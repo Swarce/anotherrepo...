@@ -15,6 +15,12 @@ struct Sink {
 }
 
 static SINK: OnceLock<Mutex<Sink>> = OnceLock::new();
+static MIRROR: OnceLock<fn(&str, &str)> = OnceLock::new();
+
+/// Also send every line to `f(tag, message)` (the embedded host uses this for logcat).
+pub fn set_mirror(f: fn(&str, &str)) {
+    let _ = MIRROR.set(f);
+}
 
 pub const KEEP_LOGS: usize = 10;
 
@@ -80,6 +86,9 @@ pub fn stamp() -> String {
 }
 
 pub fn line(tag: &str, msg: &str) {
+    if let Some(f) = MIRROR.get() {
+        f(tag, msg);
+    }
     let l = format!("{} [{tag}] {msg}\n", stamp());
     let mut s = sink().lock().unwrap();
     if let Some(f) = s.file.as_mut() {
