@@ -1,0 +1,23 @@
+{
+ "asset": "battle_pvp_statue_status_parameter",
+ "about": "PvP (action battle) HP/ATK/DEF multipliers. Not read by the tactical battle.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/12-master-data-fill.md §2",
+   "note": "how the client reads the table"
+  },
+  {
+   "source": "jdr-default",
+   "note": "neutral 1.0"
+  }
+ ],
+ "data": {
+  "hpRate": 1.0,
+  "offenseRate": 1.0,
+  "defenseRate": 1.0,
+  "hpAIAutoBattleRate": 1.0,
+  "offenseAIAutoBattleRate": 1.0,
+  "defenseAIAutoBattleRate": 1.0
+ }
+}

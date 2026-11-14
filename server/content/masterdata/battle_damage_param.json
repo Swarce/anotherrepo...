@@ -1,0 +1,43 @@
+{
+ "asset": "battle_damage_param",
+ "about": "Action-battle damage constants; row 0 normal, 1 PvP, 2 PvP AI arena (AttackDamageCalculator.CalculateDamage). Not read by the tactical battle.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/12-master-data-fill.md §2",
+   "note": "how the client reads the table"
+  },
+  {
+   "source": "jdr-default",
+   "note": "all values ours"
+  }
+ ],
+ "data": {
+  "param": [
+   {
+    "OffensePowerCoeff": 100,
+    "DefensePowerCoeff": 100,
+    "MinimumDamageGuarantee": 0.05,
+    "CriticalDamagePercent": 150,
+    "RandomDamagePercent": 5,
+    "DefensePowerIgnoreCounterCoeff": 0
+   },
+   {
+    "OffensePowerCoeff": 100,
+    "DefensePowerCoeff": 100,
+    "MinimumDamageGuarantee": 0.05,
+    "CriticalDamagePercent": 150,
+    "RandomDamagePercent": 5,
+    "DefensePowerIgnoreCounterCoeff": 0
+   },
+   {
+    "OffensePowerCoeff": 100,
+    "DefensePowerCoeff": 100,
+    "MinimumDamageGuarantee": 0.05,
+    "CriticalDamagePercent": 150,
+    "RandomDamagePercent": 5,
+    "DefensePowerIgnoreCounterCoeff": 0
+   }
+  ]
+ }
+}
