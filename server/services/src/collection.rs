@@ -303,7 +303,7 @@ pub fn statue_info(o: &OwnedStatue) -> Value {
         "maxLevel": MAX_LEVEL, "sellVm": 0, "level": o.level, "bounds": 0, "exp": o.exp,
         "hp": st.hp, "eng": 0, "atk": st.atk, "def": st.def,
         "skillList": [], "abilityList": [], "leaderAbilityInfo": {},
-        "dtSkillList": [basic_attack()], "dtAbilityList": [], "dtLeaderAbilityInfo": {},
+        "dtSkillList": [], "dtAbilityList": [], "dtLeaderAbilityInfo": {},
         "characteristicList": [], "assistAttr": 0, "assistSkillInfo": {}, "assistAbilityList": [],
         "dtAssistSkillInfo": {}, "dtAssistAbilityList": [],
         "speed": 100, "evasion": 0, "hitrate": 100, "criticalRate": 5,
@@ -315,11 +315,19 @@ pub fn statue_info(o: &OwnedStatue) -> Value {
     })
 }
 
-/// Our basic tactical attack (`JDR_ATK_00` in dtbattle_skill_data_table), given to every statue
-/// until real skill data exists: without a combo-type skill a unit has no Attack button. The
-/// client takes type, button and name from the table row but keeps `skillLevel`, which must be
-/// at least 1.
+/// Our basic tactical attack (`JDR_ATK_00` in dtbattle_skill_data_table), given to every statue in
+/// a team (and to enemies) until real skill data exists: without a combo-type skill a unit has no
+/// Attack button. The client takes type, button and name from the table row but keeps
+/// `skillLevel`, which must be at least 1. Statue lists and detail views leave it out (their skill
+/// views were not traced).
 pub const BASIC_ATTACK: &str = "JDR_ATK_00";
+
+/// `statue_info` for a battle unit: with the basic attack.
+pub fn battle_statue_info(o: &OwnedStatue) -> Value {
+    let mut v = statue_info(o);
+    v["dtSkillList"] = json!([basic_attack()]);
+    v
+}
 
 fn basic_attack() -> Value {
     json!({ "skillId": BASIC_ATTACK, "skillLevel": 1, "name": "", "explanation": "",
@@ -335,8 +343,10 @@ fn empty_setting() -> Value {
 
 fn setting(c: &Collection, uid: i64) -> Value {
     match c.known_statue(uid) {
-        Some(o) => json!({ "statueuId": uid, "statueInfo": statue_info(o), "equipMindList": [],
-                           "mindLinkList": [], "assistStatueList": [], "AiId": "" }),
+        Some(o) => {
+            json!({ "statueuId": uid, "statueInfo": battle_statue_info(o), "equipMindList": [],
+                           "mindLinkList": [], "assistStatueList": [], "AiId": "" })
+        }
         None => empty_setting(),
     }
 }

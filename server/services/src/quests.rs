@@ -122,7 +122,7 @@ pub fn chapter_info(c: &ChapterDef, p: &Progress) -> Value {
 }
 
 fn enemy_info(statue_id: &str, level: i64) -> Value {
-    let mut v = collection::statue_info(&collection::OwnedStatue {
+    let mut v = collection::battle_statue_info(&collection::OwnedStatue {
         uid: 0,
         statue_id: statue_id.to_string(),
         level,
