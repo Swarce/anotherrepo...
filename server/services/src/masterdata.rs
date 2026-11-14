@@ -146,6 +146,10 @@ pub const TABLES: &[(&str, &str)] = &[
         "skill_data_table",
         include_str!("../../content/masterdata/skill_data_table.json"),
     ),
+    (
+        "dtbattle_ability_data_table",
+        include_str!("../../content/masterdata/dtbattle_ability_data_table.json"),
+    ),
 ];
 
 type Error = String;
@@ -902,13 +906,50 @@ mod tests {
         }
     }
 
+    /// Leader abilities (docs/research/12 §4): every affect a row uses exists in affect_table
+    /// (the client drops unknown ones silently), giveLimit is never 0 (an affect with no uses is
+    /// deleted at turn end), and the statues that send an ability have its row.
+    #[test]
+    fn leader_abilities_are_consistent() {
+        let doc = |name: &str| -> Value {
+            let js = TABLES.iter().find(|(n, _)| *n == name).unwrap().1;
+            serde_json::from_str::<Value>(js).unwrap()["data"].clone()
+        };
+        let affects: Vec<String> = doc("affect_table")["paramList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|a| a["affectId"].as_str().unwrap().to_string())
+            .collect();
+        let rows = doc("dtbattle_ability_data_table")["paramList"]
+            .as_array()
+            .unwrap()
+            .clone();
+        assert!(!rows.is_empty());
+        for r in &rows {
+            for p in r["abilityParamList"].as_array().unwrap() {
+                assert!(affects.contains(&p["affectId"].as_str().unwrap().to_string()));
+                assert_ne!(p["giveLimit"], 0);
+            }
+        }
+        let with = crate::collection::statues()
+            .iter()
+            .filter(|d| !crate::collection::leader_ability(&d.statue_id)["abilityId"].is_null())
+            .count();
+        assert_eq!(
+            with,
+            rows.len(),
+            "every row belongs to a statue in the roster"
+        );
+    }
+
     #[test]
     fn tutorial_table_content() {
         let s = Schema::embedded().unwrap();
         let t = tables(&s, TABLES).unwrap();
         // 17 core tables plus the battle tables from content files (the skill table is
         // generated from the statues, see generated_tables).
-        assert_eq!(t.len(), 19 + 11 + 10); // yogo_table is core
+        assert_eq!(t.len(), 19 + 11 + 10 + 1); // yogo_table is core
         let tut = t.iter().find(|t| t.name == "tutorial_flag_table").unwrap();
         assert_eq!(tut.rows, 34);
         let Val::List(rows) = &tut.vals[0] else {

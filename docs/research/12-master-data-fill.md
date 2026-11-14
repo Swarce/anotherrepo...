@@ -105,3 +105,43 @@ returns the key itself when the label is missing (H).
   - `action_branch_data_table`: needs affect data first.
 
   All five are null-safe when empty.
+
+## 4. Leader abilities in the tactical battle (Build 14)
+
+Data path (H):
+1. The battle reads the leader's (`teamOrder.leaderStatue`) `statueInfo.dtLeaderAbilityInfo`
+   (0xEBCC30) and applies it to every player member as source Leader (0xEBDE14 → 0xEFC6C0).
+   Enemies get none.
+2. `DtAbilityInfo.SetupFromAbilityData` 0xD0EE00 looks the id up in `dtbattle_ability_data_table`.
+   If it finds the row, it overwrites the name and parameters from the table. The server must
+   still send `abilityParamList: []`: a null list throws (0xD0EEC8).
+3. Each parameter becomes an affect, which is silently dropped if `affect_table` has no row for its
+   id (0xECFD48).
+
+Values (H):
+- value(level) = RoundToInt(Lerp(Lv1_i, Lv10_i, (clamp(level, 1, 10) − 1)/9)) over 8 slots
+  (0xEDA880, 0xEDAA44, GameConst 8/1/10).
+- Every value is **per mille**.
+  - Stat rates: fixed + RoundToInt(permille × 0.001 × base) (`CalcConfigValue` 0xCCA5C4).
+  - Damage dealt and damage taken: rate = 1 + Σ permille/1000, clamped to 0.1–5.0. Positive means
+    more damage on both sides, so "damage taken −9%" is −90 (0xEFDF34–0xEFE8B4).
+  - Crit damage: base 1.0, × the 1.5 crit rate (0xEFF180).
+  - Per-statue-type damage: slot 1 holds the StatueType (0xED4458).
+- `giveLimit` 0 makes the affect expire at turn end (0xFB8F0C), so we send −1, which is never
+  reduced (0xFB99C4).
+- Conditions take no parameters: DYING (HP ≤ 30%), ALONE (all others dead), FULL_HP.
+
+What we send:
+- 88 statues get `DT_LEAD_<statueId>`, with the name label `ABI_LEAD_NAME_<statueId>`. Each
+  ability carries the wiki's leader-ability numbers, the level-1 value and the MAX value as level 10.
+- 21 new affect rows join the 3 existing ones.
+- The server sends `abilityLevel` 1.
+- Left out:
+  - action-battle-only effects (move speed, cool-down seconds, gold…);
+  - DoDoDo mode (reversal is off);
+  - attribute targets (statues carry no `tribeTypeList` yet);
+  - crit-rate multipliers (the client supports only a fixed add);
+  - heal (capped by `_limitedHealRateMax`).
+- Rebuild: `tools/content/build_leader_abilities.py`.
+- Risk: the wiki numbers come from the action-battle era, so the balance is ours. The ability's
+  description in the UI may be blank, because these stat affects have no text keys.
