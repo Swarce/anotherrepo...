@@ -215,6 +215,10 @@ pub struct Stats {
     pub replaced: usize,
     pub stale: usize,
     pub best_fit: usize,
+    /// Sprites replaced with redrawn art.
+    pub art: usize,
+    /// Images in the art pack that matched no sprite of this bundle.
+    pub art_unmatched: usize,
 }
 
 /// Visit every translatable string in a decoded MonoBehaviour. `edit` returns the replacement.
@@ -305,6 +309,7 @@ pub fn rewrite_bundle(
     data: &[u8],
     bundle_name: &str,
     edit: &mut dyn FnMut(&str, &str) -> Option<String>,
+    art: Option<&HashMap<String, &[u8]>>,
 ) -> Result<(Option<Vec<u8>>, Stats), Error> {
     let mut nodes = bundle::read(data)?;
     let mut stats = Stats::default();
@@ -338,6 +343,14 @@ pub fn rewrite_bundle(
             any = true;
         }
     }
+    if let Some(images) = art {
+        let mut unmatched = Vec::new();
+        let n = crate::art::apply(&mut nodes, images, &mut unmatched)
+            .map_err(|e| format!("art: {e}"))?;
+        stats.art += n;
+        stats.art_unmatched += unmatched.len();
+        any |= n > 0;
+    }
     Ok((
         any.then(|| bundle::write_lz4(&nodes, jdr_unity::UNITY_VERSION)),
         stats,
@@ -347,13 +360,18 @@ pub fn rewrite_bundle(
 /// Every translatable string in a bundle (for the translators' export).
 pub fn collect(data: &[u8], bundle_name: &str) -> Result<Vec<Found>, Error> {
     let mut out = Vec::new();
-    rewrite_bundle(data, bundle_name, &mut |k, s| {
-        out.push(Found {
-            key: k.to_string(),
-            source: s.to_string(),
-        });
-        None
-    })?;
+    rewrite_bundle(
+        data,
+        bundle_name,
+        &mut |k, s| {
+            out.push(Found {
+                key: k.to_string(),
+                source: s.to_string(),
+            });
+            None
+        },
+        None,
+    )?;
     Ok(out)
 }
 
@@ -362,16 +380,22 @@ pub fn translate_bundle(
     data: &[u8],
     bundle_name: &str,
     tr: &Translations,
+    art: Option<&HashMap<String, &[u8]>>,
 ) -> Result<(Option<Vec<u8>>, Stats), Error> {
     let mut stale = 0;
-    let (out, mut st) = rewrite_bundle(data, bundle_name, &mut |k, s| match tr.lookup(k, s) {
-        Lookup::Found(en) => Some(en.to_string()),
-        Lookup::Stale => {
-            stale += 1;
-            None
-        }
-        Lookup::Missing => None,
-    })?;
+    let (out, mut st) = rewrite_bundle(
+        data,
+        bundle_name,
+        &mut |k, s| match tr.lookup(k, s) {
+            Lookup::Found(en) => Some(en.to_string()),
+            Lookup::Stale => {
+                stale += 1;
+                None
+            }
+            Lookup::Missing => None,
+        },
+        art,
+    )?;
     st.stale = stale;
     Ok((out, st))
 }
@@ -461,8 +485,14 @@ pub fn prepare(
     asset_key: &[u8],
     asset_iv: &[u8],
     tr: &Translations,
+    art: Option<&crate::art::ArtPack>,
 ) -> (Vec<Localized>, Vec<String>) {
     let root = state_dir.join("l10n");
+    // Cache key: the translations and the art pack (an English file is rebuilt when either changes).
+    let digest = match art {
+        Some(a) if !a.is_empty() => format!("{}+art{}", tr.digest, a.digest),
+        _ => tr.digest.clone(),
+    };
     let orig = root.join("orig");
     let gen = root.join("gen");
     let state_path = root.join("state.json");
@@ -474,18 +504,61 @@ pub fn prepare(
     // Current targets plus every bundle we replaced before (removing its last translation must
     // still serve the original again).
     let mut names = targets(tr);
+    for b in art.map(|a| a.bundles()).unwrap_or_default() {
+        if !names.contains(&b) {
+            names.push(b);
+        }
+    }
     for e in state.values() {
         if !e.name.is_empty() && !names.contains(&e.name) {
             names.push(e.name.clone());
         }
     }
-    for name in names {
-        let obf = format!("{}.bytes", names::obfuscate(&name, asset_key));
-        match prepare_one(
-            &name, &obf, game_dir, &orig, &gen, asset_key, asset_iv, tr, &mut state,
-        ) {
-            Ok(Some(l)) => out.push(l),
-            Ok(None) => {}
+    // Bundles are independent: rebuild them on a few threads (a first build with art decodes
+    // dozens of atlases; the client waits for the manifest meanwhile).
+    let next = std::sync::atomic::AtomicUsize::new(0);
+    let results = std::sync::Mutex::new(Vec::new());
+    let workers = std::thread::available_parallelism()
+        .map(|n| n.get())
+        .unwrap_or(2)
+        .clamp(1, 4);
+    std::thread::scope(|sc| {
+        for _ in 0..workers {
+            sc.spawn(|| loop {
+                let i = next.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+                let Some(name) = names.get(i) else { break };
+                let obf = format!("{}.bytes", names::obfuscate(name, asset_key));
+                let images = art.map(|a| a.for_bundle(name)).filter(|m| !m.is_empty());
+                let job = Job {
+                    name,
+                    obf: &obf,
+                    tr,
+                    digest: &digest,
+                    art: images.as_ref(),
+                };
+                let prev = state.get(&obf).cloned();
+                // A panic in one bundle must not take the others (or the server) down.
+                let r = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                    prepare_one(&job, game_dir, &orig, &gen, asset_key, asset_iv, prev)
+                }))
+                .unwrap_or_else(|_| Err("rebuild panicked".into()));
+                results
+                    .lock()
+                    .unwrap_or_else(|e| e.into_inner())
+                    .push((i, name.clone(), obf, r));
+            });
+        }
+    });
+    let mut results = results.into_inner().unwrap_or_else(|e| e.into_inner());
+    results.sort_by_key(|r| r.0);
+    for (_, name, obf, r) in results {
+        match r {
+            Ok((l, entry)) => {
+                if let Some(e) = entry {
+                    state.insert(obf, e);
+                }
+                out.extend(l);
+            }
             Err(e) => errors.push(format!("{name}: {e}")),
         }
     }
@@ -505,24 +578,31 @@ pub fn prepare(
     (out, errors)
 }
 
-#[allow(clippy::too_many_arguments)]
+/// One bundle to prepare.
+struct Job<'a> {
+    name: &'a str,
+    obf: &'a str,
+    tr: &'a Translations,
+    /// Cache key for this run (translations + art).
+    digest: &'a str,
+    art: Option<&'a HashMap<String, &'a [u8]>>,
+}
+
 fn prepare_one(
-    name: &str,
-    obf: &str,
+    job: &Job,
     game_dir: &Path,
     orig_dir: &Path,
     gen_dir: &Path,
     key: &[u8],
     iv: &[u8],
-    tr: &Translations,
-    state: &mut BTreeMap<String, StateEntry>,
-) -> Result<Option<Localized>, Error> {
+    prev: Option<StateEntry>,
+) -> Result<(Option<Localized>, Option<StateEntry>), Error> {
+    let (name, obf, tr) = (job.name, job.obf, job.tr);
     let disk_path = game_dir.join(obf);
     let Ok(disk) = std::fs::read(&disk_path) else {
-        return Ok(None); // not on this device: nothing to replace
+        return Ok((None, None)); // not on this device: nothing to replace
     };
     let disk_md5 = md5_hex(&disk);
-    let prev = state.get(obf).cloned();
     let orig_path = orig_dir.join(obf);
     let ours = |md5: &str| {
         prev.as_ref()
@@ -551,23 +631,26 @@ fn prepare_one(
     let gen_path = gen_dir.join(obf);
     if let Some(p) = prev
         .clone()
-        .filter(|p| p.src_md5 == src_md5 && p.digest == tr.digest)
+        .filter(|p| p.src_md5 == src_md5 && p.digest == job.digest)
     {
         let same_size =
             std::fs::metadata(&gen_path).map(|m| m.len() as i64).ok() == Some(p.out_size);
         let same_time = p.out_mtime != 0 && mtime_secs(&gen_path) == Some(p.out_mtime);
         if same_size && same_time {
             let md5_on_device = p.out_md5.clone();
-            return Ok(Some(Localized {
-                name: name.into(),
-                obf: obf.into(),
-                file: gen_path,
-                md5: p.out_md5,
-                size: p.out_size,
-                encrypted: p.encrypted,
-                stats: Stats::default(),
-                on_device: disk_md5 == md5_on_device,
-            }));
+            return Ok((
+                Some(Localized {
+                    name: name.into(),
+                    obf: obf.into(),
+                    file: gen_path,
+                    md5: p.out_md5,
+                    size: p.out_size,
+                    encrypted: p.encrypted,
+                    stats: Stats::default(),
+                    on_device: disk_md5 == md5_on_device,
+                }),
+                None,
+            ));
         }
     }
     let plain = if Jjec::is_jjec(&source) {
@@ -575,7 +658,7 @@ fn prepare_one(
     } else {
         source.clone()
     };
-    let (rewritten, stats) = translate_bundle(&plain, name, tr)?;
+    let (rewritten, stats) = translate_bundle(&plain, name, tr, job.art)?;
     // Nothing to change: serve the original as is (also reverts a copy we replaced earlier).
     let (bytes, encrypted) = match rewritten {
         Some(b) => (b, false),
@@ -593,29 +676,29 @@ fn prepare_one(
             outputs.remove(0);
         }
     }
-    state.insert(
-        obf.to_string(),
-        StateEntry {
-            name: name.to_string(),
-            src_md5,
-            digest: tr.digest.clone(),
-            out_md5: out_md5.clone(),
-            out_size: bytes.len() as i64,
-            out_mtime: mtime_secs(&gen_path).unwrap_or(0),
-            encrypted,
-            outputs,
-        },
-    );
-    Ok(Some(Localized {
-        name: name.into(),
-        obf: obf.into(),
-        file: gen_path,
-        md5: out_md5,
-        size: bytes.len() as i64,
+    let entry = StateEntry {
+        name: name.to_string(),
+        src_md5,
+        digest: job.digest.to_string(),
+        out_md5: out_md5.clone(),
+        out_size: bytes.len() as i64,
+        out_mtime: mtime_secs(&gen_path).unwrap_or(0),
         encrypted,
-        stats,
-        on_device,
-    }))
+        outputs,
+    };
+    Ok((
+        Some(Localized {
+            name: name.into(),
+            obf: obf.into(),
+            file: gen_path,
+            md5: out_md5,
+            size: bytes.len() as i64,
+            encrypted,
+            stats,
+            on_device,
+        }),
+        Some(entry),
+    ))
 }
 
 #[cfg(test)]
@@ -693,13 +776,13 @@ mod tests {
             ("text:MyPage_JP:A", "決定", "OK"),
             ("text:MyPage_JP:B", "変わった", "Back"), // source changed: stale
         ]);
-        let (out, st) = translate_bundle(&b, "text.jp", &t).unwrap();
+        let (out, st) = translate_bundle(&b, "text.jp", &t, None).unwrap();
         assert_eq!((st.strings, st.replaced, st.stale), (2, 1, 1));
         let out = out.unwrap();
         let again = collect(&out, "text.jp").unwrap();
         assert_eq!(again.len(), 1, "only the stale row is still Japanese");
         // Nothing to translate: no rewrite.
-        assert!(translate_bundle(&b, "text.jp", &tr(&[]))
+        assert!(translate_bundle(&b, "text.jp", &tr(&[]), None)
             .unwrap()
             .0
             .is_none());
@@ -733,7 +816,7 @@ mod tests {
         let original = text_bundle(&[("A", "決定")]);
         std::fs::write(game.join(&obf), &original).unwrap();
         let t = tr(&[("text:MyPage_JP:A", "決定", "OK")]);
-        let (l, errs) = prepare(&game, &state, key, key, &t);
+        let (l, errs) = prepare(&game, &state, key, key, &t, None);
         assert!(errs.is_empty(), "{errs:?}");
         assert_eq!(l.len(), 1);
         assert_eq!(l[0].stats.replaced, 1);
@@ -741,7 +824,7 @@ mod tests {
         assert_eq!(md5_hex(&english), l[0].md5);
         // The client downloads ours: the disk now holds the English file.
         std::fs::write(game.join(&obf), &english).unwrap();
-        let (l2, _) = prepare(&game, &state, key, key, &t);
+        let (l2, _) = prepare(&game, &state, key, key, &t, None);
         assert_eq!(
             l2[0].md5, l[0].md5,
             "rebuilt from the kept original, same output"
@@ -752,25 +835,25 @@ mod tests {
         );
         // New translations (v2) while the client still holds v1: v1 must not become the original.
         let t2 = tr(&[("text:MyPage_JP:A", "決定", "Confirm")]);
-        let (v2, _) = prepare(&game, &state, key, key, &t2);
+        let (v2, _) = prepare(&game, &state, key, key, &t2, None);
         assert_ne!(v2[0].md5, l[0].md5);
-        let (v2b, _) = prepare(&game, &state, key, key, &t2); // rebuilt again, disk still v1
+        let (v2b, _) = prepare(&game, &state, key, key, &t2, None); // rebuilt again, disk still v1
         assert_eq!(v2b[0].md5, v2[0].md5);
         assert_eq!(
             std::fs::read(state.join("l10n/orig").join(&obf)).unwrap(),
             original
         );
         // Translations removed: the original is served again (revert), flagged as it is.
-        let (l3, _) = prepare(&game, &state, key, key, &tr(&[]));
+        let (l3, _) = prepare(&game, &state, key, key, &tr(&[]), None);
         assert_eq!(l3[0].md5, md5_hex(&original));
-        let (l4, _) = prepare(&game, &state, key, key, &tr(&[])); // cached
+        let (l4, _) = prepare(&game, &state, key, key, &tr(&[]), None); // cached
         assert_eq!(
             (l4[0].md5.as_str(), l4[0].encrypted),
             (l3[0].md5.as_str(), l3[0].encrypted)
         );
         // A half-written download (or an English copy) on disk never replaces the kept original.
         std::fs::write(game.join(&obf), b"partial").unwrap();
-        let (l5, _) = prepare(&game, &state, key, key, &t);
+        let (l5, _) = prepare(&game, &state, key, key, &t, None);
         assert_eq!(l5[0].md5, l[0].md5);
         assert_eq!(
             std::fs::read(state.join("l10n/orig").join(&obf)).unwrap(),

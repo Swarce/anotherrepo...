@@ -9,7 +9,7 @@ use std::sync::atomic::Ordering;
 use std::sync::Arc;
 use std::time::Duration;
 
-const USAGE: &str = "usage: jdr-server --keys <keys.json> --files <copy of the game's files/ dir> [--data <state dir>] [--port N] [--trace] [--clock-offset SECS] [--tutorial skip|play]";
+const USAGE: &str = "usage: jdr-server --keys <keys.json> --files <copy of the game's files/ dir> [--data <state dir>] [--port N] [--trace] [--clock-offset SECS] [--tutorial skip|play] [--art <replacements dir>]";
 
 fn opt(a: &[String], n: &str) -> Option<String> {
     a.iter()
@@ -78,6 +78,15 @@ fn main() {
             ))
         });
     let mut ctx = Ctx::new(s, a.iter().any(|x| x == "--trace"));
+    if let Some(d) = opt(&a, "--art") {
+        let pack =
+            jdr_services::art::ArtPack::from_dir(&PathBuf::from(&d)).unwrap_or_else(|e| die(&e));
+        log::line(
+            "art",
+            &format!("art pack loaded from {d}: {} image(s)", pack.len()),
+        );
+        ctx.art = Some(pack);
+    }
     ctx.skip_tutorial = match opt(&a, "--tutorial").as_deref() {
         None | Some("skip") => true,
         Some("play") => false,
