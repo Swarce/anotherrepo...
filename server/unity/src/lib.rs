@@ -20,6 +20,7 @@ pub mod managed;
 pub mod objects;
 pub mod serialized;
 pub mod sfile;
+pub mod texture;
 pub mod typetree;
 pub mod writer;
 

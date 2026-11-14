@@ -25,9 +25,11 @@ use std::time::{Duration, Instant};
 /// Marker the patcher checks to make sure it embeds this library and not something else.
 #[used]
 #[no_mangle]
-pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_b008";
+pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_b011";
 
 pub const KEYS_ASSET: &str = "assets/jdr/keys.json";
+/// The player's redrawn UI art, stored in their APK by the patcher (optional).
+pub const ART_ASSET: &str = "assets/jdr/art.bin";
 
 #[cfg(target_os = "android")]
 #[used]
@@ -134,6 +136,17 @@ pub fn load_keys(state: &Path, pkg: &str) -> Result<Keys, String> {
         }
     }
     Err(format!("keys asset not found; tried {cands:?}: {errs:?}"))
+}
+
+/// The art pack from our own APK, if the patcher stored one.
+pub fn load_art(pkg: &str) -> Option<Result<jdr_services::art::ArtPack, String>> {
+    let maps = std::fs::read_to_string("/proc/self/maps").ok()?;
+    for apk in apkzip::own_apk_candidates(&maps, pkg) {
+        if let Ok(b) = apkzip::read_stored(&apk, ART_ASSET) {
+            return Some(jdr_services::art::ArtPack::from_bin(&b));
+        }
+    }
+    None
 }
 
 /// Copy `src` to `dst_dir` if its size or mtime changed since the last copy.
@@ -296,7 +309,16 @@ pub fn serve_embedded(paths: &Paths, keys: Keys, port: u16, bind_retries: u32, t
             }
         }
     };
-    let ctx = Arc::new(Ctx::new(s, false));
+    let mut ctx = Ctx::new(s, false);
+    match load_art(&paths.pkg) {
+        Some(Ok(a)) => {
+            log::line("art", &format!("art pack loaded: {} image(s)", a.len()));
+            ctx.art = Some(a);
+        }
+        Some(Err(e)) => log::line("art", &format!("art pack ERROR: {e}")),
+        None => {}
+    }
+    let ctx = Arc::new(ctx);
     ctx.port.store(port, Ordering::Relaxed);
     {
         // Build the manifest in the background so the game's first request is answered at once.

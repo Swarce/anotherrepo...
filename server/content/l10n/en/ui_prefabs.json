@@ -711,7 +711,7 @@
     ],
     "ui:scene_build:15:517:m_Text": [
       "2c0e7d19",
-      "Power Up"
+      "Enhance"
     ],
     "ui:scene_build:15:556:m_Text": [
       "ba717749",
@@ -795,7 +795,7 @@
     ],
     "ui:scene_build:5:2734:m_Text": [
       "d1055c18",
-      "Power Up"
+      "Enhance"
     ],
     "ui:scene_build:5:2758:m_Text": [
       "bca84ea5",
@@ -883,7 +883,7 @@
     ],
     "ui:scene_build:7:2654:m_Text": [
       "d1055c18",
-      "Power Up"
+      "Enhance"
     ],
     "ui:scene_build:7:2682:m_Text": [
       "bca84ea5",
@@ -911,7 +911,7 @@
     ],
     "ui:scene_build:7:2893:m_Text": [
       "e588c538",
-      "Materials will be consumed to Power Up."
+      "Materials will be consumed to Enhance."
     ],
     "ui:scene_clan:11:126:m_Text": [
       "a9ebd889",
@@ -1307,7 +1307,7 @@
     ],
     "ui:scene_formation:1:10018:m_Text": [
       "2c0e7d19",
-      "Power Up"
+      "Enhance"
     ],
     "ui:scene_formation:1:10045:m_Text": [
       "2b883ed0",
@@ -1315,7 +1315,7 @@
     ],
     "ui:scene_formation:1:10120:m_Text": [
       "2c0e7d19",
-      "Power Up"
+      "Enhance"
     ],
     "ui:scene_formation:1:10208:m_Text": [
       "8dbff0de",
@@ -1455,7 +1455,7 @@
     ],
     "ui:scene_formation:1:9064:m_Text": [
       "a2dfc575",
-      "Maverick"
+      "Solitude"
     ],
     "ui:scene_formation:1:9067:m_Text": [
       "7ebb1903",
@@ -1487,7 +1487,7 @@
     ],
     "ui:scene_formation:1:9101:m_Text": [
       "51a80cd6",
-      "Tenacity"
+      "Spirit"
     ],
     "ui:scene_formation:1:9102:m_Text": [
       "1ddef47b",
@@ -1511,7 +1511,7 @@
     ],
     "ui:scene_formation:1:9127:m_Text": [
       "6f64e69c",
-      "Bravery"
+      "Courage"
     ],
     "ui:scene_formation:1:9135:m_Text": [
       "ec766a3f",
@@ -1551,7 +1551,7 @@
     ],
     "ui:scene_formation:1:9205:m_Text": [
       "81219341",
-      "Intellect"
+      "Wisdom"
     ],
     "ui:scene_formation:1:9206:m_Text": [
       "6f3443ca",
@@ -1915,7 +1915,7 @@
     ],
     "ui:scene_formation:3:2450:m_Text": [
       "46e9f323",
-      "Statue Power Up"
+      "Statue Enhance"
     ],
     "ui:scene_formation:3:2461:m_Text": [
       "c0f52b79",
@@ -2239,7 +2239,7 @@
     ],
     "ui:scene_gasha:11:86:m_Text": [
       "a2074f0a",
-      "Gacha Results"
+      "Summon Results"
     ],
     "ui:scene_gasha:11:88:m_Text": [
       "f6c244f9",
@@ -2327,7 +2327,7 @@
     ],
     "ui:scene_gasha:5:3008:m_Text": [
       "45c1be1b",
-      "Gacha Details"
+      "Summon Details"
     ],
     "ui:scene_gasha:5:3083:m_Text": [
       "6da3e5c0",
@@ -2343,7 +2343,7 @@
     ],
     "ui:scene_gasha:5:3186:m_Text": [
       "45c1be1b",
-      "Gacha Details"
+      "Summon Details"
     ],
     "ui:scene_gasha:5:3201:m_Text": [
       "c98d5601",
@@ -2431,11 +2431,11 @@
     ],
     "ui:scene_gasha:5:3925:m_Text": [
       "bac83e18",
-      "Confirm Gacha"
+      "Confirm Summon"
     ],
     "ui:scene_gasha:5:3938:m_Text": [
       "3764e6d3",
-      "Use n currency to pull\n\"Special Gacha\" n times?\n*Text to be loaded from server"
+      "Use n currency to pull\n\"Special Summon\" n times?\n*Text to be loaded from server"
     ],
     "ui:scene_gasha:5:3948:m_Text": [
       "384cf51b",
@@ -2451,7 +2451,7 @@
     ],
     "ui:scene_gasha:5:4067:m_Text": [
       "b6104303",
-      "Your Mind BOX is full,\r\nso you can't pull the Gacha."
+      "Your Mind BOX is full,\r\nso you can't summon."
     ],
     "ui:scene_gasha:5:4081:m_Text": [
       "6c4ea5bf",
@@ -4259,7 +4259,7 @@
     ],
     "ui:ui_formation:0:-3566706127138131657:m_Text": [
       "2c0e7d19",
-      "Power Up"
+      "Enhance"
     ],
     "ui:ui_formation:0:-3599102096912058718:defaultText": [
       "26354304",
@@ -4379,7 +4379,7 @@
     ],
     "ui:ui_formation:0:813901386726182425:m_Text": [
       "2c0e7d19",
-      "Power Up"
+      "Enhance"
     ],
     "ui:ui_formation:0:8358390140125139249:m_Text": [
       "53b78141",
@@ -4419,11 +4419,11 @@
     ],
     "ui:ui_gasha:0:-6047367751277058194:m_Text": [
       "45c1be1b",
-      "Gacha Details"
+      "Summon Details"
     ],
     "ui:ui_gasha:0:-6381408975318641909:m_Text": [
       "45c1be1b",
-      "Gacha Details"
+      "Summon Details"
     ],
     "ui:ui_gasha:0:-6550539440486929044:m_Text": [
       "4a370323",
@@ -4455,7 +4455,7 @@
     ],
     "ui:ui_gasha:0:2313773771411655170:m_Text": [
       "45c1be1b",
-      "Gacha Details"
+      "Summon Details"
     ],
     "ui:ui_gasha:0:4162424031015024129:m_Text": [
       "e790abfa",

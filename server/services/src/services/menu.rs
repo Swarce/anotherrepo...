@@ -1,5 +1,5 @@
-//! MyPage menu screens for a fresh offline player: quest select, present box, follow list,
-//! items and shops. Every list is empty; M4/M5 fill them from server/content and the save.
+//! MyPage menu screens that are still empty offline: present box, follow list, items, shops and
+//! Town recommendations. Story quests live in `bizarre.rs`; the collection in `statue.rs`.
 
 use crate::app::ApiResult;
 use crate::services::ok;
@@ -7,10 +7,10 @@ use crate::Ctx;
 use jdr_core::envelope::RequestEnvelope;
 use serde_json::json;
 
-/// `BizarreSelectResponse`: no quest banners or campaigns. `dungeonLockFlg` 1 (`BoolType.True`)
-/// keeps the dungeon button locked, as for a new player (its routes are not served yet).
-pub fn get_bizarre_select(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    ok(json!({ "questList": [], "eventCampaignList": [], "dungeonLockFlg": 1 }))
+/// `GetRecommendClanResponse`: no `clanInfo`, which the client shows as "no recommended Town
+/// found" (Towns are the multiplayer guild feature; offline there is none to join).
+pub fn clan_recommend(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
+    ok(json!({}))
 }
 
 /// `PresentListResponse` for either tab (`receivedFlag` 0 or 1): an empty box shown as page 1 of 1.
@@ -26,6 +26,18 @@ pub fn follow_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
 /// `ItemListResponse`: no items owned.
 pub fn item_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "itemList": [] }))
+}
+
+/// `NotifyListResponse`: no notice pages offline (the client opens these URLs in a web view).
+pub fn notify_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
+    ok(json!({ "updateUrl": "", "failureUrl": "", "otherUrl": "",
+               "updateNewFlg": 0, "failureNewFlg": 0, "otherNewFlg": 0 }))
+}
+
+/// `GashaListResponse`: no summon banners yet (the Gamerch banner data is not served yet).
+pub fn gasha_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let p = crate::services::statue::profile(ctx, env)?;
+    ok(json!({ "gashaList": [], "itemList": [], "userInfo": crate::services::user::user_info(&p) }))
 }
 
 /// `ShopListResponse`: no in-game shops or goods, nothing paid, no charge cap.
@@ -63,7 +75,7 @@ mod tests {
             (
                 "/bizarre/get_bizarre_select",
                 json!({}),
-                &["questList", "eventCampaignList"][..],
+                &["eventCampaignList"][..],
             ),
             (
                 "/present/present_list",

@@ -21,10 +21,28 @@ pub const ASSET_DIR: &str = "Assets/Resources/Common/InMemoryMasterData";
 pub const SCHEMA_JSON: &str = include_str!("../../content/masterdata/schema.json");
 
 /// Content files (asset name, JSON). Each has `asset`, `sources` and `data` (root field -> value).
-pub const TABLES: &[(&str, &str)] = &[(
-    "tutorial_flag_table",
-    include_str!("../../content/masterdata/tutorial_flag_table.json"),
-)];
+pub const TABLES: &[(&str, &str)] = &[
+    (
+        "tutorial_flag_table",
+        include_str!("../../content/masterdata/tutorial_flag_table.json"),
+    ),
+    (
+        "dtbattle_damage_param",
+        include_str!("../../content/masterdata/dtbattle_damage_param.json"),
+    ),
+    (
+        "dtbattle_damage_rank_table",
+        include_str!("../../content/masterdata/dtbattle_damage_rank_table.json"),
+    ),
+    (
+        "dtbattle_skill_data_table",
+        include_str!("../../content/masterdata/dtbattle_skill_data_table.json"),
+    ),
+    (
+        "area_position_pattern_table",
+        include_str!("../../content/masterdata/area_position_pattern_table.json"),
+    ),
+];
 
 type Error = String;
 
@@ -205,12 +223,16 @@ impl Schema {
                 let bits = (v.as_f64().ok_or_else(bad)? as f32).to_bits() as i32;
                 return Ok(Val::Struct(vec![Val::Int(0), Val::Int(bits as i64)]));
             }
-            // The string obfuscation is not decoded yet; an empty string reads as empty.
+            // {seed, securityString}: the client splits the string on '-', parses each part as a
+            // hex byte, XORs byte i with byte i%4 of the little-endian seed and reads ASCII
+            // (SecurityStringValue.get_Value -> 0x105FAA4). With seed 0 that is the ASCII bytes as
+            // uppercase hex joined by '-'; "" stays "".
             SEC_STRING => {
-                return match v.as_str() {
-                    Some("") => Ok(Val::Struct(vec![Val::Int(0), Val::Str(String::new())])),
-                    _ => Err(format!("{at}: only \"\" is supported for {name}")),
+                let s = v.as_str().ok_or_else(bad)?;
+                if !s.is_ascii() {
+                    return Err(format!("{at}: {name} must be ASCII"));
                 }
+                return Ok(Val::Struct(vec![Val::Int(0), Val::Str(security_string(s))]));
             }
             _ => {}
         }
@@ -249,6 +271,14 @@ impl Schema {
             _ => Err(format!("{at}: not an object")),
         }
     }
+}
+
+/// The `securityString` of a SecurityStringValue with seed 0.
+pub fn security_string(s: &str) -> String {
+    s.bytes()
+        .map(|b| format!("{b:02X}"))
+        .collect::<Vec<_>>()
+        .join("-")
 }
 
 /// One table in the bundle.
@@ -423,8 +453,58 @@ pub fn build(
 }
 
 /// Build from the embedded schema and content.
+/// Tables generated from other content (the statue roster): (asset, content-file JSON).
+pub fn generated_tables() -> Vec<(String, String)> {
+    // Each generated table carries the sources of the content file its rows come from.
+    let sources_of = |content: &str| -> Value {
+        serde_json::from_str::<Value>(content)
+            .ok()
+            .and_then(|v| v.get("sources").cloned())
+            .unwrap_or(Value::Null)
+    };
+    let mut statue_src = sources_of(crate::collection::STATUES_JSON);
+    if let Some(list) = statue_src.as_array_mut() {
+        list.push(serde_json::json!({ "source": "jdr-research",
+            "doc": "docs/research/11-battle-and-positions.md §1",
+            "note": "statue_setting_table: position units, camera object, team scale" }));
+        list.push(serde_json::json!({ "source": "jdr-default",
+            "note": "statue_setting_table: the My Page position/rotation, background choice, mindFrameID and PvP AI ids are our values" }));
+    }
+    let rank_src = sources_of(crate::collection::RANKS_JSON);
+    let doc = |asset: &str, src: &Value, rows: Vec<Value>| {
+        serde_json::json!({ "asset": asset, "sources": src, "data": { "paramList": rows } })
+            .to_string()
+    };
+    vec![
+        (
+            "statue_setting_table".into(),
+            doc(
+                "statue_setting_table",
+                &statue_src,
+                crate::collection::statue_setting_rows(),
+            ),
+        ),
+        (
+            "statue_level_table".into(),
+            doc(
+                "statue_level_table",
+                &statue_src,
+                crate::collection::statue_level_rows(),
+            ),
+        ),
+        (
+            "rank_table".into(),
+            doc("rank_table", &rank_src, crate::collection::rank_rows()),
+        ),
+    ]
+}
+
+/// Build from the embedded schema and content (plus the generated tables).
 pub fn build_embedded(ms: &TypeEntry, ab: &TypeEntry) -> Result<(Vec<u8>, Vec<Table>), Error> {
-    let t = tables(&Schema::embedded()?, TABLES)?;
+    let generated = generated_tables();
+    let mut all: Vec<(&str, &str)> = TABLES.to_vec();
+    all.extend(generated.iter().map(|(a, b)| (a.as_str(), b.as_str())));
+    let t = tables(&Schema::embedded()?, &all)?;
     Ok((build(&t, ms, ab)?, t))
 }
 
@@ -433,6 +513,42 @@ mod tests {
     use super::*;
     use jdr_unity::serialized::parse_types;
     use jdr_unity::writer::W;
+
+    /// The content files the server reads directly (not through the schema) follow the same rule
+    /// as master-data content: a valid file-level `sources` list, and every record cites a source
+    /// that is valid by itself.
+    #[test]
+    fn content_files_cite_their_sources() {
+        let files = [
+            ("statues", crate::collection::STATUES_JSON, "statues"),
+            ("minds", crate::collection::MINDS_JSON, "minds"),
+            ("ranks", crate::collection::RANKS_JSON, ""),
+            ("quests", crate::quests::QUESTS_JSON, "chapters"),
+        ];
+        for (name, js, records) in files {
+            let v: Value = serde_json::from_str(js).unwrap();
+            check_sources(&v).unwrap_or_else(|e| panic!("{name}.json: {e}"));
+            if records.is_empty() {
+                continue;
+            }
+            let mut list: Vec<&Value> = v[records].as_array().unwrap().iter().collect();
+            if name == "quests" {
+                list = list
+                    .iter()
+                    .flat_map(|c| c["stages"].as_array().unwrap())
+                    .collect();
+            }
+            assert!(!list.is_empty(), "{name}.json has no records");
+            for (i, r) in list.iter().enumerate() {
+                let one = serde_json::json!({ "sources": [r["source"].clone()] });
+                check_sources(&one).unwrap_or_else(|e| panic!("{name}.json record {i}: {e}"));
+            }
+        }
+        for (asset, js) in generated_tables() {
+            let v: Value = serde_json::from_str(&js).unwrap();
+            check_sources(&v).unwrap_or_else(|e| panic!("generated {asset}: {e}"));
+        }
+    }
     use serde_json::json;
 
     fn fake_type(class_id: i32) -> TypeEntry {
@@ -482,11 +598,107 @@ mod tests {
         }
     }
 
+    /// What the tactical battle dereferences without null checks (docs/research/11): a damage
+    /// row, a non-empty rank table, a skill row for every skill a unit gets (the client's two
+    /// fixed ones and our basic attack), a category row for every skill, and the formation row.
+    #[test]
+    fn tactical_battle_tables_are_consistent() {
+        let doc = |name: &str| -> Value {
+            let js = TABLES.iter().find(|(n, _)| *n == name).unwrap().1;
+            serde_json::from_str::<Value>(js).unwrap()["data"].clone()
+        };
+        assert_eq!(
+            doc("dtbattle_damage_param")["param"]
+                .as_array()
+                .unwrap()
+                .len(),
+            1
+        );
+        assert!(!doc("dtbattle_damage_rank_table")["table"]
+            .as_array()
+            .unwrap()
+            .is_empty());
+        let sk = doc("dtbattle_skill_data_table");
+        let ids: Vec<&str> = sk["skillDataList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|r| r["dtSkillId"].as_str().unwrap())
+            .collect();
+        for need in [
+            "SKILL_000_01",
+            "SKILL_000_02",
+            crate::collection::BASIC_ATTACK,
+        ] {
+            assert!(ids.contains(&need), "{need}");
+        }
+        let cats: Vec<&str> = sk["categoryList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|c| c["dtSkillCategoryId"].as_str().unwrap())
+            .collect();
+        for r in sk["skillDataList"].as_array().unwrap() {
+            assert!(cats.contains(&r["mainSkillCategory"].as_str().unwrap()));
+        }
+        // Values that would zero damage (docs/research/11 §2.1).
+        let p = &doc("dtbattle_damage_param")["param"][0];
+        let f = |k: &str| p[k].as_f64().unwrap();
+        assert!(f("_limitRateMin") <= 1.0 && 1.0 <= f("_limitRateMax"));
+        assert!(f("_multiDealDamageMin") <= 1.0 && 1.0 <= f("_multiDealDamageMax"));
+        assert!(f("_addDamageMin") <= 0.0 && 0.0 <= f("_addDamageMax"));
+        assert!(f("_damageCap") > 0.0 && f("_damageGitterMax") > 0.0);
+        let pat = doc("area_position_pattern_table");
+        let row = pat["paramList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .find(|p| p["patternName"] == crate::quests::DT_FORMATION)
+            .expect("formation row");
+        let sets = row["posSetList"].as_array().unwrap();
+        assert_eq!(sets.len(), 6);
+        for (i, s) in sets.iter().enumerate() {
+            let list = s["positionList"].as_array().unwrap();
+            assert_eq!(list.len(), i % 3 + 1);
+            for q in list.iter().flat_map(|p| [&p["rotate"], &p["startRotate"]]) {
+                let n: f64 = ["x", "y", "z", "w"]
+                    .iter()
+                    .map(|k| q[*k].as_f64().unwrap().powi(2))
+                    .sum();
+                assert!((n - 1.0).abs() < 1e-9, "unit quaternion");
+            }
+        }
+        // Statue rows: full-size team statues, the My Page camera object, positions in cm.
+        let rows = crate::collection::statue_setting_rows();
+        assert!(rows.iter().all(|r| r["teamScaleScalar"] == 100.0
+            && r["myPageCameraType"] == "CameraIdSet0"
+            && r["mindFrameID"] == 1
+            && r["myPagePos"]["z"].as_f64().unwrap() > 100.0));
+        // Tactical areas name the formation and send no boss; action areas name none.
+        for c in crate::quests::chapters().iter().take(40) {
+            let a = &crate::quests::area_list(c, &c.stages[0])[0];
+            let want = if c.stage_type == 1 {
+                crate::quests::DT_FORMATION
+            } else {
+                ""
+            };
+            assert_eq!(a["formation"], want);
+            for e in a["areaSettingList"].as_array().unwrap() {
+                assert_eq!(e["bossFlag"], 0);
+                assert_eq!(
+                    e["enemyStatueInfo"]["dtSkillList"][0]["skillId"],
+                    crate::collection::BASIC_ATTACK
+                );
+            }
+        }
+    }
+
     #[test]
     fn tutorial_table_content() {
         let s = Schema::embedded().unwrap();
         let t = tables(&s, TABLES).unwrap();
-        assert_eq!(t.len(), 17);
+        // 17 core tables plus the three tactical battle tables with content.
+        assert_eq!(t.len(), 20);
         let tut = t.iter().find(|t| t.name == "tutorial_flag_table").unwrap();
         assert_eq!(tut.rows, 34);
         let Val::List(rows) = &tut.vals[0] else {
@@ -527,7 +739,25 @@ mod tests {
         // SecurityIntValue from a plain number: seed 0, value as is.
         let v = s.val(SEC_INT, false, &json!(42), "x").unwrap();
         assert_eq!(v, Val::Struct(vec![Val::Int(0), Val::Int(42)]));
-        assert!(s.val(SEC_STRING, false, &json!("abc"), "x").is_err());
+        // SecurityStringValue: seed 0, ASCII bytes as uppercase hex joined by '-'.
+        assert_eq!(
+            s.val(SEC_STRING, false, &json!("SKILL_000_01"), "x")
+                .unwrap(),
+            Val::Struct(vec![
+                Val::Int(0),
+                Val::Str("53-4B-49-4C-4C-5F-30-30-30-5F-30-31".into())
+            ])
+        );
+        assert_eq!(
+            s.val(SEC_STRING, false, &json!(""), "x").unwrap(),
+            Val::Struct(vec![Val::Int(0), Val::Str(String::new())])
+        );
+        assert!(s.val(SEC_STRING, false, &json!("é"), "x").is_err());
+        // SecurityFloatValue: seed 0, the float's bits.
+        assert_eq!(
+            s.val(SEC_FLOAT, false, &json!(1.5), "x").unwrap(),
+            Val::Struct(vec![Val::Int(0), Val::Int(1.5f32.to_bits() as i64)])
+        );
         assert!(s.val("Vector3", false, &json!([1, 2]), "x").is_err());
         assert_eq!(
             s.val("Vector3", false, &json!({"x":1,"y":2,"z":3}), "x")

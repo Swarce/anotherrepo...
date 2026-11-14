@@ -108,6 +108,24 @@
    "class": "Jjs.ScriptCameraParamNodeAsset",
    "core": true,
    "confidence": "H"
+  },
+  {
+   "name": "dtbattle_damage_param",
+   "class": "Jjs.dtbattle.DtBattleDamageParam",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "dtbattle_damage_rank_table",
+   "class": "Jjs.dtbattle.DtBattleDamageRankTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "dtbattle_skill_data_table",
+   "class": "Jjs.dtbattle.dtSkillDataTable",
+   "core": false,
+   "confidence": "H"
   }
  ],
  "types": {
@@ -1103,6 +1121,601 @@
     {
      "name": "securityValue",
      "type": "int"
+    }
+   ]
+  },
+  "ScSystem.ScSecurity.SecurityFloatValue": {
+   "kind": "struct",
+   "fields": [
+    {
+     "name": "seed",
+     "type": "int"
+    },
+    {
+     "name": "securityValue",
+     "type": "int"
+    }
+   ]
+  },
+  "ScSystem.ScSecurity.SecurityStringValue": {
+   "kind": "struct",
+   "fields": [
+    {
+     "name": "seed",
+     "type": "int"
+    },
+    {
+     "name": "securityString",
+     "type": "string"
+    }
+   ]
+  },
+  "Jjs.BoolType": {
+   "kind": "enum"
+  },
+  "Jjs.DTSkillTargetType": {
+   "kind": "enum"
+  },
+  "Jjs.DTSkillProcessType": {
+   "kind": "enum"
+  },
+  "Jjs.dtbattle.DtBattleDamageParam": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "param",
+     "type": "Jjs.dtbattle.DtBattleDamageParam/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.dtbattle.DtBattleDamageParam/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "_missDamageRate",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_criticalDamageRate",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_criticalDamageUpperLimit",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_criticalDamageLowerLimit",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_limitRateMin",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_limitRateMax",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_addDamageMin",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_addDamageMax",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_baseDamageCorr",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_baseHealCorr",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_ofRatioCurve",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_offenseCoff",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_defenseCoff",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_ofClampMin",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_ofClampMax",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_minimumGuaranteedMag",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_damageGitterMin",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_damageGitterMax",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_damageCap",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_minHitRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_maximumHitRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_chainMaxNum",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_chainRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_chainMaxLimitRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitedHealRateMax",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_limitedHealRateMin",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_limitedHealAddMax",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitedHealAddMin",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_healFluctuationsMax",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_healFluctuationsMin",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_multiDealDamageMin",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_multiDealDamageMax",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_reversalEnable",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_reversalStartGauge",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_reversalAddGaugeDamage",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_reversalAddGaugeDead",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_reversalAddSkillStock",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_reversalMaxTurn",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_reversalAddSpeedUpRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_reversalAddSkillCoolTimeRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveRangeNon",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveRangeVeryNear",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveRangeNear",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveRangeFar",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveRollNon",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveEscapeRenge",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveEscapeSec",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_moveSkillRangeNon",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveSkillRangeVeryNear",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveSkillRangeNear",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveSkillRangeFar",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_chain1Rate",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_chain2Rate",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_chain3Rate",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_chain4Rate",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_chain5Rate",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_statueAffinityThreshold",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitRarity3AssistStatueAmplification",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitRarity4AssistStatueAmplification",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitRarity5AssistStatueAmplification",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitRarity6AssistStatueAmplification",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitAddBonusRarity3AssistStatueAmplification",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitAddBonusRarity4AssistStatueAmplification",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitAddBonusRarity5AssistStatueAmplification",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitAddBonusRarity6AssistStatueAmplification",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_baseAssistBonusRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_sameTypeAssistBonusRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_differentTypeAssistBonusRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    }
+   ]
+  },
+  "Jjs.dtbattle.DtBattleDamageRankTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "table",
+     "type": "int",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.dtbattle.dtSkillDataTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "skillDataList",
+     "type": "Jjs.dtbattle.dtSkillData",
+     "list": true
+    },
+    {
+     "name": "categoryList",
+     "type": "Jjs.dtbattle.dtSkillCategory",
+     "list": true
+    },
+    {
+     "name": "buffList",
+     "type": "Jjs.dtbattle.dtBuff",
+     "list": true
+    },
+    {
+     "name": "buffEffList",
+     "type": "Jjs.dtbattle.dtBuffEff",
+     "list": true
+    },
+    {
+     "name": "counterList",
+     "type": "Jjs.dtbattle.dtCounterData",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.dtbattle.dtSkillData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "dtSkillId",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "viewSkillId",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "dtSkillName",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "dtSkillProfileText",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "dtSkillType",
+     "type": "Jjs.SkillType"
+    },
+    {
+     "name": "dtButtonType",
+     "type": "Jjs.SkillButtonType"
+    },
+    {
+     "name": "useSP",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "skillWait",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "damageRank",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "dtLimitCount",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "dtMinCoolTurn",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "dtMaxCoolTurn",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "hitRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "hitFlag",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "criticalRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "dododoRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "dtCamera",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "dtPositioning",
+     "type": "Jjs.BoolType"
+    },
+    {
+     "name": "dtRange",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "mainSkillCategory",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "subSkillCategory",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "useWorld",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "useKing",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "forceNormalCamera",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "skillClass",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "dtRangeMin",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "dtRangeMax",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    }
+   ]
+  },
+  "Jjs.dtbattle.dtSkillCategory": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "dtSkillCategoryId",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "TargetType",
+     "type": "Jjs.DTSkillTargetType"
+    },
+    {
+     "name": "ProcessType",
+     "type": "Jjs.DTSkillProcessType"
+    },
+    {
+     "name": "turn",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramList",
+     "type": "ScSystem.ScSecurity.SecurityStringValue",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.dtbattle.dtBuff": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "dtBuffId",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "dtBuffText",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "resist",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "eraceId",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "icon",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "buffEffectId",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "eraceTiming",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "affectID",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "giveLimit",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "maxStackNum",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramList",
+     "type": "ScSystem.ScSecurity.SecurityIntValue",
+     "list": true
+    },
+    {
+     "name": "debugParamStrList",
+     "type": "ScSystem.ScSecurity.SecurityStringValue",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.dtbattle.dtBuffEff": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "dtBuffEffectId",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "buffEffectIn",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "buffEffectLoop",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "buffEffectOut",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "action",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    }
+   ]
+  },
+  "Jjs.dtbattle.dtCounterData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "dtCounterId",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "paramList",
+     "type": "ScSystem.ScSecurity.SecurityIntValue",
+     "list": true
     }
    ]
   }
