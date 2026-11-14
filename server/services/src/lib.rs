@@ -1,9 +1,11 @@
+#![recursion_limit = "256"]
 //! Backend services the game talks to, plus the shared server context.
 
 pub mod accounts;
 pub mod app;
 pub mod art;
 pub mod cdn;
+pub mod collection;
 pub mod l10n;
 pub mod masterdata;
 pub mod services;

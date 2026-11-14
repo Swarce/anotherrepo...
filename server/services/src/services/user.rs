@@ -35,7 +35,7 @@ pub fn user_info(p: &Profile) -> Value {
         "staminaPt": 50, "staminaMax": 50, "staminaUseTime": now, "staminaMaxTime": now,
         "battlePoint": 5, "battlePointMax": 5, "battlePointUseTime": now, "battlePointMaxTime": now,
         "raidPoint": 3, "raidPointMax": 3, "raidPointUseTime": now, "raidPointMaxTime": now,
-        "statueNum": 0, "mindNum": 0, "mindMax": 300, "followNum": 0, "followMax": 50,
+        "statueNum": p.collection.statues.len(), "mindNum": 0, "mindMax": 300, "followNum": 0, "followMax": 50,
         "followerNum": 0, "followerMax": 50, "blockMax": 50, "comment": p.comment,
         "stoneNum": 0, "stoneNumFree": p.stone_free, "vm": p.gold, "mindGashaPoint": 0,
         "lastLoginAt": date(p.last_login_at), "soul": 0, "mentality": 0, "mentalityUseTime": now,
@@ -72,11 +72,26 @@ pub fn login(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         })),
         Some(mut p) => {
             p.last_login_at = clock::now();
-            ctx.accounts.touch(&p).map_err(ApiError::Internal)?;
+            // Every obtainable statue, and the teams (My Page draws its background and leader from
+            // the tactical main team sent here).
+            if p.collection.ensure(&date(clock::now())) {
+                log::line(
+                    "account",
+                    &format!(
+                        "collection: {} statue(s), {} team(s)",
+                        p.collection.statues.len(),
+                        p.collection.teams.len()
+                    ),
+                );
+            }
+            ctx.accounts.save(&p).map_err(ApiError::Internal)?;
+            let team = crate::collection::main_team(&p.collection, 1)
+                .map(|t| crate::collection::team_info(&p.collection, t))
+                .unwrap_or_else(|| json!({}));
             ok(json!({
                 "existStatus": EXIST_NORMAL, "existUser": [], "buyUncompleteFlg": 0, "is_ca": 0, "ca_html": "",
                 "userInfoMini": user_info_mini(&p),
-                "teamInfo": {}
+                "teamInfo": team
             }))
         }
     }
