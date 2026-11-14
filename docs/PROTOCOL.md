@@ -315,7 +315,7 @@ Notes:
 | `/clan/expulsion` | `ExplusionClanRequest` | `ExplusionClanResponse` | logged as unknown |
 | `/clan/info` | `GetClanInfoRequest` | `GetClanInfoResponse` | logged as unknown |
 | `/clan/invitation` | `InviteClanRequest` | `InviteClanResponse` | logged as unknown |
-| `/clan/recommend` | `GetRecommendClanRequest` | `GetRecommendClanResponse` | logged as unknown |
+| `/clan/recommend` | `GetRecommendClanRequest` | `GetRecommendClanResponse` | implemented |
 | `/clan/room_info` | `GetClanRoomInfoRequest` | `GetClanRoomInfoResponse` (M) | logged as unknown |
 | `/clan/search` | `SearchIDClanRequest` | `SearchClanResponse` | logged as unknown |
 | `/clan/search` | `SearchNameClanRequest` | `SearchClanResponse` | logged as unknown |
