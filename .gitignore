@@ -1,0 +1,24 @@
+/target
+/deliver/
+*.apk
+*.apks
+*.xapk
+*.so
+*.p12
+*.jks
+*.keystore
+keys.json
+/local/
+# Never commit game data (see CONTRIBUTING.md)
+*.dat
+*.bytes
+*.cpk
+*.acb
+*.awb
+*.unity3d
+# Logs (may contain device ids and game text)
+*.log
+logcat*.txt
+# Outputs of jdr-tool decrypt etc. belong under local/
+*.unityfs
+*.dec
