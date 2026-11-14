@@ -64,9 +64,10 @@ items, shop, quest select).
       earlier boot were reused from the cache (phone: ~1.1 s cached).
 - [x] Boot to My Page as before; `unknown_routes=0`: the five menu routes now have handlers.
 - [x] Import with the staging folder still present: `13480 already fine, 0 copied` (nothing undone).
-- [ ] No English file was downloaded in this boot's log; whether the first boot downloaded them and
-      the menus show English is to be confirmed by the owner (screenshots).
-- [ ] Title/boot dialogs in English (ClientMes); labels fit.
+- [x] First boot after installing showed the download prompt (owner); the English files were
+      downloaded then, and later boots reuse them.
+- [x] Text labels in the menus show the English (owner: "the ones that are text were translated
+      fine"). Labels drawn into icons/images stay Japanese until the redrawn art is imported.
 
 ## Build 06 — master tables generated on the phone (branch `wip/b06`)
 
