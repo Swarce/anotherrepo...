@@ -126,6 +126,72 @@
    "class": "Jjs.dtbattle.dtSkillDataTable",
    "core": false,
    "confidence": "H"
+  },
+  {
+   "name": "dtbattle_reaction_table_normal",
+   "class": "Jjs.ReactionTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "dtbattle_reaction_table_mini",
+   "class": "Jjs.ReactionTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "dtbattle_reaction_table_mini_no_blow",
+   "class": "Jjs.ReactionTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "reaction_table_normal",
+   "class": "Jjs.ReactionTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "reaction_table_mini",
+   "class": "Jjs.ReactionTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "reaction_table_mini_no_blow",
+   "class": "Jjs.ReactionTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "model_table",
+   "class": "Jjs.ModelTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "bullet_parameter",
+   "class": "Jjs.BulletParameter",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "battle_damage_param",
+   "class": "Jjs.BattleDamageParam",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "battle_combo_param",
+   "class": "Jjs.BattlePvpComboParam",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "battle_pvp_statue_status_parameter",
+   "class": "Jjs.BattlePvPStatueStatusParameter",
+   "core": false,
+   "confidence": "H"
   }
  ],
  "types": {
@@ -1716,6 +1782,321 @@
      "name": "paramList",
      "type": "ScSystem.ScSecurity.SecurityIntValue",
      "list": true
+    }
+   ]
+  },
+  "Jjs.ReactionTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "param",
+     "type": "Jjs.ReactionTable/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.ReactionTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "item",
+     "type": "Jjs.ReactionTable/ParamItem",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.ReactionTable/ParamItem": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "actionSetName",
+     "type": "string"
+    },
+    {
+     "name": "actionSetEntryId",
+     "type": "int"
+    },
+    {
+     "name": "standVanish",
+     "type": "bool"
+    }
+   ]
+  },
+  "Jjs.ModelTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.ModelTable/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.ModelTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "modelIdHash",
+     "type": "int"
+    },
+    {
+     "name": "commonAnimeType",
+     "type": "Jjs.CommonAnimationType"
+    },
+    {
+     "name": "characterHitColSize",
+     "type": "float"
+    },
+    {
+     "name": "attackHitColSize",
+     "type": "float"
+    },
+    {
+     "name": "moveSpeed",
+     "type": "float"
+    },
+    {
+     "name": "turnSpeed",
+     "type": "float"
+    },
+    {
+     "name": "damageReactionTableType",
+     "type": "Jjs.DamageRactionTableType"
+    },
+    {
+     "name": "hpbarShowOffsetY",
+     "type": "float"
+    },
+    {
+     "name": "modelAttributeType",
+     "type": "Jjs.ModelAttributeType"
+    },
+    {
+     "name": "autoPosMoveSpeedRate",
+     "type": "float"
+    },
+    {
+     "name": "enigmaScreen",
+     "type": "bool"
+    },
+    {
+     "name": "gender",
+     "type": "Jjs.GenderType"
+    },
+    {
+     "name": "dtBattleHeight",
+     "type": "Jjs.DTBattleHeightType"
+    }
+   ]
+  },
+  "Jjs.DTBattleHeightType": {
+   "kind": "enum",
+   "values": {
+    "Normal": 0,
+    "Small": 1
+   }
+  },
+  "Jjs.GenderType": {
+   "kind": "enum",
+   "values": {
+    "None": 0,
+    "Male": 1,
+    "Female": 2
+   }
+  },
+  "Jjs.ModelAttributeType": {
+   "kind": "enum",
+   "values": {
+    "None": 0,
+    "Human": 1,
+    "Stand": 2
+   }
+  },
+  "Jjs.DamageRactionTableType": {
+   "kind": "enum",
+   "values": {
+    "DMG_REACT_TYPE_NORMAL": 0,
+    "DMG_REACT_TYPE_MINI": 1,
+    "DMG_REACT_TYPE_MINI_NO_BLOW": 2
+   }
+  },
+  "Jjs.CommonAnimationType": {
+   "kind": "enum",
+   "values": {
+    "CB_TYPE_NONE": 0,
+    "CB_TYPE_SMALL": 1,
+    "CB_TYPE_MEDIUM": 2,
+    "CB_TYPE_LARGE": 3,
+    "CB_TYPE_FEMALE": 4
+   }
+  },
+  "Jjs.BulletParameter": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "param",
+     "type": "Jjs.BulletParameter/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.BulletParameter/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "ownerModelIdHash",
+     "type": "int"
+    },
+    {
+     "name": "bulletId",
+     "type": "int"
+    },
+    {
+     "name": "poolSize",
+     "type": "int"
+    },
+    {
+     "name": "onPoolEmptyBehaviour",
+     "type": "int"
+    },
+    {
+     "name": "lifeTime",
+     "type": "float"
+    },
+    {
+     "name": "dieAtCharaHit",
+     "type": "bool"
+    },
+    {
+     "name": "dieAtMapHit",
+     "type": "bool"
+    },
+    {
+     "name": "dieAtBulletErasableAttackHit",
+     "type": "bool"
+    },
+    {
+     "name": "mapCollisionMode",
+     "type": "bool"
+    },
+    {
+     "name": "stopMoveOnDying",
+     "type": "bool"
+    },
+    {
+     "name": "mapHitScale",
+     "type": "float"
+    },
+    {
+     "name": "frameEventIdIn",
+     "type": "int"
+    },
+    {
+     "name": "frameEventIdLoop",
+     "type": "int"
+    },
+    {
+     "name": "frameEventIdOut",
+     "type": "int"
+    },
+    {
+     "name": "waitInFrameEventEnd",
+     "type": "bool"
+    },
+    {
+     "name": "dieAtOwnerDamageReaction",
+     "type": "bool"
+    },
+    {
+     "name": "mapCollisionModeBoxShape",
+     "type": "bool"
+    },
+    {
+     "name": "checkMagnetForcePull",
+     "type": "bool"
+    }
+   ]
+  },
+  "Jjs.BattleDamageParam": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "param",
+     "type": "Jjs.BattleDamageParam/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.BattleDamageParam/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "OffensePowerCoeff",
+     "type": "int"
+    },
+    {
+     "name": "DefensePowerCoeff",
+     "type": "int"
+    },
+    {
+     "name": "MinimumDamageGuarantee",
+     "type": "float"
+    },
+    {
+     "name": "CriticalDamagePercent",
+     "type": "int"
+    },
+    {
+     "name": "RandomDamagePercent",
+     "type": "int"
+    },
+    {
+     "name": "DefensePowerIgnoreCounterCoeff",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.BattlePvpComboParam": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "magnification",
+     "type": "float",
+     "list": true
+    },
+    {
+     "name": "magnificationAIAutoBattle",
+     "type": "float",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.BattlePvPStatueStatusParameter": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "hpRate",
+     "type": "float"
+    },
+    {
+     "name": "offenseRate",
+     "type": "float"
+    },
+    {
+     "name": "defenseRate",
+     "type": "float"
+    },
+    {
+     "name": "hpAIAutoBattleRate",
+     "type": "float"
+    },
+    {
+     "name": "offenseAIAutoBattleRate",
+     "type": "float"
+    },
+    {
+     "name": "defenseAIAutoBattleRate",
+     "type": "float"
     }
    ]
   }

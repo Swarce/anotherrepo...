@@ -54,6 +54,50 @@ pub const TABLES: &[(&str, &str)] = &[
         "mind_level_table",
         include_str!("../../content/masterdata/mind_level_table.json"),
     ),
+    (
+        "dtbattle_reaction_table_normal",
+        include_str!("../../content/masterdata/dtbattle_reaction_table_normal.json"),
+    ),
+    (
+        "dtbattle_reaction_table_mini",
+        include_str!("../../content/masterdata/dtbattle_reaction_table_mini.json"),
+    ),
+    (
+        "dtbattle_reaction_table_mini_no_blow",
+        include_str!("../../content/masterdata/dtbattle_reaction_table_mini_no_blow.json"),
+    ),
+    (
+        "reaction_table_normal",
+        include_str!("../../content/masterdata/reaction_table_normal.json"),
+    ),
+    (
+        "reaction_table_mini",
+        include_str!("../../content/masterdata/reaction_table_mini.json"),
+    ),
+    (
+        "reaction_table_mini_no_blow",
+        include_str!("../../content/masterdata/reaction_table_mini_no_blow.json"),
+    ),
+    (
+        "model_table",
+        include_str!("../../content/masterdata/model_table.json"),
+    ),
+    (
+        "bullet_parameter",
+        include_str!("../../content/masterdata/bullet_parameter.json"),
+    ),
+    (
+        "battle_damage_param",
+        include_str!("../../content/masterdata/battle_damage_param.json"),
+    ),
+    (
+        "battle_combo_param",
+        include_str!("../../content/masterdata/battle_combo_param.json"),
+    ),
+    (
+        "battle_pvp_statue_status_parameter",
+        include_str!("../../content/masterdata/battle_pvp_statue_status_parameter.json"),
+    ),
 ];
 
 type Error = String;
@@ -771,9 +815,9 @@ mod tests {
     fn tutorial_table_content() {
         let s = Schema::embedded().unwrap();
         let t = tables(&s, TABLES).unwrap();
-        // 17 core tables plus two tactical battle tables from content files (the skill table
-        // is generated from the statues, see generated_tables).
-        assert_eq!(t.len(), 19);
+        // 17 core tables plus the battle tables from content files (the skill table is
+        // generated from the statues, see generated_tables).
+        assert_eq!(t.len(), 19 + 11);
         let tut = t.iter().find(|t| t.name == "tutorial_flag_table").unwrap();
         assert_eq!(tut.rows, 34);
         let Val::List(rows) = &tut.vals[0] else {
@@ -865,8 +909,8 @@ mod tests {
         let wrong = r#"{"asset":"x","sources":[1],"data":{}}"#;
         assert!(tables(&s, &[("rank_table", wrong)]).is_err());
         let unknown =
-            r#"{"asset":"model_table","sources":[{"source":"jdr-default","note":"n"}],"data":{}}"#;
-        assert!(tables(&s, &[("model_table", unknown)])
+            r#"{"asset":"not_a_table","sources":[{"source":"jdr-default","note":"n"}],"data":{}}"#;
+        assert!(tables(&s, &[("not_a_table", unknown)])
             .unwrap_err()
             .contains("no such asset"));
         for (src, ok) in [
