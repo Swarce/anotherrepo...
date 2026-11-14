@@ -38,6 +38,7 @@ fn main() {
     s.ports = vec![port];
     let keys = opt(&a, "--keys").unwrap_or_else(|| die(USAGE));
     s.keys = Some(Settings::load_keys(&PathBuf::from(&keys)).unwrap_or_else(|e| die(&e)));
+    s.game_files_dir = opt(&a, "--files").map(PathBuf::from);
     s.files_dir = Some(PathBuf::from(opt(&a, "--files").unwrap_or_else(|| die("--files is required: a copy of the game's files/ folder (the CDN serves your files from it)"))));
     if let Some(off) = opt(&a, "--clock-offset") {
         jdr_core::clock::set_offset(off.parse().unwrap_or_else(|_| die("bad --clock-offset")));
