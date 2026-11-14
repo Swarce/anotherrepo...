@@ -1,0 +1,189 @@
+{
+ "asset": "tutorial_flag_table",
+ "about": "Every flag label the 3.12 client queries, ids 0..N-1 (the id indexes the flag list, whose length is the row count). No script packs, so nothing is downloaded for finished tutorials. With get_tutorial_step answering all ones, every tutorial and hint counts as done and the daily/event quest categories are unlocked.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/09-master-data.md \u00a76",
+   "note": "labels read from the client's GameConst and call sites"
+  },
+  {
+   "source": "jdr-default",
+   "note": "launchType per label (not critical while every flag is on); all bools false; empty scriptPackName"
+  }
+ ],
+ "data": {
+  "paramList": [
+   {
+    "id": 0,
+    "flagLabel": "TUTORIAL_00",
+    "launchType": "Tutorial"
+   },
+   {
+    "id": 1,
+    "flagLabel": "TUTORIAL_01",
+    "launchType": "Tutorial"
+   },
+   {
+    "id": 2,
+    "flagLabel": "TUTORIAL_02",
+    "launchType": "Tutorial"
+   },
+   {
+    "id": 3,
+    "flagLabel": "TUTORIAL_03",
+    "launchType": "Tutorial"
+   },
+   {
+    "id": 4,
+    "flagLabel": "TUTORIAL_04",
+    "launchType": "Tutorial"
+   },
+   {
+    "id": 5,
+    "flagLabel": "TUTORIAL_05",
+    "launchType": "Home"
+   },
+   {
+    "id": 6,
+    "flagLabel": "TUTORIAL_06",
+    "launchType": "Home"
+   },
+   {
+    "id": 7,
+    "flagLabel": "TUTORIAL_07",
+    "launchType": "Home"
+   },
+   {
+    "id": 8,
+    "flagLabel": "TUTORIAL_08",
+    "launchType": "Home"
+   },
+   {
+    "id": 9,
+    "flagLabel": "TUTORIAL_09",
+    "launchType": "Home"
+   },
+   {
+    "id": 10,
+    "flagLabel": "TUTORIAL_10",
+    "launchType": "Home"
+   },
+   {
+    "id": 11,
+    "flagLabel": "TUTORIAL_11",
+    "launchType": "Home"
+   },
+   {
+    "id": 12,
+    "flagLabel": "HINT_00",
+    "launchType": "Manual"
+   },
+   {
+    "id": 13,
+    "flagLabel": "HINT_01",
+    "launchType": "Manual"
+   },
+   {
+    "id": 14,
+    "flagLabel": "HINT_02",
+    "launchType": "Manual"
+   },
+   {
+    "id": 15,
+    "flagLabel": "HINT_03",
+    "launchType": "Manual"
+   },
+   {
+    "id": 16,
+    "flagLabel": "HINT_04",
+    "launchType": "Manual"
+   },
+   {
+    "id": 17,
+    "flagLabel": "HINT_05",
+    "launchType": "Manual"
+   },
+   {
+    "id": 18,
+    "flagLabel": "HINT_06",
+    "launchType": "Manual"
+   },
+   {
+    "id": 19,
+    "flagLabel": "HINT_07",
+    "launchType": "Manual"
+   },
+   {
+    "id": 20,
+    "flagLabel": "HINT_08",
+    "launchType": "Manual"
+   },
+   {
+    "id": 21,
+    "flagLabel": "HINT_10",
+    "launchType": "Manual"
+   },
+   {
+    "id": 22,
+    "flagLabel": "HINT_11",
+    "launchType": "Manual"
+   },
+   {
+    "id": 23,
+    "flagLabel": "HINT_12",
+    "launchType": "Manual"
+   },
+   {
+    "id": 24,
+    "flagLabel": "HINT_13",
+    "launchType": "Manual"
+   },
+   {
+    "id": 25,
+    "flagLabel": "HINT_14",
+    "launchType": "Manual"
+   },
+   {
+    "id": 26,
+    "flagLabel": "HINT_15",
+    "launchType": "Manual"
+   },
+   {
+    "id": 27,
+    "flagLabel": "HINT_16",
+    "launchType": "Manual"
+   },
+   {
+    "id": 28,
+    "flagLabel": "HINT_17",
+    "launchType": "Manual"
+   },
+   {
+    "id": 29,
+    "flagLabel": "OPEN_00",
+    "launchType": "Manual"
+   },
+   {
+    "id": 30,
+    "flagLabel": "OPEN_01",
+    "launchType": "Manual"
+   },
+   {
+    "id": 31,
+    "flagLabel": "OPEN_02",
+    "launchType": "Manual"
+   },
+   {
+    "id": 32,
+    "flagLabel": "OPEN_03",
+    "launchType": "Manual"
+   },
+   {
+    "id": 33,
+    "flagLabel": "OPEN_04",
+    "launchType": "Manual"
+   }
+  ]
+ }
+}

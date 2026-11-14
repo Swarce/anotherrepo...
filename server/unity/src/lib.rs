@@ -1,15 +1,20 @@
 //! Unity 2018.4 asset bundle support, just enough to build the bundles the dead server used to
-//! send (`versionfile`, later `in_memory_master_data`).
+//! send (`versionfile`, `in_memory_master_data`).
 //!
 //! - [`bundle`]: UnityFS container read (LZ4/LZ4HC) and write (uncompressed).
 //! - [`serialized`]: SerializedFile v17: read type entries, write a file from parts.
 //! - [`typetree`]: build type trees for our own MonoBehaviour classes.
+//! - [`managed`]: generic managed field types (type-tree nodes + binary values) for the game's own
+//!   ScriptableObject classes.
+//! - [`objects`]: AssetBundle and MonoScript object data.
 //! - [`writer`]: little-endian writer with Unity's 4-byte alignment rules.
 //!
 //! Type definitions for engine classes (AssetBundle, MonoScript) are taken at runtime from the
 //! player's own downloaded bundles, never stored here.
 
 pub mod bundle;
+pub mod managed;
+pub mod objects;
 pub mod serialized;
 pub mod typetree;
 pub mod writer;
