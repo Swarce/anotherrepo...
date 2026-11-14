@@ -802,6 +802,13 @@ mod tests {
             && r["myPageCameraType"] == "CameraIdSet0"
             && r["mindFrameID"] == 1
             && r["myPagePos"]["z"].as_f64().unwrap() > 100.0));
+        // Reward rows: dataId is a string the client parses as an int (Build 12 device log).
+        for c in crate::quests::chapters().iter().take(40) {
+            let s = crate::quests::stage_info(c, &c.stages[0], 0, &Default::default());
+            for r in s["steadyItemSet"].as_array().unwrap() {
+                assert!(r["dataId"].as_str().unwrap().parse::<i32>().is_ok());
+            }
+        }
         // Tactical areas name the formation and send no boss; action areas name none.
         for c in crate::quests::chapters().iter().take(40) {
             let a = &crate::quests::area_list(c, &c.stages[0])[0];
