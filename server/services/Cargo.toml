@@ -9,5 +9,6 @@ publish.workspace = true
 
 [dependencies]
 jdr-core = { path = "../core" }
+jdr-crypto = { path = "../crypto" }
 serde.workspace = true
 serde_json.workspace = true

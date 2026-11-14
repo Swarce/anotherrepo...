@@ -16,3 +16,4 @@ jdr-crypto = { path = "../../server/crypto" }
 serde.workspace = true
 serde_json.workspace = true
 
+jdr-patch = { path = "../../patcher" }
