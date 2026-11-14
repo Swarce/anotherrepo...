@@ -484,6 +484,28 @@ pub fn attack_skill(statue_id: &str) -> String {
         .unwrap_or_else(|| BASIC_ATTACK.to_string())
 }
 
+/// Characters whose attacks fire bullets (their models' bullet FSMs; docs/research/12 §2): the
+/// 3-digit skill prefixes of statues 3110, 4160, 4180/4181, 4240, 5220 and 5300.
+const RANGED_PREFIXES: &[&str] = &["311", "416", "418", "424", "522", "530"];
+
+/// Where a skill's user stops, as the client's (dtRangeMin, dtRangeMax) in centimetres
+/// (`CharacterProxy.SetSkillTargetPos` 0xEE9304: farther than max walks to max, nearer than min
+/// backs off to min; 0/0 walks into the target). Melee 1-1.5 m, bullet users 4-8 m, heals on
+/// allies (target types 3-5) move only when over 10 m away. Values are ours.
+pub fn skill_range(skill_id: &str, target_type: i64) -> (i64, i64) {
+    let prefix = skill_id
+        .strip_prefix("SKILL_")
+        .and_then(|s| s.get(..3))
+        .unwrap_or("");
+    if (3..=5).contains(&target_type) {
+        (0, 1000)
+    } else if RANGED_PREFIXES.contains(&prefix) {
+        (400, 800)
+    } else {
+        (100, 150)
+    }
+}
+
 /// The base skill table (server/content/dt_skills_base.json) plus one attack row per distinct
 /// statue attack id: a copy of `JDR_ATK_00` with `dtSkillId` and `viewSkillId` set to the id, so the
 /// client plays the statue's own attack action set (skill number 99 means ATTACK).
@@ -509,6 +531,9 @@ pub fn dt_skill_table() -> Value {
             let mut row = template.clone();
             row["dtSkillId"] = json!(id);
             row["viewSkillId"] = json!(id);
+            let (min, max) = skill_range(&id, 1);
+            row["dtRangeMin"] = json!(min);
+            row["dtRangeMax"] = json!(max);
             list.push(row);
         }
     }
@@ -537,6 +562,8 @@ pub fn dt_skill_table() -> Value {
                 ("dtMinCoolTurn", json!(cool)),
                 ("dtMaxCoolTurn", json!(cool)),
                 ("mainSkillCategory", json!(s.category)),
+                ("dtRangeMin", json!(skill_range(&s.id, s.target_type).0)),
+                ("dtRangeMax", json!(skill_range(&s.id, s.target_type).1)),
             ] {
                 row[k] = v;
             }
