@@ -13,6 +13,12 @@ pub fn get_bizarre_select(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "questList": [], "eventCampaignList": [], "dungeonLockFlg": 1 }))
 }
 
+/// `GetRecommendClanResponse`: no `clanInfo`, which the client shows as "no recommended Town
+/// found" (Towns are the multiplayer guild feature; offline there is none to join).
+pub fn clan_recommend(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
+    ok(json!({}))
+}
+
 /// `PresentListResponse` for either tab (`receivedFlag` 0 or 1): an empty box shown as page 1 of 1.
 pub fn present_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "allPresentNum": 0, "allPageNum": 1, "presentList": [] }))

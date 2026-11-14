@@ -42,6 +42,7 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/team/team_info" => misc::team_info(ctx, env),
         "/bizarre/bizarre_resumption" => misc::bizarre_resumption(ctx, env),
         "/bizarre/get_bizarre_select" => menu::get_bizarre_select(ctx, env),
+        "/clan/recommend" => menu::clan_recommend(ctx, env),
         "/present/present_list" => menu::present_list(ctx, env),
         "/follow/follow_list" => menu::follow_list(ctx, env),
         "/item/item_list" => menu::item_list(ctx, env),
