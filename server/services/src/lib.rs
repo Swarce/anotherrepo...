@@ -232,9 +232,10 @@ impl Ctx {
             jdr_core::log::line(
                 "l10n",
                 &format!(
-                    "{} English file(s) ready in {} ms ({} rebuilt now: {} of {} strings replaced, {} stale)",
+                    "{} English file(s) ready in {} ms, {} already on the phone ({} rebuilt now: {} of {} strings replaced, {} stale)",
                     localized.len(),
                     t_l10n.elapsed().as_millis(),
+                    loc.iter().filter(|l| l.on_device).count(),
                     loc.iter().filter(|l| l.stats.strings > 0).count(),
                     replaced,
                     strings,
