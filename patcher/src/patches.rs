@@ -434,6 +434,54 @@ impl Patch for KeepFiles {
     }
 }
 
+/// `ret`
+pub const RET: u32 = 0xd65f_03c0;
+
+/// Turns off the Growthbeat analytics/push SDK. Offline it cannot reach its server: its Java
+/// thread dies at startup with "Failed create HttpURLConnection" (logged as a FATAL EXCEPTION,
+/// though Growthbeat's own handler keeps the app alive). Every game call goes through
+/// `GrowthbeatBehaviour.Awake` (initialise + push token), `.SendTag` and `.SendEvent`; each now
+/// returns at once, so the SDK is never started and nothing is tracked.
+pub struct NoGrowthbeat;
+
+impl Patch for NoGrowthbeat {
+    fn id(&self) -> &'static str {
+        "no-growthbeat"
+    }
+    fn description(&self) -> &'static str {
+        "Never start the Growthbeat analytics SDK (its thread crashed at startup offline)"
+    }
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        _cfg: &Config,
+        build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
+        // Runs after keep-files (which checks the whole file), so only the sites are checked.
+        let mut out = apk.read(LIBIL2CPP_ARM64)?;
+        for (off, want) in build.growthbeat_fns {
+            let window = out.get(off..off + 32).ok_or("libil2cpp.so too short")?;
+            if sha256_hex(window) != want {
+                return Err(format!("fingerprint mismatch at Growthbeat site {off:#x}").into());
+            }
+        }
+        for (off, _) in build.growthbeat_fns {
+            out[off..off + 4].copy_from_slice(&RET.to_le_bytes());
+        }
+        let compress = apk.is_compressed(LIBIL2CPP_ARM64);
+        apk.put(LIBIL2CPP_ARM64, out, compress);
+        let sites: Vec<String> = build
+            .growthbeat_fns
+            .iter()
+            .map(|(o, _)| format!("{o:#x}"))
+            .collect();
+        Ok(format!(
+            "libil2cpp.so @{}: GrowthbeatBehaviour Awake/SendTag/SendEvent -> return",
+            sites.join(", ")
+        ))
+    }
+}
+
 /// English for the in-APK ClientMes table (boot, download and error messages), from the
 /// project's translation file; rows without a current translation stay as they are.
 pub struct TranslateClientMes;
@@ -522,6 +570,7 @@ pub fn all() -> Vec<Box<dyn Patch>> {
         Box::new(DropArmv7),
         Box::new(UnityHeap),
         Box::new(KeepFiles),
+        Box::new(NoGrowthbeat),
         Box::new(EmbedServer),
         Box::new(TranslateClientMes),
         Box::new(UiArt),

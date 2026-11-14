@@ -243,6 +243,16 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
             "libil2cpp.so @{off:#x} = return true (no download-folder wipe)"
         ));
     }
+    if !disabled.contains(&"no-growthbeat") {
+        let lib = chk.read(patches::LIBIL2CPP_ARM64)?;
+        for (off, _) in build.growthbeat_fns {
+            if lib.get(off..off + 4) != Some(&patches::RET.to_le_bytes()[..]) {
+                return Err("post-check failed: no-growthbeat patch not present".into());
+            }
+        }
+        rep.checks
+            .push("libil2cpp.so GrowthbeatBehaviour Awake/SendTag/SendEvent = ret".into());
+    }
     if !disabled.contains(&"unity-heap") {
         let lib = chk.read(patches::LIBUNITY_ARM64)?;
         let (off, _) = build.unity_default_alloc_ctor;
