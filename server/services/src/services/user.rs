@@ -44,7 +44,11 @@ pub fn user_info(p: &Profile) -> Value {
 }
 
 fn current(ctx: &Ctx, env: &RequestEnvelope) -> Result<Profile, ApiError> {
-    ctx.accounts.get(&env.uuid).ok_or(ApiError::Status(10003)) // E_SESSION_NG
+    match ctx.accounts.get(&env.uuid) {
+        Ok(Some(p)) => Ok(p),
+        Ok(None) => Err(ApiError::Status(10003)), // E_SESSION_NG
+        Err(e) => Err(ApiError::Internal(format!("account unreadable: {e}"))),
+    }
 }
 
 pub fn login(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
@@ -54,13 +58,21 @@ pub fn login(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         "login",
         &format!("uuid={:?} model={model:?} os={os:?}", env.uuid),
     );
-    match ctx.accounts.get(&env.uuid) {
+    let acc = ctx.accounts.get(&env.uuid).map_err(|e| {
+        // Never answer "new user" for an account we merely failed to read.
+        log::line(
+            "account",
+            &format!("ERROR reading account {:?}: {e}", env.uuid),
+        );
+        ApiError::Internal(format!("account unreadable: {e}"))
+    })?;
+    match acc {
         None => ok(json!({
             "existStatus": EXIST_NEW_USER, "existUser": [], "buyUncompleteFlg": 0, "is_ca": 0, "ca_html": ""
         })),
         Some(mut p) => {
             p.last_login_at = clock::now();
-            ctx.accounts.save(&p).map_err(ApiError::Internal)?;
+            ctx.accounts.touch(&p).map_err(ApiError::Internal)?;
             ok(json!({
                 "existStatus": EXIST_NORMAL, "existUser": [], "buyUncompleteFlg": 0, "is_ca": 0, "ca_html": "",
                 "userInfoMini": user_info_mini(&p),

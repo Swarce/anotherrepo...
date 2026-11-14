@@ -119,9 +119,11 @@ pub fn bind(ports: &[u16]) -> std::io::Result<(TcpListener, u16)> {
 pub fn serve(listener: TcpListener, handler: Handler) -> std::io::Result<()> {
     use std::sync::atomic::Ordering;
     for conn in listener.incoming() {
-        let Ok(mut stream) = conn else { continue };
+        let Ok(stream) = conn else { continue };
         if ACTIVE.load(Ordering::Relaxed) >= MAX_CONNECTIONS {
-            let _ = write_response(&mut stream, &Response::text(503, "busy"), false, false);
+            // Close without answering: the client treats that as a transport failure and retries,
+            // whereas a 503 would be shown as a maintenance dialog.
+            drop(stream);
             continue;
         }
         ACTIVE.fetch_add(1, Ordering::Relaxed);
