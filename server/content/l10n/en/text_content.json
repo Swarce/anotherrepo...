@@ -5885,21 +5885,961 @@
       "42e56c46",
       "My Town"
     ],
+    "text:Bokencho_ItemList_JP:ITEM_DETAIL_TEXT_001": [
+      "8b09ccf3",
+      "Can be bought in the Shop or earned as a first-clear reward in Bizarre Quests.\nIt can also be obtained as an unlock reward on the Ability Tree Board."
+    ],
+    "text:Bokencho_ItemList_JP:ITEM_DETAIL_TEXT_002": [
+      "4c851950",
+      "Earned as a clear reward in Bizarre Quests.\nSmall amounts can also be earned by clearing Bizarre Quests with a Support character."
+    ],
+    "text:Bokencho_ItemList_JP:ITEM_DETAIL_TEXT_003": [
+      "d482a712",
+      "A material for enhancing a character's ○○.\nMainly obtained during Bizarre Quests."
+    ],
+    "text:Bokencho_SokanText_JP:SOUKANZU_TEXT_0001": [
+      "265ca565",
+      "Description of Jonathan Joestar"
+    ],
+    "text:Bokencho_SokanText_JP:SOUKANZU_TEXT_0002": [
+      "88c34246",
+      "Description of Will A. Zeppeli"
+    ],
+    "text:Bokencho_SokanText_JP:SOUKANZU_TEXT_0003": [
+      "6879a8a4",
+      "Description of Dio Brando"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0008": [
+      "98dd14c8",
+      "Kyuketsuki"
+    ],
     "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0009": [
       "9df61bf0",
       "Zombie"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0022": [
+      "f1f3a63e",
+      "Kujo Jotaro"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0026": [
+      "ba87e8a5",
+      "Kakyoin Noriaki"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0034": [
+      "cf68cf83",
+      "Nise Kyaputen Teniru"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0038": [
+      "5940a084",
+      "Noroi no Debo"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0050": [
+      "d8983846",
+      "Enya Baa"
     ],
     "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0052": [
       "3681e99a",
       "Dio"
     ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0065": [
+      "b454a14c",
+      "Gebu-shin"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0067": [
+      "a54a4f02",
+      "Kunumu-shin"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0069": [
+      "a50a7cd0",
+      "Toto-shin"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0070": [
+      "6a373a03",
+      "Anubisu-shin"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0072": [
+      "ee139be3",
+      "Basuteto Joshin"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0074": [
+      "34d39798",
+      "Seto-shin"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0076": [
+      "1aec6bfb",
+      "Oshirisu-shin"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0078": [
+      "0895b07a",
+      "Horusu-shin"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0080": [
+      "b4acfcad",
+      "Atumu-shin"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0083": [
+      "4d4112eb",
+      "Kujo Horii"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0084": [
+      "8d0b94c6",
+      "Kujo Sadao"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0085": [
+      "2cda250e",
+      "Higashikata Josuke"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0087": [
+      "af232ef5",
+      "Hirose Koichi"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0089": [
+      "e784b028",
+      "Nijimura Okuyasu"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0091": [
+      "c27638d2",
+      "Kishibe Rohan"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0093": [
+      "66865349",
+      "Kobayashi Tamami"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0095": [
+      "4e05522b",
+      "Hazamada Toshikazu"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0097": [
+      "1fdf9766",
+      "Yamagishi Yukako"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0101": [
+      "9646de4f",
+      "Shizuka Josuta"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0103": [
+      "e241620c",
+      "Yangu Shigekiyo"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0105": [
+      "5e894378",
+      "Tsuji Aya"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0107": [
+      "465698d7",
+      "Fungami Yuya"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0109": [
+      "a10c5529",
+      "Hazekura Mikitaka"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0111": [
+      "446891be",
+      "Katagiri Anjuro"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0113": [
+      "7801ca38",
+      "Nijimura Keicho"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0115": [
+      "74c29ebd",
+      "Otoishi Akira"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0117": [
+      "b1369229",
+      "Mushikui de Nai & Mushikui"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0119": [
+      "59f75bb0",
+      "Kira Yoshikage"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0121": [
+      "84e34ed6",
+      "Kira Yoshihiro"
+    ],
     "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0123": [
       "e57d6cc4",
       "Stray Cat"
     ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0125": [
+      "f2ffa4e2",
+      "Sugimoto Reimi"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0127": [
+      "b0f989c5",
+      "Kawajiri Hayato"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0128": [
+      "71e09d0b",
+      "Kawajiri Shinobu"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0129": [
+      "aabc4400",
+      "Hamon"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0130": [
+      "4639639e",
+      "―――"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0131": [
+      "bfbe08e5",
+      "Ishi Kamen"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0133": [
+      "1d19c2f8",
+      "Supidowagon Zaidan"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0134": [
+      "1458a432",
+      "Eija no Sekiseki"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0136": [
+      "b77d7202",
+      "―――"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0137": [
+      "09b04b47",
+      "―――"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0138": [
+      "4af1f29c",
+      "Mekishiko Sabaku"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0139": [
+      "69b2b324",
+      "Doitsu-gun Jikkenshitsu"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0140": [
+      "c6561de5",
+      "Morioh-cho"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0141": [
+      "0eead779",
+      "Anjero Iwa"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0142": [
+      "8342d7cd",
+      "Nijimura-ke"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0143": [
+      "da115f71",
+      "Boyoyon Misaki"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0144": [
+      "1447aa52",
+      "Kishibe Rohan no Ie"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0145": [
+      "2ae85ee3",
+      "Kutsu no Mukadeya"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0151": [
+      "f23aed32",
+      "Miyamoto Terunosuke"
+    ],
     "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0153": [
       "26608a37",
       "Kars ~Ultimate Thing~"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0154": [
+      "d338b514",
+      "Shutorohaimu ~Jigoku kara no Kikan~"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0155": [
+      "0917f9c9",
+      "Dio ~Saiko ni \"Hai!\"~"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0156": [
+      "fa847395",
+      "Kira Yoshikage (Kawajiri Kosaku)"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0157": [
+      "ad892aae",
+      "―――"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0159": [
+      "e15fd24b",
+      "Kujo Jotaro ~Gekko~"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0160": [
+      "198f91e9",
+      "Porunarefu ~Anubisu-shin no Hyoi~"
+    ],
+    "text:Bokencho_YogoTextYomi_JP:YOGO_TITLE_YOMI_0162": [
+      "5d4f0e1b",
+      "Namidame no Ruka"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0001": [
+      "1ac653c9",
+      "[Part 1: Phantom Blood]\nThe only son of a distinguished English noble family.\nHe learned \"Hamon\" from Baron Zeppeli and blossomed with rare talent.\nStriving to become a true \"gentleman\" and to uphold his own sense of justice,\nhe faces his strange destiny with his archenemy Dio.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0002": [
+      "2297407f",
+      "[Part 1: Phantom Blood]\nHe was won over by Jonathan, a noble \"in spirit\" as well as in appearance,\nand traveled with Jonathan and Zeppeli.\nThough he could not learn Hamon, he did the best he could\nand helped his friends.\n\n[Part 2: Battle Tendency]\nAfter Jonathan and Dio's battle ended, he moved to America\nand made his fortune in oil. With it he founded the \"Speedwagon Foundation,\"\nwhich supports the Joestar family for generations.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0003": [
+      "a01a7590",
+      "[Part 1: Phantom Blood]\nThe man who taught Jonathan Hamon.\nHe met Jonathan while traveling in search of the Stone Mask.\nSeeing hope in Jonathan's hidden talent as a Hamon warrior,\nhe taught him that the hymn of humanity is a hymn of \"courage,\" and passed on its importance.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0004": [
+      "c5d10483",
+      "[Part 1: Phantom Blood]\nJonathan's emotional support since childhood. When Jonathan was\nwounded fighting Dio, she devotedly nursed him until he awoke.\nThe two later married, and she became Erina Joestar.\n\n[Part 2: Battle Tendency]\nShe raised Joseph, moving from London to New York,\nwhere Speedwagon lives. Still as graceful as ever,\nshe treats everyone with boundless kindness.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0005": [
+      "2c159545",
+      "[Part 1: Phantom Blood]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0006": [
+      "9e252f94",
+      "[Part 1: Phantom Blood]\nA young man of low birth with a charisma\nthat draws people in. Cornered by Jonathan at the Joestar Mansion,\nhe put on the Stone Mask, gave up his humanity and became a vampire.\nIn Speedwagon's words, \"evil born and bred.\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0007": [
+      "087a0601",
+      "[Part 1: Phantom Blood]\nTonpetty's disciple, who trained in Hamon alongside Dire.\nWhen saving Poco and his sister from vampires, he was surrounded\nby four enemies, yet calmly defeated them all in an instant\nwithout a flicker on his stern face.\n\"I, Straizo, will show no mercy!\"\n\n[Part 2: Battle Tendency]\nIn his youth he was a brave warrior who stood with Jonathan\nagainst Dio Brando, but as he grew old he came to envy Dio's\nagelessness, and turned himself into a vampire with a Stone Mask\nfound by the Speedwagon Foundation.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0008": [
+      "2c159545",
+      "[Part 1: Phantom Blood]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0009": [
+      "2c159545",
+      "[Part 1: Phantom Blood]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0010": [
+      "dbab9ccf",
+      "[Part 2: Battle Tendency]\nHe looks just like Jonathan, but is a joker with\nan almost opposite personality. Born able to breathe Hamon naturally,\nhe became a far tougher warrior training under Lisa Lisa.\nIn battle he excels at outwitting, deceiving and toying with enemies.\n\n[Part 3: Stardust Crusaders]\nTo save his daughter Holy from DIO's clutches, and to end the feud\nthat began in his grandfather's day, he sets out with his grandson Jotaro.\nStill as crafty as ever, he fights with both Hamon and his Stand.\nStand: \"Hermit Purple\"\n\n[Part 4: Diamond is Unbreakable]\nAt 79, his powers of observation and analysis are still sharp.\nThings were awkward at first with Josuke, his son by\nTomoko Higashikata, but after they saved a stranger's baby\ntogether, the tension seemed to ease a little.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0011": [
+      "11825983",
+      "[Part 3: Stardust Crusaders]\n[Part 4: Diamond is Unbreakable]\nJoseph Joestar's Stand, \"Hermit Purple.\"\nIt can produce spirit photography through media such as a Polaroid camera.\nNot a combat Stand, but Joseph's insight and adaptability\nmake it highly versatile. It can also channel Hamon.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0012": [
+      "83d11866",
+      "[Part 2: Battle Tendency]\nA young Italian man whose grandfather was Will A. Zeppeli.\nHe trained in Hamon under Lisa Lisa together with Joseph.\nThe two clashed when they first met, but through shared hardship\nhe realized \"his good side lies deep in his heart,\"\nand a friendship grew.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0013": [
+      "a50a831c",
+      "[Part 2: Battle Tendency]\nJoseph and Caesar's Hamon teacher.\nA formidable Hamon warrior herself, she fights with the scarf around her neck.\nHamon energy keeps her beautiful, but she's actually 50.\nIn Joseph's words, \"An old hag?! *gulp*... Normally, that is...\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0014": [
+      "d3616754",
+      "[Part 2: Battle Tendency]\nOne of the \"Pillar Men,\" found fused with a stone pillar in Mexico\nby a Speedwagon Foundation excavation team.\nAwakened by German army experiments, his advanced intelligence\nlet him corner humans in no time.\nIn Speedwagon's words, \"the most evolved creature on Earth!\"\n\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0015": [
+      "f6af04d3",
+      "[Part 2: Battle Tendency]\nOne of the \"Pillar Men,\" who uses the Mode of Wind.\nA true fighter who lives for battle and treasures its fulfillment above all,\ndeclaring, \"Strong warriors are the truth... the brave are my friends,\nthose I respect!!\"\nHe hates anyone stepping into his shadow so much that he\nreflexively attacks, even if it's Kars or Esidisi.\nKars and Caesar call him \"a genius of combat.\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0016": [
+      "5dc1c2b1",
+      "[Part 2: Battle Tendency]\nOne of the \"Pillar Men,\" who uses the Mode of Heat.\nFacing Joseph, he saw through his plan and gained the upper hand,\nonly to lose to Joseph, who had read even that.\nCasting aside his pride to live on for his comrades at any cost,\nhe possessed Suzi Q, but Joseph's clever use of \"positive\" and\n\"negative\" Hamon thwarted him.\nWhen he's so enraged he might go mad, he bawls\nto cool his head.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0017": [
+      "e851e98f",
+      "[Part 2: Battle Tendency]\nThe most intelligent of the \"Pillar Men\" and the inventor of\nthe Stone Mask. With Wamuu and Esidisi, he pursued the Red Stone of Aja\nfor 5,000 years, an obsession that astonished even Joseph.\nHis Mode is \"Light.\"\nHis goal is to become the \"Ultimate Being,\" and he is ruthless,\nwilling to use any means, yet he shows kindness to dogs,\nflowers and other non-human things.\n\"No matter what methods I use... in the end...\n as long as I win, that's all that matters!!\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0018": [
+      "e26cc749",
+      "[Part 2: Battle Tendency]\nAn arrogant German officer who boasts that everything about his\ncountry is superior to any other. Yet he also holds a proud conviction,\nready to sacrifice himself for his homeland.\nHe gave the badly wounded Speedwagon a truth serum to learn about\nthe \"Pillar Men\" and ended up awakening Santana, but believes\neven that is a triumph of his country's technology.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0019": [
+      "80488b7e",
+      "[Part 2: Battle Tendency]\nA cheerful, charming Italian woman who serves Lisa Lisa.\nAfter Joseph and the others saved her from Esidisi's brain and\nblood vessels, which had taken over her body, she saw the group off\nas they chased the Red Stone of Aja.\n\n[Part 3: Stardust Crusaders]\nShe married Joseph Joestar and gave birth to their daughter Holy.\nAs curious and active as ever, she often troubles their butler Roses.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0020": [
+      "6d3a1a79",
+      "[Part 2: Battle Tendency]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0021": [
+      "6d3a1a79",
+      "[Part 2: Battle Tendency]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0022": [
+      "91c5b4f3",
+      "[Part 3: Stardust Crusaders]\nJoseph Joestar's grandson.\nHis Stand power awakened when DIO was revived.\nPeople tend to see him as cold, rebellious and indifferent,\nbut his mother Holy knows \"he's truly a kind boy.\"\nStand: \"Star Platinum\"\n\n[Part 4: Diamond is Unbreakable]\nHe has become a marine adventurer, apparently fairly well known in academia.\nHe came to Morioh in Joseph's place to find Josuke\nfor the division of the Joestar inheritance.\n\n[Part 5: Golden Wind]\nA leading figure in marine biology.\nA member of the Joestar family, with its feud with DIO,\nand the very man who defeated DIO.\nCalm, composed and taciturn, but with a strong sense of justice inside.\nHe asked Koichi to find a person named \"Haruno Shiobana.\""
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0023": [
+      "1b0bc638",
+      "[Part 3: Stardust Crusaders]\nJotaro Kujo's Stand, \"Star Platinum.\"\nOn top of power and speed, it can move with precision beyond any machine.\nIts range is short, but its power is second to none.\nIt shouts \"ORA ORA\" during its rush attacks.\n\n[Part 4: Diamond is Unbreakable]\nIn Part 4, it appears as a fully perfected Stand."
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0024": [
+      "31ea6830",
+      "[Part 3: Stardust Crusaders]\nA Stand User who came to Japan with Joseph to get Jotaro\nout of jail. A fortune teller, he also named Jotaro's Stand\n\"Star Platinum.\" He can be short-tempered, but only because\nhe cares about his friends; a truly passionate man.\nStand: \"Magician's Red\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0025": [
+      "558619ee",
+      "[Part 3: Stardust Crusaders]\nMuhammad Avdol's Stand, \"Magician's Red.\"\nIt controls scorching flames at will and can melt even iron instantly,\nso enemies are very wary of it and often make it their first target.\nIts signature move is \"Crossfire Hurricane.\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0026": [
+      "ef368363",
+      "[Part 3: Stardust Crusaders]\nA young man implanted with a flesh bud by DIO who became\nthe first assassin sent after Jotaro's group. He knows himself well\nand excels at mid- to long-range attacks. A Stand User since birth,\nhe spent his youth keeping others at a distance, but in Jotaro and\nthe others he found true friends who understood him.\nStand: \"Hierophant Green\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0027": [
+      "617dffc4",
+      "[Part 3: Stardust Crusaders]\nNoriaki Kakyoin's Stand, \"Hierophant Green.\"\nNot very powerful, but long-ranged; its specialty is \"Emerald Splash,\"\nfiring its destructive energy as gem-like bullets.\nIt can also slip into a human body to control it, or spread itself\nthroughout its range to form a barrier.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0028": [
+      "5c640abd",
+      "[Part 3: Stardust Crusaders]\nA Frenchman who, like Kakyoin, had a flesh bud implanted by DIO.\nHe can be simple-minded, but never loses his proud chivalry.\nHe spent about 10 years honing his power to find \"the man with\ntwo right hands\" who killed his sister, and his skill as a Stand User\nmade Jotaro think \"he's not someone I can go easy on.\"\nStand: \"Silver Chariot\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0029": [
+      "97344278",
+      "[Part 3: Stardust Crusaders]\nJean Pierre Polnareff's Stand, \"Silver Chariot.\"\nA close-range Stand that looks like a medieval knight and fights with a rapier.\nAlready fast, it can move so quickly it leaves afterimages\nonce it sheds its armor.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0030": [
+      "ae9cd60f",
+      "[Part 3: Stardust Crusaders]\nA dog Stand User who joined Jotaro's group as a \"helper.\"\nHe loves coffee-flavored chewing gum, but never truly opens up\nto anyone. He loves ripping out people's hair by the clump, and has the\nvulgar habit of farting in their faces while he does it.\nOn the other hand, he has his own conscience and sense of justice:\n\"I can't let a kid who loves dogs die.\"\nStand: \"The Fool\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0031": [
+      "8fde6093",
+      "[Part 3: Stardust Crusaders]\nIggy's Stand, \"The Fool.\"\nIt can control sand and merge itself with sand,\nwhich makes it truly shine on defense.\nIt can also form glider wings out of sand to soar through the air,\nthough apparently not for long.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0032": [
+      "69b7e05a",
+      "[Part 3: Stardust Crusaders]\nOne of DIO's assassins, a cunning old man.\nA born villain who uses his Stand to kill travelers, making it look\nlike an accident, and steals their valuables.\nHe seems to have first been hired by DIO for money, but now swears loyalty to him.\nHis tongue has a stag beetle-shaped dent.\nStand: \"Tower of Gray\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0033": [
+      "9698a670",
+      "[Part 3: Stardust Crusaders]\n\"Tower of Gray,\" a Stand shaped like a stag beetle.\nIt pierces people's tongues with its \"Tower Needle\" and rips them out.\nIt's even faster than Star Platinum.\nIts attacks are brutal; as Kakyoin puts it,\n\"A hideous Stand has a hideous user.\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0034": [
+      "66b609a0",
+      "[Part 3: Stardust Crusaders]\nA Stand User who killed the captain of the ship Jotaro's group chartered\nto Singapore, and took his place.\nAfter falling for Jotaro's bluff and being exposed, he dragged Jotaro\ninto the sea, his specialty, for a one-on-one fight.\nStand: \"Dark Blue Moon\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0035": [
+      "b2aa04b5",
+      "[Part 3: Stardust Crusaders]\nFake Captain Tennille's Stand, \"Dark Blue Moon.\"\nIt has four eyes and looks like a fish-man.\nAs it looks, it excels at underwater combat, making water cutters sharper\nthan a ship's propeller with the claws and webbing on its limbs,\nand shredding foes with sharp scales released into whirlpools it creates.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0036": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0037": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0038": [
+      "501fe07c",
+      "[Part 3: Stardust Crusaders]\nOne of the Stand Users Enya the Hag sent for DIO.\nAn assassin billed as a Native American shaman,\nhired by mafia, soldiers and politicians.\nHe goads his targets into hurting him, so his whole body is covered in scars.\nStand: \"Ebony Devil\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0039": [
+      "1ee542c7",
+      "[Part 3: Stardust Crusaders]\nDevo the Cursed's Stand, \"Ebony Devil.\"\nThe more its user resents the target, the stronger it becomes.\nIt possesses a doll and attacks remotely.\nThe doll looks like a child and spews vulgar insults.\nIt attacks with tools like razors, saws and spears, and by biting.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0040": [
+      "3485bfbc",
+      "[Part 3: Stardust Crusaders]\nOne of the assassins hired by DIO for money to attack Jotaro.\nHe used his Stand to disguise himself as Kakyoin, and with its overwhelming\ndefense seemed to have Jotaro cornered, until the Joestar family's\ntraditional battle tactic, \"Run away,\" turned the tables,\nand his prized handsome face got pummeled.\nStand: \"Yellow Temperance\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0041": [
+      "1e01fa79",
+      "[Part 3: Stardust Crusaders]\nRubber Soul's Stand, \"Yellow Temperance.\"\nA yellow, slime-like Stand that Rubber Soul calls \"armor that absorbs power\"\nand \"a defensive wall that attacks.\" When it touches a living thing,\nit dissolves and devours the flesh, adding it to its own power.\nRubber Soul boasts that it \"has no weakness!\", but\ndefeat the Stand User and you defeat the Stand.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0042": [
+      "d36ce709",
+      "[Part 3: Stardust Crusaders]\nA man who styles himself as a gunslinger out of a Western. Despite his\nflippant manner, he is a highly skilled assassin. His life philosophy\nis \"Better No. 2 than No. 1!\", and he shines with a partner.\nHe fought Jotaro's group twice and survived, a man of great luck.\nStand: \"Emperor\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0043": [
+      "ee5b006d",
+      "[Part 3: Stardust Crusaders]\nHol Horse's Stand, \"Emperor.\"\nA gun-shaped Stand whose bullets are also part of the Stand.\nSo it never runs out of ammo, and can even change the bullets' path.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0044": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0045": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0046": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0047": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0048": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0049": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0050": [
+      "cf39f8e1",
+      "[Part 3: Stardust Crusaders]\nAn old woman who worships DIO and swears loyalty to him.\nShe is astonishingly agile for her age, able to run as fast as\nPolnareff fleeing at full speed.\nShe knows a great deal about Stands and how their powers manifest,\nand taught DIO the method.\nStand: \"Justice\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0051": [
+      "55859cca",
+      "[Part 3: Stardust Crusaders]\nEnya the Hag's Stand, \"Justice.\"\nA fog-like Stand that can enter the body through wounds to control people,\nand can also create illusions.\nAble to control many people at once, it was feared as\n\"the strongest Stand,\" in Hol Horse's words.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0052": [
+      "fbda4baa",
+      "[Part 3: Stardust Crusaders]\nReduced to a head in his final battle with Jonathan, he later took\nJonathan's body and awoke from a 100-year sleep as DIO.\nStill a vampire, he now also has a Stand.\nWith an overwhelming evil charisma and a gift for seizing people's hearts,\nhe gives off an eerie allure.\nStand: \"The World\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0053": [
+      "21a3d82e",
+      "[Part 3: Stardust Crusaders]\nDIO's Stand, \"The World.\"\nThe same type of Stand as Jotaro's \"Star Platinum,\"\nwith top-class speed and power, and moreover\nthe ability to \"stop time.\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0054": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0055": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0056": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0057": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0058": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0059": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0060": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0061": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0062": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0063": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0064": [
+      "184954df",
+      "[Part 3: Stardust Crusaders]\nThe first Stand User to stand in the way of Jotaro's group in Egypt,\none of the Users representing the Egyptian Nine Glory Gods.\nHaving awakened to his Stand as a child,\nhe had no fear of crime or murder, or even of death, until he met DIO,\nthe first person in the world to recognize his worth. He came to feel,\n\"I'm not afraid to die, but I couldn't stand being abandoned\nand killed by him.\"\n\"Even evil needs its own savior,\" he says, sworn in fierce\nloyalty to DIO.\nStand: \"Geb\""
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0065": [
+      "2c162779",
+      "[Part 3: Stardust Crusaders]\nN'Doul's Stand, \"Geb\" of the Egyptian Nine Glory Gods.\nA remote-controlled water Stand. It usually takes the shape of an arm\nwith sharp claws, but can change freely as needed.\nIt moves fast, and can even enter a target's windpipe to suffocate them.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0066": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0067": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0068": [
+      "310b2ea5",
+      "[Part 3: Stardust Crusaders]\nOne of DIO's assassins, the younger of the Oingo Boingo Brothers.\nVery shy, he always sticks with his older brother Oingo.\nAfter his brother was injured, he teamed up with Hol Horse\nto stand in the way of Jotaro's group.\nHe's known for his peculiar laughs: \"Uhyaho kokekoke\" and\n\"Guhihi guhihi guhi.\"\nStand: \"Tohth\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0069": [
+      "ccff751c",
+      "[Part 3: Stardust Crusaders]\nA comic-book Stand, \"Tohth\" of the Egyptian Nine Glory Gods.\nA comic that shows the near future; once printed, its prophecies\nare never wrong. But even if you act exactly as the page says,\nmisinterpreting it can be dangerous.\nThe comic's title is \"The Great Adventures of the Oingo Boingo Brothers.\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0070": [
+      "6bc141e0",
+      "[Part 3: Stardust Crusaders]\nA Stand with no user, \"Anubis\" of the Egyptian Nine Glory Gods.\nUsing a sword as its medium, it takes over whoever picks it up, such as Chaka,\nand attacks Jotaro's group as DIO's assassin. Its wielder becomes\na master swordsman who grows stronger the more it fights: \"I've learned that one...\"\nOnce it learns an attack, it keeps that fighting skill even if its wielder\nchanges: a terrifying Stand.\nIts attacks can pass through objects to cut things behind them.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0071": [
+      "bb54f8e3",
+      "[Part 3: Stardust Crusaders]\nA female Stand User who worships DIO, representing one of\nthe Egyptian Nine Glory Gods. Joseph calls her legs \"the bomb,\" and she\nis very beautiful, but when enraged she pulls a horrible face\nand hurls foul insults.\nShe told Joseph \"I thought I wouldn't mind being your lover,\" but then\nshowed her loyalty to DIO: \"You're nowhere near as charming\nas Lord DIO.\"\nStand: \"Bastet\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0072": [
+      "57f1b667",
+      "[Part 3: Stardust Crusaders]\nMariah's Stand.\nA Stand that looks like an electrical outlet and can be stuck anywhere.\nAnyone who touches the outlet is turned into a magnet.\nThe magnetism grows stronger over time, but weakens if\nthe user and the target get too far apart.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0073": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0074": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0075": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0076": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0077": [
+      "c3ccfcd4",
+      "[Part 3: Stardust Crusaders]\nA falcon Stand User representing one of the Egyptian Nine Glory Gods.\nNot a guard dog but a \"guard bird\" that ruthlessly eliminates anyone\napproaching DIO's mansion. Extremely cruel, once it judged Iggy an enemy\nit chased him relentlessly, attacking so fiercely that Iggy thought\n\"I'll be killed unless I give up a front leg.\"\nIn the story it acts in very un-birdlike ways, like twisting the corner\nof its beak or licking and spitting out the blood from its wounded chest.\nStand: \"Horus\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0078": [
+      "999f10f3",
+      "[Part 3: Stardust Crusaders]\nPet Shop's Stand. It controls cold air and ice at will.\nIt looks like a pterosaur skeleton, and its main attack is\nfiring icicle missiles from its six arm-like limbs.\nIt can also freeze wounds to stop bleeding.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0079": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0080": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0081": [
+      "f52768cc",
+      "[Part 3: Stardust Crusaders]\nA subordinate absolutely loyal to DIO,\nso much so that he would gladly cut off his own head if asked.\nHe carries out his mission without showing emotion, but anyone who mocks DIO\nsends him into a rage, transforming his mind into a void of darkness itself.\nStand: \"Cream\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0082": [
+      "fadbd9c4",
+      "[Part 3: Stardust Crusaders]\nVanilla Ice's Stand.\nIts mouth holds a void of darkness; anything swallowed\nis smashed to dust and dies. No one knows where it goes.\nBy putting its user inside its mouth, it becomes an invisible sphere\nmerged with the void. Moving in this state erases everything in its path\nin an instant. However, the user can't see outside,\nso to check the situation it must be undone and reappear.\nIn DIO's words, a Stand that vanishes completely from this world's space.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0083": [
+      "733f4d89",
+      "[Part 3: Stardust Crusaders]\nJoseph's daughter and Jotaro's mother.\nWhen DIO awoke, her Stand power manifested, but lacking a fighting spirit\nshe couldn't control it, fell to a high fever and was given 50 days to live.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0084": [
+      "5c0d239a",
+      "[Part 3: Stardust Crusaders]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0085": [
+      "785c330a",
+      "[Part 4: Diamond is Unbreakable]\nA first-year at Budogaoka High School in Morioh, S City, M Prefecture.\nUsually easygoing, but he snaps if anyone insults his hair.\nThe change is so drastic that Jotaro called him \"seriously dangerous.\"\nThe son of Joseph Joestar, which makes him Jotaro's \"uncle.\"\nHe gained his Stand power when he was 4.\nStand: \"Crazy Diamond\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0086": [
+      "0a563e17",
+      "[Part 4: Diamond is Unbreakable]\nJosuke Higashikata's Stand.\nIts power and speed rival Jotaro's \"Star Platinum,\"\nattacking mainly with rapid punches and powerful blows.\nIt also has the special ability to restore things to their original state,\nsuch as healing wounds or repairing broken walls.\nBut when Josuke \"snaps,\" it may reshape things instead.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0087": [
+      "35809fa8",
+      "[Part 4: Diamond is Unbreakable]\nA first-year at Budogaoka High School, Josuke's classmate.\nA timid, ordinary boy, he met Jotaro and Josuke on his first day of school\nand got drawn into the many bizarre incidents in Morioh.\nFighting alongside them, he grows in spirit.\nKeicho Nijimura's \"Bow and Arrow\" awakened his Stand power.\nStand: \"Echoes\"\n\n[Part 5: Golden Wind]\nA high school boy living in Morioh, S City, M Prefecture, Japan.\nKind and good-natured, but he bravely stands up to anything\nthat threatens him or his friends.\nHe came to Neapolis, Italy, looking for a person named\n\"Haruno Shiobana.\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0088": [
+      "3d7bff9b",
+      "[Part 4: Diamond is Unbreakable]\nKoichi Hirose's Stand. ACT1, ACT2 and ACT3\neach have different abilities.\n\n■ACT1\nIt launches manga-style sound effect lettering that sticks and makes sounds.\nIt was an egg when first manifested, but as Koichi grew in spirit,\nit awakened with the form and powers of ACT1.\n\n■ACT2\nThe form ACT1 grew into by shedding its skin, in response to Koichi's growth\nwhile living a terrifyingly abnormal life of becoming a \"fine man.\"\nIt attacks with sound effect words made with its tail,\nmaking the effects of those words real.\n\n■ACT3\nThe form it grew into by shedding ACT2, as if responding to Koichi's peril.\nIt looks like a child and can talk.\nIt acts on its user's \"orders\" and is far faster\nthan ACT1 or ACT2.\nIts finisher, \"Echoes 3 FREEZE,\" makes its target heavy,\nand the closer the target is to the user, the heavier it gets.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0089": [
+      "baae3d02",
+      "[Part 4: Diamond is Unbreakable]\nA first-year at Budogaoka High School, Keicho's younger brother.\nHis speech and actions aren't very bright, but he's warm-hearted and kind,\nand fights with Josuke and Koichi to protect Morioh.\nHe has an outstanding talent for describing food.\nHe's in the same class as Yukako.\nStand: \"The Hand\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0090": [
+      "f6d14437",
+      "[Part 4: Diamond is Unbreakable]\nOkuyasu Nijimura's Stand.\nIts \"right hand\" can scrape away space.\nNo one knows where the scraped-away parts go.\nBesides attacking directly, by scraping away space it can pull a target\ntoward it with \"teleportation,\" or move its user.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0091": [
+      "55835e43",
+      "[Part 4: Diamond is Unbreakable]\nA popular manga artist living in S City, M Prefecture, author of \"Pink Dark Boy.\"\nAlways chasing the best material, he doesn't draw from imagination or fantasy:\nhe believes \"reality\" is the essence of entertainment, and gets involved\nin many incidents in Morioh as research.\nHe doesn't get along with Josuke or Okuyasu, but often acts with Koichi,\nwho is \"on his wavelength,\" and is especially close to him.\nOne of his favorite things is telling someone who thinks they're tough \"NO.\"\nStand: \"Heaven's Door\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0092": [
+      "1f3b4eb3",
+      "[Part 4: Diamond is Unbreakable]\nRohan Kishibe's Stand. It turns its target into a \"book.\"\nHe can read the target's \"memories\" from its pages, and erase them\nby tearing out pages.\nHe can also control the target's actions by writing on the pages.\nHe cannot read his own \"distant memories\" or \"fate.\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0093": [
+      "c5475c70",
+      "[Part 4: Diamond is Unbreakable]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0094": [
+      "c5475c70",
+      "[Part 4: Diamond is Unbreakable]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0095": [
+      "c5475c70",
+      "[Part 4: Diamond is Unbreakable]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0096": [
+      "c5475c70",
+      "[Part 4: Diamond is Unbreakable]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0097": [
+      "3e79dccb",
+      "[Part 4: Diamond is Unbreakable]\nA first-year at Budogaoka High School, in the same class as Okuyasu.\nHer Stand power manifested when Keicho Nijimura's \"Bow and Arrow\" pierced her chest.\nShe harbors an abnormal love for Koichi. She is extremely obsessive,\nand shows no mercy to anything that gets in her way.\nEven toward Koichi, whom she adores, her \"love\" drives her to terrifyingly abnormal acts.\nStand: \"Love Deluxe\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0098": [
+      "c3b7f876",
+      "[Part 4: Diamond is Unbreakable]\nYukako Yamagishi's Stand. It lets her control her own hair.\nShe can extend it to bind targets, pull them, or plant it in them\nto restrict their movement: a highly versatile ability.\nWhen her emotions run high, her hair can grow enough to cover a whole house.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0099": [
+      "0997d6be",
+      "[Part 4: Diamond is Unbreakable]\nThe owner of the Italian restaurant \"Trussardi\" in Morioh.\nThere is no menu; he looks at each customer and decides\nwhat to serve. With his skill of \"seeing the whole body from the hands,\"\nhe pinpointed Okuyasu's ailments exactly.\nFood made with his Stand can cure those ailments.\nHe hates people entering his kitchen uninvited and is very strict about hygiene.\nWhen Josuke walked into the kitchen without permission or washing his hands\nwith soap, he was furious and made him clean the whole kitchen.\n\"I serve food to make you feel wonderful.\"\nStand: \"Pearl Jam\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0100": [
+      "1eaef443",
+      "[Part 4: Diamond is Unbreakable]\nTonio Trussardi's Stand.\nMixed into his food, it cures the ailments of those who eat it, but\nwhen it takes effect, unreal things happen: sleep deprivation makes\ntears gush from the eyes like a waterfall, and cavities pop out\nwith new teeth growing in at terrifying speed.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0101": [
+      "c5475c70",
+      "[Part 4: Diamond is Unbreakable]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0102": [
+      "c5475c70",
+      "[Part 4: Diamond is Unbreakable]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0103": [
+      "5e88a73c",
+      "[Part 4: Diamond is Unbreakable]\nA second-year at Budogaoka Middle School, weighing 110 kg,\nnicknamed \"Shigechi.\"\nHis speech and looks are lovably endearing, but he's clever enough\nto think up ways to collect money with his Stand.\nHe's very attached to money, and sometimes his miserly side shows.\nStand: \"Harvest\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0104": [
+      "95de781d",
+      "[Part 4: Diamond is Unbreakable]\nShigechi's Stand. A swarm of tiny \"remote-controlled\" Stands.\nBy his own account, he can summon about 500 of them.\nEach is weak, but they act on his orders, swarming to scrape away skin,\ninjecting liquids like alcohol into blood vessels, or even carrying\ntheir user \"bucket brigade\" style, making the most of their numbers.\nShigechi mainly uses this power for \"collecting.\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0105": [
+      "076659f0",
+      "[Part 4: Diamond is Unbreakable]\nA beautician who runs the beauty salon \"Cinderella\" in Morioh, and calls\nherself a creator of \"faces of happiness.\" Since childhood she has admired\nthe fairy godmother in \"Cinderella\" and wants to bring people\nhappiness like her.\nHer sign reads \"Makeup to Help You Find Love,\" but in truth\nher treatments use her Stand.\nStand: \"Cinderella\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0106": [
+      "4ce65254",
+      "[Part 4: Diamond is Unbreakable]\nAya Tsuji's Stand.\nA robot-like Stand that can change a person's fortune by reshaping\nfeatures such as their face or palm lines.\nThe effect usually lasts about 30 minutes; to keep it longer, Cinderella's\nlipstick must be reapplied every 30 minutes. If this promise is broken,\nthe makeup crumbles into a horrible mess.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0107": [
+      "cc6a3c4a",
+      "[Part 4: Diamond is Unbreakable]\nA biker gang boy, proud and narcissistic.\nWhile recovering from a motorcycle accident, he was shot with the \"Arrow\"\nby the \"Photo Dad,\" awakening his Stand. Since then his sense of smell\nhas been abnormally keen. He avoids trouble, but when it counts he's warm-hearted.\nHe truly cares for his three girls, \"Reiko,\" \"Akemi\" and \"Yoshie.\"\nStand: \"Highway Star\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0108": [
+      "1a19fcd2",
+      "[Part 4: Diamond is Unbreakable]\nYuya Fungami's Stand. It can move at 60 km/h.\nIt chases anyone who enters its trap \"room\" anywhere and drains their \"nutrients.\"\nOnce it touches you, Highway Star has no weakness.\nIt can split from its humanoid form into footprint-like shapes.\nIf targeted, the only way to survive is to find and defeat\nthe \"user.\" Drained \"nutrients\" nourish the user.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0109": [
+      "c5475c70",
+      "[Part 4: Diamond is Unbreakable]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0110": [
+      "c5475c70",
+      "[Part 4: Diamond is Unbreakable]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0111": [
+      "a5cf3f13",
+      "[Part 4: Diamond is Unbreakable]\nDubbed \"Angelo\" by the newspapers, the most sickening criminal\nin Japanese history, with an IQ of 160.\nHe lives to ruin \"people who get full of themselves.\"\nAbout half a month before his execution, Keicho's \"Bow and Arrow\"\nawakened his \"Stand\"; he then broke out of prison and hid in Morioh.\nStand: \"Aqua Necklace\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0112": [
+      "1c3fea7e",
+      "[Part 4: Diamond is Unbreakable]\nAngelo's Stand. Weak, but remote-controlled.\nIt disguises itself as liquids like milk or whiskey, or as steam,\nand gets inside a target's body to possess and control them,\nor to destroy them from within.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0113": [
+      "fcc6cdb8",
+      "[Part 4: Diamond is Unbreakable]\nOkuyasu's big brother. Searching for a certain \"Stand power,\" he uses\nthe \"Bow and Arrow\" to create Stand Users all over Morioh.\nMeticulous by nature, he favors orderly formations and tactics in battle.\n\"When you finish listening to a CD,\nyou put it neatly back in its case before playing the next one, right?\nEveryone does that. I do that too.\"\nStand: \"Bad Company\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0114": [
+      "ec241c94",
+      "[Part 4: Diamond is Unbreakable]\nA miniature army Stand made of soldiers and weapons: 7 tanks,\n4 \"Apache\" attack helicopters and 60 infantrymen.\nEach unit does little damage, but their volleys and sustained fire\nare truly destructive. Reflecting the meticulous nature of its user,\nKeicho Nijimura, it carries out orderly formations and tactics under his command.\nAlso, as a swarm-type Stand, \"Bad Company\" doesn't pass damage\nto its user when just 2 or 3 units are defeated.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0115": [
+      "86cea114",
+      "[Part 4: Diamond is Unbreakable]\n19 years old. His dream is to become an ultra-super guitarist.\nKeicho Nijimura shot him with the Stand \"Arrow,\" awakening his Stand.\nHe's careful enough to use it to achieve his goals without ever\nshowing himself, but gets carried away easily\nwhen things go his way.\nIn his own words, \"I'm... strong once I reflect on my mistakes...\"\nStand: \"Red Hot Chili Pepper\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0116": [
+      "fa758253",
+      "[Part 4: Diamond is Unbreakable]\nAkira Otoishi's Stand. An electric Stand.\nIt is remote-controlled and can travel at high speed wherever electricity flows.\nIt can even hide inside power sources such as batteries.\nIt can turn its targets into electricity and drag them into power lines or outlets.\nBy absorbing electricity it strengthens its \"Stand power,\" and with enough\nit can rival Jotaro's Star Platinum. But without electricity it grows weak\nand looks like scrap metal.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0117": [
+      "cc9ebd51",
+      "[Part 4: Diamond is Unbreakable]\nTwo \"Stand rats,\" ordinary sewer rats that gained \"Stand powers\"\nfrom the \"Bow and Arrow.\"\nThe one with a notched ear is called \"Bug-Eaten,\" the other \"Not Bug-Eaten.\"\nOn top of their animal instincts and habits, their Stand powers gave them\nthe intelligence to outwit humans.\nAs Jotaro says, \"This thing... isn't a creature\nthat should be allowed to live on this Earth anymore...\"\nStand: \"Ratt\""
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0118": [
+      "be56d27d",
+      "[Part 4: Diamond is Unbreakable]\nThe power manifested by the Stand rats: it looks like a fixed gun turret and fires needles.\nTouching a needle spreads something like a \"Stand poison\"\nthat melts the body, and even Stands.\nWith point-blank shots, long-range sniping and ricochets,\nit indiscriminately \"hunts\" anything in its territory.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0119": [
+      "34b2ad2b",
+      "[Part 4: Diamond is Unbreakable]\nA 33-year-old single man living in Morioh.\nOutwardly an unremarkable ordinary office worker, but in truth a vicious\nserial killer with an abnormal \"nature\" that compels him to kill.\nObsessed with women's \"hands,\" he has been secretly committing murders.\nHe only wants to live a quiet, peaceful life, and ruthlessly eliminates\nanything that gets in its way.\nStand: \"Killer Queen\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0120": [
+      "eff90201",
+      "[Part 4: Diamond is Unbreakable]\nYoshikage Kira's Stand. It turns whatever it touches into a \"bomb.\"\n\n■First Bomb\nBy touching an object, it can turn anything into a bomb.\nThe bomb can be detonated when it touches the target,\nor by pressing the switch on its hand.\nIts power can be adjusted, and the blast can even be used to move its user.\n\n■Second Bomb: Sheer Heart Attack\nA bomb tank launched only from Killer Queen's left arm.\nIt automatically homes in on \"heat\" such as body heat and explodes on contact.\nIt prioritizes whatever gives off the most \"heat.\"\nIts armor is so hard that even Jotaro's Star Platinum\ncalled it \"a sturdy Stand.\"\n\n■Third Bomb: Bites the Dust\nA power born from Kira's wish to live quietly.\nKiller Queen possesses the affected person, and it detonates when anyone\nthreatens to expose its \"user's\" \"identity,\" automatically eliminating the snoop.\nAt the same time it blows away the \"facts\" uncovered and rewinds time\nto a peaceful state.\nEven after a rewind, \"fates\" such as deaths that have already happened\ncannot be changed, so victims die at the time of detonation regardless of conditions.\nTo avoid this, Bites the Dust must be undone.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0121": [
+      "c5475c70",
+      "[Part 4: Diamond is Unbreakable]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0122": [
+      "c5475c70",
+      "[Part 4: Diamond is Unbreakable]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0123": [
+      "a4f0e985",
+      "[Part 4: Diamond is Unbreakable]\nOriginally an ordinary British Blue cat, it gained a Stand power\nafter someone attacked it with the \"Arrow.\"\nAfter an accident it fell into a state of suspended animation\nand became a cat-plant (Stray Cat).\nLiving on \"desire and instinct,\" it intuitively grasped the \"nature and use\"\nof its \"power,\" and used it for its own benefit.\nIt can not only form and fire balls of air, but can even pump air\ninto an enemy's blood vessels to cause an air embolism\n(blood vessels blocked by air), a terrifying ability.\nIt's so cunning that even Kosaku Kawajiri said, \"That was close...\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0124": [
+      "c5475c70",
+      "[Part 4: Diamond is Unbreakable]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0125": [
+      "c5475c70",
+      "[Part 4: Diamond is Unbreakable]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0126": [
+      "c5475c70",
+      "[Part 4: Diamond is Unbreakable]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0127": [
+      "c5475c70",
+      "[Part 4: Diamond is Unbreakable]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0128": [
+      "c5475c70",
+      "[Part 4: Diamond is Unbreakable]"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0129": [
+      "6b9f681d",
+      "[Part 1: Phantom Blood]\n[Part 2: Battle Tendency]\n[Part 3: Stardust Crusaders]\nEnergy produced by \"breathing,\" a method of controlling the body\nthat Will A. Zeppeli studied for many years. Like ripples on water,\nspecial breathing creates ripples \"in the body,\" generating energy.\nIn the East, this is called \"Sendo.\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0130": [
+      "a4d5f602",
+      "[Part 3: Stardust Crusaders]\n[Part 4: Diamond is Unbreakable]\n\"Life energy\" given concrete form, appearing with a distinct shape\nand power.\nStands share common rules: every Stand has a user, each person has one Stand,\nand if a Stand is hurt its user takes the same damage, but exceptions exist.\nEach Stand's vision and power differ.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0131": [
+      "8248d116",
+      "[Part 1: Phantom Blood]\n[Part 2: Battle Tendency]\nA stone mask whose origins date back to the \"blood rituals\" of the Aztecs,\ndrawing strange fates to its owners across the ages.\nWhen worn and given blood, its bone spikes pierce the brain,\nunlocking unknown powers and creating an undying body: a \"vampire.\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0132": [
+      "47f0d3f2",
+      "[Part 1: Phantom Blood]\nA creature that appeared before Will A. Zeppeli just as he began explaining\nHamon energy to Jonathan, as if drawn by \"fate.\"\nUnfazed even when its life was in danger, it helped Jonathan\ndeepen his understanding of Hamon. After Zeppeli channeled Hamon into it,\nthe rock beneath it was smashed, but it returned safely to the river.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0133": [
+      "7736aa45",
+      "[Part 2: Battle Tendency]\n[Part 3: Stardust Crusaders]\n[Part 4: Diamond is Unbreakable]\nA foundation Speedwagon established with the fortune he made in oil.\nIt mainly researches medicine and archaeology; its true aim is to uncover\nthe truth about the \"Stone Mask.\" It backs up the Joestar family,\nproviding information on new Stand Users and treating injured allies.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0134": [
+      "1fe1894a",
+      "[Part 2: Battle Tendency]\nAlso known as the \"Super Aja.\"\nAja is a beautiful gem rarely found in nature. Light reflects hundreds of\nmillions of times inside the crystal, amplifying and radiating from a single\npoint: a miraculous power created by nature. Among them, a flawless\n\"Red Stone\" without a single cloud is the Super Aja.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0135": [
+      "6732da7a",
+      "[Part 1: Phantom Blood]\nThe path leading to the mansion owned by George Joestar I.\nThis is where Jonathan and Will A. Zeppeli met.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0136": [
+      "d8cf6021",
+      "Ogre Street description"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0137": [
+      "cda5e680",
+      "Windknight's Lot description"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0138": [
+      "502db16c",
+      "[Part 2: Battle Tendency]\nThe vast desert that stretches across Mexico.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0139": [
+      "7b91e146",
+      "[Part 2: Battle Tendency]\nWhere the German army investigated the truth about the \"Pillar Men.\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0140": [
+      "954377ea",
+      "[Part 4: Diamond is Unbreakable]\nA bedroom town of S City that grew rapidly from the early 1980s.\nThe town flower is the Amur adonis; its specialty is miso-pickled beef tongue.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0141": [
+      "af8bdfc5",
+      "[Part 4: Diamond is Unbreakable]\nA Morioh landmark. Despite its creepy look, \"Angelo Rock\" is loved by\nthe townsfolk as a signpost and a meeting place for lovers.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0142": [
+      "3a1e4991",
+      "[Part 4: Diamond is Unbreakable]\nOkuyasu's house, just a stone's throw from Josuke's.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0143": [
+      "1ac6e933",
+      "[Part 4: Diamond is Unbreakable]\nA Morioh landmark. \"Cape Boyoyon\" became famous from a rumor among fishermen\nthat \"the cape's rock gently bounced away, boing, a young woman\nabout to kill herself.\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0144": [
+      "faa18062",
+      "[Part 4: Diamond is Unbreakable]\nA Morioh landmark. \"Rohan Kishibe's House\" sits on 103 tsubo of land,\nwith 7 bedrooms plus an attic. If you actually visit, he'll pretend he's not home.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0145": [
+      "9be3b6f1",
+      "Mukadeya Shoe Shop description"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0146": [
+      "1bb22ab2",
+      "[Part 1: Phantom Blood]\nA warrior who trained in Hamon with Zeppeli under their master Tonpetty,\nhis close friend of 20 years who endured the harsh training with him.\nSeeking revenge for his friend's death, he tried to hit Dio with his\nThunder Cross Split Attack, but Dio's Vaporization Freezing Technique\nfroze him from the neck down and shattered him.\nYet with his last strength he flung a single Hamon-charged rose\ninto Dio's right eye.\nInspired by that attack, Jonathan took on Dio.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0147": [
+      "f08ef542",
+      "[Part 1: Phantom Blood]\nA legendary knight whose grave Dio desecrated, reviving him as a zombie.\nIn life he was a loyal retainer of Mary Stuart, a hero who could cut\nthrough rock like butter with his sword.\nHe surrendered to the enemy with Bruford on the promise that the captive\nMary's life would be spared, but learned just before execution it was a trap,\nand died in bitter regret, cursing the world and hating mankind.\nRevived as a zombie, he became cruel and vile, ready to kill even children:\n\"All I'll do is kill with my strength and destroy everything!\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0148": [
+      "89feee28",
+      "[Part 1: Phantom Blood]\nA dead man revived as a zombie along with Tarkus.\nWhen the enemy broke its promise and executed him, he died in bitter regret\nlike Tarkus, spitting a curse: \"I'll curse your descendants\nto the very last generation!!\"\nEven as a zombie, he never lost his pride as a knight, and dueled Jonathan\nas a warrior. When Jonathan's Hamon restored his human heart,\nhe entrusted Jonathan with the \"Sword of Luck and Courage\" and passed on to join Mary.\nHis specialty is \"Danse Macabre Hair,\" wielding his hair\nas a weapon.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0149": [
+      "415e9e91",
+      "[Part 3: Stardust Crusaders]\nA timid young man living in Egypt.\nAnubis took over his mind, awakening him as a master swordsman Stand User\nand one of DIO's assassins. His attitude and personality changed too,\nbecoming bold and manly.\n\"I'll be taking your life...\"\nHis blunt way of speaking even impressed Polnareff.\nStand: \"Anubis\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0150": [
+      "b298bf70",
+      "[Part 1: Phantom Blood]\nAn Asian man who once sold poisons on Ogre Street.\nHe met Dio back then; the poison Dio was feeding Jonathan's father\nwas bought from Wang Chan.\nHe came looking for the Stone Mask amid the fire at the Joestar Mansion,\nbut the wounded Dio drank his blood and he became a zombie.\nSince then, he has been fiercely loyal to Dio.\n\"You! I'll scoop your brains out with my fingers!\n You slowpoke!\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0151": [
+      "4d75732a",
+      "[Part 4: Diamond is Unbreakable]\nKnown as the Enigma Boy.\nHis Stand power was awakened by the \"Photo Dad.\"\nHe enjoys \"observing\" others, cornering them mentally\nand drawing out their fear.\nStand: \"Enigma\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0152": [
+      "df5659ee",
+      "[Part 4: Diamond is Unbreakable]\nTerunosuke Miyamoto's Stand.\nIt can turn targets into \"paper,\" and unfolding the paper restores them.\nIt activates when the target shows their \"sign of fear.\"\nThe Stand itself has no power or attack ability, but turning things into\n\"paper\" seals them away completely.\nIt can turn not only objects like taxis and Kyushu tonkotsu ramen,\nbut even electricity and fire into \"paper\" to carry around.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0153": [
+      "22c4c378",
+      "[Part 2: Battle Tendency]\nCornered after Joseph channeled the final Hamon into his arm,\nthe cunning and relentless Kars had put on the Stone Mask fitted with the Super Aja\njust as Stroheim's German troops blasted him with ultraviolet light to finish him.\nPushed by the Super Aja's power, the bone spikes transformed Kars\ninto the \"Ultimate Being (Ultimate Thing).\"\nThough a Pillar Man, his body no longer perishes in sunlight;\nhe is invincible, never ages and never dies.\nHe possesses the abilities of every living thing, and surpasses them.\nAnd his form is founded on beauty, like a Greek sculpture.\nIn Speedwagon's words, \"He has no weakness at all!\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0154": [
+      "70fd3928",
+      "[Part 2: Battle Tendency]\nWith the Red Stone stolen, Joseph and the others arrived in St. Moritz,\nSwitzerland. There they met Stroheim, who should have been blown to bits\nin Mexico.\nHe had a steel prosthetic arm, a strange mechanical brace on his face,\nand a body rebuilt as a machine that can fire 600 armor-piercing rounds\na minute. All of it was built based on Santana's power, with calculations\nof how finely Kars and the others must be shredded\nto stop their life functions.\n\"My body is the crystallization and pride\n of the highest intellect of the German people!!\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0155": [
+      "a99f5c79",
+      "[Part 3: Stardust Crusaders]\nDIO, cornered by Jotaro in Egypt.\nSeizing an opening in the pursuit, he managed to absorb Joseph's blood,\nshouting \"I feel absolutely HIGH!\", thrilled that thanks to\nJoseph Joestar's blood, his body, Jonathan Joestar's,\nfit him perfectly at last.\nHe can now stop time for more seconds, and has grown stronger.\n\"I gained immortality 100 years ago... but never\nhave I felt this splendid and refreshed!\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0156": [
+      "49c5facb",
+      "[Part 4: Diamond is Unbreakable]\nYoshikage Kira, his face and fingerprints changed by Aya Tsuji's Stand.\nAs Kosaku Kawajiri, he lives in the Kawajiri home with Kosaku's wife Shinobu\nand son Hayato. The real Kosaku, Kira's victim, was a perfectly ordinary man\nwhom Shinobu called \"a boring man.\"\nHe acted to blend into Kosaku's life, but after an incident triggered\nhis \"invincible\" power, \"Bites the Dust,\" his looks changed\nand he began acting boldly.\nWithin \"Killer Queen: Bites the Dust,\" a \"fate\" that has happened once\nwill always happen, and what has been destroyed once\nwill always be destroyed.\n\"Fate is what carries your life to you!\n ...Heh, well said indeed.\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0157": [
+      "ae965a05",
+      "[Part 4: Diamond is Unbreakable]\nYoshikage Kira's Stand, Killer Queen, with Stray Cat in its belly.\nThinking Stray Cat's power to control \"air\" could be used for\nKiller Queen's explosions, Kira kept it in his attic,\neven though he had once judged it an enemy.\nHit by Josuke and Okuyasu's attacks, he shrewdly made use of the Stray Cat\nHayato had brought, and won it over to his side.\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0158": [
+      "4b261e09",
+      "[Part 2: Battle Tendency]\nA servant at Lisa Lisa's mansion and Joseph and Caesar's assistant instructor.\nWith Loggins, he welcomed the two after they cleared the \"Hell Climb Pillar\"\ntrial, and trained them hard for 3 weeks.\nIn the final Hamon trial he fought Caesar, whose Bubble Launcher's\n\"Hamon\" sparks burned off all the fine hair on his right arm.\nIn that sorry state, he declared, \"You pass, no question.\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0159": [
+      "76d7d98d",
+      "[Part 3: Stardust Crusaders]\nBefore the final battle with DIO, Joseph warned Jotaro \"never to lose\nyour cool in anger,\" but DIO's actions, mocking the Joestar bloodline,\nenraged him.\nThat seemed to put him in a bit of danger, but\n\"This ain't nothin'... I'm not angry enough yet!\"\nNever giving up on defeating DIO, he staked everything on the 2 seconds\nhe was given, and awakened the power to stop time himself.\n\"The reason you lost... is just one thing, DIO...\n one simple answer...\n 'You pissed me off.'\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0160": [
+      "f5ad8931",
+      "[Part 3: Stardust Crusaders]\nPolnareff possessed by Anubis, now able to fight dual-wielding\nwith two master swordsman Stands.\nWith the precision of Silver Chariot and the agility of Star Platinum,\nhis power was so terrifying that Jotaro himself thought,\n\"I really have to beat him... or he'll kill me...\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0161": [
+      "720a8aa4",
+      "[Part 5: Golden Wind]\nA 15-year-old living in Neapolis.\nBorn to DIO, archenemy of the Joestar family, and a Japanese woman.\nHe has an iron will that holds to his convictions, and the composure\nto handle the unexpected.\nHe dreams of becoming a Gang-Star.\nStand: \"Gold Experience\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0162": [
+      "cdc2a01d",
+      "[Part 5: Golden Wind]\nA member of the gang \"Passione.\"\nHis eyes are always teary, an aftereffect of a knife stabbed\ninto his face in a fight.\nHe shook down taxi drivers picking up passengers at Neapolis Airport,\nearning many grudges."
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0163": [
+      "be2413ac",
+      "[Part 5: Golden Wind]\nA member of the gang \"Passione.\" Age 20.\nThe team's leader, with a sharp mind and strong willpower.\nWith a strong sense of responsibility and the kindness to help people in trouble,\nhe is trusted by the organization's executives, his subordinates and the townsfolk.\nStand: \"Sticky Fingers\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0164": [
+      "40fdb240",
+      "[Part 5: Golden Wind]\nA member of the gang \"Passione\" and Bucciarati's subordinate.\nAge 20. A former police officer. Wary and slow to trust others,\nbut willing to risk his life on the orders of someone he trusts.\nStand: \"Moody Blues\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0165": [
+      "2608f98b",
+      "[Part 5: Golden Wind]\nA member of the gang \"Passione\" and Bucciarati's subordinate.\nAge 18. The team's simple, optimistic mood-maker.\nHis unbreakable spirit in any crisis supports the team.\nHe hates the number \"4.\"\nStand: \"Sex Pistols\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0166": [
+      "2abad685",
+      "[Part 5: Golden Wind]\nA member of the gang \"Passione\" and Bucciarati's subordinate.\nAge 17. Grateful to Bucciarati, who once saved him,\nhe joined the organization to help him. Innocent, and bad at studying.\nStand: \"Aerosmith\""
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0167": [
+      "6b5e7a8c",
+      "[Part 5: Golden Wind]\nA member of the gang \"Passione\" and Bucciarati's subordinate.\nAge 16. Highly intelligent with an IQ of 152, and gentle and\ngentlemanly in manner. But in truth he's short-tempered, and when he snaps\nhis ferocity scares even his teammates.\nStand: \"Purple Haze\"\n"
+    ],
+    "text:Bokencho_YogoText_JP:YOGO_TEXT_0168": [
+      "4e8952fc",
+      "[Part 5: Golden Wind]\nAn executive of the gang \"Passione.\" He gives Giorno his entrance test.\nSo huge that when he lies down he could be mistaken for a bed,\nhe is imprisoned, yet lives in total comfort behind bars.\nStand: \"Black Sabbath\""
     ],
     "text:Bokencho_YogoTitle_JP:YOGO_TITLE_0001": [
       "04405517",
@@ -39533,6 +40473,22 @@
       "9ac50342",
       "Sortie Condition 2"
     ],
+    "text:ClanBGText_JP:ClanBGText_0001": [
+      "cf8e1231",
+      "The plaza outside Morioh Station."
+    ],
+    "text:ClanBGText_JP:ClanBGText_0002": [
+      "8dca8367",
+      "A plaza with a fountain in Italy."
+    ],
+    "text:ClanBGText_JP:ClanBGText_0003": [
+      "e3c9444d",
+      "The restroom where Polpo's fortune was hidden.\nYou can meet Mr. Pericolo here at noon."
+    ],
+    "text:ClanBGText_JP:ClanBGText_0004": [
+      "5d5d0cd8",
+      "Where Polnareff fought Chaka, controlled by \"Anubis\".\nCountless pillars stand in rows."
+    ],
     "text:ClanBGTitle_JP:ClanBGTitle_0001": [
       "8b2eb22c",
       "Outside Morioh Station"
@@ -39548,6 +40504,902 @@
     "text:ClanBGTitle_JP:ClanBGTitle_0004": [
       "cb0dddf1",
       "Egyptian Temple"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0001": [
+      "2a5cbe1c",
+      "Town Rank increased"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0002": [
+      "df5a4929",
+      "Town Rank increased,\nunlocking Sub-Master permissions"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0003": [
+      "371cbf24",
+      "Town Rank increased,\nunlocking object rearrangement"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0004": [
+      "e91d1ab2",
+      "Town Rank increased,\nunlocking background map changes"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0005": [
+      "bd769d9c",
+      "Town Rank Up Message\nDummy 5"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0006": [
+      "b3721095",
+      "Town Rank Up Message\nDummy 6"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0007": [
+      "69b9142d",
+      "Town Rank Up Message\nDummy 7"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0008": [
+      "1a9e3ecd",
+      "Town Rank Up Message\nDummy 8"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0009": [
+      "3a996bd3",
+      "Town Rank Up Message\nDummy 9"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0010": [
+      "832f88f3",
+      "Town Rank Up Message\nDummy 10"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0011": [
+      "820bd74c",
+      "Town Rank Up Message\nDummy 11"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0012": [
+      "2299517e",
+      "Town Rank Up Message\nDummy 12"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0013": [
+      "a2fe66c3",
+      "Town Rank Up Message\nDummy 13"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0014": [
+      "1decfaa8",
+      "Town Rank Up Message\nDummy 14"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0015": [
+      "30aef947",
+      "Town Rank Up Message\nDummy 15"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0016": [
+      "91d70cea",
+      "Town Rank Up Message\nDummy 16"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0017": [
+      "0eb0f404",
+      "Town Rank Up Message\nDummy 17"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0018": [
+      "f1e9a6e4",
+      "Town Rank Up Message\nDummy 18"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0019": [
+      "4a6b9a1d",
+      "Town Rank Up Message\nDummy 19"
+    ],
+    "text:ClanFunctionText_JP:ClanFunctionText_0020": [
+      "8f06de5c",
+      "Town Rank Up Message\nDummy 20"
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0001": [
+      "962bcce7",
+      "Coffee-flavored chewing gum.\nIggy's favorite treat."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0001_SHORT": [
+      "f22d0e2b",
+      "Coffee-flavored chewing gum."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0002": [
+      "5c52452e",
+      "The Japanese-made portable cassette player Joseph loves.\nLets you listen to your favorite tapes anytime, anywhere."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0002_SHORT": [
+      "8952a911",
+      "The Japanese-made portable cassette player Joseph loves."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0003": [
+      "d110393a",
+      "One of the cassette tapes Joseph often listens to."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0003_SHORT": [
+      "d110393a",
+      "One of the cassette tapes Joseph often listens to."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0004": [
+      "00ecfcf7",
+      "Nail clippers shaped like a bowling pin.\nNobody uses these anymore."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0004_SHORT": [
+      "106fb40d",
+      "Nail clippers shaped like a bowling pin."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0005": [
+      "d455b58e",
+      "A mask that corrects Hamon breathing. If your rhythm slips,\nyou can't breathe and suffer the death throes of suffocation.\nAs long as the rhythm holds, breathing is no problem."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0005_SHORT": [
+      "c24f65f7",
+      "A mask that corrects Hamon breathing."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0006": [
+      "070f152d",
+      "A scarf woven from Satiporoja Beetle silk.\nThe silk conducts 100% of Hamon,\nmaking the scarf a Hamon weapon and a radar for life signs."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0006_SHORT": [
+      "1c7557a0",
+      "A scarf woven from Satiporoja Beetle silk."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0007": [
+      "1d1137e7",
+      "Stickers you get from the \"Kameyu\" department store chain,\none for every 100 yen you spend.\nCollect a lot of them to get cash back."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0007_SHORT": [
+      "e90f4ac2",
+      "Stickers you get when shopping at \"Kameyu\"."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0008": [
+      "7826d136",
+      "A sound effect sign.\nYou can set up all sorts of unique sound effects."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0008_SHORT": [
+      "9f86d5f9",
+      "A sound effect sign."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0009": [
+      "9823e89d",
+      "A dialogue sign.\nYou can set up lines from all sorts of scenes."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0009_SHORT": [
+      "b90439c4",
+      "A dialogue sign."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0010": [
+      "f32773d9",
+      "\"Whoever badmouths my hair and ticks me off,\n no matter who they are... I won't forgive 'em!\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0010_SHORT": [
+      "f32773d9",
+      "\"Whoever badmouths my hair and ticks me off,\n no matter who they are... I won't forgive 'em!\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0011": [
+      "80ec3316",
+      "\"My big brother... he says 'You decide'...\n'Okuyasu... you're the one who decides where to go'...\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0011_SHORT": [
+      "80ec3316",
+      "\"My big brother... he says 'You decide'...\n'Okuyasu... you're the one who decides where to go'...\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0012": [
+      "bbc4f12b",
+      "\"You're a complete idiot! I'll be waiting\n for you in the next world, looking forward to it!\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0012_SHORT": [
+      "bbc4f12b",
+      "\"You're a complete idiot! I'll be waiting\n for you in the next world, looking forward to it!\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0013": [
+      "60b2bd5d",
+      "\"As long as I've got you 'Harvest' guys,\n I'll never be short of money my whole life.\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0013_SHORT": [
+      "60b2bd5d",
+      "\"As long as I've got you 'Harvest' guys,\n I'll never be short of money my whole life.\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0014": [
+      "75d7119f",
+      "\"Don't you understand that 'love'\n matters more than 'work'?\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0014_SHORT": [
+      "75d7119f",
+      "\"Don't you understand that 'love'\n matters more than 'work'?\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0015": [
+      "95966aaf",
+      "\"Dio... maybe, just like you said,\n the two of us really were one.\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0015_SHORT": [
+      "95966aaf",
+      "\"Dio... maybe, just like you said,\n the two of us really were one.\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0016": [
+      "e440fe54",
+      "\"At last... at last the time of the prophecy has come.\n If this is fate, I will accept it as it is!\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0016_SHORT": [
+      "e440fe54",
+      "\"At last... at last the time of the prophecy has come.\n If this is fate, I will accept it as it is!\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0017": [
+      "c27dda2d",
+      "\"Hellooo~~~ how ya doin'~~?\n Happy-happy, nice to meetcha~~\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0017_SHORT": [
+      "c27dda2d",
+      "\"Hellooo~~~ how ya doin'~~?\n Happy-happy, nice to meetcha~~\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0018": [
+      "f6306128",
+      "\"What I'll show you at the end is the Zeppeli soul,\n passed down and entrusted to the future! The human soul!\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0018_SHORT": [
+      "f6306128",
+      "\"What I'll show you at the end is the Zeppeli soul,\n passed down and entrusted to the future! The human soul!\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0019": [
+      "d9b11720",
+      "\"I, Jotaro Kujo, will personally kick your ass.\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0019_SHORT": [
+      "d9b11720",
+      "\"I, Jotaro Kujo, will personally kick your ass.\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0020": [
+      "cd6d8711",
+      "\"No regrets... about our journey so far...\n or about what's to come... I have no regrets...\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0020_SHORT": [
+      "cd6d8711",
+      "\"No regrets... about our journey so far...\n or about what's to come... I have no regrets...\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0021": [
+      "fab0cd71",
+      "A car from the racing battle game \"F-MEGA\".\nCar A in green, number 28.\nDriven by a player who never fumbles from emotional distress."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0021_SHORT": [
+      "a49585e4",
+      "An \"F-MEGA\" car. Car A in green, number 28."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0022": [
+      "2e9280e7",
+      "A car from the racing battle game \"F-MEGA\".\nCar A in red, number 15.\nDriven by a player of skillful handling and tactics."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0022_SHORT": [
+      "655cb51d",
+      "An \"F-MEGA\" car. Car A in red, number 15."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0023": [
+      "a5e176b5",
+      "At the Owson in Koto-dai, Morioh, you can sometimes see an alley\nthat shouldn't exist, between it and the pharmacy next door.\nThey say you can meet the ghosts of a girl and a dog there."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0023_SHORT": [
+      "a5e176b5",
+      "At the Owson in Koto-dai, Morioh, you can sometimes see an alley\nthat shouldn't exist, between it and the pharmacy next door.\nThey say you can meet the ghosts of a girl and a dog there."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0024": [
+      "04d93a71",
+      "A Stone Mask unearthed from ruins in Mexico.\nIt once hung on a wall of the Joestar Mansion.\nYou sense a strange tale of fate about to begin..."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0024_SHORT": [
+      "91d8e3af",
+      "A Stone Mask unearthed from ruins in Mexico."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0025": [
+      "89c7e086",
+      "A Stone Mask that drank blood and sprouted bone spikes.\nIf those sharp spikes pierced your brain,\nyou'd surely die instantly..."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0025_SHORT": [
+      "89c7e086",
+      "A Stone Mask that drank blood and sprouted bone spikes.\nIf those sharp spikes pierced your brain,\nyou'd surely die instantly..."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0026": [
+      "b52c70d6",
+      "A muddy puddle, hardly fit for washing out your mouth.\nThe sight of it sent Dio into a rage."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0026_SHORT": [
+      "b52c70d6",
+      "A muddy puddle, hardly fit for washing out your mouth.\nThe sight of it sent Dio into a rage."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0027": [
+      "332a759f",
+      "A frog that looked sure to be crushed by Zeppeli... but\nthanks to Hamon energy, it wasn't.\nHamon can shatter the rock without harming the frog."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0027_SHORT": [
+      "32915502",
+      "A frog that wasn't crushed, thanks to Hamon energy."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0028": [
+      "b98e4240",
+      "An incinerator at the Joestar Mansion in 19th-century England.\nCheck carefully what's inside before using it."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0028_SHORT": [
+      "b98e4240",
+      "An incinerator at the Joestar Mansion in 19th-century England.\nCheck carefully what's inside before using it."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0029": [
+      "377c8e07",
+      "Dio's head, severed from his body before\nthe Hamon could reach it.\nIt has its eye on the body of the one man it respects."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0029_SHORT": [
+      "377c8e07",
+      "Dio's head, severed from his body before\nthe Hamon could reach it.\nIt has its eye on the body of the one man it respects."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0030": [
+      "d96926ba",
+      "A hound Jonathan met and befriended when he was five.\nA splendid dog that understood what life is."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0030_SHORT": [
+      "d96926ba",
+      "A hound Jonathan met and befriended when he was five.\nA splendid dog that understood what life is."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0031": [
+      "6ac517e7",
+      "Wine that served as a Hamon detector.\nIt stood for the north wind of the proverb\n\"The north wind made the Vikings.\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0031_SHORT": [
+      "6ac517e7",
+      "Wine that served as a Hamon detector.\nIt stood for the north wind of the proverb\n\"The north wind made the Vikings.\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0032": [
+      "31462344",
+      "A Stone Mask held by the Pillar Men found in Rome.\nIt has a hole in the forehead, as if something fits there."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0032_SHORT": [
+      "31462344",
+      "A Stone Mask held by the Pillar Men found in Rome.\nIt has a hole in the forehead, as if something fits there."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0033": [
+      "f3603c9e",
+      "A device that shines ultraviolet rays from many light bulbs.\nIt works as an anti-vampire weapon."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0033_SHORT": [
+      "f3603c9e",
+      "A device that shines ultraviolet rays from many light bulbs.\nIt works as an anti-vampire weapon."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0034": [
+      "3f56505f",
+      "One of D'Arby's dolls, modeled on Noriaki Kakyoin.\nWhen a soul is inside, it moans in grief."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0034_SHORT": [
+      "ed783e68",
+      "One of D'Arby's dolls, modeled on Noriaki Kakyoin."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0035": [
+      "eb89da7f",
+      "A portrait of Jotaro drawn by Kakyoin.\nAn unnatural line is painted\nacross the left knee."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0035_SHORT": [
+      "7138ad46",
+      "A portrait of Jotaro drawn by Kakyoin."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0036": [
+      "50581e53",
+      "A sketch of the Nile Wewe Fly, found through\nStar Platinum's precise movements and analysis.\nThe ones with striped legs live near Aswan."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0036_SHORT": [
+      "50581e53",
+      "A sketch of the Nile Wewe Fly, found through\nStar Platinum's precise movements and analysis.\nThe ones with striped legs live near Aswan."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0037": [
+      "050a79a0",
+      "A hotel register from a town in Pakistan.\nIt reads \"Q-taro Kujo\"."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0037_SHORT": [
+      "050a79a0",
+      "A hotel register from a town in Pakistan.\nIt reads \"Q-taro Kujo\"."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0038": [
+      "c7153a07",
+      "A toilet of the type found in India and West Asia.\nThere's no paper, so you clean with water and your left hand.\nDon't lick it, or you'll catch germs."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0038_SHORT": [
+      "c7153a07",
+      "A toilet of the type found in India and West Asia.\nThere's no paper, so you clean with water and your left hand.\nDon't lick it, or you'll catch germs."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0039": [
+      "a95a9ed2",
+      "An orange with a clockwork bomb hidden inside.\nWith the lid on, it looks like an ordinary orange.\nTry to peel it and it explodes 3 seconds later."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0039_SHORT": [
+      "a95a9ed2",
+      "An orange with a clockwork bomb hidden inside.\nWith the lid on, it looks like an ordinary orange.\nTry to peel it and it explodes 3 seconds later."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0040": [
+      "4226436f",
+      "A comic book with \"The Adventures of the Oingo Boingo Brothers\"\nwritten on the cover. Only the first few pages are drawn;\nthe rest seems to be blank."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0040_SHORT": [
+      "4226436f",
+      "A comic book with \"The Adventures of the Oingo Boingo Brothers\"\nwritten on the cover. Only the first few pages are drawn;\nthe rest seems to be blank."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0041": [
+      "def48c95",
+      "A jar that looks big enough to catch the blood\nthat gushes out when a head is cut off."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0041_SHORT": [
+      "def48c95",
+      "A jar that looks big enough to catch the blood\nthat gushes out when a head is cut off."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0042": [
+      "6f951e55",
+      "A traffic sign snapped off near its base.\nSigns exist to direct traffic,\nnot to cut off heads."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0042_SHORT": [
+      "5350b25a",
+      "A traffic sign snapped off near its base."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0043": [
+      "703d298f",
+      "A TV wrapped in Hermit Purple.\nJoseph uses it for \"spirit hearing,\" stitching together\nwords spoken on many channels into sentences."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0043_SHORT": [
+      "703d298f",
+      "A TV wrapped in Hermit Purple.\nJoseph uses it for \"spirit hearing,\" stitching together\nwords spoken on many channels into sentences."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0044": [
+      "2004b7ea",
+      "A turtle that lives in the fountain outside Morioh Station.\nIt was nearly done for after delinquents hurt it,\nbut Josuke saved it. It won't repay the favor, though."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0044_SHORT": [
+      "3c63434f",
+      "A turtle that lives in the fountain outside Morioh Station."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0045": [
+      "9a089858",
+      "A rubber glove tied off at the opening.\nIt wriggles around."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0045_SHORT": [
+      "9a089858",
+      "A rubber glove tied off at the opening.\nIt wriggles around."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0046": [
+      "6afb1ab1",
+      "You can hear a cat meowing inside.\nIt seems it's not a real cat,\nbut a stuffed toy."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0046_SHORT": [
+      "6afb1ab1",
+      "You can hear a cat meowing inside.\nIt seems it's not a real cat,\nbut a stuffed toy."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0047": [
+      "43b977f8",
+      "7,000 yen with just the corners torn.\nTake it to a bank and they'll\nexchange it for clean bills."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0047_SHORT": [
+      "43b977f8",
+      "7,000 yen with just the corners torn.\nTake it to a bank and they'll\nexchange it for clean bills."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0048": [
+      "233ea6bb",
+      "The original manuscript of Rohan Kishibe's masterpiece,\n\"Pink Dark Boy\".\nThe original has a whole different level of impact."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0048_SHORT": [
+      "233ea6bb",
+      "The original manuscript of Rohan Kishibe's masterpiece,\n\"Pink Dark Boy\".\nThe original has a whole different level of impact."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0049": [
+      "a769f6af",
+      "A minor book rarely sold in Morioh.\n7,500 yen."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0049_SHORT": [
+      "a769f6af",
+      "A minor book rarely sold in Morioh.\n7,500 yen."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0050": [
+      "df0b976c",
+      "A trap for catching rats.\nCheese is too fancy for rats,\nso it's baited with scraps of tempura."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0050_SHORT": [
+      "df0b976c",
+      "A trap for catching rats.\nCheese is too fancy for rats,\nso it's baited with scraps of tempura."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0051": [
+      "9442db4f",
+      "An instant camera that shows the photo right away.\nThey say it sometimes takes pictures by itself\nwithout anyone touching it."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0051_SHORT": [
+      "9442db4f",
+      "An instant camera that shows the photo right away.\nThey say it sometimes takes pictures by itself\nwithout anyone touching it."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0052": [
+      "e61c9467",
+      "A bag that held sandwiches from Saint-Germain.\nAlso perfect for secretly carrying around\nthings about the size of a sandwich."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0052_SHORT": [
+      "dbe071e6",
+      "A bag that held sandwiches from Saint-Germain."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0053": [
+      "e61c9467",
+      "A bag that held sandwiches from Saint-Germain.\nAlso perfect for secretly carrying around\nthings about the size of a sandwich."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0053_SHORT": [
+      "e61c9467",
+      "A bag that held sandwiches from Saint-Germain.\nAlso perfect for secretly carrying around\nthings about the size of a sandwich."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0054": [
+      "7af3faa9",
+      "Jars with years written on the lids.\nEach holds one year's worth\nof \"nails\" cut with clippers."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0054_SHORT": [
+      "7af3faa9",
+      "Jars with years written on the lids.\nEach holds one year's worth\nof \"nails\" cut with clippers."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0055": [
+      "4db2161d",
+      "A book donated to the Morioh Municipal Library.\nWhile reading it, you sometimes\nfeel like you can hear a \"voice.\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0055_SHORT": [
+      "4db2161d",
+      "A book donated to the Morioh Municipal Library.\nWhile reading it, you sometimes\nfeel like you can hear a \"voice.\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0056": [
+      "becc99bf",
+      "A carriage used in 19th-century England.\nIt brought the boy who would be adopted by the Joestars."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0056_SHORT": [
+      "becc99bf",
+      "A carriage used in 19th-century England.\nIt brought the boy who would be adopted by the Joestars."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0057": [
+      "f0b537aa",
+      "A candlestick kicked at an evil that reeks worse than vomit.\nYou can tell good people from bad by their \"smell.\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0057_SHORT": [
+      "f0b537aa",
+      "A candlestick kicked at an evil that reeks worse than vomit.\nYou can tell good people from bad by their \"smell.\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0058": [
+      "d0d18edb",
+      "A life form halfway between mineral and organism.\nIt should have been drifting through space forever."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0058_SHORT": [
+      "d0d18edb",
+      "A life form halfway between mineral and organism.\nIt should have been drifting through space forever."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0059": [
+      "c336f31d",
+      "An empty iron box found on the deck of\nan unmanned cruiser drifting off Africa.\nIt has a shelter-like double bottom."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0059_SHORT": [
+      "c336f31d",
+      "An empty iron box found on the deck of\nan unmanned cruiser drifting off Africa.\nIt has a shelter-like double bottom."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0060": [
+      "28a4fa4b",
+      "A man with a horn on his forehead, fused alive with a pillar.\nMany Stone Masks are stuck all around him..."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0060_SHORT": [
+      "28a4fa4b",
+      "A man with a horn on his forehead, fused alive with a pillar.\nMany Stone Masks are stuck all around him..."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0061": [
+      "76884bb1",
+      "Three powerful men, fused alive with a pillar.\nDiamonds seem to be embedded in the wall..."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0061_SHORT": [
+      "76884bb1",
+      "Three powerful men, fused alive with a pillar.\nDiamonds seem to be embedded in the wall..."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0062": [
+      "886474ea",
+      "A road roller brought in from somewhere.\nRoad rollers exist to pack down the ground,\nnot to crush people."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0062_SHORT": [
+      "0d6b2c93",
+      "A road roller brought in from somewhere."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0063": [
+      "12641410",
+      "The fine car Senator Wilson Phillips rides in.\nCareful: just when you think you've jumped out,\nyou may find yourself back inside."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0063_SHORT": [
+      "12641410",
+      "The fine car Senator Wilson Phillips rides in.\nCareful: just when you think you've jumped out,\nyou may find yourself back inside."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0064": [
+      "fa0e709a",
+      "A car designed as if it had vicious fangs.\nA burly arm can be seen from the driver's seat..."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0064_SHORT": [
+      "fa0e709a",
+      "A car designed as if it had vicious fangs.\nA burly arm can be seen from the driver's seat..."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0065": [
+      "1698bf02",
+      "A buggy with its front hidden by a large mirror.\nWith air conditioning and a side table for drinks,\nit makes for a comfortable ride."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0065_SHORT": [
+      "1698bf02",
+      "A buggy with its front hidden by a large mirror.\nWith air conditioning and a side table for drinks,\nit makes for a comfortable ride."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0066": [
+      "db60969c",
+      "The coffin DIO uses.\nNukesaku, who was supposed to be opening the lid,\nis somehow inside it."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0066_SHORT": [
+      "db60969c",
+      "The coffin DIO uses.\nNukesaku, who was supposed to be opening the lid,\nis somehow inside it."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0067": [
+      "79386072",
+      "\"When you see this graffiti\n and turn around, you'll...\"..."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0067_SHORT": [
+      "79386072",
+      "\"When you see this graffiti\n and turn around, you'll...\"..."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0068": [
+      "4714cd58",
+      "A cage bent wide enough for a person to slip through easily.\nRumor has it the iron bars bent on their own."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0068_SHORT": [
+      "4714cd58",
+      "A cage bent wide enough for a person to slip through easily.\nRumor has it the iron bars bent on their own."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0069": [
+      "29eb267d",
+      "A round table with gambling chips and cards,\nglasses and coins.\nRemember: it's not cheating if you don't get caught."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0069_SHORT": [
+      "36bb2f80",
+      "A round table with gambling chips and cards, glasses and coins."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0070": [
+      "aeb23f6d",
+      "A game console hooked up to\nfour TVs and controllers.\nD'Arby the Younger seems to play a lot."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0070_SHORT": [
+      "947fdd46",
+      "A game console hooked up to four TVs and controllers."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0071": [
+      "96a51f7d",
+      "Stairs where going down or up decides your fate.\nCareful: just when you think you're climbing,\nyou may find yourself going down."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0071_SHORT": [
+      "96a51f7d",
+      "Stairs where going down or up decides your fate.\nCareful: just when you think you're climbing,\nyou may find yourself going down."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0072": [
+      "5d5db1c0",
+      "A decoration for JOJO fans.\nFor dreaming of bizarre adventures."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0072_SHORT": [
+      "5d5db1c0",
+      "A decoration for JOJO fans.\nFor dreaming of bizarre adventures."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0073": [
+      "41ac1232",
+      "Furniture that is warped and twisted.\nNormally it would break before bending this far...\nIt's as if it was fixed after breaking."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0073_SHORT": [
+      "41ac1232",
+      "Furniture that is warped and twisted.\nNormally it would break before bending this far...\nIt's as if it was fixed after breaking."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0074": [
+      "9a272017",
+      "A rock that will later become Morioh's landmark \"Angelo Rock.\"\nIt talks a lot, just like a real person."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0074_SHORT": [
+      "9a272017",
+      "A rock that will later become Morioh's landmark \"Angelo Rock.\"\nIt talks a lot, just like a real person."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0075": [
+      "f08fcfde",
+      "\"Angelo Rock,\" one of Morioh's landmarks.\nDespite its creepy look, the townsfolk love it\nas a signpost and a meeting place for lovers."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0075_SHORT": [
+      "fc92d1c1",
+      "\"Angelo Rock,\" one of Morioh's landmarks."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0076": [
+      "e5bef848",
+      "A sign on the gate of an empty house in Morioh.\nIt probably said \"No Trespassing,\"\nbut for some reason part of it has been neatly erased."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0076_SHORT": [
+      "e5bef848",
+      "A sign on the gate of an empty house in Morioh.\nIt probably said \"No Trespassing,\"\nbut for some reason part of it has been neatly erased."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0077": [
+      "0c99e07f",
+      "A dog kept by the Hirose family in Morioh.\nIt's quite old and a bit senile."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0077_SHORT": [
+      "0c99e07f",
+      "A dog kept by the Hirose family in Morioh.\nIt's quite old and a bit senile."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0078": [
+      "0fad9557",
+      "A sound carrying a strong wish to be believed\nby one's precious family.\nTrust outweighs even an unbearable burden of guilt."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0078_SHORT": [
+      "0fad9557",
+      "A sound carrying a strong wish to be believed\nby one's precious family.\nTrust outweighs even an unbearable burden of guilt."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0079": [
+      "44dc923b",
+      "It looks like a wooden mannequin for figure drawing,\nthe kind sold at art supply stores.\nIt was crammed into a locker."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0079_SHORT": [
+      "25f5616b",
+      "It looks like a wooden mannequin for figure drawing."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0080": [
+      "a7c835c3",
+      "A glass of cola on a terrace table\nat Cafe Rengatei.\nIt's full of long strands of hair..."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0080_SHORT": [
+      "a7c835c3",
+      "A glass of cola on a terrace table\nat Cafe Rengatei.\nIt's full of long strands of hair..."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0081": [
+      "e7a856a1",
+      "A sound that conveys just how much someone hates it.\nIt has no effect on someone who won't listen."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0081_SHORT": [
+      "e7a856a1",
+      "A sound that conveys just how much someone hates it.\nIt has no effect on someone who won't listen."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0082": [
+      "42aa8cd0",
+      "The shed shell of Koichi Hirose's Stand, Echoes ACT1.\nIt looks withered and is falling apart."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0082_SHORT": [
+      "fc5e2b8a",
+      "The shed shell of Koichi Hirose's Stand, Echoes ACT1."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0083": [
+      "c91b4b40",
+      "The shed shell of Koichi Hirose's Stand, Echoes ACT2.\nIt's split in two as if dead, but like a similar time before,\nit's proof of growth."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0083_SHORT": [
+      "c91b4b40",
+      "The shed shell of Koichi Hirose's Stand, Echoes ACT2.\nIt's split in two as if dead, but like a similar time before,\nit's proof of growth."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0084": [
+      "863356fd",
+      "A new landmark near Morioh's villa district.\nRumor says it gently knocked away a young woman about\nto kill herself; local fishermen call it \"God's Cape.\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0084_SHORT": [
+      "863356fd",
+      "A new landmark near Morioh's villa district.\nRumor says it gently knocked away a young woman about\nto kill herself; local fishermen call it \"God's Cape.\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0085": [
+      "d734d3eb",
+      "The guitar of Akira Otoishi, who dreams of living hard\nand hot as an ultra-super guitarist.\nHe never lets it out of his sight."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0085_SHORT": [
+      "d734d3eb",
+      "The guitar of Akira Otoishi, who dreams of living hard\nand hot as an ultra-super guitarist.\nHe never lets it out of his sight."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0086": [
+      "d0db9849",
+      "Not strange junk... it seems to be a baby carriage.\nOnly parts of the seat and handle seem to float in the air.\nYou can't see it, but there seems to be a baby inside..."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0086_SHORT": [
+      "d0db9849",
+      "Not strange junk... it seems to be a baby carriage.\nOnly parts of the seat and handle seem to float in the air.\nYou can't see it, but there seems to be a baby inside..."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0087": [
+      "9fae1055",
+      "A dish from the Italian restaurant Trussardi.\nIt makes diners feel wonderful.\nFrom 3,500 yen with coffee and dessert."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0087_SHORT": [
+      "9fae1055",
+      "A dish from the Italian restaurant Trussardi.\nIt makes diners feel wonderful.\nFrom 3,500 yen with coffee and dessert."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0088": [
+      "2b5a916a",
+      "A mailbox standing in the alley that shouldn't exist in Koto-dai.\nThey say that after you pass it and turn the corner,\nyou \"must never look back\" until the exit."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0088_SHORT": [
+      "2b5a916a",
+      "A mailbox standing in the alley that shouldn't exist in Koto-dai.\nThey say that after you pass it and turn the corner,\nyou \"must never look back\" until the exit."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0089": [
+      "15cd1b40",
+      "A plant that used to be a cat.\nIt has eyes and moves at a speed no plant should.\nThrow it a ball and it'll play with it."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0089_SHORT": [
+      "4d9e6887",
+      "A plant that used to be a cat."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0090": [
+      "ba2b2ea0",
+      "Josuke Higashikata rode this in the fight with Highway Star.\nIt was torn apart several times, but fixed with no problem."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0090_SHORT": [
+      "ba2b2ea0",
+      "Josuke Higashikata rode this in the fight with Highway Star.\nIt was torn apart several times, but fixed with no problem."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0091": [
+      "0bb13d35",
+      "A pretty cool used motorbike.\nIts battery is only 12 volts.\nSadly, it broke soon after being bought."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0091_SHORT": [
+      "db741416",
+      "A pretty cool used motorbike."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0092": [
+      "9a27907a",
+      "A clock tower destroyed by Emerald Splash.\nThe hands were shot through and have stopped.\nWhat could it mean..."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0092_SHORT": [
+      "9a27907a",
+      "A clock tower destroyed by Emerald Splash.\nThe hands were shot through and have stopped.\nWhat could it mean..."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0093": [
+      "e905c3f1",
+      "An ambulance from the Morioh Fire Department.\nIt carelessly ran over a man lying in the road...\nThe man gave his name... \"Yoshikage Kira.\""
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0093_SHORT": [
+      "08cd52f5",
+      "An ambulance from the Morioh Fire Department."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0094": [
+      "3b15d442",
+      "\"JOJO\" \"ERINA\"\nTwo names surrounded by a heart."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0094_SHORT": [
+      "3b15d442",
+      "\"JOJO\" \"ERINA\"\nTwo names surrounded by a heart."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0095": [
+      "e40614c7",
+      "An abandoned steel tower. A man lives here self-sufficiently.\nIt has a sofa, a TV and all sorts of furniture,\nplus a vegetable garden and a flush toilet."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0095_SHORT": [
+      "e40614c7",
+      "An abandoned steel tower. A man lives here self-sufficiently.\nIt has a sofa, a TV and all sorts of furniture,\nplus a vegetable garden and a flush toilet."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0096": [
+      "2ca098f6",
+      "A Morioh specialty.\nSteeped in rich miso to bring out the flavor,\na delicacy you could eat endlessly."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0096_SHORT": [
+      "2ca098f6",
+      "A Morioh specialty.\nSteeped in rich miso to bring out the flavor,\na delicacy you could eat endlessly."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0097": [
+      "bb89c3e4",
+      "You can hear a railroad crossing alarm.\nThe crossing near Morioh Station is notorious,\nand you'll wait 1 to 2 minutes."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0097_SHORT": [
+      "bb89c3e4",
+      "You can hear a railroad crossing alarm.\nThe crossing near Morioh Station is notorious,\nand you'll wait 1 to 2 minutes."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0098": [
+      "6a9e2992",
+      "A meal set that lets you study English while eating.\nAnswer correctly and you get delicious food, but get it wrong\nand you'll end up eating erasers or soap."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0098_SHORT": [
+      "6a9e2992",
+      "A meal set that lets you study English while eating.\nAnswer correctly and you get delicious food, but get it wrong\nand you'll end up eating erasers or soap."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0099": [
+      "3e76959d",
+      "A remote-control Stand.\nIt can be controlled from far away, which is very handy."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_0099_SHORT": [
+      "3e76959d",
+      "A remote-control Stand.\nIt can be controlled from far away, which is very handy."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_8017": [
+      "a9051e5d",
+      "A shovel with the logo \"S.P.Q.R\".\nLuca's head got the same logo."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_8017_SHORT": [
+      "a9051e5d",
+      "A shovel with the logo \"S.P.Q.R\".\nLuca's head got the same logo."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_8018": [
+      "0ff09047",
+      "A stone statue with a mysterious DISC inside.\nGhiaccio smashed it with his fists."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_8018_SHORT": [
+      "0ff09047",
+      "A stone statue with a mysterious DISC inside.\nGhiaccio smashed it with his fists."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_8019": [
+      "2a86d32b",
+      "A pillar split in two by Bucciarati's ability."
+    ],
+    "text:ClanObjectText_JP:ClanObjectText_8019_SHORT": [
+      "2a86d32b",
+      "A pillar split in two by Bucciarati's ability."
     ],
     "text:ClanObjectTitle_JP:ClanObjectTitle_0001": [
       "03985327",
@@ -39957,9 +41809,613 @@
       "0c234fd2",
       "Pillar with a Zipper"
     ],
+    "text:ClanText_JP:ClanActiveTime_01": [
+      "1ce5d91b",
+      "Morning"
+    ],
+    "text:ClanText_JP:ClanActiveTime_02": [
+      "43622b07",
+      "Afternoon"
+    ],
+    "text:ClanText_JP:ClanActiveTime_03": [
+      "c6634ead",
+      "Daytime"
+    ],
+    "text:ClanText_JP:ClanActiveTime_04": [
+      "a519542a",
+      "Evening"
+    ],
+    "text:ClanText_JP:ClanActiveTime_05": [
+      "30003ad4",
+      "Late Night"
+    ],
+    "text:ClanText_JP:ClanActiveTime_06": [
+      "fe79ff54",
+      "Any"
+    ],
+    "text:ClanText_JP:ClanAgree": [
+      "3673b28e",
+      "Agree"
+    ],
+    "text:ClanText_JP:ClanApplication": [
+      "7806ace4",
+      "Apply"
+    ],
+    "text:ClanText_JP:ClanApplicationManagement": [
+      "8ebf0083",
+      "Join Requests"
+    ],
+    "text:ClanText_JP:ClanApplicationReleased": [
+      "5147770b",
+      "Withdraw Application"
+    ],
+    "text:ClanText_JP:ClanApproval_01": [
+      "9b3c3dad",
+      "Open"
+    ],
+    "text:ClanText_JP:ClanApproval_02": [
+      "65a3f86a",
+      "Approval Required"
+    ],
+    "text:ClanText_JP:ClanBackgroundButton": [
+      "c92b6b6a",
+      "Rearrange Objects"
+    ],
+    "text:ClanText_JP:ClanBackgroundListButton": [
+      "1b5dbedd",
+      "Town BG List"
+    ],
+    "text:ClanText_JP:ClanCancelText": [
+      "a9c9c456",
+      "Quit"
+    ],
+    "text:ClanText_JP:ClanChatForam": [
+      "58055ff8",
+      "Enter text (50 characters)"
+    ],
+    "text:ClanText_JP:ClanCreateButton": [
+      "900f8294",
+      "Create"
+    ],
+    "text:ClanText_JP:ClanCreateInfo": [
+      "f763e41e",
+      "Set each item to create your Town."
+    ],
+    "text:ClanText_JP:ClanCreated": [
+      "8e93ff6e",
+      "Create Town"
+    ],
+    "text:ClanText_JP:ClanDisagree": [
+      "2b313a14",
+      "Disagree"
+    ],
+    "text:ClanText_JP:ClanDisallowed": [
+      "8fa86276",
+      "Deny"
+    ],
+    "text:ClanText_JP:ClanIdInfoText": [
+      "83f0aecf",
+      "Enter a Town ID"
+    ],
+    "text:ClanText_JP:ClanIdText": [
+      "44c4588e",
+      "Town ID"
+    ],
+    "text:ClanText_JP:ClanInfoText": [
+      "01cec5d2",
+      "Try joining a My Town.\nYou can create a new My Town or search for an existing one."
+    ],
+    "text:ClanText_JP:ClanLeave": [
+      "ae7c465c",
+      "Leave Town"
+    ],
+    "text:ClanText_JP:ClanLeaveDecision": [
+      "83829229",
+      "Leave the Town"
+    ],
+    "text:ClanText_JP:ClanLeaveInfo": [
+      "58106a99",
+      "Are you sure you want to leave this Town?\n*Leaving a Town takes a little time to process."
+    ],
+    "text:ClanText_JP:ClanLogin_Day": [
+      "503ecc0e",
+      "d ago"
+    ],
+    "text:ClanText_JP:ClanLogin_Minute": [
+      "a374e0f5",
+      "m ago"
+    ],
+    "text:ClanText_JP:ClanLogin_OverDay": [
+      "9510144a",
+      "+ days"
+    ],
+    "text:ClanText_JP:ClanLogin_Time": [
+      "930f85e6",
+      "h ago"
+    ],
+    "text:ClanText_JP:ClanMember": [
+      "72570834",
+      "Members"
+    ],
+    "text:ClanText_JP:ClanMemberControl": [
+      "99e203b7",
+      "Manage Members"
+    ],
+    "text:ClanText_JP:ClanNameFoam": [
+      "928c9239",
+      "Enter a Town name (20 characters)"
+    ],
+    "text:ClanText_JP:ClanNameTitle": [
+      "a7252548",
+      "Town Name"
+    ],
+    "text:ClanText_JP:ClanNoText": [
+      "bca84ea5",
+      "Cancel"
+    ],
+    "text:ClanText_JP:ClanObjectListButton": [
+      "aec635c2",
+      "Object List"
+    ],
+    "text:ClanText_JP:ClanObjectSetButton": [
+      "a41952bb",
+      "Change Town BG"
+    ],
+    "text:ClanText_JP:ClanOkText_02": [
+      "77ac4d2c",
+      "Confirm Changes"
+    ],
+    "text:ClanText_JP:ClanPermit": [
+      "2113d7e3",
+      "Allow"
+    ],
+    "text:ClanText_JP:ClanPolicyChange": [
+      "8b24ac3c",
+      "Edit Town Info"
+    ],
+    "text:ClanText_JP:ClanPolicyChangeInfo": [
+      "9512aeb0",
+      "You can edit the Town info"
+    ],
+    "text:ClanText_JP:ClanPolicyTitle": [
+      "ee56610a",
+      "Filter Search"
+    ],
+    "text:ClanText_JP:ClanPolicy_01": [
+      "bcc478bd",
+      "Casual"
+    ],
+    "text:ClanText_JP:ClanPolicy_02": [
+      "032d92a6",
+      "Hardcore"
+    ],
+    "text:ClanText_JP:ClanPolicy_03": [
+      "4d218d28",
+      "Moderate"
+    ],
+    "text:ClanText_JP:ClanPolicy_04": [
+      "2babbc2b",
+      "Beginners Welcome"
+    ],
+    "text:ClanText_JP:ClanPolicy_05": [
+      "83485297",
+      "Mostly Chatting"
+    ],
+    "text:ClanText_JP:ClanProfileFoam": [
+      "772ea8b7",
+      "You can enter a Town description (100 characters incl. line breaks)"
+    ],
+    "text:ClanText_JP:ClanRecommend": [
+      "d81ad72a",
+      "Expel from Town"
+    ],
+    "text:ClanText_JP:ClanRecommendButton": [
+      "6aeeca1b",
+      "Expel"
+    ],
+    "text:ClanText_JP:ClanRecommendInfo": [
+      "155cfb7d",
+      " will be expelled from the Town. OK?"
+    ],
+    "text:ClanText_JP:ClanSearch": [
+      "1878f4f8",
+      "Search Towns"
+    ],
+    "text:ClanText_JP:ClanSearchNone": [
+      "54a824b1",
+      "Any"
+    ],
+    "text:ClanText_JP:ClanSearchText": [
+      "1b6b1a6f",
+      "Search"
+    ],
+    "text:ClanText_JP:ClanSubMasterMax": [
+      "6ffd5c16",
+      "A maximum of\n3 Sub-masters is allowed.\nTo appoint a new Sub-master,\ndismiss an existing one first."
+    ],
+    "text:ClanText_JP:ClanSubMasterPosting": [
+      "4943ad0a",
+      "Appoint this player\nas a Sub-Master?"
+    ],
+    "text:ClanText_JP:ClanSubMasterRemoval": [
+      "6beb2cb9",
+      "Dismiss this player\nas a Sub-Master?"
+    ],
+    "text:ClanText_JP:ClanText_0039": [
+      "cf405d58",
+      "Town Policy"
+    ],
+    "text:ClanText_JP:Clan_Background_01": [
+      "fe84f5f7",
+      "Could not set the Town background.\n(Error 01)"
+    ],
+    "text:ClanText_JP:Clan_Background_02": [
+      "6b7090dd",
+      "Could not set the Town background.\n(Error 02)"
+    ],
+    "text:ClanText_JP:Clan_Background_03": [
+      "175af648",
+      "Could not set the Town background.\n(Error 03)"
+    ],
+    "text:ClanText_JP:Clan_Background_04": [
+      "1a73b356",
+      "Could not set the Town background.\n(Error 04)"
+    ],
+    "text:ClanText_JP:Clan_Background_05": [
+      "87026992",
+      "Could not set the Town background.\n(Error 05)"
+    ],
+    "text:ClanText_JP:Clan_Background_06": [
+      "1862a6ca",
+      "Could not set the Town background.\n(Error 06)"
+    ],
+    "text:ClanText_JP:Clan_Background_07": [
+      "f7733fce",
+      "Could not set the Town background.\n(Error 07)"
+    ],
+    "text:ClanText_JP:Clan_Background_08": [
+      "ebc423de",
+      "Could not set the Town background.\n(Error 08)"
+    ],
+    "text:ClanText_JP:Clan_Background_09": [
+      "5a9a65b4",
+      "Could not set the Town background.\n(Error 09)"
+    ],
+    "text:ClanText_JP:Clan_Background_10": [
+      "3be3c521",
+      "Could not set the Town background.\n(Error 10)"
+    ],
+    "text:ClanText_JP:Clan_Background_Complete": [
+      "5e13239d",
+      "Town background changed."
+    ],
+    "text:ClanText_JP:Clan_Background_Set": [
+      "930a83a2",
+      "Change the Town background?"
+    ],
+    "text:ClanText_JP:Clan_BlockUser_01": [
+      "b9190917",
+      "You have been blocked by the Town Master.\nYou cannot join this Town."
+    ],
+    "text:ClanText_JP:Clan_BlockUser_02": [
+      "6fa0875d",
+      "You have blocked this user.\nYou cannot approve their request to join the Town."
+    ],
+    "text:ClanText_JP:Clan_ChatRentoNg": [
+      "51c3bb89",
+      "You cannot post multiple times in a row."
+    ],
+    "text:ClanText_JP:Clan_Chat_Emergency_QA": [
+      "d5c94b92",
+      "Please read the Terms of Service and the notes on the chat service,\nand agree to them before using the chat service."
+    ],
+    "text:ClanText_JP:Clan_Chat_Emergency_Text": [
+      "03618514",
+      "To keep the chat service safe, we receive your posts as a party to the communication.\n(As a party to the communication, we may view or delete the posts we receive. See the Terms of Service for details.)\n\nPlease do not post personal information such as\nyour real name, email address or phone number,\nor anything that could identify you.\n\n*If you don't understand this,\nplease show this screen to a parent."
+    ],
+    "text:ClanText_JP:Clan_Chat_Emergency_Title": [
+      "76e0fafd",
+      "[Notes on the Chat Service]"
+    ],
+    "text:ClanText_JP:Clan_DataCrash": [
+      "dda8acc7",
+      "The file is corrupted"
+    ],
+    "text:ClanText_JP:Clan_EVENTOPEN": [
+      "8c3bd444",
+      "A Town Event is in progress.\nDuring the event, you cannot leave, expel members from, or disband the Town."
+    ],
+    "text:ClanText_JP:Clan_EVENT_JOIN_CAUTION": [
+      "ac2a7005",
+      "A Town Event is currently in progress.\nPlease note that during a Town Event you cannot leave, expel members from, or disband the Town.\nApply to join this Town?"
+    ],
+    "text:ClanText_JP:Clan_EVENT_LAUNCH_CAUTION": [
+      "fc5d6970",
+      "A Town Event is currently in progress.\nPlease note that during a Town Event you cannot leave, expel members from, or disband the Town.\nCreate a Town?"
+    ],
+    "text:ClanText_JP:Clan_EVENT_NOT_OPEB": [
+      "75e85190",
+      "The event period has ended"
+    ],
+    "text:ClanText_JP:Clan_Foundation_01": [
+      "ff2da884",
+      "Donate"
+    ],
+    "text:ClanText_JP:Clan_Foundation_02": [
+      "ec766a3f",
+      "Owned"
+    ],
+    "text:ClanText_JP:Clan_Foundation_03": [
+      "e4bd3686",
+      "After Donation"
+    ],
+    "text:ClanText_JP:Clan_Foundation_04": [
+      "2e4a4855",
+      "Donate Town Medals"
+    ],
+    "text:ClanText_JP:Clan_Foundation_05": [
+      "609ec155",
+      "Donate"
+    ],
+    "text:ClanText_JP:Clan_Foundation_06": [
+      "775d6804",
+      "Donation Complete"
+    ],
+    "text:ClanText_JP:Clan_Foundation_07": [
+      "95f153c5",
+      "Contribution: "
+    ],
+    "text:ClanText_JP:Clan_Foundation_08": [
+      "06bb5289",
+      "Foundation Menu"
+    ],
+    "text:ClanText_JP:Clan_Foundation_09": [
+      "8cfea261",
+      "Foundation"
+    ],
+    "text:ClanText_JP:Clan_Foundation_10": [
+      "00be677d",
+      "You received a gift from the Town for your donation.\nYou can claim it from your Message Box."
+    ],
+    "text:ClanText_JP:Clan_Foundation_11": [
+      "b0eba68d",
+      "*You can donate up to 500 Town Medals at a time."
+    ],
+    "text:ClanText_JP:Clan_Foundation_12": [
+      "e309fc1c",
+      " Town Medals donated."
+    ],
+    "text:ClanText_JP:Clan_Foundation_13": [
+      "42e2a30b",
+      "Foundation Dummy Text 13"
+    ],
+    "text:ClanText_JP:Clan_Foundation_14": [
+      "960ebadc",
+      "Foundation Dummy Text 14"
+    ],
+    "text:ClanText_JP:Clan_Foundation_15": [
+      "b97348ed",
+      "Foundation Dummy Text 15"
+    ],
+    "text:ClanText_JP:Clan_Foundation_16": [
+      "4686e728",
+      "Foundation Dummy Text 16"
+    ],
+    "text:ClanText_JP:Clan_Foundation_17": [
+      "2c9c1010",
+      "Foundation Dummy Text 17"
+    ],
+    "text:ClanText_JP:Clan_Foundation_18": [
+      "e84786e8",
+      "Foundation Dummy Text 18"
+    ],
+    "text:ClanText_JP:Clan_Foundation_19": [
+      "eb186df6",
+      "Foundation Dummy Text 19"
+    ],
+    "text:ClanText_JP:Clan_Foundation_20": [
+      "fbfccdbe",
+      "Foundation Dummy Text 20"
+    ],
+    "text:ClanText_JP:Clan_INOUT_BLOCK_01": [
+      "352b0326",
+      "Joining/Leaving Towns Restricted"
+    ],
+    "text:ClanText_JP:Clan_INOUT_BLOCK_02": [
+      "cb93e074",
+      "Some Town Features Restricted"
+    ],
+    "text:ClanText_JP:Clan_INOUT_BLOCK_03": [
+      "6383f98b",
+      "Town Membership Restricted"
+    ],
+    "text:ClanText_JP:Clan_Independents": [
+      "8577c995",
+      "Unaffiliated"
+    ],
+    "text:ClanText_JP:Clan_LastVisit": [
+      "76b06571",
+      "Last Login"
+    ],
+    "text:ClanText_JP:Clan_LeaderChange": [
+      "3b58cf0e",
+      "The Master of your My Town has changed"
+    ],
+    "text:ClanText_JP:Clan_LeaderChangeMe": [
+      "8c0baf1e",
+      "You are now the Master of this Town"
+    ],
+    "text:ClanText_JP:Clan_NOT_USER": [
+      "39dc41f7",
+      "Former Member"
+    ],
+    "text:ClanText_JP:Clan_Not_Found": [
+      "976a2ffb",
+      "No join requests"
+    ],
+    "text:ClanText_JP:Clan_Object_01": [
+      "5248c87c",
+      "Could not set the Town object.\n(Error 01)"
+    ],
+    "text:ClanText_JP:Clan_Object_02": [
+      "ae742cd2",
+      "Could not set the Town object.\n(Error 02)"
+    ],
+    "text:ClanText_JP:Clan_Object_03": [
+      "f7548864",
+      "Could not set the Town object.\n(Error 03)"
+    ],
+    "text:ClanText_JP:Clan_Object_04": [
+      "e410d681",
+      "Could not set the Town object.\n(Error 04)"
+    ],
+    "text:ClanText_JP:Clan_Object_05": [
+      "6642f8d6",
+      "Could not set the Town object.\n(Error 05)"
+    ],
+    "text:ClanText_JP:Clan_Object_06": [
+      "ec1a1fa7",
+      "Could not set the Town object.\n(Error 06)"
+    ],
+    "text:ClanText_JP:Clan_Object_07": [
+      "cad18fe2",
+      "Could not set the Town object.\n(Error 07)"
+    ],
+    "text:ClanText_JP:Clan_Object_08": [
+      "079ccc66",
+      "Could not set the Town object.\n(Error 08)"
+    ],
+    "text:ClanText_JP:Clan_Object_09": [
+      "fd956657",
+      "Could not set the Town object.\n(Error 09)"
+    ],
+    "text:ClanText_JP:Clan_Object_10": [
+      "2edba24b",
+      "Could not set the Town object.\n(Error 10)"
+    ],
+    "text:ClanText_JP:Clan_Object_Bg_Unlock": [
+      "ae8956ec",
+      "Background changes can only be used by the Master and Sub-Masters of a Town at Town Rank 10 or higher."
+    ],
+    "text:ClanText_JP:Clan_Object_Complete": [
+      "e10c73d4",
+      "Town object layout changed."
+    ],
+    "text:ClanText_JP:Clan_Object_Object_Unlock": [
+      "8aad564b",
+      "Object placement can only be used by the Master and Sub-Masters of a Town at Town Rank 8 or higher."
+    ],
+    "text:ClanText_JP:Clan_Object_Remove_Button": [
+      "49fb9fe0",
+      "Remove"
+    ],
+    "text:ClanText_JP:Clan_Object_Set": [
+      "bd5b4753",
+      "Change the Town object layout?"
+    ],
+    "text:ClanText_JP:Clan_Object_Set_Button": [
+      "148d195e",
+      "Place"
+    ],
+    "text:ClanText_JP:Clan_Object_Unpositionable_01": [
+      "8cf49c3f",
+      "Cannot place here"
+    ],
+    "text:ClanText_JP:Clan_Object_Unpositionable_02": [
+      "7e91c459",
+      "Can't Place"
+    ],
+    "text:ClanText_JP:Clan_Osusume_Nashi": [
+      "009e13f0",
+      "No recommended My Towns were found."
+    ],
+    "text:ClanText_JP:Clan_Ranking_Board": [
+      "385d8193",
+      "Town Point Ranking"
+    ],
+    "text:ClanText_JP:Clan_Ranking_Current Remuneration_01": [
+      "f26d20eb",
+      "Rank Rewards"
+    ],
+    "text:ClanText_JP:Clan_Ranking_Current Remuneration_02": [
+      "89f875ae",
+      "Rewards for Your Current Rank"
+    ],
+    "text:ClanText_JP:Clan_Ranking_Mytown_01": [
+      "572f48df",
+      "Center on My Town"
+    ],
+    "text:ClanText_JP:Clan_Ranking_Mytown_02": [
+      "18dcf0aa",
+      "My Town Rank"
+    ],
+    "text:ClanText_JP:Clan_Ranking_Not_Affiliation": [
+      "05a365f1",
+      "You do not belong to a Town."
+    ],
+    "text:ClanText_JP:Clan_Ranking_Not_Participation": [
+      "157c2517",
+      "Your Town is not participating in the event"
+    ],
+    "text:ClanText_JP:Clan_Ranking_Remuneration": [
+      "1709004c",
+      "Rewards"
+    ],
+    "text:ClanText_JP:Clan_Ranking_Remuneration_List_01": [
+      "274f2b4b",
+      "Town Point Ranking Rewards"
+    ],
+    "text:ClanText_JP:Clan_Ranking_Remuneration_List_02": [
+      "2a8edfba",
+      "Solo Ranking Rewards"
+    ],
     "text:ClanText_JP:Clan_Ranking_g": [
       "738321c5",
       "Gold"
+    ],
+    "text:ClanText_JP:Clan_Ranking_i": [
+      "1aa9c417",
+      "th"
+    ],
+    "text:ClanText_JP:Clan_Ranking_ko": [
+      "1fd3686a",
+      "pcs"
+    ],
+    "text:ClanText_JP:Clan_Ranking_mai": [
+      "828ac3fb",
+      "cards"
+    ],
+    "text:ClanText_JP:Clan_Ranking_tai": [
+      "d08d660b",
+      "units"
+    ],
+    "text:ClanText_JP:Clan_Remuneration_Button_01": [
+      "598a6eed",
+      "Solo"
+    ],
+    "text:ClanText_JP:Clan_Remuneration_Button_02": [
+      "bbd23594",
+      "Town Points"
+    ],
+    "text:ClanText_JP:Per_Ranking_Not_Participation": [
+      "b48bcd66",
+      "You are not participating in the event"
+    ],
+    "text:ClanText_JP:TOWN_FUNCTION_MAP_CHANGE": [
+      "0b5d2d7d",
+      "Change BG Map"
+    ],
+    "text:ClanText_JP:TOWN_FUNCTION_OBJECT_SET": [
+      "c92b6b6a",
+      "Rearrange Objects"
+    ],
+    "text:ClanText_JP:TOWN_FUNCTION_SUBMASTER": [
+      "9ae9ffd2",
+      "Set Sub-Master"
+    ],
+    "text:ClanText_JP:clan_housyu_test_01": [
+      "372ae880",
+      "Ranking rewards."
     ],
     "text:DTB_QuestMission_JP:DT_QM_Text_000": [
       "3bf240e4",
@@ -40161,6 +42617,158 @@
       "e7ca54aa",
       "*Quest Mission to be added in the future"
     ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_ARENAMIND_001": [
+      "1e94cd70",
+      "Action Battle-only effects applied"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_ARENAMIND_002": [
+      "f4b28c4e",
+      "Tactical Battle-only effects applied"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_Button_000": [
+      "25f1f6f6",
+      "Battle"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_Button_001": [
+      "1e94cd70",
+      "Action Battle-only effects applied"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_Button_002": [
+      "e2938839",
+      "Leader"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_Button_003": [
+      "5d1e21ba",
+      "Main Members"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_Button_004": [
+      "9d7afce2",
+      "Reserve Members"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_Button_005": [
+      "d1135be3",
+      "Detailed Stats"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_Button_006": [
+      "6f8567f6",
+      "Switch\nBattle Stats"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_Button_007": [
+      "4a727a6d",
+      "Action Battle\nStats"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_Button_008": [
+      "c42b14ac",
+      "Tactical\nParameters"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_Button_009": [
+      "add4daab",
+      "Button Text"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_Button_010": [
+      "add4daab",
+      "Button Text"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_Button_011": [
+      "ee0dc5f8",
+      "How to Get Materials"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_Button_012": [
+      "f6c244f9",
+      "Close"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_Button_013": [
+      "add4daab",
+      "Button Text"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_Button_014": [
+      "add4daab",
+      "Button Text"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_Button_015": [
+      "add4daab",
+      "Button Text"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_DIALOG_000": [
+      "dd824721",
+      "Unlocked after clearing Chapter 5!"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_DIALOG_001": [
+      "f467d485",
+      "Battle Text Dialog 01"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_DIALOG_002": [
+      "aa47098d",
+      "Battle Text Dialog 02"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_DIALOG_003": [
+      "1af87b5c",
+      "Battle Text Dialog 03"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_DIALOG_004": [
+      "5a3c85c2",
+      "Battle Text Dialog 04"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_DIALOG_005": [
+      "7eab67d5",
+      "Battle Text Dialog 05"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_DIALOG_006": [
+      "1d2624e9",
+      "Battle Text Dialog 06"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_DIALOG_007": [
+      "ef7543f2",
+      "Battle Text Dialog 07"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_DIALOG_008": [
+      "3700c94b",
+      "Battle Text Dialog 08"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_DIALOG_009": [
+      "bdb3a506",
+      "Battle Text Dialog 09"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_DIALOG_010": [
+      "0eee9773",
+      "Battle Text Dialog 10"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_DIALOG_011": [
+      "1e28ea1f",
+      "Battle Text Dialog 11"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_DIALOG_012": [
+      "a121ea36",
+      "Battle Text Dialog 12"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_DIALOG_013": [
+      "2d0986d8",
+      "Battle Text Dialog 13"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_DIALOG_014": [
+      "95d246e9",
+      "Battle Text Dialog 14"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_000": [
+      "1e41ab53",
+      "No buffs or debuffs"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_001": [
+      "690e32ce",
+      "Effect Turns Left"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_002": [
+      "08e36490",
+      "Battle Text Error 02"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_003": [
+      "f6d286bc",
+      "Battle Text Error 03"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_004": [
+      "fb25aef8",
+      "Battle Text Error 04"
+    ],
     "text:DTB_formationText_JP:DTB_Formation_Text_MES_005": [
       "aee7e141",
       "Turns"
@@ -40169,9 +42777,133 @@
       "471a86c5",
       "Cool Turn"
     ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_007": [
+      "0f96b94d",
+      "Reserve"
+    ],
     "text:DTB_formationText_JP:DTB_Formation_Text_MES_008": [
       "5bad22c2",
       "Chain"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_009": [
+      "4993a44c",
+      "Overkill"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_010": [
+      "425b73cb",
+      "Damage Rank"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_011": [
+      "fab09367",
+      "Battle Text Error 11"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_012": [
+      "a72b8361",
+      "Battle Text Error 12"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_013": [
+      "4537a636",
+      "Battle Text Error 13"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_014": [
+      "8bf115fa",
+      "Battle Text Error 14"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_015": [
+      "e396c4ac",
+      "Battle Text Error 15"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_016": [
+      "079e09dc",
+      "Battle Text Error 16"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_017": [
+      "a1cbc4f5",
+      "Battle Text Error 17"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_018": [
+      "52021f86",
+      "Battle Text Error 18"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_019": [
+      "3f7a02d7",
+      "Battle Text Error 19"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_020": [
+      "c5a921d4",
+      "A team must always have a Leader.\nYou cannot make a swap that would\nleave the team without a Leader."
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_021": [
+      "e947a808",
+      "This Mind is equipped by another Statue.\nRemove it and equip it here?"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_022": [
+      "79e6c649",
+      "Battle Text Error 22"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_023": [
+      "fffce05e",
+      "Battle Text Error 23"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_024": [
+      "d8b87736",
+      "Battle Text Error 24"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_025": [
+      "c2ea2353",
+      "Battle Text Error 25"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_026": [
+      "1a14bbdb",
+      "Battle Text Error 26"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_027": [
+      "f0b9fdde",
+      "Battle Text Error 27"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_028": [
+      "36bd5a76",
+      "Battle Text Error 28"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_029": [
+      "8d88aafe",
+      "Battle Text Error 29"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_030": [
+      "76977079",
+      "Battle Text Error 30"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_031": [
+      "20430df4",
+      "Battle Text Error 31"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_032": [
+      "d20acd18",
+      "Battle Text Error 32"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_033": [
+      "19fab02f",
+      "Battle Text Error 33"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_034": [
+      "a103d0d0",
+      "Battle Text Error 34"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_MES_035": [
+      "3dca516c",
+      "Battle Text Error 35"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_SCENE_000": [
+      "25f1f6f6",
+      "Battle"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_SCENE_001": [
+      "4cf99d66",
+      "Action-only effects applied"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_SCENE_002": [
+      "d1135be3",
+      "Detailed Stats"
     ],
     "text:DTB_formationText_JP:DTB_Formation_Text_SCENE_003": [
       "ad284e90",
@@ -40188,6 +42920,46 @@
     "text:DTB_formationText_JP:DTB_Formation_Text_SCENE_006": [
       "3f25dbed",
       "Critical"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_SCENE_007": [
+      "9ab0f473",
+      "Resistances"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_SCENE_008": [
+      "39930475",
+      "Scene Text 08"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_SCENE_009": [
+      "0fcbd83a",
+      "Scene Text 09"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_SCENE_010": [
+      "cd77166e",
+      "Scene Text 10"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_SCENE_011": [
+      "29d84f99",
+      "Scene Text 11"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_SCENE_012": [
+      "7ab862d9",
+      "Scene Text 12"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_SCENE_013": [
+      "f10b0808",
+      "Scene Text 13"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_SCENE_014": [
+      "487c7719",
+      "Scene Text 14"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_SCENE_015": [
+      "e7a60cc8",
+      "Scene Text 15"
+    ],
+    "text:DTB_formationText_JP:DTB_Formation_Text_Title_008": [
+      "b044ace1",
+      "Tactical Parameters"
     ],
     "text:DTbattleSkillClass_JP:AREA_BOND_ATK": [
       "ba2c72ed",
@@ -40761,9 +43533,305 @@
       "7d88f7d5",
       "URUJURUAAA"
     ],
+    "text:DTbattleText_JP:DTbattleText_Button_000": [
+      "25f1f6f6",
+      "Battle"
+    ],
     "text:DTbattleText_JP:DTbattleText_Button_001": [
       "9e78a6f0",
       "Normal Attack"
+    ],
+    "text:DTbattleText_JP:DTbattleText_Button_002": [
+      "fd094cd6",
+      "Skill"
+    ],
+    "text:DTbattleText_JP:DTbattleText_Button_003": [
+      "1d431692",
+      "SP Skill"
+    ],
+    "text:DTbattleText_JP:DTbattleText_Button_004": [
+      "ab8641f6",
+      "Ultimate SP Skill"
+    ],
+    "text:DTbattleText_JP:DTbattleText_Button_005": [
+      "fe929fc9",
+      "Tactical Battle"
+    ],
+    "text:DTbattleText_JP:DTbattleText_Button_006": [
+      "fe929fc9",
+      "Tactical Battle"
+    ],
+    "text:DTbattleText_JP:DTbattleText_Button_007": [
+      "fe929fc9",
+      "Tactical Battle"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_000": [
+      "e8cb3ad8",
+      "Battle Text Dialog 00"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_001": [
+      "f467d485",
+      "Battle Text Dialog 01"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_002": [
+      "aa47098d",
+      "Battle Text Dialog 02"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_003": [
+      "1af87b5c",
+      "Battle Text Dialog 03"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_004": [
+      "5a3c85c2",
+      "Battle Text Dialog 04"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_005": [
+      "7eab67d5",
+      "Battle Text Dialog 05"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_006": [
+      "1d2624e9",
+      "Battle Text Dialog 06"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_007": [
+      "ef7543f2",
+      "Battle Text Dialog 07"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_008": [
+      "3700c94b",
+      "Battle Text Dialog 08"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_009": [
+      "bdb3a506",
+      "Battle Text Dialog 09"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_010": [
+      "0eee9773",
+      "Battle Text Dialog 10"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_011": [
+      "1e28ea1f",
+      "Battle Text Dialog 11"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_012": [
+      "a121ea36",
+      "Battle Text Dialog 12"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_013": [
+      "2d0986d8",
+      "Battle Text Dialog 13"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_014": [
+      "95d246e9",
+      "Battle Text Dialog 14"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_ATTACK": [
+      "55e3cb90",
+      "Make a normal attack"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_CHANGE": [
+      "8cde91bf",
+      "Swap with a reserve member"
+    ],
+    "text:DTbattleText_JP:DTbattleText_DIALOG_PASS": [
+      "887aead6",
+      "End this unit's action"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_000": [
+      "8d744523",
+      "Clear within {limitTurn} turns"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_001": [
+      "96ddff8f",
+      "No Continues"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_002": [
+      "852aa760",
+      "Scored on: Single-Hit Damage"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_003": [
+      "da5ac525",
+      "Scored on: Single-Hit Damage & Fast Clear"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_004": [
+      "40bbb186",
+      "No Battle Conditions"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_005": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_006": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_007": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_008": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_009": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_010": [
+      "e93074f4",
+      "No status ailments or buffs"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_011": [
+      "5f6d7e8b",
+      "Effect Turns Left {ReEffectTurn_param}"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_012": [
+      "a30a91df",
+      "No Trait"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_013": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_014": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_015": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_016": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_017": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_018": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_019": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_020": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_021": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_022": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_023": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_024": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_025": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_026": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_027": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_028": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_029": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_030": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_031": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_032": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_033": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_034": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_035": [
+      "75d86413",
+      "Battle Text Error"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_036": [
+      "7db24c82",
+      "Scored on: Total Damage"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_037": [
+      "c7c8f954",
+      "Scored on: Fast Clear"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_038": [
+      "d7d69f51",
+      "Scored on: Total Damage & Fast Clear"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_039": [
+      "c96c8e5f",
+      "Scored on: Single-Hit & Total Damage"
+    ],
+    "text:DTbattleText_JP:DTbattleText_MES_040": [
+      "8fa8e687",
+      "Scored on: Single-Hit, Total Damage & Fast Clear"
+    ],
+    "text:DTbattleText_JP:DTbattleText_REVERSAL_MES_000": [
+      "dde2c985",
+      "Reversal Mode Activated!"
+    ],
+    "text:DTbattleText_JP:DTbattleText_REVERSAL_MES_001": [
+      "add3b5dd",
+      "For 4 turns"
+    ],
+    "text:DTbattleText_JP:DTbattleText_REVERSAL_MES_002": [
+      "48b558d5",
+      "Cool Turns Halved!"
+    ],
+    "text:DTbattleText_JP:DTbattleText_REVERSAL_MES_003": [
+      "daa40c14",
+      "Speed +200%!"
+    ],
+    "text:DTbattleText_JP:DTbattleText_Result_000": [
+      "1e91a83b",
+      "Battle Score"
+    ],
+    "text:DTbattleText_JP:DTbattleText_Result_001": [
+      "3b5cd71f",
+      "Damage Score"
+    ],
+    "text:DTbattleText_JP:DTbattleText_Result_002": [
+      "bcb15f9a",
+      "Turn Score"
+    ],
+    "text:DTbattleText_JP:DTbattleText_Result_003": [
+      "e4ec5081",
+      "Total Score"
     ],
     "text:Daily_AchievementText_JP:Daily_ACHIEVEMENT_Text_0001": [
       "9ed2c526",
@@ -41960,6 +45028,14 @@
     "text:DungeonName_JP:DUNGEON_NAME_005": [
       "2cb3fb9f",
       "Tower to the Golden Spirit"
+    ],
+    "text:DungeonSceneText_JP:DUNGEON_DIALOG_001_YES": [
+      "60fab427",
+      "Sortie"
+    ],
+    "text:DungeonSceneText_JP:DUNGEON_DIALOG_CLOSE": [
+      "f6c244f9",
+      "Close"
     ],
     "text:DungeonStageName_JP:DUNGEON_STAGE_NAME_000": [
       "158d303c",
@@ -74189,6 +77265,22 @@
       "a89b38e0",
       "Fuse to add +1 Boost to a ★5 Statue."
     ],
+    "text:Item_Text_Detail_JP:ITEM_8001_DETAIL": [
+      "1fd3686a",
+      "pcs"
+    ],
+    "text:Item_Text_Detail_JP:ITEM_8001_DETAIL_SHORT": [
+      "1fd3686a",
+      "pcs"
+    ],
+    "text:Item_Text_Detail_JP:ITEM_8004_DETAIL": [
+      "828ac3fb",
+      "cards"
+    ],
+    "text:Item_Text_Detail_JP:ITEM_8004_DETAIL_SHORT": [
+      "828ac3fb",
+      "cards"
+    ],
     "text:Item_Text_Detail_JP:ITEM_8600_DETAIL": [
       "604cced1",
       "Awakening Medal for [Jonathan Joestar <Courage>]"
@@ -86404,6 +89496,170 @@
     "text:QuestTitleText_JP:QuestTitleText_02008": [
       "a38b5866",
       "Limited-Time Event 009"
+    ],
+    "text:RaidText_JP:RAID_MES_00_001": [
+      "4acbf4c3",
+      "The Nemesis Battle was interrupted.\nYour NP has been returned.\n*Please note that this data may be lost\nwhen an update is applied."
+    ],
+    "text:RaidText_JP:RAID_MES_01_001": [
+      "fd311571",
+      "Explore the stage\nand find a Nemesis!\n"
+    ],
+    "text:RaidText_JP:RAID_MES_01_002": [
+      "e220ac43",
+      "Remaining"
+    ],
+    "text:RaidText_JP:RAID_MES_09_001": [
+      "593c21cc",
+      "In Nemesis Battles, attack bosses to earn Nemesis Event Points and trade them for great rewards!\nCheck the Nemesis List and attack as many Nemeses as you can!\nJoin forces with your Town Members to defeat bosses efficiently!\n"
+    ],
+    "text:RaidText_JP:RAID_MES_20_001": [
+      "1e75a3b9",
+      "A Nemesis Appears!"
+    ],
+    "text:RaidText_JP:RAID_MES_25_001": [
+      "a343d011",
+      "Retire?\nYou will withdraw with the battle results so far,\nand the results will be shown."
+    ],
+    "text:RaidText_JP:RAID_MES_28_001": [
+      "0aaf1e8c",
+      "Rescue requests are sent to Town Members automatically."
+    ],
+    "text:RaidText_JP:RAID_MES_29_001": [
+      "d97e6844",
+      "Congratulations! Your rewards have been sent to your Message Box"
+    ],
+    "text:RaidText_JP:RAID_MES_30_001": [
+      "4e9e4902",
+      "Sent a rescue request to random players."
+    ],
+    "text:RaidText_JP:RAID_MES_30_002": [
+      "de284cf3",
+      "(When sent to Follows/Followers) Sent a rescue request to your Follows/Followers."
+    ],
+    "text:RaidText_JP:RAID_MES_30_003": [
+      "7d405b85",
+      " The Nemesis boss\nhas already been defeated\nby someone else.\n*No Raid Points were used."
+    ],
+    "text:RaidText_JP:RAID_MES_30_004": [
+      "ec53b017",
+      "(When it has already fled) The\nNemesis boss has already fled.\n*No Raid Points were used."
+    ],
+    "text:RaidText_JP:RAID_MES_30_005": [
+      "63381580",
+      "Not enough NP to sortie.\nPlease try again."
+    ],
+    "text:RaidText_JP:RAID_MES_51_001": [
+      "118a5dc8",
+      "\"Defeat rewards will be sent to your Messages\"\n\"Event Points have already been added\"\n*Room for 1 more line of notes"
+    ],
+    "text:RaidText_JP:RAID_MES_51_002": [
+      "d6cf4927",
+      "Defeat rewards obtained!"
+    ],
+    "text:RaidText_JP:RAID_MES_51_003": [
+      "9df10592",
+      "Event Points Earned"
+    ],
+    "text:RaidText_JP:RAID_MES_52_001": [
+      "18020421",
+      "You are {shortage_rp} NP short.\nUse 1{use_unit} of {use_name} to restore NP and sortie in the Nemesis Battle. Is that OK?"
+    ],
+    "text:RaidText_JP:RAID_MES_52_002": [
+      "fe731157",
+      "Current {use_name}"
+    ],
+    "text:RaidText_JP:RAID_MES_53_001": [
+      "18020421",
+      "You are {shortage_rp} NP short.\nUse 1{use_unit} of {use_name} to restore NP and sortie in the Nemesis Battle. Is that OK?"
+    ],
+    "text:RaidText_JP:RAID_RESULT_INFO_01": [
+      "d6abf056",
+      "Already defeated, so the results were not applied"
+    ],
+    "text:RaidText_JP:RAID_RESULT_INFO_02": [
+      "a5844fc4",
+      "Already fled, so the results were not applied"
+    ],
+    "text:RaidText_JP:RAID_TEXT_01_001": [
+      "ca1f184e",
+      "Time to Recovery"
+    ],
+    "text:RaidText_JP:RAID_TEXT_01_002": [
+      "06a8a876",
+      "Nemesis Event in Progress"
+    ],
+    "text:RaidText_JP:RAID_TEXT_01_003": [
+      "f589c299",
+      "Flees In"
+    ],
+    "text:RaidText_JP:RAID_TEXT_05_001": [
+      "c1e2366a",
+      "Claim Your Rewards"
+    ],
+    "text:RaidText_JP:RAID_TEXT_05_002": [
+      "be2b1255",
+      "Nemesis Active"
+    ],
+    "text:RaidText_JP:RAID_TEXT_05_003": [
+      "7f74c574",
+      "The event has ended"
+    ],
+    "text:RaidText_JP:RAID_TEXT_20_001": [
+      "482cda1d",
+      "Find a Nemesis on the exploration stage!"
+    ],
+    "text:RaidText_JP:RAID_TEXT_21_001": [
+      "bee4b96f",
+      "No NP Cost"
+    ],
+    "text:RaidText_JP:RAID_TEXT_23_001": [
+      "6be7c3fa",
+      "Turns Left"
+    ],
+    "text:RaidText_JP:RAID_TEXT_26_001": [
+      "021b85ab",
+      "Nemesis Defeated!"
+    ],
+    "text:RaidText_JP:RAID_TEXT_26_002": [
+      "f2adfafb",
+      "Withdraw"
+    ],
+    "text:RaidText_JP:RAID_TEXT_52_001": [
+      "60fab427",
+      "Sortie"
+    ],
+    "text:RaidText_JP:RAID_TEXT_52_002": [
+      "55571b7a",
+      "Full Sortie"
+    ],
+    "text:RaidText_JP:RAID_TEXT_52_003": [
+      "a652e8fb",
+      "To Shop"
+    ],
+    "text:RaidText_JP:RAID_TEXT_55_001": [
+      "ddcfd234",
+      "NP has recovered"
+    ],
+    "text:RaidText_JP:RAID_TEXT_55_002": [
+      "84bddff1",
+      "NP Full Recovery Notice"
+    ],
+    "text:RaidText_JP:STAGE_RAID_0001_NAME": [
+      "7219775b",
+      "DIO (Beginner)○○○○○○○○○○○○○○○○○"
+    ],
+    "text:RaidText_JP:STAGE_RAID_0002_NAME": [
+      "5ff2effb",
+      "DIO ~Feeling Absolutely \"HIGH\"!~ (Intermediate)"
+    ],
+    "text:RaidText_JP:STAGE_RAID_0003_NAME": [
+      "91f06351",
+      "DIO ~Feeling Absolutely \"HIGH\"!~ (Advanced)"
+    ],
+    "text:RaidText_JP:STAGE_RAID_0004_NAME": [
+      "a1f39d7d",
+      "DIO ~I've Already Made My Move!!~ (Rare)"
     ],
     "text:Result_Chara_Comment_JP:Result_Chara_Comment_1010_01": [
       "85fd41a1",
@@ -99725,6 +102981,174 @@
       "e46d9d59",
       "Black Sabbath"
     ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_000": [
+      "dc3a8dfa",
+      "Evasion +40"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_000_REV": [
+      "c5d78375",
+      "Evasion -40\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_001": [
+      "4ed1a631",
+      "Damage dealt to\nWisdom types +100%"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_001_REV": [
+      "b1a02253",
+      "Damage taken from\nWisdom types +100%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_002": [
+      "694fd6bf",
+      "Damage dealt to\n[Vampires] +100%"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_002_REV": [
+      "c9e20909",
+      "Damage taken from\n[Vampires] +100%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_003": [
+      "5dfa3685",
+      "Damage dealt to\n[Pillar Men] +100%"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_003_REV": [
+      "e1de0f86",
+      "Damage taken from\n[Pillar Men] +100%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_004": [
+      "bc9680b3",
+      "Damage dealt to\n[Major Arcana] +100%"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_004_REV": [
+      "62e39a7a",
+      "Damage taken from\n[Major Arcana] +100%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_005": [
+      "b6ac08e6",
+      "Damage dealt to\n[Stand Users] +100%"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_005_REV": [
+      "8bbdddbe",
+      "Damage taken from\n[Stand Users] +100%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_006": [
+      "592cf1c9",
+      "Damage dealt to\nUnity types +100%"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_006_REV": [
+      "23f2cc08",
+      "Damage taken from\nUnity types +100%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_007": [
+      "28f9294c",
+      "Speed +50%"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_007_REV": [
+      "f4ddf674",
+      "Speed -50%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_008": [
+      "0188fea1",
+      "Damage dealt to\nSpirit types +100%"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_008_REV": [
+      "2b25f92d",
+      "Damage taken from\nSpirit types +100%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_009": [
+      "e0276731",
+      "Damage dealt to\nCourage types +100%"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_009_REV": [
+      "94baaec2",
+      "Damage taken from\nCourage types +100%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_010": [
+      "9ca6b3a1",
+      "Critical Rate +20"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_010_REV": [
+      "def96257",
+      "Critical Rate -20\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_011_REV": [
+      "ee091734",
+      "ATK -50%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_012": [
+      "5b535ea5",
+      "Damage taken from\nSolitude types +100%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_012_REV": [
+      "24c67851",
+      "Damage dealt to\nSolitude types +100%"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_013": [
+      "ba7f8b43",
+      "Damage taken +50%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_013_REV": [
+      "1414690a",
+      "Damage taken -50%"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_014": [
+      "b2052e20",
+      "Damage dealt to\n[Hamon Users] +100%"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_014_REV": [
+      "8b9716d4",
+      "Damage taken from\n[Hamon Users] +100%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_015": [
+      "91926349",
+      "Accuracy -40\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_015_REV": [
+      "ca7a6cfc",
+      "Accuracy +40"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_016": [
+      "867a1e24",
+      "DEF -50%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_017": [
+      "9bbd7c97",
+      "Damage dealt to the\n[Joestar Family] +100%"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_017_REV": [
+      "eadb4c0c",
+      "Damage taken from the\n[Joestar Family] +100%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_018": [
+      "40c41324",
+      "When HP is 50% or less,\ndamage taken +100%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_018_REV": [
+      "534cc940",
+      "When HP is 50% or less,\ndamage dealt +100%"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_019": [
+      "2495d9f0",
+      "When HP is 50% or more,\ndamage dealt +100%"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_019_REV": [
+      "0ba2a173",
+      "When HP is 50% or more,\ndamage taken +100%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_020": [
+      "b1c66513",
+      "Damage dealt +50%"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_020_REV": [
+      "238ff61c",
+      "Damage dealt -50%\n[Drawback]"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_021": [
+      "f48b1d99",
+      "Critical hits dealt\ndo 1.3x damage"
+    ],
+    "text:TarotDescription_JP:TAROT_DESCRIPTION_021_REV": [
+      "e5457c1c",
+      "Critical hits taken\ndo 1.3x damage\n[Drawback]"
+    ],
     "text:TarotName_JP:TAROT_NAME_000": [
       "fcbcbe75",
       "The Fool"
@@ -100165,9 +103589,389 @@
       "275dc356",
       "Tarot Effect [The World (Upright)]"
     ],
+    "text:TipsText_JP:TipsText_001": [
+      "f0289347",
+      "Statues have all kinds of moves, like attacks\nthat hit all enemies or a single target!\nUse the right move for the situation!"
+    ],
+    "text:TipsText_JP:TipsText_002": [
+      "2d5b5ae0",
+      "Enemies unleash powerful attacks after a set number of turns!\nTake them down before they strike!"
+    ],
+    "text:TipsText_JP:TipsText_003": [
+      "845c05b6",
+      "\"Courage\" is strong against \"Spirit\"!!\nBring it to Quests with lots of Spirit types!\nA heart that fears nothing opens the way!!"
+    ],
+    "text:TipsText_JP:TipsText_004": [
+      "6796e7ee",
+      "\"Wisdom\" is strong against \"Courage\"!!\nBring it to Quests with lots of Courage types!\nThe power of calm analysis leads to victory!!"
+    ],
+    "text:TipsText_JP:TipsText_005": [
+      "9a78ab6b",
+      "\"Spirit\" is strong against \"Wisdom\"!!\nBring it to Quests with lots of Wisdom types!\nPassion that never gives up on victory wins the fight!!"
+    ],
+    "text:TipsText_JP:TipsText_006": [
+      "24d3c29c",
+      "\"Hamon Users\" are strong against \"Vampires\" and \"Pillar Men\"!!\nBring them to Quests with lots of Vampires and Pillar Men!\nSettle the feud where it all began, once and for all!"
+    ],
+    "text:TipsText_JP:TipsText_007": [
+      "6edc32af",
+      "Set a Statue as Leader and its\nLeader Ability activates!!\nCheck active Abilities on the Team screen!"
+    ],
+    "text:TipsText_JP:TipsText_008": [
+      "5ec65610",
+      "Enhance Statues by fusion to grow their stats!\nA \"Great Success!!\" gives tons of EXP!!\nUse everything you've got to seize victory!!"
+    ],
+    "text:TipsText_JP:TipsText_010": [
+      "b31626b1",
+      "Your Main Team's Leader is used as\na Support by other players!\nNo matter how tough the enemy, you've got\na strong ally, your Support, to the very end"
+    ],
+    "text:TipsText_JP:TipsText_011": [
+      "62670c38",
+      "Admire your Statues up close in the Gallery!\nEquip Minds, rotate your Statue, and in the end...\nas long as you snap it in \"Photo Mode,\" that's all that matters!!"
+    ],
+    "text:TipsText_JP:TipsText_012": [
+      "dffa7cb4",
+      "Use Minds as materials to Enhance Statues!\nSome special Minds give lots of EXP!\nGrow strong... both you and me..."
+    ],
+    "text:TipsText_JP:TipsText_013": [
+      "78fe23e8",
+      "Harmonize your spirits!\nThat is Boost!!\nIt happens when you obtain the same Statue!!"
+    ],
+    "text:TipsText_JP:TipsText_014": [
+      "6299e3c9",
+      "To gather Enhance materials efficiently,\nDaily Quests are perfect!!\nNote that the drops change by day of the week!"
+    ],
+    "text:TipsText_JP:TipsText_015": [
+      "a5ca4b5e",
+      "Equipping Minds raises\na Statue's stats!\nChoose by looks, or by performance...\nIt's a tough call!!"
+    ],
+    "text:TipsText_JP:TipsText_016": [
+      "803bee59",
+      "Some Minds add new Skills and\nSP Skills you can use in battle when equipped!\nCheck the \"Mind List\" for Minds\nlinked to Statues you own!!"
+    ],
+    "text:TipsText_JP:TipsText_017": [
+      "87e5cdf8",
+      "Make a quick fortune with sell-only Minds!"
+    ],
+    "text:TipsText_JP:TipsText_018": [
+      "d51faf8c",
+      "Unlocking the Growth Tree strengthens Statues!\nThe stats raised depend on which spaces you unlock!!\nNot just Level Ups and Boosts, but the Growth Tree too...\nLeave no stone unturned in strengthening your Statues!"
+    ],
+    "text:TipsText_JP:TipsText_019": [
+      "f61857b3",
+      "Growth Trees for ★5 Statues and above\nhave spaces that add usable Skills!!\nThey're that Statue's finishing moves!!"
+    ],
+    "text:TipsText_JP:TipsText_020": [
+      "f2b7b7c0",
+      "Get the materials needed to unlock the Growth Tree\nby clearing Daily Quests!\nThe higher the difficulty, the better\nthe materials you get!!!"
+    ],
+    "text:TipsText_JP:TipsText_021": [
+      "b10a2d94",
+      "Complete all the conditions to\nearn a \"Special Reward\"!!\nDon't forget to check the reward conditions before you sortie!!\nIf you're forgetful... better write 'em down!"
+    ],
+    "text:TipsText_JP:TipsText_022": [
+      "38ee2897",
+      "Once you get Objects, place them in your Town!\nBuild a Town all your own!"
+    ],
+    "text:TipsText_JP:TipsText_023": [
+      "c0f1d8c4",
+      "Some combinations of Objects\ngive stat bonuses!"
+    ],
+    "text:TipsText_JP:TipsText_024": [
+      "0d1b7b7d",
+      "You can chat in your Town!\nHave a great JOJO discussion!"
+    ],
+    "text:TipsText_JP:TipsText_025": [
+      "27e4ce15",
+      "[Jonathan Joestar]\n\"Feel the beat of my blood!!\""
+    ],
+    "text:TipsText_JP:TipsText_026": [
+      "ed509486",
+      "[Will A. Zeppeli]\n\"Courage means knowing fear!\""
+    ],
+    "text:TipsText_JP:TipsText_027": [
+      "342772e0",
+      "[Joseph Joestar]\n\"I really love a good trick!\""
+    ],
+    "text:TipsText_JP:TipsText_028": [
+      "cb2d83ac",
+      "[Caesar Anthonio Zeppeli]\n\"Take this and go back to the sticks!!\""
+    ],
+    "text:TipsText_JP:TipsText_029": [
+      "66bba89d",
+      "[Lisa Lisa]\n\"That's it! That's the BEST!\""
+    ],
+    "text:TipsText_JP:TipsText_030": [
+      "cd5bc222",
+      "[Rudol von Stroheim]\n\"I've got more guts than you, you coward!\""
+    ],
+    "text:TipsText_JP:TipsText_031": [
+      "28dcccb6",
+      "[Jotaro Kujo]\n\"My 'Stand' will be your judge!!\""
+    ],
+    "text:TipsText_JP:TipsText_032": [
+      "164688ba",
+      "[Muhammad Avdol]\n\"It's called 'Magician's Red'.\""
+    ],
+    "text:TipsText_JP:TipsText_033": [
+      "454de421",
+      "[Noriaki Kakyoin]\n\"I know myself... I'm no fool.\""
+    ],
+    "text:TipsText_JP:TipsText_034": [
+      "ad8764ef",
+      "[Jean Pierre Polnareff]\n\"Bravo! Oh... bravo!!\""
+    ],
+    "text:TipsText_JP:TipsText_035": [
+      "f93b9684",
+      "[Iggy]\n\"I'll... fight this one!\""
+    ],
+    "text:TipsText_JP:TipsText_036": [
+      "a3a88ccc",
+      "[Hol Horse]\n\"'The gun is mightier than the sword.' Mm-hmm~ Words to live by.\""
+    ],
+    "text:TipsText_JP:TipsText_037": [
+      "da319c97",
+      "[DIO]\n\"What's wrong? You seem shaken.\""
+    ],
+    "text:TipsText_JP:TipsText_038": [
+      "1241faa1",
+      "[Josuke Higashikata]\n\"I'll protect this town and my mom.\""
+    ],
+    "text:TipsText_JP:TipsText_039": [
+      "0f1c6d9c",
+      "[Koichi Hirose]\n\"I won't take that sound away... until you cry and apologize!\""
+    ],
+    "text:TipsText_JP:TipsText_040": [
+      "76c3556e",
+      "[Okuyasu Nijimura]\n\"Where the heck does the stuff\n I scrape away go, anyway?\""
+    ],
+    "text:TipsText_JP:TipsText_041": [
+      "9371cf6b",
+      "[Rohan Kishibe]\n\"I'll take your 'memories'!\n To use as material for my manga!\""
+    ],
+    "text:TipsText_JP:TipsText_042": [
+      "0b29d1c0",
+      "[Yukako Yamagishi]\n\"How dare yooou! You little bed-wetter!!\""
+    ],
+    "text:TipsText_JP:TipsText_043": [
+      "4907807c",
+      "[Shigekiyo Yangu]\n\"There's no way you guys\n can beat my 'Harvest'...\""
+    ],
+    "text:TipsText_JP:TipsText_044": [
+      "433101a6",
+      "[Anjuro Katagiri]\n\"It's fun watching people who get\n full of themselves get ruined. Heh heh.\""
+    ],
+    "text:TipsText_JP:TipsText_045": [
+      "f4e3b6c5",
+      "[Keicho Nijimura]\n\"It feels great when things go as announced!\""
+    ],
+    "text:TipsText_JP:TipsText_046": [
+      "8e45f63e",
+      "[Yoshikage Kira]\n\"You should follow my example...\""
+    ],
+    "text:TipsText_JP:TipsText_050": [
+      "2abd6d20",
+      "When the Reversal Gauge fills, trigger\nthe deadly \"Reversal Mode\"!\nTime to turn a pinch into a chance!"
+    ],
+    "text:TipsText_JP:TipsText_051": [
+      "0aa43944",
+      "Chain your allies' attacks into combos to raise ATK!\nKeeping the enemy from attacking is key too!"
+    ],
+    "text:TipsText_JP:TipsText_052": [
+      "2e2e7981",
+      "Raise Skill Levels with the \"Growth Tree\"\nor \"Mind Enhance\" to power up your moves!\nNow's the time to surpass yourself!!"
+    ],
+    "text:TipsText_JP:TipsText_053": [
+      "805be6ce",
+      "Some Minds add moves you can use when equipped,\nand some raise a Statue's stats!\nCustomize to your liking!"
+    ],
+    "text:TipsText_JP:TipsText_054": [
+      "06f7bcd9",
+      "Equip the same Minds to trigger a \"Mind Link\"!\nOn top of the Minds' own performance,\nyou get a stat boost bonus!!\nCheck the boosted stats under Abilities!!"
+    ],
+    "text:TipsText_JP:TipsText_055": [
+      "7b29289a",
+      "Data downloads happen only the first time!\nThe more you progress, the smoother it gets!\nIf you want to go all in at once...\ndownload the data from \"Options\"!"
+    ],
+    "text:TipsText_JP:TipsText_056": [
+      "1766524e",
+      "Spin the free Mind Summon with \"Friend Points\"!\nYou get lots of Friend Points by bringing players\nyou mutually Follow on Quests!"
+    ],
+    "text:TipsText_JP:TipsText_057": [
+      "c23ef7f7",
+      "The turn order is shown at the bottom left!\nYour Statue can act when it reaches the far right!"
+    ],
+    "text:TipsText_JP:TipsText_058": [
+      "9216a5b2",
+      "Statues have the attributes [Courage], [Wisdom], [Spirit],\n[Unity] and [Solitude],\neach with advantages and disadvantages against others!"
+    ],
+    "text:TipsText_JP:TipsText_059": [
+      "c558706a",
+      "Skills have [Use Limits]!\nBe careful!"
+    ],
+    "text:TipsText_JP:TipsText_060": [
+      "7d20c7de",
+      "Some Skill icons\nhave arrows on them!\nA right arrow makes your next action come sooner!"
+    ],
+    "text:TipsText_JP:TipsText_061": [
+      "fb9d77b2",
+      "Hold down a Skill button to check\nyour next action after using it!"
+    ],
+    "text:TipsText_JP:TipsText_062": [
+      "0297f4c1",
+      "A Statue's action speed.\n[Action Speed] is how quickly\na Statue's turn comes around!"
+    ],
+    "text:TipsText_JP:TipsText_063": [
+      "5e5d03a0",
+      "The higher this number, the more likely\nyou are to reduce damage!"
+    ],
+    "text:TipsText_JP:TipsText_064": [
+      "ef0d8e85",
+      "The higher this number, the easier it is to hit enemies!"
+    ],
+    "text:TipsText_JP:TipsText_065": [
+      "8a2df921",
+      "The higher this number, the more likely you are to land critical hits!"
+    ],
+    "text:TipsText_JP:TipsText_066": [
+      "b9d3bc55",
+      "Triggering Reversal Mode halves the\nCool Turns of Skills and SP Skills!\nUnleash special attacks on the enemy in a row!"
+    ],
+    "text:TipsText_JP:TipsText_067": [
+      "06e9b4b6",
+      "When your allies take consecutive turns and keep attacking,\na [Chain] builds and ATK rises!"
+    ],
+    "text:TipsText_JP:TipsText_068": [
+      "fb4be9ee",
+      "Defeat all enemies in the final area while in Reversal\nto enter [Reversal Overkill]!!\nKeep hammering the enemy even at 0 HP for maximum damage!"
+    ],
+    "text:TipsText_JP:TipsText_069": [
+      "7e788fa4",
+      "Put 3 units in [Statue Team] to\n[Swap] with the Reserve button!\nSwap Statues based on enemy matchups!"
+    ],
+    "text:TipsText_JP:TipsText_070": [
+      "aeda505b",
+      "Skills have [Cool Turns]!\nOnce that many turns pass,\nthe Skill can be used again!"
+    ],
     "text:TipsText_JP:TipsText_071": [
       "014255d9",
       "Omit"
+    ],
+    "text:TipsText_JP:TipsText_072": [
+      "58de0449",
+      "\"Solitude\" is strong against \"Unity\"!!\nBring it to Quests with lots of Unity types!\nA heart that needs no one is the first step to supremacy!!"
+    ],
+    "text:TipsText_JP:TipsText_073": [
+      "d0f88e1d",
+      "\"Unity\" is strong against \"Solitude\"!!\nBring it to Quests with lots of Solitude types!\nA valiant figure who braves danger inspires their allies!!"
+    ],
+    "text:TipsText_JP:TipsText_074": [
+      "bbfba441",
+      "Some Skills have [Speed]!\nSkills with a [Big Right Arrow] make your next turn come sooner!\nSkills with a [Small Right Arrow] might make it sooner!?"
+    ],
+    "text:TipsText_JP:TipsText_075": [
+      "317be77c",
+      "Tips text. 075"
+    ],
+    "text:TipsText_JP:TipsText_076": [
+      "f38e1e33",
+      "Tips text. 076"
+    ],
+    "text:TipsText_JP:TipsText_077": [
+      "5563642f",
+      "Tips text. 077"
+    ],
+    "text:TipsText_JP:TipsText_078": [
+      "cdc41a59",
+      "Tips text. 078"
+    ],
+    "text:TipsText_JP:TipsText_079": [
+      "0d8ee8e7",
+      "Tips text. 079"
+    ],
+    "text:TipsText_JP:TipsText_080": [
+      "d42eb925",
+      "Tips text. 080"
+    ],
+    "text:TipsText_JP:TipsText_081": [
+      "44695902",
+      "Tips text. 081"
+    ],
+    "text:TipsText_JP:TipsText_082": [
+      "51b7150f",
+      "Tips text. 082"
+    ],
+    "text:TipsText_JP:TipsText_083": [
+      "129417ef",
+      "Tips text. 083"
+    ],
+    "text:TipsText_JP:TipsText_084": [
+      "85e0b7ea",
+      "Tips text. 084"
+    ],
+    "text:TipsText_JP:TipsText_085": [
+      "cfbde60a",
+      "Tips text. 085"
+    ],
+    "text:TipsText_JP:TipsText_086": [
+      "acfc1a64",
+      "Tips text. 086"
+    ],
+    "text:TipsText_JP:TipsText_087": [
+      "88af3815",
+      "Tips text. 087"
+    ],
+    "text:TipsText_JP:TipsText_088": [
+      "6d235f76",
+      "Tips text. 088"
+    ],
+    "text:TipsText_JP:TipsText_089": [
+      "e5cd4929",
+      "Tips text. 089"
+    ],
+    "text:TipsText_JP:TipsText_090": [
+      "1d753e42",
+      "Tips text. 090"
+    ],
+    "text:TipsText_JP:TipsText_091": [
+      "871241a1",
+      "Tips text. 091"
+    ],
+    "text:TipsText_JP:TipsText_092": [
+      "03ba5a87",
+      "Tips text. 092"
+    ],
+    "text:TipsText_JP:TipsText_093": [
+      "177348b7",
+      "Tips text. 093"
+    ],
+    "text:TipsText_JP:TipsText_094": [
+      "cf767530",
+      "Tips text. 094"
+    ],
+    "text:TipsText_JP:TipsText_095": [
+      "ce8a7739",
+      "Tips text. 095"
+    ],
+    "text:TipsText_JP:TipsText_096": [
+      "10a91375",
+      "Tips text. 096"
+    ],
+    "text:TipsText_JP:TipsText_097": [
+      "121bad91",
+      "Tips text. 097"
+    ],
+    "text:TipsText_JP:TipsText_098": [
+      "a20362de",
+      "Tips text. 098"
+    ],
+    "text:TipsText_JP:TipsText_099": [
+      "6c64e784",
+      "Tips text. 099"
+    ],
+    "text:TipsText_JP:TipsText_100": [
+      "ee564ff5",
+      "Control the characters recreated in 3D\nand beat down the oncoming enemies!!\nBuild a team \"all your own\" that crosses the Parts,\nand experience heated battles firsthand!!"
     ],
     "text:TipsTitle_JP:TipsTitle_001": [
       "c62991e8",
@@ -116292,6 +120096,10 @@
     "text:event_campaign_JP:EQ_530009_Name": [
       "46c042d2",
       "A Challenge from Teary-Eyed Luca"
+    ],
+    "text:event_campaign_JP:EQ_ato": [
+      "e220ac43",
+      "Remaining"
     ],
     "text:event_shop_detail_text_JP:event_shop_detail_500002_10_text": [
       "5e7c6913",
