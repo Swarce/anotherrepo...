@@ -59,12 +59,14 @@ items, shop, quest select).
 - Best fit could make some labels small; layouts are untested on device.
 - Text in UI images stays Japanese until the redrawn art is imported.
 
-### Device checklist — expected; to be confirmed on a device
-- [ ] `[l10n] 32 English file(s) ready …` then a download prompt; download completes
-- [ ] Title/boot dialogs in English (ClientMes)
-- [ ] My Page, menus, shop, gacha, options, team screens show English labels that fit
-- [ ] Second boot: no download prompt; `[l10n] … ready` quickly from the cache
-- [ ] Present box / follow / items / shop open without errors; no `UNKNOWN ROUTE` for those
+### Device result (Galaxy S22, Android 16) — from the owner's log (a later boot of Build 07)
+- [x] `[l10n] 32 English file(s) ready in 1145 ms (0 rebuilt now …)`: the English files built on an
+      earlier boot were reused from the cache (phone: ~1.1 s cached).
+- [x] Boot to My Page as before; `unknown_routes=0`: the five menu routes now have handlers.
+- [x] Import with the staging folder still present: `13480 already fine, 0 copied` (nothing undone).
+- [ ] No English file was downloaded in this boot's log; whether the first boot downloaded them and
+      the menus show English is to be confirmed by the owner (screenshots).
+- [ ] Title/boot dialogs in English (ClientMes); labels fit.
 
 ## Build 06 — master tables generated on the phone (branch `wip/b06`)
 
