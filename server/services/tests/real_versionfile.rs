@@ -54,3 +54,22 @@ fn builds_versionfile_from_player_files() {
     }
     eprintln!("{} entries, bundle {} bytes", entries.len(), b.len());
 }
+
+#[test]
+fn builds_masterdata_with_player_engine_types() {
+    let Some((dir, key, iv)) = env() else {
+        eprintln!("skipped: set JDR_DATA and JDR_KEYS");
+        return;
+    };
+    let (ms, ab) = versionfile::find_template_types(&dir, key.as_bytes(), iv.as_bytes()).unwrap();
+    let (b, tables) = jdr_services::masterdata::build_embedded(&ms, &ab).unwrap();
+    if let Ok(o) = std::env::var("JDR_MASTERDATA_OUT") {
+        std::fs::write(o, &b).unwrap();
+    }
+    eprintln!(
+        "{} tables, bundle {} bytes, md5 {}",
+        tables.len(),
+        b.len(),
+        md5_hex(&b)
+    );
+}
