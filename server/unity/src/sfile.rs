@@ -21,6 +21,8 @@ pub struct SFile {
     pub types: Vec<SType>,
     pub objects: Vec<Object>,
     pub scripts: Vec<(i32, i64)>,
+    /// Whether the file carries type trees (Resources files in the APK do not).
+    pub type_trees: bool,
     /// Where the object data started in the original file.
     pub data_offset: usize,
     /// Object indices in the order their data is stored.
@@ -119,9 +121,7 @@ pub fn parse(b: &[u8]) -> Result<SFile, Error> {
     }
     let engine = r.cstr()?;
     let platform = r.i32()?;
-    if r.u8()? == 0 {
-        return Err("file has no type trees".into());
-    }
+    let type_trees = r.u8()? != 0;
     let ntypes = r.i32()?;
     if !(0..=MAX_TYPES).contains(&ntypes) {
         return Err("bad type count".into());
@@ -137,6 +137,16 @@ pub fn parse(b: &[u8]) -> Result<SFile, Error> {
             r.take(16)?; // script id
         }
         r.take(16)?;
+        if !type_trees {
+            types.push(SType {
+                entry: TypeEntry {
+                    class_id,
+                    raw: b[start..r.o].to_vec(),
+                },
+                nodes: Vec::new(),
+            });
+            continue;
+        }
         let n = r.i32()?;
         let sb = r.i32()?;
         if !(0..=MAX_NODES).contains(&n) || sb < 0 {
@@ -223,6 +233,7 @@ pub fn parse(b: &[u8]) -> Result<SFile, Error> {
         objects,
         scripts,
         layout,
+        type_trees,
         data_offset: data_off,
         externals_raw,
         user_info,
@@ -243,6 +254,7 @@ impl SFile {
             &self.externals_raw,
             &self.user_info,
             self.data_offset,
+            self.type_trees,
         )
     }
 }

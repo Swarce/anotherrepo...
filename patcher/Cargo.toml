@@ -12,6 +12,8 @@ path = "src/main.rs"
 
 [dependencies]
 jdr-crypto = { path = "../server/crypto" }
+jdr-unity = { path = "../server/unity" }
+jdr-services = { path = "../server/services" }
 sha2.workspace = true
 zip.workspace = true
 serde.workspace = true

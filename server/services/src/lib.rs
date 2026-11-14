@@ -3,6 +3,7 @@
 pub mod accounts;
 pub mod app;
 pub mod cdn;
+pub mod l10n;
 pub mod masterdata;
 pub mod services;
 pub mod versionfile;
