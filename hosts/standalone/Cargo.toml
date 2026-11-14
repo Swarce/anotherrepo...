@@ -13,3 +13,7 @@ path = "src/main.rs"
 [dependencies]
 jdr-core = { path = "../../server/core" }
 jdr-services = { path = "../../server/services" }
+
+[dev-dependencies]
+jdr-crypto = { path = "../../server/crypto" }
+serde_json.workspace = true

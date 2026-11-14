@@ -5,6 +5,7 @@
 //! `aarch64-linux-android`.
 
 pub mod clock;
+pub mod envelope;
 pub mod http;
 pub mod log;
 pub mod settings;

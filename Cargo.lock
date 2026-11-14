@@ -239,7 +239,9 @@ name = "jdr-server"
 version = "0.1.0"
 dependencies = [
  "jdr-core",
+ "jdr-crypto",
  "jdr-services",
+ "serde_json",
 ]
 
 [[package]]
@@ -247,6 +249,7 @@ name = "jdr-services"
 version = "0.1.0"
 dependencies = [
  "jdr-core",
+ "jdr-crypto",
  "serde",
  "serde_json",
 ]
@@ -256,6 +259,7 @@ name = "jdr-tool"
 version = "0.1.0"
 dependencies = [
  "jdr-crypto",
+ "jdr-patch",
  "serde",
  "serde_json",
 ]
