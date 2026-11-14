@@ -462,7 +462,14 @@ pub fn generated_tables() -> Vec<(String, String)> {
             .and_then(|v| v.get("sources").cloned())
             .unwrap_or(Value::Null)
     };
-    let statue_src = sources_of(crate::collection::STATUES_JSON);
+    let mut statue_src = sources_of(crate::collection::STATUES_JSON);
+    if let Some(list) = statue_src.as_array_mut() {
+        list.push(serde_json::json!({ "source": "jdr-research",
+            "doc": "docs/research/11-battle-and-positions.md §1",
+            "note": "statue_setting_table: position units, camera object, team scale" }));
+        list.push(serde_json::json!({ "source": "jdr-default",
+            "note": "statue_setting_table: the My Page position/rotation, background choice, mindFrameID and PvP AI ids are our values" }));
+    }
     let rank_src = sources_of(crate::collection::RANKS_JSON);
     let doc = |asset: &str, src: &Value, rows: Vec<Value>| {
         serde_json::json!({ "asset": asset, "sources": src, "data": { "paramList": rows } })
