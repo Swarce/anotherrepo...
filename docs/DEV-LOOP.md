@@ -56,11 +56,14 @@ First time only, create your signing key (stored outside the repo, reused for ev
 ./target/release/jdr-patch init-key
 ```
 
+For the PC dev loop, build without the embedded server (the game then talks to `jdr-server` on
+the PC over `adb reverse`). For the in-game server, see docs/PLAYER-SETUP.md.
+
 ```bash
-JDR_BUILD_TOOLS=/path/to/build-tools/36.0.0 ./target/release/jdr-patch patch --apk local/game-3.12.0.apk --out deliver/jojodr-b01.apk
+JDR_BUILD_TOOLS=/path/to/build-tools/36.0.0 ./target/release/jdr-patch patch --apk local/game-3.12.0.apk --out deliver/jojodr-dev.apk --disable embed-server
 ```
 
-Read `deliver/jojodr-b01.report.txt`: every patch `applied`, every post-check `ok`. Keep
+Read `deliver/jojodr-dev.report.txt`: every patch `applied`, every post-check `ok`. Keep
 `~/.config/JDR/` safe: losing the key means a future build cannot install over this one.
 
 ## 3. Install and restore your data
@@ -74,7 +77,7 @@ adb uninstall com.bandainamcoent.jojodr
 ```
 
 ```bash
-adb install deliver/jojodr-b01.apk
+adb install deliver/jojodr-dev.apk
 ```
 
 Launch the game once and quit, so Android creates its data folder, then push your files back

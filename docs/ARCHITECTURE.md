@@ -22,7 +22,7 @@
  │   → local/keys.json          │         │  libil2cpp (unchanged code)            │
  │ jdr-patch     ← your APK     │ ──────► │  metadata: server URL → 127.0.0.1:18080│
  │   → deliver/*.apk + report   │  adb    │  manifest: usesCleartextTraffic        │
- │ jdr-server (dev loop) ◄──────┼─reverse─┤  (M2: libjdrserver.so in-process)      │
+ │ jdr-server (dev loop) ◄──────┼─reverse─┤  or: libjdr.so in-process (embed-server)│
  └──────────────────────────────┘         └────────────────────────────────────────┘
 ```
 
@@ -30,7 +30,14 @@
 - `server/core` — HTTP/1.1 server (std only), envelope codec, logger, clock (JST), storage.
 - `server/services` — dispatch + one module per service; `app.rs` routes `/common/get_version`
   (bare host), `/api/*` (envelope), `/cdn/*` (asset files), `/web/*` (WebView pages).
-- `hosts/standalone` — `jdr-server` for the dev loop. `hosts/embedded` — M2.
+- `hosts/standalone` — `jdr-server` for the dev loop.
+- `hosts/embedded` — `libjdr.so` (aarch64, 16 KiB pages). The `embed-server` patch renames
+  `libmain.so`'s `liblog.so` dependency to `libjdr.so` (same length, in place); `libjdr.so` itself
+  depends on `liblog.so`, so libmain's imports still resolve. Its constructor only spawns a thread
+  that reads the keys from `assets/jdr/keys.json` in the app's own APK (stored by the patcher),
+  binds 127.0.0.1:18080 and serves. State: `/data/user/<n>/<pkg>/jdr/`; logs copied to
+  `/sdcard/Android/data/<pkg>/jdr/logs/` and mirrored to logcat (tag `JDR`); extra CDN files from
+  `/sdcard/Android/data/<pkg>/jdr/cdn/` (never the game's own `files/` folder).
 - `patcher` — `jdr-patch`: fingerprinted patches, zip rewrite, zipalign, apksigner, report.
 - `tools/jdr-tool` — keys, decoded name listing, decryption of the player's files.
 
