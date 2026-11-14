@@ -703,7 +703,7 @@
     ],
     "text:Ability_JOJOlink_Name_JP:ABI_JOLINK_NAME_058": [
       "aade4268",
-      "The Sad Fate of a Clan Tied to \"Ripple\""
+      "The Sad Fate of a Clan Tied to \"Hamon\""
     ],
     "text:Ability_JOJOlink_Name_JP:ABI_JOLINK_NAME_059": [
       "4404da9d",
@@ -727,7 +727,7 @@
     ],
     "text:Ability_JOJOlink_Name_JP:ABI_JOLINK_NAME_064": [
       "ac88281a",
-      "Inherited \"Ripple\" and \"Mission\""
+      "Inherited \"Hamon\" and \"Mission\""
     ],
     "text:Ability_JOJOlink_Name_JP:ABI_JOLINK_NAME_065": [
       "80af101a",
@@ -795,7 +795,7 @@
     ],
     "text:Ability_Leader_Name_JP:ABI_LEAD_NAME_1000_03": [
       "43755ef9",
-      "Fists Clad in Flaming Ripple"
+      "Fists Clad in Flaming Hamon"
     ],
     "text:Ability_Leader_Name_JP:ABI_LEAD_NAME_1000_04": [
       "65b78960",
@@ -827,11 +827,11 @@
     ],
     "text:Ability_Leader_Name_JP:ABI_LEAD_NAME_1020_01": [
       "5a2082bb",
-      "Ripple Master"
+      "Hamon Master"
     ],
     "text:Ability_Leader_Name_JP:ABI_LEAD_NAME_1020_02": [
       "896e6016",
-      "Ripple of Justice and Rage"
+      "Hamon of Justice and Rage"
     ],
     "text:Ability_Leader_Name_JP:ABI_LEAD_NAME_1020_03": [
       "03cc47d1",
@@ -859,7 +859,7 @@
     ],
     "text:Ability_Leader_Name_JP:ABI_LEAD_NAME_1090_02": [
       "eb3932b3",
-      "Skilled Ripple Warrior"
+      "Skilled Hamon Warrior"
     ],
     "text:Ability_Leader_Name_JP:ABI_LEAD_NAME_1090_03": [
       "6f4b24b2",
@@ -967,7 +967,7 @@
     ],
     "text:Ability_Leader_Name_JP:ABI_LEAD_NAME_2000_28": [
       "c8b7b38a",
-      "Radiant Ripple Power"
+      "Radiant Hamon Power"
     ],
     "text:Ability_Leader_Name_JP:ABI_LEAD_NAME_2010_01": [
       "c6b353c6",
@@ -999,7 +999,7 @@
     ],
     "text:Ability_Leader_Name_JP:ABI_LEAD_NAME_2020_02": [
       "025e6870",
-      "Harsh Ripple Training"
+      "Harsh Hamon Training"
     ],
     "text:Ability_Leader_Name_JP:ABI_LEAD_NAME_2020_03": [
       "c011bceb",
@@ -1015,7 +1015,7 @@
     ],
     "text:Ability_Leader_Name_JP:ABI_LEAD_NAME_2040_02": [
       "93bd797f",
-      "Ripple User"
+      "Hamon User"
     ],
     "text:Ability_Leader_Name_JP:ABI_LEAD_NAME_2040_03": [
       "8a07e0e3",
@@ -2491,7 +2491,7 @@
     ],
     "text:Ability_Mind_Name_JP:ABI_MIND_NAME_7064": [
       "6d8cfbfd",
-      "Ripple Bubbles"
+      "Hamon Bubbles"
     ],
     "text:Ability_Mind_Name_JP:ABI_MIND_NAME_7065": [
       "1d9268cb",
@@ -2811,7 +2811,7 @@
     ],
     "text:Ability_Statue_Name_JP:ABI_STAT_NAME_2010_03": [
       "a1d61659",
-      "Ripple Talent"
+      "Hamon Talent"
     ],
     "text:Ability_Statue_Name_JP:ABI_STAT_NAME_2010_04": [
       "010c8251",
@@ -3547,23 +3547,23 @@
     ],
     "text:Ability_Tokko_Name_JP:ABI_TOKKO_NAME_011": [
       "c8f25bd1",
-      "\"Ripple Training\" Event Bonus"
+      "\"Hamon Training\" Event Bonus"
     ],
     "text:Ability_Tokko_Name_JP:ABI_TOKKO_NAME_012": [
       "c8f25bd1",
-      "\"Ripple Training\" Event Bonus"
+      "\"Hamon Training\" Event Bonus"
     ],
     "text:Ability_Tokko_Name_JP:ABI_TOKKO_NAME_013": [
       "c8f25bd1",
-      "\"Ripple Training\" Event Bonus"
+      "\"Hamon Training\" Event Bonus"
     ],
     "text:Ability_Tokko_Name_JP:ABI_TOKKO_NAME_014": [
       "c8f25bd1",
-      "\"Ripple Training\" Event Bonus"
+      "\"Hamon Training\" Event Bonus"
     ],
     "text:Ability_Tokko_Name_JP:ABI_TOKKO_NAME_015": [
       "c8f25bd1",
-      "\"Ripple Training\" Event Bonus"
+      "\"Hamon Training\" Event Bonus"
     ],
     "text:Ability_Tokko_Name_JP:ABI_TOKKO_NAME_016": [
       "10c427db",
@@ -38091,7 +38091,7 @@
     ],
     "text:DTbattleSkillClass_JP:AREA_HAMON_ATK": [
       "5325ef06",
-      "AoE Ripple Attack"
+      "AoE Hamon Attack"
     ],
     "text:DTbattleSkillClass_JP:AREA_ONE_ATTACK_COUNTER_ATK": [
       "515e7d4b",
@@ -38179,7 +38179,7 @@
     ],
     "text:DTbattleSkillClass_JP:STAN_ATK": [
       "b4b32549",
-      "Unused (Ripple Attack)"
+      "Unused (Hamon Attack)"
     ],
     "text:DTbattleSkillClass_JP:THE_WORLD_ATK": [
       "11ac7435",
@@ -60191,7 +60191,7 @@
     ],
     "text:MindName_JP:MIND_NAME_4001": [
       "9b07d0bf",
-      "I'll Cut You with the Sword of Luck and Courage!!"
+      "I'll Cut You with the Sword of Luck and Pluck!!"
     ],
     "text:MindName_JP:MIND_NAME_4002": [
       "29112605",
@@ -60463,7 +60463,7 @@
     ],
     "text:MindName_JP:MIND_NAME_4073": [
       "7fce5619",
-      "Ripple Vortex Overdrive"
+      "Hamon Vortex Overdrive"
     ],
     "text:MindName_JP:MIND_NAME_4074": [
       "40b4a179",
@@ -60471,7 +60471,7 @@
     ],
     "text:MindName_JP:MIND_NAME_4075": [
       "a0f32338",
-      "Ripple-Charged Rose Thorns Must Hurt..."
+      "Hamon-Charged Rose Thorns Must Hurt..."
     ],
     "text:MindName_JP:MIND_NAME_4076": [
       "eee93ef2",
@@ -60519,7 +60519,7 @@
     ],
     "text:MindName_JP:MIND_NAME_4088": [
       "27a20777",
-      "Ya Dumb Bastard!"
+      "You're Sooo Slow!"
     ],
     "text:MindName_JP:MIND_NAME_4089": [
       "97cf7f35",
@@ -60783,7 +60783,7 @@
     ],
     "text:MindName_JP:MIND_NAME_4155": [
       "e0edb2b7",
-      "I'll Cut You with the Sword of Luck and Courage!! [+]"
+      "I'll Cut You with the Sword of Luck and Pluck!! [+]"
     ],
     "text:MindName_JP:MIND_NAME_4156": [
       "67e10fe7",
@@ -64355,7 +64355,7 @@
     ],
     "text:MindName_JP:MIND_NAME_8117": [
       "893c53f6",
-      "With That Money, I Can Get a \"Capo's Seat\"!"
+      "With That Money, I Can Get an \"Executive's Seat\"!"
     ],
     "text:MindName_JP:MIND_NAME_8118": [
       "542feec6",
@@ -64371,7 +64371,7 @@
     ],
     "text:MindName_JP:MIND_NAME_8121": [
       "5e21bf53",
-      "Bucciarati Finally Became a Capo!"
+      "Bucciarati Finally Became an Executive!"
     ],
     "text:MindName_JP:MIND_NAME_8122": [
       "ab7c1211",
@@ -69087,7 +69087,7 @@
     ],
     "text:SkillName_JP:SKILL_NAME_100_01": [
       "d2b9d1d5",
-      "Ripple Life Energy"
+      "Hamon Life Energy"
     ],
     "text:SkillName_JP:SKILL_NAME_100_02": [
       "990acd11",
@@ -69119,11 +69119,11 @@
     ],
     "text:SkillName_JP:SKILL_NAME_100_09": [
       "9b07d0bf",
-      "I'll Cut You with the Sword of Luck and Courage!!"
+      "I'll Cut You with the Sword of Luck and Pluck!!"
     ],
     "text:SkillName_JP:SKILL_NAME_100_09_01": [
       "e0edb2b7",
-      "I'll Cut You with the Sword of Luck and Courage!! [+]"
+      "I'll Cut You with the Sword of Luck and Pluck!! [+]"
     ],
     "text:SkillName_JP:SKILL_NAME_100_10": [
       "29112605",
@@ -69199,11 +69199,11 @@
     ],
     "text:SkillName_JP:SKILL_NAME_102_04": [
       "34497f82",
-      "Ripple Energy Is \"Sendo\" Power!!"
+      "Hamon Energy Is \"Sendo\" Power!!"
     ],
     "text:SkillName_JP:SKILL_NAME_102_05": [
       "4b026587",
-      "Pour It In! Sunlight Ripple!"
+      "Pour It In! Sunlight Hamon!"
     ],
     "text:SkillName_JP:SKILL_NAME_102_06": [
       "38b5b548",
@@ -69219,7 +69219,7 @@
     ],
     "text:SkillName_JP:SKILL_NAME_102_09": [
       "fff8a15c",
-      "Ripple Vortex Overdrive!!"
+      "Hamon Vortex Overdrive!!"
     ],
     "text:SkillName_JP:SKILL_NAME_102_10": [
       "f62ae00b",
@@ -69275,7 +69275,7 @@
     ],
     "text:SkillName_JP:SKILL_NAME_108_01": [
       "a0f32338",
-      "Ripple-Charged Rose Thorns Must Hurt..."
+      "Hamon-Charged Rose Thorns Must Hurt..."
     ],
     "text:SkillName_JP:SKILL_NAME_108_02": [
       "8cd0d6aa",
@@ -69291,7 +69291,7 @@
     ],
     "text:SkillName_JP:SKILL_NAME_108_05": [
       "4b026587",
-      "Pour It In! Sunlight Ripple!"
+      "Pour It In! Sunlight Hamon!"
     ],
     "text:SkillName_JP:SKILL_NAME_108_06": [
       "77b2c7f1",
@@ -69327,7 +69327,7 @@
     ],
     "text:SkillName_JP:SKILL_NAME_109_03": [
       "7fce5619",
-      "Ripple Vortex Overdrive"
+      "Hamon Vortex Overdrive"
     ],
     "text:SkillName_JP:SKILL_NAME_109_04": [
       "dd4d6c8a",
@@ -69667,7 +69667,7 @@
     ],
     "text:SkillName_JP:SKILL_NAME_200_04": [
       "4bf3023a",
-      "Elbow Ripple Overdrive"
+      "Elbow Hamon Overdrive"
     ],
     "text:SkillName_JP:SKILL_NAME_200_05": [
       "cd9722db",
@@ -69703,7 +69703,7 @@
     ],
     "text:SkillName_JP:SKILL_NAME_201_01": [
       "140d68c5",
-      "Ripple Breathing"
+      "Hamon Breathing"
     ],
     "text:SkillName_JP:SKILL_NAME_201_02": [
       "b4f60e7f",
@@ -69715,7 +69715,7 @@
     ],
     "text:SkillName_JP:SKILL_NAME_201_04": [
       "6168906f",
-      "Repelling Ripple Palm"
+      "Repelling Hamon Palm"
     ],
     "text:SkillName_JP:SKILL_NAME_201_05": [
       "221419d8",
@@ -69743,7 +69743,7 @@
     ],
     "text:SkillName_JP:SKILL_NAME_201_19": [
       "4ed29ee7",
-      "A Glimpse of Ripple"
+      "A Glimpse of Hamon"
     ],
     "text:SkillName_JP:SKILL_NAME_201_61": [
       "3340eeff",
@@ -69771,7 +69771,7 @@
     ],
     "text:SkillName_JP:SKILL_NAME_202_05": [
       "76ab215d",
-      "Channel Ripple Through the Muffler"
+      "Channel Hamon Through the Muffler"
     ],
     "text:SkillName_JP:SKILL_NAME_202_06": [
       "615761d6",
@@ -70299,7 +70299,7 @@
     ],
     "text:SkillName_JP:SKILL_NAME_301_04": [
       "0184d5f3",
-      "Wrap Ripple-Charged Hermit Purple Like a High-Voltage Wire"
+      "Wrap Hamon-Charged Hermit Purple Like a High-Voltage Wire"
     ],
     "text:SkillName_JP:SKILL_NAME_301_05": [
       "d7219739",
@@ -70307,7 +70307,7 @@
     ],
     "text:SkillName_JP:SKILL_NAME_301_06": [
       "140d68c5",
-      "Ripple Breathing"
+      "Hamon Breathing"
     ],
     "text:SkillName_JP:SKILL_NAME_301_07": [
       "c6570159",
@@ -70315,7 +70315,7 @@
     ],
     "text:SkillName_JP:SKILL_NAME_301_08": [
       "30b45743",
-      "Hermit Purple AND Ripple!"
+      "Hermit Purple AND Hamon!"
     ],
     "text:SkillName_JP:SKILL_NAME_301_09": [
       "3fb358da",
@@ -70651,7 +70651,7 @@
     ],
     "text:SkillName_JP:SKILL_NAME_309_05": [
       "27a20777",
-      "Ya Dumb Bastard!"
+      "You're Sooo Slow!"
     ],
     "text:SkillName_JP:SKILL_NAME_309_06": [
       "3f1bf216",
@@ -71523,7 +71523,7 @@
     ],
     "text:SkillName_JP:SKILL_NAME_343_05": [
       "27a20777",
-      "Ya Dumb Bastard!"
+      "You're Sooo Slow!"
     ],
     "text:SkillName_JP:SKILL_NAME_343_06": [
       "3f1bf216",
@@ -82399,179 +82399,179 @@
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_000": [
       "e4d5e763",
-      "Tarot Effect [ The Fool (Reversed)]"
+      "Tarot Effect [The Fool (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_001": [
       "215428ec",
-      "Tarot Effect [ The Magician (Reversed)]"
+      "Tarot Effect [The Magician (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_002": [
       "044de958",
-      "Tarot Effect [ The High Priestess (Reversed)]"
+      "Tarot Effect [The High Priestess (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_003": [
       "5e9d2d21",
-      "Tarot Effect [ The Empress (Reversed)]"
+      "Tarot Effect [The Empress (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_004": [
       "aff4e278",
-      "Tarot Effect [ The Emperor (Reversed)]"
+      "Tarot Effect [The Emperor (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_005": [
       "77951b75",
-      "Tarot Effect [ The Hierophant (Reversed)]"
+      "Tarot Effect [The Hierophant (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_006": [
       "750db415",
-      "Tarot Effect [ The Lovers (Reversed)]"
+      "Tarot Effect [The Lovers (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_007": [
       "fb97ebef",
-      "Tarot Effect [ The Chariot (Reversed)]"
+      "Tarot Effect [The Chariot (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_008": [
       "6ba7aa53",
-      "Tarot Effect [ Justice (Reversed)]"
+      "Tarot Effect [Justice (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_009": [
       "2df2c797",
-      "Tarot Effect [ The Hermit (Reversed)]"
+      "Tarot Effect [The Hermit (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_010": [
       "d7956f6e",
-      "Tarot Effect [ Wheel of Fortune (Reversed)]"
+      "Tarot Effect [Wheel of Fortune (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_011": [
       "5d1104bc",
-      "Tarot Effect [ Strength (Reversed)]"
+      "Tarot Effect [Strength (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_012": [
       "7e8cb742",
-      "Tarot Effect [ The Hanged Man (Reversed)]"
+      "Tarot Effect [The Hanged Man (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_013": [
       "c731c86c",
-      "Tarot Effect [ Death (Reversed)]"
+      "Tarot Effect [Death (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_014": [
       "9da4ec9d",
-      "Tarot Effect [ Temperance (Reversed)]"
+      "Tarot Effect [Temperance (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_015": [
       "a459ab4d",
-      "Tarot Effect [ The Devil (Reversed)]"
+      "Tarot Effect [The Devil (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_016": [
       "77229ab1",
-      "Tarot Effect [ The Tower (Reversed)]"
+      "Tarot Effect [The Tower (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_017": [
       "443c2368",
-      "Tarot Effect [ The Star (Reversed)]"
+      "Tarot Effect [The Star (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_018": [
       "55c0b4d9",
-      "Tarot Effect [ The Moon (Reversed)]"
+      "Tarot Effect [The Moon (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_019": [
       "b36be356",
-      "Tarot Effect [ The Sun (Reversed)]"
+      "Tarot Effect [The Sun (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_020": [
       "8cb395ca",
-      "Tarot Effect [ Judgement (Reversed)]"
+      "Tarot Effect [Judgement (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_RV_NAME_021": [
       "0eacea8c",
-      "Tarot Effect [ The World (Reversed)]"
+      "Tarot Effect [The World (Reversed)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_000": [
       "a5080f01",
-      "Tarot Effect [ The Fool (Upright)]"
+      "Tarot Effect [The Fool (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_001": [
       "e8c21743",
-      "Tarot Effect [ The Magician (Upright)]"
+      "Tarot Effect [The Magician (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_002": [
       "6db59e33",
-      "Tarot Effect [ The High Priestess (Upright)]"
+      "Tarot Effect [The High Priestess (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_003": [
       "c633c248",
-      "Tarot Effect [ The Empress (Upright)]"
+      "Tarot Effect [The Empress (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_004": [
       "341a2528",
-      "Tarot Effect [ The Emperor (Upright)]"
+      "Tarot Effect [The Emperor (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_005": [
       "e4aaf4d6",
-      "Tarot Effect [ The Hierophant (Upright)]"
+      "Tarot Effect [The Hierophant (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_006": [
       "abda1f19",
-      "Tarot Effect [ The Lovers (Upright)]"
+      "Tarot Effect [The Lovers (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_007": [
       "631ac3aa",
-      "Tarot Effect [ The Chariot (Upright)]"
+      "Tarot Effect [The Chariot (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_008": [
       "32bdc49c",
-      "Tarot Effect [ Justice (Upright)]"
+      "Tarot Effect [Justice (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_009": [
       "bcd314ee",
-      "Tarot Effect [ The Hermit (Upright)]"
+      "Tarot Effect [The Hermit (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_010": [
       "a4b85127",
-      "Tarot Effect [ Wheel of Fortune (Upright)]"
+      "Tarot Effect [Wheel of Fortune (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_011": [
       "5084f835",
-      "Tarot Effect [ Strength (Upright)]"
+      "Tarot Effect [Strength (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_012": [
       "828873d3",
-      "Tarot Effect [ The Hanged Man (Upright)]"
+      "Tarot Effect [The Hanged Man (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_013": [
       "9c93dfad",
-      "Tarot Effect [ Death (Upright)]"
+      "Tarot Effect [Death (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_014": [
       "c1ab9f62",
-      "Tarot Effect [ Temperance (Upright)]"
+      "Tarot Effect [Temperance (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_015": [
       "714d8346",
-      "Tarot Effect [ The Devil (Upright)]"
+      "Tarot Effect [The Devil (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_016": [
       "b6aa0508",
-      "Tarot Effect [ The Tower (Upright)]"
+      "Tarot Effect [The Tower (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_017": [
       "95264eae",
-      "Tarot Effect [ The Star (Upright)]"
+      "Tarot Effect [The Star (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_018": [
       "609658fd",
-      "Tarot Effect [ The Moon (Upright)]"
+      "Tarot Effect [The Moon (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_019": [
       "fb80e45a",
-      "Tarot Effect [ The Sun (Upright)]"
+      "Tarot Effect [The Sun (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_020": [
       "c275e004",
-      "Tarot Effect [ Judgement (Upright)]"
+      "Tarot Effect [Judgement (Upright)]"
     ],
     "text:Tarot_Name_JP:DT_ABI_TAROT_UP_NAME_021": [
       "275dc356",
-      "Tarot Effect [ The World (Upright)]"
+      "Tarot Effect [The World (Upright)]"
     ],
     "text:TipsText_JP:TipsText_071": [
       "014255d9",
@@ -87363,23 +87363,23 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500002_73_text": [
       "29278134",
-      "Green Stone Fragment x10000"
+      "Green Stone Shard x10000"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500002_74_text": [
       "fd8dca85",
-      "Red Stone Fragment x1000"
+      "Red Stone Shard x1000"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500002_75_text": [
       "26701fee",
-      "Red Stone Fragment x10000"
+      "Red Stone Shard x10000"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500002_76_text": [
       "a3ae7574",
-      "Gray Stone Fragment x1000"
+      "Gray Stone Shard x1000"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500002_77_text": [
       "2d74855f",
-      "Gray Stone Fragment x10000"
+      "Gray Stone Shard x10000"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500002_7_text": [
       "4da2da37",
@@ -88647,11 +88647,11 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500015_15_text": [
       "ee20cc50",
-      "Verdant Steel Bracelet x75"
+      "Green Steel Bracelet x75"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500015_16_text": [
       "365e4a68",
-      "Verdant Steel Necklace x25"
+      "Green Steel Necklace x25"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500015_17_text": [
       "0b0e87d4",
@@ -88775,7 +88775,7 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500015_47_text": [
       "6532ee56",
-      "Red Stone Fragment x1"
+      "Red Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500015_48_text": [
       "19da5343",
@@ -88787,7 +88787,7 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500015_50_text": [
       "4e946100",
-      "Blue Stone Fragment x1"
+      "Blue Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500015_51_text": [
       "32cb809b",
@@ -88799,7 +88799,7 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500015_53_text": [
       "db9d2e0b",
-      "Green Stone Fragment x1"
+      "Green Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500015_54_text": [
       "5be3bfd5",
@@ -88811,7 +88811,7 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500015_56_text": [
       "a4f70153",
-      "Gray Stone Fragment x1"
+      "Gray Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500017_01_text": [
       "02d2a1f9",
@@ -89227,7 +89227,7 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500020_50_text": [
       "4e946100",
-      "Blue Stone Fragment x1"
+      "Blue Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500020_51_text": [
       "c369a839",
@@ -89239,7 +89239,7 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500020_53_text": [
       "db9d2e0b",
-      "Green Stone Fragment x1"
+      "Green Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500020_54_text": [
       "86c7198e",
@@ -89251,7 +89251,7 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500020_56_text": [
       "6532ee56",
-      "Red Stone Fragment x1"
+      "Red Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500020_57_text": [
       "04165748",
@@ -89263,7 +89263,7 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500020_59_text": [
       "a4f70153",
-      "Gray Stone Fragment x1"
+      "Gray Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500020_60_text": [
       "2f9b2c6e",
@@ -89351,7 +89351,7 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_07_text": [
       "abb50b6f",
-      "Ink That Records Memories x1"
+      "Ink of Memories x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_08_text": [
       "046846e2",
@@ -89423,59 +89423,59 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_25_text": [
       "7582576b",
-      "Blue Stone Tablet x1"
+      "Blue Tablet x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_26_text": [
       "0f36a3e3",
-      "Green Stone Tablet x1"
+      "Green Tablet x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_27_text": [
       "d2efd3d5",
-      "Red Stone Tablet x1"
+      "Red Tablet x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_28_text": [
       "f0dfe752",
-      "White Stone Tablet x1"
+      "White Tablet x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_29_text": [
       "35d5c163",
-      "Black Stone Tablet x1"
+      "Black Tablet x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_30_text": [
       "705b1562",
-      "Blue Chronicle Disc x1"
+      "Blue Calendar Slab x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_31_text": [
       "d4c4970f",
-      "Green Chronicle Disc x1"
+      "Green Calendar Slab x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_32_text": [
       "a232a7aa",
-      "Red Chronicle Disc x1"
+      "Red Calendar Slab x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_33_text": [
       "d00ae224",
-      "White Chronicle Disc x1"
+      "White Calendar Slab x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_34_text": [
       "4478e6a9",
-      "Black Chronicle Disc x1"
+      "Black Calendar Slab x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_35_text": [
       "d386c578",
-      "Azure Steel Bracelet x1"
+      "Blue Steel Bracelet x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_36_text": [
       "2f8c1302",
-      "Verdant Steel Bracelet x1"
+      "Green Steel Bracelet x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_37_text": [
       "e562a0a0",
-      "Vermilion Steel Bracelet x1"
+      "Red Steel Bracelet x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_38_text": [
       "6e04b132",
-      "Silver Chain x1"
+      "White Silver Chain x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_39_text": [
       "6c886d99",
@@ -89483,15 +89483,15 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_40_text": [
       "05f7206d",
-      "Azure Steel Necklace x1"
+      "Blue Steel Necklace x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_41_text": [
       "a7dd3c22",
-      "Verdant Steel Necklace x1"
+      "Green Steel Necklace x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_42_text": [
       "60d13f2d",
-      "Vermilion Steel Necklace x1"
+      "Red Steel Necklace x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_43_text": [
       "4be79577",
@@ -89503,7 +89503,7 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_45_text": [
       "4e946100",
-      "Blue Stone Fragment x1"
+      "Blue Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_46_text": [
       "c369a839",
@@ -89515,7 +89515,7 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_48_text": [
       "db9d2e0b",
-      "Green Stone Fragment x1"
+      "Green Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_49_text": [
       "86c7198e",
@@ -89527,7 +89527,7 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_51_text": [
       "6532ee56",
-      "Red Stone Fragment x1"
+      "Red Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_52_text": [
       "04165748",
@@ -89539,7 +89539,7 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_54_text": [
       "a4f70153",
-      "Gray Stone Fragment x1"
+      "Gray Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500026_55_text": [
       "2f9b2c6e",
@@ -89635,11 +89635,11 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500029_16_text": [
       "979da5eb",
-      "Green Stone Tablet x40"
+      "Green Tablet x40"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500029_17_text": [
       "0683abbc",
-      "White Stone Tablet x40"
+      "White Tablet x40"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500029_18_text": [
       "6b943669",
@@ -89707,11 +89707,11 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500029_34_text": [
       "4e946100",
-      "Blue Stone Fragment x1"
+      "Blue Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500029_35_text": [
       "db9d2e0b",
-      "Green Stone Fragment x1"
+      "Green Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500029_36_text": [
       "86c7198e",
@@ -89723,11 +89723,11 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500029_38_text": [
       "6532ee56",
-      "Red Stone Fragment x1"
+      "Red Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500029_39_text": [
       "a4f70153",
-      "Gray Stone Fragment x1"
+      "Gray Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500029_40_text": [
       "2f9b2c6e",
@@ -89959,7 +89959,7 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500033_50_text": [
       "4e946100",
-      "Blue Stone Fragment x1"
+      "Blue Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500033_51_text": [
       "c369a839",
@@ -89971,7 +89971,7 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500033_53_text": [
       "db9d2e0b",
-      "Green Stone Fragment x1"
+      "Green Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500033_54_text": [
       "86c7198e",
@@ -89983,7 +89983,7 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500033_56_text": [
       "6532ee56",
-      "Red Stone Fragment x1"
+      "Red Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500033_57_text": [
       "04165748",
@@ -89995,7 +89995,7 @@
     ],
     "text:event_shop_name_text_JP:event_shop_name_500033_59_text": [
       "a4f70153",
-      "Gray Stone Fragment x1"
+      "Gray Stone Shard x1"
     ],
     "text:event_shop_name_text_JP:event_shop_name_500033_60_text": [
       "2f9b2c6e",
