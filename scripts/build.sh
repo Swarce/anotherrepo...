@@ -9,6 +9,8 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 step() { printf '\n== %s\n' "$*"; }
+skipped=()
+skip() { step "SKIPPED: $*"; skipped+=("$*"); }
 
 step "format check"
 cargo fmt --all -- --check
@@ -31,14 +33,19 @@ if [[ -n "${ANDROID_NDK:-}" ]]; then
   cargo build --release -p jdr-embedded --target aarch64-linux-android
   ls -l target/aarch64-linux-android/release/libjdr.so
 else
-  step "embedded server build skipped (set ANDROID_NDK)"
+  skip "embedded server build (set ANDROID_NDK)"
 fi
 
-if [[ -n "${JDR_APK:-}" ]] && python3 -c "import unicorn, elftools" 2>/dev/null; then
-  step "equivalence proof: unity-heap patch on your libunity.so"
-  JDR_APK="$JDR_APK" python3 -I tools/proofs/unity_heap_equiv.py
+if [[ -n "${JDR_APK:-}" ]]; then
+  if python3 -c "import unicorn, elftools" 2>/dev/null; then
+    step "equivalence proof: unity-heap patch on your libunity.so"
+    JDR_APK="$JDR_APK" python3 -I tools/proofs/unity_heap_equiv.py   # failure stops the build (set -e)
+  else
+    echo "JDR_APK is set but python3 lacks unicorn/pyelftools: the unity-heap proof is required before patching" >&2
+    exit 1
+  fi
 else
-  step "unity-heap equivalence proof skipped (needs JDR_APK and python3 with unicorn + pyelftools)"
+  skip "unity-heap equivalence proof (set JDR_APK)"
 fi
 
 step "clippy"
@@ -59,7 +66,27 @@ if [[ -n "${JDR_APK:-}" && -n "${JDR_BUILD_TOOLS:-}" ]]; then
   JDR_KEYSTORE="${JDR_KEYSTORE:-$HOME/.config/JDR/jdr-signing.p12}" \
     ./target/release/jdr-patch patch --apk "$JDR_APK" --out deliver/jdr-test.apk --force "${embed[@]}"
 else
-  step "real-binary patch test skipped (set JDR_APK and JDR_BUILD_TOOLS)"
+  skip "real-binary patch test (set JDR_APK and JDR_BUILD_TOOLS)"
 fi
 
-step "done"
+if [[ -n "${JDR_DATA:-}" && -n "${JDR_KEYS:-}" ]]; then
+  step "real data: generate versionfile from your files and check it with UnityPy"
+  out="$(pwd)/deliver/versionfile-check.bytes"
+  mkdir -p deliver
+  JDR_VERSIONFILE_OUT="$out" JDR_KEYS="$(realpath "$JDR_KEYS")" cargo test -q --release -p jdr-services --test real_versionfile
+  if python3 -c "import UnityPy" 2>/dev/null; then
+    python3 -I tools/proofs/versionfile_check.py "$out"
+  else
+    skip "UnityPy check of the generated versionfile (pip install UnityPy)"
+  fi
+  rm -f "$out"
+else
+  skip "versionfile generation from real data (set JDR_DATA and JDR_KEYS)"
+fi
+
+if ((${#skipped[@]})); then
+  step "done, with ${#skipped[@]} skipped check(s):"
+  printf '   - %s\n' "${skipped[@]}"
+else
+  step "done: every check ran"
+fi

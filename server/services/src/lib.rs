@@ -12,8 +12,14 @@ use jdr_core::log::Counters;
 use jdr_core::settings::Settings;
 use std::sync::atomic::{AtomicU16, Ordering};
 
-/// A generated bundle and the (size, mtime) of the input it was built from.
-pub type CachedBundle = ((u64, std::time::SystemTime), std::sync::Arc<Vec<u8>>);
+type Stamp = (u64, std::time::SystemTime);
+
+/// The generated manifest, or the last failure (with the vcs.bytes stamp it was computed for).
+#[derive(Clone)]
+pub enum ManifestState {
+    Built(Stamp, std::sync::Arc<Vec<u8>>),
+    Failed(Option<Stamp>, std::time::Instant, String),
+}
 
 pub struct Ctx {
     pub settings: Settings,
@@ -26,7 +32,9 @@ pub struct Ctx {
     /// master data that is not rebuilt yet).
     pub skip_tutorial: bool,
     /// Generated `versionfile` bundle, keyed by the (size, mtime) of `vcs.bytes`.
-    pub versionfile_cache: std::sync::Mutex<Option<CachedBundle>>,
+    pub versionfile_cache: std::sync::Mutex<Option<ManifestState>>,
+    /// Serialises manifest builds.
+    pub versionfile_build: std::sync::Mutex<()>,
 }
 
 /// Length of the all-ones tutorial list used to skip every tutorial (the real flag table is
@@ -40,6 +48,7 @@ impl Ctx {
             accounts,
             skip_tutorial: true,
             versionfile_cache: std::sync::Mutex::new(None),
+            versionfile_build: std::sync::Mutex::new(()),
             settings,
             counters: Counters::default(),
             port: AtomicU16::new(0),
@@ -92,42 +101,115 @@ impl Ctx {
     }
 
     /// The manifest bundle, generated from the game's own files (cached until vcs.bytes changes).
+    /// The build runs outside the cache lock; a failure is remembered for 30 s so client retries
+    /// do not rescan the whole folder each time.
     pub fn versionfile(&self) -> Result<std::sync::Arc<Vec<u8>>, String> {
+        let lock = |m: &std::sync::Mutex<Option<ManifestState>>| {
+            m.lock().unwrap_or_else(|e| e.into_inner()).clone()
+        };
         let dir = self
             .settings
             .game_files_dir
             .as_ref()
             .ok_or("no game files folder configured")?;
         let k = self.settings.keys.as_ref().ok_or("no keys")?;
-        let md = std::fs::metadata(dir.join("vcs.bytes")).map_err(|e| format!("vcs.bytes: {e}"))?;
-        let stamp = (md.len(), md.modified().unwrap_or(std::time::UNIX_EPOCH));
-        let mut g = self.versionfile_cache.lock().unwrap();
-        if let Some((s, b)) = g.as_ref() {
-            if *s == stamp {
-                return Ok(b.clone());
+        let stamp = std::fs::metadata(dir.join("vcs.bytes"))
+            .ok()
+            .map(|md| (md.len(), md.modified().unwrap_or(std::time::UNIX_EPOCH)));
+        match lock(&self.versionfile_cache) {
+            Some(ManifestState::Built(s, b)) if Some(s) == stamp => return Ok(b),
+            Some(ManifestState::Failed(s, at, e))
+                if s == stamp && at.elapsed() < std::time::Duration::from_secs(30) =>
+            {
+                return Err(e)
             }
+            _ => {}
+        }
+        // One builder at a time; others wait here, then find the fresh result.
+        let _b = self
+            .versionfile_build
+            .lock()
+            .unwrap_or_else(|e| e.into_inner());
+        match lock(&self.versionfile_cache) {
+            Some(ManifestState::Built(s, b)) if Some(s) == stamp => return Ok(b),
+            Some(ManifestState::Failed(s, at, e))
+                if s == stamp && at.elapsed() < std::time::Duration::from_secs(30) =>
+            {
+                return Err(e)
+            }
+            _ => {}
         }
         let t0 = std::time::Instant::now();
         let (key, iv) = (k.asset_key.as_bytes(), k.asset_iv.as_bytes());
-        let entries = versionfile::entries_from_files(dir, key, iv)?;
-        let (ms, ab) = versionfile::find_template_types(dir, key, iv)?;
-        let b = std::sync::Arc::new(versionfile::build(
-            &entries,
-            &ms,
-            &ab,
-            &jdr_core::clock::format(jdr_core::clock::now()),
-        ));
-        jdr_core::log::line(
-            "assets",
-            &format!(
-                "versionfile built: {} entries, {} KiB, {} ms",
-                entries.len(),
-                b.len() / 1024,
-                t0.elapsed().as_millis()
-            ),
-        );
-        *g = Some((stamp, b.clone()));
-        Ok(b)
+        let built = (|| {
+            let stamp = stamp.ok_or_else(|| {
+                format!("{}/vcs.bytes not found: the game's downloaded files are not on this device (restore files/, see PLAYER-SETUP)", dir.display())
+            })?;
+            let entries = versionfile::entries_from_files(dir, key, iv)?;
+            let (ms, ab) = versionfile::find_template_types(dir, key, iv)?;
+            let b = std::sync::Arc::new(versionfile::build(
+                &entries,
+                &ms,
+                &ab,
+                &jdr_core::clock::format(jdr_core::clock::now()),
+            ));
+            jdr_core::log::line(
+                "assets",
+                &format!(
+                    "versionfile built: {} entries, {} KiB, {} ms",
+                    entries.len(),
+                    b.len() / 1024,
+                    t0.elapsed().as_millis()
+                ),
+            );
+            Ok::<_, String>((stamp, b))
+        })();
+        let mut g = self
+            .versionfile_cache
+            .lock()
+            .unwrap_or_else(|e| e.into_inner());
+        match built {
+            Ok((s, b)) => {
+                *g = Some(ManifestState::Built(s, b.clone()));
+                Ok(b)
+            }
+            Err(e) => {
+                *g = Some(ManifestState::Failed(
+                    stamp,
+                    std::time::Instant::now(),
+                    e.clone(),
+                ));
+                Err(e)
+            }
+        }
+    }
+
+    /// Log what the game's files folder holds (boot diagnostics).
+    pub fn log_files_report(&self) {
+        let (Some(dir), Some(k)) = (
+            self.settings.game_files_dir.as_ref(),
+            self.settings.keys.as_ref(),
+        ) else {
+            return;
+        };
+        let r = versionfile::files_report(dir, k.asset_key.as_bytes(), k.asset_iv.as_bytes());
+        let line = if !r.vcs_present {
+            format!("game files: {} file(s) in {}, vcs.bytes MISSING: restore your downloaded files (PLAYER-SETUP)", r.files_on_disk, dir.display())
+        } else if r.missing.is_empty() {
+            format!(
+                "game files: {} file(s), all {} recorded files present",
+                r.files_on_disk, r.recorded
+            )
+        } else {
+            format!(
+                "game files: {} file(s); {} of {} recorded files MISSING (copy incomplete; first: {:?})",
+                r.files_on_disk,
+                r.missing.len(),
+                r.recorded,
+                r.missing.iter().take(3).collect::<Vec<_>>()
+            )
+        };
+        jdr_core::log::line("assets", &line);
     }
 
     /// Data version; constant so the client never thinks assets changed mid-session.

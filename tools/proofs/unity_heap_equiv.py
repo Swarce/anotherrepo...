@@ -61,6 +61,38 @@ def run(start, stop, regs, patched):
     return bytes(mu.mem_read(obj, 0x140)), calls
 
 
+# 1. Who calls the constructor and the page-table code? (must be only the 3 allocator setups and
+#    UnityDefaultAllocator's own methods; nothing may keep using the replaced class)
+text = elf.get_section_by_name(".text")
+base, off, size = text["sh_addr"], text["sh_offset"], text["sh_size"]
+words = struct.unpack_from("<%dI" % (size // 4), lib, off)
+
+
+def callers(target):
+    out = []
+    for i, w in enumerate(words):
+        if (w & 0x7C000000) == 0x14000000:  # B / BL
+            imm = w & 0x3FFFFFF
+            if imm & (1 << 25):
+                imm -= 1 << 26
+            if base + i * 4 + imm * 4 == target:
+                out.append(base + i * 4)
+    return out
+
+
+ctor_callers = callers(CTOR)
+assert ctor_callers == [0x50D704, 0x50D818, 0x50D858], [hex(c) for c in ctor_callers]
+assert callers(0x9FFCAC) == [0x9FF968], "page-table register must only be called from UnityDefaultAllocator::Allocate"
+assert callers(0x9FFF04) == [0x9FFB24], "page-table unregister must only be called from UnityDefaultAllocator::Deallocate"
+print("callers: constructor only from ALLOC_DEFAULT/ALLOC_GAMEOBJECT/ALLOC_GFX setup; page table only from its own class")
+
+# 2. Each of those three objects gets 0x140 bytes of storage (bump `add x9, x20|x21, #0x140`
+#    right before each call); the new constructor writes up to offset 0x118.
+for c in ctor_callers:
+    window = struct.unpack_from("<16I", lib, c - 0x40)
+    assert any((w & 0xFFFFFC00) == (0x91000000 | (0x140 << 10)) for w in window), hex(c)
+print("storage: 0x140 bytes reserved per allocator, constructor writes < 0x118")
+
 a, ca = run(CTOR, 0x10, lambda o, n: {UC_ARM64_REG_X0: o, UC_ARM64_REG_X1: n}, True)
 b, cb = run(FALLBACK[0], FALLBACK[1], lambda o, n: {UC_ARM64_REG_X20: o, UC_ARM64_REG_X1: n, UC_ARM64_REG_X19: 0x2180000}, False)
 diff = [i for i in range(0x140) if a[i] != b[i]]

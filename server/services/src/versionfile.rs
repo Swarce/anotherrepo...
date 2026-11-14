@@ -58,13 +58,56 @@ fn fields() -> Vec<Field> {
     ]
 }
 
+/// What the player's `files/` folder holds compared with the game's own record.
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct FilesReport {
+    pub files_on_disk: usize,
+    pub vcs_present: bool,
+    pub recorded: usize,
+    /// Recorded in vcs.bytes but not on disk (obfuscated names).
+    pub missing: Vec<String>,
+}
+
+/// Count files and compare them with vcs.bytes (cheap: metadata only).
+pub fn files_report(dir: &Path, asset_key: &[u8], asset_iv: &[u8]) -> FilesReport {
+    let mut r = FilesReport {
+        files_on_disk: std::fs::read_dir(dir)
+            .map(|d| d.flatten().filter(|e| e.path().is_file()).count())
+            .unwrap_or(0),
+        ..Default::default()
+    };
+    let Ok(raw) = std::fs::read(dir.join("vcs.bytes")) else {
+        return r;
+    };
+    r.vcs_present = true;
+    let Ok((_, _, plain)) = Vcs::decrypt(&raw, asset_key, asset_iv) else {
+        return r;
+    };
+    let Ok(v) = serde_json::from_slice::<serde_json::Value>(&plain) else {
+        return r;
+    };
+    if let Some(keys) = v.get("keys").and_then(|k| k.as_array()) {
+        r.recorded = keys.len();
+        r.missing = keys
+            .iter()
+            .filter_map(|k| k.as_str())
+            .filter(|k| !dir.join(k).is_file())
+            .map(str::to_owned)
+            .collect();
+    }
+    r
+}
+
 /// Entries from the player's `vcs.bytes` (obfuscated name -> md5) and the files on disk.
+/// Files recorded but missing on disk are left out (the client cannot load them anyway).
 pub fn entries_from_files(
     dir: &Path,
     asset_key: &[u8],
     asset_iv: &[u8],
 ) -> Result<Vec<Entry>, String> {
-    let raw = std::fs::read(dir.join("vcs.bytes")).map_err(|e| format!("vcs.bytes: {e}"))?;
+    let raw = std::fs::read(dir.join("vcs.bytes")).map_err(|e| {
+        format!("{}/vcs.bytes: {e} (the game's downloaded files are not on this device; see PLAYER-SETUP: restore files/)", dir.display())
+    })?;
     let (_, _, plain) =
         Vcs::decrypt(&raw, asset_key, asset_iv).map_err(|e| format!("vcs.bytes: {e}"))?;
     let v: serde_json::Value =
@@ -124,7 +167,8 @@ pub fn find_template_types(
         })
         .collect();
     files.sort();
-    for (_, p) in files.iter().take(3000) {
+    // The engine types sit in every bundle with a MonoScript; the smallest few hundred suffice.
+    for (_, p) in files.iter().take(400) {
         let Ok(mut d) = std::fs::read(p) else {
             continue;
         };
@@ -279,6 +323,21 @@ mod tests {
             class_id,
             raw: w.buf,
         }
+    }
+
+    #[test]
+    fn files_report_without_vcs() {
+        let d = std::env::temp_dir().join(format!("jdr-vf-report-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&d);
+        std::fs::create_dir_all(&d).unwrap();
+        std::fs::write(d.join("a.bytes"), b"x").unwrap();
+        let r = files_report(&d, b"0123456789abcdef", b"0123456789abcdef");
+        assert_eq!((r.files_on_disk, r.vcs_present, r.recorded), (1, false, 0));
+        assert!(
+            entries_from_files(&d, b"0123456789abcdef", b"0123456789abcdef")
+                .unwrap_err()
+                .contains("restore files/")
+        );
     }
 
     #[test]
