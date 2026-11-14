@@ -1,0 +1,508 @@
+{
+ "about": "Player rank table: cumulative EXP to reach each rank and the AP (stamina) maximum, from the Gamerch user-rank page (numbers only).",
+ "sources": [
+  {
+   "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+   "page": "https://web.archive.org/web/20241110173530/https://jojodr.gamerch.com/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%A9%E3%83%B3%E3%82%AF%E8%A1%A8",
+   "capture": "20241110173530",
+   "accessed": "2026-11-14"
+  }
+ ],
+ "ranks": [
+  {
+   "rank": 1,
+   "exp": 0,
+   "apMax": 20
+  },
+  {
+   "rank": 2,
+   "exp": 40,
+   "apMax": 21
+  },
+  {
+   "rank": 3,
+   "exp": 140,
+   "apMax": 22
+  },
+  {
+   "rank": 4,
+   "exp": 400,
+   "apMax": 23
+  },
+  {
+   "rank": 5,
+   "exp": 910,
+   "apMax": 24
+  },
+  {
+   "rank": 6,
+   "exp": 1720,
+   "apMax": 25
+  },
+  {
+   "rank": 7,
+   "exp": 2880,
+   "apMax": 26
+  },
+  {
+   "rank": 8,
+   "exp": 4440,
+   "apMax": 27
+  },
+  {
+   "rank": 9,
+   "exp": 6450,
+   "apMax": 28
+  },
+  {
+   "rank": 10,
+   "exp": 8960,
+   "apMax": 29
+  },
+  {
+   "rank": 11,
+   "exp": 12020,
+   "apMax": 30
+  },
+  {
+   "rank": 12,
+   "exp": 15680,
+   "apMax": 31
+  },
+  {
+   "rank": 13,
+   "exp": 19990,
+   "apMax": 32
+  },
+  {
+   "rank": 14,
+   "exp": 25000,
+   "apMax": 33
+  },
+  {
+   "rank": 15,
+   "exp": 30760,
+   "apMax": 34
+  },
+  {
+   "rank": 16,
+   "exp": 37320,
+   "apMax": 35
+  },
+  {
+   "rank": 17,
+   "exp": 44730,
+   "apMax": 36
+  },
+  {
+   "rank": 18,
+   "exp": 53040,
+   "apMax": 37
+  },
+  {
+   "rank": 19,
+   "exp": 62300,
+   "apMax": 38
+  },
+  {
+   "rank": 20,
+   "exp": 72560,
+   "apMax": 39
+  },
+  {
+   "rank": 21,
+   "exp": 83870,
+   "apMax": 40
+  },
+  {
+   "rank": 22,
+   "exp": 96280,
+   "apMax": 41
+  },
+  {
+   "rank": 23,
+   "exp": 109840,
+   "apMax": 42
+  },
+  {
+   "rank": 24,
+   "exp": 124600,
+   "apMax": 43
+  },
+  {
+   "rank": 25,
+   "exp": 140610,
+   "apMax": 44
+  },
+  {
+   "rank": 26,
+   "exp": 157920,
+   "apMax": 45
+  },
+  {
+   "rank": 27,
+   "exp": 176580,
+   "apMax": 46
+  },
+  {
+   "rank": 28,
+   "exp": 196640,
+   "apMax": 47
+  },
+  {
+   "rank": 29,
+   "exp": 218150,
+   "apMax": 48
+  },
+  {
+   "rank": 30,
+   "exp": 241160,
+   "apMax": 49
+  },
+  {
+   "rank": 31,
+   "exp": 265720,
+   "apMax": 50
+  },
+  {
+   "rank": 32,
+   "exp": 291880,
+   "apMax": 51
+  },
+  {
+   "rank": 33,
+   "exp": 319690,
+   "apMax": 52
+  },
+  {
+   "rank": 34,
+   "exp": 349200,
+   "apMax": 53
+  },
+  {
+   "rank": 35,
+   "exp": 380460,
+   "apMax": 54
+  },
+  {
+   "rank": 36,
+   "exp": 413520,
+   "apMax": 55
+  },
+  {
+   "rank": 37,
+   "exp": 448430,
+   "apMax": 56
+  },
+  {
+   "rank": 38,
+   "exp": 485240,
+   "apMax": 57
+  },
+  {
+   "rank": 39,
+   "exp": 524000,
+   "apMax": 58
+  },
+  {
+   "rank": 40,
+   "exp": 564760,
+   "apMax": 59
+  },
+  {
+   "rank": 41,
+   "exp": 607570,
+   "apMax": 60
+  },
+  {
+   "rank": 42,
+   "exp": 652480,
+   "apMax": 61
+  },
+  {
+   "rank": 43,
+   "exp": 699540,
+   "apMax": 62
+  },
+  {
+   "rank": 44,
+   "exp": 748800,
+   "apMax": 63
+  },
+  {
+   "rank": 45,
+   "exp": 800310,
+   "apMax": 64
+  },
+  {
+   "rank": 46,
+   "exp": 854120,
+   "apMax": 65
+  },
+  {
+   "rank": 47,
+   "exp": 910280,
+   "apMax": 66
+  },
+  {
+   "rank": 48,
+   "exp": 968840,
+   "apMax": 67
+  },
+  {
+   "rank": 49,
+   "exp": 1029850,
+   "apMax": 68
+  },
+  {
+   "rank": 50,
+   "exp": 1093360,
+   "apMax": 69
+  },
+  {
+   "rank": 51,
+   "exp": 1159420,
+   "apMax": 70
+  },
+  {
+   "rank": 52,
+   "exp": 1228080,
+   "apMax": 71
+  },
+  {
+   "rank": 53,
+   "exp": 1299390,
+   "apMax": 72
+  },
+  {
+   "rank": 54,
+   "exp": 1373400,
+   "apMax": 73
+  },
+  {
+   "rank": 55,
+   "exp": 1450160,
+   "apMax": 74
+  },
+  {
+   "rank": 56,
+   "exp": 1529720,
+   "apMax": 75
+  },
+  {
+   "rank": 57,
+   "exp": 1612130,
+   "apMax": 76
+  },
+  {
+   "rank": 58,
+   "exp": 1697440,
+   "apMax": 77
+  },
+  {
+   "rank": 59,
+   "exp": 1785700,
+   "apMax": 78
+  },
+  {
+   "rank": 60,
+   "exp": 1876960,
+   "apMax": 79
+  },
+  {
+   "rank": 61,
+   "exp": 1971270,
+   "apMax": 80
+  },
+  {
+   "rank": 62,
+   "exp": 2068680,
+   "apMax": 81
+  },
+  {
+   "rank": 63,
+   "exp": 2169240,
+   "apMax": 82
+  },
+  {
+   "rank": 64,
+   "exp": 2273000,
+   "apMax": 83
+  },
+  {
+   "rank": 65,
+   "exp": 2380010,
+   "apMax": 84
+  },
+  {
+   "rank": 66,
+   "exp": 2490320,
+   "apMax": 85
+  },
+  {
+   "rank": 67,
+   "exp": 2603980,
+   "apMax": 86
+  },
+  {
+   "rank": 68,
+   "exp": 2721040,
+   "apMax": 87
+  },
+  {
+   "rank": 69,
+   "exp": 2841550,
+   "apMax": 88
+  },
+  {
+   "rank": 70,
+   "exp": 2965560,
+   "apMax": 89
+  },
+  {
+   "rank": 71,
+   "exp": 3093120,
+   "apMax": 90
+  },
+  {
+   "rank": 72,
+   "exp": 3224280,
+   "apMax": 91
+  },
+  {
+   "rank": 73,
+   "exp": 3359090,
+   "apMax": 92
+  },
+  {
+   "rank": 74,
+   "exp": 3497600,
+   "apMax": 93
+  },
+  {
+   "rank": 75,
+   "exp": 3639860,
+   "apMax": 94
+  },
+  {
+   "rank": 76,
+   "exp": 3785920,
+   "apMax": 95
+  },
+  {
+   "rank": 77,
+   "exp": 3935830,
+   "apMax": 96
+  },
+  {
+   "rank": 78,
+   "exp": 4089640,
+   "apMax": 97
+  },
+  {
+   "rank": 79,
+   "exp": 4247400,
+   "apMax": 98
+  },
+  {
+   "rank": 80,
+   "exp": 4409160,
+   "apMax": 99
+  },
+  {
+   "rank": 81,
+   "exp": 4574970,
+   "apMax": 100
+  },
+  {
+   "rank": 82,
+   "exp": 4744880,
+   "apMax": 101
+  },
+  {
+   "rank": 83,
+   "exp": 4918940,
+   "apMax": 102
+  },
+  {
+   "rank": 84,
+   "exp": 5097200,
+   "apMax": 103
+  },
+  {
+   "rank": 85,
+   "exp": 5279710,
+   "apMax": 104
+  },
+  {
+   "rank": 86,
+   "exp": 5466520,
+   "apMax": 105
+  },
+  {
+   "rank": 87,
+   "exp": 5657680,
+   "apMax": 106
+  },
+  {
+   "rank": 88,
+   "exp": 5853240,
+   "apMax": 107
+  },
+  {
+   "rank": 89,
+   "exp": 6053250,
+   "apMax": 108
+  },
+  {
+   "rank": 90,
+   "exp": 6257760,
+   "apMax": 109
+  },
+  {
+   "rank": 91,
+   "exp": 6466820,
+   "apMax": 110
+  },
+  {
+   "rank": 92,
+   "exp": 6680480,
+   "apMax": 111
+  },
+  {
+   "rank": 93,
+   "exp": 6898790,
+   "apMax": 112
+  },
+  {
+   "rank": 94,
+   "exp": 7121800,
+   "apMax": 113
+  },
+  {
+   "rank": 95,
+   "exp": 7349560,
+   "apMax": 114
+  },
+  {
+   "rank": 96,
+   "exp": 7582120,
+   "apMax": 115
+  },
+  {
+   "rank": 97,
+   "exp": 7819530,
+   "apMax": 116
+  },
+  {
+   "rank": 98,
+   "exp": 8061840,
+   "apMax": 117
+  },
+  {
+   "rank": 99,
+   "exp": 8309100,
+   "apMax": 118
+  }
+ ]
+}

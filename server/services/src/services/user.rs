@@ -30,9 +30,10 @@ pub fn user_info_mini(p: &Profile) -> Value {
 pub fn user_info(p: &Profile) -> Value {
     let now = date(clock::now());
     json!({
-        "username": p.username, "userRank": p.rank, "birthday": "", "exp": p.exp, "nextExp": 100,
+        "username": p.username, "userRank": p.rank.max(1), "birthday": "", "exp": p.exp,
+        "nextExp": crate::collection::next_rank_exp(p.rank.max(1)),
         "clanId": 0, "clanName": "", "position": 0, "addStatus": 0,
-        "staminaPt": 50, "staminaMax": 50, "staminaUseTime": now, "staminaMaxTime": now,
+        "staminaPt": crate::collection::ap_max(p.rank.max(1)), "staminaMax": crate::collection::ap_max(p.rank.max(1)), "staminaUseTime": now, "staminaMaxTime": now,
         "battlePoint": 5, "battlePointMax": 5, "battlePointUseTime": now, "battlePointMaxTime": now,
         "raidPoint": 3, "raidPointMax": 3, "raidPointUseTime": now, "raidPointMaxTime": now,
         "statueNum": p.collection.statues.len(), "mindNum": 0, "mindMax": 300, "followNum": 0, "followMax": 50,

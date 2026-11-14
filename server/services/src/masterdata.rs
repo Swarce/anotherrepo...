@@ -443,6 +443,10 @@ pub fn generated_tables() -> Vec<(String, String)> {
             "statue_level_table".into(),
             doc("statue_level_table", crate::collection::statue_level_rows()),
         ),
+        (
+            "rank_table".into(),
+            doc("rank_table", crate::collection::rank_rows()),
+        ),
     ]
 }
 
