@@ -19,6 +19,10 @@ the settings page.
 ## Troubleshooting (Build 01)
 
 - **Patcher says "unverified build"**: your APK is not the verified 3.12.0 build.
-- **Install fails with a signature error**: uninstall the original first (back up `files/`).
+- **Install fails with a signature error, first install** (original game still installed): back
+  up `files/` with `adb pull` (docs/DEV-LOOP.md step 0), then uninstall the original once.
+- **Install fails with a signature error, update of a patched build**: **do not uninstall** — that
+  deletes your save. The new APK was signed with a different key; patch again with your original
+  key (`JDR_KEYSTORE`). The patcher normally refuses this case (key pin).
 - **The game shows a connection error at the title**: check that `jdr-server` is running and that
   `adb reverse tcp:18080 tcp:18080` was run after connecting the phone.
