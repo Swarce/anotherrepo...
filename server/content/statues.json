@@ -2,6 +2,11 @@
  "about": "Obtainable statues: identifiers from the player's own files (scan_statues.py), stats from community wikis where the match is unambiguous (each record cites its page). See docs/CONTENT.md.",
  "sources": [
   {
+   "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine snapshot)",
+   "page": "https://jojodr.gamerch.com/",
+   "accessed": "2026-11-14"
+  },
+  {
    "source": "Diamond Records Wiki (ShoutWiki)",
    "page": "https://jojodiamondrecords.shoutwiki.com/",
    "license": "CC BY-SA 3.0",
@@ -19,14 +24,29 @@
    "modelDataList": [
     "1000_0_jonathan"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 1,
+   "lv1": {
+    "hp": 581,
+    "atk": 224,
+    "def": 277
+   },
+   "lv99": {
+    "hp": 5808,
+    "atk": 2244,
+    "def": 2772
+   },
+   "maxTree": {
+    "hp": 11808,
+    "atk": 3144,
+    "def": 5622
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -35,14 +55,29 @@
    "modelDataList": [
     "1000_0_jonathan"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 1,
+   "lv1": {
+    "hp": 911,
+    "atk": 352,
+    "def": 435
+   },
+   "lv99": {
+    "hp": 9108,
+    "atk": 3519,
+    "def": 4347
+   },
+   "maxTree": {
+    "hp": 19608,
+    "atk": 4569,
+    "def": 9297
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -51,14 +86,25 @@
    "modelDataList": [
     "1000_0_jonathan"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 5,
+   "statueType": 1,
+   "lv1": {
+    "hp": 1346,
+    "atk": 520,
+    "def": 643
+   },
+   "lv99": {
+    "hp": 13464,
+    "atk": 5202,
+    "def": 6426
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -83,14 +129,28 @@
    "modelDataList": [
     "1000_0_jonathan"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 4,
+   "lv1": {
+    "hp": 662,
+    "atk": 393,
+    "def": 518
+   },
+   "lv99": {
+    "hp": 6624,
+    "atk": 3933,
+    "def": 5175
+   },
+   "maxTree": {
+    "hp": 14124,
+    "atk": 7683,
+    "def": 8925
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E3%82%B8%E3%83%A7%E3%83%8A%E3%82%B5%E3%83%B3%E3%83%BB%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC%E2%98%854%EF%BC%88%E4%BA%BA%E9%96%93%E3%81%AE%E5%8F%AF%E8%83%BD%E6%80%A7%EF%BC%89",
+    "capture": "20171113093839",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -99,14 +159,25 @@
    "modelDataList": [
     "1000_0_jonathan"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 5,
+   "statueType": 4,
+   "lv1": {
+    "hp": 979,
+    "atk": 581,
+    "def": 765
+   },
+   "lv99": {
+    "hp": 9792,
+    "atk": 5814,
+    "def": 7650
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -115,14 +186,25 @@
    "modelDataList": [
     "1000_0_jonathan"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 6,
+   "statueType": 3,
+   "lv1": {
+    "hp": 2040,
+    "atk": 1260,
+    "def": 1320
+   },
+   "lv99": {
+    "hp": 20400,
+    "atk": 12600,
+    "def": 13200
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%82%B8%E3%83%A7%E3%83%8A%E3%82%B5%E3%83%B3%E3%83%BB%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC%EF%BD%9E%E5%AE%BF%E5%91%BD%E3%81%AE%E6%98%9F%EF%BD%9E%E2%98%856%EF%BC%88%E8%82%A9%E3%81%AB%E6%B5%AE%E3%81%8B%E3%81%B6%E6%98%9F%E3%81%AE%E7%97%A3%EF%BC%89",
+    "capture": "20210410111941",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -131,14 +213,29 @@
    "modelDataList": [
     "1010_0_speedwagon"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 1,
+   "lv1": {
+    "hp": 388,
+    "atk": 285,
+    "def": 205
+   },
+   "lv99": {
+    "hp": 3876,
+    "atk": 2850,
+    "def": 2052
+   },
+   "maxTree": {
+    "hp": 6276,
+    "atk": 6900,
+    "def": 3400
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -147,14 +244,29 @@
    "modelDataList": [
     "1010_0_speedwagon"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 1,
+   "lv1": {
+    "hp": 643,
+    "atk": 472,
+    "def": 340
+   },
+   "lv99": {
+    "hp": 6426,
+    "atk": 4725,
+    "def": 3402
+   },
+   "maxTree": {
+    "hp": 10176,
+    "atk": 12150,
+    "def": 5352
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -163,14 +275,25 @@
    "modelDataList": [
     "1010_0_speedwagon"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 5,
+   "statueType": 1,
+   "lv1": {
+    "hp": 979,
+    "atk": 720,
+    "def": 518
+   },
+   "lv99": {
+    "hp": 9792,
+    "atk": 7200,
+    "def": 5184
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -179,14 +302,29 @@
    "modelDataList": [
     "1020_0_zeppeli"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 3,
+   "lv1": {
+    "hp": 428,
+    "atk": 277,
+    "def": 265
+   },
+   "lv99": {
+    "hp": 4284,
+    "atk": 2772,
+    "def": 2646
+   },
+   "maxTree": {
+    "hp": 6084,
+    "atk": 5772,
+    "def": 5496
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -195,14 +333,29 @@
    "modelDataList": [
     "1020_0_zeppeli"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 3,
+   "lv1": {
+    "hp": 683,
+    "atk": 442,
+    "def": 422
+   },
+   "lv99": {
+    "hp": 6834,
+    "atk": 4422,
+    "def": 4221
+   },
+   "maxTree": {
+    "hp": 8934,
+    "atk": 9597,
+    "def": 9171
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -467,14 +620,25 @@
    "modelDataList": [
     "1100_0_dio"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 6,
+   "statueType": 3,
+   "lv1": {
+    "hp": 2646,
+    "atk": 1386,
+    "def": 1071
+   },
+   "lv99": {
+    "hp": 26460,
+    "atk": 13860,
+    "def": 10710
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%83%87%E3%82%A3%E3%82%AA%E3%83%BB%E3%83%96%E3%83%A9%E3%83%B3%E3%83%89%E3%83%BC%EF%BD%9E%E6%9C%88%E4%B8%8B%E3%81%AE%E5%B8%9D%E7%8E%8B%EF%BD%9E%E2%98%856%EF%BC%88%E8%80%B3%E3%81%AB%E6%B5%AE%E3%81%8B%E3%81%B6%E6%B3%A2%E4%B9%B1%E3%81%AE%E9%BB%92%E5%AD%90%EF%BC%89",
+    "capture": "20210410120230",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -563,14 +727,29 @@
    "modelDataList": [
     "1120_0_bruford"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 1,
+   "lv1": {
+    "hp": 1069,
+    "atk": 742,
+    "def": 505
+   },
+   "lv99": {
+    "hp": 10692,
+    "atk": 7425,
+    "def": 5049
+   },
+   "maxTree": {
+    "hp": 15492,
+    "atk": 21225,
+    "def": 6849
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -611,14 +790,29 @@
    "modelDataList": [
     "1130_0_tarkus"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 3,
+   "lv1": {
+    "hp": 1106,
+    "atk": 640,
+    "def": 553
+   },
+   "lv99": {
+    "hp": 11058,
+    "atk": 6402,
+    "def": 5529
+   },
+   "maxTree": {
+    "hp": 20658,
+    "atk": 14802,
+    "def": 10329
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -643,14 +837,25 @@
    "modelDataList": [
     "1130_0_tarkus"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 5,
+   "statueType": 5,
+   "lv1": {
+    "hp": 1197,
+    "atk": 542,
+    "def": 570
+   },
+   "lv99": {
+    "hp": 11970,
+    "atk": 5415,
+    "def": 5700
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -659,14 +864,29 @@
    "modelDataList": [
     "2000_0_joseph"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 1,
+   "lv1": {
+    "hp": 554,
+    "atk": 224,
+    "def": 290
+   },
+   "lv99": {
+    "hp": 5544,
+    "atk": 2244,
+    "def": 2904
+   },
+   "maxTree": {
+    "hp": 11244,
+    "atk": 3144,
+    "def": 5904
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -675,14 +895,29 @@
    "modelDataList": [
     "2000_0_joseph"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 1,
+   "lv1": {
+    "hp": 869,
+    "atk": 352,
+    "def": 455
+   },
+   "lv99": {
+    "hp": 8694,
+    "atk": 3519,
+    "def": 4554
+   },
+   "maxTree": {
+    "hp": 18594,
+    "atk": 4569,
+    "def": 9804
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -691,14 +926,28 @@
    "modelDataList": [
     "2000_0_joseph"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 1,
+   "lv1": {
+    "hp": 1285,
+    "atk": 546,
+    "def": 673
+   },
+   "lv99": {
+    "hp": 12852,
+    "atk": 5202,
+    "def": 6732
+   },
+   "maxTree": {
+    "hp": 28452,
+    "atk": 7152,
+    "def": 14982
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%82%B8%E3%83%A7%E3%82%BB%E3%83%95%E3%83%BB%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC%EF%BC%882%E9%83%A8%EF%BC%89%E2%98%855%EF%BC%88%E6%B4%BB%E8%B7%AF%E8%A6%8B%E5%87%BA%E3%81%99%E7%94%9F%E5%91%BD%E3%81%AE%E5%A4%A7%E8%BB%8A%E8%BC%AA%EF%BC%89",
+    "capture": "20210410121225",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -739,14 +988,25 @@
    "modelDataList": [
     "2000_0_joseph"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 6,
+   "statueType": 3,
+   "lv1": {
+    "hp": 2455,
+    "atk": 1172,
+    "def": 949
+   },
+   "lv99": {
+    "hp": 24552,
+    "atk": 11718,
+    "def": 9486
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%82%B8%E3%83%A7%E3%82%BB%E3%83%95%E3%83%BB%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC%EF%BD%9E%E3%80%8E%E6%9C%80%E5%BE%8C%E3%81%AE%E6%B3%A2%E7%B4%8B%E3%80%8F%EF%BD%9E%E2%98%856%EF%BC%88%E8%BC%9D%E3%81%8D%E6%94%BE%E3%81%A4%E6%B3%A2%E7%B4%8B%E3%81%AE%E5%8A%9B%EF%BC%89",
+    "capture": "20210410122345",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -755,14 +1015,29 @@
    "modelDataList": [
     "2010_0_caesar"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 2,
+   "lv1": {
+    "hp": 490,
+    "atk": 284,
+    "def": 245
+   },
+   "lv99": {
+    "hp": 4902,
+    "atk": 2838,
+    "def": 2451
+   },
+   "maxTree": {
+    "hp": 8802,
+    "atk": 5688,
+    "def": 4401
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -771,14 +1046,25 @@
    "modelDataList": [
     "2010_0_caesar"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 4,
+   "statueType": 2,
+   "lv1": {
+    "hp": 775,
+    "atk": 449,
+    "def": 388
+   },
+   "lv99": {
+    "hp": 7752,
+    "atk": 4488,
+    "def": 3876
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -787,14 +1073,29 @@
    "modelDataList": [
     "2010_0_caesar"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 2,
+   "lv1": {
+    "hp": 1151,
+    "atk": 667,
+    "def": 576
+   },
+   "lv99": {
+    "hp": 11514,
+    "atk": 6666,
+    "def": 5757
+   },
+   "maxTree": {
+    "hp": 21114,
+    "atk": 15066,
+    "def": 10557
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -835,14 +1136,25 @@
    "modelDataList": [
     "2010_0_caesar"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 6,
+   "statueType": 1,
+   "lv1": {
+    "hp": 2940,
+    "atk": 2340,
+    "def": 2940
+   },
+   "lv99": {
+    "hp": 29400,
+    "atk": 23400,
+    "def": 29400
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%82%B7%E3%83%BC%E3%82%B6%E3%83%BC%EF%BD%9E%E4%B8%80%E6%97%8F%E3%81%B8%E3%81%AE%E8%AA%87%E3%82%8A%EF%BD%9E%E2%98%856%EF%BC%88%E8%99%B9%E8%89%B2%E3%81%AE%E3%82%B7%E3%83%A3%E3%83%9C%E3%83%B3%EF%BC%89",
+    "capture": "20241110182402",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -851,14 +1163,25 @@
    "modelDataList": [
     "2020_0_lisalisa"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 3,
+   "statueType": 2,
+   "lv1": {
+    "hp": 490,
+    "atk": 245,
+    "def": 284
+   },
+   "lv99": {
+    "hp": 4902,
+    "atk": 2451,
+    "def": 2838
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -867,14 +1190,29 @@
    "modelDataList": [
     "2020_0_lisalisa"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 2,
+   "lv1": {
+    "hp": 775,
+    "atk": 388,
+    "def": 449
+   },
+   "lv99": {
+    "hp": 7752,
+    "atk": 3876,
+    "def": 4488
+   },
+   "maxTree": {
+    "hp": 14966,
+    "atk": 7483,
+    "def": 9967
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -883,14 +1221,29 @@
    "modelDataList": [
     "2020_0_lisalisa"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 3,
+   "lv1": {
+    "hp": 1197,
+    "atk": 693,
+    "def": 598
+   },
+   "lv99": {
+    "hp": 11970,
+    "atk": 6930,
+    "def": 5985
+   },
+   "maxTree": {
+    "hp": 21570,
+    "atk": 15330,
+    "def": 10785
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -963,14 +1316,29 @@
    "modelDataList": [
     "2050_0_santana"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 1,
+   "lv1": {
+    "hp": 615,
+    "atk": 209,
+    "def": 221
+   },
+   "lv99": {
+    "hp": 6150,
+    "atk": 2091,
+    "def": 2214
+   },
+   "maxTree": {
+    "hp": 14550,
+    "atk": 3291,
+    "def": 3564
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -979,14 +1347,25 @@
    "modelDataList": [
     "2050_0_santana"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 4,
+   "statueType": 1,
+   "lv1": {
+    "hp": 990,
+    "atk": 337,
+    "def": 356
+   },
+   "lv99": {
+    "hp": 9900,
+    "atk": 3366,
+    "def": 3564
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -995,14 +1374,29 @@
    "modelDataList": [
     "2050_0_santana"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 1,
+   "lv1": {
+    "hp": 1485,
+    "atk": 505,
+    "def": 535
+   },
+   "lv99": {
+    "hp": 14850,
+    "atk": 5049,
+    "def": 5346
+   },
+   "maxTree": {
+    "hp": 38550,
+    "atk": 7899,
+    "def": 8646
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1027,14 +1421,25 @@
    "modelDataList": [
     "2050_0_santana"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 4,
+   "statueType": 5,
+   "lv1": {
+    "hp": 792,
+    "atk": 376,
+    "def": 416
+   },
+   "lv99": {
+    "hp": 7920,
+    "atk": 3762,
+    "def": 4158
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1043,14 +1448,29 @@
    "modelDataList": [
     "2060_0_wamuu"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 1,
+   "lv1": {
+    "hp": 428,
+    "atk": 227,
+    "def": 315
+   },
+   "lv99": {
+    "hp": 4284,
+    "atk": 2268,
+    "def": 3150
+   },
+   "maxTree": {
+    "hp": 6684,
+    "atk": 3618,
+    "def": 7350
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "license": "CC BY-SA 3.0",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Wamuu_%28Courage%29",
+    "revid": 3343,
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -1059,14 +1479,25 @@
    "modelDataList": [
     "2060_0_wamuu"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 4,
+   "statueType": 1,
+   "lv1": {
+    "hp": 683,
+    "atk": 362,
+    "def": 502
+   },
+   "lv99": {
+    "hp": 6834,
+    "atk": 3618,
+    "def": 5025
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1075,14 +1506,28 @@
    "modelDataList": [
     "2060_0_wamuu"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 1,
+   "lv1": {
+    "hp": 1020,
+    "atk": 540,
+    "def": 750
+   },
+   "lv99": {
+    "hp": 10200,
+    "atk": 5400,
+    "def": 7500
+   },
+   "maxTree": {
+    "hp": 18600,
+    "atk": 12300,
+    "def": 14400
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%83%AF%E3%83%A0%E3%82%A6%E2%98%855%EF%BC%88%E9%A2%A8%E3%81%AE%E4%BD%BF%E3%81%84%E6%89%8B%EF%BC%89",
+    "capture": "20210410111521",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -1123,14 +1568,25 @@
    "modelDataList": [
     "2070_0_esidisi"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 5,
+   "statueType": 3,
+   "lv1": {
+    "hp": 1500,
+    "atk": 540,
+    "def": 510
+   },
+   "lv99": {
+    "hp": 15000,
+    "atk": 5400,
+    "def": 5100
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1171,14 +1627,28 @@
    "modelDataList": [
     "2080_0_cars"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 2,
+   "lv1": {
+    "hp": 1386,
+    "atk": 662,
+    "def": 536
+   },
+   "lv99": {
+    "hp": 13860,
+    "atk": 6615,
+    "def": 5355
+   },
+   "maxTree": {
+    "hp": 29760,
+    "atk": 14565,
+    "def": 7455
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91%E3%82%AB%E3%83%BC%E3%82%BA%E2%98%855%EF%BC%88%E5%85%89%E8%BC%9D%E3%81%8F%E5%88%83%EF%BC%89",
+    "capture": "20171113093407",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -1222,14 +1692,28 @@
     "2081_0_cars",
     "2081_1_carsprotector"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 5,
+   "lv1": {
+    "hp": 1500,
+    "atk": 800,
+    "def": 600
+   },
+   "lv99": {
+    "hp": 15000,
+    "atk": 8000,
+    "def": 6000
+   },
+   "maxTree": {
+    "hp": 24600,
+    "atk": 16400,
+    "def": 10800
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%AD%A4%E9%AB%98%E3%80%91%E3%82%AB%E3%83%BC%E3%82%BA%E2%98%855%EF%BC%88%EF%BD%9E%E3%82%A2%E3%83%AB%E3%83%86%E3%82%A3%E3%83%A1%E3%83%83%E3%83%88%E3%83%BB%E3%82%B7%E3%82%A4%E3%83%B3%E3%82%B0%EF%BD%9E%EF%BC%89",
+    "capture": "20210410115005",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -1267,17 +1751,13 @@
     "atk": 6237,
     "def": 5049
    },
-   "maxTree": {
-    "hp": 22368,
-    "atk": 14337,
-    "def": 5949
-   },
+   "maxTree": null,
    "source": {
-    "source": "Diamond Records Wiki (ShoutWiki)",
-    "license": "CC BY-SA 3.0",
-    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Wired_Beck_%28Fighting_Spirit%29",
-    "revid": 3301,
-    "accessed": "2026-11-14"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1286,14 +1766,29 @@
    "modelDataList": [
     "2110_0_stroheim"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 3,
+   "lv1": {
+    "hp": 515,
+    "atk": 222,
+    "def": 222
+   },
+   "lv99": {
+    "hp": 5148,
+    "atk": 2223,
+    "def": 2223
+   },
+   "maxTree": {
+    "hp": 10848,
+    "atk": 4173,
+    "def": 4173
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1302,14 +1797,25 @@
    "modelDataList": [
     "2110_0_stroheim"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 4,
+   "statueType": 3,
+   "lv1": {
+    "hp": 845,
+    "atk": 365,
+    "def": 365
+   },
+   "lv99": {
+    "hp": 8448,
+    "atk": 3648,
+    "def": 3648
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1318,14 +1824,28 @@
    "modelDataList": [
     "2110_0_stroheim"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 3,
+   "lv1": {
+    "hp": 1280,
+    "atk": 553,
+    "def": 553
+   },
+   "lv99": {
+    "hp": 12804,
+    "atk": 5529,
+    "def": 5529
+   },
+   "maxTree": {
+    "hp": 29604,
+    "atk": 10329,
+    "def": 10329
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%83%AB%E3%83%89%E3%83%AB%E3%83%BB%E3%83%95%E3%82%A9%E3%83%B3%E3%83%BB%E3%82%B7%E3%83%A5%E3%83%88%E3%83%AD%E3%83%8F%E3%82%A4%E3%83%A0%E2%98%855%EF%BC%88%E7%B5%B6%E5%AF%BE%E7%9A%84%E3%81%AA%E8%87%AA%E4%BF%A1%EF%BC%89",
+    "capture": "20250821194249",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -1366,14 +1886,29 @@
    "modelDataList": [
     "2111_0_stroheim"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 1,
+   "lv1": {
+    "hp": 1020,
+    "atk": 750,
+    "def": 540
+   },
+   "lv99": {
+    "hp": 10200,
+    "atk": 7500,
+    "def": 5400
+   },
+   "maxTree": {
+    "hp": 13800,
+    "atk": 21300,
+    "def": 7800
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%82%B7%E3%83%A5%E3%83%88%E3%83%AD%E3%83%8F%E3%82%A4%E3%83%A0%E2%98%855%EF%BC%88%EF%BD%9E%E5%9C%B0%E7%8D%84%E3%81%8B%E3%82%89%E8%88%9E%E3%81%84%E6%88%BB%E3%81%A3%E3%81%9F%E3%81%9C%EF%BD%9E%EF%BC%89",
+    "capture": "20241110194055",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1383,14 +1918,29 @@
     "3000_0_jotaro",
     "3000_1_stapla"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 1,
+   "lv1": {
+    "hp": 449,
+    "atk": 330,
+    "def": 238
+   },
+   "lv99": {
+    "hp": 4488,
+    "atk": 3300,
+    "def": 2376
+   },
+   "maxTree": {
+    "hp": 6888,
+    "atk": 7500,
+    "def": 3726
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1400,14 +1950,29 @@
     "3000_0_jotaro",
     "3000_1_stapla"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 1,
+   "lv1": {
+    "hp": 704,
+    "atk": 518,
+    "def": 373
+   },
+   "lv99": {
+    "hp": 7038,
+    "atk": 5175,
+    "def": 3726
+   },
+   "maxTree": {
+    "hp": 10038,
+    "atk": 12825,
+    "def": 5676
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1417,14 +1982,29 @@
     "3000_0_jotaro",
     "3000_1_stapla"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 1,
+   "lv1": {
+    "hp": 1040,
+    "atk": 765,
+    "def": 551
+   },
+   "lv99": {
+    "hp": 10404,
+    "atk": 7650,
+    "def": 5508
+   },
+   "maxTree": {
+    "hp": 14004,
+    "atk": 21450,
+    "def": 7908
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1451,14 +2031,25 @@
     "3000_0_jotaro",
     "3000_1_stapla"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 5,
+   "statueType": 5,
+   "lv1": {
+    "hp": 1285,
+    "atk": 612,
+    "def": 581
+   },
+   "lv99": {
+    "hp": 12852,
+    "atk": 6120,
+    "def": 5814
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1519,14 +2110,29 @@
     "3002_0_jotaro",
     "3002_1_stapla"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 2,
+   "lv1": {
+    "hp": 1456,
+    "atk": 526,
+    "def": 492
+   },
+   "lv99": {
+    "hp": 14556,
+    "atk": 5258,
+    "def": 4916
+   },
+   "maxTree": {
+    "hp": 42156,
+    "atk": 7658,
+    "def": 6716
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1535,14 +2141,29 @@
    "modelDataList": [
     "3010_0_joseph3"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 2,
+   "lv1": {
+    "hp": 428,
+    "atk": 265,
+    "def": 277
+   },
+   "lv99": {
+    "hp": 4284,
+    "atk": 2646,
+    "def": 2772
+   },
+   "maxTree": {
+    "hp": 6084,
+    "atk": 5496,
+    "def": 5772
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1551,14 +2172,29 @@
    "modelDataList": [
     "3010_0_joseph3"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 2,
+   "lv1": {
+    "hp": 683,
+    "atk": 422,
+    "def": 442
+   },
+   "lv99": {
+    "hp": 6834,
+    "atk": 4221,
+    "def": 4422
+   },
+   "maxTree": {
+    "hp": 8934,
+    "atk": 9171,
+    "def": 9672
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1567,14 +2203,28 @@
    "modelDataList": [
     "3010_0_joseph3"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 2,
+   "lv1": {
+    "hp": 1020,
+    "atk": 630,
+    "def": 660
+   },
+   "lv99": {
+    "hp": 10200,
+    "atk": 6300,
+    "def": 6600
+   },
+   "maxTree": {
+    "hp": 12900,
+    "atk": 14850,
+    "def": 14700
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91%E3%82%B8%E3%83%A7%E3%82%BB%E3%83%95%E3%83%BB%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC%EF%BC%883%E9%83%A8%EF%BC%89%E2%98%855%EF%BC%88%E7%9F%A5%E6%81%B5%E3%81%A8%E4%BA%8C%E3%81%A4%E3%81%AE%E5%8A%9B%EF%BC%89",
+    "capture": "20210410120917",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -1583,14 +2233,29 @@
    "modelDataList": [
     "3010_0_joseph3"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 4,
+   "lv1": {
+    "hp": 1140,
+    "atk": 750,
+    "def": 480
+   },
+   "lv99": {
+    "hp": 11400,
+    "atk": 7500,
+    "def": 4800
+   },
+   "maxTree": {
+    "hp": 23400,
+    "atk": 13500,
+    "def": 10800
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1600,14 +2265,25 @@
     "3020_0_abdul",
     "3020_1_mred"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 3,
+   "statueType": 2,
+   "lv1": {
+    "hp": 479,
+    "atk": 277,
+    "def": 239
+   },
+   "lv99": {
+    "hp": 4788,
+    "atk": 2772,
+    "def": 2394
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1617,14 +2293,29 @@
     "3020_0_abdul",
     "3020_1_mred"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 2,
+   "lv1": {
+    "hp": 764,
+    "atk": 442,
+    "def": 382
+   },
+   "lv99": {
+    "hp": 7638,
+    "atk": 4422,
+    "def": 3819
+   },
+   "maxTree": {
+    "hp": 13938,
+    "atk": 9372,
+    "def": 6969
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1634,14 +2325,29 @@
     "3020_0_abdul",
     "3020_1_mred"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 3,
+   "lv1": {
+    "hp": 1140,
+    "atk": 660,
+    "def": 570
+   },
+   "lv99": {
+    "hp": 11400,
+    "atk": 6600,
+    "def": 5700
+   },
+   "maxTree": {
+    "hp": 21000,
+    "atk": 15000,
+    "def": 10500
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1668,14 +2374,25 @@
     "3020_0_abdul",
     "3020_1_mred"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 5,
+   "statueType": 4,
+   "lv1": {
+    "hp": 1080,
+    "atk": 720,
+    "def": 540
+   },
+   "lv99": {
+    "hp": 10800,
+    "atk": 7200,
+    "def": 5400
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1685,14 +2402,25 @@
     "3020_0_abdul",
     "3020_1_mred"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 6,
+   "statueType": 1,
+   "lv1": {
+    "hp": 2040,
+    "atk": 1320,
+    "def": 1260
+   },
+   "lv99": {
+    "hp": 20400,
+    "atk": 13200,
+    "def": 12600
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1702,14 +2430,29 @@
     "3030_0_noriaki",
     "3030_1_hgreen"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 2,
+   "lv1": {
+    "hp": 542,
+    "atk": 284,
+    "def": 219
+   },
+   "lv99": {
+    "hp": 5418,
+    "atk": 2838,
+    "def": 2193
+   },
+   "maxTree": {
+    "hp": 11118,
+    "atk": 5838,
+    "def": 3093
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1719,14 +2462,29 @@
     "3030_0_noriaki",
     "3030_1_hgreen"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 2,
+   "lv1": {
+    "hp": 857,
+    "atk": 449,
+    "def": 347
+   },
+   "lv99": {
+    "hp": 8568,
+    "atk": 4488,
+    "def": 3468
+   },
+   "maxTree": {
+    "hp": 18468,
+    "atk": 9738,
+    "def": 4518
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1736,14 +2494,28 @@
     "3030_0_noriaki",
     "3030_1_hgreen"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 2,
+   "lv1": {
+    "hp": 1323,
+    "atk": 693,
+    "def": 536
+   },
+   "lv99": {
+    "hp": 13230,
+    "atk": 6930,
+    "def": 5355
+   },
+   "maxTree": {
+    "hp": 28830,
+    "atk": 15180,
+    "def": 7305
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91%E8%8A%B1%E4%BA%AC%E9%99%A2%E5%85%B8%E6%98%8E%E2%98%855%EF%BC%88%E6%9C%80%E6%9C%9F%E3%81%AE%E3%82%A8%E3%83%A1%E3%83%A9%E3%83%AB%E3%83%89%E3%83%BB%E3%82%B9%E3%83%97%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%EF%BC%89",
+    "capture": "20210410120447",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -1753,14 +2525,29 @@
     "3030_0_noriaki",
     "3030_1_hgreen"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 4,
+   "lv1": {
+    "hp": 1163,
+    "atk": 673,
+    "def": 581
+   },
+   "lv99": {
+    "hp": 11628,
+    "atk": 6732,
+    "def": 5814
+   },
+   "maxTree": {
+    "hp": 23628,
+    "atk": 12732,
+    "def": 11814
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1821,14 +2608,29 @@
     "3040_0_polnareff",
     "3040_1_chariot"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 1,
+   "lv1": {
+    "hp": 464,
+    "atk": 322,
+    "def": 219
+   },
+   "lv99": {
+    "hp": 4644,
+    "atk": 3225,
+    "def": 2193
+   },
+   "maxTree": {
+    "hp": 7344,
+    "atk": 6825,
+    "def": 3393
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1838,14 +2640,29 @@
     "3040_0_polnareff",
     "3040_1_chariot"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 1,
+   "lv1": {
+    "hp": 734,
+    "atk": 510,
+    "def": 347
+   },
+   "lv99": {
+    "hp": 7344,
+    "atk": 5100,
+    "def": 3468
+   },
+   "maxTree": {
+    "hp": 11244,
+    "atk": 12750,
+    "def": 5118
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1855,14 +2672,28 @@
     "3040_0_polnareff",
     "3040_1_chariot"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 1,
+   "lv1": {
+    "hp": 1090,
+    "atk": 758,
+    "def": 515
+   },
+   "lv99": {
+    "hp": 10908,
+    "atk": 7575,
+    "def": 5151
+   },
+   "maxTree": {
+    "hp": 17508,
+    "atk": 19425,
+    "def": 8001
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%82%B8%E3%83%A3%E3%83%B3%E3%83%BB%E3%83%94%E3%82%A8%E3%83%BC%E3%83%AB%E3%83%BB%E3%83%9D%E3%83%AB%E3%83%8A%E3%83%AC%E3%83%95%E2%98%855%EF%BC%88%E5%8D%93%E8%B6%8A%E3%81%97%E3%81%9F%E5%89%A3%E6%8A%80%E3%81%AE%E6%8C%81%E3%81%A1%E4%B8%BB%EF%BC%89",
+    "capture": "20210410114242",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -1940,14 +2771,29 @@
     "3050_0_iggy",
     "3050_1_fool"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 3,
+   "lv1": {
+    "hp": 454,
+    "atk": 214,
+    "def": 315
+   },
+   "lv99": {
+    "hp": 4536,
+    "atk": 2142,
+    "def": 3150
+   },
+   "maxTree": {
+    "hp": 7236,
+    "atk": 3342,
+    "def": 7350
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1957,14 +2803,29 @@
     "3050_0_iggy",
     "3050_1_fool"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 3,
+   "lv1": {
+    "hp": 724,
+    "atk": 342,
+    "def": 502
+   },
+   "lv99": {
+    "hp": 7236,
+    "atk": 3417,
+    "def": 5025
+   },
+   "maxTree": {
+    "hp": 11136,
+    "atk": 5067,
+    "def": 12675
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -1974,14 +2835,28 @@
     "3050_0_iggy",
     "3050_1_fool"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 3,
+   "lv1": {
+    "hp": 1080,
+    "atk": 510,
+    "def": 750
+   },
+   "lv99": {
+    "hp": 10800,
+    "atk": 5100,
+    "def": 7500
+   },
+   "maxTree": {
+    "hp": 17400,
+    "atk": 7950,
+    "def": 19575
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%82%A4%E3%82%AE%E3%83%BC%E2%98%855%EF%BC%88%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E6%95%85%E3%81%AE%E5%BC%B7%E3%81%95%EF%BC%89",
+    "capture": "20210410111448",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -1991,14 +2866,25 @@
     "3050_0_iggy",
     "3050_1_fool"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 6,
+   "statueType": 3,
+   "lv1": {
+    "hp": 1620,
+    "atk": 765,
+    "def": 1125
+   },
+   "lv99": {
+    "hp": 16200,
+    "atk": 7650,
+    "def": 11250
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%82%A4%E3%82%AE%E3%83%BC%E2%98%856%EF%BC%88%E5%A4%A7%E3%81%8D%E3%81%AA%E6%85%8B%E5%BA%A6%E3%81%AE%E5%B0%8F%E3%81%95%E3%81%84%E4%BD%93%EF%BC%89",
+    "capture": "20241110190420",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2093,14 +2979,25 @@
     "3070_0_tennille",
     "3070_1_dbmoon"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 5,
+   "statueType": 2,
+   "lv1": {
+    "hp": 1320,
+    "atk": 570,
+    "def": 570
+   },
+   "lv99": {
+    "hp": 13200,
+    "atk": 5700,
+    "def": 5700
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2158,14 +3055,25 @@
     "3100_0_rsole",
     "3100_1_yellowt"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 3,
+   "statueType": 3,
+   "lv1": {
+    "hp": 528,
+    "atk": 204,
+    "def": 252
+   },
+   "lv99": {
+    "hp": 5280,
+    "atk": 2040,
+    "def": 2520
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2175,14 +3083,25 @@
     "3100_0_rsole",
     "3100_1_yellowt"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 4,
+   "statueType": 3,
+   "lv1": {
+    "hp": 858,
+    "atk": 332,
+    "def": 410
+   },
+   "lv99": {
+    "hp": 8580,
+    "atk": 3315,
+    "def": 4095
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2192,14 +3111,29 @@
     "3100_0_rsole",
     "3100_1_yellowt"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 3,
+   "lv1": {
+    "hp": 1294,
+    "atk": 500,
+    "def": 617
+   },
+   "lv99": {
+    "hp": 12936,
+    "atk": 4998,
+    "def": 6174
+   },
+   "maxTree": {
+    "hp": 30936,
+    "atk": 5598,
+    "def": 14574
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2241,14 +3175,25 @@
    "modelDataList": [
     "3110_0_hol"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 4,
+   "statueType": 2,
+   "lv1": {
+    "hp": 884,
+    "atk": 422,
+    "def": 342
+   },
+   "lv99": {
+    "hp": 8844,
+    "atk": 4221,
+    "def": 3417
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2273,14 +3218,28 @@
    "modelDataList": [
     "3110_0_hol"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 4,
+   "lv1": {
+    "hp": 960,
+    "atk": 750,
+    "def": 570
+   },
+   "lv99": {
+    "hp": 9600,
+    "atk": 7500,
+    "def": 5700
+   },
+   "maxTree": {
+    "hp": 21600,
+    "atk": 13500,
+    "def": 11700
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E3%83%9B%E3%83%AB%E3%83%BB%E3%83%9B%E3%83%BC%E3%82%B9%E2%98%855%EF%BC%88%E5%AE%9F%E5%8A%9B%E3%81%AE%E7%99%BA%E6%8F%AE%EF%BC%89",
+    "capture": "20171113091359",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -2323,14 +3282,25 @@
     "3150_0_enya",
     "3150_1_justice"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 4,
+   "statueType": 2,
+   "lv1": {
+    "hp": 673,
+    "atk": 416,
+    "def": 436
+   },
+   "lv99": {
+    "hp": 6732,
+    "atk": 4158,
+    "def": 4356
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2340,14 +3310,29 @@
     "3150_0_enya",
     "3150_1_justice"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 2,
+   "lv1": {
+    "hp": 1010,
+    "atk": 624,
+    "def": 653
+   },
+   "lv99": {
+    "hp": 10098,
+    "atk": 6237,
+    "def": 6534
+   },
+   "maxTree": {
+    "hp": 11108,
+    "atk": 14637,
+    "def": 15534
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2391,14 +3376,29 @@
     "3210_0_ndoul",
     "3210_1_geb"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 2,
+   "lv1": {
+    "hp": 418,
+    "atk": 221,
+    "def": 308
+   },
+   "lv99": {
+    "hp": 4182,
+    "atk": 2214,
+    "def": 3075
+   },
+   "maxTree": {
+    "hp": 7382,
+    "atk": 3564,
+    "def": 7275
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2408,14 +3408,25 @@
     "3210_0_ndoul",
     "3210_1_geb"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 4,
+   "statueType": 2,
+   "lv1": {
+    "hp": 673,
+    "atk": 356,
+    "def": 495
+   },
+   "lv99": {
+    "hp": 6732,
+    "atk": 3564,
+    "def": 4950
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2442,14 +3453,29 @@
     "3210_0_ndoul",
     "3210_1_geb"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 5,
+   "lv1": {
+    "hp": 832,
+    "atk": 376,
+    "def": 396
+   },
+   "lv99": {
+    "hp": 8316,
+    "atk": 3762,
+    "def": 3960
+   },
+   "maxTree": {
+    "hp": 23616,
+    "atk": 5412,
+    "def": 5910
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2459,14 +3485,25 @@
     "3210_0_ndoul",
     "3210_1_geb"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 5,
+   "statueType": 5,
+   "lv1": {
+    "hp": 1247,
+    "atk": 564,
+    "def": 594
+   },
+   "lv99": {
+    "hp": 12474,
+    "atk": 5643,
+    "def": 5940
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2510,14 +3547,24 @@
     "3240_0_chaka",
     "3240_1_anubis"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 5,
+   "statueType": 5,
+   "lv1": {
+    "hp": 1235,
+    "atk": 588,
+    "def": 559
+   },
+   "lv99": {
+    "hp": 12348,
+    "atk": 5880,
+    "def": 5586
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%AD%A4%E9%AB%98%E3%80%91%E3%83%81%E3%83%A3%E3%82%AB%E2%98%855%EF%BC%88%E6%84%8F%E5%BF%97%E3%82%92%E6%8C%81%E3%81%A4%E5%88%80%EF%BC%89",
+    "capture": "20210410111839",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -2558,14 +3605,29 @@
    "modelDataList": [
     "3270_0_mariah"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 2,
+   "lv1": {
+    "hp": 1000,
+    "atk": 529,
+    "def": 735
+   },
+   "lv99": {
+    "hp": 9996,
+    "atk": 5292,
+    "def": 7350
+   },
+   "maxTree": {
+    "hp": 13446,
+    "atk": 7692,
+    "def": 21150
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2591,14 +3653,29 @@
     "3300_0_pshop",
     "3300_1_horus"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 2,
+   "lv1": {
+    "hp": 418,
+    "atk": 271,
+    "def": 258
+   },
+   "lv99": {
+    "hp": 4182,
+    "atk": 2706,
+    "def": 2583
+   },
+   "maxTree": {
+    "hp": 5982,
+    "atk": 5706,
+    "def": 5433
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2608,14 +3685,29 @@
     "3300_0_pshop",
     "3300_1_horus"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 2,
+   "lv1": {
+    "hp": 673,
+    "atk": 436,
+    "def": 416
+   },
+   "lv99": {
+    "hp": 6732,
+    "atk": 4356,
+    "def": 4158
+   },
+   "maxTree": {
+    "hp": 8832,
+    "atk": 9606,
+    "def": 9108
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2625,14 +3717,29 @@
     "3300_0_pshop",
     "3300_1_horus"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 2,
+   "lv1": {
+    "hp": 1010,
+    "atk": 653,
+    "def": 624
+   },
+   "lv99": {
+    "hp": 10098,
+    "atk": 6534,
+    "def": 6237
+   },
+   "maxTree": {
+    "hp": 13998,
+    "atk": 14784,
+    "def": 14037
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2642,14 +3749,29 @@
     "3300_0_pshop",
     "3300_1_horus"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 6,
+   "statueType": 2,
+   "lv1": {
+    "hp": 1520,
+    "atk": 983,
+    "def": 939
+   },
+   "lv99": {
+    "hp": 15198,
+    "atk": 9834,
+    "def": 9387
+   },
+   "maxTree": {
+    "hp": 25098,
+    "atk": 23034,
+    "def": 21387
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "license": "CC BY-SA 3.0",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Pet_Shop_%28Tactical%29",
+    "revid": 4638,
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -2659,14 +3781,29 @@
     "3321_0_dio3",
     "3321_1_world"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 3,
+   "lv1": {
+    "hp": 1311,
+    "atk": 862,
+    "def": 552
+   },
+   "lv99": {
+    "hp": 13110,
+    "atk": 8625,
+    "def": 5520
+   },
+   "maxTree": {
+    "hp": 17910,
+    "atk": 22425,
+    "def": 7320
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91DIO%20%E2%98%855%EF%BC%88%EF%BD%9E%E6%9C%80%E9%AB%98%E3%81%AB%E3%80%8C%E3%83%8F%E3%82%A4%EF%BC%81%E3%80%8D%E3%81%A3%E3%81%A6%E3%82%84%E3%81%A4%E3%81%A0%EF%BD%9E%EF%BC%89",
+    "capture": "20210410111656",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2676,14 +3813,25 @@
     "3321_0_dio3",
     "3321_1_world"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 6,
+   "statueType": 5,
+   "lv1": {
+    "hp": 2376,
+    "atk": 1584,
+    "def": 1188
+   },
+   "lv99": {
+    "hp": 23760,
+    "atk": 15840,
+    "def": 11880
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%AD%A4%E9%AB%98%E3%80%91DIO%EF%BD%9E%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%89%E3%81%AE%E3%83%91%E3%83%AF%E3%83%BC%E3%82%92%E5%85%A8%E9%96%8B%E3%81%A0%E3%83%83%EF%BC%81%EF%BD%9E%E2%98%856%EF%BC%88%E3%81%AA%E3%81%98%E3%82%80%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%AE%E8%A1%80%EF%BC%89",
+    "capture": "20210410121538",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2693,14 +3841,25 @@
     "3322_0_dio3",
     "3322_1_world"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 6,
+   "statueType": 2,
+   "lv1": {
+    "hp": 4032,
+    "atk": 2802,
+    "def": 2112
+   },
+   "lv99": {
+    "hp": 40320,
+    "atk": 28020,
+    "def": 21120
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91DIO%EF%BD%9E%E3%81%99%E3%81%A7%E3%81%AB%E6%89%8B%E3%81%AF%E6%89%93%E3%81%A3%E3%81%9F%EF%BC%81%EF%BC%81%EF%BD%9E%E2%98%856%EF%BC%88%E5%BF%B5%E5%86%99%E3%81%AB%E6%98%A0%E3%82%8B%E5%A7%BF%EF%BC%89",
+    "capture": "20241110183141",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2761,14 +3920,28 @@
     "3330_0_vanilla",
     "3330_1_cream"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 1,
+   "lv1": {
+    "hp": 1260,
+    "atk": 660,
+    "def": 510
+   },
+   "lv99": {
+    "hp": 12600,
+    "atk": 6600,
+    "def": 5100
+   },
+   "maxTree": {
+    "hp": 28200,
+    "atk": 14850,
+    "def": 7050
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%83%B4%E3%82%A1%E3%83%8B%E3%83%A9%E3%83%BB%E3%82%A2%E3%82%A4%E3%82%B9%E2%98%855%EF%BC%88%E7%8B%82%E4%BF%A1%E8%80%85%E3%81%AE%E5%A5%89%E4%BB%95%EF%BC%89",
+    "capture": "20210410115636",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -2812,14 +3985,25 @@
     "4000_0_josuke",
     "4000_1_crazyd"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 4,
+   "statueType": 1,
+   "lv1": {
+    "hp": 704,
+    "atk": 455,
+    "def": 435
+   },
+   "lv99": {
+    "hp": 7038,
+    "atk": 4554,
+    "def": 4347
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2829,14 +4013,28 @@
     "4000_0_josuke",
     "4000_1_crazyd"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 1,
+   "lv1": {
+    "hp": 1040,
+    "atk": 673,
+    "def": 643
+   },
+   "lv99": {
+    "hp": 10404,
+    "atk": 6732,
+    "def": 6424
+   },
+   "maxTree": {
+    "hp": 11604,
+    "atk": 15732,
+    "def": 14826
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E6%9D%B1%E6%96%B9%E4%BB%97%E5%8A%A9%E2%98%855%EF%BC%88%E7%A0%95%E3%81%91%E3%81%AA%E3%81%84%E9%BB%84%E9%87%91%E3%81%AE%E7%B2%BE%E7%A5%9E%EF%BC%89",
+    "capture": "20210410110832",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -2863,14 +4061,25 @@
     "4000_0_josuke",
     "4000_1_crazyd"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 4,
+   "statueType": 4,
+   "lv1": {
+    "hp": 787,
+    "atk": 331,
+    "def": 518
+   },
+   "lv99": {
+    "hp": 7866,
+    "atk": 3312,
+    "def": 5175
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2880,14 +4089,24 @@
     "4000_0_josuke",
     "4000_1_crazyd"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 6,
+   "statueType": 4,
+   "lv1": {
+    "hp": 2009,
+    "atk": 1339,
+    "def": 1004
+   },
+   "lv99": {
+    "hp": 20088,
+    "atk": 13392,
+    "def": 10044
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E6%9D%B1%E6%96%B9%E4%BB%97%E5%8A%A9%EF%BD%9E%E7%94%BA%E3%82%92%E8%AD%B7%E3%82%8B%E8%80%85%EF%BD%9E%E2%98%856%EF%BC%88%E5%8A%9B%E5%BC%B7%E3%81%8F%E5%84%AA%E3%81%97%E3%81%8D%E7%9E%B3%EF%BC%89",
+    "capture": "20210410121132",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -2914,14 +4133,29 @@
     "4010_0_koichi",
     "4010_1_echoes1"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 2,
+   "lv1": {
+    "hp": 529,
+    "atk": 214,
+    "def": 277
+   },
+   "lv99": {
+    "hp": 5292,
+    "atk": 2142,
+    "def": 2772
+   },
+   "maxTree": {
+    "hp": 10992,
+    "atk": 3042,
+    "def": 5772
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2931,14 +4165,29 @@
     "4010_0_koichi",
     "4010_1_echoes1"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 4,
+   "lv1": {
+    "hp": 1500,
+    "atk": 570,
+    "def": 480
+   },
+   "lv99": {
+    "hp": 15000,
+    "atk": 5700,
+    "def": 4800
+   },
+   "maxTree": {
+    "hp": 27000,
+    "atk": 11700,
+    "def": 10800
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2948,14 +4197,25 @@
     "4011_0_koichi",
     "4011_1_echoes2"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 4,
+   "statueType": 1,
+   "lv1": {
+    "hp": 882,
+    "atk": 357,
+    "def": 462
+   },
+   "lv99": {
+    "hp": 8820,
+    "atk": 3570,
+    "def": 4620
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -2965,14 +4225,29 @@
     "4011_0_koichi",
     "4011_1_echoes2"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 1,
+   "lv1": {
+    "hp": 1298,
+    "atk": 525,
+    "def": 680
+   },
+   "lv99": {
+    "hp": 12978,
+    "atk": 5253,
+    "def": 6798
+   },
+   "maxTree": {
+    "hp": 29778,
+    "atk": 5853,
+    "def": 15798
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3050,14 +4325,29 @@
     "4012_0_koichi",
     "4012_1_echoes3"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 2,
+   "lv1": {
+    "hp": 1310,
+    "atk": 530,
+    "def": 686
+   },
+   "lv99": {
+    "hp": 13104,
+    "atk": 5304,
+    "def": 6864
+   },
+   "maxTree": {
+    "hp": 28704,
+    "atk": 7254,
+    "def": 15114
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3067,14 +4357,29 @@
     "4012_0_koichi",
     "4012_1_echoes3"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 4,
+   "lv1": {
+    "hp": 690,
+    "atk": 262,
+    "def": 221
+   },
+   "lv99": {
+    "hp": 6900,
+    "atk": 2622,
+    "def": 2208
+   },
+   "maxTree": {
+    "hp": 11400,
+    "atk": 4872,
+    "def": 4458
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3084,14 +4389,29 @@
     "4020_0_okuyasu",
     "4020_1_thehand"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 3,
+   "lv1": {
+    "hp": 454,
+    "atk": 315,
+    "def": 214
+   },
+   "lv99": {
+    "hp": 4536,
+    "atk": 3150,
+    "def": 2142
+   },
+   "maxTree": {
+    "hp": 6936,
+    "atk": 7350,
+    "def": 3492
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3101,14 +4421,29 @@
     "4020_0_okuyasu",
     "4020_1_thehand"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 3,
+   "lv1": {
+    "hp": 724,
+    "atk": 502,
+    "def": 342
+   },
+   "lv99": {
+    "hp": 7236,
+    "atk": 5025,
+    "def": 3417
+   },
+   "maxTree": {
+    "hp": 10536,
+    "atk": 12675,
+    "def": 5367
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3118,14 +4453,28 @@
     "4020_0_okuyasu",
     "4020_1_thehand"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 3,
+   "lv1": {
+    "hp": 1026,
+    "atk": 713,
+    "def": 485
+   },
+   "lv99": {
+    "hp": 10260,
+    "atk": 7125,
+    "def": 4845
+   },
+   "maxTree": {
+    "hp": 15960,
+    "atk": 18975,
+    "def": 8145
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E8%99%B9%E6%9D%91%E5%84%84%E6%B3%B0%E2%98%855%EF%BC%88%E5%85%84%E3%81%8B%E3%82%89%E3%81%AE%E8%87%AA%E7%AB%8B%EF%BC%89",
+    "capture": "20241110184755",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -3135,14 +4484,25 @@
     "4020_0_okuyasu",
     "4020_1_thehand"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 6,
+   "statueType": 3,
+   "lv1": {
+    "hp": 1566,
+    "atk": 1088,
+    "def": 740
+   },
+   "lv99": {
+    "hp": 15660,
+    "atk": 10875,
+    "def": 7395
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E8%99%B9%E6%9D%91%E5%84%84%E6%B3%B0%E2%98%856%EF%BC%88%E7%A9%BA%E9%96%93%E3%82%92%E5%89%8A%E3%82%8A%E5%8F%96%E3%82%8B%EF%BC%89",
+    "capture": "20241110174830",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3152,14 +4512,29 @@
     "4020_0_okuyasu",
     "4020_1_thehand"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 4,
+   "lv1": {
+    "hp": 1083,
+    "atk": 570,
+    "def": 599
+   },
+   "lv99": {
+    "hp": 10830,
+    "atk": 5700,
+    "def": 5985
+   },
+   "maxTree": {
+    "hp": 22830,
+    "atk": 11700,
+    "def": 11985
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "license": "CC BY-SA 3.0",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Okuyasu_Nijimura_%28Unity%29",
+    "revid": 4621,
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -3169,14 +4544,29 @@
     "4030_0_rohan",
     "4030_1_door"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 2,
+   "lv1": {
+    "hp": 439,
+    "atk": 232,
+    "def": 322
+   },
+   "lv99": {
+    "hp": 4386,
+    "atk": 2322,
+    "def": 3225
+   },
+   "maxTree": {
+    "hp": 6786,
+    "atk": 3672,
+    "def": 7425
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3186,14 +4576,25 @@
     "4030_0_rohan",
     "4030_1_door"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 4,
+   "statueType": 2,
+   "lv1": {
+    "hp": 694,
+    "atk": 367,
+    "def": 510
+   },
+   "lv99": {
+    "hp": 6936,
+    "atk": 3671,
+    "def": 5100
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3203,14 +4604,29 @@
     "4030_0_rohan",
     "4030_1_door"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 2,
+   "lv1": {
+    "hp": 1030,
+    "atk": 545,
+    "def": 758
+   },
+   "lv99": {
+    "hp": 10302,
+    "atk": 5454,
+    "def": 7575
+   },
+   "maxTree": {
+    "hp": 13902,
+    "atk": 7854,
+    "def": 21375
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3220,14 +4636,29 @@
     "4030_0_rohan",
     "4030_1_door"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 6,
+   "statueType": 2,
+   "lv1": {
+    "hp": 1540,
+    "atk": 815,
+    "def": 1133
+   },
+   "lv99": {
+    "hp": 15402,
+    "atk": 8154,
+    "def": 11325
+   },
+   "maxTree": {
+    "hp": 24402,
+    "atk": 20754,
+    "def": 25725
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "license": "CC BY-SA 3.0",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Rohan_Kishibe_%28Tactical%29",
+    "revid": 4819,
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -3254,14 +4685,29 @@
     "4040_0_jotaro4",
     "4040_1_stapla4"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 2,
+   "lv1": {
+    "hp": 449,
+    "atk": 277,
+    "def": 290
+   },
+   "lv99": {
+    "hp": 4488,
+    "atk": 2772,
+    "def": 2904
+   },
+   "maxTree": {
+    "hp": 6288,
+    "atk": 5622,
+    "def": 5904
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3271,14 +4717,28 @@
     "4040_0_jotaro4",
     "4040_1_stapla4"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 4,
+   "lv1": {
+    "hp": 787,
+    "atk": 518,
+    "def": 331
+   },
+   "lv99": {
+    "hp": 7866,
+    "atk": 5175,
+    "def": 3312
+   },
+   "maxTree": {
+    "hp": 15366,
+    "atk": 8925,
+    "def": 7062
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%E2%98%854%EF%BC%88%E5%B0%8A%E6%95%AC%E3%82%92%E9%9B%86%E3%82%81%E3%82%8B%E7%B5%8C%E9%A8%93%E8%80%85%EF%BC%89",
+    "capture": "20170917161913",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -3288,14 +4748,24 @@
     "4040_0_jotaro4",
     "4040_1_stapla4"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 5,
+   "statueType": 4,
+   "lv1": {
+    "hp": 1208,
+    "atk": 795,
+    "def": 509
+   },
+   "lv99": {
+    "hp": 12084,
+    "atk": 7950,
+    "def": 5088
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%E2%98%855%EF%BC%88%E9%8B%AD%E3%81%8D%E8%A6%B3%E5%AF%9F%E7%9C%BC%EF%BC%89",
+    "capture": "20210410110307",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -3339,14 +4809,25 @@
     "4043_0_jotaro4",
     "4043_1_stapla4"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 6,
+   "statueType": 1,
+   "lv1": {
+    "hp": 3134,
+    "atk": 3082,
+    "def": 2443
+   },
+   "lv99": {
+    "hp": 31338,
+    "atk": 30825,
+    "def": 24426
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%EF%BD%9E%E3%81%9F%E3%81%9F%E3%81%A3%E3%81%93%E3%82%8F%E3%81%97%E3%81%A6%E3%82%84%E3%82%8B%E3%81%9C%EF%BD%9E%E2%98%856%EF%BC%88%E8%A6%8B%E3%82%8B%E3%81%A8%E8%A6%B3%E3%82%8B%E3%81%AE%E9%81%95%E3%81%84%EF%BC%89",
+    "capture": "20241110180940",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3355,14 +4836,29 @@
    "modelDataList": [
     "4080_0_yukako"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 1,
+   "lv1": {
+    "hp": 467,
+    "atk": 271,
+    "def": 234
+   },
+   "lv99": {
+    "hp": 4674,
+    "atk": 2706,
+    "def": 2337
+   },
+   "maxTree": {
+    "hp": 8576,
+    "atk": 5556,
+    "def": 4287
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3371,14 +4867,29 @@
    "modelDataList": [
     "4080_0_yukako"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 1,
+   "lv1": {
+    "hp": 752,
+    "atk": 436,
+    "def": 376
+   },
+   "lv99": {
+    "hp": 7524,
+    "atk": 4356,
+    "def": 3762
+   },
+   "maxTree": {
+    "hp": 13824,
+    "atk": 9306,
+    "def": 6912
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3387,14 +4898,24 @@
    "modelDataList": [
     "4080_0_yukako"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 5,
+   "statueType": 1,
+   "lv1": {
+    "hp": 1129,
+    "atk": 653,
+    "def": 564
+   },
+   "lv99": {
+    "hp": 11286,
+    "atk": 6534,
+    "def": 5643
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E5%B1%B1%E5%B2%B8%E7%94%B1%E8%8A%B1%E5%AD%90%E2%98%855%EF%BC%88%E8%BC%9D%E3%81%8F%E4%B9%99%E5%A5%B3%E3%81%AE%E7%84%A1%E6%95%B5%E3%81%AE%E8%82%89%E4%BD%93%EF%BC%89",
+    "capture": "20210410121414",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -3403,14 +4924,29 @@
    "modelDataList": [
     "4080_0_yukako"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 6,
+   "statueType": 1,
+   "lv1": {
+    "hp": 1699,
+    "atk": 983,
+    "def": 849
+   },
+   "lv99": {
+    "hp": 16986,
+    "atk": 9834,
+    "def": 8493
+   },
+   "maxTree": {
+    "hp": 28686,
+    "atk": 22434,
+    "def": 20193
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "license": "CC BY-SA 3.0",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Yukako_Yamagishi_%28Courage%29",
+    "revid": 4637,
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -3419,14 +4955,29 @@
    "modelDataList": [
     "4080_0_yukako"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 5,
+   "lv1": {
+    "hp": 1069,
+    "atk": 713,
+    "def": 525
+   },
+   "lv99": {
+    "hp": 10692,
+    "atk": 7128,
+    "def": 5246
+   },
+   "maxTree": {
+    "hp": 14292,
+    "atk": 21528,
+    "def": 7046
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3436,14 +4987,28 @@
     "4110_0_shigechi",
     "4110_1_harvest"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 3,
+   "lv1": {
+    "hp": 528,
+    "atk": 228,
+    "def": 228
+   },
+   "lv99": {
+    "hp": 5280,
+    "atk": 2280,
+    "def": 2280
+   },
+   "maxTree": {
+    "hp": 10981,
+    "atk": 4080,
+    "def": 4380
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E7%9F%A2%E5%AE%89%E5%AE%AE%E9%87%8D%E6%B8%85%E2%98%853%EF%BC%88%E5%B0%8F%E3%81%95%E3%81%8F%E4%BE%BF%E5%88%A9%E3%81%AA%E7%BE%A4%E4%BD%93%EF%BC%89",
+    "capture": "20171113092324",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -3453,14 +5018,25 @@
     "4110_0_shigechi",
     "4110_1_harvest"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 4,
+   "statueType": 3,
+   "lv1": {
+    "hp": 858,
+    "atk": 370,
+    "def": 370
+   },
+   "lv99": {
+    "hp": 8580,
+    "atk": 3705,
+    "def": 3705
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3470,14 +5046,28 @@
     "4110_0_shigechi",
     "4110_1_harvest"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 4,
+   "lv1": {
+    "hp": 1411,
+    "atk": 529,
+    "def": 529
+   },
+   "lv99": {
+    "hp": 14112,
+    "atk": 5292,
+    "def": 5292
+   },
+   "maxTree": {
+    "hp": 26112,
+    "atk": 11292,
+    "def": 11292
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E7%9F%A2%E5%AE%89%E5%AE%AE%E9%87%8D%E6%B8%85%E2%98%855%EF%BC%88%E3%81%8A%E6%9C%AD%E3%81%8C%E3%81%84%E3%81%A3%E3%81%B1%E3%81%84%EF%BC%81%EF%BC%89",
+    "capture": "20170917151807",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -3538,14 +5128,25 @@
     "4130_0_yuuya",
     "4130_1_hstar"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 5,
+   "statueType": 1,
+   "lv1": {
+    "hp": 1069,
+    "atk": 505,
+    "def": 742
+   },
+   "lv99": {
+    "hp": 10692,
+    "atk": 5049,
+    "def": 7425
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3555,14 +5156,24 @@
     "4130_0_yuuya",
     "4130_1_hstar"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 5,
+   "statueType": 4,
+   "lv1": {
+    "hp": 1129,
+    "atk": 624,
+    "def": 594
+   },
+   "lv99": {
+    "hp": 11286,
+    "atk": 6237,
+    "def": 5940
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E5%99%B4%E4%B8%8A%E8%A3%95%E4%B9%9F%E2%98%855%EF%BC%88%E3%82%B9%E3%83%94%E3%83%BC%E3%83%89%E3%82%AD%E3%83%B3%E3%82%B0%EF%BC%89",
+    "capture": "20210410120729",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -3640,14 +5251,29 @@
     "4150_0_angelo",
     "4150_1_aqua"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 3,
+   "lv1": {
+    "hp": 456,
+    "atk": 264,
+    "def": 228
+   },
+   "lv99": {
+    "hp": 4560,
+    "atk": 2640,
+    "def": 2280
+   },
+   "maxTree": {
+    "hp": 8460,
+    "atk": 5490,
+    "def": 4230
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3657,14 +5283,25 @@
     "4150_0_angelo",
     "4150_1_aqua"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 4,
+   "statueType": 3,
+   "lv1": {
+    "hp": 741,
+    "atk": 429,
+    "def": 370
+   },
+   "lv99": {
+    "hp": 7410,
+    "atk": 4290,
+    "def": 3705
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3674,14 +5311,29 @@
     "4150_0_angelo",
     "4150_1_aqua"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 3,
+   "lv1": {
+    "hp": 1117,
+    "atk": 647,
+    "def": 559
+   },
+   "lv99": {
+    "hp": 11172,
+    "atk": 6468,
+    "def": 5586
+   },
+   "maxTree": {
+    "hp": 20772,
+    "atk": 14868,
+    "def": 10386
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3691,14 +5343,29 @@
     "4160_0_keicho",
     "4160_1_bcarmy"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 3,
+   "statueType": 2,
+   "lv1": {
+    "hp": 479,
+    "atk": 239,
+    "def": 277
+   },
+   "lv99": {
+    "hp": 4788,
+    "atk": 2394,
+    "def": 2772
+   },
+   "maxTree": {
+    "hp": 8688,
+    "atk": 4344,
+    "def": 5622
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3708,14 +5375,25 @@
     "4160_0_keicho",
     "4160_1_bcarmy"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 4,
+   "statueType": 2,
+   "lv1": {
+    "hp": 764,
+    "atk": 382,
+    "def": 442
+   },
+   "lv99": {
+    "hp": 7638,
+    "atk": 3819,
+    "def": 4422
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3725,14 +5403,29 @@
     "4160_0_keicho",
     "4160_1_bcarmy"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 2,
+   "lv1": {
+    "hp": 1140,
+    "atk": 570,
+    "def": 660
+   },
+   "lv99": {
+    "hp": 11400,
+    "atk": 5700,
+    "def": 6600
+   },
+   "maxTree": {
+    "hp": 21600,
+    "atk": 10800,
+    "def": 14400
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3759,14 +5452,29 @@
     "4170_0_otoishi",
     "4170_1_rhcp"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 6,
+   "statueType": 5,
+   "lv1": {
+    "hp": 1104,
+    "atk": 863,
+    "def": 656
+   },
+   "lv99": {
+    "hp": 11040,
+    "atk": 8625,
+    "def": 6555
+   },
+   "maxTree": {
+    "hp": 17640,
+    "atk": 16125,
+    "def": 13755
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "license": "CC BY-SA 3.0",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Akira_Otoishi_%28Solitary%29",
+    "revid": 2969,
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -3776,14 +5484,25 @@
     "4170_0_otoishi",
     "4170_1_rhcp"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 4,
+   "statueType": 3,
+   "lv1": {
+    "hp": 694,
+    "atk": 510,
+    "def": 367
+   },
+   "lv99": {
+    "hp": 6936,
+    "atk": 5100,
+    "def": 3672
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3793,14 +5512,28 @@
     "4170_0_otoishi",
     "4170_1_rhcp"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 3,
+   "lv1": {
+    "hp": 1030,
+    "atk": 758,
+    "def": 545
+   },
+   "lv99": {
+    "hp": 10302,
+    "atk": 7575,
+    "def": 5454
+   },
+   "maxTree": {
+    "hp": 14502,
+    "atk": 21375,
+    "def": 7554
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E9%9F%B3%E7%9F%B3%E6%98%8E%E2%98%855%EF%BC%88%E5%8F%8D%E7%9C%81%E3%81%99%E3%82%8B%E3%81%A8%E5%BC%B7%E3%81%84%E3%81%9C%E2%80%A6%EF%BC%89",
+    "capture": "20210410115223",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -3878,14 +5611,28 @@
     "4190_0_kira",
     "4190_1_killerq"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 5,
+   "lv1": {
+    "hp": 1134,
+    "atk": 567,
+    "def": 756
+   },
+   "lv99": {
+    "hp": 11340,
+    "atk": 5670,
+    "def": 7560
+   },
+   "maxTree": {
+    "hp": 20940,
+    "atk": 14370,
+    "def": 12060
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%AD%A4%E9%AB%98%E3%80%91%E5%90%89%E8%89%AF%E5%90%89%E5%BD%B1%E2%98%855%EF%BC%88%E5%90%89%E8%89%AF%E5%90%89%E5%BD%B1%E3%81%AF%E9%9D%99%E3%81%8B%E3%81%AB%E6%9A%AE%E3%82%89%E3%81%97%E3%81%9F%E3%81%84%EF%BC%89",
+    "capture": "20210410121105",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -3946,14 +5693,29 @@
     "4191_0_kawajiri",
     "4191_1_killerq"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 1,
+   "lv1": {
+    "hp": 1272,
+    "atk": 636,
+    "def": 636
+   },
+   "lv99": {
+    "hp": 12720,
+    "atk": 6360,
+    "def": 6360
+   },
+   "maxTree": {
+    "hp": 21120,
+    "atk": 15960,
+    "def": 10560
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -3980,14 +5742,29 @@
     "4192_0_kawajiri",
     "4192_1_killerq"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 3,
+   "lv1": {
+    "hp": 1002,
+    "atk": 898,
+    "def": 550
+   },
+   "lv99": {
+    "hp": 10020,
+    "atk": 8975,
+    "def": 5500
+   },
+   "maxTree": {
+    "hp": 14820,
+    "atk": 22775,
+    "def": 7300
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E5%90%89%E8%89%AF%E5%90%89%E5%BD%B1%E2%98%855%EF%BC%88%E5%B7%9D%E5%B0%BB%E6%B5%A9%E4%BD%9C%EF%BC%89",
+    "capture": "20241110175836",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -4014,14 +5791,25 @@
     "4193_0_kira",
     "4193_1_killerq"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "rarity": 6,
+   "statueType": 2,
+   "lv1": {
+    "hp": 3224,
+    "atk": 2795,
+    "def": 2640
+   },
+   "lv99": {
+    "hp": 32238,
+    "atk": 27954,
+    "def": 26397
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91%E5%90%89%E8%89%AF%E5%90%89%E5%BD%B1%EF%BD%9E...%E5%A7%8B%E6%9C%AB%E3%81%97%E3%81%A6%E3%81%8B%E3%82%89%E3%81%AD......%EF%BC%81%EF%BD%9E%E2%98%856%EF%BC%88%E6%97%A5%E5%B8%B8%E3%81%AB%E6%BD%9C%E3%82%80%E9%97%87%EF%BC%89",
+    "capture": "20241110191432",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
@@ -4097,14 +5885,29 @@
     "4240_0_miyamoto",
     "4240_1_enigma"
    ],
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 5,
+   "lv1": {
+    "hp": 1069,
+    "atk": 535,
+    "def": 713
+   },
+   "lv99": {
+    "hp": 10692,
+    "atk": 5346,
+    "def": 7128
+   },
+   "maxTree": {
+    "hp": 14292,
+    "atk": 7146,
+    "def": 21528
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
    }
   },
   {
