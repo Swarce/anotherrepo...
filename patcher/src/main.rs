@@ -226,6 +226,20 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
         }
         rep.checks.push("no lib/armeabi-v7a entries".into());
     }
+    if !disabled.contains(&"keep-files") {
+        let lib = chk.read(patches::LIBIL2CPP_ARM64)?;
+        let (off, _) = build.clear_flag_fn;
+        let want: Vec<u8> = patches::RETURN_TRUE
+            .iter()
+            .flat_map(|w| w.to_le_bytes())
+            .collect();
+        if lib.get(off..off + 8) != Some(&want[..]) {
+            return Err("post-check failed: keep-files patch not present".into());
+        }
+        rep.checks.push(format!(
+            "libil2cpp.so @{off:#x} = return true (no download-folder wipe)"
+        ));
+    }
     if !disabled.contains(&"unity-heap") {
         let lib = chk.read(patches::LIBUNITY_ARM64)?;
         let (off, _) = build.unity_default_alloc_ctor;

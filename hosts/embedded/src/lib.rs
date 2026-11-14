@@ -12,6 +12,7 @@
 //!   the game's own `files/` folder, which the client downloads into.
 
 pub mod apkzip;
+pub mod import;
 
 use jdr_core::settings::{Keys, Settings, DEFAULT_PORT};
 use jdr_core::{http, log};
@@ -24,7 +25,7 @@ use std::time::{Duration, Instant};
 /// Marker the patcher checks to make sure it embeds this library and not something else.
 #[used]
 #[no_mangle]
-pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_b004";
+pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_b005";
 
 pub const KEYS_ASSET: &str = "assets/jdr/keys.json";
 
@@ -303,6 +304,7 @@ pub fn serve_embedded(paths: &Paths, keys: Keys, port: u16, bind_retries: u32, t
         let _ = std::thread::Builder::new()
             .name("jdr-manifest".into())
             .spawn(move || {
+                run_import(&c);
                 c.log_files_report();
                 if let Err(e) = c.versionfile() {
                     log::line("assets", &format!("versionfile not built yet: {e}"));
@@ -328,6 +330,47 @@ pub fn serve_embedded(paths: &Paths, keys: Keys, port: u16, bind_retries: u32, t
     let h: http::Handler = Arc::new(move |r| app::handle(&ctx, r));
     if let Err(e) = http::serve(listener, h) {
         log::line("boot", &format!("server stopped: {e}"));
+    }
+}
+
+/// Import staged game files (see [`import`]) before the manifest is built.
+fn run_import(ctx: &Ctx) {
+    let staging = Path::new(import::STAGING);
+    let Some(dest) = ctx.settings.game_files_dir.clone() else {
+        return;
+    };
+    if !staging.is_dir() {
+        return;
+    }
+    let t0 = Instant::now();
+    log::line(
+        "import",
+        &format!(
+            "staging folder found: importing {} -> {}",
+            staging.display(),
+            dest.display()
+        ),
+    );
+    let r = import::import(staging, &dest, |done, total, st| {
+        log::line(
+            "import",
+            &format!("{done}/{total} files ({} MiB copied)", st.bytes >> 20),
+        );
+    });
+    match r {
+        Ok(st) => log::line(
+            "import",
+            &format!(
+                "import complete in {} s: {} copied ({} MiB), {} replaced unreadable, {} already fine, {} failed. Restart the game; then you may delete /data/local/tmp/jdr-import",
+                t0.elapsed().as_secs(),
+                st.copied,
+                st.bytes >> 20,
+                st.replaced_unreadable,
+                st.already_ok,
+                st.failed
+            ),
+        ),
+        Err(e) => log::line("import", &format!("import FAILED: {e}")),
     }
 }
 

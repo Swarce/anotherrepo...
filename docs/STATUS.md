@@ -2,6 +2,43 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 05 — keep the game files, import them, review fixes (branch `wip/b05`)
+
+### What the Build 04 device logs showed (Galaxy S22, Android 16)
+- The account persisted across the update (login with the saved uuid, `existStatus 0`).
+- `vcs.bytes` was missing: the game had **deleted its whole download folder**. Cause, from the
+  client code: `ResourceDownloadUIController.StartLoad` runs a one-time "cache clear of non-encrypted
+  files" (`DoCacheClearProcess` → `IOManager.DeleteAllInDirectory(persistentDataPath)`) whenever the
+  PlayerPrefs flag behind `SaveDataManager.LoadNonObfuscatedClearFlag` is unset, which it is after a
+  reinstall. Our server never writes there.
+- After the owner pushed the files back with adb: `vcs.bytes: Permission denied`; the files belong to
+  the shell user, the game falls back to the title and logs in again in a loop.
+
+### What changed
+- **`keep-files` patch** (libil2cpp @0xfd1534, fingerprinted): `LoadNonObfuscatedClearFlag` returns
+  true, so the wipe never runs. `tools/proofs/keep_files_check.py` confirms on the player's binary
+  that the cache clear is its only caller.
+- **File importer** in the embedded host: copies `/data/local/tmp/jdr-import/files` into the game's
+  `files/` as the app (replacing unreadable shell-owned copies, `vcs.bytes` last, temp file +
+  rename, source untouched), then the manifest is built. Expected to work (apps may read
+  world-readable files there); to be confirmed on a device.
+- Boot diagnostics: `[assets] game files: N file(s), …` (vcs.bytes present? recorded files missing?).
+- Manifest build outside the lock, failures cached for 30 s, poison-safe, template scan capped.
+- **Review fixes (Builds 03–04):** `unity-heap` now uses 16 MiB pools (shorter pool/large lists in
+  busy heaps; the proof allows exactly that one field to differ and also checks the calling
+  convention, the callers and the storage size); bundle reader caps block/node counts and sizes;
+  type-tree flags match Unity's (0x8000 on variable-size nodes); UnityPy check script for the
+  manifest; `build.sh` lists skipped checks and requires the proofs when `JDR_APK` is set.
+- Docs: restore step via the staging folder, missing-files and permission troubleshooting,
+  `--disable unity-heap`, log redaction; CREDITS links.
+- Build number 5, server marker `JDR_EMBEDDED_SERVER_b005`.
+
+### Device checklist — expected; to be confirmed on a device
+- [ ] `[import] … import complete …` after staging the files, then on restart
+      `[assets] game files: …, all … recorded files present` and `versionfile built`
+- [ ] `[cdn] … (generated versionfile)`, no other downloads, then the master-data stop (M1.5)
+- [ ] after a reinstall or "Clear storage", the files are no longer wiped
+
 ## Build 04 — generated asset manifest (branch `wip/b04`)
 
 ### What changed

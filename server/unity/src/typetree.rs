@@ -65,8 +65,12 @@ fn node(
     });
 }
 
+/// Unity marks variable-size containers with 0x8000 (and 0xC000 on an Array whose elements
+/// contain aligned fields); only 0x4000 affects reading, but we match the engine's own trees.
+const VAR: i32 = 0x8000;
+
 fn string_nodes(out: &mut Vec<TNode>, level: u8, name: &str, outer_flags: i32) {
-    node(out, level, "string", name, -1, outer_flags, false);
+    node(out, level, "string", name, -1, outer_flags | VAR, false);
     node(out, level + 1, "Array", "Array", -1, ALIGN | 1, true);
     node(out, level + 2, "int", "size", 4, 1, false);
     node(out, level + 2, "char", "data", 1, 1, false);
@@ -83,10 +87,10 @@ fn field_nodes(out: &mut Vec<TNode>, level: u8, f: &Field) {
             elem_type,
             fields,
         } => {
-            node(out, level, "vector", name, -1, 0, false);
-            node(out, level + 1, "Array", "Array", -1, ALIGN, true);
+            node(out, level, "vector", name, -1, VAR, false);
+            node(out, level + 1, "Array", "Array", -1, ALIGN | VAR, true);
             node(out, level + 2, "int", "size", 4, 0, false);
-            node(out, level + 2, elem_type, "data", -1, 0, false);
+            node(out, level + 2, elem_type, "data", -1, VAR, false);
             for c in fields {
                 field_nodes(out, level + 3, c);
             }

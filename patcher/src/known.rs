@@ -15,6 +15,9 @@ pub struct VerifiedBuild {
     /// File offset and SHA-256 of the `UnityDefaultAllocator` constructor body that the
     /// `unity-heap` patch replaces.
     pub unity_default_alloc_ctor: (usize, &'static str),
+    /// File offset and SHA-256 (32-byte window) of `SaveDataManager.LoadNonObfuscatedClearFlag`
+    /// in libil2cpp.so (the `keep-files` patch makes it return true).
+    pub clear_flag_fn: (usize, &'static str),
     /// SHA-256 of the binary `AndroidManifest.xml`.
     pub manifest_sha256: &'static str,
     /// Index and original value of the production server URL literal.
@@ -34,6 +37,10 @@ pub const BUILDS: &[VerifiedBuild] = &[VerifiedBuild {
     unity_default_alloc_ctor: (
         0x9ff824,
         "fa948c209cfd14d2ddcdd04f4bb0b95b67d9fd8a9600412f22c69aad4c92bdfc",
+    ),
+    clear_flag_fn: (
+        0xfd1534,
+        "306d717ddc15f17dab50cb35cec6fd9b4a87e3c88da61b1ac7c8e70a0ee4d7c4",
     ),
     manifest_sha256: "a1d3a440e4e6ba6cc1bf6a8fa91cc03fd948058d55630c9aa41820dc11061257",
     server_url_literal: (4137, "https://jdr.channel.or.jp"),
