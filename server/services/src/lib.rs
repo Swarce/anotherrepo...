@@ -3,6 +3,7 @@
 pub mod accounts;
 pub mod app;
 pub mod cdn;
+pub mod l10n;
 pub mod masterdata;
 pub mod services;
 pub mod versionfile;
@@ -21,6 +22,8 @@ pub struct Generated {
     pub versionfile: Vec<u8>,
     /// The master tables, or why they could not be built (the manifest is still served).
     pub masterdata: Result<Vec<u8>, String>,
+    /// English versions of the game's text bundles: obfuscated name -> file we serve instead.
+    pub localized: std::collections::HashMap<String, std::path::PathBuf>,
 }
 
 /// The generated bundles, or the last failure (with the vcs.bytes stamp it was computed for).
@@ -44,6 +47,8 @@ pub struct Ctx {
     pub versionfile_cache: std::sync::Mutex<Option<ManifestState>>,
     /// True while the embedded host imports staged game files (the key request waits for it).
     pub importing: std::sync::atomic::AtomicBool,
+    /// The last successful build, kept even when a later rebuild fails.
+    pub last_built: std::sync::Mutex<Option<std::sync::Arc<Generated>>>,
     /// Serialises manifest builds.
     pub versionfile_build: std::sync::Mutex<()>,
 }
@@ -60,6 +65,7 @@ impl Ctx {
             skip_tutorial: true,
             versionfile_cache: std::sync::Mutex::new(None),
             versionfile_build: std::sync::Mutex::new(()),
+            last_built: std::sync::Mutex::new(None),
             importing: std::sync::atomic::AtomicBool::new(false),
             settings,
             counters: Counters::default(),
@@ -119,6 +125,16 @@ impl Ctx {
             "{}.bytes",
             jdr_crypto::names::obfuscate(masterdata::BUNDLE_NAME, k.asset_key.as_bytes())
         ))
+    }
+
+    /// The last successfully built bundles, without rebuilding (used to serve the English files
+    /// while the client downloads: it rewrites vcs.bytes as it goes, which must not trigger a
+    /// rebuild mid-download).
+    pub fn last_generated(&self) -> Option<std::sync::Arc<Generated>> {
+        self.last_built
+            .lock()
+            .unwrap_or_else(|e| e.into_inner())
+            .clone()
     }
 
     /// The generated bundles (cached until vcs.bytes changes). The build runs outside the cache
@@ -187,6 +203,45 @@ impl Ctx {
                 }
             }
             entries.sort_by(|a, b| a.path.cmp(&b.path));
+            // English text bundles: listed with their own md5/size, so the client fetches them once.
+            let t_l10n = std::time::Instant::now();
+            let (loc, l10n_errors) = match l10n::Translations::embedded() {
+                Ok(tr) => l10n::prepare(dir, &self.settings.data_dir, key, iv, &tr),
+                Err(e) => (Vec::new(), vec![e]),
+            };
+            for e in &l10n_errors {
+                jdr_core::log::line("l10n", &format!("ERROR {e}"));
+            }
+            let mut localized = std::collections::HashMap::new();
+            for l in &loc {
+                if let Some(e) = entries.iter_mut().find(|e| e.obf == l.obf) {
+                    e.md5 = l.md5.clone();
+                    e.size = l.size;
+                    e.encrypted = l.encrypted;
+                    localized.insert(l.obf.clone(), l.file.clone());
+                }
+            }
+            let (strings, replaced, stale): (usize, usize, usize) =
+                loc.iter().fold((0, 0, 0), |a, l| {
+                    (
+                        a.0 + l.stats.strings,
+                        a.1 + l.stats.replaced,
+                        a.2 + l.stats.stale,
+                    )
+                });
+            jdr_core::log::line(
+                "l10n",
+                &format!(
+                    "{} English file(s) ready in {} ms, {} already on the phone ({} rebuilt now: {} of {} strings replaced, {} stale)",
+                    localized.len(),
+                    t_l10n.elapsed().as_millis(),
+                    loc.iter().filter(|l| l.on_device).count(),
+                    loc.iter().filter(|l| l.stats.strings > 0).count(),
+                    replaced,
+                    strings,
+                    stale
+                ),
+            );
             let vf = versionfile::build(
                 &entries,
                 &ms,
@@ -219,6 +274,7 @@ impl Ctx {
             let b = std::sync::Arc::new(Generated {
                 versionfile: vf,
                 masterdata: md.map(|(b, _)| b),
+                localized,
             });
             Ok::<_, String>((stamp, b))
         })();
@@ -229,6 +285,7 @@ impl Ctx {
         match built {
             Ok((s, b)) => {
                 *g = Some(ManifestState::Built(s, b.clone()));
+                *self.last_built.lock().unwrap_or_else(|e| e.into_inner()) = Some(b.clone());
                 Ok(b)
             }
             Err(e) => {

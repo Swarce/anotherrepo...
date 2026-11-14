@@ -264,6 +264,21 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
             "libmain.so NEEDED = {needed:?}; libjdr.so valid; keys asset stored"
         ));
     }
+    if !disabled.contains(&"english-clientmes") {
+        // Expected: every row whose original source matches a translation now holds that English.
+        let original = ApkEdit::open(&input)?.read(jdr_patch::clientmes::ENTRY)?;
+        let (_, expected, total) = patches::translate_clientmes(&original)?;
+        let got = patches::clientmes_english_rows(&chk.read(jdr_patch::clientmes::ENTRY)?)?;
+        if got != expected {
+            return Err(format!(
+                "post-check failed: ClientMes has {got} English rows, expected {expected}"
+            )
+            .into());
+        }
+        rep.checks.push(format!(
+            "ClientMes: {got} of {total} messages are our English"
+        ));
+    }
     rep.checks.push("zipalign -c -P 16 4 passed".into());
     rep.checks
         .push(format!("apksigner verify: {}", rep.schemes.join("+")));

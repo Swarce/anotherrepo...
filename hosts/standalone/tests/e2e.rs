@@ -202,6 +202,28 @@ fn new_player_boot_sequence() {
         call_as(port, &ep("/bizarre/bizarre_resumption"), "{}", &uuid)["param"]["status"],
         50301
     );
+    // MyPage menu screens: handled (not the unknown-route fallback), every list present and empty
+    for (p, param, lists) in [
+        (
+            "/bizarre/get_bizarre_select",
+            "{}",
+            &["questList", "eventCampaignList"][..],
+        ),
+        (
+            "/present/present_list",
+            r#"{"prevNum":1,"receivedFlag":0}"#,
+            &["presentList"][..],
+        ),
+        ("/follow/follow_list", "{}", &["followList"][..]),
+        ("/item/item_list", "{}", &["itemList"][..]),
+        ("/shop/shop_list", "{}", &["shopList", "itemList"][..]),
+    ] {
+        let r = call_as(port, &ep(p), param, &uuid);
+        assert_eq!(r["param"]["status"], 10000, "{p}");
+        for f in lists {
+            assert_eq!(r["param"][*f], serde_json::json!([]), "{p} {f}");
+        }
+    }
     // an unknown device asking for its profile gets a session error, not a crash
     assert_eq!(
         call_as(port, &ep("/user/user_info"), "{}", "nobody")["param"]["status"],

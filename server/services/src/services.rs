@@ -8,6 +8,7 @@ use serde_json::{json, Map, Value};
 
 pub mod client;
 pub mod common;
+pub mod menu;
 pub mod misc;
 pub mod user;
 
@@ -40,6 +41,11 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/info/get_menu_notify" => misc::get_menu_notify(ctx, env),
         "/team/team_info" => misc::team_info(ctx, env),
         "/bizarre/bizarre_resumption" => misc::bizarre_resumption(ctx, env),
+        "/bizarre/get_bizarre_select" => menu::get_bizarre_select(ctx, env),
+        "/present/present_list" => menu::present_list(ctx, env),
+        "/follow/follow_list" => menu::follow_list(ctx, env),
+        "/item/item_list" => menu::item_list(ctx, env),
+        "/shop/shop_list" => menu::shop_list(ctx, env),
         _ => return (Ok(Map::new()), false),
     };
     (r, true)

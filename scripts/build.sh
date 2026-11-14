@@ -7,6 +7,10 @@
 #   ANDROID_NDK  Android NDK folder                        -> builds libjdr.so (embedded server)
 set -euo pipefail
 cd "$(dirname "$0")/.."
+# Tests run from each crate's folder: pass file paths on as absolute paths.
+for v in JDR_KEYS JDR_DATA JDR_APK; do
+  if [[ -n "${!v:-}" ]]; then export "$v=$(realpath "${!v}")"; fi
+done
 
 step() { printf '\n== %s\n' "$*"; }
 skipped=()
@@ -75,14 +79,18 @@ if [[ -n "${JDR_DATA:-}" && -n "${JDR_KEYS:-}" ]]; then
   out="$(pwd)/deliver/versionfile-check.bytes"
   md="$(pwd)/deliver/masterdata-check.bytes"
   mkdir -p deliver
+  l10n_out="$(pwd)/deliver/l10n-check"
   JDR_VERSIONFILE_OUT="$out" JDR_MASTERDATA_OUT="$md" JDR_KEYS="$(realpath "$JDR_KEYS")" cargo test -q --release -p jdr-services --test real_versionfile
+  JDR_KEYS="$(realpath "$JDR_KEYS")" cargo test -q --release -p jdr-services --test real_unity_roundtrip
+  JDR_L10N_OUT="$l10n_out" JDR_KEYS="$(realpath "$JDR_KEYS")" cargo test -q --release -p jdr-services --test real_l10n
   if python3 -c "import UnityPy" 2>/dev/null; then
     python3 -I tools/proofs/versionfile_check.py "$out"
     python3 -I tools/proofs/masterdata_check.py "$md" server/content/masterdata
+    python3 -I tools/proofs/l10n_check.py "$l10n_out/l10n/gen"
   else
     skip "UnityPy check of the generated bundles (pip install UnityPy)"
   fi
-  rm -f "$out" "$md"
+  rm -rf "$out" "$md" "$l10n_out"
 else
   skip "bundle generation from real data (set JDR_DATA and JDR_KEYS)"
 fi

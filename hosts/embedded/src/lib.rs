@@ -25,7 +25,7 @@ use std::time::{Duration, Instant};
 /// Marker the patcher checks to make sure it embeds this library and not something else.
 #[used]
 #[no_mangle]
-pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_b006";
+pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_b007";
 
 pub const KEYS_ASSET: &str = "assets/jdr/keys.json";
 
@@ -369,12 +369,66 @@ fn run_import(ctx: &Ctx) {
             dest.display()
         ),
     );
-    let r = import::import(staging, &dest, |done, total, st| {
+    // Keep what the game and the server updated on purpose, but only while it is really theirs:
+    // an English file only while it is byte-identical to one the server produced (a broken or
+    // foreign copy is restored), and vcs.bytes only while the staging copy is the one we already
+    // imported (a newer backup in staging still replaces it).
+    let ours: std::collections::HashMap<String, Vec<String>> =
+        std::fs::read(ctx.settings.data_dir.join("l10n/state.json"))
+            .ok()
+            .and_then(|b| {
+                serde_json::from_slice::<serde_json::Map<String, serde_json::Value>>(&b).ok()
+            })
+            .map(|m| {
+                m.into_iter()
+                    .map(|(k, v)| {
+                        let mut md5s: Vec<String> = v["outputs"]
+                            .as_array()
+                            .map(|a| {
+                                a.iter()
+                                    .filter_map(|x| x.as_str().map(str::to_owned))
+                                    .collect()
+                            })
+                            .unwrap_or_default();
+                        if let Some(o) = v["out_md5"].as_str() {
+                            md5s.push(o.to_owned());
+                        }
+                        (k, md5s)
+                    })
+                    .collect()
+            })
+            .unwrap_or_default();
+    let record_path = ctx.settings.data_dir.join("import-record.json");
+    let stamp = |p: &Path| {
+        std::fs::metadata(p).ok().map(|m| {
+            let t = m
+                .modified()
+                .ok()
+                .and_then(|t| t.duration_since(std::time::UNIX_EPOCH).ok())
+                .map(|d| d.as_secs())
+                .unwrap_or(0);
+            format!("{}:{t}", m.len())
+        })
+    };
+    let recorded_vcs = std::fs::read_to_string(&record_path).ok();
+    let staging_vcs = stamp(&staging.join("vcs.bytes"));
+    let keep = |n: &str| {
+        if n == "vcs.bytes" {
+            return staging_vcs.is_some() && recorded_vcs == staging_vcs;
+        }
+        ours.get(n).is_some_and(|md5s| {
+            std::fs::read(dest.join(n))
+                .map(|b| md5s.contains(&jdr_services::versionfile::md5_hex(&b)))
+                .unwrap_or(false)
+        })
+    };
+    let r = import::import(staging, &dest, &keep, |done, total, st| {
         log::line(
             "import",
             &format!("{done}/{total} files ({} MiB copied)", st.bytes >> 20),
         );
     });
+    let imported_ok = r.as_ref().is_ok_and(|st| st.failed == 0);
     match r {
         Ok(st) => log::line(
             "import",
@@ -389,6 +443,9 @@ fn run_import(ctx: &Ctx) {
             ),
         ),
         Err(e) => log::line("import", &format!("import FAILED: {e}")),
+    }
+    if let (true, Some(v)) = (imported_ok, &staging_vcs) {
+        let _ = std::fs::write(&record_path, v);
     }
 }
 

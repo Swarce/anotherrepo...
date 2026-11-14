@@ -1,0 +1,4359 @@
+{
+  "about": "English for the game's text_menu strings: key -> [hash of the Japanese source, English]. See docs/LOCALIZATION.md.",
+  "entries": {
+    "text:AchievementText_All_JP:AchievementText_All_0001": [
+      "e220ac43",
+      "Remaining:"
+    ],
+    "text:AchievementText_All_JP:AchievementText_All_0002": [
+      "85217f7a",
+      "d"
+    ],
+    "text:AchievementText_All_JP:AchievementText_All_0003": [
+      "bf6267da",
+      "h"
+    ],
+    "text:AchievementText_All_JP:AchievementText_All_0004": [
+      "b6a993c2",
+      "m"
+    ],
+    "text:AchievementText_All_JP:AchievementText_All_0005": [
+      "7b938b1e",
+      "Rewards have been sent to your Message Box."
+    ],
+    "text:AchievementText_All_JP:AchievementText_All_0006": [
+      "714d23d8",
+      "The rewards above have been sent to your Message Box."
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_0": [
+      "cf1211da",
+      "None"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_1": [
+      "0c6918a0",
+      "Vampire"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_10": [
+      "19169972",
+      "Assassination Team"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_11": [
+      "d4fc8b90",
+      "Boss's Elite Guard"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_12": [
+      "84521e1d",
+      "Human"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_13": [
+      "76ec6b14",
+      "Animal"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_14": [
+      "13a58ec2",
+      "Student"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_15": [
+      "4f6b8c0f",
+      "Requiem"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_16": [
+      "3c50eb8a",
+      "Gender (M)"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_17": [
+      "700358ce",
+      "Gender (F)"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_18": [
+      "d1aae934",
+      "Gender (?)"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_2": [
+      "f543570a",
+      "Joestar Family"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_21": [
+      "c3792aa2",
+      "Weak to Hamon"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_22": [
+      "2973633f",
+      "Weak to UV"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_23": [
+      "1c3e1826",
+      "Immune to Physical"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_24": [
+      "156c5d1f",
+      "Resists Physical"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_3": [
+      "1db967ad",
+      "Hamon User"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_4": [
+      "1f786ffe",
+      "Pillar Man"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_5": [
+      "9f7b9135",
+      "Stand User"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_6": [
+      "660f515b",
+      "Major Arcana"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_7": [
+      "440d6fc9",
+      "Egyptian Nine Glory Gods"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_8": [
+      "8072feab",
+      "Ultimate Life Form"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_9": [
+      "64760c73",
+      "Team Bucciarati"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_ASSISTS_STATUE": [
+      "bb9e07d5",
+      "Assist Only"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_EGYPT": [
+      "440d6fc9",
+      "Egyptian Nine Glory Gods"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_HAMON": [
+      "1db967ad",
+      "Hamon User"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_HASHIRA": [
+      "1f786ffe",
+      "Pillar Man"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_JOESTAR": [
+      "f543570a",
+      "Joestar Family"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_M_ARCANA": [
+      "660f515b",
+      "Major Arcana"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_STAND": [
+      "9f7b9135",
+      "Stand User"
+    ],
+    "text:AttributeText_JP:ATTR_TEXT_VAMPIRE": [
+      "0c6918a0",
+      "Vampire"
+    ],
+    "text:Battle_JP:Battle_Dungeon_Pause_Continue_01": [
+      "79ab0225",
+      "Use 1 Diamond Coin to revive (continue)?"
+    ],
+    "text:Battle_JP:Battle_Dungeon_Pause_Continue_02": [
+      "50580d1f",
+      "Not enough Diamond Coins.\nBuy Diamond Coins to revive (continue)?"
+    ],
+    "text:Battle_JP:Battle_Dungeon_Pause_Continue_03": [
+      "f57342be",
+      "*If you choose Retire, you will lose all EXP, Gold,\nFriend Points and items earned on this stage.\n\n*If the app is force-closed or a connection error occurs\nwhile continuing, some data may not be saved\nand the continue may not take effect. Please be careful."
+    ],
+    "text:Battle_JP:Battle_Dungeon_Pause_Retire": [
+      "ba623591",
+      "Retire?\n*You will lose your Soul, and all EXP, Gold, Friend Points and items earned on this stage."
+    ],
+    "text:Battle_JP:Battle_Dungeon_error01": [
+      "1e346b7c",
+      "Solo Dungeon error message 001"
+    ],
+    "text:Battle_JP:Battle_Dungeon_error02": [
+      "88788440",
+      "Solo Dungeon error message 002"
+    ],
+    "text:Battle_JP:Battle_Dungeon_error03": [
+      "2accaacd",
+      "Solo Dungeon error message 003"
+    ],
+    "text:Battle_JP:Battle_Dungeon_error04": [
+      "bb699219",
+      "Solo Dungeon error message 004"
+    ],
+    "text:Battle_JP:Battle_Dungeon_error05": [
+      "aee7922b",
+      "Solo Dungeon error message 005"
+    ],
+    "text:Battle_JP:Battle_Highscore_Best_Score": [
+      "256edae5",
+      "High Score"
+    ],
+    "text:Battle_JP:Battle_Highscore_Maxdamage": [
+      "c9002c18",
+      "MAX Damage"
+    ],
+    "text:Battle_JP:Battle_Highscore_Now_Score": [
+      "f90e00e4",
+      "This Score"
+    ],
+    "text:Battle_JP:Battle_Highscore_Ranking": [
+      "46d43e6e",
+      "High Score Personal Ranking"
+    ],
+    "text:Battle_JP:Battle_Highscore_Score": [
+      "05a76b2e",
+      "Score"
+    ],
+    "text:Battle_JP:Battle_Highscore_Total_Score": [
+      "e4ec5081",
+      "Total Score"
+    ],
+    "text:Battle_JP:Battle_Highscore_Totaldamage": [
+      "27b8f82f",
+      "Total Damage"
+    ],
+    "text:Battle_JP:Battle_Highscore_Turn": [
+      "1131bad5",
+      "Turns"
+    ],
+    "text:Battle_JP:Battle_Highscore_result": [
+      "1e91a83b",
+      "Battle Score"
+    ],
+    "text:Battle_JP:Battle_Pause_Area_Effect_Icon": [
+      "8d3f4426",
+      "Active Area Effects"
+    ],
+    "text:Battle_JP:Battle_Pause_Area_Effect_Title": [
+      "0a82a68c",
+      "Active Area Effect Details"
+    ],
+    "text:Battle_JP:Battle_Pause_Clear_Limit_Icon": [
+      "501c2b85",
+      "Battle Conditions"
+    ],
+    "text:Battle_JP:Battle_Pause_Clear_Limit_Title": [
+      "e761f539",
+      "Battle Restrictions"
+    ],
+    "text:Battle_JP:Battle_Pause_Continue_01": [
+      "79ab0225",
+      "Use 1 Diamond Coin to revive (continue)?"
+    ],
+    "text:Battle_JP:Battle_Pause_Continue_02": [
+      "50580d1f",
+      "Not enough Diamond Coins.\nBuy Diamond Coins to revive (continue)?"
+    ],
+    "text:Battle_JP:Battle_Pause_Continue_03": [
+      "e53e9a52",
+      "*If you choose Retire, you will lose all EXP, Gold,\nFriend Points and items earned on this stage.\n\n*If the app is force-closed or a connection error occurs\nwhile continuing, some data may not be saved\nand the continue may not take effect. Please be careful.\n\n*Continuing resets the time limit to its starting value.\n (It is not reset in battles with \"Survive until time runs out\" or \"Turn limit\" rules.)"
+    ],
+    "text:Battle_JP:Battle_Pause_Option_01": [
+      "3d5de457",
+      "Battle Settings"
+    ],
+    "text:Battle_JP:Battle_Pause_Option_05": [
+      "675228a4",
+      "Camera Settings (Action Battle)"
+    ],
+    "text:Battle_JP:Battle_Pause_Option_06": [
+      "7d3f116b",
+      "HP Bar Display (Action Battle)"
+    ],
+    "text:Battle_JP:Battle_Pause_Option_07": [
+      "7be472e8",
+      "Active Battle Effects"
+    ],
+    "text:Battle_JP:Battle_Pause_Retire": [
+      "4709ba0a",
+      "Retire?\n*You will lose all EXP, Gold, Friend Points and items earned on this stage."
+    ],
+    "text:Battle_JP:Battle_Pause_Team_Status_Icon": [
+      "056cbaf1",
+      "Team Status"
+    ],
+    "text:Battle_JP:Battle_Pause_Team_Status_Title": [
+      "8c2e5fbb",
+      "Team Status Details"
+    ],
+    "text:Battle_JP:Battle_setting_01": [
+      "14e90b80",
+      "Mutual follow activates\nthe Support's Leader Ability!"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_GUARD_TEXT": [
+      "4b711156",
+      "[Guard]\n • Strong vs. Tricky trait"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_GUARD_WEAK_TEXT": [
+      "0f889df2",
+      " • Weak vs. Power trait"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_NAME_1": [
+      "b8f39c84",
+      "Power"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_NAME_2": [
+      "1b41673c",
+      "Technical"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_NAME_3": [
+      "e66d16e1",
+      "Tricky"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_NAME_4": [
+      "e04f3e9b",
+      "Peaky"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_NAME_5": [
+      "522ba9f4",
+      "Guard"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_NAME_6": [
+      "bdbdb22b",
+      "Support"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_NON": [
+      "a30a91df",
+      "No Trait"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_PEAKY_TEXT": [
+      "78fb0b84",
+      "[Peaky]\n • Strong vs. Technical trait"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_PEAKY_WEAK_TEXT": [
+      "8d541041",
+      " • Weak vs. Support trait"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_POWER_TEXT": [
+      "acf9a6ff",
+      "[Power]\n • Strong vs. Guard trait"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_POWER_WEAK_TEXT": [
+      "8b9ac4c7",
+      " • Weak vs. Tricky trait"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_STATUS_TEXT": [
+      "6d7450de",
+      "[{Characteristic_MainName}] Lv{Characteristec_Level}\n • Damage dealt to {Characteristic_StrongName} trait +{Characteristic_Param}%\n • Weak vs. {Characteristic_WeakName} trait"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_SUPPORT_TEXT": [
+      "18c76ea5",
+      "[Support]\n • Strong vs. Peaky trait"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_SUPPORT_WEAK_TEXT": [
+      "2971a342",
+      " • Weak vs. Technical trait"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_TECHNICAL_TEXT": [
+      "2d7a249b",
+      "[Technical]\n • Strong vs. Support trait"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_TECHNICAL_WEAK_TEXT": [
+      "0f10559c",
+      " • Weak vs. Peaky trait"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_TRICKY_TEXT": [
+      "2a40cdab",
+      "[Tricky]\n • Strong vs. Power trait"
+    ],
+    "text:CharacteristicText_JP:CHARACTERISTIC_TRICKY_WEAK_TEXT": [
+      "4ee10de1",
+      " • Weak vs. Guard trait"
+    ],
+    "text:DungeonSummary_JP:DUNGEON_SUMMARY_000": [
+      "451f2365",
+      "Dungeon details 7890123456789012\n01234567890123456789012\n01234567890123456789012\n01234567890123456789012\n01234567890123456789012"
+    ],
+    "text:DungeonSummary_JP:DUNGEON_SUMMARY_001": [
+      "451f2365",
+      "Dungeon details 7890123456789012\n01234567890123456789012\n01234567890123456789012\n01234567890123456789012\n01234567890123456789012"
+    ],
+    "text:DungeonSummary_JP:DUNGEON_SUMMARY_002": [
+      "abe42934",
+      "An oppressive feeling that digs into your mind...\nA pitch-black sensation...\nA corridor with no end in sight...\nExplore the sealed mansion!"
+    ],
+    "text:DungeonSummary_JP:DUNGEON_SUMMARY_003": [
+      "b6c23560",
+      "This is Morioh, S City.\nThey say strange things often happen here...\nGo out and see for yourself!"
+    ],
+    "text:DungeonSummary_JP:DUNGEON_SUMMARY_004": [
+      "451f2365",
+      "Dungeon details 7890123456789012\n01234567890123456789012\n01234567890123456789012\n01234567890123456789012\n01234567890123456789012"
+    ],
+    "text:DungeonSummary_JP:DUNGEON_SUMMARY_005": [
+      "451f2365",
+      "Dungeon details 7890123456789012\n01234567890123456789012\n01234567890123456789012\n01234567890123456789012\n01234567890123456789012"
+    ],
+    "text:Evolution_JP:Evolution_Button_01": [
+      "93dfe5e1",
+      "View Awakened"
+    ],
+    "text:Evolution_JP:Evolution_Button_02": [
+      "f0dd965c",
+      "View Before Awakening"
+    ],
+    "text:Evolution_JP:Evolution_Button_03": [
+      "b2b3ae26",
+      "To Statue Power Up"
+    ],
+    "text:Evolution_JP:Evolution_Button_04": [
+      "24b21a51",
+      "To Growth Tree"
+    ],
+    "text:Evolution_JP:Evolution_Button_05": [
+      "0c2c1db8",
+      "Awakening Info"
+    ],
+    "text:Evolution_JP:Evolution_Button_06": [
+      "aebb6557",
+      "Awaken"
+    ],
+    "text:Evolution_JP:Evolution_Button_07": [
+      "bca84ea5",
+      "Cancel"
+    ],
+    "text:Evolution_JP:Evolution_Button_08": [
+      "946ab7db",
+      "Check Conditions / OK"
+    ],
+    "text:Evolution_JP:Evolution_Button_09": [
+      "4f3e3906",
+      "On Awakening"
+    ],
+    "text:Evolution_JP:Evolution_Button_10": [
+      "5a4a85ff",
+      "At Lv MAX"
+    ],
+    "text:Evolution_JP:Evolution_Button_11": [
+      "d1135be3",
+      "Detailed Stats"
+    ],
+    "text:Evolution_JP:Evolution_Button_12": [
+      "2c8202f8",
+      "Awakening Conditions"
+    ],
+    "text:Evolution_JP:Evolution_Button_13": [
+      "582033ac",
+      "Awakened Stats\n/ OK"
+    ],
+    "text:Evolution_JP:Evolution_Button_14": [
+      "8ee993fe",
+      "Lv MAX\nFull Growth Tree"
+    ],
+    "text:Evolution_JP:Evolution_Image_01": [
+      "2c8202f8",
+      "Awakening Conditions"
+    ],
+    "text:Evolution_JP:Evolution_Image_02": [
+      "01ad19be",
+      "Level"
+    ],
+    "text:Evolution_JP:Evolution_Image_03": [
+      "4345e979",
+      "Growth Tree"
+    ],
+    "text:Evolution_JP:Evolution_Image_04": [
+      "84256c98",
+      "Boost"
+    ],
+    "text:Evolution_JP:Evolution_Image_05": [
+      "455ef00f",
+      "Gold Required"
+    ],
+    "text:Evolution_JP:Evolution_Image_06": [
+      "c0f52b79",
+      "Owned ×"
+    ],
+    "text:Evolution_JP:Evolution_Image_07": [
+      "8587d8a7",
+      "Awakenable Statues Owned"
+    ],
+    "text:Evolution_JP:Evolution_Image_08": [
+      "e2581bb5",
+      "Confirm Awakening"
+    ],
+    "text:Evolution_JP:Evolution_Text_01": [
+      "32fbfbf7",
+      "The Statue will be awakened using the following Awakening materials."
+    ],
+    "text:Evolution_JP:Evolution_Text_02": [
+      "d3e7669e",
+      "Awakening reduces the Boost count of the source Statue."
+    ],
+    "text:Evolution_JP:Evolution_Text_03": [
+      "67e25605",
+      "Awakening conditions not met."
+    ],
+    "text:Evolution_JP:Evolution_Text_04": [
+      "d3d23879",
+      "Awakened Statue Stats"
+    ],
+    "text:Evolution_JP:Evolution_Text_05": [
+      "aa17e444",
+      "*Awakening reduces the source Statue's Boost count according to the\nAwakening conditions. The Statue itself will not be lost."
+    ],
+    "text:Evolution_JP:ParamSelect_Button_03": [
+      "8ee993fe",
+      "Lv MAX\nFull Growth Tree"
+    ],
+    "text:FilterText_JP:FILTER_0": [
+      "e9178a1a",
+      "Show All"
+    ],
+    "text:FilterText_JP:FILTER_1": [
+      "6f64e69c",
+      "Bravery"
+    ],
+    "text:FilterText_JP:FILTER_100": [
+      "61769335",
+      "Ability"
+    ],
+    "text:FilterText_JP:FILTER_101": [
+      "fd094cd6",
+      "Skill"
+    ],
+    "text:FilterText_JP:FILTER_102": [
+      "6ab86fa3",
+      "EXP"
+    ],
+    "text:FilterText_JP:FILTER_103": [
+      "29c10ea5",
+      "Boost"
+    ],
+    "text:FilterText_JP:FILTER_104": [
+      "2db42518",
+      "Arena"
+    ],
+    "text:FilterText_JP:FILTER_2": [
+      "81219341",
+      "Intellect"
+    ],
+    "text:FilterText_JP:FILTER_200": [
+      "15708cdc",
+      "Favorites"
+    ],
+    "text:FilterText_JP:FILTER_201": [
+      "43b1a2d9",
+      "Has Bonus"
+    ],
+    "text:FilterText_JP:FILTER_202": [
+      "32fc3fd5",
+      "Arena Effect"
+    ],
+    "text:FilterText_JP:FILTER_203": [
+      "adcf64ba",
+      "Trait"
+    ],
+    "text:FilterText_JP:FILTER_204": [
+      "bb9e07d5",
+      "Assist Only"
+    ],
+    "text:FilterText_JP:FILTER_3": [
+      "51a80cd6",
+      "Tenacity"
+    ],
+    "text:FilterText_JP:FILTER_300": [
+      "b0020690",
+      "Part 1"
+    ],
+    "text:FilterText_JP:FILTER_301": [
+      "92107a81",
+      "Part 2"
+    ],
+    "text:FilterText_JP:FILTER_302": [
+      "47ff9d47",
+      "Part 3"
+    ],
+    "text:FilterText_JP:FILTER_303": [
+      "102c399d",
+      "Part 4"
+    ],
+    "text:FilterText_JP:FILTER_304": [
+      "13b275c2",
+      "Part 5"
+    ],
+    "text:FilterText_JP:FILTER_4": [
+      "7810a8bc",
+      "Unity"
+    ],
+    "text:FilterText_JP:FILTER_400": [
+      "88500604",
+      "Obtained"
+    ],
+    "text:FilterText_JP:FILTER_401": [
+      "88500604",
+      "Obtained"
+    ],
+    "text:FilterText_JP:FILTER_5": [
+      "a2dfc575",
+      "Maverick"
+    ],
+    "text:FilterText_JP:FILTER_ABIPVP": [
+      "32fc3fd5",
+      "Arena Effect"
+    ],
+    "text:FilterText_JP:FILTER_APPEAREDPART1": [
+      "b0020690",
+      "Part 1"
+    ],
+    "text:FilterText_JP:FILTER_APPEAREDPART2": [
+      "92107a81",
+      "Part 2"
+    ],
+    "text:FilterText_JP:FILTER_APPEAREDPART3": [
+      "47ff9d47",
+      "Part 3"
+    ],
+    "text:FilterText_JP:FILTER_APPEAREDPART4": [
+      "102c399d",
+      "Part 4"
+    ],
+    "text:FilterText_JP:FILTER_BRAVE": [
+      "6f64e69c",
+      "Bravery"
+    ],
+    "text:FilterText_JP:FILTER_EVENT": [
+      "43b1a2d9",
+      "Has Bonus"
+    ],
+    "text:FilterText_JP:FILTER_FAVORITE": [
+      "15708cdc",
+      "Favorites"
+    ],
+    "text:FilterText_JP:FILTER_INTELLI": [
+      "81219341",
+      "Intellect"
+    ],
+    "text:FilterText_JP:FILTER_MAVERICK": [
+      "a2dfc575",
+      "Maverick"
+    ],
+    "text:FilterText_JP:FILTER_MINDABILITY": [
+      "61769335",
+      "Ability"
+    ],
+    "text:FilterText_JP:FILTER_MINDBOOST": [
+      "6ab86fa3",
+      "EXP"
+    ],
+    "text:FilterText_JP:FILTER_MINDKAKUSEI": [
+      "29c10ea5",
+      "Boost"
+    ],
+    "text:FilterText_JP:FILTER_MINDPVP": [
+      "2db42518",
+      "Arena"
+    ],
+    "text:FilterText_JP:FILTER_MINDSKILL": [
+      "fd094cd6",
+      "Skill"
+    ],
+    "text:FilterText_JP:FILTER_NONE": [
+      "e9178a1a",
+      "Show All"
+    ],
+    "text:FilterText_JP:FILTER_TENACITY": [
+      "51a80cd6",
+      "Tenacity"
+    ],
+    "text:FilterText_JP:FILTER_UNITY": [
+      "7810a8bc",
+      "Unity"
+    ],
+    "text:FollowFollower_JP:FollowFollower_0002": [
+      "76140eef",
+      "Follow this player?"
+    ],
+    "text:FollowFollower_JP:FollowFollower_0003": [
+      "62db0695",
+      "You have reached the follower limit"
+    ],
+    "text:FollowFollower_JP:FollowFollower_0004": [
+      "5ce71a42",
+      "This player has reached their follower limit"
+    ],
+    "text:FollowFollower_JP:FollowFollower_0005": [
+      "44386a55",
+      "You can link with Facebook"
+    ],
+    "text:FollowFollower_JP:FollowFollower_0006": [
+      "577676df",
+      "Following"
+    ],
+    "text:FollowFollower_JP:FollowFollower_0007": [
+      "3481a937",
+      "Followers"
+    ],
+    "text:FollowFollower_JP:FollowFollower_0008": [
+      "baa52b97",
+      "User Search"
+    ],
+    "text:FollowFollower_JP:FollowFollower_0009": [
+      "f36e1018",
+      "Block List"
+    ],
+    "text:FollowFollower_JP:FollowFollower_0010": [
+      "55d5830f",
+      "SNS Link"
+    ],
+    "text:FollowFollower_JP:FollowFollower_0011": [
+      "f47c2036",
+      "Date Added"
+    ],
+    "text:FollowFollower_JP:FollowFollower_0012": [
+      "377675ea",
+      "User Rank"
+    ],
+    "text:FollowFollower_JP:FollowFollower_0013": [
+      "2520913b",
+      "Level"
+    ],
+    "text:FollowFollower_JP:FollowFollower_0014": [
+      "bd5d3a3e",
+      "Rarity"
+    ],
+    "text:FollowFollower_JP:FollowFollower_0015": [
+      "2d946050",
+      "Type"
+    ],
+    "text:FollowFollower_JP:FollowFollower_0016": [
+      "c2282018",
+      "Last Login"
+    ],
+    "text:FollowFollower_JP:FollowFollower_BlockCheck": [
+      "8cc0224c",
+      "Block this user?\n*Blocking removes them from your Following and Followers."
+    ],
+    "text:Formation_JP:Formation_Assist_Autoset_1": [
+      "ac32ea14",
+      "Overall Focus"
+    ],
+    "text:Formation_JP:Formation_Assist_Autoset_2": [
+      "dd26236c",
+      "ATK Focus"
+    ],
+    "text:Formation_JP:Formation_Assist_Autoset_3": [
+      "a060aa3a",
+      "DEF Focus"
+    ],
+    "text:Formation_JP:Formation_Assist_Autoset_4": [
+      "aa4daa17",
+      "HP Focus"
+    ],
+    "text:Formation_JP:Formation_Massage_01": [
+      "9e12fccd",
+      "Auto Team"
+    ],
+    "text:Formation_JP:Formation_Massage_02": [
+      "b5454846",
+      "Some equipment was removed because some Minds did not meet the equip conditions."
+    ],
+    "text:Formation_JP:Formation_Massage_03": [
+      "d1d9954c",
+      "Some equipment was removed because Mind Capacity was exceeded."
+    ],
+    "text:Formation_JP:Formation_Massage_04": [
+      "fed1a30c",
+      "There was no Leader, so this Statue has been made Leader."
+    ],
+    "text:Formation_JP:Formation_Massage_05": [
+      "831f5274",
+      "A team cannot be left without its Leader. Remove the other members first."
+    ],
+    "text:Formation_JP:Formation_Massage_06": [
+      "3ba87b64",
+      "Teams with a BP cost of 2 or more cannot be edited."
+    ],
+    "text:Formation_JP:Formation_Massage_07": [
+      "decaaefd",
+      "This Statue is not the team Leader, so its skill cannot activate."
+    ],
+    "text:Formation_JP:Formation_Massage_08": [
+      "6cd7a1e2",
+      "Incapacitated teams cannot be edited."
+    ],
+    "text:Formation_JP:Formation_Massage_09": [
+      "3474696a",
+      "No Assist Ability."
+    ],
+    "text:Formation_JP:Formation_Massage_10": [
+      "c9661d1b",
+      "The team became incapacitated, so it could not be edited."
+    ],
+    "text:Formation_JP:Formation_Massage_11": [
+      "21cca97d",
+      "This team is currently deployed and cannot be edited."
+    ],
+    "text:Formation_JP:Formation_Massage_12": [
+      "ef4c7670",
+      "Remove all Minds equipped in the current edit?"
+    ],
+    "text:Formation_JP:Formation_Massage_13": [
+      "d08bb412",
+      "Remove all Assists in the current edit?"
+    ],
+    "text:Formation_JP:Formation_Massage_14": [
+      "6ec04fd3",
+      "A Statue was changed, so it has been removed from the Assist lineup."
+    ],
+    "text:Formation_JP:Formation_Massage_15": [
+      "f594c0db",
+      "No Statue to equip."
+    ],
+    "text:Formation_JP:Formation_Massage_16": [
+      "a9ffb0b5",
+      "The team has been changed.\nSave changes?"
+    ],
+    "text:Formation_JP:Formation_Menu_Button_01": [
+      "de16cfa6",
+      "Copy Team"
+    ],
+    "text:Formation_JP:Formation_Menu_Button_02": [
+      "40234b33",
+      "Paste Team"
+    ],
+    "text:Formation_JP:Formation_Menu_Button_03": [
+      "82ca10ff",
+      "Disband Team"
+    ],
+    "text:Formation_JP:Formation_Menu_Button_04": [
+      "37b06071",
+      "Remove All Assists"
+    ],
+    "text:Formation_JP:Formation_Menu_Button_05": [
+      "d267e98b",
+      "Remove All Minds"
+    ],
+    "text:Formation_JP:Formation_Team_Autoset_1": [
+      "ac32ea14",
+      "Overall Focus"
+    ],
+    "text:Formation_JP:Formation_Team_Autoset_2": [
+      "dd26236c",
+      "ATK Focus"
+    ],
+    "text:Formation_JP:Formation_Team_Autoset_3": [
+      "a060aa3a",
+      "DEF Focus"
+    ],
+    "text:Formation_JP:Formation_Team_Autoset_4": [
+      "aa4daa17",
+      "HP Focus"
+    ],
+    "text:Growth_JP:Growth_Message_01": [
+      "2578780c",
+      "Select Materials"
+    ],
+    "text:Growth_JP:Growth_Message_02": [
+      "882d6a59",
+      "Gold Owned:"
+    ],
+    "text:Growth_JP:Growth_Message_03": [
+      "eb3aa02a",
+      "Gold Cost:"
+    ],
+    "text:Growth_JP:Growth_Message_04": [
+      "2578780c",
+      "Select Materials"
+    ],
+    "text:Growth_JP:Growth_Message_05": [
+      "882d6a59",
+      "Gold Owned:"
+    ],
+    "text:Growth_JP:Growth_Message_06": [
+      "eb3aa02a",
+      "Gold Cost:"
+    ],
+    "text:Growth_JP:Growth_Message_07": [
+      "0449e552",
+      "EXP Gained:"
+    ],
+    "text:Growth_JP:Growth_Message_08": [
+      "b360ea88",
+      "The following Minds and Gold will be used to Power Up."
+    ],
+    "text:Growth_JP:Growth_Message_09": [
+      "d611e84a",
+      "The materials include Minds of ★3 or higher."
+    ],
+    "text:Growth_JP:Growth_Message_10": [
+      "d1055c18",
+      "Power Up"
+    ],
+    "text:Growth_JP:Growth_Message_11": [
+      "bca84ea5",
+      "Cancel"
+    ],
+    "text:Growth_JP:Growth_Message_12": [
+      "84bdeb88",
+      "Statues Owned:"
+    ],
+    "text:Growth_JP:Growth_Message_13": [
+      "58b76f00",
+      "Select Minds"
+    ],
+    "text:Growth_JP:Growth_Message_14": [
+      "3485cbb3",
+      "Select items"
+    ],
+    "text:Growth_JP:Growth_Message_15": [
+      "c4fb7ef4",
+      "You have no\nusable items"
+    ],
+    "text:Growth_JP:Growth_Message_16": [
+      "f03239bd",
+      "Not enough Gold"
+    ],
+    "text:Growth_JP:Growth_Message_17": [
+      "6a8651b9",
+      "Types:"
+    ],
+    "text:Growth_JP:Growth_Message_18": [
+      "dfe074e8",
+      "Selected:"
+    ],
+    "text:Growth_JP:Growth_Message_19": [
+      "79947a7d",
+      "You have no\nusable Minds"
+    ],
+    "text:Growth_JP:Growth_Message_20": [
+      "597a8023",
+      "Items"
+    ],
+    "text:Growth_JP:Growth_Message_21": [
+      "4053ec71",
+      "Minds"
+    ],
+    "text:Growth_JP:Growth_Message_22": [
+      "df3535a6",
+      "OK"
+    ],
+    "text:Growth_JP:Growth_Message_23": [
+      "4e39efcb",
+      "Take Out"
+    ],
+    "text:Growth_JP:Growth_Message_24": [
+      "95852bff",
+      "Send to Storage"
+    ],
+    "text:MindSale_JP:MindSale_Message_01": [
+      "78d4c13c",
+      "Sell the selected Minds?"
+    ],
+    "text:MindSale_JP:MindSale_Message_02": [
+      "8a36407c",
+      "Minds of ☆3 or higher are selected.\nReally sell them?"
+    ],
+    "text:MindSale_JP:MindSale_Message_03": [
+      "b8b86e48",
+      "Minds sold."
+    ],
+    "text:MindSale_JP:MindSale_Message_04": [
+      "37e92098",
+      "Gold Gained:"
+    ],
+    "text:MindSale_JP:MindSale_Message_05": [
+      "902d2c4b",
+      "Rings of Memories Gained:"
+    ],
+    "text:MindSale_JP:MindSale_Message_06": [
+      "882d6a59",
+      "Gold Owned:"
+    ],
+    "text:MindSale_JP:MindSale_Message_07": [
+      "7ca5608d",
+      "Rings of Memories Owned:"
+    ],
+    "text:MindSale_JP:MindSale_Message_08": [
+      "788c27fa",
+      "Minds to Sell"
+    ],
+    "text:MindSale_JP:MindSale_Message_09": [
+      "2c9b72bc",
+      "Sale Results"
+    ],
+    "text:MindSale_JP:MindSale_Message_10": [
+      "a5f431cc",
+      "Sell"
+    ],
+    "text:MindSale_JP:MindSale_Message_11": [
+      "bca84ea5",
+      "Cancel"
+    ],
+    "text:MyPage_JP:Information_tag_01": [
+      "6cd241f0",
+      "Updates"
+    ],
+    "text:MyPage_JP:Information_tag_02": [
+      "982e5629",
+      "System"
+    ],
+    "text:MyPage_JP:Information_tag_03": [
+      "f1315665",
+      "Other"
+    ],
+    "text:MyPage_JP:MyPage_Massage_01": [
+      "7d7e6e45",
+      "Use an item to restore AP."
+    ],
+    "text:MyPage_JP:MyPage_Massage_02": [
+      "9d9e9aff",
+      "Use Diamond Coins to restore AP."
+    ],
+    "text:MyPage_JP:MyPage_Massage_03": [
+      "c9f3fbbb",
+      "Gift received."
+    ],
+    "text:MyPage_JP:MyPage_Massage_04": [
+      "2e893836",
+      "All gifts received."
+    ],
+    "text:MyPage_JP:MyPage_Massage_05": [
+      "e6f24da3",
+      "Gifts Received"
+    ],
+    "text:MyPage_JP:MyPage_Massage_06": [
+      "ecd20ad2",
+      "Restore AP"
+    ],
+    "text:MyPage_JP:MyPage_Massage_07": [
+      "7d7e6e45",
+      "Use an item to restore AP."
+    ],
+    "text:MyPage_JP:MyPage_Massage_08": [
+      "9ef3750a",
+      "Not unlocked yet"
+    ],
+    "text:MyPage_JP:MyPage_Massage_09": [
+      "e5b42b9e",
+      "AP cannot be restored any further."
+    ],
+    "text:MyPage_JP:MyPage_Massage_10": [
+      "a0de654b",
+      "Restore AP"
+    ],
+    "text:MyPage_JP:MyPage_Massage_11": [
+      "4ca6d7db",
+      "AP restored"
+    ],
+    "text:MyPage_JP:MyPage_Massage_12": [
+      "5272f15c",
+      "Not enough AP."
+    ],
+    "text:MyPage_JP:MyPage_Massage_13": [
+      "ef61b4fa",
+      "Not enough Diamond Coins.\nBuy in-game currency at the Shop?"
+    ],
+    "text:MyPage_JP:MyPage_Massage_14": [
+      "8387099d",
+      "Claim All\non Page"
+    ],
+    "text:MyPage_JP:MyPage_Massage_15": [
+      "72581708",
+      "Claim"
+    ],
+    "text:MyPage_JP:MyPage_Massage_16": [
+      "1195d47b",
+      "Claimed"
+    ],
+    "text:MyPage_JP:MyPage_Massage_17": [
+      "443b9747",
+      "Notes on Claiming Gifts"
+    ],
+    "text:MyPage_JP:MyPage_Massage_18": [
+      "ec766a3f",
+      "Owned"
+    ],
+    "text:MyPage_JP:MyPage_Massage_19": [
+      "c973f8ce",
+      "on page"
+    ],
+    "text:MyPage_JP:MyPage_Massage_20": [
+      "97c4d05b",
+      "Could not claim because you have too many"
+    ],
+    "text:MyPage_JP:MyPage_Massage_21": [
+      "f5f5a0ed",
+      "Some items could not be claimed because you have too many"
+    ],
+    "text:MyPage_JP:MyPage_Massage_22": [
+      "a6b68c93",
+      "Team/Power Up is currently under maintenance"
+    ],
+    "text:MyPage_JP:MyPage_Massage_23": [
+      "9eced0c7",
+      "Quests are currently under maintenance"
+    ],
+    "text:MyPage_JP:MyPage_Massage_24": [
+      "f2c1aec1",
+      "My Town is currently under maintenance"
+    ],
+    "text:MyPage_JP:MyPage_Massage_25": [
+      "ffa4eb76",
+      "Gacha is currently under maintenance"
+    ],
+    "text:MyPage_JP:MyPage_Massage_26": [
+      "d53e3a48",
+      "The Shop is currently under maintenance"
+    ],
+    "text:MyPage_JP:MyPage_Massage_27": [
+      "503ecc0e",
+      "d ago"
+    ],
+    "text:MyPage_JP:MyPage_Massage_28": [
+      "930f85e6",
+      "h ago"
+    ],
+    "text:MyPage_JP:MyPage_Massage_29": [
+      "a374e0f5",
+      "m ago"
+    ],
+    "text:MyPage_JP:MyPage_Massage_30": [
+      "6555e54b",
+      "until"
+    ],
+    "text:MyPage_JP:MyPage_Massage_31": [
+      "bca783a8",
+      "Move All to\nMessage Box"
+    ],
+    "text:PvPHome_JP:Client_Mes_0043": [
+      "9895b5d3",
+      "BP restored"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_00551709": [
+      "3ef5f996",
+      "Mind slot unlock conditions not met"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_00551710": [
+      "3326e0ae",
+      "Cannot equip more copies of the same Mind than the limit allows"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_00551711": [
+      "2034b5c0",
+      "Assist Locked"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_00551712": [
+      "277c6f62",
+      "In Other Team"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_00551713": [
+      "fa84506f",
+      "Assisting"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_00554101": [
+      "abadce8c",
+      "Awakening conditions not met, so it cannot be awakened"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_00600019": [
+      "036ae1dd",
+      "The Arena is not currently being held"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01200014": [
+      "6ffd5c16",
+      "A maximum of\n3 Sub-masters is allowed.\nTo appoint a new Sub-master,\ndismiss an existing one first."
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01200015": [
+      "d43452c6",
+      "The Town Rank cannot be\nraised any further,\nso the donation could not be made."
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01300001": [
+      "cc4224f3",
+      "The same Statue is also set in another team"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01300002": [
+      "89c702a4",
+      "No opponent found"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01300003": [
+      "58f36d5a",
+      "Not enough Fever Gauge"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01300004": [
+      "a2965ece",
+      "Battle has not started"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01300005": [
+      "e4f15b5a",
+      "Teams with a BP cost of 2 or more cannot be edited"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01300006": [
+      "02d6e327",
+      "The team has no Leader"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01300008": [
+      "226cf2f4",
+      "BP cannot be restored any further"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01300009": [
+      "3d21abb7",
+      "Not enough BP to start the battle"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01300010": [
+      "0563c569",
+      "The opponent's team has changed, so the battle cannot proceed"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01352007": [
+      "dc19e0f5",
+      "Not enough Statues for Auto Team"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01352011": [
+      "2034b5c0",
+      "Assist Locked"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01352012": [
+      "7023e5b6",
+      "In Team"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01352013": [
+      "fa84506f",
+      "Assisting"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01352014": [
+      "f7dca90a",
+      "Can't Add"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01352016": [
+      "29919da1",
+      "Team on Sortie"
+    ],
+    "text:PvPHome_JP:ERROR_TEXT_01352017": [
+      "3bc3ee2b",
+      "Team on Cooldown"
+    ],
+    "text:PvPHome_JP:PVPHOME_00001_TEXT": [
+      "dce52f3e",
+      "Confirm"
+    ],
+    "text:PvPHome_JP:PVPHOME_00002_TEXT": [
+      "d54c3c0f",
+      "No available opponents found. Please try again later"
+    ],
+    "text:PvPHome_JP:PVPHOME_00003_TEXT": [
+      "5ba680d8",
+      "No teams can take part in battle."
+    ],
+    "text:PvPHome_JP:PVPHOME_00004_TEXT": [
+      "039b115b",
+      "Start the battle \"Team {0}\" vs \"{1}\"?\n\nThis will use {2} Battle Points.\n\nStart the battle?"
+    ],
+    "text:PvPHome_JP:PVPHOME_00010_TEXT": [
+      "313bc776",
+      "Battle Start"
+    ],
+    "text:PvPHome_JP:PVPHOME_00011_TEXT": [
+      "bca84ea5",
+      "Cancel"
+    ],
+    "text:PvPHome_JP:PVPHOME_00012_TEXT": [
+      "1e9021ce",
+      "You need {0} BP to start a battle"
+    ],
+    "text:PvPHome_JP:PVPHOME_00014_TEXT": [
+      "226cf2f4",
+      "BP cannot be restored any further"
+    ],
+    "text:PvPHome_JP:PVPHOME_00015_TEXT": [
+      "4021bbe8",
+      "BP cost recovers once BP reaches {0} or more"
+    ],
+    "text:PvPHome_JP:PVPHOME_00017_TEXT": [
+      "fbf570e6",
+      "Not enough {0}"
+    ],
+    "text:PvPHome_JP:PVPHOME_00018_TEXT": [
+      "f7960641",
+      "Remaining"
+    ],
+    "text:PvPHome_JP:PVPHOME_00019_TEXT": [
+      "62eb3e1b",
+      "The Arena points review period has ended"
+    ],
+    "text:PvPHome_JP:PVPHOME_00020_TEXT": [
+      "a40ac4d0",
+      "The Arena has ended"
+    ],
+    "text:PvPHome_JP:PVPHOME_00021_TEXT": [
+      "22c2078e",
+      "An error occurred"
+    ],
+    "text:PvPHome_JP:PVPHOME_00022_TEXT": [
+      "996d2a64",
+      "Use 1 {0} to restore BP?"
+    ],
+    "text:PvPHome_JP:PVPHOME_00023_TEXT": [
+      "5827bf8d",
+      "ATK Modifier {0}%"
+    ],
+    "text:PvPHome_JP:PVPHOME_00024_TEXT": [
+      "9cd3e86c",
+      "DEF Modifier {0}%"
+    ],
+    "text:PvPHome_JP:PVPHOME_00025_TEXT": [
+      "67cfeaf4",
+      "You were attacked by {0}\nand drove them off"
+    ],
+    "text:PvPHome_JP:PVPHOME_00026_TEXT": [
+      "5f97f034",
+      "You were attacked by {0}\nand were defeated"
+    ],
+    "text:PvPHome_JP:PVPHOME_00027_TEXT": [
+      "7e6b631c",
+      "Use Full Revive?\nAll incapacitated teams will be revived"
+    ],
+    "text:PvPHome_JP:PVPHOME_00028_TEXT": [
+      "9f28424d",
+      "Full Revive is now available"
+    ],
+    "text:PvPHome_JP:PVPHOME_00029_TEXT": [
+      "70d4a800",
+      "After {0} battles,\nthe BP cost of all teams except the one used dropped by 1"
+    ],
+    "text:PvPHome_JP:PVPHOME_00030_TEXT": [
+      "6fe7ac4c",
+      "Activate Fever?"
+    ],
+    "text:PvPHome_JP:PVPHOME_00031_TEXT": [
+      "0d814551",
+      "Connection was lost during battle\nThe previous battle counts as a loss"
+    ],
+    "text:PvPHome_JP:PVPHOME_00032_TEXT": [
+      "036ae1dd",
+      "The Arena is not currently being held"
+    ],
+    "text:PvPHome_JP:PVPHOME_00033_TEXT": [
+      "d97e6844",
+      "Congratulations! Your rewards have been sent to your Message Box"
+    ],
+    "text:PvPHome_JP:PVPHOME_00034_TEXT": [
+      "1391144e",
+      "Really retire?\nRetiring counts the battle as a loss"
+    ],
+    "text:PvPHome_JP:PVPHOME_00035_TEXT": [
+      "3185567a",
+      "This team is incapacitated and cannot be edited\nRevive the team before editing it"
+    ],
+    "text:PvPHome_JP:PVPHOME_00036_TEXT": [
+      "f72304f1",
+      "The Arena is about to end,\nso points may not be counted\nFight anyway?"
+    ],
+    "text:PvPHome_JP:PVPHOME_00037_TEXT": [
+      "0490177e",
+      "Use 1 {0} to revive?"
+    ],
+    "text:PvPHome_JP:PVPHOME_00038_TEXT": [
+      "35f84e53",
+      "Reviving makes the selected team usable again"
+    ],
+    "text:PvPHome_JP:PVPHOME_00039_TEXT": [
+      "cceb494b",
+      "Use 1 {0}\nto shuffle?"
+    ],
+    "text:PvPHome_JP:PVPHOME_00040_TEXT": [
+      "304923c8",
+      "Shuffling swaps in a new set of opponents"
+    ],
+    "text:PvPHome_JP:PVPHOME_00041_TEXT": [
+      "f6c244f9",
+      "Close"
+    ],
+    "text:PvPHome_JP:PVPHOME_00042_TEXT": [
+      "3f5bb954",
+      "Not enough {0} to revive\nGo to the Shop?"
+    ],
+    "text:PvPHome_JP:PVPHOME_00043_TEXT": [
+      "d7002bee",
+      "Not enough {0} to shuffle\nGo to the Shop?"
+    ],
+    "text:PvPHome_JP:PVPHOME_00044_TEXT": [
+      "6feb5ad5",
+      "You were attacked by {0} and were defeated."
+    ],
+    "text:PvPHome_JP:PVPHOME_00045_TEXT": [
+      "8117c88d",
+      "No teams are incapacitated"
+    ],
+    "text:PvPHome_JP:PVPHOME_00046_TEXT": [
+      "36b137c8",
+      "The selected team has already been revived"
+    ],
+    "text:PvPHome_JP:PVPHOME_00047_TEXT": [
+      "79e45b15",
+      "Revive"
+    ],
+    "text:PvPHome_JP:PVPHOME_00048_TEXT": [
+      "265f5d38",
+      "Shuffle"
+    ],
+    "text:PvPHome_JP:PVPHOME_00049_TEXT": [
+      "0c2b21b3",
+      "You were attacked by {0} and drove them off."
+    ],
+    "text:PvPHome_JP:PVPHOME_00050_TEXT": [
+      "6ad7f165",
+      "You lost the battle"
+    ],
+    "text:PvPHome_JP:PVPHOME_00051_TEXT": [
+      "6cb51e5e",
+      "Used 1 {0} to shuffle opponents"
+    ],
+    "text:PvPHome_JP:PVPHOME_00052_TEXT": [
+      "02e847ae",
+      "Used 1 {0} to revive"
+    ],
+    "text:PvPHome_JP:PVPHOME_00053_TEXT": [
+      "b43abc31",
+      "Restore"
+    ],
+    "text:PvPHome_JP:PVPHOME_00054_TEXT": [
+      "54b1e055",
+      "Cannot be restored right now"
+    ],
+    "text:PvPHome_JP:PVPHOME_00055_TEXT": [
+      "df69e77f",
+      "The team is already restored"
+    ],
+    "text:PvPHome_JP:PVPHOME_00056_TEXT": [
+      "b60d7d58",
+      "The battle could not start because the team is unable to fight"
+    ],
+    "text:PvPHome_JP:PVPHOME_00060_TEXT": [
+      "45098924",
+      "Give up and end the battle.\nThis battle will count as a loss."
+    ],
+    "text:PvPHome_JP:Ranking_None_PVP": [
+      "3262e196",
+      "The review period has ended"
+    ],
+    "text:QuestCondition_JP:QuestCondition_000": [
+      "f2fb0524",
+      "Items Needed to Unlock Quest"
+    ],
+    "text:QuestCondition_JP:QuestCondition_001": [
+      "e5838661",
+      "Conditions not met.\nThe following required Statues\nmust be set in your team."
+    ],
+    "text:QuestCondition_JP:QuestCondition_002": [
+      "4e3a85f9",
+      "is now selectable."
+    ],
+    "text:QuestCondition_JP:QuestCondition_003": [
+      "f6c244f9",
+      "Close"
+    ],
+    "text:QuestCondition_JP:QuestCondition_004": [
+      "f974b00e",
+      "Unlock Quest"
+    ],
+    "text:QuestCondition_JP:QuestCondition_005": [
+      "4dde32d4",
+      "Unlock"
+    ],
+    "text:QuestCondition_JP:QuestCondition_006": [
+      "a9c9c456",
+      "Cancel"
+    ],
+    "text:QuestConfune_JP:QuestConfune_000": [
+      "6afccca2",
+      "Daily Quests unlocked!\nDaily Quests give EXP Power Up materials and Growth Tree materials"
+    ],
+    "text:QuestConfune_JP:QuestConfune_001": [
+      "283a9e9c",
+      "Event Quests unlocked!\nQuests where you can experience all kinds of stories. Available for a limited time"
+    ],
+    "text:QuestConfune_JP:QuestConfune_002": [
+      "4091268e",
+      "Daily Missions unlocked!\nComplete missions that refresh every day to earn rewards"
+    ],
+    "text:QuestConfune_JP:QuestConfune_003": [
+      "64954a4b",
+      "Event Quests are not unlocked yet\nProgress through Story Quests to unlock them"
+    ],
+    "text:QuestConfune_JP:QuestConfune_004": [
+      "f2d02869",
+      "Daily Quests are not unlocked yet\nProgress through Story Quests to unlock them"
+    ],
+    "text:QuestConfune_JP:QuestConfune_005": [
+      "240c14b3",
+      "Unlocked by clearing \"Chapter 1: Jotaro Kujo Meets Josuke Higashikata (1) Part 2\"!"
+    ],
+    "text:QuestConfune_JP:QuestConfune_006": [
+      "9e891c4a",
+      "Unlocked by clearing \"Chapter 2: Jotaro Kujo Meets Josuke Higashikata (2) Part 3\"!"
+    ],
+    "text:QuestConfune_JP:QuestConfune_007": [
+      "9e891c4a",
+      "Unlocked by clearing \"Chapter 2: Jotaro Kujo Meets Josuke Higashikata (2) Part 3\"!"
+    ],
+    "text:QuestConfune_JP:QuestConfune_009": [
+      "cea0c67f",
+      "\"Labyrinth of the Mind\" unlocked!\nThe deeper you go, the greater the rewards."
+    ],
+    "text:QuestConfune_JP:QuestConfune_010": [
+      "1f6400de",
+      "\"Labyrinth of the Mind\" is currently closed.\nPlease wait for it to reopen."
+    ],
+    "text:QuestConfune_JP:QuestConfune_011": [
+      "a758de78",
+      "Unlocked by clearing the tutorial!"
+    ],
+    "text:QuestResult_JP:Quest_Result_Massage_01": [
+      "26bbc05f",
+      "Player Rank up!"
+    ],
+    "text:QuestResult_JP:Quest_Result_Massage_02": [
+      "838612bd",
+      "First clear reward obtained!"
+    ],
+    "text:QuestResult_JP:Quest_Result_Massage_03": [
+      "ed8fbfbe",
+      "Special reward obtained!"
+    ],
+    "text:QuestResult_JP:Quest_Result_Massage_04": [
+      "76140eef",
+      "Follow this player?"
+    ],
+    "text:QuestResult_JP:Quest_Result_Massage_05": [
+      "19b75efa",
+      "Level up!"
+    ],
+    "text:QuestResult_JP:Quest_Result_Massage_06": [
+      "1a723e8f",
+      "Points Earned"
+    ],
+    "text:QuestResult_JP:Quest_Result_Massage_07": [
+      "cd176867",
+      "Event Items Obtained"
+    ],
+    "text:QuestType_JP:TypeText_001": [
+      "a82ac7d2",
+      "Story Bizarre"
+    ],
+    "text:QuestType_JP:TypeText_002": [
+      "8d756d94",
+      "Daily Bizarre"
+    ],
+    "text:QuestType_JP:TypeText_003": [
+      "0ca445f8",
+      "Limited-Time Event"
+    ],
+    "text:QuestType_JP:TypeText_004": [
+      "5bde6392",
+      "Other_01"
+    ],
+    "text:QuestType_JP:TypeText_005": [
+      "46a964ec",
+      "Other_02"
+    ],
+    "text:ResultText_JP:ResultText_001": [
+      "1745ca44",
+      "AP has been restored."
+    ],
+    "text:ResultText_JP:ResultText_002": [
+      "9341e55c",
+      "Max AP has increased."
+    ],
+    "text:SkillTypeText_JP:SKILL_TYPE_TEXT_0": [
+      "4b20dcc3",
+      "TBD"
+    ],
+    "text:SkillTypeText_JP:SKILL_TYPE_TEXT_1": [
+      "9e78a6f0",
+      "Normal Attack"
+    ],
+    "text:SkillTypeText_JP:SKILL_TYPE_TEXT_2": [
+      "fd094cd6",
+      "Skill"
+    ],
+    "text:SkillTypeText_JP:SKILL_TYPE_TEXT_3": [
+      "1d431692",
+      "SP Skill"
+    ],
+    "text:SkillTypeText_JP:SKILL_TYPE_TEXT_4": [
+      "100e75ae",
+      "Pass"
+    ],
+    "text:SkillTypeText_JP:SKILL_TYPE_TEXT_5": [
+      "38e36ee6",
+      "Switch"
+    ],
+    "text:SkillTypeText_JP:SKILL_TYPE_TEXT_6": [
+      "674d3497",
+      "KO Switch"
+    ],
+    "text:SkillTypeText_JP:SKILL_TYPE_TEXT_7": [
+      "b2e32051",
+      "Stunned"
+    ],
+    "text:SortText_JP:SORT_0": [
+      "8ab087e4",
+      "Unsorted"
+    ],
+    "text:SortText_JP:SORT_1": [
+      "29696d9a",
+      "Date Obtained"
+    ],
+    "text:SortText_JP:SORT_10": [
+      "0babc2f8",
+      "Boost"
+    ],
+    "text:SortText_JP:SORT_11": [
+      "572a6a52",
+      "Type"
+    ],
+    "text:SortText_JP:SORT_12": [
+      "572a6a52",
+      "Type"
+    ],
+    "text:SortText_JP:SORT_13": [
+      "28a13f2c",
+      "Part"
+    ],
+    "text:SortText_JP:SORT_14": [
+      "0677fcd9",
+      "Menacing"
+    ],
+    "text:SortText_JP:SORT_15": [
+      "49e52111",
+      "Overall"
+    ],
+    "text:SortText_JP:SORT_2": [
+      "76688e1d",
+      "Name"
+    ],
+    "text:SortText_JP:SORT_3": [
+      "01ad19be",
+      "Level"
+    ],
+    "text:SortText_JP:SORT_4": [
+      "a28c7306",
+      "Rarity"
+    ],
+    "text:SortText_JP:SORT_5": [
+      "69b6412b",
+      "Cost"
+    ],
+    "text:SortText_JP:SORT_9": [
+      "ec766a3f",
+      "Owned"
+    ],
+    "text:SortText_JP:SORT_APPEATEDPART": [
+      "28a13f2c",
+      "Part"
+    ],
+    "text:SortText_JP:SORT_CONVERGENCE": [
+      "0babc2f8",
+      "Boost"
+    ],
+    "text:SortText_JP:SORT_COST": [
+      "69b6412b",
+      "Cost"
+    ],
+    "text:SortText_JP:SORT_LEVEL": [
+      "01ad19be",
+      "Level"
+    ],
+    "text:SortText_JP:SORT_MINDTYPE": [
+      "572a6a52",
+      "Type"
+    ],
+    "text:SortText_JP:SORT_NAME": [
+      "76688e1d",
+      "Name"
+    ],
+    "text:SortText_JP:SORT_NONE": [
+      "8ab087e4",
+      "Unsorted"
+    ],
+    "text:SortText_JP:SORT_OBTAIN": [
+      "29696d9a",
+      "Date Obtained"
+    ],
+    "text:SortText_JP:SORT_REALITY": [
+      "a28c7306",
+      "Rarity"
+    ],
+    "text:SortText_JP:SORT_STATUETYPE": [
+      "572a6a52",
+      "Type"
+    ],
+    "text:SortText_JP:SORT_STOCKCOUNT": [
+      "ec766a3f",
+      "Owned"
+    ],
+    "text:SpecialActionText_JP:SPECIALACTION_3001": [
+      "0b6b126f",
+      "[Just for an instant, about one punch's worth]\nIf attacked while time is stopped, you can\ncounterattack once.\nIf it hits, the time stop is canceled."
+    ],
+    "text:SpecialActionText_JP:SPECIALACTION_3031": [
+      "9f9dc28e",
+      "Attacks using \"Emerald Splash\" deal more damage,\nand attacks using \"Tentacles\" deal less damage."
+    ],
+    "text:SpecialActionText_JP:SPECIALACTION_3041": [
+      "dc32c201",
+      "[Mastery]\nWhen HP falls below a certain level, or when hit by a skill for a set time\nafter using the skill \"I've learned that one too\", \"Mastery\" rises.\nHigher Mastery raises the speed of all actions.\nAt a certain level of Mastery, specific attacks are enhanced."
+    ],
+    "text:SpecialActionText_JP:SPECIALACTION_3060": [
+      "7aff5b0b",
+      "Your own Stand that appears during normal attacks etc.\ncannot be hit by attacks from other Statues."
+    ],
+    "text:SpecialActionText_JP:SPECIALACTION_3090": [
+      "628429e8",
+      "[Energy of Resentment]\nDepending on remaining HP, the summoned dolls gain faster\ncooldown recovery, skill speed, movement speed and ATK."
+    ],
+    "text:SpecialActionText_JP:SPECIALACTION_3240": [
+      "ba02df38",
+      "[Mastery] When HP falls below a certain level,\nor when the Mind SP Skill \"You're a master... a master swordsman\"\nis used, \"Mastery\" rises.\nHigher Mastery raises the speed of all actions.\nAt a certain level of Mastery, specific attacks are enhanced."
+    ],
+    "text:SpecialActionText_JP:SPECIALACTION_3321": [
+      "bd710201",
+      "[Settling In]\nThe 5th normal attack is a blood-sucking attack that restores a little HP.\nThe \"Settling In\" level rises bit by bit depending on whose blood is drunk,\nand at a certain amount an effect triggers: longer time stop,\nshorter CT, ATK up and DEF down, each changing in up to 4 stages."
+    ],
+    "text:SpecialActionText_JP:SPECIALACTION_3321_2": [
+      "adb7e2ef",
+      "[Settling In] The 5th normal attack is a blood-sucking attack that\nrestores a little HP and raises the \"Settling In\" level by 2.\nThe level rises bit by bit depending on the target attacked, and at a certain\namount an effect triggers: longer time stop, shorter CT,\nATK up and DEF down, each changing in up to 4 stages."
+    ],
+    "text:SpecialActionText_JP:SPECIALACTION_4030": [
+      "d2e1188a",
+      "[I've already put the \"safety catch\" on you...]\nHas a chance to activate on normal attacks.\nWhen active, for a set time, each hit you take\ninflicts an ATK-down status on the attacker."
+    ],
+    "text:SpecialActionText_JP:SPECIALACTION_4192": [
+      "acf12789",
+      "[Bomb #3] Turns back time, restoring your stats to their state\nat the start of the area, except for Finisher SP Skill uses.\nTeam members and enemies keep the stats they had\nbefore \"Bomb #3\" was activated.\nActivating it uses up a Finisher SP Skill use."
+    ],
+    "text:SpecialActionText_JP:SPECIALACTION_4194": [
+      "acf12789",
+      "[Bomb #3] Turns back time, restoring your stats to their state\nat the start of the area, except for Finisher SP Skill uses.\nTeam members and enemies keep the stats they had\nbefore \"Bomb #3\" was activated.\nActivating it uses up a Finisher SP Skill use."
+    ],
+    "text:SpecialActionText_JP:SPECIALACTION_4240": [
+      "2b00bbe9",
+      "[Fear]\nLanding attacks draws out signs of fear from the opponent.\nThe attacks that raise Fear change with each battle.\nWhile a sign is showing, some SP Skills are enhanced."
+    ],
+    "text:StRateTypeText_JP:STRATE_TYPE_HAMON_BA_MC_TEXT": [
+      "dd0dd21c",
+      "Hamon C, Drain B, Mental C-, Aging C"
+    ],
+    "text:StRateTypeText_JP:STRATE_TYPE_HAMON_FEMALE_TEXT": [
+      "ba4bbd67",
+      "Hamon C, Drain B, Mental C-, Aging B+"
+    ],
+    "text:StRateTypeText_JP:STRATE_TYPE_HASHIRA_DS_SA_TEXT": [
+      "30f28b3d",
+      "Hamon C-, Drain B, Mental C, Aging B+"
+    ],
+    "text:StRateTypeText_JP:STRATE_TYPE_H_S_DS_BA_MA_TEXT": [
+      "f19ff28b",
+      "Hamon C, Drain A, Mental D-, Aging C"
+    ],
+    "text:StRateTypeText_JP:STRATE_TYPE_NONE_FEMALE_TEXT": [
+      "d1c52e77",
+      "Hamon C, Drain D-, Mental A, Aging B+"
+    ],
+    "text:StRateTypeText_JP:STRATE_TYPE_NONE_TEXT": [
+      "d217f9d6",
+      "Hamon C, Drain D-, Mental A, Aging C"
+    ],
+    "text:StRateTypeText_JP:STRATE_TYPE_PESCI_TEXT": [
+      "d3743444",
+      "Hamon C, Drain C-, Mental B, Aging SS"
+    ],
+    "text:StRateTypeText_JP:STRATE_TYPE_PROSCIUTTO_TEXT": [
+      "c663763e",
+      "Hamon C, Drain C-, Mental B, Aging SSS+"
+    ],
+    "text:StRateTypeText_JP:STRATE_TYPE_STAND_AGING+_TEXT": [
+      "8c50e526",
+      "Hamon C, Drain C-, Mental B, Aging S"
+    ],
+    "text:StRateTypeText_JP:STRATE_TYPE_STAND_DS_MA_TEXT": [
+      "44545282",
+      "Hamon C, Drain C-, Mental B, Aging C"
+    ],
+    "text:StRateTypeText_JP:STRATE_TYPE_STAND_FEMALE_TEXT": [
+      "be6c6319",
+      "Hamon C, Drain C-, Mental B, Aging B+"
+    ],
+    "text:StRateTypeText_JP:STRATE_TYPE_ULTIMATE_ALLS_TEXT": [
+      "21d8f025",
+      "Hamon S, Drain C, Mental E-, Aging B+"
+    ],
+    "text:StRateTypeText_JP:STRATE_TYPE_VAMP_DA_SB_TEXT": [
+      "f2eea65e",
+      "Hamon D-, Drain A, Mental C, Aging B+"
+    ],
+    "text:StRateTypeText_JP:STRATE_TYPE_V_S_DS_SB_MA_TEXT": [
+      "284e6129",
+      "Hamon D-, Drain C, Mental A, Aging B+"
+    ],
+    "text:StatueTypeText_JP:STATUE_TYPE_TEXT_0": [
+      "cf1211da",
+      "None"
+    ],
+    "text:StatueTypeText_JP:STATUE_TYPE_TEXT_1": [
+      "6f64e69c",
+      "Bravery"
+    ],
+    "text:StatueTypeText_JP:STATUE_TYPE_TEXT_2": [
+      "81219341",
+      "Intellect"
+    ],
+    "text:StatueTypeText_JP:STATUE_TYPE_TEXT_3": [
+      "51a80cd6",
+      "Tenacity"
+    ],
+    "text:StatueTypeText_JP:STATUE_TYPE_TEXT_4": [
+      "7810a8bc",
+      "Unity"
+    ],
+    "text:StatueTypeText_JP:STATUE_TYPE_TEXT_5": [
+      "a2dfc575",
+      "Maverick"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_001": [
+      "49fb9fe0",
+      "Remove"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_002": [
+      "7ddaa9d9",
+      "Low CP"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_004": [
+      "15708cdc",
+      "Favorite"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_005": [
+      "2c5e90c7",
+      "Equipped"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_006": [
+      "c3912b98",
+      "Conditions\nNot Met"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_007": [
+      "9968877d",
+      "Selected"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_008": [
+      "c20b3e99",
+      "Unavailable"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_009": [
+      "8055bf66",
+      "Low Gold"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_010": [
+      "bc9c6a49",
+      "Max Power"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_011": [
+      "a3796598",
+      "Same Char"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_012": [
+      "17dd896c",
+      "Material"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_013": [
+      "767b285a",
+      "Can't Power Up"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_014": [
+      "0190236f",
+      "In\nTeam"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_015": [
+      "0eba1ea1",
+      "Equipped by\nOther"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_016": [
+      "a80683b8",
+      "No Duplicates"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_017": [
+      "0190236f",
+      "In\nTeam"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_018": [
+      "3608d780",
+      "Can't Equip"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_019": [
+      "a80683b8",
+      "No Duplicates"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_020": [
+      "fb20326e",
+      "Mind Slot\nMismatch"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_021": [
+      "f5c1475f",
+      "Equip\nLimit"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_022": [
+      "737ccfa6",
+      "Assist\nOnly"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_023": [
+      "f38d334a",
+      "In\nAssist"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_024": [
+      "2c5e90c7",
+      "Equipped"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_025": [
+      "0eba1ea1",
+      "Equipped by\nOther"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_026": [
+      "0dd77eba",
+      "Can't Awaken"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_027": [
+      "f1ee60a8",
+      "Action\nOnly"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_028": [
+      "e13025f0",
+      "Tactical\nOnly"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_029": [
+      "8eda6730",
+      "Same Char\nNot Allowed"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_030": [
+      "70a8b8f5",
+      "Can't\nAssist"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_031": [
+      "2cb3ae99",
+      "Arena\nDuplicate"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_032": [
+      "f1247e2d",
+      "Leader\nRequired"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_033": [
+      "f7dca90a",
+      "Can't Add"
+    ],
+    "text:ThumbnailTextLabel_JP:ThumbnailText_034": [
+      "06648e1a",
+      "No more items can be selected"
+    ],
+    "text:TitleText_JP:TitleText_001": [
+      "0241259d",
+      "Enter your registered User ID and password to carry over game data from another device.\n*Please note that \"Diamond Coins\" cannot be carried over when transferring data between different operating systems."
+    ],
+    "text:TitleText_JP:TitleText_002": [
+      "3c8dae37",
+      "[Important]\n*When transferring data between different operating systems,\n\"Diamond Coins\" cannot be carried over. Please be aware."
+    ],
+    "text:TitleText_JP:TitleText_003": [
+      "51733ccf",
+      "Transfer data using the entered ID and password?"
+    ],
+    "text:TitleText_JP:TitleText_004": [
+      "4b635c48",
+      "Data transfer complete.\nPlease continue to enjoy \"JoJo's Bizarre Adventure: Diamond Records\"!"
+    ],
+    "text:TitleText_JP:TitleText_005": [
+      "6b0da5cd",
+      "Data transfer complete.\nReset the \"JoJo's Bizarre Adventure: Diamond Records\" play data on this device?"
+    ],
+    "text:TitleText_JP:TitleText_006": [
+      "8070228a",
+      "Clears the cache and downloads the data again.\nIf data is corrupted, downloading it again may fix the problem."
+    ],
+    "text:TitleText_JP:TitleText_007": [
+      "a70bd854",
+      "Clear the cache?\n*We recommend a stable connection such as Wi-Fi."
+    ],
+    "text:TitleText_JP:TitleText_008": [
+      "66b0a0a2",
+      "Do you agree to the Terms of Use?"
+    ],
+    "text:TitleText_JP:TitleText_009": [
+      "546f48a3",
+      "A new version is available."
+    ],
+    "text:TitleText_JP:TitleText_010": [
+      "03810baf",
+      "Which data do you want to start the game with?"
+    ],
+    "text:TitleText_JP:TitleText_011": [
+      "29acf9af",
+      "Game data has been transferred."
+    ],
+    "text:TitleText_JP:TitleText_012": [
+      "fa56d683",
+      "Which game data will you use?"
+    ],
+    "text:TitleText_JP:TitleText_013": [
+      "b7d38994",
+      "Game data will now be downloaded."
+    ],
+    "text:TitleText_JP:TitleText_014": [
+      "b7d38994",
+      "Game data will now be downloaded."
+    ],
+    "text:TitleText_JP:TitleText_015": [
+      "24b98084",
+      "Under maintenance."
+    ],
+    "text:TitleText_JP:TitleText_016": [
+      "3c8dae37",
+      "[Important]\n*When transferring data between different operating systems,\n\"Diamond Coins\" cannot be carried over. Please be aware."
+    ],
+    "text:TitleText_JP:TitleText_017": [
+      "f3b7bc3c",
+      "Your User ID is required when contacting support.\nPress the Copy button to copy your User ID to your device."
+    ],
+    "text:TitleText_JP:TitleText_018": [
+      "f0ba774d",
+      "Open your browser and connect\nto the official website?"
+    ],
+    "text:TreeGridLabel_JP:GRID_LABEL_ASSIST_SKILL": [
+      "24ba368a",
+      "Assist Skill\nLv.UP"
+    ],
+    "text:TreeGridLabel_JP:GRID_LABEL_EVOLUTION": [
+      "9555c9f0",
+      "Awakening Unlock"
+    ],
+    "text:TreeGridLabel_JP:GRID_LABEL_LEADER_ABILITY": [
+      "2f9a82c1",
+      "Leader Ability\nLv.UP"
+    ],
+    "text:TreeGridLabel_JP:GRID_LABEL_MIND_CAPAXITY": [
+      "1ef7306f",
+      "CP Up"
+    ],
+    "text:TreeGridLabel_JP:GRID_LABEL_NORMAL_SKILL_1": [
+      "f356108d",
+      "Skill Lv.UP"
+    ],
+    "text:TreeGridLabel_JP:GRID_LABEL_SP_NEW": [
+      "27630be1",
+      "Finisher SP Skill\nUnlocked!"
+    ],
+    "text:TreeGridLabel_JP:GRID_LABEL_SP_SKILL_NEW": [
+      "a16c84dc",
+      "SP Skill Lv.UP"
+    ],
+    "text:TreeGridLabel_JP:GRID_LABEL_STORN": [
+      "f7684aeb",
+      "Got 1\nDiamond Coin!"
+    ],
+    "text:TreeGridLabel_JP:GRID_LABEL__SP_SKILL_2": [
+      "0bcdb11e",
+      "Finisher SP Skill\nLv.UP"
+    ],
+    "text:Tree_JP:Tree_Message_01": [
+      "1b2a0180",
+      "Use items to unlock?"
+    ],
+    "text:Tree_JP:Tree_Message_02": [
+      "fac134f7",
+      "Use items to remove the lock?"
+    ],
+    "text:Tree_JP:Tree_Message_03": [
+      "7e897f53",
+      "Lock removed."
+    ],
+    "text:Tree_JP:Tree_Message_04": [
+      "586ccfe6",
+      "Not enough items to unlock the Ability Tree."
+    ],
+    "text:Tree_JP:Tree_Message_05": [
+      "792dc21f",
+      "A tile that raises ATK. Draw out the Statue's fighting power!"
+    ],
+    "text:Tree_JP:Tree_Message_06": [
+      "135879ed",
+      "A tile that raises DEF. Draw out the Statue's defensive power!"
+    ],
+    "text:Tree_JP:Tree_Message_07": [
+      "3e3bec0b",
+      "A tile that raises HP. Draw out the Statue's endurance!"
+    ],
+    "text:Tree_JP:Tree_Message_08": [
+      "b765a7c7",
+      "A tile that raises Skill Level. Unleash masterful techniques!"
+    ],
+    "text:Tree_JP:Tree_Message_09": [
+      "710f91cc",
+      "A tile that raises Special Skill Level. Unleash your power!"
+    ],
+    "text:Tree_JP:Tree_Message_10": [
+      "44559e7a",
+      "Awakening to a new ability..."
+    ],
+    "text:Tree_JP:Tree_Message_11": [
+      "91f7fc3d",
+      "A tile that raises Finisher Special Skill Level. Unleash a finishing blow!"
+    ],
+    "text:Tree_JP:Tree_Message_12": [
+      "0b87cf7a",
+      "A tile that increases Mind Capacity. Inherit memories of battle!"
+    ],
+    "text:Tree_JP:Tree_Message_13": [
+      "461eedec",
+      "A tile that raises Leader Ability Level. Lead your allies into battle!"
+    ],
+    "text:Tree_JP:Tree_Message_14": [
+      "c88f923e",
+      "Use shining coins to gain new allies and power!"
+    ],
+    "text:Tree_JP:Tree_Message_15": [
+      "2ec03010",
+      "An old lock with a strange glow...\nIt seems a special key is needed to open it.\nUnlocking it looks like it will let you advance further!"
+    ],
+    "text:Tree_JP:Tree_Message_16": [
+      "2ec03010",
+      "An old lock with a strange glow...\nIt seems a special key is needed to open it.\nUnlocking it looks like it will let you advance further!"
+    ],
+    "text:Tree_JP:Tree_Message_17": [
+      "2ec03010",
+      "An old lock with a strange glow...\nIt seems a special key is needed to open it.\nUnlocking it looks like it will let you advance further!"
+    ],
+    "text:Tree_JP:Tree_Message_18": [
+      "48baec2d",
+      "A tile that raises Assist Skill Level. Weave the power to support your allies!"
+    ],
+    "text:Tree_JP:Tree_Message_19": [
+      "4cde2f01",
+      "A tile that enables Awakening when unlocked. Weave the potential to evolve!"
+    ],
+    "text:Tree_JP:Tree_Message_20": [
+      "a391ffe7",
+      "Unlock"
+    ],
+    "text:Tree_JP:Tree_Message_21": [
+      "24a7273c",
+      "Unlock All"
+    ],
+    "text:TutorialMes_JP:TutorialMes_000": [
+      "7e683a12",
+      "I'll decide"
+    ],
+    "text:TutorialMes_JP:TutorialMes_001": [
+      "390f2f07",
+      "* You can change your name later in \"Options\"."
+    ],
+    "text:TutorialMes_JP:TutorialMes_002": [
+      "397f50f2",
+      "This is it!"
+    ],
+    "text:TutorialMes_JP:TutorialMes_003": [
+      "ee863a1f",
+      "Enter your name (10 characters)"
+    ],
+    "text:TutorialMes_JP:TutorialMes_004": [
+      "21d300c9",
+      "Thank you for playing \"JoJo's Bizarre Adventure: Diamond Records\"!\nIf you like, please take a moment to rate the app."
+    ],
+    "text:TutorialMes_JP:TutorialMes_005": [
+      "5fd43590",
+      "Rate"
+    ],
+    "text:TutorialMes_JP:TutorialMes_006": [
+      "2b9f3e1b",
+      "No Thanks"
+    ],
+    "text:gasha_JP:BOX_GASHA_Massage_01": [
+      "101aaea0",
+      "Reset"
+    ],
+    "text:gasha_JP:BOX_GASHA_Massage_02": [
+      "f9dcfa0f",
+      "Box Status"
+    ],
+    "text:gasha_JP:BOX_GASHA_Massage_03": [
+      "db9f0446",
+      "Reset the box?\nResetting returns the box to its initial state,\nand you will not be able to return to the current box state.\nTo reset, select \"Yes\"."
+    ],
+    "text:gasha_JP:GASHA_FRENZY_0001": [
+      "63c535cd",
+      "Promo text 1 goes here"
+    ],
+    "text:gasha_JP:GASHA_FRENZY_0002": [
+      "7c8ea7dc",
+      "Promo text 2 goes here"
+    ],
+    "text:gasha_JP:GASHA_FRENZY_0003": [
+      "23bb56bc",
+      "Promo text 3 goes here"
+    ],
+    "text:gasha_JP:GASHA_FRENZY_0004": [
+      "dbb24486",
+      "Promo text 4 goes here"
+    ],
+    "text:gasha_JP:GASHA_Massage_01": [
+      "8f778a58",
+      "Use {GashaItemNum}{GashaItemUnit} {GashaItem}\nto pull\n\"{GashaName}\"?"
+    ],
+    "text:gasha_JP:GASHA_Massage_02": [
+      "3b124e6c",
+      "Pull the once-a-day free gacha of\n\"{GashaName}\"?"
+    ],
+    "text:gasha_JP:GASHA_Massage_03": [
+      "535e4274",
+      "Team/Power Up"
+    ],
+    "text:gasha_JP:GASHA_Massage_04": [
+      "ef61b4fa",
+      "Not enough Diamond Coins.\nBuy in-game currency at the Shop?"
+    ],
+    "text:gasha_JP:GASHA_Massage_05": [
+      "36cdc923",
+      "Not enough paid Diamond Coins.\nBuy in-game currency at the Shop?"
+    ],
+    "text:gasha_JP:GASHA_Massage_06": [
+      "6d258c40",
+      "Cannot be reset"
+    ],
+    "text:gasha_JP:GASHA_NONE": [
+      "14e2135a",
+      "There are no Gachas currently available"
+    ],
+    "text:gasha_JP:GASHA_STEP_00": [
+      "bcd4c9a8",
+      "1st Pull Free!"
+    ],
+    "text:gasha_JP:GASHA_STEP_01": [
+      "da348e9b",
+      "1 ★5 Guaranteed!"
+    ],
+    "text:gasha_JP:GASHA_STEP_02": [
+      "13d0ac26",
+      "1 ★5 or Higher Guaranteed!"
+    ],
+    "text:gasha_JP:GASHA_STEP_03": [
+      "09a84047",
+      "Placeholder text placeholder text"
+    ],
+    "text:gasha_JP:gs_000001_na": [
+      "3018ba83",
+      "Statue Gacha"
+    ],
+    "text:gasha_JP:gs_000010_na": [
+      "3018ba83",
+      "Statue Gacha"
+    ],
+    "text:gasha_JP:gs_090000_na": [
+      "3018ba83",
+      "Statue Gacha"
+    ],
+    "text:gasha_JP:gs_099010_na": [
+      "9a755220",
+      "Part 4 ★5 Guaranteed Beginner's Gacha"
+    ],
+    "text:gasha_JP:gs_099020_na": [
+      "5beb69f1",
+      "JoJo Special Gacha"
+    ],
+    "text:gasha_JP:gs_099030_na": [
+      "b8345216",
+      "Beginner's Gacha"
+    ],
+    "text:gasha_JP:gs_099040_na": [
+      "de882bfc",
+      "10x Beginner's Gacha"
+    ],
+    "text:gasha_JP:gs_100000_na": [
+      "3858d542",
+      "Mind Gacha"
+    ],
+    "text:gasha_JP:gs_100025_na": [
+      "01c9eafb",
+      "Great Pickup Gacha"
+    ],
+    "text:gasha_JP:gs_190000_na": [
+      "3858d542",
+      "Mind Gacha"
+    ],
+    "text:gasha_JP:gs_200015_na": [
+      "886f044b",
+      "\"Intellect, Tenacity, Bravery\" Skill Mind Pickup Gacha"
+    ],
+    "text:gasha_JP:gs_200025_na": [
+      "fd53a2a5",
+      "Vol. 2!! SP Skill Mind Pickup"
+    ],
+    "text:gasha_JP:gs_290000_na": [
+      "e16b2345",
+      "Friend Point Mind Gacha"
+    ],
+    "text:gasha_JP:gs_300000_na": [
+      "cb1f8702",
+      "Statue Gacha \"Shadows Lurking in the Dark Fog\" Pickup"
+    ],
+    "text:gasha_JP:gs_300010_na": [
+      "136d4565",
+      "Statue Gacha \"The Moment Love Was Captured\" Pickup"
+    ],
+    "text:gasha_JP:gs_300020_na": [
+      "12c56f17",
+      "Statue Gacha \"Hamon Training\" Pickup"
+    ],
+    "text:gasha_JP:gs_300030_na": [
+      "1cb1b55a",
+      "Advent Gacha \"DIO\" Pickup"
+    ],
+    "text:gasha_JP:gs_300040_na": [
+      "40daa3a6",
+      "Statue Gacha \"The Brave Busybody\" Pickup"
+    ],
+    "text:gasha_JP:gs_300050_na": [
+      "b78d7204",
+      "Statue Gacha \"The Awakened Pillar Men\" Pickup"
+    ],
+    "text:gasha_JP:gs_300055_na": [
+      "f28e01ba",
+      "Advent Gacha"
+    ],
+    "text:gasha_JP:gs_300060_na": [
+      "5c4c3f11",
+      "Statue Gacha \"Dream Match Festival\" Pickup"
+    ],
+    "text:gasha_JP:gs_300065_na": [
+      "6d0ad5ff",
+      "Great Pickup Gacha \"Tenacity\""
+    ],
+    "text:gasha_JP:gs_300066_na": [
+      "1479c68e",
+      "Great Pickup Gacha \"Intellect\""
+    ],
+    "text:gasha_JP:gs_300067_na": [
+      "8f1db40c",
+      "Great Pickup Gacha \"Bravery\""
+    ],
+    "text:gasha_JP:gs_300070_na": [
+      "7443a7fe",
+      "Statue Gacha \"The Bizarre End of 'Youth'\" Pickup"
+    ],
+    "text:gasha_JP:gs_300080_na": [
+      "ae1e122a",
+      "Statue Gacha \"The Electrifying Guitarist\" Pickup"
+    ],
+    "text:gasha_JP:gs_300090_na": [
+      "b3f5791c",
+      "Statue Gacha \"Battle of Ice and Sand\" Pickup"
+    ],
+    "text:gasha_JP:gs_300100_na": [
+      "6ed0eaec",
+      "Statue Gacha \"The Encroaching Void\" Pickup"
+    ],
+    "text:gasha_JP:gs_300110_na": [
+      "54a4e4df",
+      "Advent Gacha \"Yoshikage Kira\" Pickup"
+    ],
+    "text:gasha_JP:gs_300115_na": [
+      "7485f096",
+      "Statue Gacha \"Darkness Creeping into Daily Life\" Pickup"
+    ],
+    "text:gasha_JP:gs_300120_na": [
+      "51ae963f",
+      "Statue Gacha \"Variety of Fighters\" Pickup"
+    ],
+    "text:gasha_JP:gs_300130_na": [
+      "573de929",
+      "Statue Gacha \"The Woman with Killer Legs\" Pickup"
+    ],
+    "text:gasha_JP:gs_300135_na": [
+      "5759f1c4",
+      "★5 Guaranteed 10x Limited Gacha"
+    ],
+    "text:gasha_JP:gs_300137_na": [
+      "007a22bb",
+      "Statue Gacha \"The Woman with Killer Legs\" Pickup Vol. 2!"
+    ],
+    "text:gasha_JP:gs_300140_na": [
+      "ae77a6f4",
+      "Advent Gacha \"Kars & Lisa Lisa\" Pickup"
+    ],
+    "text:gasha_JP:gs_300145_na": [
+      "94febd19",
+      "Statue Gacha \"'Mode of Light' Shining on the Snowfield\" Pickup"
+    ],
+    "text:gasha_JP:gs_300150_na": [
+      "bfcf0f98",
+      "Statue Gacha \"Racing Speed King\" Pickup"
+    ],
+    "text:gasha_JP:gs_300155_na": [
+      "5134ca97",
+      "Diamond Selection Gacha"
+    ],
+    "text:gasha_JP:gs_300160_na": [
+      "7d77ece5",
+      "Statue Gacha \"Movie Celebration! Diamond Is Unbreakable\" Pickup"
+    ],
+    "text:gasha_JP:gs_300165_na": [
+      "45b8132e",
+      "Limited Statue Gacha"
+    ],
+    "text:gasha_JP:gs_300170_na": [
+      "b2eec8f7",
+      "Advent Gacha \"Yoshikage Kira, DIO\" Pickup"
+    ],
+    "text:gasha_JP:gs_300175_na": [
+      "82478287",
+      "Advent Gacha \"Jotaro Kujo, DIO\" Pickup"
+    ],
+    "text:gasha_JP:gs_300190_na": [
+      "a175e55e",
+      "Statue Gacha \"Dream Match Festival 2\" Pickup Vol. 1"
+    ],
+    "text:gasha_JP:gs_300195_na": [
+      "b350b4b9",
+      "Statue Gacha \"Dream Match Festival 2\" Pickup Vol. 2"
+    ],
+    "text:gasha_JP:gs_300197_na": [
+      "57f8872f",
+      "Premium Fest Gacha"
+    ],
+    "text:gasha_JP:gs_300200_na": [
+      "5134ca97",
+      "Diamond Selection Gacha"
+    ],
+    "text:gasha_JP:gs_300210_na": [
+      "5134ca97",
+      "Diamond Selection Gacha"
+    ],
+    "text:gasha_JP:gs_300230_na": [
+      "d1d2e745",
+      "Super Advent Gacha"
+    ],
+    "text:gasha_JP:gs_300240_na": [
+      "46dc3514",
+      "Statue Gacha \"The Revived Legendary Black Knight\" Pickup"
+    ],
+    "text:gasha_JP:gs_300250_na": [
+      "f28e01ba",
+      "Advent Gacha"
+    ],
+    "text:gasha_JP:gs_300260_na": [
+      "e4039790",
+      "Statue Gacha \"Dance of the Cursed Sword\" Pickup"
+    ],
+    "text:gasha_JP:gs_300270_na": [
+      "5134ca97",
+      "Diamond Selection Gacha"
+    ],
+    "text:gasha_JP:gs_300280_na": [
+      "d1d2e745",
+      "Super Advent Gacha"
+    ],
+    "text:gasha_JP:gs_300285_na": [
+      "f28e01ba",
+      "Advent Gacha"
+    ],
+    "text:gasha_JP:gs_300290_na": [
+      "5134ca97",
+      "Diamond Selection Gacha"
+    ],
+    "text:gasha_JP:gs_300295_na": [
+      "f28e01ba",
+      "Advent Gacha"
+    ],
+    "text:gasha_JP:gs_300310_na": [
+      "45b8132e",
+      "Limited Statue Gacha"
+    ],
+    "text:gasha_JP:gs_300320_na": [
+      "8fa83ea4",
+      "Statue Gacha \"The Enigma Boy\" Pickup"
+    ],
+    "text:gasha_JP:gs_300330_na": [
+      "d1d2e745",
+      "Super Advent Gacha"
+    ],
+    "text:gasha_JP:gs_300335_na": [
+      "f28e01ba",
+      "Advent Gacha"
+    ],
+    "text:gasha_JP:gs_300350_na": [
+      "4106de19",
+      "Statue Gacha \"The Ominous Tower of Gray\" Pickup"
+    ],
+    "text:gasha_JP:gs_300355_na": [
+      "f28e01ba",
+      "Advent Gacha"
+    ],
+    "text:gasha_JP:gs_300360_na": [
+      "5134ca97",
+      "Diamond Selection Gacha"
+    ],
+    "text:gasha_JP:gs_300370_na": [
+      "57f8872f",
+      "Premium Fest Gacha"
+    ],
+    "text:gasha_JP:gs_300380_na": [
+      "d1d2e745",
+      "Super Advent Gacha"
+    ],
+    "text:gasha_JP:gs_300385_na": [
+      "d1d2e745",
+      "Super Advent Gacha"
+    ],
+    "text:gasha_JP:gs_300390_na": [
+      "69b61b34",
+      "Statue Gacha \"Challenge from a Strong Foe\" Vol. 1 Pickup"
+    ],
+    "text:gasha_JP:gs_300392_na": [
+      "ca12f2ec",
+      "Statue Gacha \"Challenge from a Strong Foe\" Vol. 2 Pickup"
+    ],
+    "text:gasha_JP:gs_300394_na": [
+      "3c0572f7",
+      "Statue Gacha \"Challenge from a Strong Foe\" Vol. 3 Pickup"
+    ],
+    "text:gasha_JP:gs_300396_na": [
+      "48ec244a",
+      "Statue Gacha \"Challenge from a Strong Foe\" Vol. 4 Pickup"
+    ],
+    "text:gasha_JP:gs_300398_na": [
+      "5448e124",
+      "Statue Gacha \"Challenge from a Strong Foe\" Vol. 5 Pickup"
+    ],
+    "text:gasha_JP:gs_300400_na": [
+      "f59002d8",
+      "Statue Gacha \"Dream Match Festival DX\" Pickup"
+    ],
+    "text:gasha_JP:gs_300402_na": [
+      "2c1869e0",
+      "Paid Diamond Selection Gacha"
+    ],
+    "text:gasha_JP:gs_300404_na": [
+      "5134ca97",
+      "Diamond Selection Gacha"
+    ],
+    "text:gasha_JP:gs_300410_na": [
+      "c0f53b03",
+      "New Year Holiday Super Advent Gacha"
+    ],
+    "text:gasha_JP:gs_300412_na": [
+      "ceee73e1",
+      "New Year's Money-aaah! Gacha"
+    ],
+    "text:gasha_JP:gs_300414_na": [
+      "de3c3dff",
+      "New Year Advent Gacha Vol. 1"
+    ],
+    "text:gasha_JP:gs_300416_na": [
+      "3ffe9b97",
+      "New Year Advent Gacha Vol. 2"
+    ],
+    "text:gasha_JP:gs_300420_na": [
+      "fc111cac",
+      "Statue Gacha \"Cinderella's Magician\" Pickup"
+    ],
+    "text:gasha_JP:gs_300425_na": [
+      "5134ca97",
+      "Diamond Selection Gacha"
+    ],
+    "text:gasha_JP:gs_300430_na": [
+      "f5d212ec",
+      "Statue Gacha \"The Dark Blue Moon That Lures to the Sea\" Pickup"
+    ],
+    "text:gasha_JP:gs_300440_na": [
+      "d1d2e745",
+      "Super Advent Gacha"
+    ],
+    "text:gasha_JP:gs_300450_na": [
+      "6c380d23",
+      "Statue Gacha \"Teachings of the Zeppeli Family\" Pickup"
+    ],
+    "text:gasha_JP:gs_300455_na": [
+      "57f8872f",
+      "Premium Fest Gacha"
+    ],
+    "text:gasha_JP:gs_300470_na": [
+      "0d1b25bb",
+      "1st Anniversary Gacha: Part 3 Festivaaal!!"
+    ],
+    "text:gasha_JP:gs_300475_na": [
+      "aa497c58",
+      "1st Anniversary Gacha: Part 4 Festivaaal!!"
+    ],
+    "text:gasha_JP:gs_300480_na": [
+      "f28e01ba",
+      "Advent Gacha"
+    ],
+    "text:gasha_JP:gs_300490_na": [
+      "f1a76879",
+      "Statue Gacha \"The Hamon Warriors' 'Nemesis'\" Pickup"
+    ],
+    "text:gasha_JP:gs_300495_na": [
+      "bda68c72",
+      "1st Anniversary Gacha: Parts 1 & 2 Festivaaal!!"
+    ],
+    "text:gasha_JP:gs_350010_na": [
+      "2db18939",
+      "Statue Count-Up Gacha: Round 1"
+    ],
+    "text:gasha_JP:gs_350012_na": [
+      "6845a37d",
+      "Statue Count-Up Gacha: Round 2"
+    ],
+    "text:gasha_JP:gs_350014_na": [
+      "3d30c791",
+      "Statue Count-Up Gacha: Round 3"
+    ],
+    "text:gasha_JP:gs_350016_na": [
+      "a0b8c311",
+      "Statue Count-Up Gacha: Round 4"
+    ],
+    "text:gasha_JP:gs_350018_na": [
+      "477d5bbb",
+      "Statue Count-Up Gacha: Round 5"
+    ],
+    "text:gasha_JP:gs_350020_na": [
+      "2db18939",
+      "Statue Count-Up Gacha: Round 1"
+    ],
+    "text:gasha_JP:gs_350022_na": [
+      "6845a37d",
+      "Statue Count-Up Gacha: Round 2"
+    ],
+    "text:gasha_JP:gs_350024_na": [
+      "3d30c791",
+      "Statue Count-Up Gacha: Round 3"
+    ],
+    "text:gasha_JP:gs_350026_na": [
+      "a0b8c311",
+      "Statue Count-Up Gacha: Round 4"
+    ],
+    "text:gasha_JP:gs_350028_na": [
+      "477d5bbb",
+      "Statue Count-Up Gacha: Round 5"
+    ],
+    "text:gasha_JP:gs_400000_na": [
+      "13f97193",
+      "Mind Gacha \"Shadows Lurking in the Dark Fog\" Pickup"
+    ],
+    "text:gasha_JP:gs_400010_na": [
+      "50807be4",
+      "Mind Gacha \"The Moment Love Was Captured\" Pickup"
+    ],
+    "text:gasha_JP:gs_400020_na": [
+      "19153a47",
+      "Mind Gacha \"Hamon Training\" Pickup"
+    ],
+    "text:gasha_JP:gs_400030_na": [
+      "4b550170",
+      "Mind Gacha \"The Chase in Egypt\" Pickup"
+    ],
+    "text:gasha_JP:gs_400040_na": [
+      "9182d557",
+      "Mind Gacha \"The Brave Busybody\" Pickup"
+    ],
+    "text:gasha_JP:gs_400050_na": [
+      "c0a18fd1",
+      "Mind Gacha \"The Awakened Pillar Men\" Pickup"
+    ],
+    "text:gasha_JP:gs_400055_na": [
+      "79d460e6",
+      "Super SP Skill Mind Pickup"
+    ],
+    "text:gasha_JP:gs_400060_na": [
+      "2ad11ac8",
+      "Mind Gacha \"Dream Match Festival\" Pickup"
+    ],
+    "text:gasha_JP:gs_400070_na": [
+      "323a6ab2",
+      "Mind Gacha \"The Bizarre End of 'Youth'\" Pickup"
+    ],
+    "text:gasha_JP:gs_400080_na": [
+      "b72b64d0",
+      "Mind Gacha \"The Electrifying Guitarist\" Pickup"
+    ],
+    "text:gasha_JP:gs_400090_na": [
+      "99b097fd",
+      "Mind Gacha \"Battle of Ice and Sand\" Pickup"
+    ],
+    "text:gasha_JP:gs_400100_na": [
+      "31cc01fc",
+      "Mind Gacha \"The Encroaching Void\" Pickup"
+    ],
+    "text:gasha_JP:gs_400110_na": [
+      "7fec3cfe",
+      "Mind Gacha \"Darkness Creeping into Daily Life\" Pickup"
+    ],
+    "text:gasha_JP:gs_400115_na": [
+      "d30978ce",
+      "Mind Gacha \"Darkness Creeping into Daily Life\" Pickup Vol. 2!"
+    ],
+    "text:gasha_JP:gs_400120_na": [
+      "e708be2d",
+      "Mind Gacha \"Variety of Fighters\" Pickup"
+    ],
+    "text:gasha_JP:gs_400130_na": [
+      "59a6ed9c",
+      "Mind Gacha \"The Woman with Killer Legs\" Pickup"
+    ],
+    "text:gasha_JP:gs_400137_na": [
+      "b3a27aac",
+      "Mind Gacha \"The Woman with Killer Legs\" Pickup Vol. 2!"
+    ],
+    "text:gasha_JP:gs_400140_na": [
+      "ff9f53d9",
+      "Mind Gacha \"'Mode of Light' Shining on the Snowfield\" Pickup"
+    ],
+    "text:gasha_JP:gs_400145_na": [
+      "0e1bc948",
+      "Mind Gacha \"'Mode of Light' Shining on the Snowfield\" Pickup Vol. 2!"
+    ],
+    "text:gasha_JP:gs_400150_na": [
+      "5daf8239",
+      "Mind Gacha \"Racing Speed King\" Pickup"
+    ],
+    "text:gasha_JP:gs_400160_na": [
+      "55efb0f9",
+      "Mind Gacha \"Movie Celebration! Diamond Is Unbreakable\" Pickup Vol. 1"
+    ],
+    "text:gasha_JP:gs_400165_na": [
+      "663cbeb8",
+      "Mind Gacha \"Movie Celebration! Diamond Is Unbreakable\" Pickup Vol. 2"
+    ],
+    "text:gasha_JP:gs_400167_na": [
+      "b3b6e40a",
+      "Limited Mind Gacha"
+    ],
+    "text:gasha_JP:gs_400170_na": [
+      "8844b1bc",
+      "Mind Gacha \"Bizarre Encounters in a Bizarre Town\" Pickup"
+    ],
+    "text:gasha_JP:gs_400175_na": [
+      "cc4ccd3f",
+      "Mind Gacha \"Bizarre Encounters in a Bizarre Town\" Pickup Vol. 2"
+    ],
+    "text:gasha_JP:gs_400190_na": [
+      "bce6541b",
+      "Mind Gacha \"Dream Match Festival 2\" Pickup Vol. 1"
+    ],
+    "text:gasha_JP:gs_400195_na": [
+      "d64a2175",
+      "Mind Gacha \"Dream Match Festival 2\" Pickup Vol. 2"
+    ],
+    "text:gasha_JP:gs_400210_na": [
+      "f1b74e94",
+      "Mind Gacha \"Gathered Stardust\" Pickup"
+    ],
+    "text:gasha_JP:gs_400230_na": [
+      "37648ce3",
+      "Mind Gacha \"The Dark Emperor Who Craves Blood\" Pickup Vol. 1"
+    ],
+    "text:gasha_JP:gs_400235_na": [
+      "45911306",
+      "Mind Gacha \"The Dark Emperor Who Craves Blood\" Pickup Vol. 2"
+    ],
+    "text:gasha_JP:gs_400240_na": [
+      "98f4abd4",
+      "Mind Gacha \"The Revived Legendary Black Knight\" Pickup"
+    ],
+    "text:gasha_JP:gs_400260_na": [
+      "8a16328c",
+      "Mind Gacha \"Dance of the Cursed Sword\" Pickup"
+    ],
+    "text:gasha_JP:gs_400280_na": [
+      "595c9d7d",
+      "Mind Gacha \"An Uncontrollable Urge to Kill\" Pickup"
+    ],
+    "text:gasha_JP:gs_400285_na": [
+      "e5ec95d8",
+      "Mind Gacha \"An Uncontrollable Urge to Kill\" Pickup Vol. 2"
+    ],
+    "text:gasha_JP:gs_400290_na": [
+      "255f5061",
+      "Mind Gacha \"Variety of Fighters 2\" Pickup Vol. 1"
+    ],
+    "text:gasha_JP:gs_400295_na": [
+      "d73399c2",
+      "Mind Gacha \"Variety of Fighters 2\" Pickup Vol. 2"
+    ],
+    "text:gasha_JP:gs_400310_na": [
+      "b3b6e40a",
+      "Limited Mind Gacha"
+    ],
+    "text:gasha_JP:gs_400320_na": [
+      "49a8df8b",
+      "Mind Gacha \"The Enigma Boy\" Pickup"
+    ],
+    "text:gasha_JP:gs_400330_na": [
+      "1a5b4ac4",
+      "Mind Gacha \"Birth of the Ultimate Life Form\" Pickup"
+    ],
+    "text:gasha_JP:gs_400335_na": [
+      "0a642aaa",
+      "Mind Gacha \"Birth of the Ultimate Life Form\" Pickup Vol. 2"
+    ],
+    "text:gasha_JP:gs_400350_na": [
+      "a545f286",
+      "Mind Gacha \"The Ominous Tower of Gray\" Pickup"
+    ],
+    "text:gasha_JP:gs_400370_na": [
+      "ad34b9c1",
+      "Mind Gacha \"Cats Love Yoshikage Kira\" Pickup"
+    ],
+    "text:gasha_JP:gs_400380_na": [
+      "ce7ed45a",
+      "Mind Gacha \"The Vicious 'Air Bomb'\" Pickup"
+    ],
+    "text:gasha_JP:gs_400385_na": [
+      "7a9d31eb",
+      "Mind Gacha \"The Vicious 'Air Bomb'\" Pickup Vol. 2"
+    ],
+    "text:gasha_JP:gs_400390_na": [
+      "d21fe749",
+      "Mind Gacha \"Challenge from a Strong Foe\" Pickup"
+    ],
+    "text:gasha_JP:gs_400400_na": [
+      "d7ea6f5d",
+      "Mind Gacha \"Dream Match Festival DX\" Pickup"
+    ],
+    "text:gasha_JP:gs_400410_na": [
+      "11d22b8b",
+      "Mind Gacha \"Fateful Showdown\" Pickup"
+    ],
+    "text:gasha_JP:gs_400412_na": [
+      "df5a8dff",
+      "Mind \"New Year & Fateful Showdown\" Vol. 1"
+    ],
+    "text:gasha_JP:gs_400414_na": [
+      "f73b2524",
+      "Mind \"New Year & Fateful Showdown\" Vol. 2"
+    ],
+    "text:gasha_JP:gs_400420_na": [
+      "95ec40b6",
+      "Mind Gacha \"Cinderella's Magician\" Pickup"
+    ],
+    "text:gasha_JP:gs_400430_na": [
+      "d1c60f80",
+      "Mind Gacha \"The Dark Blue Moon That Lures to the Sea\" Pickup"
+    ],
+    "text:gasha_JP:gs_400440_na": [
+      "e3eb8f54",
+      "Mind Gacha \"The Possessed Silver Chariot\" Pickup"
+    ],
+    "text:gasha_JP:gs_400450_na": [
+      "286da9d1",
+      "Mind Gacha \"Teachings of the Zeppeli Family\" Pickup"
+    ],
+    "text:gasha_JP:gs_400460_na": [
+      "3b2d0a70",
+      "Skill Mind Pickup"
+    ],
+    "text:gasha_JP:gs_400470_na": [
+      "95dbbf41",
+      "Mind Gacha \"The Manga 'Material' Rohan Seeks\" Pickup"
+    ],
+    "text:gasha_JP:gs_400480_na": [
+      "3a611bb1",
+      "Mind Gacha \"The 'Hands' Kira Likes\" Pickup"
+    ],
+    "text:gasha_JP:gs_400490_na": [
+      "63a3c222",
+      "Mind Gacha \"The Hamon Warriors' 'Nemesis'\" Pickup"
+    ],
+    "text:gasha_JP:gs_600120_na": [
+      "68a0d632",
+      "\"★5 Yukako Yamagishi\" Box Gacha"
+    ],
+    "text:gasha_JP:gs_600125_na": [
+      "b945654f",
+      "\"★5 Hol Horse\" Box Gacha"
+    ],
+    "text:gasha_JP:gs_600160_na": [
+      "5523acd8",
+      "Vol. 1 Movie Celebration Box Gacha"
+    ],
+    "text:gasha_JP:gs_600165_na": [
+      "952cb752",
+      "Vol. 2 Movie Celebration Box Gacha"
+    ],
+    "text:gasha_JP:gs_600210_na": [
+      "4b8f6467",
+      "\"Gathered Stardust\" Box Gacha"
+    ],
+    "text:gasha_JP:gs_600220_na": [
+      "2e7a8bc7",
+      "\"Arena\" Box Gacha"
+    ],
+    "text:gasha_JP:gs_600230_na": [
+      "c69f9638",
+      "\"Phantom Blood\" Box Gacha"
+    ],
+    "text:gasha_JP:gs_600290_na": [
+      "ccbc8ecc",
+      "\"Variety of Fighters 2\" Box Gacha"
+    ],
+    "text:gasha_JP:gs_600300_na": [
+      "c56fb422",
+      "\"Battle Tendency\" Box Gacha"
+    ],
+    "text:gasha_JP:gs_600340_na": [
+      "7886b6b2",
+      "Arena Box Gacha"
+    ],
+    "text:gasha_JP:gs_600370_na": [
+      "fa08862b",
+      "Statue Box Gacha"
+    ],
+    "text:gasha_JP:gs_600375_na": [
+      "3f23cb2f",
+      "Statue Box Gacha Vol. 2"
+    ],
+    "text:gasha_JP:gs_600430_na": [
+      "fa08862b",
+      "Statue Box Gacha"
+    ],
+    "text:gasha_JP:gs_600460_na": [
+      "fa08862b",
+      "Statue Box Gacha"
+    ],
+    "text:gasha_JP:gs_600490_na": [
+      "fa08862b",
+      "Statue Box Gacha"
+    ],
+    "text:gasha_JP:gs_700180_na": [
+      "f31a0cfc",
+      "Mind Gacha \"Arena\" Pickup"
+    ],
+    "text:gasha_JP:gs_700200_na": [
+      "f31a0cfc",
+      "Mind Gacha \"Arena\" Pickup"
+    ],
+    "text:gasha_JP:gs_700220_na": [
+      "f31a0cfc",
+      "Mind Gacha \"Arena\" Pickup"
+    ],
+    "text:gasha_JP:gs_700250_na": [
+      "f4fbbb87",
+      "Arena Pickup Gacha"
+    ],
+    "text:gasha_JP:gs_700360_na": [
+      "f4fbbb87",
+      "Arena Pickup Gacha"
+    ],
+    "text:gasha_JP:gs_800260_na": [
+      "70cf9ee9",
+      "Skill Mind Box Gacha"
+    ],
+    "text:gasha_JP:gs_800300_na": [
+      "70cf9ee9",
+      "Skill Mind Box Gacha"
+    ],
+    "text:gasha_JP:gs_800340_na": [
+      "70cf9ee9",
+      "Skill Mind Box Gacha"
+    ],
+    "text:gasha_JP:gs_800400_na": [
+      "2cf5dafa",
+      "Arena Mind Box Gacha"
+    ],
+    "text:gasha_JP:gs_900060_na": [
+      "65fdf38e",
+      "Dream Ticket Gacha"
+    ],
+    "text:gasha_JP:gs_900120_na": [
+      "2d50b05e",
+      "Variety Ticket Gacha"
+    ],
+    "text:gasha_JP:gs_900190_na": [
+      "b1abd305",
+      "Dream Ticket Gacha 2"
+    ],
+    "text:gasha_JP:gs_900290_na": [
+      "df2be188",
+      "\"Variety of Fighters 2\" Friend Point Mind Gacha"
+    ],
+    "text:gasha_JP:gs_900295_na": [
+      "7692fd02",
+      "\"Variety of Fighters 2\" Friend Point Mind Gacha EX"
+    ],
+    "text:gasha_JP:gs_900297_na": [
+      "d819706b",
+      "\"Variety of Fighters 2\" Friend Point Mind Gacha MAX"
+    ],
+    "text:gasha_JP:gs_900390_na": [
+      "385c451f",
+      "Grand Giveback Fest Statue Gacha"
+    ],
+    "text:gasha_JP:gs_900395_na": [
+      "22b9805d",
+      "Grand Giveback Fest Mind Gacha"
+    ],
+    "text:gasha_JP:gs_900400_na": [
+      "deafdc2c",
+      "Dream Ticket Gacha DX"
+    ],
+    "text:gasha_JP:gs_900405_na": [
+      "cec43f55",
+      "[Points Only] New Year's Money-aaah! Gacha"
+    ],
+    "text:gasha_JP:gs_900430_na": [
+      "51fcc9d6",
+      "Shift Change Gacha (1st Gear) (Tentative)"
+    ],
+    "text:gasha_JP:gs_900432_na": [
+      "e4eb750e",
+      "Shift Change Gacha (2nd Gear) (Tentative)"
+    ],
+    "text:gasha_JP:gs_900434_na": [
+      "3d29c1ab",
+      "Shift Change Gacha (3rd Gear) (Tentative)"
+    ],
+    "text:gasha_JP:gs_950041_na": [
+      "45f49c02",
+      "Count-Up Round 1 Statue Gacha"
+    ],
+    "text:gasha_JP:gs_950042_na": [
+      "d90d3a8b",
+      "Count-Up Round 2 Statue Gacha"
+    ],
+    "text:gasha_JP:gs_950043_na": [
+      "3e8fd849",
+      "Count-Up Round 3 Statue Gacha"
+    ],
+    "text:gasha_JP:gs_950044_na": [
+      "b992c796",
+      "Count-Up Round 4 Statue Gacha"
+    ],
+    "text:gasha_JP:gs_950045_na": [
+      "9ef0d8f8",
+      "Count-Up Round 5 Statue Gacha"
+    ],
+    "text:gasha_JP:gs_990000_na": [
+      "2c58b30c",
+      "Effect Camera Test Gacha"
+    ],
+    "text:gasha_frenzy_JP:Gasha_Frenzy_300470": [
+      "9ba74da2",
+      "[1st Anniversary Gacha]\nEvery Part 3 Statue, Super Advent and Advent included, all in one place!"
+    ],
+    "text:gasha_frenzy_JP:Gasha_Frenzy_300475": [
+      "57eb9622",
+      "[1st Anniversary Gacha] Vol. 2!\nThis time it's every Part 4 Statue! Don't miss it!"
+    ],
+    "text:gasha_frenzy_JP:Gasha_Frenzy_300480": [
+      "354f3346",
+      "[Advent Gacha]\n★6 Statues debut! Don't miss this chance!"
+    ],
+    "text:optionText_JP:a_jisseki_login_ng": [
+      "38af9238",
+      "Login failed"
+    ],
+    "text:optionText_JP:birthday_check_00": [
+      "3705caf2",
+      "Is the date of birth you entered correct?"
+    ],
+    "text:optionText_JP:birthday_check_01": [
+      "75b7e337",
+      "Please enter your date of birth to verify your age.\nWhen a minor buys app currency or content,\na screen will be shown to confirm parental consent.\n*If you don't understand this,\nplease show this screen to a parent."
+    ],
+    "text:optionText_JP:birthday_check_02": [
+      "39f5ca8d",
+      "*Once entered, your date of birth cannot be changed.\nPlease make sure it is correct."
+    ],
+    "text:optionText_JP:birthday_error_00": [
+      "52f145b6",
+      "The entry is invalid.\nE.g. if you were born on 1998/02/08,"
+    ],
+    "text:optionText_JP:birthday_error_01": [
+      "52ee2b58",
+      "enter it as shown."
+    ],
+    "text:optionText_JP:birthday_limit_01": [
+      "2d834d51",
+      "*Spending limits (monthly maximum)\nUnder 16: 5,000 yen\nAges 16-19: 20,000 yen\n20 and over: no limit"
+    ],
+    "text:optionText_JP:birthday_show_00": [
+      "2e0ceaea",
+      "Confirm Date of Birth"
+    ],
+    "text:optionText_JP:birthday_show_01": [
+      "a421f94a",
+      "Date of Birth Entered"
+    ],
+    "text:optionText_JP:birthday_show_02": [
+      "e772735a",
+      "When a minor buys in-game currency or content,\na parental consent screen will be shown."
+    ],
+    "text:optionText_JP:bokencho_caution": [
+      "800a5a9e",
+      "Select a term from the list\nto learn about it"
+    ],
+    "text:optionText_JP:button_back": [
+      "f6c244f9",
+      "Close"
+    ],
+    "text:optionText_JP:button_cancel": [
+      "bca84ea5",
+      "Cancel"
+    ],
+    "text:optionText_JP:button_change": [
+      "856252cf",
+      "Change"
+    ],
+    "text:optionText_JP:button_confirmation": [
+      "dce52f3e",
+      "Confirm"
+    ],
+    "text:optionText_JP:button_dc_rireki_00": [
+      "a3dca27f",
+      "Diamond Coin Purchase History"
+    ],
+    "text:optionText_JP:button_decision": [
+      "df3535a6",
+      "OK"
+    ],
+    "text:optionText_JP:button_dl_start_00": [
+      "d7c9996c",
+      "Start Download"
+    ],
+    "text:optionText_JP:button_dl_start_01": [
+      "2172de6b",
+      "Run"
+    ],
+    "text:optionText_JP:button_kakin_nashi": [
+      "a67306f3",
+      "No Diamond Coin purchase records"
+    ],
+    "text:optionText_JP:button_no": [
+      "48ef2b67",
+      "No"
+    ],
+    "text:optionText_JP:button_pass_issue_00": [
+      "d8f41dcb",
+      "Issue"
+    ],
+    "text:optionText_JP:button_pass_issue_01": [
+      "70f7ae4a",
+      "Copy"
+    ],
+    "text:optionText_JP:button_pass_issue_02": [
+      "b66c723b",
+      "Send Email"
+    ],
+    "text:optionText_JP:button_save": [
+      "dcb7b045",
+      "Save"
+    ],
+    "text:optionText_JP:button_yes": [
+      "8f90d85e",
+      "Yes"
+    ],
+    "text:optionText_JP:dc_kakunin_01": [
+      "4a99b739",
+      "Diamond Coin Balance"
+    ],
+    "text:optionText_JP:dc_kakunin_02": [
+      "df774ef6",
+      "Breakdown of Diamond Coins Owned"
+    ],
+    "text:optionText_JP:dc_kakunin_03": [
+      "8482ec68",
+      "Paid"
+    ],
+    "text:optionText_JP:dc_kakunin_04": [
+      "d6a35ce9",
+      "Free"
+    ],
+    "text:optionText_JP:dc_kakunin_05": [
+      "387bb14d",
+      "*Any app currency given for free\n is used before app currency you paid for."
+    ],
+    "text:optionText_JP:dc_rireki": [
+      "c8b1ac4c",
+      "Diamond Coin purchase history\n*Shows the latest 100 entries"
+    ],
+    "text:optionText_JP:dc_rireki_kakunin": [
+      "a3dca27f",
+      "Diamond Coin Purchase History"
+    ],
+    "text:optionText_JP:enquiry_01": [
+      "f3b7bc3c",
+      "Your User ID is required when contacting support.\nPress the Copy button to copy your User ID to your device."
+    ],
+    "text:optionText_JP:enquiry_02": [
+      "f0ba774d",
+      "Open your browser and connect\nto the official website?"
+    ],
+    "text:optionText_JP:i_jisseki_login_ng": [
+      "38af9238",
+      "Login failed"
+    ],
+    "text:optionText_JP:i_jisseki_login_restart": [
+      "467aaecc",
+      "Unable to log in.\nPlease log in from \"Game Center\" in \"Settings\""
+    ],
+    "text:optionText_JP:kiyaku_00": [
+      "a9ebd889",
+      "Terms of Use"
+    ],
+    "text:optionText_JP:kiyaku_01": [
+      "de79d8d5",
+      "Copyright"
+    ],
+    "text:optionText_JP:mydata_caution_username00": [
+      "65682e65",
+      "Edit User Name"
+    ],
+    "text:optionText_JP:mydata_caution_username01": [
+      "cd2c4ce9",
+      "*Do not use offensive or inappropriate names.\n*You can change your user name once per day."
+    ],
+    "text:optionText_JP:mydata_caution_username02": [
+      "f1f4a9f0",
+      "Enter a user name. (Max 10 characters)"
+    ],
+    "text:optionText_JP:mydata_caution_userprofile00": [
+      "c27a2585",
+      "Edit Profile"
+    ],
+    "text:optionText_JP:mydata_caution_userprofile01": [
+      "e0eef41d",
+      "*Do not post offensive or inappropriate content.\n*You can change your profile once per day."
+    ],
+    "text:optionText_JP:mydata_caution_userprofile02": [
+      "770ebfdd",
+      "Enter your profile text. (Max 30 characters)"
+    ],
+    "text:optionText_JP:network_f_account_release": [
+      "88fb92fe",
+      "Delete your Facebook login info?\n*Once deleted, you will need to log in again."
+    ],
+    "text:optionText_JP:network_set_01": [
+      "038597b8",
+      "Network Settings"
+    ],
+    "text:optionText_JP:network_set_02": [
+      "7945c3cf",
+      "Push Notification Settings"
+    ],
+    "text:optionText_JP:network_set_03": [
+      "e6ac62b4",
+      "Event Notifications"
+    ],
+    "text:optionText_JP:network_set_04": [
+      "8558c51b",
+      "AP Fully Restored"
+    ],
+    "text:optionText_JP:network_set_05": [
+      "b5931c85",
+      "BP Fully Restored"
+    ],
+    "text:optionText_JP:network_t_account_release": [
+      "e48cc630",
+      "Delete your Twitter login info?\n*Once deleted, you will need to log in again."
+    ],
+    "text:optionText_JP:option_category_00": [
+      "897af799",
+      "News"
+    ],
+    "text:optionText_JP:option_category_01": [
+      "1cd4be9c",
+      "My Data"
+    ],
+    "text:optionText_JP:option_category_02": [
+      "15ccfdea",
+      "Adventure Log"
+    ],
+    "text:optionText_JP:option_category_03": [
+      "6a5cad6b",
+      "System Settings"
+    ],
+    "text:optionText_JP:option_category_04": [
+      "038597b8",
+      "Network Settings"
+    ],
+    "text:optionText_JP:option_category_05": [
+      "30672835",
+      "Help"
+    ],
+    "text:optionText_JP:option_category_06": [
+      "ca79140e",
+      "Achievements"
+    ],
+    "text:optionText_JP:option_category_07": [
+      "c90ccd2c",
+      "Issue Transfer Pass"
+    ],
+    "text:optionText_JP:option_category_08": [
+      "f5f1ecc6",
+      "Purchase History / Balance"
+    ],
+    "text:optionText_JP:option_category_09": [
+      "fe117f6a",
+      "Date of Birth"
+    ],
+    "text:optionText_JP:option_category_10": [
+      "a6c63435",
+      "Contact Us"
+    ],
+    "text:optionText_JP:option_category_11": [
+      "1a566647",
+      "Terms of Use /\nCopyright"
+    ],
+    "text:optionText_JP:option_category_12": [
+      "f28b5782",
+      "Privacy Policy"
+    ],
+    "text:optionText_JP:option_category_13": [
+      "82a81887",
+      "Data Download"
+    ],
+    "text:optionText_JP:option_category_14": [
+      "1cf05e09",
+      "Back to Title"
+    ],
+    "text:optionText_JP:oshirase_00": [
+      "6cd241f0",
+      "Updates"
+    ],
+    "text:optionText_JP:oshirase_01": [
+      "a04fd92c",
+      "Issues"
+    ],
+    "text:optionText_JP:oshirase_02": [
+      "f1315665",
+      "Other"
+    ],
+    "text:optionText_JP:pass_caution_00": [
+      "b33c54ca",
+      "Issue Transfer Password"
+    ],
+    "text:optionText_JP:pass_caution_01": [
+      "0c61f769",
+      "Issue a password for data transfer.\nKeep your password safe,\nand do not share or publish it.\n\n*When transferring to a different OS,\n[Diamond Coins] cannot be carried over.\n*Passwords are valid for 3 months.\nIf you issue a new password after setting one,\nthe old password becomes invalid.\nPlease be careful.\n*If you transfer in the middle of a battle,\nyou cannot return to that battle after the transfer."
+    ],
+    "text:optionText_JP:pass_caution_02": [
+      "a2509a0e",
+      "Issue a password for data transfer.\nKeep your password safe,\nand do not share or publish it.\n\n*When transferring \"between different OSes\",\n[Diamond Coins] cannot be carried over.\n*Passwords are valid for 3 months.\nIf you issue a new password after setting one,\nthe old password becomes invalid.\nPlease be careful.\n*If you transfer in the middle of a battle,\nyou cannot return to that battle after the transfer."
+    ],
+    "text:optionText_JP:pass_caution_03": [
+      "445c96fe",
+      "User ID"
+    ],
+    "text:optionText_JP:pass_caution_04": [
+      "d8b07614",
+      "Password"
+    ],
+    "text:optionText_JP:pass_caution_05": [
+      "b63da718",
+      "This is important information; do not share it with anyone.\nBe sure to write it down or take a screenshot."
+    ],
+    "text:optionText_JP:pass_caution_99": [
+      "6499d3dd",
+      "User ID: {mail_UserId}\nPassword: {mail_Pass}\n\n*Do not share or publish the issued password\n*Be sure to keep a record of your password via screenshot, notes or email\n*The password in this email becomes invalid if you issue a new password"
+    ],
+    "text:optionText_JP:system_set_01": [
+      "6a5cad6b",
+      "System Settings"
+    ],
+    "text:optionText_JP:system_set_02": [
+      "8822f803",
+      "Graphics Settings"
+    ],
+    "text:optionText_JP:system_set_03": [
+      "0fd72814",
+      "Frame Rate Settings"
+    ],
+    "text:optionText_JP:system_set_07": [
+      "2f6157db",
+      "Battle Camera Settings (Action)"
+    ],
+    "text:optionText_JP:system_set_08": [
+      "6baf589a",
+      "Town Camera Settings"
+    ],
+    "text:optionText_JP:system_set_09": [
+      "b58387ad",
+      "HP Bar Display (Action)"
+    ],
+    "text:optionText_JP:system_set_10": [
+      "3fae5f04",
+      "Graphics and Frame Rate settings default to\nNORMAL. Adjust them to suit your device."
+    ],
+    "text:optionText_JP:system_set_11": [
+      "768d25b0",
+      "Skip Gacha Animation"
+    ],
+    "text:optionText_JP:system_set_12": [
+      "432e163d",
+      "Skip Boost Animation"
+    ],
+    "text:optionText_JP:title_back_check": [
+      "fc366544",
+      "Return to the title screen?"
+    ],
+    "text:optionText_JP:user_enxtEXP": [
+      "6aa51a16",
+      "To next rank:"
+    ],
+    "text:shop_JP:CAUTION_0001_MESSAGE": [
+      "55bc9a4d",
+      "Minors must obtain the consent of a legal guardian (such as a parent)\nbefore purchasing paid content."
+    ],
+    "text:shop_JP:CAUTION_0002_MESSAGE": [
+      "eee3b7cd",
+      "This purchase would exceed your monthly spending limit,\nso unfortunately you cannot buy this item.\nWe appreciate your understanding."
+    ],
+    "text:shop_JP:CAUTION_0003_MESSAGE": [
+      "76091654",
+      "Purchase?"
+    ],
+    "text:shop_JP:CAUTION_0004_MESSAGE": [
+      "d527499c",
+      "Not enough Diamond Coins."
+    ],
+    "text:shop_JP:CAUTION_0005_MESSAGE": [
+      "359cf77e",
+      "Not enough paid Diamond Coins."
+    ],
+    "text:shop_JP:CAUTION_0006_MESSAGE": [
+      "200b447a",
+      "This item is paid for with paid Diamond Coins."
+    ],
+    "text:shop_JP:CAUTION_0007_MESSAGE": [
+      "9ab421a9",
+      "*If you don't understand this,\nplease show this screen to a parent."
+    ],
+    "text:shop_JP:CAUTION_0008_MESSAGE": [
+      "2f688840",
+      "Monthly spending limits by age\nUnder 16: up to 5,000 yen/month (tax incl.)\nAges 16-19: up to 20,000 yen/month (tax incl.)\n20 and over: no limit"
+    ],
+    "text:shop_JP:CAUTION_0009_MESSAGE": [
+      "a9ebd889",
+      "Terms of Use"
+    ],
+    "text:shop_JP:GOODS_0001_DETAIL": [
+      "6a930b79",
+      "1 Diamond Coin"
+    ],
+    "text:shop_JP:GOODS_0001_NAME": [
+      "a8390f41",
+      "Diamond Coins A"
+    ],
+    "text:shop_JP:GOODS_0002_DETAIL": [
+      "9b9a4d3a",
+      "6 Diamond Coins"
+    ],
+    "text:shop_JP:GOODS_0002_NAME": [
+      "019e83fd",
+      "Diamond Coins B"
+    ],
+    "text:shop_JP:GOODS_0003_DETAIL": [
+      "fb9a2cfc",
+      "12 Diamond Coins"
+    ],
+    "text:shop_JP:GOODS_0003_NAME": [
+      "2ae8809a",
+      "Diamond Coins C"
+    ],
+    "text:shop_JP:GOODS_0004_DETAIL": [
+      "c989a98c",
+      "30 Diamond Coins"
+    ],
+    "text:shop_JP:GOODS_0004_NAME": [
+      "9bbef545",
+      "Diamond Coins D"
+    ],
+    "text:shop_JP:GOODS_0005_DETAIL": [
+      "9f6303a4",
+      "60 Diamond Coins"
+    ],
+    "text:shop_JP:GOODS_0005_NAME": [
+      "33f71088",
+      "Diamond Coins E"
+    ],
+    "text:shop_JP:GOODS_0006_DETAIL": [
+      "67230286",
+      "90 Diamond Coins"
+    ],
+    "text:shop_JP:GOODS_0006_NAME": [
+      "225d44c4",
+      "Diamond Coins F"
+    ],
+    "text:shop_JP:GOODS_0007_DETAIL": [
+      "211966b5",
+      "Each purchase expands the Mind Box by 5 slots."
+    ],
+    "text:shop_JP:GOODS_0007_NAME": [
+      "480b8958",
+      "Expand Mind Box"
+    ],
+    "text:shop_JP:GOODS_0008_DETAIL": [
+      "953d6649",
+      "Each purchase restores AP by your current max AP."
+    ],
+    "text:shop_JP:GOODS_0008_NAME": [
+      "47f9aab5",
+      "AP 100% Recovery"
+    ],
+    "text:shop_JP:GOODS_0009_DETAIL": [
+      "598e2c32",
+      "Eating it is super energizing. Restores 100% of AP."
+    ],
+    "text:shop_JP:GOODS_0009_NAME": [
+      "26e727b5",
+      "Sandwich x1"
+    ],
+    "text:shop_JP:GOODS_0010_DETAIL": [
+      "83676f28",
+      "A blue key that can free the soul and lead it to greater heights."
+    ],
+    "text:shop_JP:GOODS_0010_NAME": [
+      "d785f8ad",
+      "Blue Expansion Key x1"
+    ],
+    "text:shop_JP:GOODS_0011_DETAIL": [
+      "8b8c871d",
+      "A green key that can free the soul and lead it to greater heights."
+    ],
+    "text:shop_JP:GOODS_0011_NAME": [
+      "e7cf67f2",
+      "Green Expansion Key x1"
+    ],
+    "text:shop_JP:GOODS_0012_DETAIL": [
+      "74bd278e",
+      "A red key that can free the soul and lead it to greater heights."
+    ],
+    "text:shop_JP:GOODS_0012_NAME": [
+      "ae19ab48",
+      "Red Expansion Key x1"
+    ],
+    "text:shop_JP:GOODS_0013_DETAIL": [
+      "95975669",
+      "Power Up material. Gives 1.2x EXP when fused into a Statue!"
+    ],
+    "text:shop_JP:GOODS_0013_NAME": [
+      "9a23876c",
+      "Rainbow Trophy x1"
+    ],
+    "text:shop_JP:GOODS_0014_DETAIL": [
+      "306e76fe",
+      "Fuse to add +1 Boost to a ★3 Statue."
+    ],
+    "text:shop_JP:GOODS_0014_NAME": [
+      "cf280fa5",
+      "Bronze Turtle x1"
+    ],
+    "text:shop_JP:GOODS_0015_DETAIL": [
+      "93504bf1",
+      "Fuse to add +1 Boost to a ★4 Statue."
+    ],
+    "text:shop_JP:GOODS_0015_NAME": [
+      "20ca0004",
+      "Silver Turtle x1"
+    ],
+    "text:shop_JP:GOODS_0016_DETAIL": [
+      "12e31ec6",
+      "Fuse to add +1 Boost to a ★5 Statue."
+    ],
+    "text:shop_JP:GOODS_0016_NAME": [
+      "eaa503af",
+      "Golden Turtle x1"
+    ],
+    "text:shop_JP:GOODS_0022_DETAIL": [
+      "68c5029b",
+      "Diamond Coins: 6 → 8"
+    ],
+    "text:shop_JP:GOODS_0022_NAME": [
+      "e6336a26",
+      "Diamond Coins G"
+    ],
+    "text:shop_JP:GOODS_0023_DETAIL": [
+      "14946733",
+      "Diamond Coins: 12 → 16"
+    ],
+    "text:shop_JP:GOODS_0023_NAME": [
+      "5e3735a3",
+      "Diamond Coins H"
+    ],
+    "text:shop_JP:GOODS_0024_DETAIL": [
+      "438e2019",
+      "Diamond Coins: 30 → 40"
+    ],
+    "text:shop_JP:GOODS_0024_NAME": [
+      "57a7e5fe",
+      "Diamond Coins I"
+    ],
+    "text:shop_JP:GOODS_0025_DETAIL": [
+      "a47a6080",
+      "Diamond Coins: 60 → 80"
+    ],
+    "text:shop_JP:GOODS_0025_NAME": [
+      "975b65ab",
+      "Diamond Coins J"
+    ],
+    "text:shop_JP:GOODS_0026_DETAIL": [
+      "81ac7980",
+      "Diamond Coins: 90 → 120"
+    ],
+    "text:shop_JP:GOODS_0026_NAME": [
+      "06e95c82",
+      "Diamond Coins K"
+    ],
+    "text:shop_JP:GOODS_0032_NAME": [
+      "45dbd362",
+      "Diamond Coins L"
+    ],
+    "text:shop_JP:GOODS_0033_NAME": [
+      "462ed14b",
+      "Diamond Coins M"
+    ],
+    "text:shop_JP:GOODS_0034_NAME": [
+      "c40a9bb2",
+      "Diamond Coins N"
+    ],
+    "text:shop_JP:GOODS_0035_NAME": [
+      "5a0fac33",
+      "Diamond Coins O"
+    ],
+    "text:shop_JP:GOODS_0036_NAME": [
+      "9639e6be",
+      "Diamond Coins P"
+    ],
+    "text:shop_JP:GOODS_0042_NAME": [
+      "be6b87c7",
+      "Diamond Coins Q"
+    ],
+    "text:shop_JP:GOODS_0043_NAME": [
+      "384f614d",
+      "Diamond Coins R"
+    ],
+    "text:shop_JP:GOODS_0044_NAME": [
+      "4b37a13a",
+      "Diamond Coins S"
+    ],
+    "text:shop_JP:GOODS_0045_NAME": [
+      "40d4726b",
+      "Diamond Coins T"
+    ],
+    "text:shop_JP:GOODS_0046_NAME": [
+      "6e428164",
+      "Diamond Coins U"
+    ],
+    "text:shop_JP:GOODS_0062_NAME": [
+      "722bfa47",
+      "Sale Diamond Coins SB"
+    ],
+    "text:shop_JP:GOODS_0063_NAME": [
+      "c82d8269",
+      "Sale Diamond Coins SC"
+    ],
+    "text:shop_JP:GOODS_0064_NAME": [
+      "8dbe8661",
+      "Sale Diamond Coins SD"
+    ],
+    "text:shop_JP:GOODS_0065_NAME": [
+      "9dc6ca4a",
+      "Sale Diamond Coins SE"
+    ],
+    "text:shop_JP:GOODS_0066_NAME": [
+      "47233d18",
+      "Sale Diamond Coins SF"
+    ],
+    "text:shop_JP:GOODS_1000_DETAIL": [
+      "0dc37ce6",
+      "A \"Jonathan Joestar ☆3\" Statue."
+    ],
+    "text:shop_JP:GOODS_1000_NAME": [
+      "f55362af",
+      "Jonathan Joestar ☆3"
+    ],
+    "text:shop_JP:GOODS_1001_DETAIL": [
+      "7c002fef",
+      "A \"Robert E. O. Speedwagon ☆3\" Statue."
+    ],
+    "text:shop_JP:GOODS_1001_NAME": [
+      "984863f6",
+      "Robert E. O. Speedwagon ☆3"
+    ],
+    "text:shop_JP:GOODS_1002_DETAIL": [
+      "83b66b93",
+      "A \"Will A. Zeppeli ☆3\" Statue."
+    ],
+    "text:shop_JP:GOODS_1002_NAME": [
+      "7bcf2a48",
+      "Will A. Zeppeli ☆3"
+    ],
+    "text:shop_JP:GOODS_1100_DETAIL": [
+      "2b52f5fc",
+      "Cola that restores 5 BP. Set of 5."
+    ],
+    "text:shop_JP:GOODS_1100_NAME": [
+      "cc2b170f",
+      "BP Recovery Cola x5"
+    ],
+    "text:shop_JP:GOODS_1101_DETAIL": [
+      "5b54f042",
+      "Cola that restores 5 BP. Set of 12."
+    ],
+    "text:shop_JP:GOODS_1101_NAME": [
+      "d3fd219e",
+      "BP Recovery Cola x12"
+    ],
+    "text:shop_JP:GOODS_1102_DETAIL": [
+      "84ba8470",
+      "Cola that restores 5 BP."
+    ],
+    "text:shop_JP:GOODS_1102_NAME": [
+      "92b004f0",
+      "BP Recovery Cola x1"
+    ],
+    "text:shop_JP:GOODS_2000_DETAIL": [
+      "b11119f1",
+      "A \"Guardian of Morioh ☆4\" Mind."
+    ],
+    "text:shop_JP:GOODS_2000_NAME": [
+      "91f1a7bf",
+      "Guardian of Morioh x1"
+    ],
+    "text:shop_JP:GOODS_8664_DETAIL": [
+      "2835e1a8",
+      "Awakening Medal for [Koichi Hirose ~ACT2 The Growing Boy~ <Maverick>]"
+    ],
+    "text:shop_JP:GOODS_8664_NAME": [
+      "8e68f796",
+      "Awakening Medal [Koichi Hirose ~ACT2 The Growing Boy~ <Maverick>]"
+    ],
+    "text:shop_JP:GOODS_8684_DETAIL": [
+      "ec519ea1",
+      "Awakening Medal for [Akira Otoishi ~Unshakable Confidence~ <Maverick>]"
+    ],
+    "text:shop_JP:GOODS_8684_NAME": [
+      "8ac5137a",
+      "Awakening Medal [Akira Otoishi ~Unshakable Confidence~ <Maverick>]"
+    ],
+    "text:shop_JP:GOODS_8744_DETAIL": [
+      "c9eedd1d",
+      "Awakening Medal for [Yuya Fungami ~Nutrient-Draining Ability~ <Intellect>]"
+    ],
+    "text:shop_JP:GOODS_8744_NAME": [
+      "201921b9",
+      "Awakening Medal [Yuya Fungami ~Nutrient-Draining Ability~ <Intellect>]"
+    ],
+    "text:shop_JP:GOODS_A52906_DETAIL": [
+      "67de5dd5",
+      "Teary-Eyed Luca ★★★"
+    ],
+    "text:shop_JP:GOODS_A52906_NAME": [
+      "4d428e9b",
+      "Teary-Eyed Luca"
+    ],
+    "text:shop_JP:GOODS_M4004_DETAIL": [
+      "8429afce",
+      "SP Skill Mind exclusive to \"Robert E. O. Speedwagon\"."
+    ],
+    "text:shop_JP:GOODS_M4004_NAME": [
+      "288de35c",
+      "Thugs of Ogre Street"
+    ],
+    "text:shop_JP:GOODS_M4013_DETAIL": [
+      "9f449653",
+      "Skill Mind exclusive to \"Santana\"."
+    ],
+    "text:shop_JP:GOODS_M4013_NAME": [
+      "6ac07367",
+      "Diiiie!"
+    ],
+    "text:shop_JP:GOODS_M4019_DETAIL": [
+      "49f1f742",
+      "Skill Mind exclusive to \"Joseph Joestar (Part 3)\"."
+    ],
+    "text:shop_JP:GOODS_M4019_NAME": [
+      "46706feb",
+      "A Veteran's Fight"
+    ],
+    "text:shop_JP:GOODS_M4021_DETAIL": [
+      "9581a237",
+      "Skill Mind exclusive to \"Muhammad Avdol\"."
+    ],
+    "text:shop_JP:GOODS_M4026_DETAIL": [
+      "b42581a9",
+      "SP Skill Mind exclusive to \"Jean Pierre Polnareff\"."
+    ],
+    "text:shop_JP:GOODS_M4026_NAME": [
+      "5244fd50",
+      "Go Do That in Hell"
+    ],
+    "text:shop_JP:GOODS_M4027_DETAIL": [
+      "f3da91c7",
+      "Skill Mind exclusive to \"Iggy\"."
+    ],
+    "text:shop_JP:GOODS_M4027_NAME": [
+      "bb10c662",
+      "Rude Guys Get a Fart"
+    ],
+    "text:shop_JP:GOODS_M4032_DETAIL": [
+      "6cc3bfd0",
+      "SP Skill Mind exclusive to \"Enya the Hag\"."
+    ],
+    "text:shop_JP:GOODS_M4032_NAME": [
+      "f98c0446",
+      "Useless, Useless! Kya-kya-kekeh!"
+    ],
+    "text:shop_JP:GOODS_M4037_DETAIL": [
+      "b297e82e",
+      "Skill Mind exclusive to \"Josuke Higashikata\"."
+    ],
+    "text:shop_JP:GOODS_M4037_NAME": [
+      "f0b4a9ef",
+      "Gotta Hit It From Right Here!"
+    ],
+    "text:shop_JP:GOODS_M4039_DETAIL": [
+      "008c2425",
+      "Skill Mind exclusive to \"Koichi Hirose ~ACT1~\"."
+    ],
+    "text:shop_JP:GOODS_M4039_NAME": [
+      "26f71e4a",
+      "Believe Me!"
+    ],
+    "text:shop_JP:GOODS_M4045_DETAIL": [
+      "a643abf0",
+      "Skill Mind exclusive to \"Okuyasu Nijimura\"."
+    ],
+    "text:shop_JP:GOODS_M4045_NAME": [
+      "33ca0633",
+      "Gakyaa!"
+    ],
+    "text:shop_JP:GOODS_M4053_DETAIL": [
+      "8e3c2123",
+      "Skill Mind exclusive to \"Shigekiyo Yangu\"."
+    ],
+    "text:shop_JP:GOODS_M4053_NAME": [
+      "be194c62",
+      "Shishi!"
+    ],
+    "text:shop_JP:GOODS_M4058_DETAIL": [
+      "86e65110",
+      "SP Skill Mind exclusive to \"Keicho Nijimura\"."
+    ],
+    "text:shop_JP:GOODS_M4058_NAME": [
+      "5ebcd2ad",
+      "Isn't That a Beautiful Geometric Pattern~~~?"
+    ],
+    "text:shop_JP:GOODS_M4061_DETAIL": [
+      "6df60715",
+      "Skill Mind exclusive to \"N'Doul\"."
+    ],
+    "text:shop_JP:GOODS_M4061_NAME": [
+      "5e230cf2",
+      "This Overwhelming Power"
+    ],
+    "text:shop_JP:GOODS_M4068_DETAIL": [
+      "31574d5f",
+      "SP Skill Mind exclusive to \"Dio Brando\"."
+    ],
+    "text:shop_JP:GOODS_M4068_NAME": [
+      "5279969a",
+      "Can a Monkey Ever Catch Up to a Man?!"
+    ],
+    "text:shop_JP:GOODS_M4071_DETAIL": [
+      "4b17e667",
+      "Skill Mind exclusive to \"Bruford\"."
+    ],
+    "text:shop_JP:GOODS_M4071_NAME": [
+      "7a89afcc",
+      "Don't You Come Out........."
+    ],
+    "text:shop_JP:GOODS_M4073_DETAIL": [
+      "ba86c2b2",
+      "Skill Mind exclusive to \"Straizo\"."
+    ],
+    "text:shop_JP:GOODS_M4073_NAME": [
+      "7fce5619",
+      "Turbulent Hamon Rush"
+    ],
+    "text:shop_JP:GOODS_M4075_DETAIL": [
+      "60212f0e",
+      "Skill Mind exclusive to \"Dire\"."
+    ],
+    "text:shop_JP:GOODS_M4075_NAME": [
+      "a0f32338",
+      "Hamon-Charged Rose Thorns Must Sting..."
+    ],
+    "text:shop_JP:GOODS_M4078_DETAIL": [
+      "ea579e11",
+      "SP Skill Mind exclusive to \"Esidisi\"."
+    ],
+    "text:shop_JP:GOODS_M4085_DETAIL": [
+      "163aa238",
+      "Skill Mind exclusive to \"Mariah\"."
+    ],
+    "text:shop_JP:GOODS_M4085_NAME": [
+      "09af0045",
+      "Overwhelmingly Superior!!"
+    ],
+    "text:shop_JP:GOODS_M4088_DETAIL": [
+      "1f10d989",
+      "SP Skill Mind exclusive to \"Devo the Cursed\"."
+    ],
+    "text:shop_JP:GOODS_M4088_NAME": [
+      "27a20777",
+      "You're Sloooow!"
+    ],
+    "text:shop_JP:GOODS_M4096_DETAIL": [
+      "947449e4",
+      "SP Skill Mind exclusive to \"Wang Chan\"."
+    ],
+    "text:shop_JP:GOODS_M5015_DETAIL": [
+      "95975669",
+      "Power Up material. Gives 1.2x EXP when fused into a Statue!"
+    ],
+    "text:shop_JP:GOODS_M5015_NAME": [
+      "ef6bc32a",
+      "Golden Trophy"
+    ],
+    "text:shop_JP:GOODS_M5016_DETAIL": [
+      "95975669",
+      "Power Up material. Gives 1.2x EXP when fused into a Statue!"
+    ],
+    "text:shop_JP:GOODS_M5016_NAME": [
+      "a965b4e7",
+      "Rainbow Trophy"
+    ],
+    "text:shop_JP:GOODS_M5019_DETAIL": [
+      "f7e10fe1",
+      "Power Up material. Gives 1.2x EXP when fused into a Mind!"
+    ],
+    "text:shop_JP:GOODS_M5019_NAME": [
+      "25ce9a5e",
+      "Golden Mind"
+    ],
+    "text:shop_JP:GOODS_M5020_DETAIL": [
+      "f7e10fe1",
+      "Power Up material. Gives 1.2x EXP when fused into a Mind!"
+    ],
+    "text:shop_JP:GOODS_M5020_NAME": [
+      "06537b5f",
+      "Rainbow Mind"
+    ],
+    "text:shop_JP:GOODS_M6001_DETAIL": [
+      "8be68572",
+      "Adds +1 Boost to a ★3 Statue."
+    ],
+    "text:shop_JP:GOODS_M6001_NAME": [
+      "a20661ac",
+      "Bronze Turtle"
+    ],
+    "text:shop_JP:GOODS_M6002_DETAIL": [
+      "5c9c615f",
+      "Adds +1 Boost to a ★4 Statue."
+    ],
+    "text:shop_JP:GOODS_M6002_NAME": [
+      "fcf411a9",
+      "Silver Turtle"
+    ],
+    "text:shop_JP:GOODS_M6003_DETAIL": [
+      "3baa585d",
+      "Adds +1 Boost to a ★5 Statue."
+    ],
+    "text:shop_JP:GOODS_M6003_NAME": [
+      "bba9a7b9",
+      "Golden Turtle"
+    ],
+    "text:shop_JP:GOODS_M6004_DETAIL": [
+      "e71883e1",
+      "Ink for recording memories of a Bizarre Adventure."
+    ],
+    "text:shop_JP:GOODS_M6004_NAME": [
+      "6a2a0be4",
+      "Ink That Records Memories"
+    ],
+    "text:shop_JP:GOODS_M6005_DETAIL": [
+      "6382d38e",
+      "A pen nib for drawing memories of a Bizarre Adventure."
+    ],
+    "text:shop_JP:GOODS_M6005_NAME": [
+      "10e794a0",
+      "Nib That Draws Feelings"
+    ],
+    "text:shop_JP:GOODS_M6006_DETAIL": [
+      "90986cce",
+      "A frame that holds memories of the past."
+    ],
+    "text:shop_JP:GOODS_M6006_NAME": [
+      "06bb207c",
+      "Frame That Adorns the Past"
+    ],
+    "text:shop_JP:GOODS_M7004_DETAIL": [
+      "dfae229b",
+      "A Mind with various effects during Menacing Mode."
+    ],
+    "text:shop_JP:GOODS_M7004_NAME": [
+      "70999240",
+      "I'll Beat That \"Stand\" Before You Take Another Breath"
+    ],
+    "text:shop_JP:GOODS_M7005_DETAIL": [
+      "7235dcfe",
+      "A Mind that boosts Menacing Charge efficiency when near death."
+    ],
+    "text:shop_JP:GOODS_M7005_NAME": [
+      "4484b0d7",
+      "Heeelp Meee!"
+    ],
+    "text:shop_JP:GOODS_M7006_DETAIL": [
+      "dfae229b",
+      "A Mind with various effects during Menacing Mode."
+    ],
+    "text:shop_JP:GOODS_M7006_NAME": [
+      "4da2da37",
+      "Their \"Heart\" Is Flowing Into Me........."
+    ],
+    "text:shop_JP:GOODS_M7009_DETAIL": [
+      "3b967af8",
+      "A Mind that raises movement speed during Menacing Mode."
+    ],
+    "text:shop_JP:GOODS_M7009_NAME": [
+      "d06c90d3",
+      "Department Store Uproar"
+    ],
+    "text:shop_JP:GOODS_M7016_DETAIL": [
+      "98f45c3a",
+      "A Mind that makes it easier to keep kill streaks going."
+    ],
+    "text:shop_JP:GOODS_M7016_NAME": [
+      "1d247c4d",
+      "Observe Carefully, Then Act"
+    ],
+    "text:shop_JP:GOODS_S10002_DETAIL": [
+      "1d7b775d",
+      "Jonathan Joestar ★★★★"
+    ],
+    "text:shop_JP:GOODS_S10002_NAME": [
+      "04405517",
+      "Jonathan Joestar"
+    ],
+    "text:shop_JP:GOODS_S10101_DETAIL": [
+      "33e49f20",
+      "Robert E. O. Speedwagon ★★★"
+    ],
+    "text:shop_JP:GOODS_S10101_NAME": [
+      "398e7594",
+      "Robert E. O. Speedwagon"
+    ],
+    "text:shop_JP:GOODS_S10102_DETAIL": [
+      "21a1a694",
+      "Robert E. O. Speedwagon ★★★★"
+    ],
+    "text:shop_JP:GOODS_S10102_NAME": [
+      "398e7594",
+      "Robert E. O. Speedwagon"
+    ],
+    "text:shop_JP:GOODS_S20201_DETAIL": [
+      "7c730e4b",
+      "Lisa Lisa ★★★"
+    ],
+    "text:shop_JP:GOODS_S20201_NAME": [
+      "5e36aca1",
+      "Lisa Lisa"
+    ],
+    "text:shop_JP:GOODS_S20202_DETAIL": [
+      "5ee64371",
+      "Lisa Lisa ★★★★"
+    ],
+    "text:shop_JP:GOODS_S20202_NAME": [
+      "5e36aca1",
+      "Lisa Lisa"
+    ],
+    "text:shop_JP:GOODS_S31001_DETAIL": [
+      "1c4860a4",
+      "Rubber Soul ★★★"
+    ],
+    "text:shop_JP:GOODS_S31001_NAME": [
+      "b5860ce4",
+      "Rubber Soul"
+    ],
+    "text:shop_JP:GOODS_S31002_DETAIL": [
+      "29c1ebc4",
+      "Rubber Soul ★★★★"
+    ],
+    "text:shop_JP:GOODS_S31002_NAME": [
+      "b5860ce4",
+      "Rubber Soul"
+    ],
+    "text:shop_JP:GOODS_S40115_DETAIL": [
+      "669c229f",
+      "Koichi Hirose ~ACT2 The Growing Boy~ ★★★"
+    ],
+    "text:shop_JP:GOODS_S40115_NAME": [
+      "8caba378",
+      "Koichi Hirose ~ACT2 The Growing Boy~"
+    ],
+    "text:shop_JP:GOODS_S40126_DETAIL": [
+      "9c345d37",
+      "Koichi Hirose ~ACT3~ ★★★"
+    ],
+    "text:shop_JP:GOODS_S40126_NAME": [
+      "679b1b84",
+      "Koichi Hirose ~ACT3~"
+    ],
+    "text:shop_JP:GOODS_S40401_DETAIL": [
+      "c05d8b81",
+      "Jotaro Kujo ★★★"
+    ],
+    "text:shop_JP:GOODS_S40401_NAME": [
+      "f8e1b88d",
+      "Jotaro Kujo"
+    ],
+    "text:shop_JP:GOODS_S40705_DETAIL": [
+      "e2964870",
+      "Akira Otoishi ~Unshakable Confidence~ ★★★"
+    ],
+    "text:shop_JP:GOODS_S40705_NAME": [
+      "47234564",
+      "Akira Otoishi ~Unshakable Confidence~"
+    ],
+    "text:shop_JP:GOODS_S41325_DETAIL": [
+      "53630aa0",
+      "Yuya Fungami ~Nutrient-Draining Ability~ ★★★"
+    ],
+    "text:shop_JP:GOODS_S41325_NAME": [
+      "536bb380",
+      "Yuya Fungami ~Nutrient-Draining Ability~"
+    ],
+    "text:shop_JP:SHOP_00001_NAME": [
+      "eb53790c",
+      "Buy Diamond Coins"
+    ],
+    "text:shop_JP:SHOP_00002_NAME": [
+      "480b8958",
+      "Expand Mind Box"
+    ],
+    "text:shop_JP:SHOP_00003_NAME": [
+      "ecd20ad2",
+      "Restore AP"
+    ],
+    "text:shop_JP:SHOP_00004_NAME": [
+      "fff56508",
+      "Diamond Coin Exchange"
+    ],
+    "text:shop_JP:SHOP_00005_NAME": [
+      "67890ceb",
+      "Ring of Memories Exchange"
+    ],
+    "text:shop_JP:SHOP_00006_NAME": [
+      "092c74ea",
+      "Buy BP Recovery Cola"
+    ],
+    "text:shop_JP:SHOP_0001_MESSAGE": [
+      "dce52f3e",
+      "Confirm"
+    ],
+    "text:shop_JP:SHOP_0002_MESSAGE": [
+      "5302e94b",
+      "Not enough items for this exchange"
+    ],
+    "text:shop_JP:SHOP_0003_MESSAGE": [
+      "78532e41",
+      "AP is over the limit, so AP could not be restored"
+    ],
+    "text:shop_JP:SHOP_0004_MESSAGE": [
+      "62b6980e",
+      "The Mind Box cannot be expanded beyond its maximum size"
+    ],
+    "text:shop_JP:SHOP_0005_MESSAGE": [
+      "cf2a5330",
+      "Not currently on sale\nSee the News for details"
+    ],
+    "text:shop_JP:SHOP_0006_MESSAGE": [
+      "7013fe4c",
+      "Please wait for new items to arrive"
+    ],
+    "text:shop_JP:SHOP_0007_MESSAGE": [
+      "01fc0c92",
+      "Cannot access Google Play Services\nIf you are not logged in to Google Play, please log in\nIf the problem persists, please contact support"
+    ],
+    "text:shop_JP:SHOP_0009_MESSAGE": [
+      "059a306d",
+      "Currently Owned"
+    ],
+    "text:shop_JP:SHOP_0010_MESSAGE": [
+      "de6a05ad",
+      "Owned After"
+    ],
+    "text:shop_JP:SHOP_0011_MESSAGE": [
+      "3e574f2c",
+      "Current Box Size"
+    ],
+    "text:shop_JP:SHOP_0012_MESSAGE": [
+      "5fd66bee",
+      "Box Size After"
+    ],
+    "text:shop_JP:SHOP_0013_MESSAGE": [
+      "cb3a2090",
+      "Current AP"
+    ],
+    "text:shop_JP:SHOP_0014_MESSAGE": [
+      "1899d72e",
+      "AP After"
+    ],
+    "text:shop_JP:SHOP_0016_MESSAGE": [
+      "a4afc4a8",
+      "Purchase complete"
+    ],
+    "text:shop_JP:SHOP_0017_MESSAGE": [
+      "e71126ec",
+      "Diamond Coin purchase canceled"
+    ],
+    "text:shop_JP:SHOP_0018_MESSAGE": [
+      "4bad5f32",
+      "Could not purchase Diamond Coins\nPlease check again later"
+    ],
+    "text:shop_JP:SHOP_0020_MESSAGE": [
+      "85217f7a",
+      "d"
+    ],
+    "text:shop_JP:SHOP_0021_MESSAGE": [
+      "bf6267da",
+      "h"
+    ],
+    "text:shop_JP:SHOP_0022_MESSAGE": [
+      "b6a993c2",
+      "m"
+    ],
+    "text:shop_JP:SHOP_0023_MESSAGE": [
+      "9dcdc2b2",
+      "s"
+    ],
+    "text:shop_JP:SHOP_0024_MESSAGE": [
+      "8f26d438",
+      "Ended"
+    ],
+    "text:shop_JP:SHOP_0026_MESSAGE": [
+      "1fd3686a",
+      "pcs"
+    ],
+    "text:shop_JP:SHOP_0028_MESSAGE": [
+      "3cb7dae5",
+      "Payment Services\nAct Notice"
+    ],
+    "text:shop_JP:SHOP_0029_MESSAGE": [
+      "8f44db8b",
+      "Specified Commercial\nTransactions Act Notice"
+    ],
+    "text:shop_JP:SHOP_0030_MESSAGE": [
+      "4fe94f2f",
+      "Exchange ends in"
+    ],
+    "text:shop_JP:SHOP_0031_MESSAGE": [
+      "5f3582c1",
+      "Remaining"
+    ],
+    "text:shop_JP:SHOP_0033_MESSAGE": [
+      "37f1dbde",
+      "Event Points"
+    ],
+    "text:shop_JP:SHOP_0034_MESSAGE": [
+      "1a723e8f",
+      "Points Earned"
+    ],
+    "text:shop_JP:SHOP_0035_MESSAGE": [
+      "598a6eed",
+      "Personal"
+    ],
+    "text:shop_JP:SHOP_0036_MESSAGE": [
+      "be44c622",
+      "Town"
+    ],
+    "text:shop_JP:SHOP_0038_MESSAGE": [
+      "848cf7a6",
+      "Selected"
+    ],
+    "text:shop_JP:SHOP_0039_MESSAGE": [
+      "1fd3686a",
+      "pcs"
+    ],
+    "text:shop_JP:SHOP_0041_MESSAGE": [
+      "4e85f3e3",
+      "Diamond Coins cannot be purchased right now"
+    ],
+    "text:shop_JP:SHOP_0043_MESSAGE": [
+      "eb9e6fe0",
+      "Owned Before"
+    ],
+    "text:shop_JP:SHOP_0044_MESSAGE": [
+      "714c3d4c",
+      "Box Size Before"
+    ],
+    "text:shop_JP:SHOP_0045_MESSAGE": [
+      "b5fbd12d",
+      "AP Before"
+    ],
+    "text:shop_JP:SHOP_0046_MESSAGE": [
+      "a7c8c2ca",
+      "Your Mind Box is full. You cannot buy any more Minds"
+    ],
+    "text:shop_JP:SHOP_0047_MESSAGE": [
+      "24296eb3",
+      "Could not purchase Diamond Coins\nPlease contact support"
+    ],
+    "text:shop_JP:SHOP_0048_MESSAGE": [
+      "618cee5c",
+      "Diamond Coin purchase was interrupted\nPlease check again later"
+    ],
+    "text:shop_JP:SHOP_0049_MESSAGE": [
+      "59064811",
+      "Diamond Coins cannot be purchased right now\nPlease check your device settings"
+    ],
+    "text:shop_JP:SHOP_0050_MESSAGE": [
+      "2d62f1bb",
+      "Not enough Diamond Coins"
+    ],
+    "text:shop_JP:SHOP_0051_MESSAGE": [
+      "6290db2e",
+      "Your previously interrupted Diamond Coin purchase has been completed"
+    ],
+    "text:shop_JP:SHOP_0052_MESSAGE": [
+      "a843a1b9",
+      "You cannot buy Diamond Coins beyond the maximum you can hold"
+    ],
+    "text:shop_JP:SHOP_0053_MESSAGE": [
+      "e5ae83e3",
+      "This item cannot be exchanged any more"
+    ],
+    "text:shop_JP:SHOP_0054_MESSAGE": [
+      "d2db77ce",
+      "Unlimited"
+    ],
+    "text:shop_JP:SHOP_0055_MESSAGE": [
+      "cc2f84a3",
+      "Exchange"
+    ],
+    "text:shop_JP:SHOP_0056_MESSAGE": [
+      "3e2b04ee",
+      "Expand"
+    ],
+    "text:shop_JP:SHOP_0057_MESSAGE": [
+      "b43abc31",
+      "Restore"
+    ],
+    "text:shop_JP:SHOP_0058_MESSAGE": [
+      "253d9c47",
+      "After"
+    ],
+    "text:shop_JP:SHOP_0059_MESSAGE": [
+      "f4d1793c",
+      "After"
+    ],
+    "text:shop_JP:SHOP_0060_MESSAGE": [
+      "4bc75322",
+      "After"
+    ],
+    "text:shop_JP:SHOP_0062_MESSAGE": [
+      "dfa6b21c",
+      "You cannot buy more Diamond Coins than this amount"
+    ]
+  },
+  "sources": [
+    {
+      "note": "translated by the project",
+      "source": "jdr-default"
+    }
+  ]
+}

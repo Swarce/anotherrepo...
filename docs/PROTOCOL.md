@@ -35,8 +35,8 @@ Notes:
 |---|---|
 | Request classes | 171 |
 | Distinct paths | 168 |
-| Request classes on an implemented path (Build 01) | 20 |
-| Distinct implemented paths | 19 |
+| Request classes on an implemented path | 25 |
+| Distinct implemented paths | 24 |
 
 ## Endpoints
 
@@ -87,7 +87,7 @@ Notes:
 | `/info/get_menu_notify` | `GetMenuNotifyRequest` | `GetMenuNotifyResponse` | implemented |
 | `/info/notify_list` | `NotifyListRequest` | `NotifyListResponse` | logged as unknown |
 
-### shop — IAP (disabled offline) and in-game shops (9, 1 implemented)
+### shop — IAP (disabled offline) and in-game shops (9, 2 implemented)
 
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
@@ -99,7 +99,7 @@ Notes:
 | `/shop/event_shop_list` | `EventShopListRequest` | `EventShopListResponse` | logged as unknown |
 | `/shop/product_list` | `ProductListRequest` | `ProductListResponse` | implemented |
 | `/shop/shop_buy` | `ShopBuyRequest` | `ShopBuyResponse` | logged as unknown |
-| `/shop/shop_list` | `ShopListRequest` | `ShopListResponse` | logged as unknown |
+| `/shop/shop_list` | `ShopListRequest` | `ShopListResponse` | implemented |
 
 ### gasha — gacha (5, 0 implemented)
 
@@ -111,13 +111,13 @@ Notes:
 | `/gasha/get_box_gasha` | `GetBoxGashaRequest` | `GetBoxGashaResponse` | logged as unknown |
 | `/gasha/reset_box_gasha` | `ResetBoxGashaRequest` | `ResetBoxGashaResponse` | logged as unknown |
 
-### present — present box (3, 0 implemented)
+### present — present box (3, 1 implemented)
 
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
 | `/present/get` | `GetPresentRequest` | `GetPresentResponse` | logged as unknown |
 | `/present/get_all` | `GetPresentAllRequest` | `GetPresentResponse` | logged as unknown |
-| `/present/present_list` | `PresentListRequest` | `PresentListResponse` | logged as unknown |
+| `/present/present_list` | `PresentListRequest` | `PresentListResponse` | implemented |
 
 ### team — team formation (11, 1 implemented)
 
@@ -166,13 +166,13 @@ Notes:
 | `/mind/strengthening` | `MindStrengtheningRequest` | `MindStrengtheningResponse` | logged as unknown |
 | `/mind/strengthening_item` | `MindStrengtheningItemRequest` | `MindStrengtheningResponse` | logged as unknown |
 
-### item — items (3, 0 implemented)
+### item — items (3, 1 implemented)
 
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
 | `/item/exp_item_list` | `ExpItemListRequest` | `ExpItemListResponse` | logged as unknown |
 | `/item/heal_item_list` | `HealItemListRequest` | `HealItemListResponse` | logged as unknown |
-| `/item/item_list` | `ItemListRequest` | `ItemListResponse` | logged as unknown |
+| `/item/item_list` | `ItemListRequest` | `ItemListResponse` | implemented |
 
 ### sell — selling (1, 0 implemented)
 
@@ -204,7 +204,7 @@ Notes:
 | `/book/statue_list` | `StatueBookRequest` | `StatueBookResponse` | logged as unknown |
 | `/book/yogo_list` | `TermBookRequest` | `TermBookResponse` (M) | logged as unknown |
 
-### bizarre — story/quest battles (10, 1 implemented)
+### bizarre — story/quest battles (10, 2 implemented)
 
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
@@ -215,7 +215,7 @@ Notes:
 | `/bizarre/bizarre_start` | `BizarreStartRequest` | `BizarreStartResponse` | logged as unknown |
 | `/bizarre/check_timed_chapter` | `CheckTimedChapterRequest` | `CheckTimedChapterResponse` (M) | logged as unknown |
 | `/bizarre/destruction` | `BizarreDestructionRequest` | `BizarreDestructionResponse` | logged as unknown |
-| `/bizarre/get_bizarre_select` | `BizarreSelectRequest` | `BizarreSelectResponse` | logged as unknown |
+| `/bizarre/get_bizarre_select` | `BizarreSelectRequest` | `BizarreSelectResponse` | implemented |
 | `/bizarre/stage_list` | `StageListRequest` | `StageListResponse` | logged as unknown |
 | `/bizarre/unlock` | `BizarreUnlockRequest` | `BizarreUnlockResponse` | logged as unknown |
 
@@ -279,13 +279,13 @@ Notes:
 |---|---|---|---|
 | `/support/support_user_s` | `SupportUserRequest` | `SupportUserResponse` | logged as unknown |
 
-### follow — follow list (social) (10, 0 implemented)
+### follow — follow list (social) (10, 1 implemented)
 
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
 | `/follow/block` | `BlockUserRequest` | `BlockUserResponse` | logged as unknown |
 | `/follow/block_list` | `BlockListRequest` | `BlockListResponse` (M) | logged as unknown |
-| `/follow/follow_list` | `FollowListRequest` | `FollowListResponse` (M) | logged as unknown |
+| `/follow/follow_list` | `FollowListRequest` | `FollowListResponse` (M) | implemented |
 | `/follow/follower_list` | `FollowerListRequest` | `FollowerListResponse` (M) | logged as unknown |
 | `/follow/kick_follow` | `ReleaseFollowerRequest` | `ReleaseFollowerResponse` (M) | logged as unknown |
 | `/follow/release_follow` | `ReleaseFollowRequest` | `SetFollowResponse` | logged as unknown |
