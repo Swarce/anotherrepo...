@@ -1,6 +1,35 @@
 # Design: rebuilding `in_memory_master_data` and `versionfile` (M1.5)
 
-Status: **draft for review** (written in Build 01, implementation starts in Build 02).
+Status: **implemented** — `versionfile` in Build 04 (device-confirmed), `in_memory_master_data` in
+Build 06 (device test pending). The original plan below (a Python/UnityPy tool on the player's PC)
+was replaced by generation inside the server, on the phone; see "As built".
+
+## As built (Build 06)
+
+- **Where:** `Ctx::generated()` builds both bundles in the embedded server (and the standalone host),
+  in the background at boot and on demand, cached until `vcs.bytes` changes. Master data first, then
+  the manifest, which lists it (`in_memory_master_data.bytes`, md5 + size of the exact bytes `/cdn`
+  serves, `isEncrypt=false`: plain UnityFS).
+- **Schema:** `server/content/masterdata/schema.json` — every asset in the bundle with its class, and
+  the serialized fields of 147 types, from our analysis of the client's type metadata
+  (docs/research/09-master-data.md). Code identifiers only; no game text, no values.
+- **Rows:** one JSON file per table in the same folder (`asset`, `sources`, `data`). Enums by name or
+  number, `SecurityIntValue` as a plain number (written seed 0 / value), unknown fields refused.
+  A core table without a file is written empty (every core loader accepts an empty list); battle-only
+  tables are left out until they have content (their readers null-check; an all-zero settings object
+  would be worse than none).
+- **Type trees:** `jdr_unity::managed` writes the node shapes the engine itself uses (research 09 §4),
+  with our own script hash so the runtime reads through the shipped tree. One MonoScript per class,
+  `Assembly-CSharp.dll`, container keys = lowercase full asset paths, sorted; preload table = script +
+  object per asset.
+- **Content in Build 06:** `tutorial_flag_table` (34 labels the client queries, ids 0..33, no script
+  packs) so tutorials and hints count as done and daily/event quests unlock with the all-ones
+  `get_tutorial_step`. Everything else is empty.
+- **Checks:** unit tests pin the tutorial-table type tree to the research template and the binary
+  layout; `tools/proofs/masterdata_check.py` reads the bundle built with the player's own engine type
+  entries through UnityPy (exact byte consumption) and compares every value with the content files.
+
+The sections below are the original Build 01 plan, kept for the table/source overview.
 
 ## Problem
 
