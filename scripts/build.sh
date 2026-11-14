@@ -71,18 +71,20 @@ else
 fi
 
 if [[ -n "${JDR_DATA:-}" && -n "${JDR_KEYS:-}" ]]; then
-  step "real data: generate versionfile from your files and check it with UnityPy"
+  step "real data: generate versionfile + in_memory_master_data from your files and check them with UnityPy"
   out="$(pwd)/deliver/versionfile-check.bytes"
+  md="$(pwd)/deliver/masterdata-check.bytes"
   mkdir -p deliver
-  JDR_VERSIONFILE_OUT="$out" JDR_KEYS="$(realpath "$JDR_KEYS")" cargo test -q --release -p jdr-services --test real_versionfile
+  JDR_VERSIONFILE_OUT="$out" JDR_MASTERDATA_OUT="$md" JDR_KEYS="$(realpath "$JDR_KEYS")" cargo test -q --release -p jdr-services --test real_versionfile
   if python3 -c "import UnityPy" 2>/dev/null; then
     python3 -I tools/proofs/versionfile_check.py "$out"
+    python3 -I tools/proofs/masterdata_check.py "$md" server/content/masterdata
   else
-    skip "UnityPy check of the generated versionfile (pip install UnityPy)"
+    skip "UnityPy check of the generated bundles (pip install UnityPy)"
   fi
-  rm -f "$out"
+  rm -f "$out" "$md"
 else
-  skip "versionfile generation from real data (set JDR_DATA and JDR_KEYS)"
+  skip "bundle generation from real data (set JDR_DATA and JDR_KEYS)"
 fi
 
 if ((${#skipped[@]})); then

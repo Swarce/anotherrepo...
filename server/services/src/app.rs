@@ -121,17 +121,32 @@ fn route(ctx: &Arc<Ctx>, req: &Request) -> (Response, &'static str, String) {
     let path = req.path.as_str();
     if let Some(rel) = path.strip_prefix(CDN_PREFIX) {
         ctx.counters.cdn.fetch_add(1, Ordering::Relaxed);
-        if ctx.versionfile_obf_name().as_deref() == Some(rel.trim_start_matches('/')) {
-            return match ctx.versionfile() {
-                Ok(b) => (
-                    Response::ok("application/octet-stream", b.as_ref().clone()),
-                    "cdn",
-                    " (generated versionfile)".into(),
-                ),
+        let name = rel.trim_start_matches('/');
+        let which = if ctx.versionfile_obf_name().as_deref() == Some(name) {
+            Some("versionfile")
+        } else if ctx.masterdata_obf_name().as_deref() == Some(name) {
+            Some("in_memory_master_data")
+        } else {
+            None
+        };
+        if let Some(which) = which {
+            return match ctx.generated() {
+                Ok(g) => {
+                    let body = if which == "versionfile" {
+                        &g.versionfile
+                    } else {
+                        &g.masterdata
+                    };
+                    (
+                        Response::ok("application/octet-stream", body.clone()),
+                        "cdn",
+                        format!(" (generated {which})"),
+                    )
+                }
                 Err(e) => (
-                    Response::text(404, "versionfile unavailable"),
+                    Response::text(404, "generated bundle unavailable"),
                     "cdn",
-                    format!(" versionfile ERROR: {e}"),
+                    format!(" {which} ERROR: {e}"),
                 ),
             };
         }

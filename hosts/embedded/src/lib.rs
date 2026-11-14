@@ -25,7 +25,7 @@ use std::time::{Duration, Instant};
 /// Marker the patcher checks to make sure it embeds this library and not something else.
 #[used]
 #[no_mangle]
-pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_b005";
+pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_b006";
 
 pub const KEYS_ASSET: &str = "assets/jdr/keys.json";
 
@@ -306,8 +306,8 @@ pub fn serve_embedded(paths: &Paths, keys: Keys, port: u16, bind_retries: u32, t
             .spawn(move || {
                 run_import(&c);
                 c.log_files_report();
-                if let Err(e) = c.versionfile() {
-                    log::line("assets", &format!("versionfile not built yet: {e}"));
+                if let Err(e) = c.generated() {
+                    log::line("assets", &format!("generated bundles not built yet: {e}"));
                 }
             });
     }
