@@ -2,7 +2,7 @@
 """Check rebuilt (English) text bundles with UnityPy, an independent Unity reader.
 
 Every MonoBehaviour must decode through its type tree consuming exactly its bytes; translated
-labels must carry no Japanese; UI labels set to best fit must have a sane size range.
+labels must carry no Japanese; UI labels set to best fit must have a sane size range (min <= max; the game itself uses min 0).
 
 usage: python3 tools/proofs/l10n_check.py <dir with rebuilt .bytes files>
 requires: pip install UnityPy
@@ -32,6 +32,6 @@ for p in files:
             fd = t.get("m_FontData") or {}
             if fd.get("m_BestFit"):
                 best_fit += 1
-                assert 1 <= fd["m_MinSize"] <= fd["m_MaxSize"], (p, fd)
+                assert 0 <= fd["m_MinSize"] <= fd["m_MaxSize"], (p, fd)
 print(f"OK: {len(files)} rebuilt bundles parse with UnityPy; {objs} MonoBehaviours, "
       f"{texts} UI texts ({english} without Japanese, {best_fit} best fit)")
