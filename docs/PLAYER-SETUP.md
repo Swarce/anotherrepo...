@@ -1,8 +1,9 @@
 # Player setup
 
-> Status: **Build 04, for testing.** The server runs inside the game (no PC needed after install).
-> The game is still expected to stop at the loading screen until the master-data rebuild (M1.5)
-> lands. Nothing here is confirmed on a device yet.
+> Status: **for testing.** Confirmed on a Galaxy S22 / Android 16 (device logs, Builds 02–04): the
+> in-game server starts, the title screen, terms page, account creation and login work, and saves
+> survive an update. The game then needs its downloaded files and stops at the loading screen until
+> the master-data rebuild (M1.5) lands.
 
 ## Read first
 
@@ -16,6 +17,9 @@
 - **If the in-game server cannot load, the game cannot start.** Recovery is below; it never needs
   an uninstall.
 - Keep `local/backup/files` on your PC until the game is fully playable.
+- **The game's downloaded files must be on the phone and complete** (`files/`, about 13,500 files
+  including `vcs.bytes`). Uninstalling the original game deletes them; step 6 puts them back. The
+  in-game server builds the asset list from them and logs what it finds at start-up.
 
 ## What you need
 
@@ -80,13 +84,20 @@
    adb logcat -s JDR Unity
    ```
 
-## What success looks like (Build 02)
+## What success looks like
 
-1. `[boot] jdr embedded build 4 …`, `keys loaded`, `listening on 127.0.0.1:18080`.
-2. `[api] POST /common/get_version 200` when the title screen appears.
-3. Tap: terms page with an Accept button → `[account] created …` → `/api/user/login` again.
-4. `getkey`, `get_system_config`, `get_tutorial_step`, `getfiledata …`, then the expected stall on
-   the loading screen (`[cdn] … 404` for the bundles M1.5 will build).
+1. `[boot] jdr embedded build N …`, `keys loaded`, `listening on 127.0.0.1:18080`.
+2. `[assets] game files: 13480 file(s), all 13479 recorded files present` (your numbers may
+   differ slightly), then `[assets] versionfile built: … entries`.
+3. `[api] POST /common/get_version 200` when the title screen appears.
+4. First start only: terms page → `[account] created …` → `/api/user/login` again. Later starts:
+   one login with your saved account.
+5. `getkey`, then `getfiledata` for the manifest and
+   `[cdn] GET /cdn/….bytes 200 … (generated versionfile)`, then the expected stop on the loading
+   screen at the master-data bundle (until M1.5).
+
+Updating from an earlier patched build: just `adb install -r` the new APK (same key); your account
+and files stay.
 
 Send `adb logcat -d > local/logcat.txt` and the server log:
 
@@ -94,12 +105,20 @@ Send `adb logcat -d > local/logcat.txt` and the server log:
 adb pull /sdcard/Android/data/com.bandainamcoent.jojodr/jdr/logs local/device-logs
 ```
 
+Before posting logs publicly, replace the long hex file names (`/cdn/<hex>.bytes`): they are derived
+from your asset key.
+
 ## Troubleshooting
 
 - **The game closes immediately at launch (no `JDR` lines):** the in-game server library did not
   load. Patch the same APK again **with the same key** and `--disable embed-server`, then
   `adb install -r` it: that build talks to `jdr-server` on your PC (docs/DEV-LOOP.md) and keeps your
   data. Send the logcat from the failed launch.
+- **`vcs.bytes MISSING` or `… recorded files MISSING`:** your downloaded files are not (all) on the
+  phone. Push them again (step 6) and restart the game.
+- **A new crash inside `libunity.so`:** the `unity-heap` engine fix can be switched off. Patch the same
+  APK again with the same key and `--disable unity-heap`, then `adb install -r`, and send the logcat
+  (without it the game is expected to crash right after login on Android 11+).
 - **`FATAL` in the `JDR` lines:** keys missing (re-patch with `--keys`) or the port is taken.
   The usual cause is a leftover `adb reverse` from the PC dev loop: run `adb reverse --remove-all`
   and restart the game. Otherwise another app holds 127.0.0.1:18080 (the server keeps retrying and

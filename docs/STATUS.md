@@ -19,7 +19,8 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 
 ### Verified off-device
 - Real data: 13,479 entries (4,368 encrypted), 1.89 MB bundle, built in ~0.1 s on a PC.
-- UnityPy (an independent Unity reader) parses the bundle: container
+- UnityPy (an independent Unity reader) parses the bundle (`tools/proofs/versionfile_check.py`, run
+  by `build.sh` with `JDR_DATA` + `JDR_KEYS`): container
   `assets/resources/version/android/versionfile.asset`, MonoScript
   `ScSystem.ScIO.AssetBundleVersionInfo` / `Assembly-CSharp.dll`, every entry decodes through our
   type tree.
@@ -57,11 +58,16 @@ server-data problem; Unity fixed it in a later 2018.4 release. The `-systemalloc
 not help: in this release build its result is ignored.
 
 ### What changed
-- **`unity-heap` patch:** replaces the 96-byte body of the `UnityDefaultAllocator` constructor
+- **`unity-heap` patch** (evidence: the boot crash is gone on the device; long sessions, memory use
+  and frame pacing with the new allocators are not yet observed): replaces the 96-byte body of the `UnityDefaultAllocator` constructor
   (libunity @0x9ff824, fingerprinted by library and window SHA-256) with code that builds a
-  `DynamicHeapAllocator`, field for field like the engine's own inline `ALLOC_FALLBACK` heap. Only
-  the three allocators above used that constructor; nothing else calls it or the page-table code.
-- **Equivalence proof on the real binary** (`tools/proofs/unity_heap_equiv.py`, run by `build.sh`):
+  `DynamicHeapAllocator`, field for field like the engine's own inline `ALLOC_FALLBACK` heap. The
+  proof script checks on the real binary that only the three allocators above call that
+  constructor, that the page-table code is reachable only from its own class, and that each object
+  has 0x140 bytes of storage (the constructor writes below 0x118). The new heaps lock (like the
+  fallback heap) and use 1 MiB pools.
+- **Equivalence proof on the real binary** (`tools/proofs/unity_heap_equiv.py`; `build.sh` runs it
+  and requires it whenever `JDR_APK` is set):
   arm64 emulation of the patched constructor vs the engine's inline construction on a poisoned
   object → 129 bytes written, **0 bytes differ**, same mutex-init call.
 - Build number 3, server marker `JDR_EMBEDDED_SERVER_b003`.
