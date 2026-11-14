@@ -1,0 +1,65 @@
+{
+ "asset": "oraoramode_setting",
+ "about": "Equivalent to a missing asset: no oraora affect flags, gauge rate 100 for every StatueType, and the rates the client uses when the asset is missing (GameConst cctor).",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/12-master-data-fill.md §1",
+   "note": "fallback values from GameConst: deal 2.0, receive 0.5, speed-up 3.0/1.5/1.5/1.5/2.0"
+  },
+  {
+   "source": "jdr-default",
+   "note": "speed-up ints in percent (M); team and PvP gauge values 0"
+  }
+ ],
+ "data": {
+  "statueModeInfoList": [
+   {
+    "affect": 0,
+    "gaugeChargeRate": 100
+   },
+   {
+    "affect": 0,
+    "gaugeChargeRate": 100
+   },
+   {
+    "affect": 0,
+    "gaugeChargeRate": 100
+   },
+   {
+    "affect": 0,
+    "gaugeChargeRate": 100
+   },
+   {
+    "affect": 0,
+    "gaugeChargeRate": 100
+   },
+   {
+    "affect": 0,
+    "gaugeChargeRate": 100
+   }
+  ],
+  "normalSetting": {
+   "speedUpRate": {
+    "normalAttack": 300,
+    "run": 150,
+    "step": 150,
+    "skill": 150,
+    "others": 200
+   },
+   "dealDamageRate": 2.0,
+   "receiveDamageRate": 0.5
+  },
+  "pvpSetting": {
+   "speedUpRate": {
+    "normalAttack": 300,
+    "run": 150,
+    "step": 150,
+    "skill": 150,
+    "others": 200
+   },
+   "dealDamageRate": 2.0,
+   "receiveDamageRate": 0.5
+  }
+ }
+}
