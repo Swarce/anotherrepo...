@@ -303,7 +303,7 @@ pub fn statue_info(o: &OwnedStatue) -> Value {
         "maxLevel": MAX_LEVEL, "sellVm": 0, "level": o.level, "bounds": 0, "exp": o.exp,
         "hp": st.hp, "eng": 0, "atk": st.atk, "def": st.def,
         "skillList": [], "abilityList": [], "leaderAbilityInfo": {},
-        "dtSkillList": [], "dtAbilityList": [], "dtLeaderAbilityInfo": {},
+        "dtSkillList": [basic_attack()], "dtAbilityList": [], "dtLeaderAbilityInfo": {},
         "characteristicList": [], "assistAttr": 0, "assistSkillInfo": {}, "assistAbilityList": [],
         "dtAssistSkillInfo": {}, "dtAssistAbilityList": [],
         "speed": 100, "evasion": 0, "hitrate": 100, "criticalRate": 5,
@@ -313,6 +313,19 @@ pub fn statue_info(o: &OwnedStatue) -> Value {
         "evolutionFlg": 0, "openEvolutionTreeFlg": 0, "evolutionLevel": 0,
         "evolutionConvergence": 0, "evolutionUseGold": 0, "evolutionUseItemList": []
     })
+}
+
+/// Our basic tactical attack (`JDR_ATK_00` in dtbattle_skill_data_table), given to every statue
+/// until real skill data exists: without a combo-type skill a unit has no Attack button. The
+/// client takes type, button and name from the table row but keeps `skillLevel`, which must be
+/// at least 1.
+pub const BASIC_ATTACK: &str = "JDR_ATK_00";
+
+fn basic_attack() -> Value {
+    json!({ "skillId": BASIC_ATTACK, "skillLevel": 1, "name": "", "explanation": "",
+            "skillType": 1, "bottunType": 1, "coolDown": 0, "limitCount": 0,
+            "magnificationLv01": 0, "magnificationLv10": 0, "pvpMagnificationLv01": 0,
+            "pvpMagnificationLv10": 0, "skillParamList": [], "isInit": false })
 }
 
 fn empty_setting() -> Value {
