@@ -17,10 +17,11 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 - **Battle** (docs/research/11 §3):
   - the damage spread is now sent in the client's 1/10000 unit (we had sent percent, so every
     hit did 1 damage);
-  - attacks wait 100 and other skills 50, so turns rotate;
+  - attacks wait 100, a unit change 50 and cancel 0, so turns rotate;
   - story enemies use the attack-only AI `zako01_cmn`;
-  - every statue attacks with its own action set (`SKILL_<psid3>_99`, which means ATTACK, picked
-    from the player's files), with one skill row per attack id;
+  - every statue attacks with an action set of its own model: `SKILL_<psid3>_99` (99 means
+    ATTACK) for 263 statues, `SKILL_204_01` for the 3 whose model has no ATTACK action, picked from
+    the player's files, with one skill row per attack id (64);
   - the stage window lists the stage's gold, and tactical chapters show the game's own chapter text.
 - Build number 12, server marker `JDR_EMBEDDED_SERVER_b012`.
 

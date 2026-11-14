@@ -1,6 +1,6 @@
 {
  "asset": "dtbattle_skill_data_table",
- "about": "Tactical battle skills (base rows; the server adds one attack row per statue: SKILL_<first 3 digits of the statueId>_99, or its lowest SKILL_NN when the model has no ATTACK action, copied from JDR_ATK_00 with viewSkillId = the id so the client plays the statue's own attack action set). SKILL_000_01 (unit change) and SKILL_000_02 (cancel) are attached by the client to every unit and must exist; JDR_ATK_00 is the fallback attack. skillWait is how far a unit's action gauge drops after acting (100 for an attack, 50 otherwise), so turns rotate. The attack category's first param is the hit attribute (PHYSICAL).",
+ "about": "Tactical battle skills (base rows; the server adds one attack row per statue: SKILL_<first 3 digits of the statueId>_99, or its lowest SKILL_NN when the model has no ATTACK action, copied from JDR_ATK_00 with viewSkillId = the id so the client plays the statue's own attack action set). SKILL_000_01 (unit change) and SKILL_000_02 (cancel) are attached by the client to every unit and must exist; JDR_ATK_00 is the fallback attack. skillWait is how far a unit's action gauge drops after acting (100 for an attack, 50 for a unit change, 0 for cancel), so turns rotate. The attack category's first param is the hit attribute (PHYSICAL).",
  "sources": [
   {
    "source": "jdr-research",
@@ -51,7 +51,7 @@
     "dtSkillType": 4,
     "dtButtonType": 1,
     "useSP": 0,
-    "skillWait": 50,
+    "skillWait": 0,
     "damageRank": 0,
     "dtLimitCount": 0,
     "dtMinCoolTurn": 0,
