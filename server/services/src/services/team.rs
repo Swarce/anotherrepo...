@@ -84,9 +84,14 @@ pub fn statue_select(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         if !(1..=3).contains(&seq) || !usable || (seq == 1 && uid == 0) {
             return ((), Change::None);
         }
-        let i = (seq - 1) as usize;
         let mut changed = false;
         for t in teams_numbered(&mut p.collection, team_num) {
+            // A team without a leader takes its first statue as the leader, whatever the seat.
+            let i = if t.slots[0] == 0 && uid != 0 {
+                0
+            } else {
+                (seq - 1) as usize
+            };
             let old = t.slots[i];
             if old == uid {
                 continue;
@@ -353,6 +358,18 @@ mod tests {
                 "both battle types follow"
             );
         }
+        // An empty team (team 4) takes its first statue as the leader, not a side member.
+        let (r, _) = dispatch(
+            &ctx,
+            "/team/statue_select",
+            &env(
+                &uuid,
+                json!({"teamNum": 4, "statueSeq": 2, "statueuId": outsider}),
+            ),
+        );
+        let o = &r.unwrap()["teamInfo"]["teamOrder"];
+        assert_eq!(o["leaderStatue"]["statueuId"], outsider);
+        assert_eq!(o["memberLeftStatue"]["statueuId"], 0);
 
         let (r, _) = dispatch(&ctx, "/user/user_info_mini", &env(&uuid, json!({"id": ""})));
         let card = r.unwrap();
