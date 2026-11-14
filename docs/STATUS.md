@@ -23,14 +23,21 @@ Courage/Wisdom/Spirit/Unity/Solitude.
 
 ### Verified off-device
 - Real data: all 451 menu sprites matched and replaced, 0 unmatched; UnityPy confirms every
-  replaced sprite equals its PNG exactly and every other pixel of the 48 touched textures equals
-  the original (so the ETC decoder and the paste change nothing else).
-- Real patch with the pack: 13 sprites in the 4 in-APK screen files equal their PNGs (UnityPy).
+  replaced sprite equals its PNG exactly and, in the textures whose originals are unencrypted, every
+  other pixel equals the original (so the ETC decoder and the paste change nothing else).
+- Real patch with the pack: 13 sprites in the 4 in-APK screen files equal their PNGs
+  (`tools/proofs/art_check.py --apk`, run by build.sh).
+- Removing the pack reverts: bundles with text go back to the text-only files, art-only bundles to
+  their originals (real-data test).
 
 ### Known gaps / risks (expected)
 - Animated lettering made of several sprites (e.g. SUCCESS!!, RETIRED, RATE UP!) may need spacing
   or timing adjustments (owner's notes); nine tutorial screens are not redrawn yet.
-- RGBA32 atlases use 4x the memory of ETC2 ones while those screens are open.
+- RGBA32 atlases use 4x the memory of ETC2 (8x of ETC1) ones while those screens are open; check
+  with `adb shell dumpsys meminfo com.bandainamcoent.jojodr` on the busiest menus.
+- Storage on the phone (measured on the owner's files): originals kept 111 MiB, served English/art
+  files 182 MiB (the game's own copies of those are replaced by the downloaded ones), plus the
+  19 MB pack in the APK.
 
 ### Device checklist — expected; to be confirmed on a device
 - [ ] `[art] art pack loaded: 451 image(s)`, one download prompt, then menus show the redrawn art

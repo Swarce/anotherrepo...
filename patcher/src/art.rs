@@ -113,14 +113,8 @@ pub fn apply(
         in_apk: 0,
         apk_files: 0,
     };
-    if !stored_pack.is_empty() {
-        apk.put(ART_ASSET, stored_pack.to_bin(), false);
-    }
-    if in_apk.is_empty() {
-        return Ok(out);
-    }
     let data_dir = data_dir.ok_or(
-        "the art pack has images for the APK's own screens (apk_*): pass --data <your game files folder> so their layouts can be read",
+        "--art needs --data <your game files folder> (to check the pack against your bundles and read the title-screen layouts)",
     )?;
     let keys: serde_json::Value =
         serde_json::from_slice(keys_json.ok_or("--keys is required with --art")?)?;
@@ -128,6 +122,34 @@ pub fn apply(
         .as_str()
         .ok_or("keys.json: no asset_key")?;
     let iv = keys["asset_iv"].as_str().ok_or("keys.json: no asset_iv")?;
+    // Dry run: every menu image must land on a sprite of the player's own bundles, so a pack
+    // that does not fit is found here and not on the phone.
+    for b in stored_pack.bundles() {
+        let obf = format!("{}.bytes", jdr_crypto::names::obfuscate(&b, key.as_bytes()));
+        let raw = std::fs::read(data_dir.join(&obf))
+            .map_err(|e| format!("art pack: bundle {b} not in --data ({e})"))?;
+        let plain = if Jjec::is_jjec(&raw) {
+            Jjec::decrypt(&raw, key.as_bytes(), iv.as_bytes()).map_err(|e| format!("{b}: {e}"))?
+        } else {
+            raw
+        };
+        let mut nodes = bundle::read(&plain).map_err(|e| format!("{b}: {e}"))?;
+        let r =
+            art::apply(&mut nodes, &stored_pack.for_bundle(&b)).map_err(|e| format!("{b}: {e}"))?;
+        if !r.unmatched.is_empty() || !r.errors.is_empty() {
+            return Err(format!(
+                "art pack does not fit bundle {b}: images match no sprite: {:?}; errors: {:?}",
+                r.unmatched, r.errors
+            )
+            .into());
+        }
+    }
+    if !stored_pack.is_empty() {
+        apk.put(ART_ASSET, stored_pack.to_bin(), false);
+    }
+    if in_apk.is_empty() {
+        return Ok(out);
+    }
     let (tex_nodes, sprite_nodes) = template_nodes(data_dir, key.as_bytes(), iv.as_bytes())?;
     let groups = ArtPack::from_files(in_apk)?;
     for b in groups.bundles() {
@@ -149,12 +171,15 @@ pub fn apply(
         }
         let images = groups.for_bundle(&b);
         let mut files = vec![Some(f)];
-        let mut unmatched = Vec::new();
-        let (n, _) = art::apply_files(&mut files, &HashMap::new(), &images, &mut unmatched)
-            .map_err(|e| format!("{entry}: {e}"))?;
-        if !unmatched.is_empty() {
-            return Err(format!("{entry}: images match no sprite: {unmatched:?}").into());
+        let r = art::apply_files(&mut files, &HashMap::new(), &images);
+        if !r.unmatched.is_empty() || !r.errors.is_empty() {
+            return Err(format!(
+                "{entry}: images match no sprite: {:?}; errors: {:?}",
+                r.unmatched, r.errors
+            )
+            .into());
         }
+        let n = r.replaced;
         let f = files.pop().flatten().expect("file");
         let compress = apk.is_compressed(&entry);
         apk.put(&entry, f.write(), compress);
