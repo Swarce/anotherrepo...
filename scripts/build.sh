@@ -5,10 +5,11 @@
 #   JDR_BUILD_TOOLS  folder with zipalign + apksigner      -> needed for the patch test
 #   JDR_KEYS   your local keys.json                        -> patch test embeds the server
 #   ANDROID_NDK  Android NDK folder                        -> builds libjdr.so (embedded server)
+#   JDR_ART_ZIP  your redrawn UI art pack (zip)            -> patch test stores/applies it, art checks
 set -euo pipefail
 cd "$(dirname "$0")/.."
 # Tests run from each crate's folder: pass file paths on as absolute paths.
-for v in JDR_KEYS JDR_DATA JDR_APK; do
+for v in JDR_KEYS JDR_DATA JDR_APK JDR_ART_ZIP; do
   if [[ -n "${!v:-}" ]]; then export "$v=$(realpath "${!v}")"; fi
 done
 
@@ -68,6 +69,9 @@ if [[ -n "${JDR_APK:-}" && -n "${JDR_BUILD_TOOLS:-}" ]]; then
     echo "(needs JDR_KEYS and ANDROID_NDK in the same run to embed a freshly built libjdr.so; building the dev-loop APK without it)"
     embed=(--disable embed-server)
   fi
+  if [[ -n "${JDR_ART_ZIP:-}" && -n "${JDR_DATA:-}" ]]; then
+    embed+=(--art "$JDR_ART_ZIP" --data "$JDR_DATA")
+  fi
   JDR_KEYSTORE="${JDR_KEYSTORE:-$HOME/.config/JDR/jdr-signing.p12}" \
     ./target/release/jdr-patch patch --apk "$JDR_APK" --out deliver/jdr-test.apk --force "${embed[@]}"
 else
@@ -87,6 +91,16 @@ if [[ -n "${JDR_DATA:-}" && -n "${JDR_KEYS:-}" ]]; then
     python3 -I tools/proofs/versionfile_check.py "$out"
     python3 -I tools/proofs/masterdata_check.py "$md" server/content/masterdata
     python3 -I tools/proofs/l10n_check.py "$l10n_out/l10n/gen"
+    if [[ -n "${JDR_ART_ZIP:-}" ]]; then
+      art_dir="$(mktemp -d)"; art_out="$(pwd)/deliver/art-check"
+      python3 -I -c 'import sys,zipfile; zipfile.ZipFile(sys.argv[1]).extractall(sys.argv[2])' "$JDR_ART_ZIP" "$art_dir"
+      reps="$(find "$art_dir" -type d -name replacements | head -1)"
+      JDR_ART="$reps" JDR_ART_OUT="$art_out" cargo test -q --release -p jdr-services --test real_art
+      python3 -I tools/proofs/art_check.py "$art_out" "$reps"
+      rm -rf "$art_dir" "$art_out"
+    else
+      skip "redrawn art checks (set JDR_ART_ZIP)"
+    fi
   else
     skip "UnityPy check of the generated bundles (pip install UnityPy)"
   fi

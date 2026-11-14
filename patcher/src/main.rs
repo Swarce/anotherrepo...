@@ -9,6 +9,7 @@ use std::path::PathBuf;
 
 const USAGE: &str = "usage:
   jdr-patch patch --apk <in.apk> --out <out.apk> --keys <keys.json> [--server-lib libjdr.so] [--port N] [--disable <patch-id>]... [--keystore <p12>] [--force]
+        [--art <your redrawn art pack.zip> --data <your game files folder>]
         (--disable embed-server: dev-loop APK that talks to jdr-server on a PC)
   jdr-patch list                 list patches
   jdr-patch init-key [--keystore <p12>]   create the signing key if missing
@@ -131,6 +132,8 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
         Some(k) => Some(std::fs::read(&k).map_err(|e| format!("--keys {k}: {e}"))?),
         None => None,
     };
+    cfg.art_zip = opt(args, "--art").map(PathBuf::from);
+    cfg.data_dir = opt(args, "--data").map(PathBuf::from);
     cfg.server_lib = opt(args, "--server-lib")
         .map(PathBuf::from)
         .or_else(default_server_lib);
@@ -278,6 +281,23 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
         rep.checks.push(format!(
             "ClientMes: {got} of {total} messages are our English"
         ));
+    }
+    if cfg.art_zip.is_some() && !disabled.contains(&"ui-art") {
+        let msg = match chk.read(jdr_patch::art::ART_ASSET) {
+            Ok(b) => {
+                if chk.is_compressed(jdr_patch::art::ART_ASSET) {
+                    return Err("post-check failed: art pack asset must be stored".into());
+                }
+                let p = jdr_services::art::ArtPack::from_bin(&b)?;
+                format!(
+                    "art pack stored ({} images, {} KiB)",
+                    p.len(),
+                    b.len() / 1024
+                )
+            }
+            Err(_) => "no menu art in the pack".into(),
+        };
+        rep.checks.push(msg);
     }
     rep.checks.push("zipalign -c -P 16 4 passed".into());
     rep.checks
