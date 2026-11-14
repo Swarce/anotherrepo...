@@ -9,6 +9,7 @@ use serde_json::{json, Map, Value};
 pub mod bizarre;
 pub mod client;
 pub mod common;
+pub mod gasha;
 pub mod menu;
 pub mod misc;
 pub mod statue;
@@ -71,7 +72,8 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/item/item_list" => menu::item_list(ctx, env),
         "/shop/shop_list" => menu::shop_list(ctx, env),
         "/info/notify_list" => menu::notify_list(ctx, env),
-        "/gasha/gasha_list" => menu::gasha_list(ctx, env),
+        "/gasha/gasha_list" => gasha::gasha_list(ctx, env),
+        "/gasha/gasha_play" => gasha::gasha_play(ctx, env),
         _ => return (Ok(Map::new()), false),
     };
     (r, true)
