@@ -38,6 +38,22 @@ pub const TABLES: &[(&str, &str)] = &[
         "area_position_pattern_table",
         include_str!("../../content/masterdata/area_position_pattern_table.json"),
     ),
+    (
+        "Set_el_camera_set_common",
+        include_str!("../../content/masterdata/Set_el_camera_set_common.json"),
+    ),
+    (
+        "Node_el_camera_node_common",
+        include_str!("../../content/masterdata/Node_el_camera_node_common.json"),
+    ),
+    (
+        "team_rank_table",
+        include_str!("../../content/masterdata/team_rank_table.json"),
+    ),
+    (
+        "mind_level_table",
+        include_str!("../../content/masterdata/mind_level_table.json"),
+    ),
 ];
 
 type Error = String;
@@ -711,6 +727,42 @@ mod tests {
                     crate::collection::attack_skill(sid).as_str()
                 );
                 assert_eq!(e["AiId"], crate::quests::DT_ENEMY_AI);
+            }
+        }
+    }
+
+    /// Every camera id the client hard-codes has a set that ends on its own (flagMaintain false),
+    /// and every node a set names exists (docs/research/12 §1).
+    #[test]
+    fn script_cameras_cover_the_hard_coded_ids() {
+        let doc = |name: &str| -> Value {
+            let js = TABLES.iter().find(|(n, _)| *n == name).unwrap().1;
+            serde_json::from_str::<Value>(js).unwrap()["data"].clone()
+        };
+        let sets = doc("Set_el_camera_set_common");
+        let nodes = doc("Node_el_camera_node_common");
+        let node_ids: Vec<&str> = nodes["listData"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|n| n["id"].as_str().unwrap())
+            .collect();
+        let list = sets["listData"].as_array().unwrap();
+        let ids: Vec<i64> = list
+            .iter()
+            .map(|s| s["cameraID"].as_i64().unwrap())
+            .collect();
+        for id in [41, 42, 201, 301, 350, 351, 100300, 100301, 100310, 100311]
+            .into_iter()
+            .chain(101005..=101028)
+        {
+            assert!(ids.contains(&id), "camera {id}");
+        }
+        for s in list {
+            assert_eq!(s["flagMaintain"], false);
+            for d in s["dataList"].as_array().unwrap() {
+                assert!(node_ids.contains(&d["cameraNode"].as_str().unwrap()));
+                assert!(d["sec"].as_f64().unwrap() > 0.0);
             }
         }
     }
