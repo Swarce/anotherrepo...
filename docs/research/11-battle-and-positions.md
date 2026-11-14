@@ -100,3 +100,52 @@ These are null-safe or already satisfied (H unless marked):
 
 Not traced yet: the action and timeline assets a skill needs when it plays (`viewSkillId` is empty
 for our basic attack), and what the AI behaviour data needs beyond the lookup.
+
+## 3. Battle mechanics: damage, turns, animations, stage window (Build 12)
+
+What the Build 11 device log showed: the tutorial battle loaded and units were placed. But no
+animation played, every hit did 1 damage, turns never ended, and the stage window had no
+description or rewards. No errors were logged.
+
+- **Damage** (`CalcSkillHpDamage` 0xEFDCE4) (H):
+  - base = baseDamageCorr × rankRate × ATK / 1e8;
+  - then × max(ofRatioCurve × ln(ATK/DEF) + 1, minimumGuaranteedMag) (`logf` at 0xEFE610);
+  - then × the random spread × 0.0001 (constant 0x2089AAC, 0xEFE69C–0xEFE7CC).
+
+  So `damageGitterMin/Max` are in 1/10000. We had sent 95/105, which gives about 1% damage and
+  rounds to 1; Build 12 sends 9500/10500. `healFluctuationsMin/Max` use the same unit (0xEFF05C).
+  The DAMAGE category's `paramList[0]` is the hit attribute name, not a power (`CheckHpConfigAttr`
+  0xD8CD5C), so we send `PHYSICAL` (L). A skill's power comes only from `damageRank` through the
+  rank table.
+- **Turns** (H for the mechanism):
+  - Action gauges start at 50–52.
+  - Time to act = (100 − gauge) × 10000 / speed (0xBA31F0).
+  - After acting, the unit's gauge drops by the skill's `skillWait` (0xBA338C).
+  - With `skillWait` 0 the first unit keeps acting forever. Build 12 sends 100 for attacks and 50
+    for the fixed skills (L).
+  - Clear: `clearAreaType` 1 ends the area when every enemy is dead (0xEBD730).
+  - `limitTurn`/`endureTurn` 0 means no turn limit.
+  - Story enemies now use the attack-only AI `zako01_cmn` from the player's aipack. An empty id
+    falls back to the player's auto-play AI.
+- **Animations** (H):
+  - The action set comes from `viewSkillId`: the client parses the number after the last `_` as
+    the skill number (0xF992F0); an empty id gives −1.
+  - It then names the action set (0xFB3C28): 0 or 90–99 → `ATTACK`, otherwise `SKILL_%02d`.
+  - Action sets are in `dt_actionset_statue_<psid>` as `<model>_<NNN>_<ACTION>`.
+  - Build 12 gives every statue `SKILL_<first 3 digits>_99`, which maps to ATTACK. It uses the
+    lowest `SKILL_NN` when the model has no ATTACK action (3 statues). `tools/content/scan_statues.py`
+    records each model's actions, `build_statues.py` writes `dtAttack`, and the server adds one row
+    per id to `dtbattle_skill_data_table`, with viewSkillId equal to the id.
+- **Stage window** (0xE0EDD4) (H for the fields):
+  - title = label `text`;
+  - name = label `stageId`;
+  - reward list = `steadyItemSet`;
+  - first-clear reward = `rewardItemSet[0]`;
+  - special reward = `reward3StarsItemSet[0]`;
+  - conditions = `starList[].comment`;
+  - enemies = `enemyList`.
+
+  RewardItemSet is `{dataType (1 statue, 2 mind, 3 item, 4 stone, 5 money, 6 friend points),
+  dataId, name, count}`. Build 12 lists the stage's gold as the steady reward. Chapter
+  descriptions use the game's own `ChapterText_DT_ST_<nnn>` labels (000 and 401–478). Tactical
+  stages have no description label of their own in the game's text (M).

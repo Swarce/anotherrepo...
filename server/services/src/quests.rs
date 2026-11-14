@@ -99,6 +99,16 @@ fn name_label(c: &ChapterDef) -> String {
     c.chapter_id.replacen("CHAPTER_", "CHAPTER_NAME_", 1)
 }
 
+/// The chapter description label: the game has `ChapterText_DT_ST_<nnn>` for the tactical story
+/// chapters (000 and 401-478); other chapters keep their id (shown as is).
+fn summary_label(c: &ChapterDef) -> String {
+    if c.stage_type == 1 && (c.num == 0 || (401..=478).contains(&c.num)) {
+        format!("ChapterText_DT_ST_{:03}", c.num)
+    } else {
+        c.chapter_id.clone()
+    }
+}
+
 pub fn chapter_info(c: &ChapterDef, p: &Progress) -> Value {
     let stages: Vec<Value> = c
         .stages
@@ -111,7 +121,7 @@ pub fn chapter_info(c: &ChapterDef, p: &Progress) -> Value {
         .collect();
     json!({
         "chapterId": c.chapter_id, "name": name_label(c), "category": STORY_CATEGORY,
-        "summary": c.chapter_id, "chapterNum": c.num,
+        "summary": summary_label(c), "chapterNum": c.num,
         "startStageId": c.stages.first().map(|s| s.stage_id.as_str()).unwrap_or(""),
         "lastStageId": c.stages.last().map(|s| s.stage_id.as_str()).unwrap_or(""),
         "chapterMapType": c.chapter_map.unwrap_or(0), "selectMapType": 0, "locationId": 0,
@@ -141,7 +151,10 @@ pub fn stage_info(c: &ChapterDef, s: &StageDef, n: usize, p: &Progress) -> Value
         "startConditionItemList": [], "startConditionList": [], "startConditionFlg": true,
         "startConditionText": "", "areaMax": s.areas.len().max(1), "useMentality": 0, "openSetting": 1,
         "nextStageIdList": c.stages.get(n + 1).map(|x| vec![x.stage_id.clone()]).unwrap_or_default(),
-        "starList": [], "steadyItemSet": [], "rewardItemSet": [], "reward3StarsItemSet": [],
+        // The stage window lists steadyItemSet as the clear reward: the gold a clear pays.
+        // (RewardItemSet dataType 5 = Money.)
+        "starList": [], "rewardItemSet": [], "reward3StarsItemSet": [],
+        "steadyItemSet": [{ "dataType": 5, "dataId": 0, "name": "", "count": s.gold }],
         "bossDropItemSet": [], "useStamina": s.use_stamina, "gainRankExp": s.gain_rank_exp,
         "mindGashaPoint": 0, "playCount": p.play_counts.get(&s.stage_id).copied().unwrap_or(0),
         "clearFlg": cleared as i64, "clearCount": cleared as i64, "clearRank": if cleared { 4 } else { 0 },
@@ -155,6 +168,10 @@ pub fn stage_info(c: &ChapterDef, s: &StageDef, n: usize, p: &Progress) -> Value
         "cannotContinue": 0, "presetTeamId": ""
     })
 }
+
+/// AI for story enemies: an attack-only AI from the player's aipack (an empty id would fall back to
+/// the player's auto-play AI).
+pub const DT_ENEMY_AI: &str = "zako01_cmn";
 
 /// Our pattern in area_position_pattern_table (server/content/masterdata).
 pub const DT_FORMATION: &str = "JDR_DT_DEFAULT";
@@ -188,7 +205,7 @@ pub fn area_list(c: &ChapterDef, s: &StageDef) -> Vec<Value> {
                 .enumerate()
                 .map(|(k, e)| {
                     json!({ "enemyStatueInfo": enemy_info(e, s.enemy_level), "seq": k + 1,
-                            "difficultyTable": "", "difficultyLevel": 1, "AiId": "", "fastStrike": false,
+                            "difficultyTable": "", "difficultyLevel": 1, "AiId": DT_ENEMY_AI, "fastStrike": false,
                             "enemySkillTable": "", "dropList": [], "disappear": 0, "hideEnemyInfo": 0,
                             // No boss intro until it is known to work offline.
                             "bossFlag": 0, "backFlag": 0 })

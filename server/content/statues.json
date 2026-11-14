@@ -24,6 +24,7 @@
    "modelDataList": [
     "1000_0_jonathan"
    ],
+   "dtAttack": "SKILL_100_99",
    "rarity": 3,
    "statueType": 1,
    "lv1": {
@@ -55,6 +56,7 @@
    "modelDataList": [
     "1000_0_jonathan"
    ],
+   "dtAttack": "SKILL_100_99",
    "rarity": 4,
    "statueType": 1,
    "lv1": {
@@ -86,6 +88,7 @@
    "modelDataList": [
     "1000_0_jonathan"
    ],
+   "dtAttack": "SKILL_100_99",
    "rarity": 5,
    "statueType": 1,
    "lv1": {
@@ -113,6 +116,7 @@
    "modelDataList": [
     "1000_0_jonathan"
    ],
+   "dtAttack": "SKILL_100_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -129,6 +133,7 @@
    "modelDataList": [
     "1000_0_jonathan"
    ],
+   "dtAttack": "SKILL_100_99",
    "rarity": 4,
    "statueType": 4,
    "lv1": {
@@ -159,6 +164,7 @@
    "modelDataList": [
     "1000_0_jonathan"
    ],
+   "dtAttack": "SKILL_100_99",
    "rarity": 5,
    "statueType": 4,
    "lv1": {
@@ -186,6 +192,7 @@
    "modelDataList": [
     "1000_0_jonathan"
    ],
+   "dtAttack": "SKILL_100_99",
    "rarity": 6,
    "statueType": 3,
    "lv1": {
@@ -213,6 +220,7 @@
    "modelDataList": [
     "1010_0_speedwagon"
    ],
+   "dtAttack": "SKILL_101_99",
    "rarity": 3,
    "statueType": 1,
    "lv1": {
@@ -244,6 +252,7 @@
    "modelDataList": [
     "1010_0_speedwagon"
    ],
+   "dtAttack": "SKILL_101_99",
    "rarity": 4,
    "statueType": 1,
    "lv1": {
@@ -275,6 +284,7 @@
    "modelDataList": [
     "1010_0_speedwagon"
    ],
+   "dtAttack": "SKILL_101_99",
    "rarity": 5,
    "statueType": 1,
    "lv1": {
@@ -302,6 +312,7 @@
    "modelDataList": [
     "1020_0_zeppeli"
    ],
+   "dtAttack": "SKILL_102_99",
    "rarity": 3,
    "statueType": 3,
    "lv1": {
@@ -333,6 +344,7 @@
    "modelDataList": [
     "1020_0_zeppeli"
    ],
+   "dtAttack": "SKILL_102_99",
    "rarity": 4,
    "statueType": 3,
    "lv1": {
@@ -364,6 +376,7 @@
    "modelDataList": [
     "1020_0_zeppeli"
    ],
+   "dtAttack": "SKILL_102_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -380,6 +393,7 @@
    "modelDataList": [
     "1020_0_zeppeli"
    ],
+   "dtAttack": "SKILL_102_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -396,6 +410,7 @@
    "modelDataList": [
     "1080_0_dire"
    ],
+   "dtAttack": "SKILL_108_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -412,6 +427,7 @@
    "modelDataList": [
     "1080_0_dire"
    ],
+   "dtAttack": "SKILL_108_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -428,6 +444,7 @@
    "modelDataList": [
     "1080_0_dire"
    ],
+   "dtAttack": "SKILL_108_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -444,6 +461,7 @@
    "modelDataList": [
     "1090_0_straits"
    ],
+   "dtAttack": "SKILL_109_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -460,6 +478,7 @@
    "modelDataList": [
     "1090_0_straits"
    ],
+   "dtAttack": "SKILL_109_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -476,6 +495,7 @@
    "modelDataList": [
     "1090_0_straits"
    ],
+   "dtAttack": "SKILL_109_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -492,6 +512,7 @@
    "modelDataList": [
     "1090_0_straits"
    ],
+   "dtAttack": "SKILL_109_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -508,6 +529,7 @@
    "modelDataList": [
     "1100_0_dio"
    ],
+   "dtAttack": "SKILL_110_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -524,6 +546,7 @@
    "modelDataList": [
     "1100_0_dio"
    ],
+   "dtAttack": "SKILL_110_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -540,6 +563,7 @@
    "modelDataList": [
     "1100_0_dio"
    ],
+   "dtAttack": "SKILL_110_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -556,6 +580,7 @@
    "modelDataList": [
     "1100_0_dio"
    ],
+   "dtAttack": "SKILL_110_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -572,6 +597,7 @@
    "modelDataList": [
     "1100_0_dio"
    ],
+   "dtAttack": "SKILL_110_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -588,6 +614,7 @@
    "modelDataList": [
     "1100_0_dio"
    ],
+   "dtAttack": "SKILL_110_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -604,6 +631,7 @@
    "modelDataList": [
     "1100_0_dio"
    ],
+   "dtAttack": "SKILL_110_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -620,6 +648,7 @@
    "modelDataList": [
     "1100_0_dio"
    ],
+   "dtAttack": "SKILL_110_99",
    "rarity": 6,
    "statueType": 3,
    "lv1": {
@@ -647,6 +676,7 @@
    "modelDataList": [
     "1110_0_wanchan"
    ],
+   "dtAttack": "SKILL_111_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -663,6 +693,7 @@
    "modelDataList": [
     "1110_0_wanchan"
    ],
+   "dtAttack": "SKILL_111_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -679,6 +710,7 @@
    "modelDataList": [
     "1110_0_wanchan"
    ],
+   "dtAttack": "SKILL_111_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -695,6 +727,7 @@
    "modelDataList": [
     "1120_0_bruford"
    ],
+   "dtAttack": "SKILL_112_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -711,6 +744,7 @@
    "modelDataList": [
     "1120_0_bruford"
    ],
+   "dtAttack": "SKILL_112_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -727,6 +761,7 @@
    "modelDataList": [
     "1120_0_bruford"
    ],
+   "dtAttack": "SKILL_112_99",
    "rarity": 5,
    "statueType": 1,
    "lv1": {
@@ -758,6 +793,7 @@
    "modelDataList": [
     "1130_0_tarkus"
    ],
+   "dtAttack": "SKILL_113_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -774,6 +810,7 @@
    "modelDataList": [
     "1130_0_tarkus"
    ],
+   "dtAttack": "SKILL_113_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -790,6 +827,7 @@
    "modelDataList": [
     "1130_0_tarkus"
    ],
+   "dtAttack": "SKILL_113_99",
    "rarity": 5,
    "statueType": 3,
    "lv1": {
@@ -821,6 +859,7 @@
    "modelDataList": [
     "1130_0_tarkus"
    ],
+   "dtAttack": "SKILL_113_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -837,6 +876,7 @@
    "modelDataList": [
     "1130_0_tarkus"
    ],
+   "dtAttack": "SKILL_113_99",
    "rarity": 5,
    "statueType": 5,
    "lv1": {
@@ -864,6 +904,7 @@
    "modelDataList": [
     "2000_0_joseph"
    ],
+   "dtAttack": "SKILL_200_99",
    "rarity": 3,
    "statueType": 1,
    "lv1": {
@@ -895,6 +936,7 @@
    "modelDataList": [
     "2000_0_joseph"
    ],
+   "dtAttack": "SKILL_200_99",
    "rarity": 4,
    "statueType": 1,
    "lv1": {
@@ -926,6 +968,7 @@
    "modelDataList": [
     "2000_0_joseph"
    ],
+   "dtAttack": "SKILL_200_99",
    "rarity": 5,
    "statueType": 1,
    "lv1": {
@@ -956,6 +999,7 @@
    "modelDataList": [
     "2000_0_joseph"
    ],
+   "dtAttack": "SKILL_200_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -972,6 +1016,7 @@
    "modelDataList": [
     "2000_0_joseph"
    ],
+   "dtAttack": "SKILL_200_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -988,6 +1033,7 @@
    "modelDataList": [
     "2000_0_joseph"
    ],
+   "dtAttack": "SKILL_200_99",
    "rarity": 6,
    "statueType": 3,
    "lv1": {
@@ -1015,6 +1061,7 @@
    "modelDataList": [
     "2010_0_caesar"
    ],
+   "dtAttack": "SKILL_201_99",
    "rarity": 3,
    "statueType": 2,
    "lv1": {
@@ -1046,6 +1093,7 @@
    "modelDataList": [
     "2010_0_caesar"
    ],
+   "dtAttack": "SKILL_201_99",
    "rarity": 4,
    "statueType": 2,
    "lv1": {
@@ -1073,6 +1121,7 @@
    "modelDataList": [
     "2010_0_caesar"
    ],
+   "dtAttack": "SKILL_201_99",
    "rarity": 5,
    "statueType": 2,
    "lv1": {
@@ -1104,6 +1153,7 @@
    "modelDataList": [
     "2010_0_caesar"
    ],
+   "dtAttack": "SKILL_201_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -1120,6 +1170,7 @@
    "modelDataList": [
     "2010_0_caesar"
    ],
+   "dtAttack": "SKILL_201_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -1136,6 +1187,7 @@
    "modelDataList": [
     "2010_0_caesar"
    ],
+   "dtAttack": "SKILL_201_99",
    "rarity": 6,
    "statueType": 1,
    "lv1": {
@@ -1163,6 +1215,7 @@
    "modelDataList": [
     "2020_0_lisalisa"
    ],
+   "dtAttack": "SKILL_202_99",
    "rarity": 3,
    "statueType": 2,
    "lv1": {
@@ -1190,6 +1243,7 @@
    "modelDataList": [
     "2020_0_lisalisa"
    ],
+   "dtAttack": "SKILL_202_99",
    "rarity": 4,
    "statueType": 2,
    "lv1": {
@@ -1221,6 +1275,7 @@
    "modelDataList": [
     "2020_0_lisalisa"
    ],
+   "dtAttack": "SKILL_202_99",
    "rarity": 5,
    "statueType": 3,
    "lv1": {
@@ -1252,6 +1307,7 @@
    "modelDataList": [
     "2020_0_lisalisa"
    ],
+   "dtAttack": "SKILL_202_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -1268,6 +1324,7 @@
    "modelDataList": [
     "2040_0_messina"
    ],
+   "dtAttack": "SKILL_204_01",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -1284,6 +1341,7 @@
    "modelDataList": [
     "2040_0_messina"
    ],
+   "dtAttack": "SKILL_204_01",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -1300,6 +1358,7 @@
    "modelDataList": [
     "2040_0_messina"
    ],
+   "dtAttack": "SKILL_204_01",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -1316,6 +1375,7 @@
    "modelDataList": [
     "2050_0_santana"
    ],
+   "dtAttack": "SKILL_205_99",
    "rarity": 3,
    "statueType": 1,
    "lv1": {
@@ -1347,6 +1407,7 @@
    "modelDataList": [
     "2050_0_santana"
    ],
+   "dtAttack": "SKILL_205_99",
    "rarity": 4,
    "statueType": 1,
    "lv1": {
@@ -1374,6 +1435,7 @@
    "modelDataList": [
     "2050_0_santana"
    ],
+   "dtAttack": "SKILL_205_99",
    "rarity": 5,
    "statueType": 1,
    "lv1": {
@@ -1405,6 +1467,7 @@
    "modelDataList": [
     "2050_0_santana"
    ],
+   "dtAttack": "SKILL_205_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -1421,6 +1484,7 @@
    "modelDataList": [
     "2050_0_santana"
    ],
+   "dtAttack": "SKILL_205_99",
    "rarity": 4,
    "statueType": 5,
    "lv1": {
@@ -1448,6 +1512,7 @@
    "modelDataList": [
     "2060_0_wamuu"
    ],
+   "dtAttack": "SKILL_206_99",
    "rarity": 3,
    "statueType": 1,
    "lv1": {
@@ -1479,6 +1544,7 @@
    "modelDataList": [
     "2060_0_wamuu"
    ],
+   "dtAttack": "SKILL_206_99",
    "rarity": 4,
    "statueType": 1,
    "lv1": {
@@ -1506,6 +1572,7 @@
    "modelDataList": [
     "2060_0_wamuu"
    ],
+   "dtAttack": "SKILL_206_99",
    "rarity": 5,
    "statueType": 1,
    "lv1": {
@@ -1536,6 +1603,7 @@
    "modelDataList": [
     "2070_0_esidisi"
    ],
+   "dtAttack": "SKILL_207_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -1552,6 +1620,7 @@
    "modelDataList": [
     "2070_0_esidisi"
    ],
+   "dtAttack": "SKILL_207_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -1568,6 +1637,7 @@
    "modelDataList": [
     "2070_0_esidisi"
    ],
+   "dtAttack": "SKILL_207_99",
    "rarity": 5,
    "statueType": 3,
    "lv1": {
@@ -1595,6 +1665,7 @@
    "modelDataList": [
     "2080_0_cars"
    ],
+   "dtAttack": "SKILL_208_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -1611,6 +1682,7 @@
    "modelDataList": [
     "2080_0_cars"
    ],
+   "dtAttack": "SKILL_208_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -1627,6 +1699,7 @@
    "modelDataList": [
     "2080_0_cars"
    ],
+   "dtAttack": "SKILL_208_99",
    "rarity": 5,
    "statueType": 2,
    "lv1": {
@@ -1658,6 +1731,7 @@
     "2081_0_cars",
     "2081_1_carsprotector"
    ],
+   "dtAttack": "SKILL_208_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -1675,6 +1749,7 @@
     "2081_0_cars",
     "2081_1_carsprotector"
    ],
+   "dtAttack": "SKILL_208_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -1692,6 +1767,7 @@
     "2081_0_cars",
     "2081_1_carsprotector"
    ],
+   "dtAttack": "SKILL_208_99",
    "rarity": 5,
    "statueType": 5,
    "lv1": {
@@ -1723,6 +1799,7 @@
     "2081_0_cars",
     "2081_1_carsprotector"
    ],
+   "dtAttack": "SKILL_208_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -1739,6 +1816,7 @@
    "modelDataList": [
     "2100_0_beck"
    ],
+   "dtAttack": "SKILL_210_99",
    "rarity": 5,
    "statueType": 3,
    "lv1": {
@@ -1766,6 +1844,7 @@
    "modelDataList": [
     "2110_0_stroheim"
    ],
+   "dtAttack": "SKILL_211_99",
    "rarity": 3,
    "statueType": 3,
    "lv1": {
@@ -1797,6 +1876,7 @@
    "modelDataList": [
     "2110_0_stroheim"
    ],
+   "dtAttack": "SKILL_211_99",
    "rarity": 4,
    "statueType": 3,
    "lv1": {
@@ -1824,6 +1904,7 @@
    "modelDataList": [
     "2110_0_stroheim"
    ],
+   "dtAttack": "SKILL_211_99",
    "rarity": 5,
    "statueType": 3,
    "lv1": {
@@ -1854,6 +1935,7 @@
    "modelDataList": [
     "2111_0_stroheim"
    ],
+   "dtAttack": "SKILL_211_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -1870,6 +1952,7 @@
    "modelDataList": [
     "2111_0_stroheim"
    ],
+   "dtAttack": "SKILL_211_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -1886,6 +1969,7 @@
    "modelDataList": [
     "2111_0_stroheim"
    ],
+   "dtAttack": "SKILL_211_99",
    "rarity": 5,
    "statueType": 1,
    "lv1": {
@@ -1918,6 +2002,7 @@
     "3000_0_jotaro",
     "3000_1_stapla"
    ],
+   "dtAttack": "SKILL_300_99",
    "rarity": 3,
    "statueType": 1,
    "lv1": {
@@ -1950,6 +2035,7 @@
     "3000_0_jotaro",
     "3000_1_stapla"
    ],
+   "dtAttack": "SKILL_300_99",
    "rarity": 4,
    "statueType": 1,
    "lv1": {
@@ -1982,6 +2068,7 @@
     "3000_0_jotaro",
     "3000_1_stapla"
    ],
+   "dtAttack": "SKILL_300_99",
    "rarity": 5,
    "statueType": 1,
    "lv1": {
@@ -2014,6 +2101,7 @@
     "3000_0_jotaro",
     "3000_1_stapla"
    ],
+   "dtAttack": "SKILL_300_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -2031,6 +2119,7 @@
     "3000_0_jotaro",
     "3000_1_stapla"
    ],
+   "dtAttack": "SKILL_300_99",
    "rarity": 5,
    "statueType": 5,
    "lv1": {
@@ -2059,6 +2148,7 @@
     "3001_0_jotaro",
     "3001_1_stapla"
    ],
+   "dtAttack": "SKILL_300_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -2076,6 +2166,7 @@
     "3001_0_jotaro",
     "3001_1_stapla"
    ],
+   "dtAttack": "SKILL_300_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -2093,6 +2184,7 @@
     "3001_0_jotaro",
     "3001_1_stapla"
    ],
+   "dtAttack": "SKILL_300_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -2110,6 +2202,7 @@
     "3002_0_jotaro",
     "3002_1_stapla"
    ],
+   "dtAttack": "SKILL_300_99",
    "rarity": 5,
    "statueType": 2,
    "lv1": {
@@ -2141,6 +2234,7 @@
    "modelDataList": [
     "3010_0_joseph3"
    ],
+   "dtAttack": "SKILL_301_99",
    "rarity": 3,
    "statueType": 2,
    "lv1": {
@@ -2172,6 +2266,7 @@
    "modelDataList": [
     "3010_0_joseph3"
    ],
+   "dtAttack": "SKILL_301_99",
    "rarity": 4,
    "statueType": 2,
    "lv1": {
@@ -2203,6 +2298,7 @@
    "modelDataList": [
     "3010_0_joseph3"
    ],
+   "dtAttack": "SKILL_301_99",
    "rarity": 5,
    "statueType": 2,
    "lv1": {
@@ -2233,6 +2329,7 @@
    "modelDataList": [
     "3010_0_joseph3"
    ],
+   "dtAttack": "SKILL_301_99",
    "rarity": 5,
    "statueType": 4,
    "lv1": {
@@ -2265,6 +2362,7 @@
     "3020_0_abdul",
     "3020_1_mred"
    ],
+   "dtAttack": "SKILL_302_99",
    "rarity": 3,
    "statueType": 2,
    "lv1": {
@@ -2293,6 +2391,7 @@
     "3020_0_abdul",
     "3020_1_mred"
    ],
+   "dtAttack": "SKILL_302_99",
    "rarity": 4,
    "statueType": 2,
    "lv1": {
@@ -2325,6 +2424,7 @@
     "3020_0_abdul",
     "3020_1_mred"
    ],
+   "dtAttack": "SKILL_302_99",
    "rarity": 5,
    "statueType": 3,
    "lv1": {
@@ -2357,6 +2457,7 @@
     "3020_0_abdul",
     "3020_1_mred"
    ],
+   "dtAttack": "SKILL_302_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -2374,6 +2475,7 @@
     "3020_0_abdul",
     "3020_1_mred"
    ],
+   "dtAttack": "SKILL_302_99",
    "rarity": 5,
    "statueType": 4,
    "lv1": {
@@ -2402,6 +2504,7 @@
     "3020_0_abdul",
     "3020_1_mred"
    ],
+   "dtAttack": "SKILL_302_99",
    "rarity": 6,
    "statueType": 1,
    "lv1": {
@@ -2430,6 +2533,7 @@
     "3030_0_noriaki",
     "3030_1_hgreen"
    ],
+   "dtAttack": "SKILL_303_99",
    "rarity": 3,
    "statueType": 2,
    "lv1": {
@@ -2462,6 +2566,7 @@
     "3030_0_noriaki",
     "3030_1_hgreen"
    ],
+   "dtAttack": "SKILL_303_99",
    "rarity": 4,
    "statueType": 2,
    "lv1": {
@@ -2494,6 +2599,7 @@
     "3030_0_noriaki",
     "3030_1_hgreen"
    ],
+   "dtAttack": "SKILL_303_99",
    "rarity": 5,
    "statueType": 2,
    "lv1": {
@@ -2525,6 +2631,7 @@
     "3030_0_noriaki",
     "3030_1_hgreen"
    ],
+   "dtAttack": "SKILL_303_99",
    "rarity": 5,
    "statueType": 4,
    "lv1": {
@@ -2557,6 +2664,7 @@
     "3030_0_noriaki",
     "3030_1_hgreen"
    ],
+   "dtAttack": "SKILL_303_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -2574,6 +2682,7 @@
     "3031_0_noriaki",
     "3031_1_hgreen"
    ],
+   "dtAttack": "SKILL_303_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -2591,6 +2700,7 @@
     "3031_0_noriaki",
     "3031_1_hgreen"
    ],
+   "dtAttack": "SKILL_303_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -2608,6 +2718,7 @@
     "3040_0_polnareff",
     "3040_1_chariot"
    ],
+   "dtAttack": "SKILL_304_99",
    "rarity": 3,
    "statueType": 1,
    "lv1": {
@@ -2640,6 +2751,7 @@
     "3040_0_polnareff",
     "3040_1_chariot"
    ],
+   "dtAttack": "SKILL_304_99",
    "rarity": 4,
    "statueType": 1,
    "lv1": {
@@ -2672,6 +2784,7 @@
     "3040_0_polnareff",
     "3040_1_chariot"
    ],
+   "dtAttack": "SKILL_304_99",
    "rarity": 5,
    "statueType": 1,
    "lv1": {
@@ -2703,6 +2816,7 @@
     "3040_0_polnareff",
     "3040_1_chariot"
    ],
+   "dtAttack": "SKILL_304_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -2720,6 +2834,7 @@
     "3040_0_polnareff",
     "3040_1_chariot"
    ],
+   "dtAttack": "SKILL_304_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -2737,6 +2852,7 @@
     "3041_0_polnareff",
     "3041_1_chariot"
    ],
+   "dtAttack": "SKILL_304_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -2754,6 +2870,7 @@
     "3041_0_polnareff",
     "3041_1_chariot"
    ],
+   "dtAttack": "SKILL_304_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -2771,6 +2888,7 @@
     "3050_0_iggy",
     "3050_1_fool"
    ],
+   "dtAttack": "SKILL_305_99",
    "rarity": 3,
    "statueType": 3,
    "lv1": {
@@ -2803,6 +2921,7 @@
     "3050_0_iggy",
     "3050_1_fool"
    ],
+   "dtAttack": "SKILL_305_99",
    "rarity": 4,
    "statueType": 3,
    "lv1": {
@@ -2835,6 +2954,7 @@
     "3050_0_iggy",
     "3050_1_fool"
    ],
+   "dtAttack": "SKILL_305_99",
    "rarity": 5,
    "statueType": 3,
    "lv1": {
@@ -2866,6 +2986,7 @@
     "3050_0_iggy",
     "3050_1_fool"
    ],
+   "dtAttack": "SKILL_305_99",
    "rarity": 6,
    "statueType": 3,
    "lv1": {
@@ -2894,6 +3015,7 @@
     "3060_0_gfly",
     "3060_1_tgray"
    ],
+   "dtAttack": "SKILL_306_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -2911,6 +3033,7 @@
     "3060_0_gfly",
     "3060_1_tgray"
    ],
+   "dtAttack": "SKILL_306_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -2928,6 +3051,7 @@
     "3060_0_gfly",
     "3060_1_tgray"
    ],
+   "dtAttack": "SKILL_306_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -2945,6 +3069,7 @@
     "3070_0_tennille",
     "3070_1_dbmoon"
    ],
+   "dtAttack": "SKILL_307_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -2962,6 +3087,7 @@
     "3070_0_tennille",
     "3070_1_dbmoon"
    ],
+   "dtAttack": "SKILL_307_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -2979,6 +3105,7 @@
     "3070_0_tennille",
     "3070_1_dbmoon"
    ],
+   "dtAttack": "SKILL_307_99",
    "rarity": 5,
    "statueType": 2,
    "lv1": {
@@ -3006,6 +3133,7 @@
    "modelDataList": [
     "3090_0_devo"
    ],
+   "dtAttack": "SKILL_309_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3022,6 +3150,7 @@
    "modelDataList": [
     "3090_0_devo"
    ],
+   "dtAttack": "SKILL_309_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3038,6 +3167,7 @@
    "modelDataList": [
     "3090_0_devo"
    ],
+   "dtAttack": "SKILL_309_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3055,6 +3185,7 @@
     "3100_0_rsole",
     "3100_1_yellowt"
    ],
+   "dtAttack": "SKILL_310_99",
    "rarity": 3,
    "statueType": 3,
    "lv1": {
@@ -3083,6 +3214,7 @@
     "3100_0_rsole",
     "3100_1_yellowt"
    ],
+   "dtAttack": "SKILL_310_99",
    "rarity": 4,
    "statueType": 3,
    "lv1": {
@@ -3111,6 +3243,7 @@
     "3100_0_rsole",
     "3100_1_yellowt"
    ],
+   "dtAttack": "SKILL_310_99",
    "rarity": 5,
    "statueType": 3,
    "lv1": {
@@ -3143,6 +3276,7 @@
     "3100_0_rsole",
     "3100_1_yellowt"
    ],
+   "dtAttack": "SKILL_310_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3159,6 +3293,7 @@
    "modelDataList": [
     "3110_0_hol"
    ],
+   "dtAttack": "SKILL_311_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3175,6 +3310,7 @@
    "modelDataList": [
     "3110_0_hol"
    ],
+   "dtAttack": "SKILL_311_99",
    "rarity": 4,
    "statueType": 2,
    "lv1": {
@@ -3202,6 +3338,7 @@
    "modelDataList": [
     "3110_0_hol"
    ],
+   "dtAttack": "SKILL_311_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3218,6 +3355,7 @@
    "modelDataList": [
     "3110_0_hol"
    ],
+   "dtAttack": "SKILL_311_99",
    "rarity": 5,
    "statueType": 4,
    "lv1": {
@@ -3248,6 +3386,7 @@
    "modelDataList": [
     "3110_0_hol"
    ],
+   "dtAttack": "SKILL_311_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3265,6 +3404,7 @@
     "3150_0_enya",
     "3150_1_justice"
    ],
+   "dtAttack": "SKILL_315_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3282,6 +3422,7 @@
     "3150_0_enya",
     "3150_1_justice"
    ],
+   "dtAttack": "SKILL_315_99",
    "rarity": 4,
    "statueType": 2,
    "lv1": {
@@ -3310,6 +3451,7 @@
     "3150_0_enya",
     "3150_1_justice"
    ],
+   "dtAttack": "SKILL_315_99",
    "rarity": 5,
    "statueType": 2,
    "lv1": {
@@ -3342,6 +3484,7 @@
     "3150_0_enya",
     "3150_1_justice"
    ],
+   "dtAttack": "SKILL_315_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3359,6 +3502,7 @@
     "3150_0_enya",
     "3150_1_justice"
    ],
+   "dtAttack": "SKILL_315_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3376,6 +3520,7 @@
     "3210_0_ndoul",
     "3210_1_geb"
    ],
+   "dtAttack": "SKILL_321_99",
    "rarity": 3,
    "statueType": 2,
    "lv1": {
@@ -3408,6 +3553,7 @@
     "3210_0_ndoul",
     "3210_1_geb"
    ],
+   "dtAttack": "SKILL_321_99",
    "rarity": 4,
    "statueType": 2,
    "lv1": {
@@ -3436,6 +3582,7 @@
     "3210_0_ndoul",
     "3210_1_geb"
    ],
+   "dtAttack": "SKILL_321_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3453,6 +3600,7 @@
     "3210_0_ndoul",
     "3210_1_geb"
    ],
+   "dtAttack": "SKILL_321_99",
    "rarity": 4,
    "statueType": 5,
    "lv1": {
@@ -3485,6 +3633,7 @@
     "3210_0_ndoul",
     "3210_1_geb"
    ],
+   "dtAttack": "SKILL_321_99",
    "rarity": 5,
    "statueType": 5,
    "lv1": {
@@ -3513,6 +3662,7 @@
     "3240_0_chaka",
     "3240_1_anubis"
    ],
+   "dtAttack": "SKILL_324_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3530,6 +3680,7 @@
     "3240_0_chaka",
     "3240_1_anubis"
    ],
+   "dtAttack": "SKILL_324_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3547,6 +3698,7 @@
     "3240_0_chaka",
     "3240_1_anubis"
    ],
+   "dtAttack": "SKILL_324_99",
    "rarity": 5,
    "statueType": 5,
    "lv1": {
@@ -3573,6 +3725,7 @@
    "modelDataList": [
     "3270_0_mariah"
    ],
+   "dtAttack": "SKILL_327_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3589,6 +3742,7 @@
    "modelDataList": [
     "3270_0_mariah"
    ],
+   "dtAttack": "SKILL_327_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3605,6 +3759,7 @@
    "modelDataList": [
     "3270_0_mariah"
    ],
+   "dtAttack": "SKILL_327_99",
    "rarity": 5,
    "statueType": 2,
    "lv1": {
@@ -3636,6 +3791,7 @@
    "modelDataList": [
     "3270_0_mariah"
    ],
+   "dtAttack": "SKILL_327_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3653,6 +3809,7 @@
     "3300_0_pshop",
     "3300_1_horus"
    ],
+   "dtAttack": "SKILL_330_99",
    "rarity": 3,
    "statueType": 2,
    "lv1": {
@@ -3685,6 +3842,7 @@
     "3300_0_pshop",
     "3300_1_horus"
    ],
+   "dtAttack": "SKILL_330_99",
    "rarity": 4,
    "statueType": 2,
    "lv1": {
@@ -3717,6 +3875,7 @@
     "3300_0_pshop",
     "3300_1_horus"
    ],
+   "dtAttack": "SKILL_330_99",
    "rarity": 5,
    "statueType": 2,
    "lv1": {
@@ -3749,6 +3908,7 @@
     "3300_0_pshop",
     "3300_1_horus"
    ],
+   "dtAttack": "SKILL_330_99",
    "rarity": 6,
    "statueType": 2,
    "lv1": {
@@ -3781,6 +3941,7 @@
     "3321_0_dio3",
     "3321_1_world"
    ],
+   "dtAttack": "SKILL_332_99",
    "rarity": 5,
    "statueType": 3,
    "lv1": {
@@ -3813,6 +3974,7 @@
     "3321_0_dio3",
     "3321_1_world"
    ],
+   "dtAttack": "SKILL_332_99",
    "rarity": 6,
    "statueType": 5,
    "lv1": {
@@ -3841,6 +4003,7 @@
     "3322_0_dio3",
     "3322_1_world"
    ],
+   "dtAttack": "SKILL_332_99",
    "rarity": 6,
    "statueType": 2,
    "lv1": {
@@ -3869,6 +4032,7 @@
     "3323_0_dio3",
     "3323_1_world"
    ],
+   "dtAttack": "SKILL_332_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3886,6 +4050,7 @@
     "3330_0_vanilla",
     "3330_1_cream"
    ],
+   "dtAttack": "SKILL_333_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3903,6 +4068,7 @@
     "3330_0_vanilla",
     "3330_1_cream"
    ],
+   "dtAttack": "SKILL_333_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3920,6 +4086,7 @@
     "3330_0_vanilla",
     "3330_1_cream"
    ],
+   "dtAttack": "SKILL_333_99",
    "rarity": 5,
    "statueType": 1,
    "lv1": {
@@ -3951,6 +4118,7 @@
     "3330_0_vanilla",
     "3330_1_cream"
    ],
+   "dtAttack": "SKILL_333_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3968,6 +4136,7 @@
     "4000_0_josuke",
     "4000_1_crazyd"
    ],
+   "dtAttack": "SKILL_400_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -3985,6 +4154,7 @@
     "4000_0_josuke",
     "4000_1_crazyd"
    ],
+   "dtAttack": "SKILL_400_99",
    "rarity": 4,
    "statueType": 1,
    "lv1": {
@@ -4013,6 +4183,7 @@
     "4000_0_josuke",
     "4000_1_crazyd"
    ],
+   "dtAttack": "SKILL_400_99",
    "rarity": 5,
    "statueType": 1,
    "lv1": {
@@ -4044,6 +4215,7 @@
     "4000_0_josuke",
     "4000_1_crazyd"
    ],
+   "dtAttack": "SKILL_400_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -4061,6 +4233,7 @@
     "4000_0_josuke",
     "4000_1_crazyd"
    ],
+   "dtAttack": "SKILL_400_99",
    "rarity": 4,
    "statueType": 4,
    "lv1": {
@@ -4089,6 +4262,7 @@
     "4000_0_josuke",
     "4000_1_crazyd"
    ],
+   "dtAttack": "SKILL_400_99",
    "rarity": 6,
    "statueType": 4,
    "lv1": {
@@ -4116,6 +4290,7 @@
     "4000_0_josuke",
     "4000_1_crazyd"
    ],
+   "dtAttack": "SKILL_400_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -4133,6 +4308,7 @@
     "4010_0_koichi",
     "4010_1_echoes1"
    ],
+   "dtAttack": "SKILL_401_99",
    "rarity": 3,
    "statueType": 2,
    "lv1": {
@@ -4165,6 +4341,7 @@
     "4010_0_koichi",
     "4010_1_echoes1"
    ],
+   "dtAttack": "SKILL_401_99",
    "rarity": 5,
    "statueType": 4,
    "lv1": {
@@ -4197,6 +4374,7 @@
     "4011_0_koichi",
     "4011_1_echoes2"
    ],
+   "dtAttack": "SKILL_401_99",
    "rarity": 4,
    "statueType": 1,
    "lv1": {
@@ -4225,6 +4403,7 @@
     "4011_0_koichi",
     "4011_1_echoes2"
    ],
+   "dtAttack": "SKILL_401_99",
    "rarity": 5,
    "statueType": 1,
    "lv1": {
@@ -4257,6 +4436,7 @@
     "4011_0_koichi",
     "4011_1_echoes2"
    ],
+   "dtAttack": "SKILL_401_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -4274,6 +4454,7 @@
     "4011_0_koichi",
     "4011_1_echoes2"
    ],
+   "dtAttack": "SKILL_401_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -4291,6 +4472,7 @@
     "4011_0_koichi",
     "4011_1_echoes2"
    ],
+   "dtAttack": "SKILL_401_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -4308,6 +4490,7 @@
     "4011_0_koichi",
     "4011_1_echoes2"
    ],
+   "dtAttack": "SKILL_401_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -4325,6 +4508,7 @@
     "4012_0_koichi",
     "4012_1_echoes3"
    ],
+   "dtAttack": "SKILL_401_99",
    "rarity": 5,
    "statueType": 2,
    "lv1": {
@@ -4357,6 +4541,7 @@
     "4012_0_koichi",
     "4012_1_echoes3"
    ],
+   "dtAttack": "SKILL_401_99",
    "rarity": 3,
    "statueType": 4,
    "lv1": {
@@ -4389,6 +4574,7 @@
     "4020_0_okuyasu",
     "4020_1_thehand"
    ],
+   "dtAttack": "SKILL_402_99",
    "rarity": 3,
    "statueType": 3,
    "lv1": {
@@ -4421,6 +4607,7 @@
     "4020_0_okuyasu",
     "4020_1_thehand"
    ],
+   "dtAttack": "SKILL_402_99",
    "rarity": 4,
    "statueType": 3,
    "lv1": {
@@ -4453,6 +4640,7 @@
     "4020_0_okuyasu",
     "4020_1_thehand"
    ],
+   "dtAttack": "SKILL_402_99",
    "rarity": 5,
    "statueType": 3,
    "lv1": {
@@ -4484,6 +4672,7 @@
     "4020_0_okuyasu",
     "4020_1_thehand"
    ],
+   "dtAttack": "SKILL_402_99",
    "rarity": 6,
    "statueType": 3,
    "lv1": {
@@ -4512,6 +4701,7 @@
     "4020_0_okuyasu",
     "4020_1_thehand"
    ],
+   "dtAttack": "SKILL_402_99",
    "rarity": 5,
    "statueType": 4,
    "lv1": {
@@ -4544,6 +4734,7 @@
     "4030_0_rohan",
     "4030_1_door"
    ],
+   "dtAttack": "SKILL_403_99",
    "rarity": 3,
    "statueType": 2,
    "lv1": {
@@ -4576,6 +4767,7 @@
     "4030_0_rohan",
     "4030_1_door"
    ],
+   "dtAttack": "SKILL_403_99",
    "rarity": 4,
    "statueType": 2,
    "lv1": {
@@ -4604,6 +4796,7 @@
     "4030_0_rohan",
     "4030_1_door"
    ],
+   "dtAttack": "SKILL_403_99",
    "rarity": 5,
    "statueType": 2,
    "lv1": {
@@ -4636,6 +4829,7 @@
     "4030_0_rohan",
     "4030_1_door"
    ],
+   "dtAttack": "SKILL_403_99",
    "rarity": 6,
    "statueType": 2,
    "lv1": {
@@ -4668,6 +4862,7 @@
     "4031_0_rohan",
     "4031_1_door"
    ],
+   "dtAttack": "SKILL_403_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -4685,6 +4880,7 @@
     "4040_0_jotaro4",
     "4040_1_stapla4"
    ],
+   "dtAttack": "SKILL_404_99",
    "rarity": 3,
    "statueType": 2,
    "lv1": {
@@ -4717,6 +4913,7 @@
     "4040_0_jotaro4",
     "4040_1_stapla4"
    ],
+   "dtAttack": "SKILL_404_99",
    "rarity": 4,
    "statueType": 4,
    "lv1": {
@@ -4748,6 +4945,7 @@
     "4040_0_jotaro4",
     "4040_1_stapla4"
    ],
+   "dtAttack": "SKILL_404_99",
    "rarity": 5,
    "statueType": 4,
    "lv1": {
@@ -4775,6 +4973,7 @@
     "4040_0_jotaro4",
     "4040_1_stapla4"
    ],
+   "dtAttack": "SKILL_404_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -4792,6 +4991,7 @@
     "4042_0_jotaro4",
     "4042_1_stapla4"
    ],
+   "dtAttack": "SKILL_404_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -4809,6 +5009,7 @@
     "4043_0_jotaro4",
     "4043_1_stapla4"
    ],
+   "dtAttack": "SKILL_404_99",
    "rarity": 6,
    "statueType": 1,
    "lv1": {
@@ -4836,6 +5037,7 @@
    "modelDataList": [
     "4080_0_yukako"
    ],
+   "dtAttack": "SKILL_408_99",
    "rarity": 3,
    "statueType": 1,
    "lv1": {
@@ -4867,6 +5069,7 @@
    "modelDataList": [
     "4080_0_yukako"
    ],
+   "dtAttack": "SKILL_408_99",
    "rarity": 4,
    "statueType": 1,
    "lv1": {
@@ -4898,6 +5101,7 @@
    "modelDataList": [
     "4080_0_yukako"
    ],
+   "dtAttack": "SKILL_408_99",
    "rarity": 5,
    "statueType": 1,
    "lv1": {
@@ -4924,6 +5128,7 @@
    "modelDataList": [
     "4080_0_yukako"
    ],
+   "dtAttack": "SKILL_408_99",
    "rarity": 6,
    "statueType": 1,
    "lv1": {
@@ -4955,6 +5160,7 @@
    "modelDataList": [
     "4080_0_yukako"
    ],
+   "dtAttack": "SKILL_408_99",
    "rarity": 5,
    "statueType": 5,
    "lv1": {
@@ -4987,6 +5193,7 @@
     "4110_0_shigechi",
     "4110_1_harvest"
    ],
+   "dtAttack": "SKILL_411_99",
    "rarity": 3,
    "statueType": 3,
    "lv1": {
@@ -5018,6 +5225,7 @@
     "4110_0_shigechi",
     "4110_1_harvest"
    ],
+   "dtAttack": "SKILL_411_99",
    "rarity": 4,
    "statueType": 3,
    "lv1": {
@@ -5046,6 +5254,7 @@
     "4110_0_shigechi",
     "4110_1_harvest"
    ],
+   "dtAttack": "SKILL_411_99",
    "rarity": 5,
    "statueType": 4,
    "lv1": {
@@ -5077,6 +5286,7 @@
     "4110_0_shigechi",
     "4110_1_harvest"
    ],
+   "dtAttack": "SKILL_411_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5094,6 +5304,7 @@
     "4130_0_yuuya",
     "4130_1_hstar"
    ],
+   "dtAttack": "SKILL_413_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5111,6 +5322,7 @@
     "4130_0_yuuya",
     "4130_1_hstar"
    ],
+   "dtAttack": "SKILL_413_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5128,6 +5340,7 @@
     "4130_0_yuuya",
     "4130_1_hstar"
    ],
+   "dtAttack": "SKILL_413_99",
    "rarity": 5,
    "statueType": 1,
    "lv1": {
@@ -5156,6 +5369,7 @@
     "4130_0_yuuya",
     "4130_1_hstar"
    ],
+   "dtAttack": "SKILL_413_99",
    "rarity": 5,
    "statueType": 4,
    "lv1": {
@@ -5183,6 +5397,7 @@
     "4130_0_yuuya",
     "4130_1_hstar"
    ],
+   "dtAttack": "SKILL_413_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5200,6 +5415,7 @@
     "4130_0_yuuya",
     "4130_1_hstar"
    ],
+   "dtAttack": "SKILL_413_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5217,6 +5433,7 @@
     "4130_0_yuuya",
     "4130_1_hstar"
    ],
+   "dtAttack": "SKILL_413_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5234,6 +5451,7 @@
     "4130_0_yuuya",
     "4130_1_hstar"
    ],
+   "dtAttack": "SKILL_413_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5251,6 +5469,7 @@
     "4150_0_angelo",
     "4150_1_aqua"
    ],
+   "dtAttack": "SKILL_415_99",
    "rarity": 3,
    "statueType": 3,
    "lv1": {
@@ -5283,6 +5502,7 @@
     "4150_0_angelo",
     "4150_1_aqua"
    ],
+   "dtAttack": "SKILL_415_99",
    "rarity": 4,
    "statueType": 3,
    "lv1": {
@@ -5311,6 +5531,7 @@
     "4150_0_angelo",
     "4150_1_aqua"
    ],
+   "dtAttack": "SKILL_415_99",
    "rarity": 5,
    "statueType": 3,
    "lv1": {
@@ -5343,6 +5564,7 @@
     "4160_0_keicho",
     "4160_1_bcarmy"
    ],
+   "dtAttack": "SKILL_416_99",
    "rarity": 3,
    "statueType": 2,
    "lv1": {
@@ -5375,6 +5597,7 @@
     "4160_0_keicho",
     "4160_1_bcarmy"
    ],
+   "dtAttack": "SKILL_416_99",
    "rarity": 4,
    "statueType": 2,
    "lv1": {
@@ -5403,6 +5626,7 @@
     "4160_0_keicho",
     "4160_1_bcarmy"
    ],
+   "dtAttack": "SKILL_416_99",
    "rarity": 5,
    "statueType": 2,
    "lv1": {
@@ -5435,6 +5659,7 @@
     "4160_0_keicho",
     "4160_1_bcarmy"
    ],
+   "dtAttack": "SKILL_416_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5452,6 +5677,7 @@
     "4170_0_otoishi",
     "4170_1_rhcp"
    ],
+   "dtAttack": "SKILL_417_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5469,6 +5695,7 @@
     "4170_0_otoishi",
     "4170_1_rhcp"
    ],
+   "dtAttack": "SKILL_417_99",
    "rarity": 4,
    "statueType": 3,
    "lv1": {
@@ -5497,6 +5724,7 @@
     "4170_0_otoishi",
     "4170_1_rhcp"
    ],
+   "dtAttack": "SKILL_417_99",
    "rarity": 5,
    "statueType": 3,
    "lv1": {
@@ -5528,6 +5756,7 @@
     "4170_0_otoishi",
     "4170_1_rhcp"
    ],
+   "dtAttack": "SKILL_417_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5545,6 +5774,7 @@
     "4170_0_otoishi",
     "4170_1_rhcp"
    ],
+   "dtAttack": "SKILL_417_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5562,6 +5792,7 @@
     "4170_0_otoishi",
     "4170_1_rhcp"
    ],
+   "dtAttack": "SKILL_417_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5579,6 +5810,7 @@
     "4170_0_otoishi",
     "4170_1_rhcp"
    ],
+   "dtAttack": "SKILL_417_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5596,6 +5828,7 @@
     "4190_0_kira",
     "4190_1_killerq"
    ],
+   "dtAttack": "SKILL_419_99",
    "rarity": 5,
    "statueType": 5,
    "lv1": {
@@ -5627,6 +5860,7 @@
     "4190_0_kira",
     "4190_1_killerq"
    ],
+   "dtAttack": "SKILL_419_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5644,6 +5878,7 @@
     "4191_0_kawajiri",
     "4191_1_killerq"
    ],
+   "dtAttack": "SKILL_419_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5661,6 +5896,7 @@
     "4191_0_kawajiri",
     "4191_1_killerq"
    ],
+   "dtAttack": "SKILL_419_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5678,6 +5914,7 @@
     "4191_0_kawajiri",
     "4191_1_killerq"
    ],
+   "dtAttack": "SKILL_419_99",
    "rarity": 5,
    "statueType": 1,
    "lv1": {
@@ -5710,6 +5947,7 @@
     "4191_0_kawajiri",
     "4191_1_killerq"
    ],
+   "dtAttack": "SKILL_419_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5727,6 +5965,7 @@
     "4192_0_kawajiri",
     "4192_1_killerq"
    ],
+   "dtAttack": "SKILL_419_99",
    "rarity": 5,
    "statueType": 3,
    "lv1": {
@@ -5759,6 +5998,7 @@
     "4192_0_kawajiri",
     "4192_1_killerq"
    ],
+   "dtAttack": "SKILL_419_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5776,6 +6016,7 @@
     "4193_0_kira",
     "4193_1_killerq"
    ],
+   "dtAttack": "SKILL_419_99",
    "rarity": 6,
    "statueType": 2,
    "lv1": {
@@ -5804,6 +6045,7 @@
     "4194_0_kawajiri",
     "4194_1_killerq"
    ],
+   "dtAttack": "SKILL_419_99",
    "rarity": 6,
    "statueType": 1,
    "lv1": {
@@ -5836,6 +6078,7 @@
     "4240_0_miyamoto",
     "4240_1_enigma"
    ],
+   "dtAttack": "SKILL_424_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5853,6 +6096,7 @@
     "4240_0_miyamoto",
     "4240_1_enigma"
    ],
+   "dtAttack": "SKILL_424_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5870,6 +6114,7 @@
     "4240_0_miyamoto",
     "4240_1_enigma"
    ],
+   "dtAttack": "SKILL_424_99",
    "rarity": 5,
    "statueType": 5,
    "lv1": {
@@ -5902,6 +6147,7 @@
     "5000_0_giorno",
     "5000_1_golde"
    ],
+   "dtAttack": "SKILL_500_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5919,6 +6165,7 @@
     "5000_0_giorno",
     "5000_1_golde"
    ],
+   "dtAttack": "SKILL_500_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5936,6 +6183,7 @@
     "5000_0_giorno",
     "5000_1_golde"
    ],
+   "dtAttack": "SKILL_500_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5953,6 +6201,7 @@
     "5000_0_giorno",
     "5000_1_golde"
    ],
+   "dtAttack": "SKILL_500_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5970,6 +6219,7 @@
     "5000_0_giorno",
     "5000_1_golde"
    ],
+   "dtAttack": "SKILL_500_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -5987,6 +6237,7 @@
     "5001_0_giorno",
     "5001_1_golder"
    ],
+   "dtAttack": "SKILL_500_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -6004,6 +6255,7 @@
     "5010_0_bucchi",
     "5010_1_stickyf"
    ],
+   "dtAttack": "SKILL_501_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -6021,6 +6273,7 @@
     "5010_0_bucchi",
     "5010_1_stickyf"
    ],
+   "dtAttack": "SKILL_501_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -6038,6 +6291,7 @@
     "5030_0_abba",
     "5030_1_moodyb"
    ],
+   "dtAttack": "SKILL_503_99",
    "rarity": 6,
    "statueType": 2,
    "lv1": {
@@ -6070,6 +6324,7 @@
     "5050_0_mista",
     "5050_1_sexpistols"
    ],
+   "dtAttack": "SKILL_505_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -6087,6 +6342,7 @@
     "5050_0_mista",
     "5050_1_sexpistols"
    ],
+   "dtAttack": "SKILL_505_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -6104,6 +6360,7 @@
     "5080_0_narancia",
     "5080_1_aerosmith"
    ],
+   "dtAttack": "SKILL_508_99",
    "rarity": 6,
    "statueType": 3,
    "lv1": {
@@ -6136,6 +6393,7 @@
     "5100_0_fugo",
     "5100_1_purpleh"
    ],
+   "dtAttack": "SKILL_510_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -6153,6 +6411,7 @@
     "5120_0_prosciutto",
     "5120_1_gratefuld"
    ],
+   "dtAttack": "SKILL_512_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -6170,6 +6429,7 @@
     "5140_0_babyf",
     "5140_1_melone"
    ],
+   "dtAttack": "SKILL_514_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -6187,6 +6447,7 @@
     "5150_0_whitea",
     "5150_1_ghiaccio"
    ],
+   "dtAttack": "SKILL_515_99",
    "rarity": 6,
    "statueType": 3,
    "lv1": {
@@ -6219,6 +6480,7 @@
     "5170_0_diavolo",
     "5170_1_kingc"
    ],
+   "dtAttack": "SKILL_517_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -6236,6 +6498,7 @@
     "5210_0_trish",
     "5210_1_spiceg"
    ],
+   "dtAttack": "SKILL_521_99",
    "rarity": 6,
    "statueType": 1,
    "lv1": {
@@ -6267,6 +6530,7 @@
    "modelDataList": [
     "5220_0_risotto"
    ],
+   "dtAttack": "SKILL_522_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -6283,6 +6547,7 @@
    "modelDataList": [
     "5290_0_luca"
    ],
+   "dtAttack": "SKILL_529_99",
    "rarity": 6,
    "statueType": 3,
    "lv1": {
@@ -6315,6 +6580,7 @@
     "5320_0_jotaro5",
     "5320_1_stapla5"
    ],
+   "dtAttack": "SKILL_532_99",
    "rarity": null,
    "statueType": null,
    "lv1": null,
