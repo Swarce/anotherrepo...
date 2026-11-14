@@ -1,0 +1,13 @@
+[package]
+name = "jdr-crypto"
+description = "Client crypto formats: request envelope cipher, bundle name obfuscation, JJEC/vcs containers, key recovery from the player's own files"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+aes.workspace = true
+cbc.workspace = true
+md-5.workspace = true
