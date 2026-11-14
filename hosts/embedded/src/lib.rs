@@ -81,10 +81,26 @@ pub fn detect_paths() -> Result<Paths, String> {
     if !valid_pkg(&pkg) {
         return Err(format!("unexpected process name {pkg:?}"));
     }
-    let uid = status_uid().unwrap_or(0);
+    let uid = status_uid().ok_or("cannot read uid from /proc/self/status")?;
     let user = uid / 100_000;
+    // Internal storage normally lives at /data/user/<n>/<pkg>; apps moved to adoptable storage live
+    // under /mnt/expand/<uuid>/user/<n>/<pkg>. Use the first one that exists.
+    let mut cands = vec![
+        PathBuf::from(format!("/data/user/{user}/{pkg}")),
+        PathBuf::from(format!("/data/data/{pkg}")),
+    ];
+    if let Ok(rd) = std::fs::read_dir("/mnt/expand") {
+        cands.extend(
+            rd.flatten()
+                .map(|e| e.path().join(format!("user/{user}/{pkg}"))),
+        );
+    }
+    let base = cands
+        .into_iter()
+        .find(|p| p.is_dir())
+        .ok_or_else(|| format!("no data folder found for {pkg} (user {user})"))?;
     Ok(Paths {
-        state: PathBuf::from(format!("/data/user/{user}/{pkg}/jdr")),
+        state: base.join("jdr"),
         external: PathBuf::from(format!("/storage/emulated/{user}/Android/data/{pkg}/jdr")),
         pkg,
     })
@@ -99,14 +115,24 @@ fn status_uid() -> Option<u32> {
 }
 
 /// Keys: an override file in the state folder wins, else the asset the patcher put in the APK.
-pub fn load_keys(state: &Path) -> Result<Keys, String> {
+pub fn load_keys(state: &Path, pkg: &str) -> Result<Keys, String> {
     let over = state.join("keys.json");
     if over.is_file() {
         return Settings::load_keys(&over);
     }
-    let apk = apkzip::own_apk_path().ok_or("cannot find own base.apk in /proc/self/maps")?;
-    let b = apkzip::read_stored(&apk, KEYS_ASSET)?;
-    serde_json::from_slice(&b).map_err(|e| format!("{KEYS_ASSET}: {e}"))
+    let maps =
+        std::fs::read_to_string("/proc/self/maps").map_err(|e| format!("/proc/self/maps: {e}"))?;
+    let cands = apkzip::own_apk_candidates(&maps, pkg);
+    let mut errs = vec![];
+    for apk in &cands {
+        match apkzip::read_stored(apk, KEYS_ASSET) {
+            Ok(b) => {
+                return serde_json::from_slice(&b).map_err(|e| format!("{apk} {KEYS_ASSET}: {e}"))
+            }
+            Err(e) => errs.push(e),
+        }
+    }
+    Err(format!("keys asset not found; tried {cands:?}: {errs:?}"))
 }
 
 /// Copy `src` to `dst_dir` if its size or mtime changed since the last copy.
@@ -128,6 +154,27 @@ fn copy_if_changed(
     }
 }
 
+/// Keep only the newest `keep` `server-*.log` files in `dir`.
+fn prune(dir: &Path, keep: usize) {
+    let Ok(rd) = std::fs::read_dir(dir) else {
+        return;
+    };
+    let mut v: Vec<PathBuf> = rd
+        .flatten()
+        .map(|e| e.path())
+        .filter(|p| {
+            p.file_name()
+                .and_then(|n| n.to_str())
+                .map(|n| n.starts_with("server-") && n.ends_with(".log"))
+                .unwrap_or(false)
+        })
+        .collect();
+    v.sort();
+    while v.len() > keep {
+        let _ = std::fs::remove_file(v.remove(0));
+    }
+}
+
 /// Mirror the log (every 5 s) and the account saves (every 30 s) to external storage, where the
 /// player can reach them with adb. Only changed files are copied. External storage only becomes
 /// writable once the game has created its folder there, so failures are retried silently.
@@ -136,8 +183,15 @@ fn mirror_loop(state: PathBuf, external: PathBuf) {
     let mut tick: u64 = 0;
     loop {
         std::thread::sleep(Duration::from_secs(5));
+        // Never create Android/data/<pkg> ourselves: wait for the framework/game to do it.
+        if !external.parent().map(|p| p.is_dir()).unwrap_or(false) {
+            continue;
+        }
         if let Some(src) = log::current_path() {
             copy_if_changed(&src, &external.join("logs"), &mut seen);
+            if tick % 60 == 0 {
+                prune(&external.join("logs"), log::KEEP_LOGS);
+            }
         }
         if tick % 6 == 0 {
             if let Ok(rd) = std::fs::read_dir(state.join("accounts")) {
@@ -183,7 +237,7 @@ pub fn run() {
             .name("jdr-mirror".into())
             .spawn(move || mirror_loop(st, ext));
     }
-    let keys = match load_keys(&paths.state) {
+    let keys = match load_keys(&paths.state, &paths.pkg) {
         Ok(k) => k,
         Err(e) => {
             log::line(
@@ -223,10 +277,11 @@ pub fn serve_embedded(paths: &Paths, keys: Keys, port: u16, bind_retries: u32, t
         match http::bind(&s.ports) {
             Ok(x) => break x,
             Err(e) if tries < bind_retries => {
-                if tries == 0 {
+                if tries % 120 == 0 {
+                    // first failure, then once a minute
                     log::line(
                         "boot",
-                        &format!("bind 127.0.0.1:{port} failed ({e}); retrying"),
+                        &format!("FATAL: cannot bind 127.0.0.1:{port} ({e}): another app, an old game process, or a leftover `adb reverse tcp:18080` (run `adb reverse --remove-all`) holds it; retrying"),
                     );
                 }
                 tries += 1;
@@ -367,6 +422,52 @@ mod tests {
         let split = out.windows(4).position(|w| w == b"\r\n\r\n").unwrap();
         let v = decode_response_like_client(&out[split + 4..], b"Synthetic-Key-16").unwrap();
         assert_eq!(v["param"]["url"], format!("http://127.0.0.1:{port}/api"));
+    }
+
+    #[test]
+    fn apk_candidates_prefer_own_library_and_package() {
+        let pkg = "com.bandainamcoent.jojodr";
+        let maps = "\
+7000-8000 r--p 00000000 fd:01 1 /data/app/~~x==/com.google.android.gms-AAA==/base.apk
+7100-8100 r--p 00000000 fd:01 2 /data/app/~~y==/com.android.webview-BBB==/base.apk
+7200-8200 r-xp 00000000 fd:01 3 /data/app/~~z==/com.bandainamcoent.jojodr-CCC==/lib/arm64/libjdr.so
+7300-8300 r--p 00000000 fd:01 4 /data/app/~~z==/com.bandainamcoent.jojodr-CCC==/base.apk
+";
+        let c = apkzip::own_apk_candidates(maps, pkg);
+        assert_eq!(
+            c,
+            vec!["/data/app/~~z==/com.bandainamcoent.jojodr-CCC==/base.apk".to_string()]
+        );
+        let from_apk = "7200-8200 r-xp 00000000 fd:01 3 /data/app/com.bandainamcoent.jojodr-1/base.apk!/lib/arm64-v8a/libjdr.so\n";
+        assert_eq!(
+            apkzip::own_apk_candidates(from_apk, pkg),
+            vec!["/data/app/com.bandainamcoent.jojodr-1/base.apk".to_string()]
+        );
+        assert!(apkzip::own_apk_candidates(
+            "7000-8000 r--p 0 0 1 /data/app/other-1/base.apk\n",
+            pkg
+        )
+        .is_empty());
+    }
+
+    #[test]
+    fn prune_keeps_newest() {
+        let d = std::env::temp_dir().join(format!("jdr-emb-prune-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&d);
+        std::fs::create_dir_all(&d).unwrap();
+        for i in 0..15 {
+            std::fs::write(d.join(format!("server-{:04}.log", i)), b"x").unwrap();
+        }
+        std::fs::write(d.join("other.txt"), b"x").unwrap();
+        prune(&d, 10);
+        let mut names: Vec<_> = std::fs::read_dir(&d)
+            .unwrap()
+            .map(|e| e.unwrap().file_name().into_string().unwrap())
+            .collect();
+        names.sort();
+        assert_eq!(names.len(), 11);
+        assert_eq!(names[0], "other.txt");
+        assert_eq!(names[1], "server-0005.log");
     }
 
     #[test]

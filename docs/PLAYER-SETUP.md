@@ -100,8 +100,10 @@ adb pull /sdcard/Android/data/com.bandainamcoent.jojodr/jdr/logs local/device-lo
   load. Patch the same APK again **with the same key** and `--disable embed-server`, then
   `adb install -r` it: that build talks to `jdr-server` on your PC (docs/DEV-LOOP.md) and keeps your
   data. Send the logcat from the failed launch.
-- **`FATAL` in the `JDR` lines:** keys missing (re-patch with `--keys`) or the port is taken
-  (another app holds 127.0.0.1:18080; the server keeps retrying and logs every minute).
+- **`FATAL` in the `JDR` lines:** keys missing (re-patch with `--keys`) or the port is taken.
+  The usual cause is a leftover `adb reverse` from the PC dev loop: run `adb reverse --remove-all`
+  and restart the game. Otherwise another app holds 127.0.0.1:18080 (the server keeps retrying and
+  logs every minute).
 - **Patcher says "unverified build"**: your APK is not the verified 3.12.0 build.
 - **Patcher says "needs the server library"**: build `libjdr.so` (step 2) or pass `--server-lib`.
 - **Signature error, first install:** uninstall the original once (after the backup).
