@@ -347,6 +347,10 @@ pub const DT_SKILLS_BASE: &str = include_str!("../../content/dt_skills_base.json
 
 pub fn dt_skill_table() -> Value {
     let mut doc: Value = serde_json::from_str(DT_SKILLS_BASE).unwrap_or(Value::Null);
+    if let Some(src) = doc["sources"].as_array_mut() {
+        src.push(json!({ "source": "jdr-default",
+            "note": "attack rows: one per dtAttack id in server/content/statues.json (picked from the player's own action sets by tools/content/build_statues.py); the id prefix is the first 3 digits of the statueId, shared by models with the same prefix (the client plays the action set of the unit's own model)" }));
+    }
     let template = doc["data"]["skillDataList"]
         .as_array()
         .and_then(|l| l.iter().find(|r| r["dtSkillId"] == BASIC_ATTACK))
