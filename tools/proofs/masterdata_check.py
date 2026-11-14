@@ -31,23 +31,44 @@ assert [c[0] for c in ab["m_Container"]] == sorted(c[0] for c in ab["m_Container
 scripts = {o.path_id: o.read_typetree() for o in env.objects if o.type.name == "MonoScript"}
 
 
-def enum_value(tname, v):
+import struct
+
+SEC = "ScSystem.ScSecurity."
+
+
+def default(tname, is_list):
+    if is_list:
+        return []
     t = schema["types"].get(tname)
-    if t and t["kind"] == "enum" and isinstance(v, str):
-        return t["values"][v]
-    return v
+    if tname in ("int", "long") or (t and t["kind"] == "enum"):
+        return 0
+    return {"float": 0.0, "bool": False, "string": "", "Vector3": [0, 0, 0], "Quaternion": [0, 0, 0, 1]}.get(tname) \
+        if t is None else {f["name"]: default(f["type"], f.get("list", False)) for f in t["fields"]}
 
 
 def compare(tname, is_list, src, got, at):
-    """src: our JSON value; got: what UnityPy read."""
+    """src: our JSON value (absent fields = schema defaults); got: what UnityPy read."""
     if is_list:
         assert len(src) == len(got), (at, len(src), len(got))
         for i, (s, g) in enumerate(zip(src, got)):
             compare(tname, False, s, g, f"{at}[{i}]")
         return
     t = schema["types"].get(tname)
+    # Shorthands the server accepts: SecurityInt/FloatValue as a plain number (seed 0).
+    if tname == SEC + "SecurityIntValue" and isinstance(src, (int, float)):
+        assert got["seed"] ^ got["securityValue"] == src, (at, got, src)
+        return
+    if tname == SEC + "SecurityFloatValue" and isinstance(src, (int, float)):
+        bits = (got["seed"] ^ got["securityValue"]) & 0xFFFFFFFF
+        assert struct.unpack("<f", struct.pack("<I", bits))[0] == struct.unpack("<f", struct.pack("<f", src))[0], at
+        return
+    if tname in ("Vector3", "Quaternion"):
+        keys = "xyz" if tname == "Vector3" else "xyzw"
+        vals = [src[k] for k in keys] if isinstance(src, dict) else src
+        assert all(abs(got[k] - v) < 1e-6 for k, v in zip(keys, vals)), (at, got, src)
+        return
     if t is None or t["kind"] == "enum":
-        exp = enum_value(tname, src)
+        exp = t["values"][src] if (t and isinstance(src, str)) else src
         if tname == "bool":
             assert bool(got) == exp, (at, got, exp)
         elif tname == "float":
@@ -56,8 +77,8 @@ def compare(tname, is_list, src, got, at):
             assert got == exp, (at, got, exp)
         return
     for f in t["fields"]:
-        if f["name"] in src:
-            compare(f["type"], f.get("list", False), src[f["name"]], got[f["name"]], f"{at}.{f['name']}")
+        ft, fl = f["type"], f.get("list", False)
+        compare(ft, fl, src.get(f["name"], default(ft, fl)), got[f["name"]], f"{at}.{f['name']}")
 
 
 checked = 0
@@ -71,8 +92,8 @@ for o in env.objects:
     ns, cls = a["class"].rsplit(".", 1)
     ms = scripts[tree["m_Script"]["m_PathID"]]
     assert (ms["m_Namespace"], ms["m_ClassName"], ms["m_AssemblyName"]) == (ns, cls, "Assembly-CSharp.dll"), (name, ms)
-    if name in files:
-        compare(a["class"], False, files[name]["data"], tree, name)
+    # Every field: content values, or the schema default where the content (or no file) omits it.
+    compare(a["class"], False, files.get(name, {}).get("data", {}), tree, name)
     checked += 1
 
 assert checked == len(want), (checked, len(want))

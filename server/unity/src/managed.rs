@@ -58,7 +58,9 @@ impl Ty {
     /// True when reading this value realigns the stream (so the parent gets 0x8000).
     pub fn aligns(&self) -> bool {
         match self {
-            Ty::Bool | Ty::Str | Ty::List(_) => true,
+            Ty::Bool | Ty::Str => true,
+            // A list of fixed-size structs (no 0x4000 on its Array) does not realign.
+            Ty::List(e) => !matches!(e.as_ref(), Ty::Struct { .. }) || e.aligns(),
             Ty::Struct { fields, .. } => fields.iter().any(|(_, t)| t.aligns()),
             _ => false,
         }
@@ -328,6 +330,13 @@ mod tests {
         assert!(n[1].is_array && n[6].is_array);
     }
 
+    fn sec2() -> Ty {
+        Ty::Struct {
+            name: "SecurityIntValue".into(),
+            fields: vec![("seed".into(), Ty::Int), ("securityValue".into(), Ty::Int)],
+        }
+    }
+
     #[test]
     fn primitive_and_fixed_lists() {
         let sec = Ty::Struct {
@@ -345,6 +354,12 @@ mod tests {
         assert_eq!(r[7], "    Array Array -1 0x4000");
         assert_eq!(r[9], "      Vector3f data 12 0x200000");
         assert_eq!(r[14], "    Array Array -1 0xc000");
+        // A struct holding only a list of fixed-size structs does not align (engine: flags 0).
+        let holder = Ty::Struct {
+            name: "SkillData".into(),
+            fields: vec![("p".into(), Ty::List(Box::new(sec2())))],
+        };
+        assert!(!holder.aligns());
     }
 
     #[test]

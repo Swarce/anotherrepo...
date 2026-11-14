@@ -130,19 +130,19 @@ fn route(ctx: &Arc<Ctx>, req: &Request) -> (Response, &'static str, String) {
             None
         };
         if let Some(which) = which {
-            return match ctx.generated() {
-                Ok(g) => {
-                    let body = if which == "versionfile" {
-                        &g.versionfile
-                    } else {
-                        &g.masterdata
-                    };
-                    (
-                        Response::ok("application/octet-stream", body.clone()),
-                        "cdn",
-                        format!(" (generated {which})"),
-                    )
+            let body = ctx.generated().and_then(|g| {
+                if which == "versionfile" {
+                    Ok(g.versionfile.clone())
+                } else {
+                    g.masterdata.clone()
                 }
+            });
+            return match body {
+                Ok(b) => (
+                    Response::ok("application/octet-stream", b),
+                    "cdn",
+                    format!(" (generated {which})"),
+                ),
                 Err(e) => (
                     Response::text(404, "generated bundle unavailable"),
                     "cdn",

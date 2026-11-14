@@ -301,6 +301,8 @@ pub fn serve_embedded(paths: &Paths, keys: Keys, port: u16, bind_retries: u32, t
     {
         // Build the manifest in the background so the game's first request is answered at once.
         let c = ctx.clone();
+        // Set before the thread starts, so a key request that arrives first already waits.
+        ctx.importing.store(import_pending(&ctx), Ordering::Relaxed);
         let _ = std::thread::Builder::new()
             .name("jdr-manifest".into())
             .spawn(move || {
@@ -334,7 +336,22 @@ pub fn serve_embedded(paths: &Paths, keys: Keys, port: u16, bind_retries: u32, t
 }
 
 /// Import staged game files (see [`import`]) before the manifest is built.
+/// Clears `Ctx::importing` on every exit, panics included, so the key request never waits for a
+/// dead import.
+struct Importing<'a>(&'a std::sync::atomic::AtomicBool);
+impl Drop for Importing<'_> {
+    fn drop(&mut self) {
+        self.0.store(false, Ordering::Relaxed);
+    }
+}
+
+/// True when there is something to import (decided before the server answers its first request).
+fn import_pending(ctx: &Ctx) -> bool {
+    ctx.settings.game_files_dir.is_some() && Path::new(import::STAGING).is_dir()
+}
+
 fn run_import(ctx: &Ctx) {
+    let _importing = Importing(&ctx.importing);
     let staging = Path::new(import::STAGING);
     let Some(dest) = ctx.settings.game_files_dir.clone() else {
         return;
@@ -342,16 +359,8 @@ fn run_import(ctx: &Ctx) {
     if !staging.is_dir() {
         return;
     }
-    let t0 = Instant::now();
-    // Cleared on every exit, panics included, so the key request never waits for a dead import.
-    struct Importing<'a>(&'a std::sync::atomic::AtomicBool);
-    impl Drop for Importing<'_> {
-        fn drop(&mut self) {
-            self.0.store(false, Ordering::Relaxed);
-        }
-    }
     ctx.importing.store(true, Ordering::Relaxed);
-    let _importing = Importing(&ctx.importing);
+    let t0 = Instant::now();
     log::line(
         "import",
         &format!(
