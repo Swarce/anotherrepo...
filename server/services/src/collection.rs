@@ -40,6 +40,27 @@ pub struct StatueDef {
     /// (`tools/content/build_statues.py`).
     #[serde(rename = "dtAttack", default)]
     pub dt_attack: Option<String>,
+    /// Tactical skills (normal, special) from `tools/content/build_statues.py`.
+    #[serde(rename = "dtSkills", default)]
+    pub dt_skills: Vec<DtSkill>,
+}
+
+/// One tactical skill of a statue: label keys from the player's files, our numbers.
+#[derive(Debug, Clone, Deserialize)]
+pub struct DtSkill {
+    pub id: String,
+    pub special: bool,
+    pub name: String,
+    pub text: String,
+    pub button: i64,
+    #[serde(rename = "damageRank")]
+    pub damage_rank: i64,
+    pub category: String,
+    #[serde(rename = "targetType")]
+    pub target_type: i64,
+    #[serde(rename = "processType")]
+    pub process_type: i64,
+    pub attr: String,
 }
 
 impl StatueDef {
@@ -329,7 +350,21 @@ pub const BASIC_ATTACK: &str = "JDR_ATK_00";
 /// `statue_info` for a battle unit: with the basic attack.
 pub fn battle_statue_info(o: &OwnedStatue) -> Value {
     let mut v = statue_info(o);
-    v["dtSkillList"] = json!([basic_attack(&attack_skill(&o.statue_id))]);
+    let mut list = vec![basic_attack(&attack_skill(&o.statue_id))];
+    for s in find(&o.statue_id)
+        .map(|d| d.dt_skills.as_slice())
+        .unwrap_or(&[])
+    {
+        // The client takes type, button and name from the table row; the level must be >= 1.
+        list.push(
+            json!({ "skillId": s.id, "skillLevel": 1, "name": "", "explanation": "",
+            "skillType": if s.special { 3 } else { 2 }, "bottunType": s.button, "coolDown": 0,
+            "limitCount": 0, "magnificationLv01": 0, "magnificationLv10": 0,
+            "pvpMagnificationLv01": 0, "pvpMagnificationLv10": 0, "skillParamList": [],
+            "isInit": false }),
+        );
+    }
+    v["dtSkillList"] = json!(list);
     v
 }
 
@@ -366,6 +401,45 @@ pub fn dt_skill_table() -> Value {
             row["dtSkillId"] = json!(id);
             row["viewSkillId"] = json!(id);
             list.push(row);
+        }
+    }
+    // Normal and special skills (docs/research/12 §3): one row per skill id, one category row per
+    // category label. Numbers are ours: wait 100 (ends the turn), cool-down 2 turns (special 3,
+    // with 3 uses), the same hit and critical rates as the attack, no SP cost.
+    let mut skills = std::collections::BTreeMap::new();
+    let mut cats = std::collections::BTreeMap::new();
+    for s in statues().iter().flat_map(|d| d.dt_skills.iter()) {
+        skills.entry(s.id.clone()).or_insert(s);
+        cats.entry(s.category.clone()).or_insert(s);
+    }
+    if let Some(list) = doc["data"]["skillDataList"].as_array_mut() {
+        for s in skills.values() {
+            let mut row = template.clone();
+            let cool = if s.special { 3 } else { 2 };
+            for (k, v) in [
+                ("dtSkillId", json!(s.id)),
+                ("viewSkillId", json!(s.id)),
+                ("dtSkillName", json!(s.name)),
+                ("dtSkillProfileText", json!(s.text)),
+                ("dtSkillType", json!(if s.special { 3 } else { 2 })),
+                ("dtButtonType", json!(s.button)),
+                ("damageRank", json!(s.damage_rank)),
+                ("dtLimitCount", json!(if s.special { 3 } else { 0 })),
+                ("dtMinCoolTurn", json!(cool)),
+                ("dtMaxCoolTurn", json!(cool)),
+                ("mainSkillCategory", json!(s.category)),
+            ] {
+                row[k] = v;
+            }
+            list.push(row);
+        }
+    }
+    if let Some(list) = doc["data"]["categoryList"].as_array_mut() {
+        for (id, s) in cats {
+            list.push(
+                json!({ "dtSkillCategoryId": id, "TargetType": s.target_type,
+                "ProcessType": s.process_type, "turn": 0, "paramList": [s.attr] }),
+            );
         }
     }
     doc
@@ -513,6 +587,7 @@ mod tests {
                 def: 200,
             }),
             dt_attack: None,
+            dt_skills: Vec::new(),
         };
         assert_eq!(d.stats_at(1).hp, 100);
         assert_eq!(d.stats_at(99).hp, 1000);
