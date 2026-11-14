@@ -258,7 +258,11 @@ impl Collection {
     /// MAX_LEVEL). Returns how many levels were gained in total.
     pub fn add_statue_exp(&mut self, uids: &[i64], exp: i64) -> i64 {
         let mut gained = 0;
-        for o in self.statues.iter_mut().filter(|o| o.uid != 0 && uids.contains(&o.uid)) {
+        for o in self
+            .statues
+            .iter_mut()
+            .filter(|o| o.uid != 0 && uids.contains(&o.uid))
+        {
             o.exp = (o.exp + exp.max(0)).min(exp_for_level(MAX_LEVEL));
             while o.level < MAX_LEVEL && o.exp >= exp_for_level(o.level + 1) {
                 o.level += 1;
@@ -516,7 +520,10 @@ mod rank_tests {
         assert_eq!(ap_max(1), 20);
         assert_eq!(next_rank_exp(1), 40);
         let top = ranks().last().unwrap();
-        assert!(next_rank_exp(top.rank) > top.exp, "no zero-width bar at the top rank");
+        assert!(
+            next_rank_exp(top.rank) > top.exp,
+            "no zero-width bar at the top rank"
+        );
     }
 
     #[test]
@@ -537,13 +544,24 @@ mod rank_tests {
     fn teams_drop_statues_the_content_no_longer_has() {
         let mut c = Collection::default();
         c.ensure("2026-01-01 00:00:00");
-        let main = c.teams.iter().position(|t| t.main && t.stage_type == 1).unwrap();
+        let main = c
+            .teams
+            .iter()
+            .position(|t| t.main && t.stage_type == 1)
+            .unwrap();
         let leader = c.teams[main].slots[0];
-        c.statues.iter_mut().find(|s| s.uid == leader).unwrap().statue_id = "9999_99".into();
+        c.statues
+            .iter_mut()
+            .find(|s| s.uid == leader)
+            .unwrap()
+            .statue_id = "9999_99".into();
         assert!(c.ensure("2026-01-01 00:00:00"), "repair counts as a change");
         let t = &c.teams[main];
         assert_ne!(t.slots[0], 0, "main team gets a leader back");
-        assert!(t.slots.iter().all(|s| *s == 0 || c.known_statue(*s).is_some()));
+        assert!(t
+            .slots
+            .iter()
+            .all(|s| *s == 0 || c.known_statue(*s).is_some()));
         assert!(!c.ensure("2026-01-01 00:00:00"), "and is stable afterwards");
     }
 }

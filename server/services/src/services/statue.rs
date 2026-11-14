@@ -23,7 +23,9 @@ pub fn with_profile<R>(
     }) {
         Ok(Some(x)) => Ok(x),
         Ok(None) => Err(ApiError::Status(10003)), // E_SESSION_NG
-        Err(e) => Err(ApiError::Internal(format!("account unreadable or unwritable: {e}"))),
+        Err(e) => Err(ApiError::Internal(format!(
+            "account unreadable or unwritable: {e}"
+        ))),
     }
 }
 
