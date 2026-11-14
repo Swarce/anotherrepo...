@@ -16,6 +16,17 @@ fn int(env: &RequestEnvelope, k: &str) -> Option<i64> {
     env.param.get(k).and_then(Value::as_i64)
 }
 
+/// `teamNum` must name one of the player's teams (1..=TEAMS_PER_TYPE); anything else is refused
+/// before the save is touched (a stray number must never clear the main team).
+fn team_num(env: &RequestEnvelope) -> Result<i64, ApiError> {
+    match int(env, "teamNum") {
+        Some(n) if (1..=collection::TEAMS_PER_TYPE).contains(&n) => Ok(n),
+        other => Err(ApiError::Internal(format!(
+            "teamNum {other:?} out of range"
+        ))),
+    }
+}
+
 /// The tactical team with this number, for the response (the one My Page and the screen show).
 fn shown(c: &Collection, team_num: i64) -> Value {
     c.teams
@@ -32,7 +43,7 @@ fn teams_numbered(c: &mut Collection, team_num: i64) -> impl Iterator<Item = &mu
 /// `LeaderChangeRequest {teamNum, statueSeq}` (TeamStatueRole 1 leader, 2 left, 3 right): the
 /// statue in that slot becomes the leader and the old leader takes its place.
 pub fn leader_change(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
-    let team_num = int(env, "teamNum").unwrap_or(1);
+    let team_num = team_num(env)?;
     let seq = int(env, "statueSeq").unwrap_or(1);
     if !(1..=3).contains(&seq) {
         return Err(ApiError::Internal(format!("statueSeq {seq} out of range")));
@@ -49,7 +60,7 @@ pub fn leader_change(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         (
             (),
             if changed {
-                Change::Progress
+                Change::Bookkeeping // team edits are cheap to redo: no backup rotation
             } else {
                 Change::None
             },
@@ -61,7 +72,7 @@ pub fn leader_change(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
 /// `SetTeamRequest {teamNum, mainFlg, leaderstatueuId, memberLeftStatueuId, memberRightStatueuId}`.
 /// Statues the player does not own become empty slots; a team without a leader is refused.
 pub fn set_team(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
-    let team_num = int(env, "teamNum").unwrap_or(1);
+    let team_num = team_num(env)?;
     let main = int(env, "mainFlg").unwrap_or(0) == 1;
     let wanted = [
         int(env, "leaderstatueuId").unwrap_or(0),
@@ -93,7 +104,7 @@ pub fn set_team(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                 t.main = t.team_num == team_num;
             }
         }
-        (true, Change::Progress)
+        (true, Change::Bookkeeping)
     })?;
     if !ok_leader {
         return Err(ApiError::Internal(
@@ -209,6 +220,18 @@ mod tests {
             &env(&uuid, json!({"teamNum": 3, "leaderstatueuId": 0})),
         );
         assert!(r.is_err(), "a team needs a leader");
+        for bad in [
+            json!({"teamNum": 99, "mainFlg": 1, "leaderstatueuId": free[3]}),
+            json!({}),
+        ] {
+            let (r, _) = dispatch(&ctx, "/team/set_team", &env(&uuid, bad));
+            assert!(r.is_err(), "out-of-range teamNum refused");
+        }
+        let p = ctx.accounts.get(&uuid).unwrap().unwrap();
+        assert!(
+            p.collection.teams.iter().any(|t| t.main),
+            "a main team remains"
+        );
 
         let (r, _) = dispatch(&ctx, "/user/user_info_mini", &env(&uuid, json!({"id": ""})));
         let card = r.unwrap();

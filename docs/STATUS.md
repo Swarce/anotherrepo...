@@ -14,7 +14,8 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 
 ### What changed
 - **Positions** (docs/research/11 §1): the client reads positions in centimetres and
-  `teamScaleScalar` as a percentage. Our 1.0 made team statues 1% size, so it is now 100. The My
+  `teamScaleScalar` as a percentage. Our 1.0 made team statues 1% size, which most likely hid
+  them (not yet confirmed on a device), so it is now 100. The My
   Page leader stands 3.66 m in front of the `CameraIdSet0` camera, facing it. Rows also set
   `mindFrameID` 1 and the PvP AI ids to 1.
 - **Tactical battle tables** (docs/research/11 §2), new master-data content:
@@ -24,9 +25,14 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
     three categories;
   - an `area_position_pattern_table` row named in every tactical area's `formation`.
   
-  Every statue now carries the basic attack, and tactical enemies are not bosses for now.
-  The SecurityStringValue encoding is implemented, and the UnityPy proof decodes it independently.
-- **Routes:** `team/leader_change`, `team/set_team` (both battle types follow), `user/user_info_mini`
+  Statues in teams (and enemies) carry the basic attack; statue lists and detail views do not,
+  since their skill views were not traced. Tactical enemies are not bosses for now.
+  The SecurityStringValue encoding is implemented. The real-data proof
+  (`tools/proofs/masterdata_check.py`, run by `scripts/build.sh`) decodes it back with its own
+  implementation of the client's reading; this is the same reading, re-implemented, not a second
+  source.
+- **Routes:** `team/leader_change`, `team/set_team` (both battle types follow; a team number outside
+  1–5 is refused; edits do not rotate save backups), `user/user_info_mini`
   (the card shows the main leader), `follow/follower_list`, `follow/block_list`,
   `trophy/trophy_list`, `info/notify_list`, `gasha/gasha_list` (empty).
 - Build number 11, server marker `JDR_EMBEDDED_SERVER_b011`.
