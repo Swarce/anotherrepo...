@@ -2,8 +2,7 @@
 
 The game never had an English release. We translate its text **in place**: the language setting
 stays "jp", and the Japanese strings are replaced with English in the files the game already loads.
-UI images keep their Japanese lettering for now (`tools/ui-assets/export_ui.py` exports them for
-redrawing; re-import comes in a later build).
+UI images with Japanese lettering can be replaced with redrawn art (see "Redrawn UI art" below).
 
 ## Where the text lives
 
@@ -68,6 +67,23 @@ files (your backup), not from a phone folder that already holds English files.
 
 The in-game terms-of-use text is replaced by a short notice that this is an unofficial offline
 build (the original terms no longer apply); it is not a translation of the publisher's terms.
+
+## Redrawn UI art (Build 09)
+
+1. `tools/ui-assets/export_ui.py` exports every menu texture and each sprite cut out of its atlas
+   from the player's own copy (`<bundle>/sprites/<sprite>.png`, exact rectangle size).
+2. The player redraws the sprites they want and zips them as `replacements/<bundle>/sprites/…`.
+3. `jdr-patch patch … --art <pack.zip> --data <files>`:
+   - images for the APK's own screens (`apk_<file>`: title, boot) are pasted into those textures
+     in the APK (layouts read from the player's bundles; every object must decode exactly);
+   - images for downloaded bundles are stored in the APK (`assets/jdr/art.bin`).
+4. On the phone the server pastes them into the decoded atlases while it rebuilds the English
+   bundles (same originals, cache and one-time download), so menus and text change together.
+   Changed atlases are stored as uncompressed RGBA32 (no lossy re-compression): more memory per
+   atlas (a 2048×2048 atlas takes 16 MB instead of 4 MB).
+5. The art pack is the player's own and never goes into the repo.
+
+Terms in the text follow the art: Summon, Enhance, Courage/Wisdom/Spirit/Unity/Solitude, Town.
 
 ## Status (Build 08)
 

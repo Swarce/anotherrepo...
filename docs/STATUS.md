@@ -2,6 +2,41 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 09 — redrawn UI art (branch `wip/b09`)
+
+### What came in
+The owner's redrawn art pack: 464 sprites (all in English lettering) from 34 UI bundles and 4
+title/boot screen files in the APK, at the exported sizes; terms Summon, Enhance,
+Courage/Wisdom/Spirit/Unity/Solitude.
+
+### What changed
+- **Art import.** `jdr-patch … --art <pack.zip> --data <files>`: title/boot screens repainted in
+  the APK (13 sprites, 4 files); menu art (451 sprites) stored in the APK (`assets/jdr/art.bin`,
+  ~19 MB) and applied by the server on the phone while it rebuilds the English bundles (same
+  originals, cache and single download). Atlases with replaced sprites are stored as RGBA32.
+- `jdr_unity::texture`: ETC1/ETC2_RGBA8/RGB24/RGBA32/ARGB32/Alpha8 decode, PNG decode, paste.
+- The bundle rebuild runs on up to 4 threads (desktop: ~1.1–1.5 s for all 60 bundles with art).
+- Text terms aligned with the art (Gacha → Summon, Power Up → Enhance, Bravery/Intellect/
+  Tenacity/Maverick → Courage/Wisdom/Spirit/Solitude).
+- Server log: `[art] art pack loaded: N image(s)` and `[art] … sprite(s) replaced in this rebuild`.
+- Build number 9, server marker `JDR_EMBEDDED_SERVER_b009`.
+
+### Verified off-device
+- Real data: all 451 menu sprites matched and replaced, 0 unmatched; UnityPy confirms every
+  replaced sprite equals its PNG exactly and every other pixel of the 48 touched textures equals
+  the original (so the ETC decoder and the paste change nothing else).
+- Real patch with the pack: 13 sprites in the 4 in-APK screen files equal their PNGs (UnityPy).
+
+### Known gaps / risks (expected)
+- Animated lettering made of several sprites (e.g. SUCCESS!!, RETIRED, RATE UP!) may need spacing
+  or timing adjustments (owner's notes); nine tutorial screens are not redrawn yet.
+- RGBA32 atlases use 4x the memory of ETC2 ones while those screens are open.
+
+### Device checklist — expected; to be confirmed on a device
+- [ ] `[art] art pack loaded: 451 image(s)`, one download prompt, then menus show the redrawn art
+- [ ] Title screen shows the English logo/lettering
+- [ ] Animated words (gacha/build results, retire) look right; no missing or misplaced sprites
+
 ## Build 08 — English names (branch `wip/b08`)
 
 ### What the Build 07 device result showed
