@@ -121,6 +121,20 @@ fn route(ctx: &Arc<Ctx>, req: &Request) -> (Response, &'static str, String) {
     let path = req.path.as_str();
     if let Some(rel) = path.strip_prefix(CDN_PREFIX) {
         ctx.counters.cdn.fetch_add(1, Ordering::Relaxed);
+        if ctx.versionfile_obf_name().as_deref() == Some(rel.trim_start_matches('/')) {
+            return match ctx.versionfile() {
+                Ok(b) => (
+                    Response::ok("application/octet-stream", b.as_ref().clone()),
+                    "cdn",
+                    " (generated versionfile)".into(),
+                ),
+                Err(e) => (
+                    Response::text(404, "versionfile unavailable"),
+                    "cdn",
+                    format!(" versionfile ERROR: {e}"),
+                ),
+            };
+        }
         return match &ctx.settings.files_dir {
             Some(dir) => (cdn::serve_file(dir, rel, req), "cdn", String::new()),
             None => (
