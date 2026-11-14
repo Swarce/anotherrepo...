@@ -11,13 +11,45 @@ fn u32le(b: &[u8], o: usize) -> u32 {
     u32::from_le_bytes([b[o], b[o + 1], b[o + 2], b[o + 3]])
 }
 
-/// Path of the APK this process runs from, from `/proc/self/maps`.
-pub fn own_apk_path() -> Option<String> {
-    let maps = std::fs::read_to_string("/proc/self/maps").ok()?;
-    maps.lines()
+/// Candidate paths of this app's own APK, most reliable first, from `/proc/self/maps` text:
+/// 1. derived from where `libjdr.so` itself is mapped (`<app>/lib/arm64/libjdr.so` ->
+///    `<app>/base.apk`, or `<app>/base.apk!/lib/...` when loaded straight from the APK);
+/// 2. any mapped `base.apk` whose path contains `/<pkg>-` (other apps' APKs, e.g. Play Services or
+///    WebView, are mapped into the game process too and must not be picked).
+pub fn own_apk_candidates(maps: &str, pkg: &str) -> Vec<String> {
+    let paths: Vec<&str> = maps
+        .lines()
         .filter_map(|l| l.split_whitespace().nth(5))
-        .find(|p| p.ends_with("/base.apk"))
-        .map(str::to_owned)
+        .collect();
+    let mut out: Vec<String> = vec![];
+    let mut push = |p: String| {
+        if !out.contains(&p) {
+            out.push(p);
+        }
+    };
+    for p in &paths {
+        if !p.ends_with("/libjdr.so") {
+            continue;
+        }
+        if let Some((apk, _)) = p.split_once("!/") {
+            if apk.ends_with(".apk") {
+                push(apk.to_string());
+            }
+        } else if let Some(app) = std::path::Path::new(p)
+            .parent()
+            .and_then(|d| d.parent())
+            .and_then(|d| d.parent())
+        {
+            push(app.join("base.apk").to_string_lossy().into_owned());
+        }
+    }
+    let marker = format!("/{pkg}-");
+    for p in &paths {
+        if p.ends_with("/base.apk") && p.contains(&marker) {
+            push(p.to_string());
+        }
+    }
+    out
 }
 
 pub fn read_stored(apk: &str, name: &str) -> Result<Vec<u8>, String> {

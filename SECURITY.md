@@ -11,7 +11,7 @@
 - Logs: key fields and device identifiers (`assetkey`, `assetvector`, `soundkey`, `signature`,
   `nonce`, `backupId`, `ad_id`, `platform_user_id`) are redacted from all log lines, so logs can be
   shared. Review a log before posting it publicly anyway.
-- Limits: 64 concurrent connections (20 s idle timeout), 64 KiB of headers, 2 MiB bodies; handler
+- Limits: 32 concurrent connections (20 s read/write timeouts), 64 KiB of headers, 2 MiB bodies; handler
   panics are caught.
 
 ## In-game server (Build 02+)
