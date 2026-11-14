@@ -10,6 +10,7 @@
 
 use jdr_crypto::{names, Jjec, Vcs};
 use jdr_unity::bundle::{self, Node};
+use jdr_unity::objects;
 use jdr_unity::serialized::{self, Object, TypeEntry};
 use jdr_unity::typetree::{class_hash, mono_behaviour_type, Field};
 use jdr_unity::writer::W;
@@ -204,17 +205,6 @@ const PATH_ASSETBUNDLE: i64 = 1;
 const PATH_MONOSCRIPT: i64 = 2;
 const PATH_MANIFEST: i64 = 3;
 
-fn monoscript_data(hash: [u8; 16]) -> Vec<u8> {
-    let mut w = W::new();
-    w.string(CLASS); // m_Name
-    w.i32(0); // m_ExecutionOrder
-    w.bytes(&hash); // m_PropertiesHash
-    w.string(CLASS);
-    w.string(NAMESPACE);
-    w.string("Assembly-CSharp.dll");
-    w.buf
-}
-
 fn manifest_data(entries: &[Entry], create_time: &str) -> Vec<u8> {
     let mut w = W::new();
     w.pptr(0, 0); // m_GameObject (ScriptableObject: none)
@@ -237,27 +227,16 @@ fn manifest_data(entries: &[Entry], create_time: &str) -> Vec<u8> {
 }
 
 fn assetbundle_data() -> Vec<u8> {
-    let mut w = W::new();
-    w.string(BUNDLE_NAME); // m_Name
-    w.i32(2); // m_PreloadTable
-    w.pptr(0, PATH_MONOSCRIPT);
-    w.pptr(0, PATH_MANIFEST);
-    w.i32(1); // m_Container
-    w.string(CONTAINER);
-    w.i32(0); // preloadIndex
-    w.i32(2); // preloadSize
-    w.pptr(0, PATH_MANIFEST);
-    w.i32(0); // m_MainAsset.preloadIndex
-    w.i32(0);
-    w.pptr(0, 0);
-    w.u32(1); // m_RuntimeCompatibility
-    w.string(BUNDLE_NAME); // m_AssetBundleName
-    w.i32(0); // m_Dependencies
-    w.bool_aligned(false); // m_IsStreamedSceneAssetBundle
-    w.i32(0); // m_ExplicitDataLayout
-    w.i32(7); // m_PathFlags
-    w.i32(0); // m_SceneHashes
-    w.buf
+    objects::assetbundle_data(
+        BUNDLE_NAME,
+        &[PATH_MONOSCRIPT, PATH_MANIFEST],
+        &[objects::ContainerEntry {
+            path: CONTAINER.into(),
+            preload_index: 0,
+            preload_size: 2,
+            path_id: PATH_MANIFEST,
+        }],
+    )
 }
 
 /// Build the bundle bytes.
@@ -280,7 +259,7 @@ pub fn build(
         Object {
             path_id: PATH_MONOSCRIPT,
             type_index: 0,
-            data: monoscript_data(hash),
+            data: objects::monoscript_data(CLASS, NAMESPACE, hash),
         },
         Object {
             path_id: PATH_MANIFEST,

@@ -3,6 +3,7 @@
 pub mod accounts;
 pub mod app;
 pub mod cdn;
+pub mod masterdata;
 pub mod services;
 pub mod versionfile;
 pub mod web;
@@ -14,10 +15,18 @@ use std::sync::atomic::{AtomicU16, Ordering};
 
 type Stamp = (u64, std::time::SystemTime);
 
-/// The generated manifest, or the last failure (with the vcs.bytes stamp it was computed for).
+/// The two bundles we generate: the master tables, and the manifest that lists every file
+/// (including the master tables, with their md5 and size).
+pub struct Generated {
+    pub versionfile: Vec<u8>,
+    /// The master tables, or why they could not be built (the manifest is still served).
+    pub masterdata: Result<Vec<u8>, String>,
+}
+
+/// The generated bundles, or the last failure (with the vcs.bytes stamp it was computed for).
 #[derive(Clone)]
 pub enum ManifestState {
-    Built(Stamp, std::sync::Arc<Vec<u8>>),
+    Built(Stamp, std::sync::Arc<Generated>),
     Failed(Option<Stamp>, std::time::Instant, String),
 }
 
@@ -31,8 +40,10 @@ pub struct Ctx {
     /// Answer `get_tutorial_step` with all flags set (Build 01 default: the tutorial needs
     /// master data that is not rebuilt yet).
     pub skip_tutorial: bool,
-    /// Generated `versionfile` bundle, keyed by the (size, mtime) of `vcs.bytes`.
+    /// Generated `versionfile` and `in_memory_master_data`, keyed by the (size, mtime) of `vcs.bytes`.
     pub versionfile_cache: std::sync::Mutex<Option<ManifestState>>,
+    /// True while the embedded host imports staged game files (the key request waits for it).
+    pub importing: std::sync::atomic::AtomicBool,
     /// Serialises manifest builds.
     pub versionfile_build: std::sync::Mutex<()>,
 }
@@ -49,6 +60,7 @@ impl Ctx {
             skip_tutorial: true,
             versionfile_cache: std::sync::Mutex::new(None),
             versionfile_build: std::sync::Mutex::new(()),
+            importing: std::sync::atomic::AtomicBool::new(false),
             settings,
             counters: Counters::default(),
             port: AtomicU16::new(0),
@@ -100,10 +112,19 @@ impl Ctx {
         ))
     }
 
-    /// The manifest bundle, generated from the game's own files (cached until vcs.bytes changes).
-    /// The build runs outside the cache lock; a failure is remembered for 30 s so client retries
-    /// do not rescan the whole folder each time.
-    pub fn versionfile(&self) -> Result<std::sync::Arc<Vec<u8>>, String> {
+    /// Obfuscated file name of the `in_memory_master_data` bundle.
+    pub fn masterdata_obf_name(&self) -> Option<String> {
+        let k = self.settings.keys.as_ref()?;
+        Some(format!(
+            "{}.bytes",
+            jdr_crypto::names::obfuscate(masterdata::BUNDLE_NAME, k.asset_key.as_bytes())
+        ))
+    }
+
+    /// The generated bundles (cached until vcs.bytes changes). The build runs outside the cache
+    /// lock; a failure is remembered for 30 s so client retries do not rescan the whole folder
+    /// each time.
+    pub fn generated(&self) -> Result<std::sync::Arc<Generated>, String> {
         let lock = |m: &std::sync::Mutex<Option<ManifestState>>| {
             m.lock().unwrap_or_else(|e| e.into_inner()).clone()
         };
@@ -145,23 +166,60 @@ impl Ctx {
             let stamp = stamp.ok_or_else(|| {
                 format!("{}/vcs.bytes not found: the game's downloaded files are not on this device (restore files/, see PLAYER-SETUP)", dir.display())
             })?;
-            let entries = versionfile::entries_from_files(dir, key, iv)?;
+            let mut entries = versionfile::entries_from_files(dir, key, iv)?;
             let (ms, ab) = versionfile::find_template_types(dir, key, iv)?;
-            let b = std::sync::Arc::new(versionfile::build(
+            let md_name = masterdata::BUNDLE_NAME;
+            entries.retain(|e| e.path != format!("{md_name}.bytes"));
+            let md = masterdata::build_embedded(&ms, &ab);
+            match &md {
+                // Listed like any other file (expected to match the dead server; to be confirmed
+                // on a device): the client fetches it into memory, never stores it or records it in
+                // vcs.bytes, and is expected to check the download against this md5.
+                Ok((md, _)) => entries.push(versionfile::Entry {
+                    path: format!("{md_name}.bytes"),
+                    obf: format!("{}.bytes", jdr_crypto::names::obfuscate(md_name, key)),
+                    md5: versionfile::md5_hex(md),
+                    size: md.len() as i64,
+                    encrypted: false,
+                }),
+                Err(e) => {
+                    jdr_core::log::line("assets", &format!("in_memory_master_data ERROR: {e}"))
+                }
+            }
+            entries.sort_by(|a, b| a.path.cmp(&b.path));
+            let vf = versionfile::build(
                 &entries,
                 &ms,
                 &ab,
                 &jdr_core::clock::format(jdr_core::clock::now()),
-            ));
+            );
             jdr_core::log::line(
                 "assets",
                 &format!(
-                    "versionfile built: {} entries, {} KiB, {} ms",
+                    "versionfile built: {} entries, {} KiB; in_memory_master_data: {}; {} ms",
                     entries.len(),
-                    b.len() / 1024,
+                    vf.len() / 1024,
+                    match &md {
+                        Ok((b, tables)) => format!(
+                            "{} tables ({}), {} KiB",
+                            tables.len(),
+                            tables
+                                .iter()
+                                .filter(|t| t.rows > 0)
+                                .map(|t| format!("{} {} rows", t.name, t.rows))
+                                .collect::<Vec<_>>()
+                                .join(", "),
+                            b.len() / 1024
+                        ),
+                        Err(_) => "FAILED (see above)".into(),
+                    },
                     t0.elapsed().as_millis()
                 ),
             );
+            let b = std::sync::Arc::new(Generated {
+                versionfile: vf,
+                masterdata: md.map(|(b, _)| b),
+            });
             Ok::<_, String>((stamp, b))
         })();
         let mut g = self

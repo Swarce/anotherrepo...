@@ -1,0 +1,1110 @@
+{
+ "_about": "Serialized field layout of the core in_memory_master_data ScriptableObjects (JoJo DR 3.12.0): only the types these tables reach, enum value names only where our content uses them. Derived by our own analysis of the client's type metadata (docs/research/09-master-data.md). Code identifiers only; no game text or values. Battle tables are added together with their content.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/09-master-data.md"
+  }
+ ],
+ "assets": [
+  {
+   "name": "rank_table",
+   "class": "Jjs.PlayerRankTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "yogo_table",
+   "class": "Jjs.YogoTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "statue_setting_table",
+   "class": "Jjs.StatueSettingTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "statue_special_scene_data_table",
+   "class": "Jjs.StatueSpecialSceneDataTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "team_rank_table",
+   "class": "Jjs.TeamRankTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "tutorial_flag_table",
+   "class": "Jjs.TutorialFlagTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "statue_level_table",
+   "class": "Jjs.LevelTableData",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "mind_level_table",
+   "class": "Jjs.MindLevelTableData",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "skill_data_table",
+   "class": "Jjs.SkillDataTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "ability_data_table",
+   "class": "Jjs.AbilityDataTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "assist_ability_condition_table",
+   "class": "Jjs.AssistAbilityConditionTableData",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "map_gimmick_pattern_table",
+   "class": "Jjs.MapGimmickPatternTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "affect_text_rule_table",
+   "class": "Jjs.AffectTextRuleTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "action_branch_data_table",
+   "class": "Jjs.ActionBranchDataTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "area_position_pattern_table",
+   "class": "Jjs.AreaPositionPatternTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "Set_el_camera_set_common",
+   "class": "Jjs.ScriptCameraParamSetAsset",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "Node_el_camera_node_common",
+   "class": "Jjs.ScriptCameraParamNodeAsset",
+   "core": true,
+   "confidence": "H"
+  }
+ ],
+ "types": {
+  "Jjs.AbilityConditionTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "statueId",
+     "type": "string"
+    },
+    {
+     "name": "conditionTableData",
+     "type": "Jjs.AssistAbilityCondition",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AbilityData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "abilityId",
+     "type": "string"
+    },
+    {
+     "name": "abilityName",
+     "type": "string"
+    },
+    {
+     "name": "abilityParamList",
+     "type": "Jjs.AbilityData/AbilityParam",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AbilityData/AbilityParam": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "affectId",
+     "type": "string"
+    },
+    {
+     "name": "giveLimit",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv1_0",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv1_1",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv1_2",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv1_3",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv1_4",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv1_5",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv1_6",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv1_7",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv10_0",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv10_1",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv10_2",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv10_3",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv10_4",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv10_5",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv10_6",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv10_7",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    }
+   ]
+  },
+  "Jjs.AbilityDataTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.AbilityData",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.ActionBranchData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "branchId",
+     "type": "string"
+    },
+    {
+     "name": "actionId_None",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageSmall",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageBig",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageHeavy",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageBlow",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageBind",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageParalysis",
+     "type": "string"
+    },
+    {
+     "name": "actionId_Down",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageBindDown",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageParalysisDown",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamagePull",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageInvidible",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageVidible",
+     "type": "string"
+    },
+    {
+     "name": "actionId_Die",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DieDown",
+     "type": "string"
+    }
+   ]
+  },
+  "Jjs.ActionBranchDataTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "dtParamList",
+     "type": "Jjs.ActionBranchData",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AffectCondition": {
+   "kind": "enum"
+  },
+  "Jjs.AffectTextRuleTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "pvrsRuleList",
+     "type": "Jjs.AffectTextRuleTable/AffectTextRuleParam",
+     "list": true
+    },
+    {
+     "name": "baseAffectRuleList",
+     "type": "Jjs.AffectTextRuleTable/AffectTextRuleParam",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AffectTextRuleTable/AffectTextRuleParam": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "pvrs",
+     "type": "Jjs.AffectCondition"
+    },
+    {
+     "name": "baseAffectType",
+     "type": "Jjs.BaseAffectType"
+    },
+    {
+     "name": "paramRuleTypeList",
+     "type": "Jjs.AffectTextRuleTable/RuleType",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AffectTextRuleTable/RuleType": {
+   "kind": "enum"
+  },
+  "Jjs.AreaPositionPatternTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.AreaPositionPatternTable/PatternData",
+     "list": true
+    },
+    {
+     "name": "positionList",
+     "type": "Jjs.AreaPositionPatternTable/PositionData",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AreaPositionPatternTable/PatternData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "patternName",
+     "type": "string"
+    },
+    {
+     "name": "posSetList",
+     "type": "Jjs.AreaPositionPatternTable/PatternData/PositionSet",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AreaPositionPatternTable/PatternData/Position": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "pos",
+     "type": "Vector3"
+    },
+    {
+     "name": "rotate",
+     "type": "Quaternion"
+    },
+    {
+     "name": "startPos",
+     "type": "Vector3"
+    },
+    {
+     "name": "startRotate",
+     "type": "Quaternion"
+    }
+   ]
+  },
+  "Jjs.AreaPositionPatternTable/PatternData/PositionSet": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "setType",
+     "type": "Jjs.AreaPositionPatternTable/PatternData/SetType"
+    },
+    {
+     "name": "positionList",
+     "type": "Jjs.AreaPositionPatternTable/PatternData/Position",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AreaPositionPatternTable/PatternData/SetType": {
+   "kind": "enum"
+  },
+  "Jjs.AreaPositionPatternTable/PositionData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "name",
+     "type": "string"
+    },
+    {
+     "name": "pos",
+     "type": "Vector3"
+    },
+    {
+     "name": "rotate",
+     "type": "Quaternion"
+    }
+   ]
+  },
+  "Jjs.AssistAbilityCondition": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "assistAbilityId",
+     "type": "string"
+    },
+    {
+     "name": "assistAbilityCondition",
+     "type": "Jjs.CondData",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AssistAbilityConditionTableData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.AbilityConditionTable",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.BaseAffectType": {
+   "kind": "enum"
+  },
+  "Jjs.CondData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "statueType",
+     "type": "Jjs.StatueType"
+    },
+    {
+     "name": "count",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.FormationTeamRank": {
+   "kind": "enum"
+  },
+  "Jjs.LevelTable": {
+   "kind": "struct",
+   "fields": [
+    {
+     "name": "level",
+     "type": "int"
+    },
+    {
+     "name": "exp",
+     "type": "int"
+    },
+    {
+     "name": "hp",
+     "type": "int"
+    },
+    {
+     "name": "atk",
+     "type": "int"
+    },
+    {
+     "name": "def",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.LevelTableData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.StatueLevelTableList",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.MapGimmickPatternTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.MapGimmickPatternTable/PatternData",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.MapGimmickPatternTable/PatternData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "patternName",
+     "type": "string"
+    },
+    {
+     "name": "bodyPos",
+     "type": "Vector3"
+    },
+    {
+     "name": "positionList",
+     "type": "Vector3",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.MindLevelTable": {
+   "kind": "struct",
+   "fields": [
+    {
+     "name": "level",
+     "type": "int"
+    },
+    {
+     "name": "exp",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.MindLevelTableData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.MindLevelTableList",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.MindLevelTableList": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "rare",
+     "type": "int"
+    },
+    {
+     "name": "levelTableList",
+     "type": "Jjs.MindLevelTable",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.PlayerRankTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.PlayerRankTable/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.PlayerRankTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "rank",
+     "type": "int"
+    },
+    {
+     "name": "exp",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.ScriptCameraParamNode": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "id",
+     "type": "string"
+    },
+    {
+     "name": "baseBoneID",
+     "type": "ScSystem.ScGraphics.CharacterBoneList/Bone"
+    },
+    {
+     "name": "lookatBoneID",
+     "type": "ScSystem.ScGraphics.CharacterBoneList/Bone"
+    },
+    {
+     "name": "rotate",
+     "type": "Vector3"
+    },
+    {
+     "name": "perspective",
+     "type": "float"
+    },
+    {
+     "name": "length",
+     "type": "float"
+    },
+    {
+     "name": "baseOffset",
+     "type": "Vector3"
+    },
+    {
+     "name": "lookatOffset",
+     "type": "Vector3"
+    }
+   ]
+  },
+  "Jjs.ScriptCameraParamNodeAsset": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "listData",
+     "type": "Jjs.ScriptCameraParamNode",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.ScriptCameraParamSet": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "cameraID",
+     "type": "int"
+    },
+    {
+     "name": "beginInter",
+     "type": "float"
+    },
+    {
+     "name": "endInter",
+     "type": "float"
+    },
+    {
+     "name": "flagMaintain",
+     "type": "bool"
+    },
+    {
+     "name": "flagBindBase",
+     "type": "bool"
+    },
+    {
+     "name": "flagBindLookat",
+     "type": "bool"
+    },
+    {
+     "name": "flagNowConnect",
+     "type": "bool"
+    },
+    {
+     "name": "flagWorldSet",
+     "type": "bool"
+    },
+    {
+     "name": "flagForcusAhead",
+     "type": "bool"
+    },
+    {
+     "name": "flagNotUpdateBonePosition",
+     "type": "bool"
+    },
+    {
+     "name": "flagNotInter",
+     "type": "bool"
+    },
+    {
+     "name": "dataList",
+     "type": "Jjs.ScriptCameraParamSetData",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.ScriptCameraParamSetAsset": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "listData",
+     "type": "Jjs.ScriptCameraParamSet",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.ScriptCameraParamSetData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "cameraNode",
+     "type": "string"
+    },
+    {
+     "name": "sec",
+     "type": "float"
+    },
+    {
+     "name": "inter",
+     "type": "float"
+    },
+    {
+     "name": "targetIDBase",
+     "type": "int"
+    },
+    {
+     "name": "targetIDLookat",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.SkillButtonType": {
+   "kind": "enum"
+  },
+  "Jjs.SkillData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "skillId",
+     "type": "string"
+    },
+    {
+     "name": "skillName",
+     "type": "string"
+    },
+    {
+     "name": "skillProfileText",
+     "type": "string"
+    },
+    {
+     "name": "skillType",
+     "type": "Jjs.SkillType"
+    },
+    {
+     "name": "bottunType",
+     "type": "Jjs.SkillButtonType"
+    },
+    {
+     "name": "coolDownTime",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "limitCount",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "skillRateLv01",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "skillRateLv10",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "pvpSkillRateLv01",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "pvpSkillRateLv10",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "skillParamList",
+     "type": "ScSystem.ScSecurity.SecurityIntValue",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.SkillDataTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.SkillData",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.SkillType": {
+   "kind": "enum"
+  },
+  "Jjs.SpecialRetireCondition": {
+   "kind": "enum"
+  },
+  "Jjs.SpecialRetireData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "condition",
+     "type": "Jjs.SpecialRetireCondition"
+    },
+    {
+     "name": "conditionParam1",
+     "type": "string"
+    },
+    {
+     "name": "conditionParam2",
+     "type": "string"
+    },
+    {
+     "name": "longExcelCameraId",
+     "type": "int"
+    },
+    {
+     "name": "shortExcelCameraId",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.SpecialSkillSceneData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "spSkillVariation",
+     "type": "int"
+    },
+    {
+     "name": "spSkillSceneParam1",
+     "type": "string"
+    },
+    {
+     "name": "spSkillSceneParam2",
+     "type": "string"
+    }
+   ]
+  },
+  "Jjs.StatueLevelTableList": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "statueId",
+     "type": "string"
+    },
+    {
+     "name": "levelTableList",
+     "type": "Jjs.LevelTable",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.StatueSettingTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.StatueSettingTable/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.StatueSettingTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "statueId",
+     "type": "string"
+    },
+    {
+     "name": "myPageId",
+     "type": "int"
+    },
+    {
+     "name": "myPageCameraType",
+     "type": "string"
+    },
+    {
+     "name": "myPagePos",
+     "type": "Vector3"
+    },
+    {
+     "name": "myPageRotation",
+     "type": "Vector3"
+    },
+    {
+     "name": "teamPos",
+     "type": "Vector3"
+    },
+    {
+     "name": "teamRotation",
+     "type": "Vector3"
+    },
+    {
+     "name": "teamScaleScalar",
+     "type": "float"
+    },
+    {
+     "name": "detailViewPos",
+     "type": "Vector3"
+    },
+    {
+     "name": "jojoViewPos",
+     "type": "Vector3"
+    },
+    {
+     "name": "gashaTopViewPos",
+     "type": "Vector3"
+    },
+    {
+     "name": "mindFrameID",
+     "type": "int"
+    },
+    {
+     "name": "battleResultComment",
+     "type": "string"
+    },
+    {
+     "name": "dododoGaugeType",
+     "type": "int"
+    },
+    {
+     "name": "gashaScriptCamNo01",
+     "type": "int"
+    },
+    {
+     "name": "pvpAiId",
+     "type": "int"
+    },
+    {
+     "name": "pvpAiAutoBattleAiId",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.StatueSpecialSceneDataTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "dataList",
+     "type": "Jjs.StatueSpecialSceneDataTable/Data",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.StatueSpecialSceneDataTable/Data": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "statueId",
+     "type": "string"
+    },
+    {
+     "name": "specialRetireData",
+     "type": "Jjs.SpecialRetireData"
+    },
+    {
+     "name": "dtSpecialRetireData",
+     "type": "Jjs.SpecialRetireData"
+    },
+    {
+     "name": "spcialSkillSceneData",
+     "type": "Jjs.SpecialSkillSceneData"
+    }
+   ]
+  },
+  "Jjs.StatueType": {
+   "kind": "enum"
+  },
+  "Jjs.TeamRankTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.TeamRankTable/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.TeamRankTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "rank",
+     "type": "Jjs.FormationTeamRank"
+    },
+    {
+     "name": "passingScore",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.TutorialFlagTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.TutorialFlagTable/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.TutorialFlagTable/LaunchType": {
+   "kind": "enum",
+   "values": {
+    "Manual": 0,
+    "Tutorial": 1,
+    "AreaStart": 2,
+    "Home": 3
+   }
+  },
+  "Jjs.TutorialFlagTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "id",
+     "type": "int"
+    },
+    {
+     "name": "flagLabel",
+     "type": "string"
+    },
+    {
+     "name": "autoSave",
+     "type": "bool"
+    },
+    {
+     "name": "launchType",
+     "type": "Jjs.TutorialFlagTable/LaunchType"
+    },
+    {
+     "name": "scriptPackName",
+     "type": "string"
+    },
+    {
+     "name": "continueHome",
+     "type": "bool"
+    },
+    {
+     "name": "resourceDownloadStopForMainTutorial",
+     "type": "bool"
+    }
+   ]
+  },
+  "Jjs.YogoTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.YogoTable/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.YogoTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "yogo_Id",
+     "type": "string"
+    },
+    {
+     "name": "yogo_Title",
+     "type": "string"
+    },
+    {
+     "name": "yogo_Yomi",
+     "type": "string"
+    },
+    {
+     "name": "yogo_Text",
+     "type": "string"
+    },
+    {
+     "name": "yogo_Picture",
+     "type": "string"
+    }
+   ]
+  },
+  "ScSystem.ScGraphics.CharacterBoneList/Bone": {
+   "kind": "enum"
+  },
+  "ScSystem.ScSecurity.SecurityIntValue": {
+   "kind": "struct",
+   "fields": [
+    {
+     "name": "seed",
+     "type": "int"
+    },
+    {
+     "name": "securityValue",
+     "type": "int"
+    }
+   ]
+  }
+ }
+}

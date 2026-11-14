@@ -12,7 +12,7 @@ game comes from the game's own files or is written by us.
 
 | Source | Used for | Files |
 |---|---|---|
-| _(none yet: entries are added with the first content files in M1.5)_ | | |
+| _(no outside sources yet)_ | `tutorial_flag_table` uses only our own research (`jdr-research`, docs/research/09) and our own defaults (`jdr-default`) | `server/content/masterdata/` |
 
 Thank you to the players and wiki editors who documented the game while it was running.
 

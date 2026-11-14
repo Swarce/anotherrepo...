@@ -2,6 +2,79 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 06 — master tables generated on the phone (branch `wip/b06`)
+
+### What the Build 05 device logs showed (Galaxy S22, Android 16)
+- Boot reached `getfiledata` for `in_memory_master_data` and stopped on `[cdn] … 404`: the bundle
+  the dead server used to send with the game's master tables. No player copy has it (it was only
+  ever held in memory).
+- During an import, the client looped title → login until `vcs.bytes` arrived.
+
+### What changed
+- **`in_memory_master_data` is generated** by the server (embedded and standalone), next to the
+  manifest, and listed in it with the md5 and size of exactly what `/cdn` serves (plain UnityFS,
+  `isEncrypt=false`). Log line: `[assets] versionfile built: … in_memory_master_data: N tables (…)`.
+- **Schema** (`server/content/masterdata/schema.json`): the 17 core assets and the serialized fields
+  of the 57 types they reach, from our analysis of the client (docs/research/09-master-data.md);
+  only what our content needs (code identifiers, no values or text). The bundle holds about 45
+  assets, not 18: 27 more battle tables are read from the same bundle; their layouts are mapped in
+  the research and join the schema with their content. Their boot readers null-check (checked in
+  the code for the two read earliest).
+- **Content:** `tutorial_flag_table` with the 34 flag labels the client queries (ids 0..33, no
+  tutorial script downloads), so, with `get_tutorial_step` answering all ones, every tutorial and hint
+  counts as done and the daily/event quest categories unlock. The other 16 core tables are written
+  empty (each loader accepts an empty list); battle tables are left out until they have content.
+- `jdr_unity::managed` (type trees + binary layout in the engine's own node shapes) and
+  `jdr_unity::objects` (AssetBundle/MonoScript, shared with the manifest; manifest bytes unchanged).
+- Import: leftovers of an interrupted import are removed; `/client/getkey` waits (≤ 12 s) while an
+  import runs, so the game holds on the title instead of looping (the flag clears even if the import
+  panics).
+- Content files must carry well-formed sources (`jdr-research` + doc, `jdr-default` + note, outside
+  sources + page + access date); CONTRIBUTING and CREDITS updated.
+- `jdr-server --tutorial play` now warns: there are no tutorial scripts in the tables yet.
+- If the master tables ever fail to build, the manifest is still built and served (without them),
+  and the error is logged.
+- Two reviews (correctness; behaviour/risk). The correctness review compared our type trees with real
+  engine trees from the player's files (MonoBehaviour header, nested-class lists, strings, bools,
+  Vector3, vectors: exact match) and found nothing serious. Fixed: preload order now object → script
+  as the engine writes it; informational 0x8000 no longer set for lists of fixed-size structs;
+  `List<bool>` refused until its packing is needed; duplicate content files refused; the import
+  flag is set before the first request can arrive; the UnityPy check now compares every field
+  (defaults included) with the content.
+- Build number 6, server marker `JDR_EMBEDDED_SERVER_b006`.
+
+### Verified off-device
+- Real data, through the server context as on the phone: the manifest lists the master-data
+  bundle with the md5 and size of exactly the bytes `/cdn` serves.
+- Unit tests: the tutorial-table type tree equals the research template node for node; binary layout
+  (string/bool alignment, lists); every class in the schema resolves and serializes; content rules
+  (sources required, typos refused, enum names); deterministic bundle.
+- Real data (`JDR_DATA`/`JDR_KEYS`): bundle built with the player's own MonoScript/AssetBundle type
+  entries; `tools/proofs/masterdata_check.py` (UnityPy) reads all 17 tables at the client's container
+  paths, each consuming exactly its bytes, and every tutorial row equals the content file.
+
+### Known gaps / risks (expected)
+- Whether the engine reads our objects through the shipped type trees (script hash differs from the
+  build's) is expected from Unity's behaviour and from the manifest working, but is **first tested on
+  the device** in this build.
+- No team yet, so MyPage shows no leader model. Glossary empty. Battles, gacha scenes and special-move
+  cameras need real rows (M4 content) and the battle tables.
+- `rank_table` exists but is empty: player-rank lookups return a zero row (battle-result exp bar).
+
+### Device result (Galaxy S22, Android 16) — confirmed by device log
+- [x] `versionfile built: 13480 entries, 1845 KiB; in_memory_master_data: 17 tables
+      (tutorial_flag_table 34 rows), 32 KiB; 1061 ms` (in the background, before the title).
+- [x] `[cdn] GET /cdn/0a59….bytes 200 out=33596B (generated in_memory_master_data)`: the client
+      accepted the generated tables (our MonoScripts and type trees) and left TitleLoad.
+- [x] **MyPage reached** (owner: "We got to the menu"): `product_list`, `banner_list`, `user_info`,
+      `team_info`, `check_forced_notify`, `event_list`, `bizarre_resumption`, `get_loginbonus`,
+      `get_menu_notify`, then menu navigation (present box, follow list, items, shop).
+- [x] No tutorial ran (the 34-flag table + all-ones `get_tutorial_step` work as intended).
+- Unknown routes hit (answered with an empty OK): `bizarre/get_bizarre_select`,
+  `present/present_list`, `follow/follow_list`, `item/item_list`, `shop/shop_list`. Next build adds
+  proper handlers.
+- Import re-run was a no-op (13,480 already fine, 10 s); the staging folder can be deleted.
+
 ## Build 05 — keep the game files, import them, review fixes (branch `wip/b05`)
 
 ### What the Build 04 device logs showed (Galaxy S22, Android 16)
