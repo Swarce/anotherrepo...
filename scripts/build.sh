@@ -38,8 +38,9 @@ fi
 
 if [[ -n "${JDR_APK:-}" ]]; then
   if python3 -c "import unicorn, elftools" 2>/dev/null; then
-    step "equivalence proof: unity-heap patch on your libunity.so"
+    step "proofs on your binaries: unity-heap equivalence, keep-files callers"
     JDR_APK="$JDR_APK" python3 -I tools/proofs/unity_heap_equiv.py   # failure stops the build (set -e)
+    JDR_APK="$JDR_APK" python3 -I tools/proofs/keep_files_check.py
   else
     echo "JDR_APK is set but python3 lacks unicorn/pyelftools: the unity-heap proof is required before patching" >&2
     exit 1

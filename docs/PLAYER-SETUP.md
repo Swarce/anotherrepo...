@@ -18,8 +18,9 @@
   an uninstall.
 - Keep `local/backup/files` on your PC until the game is fully playable.
 - **The game's downloaded files must be on the phone and complete** (`files/`, about 13,500 files
-  including `vcs.bytes`). Uninstalling the original game deletes them; step 6 puts them back. The
-  in-game server builds the asset list from them and logs what it finds at start-up.
+  including `vcs.bytes`). Uninstalling the original game deletes them, and the original game also
+  wiped them once on its first start; step 6 puts them back and the `keep-files` patch prevents
+  that wipe. The in-game server builds the asset list from them and logs what it finds at start-up.
 
 ## What you need
 
@@ -52,10 +53,10 @@
 4. **Patch:**
 
    ```bash
-   JDR_BUILD_TOOLS=/path/to/build-tools ./target/release/jdr-patch patch --apk local/game-3.12.0.apk --out deliver/jojodr-b04.apk --keys local/keys.json --server-lib target/aarch64-linux-android/release/libjdr.so
+   JDR_BUILD_TOOLS=/path/to/build-tools ./target/release/jdr-patch patch --apk local/game-3.12.0.apk --out deliver/jojodr-b05.apk --keys local/keys.json --server-lib target/aarch64-linux-android/release/libjdr.so
    ```
 
-   The report must show `embed-server` applied (with `JDR_EMBEDDED_SERVER_b004`) and every
+   The report must show `embed-server` applied (with `JDR_EMBEDDED_SERVER_b005`) and every
    post-check `ok`.
 5. **Install.** First time only, the original game must go (back up first, step 1):
 
@@ -64,15 +65,32 @@
    ```
 
    ```bash
-   adb install deliver/jojodr-b04.apk
+   adb install deliver/jojodr-b05.apk
    ```
 
    Later builds: `adb install -r deliver/jojodr-bNN.apk` (keeps everything; never uninstall).
-6. **Restore your files:** launch the game once, quit, then
+6. **Restore your files.** Do **not** push them into `Android/data/…/files/` directly: on Android 11+
+   files pushed there belong to the shell user and the game cannot read them (`Permission
+   denied`). Push them to a staging folder instead; the in-game server copies them in as the app
+   (about 1.9 GB, expected to take under a minute; expected to work, to be confirmed on a device):
 
    ```bash
-   adb push local/backup/files/. /sdcard/Android/data/com.bandainamcoent.jojodr/files/
+   adb push local/backup/files /data/local/tmp/jdr-import/files
    ```
+
+   ```bash
+   adb shell chmod -R a+rX /data/local/tmp/jdr-import
+   ```
+
+   Start the game and watch `adb logcat -s JDR` until it prints `[import] import complete`, then
+   close and restart the game. Afterwards you may free the space:
+
+   ```bash
+   adb shell rm -rf /data/local/tmp/jdr-import
+   ```
+
+   The `keep-files` patch stops the game from ever wiping this folder again (it used to do that
+   once on a fresh install).
 
 7. **Test:** clear the device log, start the game, watch the server lines:
 
@@ -115,7 +133,10 @@ from your asset key.
   `adb install -r` it: that build talks to `jdr-server` on your PC (docs/DEV-LOOP.md) and keeps your
   data. Send the logcat from the failed launch.
 - **`vcs.bytes MISSING` or `… recorded files MISSING`:** your downloaded files are not (all) on the
-  phone. Push them again (step 6) and restart the game.
+  phone. Stage them again (step 6) and restart the game.
+- **`Permission denied` for `vcs.bytes`:** the files were pushed straight into `Android/data`; stage
+  them in `/data/local/tmp/jdr-import/files` instead (step 6); the import replaces the unreadable
+  copies.
 - **A new crash inside `libunity.so`:** the `unity-heap` engine fix can be switched off. Patch the same
   APK again with the same key and `--disable unity-heap`, then `adb install -r`, and send the logcat
   (without it the game is expected to crash right after login on Android 11+).
