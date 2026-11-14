@@ -7,6 +7,10 @@
 #   ANDROID_NDK  Android NDK folder                        -> builds libjdr.so (embedded server)
 set -euo pipefail
 cd "$(dirname "$0")/.."
+# Tests run from each crate's folder: pass file paths on as absolute paths.
+for v in JDR_KEYS JDR_DATA JDR_APK; do
+  if [[ -n "${!v:-}" ]]; then export "$v=$(realpath "${!v}")"; fi
+done
 
 step() { printf '\n== %s\n' "$*"; }
 skipped=()
