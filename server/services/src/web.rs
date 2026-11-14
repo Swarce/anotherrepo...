@@ -18,7 +18,7 @@ pub fn page(rel: &str) -> Response {
     match rel {
         "/information/terms_a.html" => html(
             "Offline preservation build",
-            "<p>This copy of the game runs entirely on your device. There is no online service, no account on any server, no purchases and no tracking.</p><p>Tap <b>Accept</b> to continue.</p>",
+            "<p>The online service for this game has ended. This copy talks only to a local preservation server on your own devices. There are no purchases and no tracking.</p><p>Tap <b>Accept</b> to continue.</p>",
         ),
         "/information/copyright.html" => html(
             "Credits",

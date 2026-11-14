@@ -4,14 +4,14 @@
 
 | Part | State offline |
 |---|---|
-| Unity 2018.4 IL2CPP client (arm64 + armv7), game code in `libil2cpp.so` + `global-metadata.dat` | works; we patch data only (one string literal, one manifest attribute) |
+| Unity 2018.4 IL2CPP client (arm64 + armv7), game code in `libil2cpp.so` + `global-metadata.dat` | kept; we patch data only (one string literal, one manifest attribute). Behaviour offline: to be confirmed on a device |
 | API server `jdr.channel.or.jp` (encrypted form posts, ~171 endpoints) | **dead** → our server |
 | Asset CDN (S3, URLs handed out by `/client/getfiledata`) | **dead** → our server serves the player's own downloaded files |
 | `versionfile` bundle (server's asset manifest, fetched into memory each boot) | **dead, never stored** → we build it |
 | `in_memory_master_data` bundle (18 master tables, fetched into memory each boot) | **dead, never stored** → we rebuild it (M1.5) |
 | Asset/sound keys (`/client/getkey`) | **dead, never stored** → recovered from the player's files / public sound-key list |
 | Clan room (realtime socket) | dead → hidden |
-| Firebase, Play Games, AdMob, Adjust, GrowthPush, SmartBeat, Prime31 IAP | fail harmlessly or are disabled; removal in M6 (debloat) |
+| Firebase, Play Games, AdMob, Adjust, GrowthPush, SmartBeat, Prime31 IAP | IAP stays uninitialised (empty product key); the others are expected to fail harmlessly (to be confirmed on a device); removal in M6 (debloat) |
 
 ## Components
 

@@ -12,7 +12,7 @@ use std::time::Instant;
 
 /// Path prefix of the API base we hand out in `get_version.url`.
 pub const API_PREFIX: &str = "/api";
-/// Path prefix of the CDN base we hand out in `get_version.s3_url`.
+/// Path prefix of asset URLs we hand out from `/client/getfiledata` (`s3_url` is `/web`).
 pub const CDN_PREFIX: &str = "/cdn";
 
 /// Result of one API handler: the endpoint's `param` object (status defaults to OK).

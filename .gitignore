@@ -16,3 +16,9 @@ keys.json
 *.acb
 *.awb
 *.unity3d
+# Logs (may contain device ids and game text)
+*.log
+logcat*.txt
+# Outputs of jdr-tool decrypt etc. belong under local/
+*.unityfs
+*.dec
