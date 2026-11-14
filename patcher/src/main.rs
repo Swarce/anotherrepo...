@@ -95,7 +95,7 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
             continue;
         }
         let detail = p
-            .apply(&mut apk, &cfg)
+            .apply(&mut apk, &cfg, build)
             .map_err(|e| format!("patch {} refused: {e}", p.id()))?;
         rep.lines.push((
             p.id().into(),
@@ -131,6 +131,14 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
             "metadata literal #{} = {}",
             build.server_url_literal.0, cfg.server_url
         ));
+    }
+    if !disabled.contains(&"cleartext") {
+        let x = jdr_patch::axml::Axml::parse(&chk.read(patches::MANIFEST)?)?;
+        if x.get_android_bool("application", patches::ATTR_USES_CLEARTEXT) != Some(true) {
+            return Err("post-check failed: usesCleartextTraffic not set".into());
+        }
+        rep.checks
+            .push("manifest: application usesCleartextTraffic=true".into());
     }
     if !disabled.contains(&"drop-armv7") {
         if chk

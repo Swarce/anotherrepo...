@@ -28,7 +28,12 @@ pub trait Patch {
     fn id(&self) -> &'static str;
     fn description(&self) -> &'static str;
     /// Apply to the APK. Returns a short detail line for the report.
-    fn apply(&self, apk: &mut ApkEdit, cfg: &Config) -> Result<String, Error>;
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        cfg: &Config,
+        build: &known::VerifiedBuild,
+    ) -> Result<String, Error>;
 }
 
 pub fn sha256_hex(b: &[u8]) -> String {
@@ -39,6 +44,7 @@ pub fn sha256_hex(b: &[u8]) -> String {
 }
 
 /// The fingerprinted build for this APK, or an error explaining why we refuse.
+/// Call once on the untouched input, before any patch runs.
 pub fn identify(apk: &mut ApkEdit) -> Result<&'static known::VerifiedBuild, Error> {
     let m = apk.read(METADATA_PATH)?;
     let sha = sha256_hex(&m);
@@ -80,8 +86,12 @@ impl Patch for ServerUrl {
     fn description(&self) -> &'static str {
         "Point HttpConst's production URL literal at the local server (global-metadata.dat)"
     }
-    fn apply(&self, apk: &mut ApkEdit, cfg: &Config) -> Result<String, Error> {
-        let build = identify(apk)?;
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        cfg: &Config,
+        build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
         let data = apk.read(METADATA_PATH)?;
         let (idx, expected) = build.server_url_literal;
         let m = Metadata::parse(&data)?;
@@ -111,7 +121,12 @@ impl Patch for DropArmv7 {
     fn description(&self) -> &'static str {
         "Remove lib/armeabi-v7a (32-bit); the game then installs as arm64-only"
     }
-    fn apply(&self, apk: &mut ApkEdit, _cfg: &Config) -> Result<String, Error> {
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        _cfg: &Config,
+        _build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
         if !apk.exists(LIBIL2CPP_ARM64) {
             return Err(
                 "refusing: no arm64-v8a libil2cpp.so, removing armeabi-v7a would leave no ABI"
@@ -130,8 +145,63 @@ impl Patch for DropArmv7 {
     }
 }
 
+/// Allows plain HTTP so the game's Java HTTP stack may reach `http://127.0.0.1`.
+///
+/// The client sends API calls through `ScNet.HttpAndroid` (Java `HttpURLConnection`); with
+/// targetSdk 28 Android blocks cleartext unless the manifest allows it.
+pub struct Cleartext;
+
+pub const MANIFEST: &str = "AndroidManifest.xml";
+/// `android:usesCleartextTraffic`
+pub const ATTR_USES_CLEARTEXT: u32 = 0x0101_04ec;
+
+impl Patch for Cleartext {
+    fn id(&self) -> &'static str {
+        "cleartext"
+    }
+    fn description(&self) -> &'static str {
+        "Set android:usesCleartextTraffic=true so the Java HTTP stack may use http://127.0.0.1"
+    }
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        _cfg: &Config,
+        build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
+        let data = apk.read(MANIFEST)?;
+        let sha = sha256_hex(&data);
+        if sha != build.manifest_sha256 {
+            return Err(format!("fingerprint mismatch: AndroidManifest.xml sha256 {sha}").into());
+        }
+        let mut x = crate::axml::Axml::parse(&data)?;
+        if crate::axml::Axml::parse(&x.write())? != x {
+            return Err("manifest does not round-trip; refusing".into());
+        }
+        let what = x.set_android_bool(
+            "application",
+            "usesCleartextTraffic",
+            ATTR_USES_CLEARTEXT,
+            true,
+        )?;
+        let out = x.write();
+        let check = crate::axml::Axml::parse(&out)?;
+        if check.get_android_bool("application", ATTR_USES_CLEARTEXT) != Some(true) {
+            return Err("post-check failed: attribute not readable".into());
+        }
+        let compress = apk.is_compressed(MANIFEST);
+        apk.put(MANIFEST, out, compress);
+        Ok(format!(
+            "<application android:usesCleartextTraffic=\"true\"> {what}"
+        ))
+    }
+}
+
 pub fn all() -> Vec<Box<dyn Patch>> {
-    vec![Box::new(ServerUrl), Box::new(DropArmv7)]
+    vec![
+        Box::new(ServerUrl),
+        Box::new(Cleartext),
+        Box::new(DropArmv7),
+    ]
 }
 
 #[cfg(test)]

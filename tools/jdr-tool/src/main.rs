@@ -8,7 +8,7 @@ use std::path::{Path, PathBuf};
 type Error = Box<dyn std::error::Error + Send + Sync>;
 
 const USAGE: &str = "usage:
-  jdr-tool keys --data <files dir> [--apk <apk>] [--soundkey <hex>] --out <keys.json>
+  jdr-tool keys --data <files dir> --apk <apk> [--soundkey <hex>] --out <keys.json>
   jdr-tool names --data <files dir> --keys <keys.json>            decoded name <TAB> file <TAB> size
   jdr-tool decrypt --keys <keys.json> --in <file> --out <file>     JJEC bundle or vcs.bytes";
 
@@ -41,6 +41,8 @@ pub struct Keys {
     pub asset_iv: String,
     #[serde(default)]
     pub sound_key: Option<String>,
+    #[serde(default)]
+    pub http_key: Option<String>,
 }
 
 pub fn load_keys(p: &Path) -> Result<Keys, Error> {
@@ -111,20 +113,42 @@ fn cmd_keys(a: &[String]) -> Result<(), Error> {
         u64::from_str_radix(s.trim_start_matches("0x"), 16)
             .map_err(|_| "--soundkey must be hex")?;
     }
+    let http_key = match opt(a, "--apk") {
+        Some(apk) => Some(http_key_from_apk(Path::new(&apk))?),
+        None => None,
+    };
     let k = Keys {
         asset_key: String::from_utf8(nk.key.to_vec())?,
         asset_iv: String::from_utf8(iv.to_vec())?,
         sound_key,
+        http_key,
     };
     std::fs::write(&out, serde_json::to_vec_pretty(&k)?)?;
     eprintln!(
         "recovered asset key from {} names (score {:.4}), IV verified on encrypted bundles; wrote {}",
         nk.names_used, nk.score, out.display()
     );
+    if k.http_key.is_none() {
+        eprintln!("note: no --apk given; the server cannot read requests until http_key is set");
+    }
     if k.sound_key.is_none() {
         eprintln!("note: no --soundkey given; audio will stay silent until one is set (docs/research/08-assets-cdn.md)");
     }
     Ok(())
+}
+
+/// Read the request-envelope key literal from the player's own APK (verified builds only).
+pub fn http_key_from_apk(apk: &Path) -> Result<String, Error> {
+    use jdr_patch::{apk::ApkEdit, meta::Metadata, patches};
+    let mut e = ApkEdit::open(apk)?;
+    let build = patches::identify(&mut e)?;
+    let data = e.read(patches::METADATA_PATH)?;
+    let m = Metadata::parse(&data)?;
+    let lit = m.literal(build.http_key_literal)?;
+    if lit.len() != 16 || !lit.iter().all(|c| c.is_ascii_graphic()) {
+        return Err("envelope key literal has an unexpected shape; refusing".into());
+    }
+    Ok(String::from_utf8(lit.to_vec())?)
 }
 
 fn cmd_names(a: &[String]) -> Result<(), Error> {
