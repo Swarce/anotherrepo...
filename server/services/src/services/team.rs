@@ -46,7 +46,9 @@ pub fn leader_change(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let team_num = team_num(env)?;
     let seq = int(env, "statueSeq").unwrap_or(1);
     if !(1..=3).contains(&seq) {
-        return Err(ApiError::Internal(format!("statueSeq {seq} out of range")));
+        // Nothing to change: answer with the team as it is.
+        let p = crate::services::statue::profile(ctx, env)?;
+        return ok(json!({ "teamInfo": shown(&p.collection, team_num) }));
     }
     let (p, ()) = with_profile(ctx, env, |p| {
         let mut changed = false;
@@ -70,7 +72,8 @@ pub fn leader_change(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
 }
 
 /// `SetTeamRequest {teamNum, mainFlg, leaderstatueuId, memberLeftStatueuId, memberRightStatueuId}`.
-/// Statues the player does not own become empty slots; a team without a leader is refused.
+/// Statues the player does not own become empty slots; a team without a leader is not saved (the
+/// reply shows the team as it is).
 pub fn set_team(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let team_num = team_num(env)?;
     let main = int(env, "mainFlg").unwrap_or(0) == 1;
@@ -79,7 +82,7 @@ pub fn set_team(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         int(env, "memberLeftStatueuId").unwrap_or(0),
         int(env, "memberRightStatueuId").unwrap_or(0),
     ];
-    let (p, ok_leader) = with_profile(ctx, env, |p| {
+    let (p, ()) = with_profile(ctx, env, |p| {
         let mut slots = wanted.map(|u| {
             if u != 0 && p.collection.known_statue(u).is_some() {
                 u
@@ -94,7 +97,7 @@ pub fn set_team(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
             }
         }
         if slots[0] == 0 {
-            return (false, Change::None);
+            return ((), Change::None);
         }
         for t in teams_numbered(&mut p.collection, team_num) {
             t.slots = slots;
@@ -104,13 +107,8 @@ pub fn set_team(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                 t.main = t.team_num == team_num;
             }
         }
-        (true, Change::Bookkeeping)
+        ((), Change::Bookkeeping)
     })?;
-    if !ok_leader {
-        return Err(ApiError::Internal(
-            "set_team without a usable leader".into(),
-        ));
-    }
     ok(json!({ "teamInfo": shown(&p.collection, team_num) }))
 }
 
@@ -219,7 +217,31 @@ mod tests {
             "/team/set_team",
             &env(&uuid, json!({"teamNum": 3, "leaderstatueuId": 0})),
         );
-        assert!(r.is_err(), "a team needs a leader");
+        assert_eq!(
+            slots(&r.unwrap()),
+            [0, 0, 0],
+            "a team without a leader is not saved"
+        );
+        let (r, _) = dispatch(
+            &ctx,
+            "/team/leader_change",
+            &env(&uuid, json!({"teamNum": 1, "statueSeq": 7})),
+        );
+        assert_eq!(
+            slots(&r.unwrap()),
+            back,
+            "an out-of-range seat changes nothing"
+        );
+        for path in [
+            "/follow/follower_list",
+            "/follow/block_list",
+            "/trophy/trophy_list",
+            "/info/notify_list",
+            "/gasha/gasha_list",
+        ] {
+            let (r, known) = dispatch(&ctx, path, &env(&uuid, json!({})));
+            assert!(known && r.is_ok(), "{path}");
+        }
         for bad in [
             json!({"teamNum": 99, "mainFlg": 1, "leaderstatueuId": free[3]}),
             json!({}),
