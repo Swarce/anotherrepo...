@@ -1,23 +1,38 @@
 #!/usr/bin/env python3
-"""Build server/content/minds.json: minds (cards) matched to game ids on the Gamerch wiki
-(exact Japanese name, matched locally when fetching), with rarity, cost and flat HP/ATK/DEF from
-their effects. Only minds whose image bundle (mim_<id>) exists in the player's files.
+"""Build server/content/minds.json: minds (cards) from the Gamerch wiki matched to game ids by name
+(the wiki's Japanese name against the game's own MIND_NAME_<id> label, after NFKC normalisation; a
+name shared by several ids is skipped), with rarity, cost and flat HP/ATK/DEF from their effects.
+Only minds whose image bundle (mim_<id>) exists in the player's files.
 
 usage: python3 -I tools/content/build_minds.py --gamerch local/wiki-raw/gamerch/minds.json \
-          --data <files dir> --keys local/keys.json --tool target/release/jdr-tool --out server/content/minds.json
+          --export local/l10n/work.tsv --data <files dir> --keys local/keys.json \
+          --tool target/release/jdr-tool --out server/content/minds.json
 """
 import argparse
 import datetime
 import json
 import re
 import subprocess
+import unicodedata
 
 ap = argparse.ArgumentParser()
-for x in ("--gamerch", "--data", "--keys", "--tool", "--out"):
+for x in ("--gamerch", "--export", "--data", "--keys", "--tool", "--out"):
     ap.add_argument(x, required=True)
 a = ap.parse_args()
 names = {l.split("\t")[0] for l in subprocess.run([a.tool, "names", "--data", a.data, "--keys", a.keys],
                                                   check=True, capture_output=True, text=True).stdout.splitlines()}
+
+
+def norm(x):
+    return unicodedata.normalize("NFKC", x or "").replace(" ", "").replace("\u3000", "")
+
+
+ids_by_name = {}
+for line in open(a.export, encoding="utf-8"):
+    c = line.rstrip("\n").split("\t")
+    m = re.fullmatch(r"text:MindName_JP:MIND_NAME_(\d{4})", c[0]) if len(c) >= 4 else None
+    if m:
+        ids_by_name.setdefault(norm(c[3]), set()).add(m.group(1))
 doc = json.load(open(a.gamerch))
 recs = doc if isinstance(doc, list) else doc["minds"]
 
@@ -33,7 +48,8 @@ def flat(effects, stat):
 
 out, seen = [], set()
 for r in recs:
-    mid = r.get("mind_id")
+    ids = ids_by_name.get(norm(r.get("name_jp")), set())
+    mid = next(iter(ids)) if len(ids) == 1 else None
     if not mid or mid in seen or f"mim_{mid}" not in names:
         continue
     seen.add(mid)

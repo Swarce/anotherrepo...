@@ -48,8 +48,22 @@ pub struct Profile {
 pub struct Accounts {
     dir: PathBuf,
     cache: Mutex<HashMap<String, Profile>>,
-    /// Serialises read-modify-write of account files (the client may resend a slow request).
+    /// Serialises writes of account files (the client may resend a slow request).
     write_lock: Mutex<()>,
+    /// Held across read, change and write in `update`, so concurrent requests cannot lose each
+    /// other's changes.
+    update_lock: Mutex<()>,
+}
+
+/// What a change to a profile was, which decides how it is written.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+pub enum Change {
+    /// Nothing to write.
+    None,
+    /// Bookkeeping (login time, play counts): written without rotating backups.
+    Bookkeeping,
+    /// Real progress: written with a backup rotation.
+    Progress,
 }
 
 fn valid_uuid(u: &str) -> bool {
@@ -73,7 +87,28 @@ impl Accounts {
             dir: data_dir.join("accounts"),
             cache: Mutex::new(HashMap::new()),
             write_lock: Mutex::new(()),
+            update_lock: Mutex::new(()),
         }
+    }
+
+    /// Read one account, let `f` change it, and write it as `f` says, all under one lock.
+    /// `Ok(None)`: no such account.
+    pub fn update<R>(
+        &self,
+        uuid: &str,
+        f: impl FnOnce(&mut Profile) -> (R, Change),
+    ) -> Result<Option<(Profile, R)>, String> {
+        let _g = self.update_lock.lock().unwrap_or_else(|e| e.into_inner());
+        let Some(mut p) = self.get(uuid)? else {
+            return Ok(None);
+        };
+        let (r, change) = f(&mut p);
+        match change {
+            Change::None => {}
+            Change::Bookkeeping => self.write(&p, false)?,
+            Change::Progress => self.write(&p, true)?,
+        }
+        Ok(Some((p, r)))
     }
 
     fn path(&self, uuid: &str) -> PathBuf {

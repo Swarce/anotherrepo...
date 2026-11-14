@@ -218,6 +218,19 @@ fn new_player_boot_sequence() {
         &uuid,
     );
     assert_eq!(en["param"]["clearRank"], 4);
+    assert!(en["param"]["gold"].as_i64().unwrap() > 0);
+    // A resent end for the same battle pays nothing more.
+    let again = call_as(
+        port,
+        &ep("/bizarre/bizarre_end"),
+        &format!(r#"{{"stageId":"{stage}","result":0}}"#),
+        &uuid,
+    );
+    assert_eq!(again["param"]["gold"], 0);
+    assert_eq!(
+        again["param"]["userInfo"]["vm"],
+        en["param"]["userInfo"]["vm"]
+    );
     let stl2 = call_as(
         port,
         &ep("/bizarre/stage_list"),

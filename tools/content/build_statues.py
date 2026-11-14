@@ -4,10 +4,14 @@ own files (scan_statues.py) and numbers from the community wikis.
 
 Matching (strict; anything ambiguous falls back to marked defaults):
   - a statueId is obtainable when it has a model + animations + action set AND a leader-ability label;
-  - wiki stats attach to a statueId only when the character (Japanese name from the game's own
-    STATUE_NAME label) has exactly one obtainable statueId and the wiki has exactly one statue
-    for that character. Other variants wait for the Gamerch statue pages (exact key: the
-    leader-ability name).
+  - Gamerch statue pages attach by their leader-ability name (or, for assist-only statues, the
+    assist-ability name), compared after NFKC normalisation with the game's own
+    ABI_LEAD_NAME_<id> / ABI_AST_<id>_N labels; a name that maps to more than one statueId is skipped;
+  - ShoutWiki entries attach by elimination: after the exact matches, when exactly one entry and
+    exactly one statueId of that character remain, and the entry's rarity keeps rarity
+    non-decreasing within the id's variant family (same tens digit of the suffix);
+  - a record is used only when every stat has 5 <= Lv99 / Lv1 <= 20 (the wikis show Lv99 ~ 10 x Lv1);
+    anything else is a wiki typo and the statue keeps defaults.
 Only numbers are written, each record citing its source page.
 
 usage: python3 -I tools/content/build_statues.py --scan local/content/statues_scan.json \
@@ -19,6 +23,7 @@ import collections
 import datetime
 import json
 import re
+import unicodedata
 
 ap = argparse.ArgumentParser()
 for x in ("--scan", "--export", "--shoutwiki", "--out"):
@@ -50,16 +55,47 @@ GAMERCH_TYPE = {"勇気": 1, "知略": 2, "闘志": 3, "団結": 4, "孤高": 5}
 TODAY = datetime.date.today().isoformat()
 
 
+def norm(x):
+    return unicodedata.normalize("NFKC", x or "").replace(" ", "").replace("\u3000", "")
+
+
+def family(sid):
+    return (sid[:4], sid[5:6])
+
+
+def plausible(lv1, lv99):
+    return all(lv1.get(k) and 5 <= lv99[k] / lv1[k] <= 20 for k in ("hp", "atk", "def"))
+
+
+rejected = []
+
+
 def full(x):
     return isinstance(x, dict) and all(isinstance(x.get(k), int) for k in ("hp", "atk", "def"))
 
 
-# 1) Gamerch: exact match by leader-ability (or assist-ability) name, done when fetching.
+# 1) Gamerch: exact match by leader-ability (or assist-ability) name against the game's labels.
+by_ability = collections.defaultdict(set)
+for k, v in labels.items():
+    m = re.fullmatch(r"text:Ability_Leader_Name_JP:ABI_LEAD_NAME_(\d{4}_\d{2})", k) or \
+        re.fullmatch(r"text:Ability_Assist_Name_JP:ABI_AST_(\d{4}_\d{2})_N", k)
+    if m and m.group(1) in jp_name:
+        by_ability[norm(v)].add(m.group(1))
 gamerch = {}
 if a.gamerch:
     for g in json.load(open(a.gamerch))["statues"]:
-        if g.get("statue_id") and full(g.get("lv99")):
-            gamerch[g["statue_id"]] = g
+        if not full(g.get("lv99")):
+            continue
+        ids = by_ability.get(norm(g.get("leader_ability_jp")), set()) or \
+            by_ability.get(norm(g.get("assist_ability_jp")), set())
+        if len(ids) != 1:
+            continue
+        sid = next(iter(ids))
+        lv1 = g["lv1"] if full(g.get("lv1")) else {k: round(v / 10) for k, v in g["lv99"].items()}
+        if not plausible(lv1, g["lv99"]):
+            rejected.append(sid)
+            continue
+        gamerch[sid] = g
 out = []
 matched = 0
 by_source = collections.Counter()
@@ -108,7 +144,13 @@ for s in obtainable:
     ws = [w for w in by_name.get(key, []) if (w["rarity"], STATUE_TYPE.get(w["type"])) not in claimed[key]]
     if len(remaining_ids[key]) == 1 and len(ws) == 1:
         w = ws[0]
-        if all(w["lv1"].values()) and all(w["lv99"].values()):
+        siblings = [(o, gamerch[o].get("rarity")) for o in gamerch if family(o) == family(sid)]
+        ordered = all((o < sid) == (r <= w["rarity"]) or r == w["rarity"] for o, r in siblings if r)
+        if not (all(w["lv1"].values()) and all(w["lv99"].values())):
+            pass
+        elif not ordered or not plausible(w["lv1"], w["lv99"]):
+            rejected.append(sid)
+        else:
             rec.update({
                 "rarity": w["rarity"],
                 "statueType": STATUE_TYPE.get(w["type"]),
@@ -135,4 +177,5 @@ doc = {
     "statues": out,
 }
 json.dump(doc, open(a.out, "w"), indent=1, ensure_ascii=False)
-print(f"{len(out)} obtainable statues; {matched} with wiki stats ({dict(by_source)}), {len(out) - matched} on defaults")
+print(f"{len(out)} obtainable statues; {matched} with wiki stats ({dict(by_source)}), {len(out) - matched} on defaults; "
+      f"rejected as implausible or out of rarity order: {sorted(set(rejected))}")

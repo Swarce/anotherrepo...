@@ -189,6 +189,7 @@ impl Collection {
                 changed = true;
             }
         }
+        changed |= self.repair_teams();
         changed
     }
 
@@ -198,7 +199,7 @@ impl Collection {
             .filter_map(|id| {
                 self.statues
                     .iter()
-                    .find(|s| s.statue_id == *id)
+                    .find(|s| s.statue_id == *id && find(&s.statue_id).is_some())
                     .map(|s| s.uid)
             })
             .take(3)
@@ -207,7 +208,7 @@ impl Collection {
             if picked.len() >= 3 {
                 break;
             }
-            if !picked.contains(&s.uid) {
+            if !picked.contains(&s.uid) && find(&s.statue_id).is_some() {
                 picked.push(s.uid);
             }
         }
@@ -220,6 +221,51 @@ impl Collection {
 
     pub fn statue(&self, uid: i64) -> Option<&OwnedStatue> {
         self.statues.iter().find(|s| s.uid == uid)
+    }
+
+    /// An owned statue the content still knows (a statue dropped from statues.json stays in the
+    /// save but is not shown or used).
+    pub fn known_statue(&self, uid: i64) -> Option<&OwnedStatue> {
+        self.statue(uid).filter(|o| find(&o.statue_id).is_some())
+    }
+
+    /// Clear team slots that point at nothing usable and refill a main team without a leader.
+    fn repair_teams(&mut self) -> bool {
+        let mut changed = false;
+        let usable: std::collections::HashSet<i64> = self
+            .statues
+            .iter()
+            .filter(|o| find(&o.statue_id).is_some())
+            .map(|o| o.uid)
+            .collect();
+        let starter = self.starter_slots();
+        for t in &mut self.teams {
+            for s in &mut t.slots {
+                if *s != 0 && !usable.contains(s) {
+                    *s = 0;
+                    changed = true;
+                }
+            }
+            if t.main && t.slots[0] == 0 {
+                t.slots = starter;
+                changed = true;
+            }
+        }
+        changed
+    }
+
+    /// Add battle EXP to the given statues, levelling them up along `exp_for_level` (capped at
+    /// MAX_LEVEL). Returns how many levels were gained in total.
+    pub fn add_statue_exp(&mut self, uids: &[i64], exp: i64) -> i64 {
+        let mut gained = 0;
+        for o in self.statues.iter_mut().filter(|o| o.uid != 0 && uids.contains(&o.uid)) {
+            o.exp = (o.exp + exp.max(0)).min(exp_for_level(MAX_LEVEL));
+            while o.level < MAX_LEVEL && o.exp >= exp_for_level(o.level + 1) {
+                o.level += 1;
+                gained += 1;
+            }
+        }
+        gained
     }
 }
 
@@ -271,7 +317,7 @@ fn empty_setting() -> Value {
 }
 
 fn setting(c: &Collection, uid: i64) -> Value {
-    match c.statue(uid) {
+    match c.known_statue(uid) {
         Some(o) => json!({ "statueuId": uid, "statueInfo": statue_info(o), "equipMindList": [],
                            "mindLinkList": [], "assistStatueList": [], "AiId": "" }),
         None => empty_setting(),
@@ -311,14 +357,18 @@ pub fn statue_setting_rows() -> Vec<Value> {
     ];
     statues()
         .iter()
-        .enumerate()
-        .map(|(i, d)| {
+        .map(|d| {
             let ids = BG
                 .iter()
                 .find(|(p, _)| *p == d.part)
                 .map(|(_, ids)| *ids)
                 .unwrap_or(&[10]);
-            json!({ "statueId": d.statue_id, "myPageId": ids[i % ids.len()], "teamScaleScalar": 1.0 })
+            // By a hash of the id, so a statue keeps its background when statues.json changes.
+            let h = d
+                .statue_id
+                .bytes()
+                .fold(0x811c_9dc5u32, |h, b| (h ^ b as u32).wrapping_mul(0x0100_0193));
+            json!({ "statueId": d.statue_id, "myPageId": ids[h as usize % ids.len()], "teamScaleScalar": 1.0 })
         })
         .collect()
 }
@@ -437,14 +487,13 @@ pub fn ap_max(rank: i64) -> i64 {
         .unwrap_or(20)
 }
 
-/// Total EXP needed for the next rank (the current threshold at the top rank).
+/// Total EXP needed for the next rank. At the top rank there is none: one past the top threshold,
+/// so a client computing `(exp - cur) / (next - cur)` never divides by zero.
 pub fn next_rank_exp(rank: i64) -> i64 {
-    ranks()
-        .iter()
-        .find(|r| r.rank == rank + 1)
-        .or_else(|| ranks().last())
-        .map(|r| r.exp)
-        .unwrap_or(100)
+    match ranks().iter().find(|r| r.rank == rank + 1) {
+        Some(r) => r.exp,
+        None => ranks().last().map(|r| r.exp + 1).unwrap_or(100),
+    }
 }
 
 /// Rows for `rank_table` (`PlayerRankTable.Param {rank, exp}`).
@@ -466,6 +515,36 @@ mod rank_tests {
         assert_eq!(rank_for_exp(40), 2);
         assert_eq!(ap_max(1), 20);
         assert_eq!(next_rank_exp(1), 40);
+        let top = ranks().last().unwrap();
+        assert!(next_rank_exp(top.rank) > top.exp, "no zero-width bar at the top rank");
+    }
+
+    #[test]
+    fn statue_exp_levels_up_and_caps() {
+        let mut c = Collection::default();
+        c.ensure("2026-01-01 00:00:00");
+        let uid = c.statues[0].uid;
+        let other = c.statues[1].uid;
+        assert_eq!(c.add_statue_exp(&[uid, 0], exp_for_level(3)), 2);
+        assert_eq!(c.statue(uid).unwrap().level, 3);
+        assert_eq!(c.statue(other).unwrap().level, 1, "only the team gains EXP");
+        c.add_statue_exp(&[uid], i64::MAX / 2);
+        assert_eq!(c.statue(uid).unwrap().level, MAX_LEVEL);
+        assert_eq!(c.statue(uid).unwrap().exp, exp_for_level(MAX_LEVEL));
+    }
+
+    #[test]
+    fn teams_drop_statues_the_content_no_longer_has() {
+        let mut c = Collection::default();
+        c.ensure("2026-01-01 00:00:00");
+        let main = c.teams.iter().position(|t| t.main && t.stage_type == 1).unwrap();
+        let leader = c.teams[main].slots[0];
+        c.statues.iter_mut().find(|s| s.uid == leader).unwrap().statue_id = "9999_99".into();
+        assert!(c.ensure("2026-01-01 00:00:00"), "repair counts as a change");
+        let t = &c.teams[main];
+        assert_ne!(t.slots[0], 0, "main team gets a leader back");
+        assert!(t.slots.iter().all(|s| *s == 0 || c.known_statue(*s).is_some()));
+        assert!(!c.ensure("2026-01-01 00:00:00"), "and is stable afterwards");
     }
 }
 

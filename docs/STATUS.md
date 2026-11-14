@@ -14,18 +14,23 @@ leader model come from the tactical main team's leader and its `statue_setting_t
   tactical main team (Jonathan, Jotaro, Josuke) is sent with login and team_info, which should give
   My Page its background (`bg_00NN` by JoJo part) and the leader model. Routes: `statue/statue_list`,
   `statue/statue_info`, `team/team_info`.
-- **Statue numbers from the wikis:** rarity, type, Lv1/Lv99 and max-tree stats for 142 of 266 statues
-  (129 from Gamerch matched exactly by leader-ability name, 13 from ShoutWiki by elimination); stats
-  per level are linear Lv1→Lv99 (the wikis' Lv99 = 10 × Lv1 for 195 of 200 statues). The rest,
-  mostly released after the 2018 snapshot, use marked defaults.
-- **Minds:** the player owns the 370 minds matched to game ids on Gamerch (rarity, cost, flat
-  stats); routes `mind/mind_list`, `mind/mind_info`.
+- **Statue numbers from the wikis:** rarity, type and Lv99 stats for 140 of 266 statues (129 from
+  Gamerch matched by leader- or assist-ability name against the game's labels, 11 from ShoutWiki by
+  elimination); Lv1 from the wiki for 35 of them, Lv99 / 10 for the rest; stats per level are linear
+  Lv1→Lv99. Two wiki records were rejected (a typo and a rarity-order conflict). The rest, mostly
+  released after the 2018 snapshot, use marked defaults.
+- **Minds:** the player owns the 417 minds matched to game ids by name on Gamerch (rarity, flat
+  stats; cost is a default for most); routes `mind/mind_list`, `mind/mind_info`.
 - **Generated master tables:** `statue_setting_table` (266 rows), `statue_level_table` (266 × 99
   levels), `rank_table` (ranks 1–99 from Gamerch).
-- **Story quests:** story button, 82 chapters (31 action, 51 tactical with stages) and 370 stages from
-  the player's files; 100 stages carry Gamerch numbers (AP, rank EXP, gold, recommended level); battles
-  are described with the player's area scenes and a wave of enemy statues; clears are recorded and
-  grant gold and rank EXP; rank-ups and AP max follow the Gamerch rank table. Routes: `bizarre_list`,
+- **Story quests:** story button, 82 chapters (29 action, 53 tactical) and 370 stages from the
+  player's files; 86 stages carry Gamerch numbers (AP, rank EXP, gold where shown, recommended level),
+  matched by chapter title; the rest have defaults kept inside the game's limits (stamina ≤ 20,
+  level ≤ 99). Battles are described with the player's area scenes and a wave of enemy statues;
+  a clear is recorded and grants gold, rank EXP and statue EXP to the team that fought, once per
+  started battle; rank-ups and AP max follow the Gamerch rank table.
+- **Saves:** every change goes through one locked read-change-write; bookkeeping (login time, play
+  counts) no longer rotates the 5 backups. Routes: `bizarre_list`,
   `stage_list`, `bizarre_start`, `bizarre_end`, `bizarre_continue`, `destruction`,
   `check_timed_chapter`, `support/support_user_s`, `clan/recommend`.
 - **Wiki fetch:** ShoutWiki (351 pages), JoJoWiki (86 pages), Gamerch via the Wayback Machine (178
@@ -34,9 +39,13 @@ leader model come from the tactical main team's leader and its `statue_setting_t
 - Build number 10, server marker `JDR_EMBEDDED_SERVER_b010`.
 
 ### Known gaps / risks (expected)
-- Battles have never run offline: enemy waves, spawn naming (`WAVE_A/01`), maps per stage and the
-  empty battle tables (skills, abilities, reactions) are untested and may fail; the stage list and
-  start/end should work.
+- Battles have never run offline and probably fail somewhere: statues carry no skills, abilities or
+  level-up table and the battle master tables are empty; enemy spawn naming (`WAVE_A`/`01`) is a
+  guess; tactical battles send no formation or AI id (the position-pattern and AI tables are not
+  generated), so tactical stages are the least likely to load. The result code for a win (0) is
+  medium confidence. The stage list should show; whether start/end work needs the device log.
+- Enemies use the wiki's recommended level, and the player's statues start at level 1 and only grow
+  from clears, so later action chapters may be too hard.
 - Enemy line-ups and rewards are defaults (the wiki shows them as images); stages after chapter 23
   and the tactical chapters have default numbers.
 - Skills and abilities are not filled yet (statue details show none).
