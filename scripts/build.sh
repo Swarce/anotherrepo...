@@ -69,11 +69,17 @@ if [[ -n "${JDR_APK:-}" && -n "${JDR_BUILD_TOOLS:-}" ]]; then
     echo "(needs JDR_KEYS and ANDROID_NDK in the same run to embed a freshly built libjdr.so; building the dev-loop APK without it)"
     embed=(--disable embed-server)
   fi
-  if [[ -n "${JDR_ART_ZIP:-}" && -n "${JDR_DATA:-}" ]]; then
-    embed+=(--art "$JDR_ART_ZIP" --data "$JDR_DATA")
+  if [[ -n "${JDR_ART_ZIP:-}" && -n "${JDR_DATA:-}" && -n "${JDR_KEYS:-}" ]]; then
+    embed+=(--keys "$JDR_KEYS" --art "$JDR_ART_ZIP" --data "$JDR_DATA")
   fi
   JDR_KEYSTORE="${JDR_KEYSTORE:-$HOME/.config/JDR/jdr-signing.p12}" \
     ./target/release/jdr-patch patch --apk "$JDR_APK" --out deliver/jdr-test.apk --force "${embed[@]}"
+  if [[ -n "${JDR_ART_ZIP:-}" ]] && python3 -c "import UnityPy" 2>/dev/null; then
+    art_tmp="$(mktemp -d)"
+    python3 -I -c 'import sys,zipfile; zipfile.ZipFile(sys.argv[1]).extractall(sys.argv[2])' "$JDR_ART_ZIP" "$art_tmp"
+    python3 -I tools/proofs/art_check.py --apk deliver/jdr-test.apk "$JDR_APK" "$(find "$art_tmp" -type d -name replacements | head -1)"
+    rm -rf "$art_tmp"
+  fi
 else
   skip "real-binary patch test (set JDR_APK and JDR_BUILD_TOOLS)"
 fi

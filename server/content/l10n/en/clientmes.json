@@ -403,11 +403,11 @@
     ],
     "clientmes:ERROR_TEXT_00500021": [
       "8450d363",
-      "The level has reached its maximum.\nNo further Enhance is possible."
+      "The level has reached its maximum.\nNo further Enhancement is possible."
     ],
     "clientmes:ERROR_TEXT_00500022": [
       "bfc48c7c",
-      "The Enhance cost does not match."
+      "The Enhancement cost does not match."
     ],
     "clientmes:ERROR_TEXT_00600001": [
       "fa6ad4c5",
@@ -491,35 +491,35 @@
     ],
     "clientmes:ERROR_TEXT_00800001": [
       "7cf78ae6",
-      "The Summon period has ended,\nso you cannot pull this Summon."
+      "The Summon period has ended,\nso you cannot summon from it."
     ],
     "clientmes:ERROR_TEXT_00800002": [
       "19ef0bcc",
-      "Your Mind Box is full,\nso you cannot pull the Summon."
+      "Your Mind Box is full,\nso you cannot summon."
     ],
     "clientmes:ERROR_TEXT_00800003": [
       "f26576bf",
-      "Not enough Diamond Coins,\nso you cannot pull the Summon."
+      "Not enough Diamond Coins,\nso you cannot summon."
     ],
     "clientmes:ERROR_TEXT_00800004": [
       "faa0d7e0",
-      "Not enough paid Diamond Coins,\nso you cannot pull the Summon."
+      "Not enough paid Diamond Coins,\nso you cannot summon."
     ],
     "clientmes:ERROR_TEXT_00800005": [
       "4ad7eabc",
-      "You have reached the pull limit,\nso you cannot pull the Summon."
+      "You have reached the pull limit,\nso you cannot summon."
     ],
     "clientmes:ERROR_TEXT_00800006": [
       "4ad7eabc",
-      "You have reached the pull limit,\nso you cannot pull the Summon."
+      "You have reached the pull limit,\nso you cannot summon."
     ],
     "clientmes:ERROR_TEXT_00800007": [
       "758e96a7",
-      "Not enough {GashaItem},\nso you cannot pull the Summon."
+      "Not enough {GashaItem},\nso you cannot summon."
     ],
     "clientmes:ERROR_TEXT_00800008": [
       "600bd44a",
-      "Your Mind Box is full,\nso you cannot pull the Summon.\nPlease free up Mind slots by powering up Statues or Minds,\nselling Minds, etc."
+      "Your Mind Box is full,\nso you cannot summon.\nPlease free up Mind slots by enhancing Statues or Minds,\nselling Minds, etc."
     ],
     "clientmes:ERROR_TEXT_00900001": [
       "b46f125e",

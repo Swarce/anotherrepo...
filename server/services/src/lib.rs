@@ -240,6 +240,11 @@ impl Ctx {
                         a.2 + l.stats.stale,
                     )
                 });
+            for l in &loc {
+                for e in l.stats.art_errors.iter().take(5) {
+                    jdr_core::log::line("art", &format!("{}: skipped: {e}", l.name));
+                }
+            }
             if let Some(a) = &self.art {
                 let (done, unmatched) = loc.iter().fold((0, 0), |x, l| {
                     (x.0 + l.stats.art, x.1 + l.stats.art_unmatched)

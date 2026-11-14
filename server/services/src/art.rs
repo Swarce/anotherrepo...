@@ -193,18 +193,26 @@ struct SpriteRef {
     file_index: usize,
     texture: i64,
     rect: (usize, usize, usize, usize),
+    file: String,
     png: Vec<u8>,
 }
 
-/// Replace sprites in a decoded bundle's nodes. Returns how many sprites were replaced; sprites in
-/// the pack that match nothing are reported in `unmatched`.
-pub fn apply(
-    nodes: &mut [Node],
-    images: &HashMap<String, &[u8]>,
-    unmatched: &mut Vec<String>,
-) -> Result<usize, Error> {
+/// What applying a pack to one bundle did.
+#[derive(Debug, Default)]
+pub struct Applied {
+    pub replaced: usize,
+    /// Indices of the serialized files that changed.
+    pub changed: std::collections::HashSet<usize>,
+    /// Images that match no sprite.
+    pub unmatched: Vec<String>,
+    /// Sprites or textures skipped (the rest of the bundle, its text included, still applies).
+    pub errors: Vec<String>,
+}
+
+/// Replace sprites in a decoded bundle's nodes.
+pub fn apply(nodes: &mut [Node], images: &HashMap<String, &[u8]>) -> Result<Applied, Error> {
     if images.is_empty() {
-        return Ok(0);
+        return Ok(Applied::default());
     }
     let mut files = Vec::new();
     for n in nodes.iter() {
@@ -214,29 +222,149 @@ pub fn apply(
             None
         });
     }
-    let res: HashMap<String, Vec<u8>> = nodes
-        .iter()
-        .filter(|n| n.flags & 4 == 0)
-        .map(|n| (n.name.clone(), n.data.clone()))
-        .collect();
-    let (count, changed) = apply_files(&mut files, &res, images, unmatched)?;
+    let r = {
+        let res: HashMap<&str, &[u8]> = nodes
+            .iter()
+            .filter(|n| n.flags & 4 == 0)
+            .map(|n| (n.name.as_str(), n.data.as_slice()))
+            .collect();
+        apply_files(&mut files, &res, images)
+    };
     for (i, (n, f)) in nodes.iter_mut().zip(files).enumerate() {
-        if let (true, Some(f)) = (changed.contains(&i), f) {
+        if let (true, Some(f)) = (r.changed.contains(&i), f) {
             n.data = f.write();
         }
     }
-    Ok(count)
+    Ok(r)
+}
+
+fn find_sprite(v: &V, file: &str, fi: usize, png: &[u8]) -> Result<SpriteRef, Error> {
+    let rd = v.get("m_RD").ok_or("sprite without m_RD")?;
+    // A separate alpha texture (ETC1 split alpha) or a rotated packing would need more than a
+    // paste into the main texture: refuse rather than draw something wrong.
+    if rd
+        .get("alphaTexture")
+        .and_then(|t| t.get("m_PathID"))
+        .and_then(V::as_i64)
+        .unwrap_or(0)
+        != 0
+    {
+        return Err(format!(
+            "{file}: sprite uses a separate alpha texture (not supported)"
+        ));
+    }
+    let settings = rd.get("settingsRaw").and_then(V::as_i64).unwrap_or(0);
+    if (settings >> 2) & 0xF != 0 {
+        return Err(format!(
+            "{file}: sprite is stored rotated in its atlas (not supported)"
+        ));
+    }
+    let tex = rd.get("texture").ok_or("sprite without texture")?;
+    if tex.get("m_FileID").and_then(V::as_i64) != Some(0) {
+        return Err(format!("{file}: atlas texture is in another file"));
+    }
+    let pid = tex
+        .get("m_PathID")
+        .and_then(V::as_i64)
+        .ok_or("bad texture ref")?;
+    let r = rd.get("textureRect").ok_or("sprite without textureRect")?;
+    let f = |k: &str| {
+        num(r.get(k))
+            .map(|x| x.round().max(0.0) as usize)
+            .ok_or_else(|| format!("{file}: bad rect"))
+    };
+    Ok(SpriteRef {
+        file_index: fi,
+        texture: pid,
+        rect: (f("x")?, f("y")?, f("width")?, f("height")?),
+        file: file.to_string(),
+        png: png.to_vec(),
+    })
+}
+
+/// Decode a texture, paste its sprites, store it as RGBA32. Returns the new object data.
+fn repaint(
+    f: &sfile::SFile,
+    pid: i64,
+    sprites: &[&SpriteRef],
+    res: &HashMap<&str, &[u8]>,
+) -> Result<(usize, Vec<u8>), Error> {
+    let oi = f
+        .objects
+        .iter()
+        .position(|o| o.path_id == pid)
+        .ok_or_else(|| format!("texture {pid} not found"))?;
+    let t = &f.types[f.objects[oi].type_index as usize];
+    if t.entry.class_id != CLASS_TEXTURE2D {
+        return Err(format!("object {pid} is not a Texture2D"));
+    }
+    let mut v = sfile::read_object(&t.nodes, &f.objects[oi].data)?;
+    let w = v.get("m_Width").and_then(V::as_i64).ok_or("no m_Width")? as usize;
+    let h = v.get("m_Height").and_then(V::as_i64).ok_or("no m_Height")? as usize;
+    let fmt = v
+        .get("m_TextureFormat")
+        .and_then(V::as_i64)
+        .ok_or("no format")?;
+    let sd = v.get("m_StreamData");
+    let sd_size = sd
+        .and_then(|s| s.get("size"))
+        .and_then(V::as_i64)
+        .unwrap_or(0) as usize;
+    let mut px = if sd_size > 0 {
+        let sd = sd.expect("stream data");
+        let off = sd.get("offset").and_then(V::as_i64).unwrap_or(0) as usize;
+        let path = sd.get("path").and_then(V::as_str).unwrap_or("");
+        let node = path.rsplit('/').next().unwrap_or(path);
+        let data = res
+            .get(node)
+            .and_then(|b| b.get(off..off + sd_size))
+            .ok_or_else(|| format!("texture data {path} not in the bundle"))?;
+        texture::decode(fmt, w, h, data)?
+    } else {
+        match v.get("image data") {
+            Some(V::Bytes(b)) => texture::decode(fmt, w, h, b)?,
+            _ => return Err("texture without image data".into()),
+        }
+    };
+    for s in sprites {
+        let (iw, ih, img) = texture::decode_png(&s.png).map_err(|e| format!("{}: {e}", s.file))?;
+        let (x, y, rw, rh) = s.rect;
+        if (iw, ih) != (rw, rh) {
+            return Err(format!(
+                "{}: image is {iw}x{ih} but its sprite is {rw}x{rh} (keep the exported size)",
+                s.file
+            ));
+        }
+        texture::paste(&mut px, w, h, &img, iw, ih, x, y)
+            .map_err(|e| format!("{}: {e}", s.file))?;
+    }
+    let set = |v: &mut V, k: &str, x: V| {
+        if let Some(f) = v.get_mut(k) {
+            *f = x;
+        }
+    };
+    set(&mut v, "m_TextureFormat", V::I(texture::FMT_RGBA32));
+    set(&mut v, "m_CompleteImageSize", V::I((w * h * 4) as i64));
+    set(&mut v, "m_MipCount", V::I(1));
+    set(&mut v, "m_MipMap", V::U(0));
+    set(&mut v, "image data", V::Bytes(px));
+    if let Some(sd) = v.get_mut("m_StreamData") {
+        set(sd, "offset", V::U(0));
+        set(sd, "size", V::U(0));
+        set(sd, "path", V::Str(Vec::new()));
+    }
+    Ok((oi, sfile::write_object(&t.nodes, &v)?))
 }
 
 /// The core of [`apply`] on parsed files (`None` = not a serialized file). Files without type trees
 /// (in-APK Resources files) must have their Texture2D/Sprite type nodes filled in by the caller.
-/// Returns the number of sprites replaced and the indices of the files changed.
+/// A sprite or texture that cannot be applied is skipped and reported; the rest still applies.
 pub fn apply_files(
     files: &mut [Option<sfile::SFile>],
-    res: &HashMap<String, Vec<u8>>,
+    res: &HashMap<&str, &[u8]>,
     images: &HashMap<String, &[u8]>,
-    unmatched: &mut Vec<String>,
-) -> Result<(usize, std::collections::HashSet<usize>), Error> {
+) -> Applied {
+    let mut out = Applied::default();
     // Pass 1: find the sprites (file name -> texture + rectangle), as the exporter named them.
     let mut seen: HashMap<String, usize> = HashMap::new();
     let mut found: Vec<SpriteRef> = Vec::new();
@@ -268,34 +396,18 @@ pub fn apply_files(
             let Some(file) = candidates.into_iter().find(|c| images.contains_key(c)) else {
                 continue;
             };
-            let rd = v.get("m_RD").ok_or("sprite without m_RD")?;
-            let tex = rd.get("texture").ok_or("sprite without texture")?;
-            if tex.get("m_FileID").and_then(V::as_i64) != Some(0) {
-                return Err(format!("{file}: atlas texture is in another file"));
+            used.insert(file.clone());
+            match find_sprite(&v, &file, fi, images[&file]) {
+                Ok(s) => found.push(s),
+                Err(e) => out.errors.push(e),
             }
-            let pid = tex
-                .get("m_PathID")
-                .and_then(V::as_i64)
-                .ok_or("bad texture ref")?;
-            let r = rd.get("textureRect").ok_or("sprite without textureRect")?;
-            let f = |k: &str| {
-                num(r.get(k))
-                    .map(|x| x.round().max(0.0) as usize)
-                    .ok_or("bad rect")
-            };
-            found.push(SpriteRef {
-                file_index: fi,
-                texture: pid,
-                rect: (f("x")?, f("y")?, f("width")?, f("height")?),
-                png: images[&file].to_vec(),
-            });
-            used.insert(file);
         }
     }
-    unmatched.extend(images.keys().filter(|k| !used.contains(*k)).cloned());
-    if found.is_empty() {
-        return Ok((0, Default::default()));
-    }
+    out.unmatched = images
+        .keys()
+        .filter(|k| !used.contains(*k))
+        .cloned()
+        .collect();
     // Pass 2: per texture, decode, paste, store as RGBA32.
     let mut by_tex: BTreeMap<(usize, i64), Vec<&SpriteRef>> = BTreeMap::new();
     for s in &found {
@@ -303,73 +415,16 @@ pub fn apply_files(
     }
     for ((fi, pid), sprites) in by_tex {
         let f = files[fi].as_mut().expect("serialized file");
-        let oi = f
-            .objects
-            .iter()
-            .position(|o| o.path_id == pid)
-            .ok_or_else(|| format!("texture {pid} not found"))?;
-        let t = &f.types[f.objects[oi].type_index as usize];
-        if t.entry.class_id != CLASS_TEXTURE2D {
-            return Err(format!("object {pid} is not a Texture2D"));
-        }
-        let tnodes = t.nodes.clone();
-        let mut v = sfile::read_object(&tnodes, &f.objects[oi].data)?;
-        let w = v.get("m_Width").and_then(V::as_i64).ok_or("no m_Width")? as usize;
-        let h = v.get("m_Height").and_then(V::as_i64).ok_or("no m_Height")? as usize;
-        let fmt = v
-            .get("m_TextureFormat")
-            .and_then(V::as_i64)
-            .ok_or("no format")?;
-        let sd = v.get("m_StreamData");
-        let sd_size = sd
-            .and_then(|s| s.get("size"))
-            .and_then(V::as_i64)
-            .unwrap_or(0) as usize;
-        let data: Vec<u8> = if sd_size > 0 {
-            let sd = sd.expect("stream data");
-            let off = sd.get("offset").and_then(V::as_i64).unwrap_or(0) as usize;
-            let path = sd.get("path").and_then(V::as_str).unwrap_or("");
-            let node = path.rsplit('/').next().unwrap_or(path);
-            res.get(node)
-                .and_then(|b| b.get(off..off + sd_size))
-                .ok_or_else(|| format!("texture data {path} not in the bundle"))?
-                .to_vec()
-        } else {
-            match v.get("image data") {
-                Some(V::Bytes(b)) => b.clone(),
-                _ => return Err("texture without image data".into()),
+        match repaint(f, pid, &sprites, res) {
+            Ok((oi, data)) => {
+                f.objects[oi].data = data;
+                out.replaced += sprites.len();
+                out.changed.insert(fi);
             }
-        };
-        let mut px = texture::decode(fmt, w, h, &data)?;
-        for s in &sprites {
-            let (iw, ih, img) = texture::decode_png(&s.png)?;
-            let (x, y, rw, rh) = s.rect;
-            if (iw, ih) != (rw, rh) {
-                return Err(format!(
-                    "image is {iw}x{ih} but its sprite is {rw}x{rh} (keep the exported size)"
-                ));
-            }
-            texture::paste(&mut px, w, h, &img, iw, ih, x, y)?;
+            Err(e) => out.errors.push(format!("texture {pid}: {e}")),
         }
-        let set = |v: &mut V, k: &str, x: V| {
-            if let Some(f) = v.get_mut(k) {
-                *f = x;
-            }
-        };
-        set(&mut v, "m_TextureFormat", V::I(texture::FMT_RGBA32));
-        set(&mut v, "m_CompleteImageSize", V::I((w * h * 4) as i64));
-        set(&mut v, "m_MipCount", V::I(1));
-        set(&mut v, "m_MipMap", V::U(0));
-        set(&mut v, "image data", V::Bytes(px));
-        if let Some(sd) = v.get_mut("m_StreamData") {
-            set(sd, "offset", V::U(0));
-            set(sd, "size", V::U(0));
-            set(sd, "path", V::Str(Vec::new()));
-        }
-        f.objects[oi].data = sfile::write_object(&tnodes, &v)?;
     }
-    let changed: std::collections::HashSet<usize> = found.iter().map(|s| s.file_index).collect();
-    Ok((found.len(), changed))
+    out
 }
 
 #[cfg(test)]

@@ -6,6 +6,7 @@ rebuilt (RGBA32) texture must equal the PNG exactly; every other pixel must equa
 texture as UnityPy decodes it (so our ETC decoder and the paste touch nothing else).
 
 usage: python3 tools/proofs/art_check.py <state dir (with l10n/gen and l10n/orig)> <replacements dir>
+       python3 tools/proofs/art_check.py --apk <patched.apk> <original.apk> <replacements dir>
 requires: pip install UnityPy (with texture2ddecoder), Pillow
 """
 import glob
@@ -15,6 +16,29 @@ import sys
 
 import UnityPy
 from PIL import Image, ImageChops
+
+if sys.argv[1] == "--apk":
+    # In-APK screens: every apk_<file> image must equal its sprite in the patched APK, and the
+    # textures must be RGBA32.
+    import zipfile
+    patched, original, reps = zipfile.ZipFile(sys.argv[2]), zipfile.ZipFile(sys.argv[3]), sys.argv[4]
+    n = 0
+    for b in sorted(d for d in os.listdir(reps) if d.startswith("apk_")):
+        env = UnityPy.load(patched.read("assets/bin/Data/" + b[4:]))
+        sprites = {o.read().m_Name: o.read() for o in env.objects if o.type.name == "Sprite"}
+        for f in sorted(os.listdir(os.path.join(reps, b, "sprites"))):
+            s = sprites[f[:-4]]
+            t = s.m_RD.texture.read()
+            assert int(t.m_TextureFormat) == 4, (b, f, t.m_TextureFormat)
+            img = t.image.convert("RGBA")
+            r, h = s.m_RD.textureRect, img.height
+            box = (int(round(r.x)), int(round(h - r.y - r.height)), int(round(r.x + r.width)), int(round(h - r.y)))
+            png = Image.open(os.path.join(reps, b, "sprites", f)).convert("RGBA")
+            assert ImageChops.difference(img.crop(box), png).getbbox() is None, (b, f)
+            n += 1
+    assert n > 0, "no in-APK images in the pack"
+    print(f"OK: {n} redrawn sprites in the APK's own screens match their PNGs exactly (RGBA32)")
+    sys.exit(0)
 
 state, reps = sys.argv[1], sys.argv[2]
 
@@ -30,7 +54,7 @@ def bundle_name(env):
     return None
 
 
-checked = textures = 0
+checked = textures = compared = 0
 for gen in sorted(glob.glob(os.path.join(state, "l10n", "gen", "*.bytes"))):
     env = UnityPy.load(gen)
     name = bundle_name(env)
@@ -71,7 +95,8 @@ for gen in sorted(glob.glob(os.path.join(state, "l10n", "gen", "*.bytes"))):
             diff = ImageChops.difference(ot, img)
             diff.paste((0, 0, 0, 0), mask=mask)
             assert diff.getbbox() is None, (name, t.m_Name, "pixels outside the sprites changed", diff.getbbox())
+            compared += 1
         textures += 1
 assert checked > 0, "no replaced sprites found"
 print(f"OK: {checked} redrawn sprites match their PNGs exactly in {textures} RGBA32 textures; "
-      "everything else in those textures equals the original")
+      f"in {compared} of them (originals not encrypted) everything else equals the original")
