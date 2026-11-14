@@ -36,6 +36,10 @@ pub struct StatueDef {
     pub statue_type: Option<i64>,
     pub lv1: Option<Stats>,
     pub lv99: Option<Stats>,
+    /// Tactical basic attack skill id, chosen from the statue's action sets in the player's files
+    /// (`tools/content/build_statues.py`).
+    #[serde(rename = "dtAttack", default)]
+    pub dt_attack: Option<String>,
 }
 
 impl StatueDef {
@@ -325,12 +329,46 @@ pub const BASIC_ATTACK: &str = "JDR_ATK_00";
 /// `statue_info` for a battle unit: with the basic attack.
 pub fn battle_statue_info(o: &OwnedStatue) -> Value {
     let mut v = statue_info(o);
-    v["dtSkillList"] = json!([basic_attack()]);
+    v["dtSkillList"] = json!([basic_attack(&attack_skill(&o.statue_id))]);
     v
 }
 
-fn basic_attack() -> Value {
-    json!({ "skillId": BASIC_ATTACK, "skillLevel": 1, "name": "", "explanation": "",
+/// The statue's own attack (its `dtAttack`), else our fallback `JDR_ATK_00`.
+pub fn attack_skill(statue_id: &str) -> String {
+    find(statue_id)
+        .and_then(|d| d.dt_attack.clone())
+        .unwrap_or_else(|| BASIC_ATTACK.to_string())
+}
+
+/// The base skill table (server/content/dt_skills_base.json) plus one attack row per distinct
+/// statue attack id: a copy of `JDR_ATK_00` with `dtSkillId` and `viewSkillId` set to the id, so the
+/// client plays the statue's own attack action set (skill number 99 means ATTACK).
+pub const DT_SKILLS_BASE: &str = include_str!("../../content/dt_skills_base.json");
+
+pub fn dt_skill_table() -> Value {
+    let mut doc: Value = serde_json::from_str(DT_SKILLS_BASE).unwrap_or(Value::Null);
+    let template = doc["data"]["skillDataList"]
+        .as_array()
+        .and_then(|l| l.iter().find(|r| r["dtSkillId"] == BASIC_ATTACK))
+        .cloned()
+        .unwrap_or(Value::Null);
+    let ids: std::collections::BTreeSet<String> = statues()
+        .iter()
+        .filter_map(|d| d.dt_attack.clone())
+        .collect();
+    if let Some(list) = doc["data"]["skillDataList"].as_array_mut() {
+        for id in ids {
+            let mut row = template.clone();
+            row["dtSkillId"] = json!(id);
+            row["viewSkillId"] = json!(id);
+            list.push(row);
+        }
+    }
+    doc
+}
+
+fn basic_attack(id: &str) -> Value {
+    json!({ "skillId": id, "skillLevel": 1, "name": "", "explanation": "",
             "skillType": 1, "bottunType": 1, "coolDown": 0, "limitCount": 0,
             "magnificationLv01": 0, "magnificationLv10": 0, "pvpMagnificationLv01": 0,
             "pvpMagnificationLv10": 0, "skillParamList": [], "isInit": false })
@@ -470,6 +508,7 @@ mod tests {
                 atk: 100,
                 def: 200,
             }),
+            dt_attack: None,
         };
         assert_eq!(d.stats_at(1).hp, 100);
         assert_eq!(d.stats_at(99).hp, 1000);
