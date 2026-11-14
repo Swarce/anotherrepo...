@@ -28,6 +28,18 @@ pub fn item_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "itemList": [] }))
 }
 
+/// `NotifyListResponse`: no notice pages offline (the client opens these URLs in a web view).
+pub fn notify_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
+    ok(json!({ "updateUrl": "", "failureUrl": "", "otherUrl": "",
+               "updateNewFlg": 0, "failureNewFlg": 0, "otherNewFlg": 0 }))
+}
+
+/// `GashaListResponse`: no summon banners yet (the Gamerch banner data is not served yet).
+pub fn gasha_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let p = crate::services::statue::profile(ctx, env)?;
+    ok(json!({ "gashaList": [], "itemList": [], "userInfo": crate::services::user::user_info(&p) }))
+}
+
 /// `ShopListResponse`: no in-game shops or goods, nothing paid, no charge cap.
 pub fn shop_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "shopList": [], "itemList": [], "pay": 0, "maxChargeDc": 0 }))
