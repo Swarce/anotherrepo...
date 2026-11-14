@@ -1,0 +1,132 @@
+{
+ "asset": "dtbattle_skill_data_table",
+ "about": "Tactical battle skills. SKILL_000_01 (unit change) and SKILL_000_02 (cancel) are attached by the client to every unit and must exist; JDR_ATK_00 is our basic attack, given to every statue until real skill data exists. Each skill names a category row. Buff, buff-effect and counter lists stay empty.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/11-battle-and-positions.md",
+   "note": "which fields the tactical battle reads, and the values that would zero damage or crash"
+  },
+  {
+   "source": "jdr-default",
+   "note": "skill numbers and the JDR_ATK_00/JDR_CAT_* ids are ours; SKILL_000_01/02 are the client's fixed ids"
+  }
+ ],
+ "data": {
+  "skillDataList": [
+   {
+    "dtSkillId": "SKILL_000_01",
+    "viewSkillId": "",
+    "dtSkillName": "",
+    "dtSkillProfileText": "",
+    "dtSkillType": 5,
+    "dtButtonType": 1,
+    "useSP": 0,
+    "skillWait": 0,
+    "damageRank": 0,
+    "dtLimitCount": 0,
+    "dtMinCoolTurn": 0,
+    "dtMaxCoolTurn": 0,
+    "hitRate": 100,
+    "hitFlag": 0,
+    "criticalRate": 0,
+    "dododoRate": 0,
+    "dtCamera": "",
+    "dtPositioning": 0,
+    "dtRange": 0,
+    "mainSkillCategory": "JDR_CAT_CHANGE",
+    "subSkillCategory": "",
+    "useWorld": 0,
+    "useKing": 0,
+    "forceNormalCamera": 0,
+    "skillClass": "",
+    "dtRangeMin": 0,
+    "dtRangeMax": 0
+   },
+   {
+    "dtSkillId": "SKILL_000_02",
+    "viewSkillId": "",
+    "dtSkillName": "",
+    "dtSkillProfileText": "",
+    "dtSkillType": 4,
+    "dtButtonType": 1,
+    "useSP": 0,
+    "skillWait": 0,
+    "damageRank": 0,
+    "dtLimitCount": 0,
+    "dtMinCoolTurn": 0,
+    "dtMaxCoolTurn": 0,
+    "hitRate": 100,
+    "hitFlag": 0,
+    "criticalRate": 0,
+    "dododoRate": 0,
+    "dtCamera": "",
+    "dtPositioning": 0,
+    "dtRange": 0,
+    "mainSkillCategory": "JDR_CAT_PASS",
+    "subSkillCategory": "",
+    "useWorld": 0,
+    "useKing": 0,
+    "forceNormalCamera": 0,
+    "skillClass": "",
+    "dtRangeMin": 0,
+    "dtRangeMax": 0
+   },
+   {
+    "dtSkillId": "JDR_ATK_00",
+    "viewSkillId": "",
+    "dtSkillName": "",
+    "dtSkillProfileText": "",
+    "dtSkillType": 1,
+    "dtButtonType": 1,
+    "useSP": 0,
+    "skillWait": 0,
+    "damageRank": 1,
+    "dtLimitCount": 0,
+    "dtMinCoolTurn": 0,
+    "dtMaxCoolTurn": 0,
+    "hitRate": 100,
+    "hitFlag": 1,
+    "criticalRate": 5,
+    "dododoRate": 0,
+    "dtCamera": "",
+    "dtPositioning": 0,
+    "dtRange": 0,
+    "mainSkillCategory": "JDR_CAT_ATK",
+    "subSkillCategory": "",
+    "useWorld": 0,
+    "useKing": 0,
+    "forceNormalCamera": 0,
+    "skillClass": "",
+    "dtRangeMin": 0,
+    "dtRangeMax": 0
+   }
+  ],
+  "categoryList": [
+   {
+    "dtSkillCategoryId": "JDR_CAT_ATK",
+    "TargetType": 1,
+    "ProcessType": 1,
+    "turn": 0,
+    "paramList": []
+   },
+   {
+    "dtSkillCategoryId": "JDR_CAT_PASS",
+    "TargetType": 5,
+    "ProcessType": 0,
+    "turn": 0,
+    "paramList": []
+   },
+   {
+    "dtSkillCategoryId": "JDR_CAT_CHANGE",
+    "TargetType": 6,
+    "ProcessType": 7,
+    "turn": 0,
+    "paramList": []
+   }
+  ],
+  "buffList": [],
+  "buffEffList": [],
+  "counterList": []
+ }
+}
