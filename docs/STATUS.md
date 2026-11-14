@@ -61,14 +61,19 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
   cameras need real rows (M4 content) and the battle tables.
 - `rank_table` exists but is empty: player-rank lookups return a zero row (battle-result exp bar).
 
-### Device checklist — expected; to be confirmed on a device
-- [ ] `[assets] versionfile built: 13480 entries …; in_memory_master_data: 17 tables (tutorial_flag_table 34 rows)`
-- [ ] `[cdn] GET /cdn/0a59….bytes 200 … (generated in_memory_master_data)`
-- [ ] Past the loading screen: `/api/user/user_info`, `/api/team/team_info`, `/api/info/*` follow
-- [ ] MyPage appears (no leader model expected); footer menus respond
-- [ ] Any `UNKNOWN ROUTE` lines; logcat exceptions after the last request
-- [ ] Later screens that read empty tables (gacha, formation, statue detail, glossary): blank
-      values expected; note any crash
+### Device result (Galaxy S22, Android 16) — confirmed by device log
+- [x] `versionfile built: 13480 entries, 1845 KiB; in_memory_master_data: 17 tables
+      (tutorial_flag_table 34 rows), 32 KiB; 1061 ms` (in the background, before the title).
+- [x] `[cdn] GET /cdn/0a59….bytes 200 out=33596B (generated in_memory_master_data)`: the client
+      accepted the generated tables (our MonoScripts and type trees) and left TitleLoad.
+- [x] **MyPage reached** (owner: "We got to the menu"): `product_list`, `banner_list`, `user_info`,
+      `team_info`, `check_forced_notify`, `event_list`, `bizarre_resumption`, `get_loginbonus`,
+      `get_menu_notify`, then menu navigation (present box, follow list, items, shop).
+- [x] No tutorial ran (the 34-flag table + all-ones `get_tutorial_step` work as intended).
+- Unknown routes hit (answered with an empty OK): `bizarre/get_bizarre_select`,
+  `present/present_list`, `follow/follow_list`, `item/item_list`, `shop/shop_list`. Next build adds
+  proper handlers.
+- Import re-run was a no-op (13,480 already fine, 10 s); the staging folder can be deleted.
 
 ## Build 05 — keep the game files, import them, review fixes (branch `wip/b05`)
 
