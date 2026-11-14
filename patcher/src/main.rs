@@ -139,6 +139,9 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
         .filter(|w| w[0] == "--disable")
         .map(|w| w[1].as_str())
         .collect();
+    if cfg.server_url != Config::default().server_url && !disabled.contains(&"embed-server") {
+        return Err("--port only works for the dev-loop APK (--disable embed-server): the in-game server always listens on 18080".into());
+    }
     for d in &disabled {
         if !patches::all().iter().any(|p| p.id() == *d) {
             return Err(format!("unknown patch id {d:?} (see `jdr-patch list`)").into());
@@ -225,7 +228,7 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
     }
     if !disabled.contains(&"embed-server") {
         let main = chk.read(patches::LIBMAIN_ARM64)?;
-        let needed = jdr_patch::elf::Elf::parse(&main)?.needed()?;
+        let needed = jdr_patch::elf::needed_of(&main)?;
         if !needed.iter().any(|n| n == "libjdr.so") || needed.iter().any(|n| n == "liblog.so") {
             return Err(format!("post-check failed: libmain.so NEEDED is {needed:?}").into());
         }

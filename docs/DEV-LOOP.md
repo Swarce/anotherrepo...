@@ -103,6 +103,13 @@ adb reverse tcp:18080 tcp:18080
 Start the game. The server prints one line per request; unknown endpoints are marked
 `UNKNOWN ROUTE`.
 
+When you switch back to an APK with the in-game server, remove the reverse first, or adb keeps
+port 18080 on the phone and the in-game server cannot start:
+
+```bash
+adb reverse --remove-all
+```
+
 ## Logs to send
 
 - `local/server/logs/server-*.log` (newest)
