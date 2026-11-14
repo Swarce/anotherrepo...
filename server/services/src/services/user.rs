@@ -19,10 +19,15 @@ fn date(t: i64) -> String {
 }
 
 pub fn user_info_mini(p: &Profile) -> Value {
+    // The card shows the tactical main team's leader.
+    let leader = crate::collection::main_team(&p.collection, 1)
+        .and_then(|t| p.collection.known_statue(t.slots[0]))
+        .map(crate::collection::statue_info)
+        .unwrap_or_else(|| json!({ "statueId": "" }));
     json!({
         "id": p.user_id, "username": p.username, "userRank": p.rank, "clanId": 0, "clanName": "",
         "position": 0, "comment": p.comment, "lastLoginAt": date(p.last_login_at), "followNum": 0,
-        "followerNum": 0, "followStatus": 0, "equipMindList": [], "supportSkillId": "",
+        "followerNum": 0, "followStatus": 0, "statueInfo": leader, "equipMindList": [], "supportSkillId": "",
         "leaderAblityId": "", "availableAt": "", "friendPoint": 0
     })
 }
