@@ -71,6 +71,16 @@ pub struct Progress {
     pub cleared: BTreeSet<String>,
     #[serde(default)]
     pub play_counts: std::collections::BTreeMap<String, i64>,
+    /// The battle started and not yet ended: `bizarre_end` pays out only for it, once.
+    #[serde(default)]
+    pub pending: Option<PendingBattle>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub struct PendingBattle {
+    pub stage_id: String,
+    pub stage_type: i64,
+    pub team_num: i64,
 }
 
 const OPEN: &str = "2020-01-01 00:00:00";
@@ -96,7 +106,7 @@ pub fn chapter_info(c: &ChapterDef, p: &Progress) -> Value {
         .map(|s| {
             json!({ "stageId": s.stage_id, "clearFlg": p.cleared.contains(&s.stage_id) as i64,
                     "specialRewardFlg": 0, "playCount": p.play_counts.get(&s.stage_id).copied().unwrap_or(0),
-                    "isRaid": false })
+                    "isRaid": 0 })
         })
         .collect();
     json!({
@@ -135,7 +145,7 @@ pub fn stage_info(c: &ChapterDef, s: &StageDef, n: usize, p: &Progress) -> Value
         "bossDropItemSet": [], "useStamina": s.use_stamina, "gainRankExp": s.gain_rank_exp,
         "mindGashaPoint": 0, "playCount": p.play_counts.get(&s.stage_id).copied().unwrap_or(0),
         "clearFlg": cleared as i64, "clearCount": cleared as i64, "clearRank": if cleared { 4 } else { 0 },
-        "specialRewardFlg": 0, "questTips": {}, "meisyoId": "", "limitTime": 0, "endureTime": 0,
+        "specialRewardFlg": 0, "questTips": {}, "meisyoId": 0, "limitTime": 0, "endureTime": 0,
         "enemyList": s.enemies.iter().map(|e| enemy_info(e, s.enemy_level)).collect::<Vec<_>>(),
         "staminaCoefficientList": { "rate": 1.0, "add": 0 },
         "expCoefficientList": { "rate": 1.0, "add": 0 },
@@ -183,7 +193,7 @@ pub fn area_list(c: &ChapterDef, s: &StageDef) -> Vec<Value> {
             json!({
                 "areaNum": i + 1, "areaId": area, "areaScene": area.to_uppercase(),
                 "areaEventId": "", "endEventId": "", "bizarreEffectId": "", "mapId": s.map_id,
-                "dayNight": 0, "vampireDayNight": 0, "mapCamera": "", "startCamera": "", "bgmCueId": "",
+                "dayNight": 0, "vampireDayNight": 0, "mapCamera": 0, "startCamera": 0, "bgmCueId": 0,
                 "rotate": 0, "levelEditId": "", "instanceObjType": 0, "startWipe": 1, "endWipe": 1,
                 "clearWaveNum": 1, "limitTime": 0, "endureTime": 0,
                 "waveList": if c.stage_type == 0 { waves } else { Vec::new() },
@@ -195,11 +205,12 @@ pub fn area_list(c: &ChapterDef, s: &StageDef) -> Vec<Value> {
         .collect()
 }
 
-/// Team by number and battle type (falls back to the main team of that type).
+/// Team by number and battle type; a missing team or one without a leader falls back to the main
+/// team of that type.
 pub fn team_for(c: &Collection, stage_type: i64, team_no: i64) -> Option<&collection::Team> {
     c.teams
         .iter()
-        .find(|t| t.stage_type == stage_type && t.team_num == team_no)
+        .find(|t| t.stage_type == stage_type && t.team_num == team_no && t.slots[0] != 0)
         .or_else(|| collection::main_team(c, stage_type))
 }
 

@@ -425,9 +425,16 @@ pub fn build(
 /// Build from the embedded schema and content.
 /// Tables generated from other content (the statue roster): (asset, content-file JSON).
 pub fn generated_tables() -> Vec<(String, String)> {
-    let src = serde_json::json!([{ "source": "jdr-default",
-        "note": "generated from server/content/statues.json (stats from the wikis where matched)" }]);
-    let doc = |asset: &str, rows: Vec<Value>| {
+    // Each generated table carries the sources of the content file its rows come from.
+    let sources_of = |content: &str| -> Value {
+        serde_json::from_str::<Value>(content)
+            .ok()
+            .and_then(|v| v.get("sources").cloned())
+            .unwrap_or(Value::Null)
+    };
+    let statue_src = sources_of(crate::collection::STATUES_JSON);
+    let rank_src = sources_of(crate::collection::RANKS_JSON);
+    let doc = |asset: &str, src: &Value, rows: Vec<Value>| {
         serde_json::json!({ "asset": asset, "sources": src, "data": { "paramList": rows } })
             .to_string()
     };
@@ -436,16 +443,21 @@ pub fn generated_tables() -> Vec<(String, String)> {
             "statue_setting_table".into(),
             doc(
                 "statue_setting_table",
+                &statue_src,
                 crate::collection::statue_setting_rows(),
             ),
         ),
         (
             "statue_level_table".into(),
-            doc("statue_level_table", crate::collection::statue_level_rows()),
+            doc(
+                "statue_level_table",
+                &statue_src,
+                crate::collection::statue_level_rows(),
+            ),
         ),
         (
             "rank_table".into(),
-            doc("rank_table", crate::collection::rank_rows()),
+            doc("rank_table", &rank_src, crate::collection::rank_rows()),
         ),
     ]
 }
@@ -464,6 +476,42 @@ mod tests {
     use super::*;
     use jdr_unity::serialized::parse_types;
     use jdr_unity::writer::W;
+
+    /// The content files the server reads directly (not through the schema) follow the same rule
+    /// as master-data content: a valid file-level `sources` list, and every record cites a source
+    /// that is valid by itself.
+    #[test]
+    fn content_files_cite_their_sources() {
+        let files = [
+            ("statues", crate::collection::STATUES_JSON, "statues"),
+            ("minds", crate::collection::MINDS_JSON, "minds"),
+            ("ranks", crate::collection::RANKS_JSON, ""),
+            ("quests", crate::quests::QUESTS_JSON, "chapters"),
+        ];
+        for (name, js, records) in files {
+            let v: Value = serde_json::from_str(js).unwrap();
+            check_sources(&v).unwrap_or_else(|e| panic!("{name}.json: {e}"));
+            if records.is_empty() {
+                continue;
+            }
+            let mut list: Vec<&Value> = v[records].as_array().unwrap().iter().collect();
+            if name == "quests" {
+                list = list
+                    .iter()
+                    .flat_map(|c| c["stages"].as_array().unwrap())
+                    .collect();
+            }
+            assert!(!list.is_empty(), "{name}.json has no records");
+            for (i, r) in list.iter().enumerate() {
+                let one = serde_json::json!({ "sources": [r["source"].clone()] });
+                check_sources(&one).unwrap_or_else(|e| panic!("{name}.json record {i}: {e}"));
+            }
+        }
+        for (asset, js) in generated_tables() {
+            let v: Value = serde_json::from_str(&js).unwrap();
+            check_sources(&v).unwrap_or_else(|e| panic!("generated {asset}: {e}"));
+        }
+    }
     use serde_json::json;
 
     fn fake_type(class_id: i32) -> TypeEntry {

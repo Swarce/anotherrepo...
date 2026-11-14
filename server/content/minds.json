@@ -694,6 +694,20 @@
    }
   },
   {
+   "mindId": "1034",
+   "rarity": 3,
+   "cost": 9,
+   "hp": 510,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "1035",
    "rarity": 3,
    "cost": 9,
@@ -1378,6 +1392,34 @@
    }
   },
   {
+   "mindId": "4023",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "4024",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "4025",
    "rarity": 4,
    "cost": 12,
@@ -1503,6 +1545,20 @@
   },
   {
    "mindId": "4035",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "4036",
    "rarity": 4,
    "cost": 12,
    "hp": 0,
@@ -1710,6 +1766,19 @@
    }
   },
   {
+   "mindId": "4059",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%81%9F%E3%81%A8%E3%81%88100%E5%86%86%E7%8E%89%E3%81%A0%E3%82%8D%E3%83%BC%E3%81%A8............",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
    "mindId": "4060",
    "rarity": 4,
    "cost": 12,
@@ -1836,6 +1905,20 @@
   },
   {
    "mindId": "4070",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "4071",
    "rarity": 4,
    "cost": 12,
    "hp": 0,
@@ -2030,6 +2113,34 @@
    }
   },
   {
+   "mindId": "4091",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "4092",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "4094",
    "rarity": 4,
    "cost": 12,
@@ -2072,6 +2183,62 @@
    }
   },
   {
+   "mindId": "4098",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "4099",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "4100",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "4102",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "4103",
    "rarity": 4,
    "cost": 12,
@@ -2101,6 +2268,20 @@
   },
   {
    "mindId": "4106",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "4108",
    "rarity": 4,
    "cost": 12,
    "hp": 0,
@@ -2212,6 +2393,20 @@
    }
   },
   {
+   "mindId": "4116",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "4117",
    "rarity": 4,
    "cost": 12,
@@ -2235,6 +2430,20 @@
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "4124",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%81%B0...%E3%81%B0%E3%81%8B%E3%81%AA%EF%BC%81%E3%81%A8...%E6%99%82%E3%82%92%E6%AD%A2%E3%82%81%E3%81%9F%E3%81%A0%E3%81%A8%E3%82%A9.........%EF%BC%9F",
     "accessed": "2026-11-14",
     "note": "cost = 3 x rarity (jdr-default)"
    }
@@ -2478,6 +2687,20 @@
    }
   },
   {
+   "mindId": "7020",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 800,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "7021",
    "rarity": 3,
    "cost": 9,
@@ -2606,6 +2829,20 @@
    "rarity": 3,
    "cost": 9,
    "hp": 590,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "7039",
+   "rarity": 3,
+   "cost": 9,
+   "hp": 420,
    "atk": 0,
    "def": 0,
    "source": {
@@ -2769,6 +3006,19 @@
    }
   },
   {
+   "mindId": "7087",
+   "rarity": 3,
+   "cost": 8,
+   "hp": 320,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%81%BE%E3%81%8E%E3%82%8C%E3%82%82%E3%81%AA%E3%81%84%E3%83%92%E3%83%BC%E3%83%AD%E3%83%BC%EF%BC%81JOJO%EF%BC%81",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
    "mindId": "7088",
    "rarity": 2,
    "cost": 6,
@@ -2838,6 +3088,20 @@
    }
   },
   {
+   "mindId": "7097",
+   "rarity": 3,
+   "cost": 9,
+   "hp": 290,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "7098",
    "rarity": 3,
    "cost": 9,
@@ -2872,6 +3136,20 @@
    "hp": 860,
    "atk": 0,
    "def": 500,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "7101",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 420,
+   "atk": 870,
+   "def": 0,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -2931,6 +3209,20 @@
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%862",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "7109",
+   "rarity": 1,
+   "cost": 3,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%861",
     "accessed": "2026-11-14",
     "note": "cost = 3 x rarity (jdr-default)"
    }
@@ -3214,6 +3506,20 @@
    }
   },
   {
+   "mindId": "7175",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "7177",
    "rarity": 3,
    "cost": 9,
@@ -3293,6 +3599,20 @@
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "7189",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 600,
+   "atk": 0,
+   "def": 780,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
     "accessed": "2026-11-14",
     "note": "cost = 3 x rarity (jdr-default)"
    }
@@ -3575,6 +3895,19 @@
    }
   },
   {
+   "mindId": "7241",
+   "rarity": 3,
+   "cost": 8,
+   "hp": 600,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%8F%E3%81%97%E3%82%89%E3%82%82%E5%8B%95%E3%81%8B%E3%81%AD%E3%81%B0%E3%81%AA%E3%82%89%E3%82%93%E3%82%88%E3%81%86%E3%81%98%E3%82%83%E3%81%AE...",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
    "mindId": "7243",
    "rarity": 3,
    "cost": 8,
@@ -3756,6 +4089,20 @@
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%BA%E3%82%AD%E3%83%A5%E3%82%A6%E3%82%A5%E3%82%A5%E3%83%B3",
     "accessed": "2026-11-14"
+   }
+  },
+  {
+   "mindId": "7293",
+   "rarity": 3,
+   "cost": 9,
+   "hp": 0,
+   "atk": 250,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
    }
   },
   {
@@ -4078,6 +4425,20 @@
    }
   },
   {
+   "mindId": "7322",
+   "rarity": 3,
+   "cost": 9,
+   "hp": 0,
+   "atk": 0,
+   "def": 620,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "7329",
    "rarity": 4,
    "cost": 12,
@@ -4162,6 +4523,20 @@
    }
   },
   {
+   "mindId": "7341",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "7342",
    "rarity": 3,
    "cost": 9,
@@ -4218,6 +4593,20 @@
    }
   },
   {
+   "mindId": "7353",
+   "rarity": 3,
+   "cost": 9,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "7354",
    "rarity": 3,
    "cost": 9,
@@ -4246,7 +4635,35 @@
    }
   },
   {
+   "mindId": "7364",
+   "rarity": 3,
+   "cost": 9,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "7365",
+   "rarity": 3,
+   "cost": 9,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "7366",
    "rarity": 3,
    "cost": 9,
    "hp": 0,
@@ -4269,6 +4686,20 @@
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "7390",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
     "accessed": "2026-11-14",
     "note": "cost = 3 x rarity (jdr-default)"
    }
@@ -4330,7 +4761,35 @@
    }
   },
   {
+   "mindId": "7398",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "7400",
+   "rarity": 3,
+   "cost": 9,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "7401",
    "rarity": 3,
    "cost": 9,
    "hp": 0,
@@ -4442,6 +4901,20 @@
    }
   },
   {
+   "mindId": "7424",
+   "rarity": 3,
+   "cost": 9,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "7425",
    "rarity": 3,
    "cost": 9,
@@ -4544,6 +5017,20 @@
    "rarity": 4,
    "cost": 12,
    "hp": 2078,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "7448",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 1800,
    "atk": 0,
    "def": 0,
    "source": {
@@ -4750,6 +5237,20 @@
    }
   },
   {
+   "mindId": "7492",
+   "rarity": 3,
+   "cost": 9,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "7497",
    "rarity": 4,
    "cost": 12,
@@ -4764,6 +5265,20 @@
    }
   },
   {
+   "mindId": "7498",
+   "rarity": 3,
+   "cost": 9,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "7499",
    "rarity": 3,
    "cost": 9,
@@ -4773,6 +5288,48 @@
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "7511",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "7512",
+   "rarity": 3,
+   "cost": 9,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "7536",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E8%A6%8B%E3%81%A6%E3%81%97%E3%81%BE%E3%81%A3%E3%81%9F%E3%81%8B......",
     "accessed": "2026-11-14",
     "note": "cost = 3 x rarity (jdr-default)"
    }
@@ -4876,6 +5433,20 @@
    }
   },
   {
+   "mindId": "8047",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "8067",
    "rarity": 3,
    "cost": 9,
@@ -4932,6 +5503,48 @@
    }
   },
   {
+   "mindId": "8071",
+   "rarity": 3,
+   "cost": 9,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "8072",
+   "rarity": 3,
+   "cost": 9,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "8075",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "8076",
    "rarity": 4,
    "cost": 12,
@@ -4960,6 +5573,34 @@
    }
   },
   {
+   "mindId": "8078",
+   "rarity": 3,
+   "cost": 9,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "8081",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
    "mindId": "8082",
    "rarity": 3,
    "cost": 9,
@@ -4969,6 +5610,20 @@
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost = 3 x rarity (jdr-default)"
+   }
+  },
+  {
+   "mindId": "8085",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
     "accessed": "2026-11-14",
     "note": "cost = 3 x rarity (jdr-default)"
    }

@@ -1,6 +1,7 @@
 //! `/user/*`: login, account creation, profile, tutorial flags.
 
-use crate::accounts::Profile;
+use crate::accounts::{Change, Profile};
+use crate::services::statue::with_profile;
 use crate::app::{ApiError, ApiResult};
 use crate::services::ok;
 use crate::Ctx;
@@ -71,21 +72,24 @@ pub fn login(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         None => ok(json!({
             "existStatus": EXIST_NEW_USER, "existUser": [], "buyUncompleteFlg": 0, "is_ca": 0, "ca_html": ""
         })),
-        Some(mut p) => {
-            p.last_login_at = clock::now();
+        Some(before) => {
             // Every obtainable statue, and the teams (My Page draws its background and leader from
-            // the tactical main team sent here).
-            if p.collection.ensure(&date(clock::now())) {
+            // the tactical main team sent here). The login time alone is bookkeeping.
+            let (p, ()) = with_profile(ctx, env, |p| {
+                p.last_login_at = clock::now();
+                ((), Change::Bookkeeping)
+            })?;
+            if p.collection != before.collection {
                 log::line(
                     "account",
                     &format!(
-                        "collection: {} statue(s), {} team(s)",
+                        "collection: {} statue(s), {} mind(s), {} team(s)",
                         p.collection.statues.len(),
+                        p.collection.minds.len(),
                         p.collection.teams.len()
                     ),
                 );
             }
-            ctx.accounts.save(&p).map_err(ApiError::Internal)?;
             let team = crate::collection::main_team(&p.collection, 1)
                 .map(|t| crate::collection::team_info(&p.collection, t))
                 .unwrap_or_else(|| json!({}));
@@ -128,13 +132,17 @@ pub fn get_tutorial_step(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
 }
 
 pub fn tutorial(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
-    let mut p = current(ctx, env)?;
     if let Some(list) = env.param.get("tutorialStep").and_then(Value::as_array) {
-        p.tutorial_step = list
+        let steps: Vec<u8> = list
             .iter()
             .map(|v| (v.as_i64().unwrap_or(0) != 0) as u8)
             .collect();
-        ctx.accounts.save(&p).map_err(ApiError::Internal)?;
+        with_profile(ctx, env, |p| {
+            p.tutorial_step = steps;
+            ((), Change::Progress)
+        })?;
+    } else {
+        current(ctx, env)?;
     }
     ok(json!({}))
 }
@@ -145,14 +153,19 @@ pub fn user_info_api(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
 }
 
 pub fn update_username(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
-    let mut p = current(ctx, env)?;
-    if let Some(n) = env.param.get("username").and_then(Value::as_str) {
-        let n: String = n.chars().take(12).collect();
-        if !n.trim().is_empty() {
+    let name: Option<String> = env
+        .param
+        .get("username")
+        .and_then(Value::as_str)
+        .map(|n| n.chars().take(12).collect())
+        .filter(|n: &String| !n.trim().is_empty());
+    let (p, ()) = with_profile(ctx, env, |p| match name {
+        Some(n) => {
             p.username = n;
-            ctx.accounts.save(&p).map_err(ApiError::Internal)?;
+            ((), Change::Progress)
         }
-    }
+        None => ((), Change::None),
+    })?;
     ok(json!({ "userInfo": user_info(&p) }))
 }
 
