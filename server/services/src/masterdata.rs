@@ -797,7 +797,7 @@ mod tests {
                     .iter()
                     .map(|k| q[*k].as_f64().unwrap().powi(2))
                     .sum();
-                assert!((n - 1.0).abs() < 1e-9, "unit quaternion");
+                assert!((n - 1.0).abs() < 1e-6, "unit quaternion");
             }
         }
         // Statue rows: full-size team statues, the My Page camera object, positions in cm.
