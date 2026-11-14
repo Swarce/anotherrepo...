@@ -152,6 +152,95 @@ fn new_player_boot_sequence() {
     let login2 = call_as(port, &ep("/user/login"), "{}", &uuid);
     assert_eq!(login2["param"]["existStatus"], 0);
     assert_eq!(login2["param"]["userInfoMini"]["username"], "Player");
+    // My Page: the tactical main team with a leader statue (background + model)
+    let team = &login2["param"]["teamInfo"];
+    assert_eq!(
+        (team["stageType"].as_i64(), team["mainFlg"].as_i64()),
+        (Some(1), Some(1))
+    );
+    let leader = &team["teamOrder"]["leaderStatue"]["statueInfo"];
+    assert!(leader["statueId"].as_str().unwrap().len() == 7, "{leader}");
+    assert!(!leader["modelDataList"].as_array().unwrap().is_empty());
+    let ti = call_as(port, &ep("/team/team_info"), "{}", &uuid);
+    assert_eq!(
+        ti["param"]["teamList"].as_array().unwrap().len(),
+        10,
+        "5 teams x 2 battle types"
+    );
+    let sl = call_as(port, &ep("/statue/statue_list"), "{}", &uuid);
+    let n = sl["param"]["statueList"].as_array().unwrap().len();
+    assert!(n > 200 && sl["param"]["allStatueNum"] == n, "{n}");
+    let uid = leader["statueuId"].as_i64().unwrap();
+    let si = call_as(
+        port,
+        &ep("/statue/statue_info"),
+        &format!(r#"{{"statueuId":{uid}}}"#),
+        &uuid,
+    );
+    assert_eq!(si["param"]["statueInfo"]["statueId"], leader["statueId"]);
+    let ml = call_as(port, &ep("/mind/mind_list"), "{}", &uuid);
+    assert!(ml["param"]["mindList"].as_array().unwrap().len() > 300);
+    // Story: the story button, a chapter list, a stage list, start and end (clear recorded)
+    let sel = call_as(port, &ep("/bizarre/get_bizarre_select"), "{}", &uuid);
+    assert_eq!(sel["param"]["questList"][0]["bannerType"], 1);
+    let bl = call_as(
+        port,
+        &ep("/bizarre/bizarre_list"),
+        r#"{"category":1}"#,
+        &uuid,
+    );
+    let ch = &bl["param"]["chapterList"][1];
+    let chapter = ch["chapterId"].as_str().unwrap().to_string();
+    let stl = call_as(
+        port,
+        &ep("/bizarre/stage_list"),
+        &format!(
+            r#"{{"chapterId":"{chapter}","stageType":{}}}"#,
+            ch["stageType"]
+        ),
+        &uuid,
+    );
+    let stage = stl["param"]["stageList"][0]["stageId"]
+        .as_str()
+        .unwrap()
+        .to_string();
+    let st = call_as(
+        port,
+        &ep("/bizarre/bizarre_start"),
+        &format!(r#"{{"stageId":"{stage}","teamNo":1}}"#),
+        &uuid,
+    );
+    assert!(!st["param"]["areaList"].as_array().unwrap().is_empty());
+    let en = call_as(
+        port,
+        &ep("/bizarre/bizarre_end"),
+        &format!(r#"{{"stageId":"{stage}","result":0}}"#),
+        &uuid,
+    );
+    assert_eq!(en["param"]["clearRank"], 4);
+    assert!(en["param"]["gold"].as_i64().unwrap() > 0);
+    // A resent end for the same battle pays nothing more.
+    let again = call_as(
+        port,
+        &ep("/bizarre/bizarre_end"),
+        &format!(r#"{{"stageId":"{stage}","result":0}}"#),
+        &uuid,
+    );
+    assert_eq!(again["param"]["gold"], 0);
+    assert_eq!(
+        again["param"]["userInfo"]["vm"],
+        en["param"]["userInfo"]["vm"]
+    );
+    let stl2 = call_as(
+        port,
+        &ep("/bizarre/stage_list"),
+        &format!(
+            r#"{{"chapterId":"{chapter}","stageType":{}}}"#,
+            ch["stageType"]
+        ),
+        &uuid,
+    );
+    assert_eq!(stl2["param"]["stageList"][0]["clearFlg"], 1);
 
     let k = call_as(port, &ep("/client/getkey"), "{}", &uuid);
     assert_eq!(k["param"]["assetkey"], "A".repeat(16));
@@ -207,7 +296,7 @@ fn new_player_boot_sequence() {
         (
             "/bizarre/get_bizarre_select",
             "{}",
-            &["questList", "eventCampaignList"][..],
+            &["eventCampaignList"][..],
         ),
         (
             "/present/present_list",

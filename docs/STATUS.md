@@ -2,6 +2,107 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 11 — team view, My Page leader, first tactical battle tables (branch `wip/b11`)
+
+### What the Build 10 device log showed
+- My Page had its background, but the leader model was off frame. The character list worked.
+- Team Setup showed no 3D statues, and Unity logged step-offset warnings from the pedestal code.
+- Pressing Battle on a story stage hung. `bizarre_start` answered, then `dtbattle.ReversalManager.Init`
+  threw a NullReferenceException (`dtbattle_damage_param` missing), and the battle update threw on
+  every frame.
+- The profile card, Set as Leader, followers, blocks and trophies called routes we did not answer.
+
+### What changed
+- **Positions** (docs/research/11 §1): the client reads positions in centimetres and
+  `teamScaleScalar` as a percentage. Our 1.0 made team statues 1% size, which most likely hid
+  them (not yet confirmed on a device), so it is now 100. The My
+  Page leader stands 3.66 m in front of the `CameraIdSet0` camera, facing it. Rows also set
+  `mindFrameID` 1 and the PvP AI ids to 1.
+- **Tactical battle tables** (docs/research/11 §2), new master-data content:
+  - `dtbattle_damage_param`: one row of chosen tuning values, reversal off;
+  - `dtbattle_damage_rank_table`;
+  - `dtbattle_skill_data_table`: the client's fixed skills, our basic attack `JDR_ATK_00` and
+    three categories;
+  - an `area_position_pattern_table` row named in every tactical area's `formation`.
+  
+  Statues in teams (and enemies) carry the basic attack; statue lists and detail views do not,
+  since their skill views were not traced. Tactical enemies are not bosses for now.
+  The SecurityStringValue encoding is implemented. The real-data proof
+  (`tools/proofs/masterdata_check.py`, run by `scripts/build.sh`) decodes it back with its own
+  implementation of the client's reading; this is the same reading, re-implemented, not a second
+  source.
+- **Routes:** `team/leader_change`, `team/set_team` (both battle types follow; a team number outside
+  1–5 is refused; edits do not rotate save backups), `user/user_info_mini`
+  (the card shows the main leader), `follow/follower_list`, `follow/block_list`,
+  `trophy/trophy_list`, `info/notify_list`, `gasha/gasha_list` (empty).
+- Build number 11, server marker `JDR_EMBEDDED_SERVER_b011`.
+
+### Known gaps / risks (expected)
+- The battle may get further and stop at the next missing piece. Our basic attack has no
+  animation id, the AI uses the client's `playerauto` default, and all damage numbers are our own
+  choices. The device log will show the next failure.
+- My Page and team positions come from scene measurements, not the original values, so some very
+  tall or very small models may sit oddly.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] My Page: the leader is in frame
+- [ ] Team Setup shows the three statues; Set as Leader sticks after leaving and returning
+- [ ] Profile card opens
+- [ ] Story → a stage → Battle: how far it gets (field shown? units placed? Attack button? a hit?)
+
+## Build 10 — characters, teams, story quests from the wikis (branch `wip/b10`)
+
+### What the Build 09 device log showed
+Redrawn English art on screen; the My Page background was black (no team: the background and the
+leader model come from the tactical main team's leader and its `statue_setting_table` row).
+
+### What changed
+- **Collection:** the player owns every obtainable statue (266: model, animations, action set and
+  leader ability present in the player's files) at level 1, and 5 teams per battle type; the
+  tactical main team (Jonathan, Jotaro, Josuke) is sent with login and team_info, which should give
+  My Page its background (`bg_00NN` by JoJo part) and the leader model. Routes: `statue/statue_list`,
+  `statue/statue_info`, `team/team_info`.
+- **Statue numbers from the wikis:** rarity, type and Lv99 stats for 140 of 266 statues (129 from
+  Gamerch matched by leader- or assist-ability name against the game's labels, 11 from ShoutWiki by
+  elimination); Lv1 from the wiki for 35 of them, Lv99 / 10 for the rest; stats per level are linear
+  Lv1→Lv99. Two wiki records were rejected (a typo and a rarity-order conflict). The rest, mostly
+  released after the 2018 snapshot, use marked defaults.
+- **Minds:** the player owns the 417 minds matched to game ids by name on Gamerch (rarity, flat
+  stats; cost is a default for most); routes `mind/mind_list`, `mind/mind_info`.
+- **Generated master tables:** `statue_setting_table` (266 rows), `statue_level_table` (266 × 99
+  levels), `rank_table` (ranks 1–99 from Gamerch).
+- **Story quests:** story button, 82 chapters (29 action, 53 tactical) and 370 stages from the
+  player's files; 86 stages carry Gamerch numbers (AP, rank EXP, gold where shown, recommended level),
+  matched by chapter title; the rest have defaults kept inside the game's limits (stamina ≤ 20,
+  level ≤ 99). Battles are described with the player's area scenes and a wave of enemy statues;
+  a clear is recorded and grants gold, rank EXP and statue EXP to the team that fought, once per
+  started battle; rank-ups and AP max follow the Gamerch rank table.
+- **Saves:** every change goes through one locked read-change-write; bookkeeping (login time, play
+  counts) no longer rotates the 5 backups. Routes: `bizarre_list`,
+  `stage_list`, `bizarre_start`, `bizarre_end`, `bizarre_continue`, `destruction`,
+  `check_timed_chapter`, `support/support_user_s`, `clan/recommend`.
+- **Wiki fetch:** ShoutWiki (351 pages), JoJoWiki (86 pages), Gamerch via the Wayback Machine (178
+  archived data pages of 1,004; most were never archived). Raw pages stay local; only numbers with
+  their source pages are committed (`docs/CONTENT.md`, `CREDITS.md`).
+- Build number 10, server marker `JDR_EMBEDDED_SERVER_b010`.
+
+### Known gaps / risks (expected)
+- Battles have never run offline and probably fail somewhere: statues carry no skills, abilities or
+  level-up table and the battle master tables are empty; enemy spawn naming (`WAVE_A`/`01`) is a
+  guess; tactical battles send no formation or AI id (the position-pattern and AI tables are not
+  generated), so tactical stages are the least likely to load. The result code for a win (0) is
+  medium confidence. The stage list should show; whether start/end work needs the device log.
+- Enemies use the wiki's recommended level, and the player's statues start at level 1 and only grow
+  from clears, so later action chapters may be too hard.
+- Enemy line-ups and rewards are defaults (the wiki shows them as images); stages after chapter 23
+  and the tactical chapters have default numbers.
+- Skills and abilities are not filled yet (statue details show none).
+
+### Device checklist — expected; to be confirmed on a device
+- [ ] My Page shows a background and the leader model (Jonathan)
+- [ ] Team/Enhance and the statue list show the roster with names, rarity, levels, stats
+- [ ] Quests → Story shows chapters and stages; starting a stage loads (or note where it stops)
+
 ## Build 09 — redrawn UI art (branch `wip/b09`)
 
 ### What came in
@@ -47,10 +148,15 @@ Courage/Wisdom/Spirit/Unity/Solitude.
   files 182 MiB (the game's own copies of those are replaced by the downloaded ones), plus the
   19 MB pack in the APK.
 
-### Device checklist — expected; to be confirmed on a device
-- [ ] `[art] art pack loaded: 451 image(s)`, one download prompt, then menus show the redrawn art
-- [ ] Title screen shows the English logo/lettering
-- [ ] Animated words (gacha/build results, retire) look right; no missing or misplaced sprites
+### Device result (Galaxy S22, Android 16) — from the owner's log and screenshots
+- [x] `[art] art pack loaded: 451 image(s)`; `[l10n] 60 English file(s) ready in 1322 ms, 60 already
+      on the phone` (cached after the first boot's download).
+- [x] My Page buttons, header and side menu show the redrawn English art (Inbox, Notices, Missions,
+      Friends, Home, Team/Enhance, Quests, My Town, Summon, Shop, Menu); Options screen in English.
+- [ ] My Page 3D background is black: expected without a team (no leader statue, no
+      `statue_setting_table` row) — next build.
+- Town "Pick Up" dialog body still Japanese (description text tables, next batches); one route
+  unknown: `clan/recommend` (now handled).
 
 ## Build 08 — English names (branch `wip/b08`)
 

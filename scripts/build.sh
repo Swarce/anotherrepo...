@@ -110,7 +110,7 @@ if [[ -n "${JDR_DATA:-}" && -n "${JDR_KEYS:-}" ]]; then
   else
     skip "UnityPy check of the generated bundles (pip install UnityPy)"
   fi
-  rm -rf "$out" "$md" "$l10n_out"
+  rm -rf "$out" "$md" "$md.generated" "$l10n_out"
 else
   skip "bundle generation from real data (set JDR_DATA and JDR_KEYS)"
 fi
