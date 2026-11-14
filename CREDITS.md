@@ -20,4 +20,8 @@ Thank you to the players and wiki editors who documented the game while it was r
 
 - [vgmstream](https://github.com/vgmstream/vgmstream): the public HCA key list (the sound key is
   supplied by the player at patch time, not stored here).
-- Unity forum and community write-ups on the Unity 2018 "16GB address" allocator crash on Android 11+.
+- Unity 2018 "16GB address" allocator crash on Android 11+: the
+  [Unity forum thread](https://discussions.unity.com/t/android-11-crash-when-using-system-allocator/832246)
+  and the write-up in
+  [project-liminal-gate](https://github.com/anzensan/project-liminal-gate/blob/main/docs/advanced-configuration.md),
+  which pointed to building a `DynamicHeapAllocator` instead (our patch and its proof are our own).

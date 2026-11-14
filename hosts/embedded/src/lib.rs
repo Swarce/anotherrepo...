@@ -303,6 +303,7 @@ pub fn serve_embedded(paths: &Paths, keys: Keys, port: u16, bind_retries: u32, t
         let _ = std::thread::Builder::new()
             .name("jdr-manifest".into())
             .spawn(move || {
+                c.log_files_report();
                 if let Err(e) = c.versionfile() {
                     log::line("assets", &format!("versionfile not built yet: {e}"));
                 }

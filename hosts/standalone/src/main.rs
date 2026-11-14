@@ -100,6 +100,7 @@ fn main() {
         "boot",
         &format!("listening on http://127.0.0.1:{port} (adb reverse tcp:{port} tcp:{port})"),
     );
+    ctx.log_files_report();
     let c2 = ctx.clone();
     std::thread::spawn(move || loop {
         std::thread::sleep(Duration::from_secs(60));
