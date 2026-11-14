@@ -24,7 +24,8 @@
   supplies the API and CDN base itself (`get_version.url` / `s3_url`).
 - Multiplayer: clan room hidden; PvP vs generated rival teams; raid rescue by NPC helpers.
 - Events: fresh rotation, texts rewritten without real-world dates.
-- Content source for server-only data: public wikis, cited in docs/research/04 and 05.
+- Content source for server-only data: public wikis. **Committed** in `server/content/` as JSON with
+  per-file sources and credited in `CREDITS.md` (facts and numbers only, no copied prose).
 
 ## 1.0 release checklist
 - [ ] Patched APK installs over the previous build and keeps the save

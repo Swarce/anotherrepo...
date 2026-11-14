@@ -47,6 +47,11 @@ docs/              architecture, protocol, research, status
 scripts/build.sh   build everything, run every test the environment allows
 ```
 
+## Credits
+
+Server-side values that no player copy contains are rebuilt from public community wikis; see
+[CREDITS.md](CREDITS.md).
+
 ## Legal
 
 This is an unofficial, non-commercial preservation project with no affiliation to Bandai Namco,
