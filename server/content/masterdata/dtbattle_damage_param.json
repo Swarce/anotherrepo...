@@ -1,0 +1,78 @@
+{
+ "asset": "dtbattle_damage_param",
+ "about": "Tactical battle damage tuning: one row (the client reads row 0 outside PvP). The real values died with the server; these are chosen so damage is neither zero nor capped (limit rates bracket 1.0, the jitter brackets 100%, a large cap) and the reversal mode is off. Assist-bonus fields are 0.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/11-battle-and-positions.md",
+   "note": "which fields the tactical battle reads, and the values that would zero damage or crash"
+  },
+  {
+   "source": "jdr-default",
+   "note": "every number here is our choice (no source has the original tuning)"
+  }
+ ],
+ "data": {
+  "param": [
+   {
+    "_missDamageRate": 0.5,
+    "_criticalDamageRate": 1.5,
+    "_criticalDamageUpperLimit": 2.0,
+    "_criticalDamageLowerLimit": 1.0,
+    "_limitRateMin": 0.1,
+    "_limitRateMax": 5.0,
+    "_addDamageMin": 0,
+    "_addDamageMax": 999999,
+    "_baseDamageCorr": 10000,
+    "_baseHealCorr": 10000,
+    "_ofRatioCurve": 1.0,
+    "_offenseCoff": 1.0,
+    "_defenseCoff": 1.0,
+    "_ofClampMin": 0.1,
+    "_ofClampMax": 10.0,
+    "_minimumGuaranteedMag": 0.1,
+    "_damageGitterMin": 95,
+    "_damageGitterMax": 105,
+    "_damageCap": 99999999,
+    "_minHitRate": 5,
+    "_maximumHitRate": 100,
+    "_chainMaxNum": 5,
+    "_chainRate": 10,
+    "_chainMaxLimitRate": 150,
+    "_limitedHealRateMax": 1.0,
+    "_limitedHealRateMin": 0.0,
+    "_limitedHealAddMax": 999999,
+    "_limitedHealAddMin": 0,
+    "_healFluctuationsMax": 105,
+    "_healFluctuationsMin": 95,
+    "_multiDealDamageMin": 1,
+    "_multiDealDamageMax": 10,
+    "_reversalEnable": 0,
+    "_reversalStartGauge": 0,
+    "_reversalAddGaugeDamage": 0,
+    "_reversalAddGaugeDead": 0,
+    "_reversalAddSkillStock": 0,
+    "_reversalMaxTurn": 3,
+    "_reversalAddSpeedUpRate": 0,
+    "_reversalAddSkillCoolTimeRate": 0,
+    "_moveRangeNon": 0,
+    "_moveRangeVeryNear": 1,
+    "_moveRangeNear": 2,
+    "_moveRangeFar": 3,
+    "_moveRollNon": 0,
+    "_moveEscapeRenge": 5,
+    "_moveEscapeSec": 1.0,
+    "_moveSkillRangeNon": 0,
+    "_moveSkillRangeVeryNear": 1,
+    "_moveSkillRangeNear": 2,
+    "_moveSkillRangeFar": 3,
+    "_chain1Rate": 1.0,
+    "_chain2Rate": 1.1,
+    "_chain3Rate": 1.2,
+    "_chain4Rate": 1.3,
+    "_chain5Rate": 1.4,
+    "_statueAffinityThreshold": 100
+   }
+  ]
+ }
+}

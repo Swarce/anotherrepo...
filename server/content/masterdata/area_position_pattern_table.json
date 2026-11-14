@@ -1,0 +1,343 @@
+{
+ "asset": "area_position_pattern_table",
+ "about": "Where tactical battle units stand. The server names this pattern in every tactical area's `formation`. Sets are picked by list position: players with 1-3 units in front (sets 0-2), enemies likewise (3-5); players 3 m behind the area's pivot facing forward, enemies 3 m ahead facing back.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/11-battle-and-positions.md",
+   "note": "which fields the tactical battle reads, and the values that would zero damage or crash"
+  },
+  {
+   "source": "jdr-default",
+   "note": "the pattern name and positions are ours (no pattern names exist in the player's files)"
+  }
+ ],
+ "data": {
+  "paramList": [
+   {
+    "patternName": "JDR_DT_DEFAULT",
+    "posSetList": [
+     {
+      "setType": 0,
+      "positionList": [
+       {
+        "pos": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": -3.0
+        },
+        "rotate": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": 0.0,
+         "w": 1.0
+        },
+        "startPos": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": -3.0
+        },
+        "startRotate": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": 0.0,
+         "w": 1.0
+        }
+       }
+      ]
+     },
+     {
+      "setType": 1,
+      "positionList": [
+       {
+        "pos": {
+         "x": -1.5,
+         "y": 0.0,
+         "z": -3.0
+        },
+        "rotate": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": 0.0,
+         "w": 1.0
+        },
+        "startPos": {
+         "x": -1.5,
+         "y": 0.0,
+         "z": -3.0
+        },
+        "startRotate": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": 0.0,
+         "w": 1.0
+        }
+       },
+       {
+        "pos": {
+         "x": 1.5,
+         "y": 0.0,
+         "z": -3.0
+        },
+        "rotate": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": 0.0,
+         "w": 1.0
+        },
+        "startPos": {
+         "x": 1.5,
+         "y": 0.0,
+         "z": -3.0
+        },
+        "startRotate": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": 0.0,
+         "w": 1.0
+        }
+       }
+      ]
+     },
+     {
+      "setType": 2,
+      "positionList": [
+       {
+        "pos": {
+         "x": -2.0,
+         "y": 0.0,
+         "z": -3.0
+        },
+        "rotate": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": 0.0,
+         "w": 1.0
+        },
+        "startPos": {
+         "x": -2.0,
+         "y": 0.0,
+         "z": -3.0
+        },
+        "startRotate": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": 0.0,
+         "w": 1.0
+        }
+       },
+       {
+        "pos": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": -3.0
+        },
+        "rotate": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": 0.0,
+         "w": 1.0
+        },
+        "startPos": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": -3.0
+        },
+        "startRotate": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": 0.0,
+         "w": 1.0
+        }
+       },
+       {
+        "pos": {
+         "x": 2.0,
+         "y": 0.0,
+         "z": -3.0
+        },
+        "rotate": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": 0.0,
+         "w": 1.0
+        },
+        "startPos": {
+         "x": 2.0,
+         "y": 0.0,
+         "z": -3.0
+        },
+        "startRotate": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": 0.0,
+         "w": 1.0
+        }
+       }
+      ]
+     },
+     {
+      "setType": 3,
+      "positionList": [
+       {
+        "pos": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": 3.0
+        },
+        "rotate": {
+         "x": 0.0,
+         "y": 1.0,
+         "z": 0.0,
+         "w": 0.0
+        },
+        "startPos": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": 3.0
+        },
+        "startRotate": {
+         "x": 0.0,
+         "y": 1.0,
+         "z": 0.0,
+         "w": 0.0
+        }
+       }
+      ]
+     },
+     {
+      "setType": 4,
+      "positionList": [
+       {
+        "pos": {
+         "x": -1.5,
+         "y": 0.0,
+         "z": 3.0
+        },
+        "rotate": {
+         "x": 0.0,
+         "y": 1.0,
+         "z": 0.0,
+         "w": 0.0
+        },
+        "startPos": {
+         "x": -1.5,
+         "y": 0.0,
+         "z": 3.0
+        },
+        "startRotate": {
+         "x": 0.0,
+         "y": 1.0,
+         "z": 0.0,
+         "w": 0.0
+        }
+       },
+       {
+        "pos": {
+         "x": 1.5,
+         "y": 0.0,
+         "z": 3.0
+        },
+        "rotate": {
+         "x": 0.0,
+         "y": 1.0,
+         "z": 0.0,
+         "w": 0.0
+        },
+        "startPos": {
+         "x": 1.5,
+         "y": 0.0,
+         "z": 3.0
+        },
+        "startRotate": {
+         "x": 0.0,
+         "y": 1.0,
+         "z": 0.0,
+         "w": 0.0
+        }
+       }
+      ]
+     },
+     {
+      "setType": 5,
+      "positionList": [
+       {
+        "pos": {
+         "x": -2.0,
+         "y": 0.0,
+         "z": 3.0
+        },
+        "rotate": {
+         "x": 0.0,
+         "y": 1.0,
+         "z": 0.0,
+         "w": 0.0
+        },
+        "startPos": {
+         "x": -2.0,
+         "y": 0.0,
+         "z": 3.0
+        },
+        "startRotate": {
+         "x": 0.0,
+         "y": 1.0,
+         "z": 0.0,
+         "w": 0.0
+        }
+       },
+       {
+        "pos": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": 3.0
+        },
+        "rotate": {
+         "x": 0.0,
+         "y": 1.0,
+         "z": 0.0,
+         "w": 0.0
+        },
+        "startPos": {
+         "x": 0.0,
+         "y": 0.0,
+         "z": 3.0
+        },
+        "startRotate": {
+         "x": 0.0,
+         "y": 1.0,
+         "z": 0.0,
+         "w": 0.0
+        }
+       },
+       {
+        "pos": {
+         "x": 2.0,
+         "y": 0.0,
+         "z": 3.0
+        },
+        "rotate": {
+         "x": 0.0,
+         "y": 1.0,
+         "z": 0.0,
+         "w": 0.0
+        },
+        "startPos": {
+         "x": 2.0,
+         "y": 0.0,
+         "z": 3.0
+        },
+        "startRotate": {
+         "x": 0.0,
+         "y": 1.0,
+         "z": 0.0,
+         "w": 0.0
+        }
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "positionList": []
+ }
+}
