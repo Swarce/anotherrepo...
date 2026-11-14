@@ -19,7 +19,8 @@ pub fn getkey(ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
         .as_deref()
         .and_then(|s| u64::from_str_radix(s.trim_start_matches("0x"), 16).ok())
         .map(|v| v.to_string())
-        .unwrap_or_default();
+        // The client parses this with Convert.ToUInt64; an empty string would throw at boot.
+        .unwrap_or_else(|| "0".to_string());
     ok(json!({ "assetkey": k.asset_key, "assetvector": k.asset_iv, "soundkey": sound }))
 }
 

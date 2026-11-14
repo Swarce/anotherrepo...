@@ -51,6 +51,14 @@ fn main() {
             logp.map(|p| p.display().to_string()).unwrap_or_default()
         ),
     );
+    let sk = s.keys.as_ref().and_then(|k| k.sound_key.clone());
+    if sk
+        .as_deref()
+        .and_then(|v| u64::from_str_radix(v.trim_start_matches("0x"), 16).ok())
+        .is_none()
+    {
+        log::line("boot", &format!("WARNING: sound_key missing or not hex ({sk:?}); sending 0, downloaded audio will not decode"));
+    }
     if s.keys.as_ref().and_then(|k| k.http_key.as_ref()).is_none() {
         log::line(
             "boot",
