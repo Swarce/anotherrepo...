@@ -1,6 +1,6 @@
 # Player setup
 
-> Status: **Build 03, for testing.** The server runs inside the game (no PC needed after install).
+> Status: **Build 04, for testing.** The server runs inside the game (no PC needed after install).
 > The game is still expected to stop at the loading screen until the master-data rebuild (M1.5)
 > lands. Nothing here is confirmed on a device yet.
 
@@ -48,10 +48,10 @@
 4. **Patch:**
 
    ```bash
-   JDR_BUILD_TOOLS=/path/to/build-tools ./target/release/jdr-patch patch --apk local/game-3.12.0.apk --out deliver/jojodr-b03.apk --keys local/keys.json --server-lib target/aarch64-linux-android/release/libjdr.so
+   JDR_BUILD_TOOLS=/path/to/build-tools ./target/release/jdr-patch patch --apk local/game-3.12.0.apk --out deliver/jojodr-b04.apk --keys local/keys.json --server-lib target/aarch64-linux-android/release/libjdr.so
    ```
 
-   The report must show `embed-server` applied (with `JDR_EMBEDDED_SERVER_b003`) and every
+   The report must show `embed-server` applied (with `JDR_EMBEDDED_SERVER_b004`) and every
    post-check `ok`.
 5. **Install.** First time only, the original game must go (back up first, step 1):
 
@@ -60,7 +60,7 @@
    ```
 
    ```bash
-   adb install deliver/jojodr-b03.apk
+   adb install deliver/jojodr-b04.apk
    ```
 
    Later builds: `adb install -r deliver/jojodr-bNN.apk` (keeps everything; never uninstall).
@@ -82,7 +82,7 @@
 
 ## What success looks like (Build 02)
 
-1. `[boot] jdr embedded build 3 …`, `keys loaded`, `listening on 127.0.0.1:18080`.
+1. `[boot] jdr embedded build 4 …`, `keys loaded`, `listening on 127.0.0.1:18080`.
 2. `[api] POST /common/get_version 200` when the title screen appears.
 3. Tap: terms page with an Accept button → `[account] created …` → `/api/user/login` again.
 4. `getkey`, `get_system_config`, `get_tutorial_step`, `getfiledata …`, then the expected stall on
