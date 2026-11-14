@@ -307,11 +307,86 @@ impl Patch for EmbedServer {
     }
 }
 
+pub const LIBUNITY_ARM64: &str = "lib/arm64-v8a/libunity.so";
+
+/// Replacement body (24 ARM64 instructions, our own code) for `UnityDefaultAllocator`'s
+/// constructor at 0x9ff824 in the verified libunity: it builds a `DynamicHeapAllocator` instead,
+/// field for field like the engine's own inline `ALLOC_FALLBACK` construction (MemoryManager
+/// @0x50d27c..0x50d2dc). Disassembly:
+/// ```text
+/// stp x19,x30,[sp,#-16]! ; mov x19,x0 ; bl BaseAllocator::ctor(0x50f07c)
+/// adrp x8,0x12cd000 ; add x8,x8,#0x620          ; DynamicHeapAllocator vtable
+/// add x9,x19,#0xb8 ; add x10,x19,#0xc8 ; str xzr,[x19,#0xa8]
+/// stp x9,x9,[x19,#0xb8] ; stp x10,x10,[x19,#0xc8] ; str x8,[x19]
+/// add x0,x19,#0xd8 ; bl Mutex::ctor(0xa234c8)
+/// mov w10,#0x100000 ; stp x10,xzr,[x19,#0x108] ; mov w9,#1
+/// str xzr,[x19,#0xb0] ; strb w9,[x19,#0x104] ; ldp x19,x30,[sp],#16 ; ret ; nop x4
+/// ```
+/// Equivalence proof on the real binary: tools/proofs/unity_heap_equiv.py.
+pub const UNITY_HEAP_CTOR: [u32; 24] = [
+    0xa9bf7bf3, 0xaa0003f3, 0x97ec3e14, 0xd0004668, 0x91188108, 0x9102e269, 0x9103226a, 0xf900567f,
+    0xa90ba669, 0xa90caa6a, 0xf9000268, 0x91036260, 0x94008f1d, 0x52a0020a, 0xa910fe6a, 0x52800029,
+    0xf9005a7f, 0x39041269, 0xa8c17bf3, 0xd65f03c0, 0xd503201f, 0xd503201f, 0xd503201f, 0xd503201f,
+];
+
+pub fn unity_heap_bytes() -> Vec<u8> {
+    UNITY_HEAP_CTOR
+        .iter()
+        .flat_map(|w| w.to_le_bytes())
+        .collect()
+}
+
+/// Fixes Unity 2018's "Using memoryadresses from more that 16GB of memory" crash on Android 11+.
+///
+/// `UnityDefaultAllocator` (used for ALLOC_DEFAULT, ALLOC_GAMEOBJECT, ALLOC_GFX) records every
+/// malloc'd block in a page table with only 5 slots of 4 GiB windows; Android's Scudo allocator
+/// spreads memory over more windows, the lookup returns slot -1 and the engine crashes. The patch
+/// makes those three allocators `DynamicHeapAllocator`s, which the engine already uses for its
+/// fallback heap and which have no such table.
+pub struct UnityHeap;
+
+impl Patch for UnityHeap {
+    fn id(&self) -> &'static str {
+        "unity-heap"
+    }
+    fn description(&self) -> &'static str {
+        "Fix Unity 2018 16GB-address crash on Android 11+: default allocators become DynamicHeapAllocators"
+    }
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        _cfg: &Config,
+        build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
+        let lib = apk.read(LIBUNITY_ARM64)?;
+        let sha = sha256_hex(&lib);
+        if sha != build.libunity_arm64_sha256 {
+            return Err(format!("fingerprint mismatch: libunity.so sha256 {sha}").into());
+        }
+        let (off, want) = build.unity_default_alloc_ctor;
+        let new = unity_heap_bytes();
+        let window = lib
+            .get(off..off + new.len())
+            .ok_or("libunity.so too short")?;
+        if sha256_hex(window) != want {
+            return Err("fingerprint mismatch at the UnityDefaultAllocator constructor".into());
+        }
+        let mut out = lib.clone();
+        out[off..off + new.len()].copy_from_slice(&new);
+        let compress = apk.is_compressed(LIBUNITY_ARM64);
+        apk.put(LIBUNITY_ARM64, out, compress);
+        Ok(format!(
+            "libunity.so @{off:#x}: UnityDefaultAllocator ctor -> DynamicHeapAllocator (96 bytes)"
+        ))
+    }
+}
+
 pub fn all() -> Vec<Box<dyn Patch>> {
     vec![
         Box::new(ServerUrl),
         Box::new(Cleartext),
         Box::new(DropArmv7),
+        Box::new(UnityHeap),
         Box::new(EmbedServer),
     ]
 }
@@ -328,6 +403,27 @@ mod tests {
         assert!(validate_server_url("https://127.0.0.1:18080", 25).is_err());
         assert!(validate_server_url("http://127.0.0.1:0", 25).is_err());
         assert!(validate_server_url("http://127.0.0.1:x", 25).is_err());
+    }
+
+    #[test]
+    fn unity_heap_code_shape() {
+        let b = unity_heap_bytes();
+        assert_eq!(b.len(), 96);
+        // ends with ret + nops, starts with the stp prologue
+        assert_eq!(UNITY_HEAP_CTOR[0], 0xa9bf7bf3);
+        assert_eq!(UNITY_HEAP_CTOR[19], 0xd65f03c0);
+        assert!(UNITY_HEAP_CTOR[20..].iter().all(|&w| w == 0xd503201f));
+        // both BLs land on the verified targets
+        let bl = |i: usize| {
+            let w = UNITY_HEAP_CTOR[i];
+            let mut imm = (w & 0x03ff_ffff) as i64;
+            if imm & (1 << 25) != 0 {
+                imm -= 1 << 26;
+            }
+            (0x9ff824 + 4 * i as i64 + imm * 4) as u64
+        };
+        assert_eq!(bl(2), 0x50f07c);
+        assert_eq!(bl(12), 0xa234c8);
     }
 
     #[test]

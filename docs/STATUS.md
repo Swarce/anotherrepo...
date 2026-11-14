@@ -2,6 +2,40 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 03 — Unity allocator crash fix (branch `wip/b03`)
+
+### What the Build 02 device log showed (Galaxy S22, Android 16)
+- **The embedded server works on the device:** `jdr embedded build 2` (+5 ms), `keys loaded`
+  (+19 ms), `listening on 127.0.0.1:18080`; then `POST /common/get_version 200` twice and
+  `POST /api/user/login 200` (new user, `existStatus 4`).
+- 26 ms after the login reply the game crashed in `libunity.so` (SIGSEGV, fault addr 0x106645) inside
+  `JsonUtility.FromJson`, right after Unity's own error **"Using memoryadresses from more that 16GB
+  of memory"**. Growthbeat (analytics) failed offline and caught its own exception (not the cause).
+
+### Cause
+Unity 2018.4.1's `UnityDefaultAllocator` (ALLOC_DEFAULT, ALLOC_GAMEOBJECT, ALLOC_GFX) records every
+malloc'd block in a page table with 5 slots of 4 GiB address windows. Android 11+'s Scudo allocator
+spreads memory over more windows; the slot search returns -1 and the next access faults (crash
+frames 0x9ffdb4 / 0x9ff968 are exactly that code). This is an engine bug on new Android, not a
+server-data problem; Unity fixed it in a later 2018.4 release. The `-systemallocator` switch does
+not help: in this release build its result is ignored.
+
+### What changed
+- **`unity-heap` patch:** replaces the 96-byte body of the `UnityDefaultAllocator` constructor
+  (libunity @0x9ff824, fingerprinted by library and window SHA-256) with code that builds a
+  `DynamicHeapAllocator`, field for field like the engine's own inline `ALLOC_FALLBACK` heap. Only
+  the three allocators above used that constructor; nothing else calls it or the page-table code.
+- **Equivalence proof on the real binary** (`tools/proofs/unity_heap_equiv.py`, run by `build.sh`):
+  arm64 emulation of the patched constructor vs the engine's inline construction on a poisoned
+  object → 129 bytes written, **0 bytes differ**, same mutex-init call.
+- Build number 3, server marker `JDR_EMBEDDED_SERVER_b003`.
+
+### Device checklist — expected; to be confirmed on a device
+- [ ] no "Using memoryadresses from more that 16GB" line, no SIGSEGV after login
+- [ ] terms page → `[account] created` → second login → getkey / get_system_config /
+      get_tutorial_step / getfiledata → the expected stall (M1.5)
+- [ ] the game runs for several minutes on the title/loading screens without a native crash
+
 ## Build 02 — embedded server (branch `wip/b02`)
 
 ### What changed

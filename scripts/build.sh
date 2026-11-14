@@ -34,6 +34,13 @@ else
   step "embedded server build skipped (set ANDROID_NDK)"
 fi
 
+if [[ -n "${JDR_APK:-}" ]] && python3 -c "import unicorn, elftools" 2>/dev/null; then
+  step "equivalence proof: unity-heap patch on your libunity.so"
+  JDR_APK="$JDR_APK" python3 -I tools/proofs/unity_heap_equiv.py
+else
+  step "unity-heap equivalence proof skipped (needs JDR_APK and python3 with unicorn + pyelftools)"
+fi
+
 step "clippy"
 cargo clippy --workspace --all-targets -- -D warnings
 

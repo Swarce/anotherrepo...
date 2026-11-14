@@ -10,6 +10,11 @@ pub struct VerifiedBuild {
     pub libil2cpp_arm64_sha256: &'static str,
     /// SHA-256 of `lib/arm64-v8a/libmain.so` (its `liblog.so` dependency becomes `libjdr.so`).
     pub libmain_arm64_sha256: &'static str,
+    /// SHA-256 of `lib/arm64-v8a/libunity.so`.
+    pub libunity_arm64_sha256: &'static str,
+    /// File offset and SHA-256 of the `UnityDefaultAllocator` constructor body that the
+    /// `unity-heap` patch replaces.
+    pub unity_default_alloc_ctor: (usize, &'static str),
     /// SHA-256 of the binary `AndroidManifest.xml`.
     pub manifest_sha256: &'static str,
     /// Index and original value of the production server URL literal.
@@ -25,6 +30,11 @@ pub const BUILDS: &[VerifiedBuild] = &[VerifiedBuild {
     metadata_sha256: "aeab1947a8ccfd05c8bd40d472198344d9ce3d3dd019bbcc30c906c3026aa962",
     libil2cpp_arm64_sha256: "b5653644705b9a22360608a50eed28884c7721dcb2aeb45d525fc3aa8e7c101a",
     libmain_arm64_sha256: "722bf491c8befadef7e510c0e49c619b34dd313350a3c4395091e2c2d38f5f2f",
+    libunity_arm64_sha256: "cf553c2930c579518e59734a5cb96d5c42e113d873050a356068537c938f6f4e",
+    unity_default_alloc_ctor: (
+        0x9ff824,
+        "fa948c209cfd14d2ddcdd04f4bb0b95b67d9fd8a9600412f22c69aad4c92bdfc",
+    ),
     manifest_sha256: "a1d3a440e4e6ba6cc1bf6a8fa91cc03fd948058d55630c9aa41820dc11061257",
     server_url_literal: (4137, "https://jdr.channel.or.jp"),
     http_key_literal: 4143,
