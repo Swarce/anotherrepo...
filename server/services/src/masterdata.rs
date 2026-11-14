@@ -143,6 +143,10 @@ impl Schema {
                 fields: self.root_fields_at(name, depth + 1)?,
             },
         };
+        if list && t == Ty::Bool {
+            // The engine packs bool arrays at one byte each; not needed yet, so not written.
+            return Err(format!("schema: List<bool> ({name}) is not supported yet"));
+        }
         Ok(if list { Ty::List(Box::new(t)) } else { t })
     }
 
@@ -293,6 +297,9 @@ pub fn tables(schema: &Schema, content: &[(&str, &str)]) -> Result<Vec<Table>, E
             return Err(format!("{name}.json: \"asset\" must be {name:?}"));
         }
         check_sources(&v).map_err(|e| format!("{name}.json: {e}"))?;
+        if parsed.iter().any(|(n, _): &(String, Value)| n == name) {
+            return Err(format!("{name}.json: listed twice"));
+        }
         if !schema.assets.iter().any(|a| a.name == *name) {
             return Err(format!("{name}.json: no such asset in the schema"));
         }
@@ -385,8 +392,9 @@ pub fn build(
             preload_size: 2,
             path_id: table_id(ti),
         });
-        preload.push(script_id(ci));
+        // Object, then its script: the order the engine writes (text.jp).
         preload.push(table_id(ti));
+        preload.push(script_id(ci));
     }
     objects_out.insert(
         0,

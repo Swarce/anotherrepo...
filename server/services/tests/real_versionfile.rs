@@ -92,6 +92,7 @@ fn manifest_lists_the_served_masterdata() {
     );
     let ctx = jdr_services::Ctx::new(s, false);
     let g = ctx.generated().unwrap();
+    let md = g.masterdata.as_ref().unwrap();
     let obf = ctx.masterdata_obf_name().unwrap();
     let vf = jdr_unity::bundle::read(&g.versionfile).unwrap();
     // The manifest stores each string length-prefixed; find our entry's fields in order.
@@ -101,10 +102,10 @@ fn manifest_lists_the_served_masterdata() {
     let rest = &body[at..];
     let pos = |n: &[u8]| rest.windows(n.len()).position(|w| w == n);
     assert!(pos(obf.as_bytes()).is_some(), "obfuscated name follows");
-    let md5 = md5_hex(&g.masterdata);
+    let md5 = md5_hex(md);
     let m = pos(md5.as_bytes()).expect("md5 of the served bytes follows");
     // Strings are padded to 4 bytes from the start of the file (objects start 8-aligned).
     let size_at = (at + m + 32).div_ceil(4) * 4;
     let size = i64::from_le_bytes(body[size_at..size_at + 8].try_into().unwrap());
-    assert_eq!(size, g.masterdata.len() as i64);
+    assert_eq!(size, md.len() as i64);
 }
