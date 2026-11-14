@@ -17,8 +17,9 @@ Matching (strict; anything ambiguous falls back to marked defaults):
     variant, so variant k of a character (statueIds of one 3-digit prefix, sorted) takes
     SKILL_{2k-1} (normal skill) and SKILL_{2k} (special), else the k-th available pair, among the
     NN that both have an action set on the model and a DTbattle_SKILL_TEXT label. The skill text is
-    read locally only to classify it (damage or heal, one target or all, element); damage and heal
-    skills are kept, others wait for buff data. Only label keys, ids and our numbers are written;
+    read locally only to classify it (damage or heal, one target or all, element); buff and debuff
+    skills wait for buff data, and skills with no damage, heal or buff wording are sent as
+    single-target hits. Only label keys, ids and our numbers are written;
   - a record is used only when every stat has 5 <= Lv99 / Lv1 <= 20 (the wikis show Lv99 ~ 10 x Lv1);
     anything else is a wiki typo and the statue keeps defaults.
 Only numbers are written, each record citing its source page.
@@ -102,7 +103,13 @@ def classify(t):
         if cat not in DTSC:
             cat = base if base in DTSC else "DTSC_PHYSICAL_HEAL"
         return "HEAL", cat, 4 if cat.endswith("_ALL") else 5 if cat.endswith("_MINE") else 3, 3, "NONE"
-    return None
+    buff = any(w in t for w in ("アップ", "上昇", "ダウン", "封印", "状態変化"))
+    if buff:
+        return None  # buffs and debuffs need buff data (dtBuff rows), not sent yet
+    # Anything else (no damage-rank tag, no heal or buff wording): a single-target hit with the
+    # skill's own animation, so the statue keeps its skill button (Build 13 device log: Jonathan
+    # and Jotaro had no special because their specials fell here).
+    return "DAMAGE", "DTSC_" + elem if "DTSC_" + elem in DTSC else "DTSC_PHYSICAL", 1, 1, ATTR[elem]
 
 
 # Button icons by kind: single-target damage ONE_ATTACK 7 / SP_ONE_ATTACK 38, all-target DT_AREA_ATTACK
