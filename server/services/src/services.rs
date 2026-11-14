@@ -6,10 +6,13 @@ use crate::Ctx;
 use jdr_core::envelope::RequestEnvelope;
 use serde_json::{json, Map, Value};
 
+pub mod bizarre;
 pub mod client;
 pub mod common;
 pub mod menu;
 pub mod misc;
+pub mod statue;
+pub mod team;
 pub mod user;
 
 fn obj(v: Value) -> Map<String, Value> {
@@ -39,13 +42,34 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/info/event_list" => misc::event_list(ctx, env),
         "/info/banner_list" => misc::banner_list(ctx, env),
         "/info/get_menu_notify" => misc::get_menu_notify(ctx, env),
+        "/mind/mind_list" => statue::mind_list(ctx, env),
+        "/mind/mind_info" => statue::mind_info(ctx, env),
+        "/statue/statue_list" => statue::statue_list(ctx, env),
+        "/statue/statue_info" => statue::statue_info(ctx, env),
         "/team/team_info" => misc::team_info(ctx, env),
+        "/team/leader_change" => team::leader_change(ctx, env),
+        "/team/set_team" => team::set_team(ctx, env),
+        "/user/user_info_mini" => team::user_info_mini(ctx, env),
+        "/follow/follower_list" => team::follower_list(ctx, env),
+        "/follow/block_list" => team::block_list(ctx, env),
+        "/trophy/trophy_list" => team::trophy_list(ctx, env),
         "/bizarre/bizarre_resumption" => misc::bizarre_resumption(ctx, env),
-        "/bizarre/get_bizarre_select" => menu::get_bizarre_select(ctx, env),
+        "/bizarre/bizarre_list" => bizarre::bizarre_list(ctx, env),
+        "/bizarre/stage_list" => bizarre::stage_list(ctx, env),
+        "/bizarre/bizarre_start" => bizarre::bizarre_start(ctx, env),
+        "/bizarre/bizarre_end" => bizarre::bizarre_end(ctx, env),
+        "/bizarre/bizarre_continue" => bizarre::bizarre_continue(ctx, env),
+        "/bizarre/destruction" => bizarre::destruction(ctx, env),
+        "/bizarre/check_timed_chapter" => bizarre::check_timed_chapter(ctx, env),
+        "/support/support_user_s" => bizarre::support_user_s(ctx, env),
+        "/bizarre/get_bizarre_select" => bizarre::get_bizarre_select(ctx, env),
+        "/clan/recommend" => menu::clan_recommend(ctx, env),
         "/present/present_list" => menu::present_list(ctx, env),
         "/follow/follow_list" => menu::follow_list(ctx, env),
         "/item/item_list" => menu::item_list(ctx, env),
         "/shop/shop_list" => menu::shop_list(ctx, env),
+        "/info/notify_list" => menu::notify_list(ctx, env),
+        "/gasha/gasha_list" => menu::gasha_list(ctx, env),
         _ => return (Ok(Map::new()), false),
     };
     (r, true)

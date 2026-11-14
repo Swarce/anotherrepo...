@@ -1,8 +1,9 @@
 //! `/user/*`: login, account creation, profile, tutorial flags.
 
-use crate::accounts::Profile;
+use crate::accounts::{Change, Profile};
 use crate::app::{ApiError, ApiResult};
 use crate::services::ok;
+use crate::services::statue::with_profile;
 use crate::Ctx;
 use jdr_core::envelope::RequestEnvelope;
 use jdr_core::{clock, log};
@@ -18,10 +19,15 @@ fn date(t: i64) -> String {
 }
 
 pub fn user_info_mini(p: &Profile) -> Value {
+    // The card shows the tactical main team's leader.
+    let leader = crate::collection::main_team(&p.collection, 1)
+        .and_then(|t| p.collection.known_statue(t.slots[0]))
+        .map(crate::collection::statue_info)
+        .unwrap_or_else(|| json!({ "statueId": "" }));
     json!({
         "id": p.user_id, "username": p.username, "userRank": p.rank, "clanId": 0, "clanName": "",
         "position": 0, "comment": p.comment, "lastLoginAt": date(p.last_login_at), "followNum": 0,
-        "followerNum": 0, "followStatus": 0, "equipMindList": [], "supportSkillId": "",
+        "followerNum": 0, "followStatus": 0, "statueInfo": leader, "equipMindList": [], "supportSkillId": "",
         "leaderAblityId": "", "availableAt": "", "friendPoint": 0
     })
 }
@@ -30,12 +36,13 @@ pub fn user_info_mini(p: &Profile) -> Value {
 pub fn user_info(p: &Profile) -> Value {
     let now = date(clock::now());
     json!({
-        "username": p.username, "userRank": p.rank, "birthday": "", "exp": p.exp, "nextExp": 100,
+        "username": p.username, "userRank": p.rank.max(1), "birthday": "", "exp": p.exp,
+        "nextExp": crate::collection::next_rank_exp(p.rank.max(1)),
         "clanId": 0, "clanName": "", "position": 0, "addStatus": 0,
-        "staminaPt": 50, "staminaMax": 50, "staminaUseTime": now, "staminaMaxTime": now,
+        "staminaPt": crate::collection::ap_max(p.rank.max(1)), "staminaMax": crate::collection::ap_max(p.rank.max(1)), "staminaUseTime": now, "staminaMaxTime": now,
         "battlePoint": 5, "battlePointMax": 5, "battlePointUseTime": now, "battlePointMaxTime": now,
         "raidPoint": 3, "raidPointMax": 3, "raidPointUseTime": now, "raidPointMaxTime": now,
-        "statueNum": 0, "mindNum": 0, "mindMax": 300, "followNum": 0, "followMax": 50,
+        "statueNum": p.collection.statues.len(), "mindNum": p.collection.minds.len(), "mindMax": crate::collection::MIND_MAX, "followNum": 0, "followMax": 50,
         "followerNum": 0, "followerMax": 50, "blockMax": 50, "comment": p.comment,
         "stoneNum": 0, "stoneNumFree": p.stone_free, "vm": p.gold, "mindGashaPoint": 0,
         "lastLoginAt": date(p.last_login_at), "soul": 0, "mentality": 0, "mentalityUseTime": now,
@@ -70,13 +77,31 @@ pub fn login(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         None => ok(json!({
             "existStatus": EXIST_NEW_USER, "existUser": [], "buyUncompleteFlg": 0, "is_ca": 0, "ca_html": ""
         })),
-        Some(mut p) => {
-            p.last_login_at = clock::now();
-            ctx.accounts.touch(&p).map_err(ApiError::Internal)?;
+        Some(before) => {
+            // Every obtainable statue, and the teams (My Page draws its background and leader from
+            // the tactical main team sent here). The login time alone is bookkeeping.
+            let (p, ()) = with_profile(ctx, env, |p| {
+                p.last_login_at = clock::now();
+                ((), Change::Bookkeeping)
+            })?;
+            if p.collection != before.collection {
+                log::line(
+                    "account",
+                    &format!(
+                        "collection: {} statue(s), {} mind(s), {} team(s)",
+                        p.collection.statues.len(),
+                        p.collection.minds.len(),
+                        p.collection.teams.len()
+                    ),
+                );
+            }
+            let team = crate::collection::main_team(&p.collection, 1)
+                .map(|t| crate::collection::team_info(&p.collection, t))
+                .unwrap_or_else(|| json!({}));
             ok(json!({
                 "existStatus": EXIST_NORMAL, "existUser": [], "buyUncompleteFlg": 0, "is_ca": 0, "ca_html": "",
                 "userInfoMini": user_info_mini(&p),
-                "teamInfo": {}
+                "teamInfo": team
             }))
         }
     }
@@ -112,13 +137,17 @@ pub fn get_tutorial_step(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
 }
 
 pub fn tutorial(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
-    let mut p = current(ctx, env)?;
     if let Some(list) = env.param.get("tutorialStep").and_then(Value::as_array) {
-        p.tutorial_step = list
+        let steps: Vec<u8> = list
             .iter()
             .map(|v| (v.as_i64().unwrap_or(0) != 0) as u8)
             .collect();
-        ctx.accounts.save(&p).map_err(ApiError::Internal)?;
+        with_profile(ctx, env, |p| {
+            p.tutorial_step = steps;
+            ((), Change::Progress)
+        })?;
+    } else {
+        current(ctx, env)?;
     }
     ok(json!({}))
 }
@@ -129,14 +158,19 @@ pub fn user_info_api(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
 }
 
 pub fn update_username(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
-    let mut p = current(ctx, env)?;
-    if let Some(n) = env.param.get("username").and_then(Value::as_str) {
-        let n: String = n.chars().take(12).collect();
-        if !n.trim().is_empty() {
+    let name: Option<String> = env
+        .param
+        .get("username")
+        .and_then(Value::as_str)
+        .map(|n| n.chars().take(12).collect())
+        .filter(|n: &String| !n.trim().is_empty());
+    let (p, ()) = with_profile(ctx, env, |p| match name {
+        Some(n) => {
             p.username = n;
-            ctx.accounts.save(&p).map_err(ApiError::Internal)?;
+            ((), Change::Progress)
         }
-    }
+        None => ((), Change::None),
+    })?;
     ok(json!({ "userInfo": user_info(&p) }))
 }
 

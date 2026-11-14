@@ -6,6 +6,7 @@ with the right namespace/class, and decode through our type tree consuming exact
 The values read back must equal our content files (server/content/masterdata/*.json).
 
 usage: python3 tools/proofs/masterdata_check.py <bundle> <repo>/server/content/masterdata
+       (generated tables are read from <bundle>.generated/ when present)
 requires: pip install UnityPy
 """
 import json
@@ -17,6 +18,10 @@ import UnityPy
 bundle, content = sys.argv[1], sys.argv[2]
 schema = json.load(open(os.path.join(content, "schema.json")))
 files = {f[:-5]: json.load(open(os.path.join(content, f))) for f in os.listdir(content) if f.endswith(".json") and f != "schema.json"}
+# Tables the server generates from other content (written next to the bundle by the real test).
+gen_dir = bundle + ".generated"
+if os.path.isdir(gen_dir):
+    files.update({f[:-5]: json.load(open(os.path.join(gen_dir, f))) for f in os.listdir(gen_dir) if f.endswith(".json")})
 want = [a for a in schema["assets"] if a["core"] or a["name"] in files]
 prefix = "assets/resources/common/inmemorymasterdata/"
 
@@ -61,6 +66,14 @@ def compare(tname, is_list, src, got, at):
     if tname == SEC + "SecurityFloatValue" and isinstance(src, (int, float)):
         bits = (got["seed"] ^ got["securityValue"]) & 0xFFFFFFFF
         assert struct.unpack("<f", struct.pack("<I", bits))[0] == struct.unpack("<f", struct.pack("<f", src))[0], at
+        return
+    if tname == SEC + "SecurityStringValue" and isinstance(src, str):
+        # The client's decoding: split on '-', hex bytes, XOR byte i with byte i%4 of the
+        # little-endian seed, ASCII (SecurityStringValue.get_Value, docs/research/11).
+        s = got["securityString"]
+        seed = struct.pack("<i", got["seed"])
+        dec = "" if s == "" else bytes(int(h, 16) ^ seed[i % 4] for i, h in enumerate(s.split("-"))).decode("ascii")
+        assert dec == src, (at, s, src)
         return
     if tname in ("Vector3", "Quaternion"):
         keys = "xyz" if tname == "Vector3" else "xyzw"
