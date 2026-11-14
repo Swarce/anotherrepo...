@@ -1,6 +1,6 @@
 {
  "asset": "dtbattle_damage_param",
- "about": "Tactical battle damage tuning: one row (the client reads row 0 outside PvP). The real values died with the server; these are chosen so damage is neither zero nor capped (limit rates bracket 1.0, the jitter brackets 100%, a large cap) and the reversal mode is off. Assist-bonus fields are 0.",
+ "about": "Tactical battle damage tuning: one row (the client reads row 0 outside PvP). The real values died with the server; these are chosen so damage is neither zero nor capped (limit rates bracket 1.0, the random spread brackets 100% (in 1/10000: 9500-10500), a large cap) and the reversal mode is off. Assist-bonus fields are 0.",
  "sources": [
   {
    "source": "jdr-research",
@@ -31,8 +31,8 @@
     "_ofClampMin": 0.1,
     "_ofClampMax": 10.0,
     "_minimumGuaranteedMag": 0.1,
-    "_damageGitterMin": 95,
-    "_damageGitterMax": 105,
+    "_damageGitterMin": 9500,
+    "_damageGitterMax": 10500,
     "_damageCap": 99999999,
     "_minHitRate": 5,
     "_maximumHitRate": 100,
@@ -43,8 +43,8 @@
     "_limitedHealRateMin": 0.0,
     "_limitedHealAddMax": 999999,
     "_limitedHealAddMin": 0,
-    "_healFluctuationsMax": 105,
-    "_healFluctuationsMin": 95,
+    "_healFluctuationsMax": 10500,
+    "_healFluctuationsMin": 9500,
     "_multiDealDamageMin": 1,
     "_multiDealDamageMax": 10,
     "_reversalEnable": 0,

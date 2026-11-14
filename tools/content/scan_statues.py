@@ -3,7 +3,10 @@
 
 For every statueId named in the text tables (STATUE_NAME_<psid>_<variant>), records which of its
 bundles exist (model, animations, action sets, ...) and the model names inside `statue_<psid>`
-(the `modelDataList` the server sends). Identifiers only; nothing from the files is copied.
+(the `modelDataList` the server sends), and the tactical-battle action names each model has in
+`dt_actionset_statue_<psid>` (ATTACK, SKILL_01, ...; objects named `<model>_<NNN>_<ACTION>`), from
+which the server picks the statue's basic attack. Identifiers only; nothing from the files is
+copied.
 
 usage: python3 -I tools/content/scan_statues.py --data <files dir> --keys local/keys.json \
           --tool target/release/jdr-tool --export local/l10n/work.tsv --out local/content/statues_scan.json
@@ -35,6 +38,43 @@ FAMILIES = ["statue", "animation_statue_common", "animation_statue_battle", "ani
             "frameevents_statue_battle", "frameevents_statue_talk", "effect_statue_common", "effect_statue_ste",
             "effect_statue_battle", "effect_statue_talk", "statue_accessory"]
 models = {}
+dt_actions = {}
+
+
+def load(bundle):
+    """UnityPy environment of one of the player's bundles (decrypted to a temp file if needed)."""
+    f = names.get(bundle)
+    if not f:
+        return None
+    p = os.path.join(a.data, f)
+    if open(p, "rb").read(4) == b"JJEC":
+        t = tempfile.mkdtemp()
+        dec = os.path.join(t, "d")
+        subprocess.run([a.tool, "decrypt", "--keys", a.keys, "--in", p, "--out", dec], check=True, capture_output=True)
+        env = UnityPy.load(open(dec, "rb").read())
+        os.remove(dec)
+        os.rmdir(t)
+        return env
+    return UnityPy.load(p)
+
+
+def actions(psid):
+    """{model: sorted action names} from dt_actionset_statue_<psid>."""
+    if psid not in dt_actions:
+        found = {}
+        env = load(f"dt_actionset_statue_{psid}")
+        for o in (env.objects if env else []):
+            if o.type.name != "MonoBehaviour":
+                continue
+            try:
+                n = o.peek_name()
+            except Exception:
+                n = o.read().m_Name
+            m = re.match(r"(.+?)_(\d{3})_([A-Z][A-Z0-9_]*)$", n or "")
+            if m:
+                found.setdefault(m.group(1), set()).add(m.group(3))
+        dt_actions[psid] = {k: sorted(v) for k, v in found.items()}
+    return dt_actions[psid]
 
 
 def model_names(psid):
@@ -70,6 +110,7 @@ for sid in ids:
         "psid": int(psid),
         "part": int(psid[0]),
         "modelDataList": human[:1] + stand[:1],
+        "dtActions": actions(psid).get(human[0], []) if human else [],
         "bundles": bundles,
         "thumbnail": f"st_{sid}",
         "playable": bool(human) and f"animation_statue_common_{psid}" in names

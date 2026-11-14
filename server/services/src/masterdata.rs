@@ -35,10 +35,6 @@ pub const TABLES: &[(&str, &str)] = &[
         include_str!("../../content/masterdata/dtbattle_damage_rank_table.json"),
     ),
     (
-        "dtbattle_skill_data_table",
-        include_str!("../../content/masterdata/dtbattle_skill_data_table.json"),
-    ),
-    (
         "area_position_pattern_table",
         include_str!("../../content/masterdata/area_position_pattern_table.json"),
     ),
@@ -471,6 +467,7 @@ pub fn generated_tables() -> Vec<(String, String)> {
             "note": "statue_setting_table: the My Page position/rotation, background choice, mindFrameID and PvP AI ids are our values" }));
     }
     let rank_src = sources_of(crate::collection::RANKS_JSON);
+    let skills = crate::collection::dt_skill_table();
     let doc = |asset: &str, src: &Value, rows: Vec<Value>| {
         serde_json::json!({ "asset": asset, "sources": src, "data": { "paramList": rows } })
             .to_string()
@@ -491,6 +488,12 @@ pub fn generated_tables() -> Vec<(String, String)> {
                 &statue_src,
                 crate::collection::statue_level_rows(),
             ),
+        ),
+        (
+            "dtbattle_skill_data_table".into(),
+            serde_json::json!({ "asset": "dtbattle_skill_data_table", "sources": skills["sources"],
+                                "data": skills["data"] })
+            .to_string(),
         ),
         (
             "rank_table".into(),
@@ -618,7 +621,7 @@ mod tests {
             .as_array()
             .unwrap()
             .is_empty());
-        let sk = doc("dtbattle_skill_data_table");
+        let sk = crate::collection::dt_skill_table()["data"].clone();
         let ids: Vec<&str> = sk["skillDataList"]
             .as_array()
             .unwrap()
@@ -632,6 +635,20 @@ mod tests {
         ] {
             assert!(ids.contains(&need), "{need}");
         }
+        // Every statue's attack has a row whose viewSkillId is the id itself (the action set).
+        for d in crate::collection::statues() {
+            let id = crate::collection::attack_skill(&d.statue_id);
+            let row = sk["skillDataList"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .find(|r| r["dtSkillId"] == id.as_str())
+                .unwrap_or_else(|| panic!("no row for {id}"));
+            assert!(id == crate::collection::BASIC_ATTACK || row["viewSkillId"] == id.as_str());
+            assert_eq!(row["skillWait"], 100, "an attack ends the unit's turn");
+        }
+        let unique: std::collections::HashSet<_> = ids.iter().collect();
+        assert_eq!(unique.len(), ids.len(), "skill ids are unique");
         let cats: Vec<&str> = sk["categoryList"]
             .as_array()
             .unwrap()
@@ -647,7 +664,10 @@ mod tests {
         assert!(f("_limitRateMin") <= 1.0 && 1.0 <= f("_limitRateMax"));
         assert!(f("_multiDealDamageMin") <= 1.0 && 1.0 <= f("_multiDealDamageMax"));
         assert!(f("_addDamageMin") <= 0.0 && 0.0 <= f("_addDamageMax"));
-        assert!(f("_damageCap") > 0.0 && f("_damageGitterMax") > 0.0);
+        assert!(f("_damageCap") > 0.0);
+        // The random spread is in 1/10000 (docs/research/11 §3): it must bracket 10000.
+        assert!(f("_damageGitterMin") <= 10000.0 && 10000.0 <= f("_damageGitterMax"));
+        assert!(f("_healFluctuationsMin") <= 10000.0 && 10000.0 <= f("_healFluctuationsMax"));
         let pat = doc("area_position_pattern_table");
         let row = pat["paramList"]
             .as_array()
@@ -685,10 +705,12 @@ mod tests {
             assert_eq!(a["formation"], want);
             for e in a["areaSettingList"].as_array().unwrap() {
                 assert_eq!(e["bossFlag"], 0);
+                let sid = e["enemyStatueInfo"]["statueId"].as_str().unwrap();
                 assert_eq!(
                     e["enemyStatueInfo"]["dtSkillList"][0]["skillId"],
-                    crate::collection::BASIC_ATTACK
+                    crate::collection::attack_skill(sid).as_str()
                 );
+                assert_eq!(e["AiId"], crate::quests::DT_ENEMY_AI);
             }
         }
     }
@@ -697,8 +719,9 @@ mod tests {
     fn tutorial_table_content() {
         let s = Schema::embedded().unwrap();
         let t = tables(&s, TABLES).unwrap();
-        // 17 core tables plus the three tactical battle tables with content.
-        assert_eq!(t.len(), 20);
+        // 17 core tables plus two tactical battle tables from content files (the skill table
+        // is generated from the statues, see generated_tables).
+        assert_eq!(t.len(), 19);
         let tut = t.iter().find(|t| t.name == "tutorial_flag_table").unwrap();
         assert_eq!(tut.rows, 34);
         let Val::List(rows) = &tut.vals[0] else {
