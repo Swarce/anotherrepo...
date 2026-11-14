@@ -395,7 +395,7 @@
     ],
     "text:Evolution_JP:Evolution_Button_03": [
       "b2b3ae26",
-      "To Statue Power Up"
+      "To Statue Enhance"
     ],
     "text:Evolution_JP:Evolution_Button_04": [
       "24b21a51",
@@ -503,7 +503,7 @@
     ],
     "text:FilterText_JP:FILTER_1": [
       "6f64e69c",
-      "Bravery"
+      "Courage"
     ],
     "text:FilterText_JP:FILTER_100": [
       "61769335",
@@ -527,7 +527,7 @@
     ],
     "text:FilterText_JP:FILTER_2": [
       "81219341",
-      "Intellect"
+      "Wisdom"
     ],
     "text:FilterText_JP:FILTER_200": [
       "15708cdc",
@@ -551,7 +551,7 @@
     ],
     "text:FilterText_JP:FILTER_3": [
       "51a80cd6",
-      "Tenacity"
+      "Spirit"
     ],
     "text:FilterText_JP:FILTER_300": [
       "b0020690",
@@ -587,7 +587,7 @@
     ],
     "text:FilterText_JP:FILTER_5": [
       "a2dfc575",
-      "Maverick"
+      "Solitude"
     ],
     "text:FilterText_JP:FILTER_ABIPVP": [
       "32fc3fd5",
@@ -611,7 +611,7 @@
     ],
     "text:FilterText_JP:FILTER_BRAVE": [
       "6f64e69c",
-      "Bravery"
+      "Courage"
     ],
     "text:FilterText_JP:FILTER_EVENT": [
       "43b1a2d9",
@@ -623,11 +623,11 @@
     ],
     "text:FilterText_JP:FILTER_INTELLI": [
       "81219341",
-      "Intellect"
+      "Wisdom"
     ],
     "text:FilterText_JP:FILTER_MAVERICK": [
       "a2dfc575",
-      "Maverick"
+      "Solitude"
     ],
     "text:FilterText_JP:FILTER_MINDABILITY": [
       "61769335",
@@ -655,7 +655,7 @@
     ],
     "text:FilterText_JP:FILTER_TENACITY": [
       "51a80cd6",
-      "Tenacity"
+      "Spirit"
     ],
     "text:FilterText_JP:FILTER_UNITY": [
       "7810a8bc",
@@ -871,7 +871,7 @@
     ],
     "text:Growth_JP:Growth_Message_08": [
       "b360ea88",
-      "The following Minds and Gold will be used to Power Up."
+      "The following Minds and Gold will be used to Enhance."
     ],
     "text:Growth_JP:Growth_Message_09": [
       "d611e84a",
@@ -879,7 +879,7 @@
     ],
     "text:Growth_JP:Growth_Message_10": [
       "d1055c18",
-      "Power Up"
+      "Enhance"
     ],
     "text:Growth_JP:Growth_Message_11": [
       "bca84ea5",
@@ -1079,7 +1079,7 @@
     ],
     "text:MyPage_JP:MyPage_Massage_22": [
       "a6b68c93",
-      "Team/Power Up is currently under maintenance"
+      "Team/Enhance is currently under maintenance"
     ],
     "text:MyPage_JP:MyPage_Massage_23": [
       "9eced0c7",
@@ -1091,7 +1091,7 @@
     ],
     "text:MyPage_JP:MyPage_Massage_25": [
       "ffa4eb76",
-      "Gacha is currently under maintenance"
+      "Summon is currently under maintenance"
     ],
     "text:MyPage_JP:MyPage_Massage_26": [
       "d53e3a48",
@@ -1455,7 +1455,7 @@
     ],
     "text:QuestConfune_JP:QuestConfune_000": [
       "6afccca2",
-      "Daily Quests unlocked!\nDaily Quests give EXP Power Up materials and Growth Tree materials"
+      "Daily Quests unlocked!\nDaily Quests give EXP Enhancement materials and Growth Tree materials"
     ],
     "text:QuestConfune_JP:QuestConfune_001": [
       "283a9e9c",
@@ -1791,15 +1791,15 @@
     ],
     "text:StatueTypeText_JP:STATUE_TYPE_TEXT_1": [
       "6f64e69c",
-      "Bravery"
+      "Courage"
     ],
     "text:StatueTypeText_JP:STATUE_TYPE_TEXT_2": [
       "81219341",
-      "Intellect"
+      "Wisdom"
     ],
     "text:StatueTypeText_JP:STATUE_TYPE_TEXT_3": [
       "51a80cd6",
-      "Tenacity"
+      "Spirit"
     ],
     "text:StatueTypeText_JP:STATUE_TYPE_TEXT_4": [
       "7810a8bc",
@@ -1807,7 +1807,7 @@
     ],
     "text:StatueTypeText_JP:STATUE_TYPE_TEXT_5": [
       "a2dfc575",
-      "Maverick"
+      "Solitude"
     ],
     "text:ThumbnailTextLabel_JP:ThumbnailText_001": [
       "49fb9fe0",
@@ -1855,7 +1855,7 @@
     ],
     "text:ThumbnailTextLabel_JP:ThumbnailText_013": [
       "767b285a",
-      "Can't Power Up"
+      "Can't Enhance"
     ],
     "text:ThumbnailTextLabel_JP:ThumbnailText_014": [
       "0190236f",
@@ -2195,11 +2195,11 @@
     ],
     "text:gasha_JP:GASHA_Massage_02": [
       "3b124e6c",
-      "Pull the once-a-day free gacha of\n\"{GashaName}\"?"
+      "Pull the once-a-day free summon of\n\"{GashaName}\"?"
     ],
     "text:gasha_JP:GASHA_Massage_03": [
       "535e4274",
-      "Team/Power Up"
+      "Team/Enhance"
     ],
     "text:gasha_JP:GASHA_Massage_04": [
       "ef61b4fa",
@@ -2235,47 +2235,47 @@
     ],
     "text:gasha_JP:gs_000001_na": [
       "3018ba83",
-      "Statue Gacha"
+      "Statue Summon"
     ],
     "text:gasha_JP:gs_000010_na": [
       "3018ba83",
-      "Statue Gacha"
+      "Statue Summon"
     ],
     "text:gasha_JP:gs_090000_na": [
       "3018ba83",
-      "Statue Gacha"
+      "Statue Summon"
     ],
     "text:gasha_JP:gs_099010_na": [
       "9a755220",
-      "Part 4 ★5 Guaranteed Beginner's Gacha"
+      "Part 4 ★5 Guaranteed Beginner's Summon"
     ],
     "text:gasha_JP:gs_099020_na": [
       "5beb69f1",
-      "JoJo Special Gacha"
+      "JoJo Special Summon"
     ],
     "text:gasha_JP:gs_099030_na": [
       "b8345216",
-      "Beginner's Gacha"
+      "Beginner's Summon"
     ],
     "text:gasha_JP:gs_099040_na": [
       "de882bfc",
-      "10x Beginner's Gacha"
+      "10x Beginner's Summon"
     ],
     "text:gasha_JP:gs_100000_na": [
       "3858d542",
-      "Mind Gacha"
+      "Mind Summon"
     ],
     "text:gasha_JP:gs_100025_na": [
       "01c9eafb",
-      "Great Pickup Gacha"
+      "Great Pickup Summon"
     ],
     "text:gasha_JP:gs_190000_na": [
       "3858d542",
-      "Mind Gacha"
+      "Mind Summon"
     ],
     "text:gasha_JP:gs_200015_na": [
       "886f044b",
-      "\"Intellect, Tenacity, Bravery\" Skill Mind Pickup Gacha"
+      "\"Wisdom, Spirit, Courage\" Skill Mind Pickup Summon"
     ],
     "text:gasha_JP:gs_200025_na": [
       "fd53a2a5",
@@ -2283,375 +2283,375 @@
     ],
     "text:gasha_JP:gs_290000_na": [
       "e16b2345",
-      "Friend Point Mind Gacha"
+      "Friend Point Mind Summon"
     ],
     "text:gasha_JP:gs_300000_na": [
       "cb1f8702",
-      "Statue Gacha \"Shadows Lurking in the Dark Fog\" Pickup"
+      "Statue Summon \"Shadows Lurking in the Dark Fog\" Pickup"
     ],
     "text:gasha_JP:gs_300010_na": [
       "136d4565",
-      "Statue Gacha \"The Moment Love Was Captured\" Pickup"
+      "Statue Summon \"The Moment Love Was Captured\" Pickup"
     ],
     "text:gasha_JP:gs_300020_na": [
       "12c56f17",
-      "Statue Gacha \"Hamon Training\" Pickup"
+      "Statue Summon \"Hamon Training\" Pickup"
     ],
     "text:gasha_JP:gs_300030_na": [
       "1cb1b55a",
-      "Advent Gacha \"DIO\" Pickup"
+      "Advent Summon \"DIO\" Pickup"
     ],
     "text:gasha_JP:gs_300040_na": [
       "40daa3a6",
-      "Statue Gacha \"The Brave Busybody\" Pickup"
+      "Statue Summon \"The Brave Busybody\" Pickup"
     ],
     "text:gasha_JP:gs_300050_na": [
       "b78d7204",
-      "Statue Gacha \"The Awakened Pillar Men\" Pickup"
+      "Statue Summon \"The Awakened Pillar Men\" Pickup"
     ],
     "text:gasha_JP:gs_300055_na": [
       "f28e01ba",
-      "Advent Gacha"
+      "Advent Summon"
     ],
     "text:gasha_JP:gs_300060_na": [
       "5c4c3f11",
-      "Statue Gacha \"Dream Match Festival\" Pickup"
+      "Statue Summon \"Dream Match Festival\" Pickup"
     ],
     "text:gasha_JP:gs_300065_na": [
       "6d0ad5ff",
-      "Great Pickup Gacha \"Tenacity\""
+      "Great Pickup Summon \"Spirit\""
     ],
     "text:gasha_JP:gs_300066_na": [
       "1479c68e",
-      "Great Pickup Gacha \"Intellect\""
+      "Great Pickup Summon \"Wisdom\""
     ],
     "text:gasha_JP:gs_300067_na": [
       "8f1db40c",
-      "Great Pickup Gacha \"Bravery\""
+      "Great Pickup Summon \"Courage\""
     ],
     "text:gasha_JP:gs_300070_na": [
       "7443a7fe",
-      "Statue Gacha \"The Bizarre End of 'Youth'\" Pickup"
+      "Statue Summon \"The Bizarre End of 'Youth'\" Pickup"
     ],
     "text:gasha_JP:gs_300080_na": [
       "ae1e122a",
-      "Statue Gacha \"The Electrifying Guitarist\" Pickup"
+      "Statue Summon \"The Electrifying Guitarist\" Pickup"
     ],
     "text:gasha_JP:gs_300090_na": [
       "b3f5791c",
-      "Statue Gacha \"Battle of Ice and Sand\" Pickup"
+      "Statue Summon \"Battle of Ice and Sand\" Pickup"
     ],
     "text:gasha_JP:gs_300100_na": [
       "6ed0eaec",
-      "Statue Gacha \"The Encroaching Void\" Pickup"
+      "Statue Summon \"The Encroaching Void\" Pickup"
     ],
     "text:gasha_JP:gs_300110_na": [
       "54a4e4df",
-      "Advent Gacha \"Yoshikage Kira\" Pickup"
+      "Advent Summon \"Yoshikage Kira\" Pickup"
     ],
     "text:gasha_JP:gs_300115_na": [
       "7485f096",
-      "Statue Gacha \"Darkness Creeping into Daily Life\" Pickup"
+      "Statue Summon \"Darkness Creeping into Daily Life\" Pickup"
     ],
     "text:gasha_JP:gs_300120_na": [
       "51ae963f",
-      "Statue Gacha \"Variety of Fighters\" Pickup"
+      "Statue Summon \"Variety of Fighters\" Pickup"
     ],
     "text:gasha_JP:gs_300130_na": [
       "573de929",
-      "Statue Gacha \"The Woman with Killer Legs\" Pickup"
+      "Statue Summon \"The Woman with Killer Legs\" Pickup"
     ],
     "text:gasha_JP:gs_300135_na": [
       "5759f1c4",
-      "★5 Guaranteed 10x Limited Gacha"
+      "★5 Guaranteed 10x Limited Summon"
     ],
     "text:gasha_JP:gs_300137_na": [
       "007a22bb",
-      "Statue Gacha \"The Woman with Killer Legs\" Pickup Vol. 2!"
+      "Statue Summon \"The Woman with Killer Legs\" Pickup Vol. 2!"
     ],
     "text:gasha_JP:gs_300140_na": [
       "ae77a6f4",
-      "Advent Gacha \"Kars & Lisa Lisa\" Pickup"
+      "Advent Summon \"Kars & Lisa Lisa\" Pickup"
     ],
     "text:gasha_JP:gs_300145_na": [
       "94febd19",
-      "Statue Gacha \"'Mode of Light' Shining on the Snowfield\" Pickup"
+      "Statue Summon \"'Mode of Light' Shining on the Snowfield\" Pickup"
     ],
     "text:gasha_JP:gs_300150_na": [
       "bfcf0f98",
-      "Statue Gacha \"Racing Speed King\" Pickup"
+      "Statue Summon \"Racing Speed King\" Pickup"
     ],
     "text:gasha_JP:gs_300155_na": [
       "5134ca97",
-      "Diamond Selection Gacha"
+      "Diamond Selection Summon"
     ],
     "text:gasha_JP:gs_300160_na": [
       "7d77ece5",
-      "Statue Gacha \"Movie Celebration! Diamond is Unbreakable\" Pickup"
+      "Statue Summon \"Movie Celebration! Diamond is Unbreakable\" Pickup"
     ],
     "text:gasha_JP:gs_300165_na": [
       "45b8132e",
-      "Limited Statue Gacha"
+      "Limited Statue Summon"
     ],
     "text:gasha_JP:gs_300170_na": [
       "b2eec8f7",
-      "Advent Gacha \"Yoshikage Kira, DIO\" Pickup"
+      "Advent Summon \"Yoshikage Kira, DIO\" Pickup"
     ],
     "text:gasha_JP:gs_300175_na": [
       "82478287",
-      "Advent Gacha \"Jotaro Kujo, DIO\" Pickup"
+      "Advent Summon \"Jotaro Kujo, DIO\" Pickup"
     ],
     "text:gasha_JP:gs_300190_na": [
       "a175e55e",
-      "Statue Gacha \"Dream Match Festival 2\" Pickup Vol. 1"
+      "Statue Summon \"Dream Match Festival 2\" Pickup Vol. 1"
     ],
     "text:gasha_JP:gs_300195_na": [
       "b350b4b9",
-      "Statue Gacha \"Dream Match Festival 2\" Pickup Vol. 2"
+      "Statue Summon \"Dream Match Festival 2\" Pickup Vol. 2"
     ],
     "text:gasha_JP:gs_300197_na": [
       "57f8872f",
-      "Premium Fest Gacha"
+      "Premium Fest Summon"
     ],
     "text:gasha_JP:gs_300200_na": [
       "5134ca97",
-      "Diamond Selection Gacha"
+      "Diamond Selection Summon"
     ],
     "text:gasha_JP:gs_300210_na": [
       "5134ca97",
-      "Diamond Selection Gacha"
+      "Diamond Selection Summon"
     ],
     "text:gasha_JP:gs_300230_na": [
       "d1d2e745",
-      "Super Advent Gacha"
+      "Super Advent Summon"
     ],
     "text:gasha_JP:gs_300240_na": [
       "46dc3514",
-      "Statue Gacha \"The Revived Legendary Black Knight\" Pickup"
+      "Statue Summon \"The Revived Legendary Black Knight\" Pickup"
     ],
     "text:gasha_JP:gs_300250_na": [
       "f28e01ba",
-      "Advent Gacha"
+      "Advent Summon"
     ],
     "text:gasha_JP:gs_300260_na": [
       "e4039790",
-      "Statue Gacha \"Dance of the Cursed Sword\" Pickup"
+      "Statue Summon \"Dance of the Cursed Sword\" Pickup"
     ],
     "text:gasha_JP:gs_300270_na": [
       "5134ca97",
-      "Diamond Selection Gacha"
+      "Diamond Selection Summon"
     ],
     "text:gasha_JP:gs_300280_na": [
       "d1d2e745",
-      "Super Advent Gacha"
+      "Super Advent Summon"
     ],
     "text:gasha_JP:gs_300285_na": [
       "f28e01ba",
-      "Advent Gacha"
+      "Advent Summon"
     ],
     "text:gasha_JP:gs_300290_na": [
       "5134ca97",
-      "Diamond Selection Gacha"
+      "Diamond Selection Summon"
     ],
     "text:gasha_JP:gs_300295_na": [
       "f28e01ba",
-      "Advent Gacha"
+      "Advent Summon"
     ],
     "text:gasha_JP:gs_300310_na": [
       "45b8132e",
-      "Limited Statue Gacha"
+      "Limited Statue Summon"
     ],
     "text:gasha_JP:gs_300320_na": [
       "8fa83ea4",
-      "Statue Gacha \"The Enigma Boy\" Pickup"
+      "Statue Summon \"The Enigma Boy\" Pickup"
     ],
     "text:gasha_JP:gs_300330_na": [
       "d1d2e745",
-      "Super Advent Gacha"
+      "Super Advent Summon"
     ],
     "text:gasha_JP:gs_300335_na": [
       "f28e01ba",
-      "Advent Gacha"
+      "Advent Summon"
     ],
     "text:gasha_JP:gs_300350_na": [
       "4106de19",
-      "Statue Gacha \"The Ominous Tower of Gray\" Pickup"
+      "Statue Summon \"The Ominous Tower of Gray\" Pickup"
     ],
     "text:gasha_JP:gs_300355_na": [
       "f28e01ba",
-      "Advent Gacha"
+      "Advent Summon"
     ],
     "text:gasha_JP:gs_300360_na": [
       "5134ca97",
-      "Diamond Selection Gacha"
+      "Diamond Selection Summon"
     ],
     "text:gasha_JP:gs_300370_na": [
       "57f8872f",
-      "Premium Fest Gacha"
+      "Premium Fest Summon"
     ],
     "text:gasha_JP:gs_300380_na": [
       "d1d2e745",
-      "Super Advent Gacha"
+      "Super Advent Summon"
     ],
     "text:gasha_JP:gs_300385_na": [
       "d1d2e745",
-      "Super Advent Gacha"
+      "Super Advent Summon"
     ],
     "text:gasha_JP:gs_300390_na": [
       "69b61b34",
-      "Statue Gacha \"Challenge from a Strong Foe\" Vol. 1 Pickup"
+      "Statue Summon \"Challenge from a Strong Foe\" Vol. 1 Pickup"
     ],
     "text:gasha_JP:gs_300392_na": [
       "ca12f2ec",
-      "Statue Gacha \"Challenge from a Strong Foe\" Vol. 2 Pickup"
+      "Statue Summon \"Challenge from a Strong Foe\" Vol. 2 Pickup"
     ],
     "text:gasha_JP:gs_300394_na": [
       "3c0572f7",
-      "Statue Gacha \"Challenge from a Strong Foe\" Vol. 3 Pickup"
+      "Statue Summon \"Challenge from a Strong Foe\" Vol. 3 Pickup"
     ],
     "text:gasha_JP:gs_300396_na": [
       "48ec244a",
-      "Statue Gacha \"Challenge from a Strong Foe\" Vol. 4 Pickup"
+      "Statue Summon \"Challenge from a Strong Foe\" Vol. 4 Pickup"
     ],
     "text:gasha_JP:gs_300398_na": [
       "5448e124",
-      "Statue Gacha \"Challenge from a Strong Foe\" Vol. 5 Pickup"
+      "Statue Summon \"Challenge from a Strong Foe\" Vol. 5 Pickup"
     ],
     "text:gasha_JP:gs_300400_na": [
       "f59002d8",
-      "Statue Gacha \"Dream Match Festival DX\" Pickup"
+      "Statue Summon \"Dream Match Festival DX\" Pickup"
     ],
     "text:gasha_JP:gs_300402_na": [
       "2c1869e0",
-      "Paid Diamond Selection Gacha"
+      "Paid Diamond Selection Summon"
     ],
     "text:gasha_JP:gs_300404_na": [
       "5134ca97",
-      "Diamond Selection Gacha"
+      "Diamond Selection Summon"
     ],
     "text:gasha_JP:gs_300410_na": [
       "c0f53b03",
-      "New Year Holiday Super Advent Gacha"
+      "New Year Holiday Super Advent Summon"
     ],
     "text:gasha_JP:gs_300412_na": [
       "ceee73e1",
-      "New Year's Money-aaah! Gacha"
+      "New Year's Money-aaah! Summon"
     ],
     "text:gasha_JP:gs_300414_na": [
       "de3c3dff",
-      "New Year Advent Gacha Vol. 1"
+      "New Year Advent Summon Vol. 1"
     ],
     "text:gasha_JP:gs_300416_na": [
       "3ffe9b97",
-      "New Year Advent Gacha Vol. 2"
+      "New Year Advent Summon Vol. 2"
     ],
     "text:gasha_JP:gs_300420_na": [
       "fc111cac",
-      "Statue Gacha \"Cinderella's Magician\" Pickup"
+      "Statue Summon \"Cinderella's Magician\" Pickup"
     ],
     "text:gasha_JP:gs_300425_na": [
       "5134ca97",
-      "Diamond Selection Gacha"
+      "Diamond Selection Summon"
     ],
     "text:gasha_JP:gs_300430_na": [
       "f5d212ec",
-      "Statue Gacha \"The Dark Blue Moon That Lures to the Sea\" Pickup"
+      "Statue Summon \"The Dark Blue Moon That Lures to the Sea\" Pickup"
     ],
     "text:gasha_JP:gs_300440_na": [
       "d1d2e745",
-      "Super Advent Gacha"
+      "Super Advent Summon"
     ],
     "text:gasha_JP:gs_300450_na": [
       "6c380d23",
-      "Statue Gacha \"Teachings of the Zeppeli Family\" Pickup"
+      "Statue Summon \"Teachings of the Zeppeli Family\" Pickup"
     ],
     "text:gasha_JP:gs_300455_na": [
       "57f8872f",
-      "Premium Fest Gacha"
+      "Premium Fest Summon"
     ],
     "text:gasha_JP:gs_300470_na": [
       "0d1b25bb",
-      "1st Anniversary Gacha: Part 3 Festivaaal!!"
+      "1st Anniversary Summon: Part 3 Festivaaal!!"
     ],
     "text:gasha_JP:gs_300475_na": [
       "aa497c58",
-      "1st Anniversary Gacha: Part 4 Festivaaal!!"
+      "1st Anniversary Summon: Part 4 Festivaaal!!"
     ],
     "text:gasha_JP:gs_300480_na": [
       "f28e01ba",
-      "Advent Gacha"
+      "Advent Summon"
     ],
     "text:gasha_JP:gs_300490_na": [
       "f1a76879",
-      "Statue Gacha \"The Hamon Warriors' 'Nemesis'\" Pickup"
+      "Statue Summon \"The Hamon Warriors' 'Nemesis'\" Pickup"
     ],
     "text:gasha_JP:gs_300495_na": [
       "bda68c72",
-      "1st Anniversary Gacha: Parts 1 & 2 Festivaaal!!"
+      "1st Anniversary Summon: Parts 1 & 2 Festivaaal!!"
     ],
     "text:gasha_JP:gs_350010_na": [
       "2db18939",
-      "Statue Count-Up Gacha: Round 1"
+      "Statue Count-Up Summon: Round 1"
     ],
     "text:gasha_JP:gs_350012_na": [
       "6845a37d",
-      "Statue Count-Up Gacha: Round 2"
+      "Statue Count-Up Summon: Round 2"
     ],
     "text:gasha_JP:gs_350014_na": [
       "3d30c791",
-      "Statue Count-Up Gacha: Round 3"
+      "Statue Count-Up Summon: Round 3"
     ],
     "text:gasha_JP:gs_350016_na": [
       "a0b8c311",
-      "Statue Count-Up Gacha: Round 4"
+      "Statue Count-Up Summon: Round 4"
     ],
     "text:gasha_JP:gs_350018_na": [
       "477d5bbb",
-      "Statue Count-Up Gacha: Round 5"
+      "Statue Count-Up Summon: Round 5"
     ],
     "text:gasha_JP:gs_350020_na": [
       "2db18939",
-      "Statue Count-Up Gacha: Round 1"
+      "Statue Count-Up Summon: Round 1"
     ],
     "text:gasha_JP:gs_350022_na": [
       "6845a37d",
-      "Statue Count-Up Gacha: Round 2"
+      "Statue Count-Up Summon: Round 2"
     ],
     "text:gasha_JP:gs_350024_na": [
       "3d30c791",
-      "Statue Count-Up Gacha: Round 3"
+      "Statue Count-Up Summon: Round 3"
     ],
     "text:gasha_JP:gs_350026_na": [
       "a0b8c311",
-      "Statue Count-Up Gacha: Round 4"
+      "Statue Count-Up Summon: Round 4"
     ],
     "text:gasha_JP:gs_350028_na": [
       "477d5bbb",
-      "Statue Count-Up Gacha: Round 5"
+      "Statue Count-Up Summon: Round 5"
     ],
     "text:gasha_JP:gs_400000_na": [
       "13f97193",
-      "Mind Gacha \"Shadows Lurking in the Dark Fog\" Pickup"
+      "Mind Summon \"Shadows Lurking in the Dark Fog\" Pickup"
     ],
     "text:gasha_JP:gs_400010_na": [
       "50807be4",
-      "Mind Gacha \"The Moment Love Was Captured\" Pickup"
+      "Mind Summon \"The Moment Love Was Captured\" Pickup"
     ],
     "text:gasha_JP:gs_400020_na": [
       "19153a47",
-      "Mind Gacha \"Hamon Training\" Pickup"
+      "Mind Summon \"Hamon Training\" Pickup"
     ],
     "text:gasha_JP:gs_400030_na": [
       "4b550170",
-      "Mind Gacha \"The Chase in Egypt\" Pickup"
+      "Mind Summon \"The Chase in Egypt\" Pickup"
     ],
     "text:gasha_JP:gs_400040_na": [
       "9182d557",
-      "Mind Gacha \"The Brave Busybody\" Pickup"
+      "Mind Summon \"The Brave Busybody\" Pickup"
     ],
     "text:gasha_JP:gs_400050_na": [
       "c0a18fd1",
-      "Mind Gacha \"The Awakened Pillar Men\" Pickup"
+      "Mind Summon \"The Awakened Pillar Men\" Pickup"
     ],
     "text:gasha_JP:gs_400055_na": [
       "79d460e6",
@@ -2659,163 +2659,163 @@
     ],
     "text:gasha_JP:gs_400060_na": [
       "2ad11ac8",
-      "Mind Gacha \"Dream Match Festival\" Pickup"
+      "Mind Summon \"Dream Match Festival\" Pickup"
     ],
     "text:gasha_JP:gs_400070_na": [
       "323a6ab2",
-      "Mind Gacha \"The Bizarre End of 'Youth'\" Pickup"
+      "Mind Summon \"The Bizarre End of 'Youth'\" Pickup"
     ],
     "text:gasha_JP:gs_400080_na": [
       "b72b64d0",
-      "Mind Gacha \"The Electrifying Guitarist\" Pickup"
+      "Mind Summon \"The Electrifying Guitarist\" Pickup"
     ],
     "text:gasha_JP:gs_400090_na": [
       "99b097fd",
-      "Mind Gacha \"Battle of Ice and Sand\" Pickup"
+      "Mind Summon \"Battle of Ice and Sand\" Pickup"
     ],
     "text:gasha_JP:gs_400100_na": [
       "31cc01fc",
-      "Mind Gacha \"The Encroaching Void\" Pickup"
+      "Mind Summon \"The Encroaching Void\" Pickup"
     ],
     "text:gasha_JP:gs_400110_na": [
       "7fec3cfe",
-      "Mind Gacha \"Darkness Creeping into Daily Life\" Pickup"
+      "Mind Summon \"Darkness Creeping into Daily Life\" Pickup"
     ],
     "text:gasha_JP:gs_400115_na": [
       "d30978ce",
-      "Mind Gacha \"Darkness Creeping into Daily Life\" Pickup Vol. 2!"
+      "Mind Summon \"Darkness Creeping into Daily Life\" Pickup Vol. 2!"
     ],
     "text:gasha_JP:gs_400120_na": [
       "e708be2d",
-      "Mind Gacha \"Variety of Fighters\" Pickup"
+      "Mind Summon \"Variety of Fighters\" Pickup"
     ],
     "text:gasha_JP:gs_400130_na": [
       "59a6ed9c",
-      "Mind Gacha \"The Woman with Killer Legs\" Pickup"
+      "Mind Summon \"The Woman with Killer Legs\" Pickup"
     ],
     "text:gasha_JP:gs_400137_na": [
       "b3a27aac",
-      "Mind Gacha \"The Woman with Killer Legs\" Pickup Vol. 2!"
+      "Mind Summon \"The Woman with Killer Legs\" Pickup Vol. 2!"
     ],
     "text:gasha_JP:gs_400140_na": [
       "ff9f53d9",
-      "Mind Gacha \"'Mode of Light' Shining on the Snowfield\" Pickup"
+      "Mind Summon \"'Mode of Light' Shining on the Snowfield\" Pickup"
     ],
     "text:gasha_JP:gs_400145_na": [
       "0e1bc948",
-      "Mind Gacha \"'Mode of Light' Shining on the Snowfield\" Pickup Vol. 2!"
+      "Mind Summon \"'Mode of Light' Shining on the Snowfield\" Pickup Vol. 2!"
     ],
     "text:gasha_JP:gs_400150_na": [
       "5daf8239",
-      "Mind Gacha \"Racing Speed King\" Pickup"
+      "Mind Summon \"Racing Speed King\" Pickup"
     ],
     "text:gasha_JP:gs_400160_na": [
       "55efb0f9",
-      "Mind Gacha \"Movie Celebration! Diamond is Unbreakable\" Pickup Vol. 1"
+      "Mind Summon \"Movie Celebration! Diamond is Unbreakable\" Pickup Vol. 1"
     ],
     "text:gasha_JP:gs_400165_na": [
       "663cbeb8",
-      "Mind Gacha \"Movie Celebration! Diamond is Unbreakable\" Pickup Vol. 2"
+      "Mind Summon \"Movie Celebration! Diamond is Unbreakable\" Pickup Vol. 2"
     ],
     "text:gasha_JP:gs_400167_na": [
       "b3b6e40a",
-      "Limited Mind Gacha"
+      "Limited Mind Summon"
     ],
     "text:gasha_JP:gs_400170_na": [
       "8844b1bc",
-      "Mind Gacha \"Bizarre Encounters in a Bizarre Town\" Pickup"
+      "Mind Summon \"Bizarre Encounters in a Bizarre Town\" Pickup"
     ],
     "text:gasha_JP:gs_400175_na": [
       "cc4ccd3f",
-      "Mind Gacha \"Bizarre Encounters in a Bizarre Town\" Pickup Vol. 2"
+      "Mind Summon \"Bizarre Encounters in a Bizarre Town\" Pickup Vol. 2"
     ],
     "text:gasha_JP:gs_400190_na": [
       "bce6541b",
-      "Mind Gacha \"Dream Match Festival 2\" Pickup Vol. 1"
+      "Mind Summon \"Dream Match Festival 2\" Pickup Vol. 1"
     ],
     "text:gasha_JP:gs_400195_na": [
       "d64a2175",
-      "Mind Gacha \"Dream Match Festival 2\" Pickup Vol. 2"
+      "Mind Summon \"Dream Match Festival 2\" Pickup Vol. 2"
     ],
     "text:gasha_JP:gs_400210_na": [
       "f1b74e94",
-      "Mind Gacha \"Gathered Stardust\" Pickup"
+      "Mind Summon \"Gathered Stardust\" Pickup"
     ],
     "text:gasha_JP:gs_400230_na": [
       "37648ce3",
-      "Mind Gacha \"The Dark Emperor Who Craves Blood\" Pickup Vol. 1"
+      "Mind Summon \"The Dark Emperor Who Craves Blood\" Pickup Vol. 1"
     ],
     "text:gasha_JP:gs_400235_na": [
       "45911306",
-      "Mind Gacha \"The Dark Emperor Who Craves Blood\" Pickup Vol. 2"
+      "Mind Summon \"The Dark Emperor Who Craves Blood\" Pickup Vol. 2"
     ],
     "text:gasha_JP:gs_400240_na": [
       "98f4abd4",
-      "Mind Gacha \"The Revived Legendary Black Knight\" Pickup"
+      "Mind Summon \"The Revived Legendary Black Knight\" Pickup"
     ],
     "text:gasha_JP:gs_400260_na": [
       "8a16328c",
-      "Mind Gacha \"Dance of the Cursed Sword\" Pickup"
+      "Mind Summon \"Dance of the Cursed Sword\" Pickup"
     ],
     "text:gasha_JP:gs_400280_na": [
       "595c9d7d",
-      "Mind Gacha \"An Uncontrollable Urge to Kill\" Pickup"
+      "Mind Summon \"An Uncontrollable Urge to Kill\" Pickup"
     ],
     "text:gasha_JP:gs_400285_na": [
       "e5ec95d8",
-      "Mind Gacha \"An Uncontrollable Urge to Kill\" Pickup Vol. 2"
+      "Mind Summon \"An Uncontrollable Urge to Kill\" Pickup Vol. 2"
     ],
     "text:gasha_JP:gs_400290_na": [
       "255f5061",
-      "Mind Gacha \"Variety of Fighters 2\" Pickup Vol. 1"
+      "Mind Summon \"Variety of Fighters 2\" Pickup Vol. 1"
     ],
     "text:gasha_JP:gs_400295_na": [
       "d73399c2",
-      "Mind Gacha \"Variety of Fighters 2\" Pickup Vol. 2"
+      "Mind Summon \"Variety of Fighters 2\" Pickup Vol. 2"
     ],
     "text:gasha_JP:gs_400310_na": [
       "b3b6e40a",
-      "Limited Mind Gacha"
+      "Limited Mind Summon"
     ],
     "text:gasha_JP:gs_400320_na": [
       "49a8df8b",
-      "Mind Gacha \"The Enigma Boy\" Pickup"
+      "Mind Summon \"The Enigma Boy\" Pickup"
     ],
     "text:gasha_JP:gs_400330_na": [
       "1a5b4ac4",
-      "Mind Gacha \"Birth of the Ultimate Life Form\" Pickup"
+      "Mind Summon \"Birth of the Ultimate Life Form\" Pickup"
     ],
     "text:gasha_JP:gs_400335_na": [
       "0a642aaa",
-      "Mind Gacha \"Birth of the Ultimate Life Form\" Pickup Vol. 2"
+      "Mind Summon \"Birth of the Ultimate Life Form\" Pickup Vol. 2"
     ],
     "text:gasha_JP:gs_400350_na": [
       "a545f286",
-      "Mind Gacha \"The Ominous Tower of Gray\" Pickup"
+      "Mind Summon \"The Ominous Tower of Gray\" Pickup"
     ],
     "text:gasha_JP:gs_400370_na": [
       "ad34b9c1",
-      "Mind Gacha \"Cats Love Yoshikage Kira\" Pickup"
+      "Mind Summon \"Cats Love Yoshikage Kira\" Pickup"
     ],
     "text:gasha_JP:gs_400380_na": [
       "ce7ed45a",
-      "Mind Gacha \"The Vicious 'Air Bomb'\" Pickup"
+      "Mind Summon \"The Vicious 'Air Bomb'\" Pickup"
     ],
     "text:gasha_JP:gs_400385_na": [
       "7a9d31eb",
-      "Mind Gacha \"The Vicious 'Air Bomb'\" Pickup Vol. 2"
+      "Mind Summon \"The Vicious 'Air Bomb'\" Pickup Vol. 2"
     ],
     "text:gasha_JP:gs_400390_na": [
       "d21fe749",
-      "Mind Gacha \"Challenge from a Strong Foe\" Pickup"
+      "Mind Summon \"Challenge from a Strong Foe\" Pickup"
     ],
     "text:gasha_JP:gs_400400_na": [
       "d7ea6f5d",
-      "Mind Gacha \"Dream Match Festival DX\" Pickup"
+      "Mind Summon \"Dream Match Festival DX\" Pickup"
     ],
     "text:gasha_JP:gs_400410_na": [
       "11d22b8b",
-      "Mind Gacha \"Fateful Showdown\" Pickup"
+      "Mind Summon \"Fateful Showdown\" Pickup"
     ],
     "text:gasha_JP:gs_400412_na": [
       "df5a8dff",
@@ -2827,19 +2827,19 @@
     ],
     "text:gasha_JP:gs_400420_na": [
       "95ec40b6",
-      "Mind Gacha \"Cinderella's Magician\" Pickup"
+      "Mind Summon \"Cinderella's Magician\" Pickup"
     ],
     "text:gasha_JP:gs_400430_na": [
       "d1c60f80",
-      "Mind Gacha \"The Dark Blue Moon That Lures to the Sea\" Pickup"
+      "Mind Summon \"The Dark Blue Moon That Lures to the Sea\" Pickup"
     ],
     "text:gasha_JP:gs_400440_na": [
       "e3eb8f54",
-      "Mind Gacha \"The Possessed Silver Chariot\" Pickup"
+      "Mind Summon \"The Possessed Silver Chariot\" Pickup"
     ],
     "text:gasha_JP:gs_400450_na": [
       "286da9d1",
-      "Mind Gacha \"Teachings of the Zeppeli Family\" Pickup"
+      "Mind Summon \"Teachings of the Zeppeli Family\" Pickup"
     ],
     "text:gasha_JP:gs_400460_na": [
       "3b2d0a70",
@@ -2847,199 +2847,199 @@
     ],
     "text:gasha_JP:gs_400470_na": [
       "95dbbf41",
-      "Mind Gacha \"The Manga 'Material' Rohan Seeks\" Pickup"
+      "Mind Summon \"The Manga 'Material' Rohan Seeks\" Pickup"
     ],
     "text:gasha_JP:gs_400480_na": [
       "3a611bb1",
-      "Mind Gacha \"The 'Hands' Kira Likes\" Pickup"
+      "Mind Summon \"The 'Hands' Kira Likes\" Pickup"
     ],
     "text:gasha_JP:gs_400490_na": [
       "63a3c222",
-      "Mind Gacha \"The Hamon Warriors' 'Nemesis'\" Pickup"
+      "Mind Summon \"The Hamon Warriors' 'Nemesis'\" Pickup"
     ],
     "text:gasha_JP:gs_600120_na": [
       "68a0d632",
-      "\"★5 Yukako Yamagishi\" Box Gacha"
+      "\"★5 Yukako Yamagishi\" Box Summon"
     ],
     "text:gasha_JP:gs_600125_na": [
       "b945654f",
-      "\"★5 Hol Horse\" Box Gacha"
+      "\"★5 Hol Horse\" Box Summon"
     ],
     "text:gasha_JP:gs_600160_na": [
       "5523acd8",
-      "Vol. 1 Movie Celebration Box Gacha"
+      "Vol. 1 Movie Celebration Box Summon"
     ],
     "text:gasha_JP:gs_600165_na": [
       "952cb752",
-      "Vol. 2 Movie Celebration Box Gacha"
+      "Vol. 2 Movie Celebration Box Summon"
     ],
     "text:gasha_JP:gs_600210_na": [
       "4b8f6467",
-      "\"Gathered Stardust\" Box Gacha"
+      "\"Gathered Stardust\" Box Summon"
     ],
     "text:gasha_JP:gs_600220_na": [
       "2e7a8bc7",
-      "\"Arena\" Box Gacha"
+      "\"Arena\" Box Summon"
     ],
     "text:gasha_JP:gs_600230_na": [
       "c69f9638",
-      "\"Phantom Blood\" Box Gacha"
+      "\"Phantom Blood\" Box Summon"
     ],
     "text:gasha_JP:gs_600290_na": [
       "ccbc8ecc",
-      "\"Variety of Fighters 2\" Box Gacha"
+      "\"Variety of Fighters 2\" Box Summon"
     ],
     "text:gasha_JP:gs_600300_na": [
       "c56fb422",
-      "\"Battle Tendency\" Box Gacha"
+      "\"Battle Tendency\" Box Summon"
     ],
     "text:gasha_JP:gs_600340_na": [
       "7886b6b2",
-      "Arena Box Gacha"
+      "Arena Box Summon"
     ],
     "text:gasha_JP:gs_600370_na": [
       "fa08862b",
-      "Statue Box Gacha"
+      "Statue Box Summon"
     ],
     "text:gasha_JP:gs_600375_na": [
       "3f23cb2f",
-      "Statue Box Gacha Vol. 2"
+      "Statue Box Summon Vol. 2"
     ],
     "text:gasha_JP:gs_600430_na": [
       "fa08862b",
-      "Statue Box Gacha"
+      "Statue Box Summon"
     ],
     "text:gasha_JP:gs_600460_na": [
       "fa08862b",
-      "Statue Box Gacha"
+      "Statue Box Summon"
     ],
     "text:gasha_JP:gs_600490_na": [
       "fa08862b",
-      "Statue Box Gacha"
+      "Statue Box Summon"
     ],
     "text:gasha_JP:gs_700180_na": [
       "f31a0cfc",
-      "Mind Gacha \"Arena\" Pickup"
+      "Mind Summon \"Arena\" Pickup"
     ],
     "text:gasha_JP:gs_700200_na": [
       "f31a0cfc",
-      "Mind Gacha \"Arena\" Pickup"
+      "Mind Summon \"Arena\" Pickup"
     ],
     "text:gasha_JP:gs_700220_na": [
       "f31a0cfc",
-      "Mind Gacha \"Arena\" Pickup"
+      "Mind Summon \"Arena\" Pickup"
     ],
     "text:gasha_JP:gs_700250_na": [
       "f4fbbb87",
-      "Arena Pickup Gacha"
+      "Arena Pickup Summon"
     ],
     "text:gasha_JP:gs_700360_na": [
       "f4fbbb87",
-      "Arena Pickup Gacha"
+      "Arena Pickup Summon"
     ],
     "text:gasha_JP:gs_800260_na": [
       "70cf9ee9",
-      "Skill Mind Box Gacha"
+      "Skill Mind Box Summon"
     ],
     "text:gasha_JP:gs_800300_na": [
       "70cf9ee9",
-      "Skill Mind Box Gacha"
+      "Skill Mind Box Summon"
     ],
     "text:gasha_JP:gs_800340_na": [
       "70cf9ee9",
-      "Skill Mind Box Gacha"
+      "Skill Mind Box Summon"
     ],
     "text:gasha_JP:gs_800400_na": [
       "2cf5dafa",
-      "Arena Mind Box Gacha"
+      "Arena Mind Box Summon"
     ],
     "text:gasha_JP:gs_900060_na": [
       "65fdf38e",
-      "Dream Ticket Gacha"
+      "Dream Ticket Summon"
     ],
     "text:gasha_JP:gs_900120_na": [
       "2d50b05e",
-      "Variety Ticket Gacha"
+      "Variety Ticket Summon"
     ],
     "text:gasha_JP:gs_900190_na": [
       "b1abd305",
-      "Dream Ticket Gacha 2"
+      "Dream Ticket Summon 2"
     ],
     "text:gasha_JP:gs_900290_na": [
       "df2be188",
-      "\"Variety of Fighters 2\" Friend Point Mind Gacha"
+      "\"Variety of Fighters 2\" Friend Point Mind Summon"
     ],
     "text:gasha_JP:gs_900295_na": [
       "7692fd02",
-      "\"Variety of Fighters 2\" Friend Point Mind Gacha EX"
+      "\"Variety of Fighters 2\" Friend Point Mind Summon EX"
     ],
     "text:gasha_JP:gs_900297_na": [
       "d819706b",
-      "\"Variety of Fighters 2\" Friend Point Mind Gacha MAX"
+      "\"Variety of Fighters 2\" Friend Point Mind Summon MAX"
     ],
     "text:gasha_JP:gs_900390_na": [
       "385c451f",
-      "Grand Giveback Fest Statue Gacha"
+      "Grand Giveback Fest Statue Summon"
     ],
     "text:gasha_JP:gs_900395_na": [
       "22b9805d",
-      "Grand Giveback Fest Mind Gacha"
+      "Grand Giveback Fest Mind Summon"
     ],
     "text:gasha_JP:gs_900400_na": [
       "deafdc2c",
-      "Dream Ticket Gacha DX"
+      "Dream Ticket Summon DX"
     ],
     "text:gasha_JP:gs_900405_na": [
       "cec43f55",
-      "[Points Only] New Year's Money-aaah! Gacha"
+      "[Points Only] New Year's Money-aaah! Summon"
     ],
     "text:gasha_JP:gs_900430_na": [
       "51fcc9d6",
-      "Shift Change Gacha (1st Gear) (Tentative)"
+      "Shift Change Summon (1st Gear) (Tentative)"
     ],
     "text:gasha_JP:gs_900432_na": [
       "e4eb750e",
-      "Shift Change Gacha (2nd Gear) (Tentative)"
+      "Shift Change Summon (2nd Gear) (Tentative)"
     ],
     "text:gasha_JP:gs_900434_na": [
       "3d29c1ab",
-      "Shift Change Gacha (3rd Gear) (Tentative)"
+      "Shift Change Summon (3rd Gear) (Tentative)"
     ],
     "text:gasha_JP:gs_950041_na": [
       "45f49c02",
-      "Count-Up Round 1 Statue Gacha"
+      "Count-Up Round 1 Statue Summon"
     ],
     "text:gasha_JP:gs_950042_na": [
       "d90d3a8b",
-      "Count-Up Round 2 Statue Gacha"
+      "Count-Up Round 2 Statue Summon"
     ],
     "text:gasha_JP:gs_950043_na": [
       "3e8fd849",
-      "Count-Up Round 3 Statue Gacha"
+      "Count-Up Round 3 Statue Summon"
     ],
     "text:gasha_JP:gs_950044_na": [
       "b992c796",
-      "Count-Up Round 4 Statue Gacha"
+      "Count-Up Round 4 Statue Summon"
     ],
     "text:gasha_JP:gs_950045_na": [
       "9ef0d8f8",
-      "Count-Up Round 5 Statue Gacha"
+      "Count-Up Round 5 Statue Summon"
     ],
     "text:gasha_JP:gs_990000_na": [
       "2c58b30c",
-      "Effect Camera Test Gacha"
+      "Effect Camera Test Summon"
     ],
     "text:gasha_frenzy_JP:Gasha_Frenzy_300470": [
       "9ba74da2",
-      "[1st Anniversary Gacha]\nEvery Part 3 Statue, Super Advent and Advent included, all in one place!"
+      "[1st Anniversary Summon]\nEvery Part 3 Statue, Super Advent and Advent included, all in one place!"
     ],
     "text:gasha_frenzy_JP:Gasha_Frenzy_300475": [
       "57eb9622",
-      "[1st Anniversary Gacha] Vol. 2!\nThis time it's every Part 4 Statue! Don't miss it!"
+      "[1st Anniversary Summon] Vol. 2!\nThis time it's every Part 4 Statue! Don't miss it!"
     ],
     "text:gasha_frenzy_JP:Gasha_Frenzy_300480": [
       "354f3346",
-      "[Advent Gacha]\n★6 Statues debut! Don't miss this chance!"
+      "[Advent Summon]\n★6 Statues debut! Don't miss this chance!"
     ],
     "text:optionText_JP:a_jisseki_login_ng": [
       "38af9238",
@@ -3379,7 +3379,7 @@
     ],
     "text:optionText_JP:system_set_11": [
       "768d25b0",
-      "Skip Gacha Animation"
+      "Skip Summon Animation"
     ],
     "text:optionText_JP:system_set_12": [
       "432e163d",
@@ -3527,7 +3527,7 @@
     ],
     "text:shop_JP:GOODS_0013_DETAIL": [
       "95975669",
-      "Power Up material. Gives 1.2x EXP when fused into a Statue!"
+      "Enhancement material. Gives 1.2x EXP when fused into a Statue!"
     ],
     "text:shop_JP:GOODS_0013_NAME": [
       "9a23876c",
@@ -3715,27 +3715,27 @@
     ],
     "text:shop_JP:GOODS_8664_DETAIL": [
       "2835e1a8",
-      "Awakening Medal for [Koichi Hirose ~ACT2 The Growing Boy~ <Maverick>]"
+      "Awakening Medal for [Koichi Hirose ~ACT2 The Growing Boy~ <Solitude>]"
     ],
     "text:shop_JP:GOODS_8664_NAME": [
       "8e68f796",
-      "Awakening Medal [Koichi Hirose ~ACT2 The Growing Boy~ <Maverick>]"
+      "Awakening Medal [Koichi Hirose ~ACT2 The Growing Boy~ <Solitude>]"
     ],
     "text:shop_JP:GOODS_8684_DETAIL": [
       "ec519ea1",
-      "Awakening Medal for [Akira Otoishi ~Unshakable Confidence~ <Maverick>]"
+      "Awakening Medal for [Akira Otoishi ~Unshakable Confidence~ <Solitude>]"
     ],
     "text:shop_JP:GOODS_8684_NAME": [
       "8ac5137a",
-      "Awakening Medal [Akira Otoishi ~Unshakable Confidence~ <Maverick>]"
+      "Awakening Medal [Akira Otoishi ~Unshakable Confidence~ <Solitude>]"
     ],
     "text:shop_JP:GOODS_8744_DETAIL": [
       "c9eedd1d",
-      "Awakening Medal for [Yuya Fungami ~Power to Drain Nutrients~ <Intellect>]"
+      "Awakening Medal for [Yuya Fungami ~Power to Drain Nutrients~ <Wisdom>]"
     ],
     "text:shop_JP:GOODS_8744_NAME": [
       "201921b9",
-      "Awakening Medal [Yuya Fungami ~Power to Drain Nutrients~ <Intellect>]"
+      "Awakening Medal [Yuya Fungami ~Power to Drain Nutrients~ <Wisdom>]"
     ],
     "text:shop_JP:GOODS_A52906_DETAIL": [
       "67de5dd5",
@@ -3903,7 +3903,7 @@
     ],
     "text:shop_JP:GOODS_M5015_DETAIL": [
       "95975669",
-      "Power Up material. Gives 1.2x EXP when fused into a Statue!"
+      "Enhancement material. Gives 1.2x EXP when fused into a Statue!"
     ],
     "text:shop_JP:GOODS_M5015_NAME": [
       "ef6bc32a",
@@ -3911,7 +3911,7 @@
     ],
     "text:shop_JP:GOODS_M5016_DETAIL": [
       "95975669",
-      "Power Up material. Gives 1.2x EXP when fused into a Statue!"
+      "Enhancement material. Gives 1.2x EXP when fused into a Statue!"
     ],
     "text:shop_JP:GOODS_M5016_NAME": [
       "a965b4e7",
@@ -3919,7 +3919,7 @@
     ],
     "text:shop_JP:GOODS_M5019_DETAIL": [
       "f7e10fe1",
-      "Power Up material. Gives 1.2x EXP when fused into a Mind!"
+      "Enhancement material. Gives 1.2x EXP when fused into a Mind!"
     ],
     "text:shop_JP:GOODS_M5019_NAME": [
       "25ce9a5e",
@@ -3927,7 +3927,7 @@
     ],
     "text:shop_JP:GOODS_M5020_DETAIL": [
       "f7e10fe1",
-      "Power Up material. Gives 1.2x EXP when fused into a Mind!"
+      "Enhancement material. Gives 1.2x EXP when fused into a Mind!"
     ],
     "text:shop_JP:GOODS_M5020_NAME": [
       "06537b5f",
