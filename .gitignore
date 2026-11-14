@@ -22,3 +22,8 @@ logcat*.txt
 # Outputs of jdr-tool decrypt etc. belong under local/
 *.unityfs
 *.dec
+
+# Game-derived art and packs (never in the repo)
+*.png
+*.zip
+art.bin

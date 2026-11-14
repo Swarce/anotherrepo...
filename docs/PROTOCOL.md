@@ -145,8 +145,8 @@ Notes:
 | `/statue/new_flg_release` | `StatueNewFlgReleaseRequest` | `StatueNewFlgReleaseResponse` | logged as unknown |
 | `/statue/protect` | `StatueProtectRequest` | `StatueProtectResponse` | logged as unknown |
 | `/statue/save_sort` | `StatueSaveSortRequest` | `StatueSaveSortResponse` | logged as unknown |
-| `/statue/statue_info` | `StatueInfoRequest` | `StatueInfoResponse` | logged as unknown |
-| `/statue/statue_list` | `StatueListRequest` | `StatueListResponse` | logged as unknown |
+| `/statue/statue_info` | `StatueInfoRequest` | `StatueInfoResponse` | implemented |
+| `/statue/statue_list` | `StatueListRequest` | `StatueListResponse` | implemented |
 | `/statue/strengthening` | `StatueStrengtheningRequest` | `StatueStrengtheningResponse` | logged as unknown |
 | `/statue/strengthening_item` | `StatueStrengtheningItemRequest` | `StatueStrengtheningResponse` | logged as unknown |
 
@@ -155,8 +155,8 @@ Notes:
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
 | `/mind/add_storage` | `MindAddStorageRequest` | `MindAddStorageResponse` (M) | logged as unknown |
-| `/mind/mind_info` | `MindInfoRequest` | `MindInfoResponse` | logged as unknown |
-| `/mind/mind_list` | `MindListRequest` | `MindListResponse` | logged as unknown |
+| `/mind/mind_info` | `MindInfoRequest` | `MindInfoResponse` | implemented |
+| `/mind/mind_list` | `MindListRequest` | `MindListResponse` | implemented |
 | `/mind/mind_storage_list` | `MindStorageListRequest` | `MindStorageListResponse` | logged as unknown |
 | `/mind/mind_storage_move` | `MindStorageMoveRequest` | `MindStorageMoveResponse` | logged as unknown |
 | `/mind/new_flg_release` | `MindNewFlgReleaseRequest` | `MindNewFlgReleaseResponse` | logged as unknown |
@@ -208,15 +208,15 @@ Notes:
 
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
-| `/bizarre/bizarre_continue` | `BizarreContinueRequest` | `BizarreContinueResponse` | logged as unknown |
-| `/bizarre/bizarre_end` | `BizarreEndRequest` | `BizarreEndResponse` | logged as unknown |
-| `/bizarre/bizarre_list` | `BizarreListRequest` | `BizarreListResponse` | logged as unknown |
+| `/bizarre/bizarre_continue` | `BizarreContinueRequest` | `BizarreContinueResponse` | implemented |
+| `/bizarre/bizarre_end` | `BizarreEndRequest` | `BizarreEndResponse` | implemented |
+| `/bizarre/bizarre_list` | `BizarreListRequest` | `BizarreListResponse` | implemented |
 | `/bizarre/bizarre_resumption` | `BizarreResumptionRequest` | `BizarreResumptionResponse` | implemented |
-| `/bizarre/bizarre_start` | `BizarreStartRequest` | `BizarreStartResponse` | logged as unknown |
-| `/bizarre/check_timed_chapter` | `CheckTimedChapterRequest` | `CheckTimedChapterResponse` (M) | logged as unknown |
-| `/bizarre/destruction` | `BizarreDestructionRequest` | `BizarreDestructionResponse` | logged as unknown |
+| `/bizarre/bizarre_start` | `BizarreStartRequest` | `BizarreStartResponse` | implemented |
+| `/bizarre/check_timed_chapter` | `CheckTimedChapterRequest` | `CheckTimedChapterResponse` (M) | implemented |
+| `/bizarre/destruction` | `BizarreDestructionRequest` | `BizarreDestructionResponse` | implemented |
 | `/bizarre/get_bizarre_select` | `BizarreSelectRequest` | `BizarreSelectResponse` | implemented |
-| `/bizarre/stage_list` | `StageListRequest` | `StageListResponse` | logged as unknown |
+| `/bizarre/stage_list` | `StageListRequest` | `StageListResponse` | implemented |
 | `/bizarre/unlock` | `BizarreUnlockRequest` | `BizarreUnlockResponse` | logged as unknown |
 
 ### dungeon — tarot dungeon (6, 0 implemented)
@@ -277,7 +277,7 @@ Notes:
 
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
-| `/support/support_user_s` | `SupportUserRequest` | `SupportUserResponse` | logged as unknown |
+| `/support/support_user_s` | `SupportUserRequest` | `SupportUserResponse` | implemented |
 
 ### follow — follow list (social) (10, 1 implemented)
 
@@ -315,7 +315,7 @@ Notes:
 | `/clan/expulsion` | `ExplusionClanRequest` | `ExplusionClanResponse` | logged as unknown |
 | `/clan/info` | `GetClanInfoRequest` | `GetClanInfoResponse` | logged as unknown |
 | `/clan/invitation` | `InviteClanRequest` | `InviteClanResponse` | logged as unknown |
-| `/clan/recommend` | `GetRecommendClanRequest` | `GetRecommendClanResponse` | logged as unknown |
+| `/clan/recommend` | `GetRecommendClanRequest` | `GetRecommendClanResponse` | implemented |
 | `/clan/room_info` | `GetClanRoomInfoRequest` | `GetClanRoomInfoResponse` (M) | logged as unknown |
 | `/clan/search` | `SearchIDClanRequest` | `SearchClanResponse` | logged as unknown |
 | `/clan/search` | `SearchNameClanRequest` | `SearchClanResponse` | logged as unknown |

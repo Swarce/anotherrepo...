@@ -11,13 +11,18 @@
   test output; check for it before claiming a real-binary pass.
 - Translations are stored as `label -> English` plus a hash of the source line, never the Japanese
   source text.
+- **No game data anywhere the project publishes**: not in the repo, and not attached to releases,
+  issues or pull requests (this includes packs, exports, art made from the game's images, and
+  original-vs-new comparisons). Players keep their own exports and art packs private.
 - **Server-only content** (values the dead server held: stats, skill numbers, curves, gacha pools,
   prices, stages) is committed under `server/content/` as JSON **with its sources**: every file has a
   `sources` list (site, page, date accessed), and every source appears in `CREDITS.md`. Numbers and
   facts only; never copy descriptions or other prose from the sources. Values we chose ourselves are
   marked `"source": "jdr-default"` (with a `note`); facts from our own analysis of the client are
   marked `"source": "jdr-research"` (with the `doc` they are written up in). An outside source needs
-  its `page` and the date it was `accessed`. The server refuses a content file that breaks this.
+  its `page` and the date it was `accessed`. A content file that breaks this does not build: the
+  master-data loader refuses it, and a test checks the files the server reads directly (and every
+  record in them).
 - `server/content/masterdata/schema.json` holds only the field layouts our content needs (code
   identifiers, no values or text); it grows with the content, never as a full metadata dump.
 - No real payments, no tracking. Analytics/ads/crash endpoints are accepted and dropped.

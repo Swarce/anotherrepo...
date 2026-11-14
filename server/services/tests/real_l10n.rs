@@ -52,7 +52,7 @@ fn rebuilds_every_text_bundle() {
         });
     let _ = std::fs::remove_dir_all(&state);
     let t0 = std::time::Instant::now();
-    let (loc, errs) = l10n::prepare(&dir, &state, key, iv, &tr);
+    let (loc, errs) = l10n::prepare(&dir, &state, key, iv, &tr, None);
     let first = t0.elapsed();
     assert!(errs.is_empty(), "{errs:?}");
     let replaced: usize = loc.iter().map(|l| l.stats.replaced).sum();
@@ -66,7 +66,7 @@ fn rebuilds_every_text_bundle() {
         assert!(l10n::collect(&b, &l.name).unwrap().is_empty(), "{}", l.name);
     }
     let t1 = std::time::Instant::now();
-    let (again, _) = l10n::prepare(&dir, &state, key, iv, &tr);
+    let (again, _) = l10n::prepare(&dir, &state, key, iv, &tr, None);
     assert_eq!(
         again.iter().map(|l| &l.md5).collect::<Vec<_>>(),
         loc.iter().map(|l| &l.md5).collect::<Vec<_>>()
