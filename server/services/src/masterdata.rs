@@ -258,6 +258,32 @@ pub struct Table {
     pub rows: usize,
 }
 
+/// CONTRIBUTING: every content file names its sources. `jdr-research` (our own analysis, with the
+/// doc it is in) and `jdr-default` (a value we chose) need a `doc`/`note`; any other source is an
+/// outside site and needs its `page` and the date it was `accessed`.
+pub fn check_sources(v: &Value) -> Result<(), Error> {
+    let list = v
+        .get("sources")
+        .and_then(Value::as_array)
+        .filter(|s| !s.is_empty())
+        .ok_or("a non-empty \"sources\" list is required")?;
+    for (i, s) in list.iter().enumerate() {
+        let field = |k: &str| s.get(k).and_then(Value::as_str).filter(|x| !x.is_empty());
+        let src = field("source").ok_or_else(|| format!("sources[{i}] needs a \"source\""))?;
+        let ok = match src {
+            "jdr-research" => field("doc").is_some(),
+            "jdr-default" => field("note").is_some(),
+            _ => field("page").is_some() && field("accessed").is_some(),
+        };
+        if !ok {
+            return Err(format!(
+                "sources[{i}] ({src}): jdr-research needs \"doc\", jdr-default needs \"note\", an outside source needs \"page\" and \"accessed\""
+            ));
+        }
+    }
+    Ok(())
+}
+
 /// Every core asset (empty unless a content file fills it) plus any other asset with content.
 pub fn tables(schema: &Schema, content: &[(&str, &str)]) -> Result<Vec<Table>, Error> {
     let mut parsed = Vec::new();
@@ -266,15 +292,7 @@ pub fn tables(schema: &Schema, content: &[(&str, &str)]) -> Result<Vec<Table>, E
         if v.get("asset").and_then(Value::as_str) != Some(name) {
             return Err(format!("{name}.json: \"asset\" must be {name:?}"));
         }
-        if !v
-            .get("sources")
-            .and_then(Value::as_array)
-            .is_some_and(|s| !s.is_empty())
-        {
-            return Err(format!(
-                "{name}.json: a non-empty \"sources\" list is required"
-            ));
-        }
+        check_sources(&v).map_err(|e| format!("{name}.json: {e}"))?;
         if !schema.assets.iter().any(|a| a.name == *name) {
             return Err(format!("{name}.json: no such asset in the schema"));
         }
@@ -287,7 +305,7 @@ pub fn tables(schema: &Schema, content: &[(&str, &str)]) -> Result<Vec<Table>, E
             .find(|(n, _)| *n == a.name)
             .map(|(_, v)| &v["data"]);
         if !a.core && data.is_none() {
-            continue; // battle tables: absent until we have content (their readers null-check)
+            continue; // battle tables: absent until we have content (their boot readers null-check)
         }
         let fields = schema.root_fields(&a.class)?;
         let vals = match data {
@@ -533,12 +551,63 @@ mod tests {
             .contains("sources"));
         let wrong = r#"{"asset":"x","sources":[1],"data":{}}"#;
         assert!(tables(&s, &[("rank_table", wrong)]).is_err());
-        let extra = r#"{"asset":"model_table","sources":[{"source":"jdr-default"}],"data":{}}"#;
-        assert_eq!(
-            tables(&s, &[("model_table", extra)]).unwrap().len(),
-            18,
-            "extras join once they have content"
+        let unknown =
+            r#"{"asset":"model_table","sources":[{"source":"jdr-default","note":"n"}],"data":{}}"#;
+        assert!(tables(&s, &[("model_table", unknown)])
+            .unwrap_err()
+            .contains("no such asset"));
+        for (src, ok) in [
+            (r#"{"source":"jdr-research"}"#, false),
+            (
+                r#"{"source":"jdr-research","doc":"docs/research/09-master-data.md"}"#,
+                true,
+            ),
+            (r#"{"source":"jdr-default"}"#, false),
+            (
+                r#"{"source":"some-wiki","page":"https://example.org/x"}"#,
+                false,
+            ),
+            (
+                r#"{"source":"some-wiki","page":"https://example.org/x","accessed":"2026-11-14"}"#,
+                true,
+            ),
+        ] {
+            let v: Value = serde_json::from_str(&format!(r#"{{"sources":[{src}]}}"#)).unwrap();
+            assert_eq!(check_sources(&v).is_ok(), ok, "{src}");
+        }
+    }
+
+    /// The semantics from research 09 §6 that make "every tutorial done" work.
+    #[test]
+    fn tutorial_table_invariants() {
+        let v: Value = serde_json::from_str(TABLES[0].1).unwrap();
+        let rows = v["data"]["paramList"].as_array().unwrap();
+        assert!(
+            rows.len() <= crate::TUTORIAL_FLAGS,
+            "get_tutorial_step must cover every row"
         );
+        let labels: Vec<&str> = rows
+            .iter()
+            .map(|r| r["flagLabel"].as_str().unwrap())
+            .collect();
+        let unique: std::collections::BTreeSet<_> = labels.iter().collect();
+        assert_eq!(unique.len(), labels.len(), "labels unique");
+        for i in 0..12 {
+            assert!(labels.contains(&format!("TUTORIAL_{i:02}").as_str()));
+        }
+        for i in (0..18).filter(|i| *i != 9) {
+            assert!(labels.contains(&format!("HINT_{i:02}").as_str()));
+        }
+        for i in 0..5 {
+            assert!(labels.contains(&format!("OPEN_{i:02}").as_str()));
+        }
+        for r in rows {
+            let l = r["flagLabel"].as_str().unwrap();
+            if !l.starts_with("TUTORIAL_") {
+                assert_eq!(r["launchType"], "Manual", "{l}: hints/unlocks never launch");
+            }
+            assert!(r.get("scriptPackName").is_none_or(|p| p == ""), "{l}");
+        }
     }
 
     #[test]

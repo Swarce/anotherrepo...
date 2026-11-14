@@ -14,9 +14,12 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 - **`in_memory_master_data` is generated** by the server (embedded and standalone), next to the
   manifest, and listed in it with the md5 and size of exactly what `/cdn` serves (plain UnityFS,
   `isEncrypt=false`). Log line: `[assets] versionfile built: … in_memory_master_data: N tables (…)`.
-- **Schema** (`server/content/masterdata/schema.json`): the bundle's assets and the serialized fields
-  of their 147 types, from our analysis of the client (docs/research/09-master-data.md). The bundle
-  holds about 45 assets, not 18: 27 more battle tables are read from the same bundle.
+- **Schema** (`server/content/masterdata/schema.json`): the 17 core assets and the serialized fields
+  of the 57 types they reach, from our analysis of the client (docs/research/09-master-data.md);
+  only what our content needs (code identifiers, no values or text). The bundle holds about 45
+  assets, not 18: 27 more battle tables are read from the same bundle; their layouts are mapped in
+  the research and join the schema with their content. Their boot readers null-check (checked in
+  the code for the two read earliest).
 - **Content:** `tutorial_flag_table` with the 34 flag labels the client queries (ids 0..33, no
   tutorial script downloads), so, with `get_tutorial_step` answering all ones, every tutorial and hint
   counts as done and the daily/event quest categories unlock. The other 16 core tables are written
@@ -24,10 +27,16 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 - `jdr_unity::managed` (type trees + binary layout in the engine's own node shapes) and
   `jdr_unity::objects` (AssetBundle/MonoScript, shared with the manifest; manifest bytes unchanged).
 - Import: leftovers of an interrupted import are removed; `/client/getkey` waits (≤ 12 s) while an
-  import runs, so the game holds on the title instead of looping.
+  import runs, so the game holds on the title instead of looping (the flag clears even if the import
+  panics).
+- Content files must carry well-formed sources (`jdr-research` + doc, `jdr-default` + note, outside
+  sources + page + access date); CONTRIBUTING and CREDITS updated.
+- `jdr-server --tutorial play` now warns: there are no tutorial scripts in the tables yet.
 - Build number 6, server marker `JDR_EMBEDDED_SERVER_b006`.
 
 ### Verified off-device
+- Real data, through the server context as on the phone: the manifest lists the master-data
+  bundle with the md5 and size of exactly the bytes `/cdn` serves.
 - Unit tests: the tutorial-table type tree equals the research template node for node; binary layout
   (string/bool alignment, lists); every class in the schema resolves and serializes; content rules
   (sources required, typos refused, enum names); deterministic bundle.
@@ -49,6 +58,8 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 - [ ] Past the loading screen: `/api/user/user_info`, `/api/team/team_info`, `/api/info/*` follow
 - [ ] MyPage appears (no leader model expected); footer menus respond
 - [ ] Any `UNKNOWN ROUTE` lines; logcat exceptions after the last request
+- [ ] Later screens that read empty tables (gacha, formation, statue detail, glossary): blank
+      values expected; note any crash
 
 ## Build 05 — keep the game files, import them, review fixes (branch `wip/b05`)
 

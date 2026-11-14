@@ -15,7 +15,11 @@
   prices, stages) is committed under `server/content/` as JSON **with its sources**: every file has a
   `sources` list (site, page, date accessed), and every source appears in `CREDITS.md`. Numbers and
   facts only; never copy descriptions or other prose from the sources. Values we chose ourselves are
-  marked `"source": "jdr-default"`.
+  marked `"source": "jdr-default"` (with a `note`); facts from our own analysis of the client are
+  marked `"source": "jdr-research"` (with the `doc` they are written up in). An outside source needs
+  its `page` and the date it was `accessed`. The server refuses a content file that breaks this.
+- `server/content/masterdata/schema.json` holds only the field layouts our content needs (code
+  identifiers, no values or text); it grows with the content, never as a full metadata dump.
 - No real payments, no tracking. Analytics/ads/crash endpoints are accepted and dropped.
 - Use real user data only from logs the user sends; synthetic data everywhere else.
 
