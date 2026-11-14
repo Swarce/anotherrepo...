@@ -758,6 +758,10 @@ mod tests {
                 .unwrap_or_else(|| panic!("no row for {id}"));
             assert!(id == crate::collection::BASIC_ATTACK || row["viewSkillId"] == id.as_str());
             assert_eq!(row["skillWait"], 100, "an attack ends the unit's turn");
+            assert!(
+                row["dtRangeMax"].as_i64().unwrap() >= 100,
+                "attackers stop in front, not inside"
+            );
         }
         let unique: std::collections::HashSet<_> = ids.iter().collect();
         assert_eq!(unique.len(), ids.len(), "skill ids are unique");
@@ -777,6 +781,8 @@ mod tests {
         assert!(f("_multiDealDamageMin") <= 1.0 && 1.0 <= f("_multiDealDamageMax"));
         assert!(f("_addDamageMin") <= 0.0 && 0.0 <= f("_addDamageMax"));
         assert!(f("_damageCap") > 0.0);
+        // Move ranges are centimetres: an approach of a few metres must not count as "far".
+        assert!(f("_moveRangeFar") >= 300.0 && f("_moveEscapeRenge") >= 50.0);
         // The random spread is in 1/10000 (docs/research/11 §3): it must bracket 10000.
         assert!(f("_damageGitterMin") <= 10000.0 && 10000.0 <= f("_damageGitterMax"));
         assert!(f("_healFluctuationsMin") <= 10000.0 && 10000.0 <= f("_healFluctuationsMax"));
