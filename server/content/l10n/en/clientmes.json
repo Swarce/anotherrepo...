@@ -1,0 +1,5 @@
+{
+ "about": "English for the game's clientmes strings: key -> [hash of the Japanese source, English]. See docs/LOCALIZATION.md.",
+ "sources": [{"source": "jdr-default", "note": "translated by the project"}],
+ "entries": {}
+}

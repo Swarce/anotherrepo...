@@ -428,6 +428,48 @@ impl Patch for KeepFiles {
     }
 }
 
+/// English for the in-APK ClientMes table (boot, download and error messages), from the
+/// project's translation file; rows without a current translation stay as they are.
+pub struct TranslateClientMes;
+
+/// Apply the embedded English to a ClientMes Resources file. Returns (file, replaced, total).
+pub fn translate_clientmes(file: &[u8]) -> Result<(Vec<u8>, usize, usize), Error> {
+    let tr = jdr_services::l10n::Translations::embedded()?;
+    let total = crate::clientmes::read(file)?.rows.len();
+    let (out, n) = crate::clientmes::rewrite(file, &|label, text| match tr
+        .lookup(&format!("clientmes:{label}"), text)
+    {
+        jdr_services::l10n::Lookup::Found(en) => Some(en.to_string()),
+        _ => None,
+    })?;
+    Ok((out, n, total))
+}
+
+impl Patch for TranslateClientMes {
+    fn id(&self) -> &'static str {
+        "english-clientmes"
+    }
+    fn description(&self) -> &'static str {
+        "English boot/download/error messages (in-APK ClientMes table)"
+    }
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        _cfg: &Config,
+        build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
+        let entry = crate::clientmes::ENTRY;
+        let file = apk.read(entry)?;
+        if sha256_hex(&file) != build.clientmes_sha256 {
+            return Err("fingerprint mismatch: ClientMes".into());
+        }
+        let (out, n, total) = translate_clientmes(&file)?;
+        let compress = apk.is_compressed(entry);
+        apk.put(entry, out, compress);
+        Ok(format!("ClientMes: {n} of {total} messages in English"))
+    }
+}
+
 pub fn all() -> Vec<Box<dyn Patch>> {
     vec![
         Box::new(ServerUrl),
@@ -436,6 +478,7 @@ pub fn all() -> Vec<Box<dyn Patch>> {
         Box::new(UnityHeap),
         Box::new(KeepFiles),
         Box::new(EmbedServer),
+        Box::new(TranslateClientMes),
     ]
 }
 

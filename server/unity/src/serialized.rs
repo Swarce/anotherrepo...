@@ -160,12 +160,14 @@ pub fn write_full(
         externals_raw,
         user_info,
         0,
+        true,
     )
 }
 
 /// As [`write_full`], placing object data in `order` (indices into `objects`; the engine's own
 /// files do not always store data in object-table order), and starting the data no earlier than
-/// `min_data_offset` (the engine sometimes pads it, e.g. to 4096).
+/// `min_data_offset` (the engine sometimes pads it, e.g. to 4096). `type_trees` is the file's
+/// type-tree flag (the type entries must match it).
 #[allow(clippy::too_many_arguments)]
 pub fn write_layout(
     engine: &str,
@@ -177,11 +179,12 @@ pub fn write_layout(
     externals_raw: &[u8],
     user_info: &str,
     min_data_offset: usize,
+    type_trees: bool,
 ) -> Vec<u8> {
     let mut m = W::new();
     m.cstr(engine);
     m.i32(platform);
-    m.u8(1); // type trees enabled
+    m.u8(type_trees as u8);
     m.i32(types.len() as i32);
     for t in types {
         m.bytes(&t.raw);
