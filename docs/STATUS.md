@@ -18,8 +18,10 @@ items, shop, quest select).
   ClientMes table (fingerprinted, `--disable english-clientmes`).
 - **First English batch** (2,533 strings): all ClientMes messages (236), all UI prefab labels
   (1,210), and the menu text tables (1,087: My Page, options, title, team, training, evolution,
-  filters/sorting, battle UI, quest types/results, arena, shop, gacha, …). Names, skills, items,
-  missions and events (~48,500 strings) follow in later batches; story scripts later still.
+  filters/sorting, battle UI, quest types/results, arena, shop, gacha, special actions, …).
+  Statue/skill/item names and descriptions, missions and events (~48,500 strings) follow in later
+  batches; story scripts later still. The in-game terms text is replaced by a short "unofficial
+  offline build" notice rather than translated.
 - **Translator tools:** `jdr-tool l10n export` (every string of the player's copy into a local TSV)
   and `jdr-tool l10n import` (refuses lost placeholders, wrong hashes, Japanese in the English).
 - **jdr-unity:** whole SerializedFile parse/write (layout and data offset preserved), generic
@@ -31,6 +33,15 @@ items, shop, quest select).
 - **UI art export** (`tools/ui-assets/export_ui.py`): every menu texture/atlas and cut-out sprite from
   the player's own copy, with a manifest for re-import (re-import comes later). Sent to the owner.
 - Build number 7, server marker `JDR_EMBEDDED_SERVER_b007`.
+- **Two reviews** (correctness; behaviour/risk). Both found the same serious bug, now fixed: after a
+  translation update, the English file still on the phone could have been saved as the
+  "original", losing the Japanese copy. Also fixed: cached English files kept their encryption
+  flag; a bundle that loses its last translation is reverted; a failed state save offers no English
+  that boot (instead of risking originals); a half-written or English file never replaces a kept
+  original; `/cdn` serves from the last build instead of rebuilding mid-download; importer keep
+  rules only while files are really ours; ClientMes post-check now counts the English rows;
+  translator import requires the Japanese column and a well-formed hash; corrupt array counts are
+  refused; the UI export manifest no longer pairs plain and obfuscated names; term fixes.
 
 ### Verified off-device
 - Real data: all 287 serialized files / 137,728 objects of the UI bundles and text.jp decode through
