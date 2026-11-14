@@ -19,6 +19,11 @@ into images stay Japanese (the owner is redrawing them).
   every row with that source. New translation file `text_content.json`.
 - Server log: `[l10n] … N already on the phone` (how many English files the client holds).
 - Build number 8, server marker `JDR_EMBEDDED_SERVER_b008`.
+- **Reviews:** code (nothing serious; `--expand-with` now checks the repo's files, not the compiled-in
+  copy) and translation quality ("good": glossary followed, no placeholder or line-break errors).
+  Fixed from the quality review: item names unified across tables, Hamon (not Ripple) throughout,
+  Mind/skill titles reused in shop and reward tables synced to one English, the team screen's type
+  labels (Bravery/Intellect/Tenacity/Maverick), a stray space in tarot effects, two mistranslations.
 
 ### Verified off-device
 - Real data with the shipped translations: 32 English files, 33,336 strings replaced, 0 stale.
