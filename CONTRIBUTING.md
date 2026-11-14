@@ -11,6 +11,9 @@
   test output; check for it before claiming a real-binary pass.
 - Translations are stored as `label -> English` plus a hash of the source line, never the Japanese
   source text.
+- **No game data anywhere the project publishes**: not in the repo, and not attached to releases,
+  issues or pull requests (this includes packs, exports, art made from the game's images, and
+  original-vs-new comparisons). Players keep their own exports and art packs private.
 - **Server-only content** (values the dead server held: stats, skill numbers, curves, gacha pools,
   prices, stages) is committed under `server/content/` as JSON **with its sources**: every file has a
   `sources` list (site, page, date accessed), and every source appears in `CREDITS.md`. Numbers and

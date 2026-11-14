@@ -53,4 +53,55 @@ fn applies_the_art_pack() {
         t0.elapsed().as_millis()
     );
     assert_eq!((done, unmatched), (want, 0));
+    let errors: Vec<_> = loc
+        .iter()
+        .flat_map(|l| l.stats.art_errors.clone())
+        .collect();
+    assert!(errors.is_empty(), "{errors:?}");
+    // Storage: originals kept vs the files we serve.
+    let size = |d: &str| -> u64 {
+        std::fs::read_dir(state.join("l10n").join(d))
+            .map(|r| {
+                r.flatten()
+                    .filter_map(|e| e.metadata().ok())
+                    .map(|m| m.len())
+                    .sum()
+            })
+            .unwrap_or(0)
+    };
+    eprintln!(
+        "storage: originals {} MiB, served files {} MiB",
+        size("orig") >> 20,
+        size("gen") >> 20
+    );
+    // Removing the pack serves text-only bundles again (the atlases revert to the originals).
+    let (plain, errs) = l10n::prepare(std::path::Path::new(&dir), &state, key, iv, &tr, None);
+    assert!(errs.is_empty(), "{errs:?}");
+    assert!(plain.iter().all(|l| l.stats.art == 0));
+    let fresh = std::env::temp_dir().join(format!("jdr-real-art-text-{}", std::process::id()));
+    let _ = std::fs::remove_dir_all(&fresh);
+    let (text_only, _) = l10n::prepare(std::path::Path::new(&dir), &fresh, key, iv, &tr, None);
+    let md5s = |v: &[l10n::Localized]| {
+        let mut m: Vec<_> = v.iter().map(|l| (l.name.clone(), l.md5.clone())).collect();
+        m.sort();
+        m
+    };
+    let text: std::collections::HashMap<_, _> = md5s(&text_only).into_iter().collect();
+    for (name, md5) in md5s(&plain) {
+        match text.get(&name) {
+            // Bundles with text: the text-only English file.
+            Some(t) => assert_eq!(&md5, t, "{name}: revert gives the text-only file"),
+            // Art-only bundles: still listed, now with the original, so the phone reverts too.
+            None => {
+                let l = plain.iter().find(|l| l.name == name).unwrap();
+                let orig = std::fs::read(state.join("l10n/orig").join(&l.obf)).unwrap();
+                assert_eq!(
+                    md5,
+                    jdr_services::versionfile::md5_hex(&orig),
+                    "{name}: original served"
+                );
+            }
+        }
+    }
+    let _ = std::fs::remove_dir_all(&fresh);
 }

@@ -219,6 +219,8 @@ pub struct Stats {
     pub art: usize,
     /// Images in the art pack that matched no sprite of this bundle.
     pub art_unmatched: usize,
+    /// Sprites or textures of the art pack that could not be applied (skipped).
+    pub art_errors: Vec<String>,
 }
 
 /// Visit every translatable string in a decoded MonoBehaviour. `edit` returns the replacement.
@@ -344,12 +346,16 @@ pub fn rewrite_bundle(
         }
     }
     if let Some(images) = art {
-        let mut unmatched = Vec::new();
-        let n = crate::art::apply(&mut nodes, images, &mut unmatched)
-            .map_err(|e| format!("art: {e}"))?;
-        stats.art += n;
-        stats.art_unmatched += unmatched.len();
-        any |= n > 0;
+        // Art problems never cost the bundle its English: bad images are skipped and reported.
+        match crate::art::apply(&mut nodes, images) {
+            Ok(r) => {
+                stats.art += r.replaced;
+                stats.art_unmatched += r.unmatched.len();
+                stats.art_errors.extend(r.errors);
+                any |= r.replaced > 0;
+            }
+            Err(e) => stats.art_errors.push(format!("art: {e}")),
+        }
     }
     Ok((
         any.then(|| bundle::write_lz4(&nodes, jdr_unity::UNITY_VERSION)),
@@ -518,10 +524,16 @@ pub fn prepare(
     // dozens of atlases; the client waits for the manifest meanwhile).
     let next = std::sync::atomic::AtomicUsize::new(0);
     let results = std::sync::Mutex::new(Vec::new());
+    // With art, each job holds several decoded atlases (16 MB each): fewer at a time.
+    let max_workers = if art.is_some_and(|a| !a.is_empty()) {
+        2
+    } else {
+        4
+    };
     let workers = std::thread::available_parallelism()
         .map(|n| n.get())
         .unwrap_or(2)
-        .clamp(1, 4);
+        .clamp(1, max_workers);
     std::thread::scope(|sc| {
         for _ in 0..workers {
             sc.spawn(|| loop {
