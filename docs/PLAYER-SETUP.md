@@ -56,8 +56,20 @@
    JDR_BUILD_TOOLS=/path/to/build-tools ./target/release/jdr-patch patch --apk local/game-3.12.0.apk --out deliver/jojodr-b05.apk --keys local/keys.json --server-lib target/aarch64-linux-android/release/libjdr.so
    ```
 
-   The report must show `embed-server` applied (with `JDR_EMBEDDED_SERVER_b005`) and every
-   post-check `ok`.
+   The report must show `embed-server` applied (with the current `JDR_EMBEDDED_SERVER_bNNN`) and
+   every post-check `ok`.
+
+   **Optional: redrawn UI art.** If you have an art pack (redrawn images made from your own export
+   with `tools/ui-assets/export_ui.py`, as `replacements/<bundle>/sprites/<sprite>.png` in a zip),
+   add it, together with your game files folder (the patcher reads the title-screen layouts from it):
+
+   ```bash
+   JDR_BUILD_TOOLS=/path/to/build-tools ./target/release/jdr-patch patch --apk local/game-3.12.0.apk --out deliver/jojodr.apk --keys local/keys.json --server-lib target/aarch64-linux-android/release/libjdr.so --art local/my-art-pack.zip --data local/files
+   ```
+
+   Title and boot screens are repainted in the APK; menu art is stored in the APK and applied by
+   the server on the phone (one download, together with the English text files). Keep your art
+   pack private: it is made from the game's own images.
 5. **Install.** First time only, the original game must go (back up first, step 1):
 
    ```bash
