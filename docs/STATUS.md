@@ -33,11 +33,19 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
   `--disable unity-heap`, log redaction; CREDITS links.
 - Build number 5, server marker `JDR_EMBEDDED_SERVER_b005`.
 
-### Device checklist — expected; to be confirmed on a device
-- [ ] `[import] … import complete …` after staging the files, then on restart
-      `[assets] game files: …, all … recorded files present` and `versionfile built`
-- [ ] `[cdn] … (generated versionfile)`, no other downloads, then the master-data stop (M1.5)
-- [ ] after a reinstall or "Clear storage", the files are no longer wiped
+### Device result (Galaxy S22, Android 16) — confirmed by device logs
+- [x] Import from `/data/local/tmp/jdr-import/files` works (apps may read it): first run copied
+      11,000 files / 1.2 GB in ~20 s before the game was closed; the next run resumed and finished in
+      13 s (2,380 copied, 2,378 unreadable shell-owned copies replaced, 0 failed).
+- [x] `[assets] game files: 13480 file(s), all 13479 recorded files present`;
+      `versionfile built: 13479 entries, 1845 KiB, 3544 ms` (background, before the title).
+- [x] The client accepted the generated manifest: `[cdn] … 200 … (generated versionfile)`, **no other
+      downloads** (every local file judged up to date), no errors.
+- [x] Then `get_system_config`, `get_tutorial_step`, and `getfiledata` for `in_memory_master_data`
+      → 404: the expected M1.5 stop.
+- [ ] After a reinstall or "Clear storage", the files are no longer wiped (not tested yet).
+- Note: during an import the client loops title → login until `vcs.bytes` arrives (it is copied
+  last). Next build: hold `/client/getkey` until the import finishes; clean leftover temp files.
 
 ## Build 04 — generated asset manifest (branch `wip/b04`)
 
