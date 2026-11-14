@@ -29,6 +29,12 @@ pub fn read_pack_zip(path: &Path) -> Result<BTreeMap<String, Vec<u8>>, Error> {
     for i in 0..z.len() {
         let mut f = z.by_index(i).map_err(|e| e.to_string())?;
         let name = f.name().replace('\\', "/");
+        // macOS zip debris
+        if name.starts_with("__MACOSX/")
+            || name.rsplit('/').next().is_some_and(|b| b.starts_with("._"))
+        {
+            continue;
+        }
         let rel = match name.find("replacements/") {
             Some(p) => name[p + "replacements/".len()..].to_string(),
             None => continue,
@@ -38,7 +44,9 @@ pub fn read_pack_zip(path: &Path) -> Result<BTreeMap<String, Vec<u8>>, Error> {
         }
         let mut b = Vec::new();
         f.read_to_end(&mut b)?;
-        out.insert(rel, b);
+        if out.insert(rel.clone(), b).is_some() {
+            return Err(format!("art pack: {rel} appears twice in the zip").into());
+        }
     }
     if out.is_empty() {
         return Err("art pack: no replacements/<bundle>/sprites/*.png in the zip".into());
@@ -47,10 +55,17 @@ pub fn read_pack_zip(path: &Path) -> Result<BTreeMap<String, Vec<u8>>, Error> {
 }
 
 /// Texture2D and Sprite type nodes from the player's downloaded bundles (same engine build).
+/// The 16-byte old type hash of a (non-MonoBehaviour) type entry.
+fn type_hash(raw: &[u8]) -> Option<&[u8]> {
+    raw.get(7..23)
+}
+
 pub fn template_nodes(
     data_dir: &Path,
     key: &[u8],
     iv: &[u8],
+    want_tex: &[u8],
+    want_sprite: &[u8],
 ) -> Result<(Vec<TNode>, Vec<TNode>), Error> {
     let mut files: Vec<(u64, std::path::PathBuf)> = std::fs::read_dir(data_dir)
         .map_err(|e| format!("{}: {e}", data_dir.display()))?
@@ -78,18 +93,26 @@ pub fn template_nodes(
             let Ok(f) = sfile::parse(&n.data) else {
                 continue;
             };
-            let find = |c: i32| {
+            // Same class and same type hash as the APK's own entries: same layout.
+            let find = |c: i32, want: &[u8]| {
                 f.types
                     .iter()
-                    .find(|t| t.entry.class_id == c && !t.nodes.is_empty())
+                    .find(|t| {
+                        t.entry.class_id == c
+                            && !t.nodes.is_empty()
+                            && type_hash(&t.entry.raw) == Some(want)
+                    })
                     .map(|t| t.nodes.clone())
             };
-            if let (Some(t), Some(s)) = (find(CLASS_TEXTURE2D), find(CLASS_SPRITE)) {
+            if let (Some(t), Some(s)) = (
+                find(CLASS_TEXTURE2D, want_tex),
+                find(CLASS_SPRITE, want_sprite),
+            ) {
                 return Ok((t, s));
             }
         }
     }
-    Err("no downloaded bundle with Texture2D and Sprite type trees found in --data".into())
+    Err("no downloaded bundle with Texture2D and Sprite type trees of the same build found in --data".into())
 }
 
 pub struct Applied {
@@ -150,8 +173,8 @@ pub fn apply(
     if in_apk.is_empty() {
         return Ok(out);
     }
-    let (tex_nodes, sprite_nodes) = template_nodes(data_dir, key.as_bytes(), iv.as_bytes())?;
     let groups = ArtPack::from_files(in_apk)?;
+    let mut templates: HashMap<(Vec<u8>, Vec<u8>), (Vec<TNode>, Vec<TNode>)> = HashMap::new();
     for b in groups.bundles() {
         let hash = b.strip_prefix("apk_").unwrap_or(&b);
         if hash.len() != 32 || !hash.bytes().all(|c| c.is_ascii_hexdigit()) {
@@ -160,6 +183,20 @@ pub fn apply(
         let entry = format!("assets/bin/Data/{hash}");
         let raw = apk.read(&entry)?;
         let mut f = sfile::parse(&raw).map_err(|e| format!("{entry}: {e}"))?;
+        let hash_of = |c: i32| {
+            f.types
+                .iter()
+                .find(|t| t.entry.class_id == c)
+                .and_then(|t| type_hash(&t.entry.raw))
+                .map(<[u8]>::to_vec)
+                .unwrap_or_default()
+        };
+        let want = (hash_of(CLASS_TEXTURE2D), hash_of(CLASS_SPRITE));
+        if !templates.contains_key(&want) {
+            let t = template_nodes(data_dir, key.as_bytes(), iv.as_bytes(), &want.0, &want.1)?;
+            templates.insert(want.clone(), t);
+        }
+        let (tex_nodes, sprite_nodes) = &templates[&want];
         for t in f.types.iter_mut() {
             if t.nodes.is_empty() {
                 match t.entry.class_id {

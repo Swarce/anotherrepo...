@@ -19,6 +19,14 @@ Courage/Wisdom/Spirit/Unity/Solitude.
 - Text terms aligned with the art (Gacha → Summon, Power Up → Enhance, Bravery/Intellect/
   Tenacity/Maverick → Courage/Wisdom/Spirit/Solitude).
 - Server log: `[art] art pack loaded: N image(s)` and `[art] … sprite(s) replaced in this rebuild`.
+- **Two reviews** (correctness; behaviour/risk). Fixed: sprite boxes now computed exactly as the
+  exporter cut them (ties-to-even edges; three sprites would otherwise have been off by a pixel),
+  the exporter's naming rule for repeated names, art generator version in the cache key, sprites
+  with a separate alpha texture or rotation refused instead of drawn wrong, a bad image skips only
+  itself (the bundle keeps its English), the patcher checks the whole pack against the player's
+  bundles before building, title-screen layouts borrowed only from types with the same hash,
+  macOS zip debris ignored, 2 rebuild workers when art is present, text fixes after the term
+  switch, CONTRIBUTING: no game data in releases/issues/PRs.
 - Build number 9, server marker `JDR_EMBEDDED_SERVER_b009`.
 
 ### Verified off-device

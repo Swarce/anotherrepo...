@@ -29,7 +29,7 @@ use std::path::{Path, PathBuf};
 type Error = String;
 
 /// Bump when the rewrite logic changes, so cached English files are rebuilt.
-pub const GEN_VERSION: u32 = 1;
+pub const GEN_VERSION: u32 = 2;
 
 /// The translation files compiled into the server.
 pub const FILES: &[(&str, &str)] = &[
@@ -473,6 +473,15 @@ fn looks_original(bytes: &[u8], name: &str, key: &[u8], iv: &[u8]) -> bool {
     collect(&plain, name).is_ok_and(|f| !f.is_empty())
 }
 
+/// Whether `bytes` decrypts and parses as a bundle.
+fn parses(bytes: &[u8], key: &[u8], iv: &[u8]) -> bool {
+    if Jjec::is_jjec(bytes) {
+        Jjec::decrypt(bytes, key, iv).is_ok_and(|p| bundle::read(&p).is_ok())
+    } else {
+        bundle::read(bytes).is_ok()
+    }
+}
+
 /// The bundles we localize: text.jp plus every UI bundle with a prefab translation.
 pub fn targets(tr: &Translations) -> Vec<String> {
     let mut v = vec!["text.jp".to_string()];
@@ -631,7 +640,16 @@ fn prepare_one(
         let kept = std::fs::read(&orig_path).ok();
         if kept.as_deref() == Some(&disk[..]) {
             disk
-        } else if let Some(kept) = kept.filter(|_| !looks_original(&disk, name, key, iv)) {
+        } else if let Some(kept) = kept.filter(|k| {
+            // A bundle without Japanese text (art only) cannot be told apart by its strings: there
+            // any file that parses counts as an original.
+            let text_bundle = looks_original(k, name, key, iv);
+            if text_bundle {
+                !looks_original(&disk, name, key, iv)
+            } else {
+                !parses(&disk, key, iv)
+            }
+        }) {
             // A half-written download, or an English copy from a backup: keep our original.
             kept
         } else {

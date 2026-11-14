@@ -17,6 +17,10 @@ import sys
 import UnityPy
 from PIL import Image, ImageChops
 
+def safe(s):
+    return re.sub(r"[^A-Za-z0-9_.\-\[\]() ]", "_", s)[:120] or "_"
+
+
 if sys.argv[1] == "--apk":
     # In-APK screens: every apk_<file> image must equal its sprite in the patched APK, and the
     # textures must be RGBA32.
@@ -25,9 +29,17 @@ if sys.argv[1] == "--apk":
     n = 0
     for b in sorted(d for d in os.listdir(reps) if d.startswith("apk_")):
         env = UnityPy.load(patched.read("assets/bin/Data/" + b[4:]))
-        sprites = {o.read().m_Name: o.read() for o in env.objects if o.type.name == "Sprite"}
+        sprites, seen = {}, set()
+        for o in env.objects:
+            if o.type.name == "Sprite":
+                sp = o.read()
+                base = safe(sp.m_Name)
+                sprites[f"{base}__{o.path_id}.png"] = sp
+                if base not in seen:
+                    sprites[f"{base}.png"] = sp
+                seen.add(base)
         for f in sorted(os.listdir(os.path.join(reps, b, "sprites"))):
-            s = sprites[f[:-4]]
+            s = sprites[f]
             t = s.m_RD.texture.read()
             assert int(t.m_TextureFormat) == 4, (b, f, t.m_TextureFormat)
             img = t.image.convert("RGBA")
@@ -64,10 +76,26 @@ for gen in sorted(glob.glob(os.path.join(state, "l10n", "gen", "*.bytes"))):
     orig_path = os.path.join(state, "l10n", "orig", os.path.basename(gen))
     orig_env = UnityPy.load(orig_path) if open(orig_path, "rb").read(4) != b"JJEC" else None
     seen, by_tex = {}, {}
+    # The exporter's rules: only sprites cut from a written texture (non-empty, not the font
+    # texture) with a non-empty box were exported and take part in the naming. The textures are
+    # judged on the ORIGINAL bundle (sizes and names do not change).
+    src_env = orig_env or env
+    exported = {}
+    for o in src_env.objects:
+        if o.type.name == "Texture2D":
+            t0 = o.read()
+            if t0.m_Width and t0.m_Height and t0.m_Name != "Font Texture":
+                exported[o.path_id] = t0.m_Height
     for o in env.objects:
         if o.type.name != "Sprite":
             continue
         s = o.read()
+        th = exported.get(s.m_RD.texture.path_id)
+        if th is None:
+            continue
+        r0 = s.m_RD.textureRect
+        if round(r0.x + r0.width) <= round(r0.x) or round(th - r0.y) <= round(th - r0.y - r0.height):
+            continue
         base = safe(s.m_Name)
         first = base not in seen
         seen[base] = 1
