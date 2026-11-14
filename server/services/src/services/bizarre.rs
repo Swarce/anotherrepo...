@@ -6,9 +6,9 @@ use crate::collection;
 use crate::quests::{self, PendingBattle, STORY_CATEGORY};
 use crate::services::ok;
 use crate::services::statue::{profile, with_profile};
-use jdr_core::log;
 use crate::Ctx;
 use jdr_core::envelope::RequestEnvelope;
+use jdr_core::log;
 use serde_json::{json, Value};
 
 /// `BizarreSelectResponse`: the story button (daily and event categories come later).
@@ -124,15 +124,15 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let result = env.param.get("result").and_then(Value::as_i64);
     if result.is_none() {
         // BattleResult.Success is 0 (docs/research/10-content.md §3.9, medium confidence).
-        log::line("bizarre", "WARN bizarre_end without `result`; counted as a win");
+        log::line(
+            "bizarre",
+            "WARN bizarre_end without `result`; counted as a win",
+        );
     }
     let won = result.unwrap_or(0) == 0;
     let found = quests::find_stage(&stage_id);
     let (p, (paid, team)) = with_profile(ctx, env, |p| {
-        let pending = p
-            .progress
-            .pending
-            .take_if(|b| b.stage_id == stage_id);
+        let pending = p.progress.pending.take_if(|b| b.stage_id == stage_id);
         let team = pending.as_ref().and_then(|b| {
             p.collection
                 .teams
@@ -157,12 +157,16 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     if won && paid.is_none() {
         log::line(
             "bizarre",
-            &format!("bizarre_end for {stage_id:?} without a matching start: nothing paid (resent?)"),
+            &format!(
+                "bizarre_end for {stage_id:?} without a matching start: nothing paid (resent?)"
+            ),
         );
     }
     let (gold, rank_exp) = paid.map(|s| (s.gold, s.gain_rank_exp)).unwrap_or((0, 0));
     let team = team
-        .or_else(|| found.and_then(|(c, _)| collection::main_team(&p.collection, c.stage_type).cloned()))
+        .or_else(|| {
+            found.and_then(|(c, _)| collection::main_team(&p.collection, c.stage_type).cloned())
+        })
         .map(|t| collection::team_info(&p.collection, &t))
         .unwrap_or_else(|| json!({}));
     let empty = || json!({ "itemSetIcon": "", "itemSetNum": 0, "statueList": [], "mindList": [], "itemList": [], "clanObjectList": [] });
