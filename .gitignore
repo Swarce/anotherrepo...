@@ -1,0 +1,18 @@
+/target
+/deliver/
+*.apk
+*.apks
+*.xapk
+*.so
+*.p12
+*.jks
+*.keystore
+keys.json
+/local/
+# Never commit game data (see CONTRIBUTING.md)
+*.dat
+*.bytes
+*.cpk
+*.acb
+*.awb
+*.unity3d

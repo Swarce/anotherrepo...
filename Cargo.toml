@@ -1,0 +1,35 @@
+[workspace]
+resolver = "2"
+members = [
+    "server/crypto",
+    "server/core",
+    "server/services",
+    "hosts/standalone",
+    "hosts/embedded",
+    "patcher",
+    "tools/jdr-tool",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+# Shared code must build for aarch64-linux-android with this toolchain. See docs/MODULES.md.
+rust-version = "1.80"
+license = "MIT"
+publish = false
+
+[workspace.dependencies]
+aes = "0.8"
+cbc = { version = "0.1", features = ["alloc", "block-padding"] }
+base64 = "0.22"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+md-5 = "0.10"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+panic = "unwind"

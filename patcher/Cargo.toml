@@ -1,0 +1,18 @@
+[package]
+name = "jdr-patch"
+description = "APK in, patched APK out"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+[[bin]]
+name = "jdr-patch"
+path = "src/main.rs"
+
+[dependencies]
+jdr-crypto = { path = "../server/crypto" }
+sha2.workspace = true
+zip.workspace = true
+serde.workspace = true
+serde_json.workspace = true
