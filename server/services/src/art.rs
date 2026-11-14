@@ -249,14 +249,12 @@ pub fn crop_box(rect: (f64, f64, f64, f64), tex_h: usize) -> Option<(usize, usiz
     let th = tex_h as f64;
     let (x0, x1) = (x.round_ties_even(), (x + w).round_ties_even());
     let (top, bot) = ((th - y - h).round_ties_even(), (th - y).round_ties_even());
-    (x1 > x0 && bot > top && x0 >= 0.0 && top >= 0.0).then(|| {
-        (
-            x0 as usize,
-            top as usize,
-            (x1 - x0) as usize,
-            (bot - top) as usize,
-        )
-    })
+    (x1 > x0 && bot > top && x0 >= 0.0 && top >= 0.0).then_some((
+        x0 as usize,
+        top as usize,
+        (x1 - x0) as usize,
+        (bot - top) as usize,
+    ))
 }
 
 fn find_sprite(v: &V, file: &str, fi: usize, png: &[u8]) -> Result<SpriteRef, Error> {
