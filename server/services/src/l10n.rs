@@ -10,8 +10,10 @@
 //! applies only while the game's source string still hashes the same.
 //!
 //! Keys:
-//! - `text:<Table>:<Label>` for text.jp rows (`Table` is the object name, e.g. `MyPage_JP`);
-//! - `ui:<bundle>:<path id>:<field>` for strings in UI prefabs (`m_Text`, `defaultText`, …);
+//! - `text:<Table>:<Label>` for text.jp rows (`Table` is the object name, e.g. `MyPage_JP`; a
+//!   label repeated in one table gets `#2`, `#3`, … from its second occurrence);
+//! - `ui:<bundle>:<file>:<path id>:<field>` for strings in UI prefabs (`m_Text`, `defaultText`, …;
+//!   `file` is the index of the serialized file inside the bundle, since scene bundles hold several);
 //! - `clientmes:<Label>` for the in-APK ClientMes table (applied by the patcher).
 //!
 //! The originals are kept (`<data>/l10n/orig/`) so the English files can always be rebuilt, and
@@ -209,6 +211,7 @@ pub struct Stats {
 /// Visit every translatable string in a decoded MonoBehaviour. `edit` returns the replacement.
 fn visit_object(
     bundle_name: &str,
+    file_index: usize,
     path_id: i64,
     v: &mut V,
     edit: &mut dyn FnMut(&str, &str) -> Option<String>,
@@ -218,17 +221,26 @@ fn visit_object(
     let table = v.get("m_Name").and_then(V::as_str).map(str::to_owned);
     // text.jp tables: {m_Name, Contents: [{Label, Text}]}
     if let (Some(table), Some(V::Arr(rows))) = (table.clone(), v.get_mut("Contents")) {
+        // Some tables repeat a label; later occurrences get `#2`, `#3`, … so every row has a key.
+        let mut seen: HashMap<String, usize> = HashMap::new();
         for row in rows {
             let label = row.get("Label").and_then(V::as_str).map(str::to_owned);
             let text = row.get("Text").and_then(V::as_str).map(str::to_owned);
             let (Some(label), Some(text)) = (label, text) else {
                 continue;
             };
+            let n = seen.entry(label.clone()).or_insert(0);
+            *n += 1;
             if !has_japanese(&text) {
                 continue;
             }
+            let key = if *n == 1 {
+                format!("text:{table}:{label}")
+            } else {
+                format!("text:{table}:{label}#{n}")
+            };
             stats.strings += 1;
-            if let Some(en) = edit(&format!("text:{table}:{label}"), &text) {
+            if let Some(en) = edit(&key, &text) {
                 *row.get_mut("Text").expect("Text") = V::Str(en.into_bytes());
                 stats.replaced += 1;
                 changed = true;
@@ -247,7 +259,10 @@ fn visit_object(
                 continue;
             };
             stats.strings += 1;
-            if let Some(en) = edit(&format!("ui:{bundle_name}:{path_id}:{name}"), &s) {
+            if let Some(en) = edit(
+                &format!("ui:{bundle_name}:{file_index}:{path_id}:{name}"),
+                &s,
+            ) {
                 *fv = V::Str(en.into_bytes());
                 stats.replaced += 1;
                 changed = true;
@@ -285,7 +300,7 @@ pub fn rewrite_bundle(
     let mut nodes = bundle::read(data)?;
     let mut stats = Stats::default();
     let mut any = false;
-    for node in nodes.iter_mut().filter(|n| n.flags & 4 != 0) {
+    for (file_index, node) in nodes.iter_mut().filter(|n| n.flags & 4 != 0).enumerate() {
         let mut f = sfile::parse(&node.data)?;
         let mut file_changed = false;
         for i in 0..f.objects.len() {
@@ -297,7 +312,14 @@ pub fn rewrite_bundle(
             let Ok(mut v) = sfile::read_object(nodes_t, &f.objects[i].data) else {
                 continue; // not decodable through its tree: leave it alone
             };
-            if visit_object(bundle_name, f.objects[i].path_id, &mut v, edit, &mut stats) {
+            if visit_object(
+                bundle_name,
+                file_index,
+                f.objects[i].path_id,
+                &mut v,
+                edit,
+                &mut stats,
+            ) {
                 f.objects[i].data = sfile::write_object(nodes_t, &v)?;
                 file_changed = true;
             }
@@ -592,7 +614,7 @@ mod tests {
         assert!(Translations::parse(&[("b", jp)])
             .unwrap_err()
             .contains("Japanese"));
-        let ok = r#"{"sources":[{"source":"jdr-default","note":"n"}],"entries":{"ui:ui_mypage:5:m_Text":["0011aabb","Menu"]}}"#;
+        let ok = r#"{"sources":[{"source":"jdr-default","note":"n"}],"entries":{"ui:ui_mypage:0:5:m_Text":["0011aabb","Menu"]}}"#;
         let t = Translations::parse(&[("a", ok)]).unwrap();
         assert_eq!(t.ui_bundles(), ["ui_mypage"]);
         assert!(Translations::parse(&[("a", ok), ("b", ok)])

@@ -215,7 +215,7 @@ mod tests {
             assert_eq!(unesc(&esc(s)), s);
         }
         assert_eq!(file_for("clientmes:X"), "clientmes");
-        assert_eq!(file_for("ui:ui_mypage:1:m_Text"), "ui_prefabs");
+        assert_eq!(file_for("ui:ui_mypage:0:1:m_Text"), "ui_prefabs");
         assert_eq!(file_for("text:MyPage_JP:A"), "text_menu");
         assert!(
             wanted("ui_mypage") && wanted("scene_vs") && wanted("text.jp") && !wanted("ui_tips_00")
