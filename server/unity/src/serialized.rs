@@ -128,6 +128,56 @@ pub fn write(
     objects: &[Object],
     scripts: &[(i32, i64)],
 ) -> Vec<u8> {
+    write_full(
+        engine,
+        platform,
+        types,
+        objects,
+        scripts,
+        &0i32.to_le_bytes(),
+        "",
+    )
+}
+
+/// As [`write`], with a verbatim externals table (count included) and user information string.
+pub fn write_full(
+    engine: &str,
+    platform: i32,
+    types: &[TypeEntry],
+    objects: &[Object],
+    scripts: &[(i32, i64)],
+    externals_raw: &[u8],
+    user_info: &str,
+) -> Vec<u8> {
+    let order: Vec<usize> = (0..objects.len()).collect();
+    write_layout(
+        engine,
+        platform,
+        types,
+        objects,
+        &order,
+        scripts,
+        externals_raw,
+        user_info,
+        0,
+    )
+}
+
+/// As [`write_full`], placing object data in `order` (indices into `objects`; the engine's own
+/// files do not always store data in object-table order), and starting the data no earlier than
+/// `min_data_offset` (the engine sometimes pads it, e.g. to 4096).
+#[allow(clippy::too_many_arguments)]
+pub fn write_layout(
+    engine: &str,
+    platform: i32,
+    types: &[TypeEntry],
+    objects: &[Object],
+    order: &[usize],
+    scripts: &[(i32, i64)],
+    externals_raw: &[u8],
+    user_info: &str,
+    min_data_offset: usize,
+) -> Vec<u8> {
     let mut m = W::new();
     m.cstr(engine);
     m.i32(platform);
@@ -139,12 +189,12 @@ pub fn write(
     // Object table entries are 4-byte aligned relative to the start of the file; the metadata
     // starts at offset 20 (4-aligned), so aligning the metadata buffer is equivalent.
     m.i32(objects.len() as i32);
-    let mut offsets = Vec::new();
+    let mut offsets = vec![0usize; objects.len()];
     let mut data = W::new();
-    for o in objects {
+    for &i in order {
         data.align(8);
-        offsets.push(data.len());
-        data.bytes(&o.data);
+        offsets[i] = data.len();
+        data.bytes(&objects[i].data);
     }
     for (o, off) in objects.iter().zip(&offsets) {
         let pad = (4 - (20 + m.len()) % 4) % 4;
@@ -165,10 +215,10 @@ pub fn write(
         }
         m.i64(*id);
     }
-    m.i32(0); // externals
-    m.cstr(""); // user information
+    m.bytes(externals_raw);
+    m.cstr(user_info);
     let header = 20usize;
-    let data_offset = (header + m.len()).div_ceil(16) * 16;
+    let data_offset = ((header + m.len()).div_ceil(16) * 16).max(min_data_offset);
     let file_size = data_offset + data.len();
     let mut w = W::new();
     w.u32be(m.len() as u32);

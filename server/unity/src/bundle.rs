@@ -142,9 +142,21 @@ pub fn read(b: &[u8]) -> Result<Vec<Node>, Error> {
         .collect()
 }
 
-/// Write an uncompressed UnityFS bundle (one data block per node, max 128 KiB? no: Unity accepts
-/// a single uncompressed block of any size).
+/// Write an uncompressed UnityFS bundle (all nodes in one uncompressed block, which the engine
+/// accepts at any size).
 pub fn write(nodes: &[Node], engine: &str) -> Vec<u8> {
+    write_blocks(nodes, engine, false)
+}
+
+/// Write a UnityFS bundle with LZ4-compressed 128 KiB blocks (as the game's own bundles are), so a
+/// rewritten bundle takes about as much space as the original.
+pub fn write_lz4(nodes: &[Node], engine: &str) -> Vec<u8> {
+    write_blocks(nodes, engine, true)
+}
+
+const BLOCK: usize = 128 << 10;
+
+fn write_blocks(nodes: &[Node], engine: &str, lz4: bool) -> Vec<u8> {
     let mut data = Vec::new();
     let mut table = Vec::new();
     for n in nodes {
@@ -156,12 +168,22 @@ pub fn write(nodes: &[Node], engine: &str) -> Vec<u8> {
         ));
         data.extend_from_slice(&n.data);
     }
+    let mut blocks: Vec<(u32, Vec<u8>, u16)> = Vec::new();
+    if lz4 {
+        for chunk in data.chunks(BLOCK) {
+            blocks.push((chunk.len() as u32, lz4_flex::block::compress(chunk), 2));
+        }
+    } else {
+        blocks.push((data.len() as u32, std::mem::take(&mut data), 0));
+    }
     let mut info = W::new();
     info.bytes(&[0u8; 16]);
-    info.u32be(1);
-    info.u32be(data.len() as u32);
-    info.u32be(data.len() as u32);
-    info.buf.extend_from_slice(&0u16.to_be_bytes()); // block flags: uncompressed
+    info.u32be(blocks.len() as u32);
+    for (us, c, fl) in &blocks {
+        info.u32be(*us);
+        info.u32be(c.len() as u32);
+        info.buf.extend_from_slice(&fl.to_be_bytes());
+    }
     info.u32be(table.len() as u32);
     for (off, sz, fl, name) in &table {
         info.i64be(*off);
@@ -175,13 +197,16 @@ pub fn write(nodes: &[Node], engine: &str) -> Vec<u8> {
     w.cstr("5.x.x");
     w.cstr(engine);
     let header_len = w.len() + 8 + 4 + 4 + 4;
-    let total = header_len + info.len() + data.len();
+    let payload: usize = blocks.iter().map(|b| b.1.len()).sum();
+    let total = header_len + info.len() + payload;
     w.i64be(total as i64);
     w.u32be(info.len() as u32);
     w.u32be(info.len() as u32);
     w.u32be(0x40); // uncompressed blocks info, directory present
     w.bytes(&info.buf);
-    w.bytes(&data);
+    for (_, c, _) in &blocks {
+        w.bytes(c);
+    }
     w.buf
 }
 
@@ -204,6 +229,14 @@ mod tests {
         ];
         let b = write(&nodes, "2018.4.1f1");
         assert_eq!(read(&b).unwrap(), nodes);
+        let big = vec![Node {
+            name: "CAB-big".into(),
+            data: (0..300_000u32).map(|i| (i / 7) as u8).collect(),
+            flags: 4,
+        }];
+        let c = write_lz4(&big, "2018.4.1f1");
+        assert_eq!(read(&c).unwrap(), big);
+        assert!(c.len() < 300_000 / 4, "compressed");
         assert!(read(b"nope").is_err());
         assert!(read(&b[..40]).is_err());
         // a header claiming a huge block count must fail cleanly
