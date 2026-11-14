@@ -339,6 +339,21 @@ fn prim_size(ty: &str) -> Option<(usize, u8)> {
     })
 }
 
+/// Lower bound on the bytes one value of node `i` occupies.
+fn min_size(nodes: &[TNode], i: usize) -> usize {
+    if let Some((sz, _)) = prim_size(&nodes[i].ty) {
+        return sz;
+    }
+    if matches!(nodes[i].ty.as_str(), "string" | "TypelessData") {
+        return 4;
+    }
+    let ch = children(nodes, i);
+    if ch.len() == 1 && nodes[ch[0]].is_array {
+        return 4;
+    }
+    ch.iter().map(|&c| min_size(nodes, c)).sum()
+}
+
 /// A 2^24-element cap on any array we decode (corrupt counts must fail, not allocate).
 const MAX_ELEMS: usize = 1 << 24;
 
@@ -391,6 +406,13 @@ fn read_node(nodes: &[TNode], i: usize, r: &mut R) -> Result<V, Error> {
                 return Err("bad array count".into());
             }
             let data = ac[1];
+            // Every element takes at least this many bytes; a count the remaining data cannot
+            // hold is corrupt (zero-size elements are capped separately).
+            let min = min_size(nodes, data);
+            let remaining = r.b.len().saturating_sub(r.o);
+            if (min > 0 && count as usize > remaining / min) || (min == 0 && count > 65_536) {
+                return Err("array count exceeds the data".into());
+            }
             let v = if matches!(nodes[data].ty.as_str(), "UInt8" | "char")
                 && subtree_end(nodes, data) == data + 1
             {
@@ -467,7 +489,7 @@ fn write_node(nodes: &[TNode], i: usize, v: &V, w: &mut W) -> Result<(), Error> 
         let ch = children(nodes, i);
         if ch.len() == 1 && nodes[ch[0]].is_array {
             let arr = ch[0];
-            let data = children(nodes, arr)[1];
+            let data = *children(nodes, arr).get(1).ok_or_else(bad)?;
             match v {
                 V::Bytes(b) => {
                     w.i32(b.len() as i32);
