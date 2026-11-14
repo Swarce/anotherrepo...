@@ -46,6 +46,9 @@ pub struct StatueDef {
     /// Tactical skills (normal, special) from `tools/content/build_statues.py`.
     #[serde(rename = "dtSkills", default)]
     pub dt_skills: Vec<DtSkill>,
+    /// Label key of the win-screen quote (`Result_Chara_Comment_<statueId>`), when the game has one.
+    #[serde(rename = "resultComment", default)]
+    pub result_comment: Option<String>,
 }
 
 /// One tactical skill of a statue: label keys from the player's files, our numbers.
@@ -157,11 +160,11 @@ pub struct TreeSquare {
     pub before: String,
 }
 
-pub const TREE_STEPS: i64 = 14;
-
 /// The growth tree of a statue (docs/research/13-menus.md §3). The client has no tree data and
-/// none survives, so the layout is ours: a start square and 14 squares in a line cycling ATK,
-/// DEF, HP. Together they add the wiki's tree-max minus Lv99 stats (else 20% of Lv99).
+/// none survives, so the layout is ours: from the start square three branches run right, ATK on
+/// top, HP in the middle and DEF below; the ATK and DEF branches fork halfway into a second line
+/// and the HP branch runs further. Each stat's squares share that stat's total: the wiki's
+/// tree-max minus Lv99 stats (else 20% of Lv99). Grid rows 0..4, the start square on row 2.
 pub fn tree_squares(d: &StatueDef) -> Vec<TreeSquare> {
     let base = d.stats_at(MAX_LEVEL);
     let total = match &d.max_tree {
@@ -176,29 +179,46 @@ pub fn tree_squares(d: &StatueDef) -> Vec<TreeSquare> {
             def: base.def / 5,
         },
     };
-    let per = |n: i64, of: i64| if of == 0 { 0 } else { n / of };
-    // Squares per effect: ATK at steps 1,4,7..; DEF at 2,5,8..; HP at 3,6,9..
-    let count = |k: i64| (1..=TREE_STEPS).filter(|s| (s - 1) % 3 == k).count() as i64;
+    // (id, x, y, effect 1 ATK / 2 DEF / 3 HP, parent id)
+    let mut layout: Vec<(String, i64, i64, i64, String)> = Vec::new();
+    for (tag, row, fork_row, effect, len) in
+        [("A", 1, 0, 1, 5), ("H", 2, -1, 3, 7), ("D", 3, 4, 2, 5)]
+    {
+        let mut parent = "S".to_string();
+        for x in 1..=len {
+            let id = format!("{tag}{x}");
+            layout.push((id.clone(), x, row, effect, parent.clone()));
+            if x == 3 && fork_row >= 0 {
+                // The fork: two squares one row out, from the third square of the branch.
+                layout.push((format!("{tag}f1"), 4, fork_row, effect, id.clone()));
+                layout.push((format!("{tag}f2"), 5, fork_row, effect, format!("{tag}f1")));
+            }
+            parent = id;
+        }
+    }
+    let counts: Vec<i64> = (0..4)
+        .map(|e| layout.iter().filter(|s| s.3 == e).count() as i64)
+        .collect();
+    let share = |stat: i64, e: usize| stat / counts[e].max(1);
     let mut out = vec![TreeSquare {
-        id: "1".into(),
-        pos: (0, 0),
+        id: "S".into(),
+        pos: (0, 2),
         effect: 0,
         param: 0,
         before: String::new(),
     }];
-    for s in 1..=TREE_STEPS {
-        let k = (s - 1) % 3;
-        let (effect, param) = match k {
-            0 => (1, per(total.atk, count(0))),
-            1 => (2, per(total.def, count(1))),
-            _ => (3, per(total.hp, count(2))),
+    for (id, x, y, effect, before) in layout {
+        let param = match effect {
+            1 => share(total.atk, 1),
+            2 => share(total.def, 2),
+            _ => share(total.hp, 3),
         };
         out.push(TreeSquare {
-            id: (s + 1).to_string(),
-            pos: (s, if s % 2 == 0 { 0 } else { 1 }),
+            id,
+            pos: (x, y),
             effect,
             param,
-            before: s.to_string(),
+            before,
         });
     }
     out
@@ -639,7 +659,9 @@ pub fn statue_setting_rows() -> Vec<Value> {
                 "myPagePos": { "x": 72.0, "y": -113.0, "z": 322.0 },
                 "myPageRotation": { "x": 0.0, "y": 192.5, "z": 0.0 },
                 "teamScaleScalar": 100.0,
-                "mindFrameID": 1, "pvpAiId": 1, "pvpAiAutoBattleAiId": 1
+                "mindFrameID": 1, "pvpAiId": 1, "pvpAiAutoBattleAiId": 1,
+                // The result screen shows this label (skipped when empty).
+                "battleResultComment": d.result_comment.clone().unwrap_or_default()
             })
         })
         .collect()
@@ -706,6 +728,7 @@ mod tests {
             }),
             dt_attack: None,
             dt_skills: Vec::new(),
+            result_comment: None,
             max_tree: None,
         };
         assert_eq!(d.stats_at(1).hp, 100);
