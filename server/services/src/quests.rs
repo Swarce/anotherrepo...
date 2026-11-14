@@ -122,7 +122,7 @@ pub fn chapter_info(c: &ChapterDef, p: &Progress) -> Value {
 }
 
 fn enemy_info(statue_id: &str, level: i64) -> Value {
-    let mut v = collection::statue_info(&collection::OwnedStatue {
+    let mut v = collection::battle_statue_info(&collection::OwnedStatue {
         uid: 0,
         statue_id: statue_id.to_string(),
         level,
@@ -156,6 +156,9 @@ pub fn stage_info(c: &ChapterDef, s: &StageDef, n: usize, p: &Progress) -> Value
     })
 }
 
+/// Our pattern in area_position_pattern_table (server/content/masterdata).
+pub const DT_FORMATION: &str = "JDR_DT_DEFAULT";
+
 /// The battle description: one AreaInfo per area scene, one wave of the stage's enemies each.
 pub fn area_list(c: &ChapterDef, s: &StageDef) -> Vec<Value> {
     let areas: Vec<String> = if s.areas.is_empty() {
@@ -187,7 +190,8 @@ pub fn area_list(c: &ChapterDef, s: &StageDef) -> Vec<Value> {
                     json!({ "enemyStatueInfo": enemy_info(e, s.enemy_level), "seq": k + 1,
                             "difficultyTable": "", "difficultyLevel": 1, "AiId": "", "fastStrike": false,
                             "enemySkillTable": "", "dropList": [], "disappear": 0, "hideEnemyInfo": 0,
-                            "bossFlag": (k == 0) as i64, "backFlag": 0 })
+                            // No boss intro until it is known to work offline.
+                            "bossFlag": 0, "backFlag": 0 })
                 })
                 .collect();
             json!({
@@ -197,7 +201,9 @@ pub fn area_list(c: &ChapterDef, s: &StageDef) -> Vec<Value> {
                 "rotate": 0, "levelEditId": "", "instanceObjType": 0, "startWipe": 1, "endWipe": 1,
                 "clearWaveNum": 1, "limitTime": 0, "endureTime": 0,
                 "waveList": if c.stage_type == 0 { waves } else { Vec::new() },
-                "mapGimmickInfo": {}, "mapPoint": 0, "formation": "",
+                "mapGimmickInfo": {}, "mapPoint": 0,
+                // Tactical areas place units by this area_position_pattern_table row.
+                "formation": if c.stage_type == 1 { DT_FORMATION } else { "" },
                 "clearAreaType": 1, "limitTurn": 0,
                 "areaSettingList": if c.stage_type == 1 { dt_settings } else { Vec::new() }
             })
