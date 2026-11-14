@@ -219,7 +219,18 @@ impl Patch for Cleartext {
 pub const LIBMAIN_ARM64: &str = "lib/arm64-v8a/libmain.so";
 pub const SERVER_LIB_ENTRY: &str = "lib/arm64-v8a/libjdr.so";
 pub const KEYS_ASSET: &str = "assets/jdr/keys.json";
-pub const SERVER_MARKER: &[u8] = b"JDR_EMBEDDED_SERVER_v";
+pub const SERVER_MARKER: &[u8] = b"JDR_EMBEDDED_SERVER_";
+
+/// The build tag after the marker (e.g. `b002`), if present.
+pub fn server_lib_tag(b: &[u8]) -> Option<String> {
+    let i = b
+        .windows(SERVER_MARKER.len())
+        .position(|w| w == SERVER_MARKER)?;
+    let tag = b.get(i + SERVER_MARKER.len()..i + SERVER_MARKER.len() + 4)?;
+    tag.iter()
+        .all(|c| c.is_ascii_alphanumeric())
+        .then(|| String::from_utf8_lossy(tag).into_owned())
+}
 
 /// Check that a file is our aarch64 embedded server library.
 pub fn validate_server_lib(b: &[u8]) -> Result<(), Error> {
@@ -292,7 +303,7 @@ impl Patch for EmbedServer {
             "http_key": k["http_key"], "sound_key": k.get("sound_key").cloned().unwrap_or(serde_json::Value::Null),
         });
         apk.put(KEYS_ASSET, serde_json::to_vec(&slim)?, false);
-        Ok(format!("libjdr.so ({} KiB, sha256 {}…), libmain NEEDED liblog.so -> libjdr.so, {KEYS_ASSET} (stored)", lib.len() / 1024, &sha256_hex(&lib)[..12]))
+        Ok(format!("libjdr.so JDR_EMBEDDED_SERVER_{} ({} KiB, sha256 {}…), libmain NEEDED liblog.so -> libjdr.so, {KEYS_ASSET} (stored)", server_lib_tag(&lib).unwrap_or_else(|| "?".into()), lib.len() / 1024, &sha256_hex(&lib)[..12]))
     }
 }
 

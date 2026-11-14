@@ -21,7 +21,13 @@ cargo check -p jdr-crypto -p jdr-core -p jdr-services -p jdr-embedded --target a
 
 if [[ -n "${ANDROID_NDK:-}" ]]; then
   step "embedded server: libjdr.so for aarch64-linux-android"
-  export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER="$ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android21-clang"
+  case "$(uname -s)" in
+    Linux) ndk_host=linux-x86_64 ;;
+    Darwin) ndk_host=darwin-x86_64 ;;  # the NDK ships one universal macOS toolchain under this name
+    *) echo "unsupported host $(uname -s); build libjdr.so on Linux/macOS (or WSL)"; exit 1 ;;
+  esac
+  export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER="$ANDROID_NDK/toolchains/llvm/prebuilt/$ndk_host/bin/aarch64-linux-android21-clang"
+  libjdr_fresh=1
   cargo build --release -p jdr-embedded --target aarch64-linux-android
   ls -l target/aarch64-linux-android/release/libjdr.so
 else
@@ -37,10 +43,10 @@ cargo test --workspace --release
 if [[ -n "${JDR_APK:-}" && -n "${JDR_BUILD_TOOLS:-}" ]]; then
   step "real-binary: patch your APK"
   mkdir -p deliver
-  if [[ -n "${JDR_KEYS:-}" && -f target/aarch64-linux-android/release/libjdr.so ]]; then
-    embed=(--keys "$JDR_KEYS")
+  if [[ -n "${JDR_KEYS:-}" && -n "${libjdr_fresh:-}" ]]; then
+    embed=(--keys "$JDR_KEYS" --server-lib target/aarch64-linux-android/release/libjdr.so)
   else
-    echo "(no JDR_KEYS or no libjdr.so: building the dev-loop APK without the embedded server)"
+    echo "(needs JDR_KEYS and ANDROID_NDK in the same run to embed a freshly built libjdr.so; building the dev-loop APK without it)"
     embed=(--disable embed-server)
   fi
   JDR_KEYSTORE="${JDR_KEYSTORE:-$HOME/.config/JDR/jdr-signing.p12}" \

@@ -7,7 +7,7 @@
 //!
 //! Paths (user `n` = uid / 100000):
 //! - state (accounts, saves): `/data/user/<n>/<pkg>/jdr/`
-//! - logs mirror (reachable with adb): `/storage/emulated/<n>/Android/data/<pkg>/jdr/logs/`
+//! - logs and save backups (reachable with adb): `/storage/emulated/<n>/Android/data/<pkg>/jdr/{logs,saves}/`
 //! - extra CDN files (import folder): `/storage/emulated/<n>/Android/data/<pkg>/jdr/cdn/` — never
 //!   the game's own `files/` folder, which the client downloads into.
 
@@ -24,7 +24,7 @@ use std::time::{Duration, Instant};
 /// Marker the patcher checks to make sure it embeds this library and not something else.
 #[used]
 #[no_mangle]
-pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_v001";
+pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_b002";
 
 pub const KEYS_ASSET: &str = "assets/jdr/keys.json";
 
@@ -109,18 +109,47 @@ pub fn load_keys(state: &Path) -> Result<Keys, String> {
     serde_json::from_slice(&b).map_err(|e| format!("{KEYS_ASSET}: {e}"))
 }
 
-/// Copy the current log to external storage once the game has created its folder there.
-fn mirror_logs(external: PathBuf) {
+/// Copy `src` to `dst_dir` if its size or mtime changed since the last copy.
+fn copy_if_changed(
+    src: &Path,
+    dst_dir: &Path,
+    seen: &mut std::collections::HashMap<PathBuf, (u64, std::time::SystemTime)>,
+) {
+    let Ok(md) = std::fs::metadata(src) else {
+        return;
+    };
+    let stamp = (md.len(), md.modified().unwrap_or(std::time::UNIX_EPOCH));
+    if seen.get(src) == Some(&stamp) {
+        return;
+    }
+    let Some(name) = src.file_name() else { return };
+    if std::fs::create_dir_all(dst_dir).is_ok() && std::fs::copy(src, dst_dir.join(name)).is_ok() {
+        seen.insert(src.to_path_buf(), stamp);
+    }
+}
+
+/// Mirror the log (every 5 s) and the account saves (every 30 s) to external storage, where the
+/// player can reach them with adb. Only changed files are copied. External storage only becomes
+/// writable once the game has created its folder there, so failures are retried silently.
+fn mirror_loop(state: PathBuf, external: PathBuf) {
+    let mut seen = std::collections::HashMap::new();
+    let mut tick: u64 = 0;
     loop {
         std::thread::sleep(Duration::from_secs(5));
         if let Some(src) = log::current_path() {
-            let dir = external.join("logs");
-            if std::fs::create_dir_all(&dir).is_ok() {
-                if let Some(name) = src.file_name() {
-                    let _ = std::fs::copy(&src, dir.join(name));
+            copy_if_changed(&src, &external.join("logs"), &mut seen);
+        }
+        if tick % 6 == 0 {
+            if let Ok(rd) = std::fs::read_dir(state.join("accounts")) {
+                for e in rd.flatten() {
+                    let p = e.path();
+                    if p.extension().and_then(|x| x.to_str()) == Some("json") {
+                        copy_if_changed(&p, &external.join("saves"), &mut seen);
+                    }
                 }
             }
         }
+        tick += 1;
     }
 }
 
@@ -149,9 +178,10 @@ pub fn run() {
     );
     {
         let ext = paths.external.clone();
+        let st = paths.state.clone();
         let _ = std::thread::Builder::new()
-            .name("jdr-logcopy".into())
-            .spawn(move || mirror_logs(ext));
+            .name("jdr-mirror".into())
+            .spawn(move || mirror_loop(st, ext));
     }
     let keys = match load_keys(&paths.state) {
         Ok(k) => k,
@@ -175,7 +205,7 @@ pub fn run() {
             }
         ),
     );
-    serve_embedded(&paths, keys, DEFAULT_PORT, 30, t0);
+    serve_embedded(&paths, keys, DEFAULT_PORT, u32::MAX, t0);
 }
 
 /// The portable part of the embedded host: bind (with retries), build the context, serve.
@@ -337,6 +367,36 @@ mod tests {
         let split = out.windows(4).position(|w| w == b"\r\n\r\n").unwrap();
         let v = decode_response_like_client(&out[split + 4..], b"Synthetic-Key-16").unwrap();
         assert_eq!(v["param"]["url"], format!("http://127.0.0.1:{port}/api"));
+    }
+
+    #[test]
+    fn marker_matches_build() {
+        assert_eq!(
+            &JDR_EMBEDDED_MARKER[..],
+            format!("JDR_EMBEDDED_SERVER_b{:03}", jdr_core::BUILD).as_bytes()
+        );
+    }
+
+    #[test]
+    fn copies_only_changed_files() {
+        let d = std::env::temp_dir().join(format!("jdr-emb-copy-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&d);
+        std::fs::create_dir_all(&d).unwrap();
+        let src = d.join("a.json");
+        std::fs::write(&src, b"1").unwrap();
+        let mut seen = std::collections::HashMap::new();
+        copy_if_changed(&src, &d.join("out"), &mut seen);
+        assert_eq!(std::fs::read(d.join("out/a.json")).unwrap(), b"1");
+        std::fs::write(d.join("out/a.json"), b"tampered").unwrap();
+        copy_if_changed(&src, &d.join("out"), &mut seen);
+        assert_eq!(
+            std::fs::read(d.join("out/a.json")).unwrap(),
+            b"tampered",
+            "unchanged source is not copied again"
+        );
+        std::fs::write(&src, b"22").unwrap();
+        copy_if_changed(&src, &d.join("out"), &mut seen);
+        assert_eq!(std::fs::read(d.join("out/a.json")).unwrap(), b"22");
     }
 
     #[test]
