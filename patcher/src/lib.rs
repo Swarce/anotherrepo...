@@ -2,6 +2,7 @@
 
 pub mod apk;
 pub mod axml;
+pub mod elf;
 pub mod known;
 pub mod meta;
 pub mod patches;
