@@ -71,6 +71,53 @@ pub fn leader_change(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "teamInfo": shown(&p.collection, team_num) }))
 }
 
+/// `StatueChangeRequest {teamNum, statueSeq, statueuId}` (`/team/statue_select`): put that statue
+/// in the seat (TeamStatueRole 1 leader, 2 left, 3 right). A statue already in the team swaps
+/// seats with the one it replaces; 0 empties a side seat (never the leader). Unknown statues or
+/// seats change nothing and the reply shows the team as it is.
+pub fn statue_select(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let team_num = team_num(env)?;
+    let seq = int(env, "statueSeq").unwrap_or(0);
+    let uid = int(env, "statueuId").unwrap_or(0);
+    let (p, ()) = with_profile(ctx, env, |p| {
+        let usable = uid == 0 || p.collection.known_statue(uid).is_some();
+        if !(1..=3).contains(&seq) || !usable || (seq == 1 && uid == 0) {
+            return ((), Change::None);
+        }
+        let mut changed = false;
+        for t in teams_numbered(&mut p.collection, team_num) {
+            // A team without a leader takes its first statue as the leader, whatever the seat.
+            let i = if t.slots[0] == 0 && uid != 0 {
+                0
+            } else {
+                (seq - 1) as usize
+            };
+            let old = t.slots[i];
+            if old == uid {
+                continue;
+            }
+            if let Some(j) = t.slots.iter().position(|s| *s == uid && uid != 0) {
+                // Already in the team: swap seats (an empty seat may not become the leader).
+                if j == 0 && old == 0 {
+                    continue;
+                }
+                t.slots[j] = old;
+            }
+            t.slots[i] = uid;
+            changed = true;
+        }
+        (
+            (),
+            if changed {
+                Change::Bookkeeping
+            } else {
+                Change::None
+            },
+        )
+    })?;
+    ok(json!({ "teamInfo": shown(&p.collection, team_num) }))
+}
+
 /// `SetTeamRequest {teamNum, mainFlg, leaderstatueuId, memberLeftStatueuId, memberRightStatueuId}`.
 /// Statues the player does not own become empty slots; a team without a leader is not saved (the
 /// reply shows the team as it is).
@@ -254,6 +301,75 @@ mod tests {
             p.collection.teams.iter().any(|t| t.main),
             "a main team remains"
         );
+
+        // statue_select: a new statue into a side seat, then a team member into the leader seat
+        // (swap), then emptying a side seat; the leader seat never empties.
+        let t1 = |p: &crate::accounts::Profile| {
+            p.collection
+                .teams
+                .iter()
+                .find(|t| t.stage_type == 1 && t.team_num == 1)
+                .unwrap()
+                .slots
+        };
+        let p = ctx.accounts.get(&uuid).unwrap().unwrap();
+        let before = t1(&p);
+        let outsider = p
+            .collection
+            .statues
+            .iter()
+            .map(|s| s.uid)
+            .find(|u| !before.contains(u))
+            .unwrap();
+        let sel = |seq: i64, uid: i64| {
+            let (r, known) = dispatch(
+                &ctx,
+                "/team/statue_select",
+                &env(
+                    &uuid,
+                    json!({"teamNum": 1, "statueSeq": seq, "statueuId": uid}),
+                ),
+            );
+            assert!(known);
+            slots(&r.unwrap())
+        };
+        assert_eq!(sel(2, outsider), [before[0], outsider, before[2]]);
+        assert_eq!(
+            sel(1, outsider),
+            [outsider, before[0], before[2]],
+            "swap with the leader"
+        );
+        assert_eq!(sel(3, 0), [outsider, before[0], 0], "a side seat may empty");
+        assert_eq!(
+            sel(1, 0),
+            [outsider, before[0], 0],
+            "the leader seat never empties"
+        );
+        assert_eq!(
+            sel(2, 999_999),
+            [outsider, before[0], 0],
+            "unknown statue ignored"
+        );
+        let p = ctx.accounts.get(&uuid).unwrap().unwrap();
+        for t in p.collection.teams.iter().filter(|t| t.team_num == 1) {
+            assert_eq!(
+                t.slots,
+                [outsider, before[0], 0],
+                "both battle types follow"
+            );
+        }
+        // An empty team (team 4) takes its first statue as the leader, not a side member.
+        let (r, _) = dispatch(
+            &ctx,
+            "/team/statue_select",
+            &env(
+                &uuid,
+                json!({"teamNum": 4, "statueSeq": 2, "statueuId": outsider}),
+            ),
+        );
+        let o = &r.unwrap()["teamInfo"]["teamOrder"];
+        assert_eq!(o["leaderStatue"]["statueuId"], outsider);
+        assert_eq!(o["memberLeftStatue"]["statueuId"], 0);
 
         let (r, _) = dispatch(&ctx, "/user/user_info_mini", &env(&uuid, json!({"id": ""})));
         let card = r.unwrap();

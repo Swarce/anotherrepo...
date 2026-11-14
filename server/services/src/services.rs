@@ -49,6 +49,7 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/team/team_info" => misc::team_info(ctx, env),
         "/team/leader_change" => team::leader_change(ctx, env),
         "/team/set_team" => team::set_team(ctx, env),
+        "/team/statue_select" => team::statue_select(ctx, env),
         "/user/user_info_mini" => team::user_info_mini(ctx, env),
         "/follow/follower_list" => team::follower_list(ctx, env),
         "/follow/block_list" => team::block_list(ctx, env),

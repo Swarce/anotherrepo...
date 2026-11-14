@@ -110,5 +110,6 @@ for o in env.objects:
     checked += 1
 
 assert checked == len(want), (checked, len(want))
-rows = {n: len(next(iter(v["data"].values()))) for n, v in files.items()}
+# Rows: the longest list in each table (generated JSON has its keys sorted).
+rows = {n: max((len(x) for x in v["data"].values() if isinstance(x, list)), default=0) for n, v in files.items()}
 print(f"OK: in_memory_master_data parses with UnityPy; {checked} tables; content rows {rows}")
