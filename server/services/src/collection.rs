@@ -131,6 +131,8 @@ pub struct Collection {
     pub statues: Vec<OwnedStatue>,
     #[serde(default)]
     pub teams: Vec<Team>,
+    #[serde(default)]
+    pub minds: Vec<OwnedMind>,
 }
 
 impl Collection {
@@ -149,6 +151,18 @@ impl Collection {
                     get_date: now.to_string(),
                 });
                 next += 1;
+                changed = true;
+            }
+        }
+        let mut next_mind = self.minds.iter().map(|m| m.uid).max().unwrap_or(0) + 1;
+        for d in minds() {
+            if !self.minds.iter().any(|m| m.mind_id == d.mind_id) {
+                self.minds.push(OwnedMind {
+                    uid: next_mind,
+                    mind_id: d.mind_id.clone(),
+                    get_date: now.to_string(),
+                });
+                next_mind += 1;
                 changed = true;
             }
         }
@@ -453,4 +467,64 @@ mod rank_tests {
         assert_eq!(ap_max(1), 20);
         assert_eq!(next_rank_exp(1), 40);
     }
+}
+
+// ---------------------------------------------------------------------------------------------
+// Minds (cards).
+
+pub const MINDS_JSON: &str = include_str!("../../content/minds.json");
+/// Mind box size offered (the player owns every listed mind).
+pub const MIND_MAX: i64 = 999;
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct MindDef {
+    #[serde(rename = "mindId")]
+    pub mind_id: String,
+    pub rarity: i64,
+    pub cost: i64,
+    pub hp: i64,
+    pub atk: i64,
+    pub def: i64,
+}
+
+pub fn minds() -> &'static [MindDef] {
+    static CELL: std::sync::OnceLock<Vec<MindDef>> = std::sync::OnceLock::new();
+    CELL.get_or_init(|| {
+        #[derive(Deserialize)]
+        struct Doc {
+            minds: Vec<MindDef>,
+        }
+        serde_json::from_str::<Doc>(MINDS_JSON)
+            .map(|d| d.minds)
+            .unwrap_or_default()
+    })
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Default)]
+pub struct OwnedMind {
+    pub uid: i64,
+    pub mind_id: String,
+    #[serde(default)]
+    pub get_date: String,
+}
+
+/// `MindInfo` (level 1; abilities left to the master tables).
+pub fn mind_info(o: &OwnedMind) -> Value {
+    let d = minds().iter().find(|m| m.mind_id == o.mind_id);
+    let (rare, cost, hp, atk, def) = d
+        .map(|d| (d.rarity, d.cost, d.hp, d.atk, d.def))
+        .unwrap_or((3, 9, 0, 0, 0));
+    let id = &o.mind_id;
+    json!({
+        "mindId": id, "name": format!("MIND_NAME_{id}"), "nameSortIndex": 0, "rare": rare, "cost": cost,
+        "description": format!("MIND_TEXT_{id}"), "mindType": 1,
+        "abilityInfo": {}, "skillInfo": {}, "dtAbilityInfo": {}, "dtSkillInfo": {},
+        "tokkouInfo": {}, "dtTokkouInfo": {}, "pvpAbilityInfo": {}, "dtPvpAbilityInfo": {},
+        "maxLevel": 10, "sellVm": 0, "linkParam": "", "tipsText": "", "level": 1, "exp": 0,
+        "limitCharaList": [], "limitTribeList": [], "limitStatueType": 0, "limitCount": 0,
+        "limitCharacteristicList": [], "characteristicList": [], "levelUpTable": [],
+        "minduId": o.uid, "sellRing": 0, "sellGet": 0, "stack": 1, "materialExp": 0,
+        "bonusCondition": 0, "bonusRate": 0, "hp": hp, "eng": 0, "atk": atk, "def": def,
+        "newFlg": 0, "useFlg": 0, "protectedFlg": 0, "getDate": o.get_date
+    })
 }

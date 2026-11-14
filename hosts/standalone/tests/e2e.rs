@@ -178,6 +178,8 @@ fn new_player_boot_sequence() {
         &uuid,
     );
     assert_eq!(si["param"]["statueInfo"]["statueId"], leader["statueId"]);
+    let ml = call_as(port, &ep("/mind/mind_list"), "{}", &uuid);
+    assert!(ml["param"]["mindList"].as_array().unwrap().len() > 300);
     // Story: the story button, a chapter list, a stage list, start and end (clear recorded)
     let sel = call_as(port, &ep("/bizarre/get_bizarre_select"), "{}", &uuid);
     assert_eq!(sel["param"]["questList"][0]["bannerType"], 1);

@@ -41,6 +41,8 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/info/event_list" => misc::event_list(ctx, env),
         "/info/banner_list" => misc::banner_list(ctx, env),
         "/info/get_menu_notify" => misc::get_menu_notify(ctx, env),
+        "/mind/mind_list" => statue::mind_list(ctx, env),
+        "/mind/mind_info" => statue::mind_info(ctx, env),
         "/statue/statue_list" => statue::statue_list(ctx, env),
         "/statue/statue_info" => statue::statue_info(ctx, env),
         "/team/team_info" => misc::team_info(ctx, env),
