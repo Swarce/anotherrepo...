@@ -155,8 +155,8 @@ Notes:
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
 | `/mind/add_storage` | `MindAddStorageRequest` | `MindAddStorageResponse` (M) | logged as unknown |
-| `/mind/mind_info` | `MindInfoRequest` | `MindInfoResponse` | logged as unknown |
-| `/mind/mind_list` | `MindListRequest` | `MindListResponse` | logged as unknown |
+| `/mind/mind_info` | `MindInfoRequest` | `MindInfoResponse` | implemented |
+| `/mind/mind_list` | `MindListRequest` | `MindListResponse` | implemented |
 | `/mind/mind_storage_list` | `MindStorageListRequest` | `MindStorageListResponse` | logged as unknown |
 | `/mind/mind_storage_move` | `MindStorageMoveRequest` | `MindStorageMoveResponse` | logged as unknown |
 | `/mind/new_flg_release` | `MindNewFlgReleaseRequest` | `MindNewFlgReleaseResponse` | logged as unknown |

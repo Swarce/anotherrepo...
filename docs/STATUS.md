@@ -18,6 +18,8 @@ leader model come from the tactical main team's leader and its `statue_setting_t
   (129 from Gamerch matched exactly by leader-ability name, 13 from ShoutWiki by elimination); stats
   per level are linear Lv1→Lv99 (the wikis' Lv99 = 10 × Lv1 for 195 of 200 statues). The rest,
   mostly released after the 2018 snapshot, use marked defaults.
+- **Minds:** the player owns the 370 minds matched to game ids on Gamerch (rarity, cost, flat
+  stats); routes `mind/mind_list`, `mind/mind_info`.
 - **Generated master tables:** `statue_setting_table` (266 rows), `statue_level_table` (266 × 99
   levels), `rank_table` (ranks 1–99 from Gamerch).
 - **Story quests:** story button, 82 chapters (31 action, 51 tactical with stages) and 370 stages from

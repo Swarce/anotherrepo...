@@ -36,7 +36,7 @@ pub fn user_info(p: &Profile) -> Value {
         "staminaPt": crate::collection::ap_max(p.rank.max(1)), "staminaMax": crate::collection::ap_max(p.rank.max(1)), "staminaUseTime": now, "staminaMaxTime": now,
         "battlePoint": 5, "battlePointMax": 5, "battlePointUseTime": now, "battlePointMaxTime": now,
         "raidPoint": 3, "raidPointMax": 3, "raidPointUseTime": now, "raidPointMaxTime": now,
-        "statueNum": p.collection.statues.len(), "mindNum": 0, "mindMax": 300, "followNum": 0, "followMax": 50,
+        "statueNum": p.collection.statues.len(), "mindNum": p.collection.minds.len(), "mindMax": crate::collection::MIND_MAX, "followNum": 0, "followMax": 50,
         "followerNum": 0, "followerMax": 50, "blockMax": 50, "comment": p.comment,
         "stoneNum": 0, "stoneNumFree": p.stone_free, "vm": p.gold, "mindGashaPoint": 0,
         "lastLoginAt": date(p.last_login_at), "soul": 0, "mentality": 0, "mentalityUseTime": now,

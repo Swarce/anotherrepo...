@@ -39,4 +39,5 @@ community wikis (each record cites its page) or are marked `jdr-default`.
 | Story chapters/stages/areas | player's files | 82 chapters, 370 stages |
 | Stage AP, rank EXP, gold, recommended level | Gamerch (Wayback snapshot, chapters 1–23) | 100 of 370 stages; enemies and rewards default (the wiki shows them as images) |
 | Player rank: EXP per rank, AP max | Gamerch user-rank page | ranks 1–99 |
-| Minds, items, events, gacha | wikis (pending) | not yet |
+| Minds: rarity, cost, flat stats | Gamerch (exact Japanese name) | 370 owned; cost defaults where the wiki has none |
+| Items, events, gacha | Gamerch (fetched: 48 gacha, 22 events) | not served yet |
