@@ -174,6 +174,23 @@ pub fn update_username(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "userInfo": user_info(&p) }))
 }
 
+/// `UpdateCommentRequest {comment}` -> `UpdateCommentResponse {userInfo}` (the profile message).
+pub fn update_comment(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let comment: Option<String> = env
+        .param
+        .get("comment")
+        .and_then(Value::as_str)
+        .map(|c| c.chars().take(60).collect());
+    let (p, ()) = with_profile(ctx, env, |p| match comment {
+        Some(c) => {
+            p.comment = c;
+            ((), Change::Progress)
+        }
+        None => ((), Change::None),
+    })?;
+    ok(json!({ "userInfo": user_info(&p) }))
+}
+
 pub fn get_loginbonus(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "loginBonusInfo": [] }))
 }
