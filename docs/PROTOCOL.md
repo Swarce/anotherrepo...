@@ -1,0 +1,327 @@
+# Protocol: endpoint map
+
+Every API call the 3.12.0 client can make, grouped by service, with the Build 01 server status.
+Source: the research table of all 171 `RequestParamBase` subclasses mapped to their `get_ApiName`
+path and response class (read from code, H). Response classes marked (M) were matched by name
+because no `Request<>` instantiation pairs them in code.
+
+Specs:
+
+- [protocol/envelope.md](protocol/envelope.md): request/response wire format.
+- [protocol/boot.md](protocol/boot.md): call order and required answers from launch to MyPage.
+- [protocol/assets.md](protocol/assets.md): getkey, getfiledata, versionfile, CDN rules.
+
+Research notes with evidence: [research/](research/) (01 redirect, 02 envelope, 03 progression,
+04 economy, 05 live-ops, 06 native boundary, 07 integrity, 08 assets).
+
+## Build 01 status meanings
+
+- **implemented**: the path is in the dispatch table in `server/services/src/services.rs`.
+- **logged as unknown**: no handler yet. The server answers `status:10000` with no other fields
+  (the client keeps its defaults for every field), counts the call, and logs the path and request
+  `param`. The 1.0 checklist requires this counter to stay at 0 in a full playthrough.
+
+Notes:
+
+- `/common/get_version` serves two request classes: `GetVersionRequest` (boot) and
+  `HearbeatRequest` (resource-download screen; expects only the base fields).
+- `/clan/search` serves three request classes (by id, by name, by policy).
+- Class names are spelled as in the client (`GashPlayRequest`, `HearbeatRequest`,
+  `PvpAutoFomationRequest`, `GetAllTrophyResult` is a request class).
+- Paths are relative to `get_version.url`, except the first `get_version`, which goes to the
+  built-in base.
+
+| Count | |
+|---|---|
+| Request classes | 171 |
+| Distinct paths | 168 |
+| Request classes on an implemented path (Build 01) | 20 |
+| Distinct implemented paths | 19 |
+
+## Endpoints
+
+### common — version check, system config, maintenance (4, 3 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/common/get_maint_sts` | `GetMaintenanceInfoRequest` | `GetMaintenanceInfoResponse` | logged as unknown |
+| `/common/get_system_config` | `SystemConfigRequest` | `SystemConfigResponse` | implemented |
+| `/common/get_version` | `GetVersionRequest` | `GetVersionResponse` | implemented |
+| `/common/get_version` | `HearbeatRequest` | `HeartbeatResponse` | implemented |
+
+### client — asset keys and asset URLs (2, 2 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/client/getfiledata` | `GetFileDataRequest` | `GetFileDataResponse` | implemented |
+| `/client/getkey` | `GetKeyRequest` | `GetKeyResponse` | implemented |
+
+### user — account, profile, tutorial flags, stamina (16, 8 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/user/change_backup_id` | `ChangeBackupIdRequest` | `ChangeBackupIdResponse` | logged as unknown |
+| `/user/create_data_move_password` | `CreateDataMovePasswordRequest` | `CreateDataMovePasswordResponse` | logged as unknown |
+| `/user/create_user` | `CreateUserRequest` | `CreateUserResponse` | implemented |
+| `/user/data_move` | `DataMoveRequest` | `DataMoveResponse` | logged as unknown |
+| `/user/get_loginbonus` | `GetLoginBonusRequest` | `GetLoginBonusResponse` | implemented |
+| `/user/get_nonce` | `GetNonceRequest` | `GetNonceResponse` | implemented |
+| `/user/get_tutorial_step` | `TutorialStepRequest` | `TutorialStepResponse` | implemented |
+| `/user/login` | `LoginRequest` | `LoginResponse` | implemented |
+| `/user/recover_battle_point` | `RecoveryBattlePointRequest` | `RecoveryBattlePointResponse` | logged as unknown |
+| `/user/recover_stamina` | `RecoverStaminaRequest` | `RecoverStaminaResponse` | logged as unknown |
+| `/user/select` | `UserSelectRequest` | `UserSelectResponse` | logged as unknown |
+| `/user/tutorial` | `UpdateTutorialStepRequest` | `UpdateTutorialStepResponse` | implemented |
+| `/user/update_comment` | `UpdateCommentRequest` | `UpdateCommentResponse` | logged as unknown |
+| `/user/update_username` | `UpdateUserNameRequest` | `UpdateUserNameResponse` | implemented |
+| `/user/user_info` | `UserInfoRequest` | `UserInfoResponse` | implemented |
+| `/user/user_info_mini` | `UserInfoMiniRequest` | `UserInfoMiniResponse` | logged as unknown |
+
+### info — notices, events, banners, menu badges (5, 4 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/info/banner_list` | `BannerListRequest` | `BannerListResponse` | implemented |
+| `/info/check_forced_notify` | `CheckForcedNotifyRequest` | `CheckForcedNotifyResponse` | implemented |
+| `/info/event_list` | `EventListRequest` | `EventListResponse` | implemented |
+| `/info/get_menu_notify` | `GetMenuNotifyRequest` | `GetMenuNotifyResponse` | implemented |
+| `/info/notify_list` | `NotifyListRequest` | `NotifyListResponse` | logged as unknown |
+
+### shop — IAP (disabled offline) and in-game shops (9, 1 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/shop/buy_cancel` | `BuyCancelRequest` | `BuyCancelResponse` | logged as unknown |
+| `/shop/buy_complete` | `BuyCompleteRequest` | `BuyCompleteResponse` | logged as unknown |
+| `/shop/buy_list` | `BuyListRequest` | `BuyListResponse` | logged as unknown |
+| `/shop/buy_trans` | `BuyTransRequest` | `BuyTransResponse` (M) | logged as unknown |
+| `/shop/event_shop_buy` | `EventShopBuyRequest` | `EventShopBuyResponse` | logged as unknown |
+| `/shop/event_shop_list` | `EventShopListRequest` | `EventShopListResponse` | logged as unknown |
+| `/shop/product_list` | `ProductListRequest` | `ProductListResponse` | implemented |
+| `/shop/shop_buy` | `ShopBuyRequest` | `ShopBuyResponse` | logged as unknown |
+| `/shop/shop_list` | `ShopListRequest` | `ShopListResponse` | logged as unknown |
+
+### gasha — gacha (5, 0 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/gasha/gasha_detail` | `GashaDetailRequest` | `GashaDetailResponse` (M) | logged as unknown |
+| `/gasha/gasha_list` | `GashaListRequest` | `GashaListResponse` | logged as unknown |
+| `/gasha/gasha_play` | `GashPlayRequest` | `GashaPlayResponse` | logged as unknown |
+| `/gasha/get_box_gasha` | `GetBoxGashaRequest` | `GetBoxGashaResponse` | logged as unknown |
+| `/gasha/reset_box_gasha` | `ResetBoxGashaRequest` | `ResetBoxGashaResponse` | logged as unknown |
+
+### present — present box (3, 0 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/present/get` | `GetPresentRequest` | `GetPresentResponse` | logged as unknown |
+| `/present/get_all` | `GetPresentAllRequest` | `GetPresentResponse` | logged as unknown |
+| `/present/present_list` | `PresentListRequest` | `PresentListResponse` | logged as unknown |
+
+### team — team formation (11, 1 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/team/auto_set_and_equip` | `AutoFomationRequest` | `AutoFomationResponse` | logged as unknown |
+| `/team/equip_mind` | `EquipMindRequest` | `EquipMindResponse` | logged as unknown |
+| `/team/equip_multiple_assist` | `EquipMultipleAssistRequest` | `EquipMultipleAssistResponse` | logged as unknown |
+| `/team/equip_multiple_minds` | `EquipMultipleMindsRequest` | `EquipMultipleMindsResponse` | logged as unknown |
+| `/team/leader_change` | `LeaderChangeRequest` | `LeaderChangeResponse` | logged as unknown |
+| `/team/save_all_flg` | `SaveAllFlgRequest` | `SaveAllFlgResponse` | logged as unknown |
+| `/team/set_team` | `SetTeamRequest` | `SetTeamResponse` | logged as unknown |
+| `/team/set_team_all` | `SetTeamAllRequest` | `SetTeamAllResponse` | logged as unknown |
+| `/team/statue_select` | `StatueChangeRequest` | `StatueChangeResponse` | logged as unknown |
+| `/team/team_info` | `TeamInfoRequest` | `TeamInfoResponse` | implemented |
+| `/team/unlock_mind_seq` | `UnlockMindRequest` | `UnlockMindResponse` | logged as unknown |
+
+### statue — characters (statues) (10, 0 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/statue/add_storage` | `StatueAddStorageRequest` | `StatueAddStorageResponse` (M) | logged as unknown |
+| `/statue/evolution_exec` | `StatueEvolutionExecRequest` | `StatueEvolutionExecResponse` | logged as unknown |
+| `/statue/evolution_info` | `StatueEvolutionInfoRequest` | `StatueEvolutionInfoResponse` | logged as unknown |
+| `/statue/new_flg_release` | `StatueNewFlgReleaseRequest` | `StatueNewFlgReleaseResponse` | logged as unknown |
+| `/statue/protect` | `StatueProtectRequest` | `StatueProtectResponse` | logged as unknown |
+| `/statue/save_sort` | `StatueSaveSortRequest` | `StatueSaveSortResponse` | logged as unknown |
+| `/statue/statue_info` | `StatueInfoRequest` | `StatueInfoResponse` | logged as unknown |
+| `/statue/statue_list` | `StatueListRequest` | `StatueListResponse` | logged as unknown |
+| `/statue/strengthening` | `StatueStrengtheningRequest` | `StatueStrengtheningResponse` | logged as unknown |
+| `/statue/strengthening_item` | `StatueStrengtheningItemRequest` | `StatueStrengtheningResponse` | logged as unknown |
+
+### mind — equipment (minds) (11, 0 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/mind/add_storage` | `MindAddStorageRequest` | `MindAddStorageResponse` (M) | logged as unknown |
+| `/mind/mind_info` | `MindInfoRequest` | `MindInfoResponse` | logged as unknown |
+| `/mind/mind_list` | `MindListRequest` | `MindListResponse` | logged as unknown |
+| `/mind/mind_storage_list` | `MindStorageListRequest` | `MindStorageListResponse` | logged as unknown |
+| `/mind/mind_storage_move` | `MindStorageMoveRequest` | `MindStorageMoveResponse` | logged as unknown |
+| `/mind/new_flg_release` | `MindNewFlgReleaseRequest` | `MindNewFlgReleaseResponse` | logged as unknown |
+| `/mind/protect` | `MindProtectRequest` | `MindProtectResponse` | logged as unknown |
+| `/mind/protect_multi` | `MindProtectMultiRequest` | `MindProtectMultiResponse` | logged as unknown |
+| `/mind/save_sort` | `MindSaveSortRequest` | `MindSaveSortResponse` | logged as unknown |
+| `/mind/strengthening` | `MindStrengtheningRequest` | `MindStrengtheningResponse` | logged as unknown |
+| `/mind/strengthening_item` | `MindStrengtheningItemRequest` | `MindStrengtheningResponse` | logged as unknown |
+
+### item — items (3, 0 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/item/exp_item_list` | `ExpItemListRequest` | `ExpItemListResponse` | logged as unknown |
+| `/item/heal_item_list` | `HealItemListRequest` | `HealItemListResponse` | logged as unknown |
+| `/item/item_list` | `ItemListRequest` | `ItemListResponse` | logged as unknown |
+
+### sell — selling (1, 0 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/sell/sell` | `SellRequest` | `SellResponse` | logged as unknown |
+
+### tree — skill tree (2, 0 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/tree/acquisition` | `TreeSquareRequest` | `TreeSquareResponse` | logged as unknown |
+| `/tree/skill_list` | `TreeListRequest` | `TreeListResponse` | logged as unknown |
+
+### trophy — missions/trophies (3, 0 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/trophy/get_all_trophy_result` | `GetAllTrophyResult` | `GetAllTrophyResponse` | logged as unknown |
+| `/trophy/trophy_list` | `TrophyListRequest` | `TrophyListResponse` | logged as unknown |
+| `/trophy/trophy_result_get` | `TrophyResultGetRequest` | `TrophyResultGetResponse` | logged as unknown |
+
+### book — collection book (4, 0 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/book/item_list` | `ItemBookRequest` | `ItemBookResponse` | logged as unknown |
+| `/book/mind_list` | `MindBookRequest` | `MindBookResponse` | logged as unknown |
+| `/book/statue_list` | `StatueBookRequest` | `StatueBookResponse` | logged as unknown |
+| `/book/yogo_list` | `TermBookRequest` | `TermBookResponse` (M) | logged as unknown |
+
+### bizarre — story/quest battles (10, 1 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/bizarre/bizarre_continue` | `BizarreContinueRequest` | `BizarreContinueResponse` | logged as unknown |
+| `/bizarre/bizarre_end` | `BizarreEndRequest` | `BizarreEndResponse` | logged as unknown |
+| `/bizarre/bizarre_list` | `BizarreListRequest` | `BizarreListResponse` | logged as unknown |
+| `/bizarre/bizarre_resumption` | `BizarreResumptionRequest` | `BizarreResumptionResponse` | implemented |
+| `/bizarre/bizarre_start` | `BizarreStartRequest` | `BizarreStartResponse` | logged as unknown |
+| `/bizarre/check_timed_chapter` | `CheckTimedChapterRequest` | `CheckTimedChapterResponse` (M) | logged as unknown |
+| `/bizarre/destruction` | `BizarreDestructionRequest` | `BizarreDestructionResponse` | logged as unknown |
+| `/bizarre/get_bizarre_select` | `BizarreSelectRequest` | `BizarreSelectResponse` | logged as unknown |
+| `/bizarre/stage_list` | `StageListRequest` | `StageListResponse` | logged as unknown |
+| `/bizarre/unlock` | `BizarreUnlockRequest` | `BizarreUnlockResponse` | logged as unknown |
+
+### dungeon — tarot dungeon (6, 0 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/dungeon/dungeon_list` | `DungeonListRequest` | `DungeonListResponse` | logged as unknown |
+| `/dungeon/earn_reward` | `DungeonEarnRewardRequest` | `DungeonEarnRewardResponse` | logged as unknown |
+| `/dungeon/reward_check` | `DungeonRewardCheckRequest` | `DungeonRewardCheckResponse` | logged as unknown |
+| `/dungeon/stage_list` | `DungeonStageListRequest` | `DungeonStageListResponse` | logged as unknown |
+| `/dungeon/tarot_flip` | `DungeonTarotFlipRequest` | `DungeonTarotFlipResponse` | logged as unknown |
+| `/dungeon/tarot_select` | `DungeonTarotSelectRequest` | `DungeonTarotSelectResponse` | logged as unknown |
+
+### raid — raid battles (6, 0 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/raid/get_raid_reward` | `GetRaidRewardRequest` | `GetRaidRewardResponse` (M) | logged as unknown |
+| `/raid/raid_end` | `RaidEndRequest` | `RaidEndResponse` | logged as unknown |
+| `/raid/raid_history_list` | `RaidHistoryListRequest` | `RaidHistoryListResponse` (M) | logged as unknown |
+| `/raid/raid_list` | `RaidListRequest` | `RaidListResponse` (M) | logged as unknown |
+| `/raid/raid_offer_rescue` | `RaidOfferRescueRequest` | `RaidOfferRescueResponse` | logged as unknown |
+| `/raid/raid_start` | `RaidStartRequest` | `RaidStartResponse` | logged as unknown |
+
+### pvp — PvP (17, 0 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/pvp/auto_set_and_equip` | `PvpAutoFomationRequest` | `PvpAutoFomationResponse` | logged as unknown |
+| `/pvp/enemy_player_list` | `PvpOpponentInfoRequest` | `PvpOpponentInfoResponse` | logged as unknown |
+| `/pvp/equip_mind_pvp` | `PvpEquipMindRequest` | `PvpEquipMindResponse` | logged as unknown |
+| `/pvp/equip_multiple_assist_pvp` | `PvpEquipMultipleAssistRequest` | `PvpEquipMultipleAssistResponse` | logged as unknown |
+| `/pvp/equip_multiple_minds_pvp` | `PvpEquipMultipleMindsRequest` | `PvpEquipMultipleMindsResponse` | logged as unknown |
+| `/pvp/fever_mode` | `PvpFeverModeStartRequest` | `PvpFeverModeStartResponse` | logged as unknown |
+| `/pvp/get_pvp_config` | `Pvp2GetConfigRequest` | `Pvp2GetConfigResponse` | logged as unknown |
+| `/pvp/home` | `PvpHomeInfoRequest` | `PvpHomeInfoResponse` | logged as unknown |
+| `/pvp/home_acqusition_check` | `PvpHomeAcqusitionCheckRequest` | `PvpHomeAcqusitionCheckResponse` | logged as unknown |
+| `/pvp/leader_change_pvp` | `PvpLeaderChangeRequest` | `PvpLeaderChangeResponse` | logged as unknown |
+| `/pvp/pvp_end` | `PvpBattleEndRequest` | `PvpBattleEndResponse` | logged as unknown |
+| `/pvp/pvp_start` | `PvpBattleStartRequest` | `PvpBattleStartResponse` | logged as unknown |
+| `/pvp/recover_hp_pvp` | `Pvp2RecoveryHpRequest` | `Pvp2RecoveryHpResponse` | logged as unknown |
+| `/pvp/set_team_all_pvp` | `PvpSetTeamAllRequest` | `PvpSetTeamAllResponse` | logged as unknown |
+| `/pvp/set_team_pvp` | `PvpSetTeamRequest` | `PvpSetTeamResponse` (M) | logged as unknown |
+| `/pvp/statue_select_pvp` | `PvpStatueChangeRequest` | `PvpStatueChangeResponse` | logged as unknown |
+| `/pvp/team_info_pvp` | `PvpTeamInfoPvpRequest` | `PvpTeamInfoPvpResponse` | logged as unknown |
+
+### event — event points and rankings (5, 0 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/event/clan_member_event_point_list` | `EventClanMemberPointListRequest` | `EventClanMemberPointListResponse` | logged as unknown |
+| `/event/get_event_ranking_detail` | `RankingDetailRequest` | `RankingDetailResponse` | logged as unknown |
+| `/event/get_event_ranking_list` | `RankingListRequest` | `RankingListResponse` | logged as unknown |
+| `/event/get_event_ranking_reward` | `RankingRewardRequest` | `RankingRewardResponse` | logged as unknown |
+| `/event/point_reward_list` | `EventPointListRequest` | `EventPointListResponse` | logged as unknown |
+
+### support — support (helper) players (1, 0 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/support/support_user_s` | `SupportUserRequest` | `SupportUserResponse` | logged as unknown |
+
+### follow — follow list (social) (10, 0 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/follow/block` | `BlockUserRequest` | `BlockUserResponse` | logged as unknown |
+| `/follow/block_list` | `BlockListRequest` | `BlockListResponse` (M) | logged as unknown |
+| `/follow/follow_list` | `FollowListRequest` | `FollowListResponse` (M) | logged as unknown |
+| `/follow/follower_list` | `FollowerListRequest` | `FollowerListResponse` (M) | logged as unknown |
+| `/follow/kick_follow` | `ReleaseFollowerRequest` | `ReleaseFollowerResponse` (M) | logged as unknown |
+| `/follow/release_follow` | `ReleaseFollowRequest` | `SetFollowResponse` | logged as unknown |
+| `/follow/save_sort` | `SaveSortFollowRequest` | `SaveSortFollowResponse` (M) | logged as unknown |
+| `/follow/search` | `SearchUserRequest` | `SearchUserResponse` (M) | logged as unknown |
+| `/follow/set_follow` | `SetFollowRequest` | `SetFollowResponse` | logged as unknown |
+| `/follow/unblock` | `UnblockUserRequest` | `UnblockUserResponse` | logged as unknown |
+
+### clan — clan and clan room (hidden offline) (27, 0 implemented)
+
+| Path | Request class | Response class | Build 01 |
+|---|---|---|---|
+| `/clan/add` | `AddClanRequest` | `AddClanResponse` | logged as unknown |
+| `/clan/add_approval` | `AddApprovalClanRequest` | `AddApprovalClanResponse` | logged as unknown |
+| `/clan/add_request_list` | `AddListClanRequest` | `AddListClanResponse` | logged as unknown |
+| `/clan/all_del_object` | `AllRemoveHasObjectRequest` | `AllRemoveHasObjectResponse` (M) | logged as unknown |
+| `/clan/cancel_approval` | `CancelAddClanRequest` | `CancelAddClanResponse` | logged as unknown |
+| `/clan/change_info` | `ChangeClanInfoRequest` | `ChangeClanInfoResponse` | logged as unknown |
+| `/clan/check_add_request` | `CheckAddRequest` | `CheckAddResponse` | logged as unknown |
+| `/clan/clan_bg_list` | `ClanBgListRequest` | `ClanBgListResponse` | logged as unknown |
+| `/clan/clan_donation` | `DonationRequest` | `DonationResponse` | logged as unknown |
+| `/clan/clan_object_list` | `ClanObjectListRequest` | `ClanObjectListResponse` | logged as unknown |
+| `/clan/create` | `CreateClanRequest` | `CreateClanResponse` | logged as unknown |
+| `/clan/del_object` | `RemoveClanObjectRequest` | `RemoveClanObjectResponse` (M) | logged as unknown |
+| `/clan/denial_approval` | `DenialApprovalClanRequest` | `DenialApprovalClanResponse` | logged as unknown |
+| `/clan/donation_item_list` | `DonationItemListRequest` | `DonationItemListResponse` | logged as unknown |
+| `/clan/expulsion` | `ExplusionClanRequest` | `ExplusionClanResponse` | logged as unknown |
+| `/clan/info` | `GetClanInfoRequest` | `GetClanInfoResponse` | logged as unknown |
+| `/clan/invitation` | `InviteClanRequest` | `InviteClanResponse` | logged as unknown |
+| `/clan/recommend` | `GetRecommendClanRequest` | `GetRecommendClanResponse` | logged as unknown |
+| `/clan/room_info` | `GetClanRoomInfoRequest` | `GetClanRoomInfoResponse` (M) | logged as unknown |
+| `/clan/search` | `SearchIDClanRequest` | `SearchClanResponse` | logged as unknown |
+| `/clan/search` | `SearchNameClanRequest` | `SearchClanResponse` | logged as unknown |
+| `/clan/search` | `SearchPolicyClanRequest` | `SearchClanResponse` | logged as unknown |
+| `/clan/secession` | `LeaveClanRequest` | `LeaveClanResponse` | logged as unknown |
+| `/clan/set_object` | `SetClanObjectRequest` | `SetClanObjectResponse` (M) | logged as unknown |
+| `/clan/set_object_comment` | `SetCommentClanObjectRequest` | `SetCommentClanObjectResponse` (M) | logged as unknown |
+| `/clan/set_sub_leader` | `SetSubMasterRequest` | `SetSubMasterResponse` | logged as unknown |
+| `/clan/sync_server_info` | `GetConnectServerInfoRequest` | `GetConnectServerInfoResponse` | logged as unknown |

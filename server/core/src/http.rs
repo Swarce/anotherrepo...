@@ -8,6 +8,37 @@ use std::time::Duration;
 
 pub const MAX_HEADER_BYTES: usize = 64 * 1024;
 pub const MAX_BODY_BYTES: usize = 16 * 1024 * 1024;
+/// Concurrent connections served; extra connections get 503 and are closed.
+pub const MAX_CONNECTIONS: usize = 64;
+
+static ACTIVE: std::sync::atomic::AtomicUsize = std::sync::atomic::AtomicUsize::new(0);
+
+/// Read one line of at most `limit` bytes. Errors with 400 if the line is longer.
+fn read_line_limited<R: BufRead>(
+    r: &mut R,
+    out: &mut String,
+    limit: usize,
+) -> Result<usize, ReadError> {
+    use std::io::Read as _;
+    let n = r.by_ref().take(limit as u64).read_line(out)?;
+    if n == limit && !out.ends_with('\n') {
+        return Err(ReadError::Bad(400, "line too long"));
+    }
+    Ok(n)
+}
+
+/// Read exactly `n` bytes, growing the buffer only as data arrives.
+fn read_body<R: BufRead>(r: &mut R, body: &mut Vec<u8>, n: usize) -> Result<(), ReadError> {
+    use std::io::Read as _;
+    let got = r.by_ref().take(n as u64).read_to_end(body)?;
+    if got != n {
+        return Err(ReadError::Io(std::io::Error::new(
+            std::io::ErrorKind::UnexpectedEof,
+            "truncated body",
+        )));
+    }
+    Ok(())
+}
 
 #[derive(Debug, Clone, Default)]
 pub struct Request {
@@ -86,14 +117,26 @@ pub fn bind(ports: &[u16]) -> std::io::Result<(TcpListener, u16)> {
 
 /// Accept loop; returns only on listener error.
 pub fn serve(listener: TcpListener, handler: Handler) -> std::io::Result<()> {
+    use std::sync::atomic::Ordering;
     for conn in listener.incoming() {
-        let Ok(stream) = conn else { continue };
+        let Ok(mut stream) = conn else { continue };
+        if ACTIVE.load(Ordering::Relaxed) >= MAX_CONNECTIONS {
+            let _ = write_response(&mut stream, &Response::text(503, "busy"), false, false);
+            continue;
+        }
+        ACTIVE.fetch_add(1, Ordering::Relaxed);
         let h = handler.clone();
-        let _ = std::thread::Builder::new()
+        let spawned = std::thread::Builder::new()
             .name("jdr-http".into())
             .spawn(move || {
-                let _ = handle_connection(stream, h);
+                let _ = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                    handle_connection(stream, h)
+                }));
+                ACTIVE.fetch_sub(1, Ordering::Relaxed);
             });
+        if spawned.is_err() {
+            ACTIVE.fetch_sub(1, Ordering::Relaxed);
+        }
     }
     Ok(())
 }
@@ -142,14 +185,17 @@ impl From<std::io::Error> for ReadError {
 pub fn read_request<R: BufRead>(r: &mut R) -> Result<Option<Request>, ReadError> {
     let mut line = String::new();
     // skip stray CRLFs between requests
-    loop {
+    for _ in 0..8 {
         line.clear();
-        if r.read_line(&mut line)? == 0 {
+        if read_line_limited(r, &mut line, MAX_HEADER_BYTES)? == 0 {
             return Ok(None);
         }
         if !line.trim().is_empty() {
             break;
         }
+    }
+    if line.trim().is_empty() {
+        return Err(ReadError::Bad(400, "no request line"));
     }
     let mut parts = line.split_whitespace();
     let method = parts
@@ -171,7 +217,7 @@ pub fn read_request<R: BufRead>(r: &mut R) -> Result<Option<Request>, ReadError>
     let mut total = line.len();
     loop {
         let mut h = String::new();
-        if r.read_line(&mut h)? == 0 {
+        if read_line_limited(r, &mut h, MAX_HEADER_BYTES)? == 0 {
             return Err(ReadError::Bad(400, "truncated headers"));
         }
         total += h.len();
@@ -200,17 +246,16 @@ pub fn read_request<R: BufRead>(r: &mut R) -> Result<Option<Request>, ReadError>
     if chunked {
         loop {
             let mut sz = String::new();
-            r.read_line(&mut sz)?;
+            read_line_limited(r, &mut sz, 256)?;
             let n = usize::from_str_radix(sz.trim().split(';').next().unwrap_or(""), 16)
                 .map_err(|_| ReadError::Bad(400, "bad chunk size"))?;
-            if req.body.len() + n > MAX_BODY_BYTES {
-                return Err(ReadError::Bad(413, "body too large"));
+            match req.body.len().checked_add(n) {
+                Some(t) if t <= MAX_BODY_BYTES => {}
+                _ => return Err(ReadError::Bad(413, "body too large")),
             }
-            let start = req.body.len();
-            req.body.resize(start + n, 0);
-            r.read_exact(&mut req.body[start..])?;
+            read_body(r, &mut req.body, n)?;
             let mut crlf = String::new();
-            r.read_line(&mut crlf)?;
+            read_line_limited(r, &mut crlf, 256)?;
             if n == 0 {
                 break;
             }
@@ -222,8 +267,7 @@ pub fn read_request<R: BufRead>(r: &mut R) -> Result<Option<Request>, ReadError>
         if n > MAX_BODY_BYTES {
             return Err(ReadError::Bad(413, "body too large"));
         }
-        req.body.resize(n, 0);
-        r.read_exact(&mut req.body)?;
+        read_body(r, &mut req.body, n)?;
     }
     Ok(Some(req))
 }
@@ -326,6 +370,25 @@ mod tests {
         assert!(matches!(
             read_request(&mut Cursor::new(raw.as_bytes())),
             Err(ReadError::Bad(413, _))
+        ));
+    }
+
+    #[test]
+    fn rejects_endless_line_and_huge_chunk() {
+        let long = vec![b'A'; MAX_HEADER_BYTES + 10];
+        assert!(matches!(
+            read_request(&mut Cursor::new(&long[..])),
+            Err(ReadError::Bad(400, _))
+        ));
+        let raw = b"POST / HTTP/1.1\r\nTransfer-Encoding: chunked\r\n\r\nffffffffffffffff\r\n";
+        assert!(matches!(
+            read_request(&mut Cursor::new(&raw[..])),
+            Err(ReadError::Bad(413, _))
+        ));
+        let short = b"POST / HTTP/1.1\r\nContent-Length: 10\r\n\r\nabc";
+        assert!(matches!(
+            read_request(&mut Cursor::new(&short[..])),
+            Err(ReadError::Io(_))
         ));
     }
 
