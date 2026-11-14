@@ -72,6 +72,14 @@ pub fn import(
     // vcs.bytes last
     names.sort_by_key(|p| p.file_name().map(|n| n == "vcs.bytes").unwrap_or(false));
     std::fs::create_dir_all(dest).map_err(|e| format!("{}: {e}", dest.display()))?;
+    // Leftovers of an interrupted import (temp names only; never the game's own files).
+    if let Ok(rd) = std::fs::read_dir(dest) {
+        for e in rd.flatten() {
+            if e.file_name().to_string_lossy().ends_with(".jdrimport.tmp") {
+                let _ = std::fs::remove_file(e.path());
+            }
+        }
+    }
     let total = names.len();
     let mut stats = ImportStats::default();
     for (i, src) in names.iter().enumerate() {
@@ -107,6 +115,7 @@ mod tests {
         std::fs::write(s.join("vcs.bytes"), b"vcs").unwrap();
         std::fs::write(d.join("a.bytes"), b"aaaa").unwrap(); // already fine
         std::fs::write(d.join("b.bytes"), b"bb").unwrap(); // wrong size -> replaced
+        std::fs::write(d.join("x.jdrimport.tmp"), b"leftover").unwrap(); // interrupted import
         let mut calls = 0;
         let st = import(&s, &d, |_, _, _| calls += 1).unwrap();
         assert_eq!(
