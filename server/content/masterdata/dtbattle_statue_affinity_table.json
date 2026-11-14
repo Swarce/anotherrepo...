@@ -1,0 +1,991 @@
+{
+ "asset": "dtbattle_statue_affinity_table",
+ "about": "Type chart for the tactical battle, indexed [attacker StatueType 0..5][receiver StatueType 0..5] with no bounds checks, so it must be a full 6x6. damagePercent[attacker ControllerType 0..1].list[BattleMode 0..2] in percent (0.01 scale); a short list reads as 0 percent, i.e. zero damage. buffResistValue[BattleMode] is subtracted from the receiver resistance; 0 is neutral.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/12-master-data-fill.md §1",
+   "note": "which side beats which: the client tips TipsText_003/004/005/072/073"
+  },
+  {
+   "source": "jdr-default",
+   "note": "percentages 150/75/100 and resist 0 chosen by us"
+  }
+ ],
+ "data": {
+  "affinityMatrix": [
+   {
+    "paramList": [
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     }
+    ],
+    "buffResistList": [
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     }
+    ]
+   },
+   {
+    "paramList": [
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Lose",
+      "damagePercent": [
+       {
+        "list": [
+         75,
+         75,
+         75
+        ]
+       },
+       {
+        "list": [
+         75,
+         75,
+         75
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Win",
+      "damagePercent": [
+       {
+        "list": [
+         150,
+         150,
+         150
+        ]
+       },
+       {
+        "list": [
+         150,
+         150,
+         150
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     }
+    ],
+    "buffResistList": [
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     }
+    ]
+   },
+   {
+    "paramList": [
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Win",
+      "damagePercent": [
+       {
+        "list": [
+         150,
+         150,
+         150
+        ]
+       },
+       {
+        "list": [
+         150,
+         150,
+         150
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Lose",
+      "damagePercent": [
+       {
+        "list": [
+         75,
+         75,
+         75
+        ]
+       },
+       {
+        "list": [
+         75,
+         75,
+         75
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     }
+    ],
+    "buffResistList": [
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     }
+    ]
+   },
+   {
+    "paramList": [
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Lose",
+      "damagePercent": [
+       {
+        "list": [
+         75,
+         75,
+         75
+        ]
+       },
+       {
+        "list": [
+         75,
+         75,
+         75
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Win",
+      "damagePercent": [
+       {
+        "list": [
+         150,
+         150,
+         150
+        ]
+       },
+       {
+        "list": [
+         150,
+         150,
+         150
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     }
+    ],
+    "buffResistList": [
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     }
+    ]
+   },
+   {
+    "paramList": [
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Win",
+      "damagePercent": [
+       {
+        "list": [
+         150,
+         150,
+         150
+        ]
+       },
+       {
+        "list": [
+         150,
+         150,
+         150
+        ]
+       }
+      ]
+     }
+    ],
+    "buffResistList": [
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     }
+    ]
+   },
+   {
+    "paramList": [
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Win",
+      "damagePercent": [
+       {
+        "list": [
+         150,
+         150,
+         150
+        ]
+       },
+       {
+        "list": [
+         150,
+         150,
+         150
+        ]
+       }
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       },
+       {
+        "list": [
+         100,
+         100,
+         100
+        ]
+       }
+      ]
+     }
+    ],
+    "buffResistList": [
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     },
+     {
+      "buffResistValue": [
+       0,
+       0,
+       0
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

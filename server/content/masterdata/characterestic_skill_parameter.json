@@ -1,0 +1,11 @@
+{
+ "asset": "characterestic_skill_parameter",
+ "about": "Neutral: every useStatuePersonalId list empty, so no statue gets the expert/familiar/fear/magnetic/counter mechanics (the same as a missing asset). skillIdHash must stay unique (Dictionary.Add, no guard).",
+ "sources": [
+  {
+   "source": "jdr-default",
+   "note": "all lists empty, numbers 0"
+  }
+ ],
+ "data": {}
+}

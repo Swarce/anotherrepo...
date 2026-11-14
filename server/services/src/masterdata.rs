@@ -98,6 +98,50 @@ pub const TABLES: &[(&str, &str)] = &[
         "battle_pvp_statue_status_parameter",
         include_str!("../../content/masterdata/battle_pvp_statue_status_parameter.json"),
     ),
+    (
+        "yogo_table",
+        include_str!("../../content/masterdata/yogo_table.json"),
+    ),
+    (
+        "characteristic_data",
+        include_str!("../../content/masterdata/characteristic_data.json"),
+    ),
+    (
+        "dtbattle_statue_affinity_table",
+        include_str!("../../content/masterdata/dtbattle_statue_affinity_table.json"),
+    ),
+    (
+        "statue_affinity_table",
+        include_str!("../../content/masterdata/statue_affinity_table.json"),
+    ),
+    (
+        "oraoramode_setting",
+        include_str!("../../content/masterdata/oraoramode_setting.json"),
+    ),
+    (
+        "affect_table",
+        include_str!("../../content/masterdata/affect_table.json"),
+    ),
+    (
+        "clan_table",
+        include_str!("../../content/masterdata/clan_table.json"),
+    ),
+    (
+        "clan_object_table",
+        include_str!("../../content/masterdata/clan_object_table.json"),
+    ),
+    (
+        "effectReductionParam",
+        include_str!("../../content/masterdata/effectReductionParam.json"),
+    ),
+    (
+        "state_abnormality_table",
+        include_str!("../../content/masterdata/state_abnormality_table.json"),
+    ),
+    (
+        "characterestic_skill_parameter",
+        include_str!("../../content/masterdata/characterestic_skill_parameter.json"),
+    ),
 ];
 
 type Error = String;
@@ -817,7 +861,7 @@ mod tests {
         let t = tables(&s, TABLES).unwrap();
         // 17 core tables plus the battle tables from content files (the skill table is
         // generated from the statues, see generated_tables).
-        assert_eq!(t.len(), 19 + 11);
+        assert_eq!(t.len(), 19 + 11 + 10); // yogo_table is core
         let tut = t.iter().find(|t| t.name == "tutorial_flag_table").unwrap();
         assert_eq!(tut.rows, 34);
         let Val::List(rows) = &tut.vals[0] else {
