@@ -1,0 +1,46 @@
+{
+ "asset": "affect_table",
+ "about": "Only the three affect ids the client names in code (GameConst / BattleSceneBaseControllerData). Every other row needs the buff or ability that references it; see the generator recipe.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/12-master-data-fill.md §1",
+   "note": "ids from client string literals; baseAffect by the matching BaseAffectType name"
+  },
+  {
+   "source": "jdr-default",
+   "note": "no limits, prvs NONE, sort index 0"
+  }
+ ],
+ "data": {
+  "paramList": [
+   {
+    "affectId": "DTAF_SYS_OVERKILL",
+    "affectTextId": "",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_DT_SYS_OVERKILL",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_SYS_TUTORIAL_FINISHLOCK",
+    "affectTextId": "DTAF_SYS_TUTORIAL_FINISHLOCK_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_DT_SYS_TUTORIAL_FINISHLOCK",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_HP1",
+    "affectTextId": "",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_DT_HP1",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   }
+  ]
+ }
+}
