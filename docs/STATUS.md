@@ -2,6 +2,59 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 07 — English menus, UI art export (branch `wip/b07`)
+
+### What the Build 06 device log showed
+MyPage reached; five menu routes fell back to the unknown-route answer (present box, follow list,
+items, shop, quest select).
+
+### What changed
+- **English in place** (docs/LOCALIZATION.md). The server rebuilds `text.jp` and the UI prefab
+  bundles with English from `server/content/l10n/en/`, keeps the originals, and lists the English
+  files in the manifest with their md5/size. The client downloads them once through its own update
+  path (expect a download prompt on the first boot, about 100 MB). Replaced UI labels get "best fit"
+  so longer English shrinks into its box. Log line: `[l10n] N English file(s) ready …`.
+- **English boot/download/error messages**: new patch `english-clientmes` rewrites the in-APK
+  ClientMes table (fingerprinted, `--disable english-clientmes`).
+- **First English batch** (2,533 strings): all ClientMes messages (236), all UI prefab labels
+  (1,210), and the menu text tables (1,087: My Page, options, title, team, training, evolution,
+  filters/sorting, battle UI, quest types/results, arena, shop, gacha, …). Names, skills, items,
+  missions and events (~48,500 strings) follow in later batches; story scripts later still.
+- **Translator tools:** `jdr-tool l10n export` (every string of the player's copy into a local TSV)
+  and `jdr-tool l10n import` (refuses lost placeholders, wrong hashes, Japanese in the English).
+- **jdr-unity:** whole SerializedFile parse/write (layout and data offset preserved), generic
+  type-tree decode/encode, Unity's common string table, LZ4 bundle writer.
+- **Importer:** never overwrites the game's own `vcs.bytes` or our English files with a staging copy
+  (otherwise a staging folder left in place would undo them at every boot).
+- **Menu routes:** `get_bizarre_select`, `present_list`, `follow_list`, `item_list`, `shop_list` answer
+  with a well-formed empty state.
+- **UI art export** (`tools/ui-assets/export_ui.py`): every menu texture/atlas and cut-out sprite from
+  the player's own copy, with a manifest for re-import (re-import comes later). Sent to the owner.
+- Build number 7, server marker `JDR_EMBEDDED_SERVER_b007`.
+
+### Verified off-device
+- Real data: all 287 serialized files / 137,728 objects of the UI bundles and text.jp decode through
+  their type trees and encode back byte-identically; the files re-serialize identically.
+- Real data: rebuilding every target with a placeholder for **every** string (50,845) replaces all of
+  them; the rebuilt bundles hold no Japanese, parse with UnityPy (exact byte consumption), and a
+  second run reuses the cache with identical md5s. Desktop: ~3 s first build, ~0.5 s cached.
+- With the real translations: 32 English files, 2,297 strings replaced, 0 stale (+ 236 ClientMes in
+  the APK); the real ClientMes rewrites byte-identically when nothing changes.
+
+### Known gaps / risks (expected)
+- First boot after installing builds the English files on the phone (desktop: ~2–3 s; the phone is
+  slower) while the client waits for the manifest.
+- Extra storage: originals + English copies (~220 MB).
+- Best fit could make some labels small; layouts are untested on device.
+- Text in UI images stays Japanese until the redrawn art is imported.
+
+### Device checklist — expected; to be confirmed on a device
+- [ ] `[l10n] 32 English file(s) ready …` then a download prompt; download completes
+- [ ] Title/boot dialogs in English (ClientMes)
+- [ ] My Page, menus, shop, gacha, options, team screens show English labels that fit
+- [ ] Second boot: no download prompt; `[l10n] … ready` quickly from the cache
+- [ ] Present box / follow / items / shop open without errors; no `UNKNOWN ROUTE` for those
+
 ## Build 06 — master tables generated on the phone (branch `wip/b06`)
 
 ### What the Build 05 device logs showed (Galaxy S22, Android 16)
