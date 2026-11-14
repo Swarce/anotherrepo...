@@ -2,6 +2,48 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 11 — team view, My Page leader, first tactical battle tables (branch `wip/b11`)
+
+### What the Build 10 device log showed
+- My Page had its background, but the leader model was off frame. The character list worked.
+- Team Setup showed no 3D statues, and Unity logged step-offset warnings from the pedestal code.
+- Pressing Battle on a story stage hung. `bizarre_start` answered, then `dtbattle.ReversalManager.Init`
+  threw a NullReferenceException (`dtbattle_damage_param` missing), and the battle update threw on
+  every frame.
+- The profile card, Set as Leader, followers, blocks and trophies called routes we did not answer.
+
+### What changed
+- **Positions** (docs/research/11 §1): the client reads positions in centimetres and
+  `teamScaleScalar` as a percentage. Our 1.0 made team statues 1% size, so it is now 100. The My
+  Page leader stands 3.66 m in front of the `CameraIdSet0` camera, facing it. Rows also set
+  `mindFrameID` 1 and the PvP AI ids to 1.
+- **Tactical battle tables** (docs/research/11 §2), new master-data content:
+  - `dtbattle_damage_param`: one row of chosen tuning values, reversal off;
+  - `dtbattle_damage_rank_table`;
+  - `dtbattle_skill_data_table`: the client's fixed skills, our basic attack `JDR_ATK_00` and
+    three categories;
+  - an `area_position_pattern_table` row named in every tactical area's `formation`.
+  
+  Every statue now carries the basic attack, and tactical enemies are not bosses for now.
+  The SecurityStringValue encoding is implemented, and the UnityPy proof decodes it independently.
+- **Routes:** `team/leader_change`, `team/set_team` (both battle types follow), `user/user_info_mini`
+  (the card shows the main leader), `follow/follower_list`, `follow/block_list`,
+  `trophy/trophy_list`, `info/notify_list`, `gasha/gasha_list` (empty).
+- Build number 11, server marker `JDR_EMBEDDED_SERVER_b011`.
+
+### Known gaps / risks (expected)
+- The battle may get further and stop at the next missing piece. Our basic attack has no
+  animation id, the AI uses the client's `playerauto` default, and all damage numbers are our own
+  choices. The device log will show the next failure.
+- My Page and team positions come from scene measurements, not the original values, so some very
+  tall or very small models may sit oddly.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] My Page: the leader is in frame
+- [ ] Team Setup shows the three statues; Set as Leader sticks after leaving and returning
+- [ ] Profile card opens
+- [ ] Story → a stage → Battle: how far it gets (field shown? units placed? Attack button? a hit?)
+
 ## Build 10 — characters, teams, story quests from the wikis (branch `wip/b10`)
 
 ### What the Build 09 device log showed

@@ -21,10 +21,28 @@ pub const ASSET_DIR: &str = "Assets/Resources/Common/InMemoryMasterData";
 pub const SCHEMA_JSON: &str = include_str!("../../content/masterdata/schema.json");
 
 /// Content files (asset name, JSON). Each has `asset`, `sources` and `data` (root field -> value).
-pub const TABLES: &[(&str, &str)] = &[(
-    "tutorial_flag_table",
-    include_str!("../../content/masterdata/tutorial_flag_table.json"),
-)];
+pub const TABLES: &[(&str, &str)] = &[
+    (
+        "tutorial_flag_table",
+        include_str!("../../content/masterdata/tutorial_flag_table.json"),
+    ),
+    (
+        "dtbattle_damage_param",
+        include_str!("../../content/masterdata/dtbattle_damage_param.json"),
+    ),
+    (
+        "dtbattle_damage_rank_table",
+        include_str!("../../content/masterdata/dtbattle_damage_rank_table.json"),
+    ),
+    (
+        "dtbattle_skill_data_table",
+        include_str!("../../content/masterdata/dtbattle_skill_data_table.json"),
+    ),
+    (
+        "area_position_pattern_table",
+        include_str!("../../content/masterdata/area_position_pattern_table.json"),
+    ),
+];
 
 type Error = String;
 
@@ -205,12 +223,16 @@ impl Schema {
                 let bits = (v.as_f64().ok_or_else(bad)? as f32).to_bits() as i32;
                 return Ok(Val::Struct(vec![Val::Int(0), Val::Int(bits as i64)]));
             }
-            // The string obfuscation is not decoded yet; an empty string reads as empty.
+            // {seed, securityString}: the client splits the string on '-', parses each part as a
+            // hex byte, XORs byte i with byte i%4 of the little-endian seed and reads ASCII
+            // (SecurityStringValue.get_Value -> 0x105FAA4). With seed 0 that is the ASCII bytes as
+            // uppercase hex joined by '-'; "" stays "".
             SEC_STRING => {
-                return match v.as_str() {
-                    Some("") => Ok(Val::Struct(vec![Val::Int(0), Val::Str(String::new())])),
-                    _ => Err(format!("{at}: only \"\" is supported for {name}")),
+                let s = v.as_str().ok_or_else(bad)?;
+                if !s.is_ascii() {
+                    return Err(format!("{at}: {name} must be ASCII"));
                 }
+                return Ok(Val::Struct(vec![Val::Int(0), Val::Str(security_string(s))]));
             }
             _ => {}
         }
@@ -249,6 +271,14 @@ impl Schema {
             _ => Err(format!("{at}: not an object")),
         }
     }
+}
+
+/// The `securityString` of a SecurityStringValue with seed 0.
+pub fn security_string(s: &str) -> String {
+    s.bytes()
+        .map(|b| format!("{b:02X}"))
+        .collect::<Vec<_>>()
+        .join("-")
 }
 
 /// One table in the bundle.
@@ -561,11 +591,69 @@ mod tests {
         }
     }
 
+    /// What the tactical battle dereferences without null checks (docs/research/11): a damage
+    /// row, a non-empty rank table, a skill row for every skill a unit gets (the client's two
+    /// fixed ones and our basic attack), a category row for every skill, and the formation row.
+    #[test]
+    fn tactical_battle_tables_are_consistent() {
+        let doc = |name: &str| -> Value {
+            let js = TABLES.iter().find(|(n, _)| *n == name).unwrap().1;
+            serde_json::from_str::<Value>(js).unwrap()["data"].clone()
+        };
+        assert_eq!(
+            doc("dtbattle_damage_param")["param"]
+                .as_array()
+                .unwrap()
+                .len(),
+            1
+        );
+        assert!(!doc("dtbattle_damage_rank_table")["table"]
+            .as_array()
+            .unwrap()
+            .is_empty());
+        let sk = doc("dtbattle_skill_data_table");
+        let ids: Vec<&str> = sk["skillDataList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|r| r["dtSkillId"].as_str().unwrap())
+            .collect();
+        for need in [
+            "SKILL_000_01",
+            "SKILL_000_02",
+            crate::collection::BASIC_ATTACK,
+        ] {
+            assert!(ids.contains(&need), "{need}");
+        }
+        let cats: Vec<&str> = sk["categoryList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|c| c["dtSkillCategoryId"].as_str().unwrap())
+            .collect();
+        for r in sk["skillDataList"].as_array().unwrap() {
+            assert!(cats.contains(&r["mainSkillCategory"].as_str().unwrap()));
+        }
+        let pat = doc("area_position_pattern_table");
+        let row = pat["paramList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .find(|p| p["patternName"] == crate::quests::DT_FORMATION)
+            .expect("formation row");
+        let sets = row["posSetList"].as_array().unwrap();
+        assert_eq!(sets.len(), 6);
+        for (i, s) in sets.iter().enumerate() {
+            assert_eq!(s["positionList"].as_array().unwrap().len(), i % 3 + 1);
+        }
+    }
+
     #[test]
     fn tutorial_table_content() {
         let s = Schema::embedded().unwrap();
         let t = tables(&s, TABLES).unwrap();
-        assert_eq!(t.len(), 17);
+        // 17 core tables plus the three tactical battle tables with content.
+        assert_eq!(t.len(), 20);
         let tut = t.iter().find(|t| t.name == "tutorial_flag_table").unwrap();
         assert_eq!(tut.rows, 34);
         let Val::List(rows) = &tut.vals[0] else {
@@ -606,7 +694,25 @@ mod tests {
         // SecurityIntValue from a plain number: seed 0, value as is.
         let v = s.val(SEC_INT, false, &json!(42), "x").unwrap();
         assert_eq!(v, Val::Struct(vec![Val::Int(0), Val::Int(42)]));
-        assert!(s.val(SEC_STRING, false, &json!("abc"), "x").is_err());
+        // SecurityStringValue: seed 0, ASCII bytes as uppercase hex joined by '-'.
+        assert_eq!(
+            s.val(SEC_STRING, false, &json!("SKILL_000_01"), "x")
+                .unwrap(),
+            Val::Struct(vec![
+                Val::Int(0),
+                Val::Str("53-4B-49-4C-4C-5F-30-30-30-5F-30-31".into())
+            ])
+        );
+        assert_eq!(
+            s.val(SEC_STRING, false, &json!(""), "x").unwrap(),
+            Val::Struct(vec![Val::Int(0), Val::Str(String::new())])
+        );
+        assert!(s.val(SEC_STRING, false, &json!("é"), "x").is_err());
+        // SecurityFloatValue: seed 0, the float's bits.
+        assert_eq!(
+            s.val(SEC_FLOAT, false, &json!(1.5), "x").unwrap(),
+            Val::Struct(vec![Val::Int(0), Val::Int(1.5f32.to_bits() as i64)])
+        );
         assert!(s.val("Vector3", false, &json!([1, 2]), "x").is_err());
         assert_eq!(
             s.val("Vector3", false, &json!({"x":1,"y":2,"z":3}), "x")

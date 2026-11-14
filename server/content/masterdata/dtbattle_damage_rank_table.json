@@ -1,0 +1,26 @@
+{
+ "asset": "dtbattle_damage_rank_table",
+ "about": "Damage multiplier per skill damage rank, in 1/10000 (rank 0 and out-of-range ranks use the last entry). Must not be empty: the client indexes Count-1.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/11-battle-and-positions.md",
+   "note": "which fields the tactical battle reads, and the values that would zero damage or crash"
+  },
+  {
+   "source": "jdr-default",
+   "note": "rates chosen by us"
+  }
+ ],
+ "data": {
+  "table": [
+   10000,
+   10000,
+   12000,
+   14000,
+   16000,
+   18000,
+   20000
+  ]
+ }
+}

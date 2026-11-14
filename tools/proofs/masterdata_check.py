@@ -67,6 +67,14 @@ def compare(tname, is_list, src, got, at):
         bits = (got["seed"] ^ got["securityValue"]) & 0xFFFFFFFF
         assert struct.unpack("<f", struct.pack("<I", bits))[0] == struct.unpack("<f", struct.pack("<f", src))[0], at
         return
+    if tname == SEC + "SecurityStringValue" and isinstance(src, str):
+        # The client's decoding: split on '-', hex bytes, XOR byte i with byte i%4 of the
+        # little-endian seed, ASCII (SecurityStringValue.get_Value, docs/research/11).
+        s = got["securityString"]
+        seed = struct.pack("<i", got["seed"])
+        dec = "" if s == "" else bytes(int(h, 16) ^ seed[i % 4] for i, h in enumerate(s.split("-"))).decode("ascii")
+        assert dec == src, (at, s, src)
+        return
     if tname in ("Vector3", "Quaternion"):
         keys = "xyz" if tname == "Vector3" else "xyzw"
         vals = [src[k] for k in keys] if isinstance(src, dict) else src
