@@ -9,7 +9,7 @@ use std::sync::atomic::Ordering;
 use std::sync::Arc;
 use std::time::Duration;
 
-const USAGE: &str = "usage: jdr-server --keys <keys.json> [--files <game files/ dir>] [--data <state dir>] [--port N] [--trace] [--clock-offset SECS]";
+const USAGE: &str = "usage: jdr-server --keys <keys.json> [--files <game files/ dir>] [--data <state dir>] [--port N] [--trace] [--clock-offset SECS] [--tutorial skip|play]";
 
 fn opt(a: &[String], n: &str) -> Option<String> {
     a.iter()
@@ -59,7 +59,24 @@ fn main() {
     }
     let (listener, port) =
         http::bind(&s.ports).unwrap_or_else(|e| die(&format!("cannot bind {:?}: {e}", s.ports)));
-    let ctx = Arc::new(Ctx::new(s, a.iter().any(|x| x == "--trace")));
+    let mut ctx = Ctx::new(s, a.iter().any(|x| x == "--trace"));
+    ctx.skip_tutorial = match opt(&a, "--tutorial").as_deref() {
+        None | Some("skip") => true,
+        Some("play") => false,
+        Some(_) => die("--tutorial must be skip or play"),
+    };
+    log::line(
+        "boot",
+        &format!(
+            "tutorial: {}",
+            if ctx.skip_tutorial {
+                "skipped (all flags set)"
+            } else {
+                "played"
+            }
+        ),
+    );
+    let ctx = Arc::new(ctx);
     ctx.port.store(port, Ordering::Relaxed);
     log::line(
         "boot",
