@@ -5,7 +5,7 @@ use crate::app::{ApiError, ApiResult};
 use crate::services::ok;
 use crate::Ctx;
 use jdr_core::envelope::RequestEnvelope;
-use serde_json::json;
+use serde_json::{json, Value};
 
 /// `ConfigInfo` (29 ints). Recovery times are divisors in the client, so never 0.
 pub fn get_system_config(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
@@ -48,8 +48,21 @@ pub fn get_menu_notify(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
 }
 
 /// No team yet: MyPage skips the leader model when no main team exists (statues arrive with M1.5).
-pub fn team_info(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    ok(json!({ "teamList": [], "mindSeqInfo": { "seqInfoList": [] } }))
+pub fn team_info(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let p = super::statue::profile(ctx, env)?;
+    let teams: Vec<Value> = p
+        .collection
+        .teams
+        .iter()
+        .map(|t| crate::collection::team_info(&p.collection, t))
+        .collect();
+    let seq: Vec<Value> = (1..=4)
+        .map(|s| json!({ "seq": s, "openFlg": 1, "goldenFlameFlg": 0, "onlySkillFlg": 0 }))
+        .collect();
+    ok(json!({
+        "teamList": teams,
+        "mindSeqInfo": { "seqInfoList": seq, "unlockInfo": { "openRank": 0, "openMaterialList": [], "itemList": [] } }
+    }))
 }
 
 /// 50301 = E_BIZALLE_NOT_START: no interrupted battle (10000 would offer to resume one).
