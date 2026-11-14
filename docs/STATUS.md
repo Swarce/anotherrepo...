@@ -47,10 +47,15 @@ Courage/Wisdom/Spirit/Unity/Solitude.
   files 182 MiB (the game's own copies of those are replaced by the downloaded ones), plus the
   19 MB pack in the APK.
 
-### Device checklist — expected; to be confirmed on a device
-- [ ] `[art] art pack loaded: 451 image(s)`, one download prompt, then menus show the redrawn art
-- [ ] Title screen shows the English logo/lettering
-- [ ] Animated words (gacha/build results, retire) look right; no missing or misplaced sprites
+### Device result (Galaxy S22, Android 16) — from the owner's log and screenshots
+- [x] `[art] art pack loaded: 451 image(s)`; `[l10n] 60 English file(s) ready in 1322 ms, 60 already
+      on the phone` (cached after the first boot's download).
+- [x] My Page buttons, header and side menu show the redrawn English art (Inbox, Notices, Missions,
+      Friends, Home, Team/Enhance, Quests, My Town, Summon, Shop, Menu); Options screen in English.
+- [ ] My Page 3D background is black: expected without a team (no leader statue, no
+      `statue_setting_table` row) — next build.
+- Town "Pick Up" dialog body still Japanese (description text tables, next batches); one route
+  unknown: `clan/recommend` (now handled).
 
 ## Build 08 — English names (branch `wip/b08`)
 
