@@ -152,9 +152,9 @@ pub fn stage_info(c: &ChapterDef, s: &StageDef, n: usize, p: &Progress) -> Value
         "startConditionText": "", "areaMax": s.areas.len().max(1), "useMentality": 0, "openSetting": 1,
         "nextStageIdList": c.stages.get(n + 1).map(|x| vec![x.stage_id.clone()]).unwrap_or_default(),
         // The stage window lists steadyItemSet as the clear reward: the gold a clear pays.
-        // (RewardItemSet dataType 5 = Money.)
+        // (RewardItemSet {dataType 5 = Money, dataId: string, name, count}.)
         "starList": [], "rewardItemSet": [], "reward3StarsItemSet": [],
-        "steadyItemSet": [{ "dataType": 5, "dataId": 0, "name": "", "count": s.gold }],
+        "steadyItemSet": [{ "dataType": 5, "dataId": "", "name": "", "count": s.gold }],
         "bossDropItemSet": [], "useStamina": s.use_stamina, "gainRankExp": s.gain_rank_exp,
         "mindGashaPoint": 0, "playCount": p.play_counts.get(&s.stage_id).copied().unwrap_or(0),
         "clearFlg": cleared as i64, "clearCount": cleared as i64, "clearRank": if cleared { 4 } else { 0 },
