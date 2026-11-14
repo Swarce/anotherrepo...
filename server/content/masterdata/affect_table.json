@@ -1,6 +1,6 @@
 {
  "asset": "affect_table",
- "about": "Only the three affect ids the client names in code (GameConst / BattleSceneBaseControllerData). Every other row needs the buff or ability that references it; see the generator recipe.",
+ "about": "The three affect ids the client names in code, plus one row per affect id used by the leader abilities in dtbattle_ability_data_table. Each id names one BaseAffectType and one AffectCondition; the amount comes from the ability row (per-mille, negative for the *_SUB ids). Empty limit lists mean no cap. affectTextId is empty: the player's labels have no text key for these plain stat ids.",
  "sources": [
   {
    "source": "jdr-research",
@@ -10,6 +10,15 @@
   {
    "source": "jdr-default",
    "note": "no limits, prvs NONE, sort index 0"
+  },
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/12-master-data-fill.md §4",
+   "note": "units, slots and conditions read in the client code; see scripts/K_abilities.py header"
+  },
+  {
+   "source": "jdr-default",
+   "note": "affect id names are ours, in the DTAF_[COND_]STAT_OP style of the client's DTAF_* label keys; textSortIndex 0"
   }
  ],
  "data": {
@@ -37,6 +46,195 @@
     "affectTextId": "",
     "prvs": "PRVS_NONE",
     "baseAffect": "BASE_DT_HP1",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_ALONE_ATK_RATEADD",
+    "affectTextId": "",
+    "prvs": "PRVS_ALONE",
+    "baseAffect": "BASE_ATK_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_ALONE_DEF_RATEADD",
+    "affectTextId": "",
+    "prvs": "PRVS_ALONE",
+    "baseAffect": "BASE_DEF_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_ATK_RATEADD",
+    "affectTextId": "",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_ATK_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_BRAVE_STYPE_DMG_RATEADD",
+    "affectTextId": "",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_DT_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_BRAVE_STYPE_VCT_DAM_RATESUB",
+    "affectTextId": "",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_DT_STYPE_VCT_DAM_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_CRT_DMG_RATEADD",
+    "affectTextId": "",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_CRT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_DEF_RATEADD",
+    "affectTextId": "",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_DEF_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_DMG_RATEADD",
+    "affectTextId": "",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_DT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_DYING_ATK_RATEADD",
+    "affectTextId": "",
+    "prvs": "PRVS_DYING",
+    "baseAffect": "BASE_ATK_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_DYING_CRT_DMG_RATEADD",
+    "affectTextId": "",
+    "prvs": "PRVS_DYING",
+    "baseAffect": "BASE_CRT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_DYING_DEF_RATEADD",
+    "affectTextId": "",
+    "prvs": "PRVS_DYING",
+    "baseAffect": "BASE_DEF_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_FULL_HP_ATK_RATEADD",
+    "affectTextId": "",
+    "prvs": "PRVS_FULL_HP",
+    "baseAffect": "BASE_ATK_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_FULL_HP_DMG_RATEADD",
+    "affectTextId": "",
+    "prvs": "PRVS_FULL_HP",
+    "baseAffect": "BASE_DT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_HP_RATEADD",
+    "affectTextId": "",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_HP_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_INTELLI_STYPE_DMG_RATEADD",
+    "affectTextId": "",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_DT_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_MAVERICK_STYPE_DMG_RATEADD",
+    "affectTextId": "",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_DT_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_MAVERICK_STYPE_VCT_DAM_RATESUB",
+    "affectTextId": "",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_DT_STYPE_VCT_DAM_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_TENACITY_STYPE_DMG_RATEADD",
+    "affectTextId": "",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_DT_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_UNITY_STYPE_DMG_RATEADD",
+    "affectTextId": "",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_DT_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_VCT_CRT_DMG_RATESUB",
+    "affectTextId": "",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_VCT_CRT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_VCT_DAM_RATESUB",
+    "affectTextId": "",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_DT_VCT_DAM_RATECON",
     "affectLimitNormal": [],
     "affectLimitExtra": [],
     "textSortIndex": 0
