@@ -36,6 +36,9 @@ pub struct StatueDef {
     pub statue_type: Option<i64>,
     pub lv1: Option<Stats>,
     pub lv99: Option<Stats>,
+    /// Stats with the growth tree complete (wiki), when known.
+    #[serde(rename = "maxTree", default)]
+    pub max_tree: Option<Stats>,
     /// Tactical basic attack skill id, chosen from the statue's action sets in the player's files
     /// (`tools/content/build_statues.py`).
     #[serde(rename = "dtAttack", default)]
@@ -138,6 +141,87 @@ pub struct OwnedStatue {
     pub exp: i64,
     #[serde(default)]
     pub get_date: String,
+    /// Growth tree squares opened (ids from `tree_squares`).
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub tree: Vec<String>,
+}
+
+/// One growth tree square: id, grid position, effect (1 ATK, 2 DEF, 3 HP; 0 = start), value, and
+/// the square before it.
+#[derive(Debug, Clone, PartialEq)]
+pub struct TreeSquare {
+    pub id: String,
+    pub pos: (i64, i64),
+    pub effect: i64,
+    pub param: i64,
+    pub before: String,
+}
+
+pub const TREE_STEPS: i64 = 14;
+
+/// The growth tree of a statue (docs/research/13-menus.md §3). The client has no tree data and
+/// none survives, so the layout is ours: a start square and 14 squares in a line cycling ATK,
+/// DEF, HP. Together they add the wiki's tree-max minus Lv99 stats (else 20% of Lv99).
+pub fn tree_squares(d: &StatueDef) -> Vec<TreeSquare> {
+    let base = d.stats_at(MAX_LEVEL);
+    let total = match &d.max_tree {
+        Some(m) => Stats {
+            hp: (m.hp - base.hp).max(0),
+            atk: (m.atk - base.atk).max(0),
+            def: (m.def - base.def).max(0),
+        },
+        None => Stats {
+            hp: base.hp / 5,
+            atk: base.atk / 5,
+            def: base.def / 5,
+        },
+    };
+    let per = |n: i64, of: i64| if of == 0 { 0 } else { n / of };
+    // Squares per effect: ATK at steps 1,4,7..; DEF at 2,5,8..; HP at 3,6,9..
+    let count = |k: i64| (1..=TREE_STEPS).filter(|s| (s - 1) % 3 == k).count() as i64;
+    let mut out = vec![TreeSquare {
+        id: "1".into(),
+        pos: (0, 0),
+        effect: 0,
+        param: 0,
+        before: String::new(),
+    }];
+    for s in 1..=TREE_STEPS {
+        let k = (s - 1) % 3;
+        let (effect, param) = match k {
+            0 => (1, per(total.atk, count(0))),
+            1 => (2, per(total.def, count(1))),
+            _ => (3, per(total.hp, count(2))),
+        };
+        out.push(TreeSquare {
+            id: (s + 1).to_string(),
+            pos: (s, if s % 2 == 0 { 0 } else { 1 }),
+            effect,
+            param,
+            before: s.to_string(),
+        });
+    }
+    out
+}
+
+/// Stat bonus from the opened squares.
+pub fn tree_bonus(o: &OwnedStatue) -> Stats {
+    let mut b = Stats {
+        hp: 0,
+        atk: 0,
+        def: 0,
+    };
+    if let Some(d) = find(&o.statue_id) {
+        for sq in tree_squares(d).iter().filter(|s| o.tree.contains(&s.id)) {
+            match sq.effect {
+                1 => b.atk += sq.param,
+                2 => b.def += sq.param,
+                3 => b.hp += sq.param,
+                _ => {}
+            }
+        }
+    }
+    b
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Default)]
@@ -174,6 +258,7 @@ impl Collection {
                     level: 1,
                     exp: 0,
                     get_date: now.to_string(),
+                    tree: Vec::new(),
                 });
                 next += 1;
                 changed = true;
@@ -311,11 +396,15 @@ pub fn statue_info(o: &OwnedStatue) -> Value {
         ),
         None => (1, 4, 1, Vec::new()),
     };
-    let st = d.map(|d| d.stats_at(o.level)).unwrap_or(Stats {
+    let mut st = d.map(|d| d.stats_at(o.level)).unwrap_or(Stats {
         hp: 1,
         atk: 1,
         def: 1,
     });
+    let tb = tree_bonus(o);
+    st.hp += tb.hp;
+    st.atk += tb.atk;
+    st.def += tb.def;
     let sid = &o.statue_id;
     json!({
         "statueId": sid, "name": format!("STATUE_NAME_{sid}"), "nameSortIndex": 0,
@@ -617,6 +706,7 @@ mod tests {
             }),
             dt_attack: None,
             dt_skills: Vec::new(),
+            max_tree: None,
         };
         assert_eq!(d.stats_at(1).hp, 100);
         assert_eq!(d.stats_at(99).hp, 1000);
