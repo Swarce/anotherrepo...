@@ -37,6 +37,18 @@
      "targetType": 3,
      "processType": 3,
      "attr": "NONE"
+    },
+    {
+     "id": "SKILL_100_02",
+     "special": true,
+     "name": "SKILL_NAME_100_02",
+     "text": "DTbattle_SKILL_TEXT_100_02",
+     "button": 38,
+     "damageRank": 150,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
     }
    ],
    "rarity": 3,
@@ -83,6 +95,18 @@
      "targetType": 1,
      "processType": 1,
      "attr": "PHYSICAL"
+    },
+    {
+     "id": "SKILL_100_04",
+     "special": true,
+     "name": "SKILL_NAME_100_04",
+     "text": "DTbattle_SKILL_TEXT_100_04",
+     "button": 38,
+     "damageRank": 150,
+     "category": "DTSC_HAMON",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "HAMON"
     }
    ],
    "rarity": 4,
@@ -125,6 +149,18 @@
      "text": "DTbattle_SKILL_TEXT_100_05",
      "button": 7,
      "damageRank": 125,
+     "category": "DTSC_HAMON",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "HAMON"
+    },
+    {
+     "id": "SKILL_100_06",
+     "special": true,
+     "name": "SKILL_NAME_100_06",
+     "text": "DTbattle_SKILL_TEXT_100_06",
+     "button": 38,
+     "damageRank": 150,
      "category": "DTSC_HAMON",
      "targetType": 1,
      "processType": 1,
@@ -573,6 +609,18 @@
    "dtAttack": "SKILL_102_99",
    "dtSkills": [
     {
+     "id": "SKILL_102_03",
+     "special": false,
+     "name": "SKILL_NAME_102_03",
+     "text": "DTbattle_SKILL_TEXT_102_03",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_HAMON",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "HAMON"
+    },
+    {
      "id": "SKILL_102_04",
      "special": true,
      "name": "SKILL_NAME_102_04",
@@ -617,7 +665,20 @@
     "1020_0_zeppeli"
    ],
    "dtAttack": "SKILL_102_99",
-   "dtSkills": [],
+   "dtSkills": [
+    {
+     "id": "SKILL_102_05",
+     "special": false,
+     "name": "SKILL_NAME_102_05",
+     "text": "DTbattle_SKILL_TEXT_102_05",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_HAMON",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "HAMON"
+    }
+   ],
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -636,6 +697,18 @@
    ],
    "dtAttack": "SKILL_102_99",
    "dtSkills": [
+    {
+     "id": "SKILL_102_07",
+     "special": false,
+     "name": "SKILL_NAME_102_07",
+     "text": "DTbattle_SKILL_TEXT_102_07",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    },
     {
      "id": "SKILL_102_08",
      "special": true,
@@ -1846,6 +1919,18 @@
      "targetType": 2,
      "processType": 1,
      "attr": "HAMON"
+    },
+    {
+     "id": "SKILL_200_04",
+     "special": true,
+     "name": "SKILL_NAME_200_04",
+     "text": "DTbattle_SKILL_TEXT_200_04",
+     "button": 38,
+     "damageRank": 150,
+     "category": "DTSC_HAMON",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "HAMON"
     }
    ],
    "rarity": 4,
@@ -2135,6 +2220,18 @@
      "targetType": 1,
      "processType": 1,
      "attr": "HAMON"
+    },
+    {
+     "id": "SKILL_201_04",
+     "special": true,
+     "name": "SKILL_NAME_201_04",
+     "text": "DTbattle_SKILL_TEXT_201_04",
+     "button": 38,
+     "damageRank": 150,
+     "category": "DTSC_HAMON",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "HAMON"
     }
    ],
    "rarity": 4,
@@ -2166,6 +2263,18 @@
    ],
    "dtAttack": "SKILL_201_99",
    "dtSkills": [
+    {
+     "id": "SKILL_201_05",
+     "special": false,
+     "name": "SKILL_NAME_201_05",
+     "text": "DTbattle_SKILL_TEXT_201_05",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_HAMON",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "HAMON"
+    },
     {
      "id": "SKILL_201_06",
      "special": true,
@@ -2393,7 +2502,32 @@
     "2020_0_lisalisa"
    ],
    "dtAttack": "SKILL_202_99",
-   "dtSkills": [],
+   "dtSkills": [
+    {
+     "id": "SKILL_202_03",
+     "special": false,
+     "name": "SKILL_NAME_202_03",
+     "text": "DTbattle_SKILL_TEXT_202_03",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    },
+    {
+     "id": "SKILL_202_04",
+     "special": true,
+     "name": "SKILL_NAME_202_04",
+     "text": "DTbattle_SKILL_TEXT_202_04",
+     "button": 38,
+     "damageRank": 150,
+     "category": "DTSC_HAMON",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "HAMON"
+    }
+   ],
    "rarity": 4,
    "statueType": 2,
    "lv1": {
@@ -2485,6 +2619,18 @@
    ],
    "dtAttack": "SKILL_202_99",
    "dtSkills": [
+    {
+     "id": "SKILL_202_07",
+     "special": false,
+     "name": "SKILL_NAME_202_07",
+     "text": "DTbattle_SKILL_TEXT_202_07",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_HAMON",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "HAMON"
+    },
     {
      "id": "SKILL_202_08",
      "special": true,
@@ -3673,6 +3819,18 @@
    "dtAttack": "SKILL_211_99",
    "dtSkills": [
     {
+     "id": "SKILL_211_05",
+     "special": false,
+     "name": "SKILL_NAME_211_05",
+     "text": "DTbattle_SKILL_TEXT_211_05",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    },
+    {
      "id": "SKILL_211_06",
      "special": true,
      "name": "SKILL_NAME_211_06",
@@ -3873,6 +4031,18 @@
      "targetType": 1,
      "processType": 1,
      "attr": "STAND_PHY"
+    },
+    {
+     "id": "SKILL_300_02",
+     "special": true,
+     "name": "SKILL_NAME_300_02",
+     "text": "DTbattle_SKILL_TEXT_300_02",
+     "button": 38,
+     "damageRank": 150,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
     }
    ],
    "rarity": 3,
@@ -3916,6 +4086,18 @@
      "text": "DTbattle_SKILL_TEXT_300_03",
      "button": 7,
      "damageRank": 125,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
+    },
+    {
+     "id": "SKILL_300_04",
+     "special": true,
+     "name": "SKILL_NAME_300_04",
+     "text": "DTbattle_SKILL_TEXT_300_04",
+     "button": 38,
+     "damageRank": 150,
      "category": "DTSC_STAND_PHYSICAL",
      "targetType": 1,
      "processType": 1,
@@ -4305,6 +4487,18 @@
    "dtAttack": "SKILL_301_99",
    "dtSkills": [
     {
+     "id": "SKILL_301_01",
+     "special": false,
+     "name": "SKILL_NAME_301_01",
+     "text": "DTbattle_SKILL_TEXT_301_01",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    },
+    {
      "id": "SKILL_301_02",
      "special": true,
      "name": "SKILL_NAME_301_02",
@@ -4639,6 +4833,18 @@
    "dtAttack": "SKILL_302_99",
    "dtSkills": [
     {
+     "id": "SKILL_302_05",
+     "special": false,
+     "name": "SKILL_NAME_302_05",
+     "text": "DTbattle_SKILL_TEXT_302_05",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
+    },
+    {
      "id": "SKILL_302_06",
      "special": true,
      "name": "SKILL_NAME_302_06",
@@ -4826,6 +5032,18 @@
      "targetType": 1,
      "processType": 1,
      "attr": "STAND_PHY"
+    },
+    {
+     "id": "SKILL_303_02",
+     "special": true,
+     "name": "SKILL_NAME_303_02",
+     "text": "DTbattle_SKILL_TEXT_303_02",
+     "button": 38,
+     "damageRank": 150,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
     }
    ],
    "rarity": 3,
@@ -4928,6 +5146,18 @@
      "text": "DTbattle_SKILL_TEXT_303_05",
      "button": 7,
      "damageRank": 125,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
+    },
+    {
+     "id": "SKILL_303_06",
+     "special": true,
+     "name": "SKILL_NAME_303_06",
+     "text": "DTbattle_SKILL_TEXT_303_06",
+     "button": 38,
+     "damageRank": 150,
      "category": "DTSC_STAND_PHYSICAL",
      "targetType": 1,
      "processType": 1,
@@ -5311,6 +5541,18 @@
    "dtAttack": "SKILL_304_99",
    "dtSkills": [
     {
+     "id": "SKILL_304_07",
+     "special": false,
+     "name": "SKILL_NAME_304_07",
+     "text": "DTbattle_SKILL_TEXT_304_07",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
+    },
+    {
      "id": "SKILL_304_08",
      "special": true,
      "name": "SKILL_NAME_304_08",
@@ -5592,6 +5834,18 @@
    ],
    "dtAttack": "SKILL_305_99",
    "dtSkills": [
+    {
+     "id": "SKILL_305_05",
+     "special": false,
+     "name": "SKILL_NAME_305_05",
+     "text": "DTbattle_SKILL_TEXT_305_05",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
+    },
     {
      "id": "SKILL_305_06",
      "special": true,
@@ -6329,6 +6583,18 @@
    "dtAttack": "SKILL_311_99",
    "dtSkills": [
     {
+     "id": "SKILL_311_03",
+     "special": false,
+     "name": "SKILL_NAME_311_03",
+     "text": "DTbattle_SKILL_TEXT_311_03",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
+    },
+    {
      "id": "SKILL_311_04",
      "special": true,
      "name": "SKILL_NAME_311_04",
@@ -6557,7 +6823,32 @@
     "3150_1_justice"
    ],
    "dtAttack": "SKILL_315_99",
-   "dtSkills": [],
+   "dtSkills": [
+    {
+     "id": "SKILL_315_03",
+     "special": false,
+     "name": "SKILL_NAME_315_03",
+     "text": "DTbattle_SKILL_TEXT_315_03",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    },
+    {
+     "id": "SKILL_315_04",
+     "special": true,
+     "name": "SKILL_NAME_315_04",
+     "text": "DTbattle_SKILL_TEXT_315_04",
+     "button": 38,
+     "damageRank": 150,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
    "rarity": 4,
    "statueType": 2,
    "lv1": {
@@ -6691,6 +6982,18 @@
    ],
    "dtAttack": "SKILL_315_99",
    "dtSkills": [
+    {
+     "id": "SKILL_315_09",
+     "special": false,
+     "name": "SKILL_NAME_315_09",
+     "text": "DTbattle_SKILL_TEXT_315_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    },
     {
      "id": "SKILL_315_10",
      "special": true,
@@ -7372,6 +7675,18 @@
    "dtAttack": "SKILL_330_99",
    "dtSkills": [
     {
+     "id": "SKILL_330_03",
+     "special": false,
+     "name": "SKILL_NAME_330_03",
+     "text": "DTbattle_SKILL_TEXT_330_03",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
+    },
+    {
      "id": "SKILL_330_04",
      "special": true,
      "name": "SKILL_NAME_330_04",
@@ -7429,6 +7744,18 @@
      "targetType": 1,
      "processType": 1,
      "attr": "PHYSICAL"
+    },
+    {
+     "id": "SKILL_330_06",
+     "special": true,
+     "name": "SKILL_NAME_330_06",
+     "text": "DTbattle_SKILL_TEXT_330_06",
+     "button": 38,
+     "damageRank": 150,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
     }
    ],
    "rarity": 5,
@@ -7958,6 +8285,18 @@
      "targetType": 1,
      "processType": 1,
      "attr": "STAND_PHY"
+    },
+    {
+     "id": "SKILL_400_04",
+     "special": true,
+     "name": "SKILL_NAME_400_04",
+     "text": "DTbattle_SKILL_TEXT_400_04",
+     "button": 38,
+     "damageRank": 150,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
     }
    ],
    "rarity": 4,
@@ -8383,6 +8722,18 @@
    "dtAttack": "SKILL_401_99",
    "dtSkills": [
     {
+     "id": "SKILL_401_17",
+     "special": false,
+     "name": "SKILL_NAME_401_17",
+     "text": "DTbattle_SKILL_TEXT_401_17",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
+    },
+    {
      "id": "SKILL_401_18",
      "special": true,
      "name": "SKILL_NAME_401_18",
@@ -8524,6 +8875,18 @@
      "text": "DTbattle_SKILL_TEXT_401_13",
      "button": 7,
      "damageRank": 125,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
+    },
+    {
+     "id": "SKILL_401_14",
+     "special": true,
+     "name": "SKILL_NAME_401_14",
+     "text": "DTbattle_SKILL_TEXT_401_14",
+     "button": 38,
+     "damageRank": 150,
      "category": "DTSC_STAND_PHYSICAL",
      "targetType": 1,
      "processType": 1,
@@ -8781,6 +9144,18 @@
      "targetType": 1,
      "processType": 1,
      "attr": "STAND_PHY"
+    },
+    {
+     "id": "SKILL_402_04",
+     "special": true,
+     "name": "SKILL_NAME_402_04",
+     "text": "DTbattle_SKILL_TEXT_402_04",
+     "button": 38,
+     "damageRank": 150,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
     }
    ],
    "rarity": 4,
@@ -8875,6 +9250,18 @@
    ],
    "dtAttack": "SKILL_402_99",
    "dtSkills": [
+    {
+     "id": "SKILL_402_07",
+     "special": false,
+     "name": "SKILL_NAME_402_07",
+     "text": "DTbattle_SKILL_TEXT_402_07",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    },
     {
      "id": "SKILL_402_08",
      "special": true,
@@ -9139,6 +9526,18 @@
    "dtAttack": "SKILL_403_99",
    "dtSkills": [
     {
+     "id": "SKILL_403_07",
+     "special": false,
+     "name": "SKILL_NAME_403_07",
+     "text": "DTbattle_SKILL_TEXT_403_07",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    },
+    {
      "id": "SKILL_403_08",
      "special": true,
      "name": "SKILL_NAME_403_08",
@@ -9184,7 +9583,32 @@
     "4031_1_door"
    ],
    "dtAttack": "SKILL_403_99",
-   "dtSkills": [],
+   "dtSkills": [
+    {
+     "id": "SKILL_403_09",
+     "special": false,
+     "name": "SKILL_NAME_403_09",
+     "text": "DTbattle_SKILL_TEXT_403_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    },
+    {
+     "id": "SKILL_403_10",
+     "special": true,
+     "name": "SKILL_NAME_403_10",
+     "text": "DTbattle_SKILL_TEXT_403_10",
+     "button": 38,
+     "damageRank": 150,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
    "rarity": null,
    "statueType": null,
    "lv1": null,
@@ -9274,6 +9698,18 @@
      "targetType": 1,
      "processType": 1,
      "attr": "STAND_PHY"
+    },
+    {
+     "id": "SKILL_404_04",
+     "special": true,
+     "name": "SKILL_NAME_404_04",
+     "text": "DTbattle_SKILL_TEXT_404_04",
+     "button": 38,
+     "damageRank": 150,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
     }
    ],
    "rarity": 4,
@@ -9320,6 +9756,18 @@
      "targetType": 1,
      "processType": 1,
      "attr": "STAND_PHY"
+    },
+    {
+     "id": "SKILL_404_06",
+     "special": true,
+     "name": "SKILL_NAME_404_06",
+     "text": "DTbattle_SKILL_TEXT_404_06",
+     "button": 38,
+     "damageRank": 150,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
     }
    ],
    "rarity": 5,
@@ -9351,6 +9799,18 @@
    ],
    "dtAttack": "SKILL_404_99",
    "dtSkills": [
+    {
+     "id": "SKILL_404_07",
+     "special": false,
+     "name": "SKILL_NAME_404_07",
+     "text": "DTbattle_SKILL_TEXT_404_07",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    },
     {
      "id": "SKILL_404_08",
      "special": true,
@@ -9568,6 +10028,18 @@
      "text": "DTbattle_SKILL_TEXT_408_05",
      "button": 7,
      "damageRank": 125,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
+    },
+    {
+     "id": "SKILL_408_06",
+     "special": true,
+     "name": "SKILL_NAME_408_06",
+     "text": "DTbattle_SKILL_TEXT_408_06",
+     "button": 38,
+     "damageRank": 150,
      "category": "DTSC_STAND_PHYSICAL",
      "targetType": 1,
      "processType": 1,
@@ -10331,6 +10803,18 @@
    "dtAttack": "SKILL_415_99",
    "dtSkills": [
     {
+     "id": "SKILL_415_03",
+     "special": false,
+     "name": "SKILL_NAME_415_03",
+     "text": "DTbattle_SKILL_TEXT_415_03",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
+    },
+    {
      "id": "SKILL_415_04",
      "special": true,
      "name": "SKILL_NAME_415_04",
@@ -10373,6 +10857,18 @@
    ],
    "dtAttack": "SKILL_415_99",
    "dtSkills": [
+    {
+     "id": "SKILL_415_05",
+     "special": false,
+     "name": "SKILL_NAME_415_05",
+     "text": "DTbattle_SKILL_TEXT_415_05",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    },
     {
      "id": "SKILL_415_06",
      "special": true,
@@ -10480,6 +10976,18 @@
    "dtAttack": "SKILL_416_99",
    "dtSkills": [
     {
+     "id": "SKILL_416_03",
+     "special": false,
+     "name": "SKILL_NAME_416_03",
+     "text": "DTbattle_SKILL_TEXT_416_03",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
+    },
+    {
      "id": "SKILL_416_04",
      "special": true,
      "name": "SKILL_NAME_416_04",
@@ -10533,6 +11041,18 @@
      "targetType": 1,
      "processType": 1,
      "attr": "STAND_PHY"
+    },
+    {
+     "id": "SKILL_416_06",
+     "special": true,
+     "name": "SKILL_NAME_416_06",
+     "text": "DTbattle_SKILL_TEXT_416_06",
+     "button": 38,
+     "damageRank": 150,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
     }
    ],
    "rarity": 5,
@@ -10569,6 +11089,18 @@
    ],
    "dtAttack": "SKILL_416_99",
    "dtSkills": [
+    {
+     "id": "SKILL_416_07",
+     "special": false,
+     "name": "SKILL_NAME_416_07",
+     "text": "DTbattle_SKILL_TEXT_416_07",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    },
     {
      "id": "SKILL_416_08",
      "special": true,
@@ -10933,7 +11465,32 @@
     "4190_1_killerq"
    ],
    "dtAttack": "SKILL_419_99",
-   "dtSkills": [],
+   "dtSkills": [
+    {
+     "id": "SKILL_419_01",
+     "special": false,
+     "name": "SKILL_NAME_419_01",
+     "text": "DTbattle_SKILL_TEXT_419_01",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    },
+    {
+     "id": "SKILL_419_02",
+     "special": true,
+     "name": "SKILL_NAME_419_02",
+     "text": "DTbattle_SKILL_TEXT_419_02",
+     "button": 38,
+     "damageRank": 150,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
    "rarity": 5,
    "statueType": 5,
    "lv1": {

@@ -2,6 +2,36 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 14 — results screen, specials for every team, leader abilities, no Growthbeat (branch `wip/b14`)
+
+### What the Build 13 device log showed
+- Battles finish, all animations play, and normal skills work.
+- The results screen hung: a NullReferenceException in `BattleResultHighScoreUIController.Setup`.
+- Special skills could not be used.
+- Owner's request: stub the Growthbeat crash at startup.
+
+### What changed
+- **Results screen:** `bizarre_end` sends `oldEventRankingResultInfo {point 0, eventDataList []}`.
+  The high-score panel reads that list without a null check (0xC0D4B4).
+- **Specials:** no client gate blocks them for our data. The default team's statues simply had no
+  special, because their second skill's text fell outside the damage/heal classification. Skills
+  with no damage, heal or buff wording are now sent as single-target hits, so 237 of 266 statues
+  have a special (229 with two extra skills). A special has 3 uses per battle; empty specials
+  refill only in reversal mode, which is off.
+- **Leader abilities** (docs/research/12 §4): 88 statues get `DT_LEAD_<statueId>`, with the
+  wiki's numbers in client-verified per-mille units and 21 new affect rows. The leader's ability
+  applies to the whole team.
+- **`no-growthbeat` patch** (owner's request): `GrowthbeatBehaviour.Awake`, `SendTag` and
+  `SendEvent` return at once (fingerprinted, with a post-check, `--disable no-growthbeat`).
+  The SDK is never started, so its thread no longer crashes offline and nothing is tracked.
+- Build number 14, server marker `JDR_EMBEDDED_SERVER_b014`.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] No Growthbeat FATAL EXCEPTION in the log at startup
+- [ ] The results screen continues after Confirm
+- [ ] The special-skill button works for Jonathan, Jotaro and Josuke
+- [ ] Leader ability effects (e.g. HP up) show in battle stats
+
 ## Build 13 — the master data filled (branch `wip/b13`)
 
 ### What the owner asked
