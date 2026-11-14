@@ -30,7 +30,7 @@ logged CharacterController "Step Offset" warnings.
   | Field | Value |
   |---|---|
   | `myPageCameraType` | `CameraIdSet0` |
-  | `myPagePos` | (82, -115, 366) |
+  | `myPagePos` | (72, -113, 322) (Build 12; was (82, -115, 366)) |
   | `myPageRotation` | (0, 192.5, 0) |
   | `teamScaleScalar` | 100 |
 

@@ -396,13 +396,13 @@ pub fn statue_setting_rows() -> Vec<Value> {
             });
             // Positions are centimetres and teamScaleScalar a percentage (the client multiplies all of
             // them by 0.01). My Page: the camera at the `CameraIdSet0` scene object (the origin,
-            // facing +Z) and the leader 3.66 m ahead, right of centre, turned towards the camera,
+            // facing +Z) and the leader 3.22 m ahead, right of centre (Build 12: 12% closer at the owner's request), turned towards the camera,
             // which frames models 1.0-2.3 m tall. Team view: the slot anchors already face the
             // camera, so no offset, at full size. (docs/research/11-battle-and-positions.md)
             json!({
                 "statueId": d.statue_id, "myPageId": ids[h as usize % ids.len()],
                 "myPageCameraType": "CameraIdSet0",
-                "myPagePos": { "x": 82.0, "y": -115.0, "z": 366.0 },
+                "myPagePos": { "x": 72.0, "y": -113.0, "z": 322.0 },
                 "myPageRotation": { "x": 0.0, "y": 192.5, "z": 0.0 },
                 "teamScaleScalar": 100.0,
                 "mindFrameID": 1, "pvpAiId": 1, "pvpAiAutoBattleAiId": 1
