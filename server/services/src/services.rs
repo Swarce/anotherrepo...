@@ -12,6 +12,7 @@ pub mod common;
 pub mod menu;
 pub mod misc;
 pub mod statue;
+pub mod team;
 pub mod user;
 
 fn obj(v: Value) -> Map<String, Value> {
@@ -46,6 +47,12 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/statue/statue_list" => statue::statue_list(ctx, env),
         "/statue/statue_info" => statue::statue_info(ctx, env),
         "/team/team_info" => misc::team_info(ctx, env),
+        "/team/leader_change" => team::leader_change(ctx, env),
+        "/team/set_team" => team::set_team(ctx, env),
+        "/user/user_info_mini" => team::user_info_mini(ctx, env),
+        "/follow/follower_list" => team::follower_list(ctx, env),
+        "/follow/block_list" => team::block_list(ctx, env),
+        "/trophy/trophy_list" => team::trophy_list(ctx, env),
         "/bizarre/bizarre_resumption" => misc::bizarre_resumption(ctx, env),
         "/bizarre/bizarre_list" => bizarre::bizarre_list(ctx, env),
         "/bizarre/stage_list" => bizarre::stage_list(ctx, env),
@@ -61,6 +68,8 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/follow/follow_list" => menu::follow_list(ctx, env),
         "/item/item_list" => menu::item_list(ctx, env),
         "/shop/shop_list" => menu::shop_list(ctx, env),
+        "/info/notify_list" => menu::notify_list(ctx, env),
+        "/gasha/gasha_list" => menu::gasha_list(ctx, env),
         _ => return (Ok(Map::new()), false),
     };
     (r, true)

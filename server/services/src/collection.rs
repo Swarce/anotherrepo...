@@ -315,6 +315,27 @@ pub fn statue_info(o: &OwnedStatue) -> Value {
     })
 }
 
+/// Our basic tactical attack (`JDR_ATK_00` in dtbattle_skill_data_table), given to every statue in
+/// a team (and to enemies) until real skill data exists: without a combo-type skill a unit has no
+/// Attack button. The client takes type, button and name from the table row but keeps
+/// `skillLevel`, which must be at least 1. Statue lists and detail views leave it out (their skill
+/// views were not traced).
+pub const BASIC_ATTACK: &str = "JDR_ATK_00";
+
+/// `statue_info` for a battle unit: with the basic attack.
+pub fn battle_statue_info(o: &OwnedStatue) -> Value {
+    let mut v = statue_info(o);
+    v["dtSkillList"] = json!([basic_attack()]);
+    v
+}
+
+fn basic_attack() -> Value {
+    json!({ "skillId": BASIC_ATTACK, "skillLevel": 1, "name": "", "explanation": "",
+            "skillType": 1, "bottunType": 1, "coolDown": 0, "limitCount": 0,
+            "magnificationLv01": 0, "magnificationLv10": 0, "pvpMagnificationLv01": 0,
+            "pvpMagnificationLv10": 0, "skillParamList": [], "isInit": false })
+}
+
 fn empty_setting() -> Value {
     json!({ "statueuId": 0, "statueInfo": { "statueId": "" }, "equipMindList": [],
             "mindLinkList": [], "assistStatueList": [], "AiId": "" })
@@ -322,8 +343,10 @@ fn empty_setting() -> Value {
 
 fn setting(c: &Collection, uid: i64) -> Value {
     match c.known_statue(uid) {
-        Some(o) => json!({ "statueuId": uid, "statueInfo": statue_info(o), "equipMindList": [],
-                           "mindLinkList": [], "assistStatueList": [], "AiId": "" }),
+        Some(o) => {
+            json!({ "statueuId": uid, "statueInfo": battle_statue_info(o), "equipMindList": [],
+                           "mindLinkList": [], "assistStatueList": [], "AiId": "" })
+        }
         None => empty_setting(),
     }
 }
@@ -368,11 +391,22 @@ pub fn statue_setting_rows() -> Vec<Value> {
                 .map(|(_, ids)| *ids)
                 .unwrap_or(&[10]);
             // By a hash of the id, so a statue keeps its background when statues.json changes.
-            let h = d
-                .statue_id
-                .bytes()
-                .fold(0x811c_9dc5u32, |h, b| (h ^ b as u32).wrapping_mul(0x0100_0193));
-            json!({ "statueId": d.statue_id, "myPageId": ids[h as usize % ids.len()], "teamScaleScalar": 1.0 })
+            let h = d.statue_id.bytes().fold(0x811c_9dc5u32, |h, b| {
+                (h ^ b as u32).wrapping_mul(0x0100_0193)
+            });
+            // Positions are centimetres and teamScaleScalar a percentage (the client multiplies all of
+            // them by 0.01). My Page: the camera at the `CameraIdSet0` scene object (the origin,
+            // facing +Z) and the leader 3.66 m ahead, right of centre, turned towards the camera,
+            // which frames models 1.0-2.3 m tall. Team view: the slot anchors already face the
+            // camera, so no offset, at full size. (docs/research/11-battle-and-positions.md)
+            json!({
+                "statueId": d.statue_id, "myPageId": ids[h as usize % ids.len()],
+                "myPageCameraType": "CameraIdSet0",
+                "myPagePos": { "x": 82.0, "y": -115.0, "z": 366.0 },
+                "myPageRotation": { "x": 0.0, "y": 192.5, "z": 0.0 },
+                "teamScaleScalar": 100.0,
+                "mindFrameID": 1, "pvpAiId": 1, "pvpAiAutoBattleAiId": 1
+            })
         })
         .collect()
 }
