@@ -2,6 +2,48 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 10 — characters, teams, story quests from the wikis (branch `wip/b10`)
+
+### What the Build 09 device log showed
+Redrawn English art on screen; the My Page background was black (no team: the background and the
+leader model come from the tactical main team's leader and its `statue_setting_table` row).
+
+### What changed
+- **Collection:** the player owns every obtainable statue (266: model, animations, action set and
+  leader ability present in the player's files) at level 1, and 5 teams per battle type; the
+  tactical main team (Jonathan, Jotaro, Josuke) is sent with login and team_info, which should give
+  My Page its background (`bg_00NN` by JoJo part) and the leader model. Routes: `statue/statue_list`,
+  `statue/statue_info`, `team/team_info`.
+- **Statue numbers from the wikis:** rarity, type, Lv1/Lv99 and max-tree stats for 142 of 266 statues
+  (129 from Gamerch matched exactly by leader-ability name, 13 from ShoutWiki by elimination); stats
+  per level are linear Lv1→Lv99 (the wikis' Lv99 = 10 × Lv1 for 195 of 200 statues). The rest,
+  mostly released after the 2018 snapshot, use marked defaults.
+- **Generated master tables:** `statue_setting_table` (266 rows), `statue_level_table` (266 × 99
+  levels), `rank_table` (ranks 1–99 from Gamerch).
+- **Story quests:** story button, 82 chapters (31 action, 51 tactical with stages) and 370 stages from
+  the player's files; 100 stages carry Gamerch numbers (AP, rank EXP, gold, recommended level); battles
+  are described with the player's area scenes and a wave of enemy statues; clears are recorded and
+  grant gold and rank EXP; rank-ups and AP max follow the Gamerch rank table. Routes: `bizarre_list`,
+  `stage_list`, `bizarre_start`, `bizarre_end`, `bizarre_continue`, `destruction`,
+  `check_timed_chapter`, `support/support_user_s`, `clan/recommend`.
+- **Wiki fetch:** ShoutWiki (351 pages), JoJoWiki (86 pages), Gamerch via the Wayback Machine (178
+  archived data pages of 1,004; most were never archived). Raw pages stay local; only numbers with
+  their source pages are committed (`docs/CONTENT.md`, `CREDITS.md`).
+- Build number 10, server marker `JDR_EMBEDDED_SERVER_b010`.
+
+### Known gaps / risks (expected)
+- Battles have never run offline: enemy waves, spawn naming (`WAVE_A/01`), maps per stage and the
+  empty battle tables (skills, abilities, reactions) are untested and may fail; the stage list and
+  start/end should work.
+- Enemy line-ups and rewards are defaults (the wiki shows them as images); stages after chapter 23
+  and the tactical chapters have default numbers.
+- Skills and abilities are not filled yet (statue details show none).
+
+### Device checklist — expected; to be confirmed on a device
+- [ ] My Page shows a background and the leader model (Jonathan)
+- [ ] Team/Enhance and the statue list show the roster with names, rarity, levels, stats
+- [ ] Quests → Story shows chapters and stages; starting a stage loads (or note where it stops)
+
 ## Build 09 — redrawn UI art (branch `wip/b09`)
 
 ### What came in
