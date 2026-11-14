@@ -8,7 +8,8 @@ use jdr_patch::sign;
 use std::path::PathBuf;
 
 const USAGE: &str = "usage:
-  jdr-patch patch --apk <in.apk> --out <out.apk> [--port N] [--disable <patch-id>]... [--keystore <p12>] [--force]
+  jdr-patch patch --apk <in.apk> --out <out.apk> --keys <keys.json> [--server-lib libjdr.so] [--port N] [--disable <patch-id>]... [--keystore <p12>] [--force]
+        (--disable embed-server: dev-loop APK that talks to jdr-server on a PC)
   jdr-patch list                 list patches
   jdr-patch init-key [--keystore <p12>]   create the signing key if missing
 
@@ -59,6 +60,20 @@ fn opt(args: &[String], name: &str) -> Option<String> {
     args.iter()
         .position(|a| a == name)
         .and_then(|i| args.get(i + 1).cloned())
+}
+
+/// The first valid aarch64 `libjdr.so`: next to the jdr-patch binary (release bundle), then the
+/// cross-build output in this checkout. (A host build next to the binary is skipped.)
+fn default_server_lib() -> Option<PathBuf> {
+    let beside = std::env::current_exe()
+        .ok()
+        .and_then(|e| e.parent().map(|d| d.join("libjdr.so")));
+    let built = PathBuf::from("target/aarch64-linux-android/release/libjdr.so");
+    beside.into_iter().chain(std::iter::once(built)).find(|p| {
+        std::fs::read(p)
+            .map(|b| patches::validate_server_lib(&b).is_ok())
+            .unwrap_or(false)
+    })
 }
 
 /// Never overwrite the player's original APK, and never clobber an existing output silently.
@@ -112,11 +127,21 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
         let port: u16 = p.parse().map_err(|_| "bad --port")?;
         cfg.server_url = format!("http://127.0.0.1:{port}");
     }
+    cfg.keys_json = match opt(args, "--keys") {
+        Some(k) => Some(std::fs::read(&k).map_err(|e| format!("--keys {k}: {e}"))?),
+        None => None,
+    };
+    cfg.server_lib = opt(args, "--server-lib")
+        .map(PathBuf::from)
+        .or_else(default_server_lib);
     let disabled: Vec<&str> = args
         .windows(2)
         .filter(|w| w[0] == "--disable")
         .map(|w| w[1].as_str())
         .collect();
+    if cfg.server_url != Config::default().server_url && !disabled.contains(&"embed-server") {
+        return Err("--port only works for the dev-loop APK (--disable embed-server): the in-game server always listens on 18080".into());
+    }
     for d in &disabled {
         if !patches::all().iter().any(|p| p.id() == *d) {
             return Err(format!("unknown patch id {d:?} (see `jdr-patch list`)").into());
@@ -200,6 +225,20 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
             return Err("post-check failed: armeabi-v7a still present".into());
         }
         rep.checks.push("no lib/armeabi-v7a entries".into());
+    }
+    if !disabled.contains(&"embed-server") {
+        let main = chk.read(patches::LIBMAIN_ARM64)?;
+        let needed = jdr_patch::elf::needed_of(&main)?;
+        if !needed.iter().any(|n| n == "libjdr.so") || needed.iter().any(|n| n == "liblog.so") {
+            return Err(format!("post-check failed: libmain.so NEEDED is {needed:?}").into());
+        }
+        patches::validate_server_lib(&chk.read(patches::SERVER_LIB_ENTRY)?)?;
+        if chk.is_compressed(patches::KEYS_ASSET) {
+            return Err("post-check failed: keys asset must be stored".into());
+        }
+        rep.checks.push(format!(
+            "libmain.so NEEDED = {needed:?}; libjdr.so valid; keys asset stored"
+        ));
     }
     rep.checks.push("zipalign -c -P 16 4 passed".into());
     rep.checks

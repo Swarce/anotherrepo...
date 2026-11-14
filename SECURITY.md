@@ -11,7 +11,22 @@
 - Logs: key fields and device identifiers (`assetkey`, `assetvector`, `soundkey`, `signature`,
   `nonce`, `backupId`, `ad_id`, `platform_user_id`) are redacted from all log lines, so logs can be
   shared. Review a log before posting it publicly anyway.
-- Limits: 64 concurrent connections, 64 KiB of headers, 16 MiB bodies; handler panics are caught.
+- Limits: 32 concurrent connections (20 s read/write timeouts), 64 KiB of headers, 2 MiB bodies; handler
+  panics are caught.
+
+## In-game server (Build 02+)
+
+- The server runs inside the game process and listens on 127.0.0.1:18080. Any app on the same phone
+  can connect to it. Installed APKs are world-readable, so another app can also read the keys the
+  patcher stored in the APK and talk the game's protocol: it could read or change the offline
+  account, or tie up connections. There are no personal credentials, payments or network accounts to
+  steal; the realistic harm is local mischief. Don't install untrusted apps alongside if that matters
+  to you.
+- If another app holds port 18080 first, the server keeps retrying and logs a FATAL line every
+  minute; the game would then talk to that app.
+- The "latch" (game keeps working if our module fails) covers Rust panics only. A native crash in the
+  server thread ends the game process like any crash; the server code avoids `unsafe` except the one
+  logcat call.
 - No TLS (the game is redirected to plain `http://127.0.0.1`), no remote access, no telemetry.
 
 ## Signing key

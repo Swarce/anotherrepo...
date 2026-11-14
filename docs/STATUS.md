@@ -2,6 +2,60 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 02 — embedded server (branch `wip/b02`)
+
+### What changed
+- **`libjdr.so`** (`hosts/embedded`, aarch64, NDK r28c API 21, 16 KiB pages): the same server as
+  `jdr-server`, inside the game process. A constructor only spawns a thread (the game never waits);
+  that thread finds the app's own APK from where `libjdr.so` is mapped, reads the player's keys from
+  the stored asset `assets/jdr/keys.json`, and serves on 127.0.0.1:18080 (retries forever if the port
+  is taken, FATAL line once a minute). State in `/data/user/<n>/<pkg>/jdr/` (adoptable-storage
+  fallback); logs and save backups copied to `/sdcard/Android/data/<pkg>/jdr/{logs,saves}/`
+  (changed files only, logs pruned); every log line mirrored to logcat, tag `JDR`.
+- **`embed-server` patch:** adds `lib/arm64-v8a/libjdr.so` (validated: aarch64, 16 KiB, build
+  marker `JDR_EMBEDDED_SERVER_b002` shown in the report), embeds the keys asset, and renames
+  `libmain.so`'s `liblog.so` dependency to `libjdr.so` (same length, in place; libmain imports no
+  liblog symbols, and libjdr depends on liblog itself). Fingerprinted on the libmain SHA-256; the ELF
+  editor proves the string is unshared (dynamic tags, verneed/verdef, all symbols via DT_HASH,
+  tail-merged strings) and returns errors on malformed input.
+- `--port` is refused with the in-game server; `--disable embed-server` builds the PC dev-loop APK.
+- Server limits: 2 MiB bodies, 32 connections, 20 s read/write timeouts.
+- `build.sh` builds `libjdr.so` when `ANDROID_NDK` is set and only embeds a library built in the
+  same run.
+- Docs: PLAYER-SETUP rewritten for the in-game server (inline steps, success checklist, recovery
+  without uninstall, save/key warnings), SECURITY in-game section, DEV-LOOP `adb reverse --remove-all`.
+- Two independent reviews (correctness inside the game process; behaviour/risk): all findings fixed.
+
+### Tests
+| Suite | Result |
+|---|---|
+| core | 16 passed |
+| crypto (+ real data with `JDR_DATA`) | 14 + 1 passed |
+| embedded (zip reader, own-APK detection with foreign APKs mapped, boots from an APK asset and answers get_version, log pruning, marker) | 7 passed |
+| patcher (incl. ELF NEEDED swap and its refusals) | 15 passed |
+| services | 9 passed |
+| end-to-end boot sequence | 5 passed |
+| real patch with the embedded server (`JDR_APK`, `JDR_KEYS`, `ANDROID_NDK`) | all post-checks ok |
+
+Verified off-device: `libjdr.so` has one constructor in `.init_array` (relocated to `jdr_init`),
+BIND_NOW, 16 KiB LOAD alignment; patched `libmain.so` NEEDED = libjdr, libstdc++, libm, libdl, libc;
+the keys asset reads back from the signed APK (after the APK Signing Block) identically to `zipfile`.
+
+### Known gaps (expected)
+- Same stall point as Build 01: `versionfile` and `in_memory_master_data` (M1.5).
+- The "game keeps working if our module fails" latch covers Rust panics only; if `libjdr.so` cannot
+  load, the game cannot start (recovery documented, no uninstall needed).
+
+### Device checklist (Galaxy S22, Android 16) — expected; to be confirmed on a device
+Follow docs/PLAYER-SETUP.md. Send `local/logcat.txt` and `adb pull …/jdr/logs`.
+- [ ] patched APK installs; the game launches (does not close immediately)
+- [ ] logcat `JDR`: `jdr embedded build 2`, `keys loaded`, `listening on 127.0.0.1:18080`
+- [ ] `[api] POST /common/get_version 200` at the title screen
+- [ ] terms page → `[account] created` → second login
+- [ ] getkey / get_system_config / get_tutorial_step / getfiledata, then the expected stall
+- [ ] `/sdcard/Android/data/com.bandainamcoent.jojodr/jdr/logs/` and `…/saves/` appear
+- [ ] restart the game: same account (`existStatus 0`), no FATAL bind line
+
 ## Build 01 — dev loop groundwork (branch `wip/b01`)
 
 ### What changed

@@ -32,7 +32,7 @@ dev loop) and inside the game process on the phone (embedded host).
 | Module | API |
 |---|---|
 | `http` | `bind(ports)`, `serve(listener, handler)`, `Request`, `Response`, `parse_form` |
-| `log` | `init(dir, echo)`, `log!(tag, ...)`, `Counters::status_line()` |
+| `log` | `init(dir, echo)`, `set_mirror(fn)` (logcat on device), `log!(tag, ...)`, `Counters::status_line()` |
 | `clock` | `now()`, `set_offset()`, `format()`, `compact()` (JST day boundaries) |
 | `storage` | `write_atomic`, `rotate_backups`, `save_guarded` |
 | `settings` | `Settings`, `Keys`, `load_keys` |

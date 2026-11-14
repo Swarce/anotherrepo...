@@ -7,9 +7,10 @@ use std::sync::Arc;
 use std::time::Duration;
 
 pub const MAX_HEADER_BYTES: usize = 64 * 1024;
-pub const MAX_BODY_BYTES: usize = 16 * 1024 * 1024;
+/// The client's request buffer is 1 MiB (`HttpConst.HttpPostDataMaxSize`); allow a little more.
+pub const MAX_BODY_BYTES: usize = 2 * 1024 * 1024;
 /// Concurrent connections served; extra connections get 503 and are closed.
-pub const MAX_CONNECTIONS: usize = 64;
+pub const MAX_CONNECTIONS: usize = 32;
 
 static ACTIVE: std::sync::atomic::AtomicUsize = std::sync::atomic::AtomicUsize::new(0);
 
@@ -144,7 +145,8 @@ pub fn serve(listener: TcpListener, handler: Handler) -> std::io::Result<()> {
 }
 
 pub fn handle_connection(stream: TcpStream, handler: Handler) -> std::io::Result<()> {
-    stream.set_read_timeout(Some(Duration::from_secs(60)))?;
+    stream.set_read_timeout(Some(Duration::from_secs(20)))?;
+    stream.set_write_timeout(Some(Duration::from_secs(20)))?;
     stream.set_nodelay(true)?;
     let mut writer = stream.try_clone()?;
     let mut reader = BufReader::new(stream);
