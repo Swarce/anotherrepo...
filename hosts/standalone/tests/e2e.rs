@@ -1,0 +1,210 @@
+//! End to end over a real socket with synthetic keys: client-mirror request -> server -> decode.
+
+use jdr_core::envelope::{decode_response_like_client, encode_request_like_client};
+use jdr_core::http;
+use jdr_core::settings::{Keys, Settings};
+use jdr_services::{app, Ctx};
+use std::io::{Read, Write};
+use std::net::TcpStream;
+use std::sync::atomic::Ordering;
+use std::sync::Arc;
+
+const HTTP_KEY: &str = "Synthetic-Key-16";
+
+fn start(files: Option<std::path::PathBuf>) -> u16 {
+    let mut s = Settings::new(std::env::temp_dir().join(format!("jdr-e2e-{}", std::process::id())));
+    s.keys = Some(Keys {
+        asset_key: "A".repeat(16),
+        asset_iv: "B".repeat(16),
+        sound_key: None,
+        http_key: Some(HTTP_KEY.into()),
+    });
+    s.files_dir = files;
+    let (l, port) = http::bind(&[0]).unwrap();
+    let ctx = Arc::new(Ctx::new(s, false));
+    ctx.port.store(port, Ordering::Relaxed);
+    let h: http::Handler = Arc::new(move |r| app::handle(&ctx, r));
+    std::thread::spawn(move || http::serve(l, h));
+    port
+}
+
+fn post(port: u16, path: &str, body: &[u8]) -> (u16, Vec<u8>) {
+    let mut s = TcpStream::connect(("127.0.0.1", port)).unwrap();
+    let head = format!(
+        "POST {path} HTTP/1.1\r\nHost: 127.0.0.1\r\nContent-Type: application/x-www-form-urlencoded\r\nUser-Agent: jgr (Android; test)\r\nConnection: close\r\nContent-Length: {}\r\n\r\n",
+        body.len()
+    );
+    s.write_all(head.as_bytes()).unwrap();
+    s.write_all(body).unwrap();
+    let mut out = vec![];
+    s.read_to_end(&mut out).unwrap();
+    let split = out.windows(4).position(|w| w == b"\r\n\r\n").unwrap();
+    let status: u16 = std::str::from_utf8(&out[9..12]).unwrap().parse().unwrap();
+    (status, out[split + 4..].to_vec())
+}
+
+fn call(port: u16, path: &str, param: &str) -> serde_json::Value {
+    call_as(port, path, param, "")
+}
+
+fn call_as(port: u16, path: &str, param: &str, uuid: &str) -> serde_json::Value {
+    let js = format!(
+        r#"{{"uuid":"{uuid}","session":"","language":1,"date":20261114103000,"platform":2,"version":"vtest","lzAccept":1,"lzEncode":0,"param":{param}}}"#
+    );
+    let (st, body) = post(
+        port,
+        path,
+        &encode_request_like_client(&js, HTTP_KEY.as_bytes(), b"0123456789abcdef"),
+    );
+    assert_eq!(st, 200);
+    decode_response_like_client(&body, HTTP_KEY.as_bytes()).unwrap()
+}
+
+#[test]
+fn get_version_hands_out_local_bases() {
+    let port = start(None);
+    let v = call(port, "/common/get_version", "{}");
+    assert_eq!(v["param"]["status"], 10000);
+    assert_eq!(v["param"]["url"], format!("http://127.0.0.1:{port}/api"));
+    assert_eq!(v["param"]["s3_url"], format!("http://127.0.0.1:{port}/web"));
+    assert!(!v["session"].as_str().unwrap().is_empty());
+    assert_eq!(v["date"].as_str().unwrap().len(), 19);
+}
+
+#[test]
+fn unknown_route_answers_ok() {
+    let port = start(None);
+    let v = call(port, "/api/nope/nothing", r#"{"x":1}"#);
+    assert_eq!(v["param"]["status"], 10000);
+}
+
+#[test]
+fn garbage_body_is_400_not_a_crash() {
+    let port = start(None);
+    assert_eq!(post(port, "/api/user/login", b"data=%%%").0, 400);
+    assert_eq!(post(port, "/api/user/login", b"").0, 400);
+}
+
+#[test]
+fn cdn_serves_files() {
+    let d = std::env::temp_dir().join(format!("jdr-e2e-files-{}", std::process::id()));
+    std::fs::create_dir_all(&d).unwrap();
+    std::fs::write(d.join("abc.bytes"), b"bundle").unwrap();
+    let port = start(Some(d));
+    let mut s = TcpStream::connect(("127.0.0.1", port)).unwrap();
+    s.write_all(b"GET /cdn/abc.bytes HTTP/1.1\r\nConnection: close\r\n\r\n")
+        .unwrap();
+    let mut out = String::new();
+    s.read_to_string(&mut out).unwrap();
+    assert!(
+        out.starts_with("HTTP/1.1 200") && out.ends_with("bundle"),
+        "{out}"
+    );
+}
+
+fn get(port: u16, path: &str) -> String {
+    let mut s = TcpStream::connect(("127.0.0.1", port)).unwrap();
+    s.write_all(format!("GET {path} HTTP/1.1\r\nConnection: close\r\n\r\n").as_bytes())
+        .unwrap();
+    let mut out = String::new();
+    s.read_to_string(&mut out).unwrap();
+    out
+}
+
+/// The new-player boot sequence in the client's order (docs/protocol/boot.md).
+#[test]
+fn new_player_boot_sequence() {
+    let port = start(None);
+    let v = call(port, "/common/get_version", "{}");
+    let api = v["param"]["url"]
+        .as_str()
+        .unwrap()
+        .trim_start_matches(&format!("http://127.0.0.1:{port}"))
+        .to_string();
+    let web = v["param"]["s3_url"]
+        .as_str()
+        .unwrap()
+        .trim_start_matches(&format!("http://127.0.0.1:{port}"))
+        .to_string();
+    let ep = |p: &str| format!("{api}{p}");
+
+    let login = call(
+        port,
+        &ep("/user/login"),
+        r#"{"model":"SM-S901B","os":"Android OS 16","osVersion":"16","backupId":"x","ad_id":""}"#,
+    );
+    assert_eq!(
+        login["param"]["existStatus"], 4,
+        "unknown device -> new user"
+    );
+    assert_eq!(login["param"]["is_ca"], 0);
+    assert!(get(port, &format!("{web}/information/terms_a.html")).starts_with("HTTP/1.1 200"));
+    let nonce = call(port, &ep("/user/get_nonce"), "{}");
+    assert!(!nonce["param"]["nonce"].as_str().unwrap().is_empty());
+    let cu = call(
+        port,
+        &ep("/user/create_user"),
+        r#"{"nonce":"n","signature":"s","backupId":"x","platform_user_id":"a","ad_id":""}"#,
+    );
+    let uuid = cu["param"]["uuId"].as_str().unwrap().to_string();
+    assert!(!uuid.is_empty() && !cu["param"]["user_id"].as_str().unwrap().is_empty());
+
+    let login2 = call_as(port, &ep("/user/login"), "{}", &uuid);
+    assert_eq!(login2["param"]["existStatus"], 0);
+    assert_eq!(login2["param"]["userInfoMini"]["username"], "Player");
+
+    let k = call_as(port, &ep("/client/getkey"), "{}", &uuid);
+    assert_eq!(k["param"]["assetkey"], "A".repeat(16));
+    let cfg = call_as(port, &ep("/common/get_system_config"), "{}", &uuid);
+    assert!(
+        cfg["param"]["configList"]["apOneRecoveryTime"]
+            .as_i64()
+            .unwrap()
+            > 0
+    );
+    let tut = call_as(port, &ep("/user/get_tutorial_step"), "{}", &uuid);
+    assert!(tut["param"]["tutorialStep"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .all(|x| x == 1));
+    let fd = call_as(
+        port,
+        &ep("/client/getfiledata"),
+        r#"{"filename":["android/data/aa.bytes","android/data/bb.bytes"]}"#,
+        &uuid,
+    );
+    assert_eq!(
+        fd["param"]["url"],
+        serde_json::json!([
+            format!("http://127.0.0.1:{port}/cdn/aa.bytes"),
+            format!("http://127.0.0.1:{port}/cdn/bb.bytes")
+        ])
+    );
+    assert_eq!(
+        call_as(port, &ep("/shop/product_list"), "{}", &uuid)["param"]["key"],
+        ""
+    );
+
+    for p in [
+        "/user/user_info",
+        "/team/team_info",
+        "/info/check_forced_notify",
+        "/info/event_list",
+        "/info/banner_list",
+        "/user/get_loginbonus",
+        "/info/get_menu_notify",
+    ] {
+        let r = call_as(port, &ep(p), r#"{"id":""}"#, &uuid);
+        assert_eq!(r["param"]["status"], 10000, "{p}");
+    }
+    assert_eq!(
+        call_as(port, &ep("/bizarre/bizarre_resumption"), "{}", &uuid)["param"]["status"],
+        50301
+    );
+    // an unknown device asking for its profile gets a session error, not a crash
+    assert_eq!(
+        call_as(port, &ep("/user/user_info"), "{}", "nobody")["param"]["status"],
+        10003
+    );
+}

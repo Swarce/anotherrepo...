@@ -1,0 +1,19 @@
+[package]
+name = "jdr-server"
+description = "Standalone host: the same server as a PC process for the dev loop"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+[[bin]]
+name = "jdr-server"
+path = "src/main.rs"
+
+[dependencies]
+jdr-core = { path = "../../server/core" }
+jdr-services = { path = "../../server/services" }
+
+[dev-dependencies]
+jdr-crypto = { path = "../../server/crypto" }
+serde_json.workspace = true
