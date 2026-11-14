@@ -275,7 +275,7 @@ fn visit_object(
         if let Some(fd) = v.get_mut("m_FontData") {
             let size = fd.get("m_FontSize").and_then(V::as_i64);
             let best = fd.get("m_BestFit").and_then(V::as_i64);
-            if let (Some(size), Some(0)) = (size, best) {
+            if let (Some(size @ 1..), Some(0)) = (size, best) {
                 let min = (size / 2).max(8).min(size);
                 *fd.get_mut("m_BestFit").expect("m_BestFit") = V::U(1);
                 if let Some(x) = fd.get_mut("m_MinSize") {
