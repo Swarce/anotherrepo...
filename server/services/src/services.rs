@@ -34,6 +34,7 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/user/tutorial" => user::tutorial(ctx, env),
         "/user/user_info" => user::user_info_api(ctx, env),
         "/user/update_username" => user::update_username(ctx, env),
+        "/user/update_comment" => user::update_comment(ctx, env),
         "/user/get_loginbonus" => user::get_loginbonus(ctx, env),
         "/client/getkey" => client::getkey(ctx, env),
         "/client/getfiledata" => client::getfiledata(ctx, env),
