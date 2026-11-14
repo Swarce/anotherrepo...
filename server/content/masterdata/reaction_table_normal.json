@@ -1,0 +1,304 @@
+{
+ "asset": "reaction_table_normal",
+ "about": "Row i = Jjs.AttackReactionType i (None, DamageSmall, DamageBig, DamageHeavy, DamageBlow, DamageBind, DamageParalysis, Down, DamageBindDown, DamageParalysisDown, DamagePull, DamageInvidible, DamageVidible, DIE, DIE_DOWN). Action names are the common action sets in the player's (dt_)actionset_common (common_NNN_<NAME>), entry 0 as the sets' own DoChangeActionSet calls use. The tactical battle reads item[0]; the action battle reads item[0..2] by receiver status, so every row has 3 items. Without the DIE rows a killed tactical unit never runs DoRetireCharacter.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/12-master-data-fill.md §2",
+   "note": "how the client reads the table"
+  },
+  {
+   "source": "jdr-default",
+   "note": "the type->action mapping and standVanish choice are ours"
+  }
+ ],
+ "data": {
+  "param": [
+   {
+    "item": [
+     {
+      "actionSetName": "",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     }
+    ]
+   },
+   {
+    "item": [
+     {
+      "actionSetName": "DAMAGE_S",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_S",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_S",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     }
+    ]
+   },
+   {
+    "item": [
+     {
+      "actionSetName": "DAMAGE_B",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_B",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_B",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     }
+    ]
+   },
+   {
+    "item": [
+     {
+      "actionSetName": "DAMAGE_HVY",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_HVY",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_HVY",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     }
+    ]
+   },
+   {
+    "item": [
+     {
+      "actionSetName": "DAMAGE_BLOW",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_BLOW",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_BLOW",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     }
+    ]
+   },
+   {
+    "item": [
+     {
+      "actionSetName": "DAMAGE_BIND",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_BIND",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_BIND",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     }
+    ]
+   },
+   {
+    "item": [
+     {
+      "actionSetName": "DAMAGE_PARALYSIS",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_PARALYSIS",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_PARALYSIS",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     }
+    ]
+   },
+   {
+    "item": [
+     {
+      "actionSetName": "DOWN",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DOWN",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DOWN",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     }
+    ]
+   },
+   {
+    "item": [
+     {
+      "actionSetName": "DOWN",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DOWN",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DOWN",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     }
+    ]
+   },
+   {
+    "item": [
+     {
+      "actionSetName": "DOWN",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DOWN",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DOWN",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     }
+    ]
+   },
+   {
+    "item": [
+     {
+      "actionSetName": "DAMAGE_B",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_B",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_B",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     }
+    ]
+   },
+   {
+    "item": [
+     {
+      "actionSetName": "DAMAGE_INVISIBLE",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_INVISIBLE",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_INVISIBLE",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     }
+    ]
+   },
+   {
+    "item": [
+     {
+      "actionSetName": "DAMAGE_VISIBLE",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_VISIBLE",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DAMAGE_VISIBLE",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     }
+    ]
+   },
+   {
+    "item": [
+     {
+      "actionSetName": "DIE",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DIE",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DIE",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     }
+    ]
+   },
+   {
+    "item": [
+     {
+      "actionSetName": "DIE_DOWN",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DIE_DOWN",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     },
+     {
+      "actionSetName": "DIE_DOWN",
+      "actionSetEntryId": 0,
+      "standVanish": false
+     }
+    ]
+   }
+  ]
+ }
+}

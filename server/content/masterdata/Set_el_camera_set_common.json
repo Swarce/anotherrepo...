@@ -1,0 +1,767 @@
+{
+ "asset": "Set_el_camera_set_common",
+ "about": "Script camera sets for every camera id the client hard-codes (PvP intro/round finish, boss intro/end, battle result, tactical stage finish and result). Each plays one generic one-second shot and then reports its end; without a set the client keeps waiting for a camera that never finishes. flagMaintain must stay false or the camera never counts as finished.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/12-master-data-fill.md §3",
+   "note": "the hard-coded ids (GameConst cctor) and why a missing set stalls"
+  },
+  {
+   "source": "jdr-default",
+   "note": "one generic shot per id (timing ours); the shot itself follows the client's built-in test camera data"
+  }
+ ],
+ "data": {
+  "listData": [
+   {
+    "cameraID": 41,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 42,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 201,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 301,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 350,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 351,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 100300,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 100301,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 100310,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 100311,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101005,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101006,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101007,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101008,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101009,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101010,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101011,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101012,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101013,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101014,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101015,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101016,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101017,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101018,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101019,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101020,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101021,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101022,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101023,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101024,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101025,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101026,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101027,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 101028,
+    "beginInter": 0.3,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "ski_cam_00",
+      "sec": 1.0,
+      "inter": 0.3,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   }
+  ]
+ }
+}

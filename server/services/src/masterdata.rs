@@ -38,6 +38,114 @@ pub const TABLES: &[(&str, &str)] = &[
         "area_position_pattern_table",
         include_str!("../../content/masterdata/area_position_pattern_table.json"),
     ),
+    (
+        "Set_el_camera_set_common",
+        include_str!("../../content/masterdata/Set_el_camera_set_common.json"),
+    ),
+    (
+        "Node_el_camera_node_common",
+        include_str!("../../content/masterdata/Node_el_camera_node_common.json"),
+    ),
+    (
+        "team_rank_table",
+        include_str!("../../content/masterdata/team_rank_table.json"),
+    ),
+    (
+        "mind_level_table",
+        include_str!("../../content/masterdata/mind_level_table.json"),
+    ),
+    (
+        "dtbattle_reaction_table_normal",
+        include_str!("../../content/masterdata/dtbattle_reaction_table_normal.json"),
+    ),
+    (
+        "dtbattle_reaction_table_mini",
+        include_str!("../../content/masterdata/dtbattle_reaction_table_mini.json"),
+    ),
+    (
+        "dtbattle_reaction_table_mini_no_blow",
+        include_str!("../../content/masterdata/dtbattle_reaction_table_mini_no_blow.json"),
+    ),
+    (
+        "reaction_table_normal",
+        include_str!("../../content/masterdata/reaction_table_normal.json"),
+    ),
+    (
+        "reaction_table_mini",
+        include_str!("../../content/masterdata/reaction_table_mini.json"),
+    ),
+    (
+        "reaction_table_mini_no_blow",
+        include_str!("../../content/masterdata/reaction_table_mini_no_blow.json"),
+    ),
+    (
+        "model_table",
+        include_str!("../../content/masterdata/model_table.json"),
+    ),
+    (
+        "bullet_parameter",
+        include_str!("../../content/masterdata/bullet_parameter.json"),
+    ),
+    (
+        "battle_damage_param",
+        include_str!("../../content/masterdata/battle_damage_param.json"),
+    ),
+    (
+        "battle_combo_param",
+        include_str!("../../content/masterdata/battle_combo_param.json"),
+    ),
+    (
+        "battle_pvp_statue_status_parameter",
+        include_str!("../../content/masterdata/battle_pvp_statue_status_parameter.json"),
+    ),
+    (
+        "yogo_table",
+        include_str!("../../content/masterdata/yogo_table.json"),
+    ),
+    (
+        "characteristic_data",
+        include_str!("../../content/masterdata/characteristic_data.json"),
+    ),
+    (
+        "dtbattle_statue_affinity_table",
+        include_str!("../../content/masterdata/dtbattle_statue_affinity_table.json"),
+    ),
+    (
+        "statue_affinity_table",
+        include_str!("../../content/masterdata/statue_affinity_table.json"),
+    ),
+    (
+        "oraoramode_setting",
+        include_str!("../../content/masterdata/oraoramode_setting.json"),
+    ),
+    (
+        "affect_table",
+        include_str!("../../content/masterdata/affect_table.json"),
+    ),
+    (
+        "clan_table",
+        include_str!("../../content/masterdata/clan_table.json"),
+    ),
+    (
+        "clan_object_table",
+        include_str!("../../content/masterdata/clan_object_table.json"),
+    ),
+    (
+        "effectReductionParam",
+        include_str!("../../content/masterdata/effectReductionParam.json"),
+    ),
+    (
+        "state_abnormality_table",
+        include_str!("../../content/masterdata/state_abnormality_table.json"),
+    ),
+    (
+        "characterestic_skill_parameter",
+        include_str!("../../content/masterdata/characterestic_skill_parameter.json"),
+    ),
+    (
+        "skill_data_table",
+        include_str!("../../content/masterdata/skill_data_table.json"),
+    ),
 ];
 
 type Error = String;
@@ -694,6 +802,13 @@ mod tests {
             && r["myPageCameraType"] == "CameraIdSet0"
             && r["mindFrameID"] == 1
             && r["myPagePos"]["z"].as_f64().unwrap() > 100.0));
+        // Reward rows: dataId is a string the client parses as an int (Build 12 device log).
+        for c in crate::quests::chapters().iter().take(40) {
+            let s = crate::quests::stage_info(c, &c.stages[0], 0, &Default::default());
+            for r in s["steadyItemSet"].as_array().unwrap() {
+                assert!(r["dataId"].as_str().unwrap().parse::<i32>().is_ok());
+            }
+        }
         // Tactical areas name the formation and send no boss; action areas name none.
         for c in crate::quests::chapters().iter().take(40) {
             let a = &crate::quests::area_list(c, &c.stages[0])[0];
@@ -715,13 +830,85 @@ mod tests {
         }
     }
 
+    /// Every camera id the client hard-codes has a set that ends on its own (flagMaintain false),
+    /// and every node a set names exists (docs/research/12 §1).
+    #[test]
+    fn script_cameras_cover_the_hard_coded_ids() {
+        let doc = |name: &str| -> Value {
+            let js = TABLES.iter().find(|(n, _)| *n == name).unwrap().1;
+            serde_json::from_str::<Value>(js).unwrap()["data"].clone()
+        };
+        let sets = doc("Set_el_camera_set_common");
+        let nodes = doc("Node_el_camera_node_common");
+        let node_ids: Vec<&str> = nodes["listData"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|n| n["id"].as_str().unwrap())
+            .collect();
+        let list = sets["listData"].as_array().unwrap();
+        let ids: Vec<i64> = list
+            .iter()
+            .map(|s| s["cameraID"].as_i64().unwrap())
+            .collect();
+        for id in [41, 42, 201, 301, 350, 351, 100300, 100301, 100310, 100311]
+            .into_iter()
+            .chain(101005..=101028)
+        {
+            assert!(ids.contains(&id), "camera {id}");
+        }
+        for s in list {
+            assert_eq!(s["flagMaintain"], false);
+            for d in s["dataList"].as_array().unwrap() {
+                assert!(node_ids.contains(&d["cameraNode"].as_str().unwrap()));
+                assert!(d["sec"].as_f64().unwrap() > 0.0);
+            }
+        }
+    }
+
+    /// Some loaders throw on a duplicate key at startup (CharacteristicTable.Init @0xF1D188,
+    /// LoadSkillUseConditionParameter @0xF1BECC; docs/research/12 §1), and duplicate model hashes,
+    /// bullets or camera ids would shadow each other: every keyed table has unique keys.
+    #[test]
+    fn keyed_tables_have_unique_keys() {
+        let doc = |name: &str| -> Value {
+            let js = TABLES.iter().find(|(n, _)| *n == name).unwrap().1;
+            serde_json::from_str::<Value>(js).unwrap()["data"].clone()
+        };
+        for (name, list, key) in [
+            ("characteristic_data", "paramList", &["id"][..]),
+            ("yogo_table", "paramList", &["yogo_Id"][..]),
+            ("model_table", "paramList", &["modelIdHash"][..]),
+            (
+                "bullet_parameter",
+                "param",
+                &["ownerModelIdHash", "bulletId"][..],
+            ),
+            ("skill_data_table", "paramList", &["skillId"][..]),
+            ("Set_el_camera_set_common", "listData", &["cameraID"][..]),
+            ("Node_el_camera_node_common", "listData", &["id"][..]),
+        ] {
+            let rows = doc(name)[list].as_array().unwrap().clone();
+            let keys: std::collections::HashSet<String> = rows
+                .iter()
+                .map(|r| {
+                    key.iter()
+                        .map(|k| r[*k].to_string())
+                        .collect::<Vec<_>>()
+                        .join("/")
+                })
+                .collect();
+            assert_eq!(keys.len(), rows.len(), "{name}: duplicate keys");
+        }
+    }
+
     #[test]
     fn tutorial_table_content() {
         let s = Schema::embedded().unwrap();
         let t = tables(&s, TABLES).unwrap();
-        // 17 core tables plus two tactical battle tables from content files (the skill table
-        // is generated from the statues, see generated_tables).
-        assert_eq!(t.len(), 19);
+        // 17 core tables plus the battle tables from content files (the skill table is
+        // generated from the statues, see generated_tables).
+        assert_eq!(t.len(), 19 + 11 + 10); // yogo_table is core
         let tut = t.iter().find(|t| t.name == "tutorial_flag_table").unwrap();
         assert_eq!(tut.rows, 34);
         let Val::List(rows) = &tut.vals[0] else {
@@ -813,8 +1000,8 @@ mod tests {
         let wrong = r#"{"asset":"x","sources":[1],"data":{}}"#;
         assert!(tables(&s, &[("rank_table", wrong)]).is_err());
         let unknown =
-            r#"{"asset":"model_table","sources":[{"source":"jdr-default","note":"n"}],"data":{}}"#;
-        assert!(tables(&s, &[("model_table", unknown)])
+            r#"{"asset":"not_a_table","sources":[{"source":"jdr-default","note":"n"}],"data":{}}"#;
+        assert!(tables(&s, &[("not_a_table", unknown)])
             .unwrap_err()
             .contains("no such asset"));
         for (src, ok) in [
