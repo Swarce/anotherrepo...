@@ -369,7 +369,17 @@ fn run_import(ctx: &Ctx) {
             dest.display()
         ),
     );
-    let r = import::import(staging, &dest, |done, total, st| {
+    // Keep what the game (vcs.bytes) and the server (English files, see l10n state) updated.
+    let localized: std::collections::HashSet<String> =
+        std::fs::read(ctx.settings.data_dir.join("l10n/state.json"))
+            .ok()
+            .and_then(|b| {
+                serde_json::from_slice::<serde_json::Map<String, serde_json::Value>>(&b).ok()
+            })
+            .map(|m| m.keys().cloned().collect())
+            .unwrap_or_default();
+    let keep = |n: &str| n == "vcs.bytes" || localized.contains(n);
+    let r = import::import(staging, &dest, &keep, |done, total, st| {
         log::line(
             "import",
             &format!("{done}/{total} files ({} MiB copied)", st.bytes >> 20),
