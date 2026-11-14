@@ -1,10 +1,12 @@
 //! `/bizarre/*` and `/support/support_user_s`: the story quest flow.
 
+use crate::accounts::Change;
 use crate::app::{ApiError, ApiResult};
 use crate::collection;
-use crate::quests::{self, STORY_CATEGORY};
+use crate::quests::{self, PendingBattle, STORY_CATEGORY};
 use crate::services::ok;
-use crate::services::statue::profile;
+use crate::services::statue::{profile, with_profile};
+use jdr_core::log;
 use crate::Ctx;
 use jdr_core::envelope::RequestEnvelope;
 use serde_json::{json, Value};
@@ -70,7 +72,6 @@ pub fn support_user_s(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
 
 /// `BizarreStartResponse`: the battle description for the chosen stage and team.
 pub fn bizarre_start(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
-    let mut p = profile(ctx, env)?;
     let stage_id = env
         .param
         .get("stageId")
@@ -79,14 +80,22 @@ pub fn bizarre_start(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let (c, s) = quests::find_stage(stage_id)
         .ok_or_else(|| ApiError::Internal(format!("unknown stage {stage_id:?}")))?;
     let team_no = env.param.get("teamNo").and_then(Value::as_i64).unwrap_or(1);
-    let team = quests::team_for(&p.collection, c.stage_type, team_no)
-        .map(|t| collection::team_info(&p.collection, t))
+    let (p, team) = with_profile(ctx, env, |p| {
+        let team = quests::team_for(&p.collection, c.stage_type, team_no).cloned();
+        *p.progress
+            .play_counts
+            .entry(stage_id.to_string())
+            .or_insert(0) += 1;
+        p.progress.pending = team.as_ref().map(|t| PendingBattle {
+            stage_id: stage_id.to_string(),
+            stage_type: t.stage_type,
+            team_num: t.team_num,
+        });
+        (team, Change::Bookkeeping)
+    })?;
+    let team = team
+        .map(|t| collection::team_info(&p.collection, &t))
         .unwrap_or_else(|| json!({}));
-    *p.progress
-        .play_counts
-        .entry(stage_id.to_string())
-        .or_insert(0) += 1;
-    ctx.accounts.save(&p).map_err(ApiError::Internal)?;
     let n = c
         .stages
         .iter()
@@ -102,31 +111,59 @@ pub fn bizarre_start(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     }))
 }
 
-/// `BizarreEndResponse`: records a clear (result 0) and grants gold and rank EXP.
+/// `BizarreEndResponse`: for the battle `bizarre_start` began, records a clear (result 0) and
+/// grants gold, rank EXP and statue EXP to the team that fought, once (a resent request pays
+/// nothing more).
 pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
-    let mut p = profile(ctx, env)?;
     let stage_id = env
         .param
         .get("stageId")
         .and_then(Value::as_str)
         .unwrap_or("")
         .to_string();
-    let won = env.param.get("result").and_then(Value::as_i64).unwrap_or(0) == 0;
-    let found = quests::find_stage(&stage_id);
-    let (gold, rank_exp) = match (won, found) {
-        (true, Some((_, s))) => (s.gold, s.gain_rank_exp),
-        _ => (0, 0),
-    };
-    if won && found.is_some() {
-        p.progress.cleared.insert(stage_id.clone());
-        p.gold += gold;
-        p.exp += rank_exp;
-        p.rank = collection::rank_for_exp(p.exp);
+    let result = env.param.get("result").and_then(Value::as_i64);
+    if result.is_none() {
+        // BattleResult.Success is 0 (docs/research/10-content.md §3.9, medium confidence).
+        log::line("bizarre", "WARN bizarre_end without `result`; counted as a win");
     }
-    ctx.accounts.save(&p).map_err(ApiError::Internal)?;
-    let team = found
-        .and_then(|(c, _)| collection::main_team(&p.collection, c.stage_type))
-        .map(|t| collection::team_info(&p.collection, t))
+    let won = result.unwrap_or(0) == 0;
+    let found = quests::find_stage(&stage_id);
+    let (p, (paid, team)) = with_profile(ctx, env, |p| {
+        let pending = p
+            .progress
+            .pending
+            .take_if(|b| b.stage_id == stage_id);
+        let team = pending.as_ref().and_then(|b| {
+            p.collection
+                .teams
+                .iter()
+                .find(|t| t.stage_type == b.stage_type && t.team_num == b.team_num)
+                .cloned()
+        });
+        match (won, found, pending.is_some()) {
+            (true, Some((_, s)), true) => {
+                p.progress.cleared.insert(stage_id.clone());
+                p.gold += s.gold;
+                p.exp += s.gain_rank_exp;
+                p.rank = collection::rank_for_exp(p.exp);
+                let uids = team.as_ref().map(|t| t.slots.to_vec()).unwrap_or_default();
+                p.collection.add_statue_exp(&uids, s.gain_rank_exp);
+                ((Some(s), team), Change::Progress)
+            }
+            (_, _, true) => ((None, team), Change::Bookkeeping),
+            _ => ((None, team), Change::None),
+        }
+    })?;
+    if won && paid.is_none() {
+        log::line(
+            "bizarre",
+            &format!("bizarre_end for {stage_id:?} without a matching start: nothing paid (resent?)"),
+        );
+    }
+    let (gold, rank_exp) = paid.map(|s| (s.gold, s.gain_rank_exp)).unwrap_or((0, 0));
+    let team = team
+        .or_else(|| found.and_then(|(c, _)| collection::main_team(&p.collection, c.stage_type).cloned()))
+        .map(|t| collection::team_info(&p.collection, &t))
         .unwrap_or_else(|| json!({}));
     let empty = || json!({ "itemSetIcon": "", "itemSetNum": 0, "statueList": [], "mindList": [], "itemList": [], "clanObjectList": [] });
     ok(json!({
@@ -134,7 +171,7 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         "starClearList": env.param.get("starClearList").cloned().unwrap_or(json!("")),
         "userInfo": crate::services::user::user_info(&p),
         "rewardList": empty(), "dropList": empty(), "firstRewardList": empty(), "starRewardList": empty(),
-        "newRecordFlg": 0, "teamInfo": team, "gold": gold, "rankExp": rank_exp, "levelExp": 0,
+        "newRecordFlg": 0, "teamInfo": team, "gold": gold, "rankExp": rank_exp, "levelExp": rank_exp,
         "mindGashaPoint": 0, "supportUserInfo": {},
         "eventResult": { "eventType": 0, "userEventPointAll": 0, "getUserEventPoint": 0, "eventRewardList": [], "getEventItemList": [] },
         "dungeonClearFlag": 0, "dungeonGameoverFlag": 0, "nowEventRankingPoint": 0

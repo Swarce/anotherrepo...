@@ -12,10 +12,15 @@ game comes from the game's own files or is written by us.
 
 | Source | Used for | Files |
 |---|---|---|
-| [Diamond Records Wiki (ShoutWiki)](https://jojodiamondrecords.shoutwiki.com/), CC BY-SA 3.0 | statue Lv1/Lv99/max stats, abilities (numbers only) | `server/content/statues.json` (per-record page + revision) |
-| [JoJo's Bizarre Encyclopedia (JoJoWiki)](https://jojowiki.com/Diamond_Records), CC BY-SA 4.0 | statue max stats (cross-check) | `server/content/statues.json` |
-| [Gamerch ジョジョDR攻略Wiki](https://jojodr.gamerch.com/) (via the Wayback Machine) | story stages, minds (in progress) | `server/content/quests.json` |
-| Our own research (`jdr-research`) and defaults (`jdr-default`) | tutorial flags, identifiers from the player's files | `server/content/masterdata/`, `statues.json`, `quests.json` |
+| [Gamerch ジョジョDR攻略Wiki](https://jojodr.gamerch.com/) (archived pages via the Wayback Machine) | statue rarity, type and stats (129 statues); story stage AP, rank EXP, gold and recommended level (86 stages); mind rarity, cost and flat stats (417 minds); the player rank table | `server/content/statues.json`, `quests.json`, `minds.json`, `ranks.json` (per-record page) |
+| [Diamond Records Wiki (ShoutWiki)](https://jojodiamondrecords.shoutwiki.com/), [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | statue rarity, type, Lv1/Lv99/max stats (11 statues) | `server/content/statues.json` (per-record page + revision) |
+| Our own research (`jdr-research`) and defaults (`jdr-default`) | tutorial flags, identifiers from the player's files, values no source gives | `server/content/masterdata/`, `statues.json`, `quests.json` |
+
+From the CC BY-SA source only facts (numbers) were extracted; no text, layout or images. Each such
+record names its page and revision, the licence and the date it was read.
+
+We also read [JoJo's Bizarre Encyclopedia (JoJoWiki)](https://jojowiki.com/Diamond_Records)
+(CC BY-SA 4.0) to cross-check statue lists; nothing from it is in the committed files.
 
 Thank you to the players and wiki editors who documented the game while it was running.
 

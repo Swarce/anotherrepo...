@@ -1,6 +1,6 @@
 //! `/statue/*`: the player's statues (characters).
 
-use crate::accounts::Profile;
+use crate::accounts::{Change, Profile};
 use crate::app::{ApiError, ApiResult};
 use crate::collection;
 use crate::services::ok;
@@ -8,18 +8,28 @@ use crate::Ctx;
 use jdr_core::envelope::RequestEnvelope;
 use serde_json::{json, Value};
 
+/// Change the calling device's account under the account lock, with its collection granted
+/// first. A grant counts as progress (written with a backup rotation); otherwise `f` decides.
+pub fn with_profile<R>(
+    ctx: &Ctx,
+    env: &RequestEnvelope,
+    f: impl FnOnce(&mut Profile) -> (R, Change),
+) -> Result<(Profile, R), ApiError> {
+    let now = ctx.server_date();
+    match ctx.accounts.update(&env.uuid, |p| {
+        let granted = p.collection.ensure(&now);
+        let (r, change) = f(p);
+        (r, if granted { Change::Progress } else { change })
+    }) {
+        Ok(Some(x)) => Ok(x),
+        Ok(None) => Err(ApiError::Status(10003)), // E_SESSION_NG
+        Err(e) => Err(ApiError::Internal(format!("account unreadable or unwritable: {e}"))),
+    }
+}
+
 /// The calling device's account, with its collection granted (saved if that changed it).
 pub fn profile(ctx: &Ctx, env: &RequestEnvelope) -> Result<Profile, ApiError> {
-    let mut p = match ctx.accounts.get(&env.uuid) {
-        Ok(Some(p)) => p,
-        Ok(None) => return Err(ApiError::Status(10003)), // E_SESSION_NG
-        Err(e) => return Err(ApiError::Internal(format!("account unreadable: {e}"))),
-    };
-    let now = ctx.server_date();
-    if p.collection.ensure(&now) {
-        ctx.accounts.save(&p).map_err(ApiError::Internal)?;
-    }
-    Ok(p)
+    with_profile(ctx, env, |_| ((), Change::None)).map(|(p, ())| p)
 }
 
 /// `StatueListResponse`: every owned statue.
@@ -29,6 +39,7 @@ pub fn statue_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .collection
         .statues
         .iter()
+        .filter(|o| collection::find(&o.statue_id).is_some())
         .map(collection::statue_info)
         .collect();
     ok(json!({ "allStatueNum": list.len(), "statueList": list, "sortType": 0 }))
@@ -76,7 +87,7 @@ pub fn statue_info(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .unwrap_or(0);
     let o = p
         .collection
-        .statue(uid)
+        .known_statue(uid)
         .ok_or_else(|| ApiError::Internal(format!("no statue {uid}")))?;
     ok(json!({ "statueInfo": collection::statue_info(o) }))
 }

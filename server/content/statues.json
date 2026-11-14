@@ -5452,29 +5452,14 @@
     "4170_0_otoishi",
     "4170_1_rhcp"
    ],
-   "rarity": 6,
-   "statueType": 5,
-   "lv1": {
-    "hp": 1104,
-    "atk": 863,
-    "def": 656
-   },
-   "lv99": {
-    "hp": 11040,
-    "atk": 8625,
-    "def": 6555
-   },
-   "maxTree": {
-    "hp": 17640,
-    "atk": 16125,
-    "def": 13755
-   },
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
    "source": {
-    "source": "Diamond Records Wiki (ShoutWiki)",
-    "license": "CC BY-SA 3.0",
-    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Akira_Otoishi_%28Solitary%29",
-    "revid": 2969,
-    "accessed": "2026-11-14"
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
    }
   },
   {
@@ -6168,29 +6153,14 @@
     "5120_0_prosciutto",
     "5120_1_gratefuld"
    ],
-   "rarity": 6,
-   "statueType": 4,
-   "lv1": {
-    "hp": 3400,
-    "atk": 1620,
-    "def": 1540
-   },
-   "lv99": {
-    "hp": 3400,
-    "atk": 16200,
-    "def": 15400
-   },
-   "maxTree": {
-    "hp": 46600,
-    "atk": 28800,
-    "def": 26200
-   },
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
    "source": {
-    "source": "Diamond Records Wiki (ShoutWiki)",
-    "license": "CC BY-SA 3.0",
-    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Prosciutto_%28Unity%29",
-    "revid": 4544,
-    "accessed": "2026-11-14"
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
    }
   },
   {

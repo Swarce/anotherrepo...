@@ -61,19 +61,17 @@
      ],
      "mapId": "map02_snowfield03",
      "useStamina": 5,
-     "gainRankExp": 20,
-     "gold": 500,
-     "enemyLevel": 2,
+     "gainRankExp": 30,
+     "gold": 400,
+     "enemyLevel": 3,
      "enemies": [
       "1110_02",
       "1110_03",
       "1120_01"
      ],
      "source": {
-      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110193936/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%92%E7%AB%A0%E3%80%80%E3%82%A2%E3%83%B3%E3%82%B8%E3%82%A7%E3%83%AD%E3%82%92%E8%BF%BD%E3%81%88",
-      "capture": "20241110193936",
-      "accessed": "2026-11-14"
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
      }
     },
     {
@@ -85,19 +83,17 @@
      ],
      "mapId": "map03_beach00",
      "useStamina": 5,
-     "gainRankExp": 20,
-     "gold": 500,
-     "enemyLevel": 3,
+     "gainRankExp": 30,
+     "gold": 400,
+     "enemyLevel": 4,
      "enemies": [
       "1120_02",
       "1120_03",
       "1130_01"
      ],
      "source": {
-      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110193936/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%92%E7%AB%A0%E3%80%80%E3%82%A2%E3%83%B3%E3%82%B8%E3%82%A7%E3%83%AD%E3%82%92%E8%BF%BD%E3%81%88",
-      "capture": "20241110193936",
-      "accessed": "2026-11-14"
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
      }
     }
    ]
@@ -116,10 +112,10 @@
       "area_st_02_01_03"
      ],
      "mapId": "map03_egypt03",
-     "useStamina": 6,
-     "gainRankExp": 40,
-     "gold": 1000,
-     "enemyLevel": 4,
+     "useStamina": 4,
+     "gainRankExp": 70,
+     "gold": 1231,
+     "enemyLevel": 6,
      "enemies": [
       "1090_13",
       "1100_01",
@@ -127,8 +123,8 @@
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110173717/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%93%E7%AB%A0%E3%80%80%E7%9A%87%E5%B8%9D",
-      "capture": "20241110173717",
+      "page": "https://web.archive.org/web/20241110192453/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%94%E7%AB%A0%E3%80%80%E5%8F%8E%E7%A9%AB",
+      "capture": "20241110192453",
       "accessed": "2026-11-14"
      }
     },
@@ -140,10 +136,10 @@
       "area_st_02_02_03"
      ],
      "mapId": "map03_enya01",
-     "useStamina": 6,
-     "gainRankExp": 40,
-     "gold": 1231,
-     "enemyLevel": 5,
+     "useStamina": 4,
+     "gainRankExp": 70,
+     "gold": 1462,
+     "enemyLevel": 7,
      "enemies": [
       "1100_03",
       "1100_11",
@@ -151,8 +147,8 @@
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110173717/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%93%E7%AB%A0%E3%80%80%E7%9A%87%E5%B8%9D",
-      "capture": "20241110173717",
+      "page": "https://web.archive.org/web/20241110192453/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%94%E7%AB%A0%E3%80%80%E5%8F%8E%E7%A9%AB",
+      "capture": "20241110192453",
       "accessed": "2026-11-14"
      }
     },
@@ -164,10 +160,10 @@
       "area_st_02_03_03"
      ],
      "mapId": "map03_enya02",
-     "useStamina": 7,
-     "gainRankExp": 70,
-     "gold": 1231,
-     "enemyLevel": 6,
+     "useStamina": 4,
+     "gainRankExp": 100,
+     "gold": 1462,
+     "enemyLevel": 7,
      "enemies": [
       "1100_13",
       "1100_14",
@@ -175,8 +171,8 @@
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110173717/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%93%E7%AB%A0%E3%80%80%E7%9A%87%E5%B8%9D",
-      "capture": "20241110173717",
+      "page": "https://web.archive.org/web/20241110192453/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%94%E7%AB%A0%E3%80%80%E5%8F%8E%E7%A9%AB",
+      "capture": "20241110192453",
       "accessed": "2026-11-14"
      }
     }
@@ -196,10 +192,10 @@
       "area_st_03_01_03"
      ],
      "mapId": "map03_tiger01",
-     "useStamina": 4,
-     "gainRankExp": 70,
-     "gold": 1231,
-     "enemyLevel": 6,
+     "useStamina": 6,
+     "gainRankExp": 40,
+     "gold": 1000,
+     "enemyLevel": 4,
      "enemies": [
       "1020_01",
       "1020_02",
@@ -207,8 +203,8 @@
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110192453/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%94%E7%AB%A0%E3%80%80%E5%8F%8E%E7%A9%AB",
-      "capture": "20241110192453",
+      "page": "https://web.archive.org/web/20241110173717/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%93%E7%AB%A0%E3%80%80%E7%9A%87%E5%B8%9D",
+      "capture": "20241110173717",
       "accessed": "2026-11-14"
      }
     },
@@ -220,10 +216,10 @@
       "area_st_03_02_03"
      ],
      "mapId": "map03_tiger02",
-     "useStamina": 4,
-     "gainRankExp": 70,
-     "gold": 1462,
-     "enemyLevel": 7,
+     "useStamina": 6,
+     "gainRankExp": 40,
+     "gold": 1231,
+     "enemyLevel": 5,
      "enemies": [
       "1020_04",
       "1080_01",
@@ -231,8 +227,8 @@
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110192453/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%94%E7%AB%A0%E3%80%80%E5%8F%8E%E7%A9%AB",
-      "capture": "20241110192453",
+      "page": "https://web.archive.org/web/20241110173717/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%93%E7%AB%A0%E3%80%80%E7%9A%87%E5%B8%9D",
+      "capture": "20241110173717",
       "accessed": "2026-11-14"
      }
     },
@@ -244,10 +240,10 @@
       "area_st_03_03_03"
      ],
      "mapId": "map04_country01",
-     "useStamina": 4,
-     "gainRankExp": 100,
-     "gold": 1462,
-     "enemyLevel": 7,
+     "useStamina": 7,
+     "gainRankExp": 70,
+     "gold": 1231,
+     "enemyLevel": 6,
      "enemies": [
       "1080_03",
       "1090_01",
@@ -255,8 +251,8 @@
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110192453/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%94%E7%AB%A0%E3%80%80%E5%8F%8E%E7%A9%AB",
-      "capture": "20241110192453",
+      "page": "https://web.archive.org/web/20241110173717/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%93%E7%AB%A0%E3%80%80%E7%9A%87%E5%B8%9D",
+      "capture": "20241110173717",
       "accessed": "2026-11-14"
      }
     }
@@ -356,20 +352,18 @@
       "area_st_05_01_03"
      ],
      "mapId": "map05_school",
-     "useStamina": 4,
-     "gainRankExp": 140,
-     "gold": 1693,
-     "enemyLevel": 19,
+     "useStamina": 6,
+     "gainRankExp": 110,
+     "gold": 1000,
+     "enemyLevel": 11,
      "enemies": [
       "1110_02",
       "1110_03",
       "1120_01"
      ],
      "source": {
-      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110180003/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%96%E7%AB%A0%E3%80%80%E6%9F%B1%E3%81%AE%E7%94%B7%E3%82%B5%E3%83%B3%E3%82%BF%E3%83%8A%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
-      "capture": "20241110180003",
-      "accessed": "2026-11-14"
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
      }
     },
     {
@@ -380,20 +374,18 @@
       "area_st_05_02_03"
      ],
      "mapId": "map05_schoolgate",
-     "useStamina": 4,
-     "gainRankExp": 140,
-     "gold": 1924,
-     "enemyLevel": 19,
+     "useStamina": 6,
+     "gainRankExp": 110,
+     "gold": 1000,
+     "enemyLevel": 12,
      "enemies": [
       "1120_02",
       "1120_03",
       "1130_01"
      ],
      "source": {
-      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110180003/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%96%E7%AB%A0%E3%80%80%E6%9F%B1%E3%81%AE%E7%94%B7%E3%82%B5%E3%83%B3%E3%82%BF%E3%83%8A%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
-      "capture": "20241110180003",
-      "accessed": "2026-11-14"
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
      }
     },
     {
@@ -404,20 +396,18 @@
       "area_st_05_03_03"
      ],
      "mapId": "map05_town01",
-     "useStamina": 4,
-     "gainRankExp": 180,
-     "gold": 1924,
-     "enemyLevel": 19,
+     "useStamina": 6,
+     "gainRankExp": 110,
+     "gold": 1000,
+     "enemyLevel": 13,
      "enemies": [
       "1130_02",
       "1130_03",
       "1130_04"
      ],
      "source": {
-      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110180003/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%96%E7%AB%A0%E3%80%80%E6%9F%B1%E3%81%AE%E7%94%B7%E3%82%B5%E3%83%B3%E3%82%BF%E3%83%8A%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
-      "capture": "20241110180003",
-      "accessed": "2026-11-14"
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
      }
     }
    ]
@@ -441,9 +431,9 @@
      "gold": 2155,
      "enemyLevel": 23,
      "enemies": [
-      "1090_13",
-      "1100_01",
-      "1100_02"
+      "2000_12",
+      "2000_28",
+      "2010_01"
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
@@ -465,9 +455,9 @@
      "gold": 2155,
      "enemyLevel": 23,
      "enemies": [
-      "1100_03",
-      "1100_11",
-      "1100_12"
+      "2010_02",
+      "2010_03",
+      "2010_04"
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
@@ -489,9 +479,9 @@
      "gold": 2155,
      "enemyLevel": 25,
      "enemies": [
-      "1100_13",
-      "1100_14",
-      "1100_28"
+      "2010_13",
+      "2010_28",
+      "2020_01"
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
@@ -511,9 +501,9 @@
      "gold": 2386,
      "enemyLevel": 25,
      "enemies": [
-      "1110_01",
-      "1110_02",
-      "1110_03"
+      "2020_02",
+      "2020_03",
+      "2020_04"
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
@@ -538,20 +528,18 @@
       "area_st_07_01_03"
      ],
      "mapId": "map03_diohouse06",
-     "useStamina": 9,
-     "gainRankExp": 240,
-     "gold": 2366,
-     "enemyLevel": 26,
+     "useStamina": 7,
+     "gainRankExp": 150,
+     "gold": 1300,
+     "enemyLevel": 15,
      "enemies": [
       "2081_12",
       "2081_13",
       "2081_14"
      ],
      "source": {
-      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110174235/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%98%E7%AB%A0%E3%80%80%E8%99%B9%E6%9D%91%E5%85%84%E5%BC%9F%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
-      "capture": "20241110174235",
-      "accessed": "2026-11-14"
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
      }
     },
     {
@@ -562,20 +550,18 @@
       "area_st_07_02_03"
      ],
      "mapId": "map03_diohouse07",
-     "useStamina": 9,
-     "gainRankExp": 300,
-     "gold": 900,
-     "enemyLevel": 26,
+     "useStamina": 7,
+     "gainRankExp": 150,
+     "gold": 1300,
+     "enemyLevel": 16,
      "enemies": [
       "2100_03",
       "2110_01",
       "2110_02"
      ],
      "source": {
-      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110174235/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%98%E7%AB%A0%E3%80%80%E8%99%B9%E6%9D%91%E5%85%84%E5%BC%9F%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
-      "capture": "20241110174235",
-      "accessed": "2026-11-14"
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
      }
     },
     {
@@ -586,20 +572,18 @@
       "area_st_07_03_03"
      ],
      "mapId": "map03_egypt01",
-     "useStamina": 9,
-     "gainRankExp": 300,
-     "gold": 900,
-     "enemyLevel": 29,
+     "useStamina": 7,
+     "gainRankExp": 150,
+     "gold": 1300,
+     "enemyLevel": 17,
      "enemies": [
       "2110_03",
       "2111_01",
       "2111_02"
      ],
      "source": {
-      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110174235/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%98%E7%AB%A0%E3%80%80%E8%99%B9%E6%9D%91%E5%85%84%E5%BC%9F%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
-      "capture": "20241110174235",
-      "accessed": "2026-11-14"
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
      }
     },
     {
@@ -610,20 +594,18 @@
       "area_st_07_04_03"
      ],
      "mapId": "map03_egypt02",
-     "useStamina": 9,
-     "gainRankExp": 300,
-     "gold": 2617,
-     "enemyLevel": 29,
+     "useStamina": 7,
+     "gainRankExp": 150,
+     "gold": 1300,
+     "enemyLevel": 18,
      "enemies": [
       "2111_03",
       "2000_01",
       "2000_02"
      ],
      "source": {
-      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110174235/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%98%E7%AB%A0%E3%80%80%E8%99%B9%E6%9D%91%E5%85%84%E5%BC%9F%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
-      "capture": "20241110174235",
-      "accessed": "2026-11-14"
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
      }
     }
    ]
@@ -692,8 +674,8 @@
      "mapId": "map03_jotatown02",
      "useStamina": 10,
      "gainRankExp": 380,
-     "gold": 1000,
-     "enemyLevel": 3,
+     "gold": 1450,
+     "enemyLevel": 29,
      "enemies": [
       "2060_03",
       "2070_01",
@@ -703,8 +685,13 @@
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
       "page": "https://web.archive.org/web/20241110191022/https://jojodr.gamerch.com/%E7%AC%AC9%E7%AB%A0%E3%80%80%E3%80%8E%E7%8B%A9%E3%82%8A%E3%80%8F%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
       "capture": "20241110191022",
-      "accessed": "2026-11-14"
-     }
+      "accessed": "2026-11-14",
+      "note": "wiki recommended level looks like a typo (under half the previous stage's); previous stage's used"
+     },
+     "defaults": [
+      "gold",
+      "enemyLevel"
+     ]
     },
     {
      "stageId": "STAGE_ST_08_04",
@@ -716,7 +703,7 @@
      "mapId": "map03_jotatown03",
      "useStamina": 10,
      "gainRankExp": 390,
-     "gold": 1000,
+     "gold": 1450,
      "enemyLevel": 31,
      "enemies": [
       "2070_03",
@@ -728,7 +715,10 @@
       "page": "https://web.archive.org/web/20241110191022/https://jojodr.gamerch.com/%E7%AC%AC9%E7%AB%A0%E3%80%80%E3%80%8E%E7%8B%A9%E3%82%8A%E3%80%8F%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
       "capture": "20241110191022",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_08_05",
@@ -772,7 +762,7 @@
      "mapId": "map04_mystery01",
      "useStamina": 10,
      "gainRankExp": 500,
-     "gold": 1100,
+     "gold": 1600,
      "enemyLevel": 34,
      "enemies": [
       "2010_01",
@@ -784,7 +774,10 @@
       "page": "https://web.archive.org/web/20241110190803/https://jojodr.gamerch.com/%E7%AC%AC10%E7%AB%A0%E3%80%80%E6%9F%B1%E3%81%AE%E7%94%B7%E3%82%B5%E3%83%B3%E3%82%BF%E3%83%8A%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110190803",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_09_02",
@@ -796,7 +789,7 @@
      "mapId": "map04_owson00",
      "useStamina": 10,
      "gainRankExp": 500,
-     "gold": 1100,
+     "gold": 1600,
      "enemyLevel": 34,
      "enemies": [
       "2010_04",
@@ -808,7 +801,10 @@
       "page": "https://web.archive.org/web/20241110190803/https://jojodr.gamerch.com/%E7%AC%AC10%E7%AB%A0%E3%80%80%E6%9F%B1%E3%81%AE%E7%94%B7%E3%82%B5%E3%83%B3%E3%82%BF%E3%83%8A%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110190803",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_09_03",
@@ -820,7 +816,7 @@
      "mapId": "map04_owson01",
      "useStamina": 10,
      "gainRankExp": 500,
-     "gold": 1100,
+     "gold": 1600,
      "enemyLevel": 34,
      "enemies": [
       "2020_01",
@@ -832,7 +828,10 @@
       "page": "https://web.archive.org/web/20241110190803/https://jojodr.gamerch.com/%E7%AC%AC10%E7%AB%A0%E3%80%80%E6%9F%B1%E3%81%AE%E7%94%B7%E3%82%B5%E3%83%B3%E3%82%BF%E3%83%8A%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110190803",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_09_04",
@@ -844,7 +843,7 @@
      "mapId": "map04_rohanhouse01",
      "useStamina": 10,
      "gainRankExp": 500,
-     "gold": 1100,
+     "gold": 1600,
      "enemyLevel": 34,
      "enemies": [
       "2020_04",
@@ -856,7 +855,10 @@
       "page": "https://web.archive.org/web/20241110190803/https://jojodr.gamerch.com/%E7%AC%AC10%E7%AB%A0%E3%80%80%E6%9F%B1%E3%81%AE%E7%94%B7%E3%82%B5%E3%83%B3%E3%82%BF%E3%83%8A%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110190803",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_09_05",
@@ -868,7 +870,7 @@
      "mapId": "map04_town01",
      "useStamina": 10,
      "gainRankExp": 500,
-     "gold": 1100,
+     "gold": 1600,
      "enemyLevel": 34,
      "enemies": [
       "2040_03",
@@ -880,7 +882,10 @@
       "page": "https://web.archive.org/web/20241110190803/https://jojodr.gamerch.com/%E7%AC%AC10%E7%AB%A0%E3%80%80%E6%9F%B1%E3%81%AE%E7%94%B7%E3%82%B5%E3%83%B3%E3%82%BF%E3%83%8A%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110190803",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     }
    ]
   },
@@ -900,7 +905,7 @@
      "mapId": "map05_luciastation",
      "useStamina": 10,
      "gainRankExp": 610,
-     "gold": 1200,
+     "gold": 1750,
      "enemyLevel": 48,
      "enemies": [
       "2081_14",
@@ -912,7 +917,10 @@
       "page": "https://web.archive.org/web/20241110192758/https://jojodr.gamerch.com/%E7%AC%AC11%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE1",
       "capture": "20241110192758",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_10_02",
@@ -1028,7 +1036,7 @@
      "mapId": "map01_around03",
      "useStamina": 11,
      "gainRankExp": 740,
-     "gold": 1300,
+     "gold": 1900,
      "enemyLevel": 53,
      "enemies": [
       "2050_04",
@@ -1040,7 +1048,10 @@
       "page": "https://web.archive.org/web/20241110185710/https://jojodr.gamerch.com/%E7%AC%AC12%E7%AB%A0%E3%80%80%E8%99%B9%E6%9D%91%E5%85%84%E5%BC%9F%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110185710",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_11_02",
@@ -1052,7 +1063,7 @@
      "mapId": "map02_italia01",
      "useStamina": 11,
      "gainRankExp": 740,
-     "gold": 1300,
+     "gold": 1900,
      "enemyLevel": 53,
      "enemies": [
       "2060_02",
@@ -1064,7 +1075,10 @@
       "page": "https://web.archive.org/web/20241110185710/https://jojodr.gamerch.com/%E7%AC%AC12%E7%AB%A0%E3%80%80%E8%99%B9%E6%9D%91%E5%85%84%E5%BC%9F%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110185710",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_11_03",
@@ -1076,7 +1090,7 @@
      "mapId": "map02_italia02",
      "useStamina": 11,
      "gainRankExp": 870,
-     "gold": 1300,
+     "gold": 1900,
      "enemyLevel": 53,
      "enemies": [
       "2070_02",
@@ -1088,7 +1102,10 @@
       "page": "https://web.archive.org/web/20241110185710/https://jojodr.gamerch.com/%E7%AC%AC12%E7%AB%A0%E3%80%80%E8%99%B9%E6%9D%91%E5%85%84%E5%BC%9F%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110185710",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_11_04",
@@ -1100,7 +1117,7 @@
      "mapId": "map02_italia03",
      "useStamina": 11,
      "gainRankExp": 870,
-     "gold": 1300,
+     "gold": 1900,
      "enemyLevel": 54,
      "enemies": [
       "2080_02",
@@ -1112,7 +1129,10 @@
       "page": "https://web.archive.org/web/20241110185710/https://jojodr.gamerch.com/%E7%AC%AC12%E7%AB%A0%E3%80%80%E8%99%B9%E6%9D%91%E5%85%84%E5%BC%9F%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110185710",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_11_05",
@@ -1156,19 +1176,22 @@
      "mapId": "map03_desert01",
      "useStamina": 11,
      "gainRankExp": 870,
-     "gold": 1400,
+     "gold": 2050,
      "enemyLevel": 59,
      "enemies": [
-      "2010_03",
-      "2010_04",
-      "2010_13"
+      "3031_03",
+      "3031_04",
+      "3040_01"
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
       "page": "https://web.archive.org/web/20241110173827/https://jojodr.gamerch.com/%E7%AC%AC13%E7%AB%A0%E3%80%80%E6%BC%AB%E7%94%BB%E5%AE%B6%E3%81%AE%E3%81%86%E3%81%A1%E3%81%B8%E9%81%8A%E3%81%B3%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE1",
       "capture": "20241110173827",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_12_02",
@@ -1180,19 +1203,22 @@
      "mapId": "map03_desert02",
      "useStamina": 11,
      "gainRankExp": 1000,
-     "gold": 1400,
+     "gold": 2050,
      "enemyLevel": 59,
      "enemies": [
-      "2010_28",
-      "2020_01",
-      "2020_02"
+      "3040_02",
+      "3040_03",
+      "3040_04"
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
       "page": "https://web.archive.org/web/20241110173827/https://jojodr.gamerch.com/%E7%AC%AC13%E7%AB%A0%E3%80%80%E6%BC%AB%E7%94%BB%E5%AE%B6%E3%81%AE%E3%81%86%E3%81%A1%E3%81%B8%E9%81%8A%E3%81%B3%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE1",
       "capture": "20241110173827",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_12_03",
@@ -1204,19 +1230,22 @@
      "mapId": "map03_desert03",
      "useStamina": 11,
      "gainRankExp": 1000,
-     "gold": 1400,
+     "gold": 2050,
      "enemyLevel": 59,
      "enemies": [
-      "2020_03",
-      "2020_04",
-      "2040_01"
+      "3040_13",
+      "3041_03",
+      "3041_04"
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
       "page": "https://web.archive.org/web/20241110173827/https://jojodr.gamerch.com/%E7%AC%AC13%E7%AB%A0%E3%80%80%E6%BC%AB%E7%94%BB%E5%AE%B6%E3%81%AE%E3%81%86%E3%81%A1%E3%81%B8%E9%81%8A%E3%81%B3%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE1",
       "capture": "20241110173827",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_12_04",
@@ -1228,19 +1257,22 @@
      "mapId": "map03_diohouse01",
      "useStamina": 11,
      "gainRankExp": 1000,
-     "gold": 1400,
+     "gold": 2050,
      "enemyLevel": 59,
      "enemies": [
-      "2040_02",
-      "2040_03",
-      "2050_01"
+      "3050_01",
+      "3050_02",
+      "3050_03"
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
       "page": "https://web.archive.org/web/20241110173827/https://jojodr.gamerch.com/%E7%AC%AC13%E7%AB%A0%E3%80%80%E6%BC%AB%E7%94%BB%E5%AE%B6%E3%81%AE%E3%81%86%E3%81%A1%E3%81%B8%E9%81%8A%E3%81%B3%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE1",
       "capture": "20241110173827",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_12_05",
@@ -1255,9 +1287,9 @@
      "gold": 4003,
      "enemyLevel": 59,
      "enemies": [
-      "2050_02",
-      "2050_03",
-      "2050_04"
+      "3050_04",
+      "3060_01",
+      "3060_02"
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
@@ -1284,7 +1316,7 @@
      "mapId": "map03_enya02",
      "useStamina": 12,
      "gainRankExp": 1140,
-     "gold": 1500,
+     "gold": 2200,
      "enemyLevel": 59,
      "enemies": [
       "3110_14",
@@ -1296,7 +1328,10 @@
       "page": "https://web.archive.org/web/20241110181234/https://jojodr.gamerch.com/%E7%AC%AC14%E7%AB%A0%E3%80%80%E6%B3%A2%E7%B4%8B%E3%81%AE%E4%BC%9D%E6%8E%88",
       "capture": "20241110181234",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_13_02",
@@ -1308,7 +1343,7 @@
      "mapId": "map03_enya03",
      "useStamina": 12,
      "gainRankExp": 1140,
-     "gold": 1500,
+     "gold": 2200,
      "enemyLevel": 59,
      "enemies": [
       "3150_03",
@@ -1320,7 +1355,10 @@
       "page": "https://web.archive.org/web/20241110181234/https://jojodr.gamerch.com/%E7%AC%AC14%E7%AB%A0%E3%80%80%E6%B3%A2%E7%B4%8B%E3%81%AE%E4%BC%9D%E6%8E%88",
       "capture": "20241110181234",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_13_03",
@@ -1332,7 +1370,7 @@
      "mapId": "map03_india01",
      "useStamina": 12,
      "gainRankExp": 1280,
-     "gold": 1500,
+     "gold": 2200,
      "enemyLevel": 59,
      "enemies": [
       "3210_01",
@@ -1344,7 +1382,10 @@
       "page": "https://web.archive.org/web/20241110181234/https://jojodr.gamerch.com/%E7%AC%AC14%E7%AB%A0%E3%80%80%E6%B3%A2%E7%B4%8B%E3%81%AE%E4%BC%9D%E6%8E%88",
       "capture": "20241110181234",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_13_04",
@@ -1356,7 +1397,7 @@
      "mapId": "map03_india02",
      "useStamina": 12,
      "gainRankExp": 1280,
-     "gold": 1500,
+     "gold": 2200,
      "enemyLevel": 59,
      "enemies": [
       "3210_12",
@@ -1368,7 +1409,10 @@
       "page": "https://web.archive.org/web/20241110181234/https://jojodr.gamerch.com/%E7%AC%AC14%E7%AB%A0%E3%80%80%E6%B3%A2%E7%B4%8B%E3%81%AE%E4%BC%9D%E6%8E%88",
       "capture": "20241110181234",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_13_05",
@@ -1380,7 +1424,7 @@
      "mapId": "map03_india03",
      "useStamina": 12,
      "gainRankExp": 1420,
-     "gold": 1500,
+     "gold": 2200,
      "enemyLevel": 59,
      "enemies": [
       "3240_12",
@@ -1392,7 +1436,10 @@
       "page": "https://web.archive.org/web/20241110181234/https://jojodr.gamerch.com/%E7%AC%AC14%E7%AB%A0%E3%80%80%E6%B3%A2%E7%B4%8B%E3%81%AE%E4%BC%9D%E6%8E%88",
       "capture": "20241110181234",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     }
    ]
   },
@@ -1412,7 +1459,7 @@
      "mapId": "map04_country01",
      "useStamina": 12,
      "gainRankExp": 1420,
-     "gold": 1600,
+     "gold": 2350,
      "enemyLevel": 60,
      "enemies": [
       "3000_01",
@@ -1424,7 +1471,10 @@
       "page": "https://web.archive.org/web/20241110193754/https://jojodr.gamerch.com/%E7%AC%AC15%E7%AB%A0%E3%80%80%E9%8A%80%E3%81%AE%E6%88%A6%E8%BB%8A",
       "capture": "20241110193754",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_14_02",
@@ -1436,7 +1486,7 @@
      "mapId": "map04_country03",
      "useStamina": 12,
      "gainRankExp": 1420,
-     "gold": 1600,
+     "gold": 2350,
      "enemyLevel": 60,
      "enemies": [
       "3000_04",
@@ -1448,7 +1498,10 @@
       "page": "https://web.archive.org/web/20241110193754/https://jojodr.gamerch.com/%E7%AC%AC15%E7%AB%A0%E3%80%80%E9%8A%80%E3%81%AE%E6%88%A6%E8%BB%8A",
       "capture": "20241110193754",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_14_03",
@@ -1460,7 +1513,7 @@
      "mapId": "map04_country04",
      "useStamina": 13,
      "gainRankExp": 1580,
-     "gold": 1600,
+     "gold": 2350,
      "enemyLevel": 60,
      "enemies": [
       "3001_04",
@@ -1472,7 +1525,10 @@
       "page": "https://web.archive.org/web/20241110193754/https://jojodr.gamerch.com/%E7%AC%AC15%E7%AB%A0%E3%80%80%E9%8A%80%E3%81%AE%E6%88%A6%E8%BB%8A",
       "capture": "20241110193754",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_14_04",
@@ -1484,7 +1540,7 @@
      "mapId": "map04_mego02",
      "useStamina": 13,
      "gainRankExp": 1580,
-     "gold": 1600,
+     "gold": 2350,
      "enemyLevel": 60,
      "enemies": [
       "3010_01",
@@ -1496,7 +1552,10 @@
       "page": "https://web.archive.org/web/20241110193754/https://jojodr.gamerch.com/%E7%AC%AC15%E7%AB%A0%E3%80%80%E9%8A%80%E3%81%AE%E6%88%A6%E8%BB%8A",
       "capture": "20241110193754",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_14_05",
@@ -1508,7 +1567,7 @@
      "mapId": "map04_mystery01",
      "useStamina": 13,
      "gainRankExp": 1740,
-     "gold": 1600,
+     "gold": 2350,
      "enemyLevel": 60,
      "enemies": [
       "3010_13",
@@ -1520,7 +1579,10 @@
       "page": "https://web.archive.org/web/20241110193754/https://jojodr.gamerch.com/%E7%AC%AC15%E7%AB%A0%E3%80%80%E9%8A%80%E3%81%AE%E6%88%A6%E8%BB%8A",
       "capture": "20241110193754",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     }
    ]
   },
@@ -1540,7 +1602,7 @@
      "mapId": "map04_town04",
      "useStamina": 13,
      "gainRankExp": 1740,
-     "gold": 1700,
+     "gold": 2500,
      "enemyLevel": 62,
      "enemies": [
       "3040_13",
@@ -1552,7 +1614,10 @@
       "page": "https://web.archive.org/web/20241110173344/https://jojodr.gamerch.com/%E7%AC%AC16%E7%AB%A0%E3%80%80%E3%80%8E%E7%8B%A9%E3%82%8A%E3%80%8F%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110173344",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_15_02",
@@ -1564,7 +1629,7 @@
      "mapId": "map04_town05",
      "useStamina": 13,
      "gainRankExp": 1740,
-     "gold": 1700,
+     "gold": 2500,
      "enemyLevel": 62,
      "enemies": [
       "3050_01",
@@ -1576,7 +1641,10 @@
       "page": "https://web.archive.org/web/20241110173344/https://jojodr.gamerch.com/%E7%AC%AC16%E7%AB%A0%E3%80%80%E3%80%8E%E7%8B%A9%E3%82%8A%E3%80%8F%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110173344",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_15_03",
@@ -1588,7 +1656,7 @@
      "mapId": "map04_tunnel03",
      "useStamina": 13,
      "gainRankExp": 1900,
-     "gold": 1700,
+     "gold": 2500,
      "enemyLevel": 62,
      "enemies": [
       "3050_04",
@@ -1600,7 +1668,10 @@
       "page": "https://web.archive.org/web/20241110173344/https://jojodr.gamerch.com/%E7%AC%AC16%E7%AB%A0%E3%80%80%E3%80%8E%E7%8B%A9%E3%82%8A%E3%80%8F%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110173344",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_15_04",
@@ -1612,7 +1683,7 @@
      "mapId": "map05_colosseum",
      "useStamina": 13,
      "gainRankExp": 1900,
-     "gold": 1700,
+     "gold": 2500,
      "enemyLevel": 62,
      "enemies": [
       "3060_03",
@@ -1624,7 +1695,10 @@
       "page": "https://web.archive.org/web/20241110173344/https://jojodr.gamerch.com/%E7%AC%AC16%E7%AB%A0%E3%80%80%E3%80%8E%E7%8B%A9%E3%82%8A%E3%80%8F%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110173344",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_15_05",
@@ -1636,7 +1710,7 @@
      "mapId": "map05_luciastation",
      "useStamina": 14,
      "gainRankExp": 2080,
-     "gold": 1700,
+     "gold": 2500,
      "enemyLevel": 62,
      "enemies": [
       "3070_03",
@@ -1648,7 +1722,10 @@
       "page": "https://web.archive.org/web/20241110173344/https://jojodr.gamerch.com/%E7%AC%AC16%E7%AB%A0%E3%80%80%E3%80%8E%E7%8B%A9%E3%82%8A%E3%80%8F%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110173344",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     }
    ]
   },
@@ -1666,20 +1743,18 @@
       "area_st_16_01_03"
      ],
      "mapId": "map05_town01",
-     "useStamina": 14,
-     "gainRankExp": 2080,
-     "gold": 1800,
-     "enemyLevel": 63,
+     "useStamina": 10,
+     "gainRankExp": 330,
+     "gold": 2650,
+     "enemyLevel": 33,
      "enemies": [
       "3210_01",
       "3210_02",
       "3210_03"
      ],
      "source": {
-      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110180322/https://jojodr.gamerch.com/%E7%AC%AC17%E7%AB%A0%E3%80%80%E5%B1%B1%E5%B2%B8%E7%94%B1%E8%8A%B1%E5%AD%90%E3%81%AF%E6%81%8B%E3%82%92%E3%81%99%E3%82%8B%E3%80%80%EF%BD%9E%E4%BB%97%E5%8A%A9%E7%B7%A8%EF%BD%9E",
-      "capture": "20241110180322",
-      "accessed": "2026-11-14"
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
      }
     },
     {
@@ -1690,20 +1765,18 @@
       "area_st_16_02_03"
      ],
      "mapId": "map05_train00",
-     "useStamina": 14,
-     "gainRankExp": 2080,
-     "gold": 1800,
-     "enemyLevel": 63,
+     "useStamina": 10,
+     "gainRankExp": 330,
+     "gold": 2650,
+     "enemyLevel": 34,
      "enemies": [
       "3210_12",
       "3210_13",
       "3240_11"
      ],
      "source": {
-      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110180322/https://jojodr.gamerch.com/%E7%AC%AC17%E7%AB%A0%E3%80%80%E5%B1%B1%E5%B2%B8%E7%94%B1%E8%8A%B1%E5%AD%90%E3%81%AF%E6%81%8B%E3%82%92%E3%81%99%E3%82%8B%E3%80%80%EF%BD%9E%E4%BB%97%E5%8A%A9%E7%B7%A8%EF%BD%9E",
-      "capture": "20241110180322",
-      "accessed": "2026-11-14"
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
      }
     },
     {
@@ -1714,20 +1787,18 @@
       "area_st_16_03_03"
      ],
      "mapId": "map01_around01",
-     "useStamina": 14,
-     "gainRankExp": 2080,
-     "gold": 1800,
-     "enemyLevel": 63,
+     "useStamina": 10,
+     "gainRankExp": 330,
+     "gold": 2650,
+     "enemyLevel": 35,
      "enemies": [
       "3240_12",
       "3240_13",
       "3270_01"
      ],
      "source": {
-      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110180322/https://jojodr.gamerch.com/%E7%AC%AC17%E7%AB%A0%E3%80%80%E5%B1%B1%E5%B2%B8%E7%94%B1%E8%8A%B1%E5%AD%90%E3%81%AF%E6%81%8B%E3%82%92%E3%81%99%E3%82%8B%E3%80%80%EF%BD%9E%E4%BB%97%E5%8A%A9%E7%B7%A8%EF%BD%9E",
-      "capture": "20241110180322",
-      "accessed": "2026-11-14"
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
      }
     },
     {
@@ -1738,20 +1809,18 @@
       "area_st_16_04_03"
      ],
      "mapId": "map01_around02",
-     "useStamina": 14,
-     "gainRankExp": 2260,
-     "gold": 1800,
-     "enemyLevel": 63,
+     "useStamina": 10,
+     "gainRankExp": 330,
+     "gold": 2650,
+     "enemyLevel": 36,
      "enemies": [
       "3270_02",
       "3270_03",
       "3270_04"
      ],
      "source": {
-      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110180322/https://jojodr.gamerch.com/%E7%AC%AC17%E7%AB%A0%E3%80%80%E5%B1%B1%E5%B2%B8%E7%94%B1%E8%8A%B1%E5%AD%90%E3%81%AF%E6%81%8B%E3%82%92%E3%81%99%E3%82%8B%E3%80%80%EF%BD%9E%E4%BB%97%E5%8A%A9%E7%B7%A8%EF%BD%9E",
-      "capture": "20241110180322",
-      "accessed": "2026-11-14"
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
      }
     },
     {
@@ -1762,20 +1831,18 @@
       "area_st_16_05_03"
      ],
      "mapId": "map01_around03",
-     "useStamina": 14,
-     "gainRankExp": 2260,
-     "gold": 1800,
-     "enemyLevel": 63,
+     "useStamina": 10,
+     "gainRankExp": 330,
+     "gold": 2650,
+     "enemyLevel": 37,
      "enemies": [
       "3300_01",
       "3300_02",
       "3300_03"
      ],
      "source": {
-      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
-      "page": "https://web.archive.org/web/20241110180322/https://jojodr.gamerch.com/%E7%AC%AC17%E7%AB%A0%E3%80%80%E5%B1%B1%E5%B2%B8%E7%94%B1%E8%8A%B1%E5%AD%90%E3%81%AF%E6%81%8B%E3%82%92%E3%81%99%E3%82%8B%E3%80%80%EF%BD%9E%E4%BB%97%E5%8A%A9%E7%B7%A8%EF%BD%9E",
-      "capture": "20241110180322",
-      "accessed": "2026-11-14"
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
      }
     }
    ]
@@ -1796,7 +1863,7 @@
      "mapId": "map02_snowfield01",
      "useStamina": 14,
      "gainRankExp": 2440,
-     "gold": 1900,
+     "gold": 2800,
      "enemyLevel": 65,
      "enemies": [
       "3001_04",
@@ -1808,7 +1875,10 @@
       "page": "https://web.archive.org/web/20241110175921/https://jojodr.gamerch.com/%E7%AC%AC18%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110175921",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_17_02",
@@ -1820,7 +1890,7 @@
      "mapId": "map02_snowfield02",
      "useStamina": 14,
      "gainRankExp": 2620,
-     "gold": 1900,
+     "gold": 2800,
      "enemyLevel": 65,
      "enemies": [
       "3010_01",
@@ -1832,7 +1902,10 @@
       "page": "https://web.archive.org/web/20241110175921/https://jojodr.gamerch.com/%E7%AC%AC18%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110175921",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_17_03",
@@ -1844,7 +1917,7 @@
      "mapId": "map02_snowfield03",
      "useStamina": 14,
      "gainRankExp": 2620,
-     "gold": 1900,
+     "gold": 2800,
      "enemyLevel": 65,
      "enemies": [
       "3010_13",
@@ -1856,7 +1929,10 @@
       "page": "https://web.archive.org/web/20241110175921/https://jojodr.gamerch.com/%E7%AC%AC18%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110175921",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_17_04",
@@ -1868,7 +1944,7 @@
      "mapId": "map03_beach00",
      "useStamina": 14,
      "gainRankExp": 2620,
-     "gold": 1900,
+     "gold": 2800,
      "enemyLevel": 65,
      "enemies": [
       "3020_03",
@@ -1880,7 +1956,10 @@
       "page": "https://web.archive.org/web/20241110175921/https://jojodr.gamerch.com/%E7%AC%AC18%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110175921",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_17_05",
@@ -1892,7 +1971,7 @@
      "mapId": "map03_desert01",
      "useStamina": 15,
      "gainRankExp": 2620,
-     "gold": 1900,
+     "gold": 2800,
      "enemyLevel": 65,
      "enemies": [
       "3020_28",
@@ -1904,7 +1983,10 @@
       "page": "https://web.archive.org/web/20241110175921/https://jojodr.gamerch.com/%E7%AC%AC18%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110175921",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_17_06",
@@ -1916,7 +1998,7 @@
      "mapId": "map03_desert02",
      "useStamina": 15,
      "gainRankExp": 2620,
-     "gold": 1900,
+     "gold": 2800,
      "enemyLevel": 65,
      "enemies": [
       "3030_03",
@@ -1928,7 +2010,10 @@
       "page": "https://web.archive.org/web/20241110175921/https://jojodr.gamerch.com/%E7%AC%AC18%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE2",
       "capture": "20241110175921",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     }
    ]
   },
@@ -1948,19 +2033,22 @@
      "mapId": "map03_egypt01",
      "useStamina": 15,
      "gainRankExp": 2800,
-     "gold": 2000,
+     "gold": 2950,
      "enemyLevel": 70,
      "enemies": [
-      "3050_04",
-      "3060_01",
-      "3060_02"
+      "4000_02",
+      "4000_03",
+      "4000_04"
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
       "page": "https://web.archive.org/web/20241110181018/https://jojodr.gamerch.com/%E7%AC%AC19%E7%AB%A0%E3%80%80%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%EF%BC%81%E6%9D%B1%E6%96%B9%E4%BB%97%E5%8A%A9%E3%81%AB%E4%BC%9A%E3%81%86",
       "capture": "20241110181018",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_18_02",
@@ -1975,9 +2063,9 @@
      "gold": 6313,
      "enemyLevel": 70,
      "enemies": [
-      "3060_03",
-      "3070_01",
-      "3070_02"
+      "4000_12",
+      "4000_18",
+      "4000_23"
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
@@ -1999,9 +2087,9 @@
      "gold": 6613,
      "enemyLevel": 70,
      "enemies": [
-      "3070_03",
-      "3090_01",
-      "3090_02"
+      "4010_01",
+      "4010_13",
+      "4011_02"
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
@@ -2020,19 +2108,22 @@
      "mapId": "map03_enya01",
      "useStamina": 15,
      "gainRankExp": 3000,
-     "gold": 2000,
+     "gold": 2950,
      "enemyLevel": 70,
      "enemies": [
-      "3090_03",
-      "3100_01",
-      "3100_02"
+      "4011_03",
+      "4011_15",
+      "4011_16"
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
       "page": "https://web.archive.org/web/20241110181018/https://jojodr.gamerch.com/%E7%AC%AC19%E7%AB%A0%E3%80%80%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%EF%BC%81%E6%9D%B1%E6%96%B9%E4%BB%97%E5%8A%A9%E3%81%AB%E4%BC%9A%E3%81%86",
       "capture": "20241110181018",
       "accessed": "2026-11-14"
-     }
+     },
+     "defaults": [
+      "gold"
+     ]
     },
     {
      "stageId": "STAGE_ST_18_05",
@@ -2047,9 +2138,9 @@
      "gold": 6613,
      "enemyLevel": 70,
      "enemies": [
-      "3100_03",
-      "3100_12",
-      "3110_01"
+      "4011_17",
+      "4011_18",
+      "4012_03"
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
@@ -2071,9 +2162,9 @@
      "gold": 6613,
      "enemyLevel": 70,
      "enemies": [
-      "3110_02",
-      "3110_03",
-      "3110_13"
+      "4012_11",
+      "4020_01",
+      "4020_02"
      ],
      "source": {
       "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
@@ -2610,10 +2701,10 @@
       "area_st_23_01_03"
      ],
      "mapId": "map03_desert03",
-     "useStamina": 16,
-     "gainRankExp": 125,
-     "gold": 2500,
-     "enemyLevel": 70,
+     "useStamina": 12,
+     "gainRankExp": 470,
+     "gold": 3700,
+     "enemyLevel": 47,
      "enemies": [
       "4240_11",
       "4240_12",
@@ -2632,10 +2723,10 @@
       "area_st_23_02_03"
      ],
      "mapId": "map03_diohouse01",
-     "useStamina": 16,
-     "gainRankExp": 125,
-     "gold": 2500,
-     "enemyLevel": 70,
+     "useStamina": 12,
+     "gainRankExp": 470,
+     "gold": 3700,
+     "enemyLevel": 48,
      "enemies": [
       "4000_01",
       "4000_02",
@@ -2654,10 +2745,10 @@
       "area_st_23_03_03"
      ],
      "mapId": "map03_diohouse06",
-     "useStamina": 16,
-     "gainRankExp": 125,
-     "gold": 2500,
-     "enemyLevel": 70,
+     "useStamina": 12,
+     "gainRankExp": 470,
+     "gold": 3700,
+     "enemyLevel": 49,
      "enemies": [
       "4000_04",
       "4000_12",
@@ -2676,10 +2767,10 @@
       "area_st_23_04_03"
      ],
      "mapId": "map03_diohouse07",
-     "useStamina": 16,
-     "gainRankExp": 125,
-     "gold": 2500,
-     "enemyLevel": 70,
+     "useStamina": 12,
+     "gainRankExp": 470,
+     "gold": 3700,
+     "enemyLevel": 50,
      "enemies": [
       "4000_23",
       "4010_01",
@@ -2698,10 +2789,10 @@
       "area_st_23_05_03"
      ],
      "mapId": "map03_egypt01",
-     "useStamina": 16,
-     "gainRankExp": 125,
-     "gold": 2500,
-     "enemyLevel": 70,
+     "useStamina": 12,
+     "gainRankExp": 470,
+     "gold": 3700,
+     "enemyLevel": 51,
      "enemies": [
       "4011_02",
       "4011_03",
@@ -2728,14 +2819,14 @@
       "area_st_24_01_03"
      ],
      "mapId": "map03_india01",
-     "useStamina": 17,
-     "gainRankExp": 130,
-     "gold": 2600,
-     "enemyLevel": 73,
+     "useStamina": 13,
+     "gainRankExp": 490,
+     "gold": 3850,
+     "enemyLevel": 49,
      "enemies": [
-      "4040_01",
-      "4040_12",
-      "4040_13"
+      "5010_04",
+      "5010_14",
+      "5030_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -2750,14 +2841,14 @@
       "area_st_24_02_03"
      ],
      "mapId": "map03_india02",
-     "useStamina": 17,
-     "gainRankExp": 130,
-     "gold": 2600,
-     "enemyLevel": 73,
+     "useStamina": 13,
+     "gainRankExp": 490,
+     "gold": 3850,
+     "enemyLevel": 50,
      "enemies": [
-      "4040_14",
-      "4042_03",
-      "4043_08"
+      "5050_03",
+      "5050_04",
+      "5080_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -2772,14 +2863,14 @@
       "area_st_24_03_03"
      ],
      "mapId": "map03_india03",
-     "useStamina": 17,
-     "gainRankExp": 130,
-     "gold": 2600,
-     "enemyLevel": 73,
+     "useStamina": 13,
+     "gainRankExp": 490,
+     "gold": 3850,
+     "enemyLevel": 51,
      "enemies": [
-      "4080_01",
-      "4080_02",
-      "4080_03"
+      "5100_14",
+      "5120_14",
+      "5140_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -2794,14 +2885,14 @@
       "area_st_24_04_03"
      ],
      "mapId": "map03_jotatown01",
-     "useStamina": 17,
-     "gainRankExp": 130,
-     "gold": 2600,
-     "enemyLevel": 73,
+     "useStamina": 13,
+     "gainRankExp": 490,
+     "gold": 3850,
+     "enemyLevel": 52,
      "enemies": [
-      "4080_04",
-      "4080_13",
-      "4110_01"
+      "5150_04",
+      "5170_14",
+      "5210_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -2816,14 +2907,14 @@
       "area_st_24_05_03"
      ],
      "mapId": "map03_jotatown02",
-     "useStamina": 17,
-     "gainRankExp": 130,
-     "gold": 2600,
-     "enemyLevel": 73,
+     "useStamina": 13,
+     "gainRankExp": 490,
+     "gold": 3850,
+     "enemyLevel": 53,
      "enemies": [
-      "4110_02",
-      "4110_13",
-      "4110_14"
+      "5220_14",
+      "5290_04",
+      "5320_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -2846,10 +2937,10 @@
       "area_st_25_01_03"
      ],
      "mapId": "map04_country04",
-     "useStamina": 17,
-     "gainRankExp": 135,
-     "gold": 2700,
-     "enemyLevel": 76,
+     "useStamina": 13,
+     "gainRankExp": 510,
+     "gold": 4000,
+     "enemyLevel": 51,
      "enemies": [
       "5150_04",
       "5170_14",
@@ -2868,10 +2959,10 @@
       "area_st_25_02_03"
      ],
      "mapId": "map04_mego02",
-     "useStamina": 17,
-     "gainRankExp": 135,
-     "gold": 2700,
-     "enemyLevel": 76,
+     "useStamina": 13,
+     "gainRankExp": 510,
+     "gold": 4000,
+     "enemyLevel": 52,
      "enemies": [
       "5220_14",
       "5290_04",
@@ -2890,10 +2981,10 @@
       "area_st_25_03_03"
      ],
      "mapId": "map04_mystery01",
-     "useStamina": 17,
-     "gainRankExp": 135,
-     "gold": 2700,
-     "enemyLevel": 76,
+     "useStamina": 13,
+     "gainRankExp": 510,
+     "gold": 4000,
+     "enemyLevel": 53,
      "enemies": [
       "5000_03",
       "5000_04",
@@ -2912,10 +3003,10 @@
       "area_st_25_04_03"
      ],
      "mapId": "map04_owson00",
-     "useStamina": 17,
-     "gainRankExp": 135,
-     "gold": 2700,
-     "enemyLevel": 76,
+     "useStamina": 13,
+     "gainRankExp": 510,
+     "gold": 4000,
+     "enemyLevel": 54,
      "enemies": [
       "5000_23",
       "5000_24",
@@ -2934,10 +3025,10 @@
       "area_st_25_05_03"
      ],
      "mapId": "map04_owson01",
-     "useStamina": 17,
-     "gainRankExp": 135,
-     "gold": 2700,
-     "enemyLevel": 76,
+     "useStamina": 13,
+     "gainRankExp": 510,
+     "gold": 4000,
+     "enemyLevel": 55,
      "enemies": [
       "5010_04",
       "5010_14",
@@ -2964,10 +3055,10 @@
       "area_st_26_01_03"
      ],
      "mapId": "map04_tunnel03",
-     "useStamina": 18,
-     "gainRankExp": 140,
-     "gold": 2800,
-     "enemyLevel": 79,
+     "useStamina": 13,
+     "gainRankExp": 530,
+     "gold": 4150,
+     "enemyLevel": 53,
      "enemies": [
       "5000_23",
       "5000_24",
@@ -2986,10 +3077,10 @@
       "area_st_26_02_03"
      ],
      "mapId": "map05_colosseum",
-     "useStamina": 18,
-     "gainRankExp": 140,
-     "gold": 2800,
-     "enemyLevel": 79,
+     "useStamina": 13,
+     "gainRankExp": 530,
+     "gold": 4150,
+     "enemyLevel": 54,
      "enemies": [
       "5010_04",
       "5010_14",
@@ -3008,10 +3099,10 @@
       "area_st_26_03_03"
      ],
      "mapId": "map05_luciastation",
-     "useStamina": 18,
-     "gainRankExp": 140,
-     "gold": 2800,
-     "enemyLevel": 79,
+     "useStamina": 13,
+     "gainRankExp": 530,
+     "gold": 4150,
+     "enemyLevel": 55,
      "enemies": [
       "5050_03",
       "5050_04",
@@ -3030,10 +3121,10 @@
       "area_st_26_04_03"
      ],
      "mapId": "map05_maggiore",
-     "useStamina": 18,
-     "gainRankExp": 140,
-     "gold": 2800,
-     "enemyLevel": 79,
+     "useStamina": 13,
+     "gainRankExp": 530,
+     "gold": 4150,
+     "enemyLevel": 56,
      "enemies": [
       "5100_14",
       "5120_14",
@@ -3052,10 +3143,10 @@
       "area_st_26_05_03"
      ],
      "mapId": "map05_roof",
-     "useStamina": 18,
-     "gainRankExp": 140,
-     "gold": 2800,
-     "enemyLevel": 79,
+     "useStamina": 13,
+     "gainRankExp": 530,
+     "gold": 4150,
+     "enemyLevel": 57,
      "enemies": [
       "5150_04",
       "5170_14",
@@ -3082,10 +3173,10 @@
       "area_st_27_01_03"
      ],
      "mapId": "map01_around01",
-     "useStamina": 18,
-     "gainRankExp": 145,
-     "gold": 2900,
-     "enemyLevel": 82,
+     "useStamina": 14,
+     "gainRankExp": 550,
+     "gold": 4300,
+     "enemyLevel": 55,
      "enemies": [
       "5100_14",
       "5120_14",
@@ -3104,10 +3195,10 @@
       "area_st_27_02_03"
      ],
      "mapId": "map01_around02",
-     "useStamina": 18,
-     "gainRankExp": 145,
-     "gold": 2900,
-     "enemyLevel": 82,
+     "useStamina": 14,
+     "gainRankExp": 550,
+     "gold": 4300,
+     "enemyLevel": 56,
      "enemies": [
       "5150_04",
       "5170_14",
@@ -3126,10 +3217,10 @@
       "area_st_27_03_03"
      ],
      "mapId": "map01_around03",
-     "useStamina": 18,
-     "gainRankExp": 145,
-     "gold": 2900,
-     "enemyLevel": 82,
+     "useStamina": 14,
+     "gainRankExp": 550,
+     "gold": 4300,
+     "enemyLevel": 57,
      "enemies": [
       "5220_14",
       "5290_04",
@@ -3148,10 +3239,10 @@
       "area_st_27_04_03"
      ],
      "mapId": "map02_italia01",
-     "useStamina": 18,
-     "gainRankExp": 145,
-     "gold": 2900,
-     "enemyLevel": 82,
+     "useStamina": 14,
+     "gainRankExp": 550,
+     "gold": 4300,
+     "enemyLevel": 58,
      "enemies": [
       "5000_03",
       "5000_04",
@@ -3170,10 +3261,10 @@
       "area_st_27_05_03"
      ],
      "mapId": "map02_italia02",
-     "useStamina": 18,
-     "gainRankExp": 145,
-     "gold": 2900,
-     "enemyLevel": 82,
+     "useStamina": 14,
+     "gainRankExp": 550,
+     "gold": 4300,
+     "enemyLevel": 59,
      "enemies": [
       "5000_23",
       "5000_24",
@@ -3200,10 +3291,10 @@
       "area_st_28_01_03"
      ],
      "mapId": "map02_snowfield03",
-     "useStamina": 19,
-     "gainRankExp": 150,
-     "gold": 3000,
-     "enemyLevel": 85,
+     "useStamina": 14,
+     "gainRankExp": 570,
+     "gold": 4450,
+     "enemyLevel": 57,
      "enemies": [
       "5000_03",
       "5000_04",
@@ -3222,10 +3313,10 @@
       "area_st_28_02_03"
      ],
      "mapId": "map03_beach00",
-     "useStamina": 19,
-     "gainRankExp": 150,
-     "gold": 3000,
-     "enemyLevel": 85,
+     "useStamina": 14,
+     "gainRankExp": 570,
+     "gold": 4450,
+     "enemyLevel": 58,
      "enemies": [
       "5000_23",
       "5000_24",
@@ -3244,10 +3335,10 @@
       "area_st_28_03_03"
      ],
      "mapId": "map03_desert01",
-     "useStamina": 19,
-     "gainRankExp": 150,
-     "gold": 3000,
-     "enemyLevel": 85,
+     "useStamina": 14,
+     "gainRankExp": 570,
+     "gold": 4450,
+     "enemyLevel": 59,
      "enemies": [
       "5010_04",
       "5010_14",
@@ -3266,10 +3357,10 @@
       "area_st_28_04_03"
      ],
      "mapId": "map03_desert02",
-     "useStamina": 19,
-     "gainRankExp": 150,
-     "gold": 3000,
-     "enemyLevel": 85,
+     "useStamina": 14,
+     "gainRankExp": 570,
+     "gold": 4450,
+     "enemyLevel": 60,
      "enemies": [
       "5050_03",
       "5050_04",
@@ -3288,10 +3379,10 @@
       "area_st_28_05_03"
      ],
      "mapId": "map03_desert03",
-     "useStamina": 19,
-     "gainRankExp": 150,
-     "gold": 3000,
-     "enemyLevel": 85,
+     "useStamina": 14,
+     "gainRankExp": 570,
+     "gold": 4450,
+     "enemyLevel": 61,
      "enemies": [
       "5100_14",
       "5120_14",
@@ -3316,7 +3407,7 @@
      "mapId": "map01_around01",
      "useStamina": 5,
      "gainRankExp": 10,
-     "gold": 200,
+     "gold": 250,
      "enemyLevel": 1,
      "enemies": [
       "1000_01",
@@ -3334,8 +3425,8 @@
      "mapId": "map01_around02",
      "useStamina": 5,
      "gainRankExp": 10,
-     "gold": 200,
-     "enemyLevel": 1,
+     "gold": 250,
+     "enemyLevel": 2,
      "enemies": [
       "1000_04",
       "1000_12",
@@ -3352,8 +3443,8 @@
      "mapId": "map01_around03",
      "useStamina": 5,
      "gainRankExp": 10,
-     "gold": 200,
-     "enemyLevel": 1,
+     "gold": 250,
+     "enemyLevel": 3,
      "enemies": [
       "1000_28",
       "1010_01",
@@ -3370,8 +3461,8 @@
      "mapId": "map02_italia01",
      "useStamina": 5,
      "gainRankExp": 10,
-     "gold": 200,
-     "enemyLevel": 1,
+     "gold": 250,
+     "enemyLevel": 4,
      "enemies": [
       "1010_03",
       "1020_01",
@@ -3393,15 +3484,15 @@
     {
      "stageId": "DT_STAGE_ST_401_01",
      "areas": [],
-     "mapId": "map03_desert03",
-     "useStamina": 205,
-     "gainRankExp": 2015,
-     "gold": 40300,
-     "enemyLevel": 1204,
+     "mapId": "map02_snowfield03",
+     "useStamina": 5,
+     "gainRankExp": 30,
+     "gold": 400,
+     "enemyLevel": 3,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "1110_02",
+      "1110_03",
+      "1120_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -3411,15 +3502,15 @@
     {
      "stageId": "DT_STAGE_ST_401_02",
      "areas": [],
-     "mapId": "map03_diohouse01",
-     "useStamina": 205,
-     "gainRankExp": 2015,
-     "gold": 40300,
-     "enemyLevel": 1204,
+     "mapId": "map03_beach00",
+     "useStamina": 5,
+     "gainRankExp": 30,
+     "gold": 400,
+     "enemyLevel": 4,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "1120_02",
+      "1120_03",
+      "1130_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -3429,15 +3520,15 @@
     {
      "stageId": "DT_STAGE_ST_401_03",
      "areas": [],
-     "mapId": "map03_diohouse06",
-     "useStamina": 205,
-     "gainRankExp": 2015,
-     "gold": 40300,
-     "enemyLevel": 1204,
+     "mapId": "map03_desert01",
+     "useStamina": 5,
+     "gainRankExp": 30,
+     "gold": 400,
+     "enemyLevel": 5,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "1130_02",
+      "1130_03",
+      "1130_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -3447,15 +3538,15 @@
     {
      "stageId": "DT_STAGE_ST_401_04",
      "areas": [],
-     "mapId": "map03_diohouse07",
-     "useStamina": 205,
-     "gainRankExp": 2015,
-     "gold": 40300,
-     "enemyLevel": 1204,
+     "mapId": "map03_desert02",
+     "useStamina": 5,
+     "gainRankExp": 30,
+     "gold": 400,
+     "enemyLevel": 6,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "1130_13",
+      "1000_01",
+      "1000_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -3465,15 +3556,15 @@
     {
      "stageId": "DT_STAGE_ST_401_05",
      "areas": [],
-     "mapId": "map03_egypt01",
-     "useStamina": 205,
-     "gainRankExp": 2015,
-     "gold": 40300,
-     "enemyLevel": 1204,
+     "mapId": "map03_desert03",
+     "useStamina": 5,
+     "gainRankExp": 30,
+     "gold": 400,
+     "enemyLevel": 7,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "1000_03",
+      "1000_04",
+      "1000_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -3491,15 +3582,15 @@
     {
      "stageId": "DT_STAGE_ST_402_01",
      "areas": [],
-     "mapId": "map03_india01",
-     "useStamina": 206,
-     "gainRankExp": 2020,
-     "gold": 40400,
-     "enemyLevel": 1207,
+     "mapId": "map03_egypt03",
+     "useStamina": 5,
+     "gainRankExp": 50,
+     "gold": 550,
+     "enemyLevel": 5,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "1090_13",
+      "1100_01",
+      "1100_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -3509,15 +3600,15 @@
     {
      "stageId": "DT_STAGE_ST_402_02",
      "areas": [],
-     "mapId": "map03_india02",
-     "useStamina": 206,
-     "gainRankExp": 2020,
-     "gold": 40400,
-     "enemyLevel": 1207,
+     "mapId": "map03_enya01",
+     "useStamina": 5,
+     "gainRankExp": 50,
+     "gold": 550,
+     "enemyLevel": 6,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "1100_03",
+      "1100_11",
+      "1100_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -3527,15 +3618,15 @@
     {
      "stageId": "DT_STAGE_ST_402_03",
      "areas": [],
-     "mapId": "map03_india03",
-     "useStamina": 206,
-     "gainRankExp": 2020,
-     "gold": 40400,
-     "enemyLevel": 1207,
+     "mapId": "map03_enya02",
+     "useStamina": 5,
+     "gainRankExp": 50,
+     "gold": 550,
+     "enemyLevel": 7,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "1100_13",
+      "1100_14",
+      "1100_28"
      ],
      "source": {
       "source": "jdr-default",
@@ -3545,15 +3636,15 @@
     {
      "stageId": "DT_STAGE_ST_402_04",
      "areas": [],
-     "mapId": "map03_jotatown01",
-     "useStamina": 206,
-     "gainRankExp": 2020,
-     "gold": 40400,
-     "enemyLevel": 1207,
+     "mapId": "map03_enya03",
+     "useStamina": 5,
+     "gainRankExp": 50,
+     "gold": 550,
+     "enemyLevel": 8,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "1110_01",
+      "1110_02",
+      "1110_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -3563,15 +3654,15 @@
     {
      "stageId": "DT_STAGE_ST_402_05",
      "areas": [],
-     "mapId": "map03_jotatown02",
-     "useStamina": 206,
-     "gainRankExp": 2020,
-     "gold": 40400,
-     "enemyLevel": 1207,
+     "mapId": "map03_india01",
+     "useStamina": 5,
+     "gainRankExp": 50,
+     "gold": 550,
+     "enemyLevel": 9,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "1120_01",
+      "1120_02",
+      "1120_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -3589,15 +3680,15 @@
     {
      "stageId": "DT_STAGE_ST_403_01",
      "areas": [],
-     "mapId": "map04_country04",
-     "useStamina": 206,
-     "gainRankExp": 2025,
-     "gold": 40500,
-     "enemyLevel": 1210,
+     "mapId": "map03_tiger01",
+     "useStamina": 6,
+     "gainRankExp": 70,
+     "gold": 700,
+     "enemyLevel": 7,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "1020_01",
+      "1020_02",
+      "1020_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -3607,15 +3698,15 @@
     {
      "stageId": "DT_STAGE_ST_403_02",
      "areas": [],
-     "mapId": "map04_mego02",
-     "useStamina": 206,
-     "gainRankExp": 2025,
-     "gold": 40500,
-     "enemyLevel": 1210,
+     "mapId": "map03_tiger02",
+     "useStamina": 6,
+     "gainRankExp": 70,
+     "gold": 700,
+     "enemyLevel": 8,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "1020_04",
+      "1080_01",
+      "1080_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -3625,15 +3716,15 @@
     {
      "stageId": "DT_STAGE_ST_403_03",
      "areas": [],
-     "mapId": "map04_mystery01",
-     "useStamina": 206,
-     "gainRankExp": 2025,
-     "gold": 40500,
-     "enemyLevel": 1210,
+     "mapId": "map04_country01",
+     "useStamina": 6,
+     "gainRankExp": 70,
+     "gold": 700,
+     "enemyLevel": 9,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "1080_03",
+      "1090_01",
+      "1090_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -3643,15 +3734,15 @@
     {
      "stageId": "DT_STAGE_ST_403_04",
      "areas": [],
-     "mapId": "map04_owson00",
-     "useStamina": 206,
-     "gainRankExp": 2025,
-     "gold": 40500,
-     "enemyLevel": 1210,
+     "mapId": "map04_country03",
+     "useStamina": 6,
+     "gainRankExp": 70,
+     "gold": 700,
+     "enemyLevel": 10,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "1090_03",
+      "1090_13",
+      "1100_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -3661,15 +3752,15 @@
     {
      "stageId": "DT_STAGE_ST_403_05",
      "areas": [],
-     "mapId": "map04_owson01",
-     "useStamina": 206,
-     "gainRankExp": 2025,
-     "gold": 40500,
-     "enemyLevel": 1210,
+     "mapId": "map04_country04",
+     "useStamina": 6,
+     "gainRankExp": 70,
+     "gold": 700,
+     "enemyLevel": 11,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "1100_02",
+      "1100_03",
+      "1100_11"
      ],
      "source": {
       "source": "jdr-default",
@@ -3687,15 +3778,15 @@
     {
      "stageId": "DT_STAGE_ST_404_01",
      "areas": [],
-     "mapId": "map04_tunnel03",
-     "useStamina": 207,
-     "gainRankExp": 2030,
-     "gold": 40600,
-     "enemyLevel": 1213,
+     "mapId": "map04_town01",
+     "useStamina": 6,
+     "gainRankExp": 90,
+     "gold": 850,
+     "enemyLevel": 9,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "1000_01",
+      "1000_02",
+      "1000_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -3705,15 +3796,15 @@
     {
      "stageId": "DT_STAGE_ST_404_02",
      "areas": [],
-     "mapId": "map05_colosseum",
-     "useStamina": 207,
-     "gainRankExp": 2030,
-     "gold": 40600,
-     "enemyLevel": 1213,
+     "mapId": "map04_town03",
+     "useStamina": 6,
+     "gainRankExp": 90,
+     "gold": 850,
+     "enemyLevel": 10,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "1000_04",
+      "1000_12",
+      "1000_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -3723,15 +3814,15 @@
     {
      "stageId": "DT_STAGE_ST_404_03",
      "areas": [],
-     "mapId": "map05_luciastation",
-     "useStamina": 207,
-     "gainRankExp": 2030,
-     "gold": 40600,
-     "enemyLevel": 1213,
+     "mapId": "map04_town04",
+     "useStamina": 6,
+     "gainRankExp": 90,
+     "gold": 850,
+     "enemyLevel": 11,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "1000_28",
+      "1010_01",
+      "1010_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -3741,15 +3832,15 @@
     {
      "stageId": "DT_STAGE_ST_404_04",
      "areas": [],
-     "mapId": "map05_maggiore",
-     "useStamina": 207,
-     "gainRankExp": 2030,
-     "gold": 40600,
-     "enemyLevel": 1213,
+     "mapId": "map04_town05",
+     "useStamina": 6,
+     "gainRankExp": 90,
+     "gold": 850,
+     "enemyLevel": 12,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "1010_03",
+      "1020_01",
+      "1020_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -3759,15 +3850,15 @@
     {
      "stageId": "DT_STAGE_ST_404_05",
      "areas": [],
-     "mapId": "map05_roof",
-     "useStamina": 207,
-     "gainRankExp": 2030,
-     "gold": 40600,
-     "enemyLevel": 1213,
+     "mapId": "map04_tunnel03",
+     "useStamina": 6,
+     "gainRankExp": 90,
+     "gold": 850,
+     "enemyLevel": 13,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "1020_03",
+      "1020_04",
+      "1080_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -3785,15 +3876,15 @@
     {
      "stageId": "DT_STAGE_ST_405_01",
      "areas": [],
-     "mapId": "map01_around01",
-     "useStamina": 207,
-     "gainRankExp": 2035,
-     "gold": 40700,
-     "enemyLevel": 1216,
+     "mapId": "map05_school",
+     "useStamina": 6,
+     "gainRankExp": 110,
+     "gold": 1000,
+     "enemyLevel": 11,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "1110_02",
+      "1110_03",
+      "1120_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -3803,15 +3894,15 @@
     {
      "stageId": "DT_STAGE_ST_405_02",
      "areas": [],
-     "mapId": "map01_around02",
-     "useStamina": 207,
-     "gainRankExp": 2035,
-     "gold": 40700,
-     "enemyLevel": 1216,
+     "mapId": "map05_schoolgate",
+     "useStamina": 6,
+     "gainRankExp": 110,
+     "gold": 1000,
+     "enemyLevel": 12,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "1120_02",
+      "1120_03",
+      "1130_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -3821,15 +3912,15 @@
     {
      "stageId": "DT_STAGE_ST_405_03",
      "areas": [],
-     "mapId": "map01_around03",
-     "useStamina": 207,
-     "gainRankExp": 2035,
-     "gold": 40700,
-     "enemyLevel": 1216,
+     "mapId": "map05_town01",
+     "useStamina": 6,
+     "gainRankExp": 110,
+     "gold": 1000,
+     "enemyLevel": 13,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "1130_02",
+      "1130_03",
+      "1130_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -3839,15 +3930,15 @@
     {
      "stageId": "DT_STAGE_ST_405_04",
      "areas": [],
-     "mapId": "map02_italia01",
-     "useStamina": 207,
-     "gainRankExp": 2035,
-     "gold": 40700,
-     "enemyLevel": 1216,
+     "mapId": "map05_train00",
+     "useStamina": 6,
+     "gainRankExp": 110,
+     "gold": 1000,
+     "enemyLevel": 14,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "1130_13",
+      "1000_01",
+      "1000_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -3857,15 +3948,15 @@
     {
      "stageId": "DT_STAGE_ST_405_05",
      "areas": [],
-     "mapId": "map02_italia02",
-     "useStamina": 207,
-     "gainRankExp": 2035,
-     "gold": 40700,
-     "enemyLevel": 1216,
+     "mapId": "map01_around01",
+     "useStamina": 6,
+     "gainRankExp": 110,
+     "gold": 1000,
+     "enemyLevel": 15,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "1000_03",
+      "1000_04",
+      "1000_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -3883,15 +3974,15 @@
     {
      "stageId": "DT_STAGE_ST_406_01",
      "areas": [],
-     "mapId": "map02_snowfield03",
-     "useStamina": 208,
-     "gainRankExp": 2040,
-     "gold": 40800,
-     "enemyLevel": 1219,
+     "mapId": "map02_mexico01",
+     "useStamina": 7,
+     "gainRankExp": 130,
+     "gold": 1150,
+     "enemyLevel": 13,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "1090_13",
+      "1100_01",
+      "1100_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -3901,15 +3992,15 @@
     {
      "stageId": "DT_STAGE_ST_406_02",
      "areas": [],
-     "mapId": "map03_beach00",
-     "useStamina": 208,
-     "gainRankExp": 2040,
-     "gold": 40800,
-     "enemyLevel": 1219,
+     "mapId": "map02_mexico02",
+     "useStamina": 7,
+     "gainRankExp": 130,
+     "gold": 1150,
+     "enemyLevel": 14,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "1100_03",
+      "1100_11",
+      "1100_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -3919,15 +4010,15 @@
     {
      "stageId": "DT_STAGE_ST_406_03",
      "areas": [],
-     "mapId": "map03_desert01",
-     "useStamina": 208,
-     "gainRankExp": 2040,
-     "gold": 40800,
-     "enemyLevel": 1219,
+     "mapId": "map02_snowfield01",
+     "useStamina": 7,
+     "gainRankExp": 130,
+     "gold": 1150,
+     "enemyLevel": 15,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "1100_13",
+      "1100_14",
+      "1100_28"
      ],
      "source": {
       "source": "jdr-default",
@@ -3937,15 +4028,15 @@
     {
      "stageId": "DT_STAGE_ST_406_04",
      "areas": [],
-     "mapId": "map03_desert02",
-     "useStamina": 208,
-     "gainRankExp": 2040,
-     "gold": 40800,
-     "enemyLevel": 1219,
+     "mapId": "map02_snowfield02",
+     "useStamina": 7,
+     "gainRankExp": 130,
+     "gold": 1150,
+     "enemyLevel": 16,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "1110_01",
+      "1110_02",
+      "1110_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -3955,15 +4046,15 @@
     {
      "stageId": "DT_STAGE_ST_406_05",
      "areas": [],
-     "mapId": "map03_desert03",
-     "useStamina": 208,
-     "gainRankExp": 2040,
-     "gold": 40800,
-     "enemyLevel": 1219,
+     "mapId": "map02_snowfield03",
+     "useStamina": 7,
+     "gainRankExp": 130,
+     "gold": 1150,
+     "enemyLevel": 17,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "1120_01",
+      "1120_02",
+      "1120_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -3981,15 +4072,15 @@
     {
      "stageId": "DT_STAGE_ST_407_01",
      "areas": [],
-     "mapId": "map03_egypt03",
-     "useStamina": 208,
-     "gainRankExp": 2045,
-     "gold": 40900,
-     "enemyLevel": 1222,
+     "mapId": "map03_diohouse06",
+     "useStamina": 7,
+     "gainRankExp": 150,
+     "gold": 1300,
+     "enemyLevel": 15,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "1020_01",
+      "1020_02",
+      "1020_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -3999,15 +4090,15 @@
     {
      "stageId": "DT_STAGE_ST_407_02",
      "areas": [],
-     "mapId": "map03_enya01",
-     "useStamina": 208,
-     "gainRankExp": 2045,
-     "gold": 40900,
-     "enemyLevel": 1222,
+     "mapId": "map03_diohouse07",
+     "useStamina": 7,
+     "gainRankExp": 150,
+     "gold": 1300,
+     "enemyLevel": 16,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "1020_04",
+      "1080_01",
+      "1080_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4017,15 +4108,15 @@
     {
      "stageId": "DT_STAGE_ST_407_03",
      "areas": [],
-     "mapId": "map03_enya02",
-     "useStamina": 208,
-     "gainRankExp": 2045,
-     "gold": 40900,
-     "enemyLevel": 1222,
+     "mapId": "map03_egypt01",
+     "useStamina": 7,
+     "gainRankExp": 150,
+     "gold": 1300,
+     "enemyLevel": 17,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "1080_03",
+      "1090_01",
+      "1090_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4035,15 +4126,15 @@
     {
      "stageId": "DT_STAGE_ST_407_04",
      "areas": [],
-     "mapId": "map03_enya03",
-     "useStamina": 208,
-     "gainRankExp": 2045,
-     "gold": 40900,
-     "enemyLevel": 1222,
+     "mapId": "map03_egypt02",
+     "useStamina": 7,
+     "gainRankExp": 150,
+     "gold": 1300,
+     "enemyLevel": 18,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "1090_03",
+      "1090_13",
+      "1100_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4053,15 +4144,15 @@
     {
      "stageId": "DT_STAGE_ST_407_05",
      "areas": [],
-     "mapId": "map03_india01",
-     "useStamina": 208,
-     "gainRankExp": 2045,
-     "gold": 40900,
-     "enemyLevel": 1222,
+     "mapId": "map03_egypt03",
+     "useStamina": 7,
+     "gainRankExp": 150,
+     "gold": 1300,
+     "enemyLevel": 19,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "1100_02",
+      "1100_03",
+      "1100_11"
      ],
      "source": {
       "source": "jdr-default",
@@ -4079,15 +4170,15 @@
     {
      "stageId": "DT_STAGE_ST_408_01",
      "areas": [],
-     "mapId": "map03_tiger01",
-     "useStamina": 209,
-     "gainRankExp": 2050,
-     "gold": 41000,
-     "enemyLevel": 1225,
+     "mapId": "map03_india03",
+     "useStamina": 7,
+     "gainRankExp": 170,
+     "gold": 1450,
+     "enemyLevel": 17,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "1000_01",
+      "1000_02",
+      "1000_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4097,15 +4188,15 @@
     {
      "stageId": "DT_STAGE_ST_408_02",
      "areas": [],
-     "mapId": "map03_tiger02",
-     "useStamina": 209,
-     "gainRankExp": 2050,
-     "gold": 41000,
-     "enemyLevel": 1225,
+     "mapId": "map03_jotatown01",
+     "useStamina": 7,
+     "gainRankExp": 170,
+     "gold": 1450,
+     "enemyLevel": 18,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "1000_04",
+      "1000_12",
+      "1000_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -4115,15 +4206,15 @@
     {
      "stageId": "DT_STAGE_ST_408_03",
      "areas": [],
-     "mapId": "map04_country01",
-     "useStamina": 209,
-     "gainRankExp": 2050,
-     "gold": 41000,
-     "enemyLevel": 1225,
+     "mapId": "map03_jotatown02",
+     "useStamina": 7,
+     "gainRankExp": 170,
+     "gold": 1450,
+     "enemyLevel": 19,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "1000_28",
+      "1010_01",
+      "1010_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4133,15 +4224,15 @@
     {
      "stageId": "DT_STAGE_ST_408_04",
      "areas": [],
-     "mapId": "map04_country03",
-     "useStamina": 209,
-     "gainRankExp": 2050,
-     "gold": 41000,
-     "enemyLevel": 1225,
+     "mapId": "map03_jotatown03",
+     "useStamina": 7,
+     "gainRankExp": 170,
+     "gold": 1450,
+     "enemyLevel": 20,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "1010_03",
+      "1020_01",
+      "1020_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4151,15 +4242,15 @@
     {
      "stageId": "DT_STAGE_ST_408_05",
      "areas": [],
-     "mapId": "map04_country04",
-     "useStamina": 209,
-     "gainRankExp": 2050,
-     "gold": 41000,
-     "enemyLevel": 1225,
+     "mapId": "map03_tiger01",
+     "useStamina": 7,
+     "gainRankExp": 170,
+     "gold": 1450,
+     "enemyLevel": 21,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "1020_03",
+      "1020_04",
+      "1080_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4177,15 +4268,15 @@
     {
      "stageId": "DT_STAGE_ST_409_01",
      "areas": [],
-     "mapId": "map04_town01",
-     "useStamina": 209,
-     "gainRankExp": 2055,
-     "gold": 41100,
-     "enemyLevel": 1228,
+     "mapId": "map04_mystery01",
+     "useStamina": 8,
+     "gainRankExp": 190,
+     "gold": 1600,
+     "enemyLevel": 19,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "1110_02",
+      "1110_03",
+      "1120_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4195,15 +4286,15 @@
     {
      "stageId": "DT_STAGE_ST_409_02",
      "areas": [],
-     "mapId": "map04_town03",
-     "useStamina": 209,
-     "gainRankExp": 2055,
-     "gold": 41100,
-     "enemyLevel": 1228,
+     "mapId": "map04_owson00",
+     "useStamina": 8,
+     "gainRankExp": 190,
+     "gold": 1600,
+     "enemyLevel": 20,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "1120_02",
+      "1120_03",
+      "1130_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4213,15 +4304,15 @@
     {
      "stageId": "DT_STAGE_ST_409_03",
      "areas": [],
-     "mapId": "map04_town04",
-     "useStamina": 209,
-     "gainRankExp": 2055,
-     "gold": 41100,
-     "enemyLevel": 1228,
+     "mapId": "map04_owson01",
+     "useStamina": 8,
+     "gainRankExp": 190,
+     "gold": 1600,
+     "enemyLevel": 21,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "1130_02",
+      "1130_03",
+      "1130_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -4239,15 +4330,15 @@
     {
      "stageId": "DT_STAGE_ST_410_01",
      "areas": [],
-     "mapId": "map05_school",
-     "useStamina": 210,
-     "gainRankExp": 2060,
-     "gold": 41200,
-     "enemyLevel": 1231,
+     "mapId": "map05_luciastation",
+     "useStamina": 8,
+     "gainRankExp": 210,
+     "gold": 1750,
+     "enemyLevel": 21,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "1090_13",
+      "1100_01",
+      "1100_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4257,15 +4348,15 @@
     {
      "stageId": "DT_STAGE_ST_410_02",
      "areas": [],
-     "mapId": "map05_schoolgate",
-     "useStamina": 210,
-     "gainRankExp": 2060,
-     "gold": 41200,
-     "enemyLevel": 1231,
+     "mapId": "map05_maggiore",
+     "useStamina": 8,
+     "gainRankExp": 210,
+     "gold": 1750,
+     "enemyLevel": 22,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "1100_03",
+      "1100_11",
+      "1100_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -4275,15 +4366,15 @@
     {
      "stageId": "DT_STAGE_ST_410_03",
      "areas": [],
-     "mapId": "map05_town01",
-     "useStamina": 210,
-     "gainRankExp": 2060,
-     "gold": 41200,
-     "enemyLevel": 1231,
+     "mapId": "map05_roof",
+     "useStamina": 8,
+     "gainRankExp": 210,
+     "gold": 1750,
+     "enemyLevel": 23,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "1100_13",
+      "1100_14",
+      "1100_28"
      ],
      "source": {
       "source": "jdr-default",
@@ -4293,15 +4384,15 @@
     {
      "stageId": "DT_STAGE_ST_410_04",
      "areas": [],
-     "mapId": "map05_train00",
-     "useStamina": 210,
-     "gainRankExp": 2060,
-     "gold": 41200,
-     "enemyLevel": 1231,
+     "mapId": "map05_sardinia",
+     "useStamina": 8,
+     "gainRankExp": 210,
+     "gold": 1750,
+     "enemyLevel": 24,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "1110_01",
+      "1110_02",
+      "1110_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4311,15 +4402,15 @@
     {
      "stageId": "DT_STAGE_ST_410_05",
      "areas": [],
-     "mapId": "map01_around01",
-     "useStamina": 210,
-     "gainRankExp": 2060,
-     "gold": 41200,
-     "enemyLevel": 1231,
+     "mapId": "map05_school",
+     "useStamina": 8,
+     "gainRankExp": 210,
+     "gold": 1750,
+     "enemyLevel": 25,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "1120_01",
+      "1120_02",
+      "1120_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4337,15 +4428,15 @@
     {
      "stageId": "DT_STAGE_ST_411_01",
      "areas": [],
-     "mapId": "map02_mexico01",
-     "useStamina": 210,
-     "gainRankExp": 2065,
-     "gold": 41300,
-     "enemyLevel": 1234,
+     "mapId": "map01_around03",
+     "useStamina": 8,
+     "gainRankExp": 230,
+     "gold": 1900,
+     "enemyLevel": 23,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "2050_04",
+      "2050_12",
+      "2060_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4355,15 +4446,15 @@
     {
      "stageId": "DT_STAGE_ST_411_02",
      "areas": [],
-     "mapId": "map02_mexico02",
-     "useStamina": 210,
-     "gainRankExp": 2065,
-     "gold": 41300,
-     "enemyLevel": 1234,
+     "mapId": "map02_italia01",
+     "useStamina": 8,
+     "gainRankExp": 230,
+     "gold": 1900,
+     "enemyLevel": 24,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "2060_02",
+      "2060_03",
+      "2070_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4373,15 +4464,15 @@
     {
      "stageId": "DT_STAGE_ST_411_03",
      "areas": [],
-     "mapId": "map02_snowfield01",
-     "useStamina": 210,
-     "gainRankExp": 2065,
-     "gold": 41300,
-     "enemyLevel": 1234,
+     "mapId": "map02_italia02",
+     "useStamina": 8,
+     "gainRankExp": 230,
+     "gold": 1900,
+     "enemyLevel": 25,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "2070_02",
+      "2070_03",
+      "2080_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4399,15 +4490,15 @@
     {
      "stageId": "DT_STAGE_ST_412_01",
      "areas": [],
-     "mapId": "map03_diohouse06",
-     "useStamina": 211,
-     "gainRankExp": 2070,
-     "gold": 41400,
-     "enemyLevel": 1237,
+     "mapId": "map03_desert01",
+     "useStamina": 9,
+     "gainRankExp": 250,
+     "gold": 2050,
+     "enemyLevel": 25,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "2010_03",
+      "2010_04",
+      "2010_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -4417,15 +4508,15 @@
     {
      "stageId": "DT_STAGE_ST_412_02",
      "areas": [],
-     "mapId": "map03_diohouse07",
-     "useStamina": 211,
-     "gainRankExp": 2070,
-     "gold": 41400,
-     "enemyLevel": 1237,
+     "mapId": "map03_desert02",
+     "useStamina": 9,
+     "gainRankExp": 250,
+     "gold": 2050,
+     "enemyLevel": 26,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "2010_28",
+      "2020_01",
+      "2020_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4435,15 +4526,15 @@
     {
      "stageId": "DT_STAGE_ST_412_03",
      "areas": [],
-     "mapId": "map03_egypt01",
-     "useStamina": 211,
-     "gainRankExp": 2070,
-     "gold": 41400,
-     "enemyLevel": 1237,
+     "mapId": "map03_desert03",
+     "useStamina": 9,
+     "gainRankExp": 250,
+     "gold": 2050,
+     "enemyLevel": 27,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "2020_03",
+      "2020_04",
+      "2040_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4453,15 +4544,15 @@
     {
      "stageId": "DT_STAGE_ST_412_04",
      "areas": [],
-     "mapId": "map03_egypt02",
-     "useStamina": 211,
-     "gainRankExp": 2070,
-     "gold": 41400,
-     "enemyLevel": 1237,
+     "mapId": "map03_diohouse01",
+     "useStamina": 9,
+     "gainRankExp": 250,
+     "gold": 2050,
+     "enemyLevel": 28,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "2040_02",
+      "2040_03",
+      "2050_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4471,15 +4562,15 @@
     {
      "stageId": "DT_STAGE_ST_412_05",
      "areas": [],
-     "mapId": "map03_egypt03",
-     "useStamina": 211,
-     "gainRankExp": 2070,
-     "gold": 41400,
-     "enemyLevel": 1237,
+     "mapId": "map03_diohouse06",
+     "useStamina": 9,
+     "gainRankExp": 250,
+     "gold": 2050,
+     "enemyLevel": 29,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "2050_02",
+      "2050_03",
+      "2050_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -4497,15 +4588,15 @@
     {
      "stageId": "DT_STAGE_ST_413_01",
      "areas": [],
-     "mapId": "map03_india03",
-     "useStamina": 211,
-     "gainRankExp": 2075,
-     "gold": 41500,
-     "enemyLevel": 1240,
+     "mapId": "map03_enya02",
+     "useStamina": 9,
+     "gainRankExp": 270,
+     "gold": 2200,
+     "enemyLevel": 27,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "2110_01",
+      "2110_02",
+      "2110_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4515,15 +4606,15 @@
     {
      "stageId": "DT_STAGE_ST_413_02",
      "areas": [],
-     "mapId": "map03_jotatown01",
-     "useStamina": 211,
-     "gainRankExp": 2075,
-     "gold": 41500,
-     "enemyLevel": 1240,
+     "mapId": "map03_enya03",
+     "useStamina": 9,
+     "gainRankExp": 270,
+     "gold": 2200,
+     "enemyLevel": 28,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "2111_01",
+      "2111_02",
+      "2111_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4533,15 +4624,15 @@
     {
      "stageId": "DT_STAGE_ST_413_03",
      "areas": [],
-     "mapId": "map03_jotatown02",
-     "useStamina": 211,
-     "gainRankExp": 2075,
-     "gold": 41500,
-     "enemyLevel": 1240,
+     "mapId": "map03_india01",
+     "useStamina": 9,
+     "gainRankExp": 270,
+     "gold": 2200,
+     "enemyLevel": 29,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "2000_01",
+      "2000_02",
+      "2000_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4559,15 +4650,15 @@
     {
      "stageId": "DT_STAGE_ST_414_01",
      "areas": [],
-     "mapId": "map04_mystery01",
-     "useStamina": 212,
-     "gainRankExp": 2080,
-     "gold": 41600,
-     "enemyLevel": 1243,
+     "mapId": "map04_country01",
+     "useStamina": 9,
+     "gainRankExp": 290,
+     "gold": 2350,
+     "enemyLevel": 29,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "2060_01",
+      "2060_02",
+      "2060_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4577,15 +4668,15 @@
     {
      "stageId": "DT_STAGE_ST_414_02",
      "areas": [],
-     "mapId": "map04_owson00",
-     "useStamina": 212,
-     "gainRankExp": 2080,
-     "gold": 41600,
-     "enemyLevel": 1243,
+     "mapId": "map04_country03",
+     "useStamina": 9,
+     "gainRankExp": 290,
+     "gold": 2350,
+     "enemyLevel": 30,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "2070_01",
+      "2070_02",
+      "2070_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4595,15 +4686,15 @@
     {
      "stageId": "DT_STAGE_ST_414_03",
      "areas": [],
-     "mapId": "map04_owson01",
-     "useStamina": 212,
-     "gainRankExp": 2080,
-     "gold": 41600,
-     "enemyLevel": 1243,
+     "mapId": "map04_country04",
+     "useStamina": 9,
+     "gainRankExp": 290,
+     "gold": 2350,
+     "enemyLevel": 31,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "2080_01",
+      "2080_02",
+      "2080_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4613,15 +4704,15 @@
     {
      "stageId": "DT_STAGE_ST_414_04",
      "areas": [],
-     "mapId": "map04_rohanhouse01",
-     "useStamina": 212,
-     "gainRankExp": 2080,
-     "gold": 41600,
-     "enemyLevel": 1243,
+     "mapId": "map04_mego02",
+     "useStamina": 9,
+     "gainRankExp": 290,
+     "gold": 2350,
+     "enemyLevel": 32,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "2081_11",
+      "2081_12",
+      "2081_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -4631,15 +4722,15 @@
     {
      "stageId": "DT_STAGE_ST_414_05",
      "areas": [],
-     "mapId": "map04_town01",
-     "useStamina": 212,
-     "gainRankExp": 2080,
-     "gold": 41600,
-     "enemyLevel": 1243,
+     "mapId": "map04_mystery01",
+     "useStamina": 9,
+     "gainRankExp": 290,
+     "gold": 2350,
+     "enemyLevel": 33,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "2081_14",
+      "2100_03",
+      "2110_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4657,15 +4748,15 @@
     {
      "stageId": "DT_STAGE_ST_415_01",
      "areas": [],
-     "mapId": "map05_luciastation",
-     "useStamina": 212,
-     "gainRankExp": 2085,
-     "gold": 41700,
-     "enemyLevel": 1246,
+     "mapId": "map04_town04",
+     "useStamina": 10,
+     "gainRankExp": 310,
+     "gold": 2500,
+     "enemyLevel": 31,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "2010_13",
+      "2010_28",
+      "2020_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4675,15 +4766,15 @@
     {
      "stageId": "DT_STAGE_ST_415_02",
      "areas": [],
-     "mapId": "map05_maggiore",
-     "useStamina": 212,
-     "gainRankExp": 2085,
-     "gold": 41700,
-     "enemyLevel": 1246,
+     "mapId": "map04_town05",
+     "useStamina": 10,
+     "gainRankExp": 310,
+     "gold": 2500,
+     "enemyLevel": 32,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "2020_02",
+      "2020_03",
+      "2020_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -4693,15 +4784,15 @@
     {
      "stageId": "DT_STAGE_ST_415_03",
      "areas": [],
-     "mapId": "map05_roof",
-     "useStamina": 212,
-     "gainRankExp": 2085,
-     "gold": 41700,
-     "enemyLevel": 1246,
+     "mapId": "map04_tunnel03",
+     "useStamina": 10,
+     "gainRankExp": 310,
+     "gold": 2500,
+     "enemyLevel": 33,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "2040_01",
+      "2040_02",
+      "2040_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4719,15 +4810,15 @@
     {
      "stageId": "DT_STAGE_ST_416_01",
      "areas": [],
-     "mapId": "map01_around03",
-     "useStamina": 213,
-     "gainRankExp": 2090,
-     "gold": 41800,
-     "enemyLevel": 1249,
+     "mapId": "map05_town01",
+     "useStamina": 10,
+     "gainRankExp": 330,
+     "gold": 2650,
+     "enemyLevel": 33,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "2110_03",
+      "2111_01",
+      "2111_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4737,15 +4828,15 @@
     {
      "stageId": "DT_STAGE_ST_416_02",
      "areas": [],
-     "mapId": "map02_italia01",
-     "useStamina": 213,
-     "gainRankExp": 2090,
-     "gold": 41800,
-     "enemyLevel": 1249,
+     "mapId": "map05_train00",
+     "useStamina": 10,
+     "gainRankExp": 330,
+     "gold": 2650,
+     "enemyLevel": 34,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "2111_03",
+      "2000_01",
+      "2000_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4755,15 +4846,15 @@
     {
      "stageId": "DT_STAGE_ST_416_03",
      "areas": [],
-     "mapId": "map02_italia02",
-     "useStamina": 213,
-     "gainRankExp": 2090,
-     "gold": 41800,
-     "enemyLevel": 1249,
+     "mapId": "map01_around01",
+     "useStamina": 10,
+     "gainRankExp": 330,
+     "gold": 2650,
+     "enemyLevel": 35,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "2000_03",
+      "2000_04",
+      "2000_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -4773,15 +4864,15 @@
     {
      "stageId": "DT_STAGE_ST_416_04",
      "areas": [],
-     "mapId": "map02_italia03",
-     "useStamina": 213,
-     "gainRankExp": 2090,
-     "gold": 41800,
-     "enemyLevel": 1249,
+     "mapId": "map01_around02",
+     "useStamina": 10,
+     "gainRankExp": 330,
+     "gold": 2650,
+     "enemyLevel": 36,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "2000_28",
+      "2010_01",
+      "2010_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4791,15 +4882,15 @@
     {
      "stageId": "DT_STAGE_ST_416_05",
      "areas": [],
-     "mapId": "map02_mexico01",
-     "useStamina": 213,
-     "gainRankExp": 2090,
-     "gold": 41800,
-     "enemyLevel": 1249,
+     "mapId": "map01_around03",
+     "useStamina": 10,
+     "gainRankExp": 330,
+     "gold": 2650,
+     "enemyLevel": 37,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "2010_03",
+      "2010_04",
+      "2010_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -4817,15 +4908,15 @@
     {
      "stageId": "DT_STAGE_ST_417_01",
      "areas": [],
-     "mapId": "map03_desert01",
-     "useStamina": 213,
-     "gainRankExp": 2095,
-     "gold": 41900,
-     "enemyLevel": 1252,
+     "mapId": "map02_snowfield01",
+     "useStamina": 10,
+     "gainRankExp": 350,
+     "gold": 2800,
+     "enemyLevel": 35,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "2060_03",
+      "2070_01",
+      "2070_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4835,15 +4926,15 @@
     {
      "stageId": "DT_STAGE_ST_417_02",
      "areas": [],
-     "mapId": "map03_desert02",
-     "useStamina": 213,
-     "gainRankExp": 2095,
-     "gold": 41900,
-     "enemyLevel": 1252,
+     "mapId": "map02_snowfield02",
+     "useStamina": 10,
+     "gainRankExp": 350,
+     "gold": 2800,
+     "enemyLevel": 36,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "2070_03",
+      "2080_01",
+      "2080_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4853,15 +4944,15 @@
     {
      "stageId": "DT_STAGE_ST_417_03",
      "areas": [],
-     "mapId": "map03_desert03",
-     "useStamina": 213,
-     "gainRankExp": 2095,
-     "gold": 41900,
-     "enemyLevel": 1252,
+     "mapId": "map02_snowfield03",
+     "useStamina": 10,
+     "gainRankExp": 350,
+     "gold": 2800,
+     "enemyLevel": 37,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "2080_03",
+      "2081_11",
+      "2081_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -4879,15 +4970,15 @@
     {
      "stageId": "DT_STAGE_ST_418_01",
      "areas": [],
-     "mapId": "map03_enya02",
-     "useStamina": 214,
-     "gainRankExp": 2100,
-     "gold": 42000,
-     "enemyLevel": 1255,
+     "mapId": "map03_egypt01",
+     "useStamina": 11,
+     "gainRankExp": 370,
+     "gold": 2950,
+     "enemyLevel": 37,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "2020_01",
+      "2020_02",
+      "2020_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4897,15 +4988,15 @@
     {
      "stageId": "DT_STAGE_ST_418_02",
      "areas": [],
-     "mapId": "map03_enya03",
-     "useStamina": 214,
-     "gainRankExp": 2100,
-     "gold": 42000,
-     "enemyLevel": 1255,
+     "mapId": "map03_egypt02",
+     "useStamina": 11,
+     "gainRankExp": 370,
+     "gold": 2950,
+     "enemyLevel": 38,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "2020_04",
+      "2040_01",
+      "2040_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4915,15 +5006,15 @@
     {
      "stageId": "DT_STAGE_ST_418_03",
      "areas": [],
-     "mapId": "map03_india01",
-     "useStamina": 214,
-     "gainRankExp": 2100,
-     "gold": 42000,
-     "enemyLevel": 1255,
+     "mapId": "map03_egypt03",
+     "useStamina": 11,
+     "gainRankExp": 370,
+     "gold": 2950,
+     "enemyLevel": 39,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "2040_03",
+      "2050_01",
+      "2050_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4933,15 +5024,15 @@
     {
      "stageId": "DT_STAGE_ST_418_04",
      "areas": [],
-     "mapId": "map03_india02",
-     "useStamina": 214,
-     "gainRankExp": 2100,
-     "gold": 42000,
-     "enemyLevel": 1255,
+     "mapId": "map03_enya01",
+     "useStamina": 11,
+     "gainRankExp": 370,
+     "gold": 2950,
+     "enemyLevel": 40,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "2050_03",
+      "2050_04",
+      "2050_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -4951,15 +5042,15 @@
     {
      "stageId": "DT_STAGE_ST_418_05",
      "areas": [],
-     "mapId": "map03_india03",
-     "useStamina": 214,
-     "gainRankExp": 2100,
-     "gold": 42000,
-     "enemyLevel": 1255,
+     "mapId": "map03_enya02",
+     "useStamina": 11,
+     "gainRankExp": 370,
+     "gold": 2950,
+     "enemyLevel": 41,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "2060_01",
+      "2060_02",
+      "2060_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4977,15 +5068,15 @@
     {
      "stageId": "DT_STAGE_ST_419_01",
      "areas": [],
-     "mapId": "map04_country01",
-     "useStamina": 214,
-     "gainRankExp": 2105,
-     "gold": 42100,
-     "enemyLevel": 1258,
+     "mapId": "map03_jotatown02",
+     "useStamina": 11,
+     "gainRankExp": 390,
+     "gold": 3100,
+     "enemyLevel": 39,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "2111_02",
+      "2111_03",
+      "2000_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4995,15 +5086,15 @@
     {
      "stageId": "DT_STAGE_ST_419_02",
      "areas": [],
-     "mapId": "map04_country03",
-     "useStamina": 214,
-     "gainRankExp": 2105,
-     "gold": 42100,
-     "enemyLevel": 1258,
+     "mapId": "map03_jotatown03",
+     "useStamina": 11,
+     "gainRankExp": 390,
+     "gold": 3100,
+     "enemyLevel": 40,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "2000_02",
+      "2000_03",
+      "2000_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -5013,15 +5104,15 @@
     {
      "stageId": "DT_STAGE_ST_419_03",
      "areas": [],
-     "mapId": "map04_country04",
-     "useStamina": 214,
-     "gainRankExp": 2105,
-     "gold": 42100,
-     "enemyLevel": 1258,
+     "mapId": "map03_tiger01",
+     "useStamina": 11,
+     "gainRankExp": 390,
+     "gold": 3100,
+     "enemyLevel": 41,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "2000_12",
+      "2000_28",
+      "2010_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5031,15 +5122,15 @@
     {
      "stageId": "DT_STAGE_ST_419_04",
      "areas": [],
-     "mapId": "map04_mego02",
-     "useStamina": 214,
-     "gainRankExp": 2105,
-     "gold": 42100,
-     "enemyLevel": 1258,
+     "mapId": "map03_tiger02",
+     "useStamina": 11,
+     "gainRankExp": 390,
+     "gold": 3100,
+     "enemyLevel": 42,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "2010_02",
+      "2010_03",
+      "2010_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -5049,15 +5140,15 @@
     {
      "stageId": "DT_STAGE_ST_419_05",
      "areas": [],
-     "mapId": "map04_mystery01",
-     "useStamina": 214,
-     "gainRankExp": 2105,
-     "gold": 42100,
-     "enemyLevel": 1258,
+     "mapId": "map04_country01",
+     "useStamina": 11,
+     "gainRankExp": 390,
+     "gold": 3100,
+     "enemyLevel": 43,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "2010_13",
+      "2010_28",
+      "2020_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5075,15 +5166,15 @@
     {
      "stageId": "DT_STAGE_ST_420_01",
      "areas": [],
-     "mapId": "map04_town04",
-     "useStamina": 215,
-     "gainRankExp": 2110,
-     "gold": 42200,
-     "enemyLevel": 1261,
+     "mapId": "map04_owson01",
+     "useStamina": 11,
+     "gainRankExp": 410,
+     "gold": 3250,
+     "enemyLevel": 41,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "2070_02",
+      "2070_03",
+      "2080_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5093,15 +5184,15 @@
     {
      "stageId": "DT_STAGE_ST_420_02",
      "areas": [],
-     "mapId": "map04_town05",
-     "useStamina": 215,
-     "gainRankExp": 2110,
-     "gold": 42200,
-     "enemyLevel": 1261,
+     "mapId": "map04_rohanhouse01",
+     "useStamina": 11,
+     "gainRankExp": 410,
+     "gold": 3250,
+     "enemyLevel": 42,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "2080_02",
+      "2080_03",
+      "2081_11"
      ],
      "source": {
       "source": "jdr-default",
@@ -5111,15 +5202,15 @@
     {
      "stageId": "DT_STAGE_ST_420_03",
      "areas": [],
-     "mapId": "map04_tunnel03",
-     "useStamina": 215,
-     "gainRankExp": 2110,
-     "gold": 42200,
-     "enemyLevel": 1261,
+     "mapId": "map04_town01",
+     "useStamina": 11,
+     "gainRankExp": 410,
+     "gold": 3250,
+     "enemyLevel": 43,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "2081_12",
+      "2081_13",
+      "2081_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -5129,15 +5220,15 @@
     {
      "stageId": "DT_STAGE_ST_420_04",
      "areas": [],
-     "mapId": "map05_colosseum",
-     "useStamina": 215,
-     "gainRankExp": 2110,
-     "gold": 42200,
-     "enemyLevel": 1261,
+     "mapId": "map04_town03",
+     "useStamina": 11,
+     "gainRankExp": 410,
+     "gold": 3250,
+     "enemyLevel": 44,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "2100_03",
+      "2110_01",
+      "2110_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -5147,15 +5238,15 @@
     {
      "stageId": "DT_STAGE_ST_420_05",
      "areas": [],
-     "mapId": "map05_luciastation",
-     "useStamina": 215,
-     "gainRankExp": 2110,
-     "gold": 42200,
-     "enemyLevel": 1261,
+     "mapId": "map04_town04",
+     "useStamina": 11,
+     "gainRankExp": 410,
+     "gold": 3250,
+     "enemyLevel": 45,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "2110_03",
+      "2111_01",
+      "2111_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -5173,15 +5264,15 @@
     {
      "stageId": "DT_STAGE_ST_421_01",
      "areas": [],
-     "mapId": "map05_town01",
-     "useStamina": 215,
-     "gainRankExp": 2115,
-     "gold": 42300,
-     "enemyLevel": 1264,
+     "mapId": "map05_roof",
+     "useStamina": 12,
+     "gainRankExp": 430,
+     "gold": 3400,
+     "enemyLevel": 43,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "2020_03",
+      "2020_04",
+      "2040_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5191,15 +5282,15 @@
     {
      "stageId": "DT_STAGE_ST_421_02",
      "areas": [],
-     "mapId": "map05_train00",
-     "useStamina": 215,
-     "gainRankExp": 2115,
-     "gold": 42300,
-     "enemyLevel": 1264,
+     "mapId": "map05_sardinia",
+     "useStamina": 12,
+     "gainRankExp": 430,
+     "gold": 3400,
+     "enemyLevel": 44,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "2040_02",
+      "2040_03",
+      "2050_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5209,15 +5300,15 @@
     {
      "stageId": "DT_STAGE_ST_421_03",
      "areas": [],
-     "mapId": "map01_around01",
-     "useStamina": 215,
-     "gainRankExp": 2115,
-     "gold": 42300,
-     "enemyLevel": 1264,
+     "mapId": "map05_school",
+     "useStamina": 12,
+     "gainRankExp": 430,
+     "gold": 3400,
+     "enemyLevel": 45,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "2050_02",
+      "2050_03",
+      "2050_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -5235,15 +5326,15 @@
     {
      "stageId": "DT_STAGE_ST_422_01",
      "areas": [],
-     "mapId": "map02_snowfield01",
-     "useStamina": 216,
-     "gainRankExp": 2120,
-     "gold": 42400,
-     "enemyLevel": 1267,
+     "mapId": "map02_italia02",
+     "useStamina": 12,
+     "gainRankExp": 450,
+     "gold": 3550,
+     "enemyLevel": 45,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "3300_01",
+      "3300_02",
+      "3300_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5253,15 +5344,15 @@
     {
      "stageId": "DT_STAGE_ST_422_02",
      "areas": [],
-     "mapId": "map02_snowfield02",
-     "useStamina": 216,
-     "gainRankExp": 2120,
-     "gold": 42400,
-     "enemyLevel": 1267,
+     "mapId": "map02_italia03",
+     "useStamina": 12,
+     "gainRankExp": 450,
+     "gold": 3550,
+     "enemyLevel": 46,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "3300_04",
+      "3321_03",
+      "3321_18"
      ],
      "source": {
       "source": "jdr-default",
@@ -5271,15 +5362,15 @@
     {
      "stageId": "DT_STAGE_ST_422_03",
      "areas": [],
-     "mapId": "map02_snowfield03",
-     "useStamina": 216,
-     "gainRankExp": 2120,
-     "gold": 42400,
-     "enemyLevel": 1267,
+     "mapId": "map02_mexico01",
+     "useStamina": 12,
+     "gainRankExp": 450,
+     "gold": 3550,
+     "enemyLevel": 47,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "3322_08",
+      "3323_08",
+      "3330_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5289,15 +5380,15 @@
     {
      "stageId": "DT_STAGE_ST_422_04",
      "areas": [],
-     "mapId": "map03_beach00",
-     "useStamina": 216,
-     "gainRankExp": 2120,
-     "gold": 42400,
-     "enemyLevel": 1267,
+     "mapId": "map02_mexico02",
+     "useStamina": 12,
+     "gainRankExp": 450,
+     "gold": 3550,
+     "enemyLevel": 48,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "3330_02",
+      "3330_03",
+      "3330_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -5307,15 +5398,15 @@
     {
      "stageId": "DT_STAGE_ST_422_05",
      "areas": [],
-     "mapId": "map03_desert01",
-     "useStamina": 216,
-     "gainRankExp": 2120,
-     "gold": 42400,
-     "enemyLevel": 1267,
+     "mapId": "map02_snowfield01",
+     "useStamina": 12,
+     "gainRankExp": 450,
+     "gold": 3550,
+     "enemyLevel": 49,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "3000_01",
+      "3000_02",
+      "3000_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5333,15 +5424,15 @@
     {
      "stageId": "DT_STAGE_ST_423_01",
      "areas": [],
-     "mapId": "map03_egypt01",
-     "useStamina": 216,
-     "gainRankExp": 2125,
-     "gold": 42500,
-     "enemyLevel": 1270,
+     "mapId": "map03_desert03",
+     "useStamina": 12,
+     "gainRankExp": 470,
+     "gold": 3700,
+     "enemyLevel": 47,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "3020_28",
+      "3030_01",
+      "3030_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -5351,15 +5442,15 @@
     {
      "stageId": "DT_STAGE_ST_423_02",
      "areas": [],
-     "mapId": "map03_egypt02",
-     "useStamina": 216,
-     "gainRankExp": 2125,
-     "gold": 42500,
-     "enemyLevel": 1270,
+     "mapId": "map03_diohouse01",
+     "useStamina": 12,
+     "gainRankExp": 470,
+     "gold": 3700,
+     "enemyLevel": 48,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "3030_03",
+      "3030_13",
+      "3030_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -5369,15 +5460,15 @@
     {
      "stageId": "DT_STAGE_ST_423_03",
      "areas": [],
-     "mapId": "map03_egypt03",
-     "useStamina": 216,
-     "gainRankExp": 2125,
-     "gold": 42500,
-     "enemyLevel": 1270,
+     "mapId": "map03_diohouse06",
+     "useStamina": 12,
+     "gainRankExp": 470,
+     "gold": 3700,
+     "enemyLevel": 49,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "3031_03",
+      "3031_04",
+      "3040_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5387,15 +5478,15 @@
     {
      "stageId": "DT_STAGE_ST_423_04",
      "areas": [],
-     "mapId": "map03_enya01",
-     "useStamina": 216,
-     "gainRankExp": 2125,
-     "gold": 42500,
-     "enemyLevel": 1270,
+     "mapId": "map03_diohouse07",
+     "useStamina": 12,
+     "gainRankExp": 470,
+     "gold": 3700,
+     "enemyLevel": 50,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "3040_02",
+      "3040_03",
+      "3040_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -5405,15 +5496,15 @@
     {
      "stageId": "DT_STAGE_ST_423_05",
      "areas": [],
-     "mapId": "map03_enya02",
-     "useStamina": 216,
-     "gainRankExp": 2125,
-     "gold": 42500,
-     "enemyLevel": 1270,
+     "mapId": "map03_egypt01",
+     "useStamina": 12,
+     "gainRankExp": 470,
+     "gold": 3700,
+     "enemyLevel": 51,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "3040_13",
+      "3041_03",
+      "3041_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -5431,15 +5522,15 @@
     {
      "stageId": "DT_STAGE_ST_424_01",
      "areas": [],
-     "mapId": "map03_jotatown02",
-     "useStamina": 217,
-     "gainRankExp": 2130,
-     "gold": 42600,
-     "enemyLevel": 1273,
+     "mapId": "map03_india01",
+     "useStamina": 13,
+     "gainRankExp": 490,
+     "gold": 3850,
+     "enemyLevel": 49,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "3100_03",
+      "3100_12",
+      "3110_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5449,15 +5540,15 @@
     {
      "stageId": "DT_STAGE_ST_424_02",
      "areas": [],
-     "mapId": "map03_jotatown03",
-     "useStamina": 217,
-     "gainRankExp": 2130,
-     "gold": 42600,
-     "enemyLevel": 1273,
+     "mapId": "map03_india02",
+     "useStamina": 13,
+     "gainRankExp": 490,
+     "gold": 3850,
+     "enemyLevel": 50,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "3110_02",
+      "3110_03",
+      "3110_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -5467,15 +5558,15 @@
     {
      "stageId": "DT_STAGE_ST_424_03",
      "areas": [],
-     "mapId": "map03_tiger01",
-     "useStamina": 217,
-     "gainRankExp": 2130,
-     "gold": 42600,
-     "enemyLevel": 1273,
+     "mapId": "map03_india03",
+     "useStamina": 13,
+     "gainRankExp": 490,
+     "gold": 3850,
+     "enemyLevel": 51,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "3110_14",
+      "3150_01",
+      "3150_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -5485,15 +5576,15 @@
     {
      "stageId": "DT_STAGE_ST_424_04",
      "areas": [],
-     "mapId": "map03_tiger02",
-     "useStamina": 217,
-     "gainRankExp": 2130,
-     "gold": 42600,
-     "enemyLevel": 1273,
+     "mapId": "map03_jotatown01",
+     "useStamina": 13,
+     "gainRankExp": 490,
+     "gold": 3850,
+     "enemyLevel": 52,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "3150_03",
+      "3150_04",
+      "3150_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -5503,15 +5594,15 @@
     {
      "stageId": "DT_STAGE_ST_424_05",
      "areas": [],
-     "mapId": "map04_country01",
-     "useStamina": 217,
-     "gainRankExp": 2130,
-     "gold": 42600,
-     "enemyLevel": 1273,
+     "mapId": "map03_jotatown02",
+     "useStamina": 13,
+     "gainRankExp": 490,
+     "gold": 3850,
+     "enemyLevel": 53,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "3210_01",
+      "3210_02",
+      "3210_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5529,15 +5620,15 @@
     {
      "stageId": "DT_STAGE_ST_425_01",
      "areas": [],
-     "mapId": "map04_owson01",
-     "useStamina": 217,
-     "gainRankExp": 2135,
-     "gold": 42700,
-     "enemyLevel": 1276,
+     "mapId": "map04_country04",
+     "useStamina": 13,
+     "gainRankExp": 510,
+     "gold": 4000,
+     "enemyLevel": 51,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "3322_08",
+      "3323_08",
+      "3330_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5547,15 +5638,15 @@
     {
      "stageId": "DT_STAGE_ST_425_02",
      "areas": [],
-     "mapId": "map04_rohanhouse01",
-     "useStamina": 217,
-     "gainRankExp": 2135,
-     "gold": 42700,
-     "enemyLevel": 1276,
+     "mapId": "map04_mego02",
+     "useStamina": 13,
+     "gainRankExp": 510,
+     "gold": 4000,
+     "enemyLevel": 52,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "3330_02",
+      "3330_03",
+      "3330_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -5565,15 +5656,15 @@
     {
      "stageId": "DT_STAGE_ST_425_03",
      "areas": [],
-     "mapId": "map04_town01",
-     "useStamina": 217,
-     "gainRankExp": 2135,
-     "gold": 42700,
-     "enemyLevel": 1276,
+     "mapId": "map04_mystery01",
+     "useStamina": 13,
+     "gainRankExp": 510,
+     "gold": 4000,
+     "enemyLevel": 53,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "3000_01",
+      "3000_02",
+      "3000_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5591,15 +5682,15 @@
     {
      "stageId": "DT_STAGE_ST_426_01",
      "areas": [],
-     "mapId": "map05_roof",
-     "useStamina": 218,
-     "gainRankExp": 2140,
-     "gold": 42800,
-     "enemyLevel": 1279,
+     "mapId": "map04_tunnel03",
+     "useStamina": 13,
+     "gainRankExp": 530,
+     "gold": 4150,
+     "enemyLevel": 53,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "3031_03",
+      "3031_04",
+      "3040_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5609,15 +5700,15 @@
     {
      "stageId": "DT_STAGE_ST_426_02",
      "areas": [],
-     "mapId": "map05_sardinia",
-     "useStamina": 218,
-     "gainRankExp": 2140,
-     "gold": 42800,
-     "enemyLevel": 1279,
+     "mapId": "map05_colosseum",
+     "useStamina": 13,
+     "gainRankExp": 530,
+     "gold": 4150,
+     "enemyLevel": 54,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "3040_02",
+      "3040_03",
+      "3040_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -5627,15 +5718,15 @@
     {
      "stageId": "DT_STAGE_ST_426_03",
      "areas": [],
-     "mapId": "map05_school",
-     "useStamina": 218,
-     "gainRankExp": 2140,
-     "gold": 42800,
-     "enemyLevel": 1279,
+     "mapId": "map05_luciastation",
+     "useStamina": 13,
+     "gainRankExp": 530,
+     "gold": 4150,
+     "enemyLevel": 55,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "3040_13",
+      "3041_03",
+      "3041_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -5645,15 +5736,15 @@
     {
      "stageId": "DT_STAGE_ST_426_04",
      "areas": [],
-     "mapId": "map05_schoolgate",
-     "useStamina": 218,
-     "gainRankExp": 2140,
-     "gold": 42800,
-     "enemyLevel": 1279,
+     "mapId": "map05_maggiore",
+     "useStamina": 13,
+     "gainRankExp": 530,
+     "gold": 4150,
+     "enemyLevel": 56,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "3050_01",
+      "3050_02",
+      "3050_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5663,15 +5754,15 @@
     {
      "stageId": "DT_STAGE_ST_426_05",
      "areas": [],
-     "mapId": "map05_town01",
-     "useStamina": 218,
-     "gainRankExp": 2140,
-     "gold": 42800,
-     "enemyLevel": 1279,
+     "mapId": "map05_roof",
+     "useStamina": 13,
+     "gainRankExp": 530,
+     "gold": 4150,
+     "enemyLevel": 57,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "3050_04",
+      "3060_01",
+      "3060_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -5689,15 +5780,15 @@
     {
      "stageId": "DT_STAGE_ST_427_01",
      "areas": [],
-     "mapId": "map02_italia02",
-     "useStamina": 218,
-     "gainRankExp": 2145,
-     "gold": 42900,
-     "enemyLevel": 1282,
+     "mapId": "map01_around01",
+     "useStamina": 14,
+     "gainRankExp": 550,
+     "gold": 4300,
+     "enemyLevel": 55,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "3110_14",
+      "3150_01",
+      "3150_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -5707,15 +5798,15 @@
     {
      "stageId": "DT_STAGE_ST_427_02",
      "areas": [],
-     "mapId": "map02_italia03",
-     "useStamina": 218,
-     "gainRankExp": 2145,
-     "gold": 42900,
-     "enemyLevel": 1282,
+     "mapId": "map01_around02",
+     "useStamina": 14,
+     "gainRankExp": 550,
+     "gold": 4300,
+     "enemyLevel": 56,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "3150_03",
+      "3150_04",
+      "3150_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -5725,15 +5816,15 @@
     {
      "stageId": "DT_STAGE_ST_427_03",
      "areas": [],
-     "mapId": "map02_mexico01",
-     "useStamina": 218,
-     "gainRankExp": 2145,
-     "gold": 42900,
-     "enemyLevel": 1282,
+     "mapId": "map01_around03",
+     "useStamina": 14,
+     "gainRankExp": 550,
+     "gold": 4300,
+     "enemyLevel": 57,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "3210_01",
+      "3210_02",
+      "3210_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5751,15 +5842,15 @@
     {
      "stageId": "DT_STAGE_ST_428_01",
      "areas": [],
-     "mapId": "map03_desert03",
-     "useStamina": 219,
-     "gainRankExp": 2150,
-     "gold": 43000,
-     "enemyLevel": 1285,
+     "mapId": "map02_snowfield03",
+     "useStamina": 14,
+     "gainRankExp": 570,
+     "gold": 4450,
+     "enemyLevel": 57,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "3000_01",
+      "3000_02",
+      "3000_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5769,15 +5860,15 @@
     {
      "stageId": "DT_STAGE_ST_428_02",
      "areas": [],
-     "mapId": "map03_diohouse01",
-     "useStamina": 219,
-     "gainRankExp": 2150,
-     "gold": 43000,
-     "enemyLevel": 1285,
+     "mapId": "map03_beach00",
+     "useStamina": 14,
+     "gainRankExp": 570,
+     "gold": 4450,
+     "enemyLevel": 58,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "3000_04",
+      "3000_13",
+      "3001_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5787,15 +5878,15 @@
     {
      "stageId": "DT_STAGE_ST_428_03",
      "areas": [],
-     "mapId": "map03_diohouse06",
-     "useStamina": 219,
-     "gainRankExp": 2150,
-     "gold": 43000,
-     "enemyLevel": 1285,
+     "mapId": "map03_desert01",
+     "useStamina": 14,
+     "gainRankExp": 570,
+     "gold": 4450,
+     "enemyLevel": 59,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "3001_04",
+      "3001_13",
+      "3002_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5805,15 +5896,15 @@
     {
      "stageId": "DT_STAGE_ST_428_04",
      "areas": [],
-     "mapId": "map03_diohouse07",
-     "useStamina": 219,
-     "gainRankExp": 2150,
-     "gold": 43000,
-     "enemyLevel": 1285,
+     "mapId": "map03_desert02",
+     "useStamina": 14,
+     "gainRankExp": 570,
+     "gold": 4450,
+     "enemyLevel": 60,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "3010_01",
+      "3010_02",
+      "3010_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5823,15 +5914,15 @@
     {
      "stageId": "DT_STAGE_ST_428_05",
      "areas": [],
-     "mapId": "map03_egypt01",
-     "useStamina": 219,
-     "gainRankExp": 2150,
-     "gold": 43000,
-     "enemyLevel": 1285,
+     "mapId": "map03_desert03",
+     "useStamina": 14,
+     "gainRankExp": 570,
+     "gold": 4450,
+     "enemyLevel": 61,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "3010_13",
+      "3020_01",
+      "3020_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -5849,15 +5940,15 @@
     {
      "stageId": "DT_STAGE_ST_429_01",
      "areas": [],
-     "mapId": "map03_india01",
-     "useStamina": 219,
-     "gainRankExp": 2155,
-     "gold": 43100,
-     "enemyLevel": 1288,
+     "mapId": "map03_egypt03",
+     "useStamina": 14,
+     "gainRankExp": 590,
+     "gold": 4600,
+     "enemyLevel": 59,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "3040_13",
+      "3041_03",
+      "3041_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -5867,15 +5958,15 @@
     {
      "stageId": "DT_STAGE_ST_429_02",
      "areas": [],
-     "mapId": "map03_india02",
-     "useStamina": 219,
-     "gainRankExp": 2155,
-     "gold": 43100,
-     "enemyLevel": 1288,
+     "mapId": "map03_enya01",
+     "useStamina": 14,
+     "gainRankExp": 590,
+     "gold": 4600,
+     "enemyLevel": 60,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "3050_01",
+      "3050_02",
+      "3050_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5885,15 +5976,15 @@
     {
      "stageId": "DT_STAGE_ST_429_03",
      "areas": [],
-     "mapId": "map03_india03",
-     "useStamina": 219,
-     "gainRankExp": 2155,
-     "gold": 43100,
-     "enemyLevel": 1288,
+     "mapId": "map03_enya02",
+     "useStamina": 14,
+     "gainRankExp": 590,
+     "gold": 4600,
+     "enemyLevel": 61,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "3050_04",
+      "3060_01",
+      "3060_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -5911,15 +6002,15 @@
     {
      "stageId": "DT_STAGE_ST_430_01",
      "areas": [],
-     "mapId": "map04_country04",
-     "useStamina": 220,
-     "gainRankExp": 2160,
-     "gold": 43200,
-     "enemyLevel": 1291,
+     "mapId": "map03_tiger01",
+     "useStamina": 15,
+     "gainRankExp": 610,
+     "gold": 4750,
+     "enemyLevel": 61,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "3210_01",
+      "3210_02",
+      "3210_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5929,15 +6020,15 @@
     {
      "stageId": "DT_STAGE_ST_430_02",
      "areas": [],
-     "mapId": "map04_mego02",
-     "useStamina": 220,
-     "gainRankExp": 2160,
-     "gold": 43200,
-     "enemyLevel": 1291,
+     "mapId": "map03_tiger02",
+     "useStamina": 15,
+     "gainRankExp": 610,
+     "gold": 4750,
+     "enemyLevel": 62,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "3210_12",
+      "3210_13",
+      "3240_11"
      ],
      "source": {
       "source": "jdr-default",
@@ -5947,15 +6038,15 @@
     {
      "stageId": "DT_STAGE_ST_430_03",
      "areas": [],
-     "mapId": "map04_mystery01",
-     "useStamina": 220,
-     "gainRankExp": 2160,
-     "gold": 43200,
-     "enemyLevel": 1291,
+     "mapId": "map04_country01",
+     "useStamina": 15,
+     "gainRankExp": 610,
+     "gold": 4750,
+     "enemyLevel": 63,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "3240_12",
+      "3240_13",
+      "3270_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5965,15 +6056,15 @@
     {
      "stageId": "DT_STAGE_ST_430_04",
      "areas": [],
-     "mapId": "map04_owson00",
-     "useStamina": 220,
-     "gainRankExp": 2160,
-     "gold": 43200,
-     "enemyLevel": 1291,
+     "mapId": "map04_country03",
+     "useStamina": 15,
+     "gainRankExp": 610,
+     "gold": 4750,
+     "enemyLevel": 64,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "3270_02",
+      "3270_03",
+      "3270_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -5983,15 +6074,15 @@
     {
      "stageId": "DT_STAGE_ST_430_05",
      "areas": [],
-     "mapId": "map04_owson01",
-     "useStamina": 220,
-     "gainRankExp": 2160,
-     "gold": 43200,
-     "enemyLevel": 1291,
+     "mapId": "map04_country04",
+     "useStamina": 15,
+     "gainRankExp": 610,
+     "gold": 4750,
+     "enemyLevel": 65,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "3300_01",
+      "3300_02",
+      "3300_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6009,15 +6100,15 @@
     {
      "stageId": "DT_STAGE_ST_431_01",
      "areas": [],
-     "mapId": "map04_tunnel03",
-     "useStamina": 220,
-     "gainRankExp": 2165,
-     "gold": 43300,
-     "enemyLevel": 1294,
+     "mapId": "map04_town01",
+     "useStamina": 15,
+     "gainRankExp": 630,
+     "gold": 4900,
+     "enemyLevel": 63,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "3001_04",
+      "3001_13",
+      "3002_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6027,15 +6118,15 @@
     {
      "stageId": "DT_STAGE_ST_431_02",
      "areas": [],
-     "mapId": "map05_colosseum",
-     "useStamina": 220,
-     "gainRankExp": 2165,
-     "gold": 43300,
-     "enemyLevel": 1294,
+     "mapId": "map04_town03",
+     "useStamina": 15,
+     "gainRankExp": 630,
+     "gold": 4900,
+     "enemyLevel": 64,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "3010_01",
+      "3010_02",
+      "3010_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6045,15 +6136,15 @@
     {
      "stageId": "DT_STAGE_ST_431_03",
      "areas": [],
-     "mapId": "map05_luciastation",
-     "useStamina": 220,
-     "gainRankExp": 2165,
-     "gold": 43300,
-     "enemyLevel": 1294,
+     "mapId": "map04_town04",
+     "useStamina": 15,
+     "gainRankExp": 630,
+     "gold": 4900,
+     "enemyLevel": 65,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "3010_13",
+      "3020_01",
+      "3020_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6063,15 +6154,15 @@
     {
      "stageId": "DT_STAGE_ST_431_04",
      "areas": [],
-     "mapId": "map05_maggiore",
-     "useStamina": 220,
-     "gainRankExp": 2165,
-     "gold": 43300,
-     "enemyLevel": 1294,
+     "mapId": "map04_town05",
+     "useStamina": 15,
+     "gainRankExp": 630,
+     "gold": 4900,
+     "enemyLevel": 66,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "3020_03",
+      "3020_12",
+      "3020_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -6081,15 +6172,15 @@
     {
      "stageId": "DT_STAGE_ST_431_05",
      "areas": [],
-     "mapId": "map05_roof",
-     "useStamina": 220,
-     "gainRankExp": 2165,
-     "gold": 43300,
-     "enemyLevel": 1294,
+     "mapId": "map04_tunnel03",
+     "useStamina": 15,
+     "gainRankExp": 630,
+     "gold": 4900,
+     "enemyLevel": 67,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "3020_28",
+      "3030_01",
+      "3030_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6107,15 +6198,15 @@
     {
      "stageId": "DT_STAGE_ST_432_01",
      "areas": [],
-     "mapId": "map01_around01",
-     "useStamina": 221,
-     "gainRankExp": 2170,
-     "gold": 43400,
-     "enemyLevel": 1297,
+     "mapId": "map05_school",
+     "useStamina": 15,
+     "gainRankExp": 650,
+     "gold": 5050,
+     "enemyLevel": 65,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "4080_04",
+      "4080_13",
+      "4110_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6125,15 +6216,15 @@
     {
      "stageId": "DT_STAGE_ST_432_02",
      "areas": [],
-     "mapId": "map01_around02",
-     "useStamina": 221,
-     "gainRankExp": 2170,
-     "gold": 43400,
-     "enemyLevel": 1297,
+     "mapId": "map05_schoolgate",
+     "useStamina": 15,
+     "gainRankExp": 650,
+     "gold": 5050,
+     "enemyLevel": 66,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "4110_02",
+      "4110_13",
+      "4110_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -6143,15 +6234,15 @@
     {
      "stageId": "DT_STAGE_ST_432_03",
      "areas": [],
-     "mapId": "map01_around03",
-     "useStamina": 221,
-     "gainRankExp": 2170,
-     "gold": 43400,
-     "enemyLevel": 1297,
+     "mapId": "map05_town01",
+     "useStamina": 15,
+     "gainRankExp": 650,
+     "gold": 5050,
+     "enemyLevel": 67,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "4130_01",
+      "4130_02",
+      "4130_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6161,15 +6252,15 @@
     {
      "stageId": "DT_STAGE_ST_432_04",
      "areas": [],
-     "mapId": "map02_italia01",
-     "useStamina": 221,
-     "gainRankExp": 2170,
-     "gold": 43400,
-     "enemyLevel": 1297,
+     "mapId": "map05_train00",
+     "useStamina": 15,
+     "gainRankExp": 650,
+     "gold": 5050,
+     "enemyLevel": 68,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "4130_13",
+      "4130_25",
+      "4130_26"
      ],
      "source": {
       "source": "jdr-default",
@@ -6179,15 +6270,15 @@
     {
      "stageId": "DT_STAGE_ST_432_05",
      "areas": [],
-     "mapId": "map02_italia02",
-     "useStamina": 221,
-     "gainRankExp": 2170,
-     "gold": 43400,
-     "enemyLevel": 1297,
+     "mapId": "map01_around01",
+     "useStamina": 15,
+     "gainRankExp": 650,
+     "gold": 5050,
+     "enemyLevel": 69,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "4130_27",
+      "4130_28",
+      "4150_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6205,15 +6296,15 @@
     {
      "stageId": "DT_STAGE_ST_433_01",
      "areas": [],
-     "mapId": "map02_snowfield03",
-     "useStamina": 221,
-     "gainRankExp": 2175,
-     "gold": 43500,
-     "enemyLevel": 1300,
+     "mapId": "map02_mexico01",
+     "useStamina": 16,
+     "gainRankExp": 670,
+     "gold": 5200,
+     "enemyLevel": 67,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "4191_01",
+      "4191_02",
+      "4191_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6223,15 +6314,15 @@
     {
      "stageId": "DT_STAGE_ST_433_02",
      "areas": [],
-     "mapId": "map03_beach00",
-     "useStamina": 221,
-     "gainRankExp": 2175,
-     "gold": 43500,
-     "enemyLevel": 1300,
+     "mapId": "map02_mexico02",
+     "useStamina": 16,
+     "gainRankExp": 670,
+     "gold": 5200,
+     "enemyLevel": 68,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "4191_04",
+      "4192_03",
+      "4192_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -6241,15 +6332,15 @@
     {
      "stageId": "DT_STAGE_ST_433_03",
      "areas": [],
-     "mapId": "map03_desert01",
-     "useStamina": 221,
-     "gainRankExp": 2175,
-     "gold": 43500,
-     "enemyLevel": 1300,
+     "mapId": "map02_snowfield01",
+     "useStamina": 16,
+     "gainRankExp": 670,
+     "gold": 5200,
+     "enemyLevel": 69,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "4193_08",
+      "4194_08",
+      "4240_11"
      ],
      "source": {
       "source": "jdr-default",
@@ -6259,15 +6350,15 @@
     {
      "stageId": "DT_STAGE_ST_433_04",
      "areas": [],
-     "mapId": "map03_desert02",
-     "useStamina": 221,
-     "gainRankExp": 2175,
-     "gold": 43500,
-     "enemyLevel": 1300,
+     "mapId": "map02_snowfield02",
+     "useStamina": 16,
+     "gainRankExp": 670,
+     "gold": 5200,
+     "enemyLevel": 70,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "4240_12",
+      "4240_13",
+      "4000_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6277,15 +6368,15 @@
     {
      "stageId": "DT_STAGE_ST_433_05",
      "areas": [],
-     "mapId": "map03_desert03",
-     "useStamina": 221,
-     "gainRankExp": 2175,
-     "gold": 43500,
-     "enemyLevel": 1300,
+     "mapId": "map02_snowfield03",
+     "useStamina": 16,
+     "gainRankExp": 670,
+     "gold": 5200,
+     "enemyLevel": 71,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "4000_02",
+      "4000_03",
+      "4000_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -6303,15 +6394,15 @@
     {
      "stageId": "DT_STAGE_ST_434_01",
      "areas": [],
-     "mapId": "map03_egypt03",
-     "useStamina": 222,
-     "gainRankExp": 2180,
-     "gold": 43600,
-     "enemyLevel": 1303,
+     "mapId": "map03_diohouse06",
+     "useStamina": 16,
+     "gainRankExp": 690,
+     "gold": 5350,
+     "enemyLevel": 69,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "4020_03",
+      "4020_04",
+      "4020_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -6321,15 +6412,15 @@
     {
      "stageId": "DT_STAGE_ST_434_02",
      "areas": [],
-     "mapId": "map03_enya01",
-     "useStamina": 222,
-     "gainRankExp": 2180,
-     "gold": 43600,
-     "enemyLevel": 1303,
+     "mapId": "map03_diohouse07",
+     "useStamina": 16,
+     "gainRankExp": 690,
+     "gold": 5350,
+     "enemyLevel": 70,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "4030_01",
+      "4030_02",
+      "4030_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6339,15 +6430,15 @@
     {
      "stageId": "DT_STAGE_ST_434_03",
      "areas": [],
-     "mapId": "map03_enya02",
-     "useStamina": 222,
-     "gainRankExp": 2180,
-     "gold": 43600,
-     "enemyLevel": 1303,
+     "mapId": "map03_egypt01",
+     "useStamina": 16,
+     "gainRankExp": 690,
+     "gold": 5350,
+     "enemyLevel": 71,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "4030_04",
+      "4031_18",
+      "4040_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6357,15 +6448,15 @@
     {
      "stageId": "DT_STAGE_ST_434_04",
      "areas": [],
-     "mapId": "map03_enya03",
-     "useStamina": 222,
-     "gainRankExp": 2180,
-     "gold": 43600,
-     "enemyLevel": 1303,
+     "mapId": "map03_egypt02",
+     "useStamina": 16,
+     "gainRankExp": 690,
+     "gold": 5350,
+     "enemyLevel": 72,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "4040_12",
+      "4040_13",
+      "4040_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -6375,15 +6466,15 @@
     {
      "stageId": "DT_STAGE_ST_434_05",
      "areas": [],
-     "mapId": "map03_india01",
-     "useStamina": 222,
-     "gainRankExp": 2180,
-     "gold": 43600,
-     "enemyLevel": 1303,
+     "mapId": "map03_egypt03",
+     "useStamina": 16,
+     "gainRankExp": 690,
+     "gold": 5350,
+     "enemyLevel": 73,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "4042_03",
+      "4043_08",
+      "4080_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6401,15 +6492,15 @@
     {
      "stageId": "DT_STAGE_ST_435_01",
      "areas": [],
-     "mapId": "map03_tiger01",
-     "useStamina": 222,
-     "gainRankExp": 2185,
-     "gold": 43700,
-     "enemyLevel": 1306,
+     "mapId": "map03_india03",
+     "useStamina": 16,
+     "gainRankExp": 710,
+     "gold": 5500,
+     "enemyLevel": 71,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "4130_28",
+      "4150_01",
+      "4150_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6419,15 +6510,15 @@
     {
      "stageId": "DT_STAGE_ST_435_02",
      "areas": [],
-     "mapId": "map03_tiger02",
-     "useStamina": 222,
-     "gainRankExp": 2185,
-     "gold": 43700,
-     "enemyLevel": 1306,
+     "mapId": "map03_jotatown01",
+     "useStamina": 16,
+     "gainRankExp": 710,
+     "gold": 5500,
+     "enemyLevel": 72,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "4150_03",
+      "4160_01",
+      "4160_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6437,15 +6528,15 @@
     {
      "stageId": "DT_STAGE_ST_435_03",
      "areas": [],
-     "mapId": "map04_country01",
-     "useStamina": 222,
-     "gainRankExp": 2185,
-     "gold": 43700,
-     "enemyLevel": 1306,
+     "mapId": "map03_jotatown02",
+     "useStamina": 16,
+     "gainRankExp": 710,
+     "gold": 5500,
+     "enemyLevel": 73,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "4160_03",
+      "4160_12",
+      "4170_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6455,15 +6546,15 @@
     {
      "stageId": "DT_STAGE_ST_435_04",
      "areas": [],
-     "mapId": "map04_country03",
-     "useStamina": 222,
-     "gainRankExp": 2185,
-     "gold": 43700,
-     "enemyLevel": 1306,
+     "mapId": "map03_jotatown03",
+     "useStamina": 16,
+     "gainRankExp": 710,
+     "gold": 5500,
+     "enemyLevel": 74,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "4170_02",
+      "4170_03",
+      "4170_15"
      ],
      "source": {
       "source": "jdr-default",
@@ -6473,15 +6564,15 @@
     {
      "stageId": "DT_STAGE_ST_435_05",
      "areas": [],
-     "mapId": "map04_country04",
-     "useStamina": 222,
-     "gainRankExp": 2185,
-     "gold": 43700,
-     "enemyLevel": 1306,
+     "mapId": "map03_tiger01",
+     "useStamina": 16,
+     "gainRankExp": 710,
+     "gold": 5500,
+     "enemyLevel": 75,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "4170_16",
+      "4170_17",
+      "4170_18"
      ],
      "source": {
       "source": "jdr-default",
@@ -6499,15 +6590,15 @@
     {
      "stageId": "DT_STAGE_ST_436_01",
      "areas": [],
-     "mapId": "map04_town01",
-     "useStamina": 223,
-     "gainRankExp": 2190,
-     "gold": 43800,
-     "enemyLevel": 1309,
+     "mapId": "map04_mystery01",
+     "useStamina": 17,
+     "gainRankExp": 730,
+     "gold": 5650,
+     "enemyLevel": 73,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "4000_03",
+      "4000_04",
+      "4000_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -6517,15 +6608,15 @@
     {
      "stageId": "DT_STAGE_ST_436_02",
      "areas": [],
-     "mapId": "map04_town03",
-     "useStamina": 223,
-     "gainRankExp": 2190,
-     "gold": 43800,
-     "enemyLevel": 1309,
+     "mapId": "map04_owson00",
+     "useStamina": 17,
+     "gainRankExp": 730,
+     "gold": 5650,
+     "enemyLevel": 74,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "4000_18",
+      "4000_23",
+      "4010_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6535,15 +6626,15 @@
     {
      "stageId": "DT_STAGE_ST_436_03",
      "areas": [],
-     "mapId": "map04_town04",
-     "useStamina": 223,
-     "gainRankExp": 2190,
-     "gold": 43800,
-     "enemyLevel": 1309,
+     "mapId": "map04_owson01",
+     "useStamina": 17,
+     "gainRankExp": 730,
+     "gold": 5650,
+     "enemyLevel": 75,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "4010_13",
+      "4011_02",
+      "4011_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6553,15 +6644,15 @@
     {
      "stageId": "DT_STAGE_ST_436_04",
      "areas": [],
-     "mapId": "map04_town05",
-     "useStamina": 223,
-     "gainRankExp": 2190,
-     "gold": 43800,
-     "enemyLevel": 1309,
+     "mapId": "map04_rohanhouse01",
+     "useStamina": 17,
+     "gainRankExp": 730,
+     "gold": 5650,
+     "enemyLevel": 76,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "4011_15",
+      "4011_16",
+      "4011_17"
      ],
      "source": {
       "source": "jdr-default",
@@ -6571,15 +6662,15 @@
     {
      "stageId": "DT_STAGE_ST_436_05",
      "areas": [],
-     "mapId": "map04_tunnel03",
-     "useStamina": 223,
-     "gainRankExp": 2190,
-     "gold": 43800,
-     "enemyLevel": 1309,
+     "mapId": "map04_town01",
+     "useStamina": 17,
+     "gainRankExp": 730,
+     "gold": 5650,
+     "enemyLevel": 77,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "4011_18",
+      "4012_03",
+      "4012_11"
      ],
      "source": {
       "source": "jdr-default",
@@ -6597,15 +6688,15 @@
     {
      "stageId": "DT_STAGE_ST_437_01",
      "areas": [],
-     "mapId": "map05_school",
-     "useStamina": 223,
-     "gainRankExp": 2195,
-     "gold": 43900,
-     "enemyLevel": 1312,
+     "mapId": "map05_luciastation",
+     "useStamina": 17,
+     "gainRankExp": 750,
+     "gold": 5800,
+     "enemyLevel": 75,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "4043_08",
+      "4080_01",
+      "4080_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6615,15 +6706,15 @@
     {
      "stageId": "DT_STAGE_ST_437_02",
      "areas": [],
-     "mapId": "map05_schoolgate",
-     "useStamina": 223,
-     "gainRankExp": 2195,
-     "gold": 43900,
-     "enemyLevel": 1312,
+     "mapId": "map05_maggiore",
+     "useStamina": 17,
+     "gainRankExp": 750,
+     "gold": 5800,
+     "enemyLevel": 76,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "4080_03",
+      "4080_04",
+      "4080_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -6633,15 +6724,15 @@
     {
      "stageId": "DT_STAGE_ST_437_03",
      "areas": [],
-     "mapId": "map05_town01",
-     "useStamina": 223,
-     "gainRankExp": 2195,
-     "gold": 43900,
-     "enemyLevel": 1312,
+     "mapId": "map05_roof",
+     "useStamina": 17,
+     "gainRankExp": 750,
+     "gold": 5800,
+     "enemyLevel": 77,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "4110_01",
+      "4110_02",
+      "4110_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -6651,15 +6742,15 @@
     {
      "stageId": "DT_STAGE_ST_437_04",
      "areas": [],
-     "mapId": "map05_train00",
-     "useStamina": 223,
-     "gainRankExp": 2195,
-     "gold": 43900,
-     "enemyLevel": 1312,
+     "mapId": "map05_sardinia",
+     "useStamina": 17,
+     "gainRankExp": 750,
+     "gold": 5800,
+     "enemyLevel": 78,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "4110_14",
+      "4130_01",
+      "4130_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6669,15 +6760,15 @@
     {
      "stageId": "DT_STAGE_ST_437_05",
      "areas": [],
-     "mapId": "map01_around01",
-     "useStamina": 223,
-     "gainRankExp": 2195,
-     "gold": 43900,
-     "enemyLevel": 1312,
+     "mapId": "map05_school",
+     "useStamina": 17,
+     "gainRankExp": 750,
+     "gold": 5800,
+     "enemyLevel": 79,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "4130_03",
+      "4130_13",
+      "4130_25"
      ],
      "source": {
       "source": "jdr-default",
@@ -6695,15 +6786,15 @@
     {
      "stageId": "DT_STAGE_ST_438_01",
      "areas": [],
-     "mapId": "map02_mexico01",
-     "useStamina": 224,
-     "gainRankExp": 2200,
-     "gold": 44000,
-     "enemyLevel": 1315,
+     "mapId": "map01_around03",
+     "useStamina": 17,
+     "gainRankExp": 770,
+     "gold": 5950,
+     "enemyLevel": 77,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "4170_17",
+      "4170_18",
+      "4190_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -6713,15 +6804,15 @@
     {
      "stageId": "DT_STAGE_ST_438_02",
      "areas": [],
-     "mapId": "map02_mexico02",
-     "useStamina": 224,
-     "gainRankExp": 2200,
-     "gold": 44000,
-     "enemyLevel": 1315,
+     "mapId": "map02_italia01",
+     "useStamina": 17,
+     "gainRankExp": 770,
+     "gold": 5950,
+     "enemyLevel": 78,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "4190_14",
+      "4191_01",
+      "4191_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6731,15 +6822,15 @@
     {
      "stageId": "DT_STAGE_ST_438_03",
      "areas": [],
-     "mapId": "map02_snowfield01",
-     "useStamina": 224,
-     "gainRankExp": 2200,
-     "gold": 44000,
-     "enemyLevel": 1315,
+     "mapId": "map02_italia02",
+     "useStamina": 17,
+     "gainRankExp": 770,
+     "gold": 5950,
+     "enemyLevel": 79,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "4191_03",
+      "4191_04",
+      "4192_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6749,15 +6840,15 @@
     {
      "stageId": "DT_STAGE_ST_438_04",
      "areas": [],
-     "mapId": "map02_snowfield02",
-     "useStamina": 224,
-     "gainRankExp": 2200,
-     "gold": 44000,
-     "enemyLevel": 1315,
+     "mapId": "map02_italia03",
+     "useStamina": 17,
+     "gainRankExp": 770,
+     "gold": 5950,
+     "enemyLevel": 80,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "4192_04",
+      "4193_08",
+      "4194_08"
      ],
      "source": {
       "source": "jdr-default",
@@ -6767,15 +6858,15 @@
     {
      "stageId": "DT_STAGE_ST_438_05",
      "areas": [],
-     "mapId": "map02_snowfield03",
-     "useStamina": 224,
-     "gainRankExp": 2200,
-     "gold": 44000,
-     "enemyLevel": 1315,
+     "mapId": "map02_mexico01",
+     "useStamina": 17,
+     "gainRankExp": 770,
+     "gold": 5950,
+     "enemyLevel": 81,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "4240_11",
+      "4240_12",
+      "4240_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -6793,15 +6884,15 @@
     {
      "stageId": "DT_STAGE_ST_439_01",
      "areas": [],
-     "mapId": "map03_diohouse06",
-     "useStamina": 224,
-     "gainRankExp": 2205,
-     "gold": 44100,
-     "enemyLevel": 1318,
+     "mapId": "map03_desert01",
+     "useStamina": 18,
+     "gainRankExp": 790,
+     "gold": 6100,
+     "enemyLevel": 79,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "4012_03",
+      "4012_11",
+      "4020_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6811,15 +6902,15 @@
     {
      "stageId": "DT_STAGE_ST_439_02",
      "areas": [],
-     "mapId": "map03_diohouse07",
-     "useStamina": 224,
-     "gainRankExp": 2205,
-     "gold": 44100,
-     "enemyLevel": 1318,
+     "mapId": "map03_desert02",
+     "useStamina": 18,
+     "gainRankExp": 790,
+     "gold": 6100,
+     "enemyLevel": 80,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "4020_02",
+      "4020_03",
+      "4020_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -6829,15 +6920,15 @@
     {
      "stageId": "DT_STAGE_ST_439_03",
      "areas": [],
-     "mapId": "map03_egypt01",
-     "useStamina": 224,
-     "gainRankExp": 2205,
-     "gold": 44100,
-     "enemyLevel": 1318,
+     "mapId": "map03_desert03",
+     "useStamina": 18,
+     "gainRankExp": 790,
+     "gold": 6100,
+     "enemyLevel": 81,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "4020_13",
+      "4030_01",
+      "4030_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6855,15 +6946,15 @@
     {
      "stageId": "DT_STAGE_ST_440_01",
      "areas": [],
-     "mapId": "map03_india03",
-     "useStamina": 225,
-     "gainRankExp": 2210,
-     "gold": 44200,
-     "enemyLevel": 1321,
+     "mapId": "map03_enya02",
+     "useStamina": 18,
+     "gainRankExp": 810,
+     "gold": 6250,
+     "enemyLevel": 81,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "4130_13",
+      "4130_25",
+      "4130_26"
      ],
      "source": {
       "source": "jdr-default",
@@ -6873,15 +6964,15 @@
     {
      "stageId": "DT_STAGE_ST_440_02",
      "areas": [],
-     "mapId": "map03_jotatown01",
-     "useStamina": 225,
-     "gainRankExp": 2210,
-     "gold": 44200,
-     "enemyLevel": 1321,
+     "mapId": "map03_enya03",
+     "useStamina": 18,
+     "gainRankExp": 810,
+     "gold": 6250,
+     "enemyLevel": 82,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "4130_27",
+      "4130_28",
+      "4150_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6891,15 +6982,15 @@
     {
      "stageId": "DT_STAGE_ST_440_03",
      "areas": [],
-     "mapId": "map03_jotatown02",
-     "useStamina": 225,
-     "gainRankExp": 2210,
-     "gold": 44200,
-     "enemyLevel": 1321,
+     "mapId": "map03_india01",
+     "useStamina": 18,
+     "gainRankExp": 810,
+     "gold": 6250,
+     "enemyLevel": 83,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "4150_02",
+      "4150_03",
+      "4160_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6909,15 +7000,15 @@
     {
      "stageId": "DT_STAGE_ST_440_04",
      "areas": [],
-     "mapId": "map03_jotatown03",
-     "useStamina": 225,
-     "gainRankExp": 2210,
-     "gold": 44200,
-     "enemyLevel": 1321,
+     "mapId": "map03_india02",
+     "useStamina": 18,
+     "gainRankExp": 810,
+     "gold": 6250,
+     "enemyLevel": 84,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "4160_02",
+      "4160_03",
+      "4160_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -6927,15 +7018,15 @@
     {
      "stageId": "DT_STAGE_ST_440_05",
      "areas": [],
-     "mapId": "map03_tiger01",
-     "useStamina": 225,
-     "gainRankExp": 2210,
-     "gold": 44200,
-     "enemyLevel": 1321,
+     "mapId": "map03_india03",
+     "useStamina": 18,
+     "gainRankExp": 810,
+     "gold": 6250,
+     "enemyLevel": 85,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "4170_01",
+      "4170_02",
+      "4170_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6953,15 +7044,15 @@
     {
      "stageId": "DT_STAGE_ST_441_01",
      "areas": [],
-     "mapId": "map04_mystery01",
-     "useStamina": 225,
-     "gainRankExp": 2215,
-     "gold": 44300,
-     "enemyLevel": 1324,
+     "mapId": "map04_country01",
+     "useStamina": 18,
+     "gainRankExp": 830,
+     "gold": 6400,
+     "enemyLevel": 83,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "4240_12",
+      "4240_13",
+      "4000_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6971,15 +7062,15 @@
     {
      "stageId": "DT_STAGE_ST_441_02",
      "areas": [],
-     "mapId": "map04_owson00",
-     "useStamina": 225,
-     "gainRankExp": 2215,
-     "gold": 44300,
-     "enemyLevel": 1324,
+     "mapId": "map04_country03",
+     "useStamina": 18,
+     "gainRankExp": 830,
+     "gold": 6400,
+     "enemyLevel": 84,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "4000_02",
+      "4000_03",
+      "4000_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -6989,15 +7080,15 @@
     {
      "stageId": "DT_STAGE_ST_441_03",
      "areas": [],
-     "mapId": "map04_owson01",
-     "useStamina": 225,
-     "gainRankExp": 2215,
-     "gold": 44300,
-     "enemyLevel": 1324,
+     "mapId": "map04_country04",
+     "useStamina": 18,
+     "gainRankExp": 830,
+     "gold": 6400,
+     "enemyLevel": 85,
      "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
+      "4000_12",
+      "4000_18",
+      "4000_23"
      ],
      "source": {
       "source": "jdr-default",
@@ -7015,15 +7106,15 @@
     {
      "stageId": "DT_STAGE_ST_442_01",
      "areas": [],
-     "mapId": "map05_luciastation",
-     "useStamina": 226,
-     "gainRankExp": 2220,
-     "gold": 44400,
-     "enemyLevel": 1327,
+     "mapId": "map04_town04",
+     "useStamina": 19,
+     "gainRankExp": 850,
+     "gold": 6550,
+     "enemyLevel": 85,
      "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
+      "4040_12",
+      "4040_13",
+      "4040_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -7033,15 +7124,15 @@
     {
      "stageId": "DT_STAGE_ST_442_02",
      "areas": [],
-     "mapId": "map05_maggiore",
-     "useStamina": 226,
-     "gainRankExp": 2220,
-     "gold": 44400,
-     "enemyLevel": 1327,
+     "mapId": "map04_town05",
+     "useStamina": 19,
+     "gainRankExp": 850,
+     "gold": 6550,
+     "enemyLevel": 86,
      "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
+      "4042_03",
+      "4043_08",
+      "4080_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -7051,15 +7142,15 @@
     {
      "stageId": "DT_STAGE_ST_442_03",
      "areas": [],
-     "mapId": "map05_roof",
-     "useStamina": 226,
-     "gainRankExp": 2220,
-     "gold": 44400,
-     "enemyLevel": 1327,
+     "mapId": "map04_tunnel03",
+     "useStamina": 19,
+     "gainRankExp": 850,
+     "gold": 6550,
+     "enemyLevel": 87,
      "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
+      "4080_02",
+      "4080_03",
+      "4080_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7069,15 +7160,15 @@
     {
      "stageId": "DT_STAGE_ST_442_04",
      "areas": [],
-     "mapId": "map05_sardinia",
-     "useStamina": 226,
-     "gainRankExp": 2220,
-     "gold": 44400,
-     "enemyLevel": 1327,
+     "mapId": "map05_colosseum",
+     "useStamina": 19,
+     "gainRankExp": 850,
+     "gold": 6550,
+     "enemyLevel": 88,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "4080_13",
+      "4110_01",
+      "4110_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -7087,15 +7178,15 @@
     {
      "stageId": "DT_STAGE_ST_442_05",
      "areas": [],
-     "mapId": "map05_school",
-     "useStamina": 226,
-     "gainRankExp": 2220,
-     "gold": 44400,
-     "enemyLevel": 1327,
+     "mapId": "map05_luciastation",
+     "useStamina": 19,
+     "gainRankExp": 850,
+     "gold": 6550,
+     "enemyLevel": 89,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "4110_13",
+      "4110_14",
+      "4130_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -7113,15 +7204,15 @@
     {
      "stageId": "DT_STAGE_ST_443_01",
      "areas": [],
-     "mapId": "map01_around03",
-     "useStamina": 226,
-     "gainRankExp": 2225,
-     "gold": 44500,
-     "enemyLevel": 1330,
+     "mapId": "map05_town01",
+     "useStamina": 19,
+     "gainRankExp": 870,
+     "gold": 6700,
+     "enemyLevel": 87,
      "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
+      "5050_03",
+      "5050_04",
+      "5080_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7131,15 +7222,15 @@
     {
      "stageId": "DT_STAGE_ST_443_02",
      "areas": [],
-     "mapId": "map02_italia01",
-     "useStamina": 226,
-     "gainRankExp": 2225,
-     "gold": 44500,
-     "enemyLevel": 1330,
+     "mapId": "map05_train00",
+     "useStamina": 19,
+     "gainRankExp": 870,
+     "gold": 6700,
+     "enemyLevel": 88,
      "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
+      "5100_14",
+      "5120_14",
+      "5140_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7149,15 +7240,15 @@
     {
      "stageId": "DT_STAGE_ST_443_03",
      "areas": [],
-     "mapId": "map02_italia02",
-     "useStamina": 226,
-     "gainRankExp": 2225,
-     "gold": 44500,
-     "enemyLevel": 1330,
+     "mapId": "map01_around01",
+     "useStamina": 19,
+     "gainRankExp": 870,
+     "gold": 6700,
+     "enemyLevel": 89,
      "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
+      "5150_04",
+      "5170_14",
+      "5210_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7175,11 +7266,65 @@
     {
      "stageId": "DT_STAGE_ST_444_01",
      "areas": [],
-     "mapId": "map03_desert01",
-     "useStamina": 227,
-     "gainRankExp": 2230,
-     "gold": 44600,
-     "enemyLevel": 1333,
+     "mapId": "map02_snowfield01",
+     "useStamina": 19,
+     "gainRankExp": 890,
+     "gold": 6850,
+     "enemyLevel": 89,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_444_02",
+     "areas": [],
+     "mapId": "map02_snowfield02",
+     "useStamina": 19,
+     "gainRankExp": 890,
+     "gold": 6850,
+     "enemyLevel": 90,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_444_03",
+     "areas": [],
+     "mapId": "map02_snowfield03",
+     "useStamina": 19,
+     "gainRankExp": 890,
+     "gold": 6850,
+     "enemyLevel": 91,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_444_04",
+     "areas": [],
+     "mapId": "map03_beach00",
+     "useStamina": 19,
+     "gainRankExp": 890,
+     "gold": 6850,
+     "enemyLevel": 92,
      "enemies": [
       "5010_04",
       "5010_14",
@@ -7191,71 +7336,17 @@
      }
     },
     {
-     "stageId": "DT_STAGE_ST_444_02",
+     "stageId": "DT_STAGE_ST_444_05",
      "areas": [],
-     "mapId": "map03_desert02",
-     "useStamina": 227,
-     "gainRankExp": 2230,
-     "gold": 44600,
-     "enemyLevel": 1333,
+     "mapId": "map03_desert01",
+     "useStamina": 19,
+     "gainRankExp": 890,
+     "gold": 6850,
+     "enemyLevel": 93,
      "enemies": [
       "5050_03",
       "5050_04",
       "5080_04"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_444_03",
-     "areas": [],
-     "mapId": "map03_desert03",
-     "useStamina": 227,
-     "gainRankExp": 2230,
-     "gold": 44600,
-     "enemyLevel": 1333,
-     "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_444_04",
-     "areas": [],
-     "mapId": "map03_diohouse01",
-     "useStamina": 227,
-     "gainRankExp": 2230,
-     "gold": 44600,
-     "enemyLevel": 1333,
-     "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_444_05",
-     "areas": [],
-     "mapId": "map03_diohouse06",
-     "useStamina": 227,
-     "gainRankExp": 2230,
-     "gold": 44600,
-     "enemyLevel": 1333,
-     "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7273,11 +7364,65 @@
     {
      "stageId": "DT_STAGE_ST_445_01",
      "areas": [],
-     "mapId": "map03_enya02",
-     "useStamina": 227,
-     "gainRankExp": 2235,
-     "gold": 44700,
-     "enemyLevel": 1336,
+     "mapId": "map03_egypt01",
+     "useStamina": 20,
+     "gainRankExp": 910,
+     "gold": 7000,
+     "enemyLevel": 91,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_445_02",
+     "areas": [],
+     "mapId": "map03_egypt02",
+     "useStamina": 20,
+     "gainRankExp": 910,
+     "gold": 7000,
+     "enemyLevel": 92,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_445_03",
+     "areas": [],
+     "mapId": "map03_egypt03",
+     "useStamina": 20,
+     "gainRankExp": 910,
+     "gold": 7000,
+     "enemyLevel": 93,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_445_04",
+     "areas": [],
+     "mapId": "map03_enya01",
+     "useStamina": 20,
+     "gainRankExp": 910,
+     "gold": 7000,
+     "enemyLevel": 94,
      "enemies": [
       "5150_04",
       "5170_14",
@@ -7289,71 +7434,17 @@
      }
     },
     {
-     "stageId": "DT_STAGE_ST_445_02",
+     "stageId": "DT_STAGE_ST_445_05",
      "areas": [],
-     "mapId": "map03_enya03",
-     "useStamina": 227,
-     "gainRankExp": 2235,
-     "gold": 44700,
-     "enemyLevel": 1336,
+     "mapId": "map03_enya02",
+     "useStamina": 20,
+     "gainRankExp": 910,
+     "gold": 7000,
+     "enemyLevel": 95,
      "enemies": [
       "5220_14",
       "5290_04",
       "5320_04"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_445_03",
-     "areas": [],
-     "mapId": "map03_india01",
-     "useStamina": 227,
-     "gainRankExp": 2235,
-     "gold": 44700,
-     "enemyLevel": 1336,
-     "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_445_04",
-     "areas": [],
-     "mapId": "map03_india02",
-     "useStamina": 227,
-     "gainRankExp": 2235,
-     "gold": 44700,
-     "enemyLevel": 1336,
-     "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_445_05",
-     "areas": [],
-     "mapId": "map03_india03",
-     "useStamina": 227,
-     "gainRankExp": 2235,
-     "gold": 44700,
-     "enemyLevel": 1336,
-     "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7371,11 +7462,65 @@
     {
      "stageId": "DT_STAGE_ST_446_01",
      "areas": [],
-     "mapId": "map04_country01",
-     "useStamina": 228,
-     "gainRankExp": 2240,
-     "gold": 44800,
-     "enemyLevel": 1339,
+     "mapId": "map03_jotatown02",
+     "useStamina": 20,
+     "gainRankExp": 930,
+     "gold": 7150,
+     "enemyLevel": 93,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_446_02",
+     "areas": [],
+     "mapId": "map03_jotatown03",
+     "useStamina": 20,
+     "gainRankExp": 930,
+     "gold": 7150,
+     "enemyLevel": 94,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_446_03",
+     "areas": [],
+     "mapId": "map03_tiger01",
+     "useStamina": 20,
+     "gainRankExp": 930,
+     "gold": 7150,
+     "enemyLevel": 95,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_446_04",
+     "areas": [],
+     "mapId": "map03_tiger02",
+     "useStamina": 20,
+     "gainRankExp": 930,
+     "gold": 7150,
+     "enemyLevel": 96,
      "enemies": [
       "5000_23",
       "5000_24",
@@ -7387,71 +7532,17 @@
      }
     },
     {
-     "stageId": "DT_STAGE_ST_446_02",
+     "stageId": "DT_STAGE_ST_446_05",
      "areas": [],
-     "mapId": "map04_country03",
-     "useStamina": 228,
-     "gainRankExp": 2240,
-     "gold": 44800,
-     "enemyLevel": 1339,
+     "mapId": "map04_country01",
+     "useStamina": 20,
+     "gainRankExp": 930,
+     "gold": 7150,
+     "enemyLevel": 97,
      "enemies": [
       "5010_04",
       "5010_14",
       "5030_04"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_446_03",
-     "areas": [],
-     "mapId": "map04_country04",
-     "useStamina": 228,
-     "gainRankExp": 2240,
-     "gold": 44800,
-     "enemyLevel": 1339,
-     "enemies": [
-      "5050_03",
-      "5050_04",
-      "5080_04"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_446_04",
-     "areas": [],
-     "mapId": "map04_mego02",
-     "useStamina": 228,
-     "gainRankExp": 2240,
-     "gold": 44800,
-     "enemyLevel": 1339,
-     "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_446_05",
-     "areas": [],
-     "mapId": "map04_mystery01",
-     "useStamina": 228,
-     "gainRankExp": 2240,
-     "gold": 44800,
-     "enemyLevel": 1339,
-     "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7469,11 +7560,11 @@
     {
      "stageId": "DT_STAGE_ST_453_01",
      "areas": [],
-     "mapId": "map05_roof",
-     "useStamina": 231,
-     "gainRankExp": 2275,
-     "gold": 45500,
-     "enemyLevel": 1360,
+     "mapId": "map04_owson01",
+     "useStamina": 20,
+     "gainRankExp": 950,
+     "gold": 7300,
+     "enemyLevel": 95,
      "enemies": [
       "5000_23",
       "5000_24",
@@ -7487,11 +7578,11 @@
     {
      "stageId": "DT_STAGE_ST_453_02",
      "areas": [],
-     "mapId": "map05_sardinia",
-     "useStamina": 231,
-     "gainRankExp": 2275,
-     "gold": 45500,
-     "enemyLevel": 1360,
+     "mapId": "map04_rohanhouse01",
+     "useStamina": 20,
+     "gainRankExp": 950,
+     "gold": 7300,
+     "enemyLevel": 96,
      "enemies": [
       "5010_04",
       "5010_14",
@@ -7505,11 +7596,11 @@
     {
      "stageId": "DT_STAGE_ST_453_03",
      "areas": [],
-     "mapId": "map05_school",
-     "useStamina": 231,
-     "gainRankExp": 2275,
-     "gold": 45500,
-     "enemyLevel": 1360,
+     "mapId": "map04_town01",
+     "useStamina": 20,
+     "gainRankExp": 950,
+     "gold": 7300,
+     "enemyLevel": 97,
      "enemies": [
       "5050_03",
       "5050_04",
@@ -7523,11 +7614,11 @@
     {
      "stageId": "DT_STAGE_ST_453_04",
      "areas": [],
-     "mapId": "map05_schoolgate",
-     "useStamina": 231,
-     "gainRankExp": 2275,
-     "gold": 45500,
-     "enemyLevel": 1360,
+     "mapId": "map04_town03",
+     "useStamina": 20,
+     "gainRankExp": 950,
+     "gold": 7300,
+     "enemyLevel": 98,
      "enemies": [
       "5100_14",
       "5120_14",
@@ -7541,11 +7632,11 @@
     {
      "stageId": "DT_STAGE_ST_453_05",
      "areas": [],
-     "mapId": "map05_town01",
-     "useStamina": 231,
-     "gainRankExp": 2275,
-     "gold": 45500,
-     "enemyLevel": 1360,
+     "mapId": "map04_town04",
+     "useStamina": 20,
+     "gainRankExp": 950,
+     "gold": 7300,
+     "enemyLevel": 99,
      "enemies": [
       "5150_04",
       "5170_14",
@@ -7567,11 +7658,11 @@
     {
      "stageId": "DT_STAGE_ST_454_01",
      "areas": [],
-     "mapId": "map02_italia02",
-     "useStamina": 232,
-     "gainRankExp": 2280,
-     "gold": 45600,
-     "enemyLevel": 1363,
+     "mapId": "map05_roof",
+     "useStamina": 20,
+     "gainRankExp": 970,
+     "gold": 7450,
+     "enemyLevel": 97,
      "enemies": [
       "5100_14",
       "5120_14",
@@ -7585,11 +7676,11 @@
     {
      "stageId": "DT_STAGE_ST_454_02",
      "areas": [],
-     "mapId": "map02_italia03",
-     "useStamina": 232,
-     "gainRankExp": 2280,
-     "gold": 45600,
-     "enemyLevel": 1363,
+     "mapId": "map05_sardinia",
+     "useStamina": 20,
+     "gainRankExp": 970,
+     "gold": 7450,
+     "enemyLevel": 98,
      "enemies": [
       "5150_04",
       "5170_14",
@@ -7603,11 +7694,11 @@
     {
      "stageId": "DT_STAGE_ST_454_03",
      "areas": [],
-     "mapId": "map02_mexico01",
-     "useStamina": 232,
-     "gainRankExp": 2280,
-     "gold": 45600,
-     "enemyLevel": 1363,
+     "mapId": "map05_school",
+     "useStamina": 20,
+     "gainRankExp": 970,
+     "gold": 7450,
+     "enemyLevel": 99,
      "enemies": [
       "5220_14",
       "5290_04",
@@ -7621,11 +7712,11 @@
     {
      "stageId": "DT_STAGE_ST_454_04",
      "areas": [],
-     "mapId": "map02_mexico02",
-     "useStamina": 232,
-     "gainRankExp": 2280,
-     "gold": 45600,
-     "enemyLevel": 1363,
+     "mapId": "map05_schoolgate",
+     "useStamina": 20,
+     "gainRankExp": 970,
+     "gold": 7450,
+     "enemyLevel": 99,
      "enemies": [
       "5000_03",
       "5000_04",
@@ -7639,11 +7730,11 @@
     {
      "stageId": "DT_STAGE_ST_454_05",
      "areas": [],
-     "mapId": "map02_snowfield01",
-     "useStamina": 232,
-     "gainRankExp": 2280,
-     "gold": 45600,
-     "enemyLevel": 1363,
+     "mapId": "map05_town01",
+     "useStamina": 20,
+     "gainRankExp": 970,
+     "gold": 7450,
+     "enemyLevel": 99,
      "enemies": [
       "5000_23",
       "5000_24",
@@ -7665,47 +7756,11 @@
     {
      "stageId": "DT_STAGE_ST_459_01",
      "areas": [],
-     "mapId": "map01_around01",
-     "useStamina": 234,
-     "gainRankExp": 2305,
-     "gold": 46100,
-     "enemyLevel": 1378,
-     "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_459_02",
-     "areas": [],
-     "mapId": "map01_around02",
-     "useStamina": 234,
-     "gainRankExp": 2305,
-     "gold": 46100,
-     "enemyLevel": 1378,
-     "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_459_03",
-     "areas": [],
-     "mapId": "map01_around03",
-     "useStamina": 234,
-     "gainRankExp": 2305,
-     "gold": 46100,
-     "enemyLevel": 1378,
+     "mapId": "map02_italia02",
+     "useStamina": 20,
+     "gainRankExp": 990,
+     "gold": 7600,
+     "enemyLevel": 99,
      "enemies": [
       "5000_03",
       "5000_04",
@@ -7717,13 +7772,13 @@
      }
     },
     {
-     "stageId": "DT_STAGE_ST_459_04",
+     "stageId": "DT_STAGE_ST_459_02",
      "areas": [],
-     "mapId": "map02_italia01",
-     "useStamina": 234,
-     "gainRankExp": 2305,
-     "gold": 46100,
-     "enemyLevel": 1378,
+     "mapId": "map02_italia03",
+     "useStamina": 20,
+     "gainRankExp": 990,
+     "gold": 7600,
+     "enemyLevel": 99,
      "enemies": [
       "5000_23",
       "5000_24",
@@ -7735,17 +7790,53 @@
      }
     },
     {
-     "stageId": "DT_STAGE_ST_459_05",
+     "stageId": "DT_STAGE_ST_459_03",
      "areas": [],
-     "mapId": "map02_italia02",
-     "useStamina": 234,
-     "gainRankExp": 2305,
-     "gold": 46100,
-     "enemyLevel": 1378,
+     "mapId": "map02_mexico01",
+     "useStamina": 20,
+     "gainRankExp": 990,
+     "gold": 7600,
+     "enemyLevel": 99,
      "enemies": [
       "5010_04",
       "5010_14",
       "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_459_04",
+     "areas": [],
+     "mapId": "map02_mexico02",
+     "useStamina": 20,
+     "gainRankExp": 990,
+     "gold": 7600,
+     "enemyLevel": 99,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_459_05",
+     "areas": [],
+     "mapId": "map02_snowfield01",
+     "useStamina": 20,
+     "gainRankExp": 990,
+     "gold": 7600,
+     "enemyLevel": 99,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7763,47 +7854,11 @@
     {
      "stageId": "DT_STAGE_ST_460_01",
      "areas": [],
-     "mapId": "map02_snowfield03",
-     "useStamina": 235,
-     "gainRankExp": 2310,
-     "gold": 46200,
-     "enemyLevel": 1381,
-     "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_460_02",
-     "areas": [],
-     "mapId": "map03_beach00",
-     "useStamina": 235,
-     "gainRankExp": 2310,
-     "gold": 46200,
-     "enemyLevel": 1381,
-     "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_460_03",
-     "areas": [],
-     "mapId": "map03_desert01",
-     "useStamina": 235,
-     "gainRankExp": 2310,
-     "gold": 46200,
-     "enemyLevel": 1381,
+     "mapId": "map03_desert03",
+     "useStamina": 20,
+     "gainRankExp": 1010,
+     "gold": 7750,
+     "enemyLevel": 99,
      "enemies": [
       "5050_03",
       "5050_04",
@@ -7815,13 +7870,13 @@
      }
     },
     {
-     "stageId": "DT_STAGE_ST_460_04",
+     "stageId": "DT_STAGE_ST_460_02",
      "areas": [],
-     "mapId": "map03_desert02",
-     "useStamina": 235,
-     "gainRankExp": 2310,
-     "gold": 46200,
-     "enemyLevel": 1381,
+     "mapId": "map03_diohouse01",
+     "useStamina": 20,
+     "gainRankExp": 1010,
+     "gold": 7750,
+     "enemyLevel": 99,
      "enemies": [
       "5100_14",
       "5120_14",
@@ -7833,17 +7888,53 @@
      }
     },
     {
-     "stageId": "DT_STAGE_ST_460_05",
+     "stageId": "DT_STAGE_ST_460_03",
      "areas": [],
-     "mapId": "map03_desert03",
-     "useStamina": 235,
-     "gainRankExp": 2310,
-     "gold": 46200,
-     "enemyLevel": 1381,
+     "mapId": "map03_diohouse06",
+     "useStamina": 20,
+     "gainRankExp": 1010,
+     "gold": 7750,
+     "enemyLevel": 99,
      "enemies": [
       "5150_04",
       "5170_14",
       "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_460_04",
+     "areas": [],
+     "mapId": "map03_diohouse07",
+     "useStamina": 20,
+     "gainRankExp": 1010,
+     "gold": 7750,
+     "enemyLevel": 99,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_460_05",
+     "areas": [],
+     "mapId": "map03_egypt01",
+     "useStamina": 20,
+     "gainRankExp": 1010,
+     "gold": 7750,
+     "enemyLevel": 99,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
      ],
      "source": {
       "source": "jdr-default",
@@ -7861,11 +7952,65 @@
     {
      "stageId": "DT_STAGE_ST_479_01",
      "areas": [],
-     "mapId": "map04_owson01",
-     "useStamina": 244,
-     "gainRankExp": 2405,
-     "gold": 48100,
-     "enemyLevel": 1438,
+     "mapId": "map03_india01",
+     "useStamina": 20,
+     "gainRankExp": 1030,
+     "gold": 7900,
+     "enemyLevel": 99,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_479_02",
+     "areas": [],
+     "mapId": "map03_india02",
+     "useStamina": 20,
+     "gainRankExp": 1030,
+     "gold": 7900,
+     "enemyLevel": 99,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_479_03",
+     "areas": [],
+     "mapId": "map03_india03",
+     "useStamina": 20,
+     "gainRankExp": 1030,
+     "gold": 7900,
+     "enemyLevel": 99,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_479_04",
+     "areas": [],
+     "mapId": "map03_jotatown01",
+     "useStamina": 20,
+     "gainRankExp": 1030,
+     "gold": 7900,
+     "enemyLevel": 99,
      "enemies": [
       "5010_04",
       "5010_14",
@@ -7877,71 +8022,17 @@
      }
     },
     {
-     "stageId": "DT_STAGE_ST_479_02",
+     "stageId": "DT_STAGE_ST_479_05",
      "areas": [],
-     "mapId": "map04_rohanhouse01",
-     "useStamina": 244,
-     "gainRankExp": 2405,
-     "gold": 48100,
-     "enemyLevel": 1438,
+     "mapId": "map03_jotatown02",
+     "useStamina": 20,
+     "gainRankExp": 1030,
+     "gold": 7900,
+     "enemyLevel": 99,
      "enemies": [
       "5050_03",
       "5050_04",
       "5080_04"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_479_03",
-     "areas": [],
-     "mapId": "map04_town01",
-     "useStamina": 244,
-     "gainRankExp": 2405,
-     "gold": 48100,
-     "enemyLevel": 1438,
-     "enemies": [
-      "5100_14",
-      "5120_14",
-      "5140_04"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_479_04",
-     "areas": [],
-     "mapId": "map04_town03",
-     "useStamina": 244,
-     "gainRankExp": 2405,
-     "gold": 48100,
-     "enemyLevel": 1438,
-     "enemies": [
-      "5150_04",
-      "5170_14",
-      "5210_04"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_479_05",
-     "areas": [],
-     "mapId": "map04_town04",
-     "useStamina": 244,
-     "gainRankExp": 2405,
-     "gold": 48100,
-     "enemyLevel": 1438,
-     "enemies": [
-      "5220_14",
-      "5290_04",
-      "5320_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7959,11 +8050,65 @@
     {
      "stageId": "DT_STAGE_ST_480_01",
      "areas": [],
-     "mapId": "map05_roof",
-     "useStamina": 245,
-     "gainRankExp": 2410,
-     "gold": 48200,
-     "enemyLevel": 1441,
+     "mapId": "map04_country04",
+     "useStamina": 20,
+     "gainRankExp": 1050,
+     "gold": 8050,
+     "enemyLevel": 99,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_480_02",
+     "areas": [],
+     "mapId": "map04_mego02",
+     "useStamina": 20,
+     "gainRankExp": 1050,
+     "gold": 8050,
+     "enemyLevel": 99,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_480_03",
+     "areas": [],
+     "mapId": "map04_mystery01",
+     "useStamina": 20,
+     "gainRankExp": 1050,
+     "gold": 8050,
+     "enemyLevel": 99,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_480_04",
+     "areas": [],
+     "mapId": "map04_owson00",
+     "useStamina": 20,
+     "gainRankExp": 1050,
+     "gold": 8050,
+     "enemyLevel": 99,
      "enemies": [
       "5150_04",
       "5170_14",
@@ -7975,71 +8120,17 @@
      }
     },
     {
-     "stageId": "DT_STAGE_ST_480_02",
+     "stageId": "DT_STAGE_ST_480_05",
      "areas": [],
-     "mapId": "map05_sardinia",
-     "useStamina": 245,
-     "gainRankExp": 2410,
-     "gold": 48200,
-     "enemyLevel": 1441,
+     "mapId": "map04_owson01",
+     "useStamina": 20,
+     "gainRankExp": 1050,
+     "gold": 8050,
+     "enemyLevel": 99,
      "enemies": [
       "5220_14",
       "5290_04",
       "5320_04"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_480_03",
-     "areas": [],
-     "mapId": "map05_school",
-     "useStamina": 245,
-     "gainRankExp": 2410,
-     "gold": 48200,
-     "enemyLevel": 1441,
-     "enemies": [
-      "5000_03",
-      "5000_04",
-      "5000_22"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_480_04",
-     "areas": [],
-     "mapId": "map05_schoolgate",
-     "useStamina": 245,
-     "gainRankExp": 2410,
-     "gold": 48200,
-     "enemyLevel": 1441,
-     "enemies": [
-      "5000_23",
-      "5000_24",
-      "5001_14"
-     ],
-     "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
-     }
-    },
-    {
-     "stageId": "DT_STAGE_ST_480_05",
-     "areas": [],
-     "mapId": "map05_town01",
-     "useStamina": 245,
-     "gainRankExp": 2410,
-     "gold": 48200,
-     "enemyLevel": 1441,
-     "enemies": [
-      "5010_04",
-      "5010_14",
-      "5030_04"
      ],
      "source": {
       "source": "jdr-default",
