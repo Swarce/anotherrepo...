@@ -343,6 +343,7 @@ fn run_import(ctx: &Ctx) {
         return;
     }
     let t0 = Instant::now();
+    ctx.importing.store(true, Ordering::Relaxed);
     log::line(
         "import",
         &format!(
@@ -372,6 +373,7 @@ fn run_import(ctx: &Ctx) {
         ),
         Err(e) => log::line("import", &format!("import FAILED: {e}")),
     }
+    ctx.importing.store(false, Ordering::Relaxed);
 }
 
 /// Port actually bound (0 until listening); for tests and diagnostics.

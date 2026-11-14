@@ -33,6 +33,8 @@ pub struct Ctx {
     pub skip_tutorial: bool,
     /// Generated `versionfile` bundle, keyed by the (size, mtime) of `vcs.bytes`.
     pub versionfile_cache: std::sync::Mutex<Option<ManifestState>>,
+    /// True while the embedded host imports staged game files (the key request waits for it).
+    pub importing: std::sync::atomic::AtomicBool,
     /// Serialises manifest builds.
     pub versionfile_build: std::sync::Mutex<()>,
 }
@@ -49,6 +51,7 @@ impl Ctx {
             skip_tutorial: true,
             versionfile_cache: std::sync::Mutex::new(None),
             versionfile_build: std::sync::Mutex::new(()),
+            importing: std::sync::atomic::AtomicBool::new(false),
             settings,
             counters: Counters::default(),
             port: AtomicU16::new(0),
