@@ -216,7 +216,10 @@ fn cmd_decrypt(a: &[String]) -> Result<(), Error> {
     let plain = if Jjec::is_jjec(&inp) {
         Jjec::decrypt(&inp, key, iv)?
     } else {
-        Vcs::decrypt(&inp, key, iv)?.2
+        // vcs.bytes carries a size and an md5 that are checked, so other files are rejected.
+        Vcs::decrypt(&inp, key, iv)
+            .map_err(|e| format!("not a JJEC bundle or a valid vcs.bytes ({e})"))?
+            .2
     };
     std::fs::write(out, plain)?;
     Ok(())

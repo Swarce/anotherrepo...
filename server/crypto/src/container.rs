@@ -93,6 +93,13 @@ impl Jjec {
 
 pub struct Vcs;
 
+mod md5 {
+    use md5::{Digest, Md5};
+    pub fn compute_hex(b: &[u8]) -> String {
+        Md5::digest(b).iter().map(|x| format!("{x:02x}")).collect()
+    }
+}
+
 pub const VCS_HEADER: usize = 40;
 
 impl Vcs {
@@ -107,15 +114,26 @@ impl Vcs {
         }
         let size = u32le(data, 0);
         let enc = u32le(data, 4) as usize;
-        let md5 = std::str::from_utf8(&data[8..40])
+        let md5_text = std::str::from_utf8(&data[8..40])
             .map_err(|_| ContainerError::BadHeader("md5 not ascii"))?
             .to_string();
         if enc % 16 != 0 || VCS_HEADER + enc > data.len() {
             return Err(ContainerError::BadHeader("encrypted size out of range"));
         }
+        if size as usize != data.len() - VCS_HEADER {
+            return Err(ContainerError::BadHeader(
+                "size field does not match file length",
+            ));
+        }
+        let digest = md5::compute_hex(&data[VCS_HEADER..]);
+        if !md5_text.eq_ignore_ascii_case(&digest) {
+            return Err(ContainerError::BadHeader(
+                "md5 field does not match contents",
+            ));
+        }
         let mut out = aescbc::decrypt_raw(key, iv, &data[VCS_HEADER..VCS_HEADER + enc])?;
         out.extend_from_slice(&data[VCS_HEADER + enc..]);
-        Ok((size, md5, out))
+        Ok((size, md5_text, out))
     }
 }
 
@@ -134,6 +152,36 @@ mod tests {
             assert_eq!(c.len(), plain.len() + JJEC_HEADER);
             assert_eq!(Jjec::decrypt(&c, K, IV).unwrap(), plain);
         }
+    }
+
+    fn vcs_file(payload: &[u8]) -> Vec<u8> {
+        let enc = payload.len() / 16 * 16;
+        let mut body = crate::aescbc::encrypt_raw(K, IV, &payload[..enc]).unwrap();
+        body.extend_from_slice(&payload[enc..]);
+        let mut d = (body.len() as u32).to_le_bytes().to_vec();
+        d.extend_from_slice(&(enc as u32).to_le_bytes());
+        d.extend_from_slice(md5::compute_hex(&body).as_bytes());
+        d.extend_from_slice(&body);
+        d
+    }
+
+    #[test]
+    fn vcs_validates_size_and_md5() {
+        let payload = br#"{"keys":["a.bytes"],"values":["0123"]}xyz"#;
+        let f = vcs_file(payload);
+        assert_eq!(Vcs::decrypt(&f, K, IV).unwrap().2, payload);
+        let mut bad = f.clone();
+        *bad.last_mut().unwrap() ^= 1;
+        assert!(matches!(
+            Vcs::decrypt(&bad, K, IV),
+            Err(ContainerError::BadHeader(_))
+        ));
+        let mut short = f.clone();
+        short.pop();
+        assert!(matches!(
+            Vcs::decrypt(&short, K, IV),
+            Err(ContainerError::BadHeader(_))
+        ));
     }
 
     #[test]

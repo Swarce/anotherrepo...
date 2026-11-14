@@ -42,6 +42,23 @@ pub fn parse_range(h: &str, len: u64) -> Option<(u64, u64)> {
     (start <= end && end < len).then_some((start, end))
 }
 
+/// `bytes=a-b` / `bytes=a-` / `bytes=-n` with a <= b; anything else is ignored.
+pub fn range_is_well_formed(h: &str) -> bool {
+    let Some(spec) = h.trim().strip_prefix("bytes=") else {
+        return false;
+    };
+    let Some((a, b)) = spec.split_once('-') else {
+        return false;
+    };
+    let num = |s: &str| !s.is_empty() && s.bytes().all(|c| c.is_ascii_digit());
+    match (a.is_empty(), b.is_empty()) {
+        (false, true) => num(a),
+        (true, false) => num(b),
+        (false, false) => num(a) && num(b) && a.parse::<u64>().ok() <= b.parse::<u64>().ok(),
+        (true, true) => false,
+    }
+}
+
 /// Serve `rel` from `root` (GET/HEAD, optional Range).
 pub fn serve_file(root: &Path, rel: &str, req: &Request) -> Response {
     let Some(path) = safe_join(root, rel) else {
@@ -52,7 +69,9 @@ pub fn serve_file(root: &Path, rel: &str, req: &Request) -> Response {
         Err(_) => return Response::text(404, "not found"),
     };
     let len = data.len() as u64;
-    if let Some(r) = req.header("Range") {
+    // RFC 7233: ignore malformed or non-byte ranges; 416 only for a well-formed range that
+    // starts past the end of the file.
+    if let Some(r) = req.header("Range").filter(|r| range_is_well_formed(r)) {
         return match parse_range(r, len) {
             Some((s, e)) => {
                 let mut resp = Response::new(
@@ -123,6 +142,20 @@ mod tests {
         let r = serve_file(&d, "f.bytes", &req);
         assert_eq!((r.status, r.body.as_slice()), (206, b"234".as_slice()));
         assert_eq!(serve_file(&d, "missing", &req).status, 404);
+        req.headers = vec![("Range".into(), "bytes=5-3".into())];
+        assert_eq!(
+            serve_file(&d, "f.bytes", &req).status,
+            200,
+            "reversed range is ignored"
+        );
+        req.headers = vec![("Range".into(), "items=0-1".into())];
+        assert_eq!(
+            serve_file(&d, "f.bytes", &req).status,
+            200,
+            "non-byte unit is ignored"
+        );
+        req.headers = vec![("Range".into(), "bytes=50-".into())];
+        assert_eq!(serve_file(&d, "f.bytes", &req).status, 416);
         assert_eq!(serve_file(&d, "../etc/passwd", &req).status, 400);
     }
 }
