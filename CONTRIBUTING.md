@@ -6,7 +6,9 @@
   text extracted from the game, textures, audio, or keys. `.gitignore` blocks the common ones; review
   your diff anyway.
 - Tests that need the real game read the developer's own copy through env vars and **skip** without
-  them: `JDR_APK` (the APK), `JDR_DATA` (the game's `files/` folder), `JDR_KEYS` (a local keys.json).
+  them: `JDR_DATA` (the game's `files/` folder; crypto real-data test) and `JDR_APK` +
+  `JDR_BUILD_TOOLS` (real patch run in `scripts/build.sh`). A skipped suite prints "skipped" in the
+  test output; check for it before claiming a real-binary pass.
 - Translations are stored as `label -> English` plus a hash of the source line, never the Japanese
   source text.
 - No real payments, no tracking. Analytics/ads/crash endpoints are accepted and dropped.

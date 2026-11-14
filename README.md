@@ -21,8 +21,9 @@ Nothing is "fixed" until a device log shows it.
 
 1. `jdr-tool keys` recovers the keys the dead server used to hand out, from your own downloaded
    files (they are written to a local `keys.json`, never committed).
-2. `jdr-patch` takes your APK, rewrites the server address to `http://127.0.0.1:18080`, applies the
-   client patches, removes what can never work offline, and re-signs it with your own key.
+2. `jdr-patch` takes your APK, rewrites the server address to `http://127.0.0.1:18080`, allows plain
+   HTTP to it, removes the 32-bit libraries, and re-signs it with your own key (debloat of SDKs that
+   cannot work offline comes in M6).
 3. The server (embedded from M2; standalone on your PC for now) speaks the game's encrypted protocol
    and serves the game's asset files from your own copy.
 

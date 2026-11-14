@@ -48,7 +48,21 @@ pub fn sha256_hex(b: &[u8]) -> String {
 pub fn identify(apk: &mut ApkEdit) -> Result<&'static known::VerifiedBuild, Error> {
     let m = apk.read(METADATA_PATH)?;
     let sha = sha256_hex(&m);
-    known::by_metadata(&sha).ok_or_else(|| {
+    let build = known::by_metadata(&sha);
+    if let Some(b) = build {
+        let lib = apk
+            .read(LIBIL2CPP_ARM64)
+            .map_err(|_| "no lib/arm64-v8a/libil2cpp.so (split or 32-bit-only APK?)")?;
+        let lsha = sha256_hex(&lib);
+        if lsha != b.libil2cpp_arm64_sha256 {
+            return Err(format!(
+                "unverified build: libil2cpp.so sha256 {lsha} does not match the verified {}",
+                b.version_name
+            )
+            .into());
+        }
+    }
+    build.ok_or_else(|| {
         format!(
             "unverified build: global-metadata.dat sha256 {sha} is not in the verified list (see docs/PLAYER-SETUP.md for supported versions)"
         )

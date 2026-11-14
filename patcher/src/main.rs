@@ -8,7 +8,7 @@ use jdr_patch::sign;
 use std::path::PathBuf;
 
 const USAGE: &str = "usage:
-  jdr-patch patch --apk <in.apk> --out <out.apk> [--port N] [--disable <patch-id>]... [--keystore <p12>]
+  jdr-patch patch --apk <in.apk> --out <out.apk> [--port N] [--disable <patch-id>]... [--keystore <p12>] [--force]
   jdr-patch list                 list patches
   jdr-patch init-key [--keystore <p12>]   create the signing key if missing
 
@@ -25,9 +25,17 @@ fn main() {
             Ok(())
         }
         Some("init-key") => {
-            let ks = opt(&args[1..], "--keystore")
+            let ks = match opt(&args[1..], "--keystore")
                 .map(PathBuf::from)
-                .unwrap_or_else(sign::default_keystore);
+                .map(Ok)
+                .unwrap_or_else(sign::default_keystore)
+            {
+                Ok(k) => k,
+                Err(e) => {
+                    eprintln!("error: {e}");
+                    std::process::exit(1)
+                }
+            };
             sign::ensure_key(&ks).map(|created| {
                 println!(
                     "{} {}",
@@ -53,12 +61,52 @@ fn opt(args: &[String], name: &str) -> Option<String> {
         .and_then(|i| args.get(i + 1).cloned())
 }
 
+/// Never overwrite the player's original APK, and never clobber an existing output silently.
+fn check_paths(input: &std::path::Path, out: &std::path::Path, force: bool) -> Result<(), Error> {
+    let inp = std::fs::canonicalize(input).map_err(|e| format!("{}: {e}", input.display()))?;
+    if let Some(dir) = out.parent().filter(|d| !d.as_os_str().is_empty()) {
+        std::fs::create_dir_all(dir)?;
+    }
+    let canon_out = |p: &std::path::Path| -> Result<PathBuf, Error> {
+        let dir = p
+            .parent()
+            .filter(|d| !d.as_os_str().is_empty())
+            .unwrap_or(std::path::Path::new("."));
+        Ok(std::fs::canonicalize(dir)?.join(p.file_name().ok_or("--out has no file name")?))
+    };
+    for p in [
+        out.to_path_buf(),
+        out.with_extension("unsigned.apk"),
+        out.with_extension("aligned.apk"),
+        out.with_extension("unsigned.aligned.apk"),
+    ] {
+        if canon_out(&p)? == inp {
+            return Err("--out (or a temporary file next to it) would overwrite the input APK; choose another output path".into());
+        }
+    }
+    if out.exists() && !force {
+        return Err(format!("{} exists; pass --force to replace it", out.display()).into());
+    }
+    Ok(())
+}
+
 fn cmd_patch(args: &[String]) -> Result<(), Error> {
     let input = PathBuf::from(opt(args, "--apk").ok_or("--apk is required")?);
     let out = PathBuf::from(opt(args, "--out").ok_or("--out is required")?);
-    let keystore = opt(args, "--keystore")
-        .map(PathBuf::from)
-        .unwrap_or_else(sign::default_keystore);
+    let keystore = match opt(args, "--keystore") {
+        Some(k) => PathBuf::from(k),
+        None => sign::default_keystore()?,
+    };
+    let force = args.iter().any(|a| a == "--force");
+    check_paths(&input, &out, force)?;
+    if !keystore.exists() {
+        return Err(format!(
+            "no signing key at {}. First time: run `jdr-patch init-key`. If you patched before, point JDR_KEYSTORE at that same key: a new key cannot install over your existing build.",
+            keystore.display()
+        )
+        .into());
+    }
+    let pinned = sign::check_pin(&keystore)?;
     let mut cfg = Config::default();
     if let Some(p) = opt(args, "--port") {
         let port: u16 = p.parse().map_err(|_| "bad --port")?;
@@ -108,11 +156,14 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
     let unsigned = out.with_extension("unsigned.apk");
     let stats = apk.write(&unsigned)?;
     rep.stats = format!("{stats:?}");
-    if sign::ensure_key(&keystore)? {
-        eprintln!("created signing key {}", keystore.display());
-    }
     let sr = sign::align_and_sign(&unsigned, &out, &keystore)?;
     let _ = std::fs::remove_file(&unsigned);
+    if sr.cert_sha256.to_ascii_lowercase() != pinned {
+        let _ = std::fs::remove_file(&out);
+        return Err("post-check failed: output certificate differs from the pinned key".into());
+    }
+    rep.checks
+        .push("certificate matches the pinned signing key".into());
     rep.schemes = sr.schemes;
     rep.cert_sha256 = sr.cert_sha256;
     rep.output = out.display().to_string();

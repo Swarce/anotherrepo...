@@ -9,7 +9,7 @@
 |---|---|---|
 | M0 | Research notes 01–08, protocol index, §2.2 decision | in progress (Build 01) |
 | M1 | URL-patched game reaches the home screen against the standalone server over `adb reverse` | started (Build 01) |
-| M2 | Embedded `libjdrserver.so` (DT_NEEDED on libmain.so), no network | |
+| M2 | Embedded `libjdrserver.so` (DT_NEEDED on libmain.so), no network. The CDN must never serve from the folder the client downloads into (WebClient truncates the destination first); serve from a read-only copy | |
 | M3 | Saves: verbatim storage, backups, export/import | |
 | M4 | Economy, gacha, shop, present box, coupons (content from public wikis, cited) | |
 | M5 | Event rotation, quests, PvP stand-ins, raid NPC helpers, simulated-clock run | |

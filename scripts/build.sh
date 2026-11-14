@@ -27,7 +27,7 @@ if [[ -n "${JDR_APK:-}" && -n "${JDR_BUILD_TOOLS:-}" ]]; then
   step "real-binary: patch your APK"
   mkdir -p deliver
   JDR_KEYSTORE="${JDR_KEYSTORE:-$HOME/.config/JDR/jdr-signing.p12}" \
-    ./target/release/jdr-patch patch --apk "$JDR_APK" --out deliver/jdr-test.apk
+    ./target/release/jdr-patch patch --apk "$JDR_APK" --out deliver/jdr-test.apk --force
 else
   step "real-binary patch test skipped (set JDR_APK and JDR_BUILD_TOOLS)"
 fi

@@ -123,7 +123,11 @@ fn cmd_keys(a: &[String]) -> Result<(), Error> {
         sound_key,
         http_key,
     };
+    if let Some(d) = out.parent().filter(|d| !d.as_os_str().is_empty()) {
+        std::fs::create_dir_all(d)?;
+    }
     std::fs::write(&out, serde_json::to_vec_pretty(&k)?)?;
+    completeness(&dir, &nk.key, &iv);
     eprintln!(
         "recovered asset key from {} names (score {:.4}), IV verified on encrypted bundles; wrote {}",
         nk.names_used, nk.score, out.display()
@@ -149,6 +153,45 @@ pub fn http_key_from_apk(apk: &Path) -> Result<String, Error> {
         return Err("envelope key literal has an unexpected shape; refusing".into());
     }
     Ok(String::from_utf8(lit.to_vec())?)
+}
+
+/// Compare the folder with the client's own record (`vcs.bytes`): warns if the copy is partial,
+/// e.g. after an incomplete MTP copy. A partial copy works for key recovery but not for play.
+fn completeness(dir: &Path, key: &[u8], iv: &[u8]) {
+    let Ok(raw) = std::fs::read(dir.join("vcs.bytes")) else {
+        eprintln!(
+            "WARNING: no vcs.bytes in {}; cannot check that your copy is complete",
+            dir.display()
+        );
+        return;
+    };
+    let Ok((_, _, plain)) = Vcs::decrypt(&raw, key, iv) else {
+        eprintln!("WARNING: vcs.bytes did not decrypt; cannot check completeness");
+        return;
+    };
+    let text = String::from_utf8_lossy(&plain);
+    let Some(keys) = text
+        .find("\"keys\":[")
+        .map(|i| &text[i + 8..])
+        .and_then(|t| t.split(']').next())
+    else {
+        eprintln!("WARNING: vcs.bytes has no file list; cannot check completeness");
+        return;
+    };
+    let names: Vec<&str> = keys
+        .split(',')
+        .map(|n| n.trim().trim_matches('"'))
+        .filter(|n| !n.is_empty())
+        .collect();
+    let missing = names.iter().filter(|n| !dir.join(n).is_file()).count();
+    if missing == 0 {
+        eprintln!(
+            "copy is complete: all {} files recorded by the game are present",
+            names.len()
+        );
+    } else {
+        eprintln!("WARNING: {missing} of {} files recorded by the game are MISSING from {}. Copy the folder again (adb pull) before uninstalling anything.", names.len(), dir.display());
+    }
 }
 
 fn cmd_names(a: &[String]) -> Result<(), Error> {

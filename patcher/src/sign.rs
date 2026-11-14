@@ -9,12 +9,66 @@ use std::process::Command;
 
 pub const KEY_ALIAS: &str = "jdr";
 
-pub fn default_keystore() -> PathBuf {
+pub fn default_keystore() -> Result<PathBuf, Error> {
     if let Ok(p) = std::env::var("JDR_KEYSTORE") {
-        return PathBuf::from(p);
+        return Ok(PathBuf::from(p));
     }
-    let home = std::env::var("HOME").unwrap_or_else(|_| ".".into());
-    PathBuf::from(home).join(".config/JDR/jdr-signing.p12")
+    let home = std::env::var("HOME")
+        .map_err(|_| "HOME is not set; set JDR_KEYSTORE to your signing key path")?;
+    Ok(PathBuf::from(home).join(".config/JDR/jdr-signing.p12"))
+}
+
+/// Sidecar file next to the keystore that records the certificate digest of the key.
+/// Every build must be signed by the same certificate, or it will not install over the last one.
+pub fn pin_path(keystore: &Path) -> PathBuf {
+    let mut s = keystore.as_os_str().to_owned();
+    s.push(".cert.sha256");
+    PathBuf::from(s)
+}
+
+/// SHA-256 digest of the keystore's certificate (lowercase hex, no colons) via keytool.
+pub fn keystore_cert_sha256(keystore: &Path) -> Result<String, Error> {
+    let pass = keystore_pass();
+    let out = run(Command::new("keytool").args([
+        "-list",
+        "-v",
+        "-keystore",
+        &keystore.to_string_lossy(),
+        "-storetype",
+        "PKCS12",
+        "-storepass",
+        &pass,
+        "-alias",
+        KEY_ALIAS,
+    ]))?;
+    parse_keytool_sha256(&out).ok_or_else(|| "keytool printed no SHA256 fingerprint".into())
+}
+
+pub fn parse_keytool_sha256(text: &str) -> Option<String> {
+    text.lines()
+        .find_map(|l| l.trim().strip_prefix("SHA256:"))
+        .map(|v| v.trim().replace(':', "").to_ascii_lowercase())
+        .filter(|v| v.len() == 64)
+}
+
+/// Check the key against its pin (writing the pin the first time). Refuses a different key.
+pub fn check_pin(keystore: &Path) -> Result<String, Error> {
+    let digest = keystore_cert_sha256(keystore)?;
+    let pin = pin_path(keystore);
+    match std::fs::read_to_string(&pin) {
+        Ok(p) if p.trim() == digest => Ok(digest),
+        Ok(p) => Err(format!(
+            "signing key {} has certificate {digest}, but {} expects {}. Builds signed with another key cannot install over your current one. Use your original key (JDR_KEYSTORE).",
+            keystore.display(),
+            pin.display(),
+            p.trim()
+        )
+        .into()),
+        Err(_) => {
+            std::fs::write(&pin, format!("{digest}\n"))?;
+            Ok(digest)
+        }
+    }
 }
 
 /// Keystore password. The key never leaves the player's machine; override with `JDR_KS_PASS`.
@@ -168,6 +222,16 @@ pub fn parse_verify(text: &str) -> Result<SignResult, Error> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn parses_keytool_fingerprint() {
+        let t = "Alias name: jdr\nCertificate fingerprints:\n\t SHA1: 00:11\n\t SHA256: AB:CD:EF:01:23:45:67:89:AB:CD:EF:01:23:45:67:89:AB:CD:EF:01:23:45:67:89:AB:CD:EF:01:23:45:67:89\n";
+        assert_eq!(
+            parse_keytool_sha256(t).unwrap(),
+            "abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789"
+        );
+        assert_eq!(parse_keytool_sha256("SHA256: 12:34"), None);
+    }
+
     #[test]
     fn parses_apksigner_output() {
         let t = "Verifies\nVerified using v1 scheme (JAR signing): true\nVerified using v2 scheme (APK Signature Scheme v2): true\nVerified using v3 scheme (APK Signature Scheme v3): true\nVerified using v4 scheme (APK Signature Scheme v4): false\nSigner #1 certificate SHA-256 digest: abcd\n";
