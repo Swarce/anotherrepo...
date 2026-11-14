@@ -369,7 +369,7 @@ Nested types: `Jjs.ScriptCameraParamNode` class [Serializable]=True
 | Quaternion | `Quaternionf name 16 0x200000` → `float x,y,z,w 4 0x200000` | 4×float (H) |
 | **SecurityIntValue** (struct) | `SecurityIntValue name 8 0x0` → `int seed 4 0x0`, `int securityValue 4 0x0` | two int32. Value = seed XOR securityValue (H for fields and decoding: fattr flags=0x102109 ser=True, both `[SerializeField]`; `get_Value` @0xA99694 `eor`. Node byte size and flags are M by analogy with MathManipulatorProperty) |
 | SecurityFloatValue (extras) | same two ints; float bits = seed ^ securityValue (`get_Value` @0xA9967C) | (H) |
-| SecurityStringValue (extras, dtSkillDataTable) | `int seed`, `string securityString`; decoding is a char-XOR routine @0x105FAA4. An empty string decodes to empty (IsNullOrEmpty early-out) | (M) |
+| SecurityStringValue (extras, dtSkillDataTable) | `int seed`, `string securityString`; decoding @0x105FAA4: split on '-', `Convert.ToInt32(part, 16)`, XOR byte i with byte i%4 of the seed, ASCII. An empty string decodes to empty (IsNullOrEmpty early-out). Implemented in Build 11, see 11-battle-and-positions.md §2 | (H) |
 | nested [Serializable] class field | `<ShortName> name size 0x8000-if-any-child-aligns` with its fields inline | (H) |
 | List<T>/T[] of int/enum/float/Vector3 | `vector name -1 0x8000` → `Array Array -1 0x4000` → `int size 4 0x0`, `<elem> data` | int32 count + elements, pad (H for int/float/Vector4; Vector3 and enum by analogy, M) |
 | List<T> of managed class/struct | `<ElemShortName> name -1 (0x8000 if elem aligns, else 0x0)` → `Array Array -1 (same)` → `int size 4 0x0`, `<ElemShortName> data …` | int32 count + elements (H for class elems with strings; M for `List<SecurityIntValue>` → `SecurityIntValue skillParamList -1 0x0 / Array -1 0x0 / SecurityIntValue data 8 0x0`) |
@@ -477,7 +477,7 @@ Alternative: with an empty `paramList`, no tutorial runs and IsClearAllTutorial 
 1. The real row content of every table: statue/skill/ability ids, level curves, the camera sets used by gasha and special-skill scripts, area/gimmick patterns. Captured traffic or another dump is needed. The schema alone does not make battles or gasha work.
 2. signboard_table: is it really dead in 3.12? No reader was found (M). Its original class is unknown.
 3. The exact runtime type-tree flags for `List<SecurityIntValue>`, enum arrays and `List<Vector3>` are inferred by analogy (M). Shipping type trees should make small mismatches harmless, but this is untested in this binary.
-4. SecurityStringValue encoding (@0x105FAA4), needed only for extra dtbattle_skill_data_table rows with non-empty strings.
+4. ~~SecurityStringValue encoding~~: solved in Build 11 (11-battle-and-positions.md §2).
 5. Whether the in-memory bundle must be JJEC-encrypted or may be plain UnityFS (see 08-assets-cdn: versionfile is plain). Build 06 serves it plain and lists it in versionfile with isEncrypt=false; to be confirmed on device. This is not covered here.
 6. The full original tutorial row list (TUTORIAL_12+ and the main_tutorial_NN mapping) is needed only to make the tutorials playable.
 7. The meaning of `continueHome` and `resourceDownloadStopForMainTutorial` (not traced).
