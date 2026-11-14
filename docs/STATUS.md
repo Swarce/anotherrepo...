@@ -5,7 +5,7 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 ## Build 09 — redrawn UI art (branch `wip/b09`)
 
 ### What came in
-The owner's redrawn art pack: 464 sprites (all in English lettering) from 34 UI bundles and 4
+The owner's redrawn art pack: 464 sprites (all in English lettering) from 41 UI bundles and 4
 title/boot screen files in the APK, at the exported sizes; terms Summon, Enhance,
 Courage/Wisdom/Spirit/Unity/Solitude.
 
