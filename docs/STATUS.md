@@ -2,6 +2,39 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 15 — battle from the side, menus open (branch `wip/b15`)
+
+### What the Build 14 device log and owner showed
+- The Growthbeat crash is gone, the results screen works, and specials work.
+- Battles were seen from behind, and the win shot was wrong.
+- Summon, Shop and the growth tree loaded forever ("probably a lot of menus").
+
+### What changed
+- **Battle camera** (docs/research/12 §5).
+  - The turn camera is world-fixed on −Z, so the teams now face each other along X: players on the
+    left, enemies on the right, spread in depth.
+  - Camera sets now cover all 266 ids the statues' animations request. A missing id had frozen the
+    camera. Shots use a side view, and the win uses a close three-quarter shot.
+- **Menus** (docs/research/13):
+  - Summon: a statue and a mind banner, free draws by the published rates.
+  - Shop: opens with one shop and no goods.
+  - Growth tree: a generated tree per statue; squares are free, saved, and add stats.
+  - Dictionary: every statue and mind.
+  - Enhance, evolution, sell, inbox and trophy claims, and protect/sort: stubs, so the screens open.
+- **Profile:** `user/update_comment` saves the profile message.
+- Build number 15, server marker `JDR_EMBEDDED_SERVER_b015`.
+
+### Known gaps
+- The shop sells nothing yet.
+- Enhance, evolution and sell change nothing (no items or materials yet).
+- The tree layout and the camera shots are ours.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] Battle seen from the side; the win shot shows the winner
+- [ ] Summon opens, and a single and a 10-draw play their animations
+- [ ] Shop, growth tree (open a square: stats rise) and dictionary open
+- [ ] The profile message is kept
+
 ## Build 14 — results screen, specials for every team, leader abilities, no Growthbeat (branch `wip/b14`)
 
 ### What the Build 13 device log showed
