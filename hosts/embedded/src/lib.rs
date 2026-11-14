@@ -24,7 +24,7 @@ use std::time::{Duration, Instant};
 /// Marker the patcher checks to make sure it embeds this library and not something else.
 #[used]
 #[no_mangle]
-pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_b002";
+pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_b003";
 
 pub const KEYS_ASSET: &str = "assets/jdr/keys.json";
 
