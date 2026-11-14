@@ -107,7 +107,7 @@
     ],
     "text:AttributeText_JP:ATTR_TEXT_7": [
       "440d6fc9",
-      "Egypt 9 Glory Gods"
+      "Egyptian Nine Glory Gods"
     ],
     "text:AttributeText_JP:ATTR_TEXT_8": [
       "8072feab",
@@ -123,7 +123,7 @@
     ],
     "text:AttributeText_JP:ATTR_TEXT_EGYPT": [
       "440d6fc9",
-      "Egypt 9 Glory Gods"
+      "Egyptian Nine Glory Gods"
     ],
     "text:AttributeText_JP:ATTR_TEXT_HAMON": [
       "1db967ad",
@@ -1215,7 +1215,7 @@
     ],
     "text:PvPHome_JP:ERROR_TEXT_01352016": [
       "29919da1",
-      "Team Deployed"
+      "Team on Sortie"
     ],
     "text:PvPHome_JP:ERROR_TEXT_01352017": [
       "3bc3ee2b",
@@ -1971,7 +1971,7 @@
     ],
     "text:TitleText_JP:TitleText_008": [
       "66b0a0a2",
-      "Do you agree to the Terms of Service?"
+      "Do you agree to the Terms of Use?"
     ],
     "text:TitleText_JP:TitleText_009": [
       "546f48a3",
@@ -3191,7 +3191,7 @@
     ],
     "text:optionText_JP:kiyaku_00": [
       "a9ebd889",
-      "Terms of Service"
+      "Terms of Use"
     ],
     "text:optionText_JP:kiyaku_01": [
       "de79d8d5",
@@ -3295,7 +3295,7 @@
     ],
     "text:optionText_JP:option_category_11": [
       "1a566647",
-      "Terms of Service /\nCopyright"
+      "Terms of Use /\nCopyright"
     ],
     "text:optionText_JP:option_category_12": [
       "f28b5782",
@@ -3427,7 +3427,7 @@
     ],
     "text:shop_JP:CAUTION_0009_MESSAGE": [
       "a9ebd889",
-      "Terms of Service"
+      "Terms of Use"
     ],
     "text:shop_JP:GOODS_0001_DETAIL": [
       "6a930b79",

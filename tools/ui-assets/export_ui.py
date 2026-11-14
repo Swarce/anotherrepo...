@@ -8,7 +8,7 @@ later import step can put redrawn images back in the same place.
 Nothing is downloaded and nothing leaves the player's machine. Run it on your own copy:
 
     python3 -I tools/ui-assets/export_ui.py --data <files dir> --keys local/keys.json \
-        --tool target/release/jdr-tool [--apk <game.apk>] --out ui-export
+        --tool target/release/jdr-tool [--apk <game.apk>] --out local/ui-export
 
 Bundles exported: ui_*, scene_* (menu canvases), mind_frame_*, inapp, plus the in-APK
 `assets/bin/Data` files (title, loading, touch effects) when --apk is given.
@@ -54,7 +54,9 @@ def safe(s):
     return re.sub(r"[^A-Za-z0-9_.\-\[\]() ]", "_", s)[:120] or "_"
 
 
-def export_env(env, label, src, outdir, manifest):
+def export_env(env, label, outdir, manifest):
+    # The manifest names bundles only by their plain names: pairing them with the obfuscated file
+    # names would reveal the asset key if an export were shared.
     texdir = os.path.join(outdir, safe(label))
     textures = {}
     for o in env.objects:
@@ -77,7 +79,7 @@ def export_env(env, label, src, outdir, manifest):
         fmt = FORMATS.get(code, f"format {code}")
         textures[o.path_id] = img
         manifest["textures"].append({
-            "bundle": label, "source": src, "path_id": o.path_id, "name": t.m_Name,
+            "bundle": label, "path_id": o.path_id, "name": t.m_Name,
             "file": f"{safe(label)}/{fn}", "width": t.m_Width, "height": t.m_Height,
             "format": fmt, "mips": getattr(t, "m_MipCount", 1),
             "png_sha256": hashlib.sha256(img.tobytes()).hexdigest(),
@@ -129,7 +131,7 @@ def main():
         for i, (n, f) in enumerate(picked, 1):
             try:
                 env = load_bundle(a.tool, a.keys, os.path.join(a.data, f), tmp)
-                export_env(env, n, f"files/{f}", a.out, manifest)
+                export_env(env, n, a.out, manifest)
             except Exception as e:
                 manifest["skipped"].append({"bundle": n, "reason": str(e)})
             print(f"[{i}/{len(picked)}] {n}", file=sys.stderr)
@@ -142,7 +144,7 @@ def main():
                         continue
                     try:
                         env = UnityPy.load(z.read(zn))
-                        export_env(env, "apk_" + zn.rsplit("/", 1)[1], zn, a.out, manifest)
+                        export_env(env, "apk_" + zn.rsplit("/", 1)[1], a.out, manifest)
                     except Exception as e:
                         manifest["skipped"].append({"bundle": zn, "reason": str(e)})
     json.dump(manifest, open(os.path.join(a.out, "manifest.json"), "w"), indent=1, ensure_ascii=False)

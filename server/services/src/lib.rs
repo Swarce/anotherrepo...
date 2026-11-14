@@ -47,6 +47,8 @@ pub struct Ctx {
     pub versionfile_cache: std::sync::Mutex<Option<ManifestState>>,
     /// True while the embedded host imports staged game files (the key request waits for it).
     pub importing: std::sync::atomic::AtomicBool,
+    /// The last successful build, kept even when a later rebuild fails.
+    pub last_built: std::sync::Mutex<Option<std::sync::Arc<Generated>>>,
     /// Serialises manifest builds.
     pub versionfile_build: std::sync::Mutex<()>,
 }
@@ -63,6 +65,7 @@ impl Ctx {
             skip_tutorial: true,
             versionfile_cache: std::sync::Mutex::new(None),
             versionfile_build: std::sync::Mutex::new(()),
+            last_built: std::sync::Mutex::new(None),
             importing: std::sync::atomic::AtomicBool::new(false),
             settings,
             counters: Counters::default(),
@@ -122,6 +125,16 @@ impl Ctx {
             "{}.bytes",
             jdr_crypto::names::obfuscate(masterdata::BUNDLE_NAME, k.asset_key.as_bytes())
         ))
+    }
+
+    /// The last successfully built bundles, without rebuilding (used to serve the English files
+    /// while the client downloads: it rewrites vcs.bytes as it goes, which must not trigger a
+    /// rebuild mid-download).
+    pub fn last_generated(&self) -> Option<std::sync::Arc<Generated>> {
+        self.last_built
+            .lock()
+            .unwrap_or_else(|e| e.into_inner())
+            .clone()
     }
 
     /// The generated bundles (cached until vcs.bytes changes). The build runs outside the cache
@@ -271,6 +284,7 @@ impl Ctx {
         match built {
             Ok((s, b)) => {
                 *g = Some(ManifestState::Built(s, b.clone()));
+                *self.last_built.lock().unwrap_or_else(|e| e.into_inner()) = Some(b.clone());
                 Ok(b)
             }
             Err(e) => {

@@ -151,7 +151,7 @@ fn route(ctx: &Arc<Ctx>, req: &Request) -> (Response, &'static str, String) {
             };
         }
         // English text bundles replace the game's own copies.
-        if let Ok(g) = ctx.generated() {
+        if let Some(g) = ctx.last_generated() {
             if let Some(f) = g.localized.get(name) {
                 let dir = f.parent().unwrap_or(std::path::Path::new("."));
                 let file = f.file_name().and_then(|x| x.to_str()).unwrap_or("");

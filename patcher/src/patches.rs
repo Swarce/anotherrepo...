@@ -445,6 +445,16 @@ pub fn translate_clientmes(file: &[u8]) -> Result<(Vec<u8>, usize, usize), Error
     Ok((out, n, total))
 }
 
+/// Rows of a ClientMes file whose text is exactly our English for that label.
+pub fn clientmes_english_rows(file: &[u8]) -> Result<usize, Error> {
+    let tr = jdr_services::l10n::Translations::embedded()?;
+    Ok(crate::clientmes::read(file)?
+        .rows
+        .iter()
+        .filter(|(l, t)| tr.english(&format!("clientmes:{l}")) == Some(t.as_str()))
+        .count())
+}
+
 impl Patch for TranslateClientMes {
     fn id(&self) -> &'static str {
         "english-clientmes"

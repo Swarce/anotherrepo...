@@ -164,6 +164,11 @@ impl Translations {
         }
     }
 
+    /// The English stored for `key`, whatever source it was made for (translator reference).
+    pub fn english(&self, key: &str) -> Option<&str> {
+        self.map.get(key).map(|(_, en)| en.as_str())
+    }
+
     /// Bundles with at least one prefab translation (from `ui:<bundle>:…` keys).
     pub fn ui_bundles(&self) -> Vec<String> {
         let mut v: Vec<String> = self
@@ -384,14 +389,52 @@ pub struct Localized {
 
 #[derive(serde::Serialize, serde::Deserialize, Default, Clone)]
 struct StateEntry {
+    /// Bundle name (so a bundle that lost its last translation is still reverted).
+    #[serde(default)]
+    name: String,
     src_md5: String,
     digest: String,
     out_md5: String,
     out_size: i64,
+    /// Modification time of the generated file when we wrote it (seconds), to detect tampering.
+    #[serde(default)]
+    out_mtime: u64,
+    #[serde(default)]
+    encrypted: bool,
+    /// md5 of every file we ever produced for this name (newest last): a copy of any of them on
+    /// disk is ours, never an original.
+    #[serde(default)]
+    outputs: Vec<String>,
+}
+
+/// How many past outputs we remember per file.
+const MAX_OUTPUTS: usize = 32;
+
+fn mtime_secs(p: &Path) -> Option<u64> {
+    std::fs::metadata(p)
+        .ok()?
+        .modified()
+        .ok()?
+        .duration_since(std::time::UNIX_EPOCH)
+        .ok()
+        .map(|d| d.as_secs())
 }
 
 fn md5_hex(b: &[u8]) -> String {
     crate::versionfile::md5_hex(b)
+}
+
+/// Whether `bytes` can be an original: it decrypts, parses, and still holds Japanese strings.
+fn looks_original(bytes: &[u8], name: &str, key: &[u8], iv: &[u8]) -> bool {
+    let plain = if Jjec::is_jjec(bytes) {
+        match Jjec::decrypt(bytes, key, iv) {
+            Ok(p) => p,
+            Err(_) => return false,
+        }
+    } else {
+        bytes.to_vec()
+    };
+    collect(&plain, name).is_ok_and(|f| !f.is_empty())
 }
 
 /// The bundles we localize: text.jp plus every UI bundle with a prefab translation.
@@ -422,7 +465,15 @@ pub fn prepare(
         .and_then(|b| serde_json::from_slice(&b).ok())
         .unwrap_or_default();
     let (mut out, mut errors) = (Vec::new(), Vec::new());
-    for name in targets(tr) {
+    // Current targets plus every bundle we replaced before (removing its last translation must
+    // still serve the original again).
+    let mut names = targets(tr);
+    for e in state.values() {
+        if !e.name.is_empty() && !names.contains(&e.name) {
+            names.push(e.name.clone());
+        }
+    }
+    for name in names {
         let obf = format!("{}.bytes", names::obfuscate(&name, asset_key));
         match prepare_one(
             &name, &obf, game_dir, &orig, &gen, asset_key, asset_iv, tr, &mut state,
@@ -432,9 +483,18 @@ pub fn prepare(
             Err(e) => errors.push(format!("{name}: {e}")),
         }
     }
-    let _ = std::fs::create_dir_all(&root);
-    if let Ok(js) = serde_json::to_vec_pretty(&state) {
-        let _ = jdr_core::storage::write_atomic(&state_path, &js);
+    // Without a saved state, the next boot could not tell our files from originals: in that case
+    // list nothing (the game keeps its current files) rather than risk losing an original.
+    let saved = std::fs::create_dir_all(&root).and_then(|_| {
+        let js = serde_json::to_vec_pretty(&state).map_err(std::io::Error::other)?;
+        jdr_core::storage::write_atomic(&state_path, &js)
+    });
+    if let Err(e) = saved {
+        errors.push(format!(
+            "cannot save {}: {e}; English files not offered this time",
+            state_path.display()
+        ));
+        return (Vec::new(), errors);
     }
     (out, errors)
 }
@@ -458,29 +518,46 @@ fn prepare_one(
     let disk_md5 = md5_hex(&disk);
     let prev = state.get(obf).cloned();
     let orig_path = orig_dir.join(obf);
-    // Which bytes are the original?
-    let source = if prev.as_ref().is_some_and(|p| p.out_md5 == disk_md5) {
+    let ours = |md5: &str| {
+        prev.as_ref()
+            .is_some_and(|p| p.out_md5 == md5 || p.outputs.iter().any(|o| o == md5))
+    };
+    // Which bytes are the original? A file we produced (now or earlier) never is; anything else on
+    // disk is (a first run, or the game's files restored from a backup).
+    let source = if ours(&disk_md5) {
         std::fs::read(&orig_path).map_err(|e| {
             format!("original copy missing ({e}); restore the game's files to rebuild")
         })?
     } else {
         std::fs::create_dir_all(orig_dir).map_err(|e| e.to_string())?;
-        if std::fs::read(&orig_path).ok().as_deref() != Some(&disk[..]) {
+        let kept = std::fs::read(&orig_path).ok();
+        if kept.as_deref() == Some(&disk[..]) {
+            disk
+        } else if let Some(kept) = kept.filter(|_| !looks_original(&disk, name, key, iv)) {
+            // A half-written download, or an English copy from a backup: keep our original.
+            kept
+        } else {
             jdr_core::storage::write_atomic(&orig_path, &disk).map_err(|e| e.to_string())?;
+            disk
         }
-        disk
     };
     let src_md5 = md5_hex(&source);
     let gen_path = gen_dir.join(obf);
-    if let Some(p) = prev.filter(|p| p.src_md5 == src_md5 && p.digest == tr.digest) {
-        if std::fs::metadata(&gen_path).map(|m| m.len() as i64).ok() == Some(p.out_size) {
+    if let Some(p) = prev
+        .clone()
+        .filter(|p| p.src_md5 == src_md5 && p.digest == tr.digest)
+    {
+        let same_size =
+            std::fs::metadata(&gen_path).map(|m| m.len() as i64).ok() == Some(p.out_size);
+        let same_time = p.out_mtime != 0 && mtime_secs(&gen_path) == Some(p.out_mtime);
+        if same_size && same_time {
             return Ok(Some(Localized {
                 name: name.into(),
                 obf: obf.into(),
                 file: gen_path,
                 md5: p.out_md5,
                 size: p.out_size,
-                encrypted: false,
+                encrypted: p.encrypted,
                 stats: Stats::default(),
             }));
         }
@@ -499,13 +576,25 @@ fn prepare_one(
     std::fs::create_dir_all(gen_dir).map_err(|e| e.to_string())?;
     jdr_core::storage::write_atomic(&gen_path, &bytes).map_err(|e| e.to_string())?;
     let out_md5 = md5_hex(&bytes);
+    let mut outputs = prev.map(|p| p.outputs).unwrap_or_default();
+    // The original itself is never recorded as "ours" (a revert serves it unchanged).
+    if out_md5 != src_md5 && !outputs.contains(&out_md5) {
+        outputs.push(out_md5.clone());
+        if outputs.len() > MAX_OUTPUTS {
+            outputs.remove(0);
+        }
+    }
     state.insert(
         obf.to_string(),
         StateEntry {
+            name: name.to_string(),
             src_md5,
             digest: tr.digest.clone(),
             out_md5: out_md5.clone(),
             out_size: bytes.len() as i64,
+            out_mtime: mtime_secs(&gen_path).unwrap_or(0),
+            encrypted,
+            outputs,
         },
     );
     Ok(Some(Localized {
@@ -651,9 +740,32 @@ mod tests {
             std::fs::read(state.join("l10n/orig").join(&obf)).unwrap(),
             original
         );
-        // Translations removed: the original is served again (revert).
+        // New translations (v2) while the client still holds v1: v1 must not become the original.
+        let t2 = tr(&[("text:MyPage_JP:A", "決定", "Confirm")]);
+        let (v2, _) = prepare(&game, &state, key, key, &t2);
+        assert_ne!(v2[0].md5, l[0].md5);
+        let (v2b, _) = prepare(&game, &state, key, key, &t2); // rebuilt again, disk still v1
+        assert_eq!(v2b[0].md5, v2[0].md5);
+        assert_eq!(
+            std::fs::read(state.join("l10n/orig").join(&obf)).unwrap(),
+            original
+        );
+        // Translations removed: the original is served again (revert), flagged as it is.
         let (l3, _) = prepare(&game, &state, key, key, &tr(&[]));
         assert_eq!(l3[0].md5, md5_hex(&original));
+        let (l4, _) = prepare(&game, &state, key, key, &tr(&[])); // cached
+        assert_eq!(
+            (l4[0].md5.as_str(), l4[0].encrypted),
+            (l3[0].md5.as_str(), l3[0].encrypted)
+        );
+        // A half-written download (or an English copy) on disk never replaces the kept original.
+        std::fs::write(game.join(&obf), b"partial").unwrap();
+        let (l5, _) = prepare(&game, &state, key, key, &t);
+        assert_eq!(l5[0].md5, l[0].md5);
+        assert_eq!(
+            std::fs::read(state.join("l10n/orig").join(&obf)).unwrap(),
+            original
+        );
         let _ = std::fs::remove_dir_all(&base);
     }
 }

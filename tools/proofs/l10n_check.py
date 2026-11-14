@@ -33,5 +33,7 @@ for p in files:
             if fd.get("m_BestFit"):
                 best_fit += 1
                 assert 0 <= fd["m_MinSize"] <= fd["m_MaxSize"], (p, fd)
+assert objs > 0 and texts > 0, "nothing decoded"
+assert english > 0, "no UI text without Japanese: the English did not land"
 print(f"OK: {len(files)} rebuilt bundles parse with UnityPy; {objs} MonoBehaviours, "
       f"{texts} UI texts ({english} without Japanese, {best_fit} best fit)")

@@ -92,26 +92,31 @@ fn export(a: &[String]) -> Result<(), Error> {
             }
         }
     }
-    let mut tsv = String::from("key\thash\tenglish\tjapanese\n");
+    let mut tsv = String::from("key\thash\tenglish\tjapanese\tprevious_english\n");
     let (mut done, mut stale) = (0, 0);
     for f in &found {
-        let en = match tr.lookup(&f.key, &f.source) {
+        // A stale row: the source changed; the old English is shown as a reference only.
+        let (en, previous) = match tr.lookup(&f.key, &f.source) {
             l10n::Lookup::Found(en) => {
                 done += 1;
-                en.to_string()
+                (en.to_string(), String::new())
             }
             l10n::Lookup::Stale => {
                 stale += 1;
-                String::new()
+                (
+                    String::new(),
+                    tr.english(&f.key).unwrap_or_default().to_string(),
+                )
             }
-            l10n::Lookup::Missing => String::new(),
+            l10n::Lookup::Missing => (String::new(), String::new()),
         };
         tsv.push_str(&format!(
-            "{}\t{}\t{}\t{}\n",
+            "{}\t{}\t{}\t{}\t{}\n",
             f.key,
             l10n::source_hash(&f.source),
             esc(&en),
-            esc(&f.source)
+            esc(&f.source),
+            esc(&previous)
         ));
     }
     std::fs::write(&out, tsv)?;
@@ -144,8 +149,12 @@ fn import(a: &[String]) -> Result<(), Error> {
     let mut n = 0;
     for (i, line) in input.lines().enumerate().skip(1) {
         let cols: Vec<&str> = line.split('\t').collect();
-        if cols.len() < 3 {
-            return Err(format!("line {}: expected key, hash, english[, japanese]", i + 1).into());
+        if cols.len() < 4 {
+            return Err(format!(
+                "line {}: expected key, hash, english, japanese (the Japanese column is needed for the checks)",
+                i + 1
+            )
+            .into());
         }
         let (key, hash, en) = (cols[0], cols[1], unesc(cols[2]));
         if en.trim().is_empty() {
@@ -157,6 +166,9 @@ fn import(a: &[String]) -> Result<(), Error> {
                 i + 1
             )
             .into());
+        }
+        if hash.len() != 8 || !hash.bytes().all(|c| c.is_ascii_hexdigit()) {
+            return Err(format!("line {}: {key}: bad hash {hash:?}", i + 1).into());
         }
         if let Some(src) = cols.get(3).map(|s| unesc(s)) {
             if l10n::placeholders(&src) != l10n::placeholders(&en) {
