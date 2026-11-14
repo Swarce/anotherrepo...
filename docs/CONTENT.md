@@ -33,9 +33,10 @@ community wikis (each record cites its page) or are marked `jdr-default`.
 | Data | Source | State |
 |---|---|---|
 | Statue ids, models, bundles | player's files | 266 obtainable |
-| Statue stats Lv1/Lv99 | ShoutWiki (CC BY-SA 3.0) | 8 matched unambiguously; others default (exact matching by leader-ability name via Gamerch next) |
+| Statue rarity, type, Lv1/Lv99, max tree | Gamerch (exact match by leader-ability name) and ShoutWiki (CC BY-SA 3.0, by elimination) | 142 of 266 (129 Gamerch, 13 ShoutWiki); the rest (mostly released after the 2018 snapshot) default |
 | Stats per level | linear Lv1→Lv99 (195 of 200 wiki statues have Lv99 = 10 × Lv1) | all |
 | My Page background per statue | 21 backgrounds in the player's files, chosen by JoJo part | default choice |
 | Story chapters/stages/areas | player's files | 82 chapters, 370 stages |
-| Stage stamina, rewards, enemies | Gamerch (pending) | defaults |
+| Stage AP, rank EXP, gold, recommended level | Gamerch (Wayback snapshot, chapters 1–23) | 100 of 370 stages; enemies and rewards default (the wiki shows them as images) |
+| Player rank: EXP per rank, AP max | Gamerch user-rank page | ranks 1–99 |
 | Minds, items, events, gacha | wikis (pending) | not yet |

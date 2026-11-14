@@ -23,6 +23,7 @@ import re
 ap = argparse.ArgumentParser()
 for x in ("--scan", "--export", "--shoutwiki", "--out"):
     ap.add_argument(x, required=True)
+ap.add_argument("--gamerch", help="local/wiki-raw/gamerch/statues.json (matched by leader-ability name)")
 a = ap.parse_args()
 
 scan = json.load(open(a.scan))["statues"]
@@ -45,8 +46,31 @@ for sid, n in jp_name.items():
     ids_by_name[n.replace(" ", "").replace("・", "")].append(sid)
 
 STATUE_TYPE = {"Courage": 1, "Tactical": 2, "Fighting Spirit": 3, "Unity": 4, "Solitary": 5}
+GAMERCH_TYPE = {"勇気": 1, "知略": 2, "闘志": 3, "団結": 4, "孤高": 5}
+TODAY = datetime.date.today().isoformat()
+
+
+def full(x):
+    return isinstance(x, dict) and all(isinstance(x.get(k), int) for k in ("hp", "atk", "def"))
+
+
+# 1) Gamerch: exact match by leader-ability (or assist-ability) name, done when fetching.
+gamerch = {}
+if a.gamerch:
+    for g in json.load(open(a.gamerch))["statues"]:
+        if g.get("statue_id") and full(g.get("lv99")):
+            gamerch[g["statue_id"]] = g
 out = []
 matched = 0
+by_source = collections.Counter()
+claimed = collections.defaultdict(set)  # character key -> {(rarity, type)} taken by exact matches
+for sid, g in gamerch.items():
+    if sid in jp_name:
+        claimed[jp_name[sid].replace(" ", "").replace("・", "")].add((g.get("rarity"), GAMERCH_TYPE.get(g.get("type"))))
+remaining_ids = collections.defaultdict(list)
+for sid, n in jp_name.items():
+    if sid not in gamerch:
+        remaining_ids[n.replace(" ", "").replace("・", "")].append(sid)
 for s in obtainable:
     sid = s["statueId"]
     rec = {
@@ -61,8 +85,28 @@ for s in obtainable:
         "source": {"source": "jdr-default", "note": "no unambiguous wiki match yet; server uses defaults"},
     }
     key = jp_name[sid].replace(" ", "").replace("・", "")
-    ws = by_name.get(key, [])
-    if len(ids_by_name[key]) == 1 and len(ws) == 1:
+    g = gamerch.get(sid)
+    if g:
+        lv99 = g["lv99"]
+        lv1 = g["lv1"] if full(g.get("lv1")) else {k: round(v / 10) for k, v in lv99.items()}
+        rec.update({
+            "rarity": g.get("rarity"),
+            "statueType": GAMERCH_TYPE.get(g.get("type")),
+            "lv1": lv1,
+            "lv99": lv99,
+            "maxTree": g["max_tree"] if full(g.get("max_tree")) else None,
+            "source": {"source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)", "page": g["source"]["page_url"],
+                       "capture": g["source"].get("capture"), "accessed": g["source"].get("accessed", TODAY),
+                       **({} if full(g.get("lv1")) else {"note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"})},
+        })
+        matched += 1
+        by_source["gamerch"] += 1
+        out.append(rec)
+        continue
+    # 2) ShoutWiki: entries of this character whose (rarity, type) no exact match claimed, when
+    #    exactly one such entry and exactly one unmatched statueId remain.
+    ws = [w for w in by_name.get(key, []) if (w["rarity"], STATUE_TYPE.get(w["type"])) not in claimed[key]]
+    if len(remaining_ids[key]) == 1 and len(ws) == 1:
         w = ws[0]
         if all(w["lv1"].values()) and all(w["lv99"].values()):
             rec.update({
@@ -76,11 +120,14 @@ for s in obtainable:
                            "accessed": datetime.date.today().isoformat()},
             })
             matched += 1
+            by_source["shoutwiki"] += 1
     out.append(rec)
 
 doc = {
     "about": "Obtainable statues: identifiers from the player's own files (scan_statues.py), stats from community wikis where the match is unambiguous (each record cites its page). See docs/CONTENT.md.",
     "sources": [
+        {"source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine snapshot)", "page": "https://jojodr.gamerch.com/",
+         "accessed": datetime.date.today().isoformat()},
         {"source": "Diamond Records Wiki (ShoutWiki)", "page": "https://jojodiamondrecords.shoutwiki.com/", "license": "CC BY-SA 3.0",
          "accessed": datetime.date.today().isoformat()},
         {"source": "jdr-default", "note": "identifiers and model names from the player's files; defaults where no wiki match"},
@@ -88,4 +135,4 @@ doc = {
     "statues": out,
 }
 json.dump(doc, open(a.out, "w"), indent=1, ensure_ascii=False)
-print(f"{len(out)} obtainable statues; {matched} with wiki stats (unambiguous), {len(out) - matched} on defaults")
+print(f"{len(out)} obtainable statues; {matched} with wiki stats ({dict(by_source)}), {len(out) - matched} on defaults")
