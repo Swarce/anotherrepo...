@@ -34,6 +34,9 @@ pub struct Profile {
     pub gold: i64,
     #[serde(default)]
     pub comment: String,
+    /// Owned statues and teams (added in Build 10; older saves get them on their next login).
+    #[serde(default)]
+    pub collection: crate::collection::Collection,
     /// Fields this build does not know (written by a newer build); kept verbatim.
     #[serde(flatten)]
     pub extra: Map<String, Value>,
@@ -134,6 +137,7 @@ impl Accounts {
             stone_free: 0,
             gold: 0,
             comment: String::new(),
+            collection: Default::default(),
             extra: Map::new(),
         };
         if self.path(&p.uuid).exists() {

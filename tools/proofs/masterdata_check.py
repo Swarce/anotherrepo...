@@ -6,6 +6,7 @@ with the right namespace/class, and decode through our type tree consuming exact
 The values read back must equal our content files (server/content/masterdata/*.json).
 
 usage: python3 tools/proofs/masterdata_check.py <bundle> <repo>/server/content/masterdata
+       (generated tables are read from <bundle>.generated/ when present)
 requires: pip install UnityPy
 """
 import json
@@ -17,6 +18,10 @@ import UnityPy
 bundle, content = sys.argv[1], sys.argv[2]
 schema = json.load(open(os.path.join(content, "schema.json")))
 files = {f[:-5]: json.load(open(os.path.join(content, f))) for f in os.listdir(content) if f.endswith(".json") and f != "schema.json"}
+# Tables the server generates from other content (written next to the bundle by the real test).
+gen_dir = bundle + ".generated"
+if os.path.isdir(gen_dir):
+    files.update({f[:-5]: json.load(open(os.path.join(gen_dir, f))) for f in os.listdir(gen_dir) if f.endswith(".json")})
 want = [a for a in schema["assets"] if a["core"] or a["name"] in files]
 prefix = "assets/resources/common/inmemorymasterdata/"
 

@@ -423,8 +423,35 @@ pub fn build(
 }
 
 /// Build from the embedded schema and content.
+/// Tables generated from other content (the statue roster): (asset, content-file JSON).
+pub fn generated_tables() -> Vec<(String, String)> {
+    let src = serde_json::json!([{ "source": "jdr-default",
+        "note": "generated from server/content/statues.json (stats from the wikis where matched)" }]);
+    let doc = |asset: &str, rows: Vec<Value>| {
+        serde_json::json!({ "asset": asset, "sources": src, "data": { "paramList": rows } })
+            .to_string()
+    };
+    vec![
+        (
+            "statue_setting_table".into(),
+            doc(
+                "statue_setting_table",
+                crate::collection::statue_setting_rows(),
+            ),
+        ),
+        (
+            "statue_level_table".into(),
+            doc("statue_level_table", crate::collection::statue_level_rows()),
+        ),
+    ]
+}
+
+/// Build from the embedded schema and content (plus the generated tables).
 pub fn build_embedded(ms: &TypeEntry, ab: &TypeEntry) -> Result<(Vec<u8>, Vec<Table>), Error> {
-    let t = tables(&Schema::embedded()?, TABLES)?;
+    let generated = generated_tables();
+    let mut all: Vec<(&str, &str)> = TABLES.to_vec();
+    all.extend(generated.iter().map(|(a, b)| (a.as_str(), b.as_str())));
+    let t = tables(&Schema::embedded()?, &all)?;
     Ok((build(&t, ms, ab)?, t))
 }
 

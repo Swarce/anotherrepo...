@@ -10,6 +10,7 @@ pub mod client;
 pub mod common;
 pub mod menu;
 pub mod misc;
+pub mod statue;
 pub mod user;
 
 fn obj(v: Value) -> Map<String, Value> {
@@ -39,6 +40,8 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/info/event_list" => misc::event_list(ctx, env),
         "/info/banner_list" => misc::banner_list(ctx, env),
         "/info/get_menu_notify" => misc::get_menu_notify(ctx, env),
+        "/statue/statue_list" => statue::statue_list(ctx, env),
+        "/statue/statue_info" => statue::statue_info(ctx, env),
         "/team/team_info" => misc::team_info(ctx, env),
         "/bizarre/bizarre_resumption" => misc::bizarre_resumption(ctx, env),
         "/bizarre/get_bizarre_select" => menu::get_bizarre_select(ctx, env),

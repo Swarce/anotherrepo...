@@ -1,0 +1,4556 @@
+{
+ "about": "Obtainable statues: identifiers from the player's own files (scan_statues.py), stats from community wikis where the match is unambiguous (each record cites its page). See docs/CONTENT.md.",
+ "sources": [
+  {
+   "source": "Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/",
+   "license": "CC BY-SA 3.0",
+   "accessed": "2026-11-14"
+  },
+  {
+   "source": "jdr-default",
+   "note": "identifiers and model names from the player's files; defaults where no wiki match"
+  }
+ ],
+ "statues": [
+  {
+   "statueId": "1000_01",
+   "part": 1,
+   "modelDataList": [
+    "1000_0_jonathan"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1000_02",
+   "part": 1,
+   "modelDataList": [
+    "1000_0_jonathan"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1000_03",
+   "part": 1,
+   "modelDataList": [
+    "1000_0_jonathan"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1000_04",
+   "part": 1,
+   "modelDataList": [
+    "1000_0_jonathan"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1000_12",
+   "part": 1,
+   "modelDataList": [
+    "1000_0_jonathan"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1000_13",
+   "part": 1,
+   "modelDataList": [
+    "1000_0_jonathan"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1000_28",
+   "part": 1,
+   "modelDataList": [
+    "1000_0_jonathan"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1010_01",
+   "part": 1,
+   "modelDataList": [
+    "1010_0_speedwagon"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1010_02",
+   "part": 1,
+   "modelDataList": [
+    "1010_0_speedwagon"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1010_03",
+   "part": 1,
+   "modelDataList": [
+    "1010_0_speedwagon"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1020_01",
+   "part": 1,
+   "modelDataList": [
+    "1020_0_zeppeli"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1020_02",
+   "part": 1,
+   "modelDataList": [
+    "1020_0_zeppeli"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1020_03",
+   "part": 1,
+   "modelDataList": [
+    "1020_0_zeppeli"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1020_04",
+   "part": 1,
+   "modelDataList": [
+    "1020_0_zeppeli"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1080_01",
+   "part": 1,
+   "modelDataList": [
+    "1080_0_dire"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1080_02",
+   "part": 1,
+   "modelDataList": [
+    "1080_0_dire"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1080_03",
+   "part": 1,
+   "modelDataList": [
+    "1080_0_dire"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1090_01",
+   "part": 1,
+   "modelDataList": [
+    "1090_0_straits"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1090_02",
+   "part": 1,
+   "modelDataList": [
+    "1090_0_straits"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1090_03",
+   "part": 1,
+   "modelDataList": [
+    "1090_0_straits"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1090_13",
+   "part": 1,
+   "modelDataList": [
+    "1090_0_straits"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1100_01",
+   "part": 1,
+   "modelDataList": [
+    "1100_0_dio"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1100_02",
+   "part": 1,
+   "modelDataList": [
+    "1100_0_dio"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1100_03",
+   "part": 1,
+   "modelDataList": [
+    "1100_0_dio"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1100_11",
+   "part": 1,
+   "modelDataList": [
+    "1100_0_dio"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1100_12",
+   "part": 1,
+   "modelDataList": [
+    "1100_0_dio"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1100_13",
+   "part": 1,
+   "modelDataList": [
+    "1100_0_dio"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1100_14",
+   "part": 1,
+   "modelDataList": [
+    "1100_0_dio"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1100_28",
+   "part": 1,
+   "modelDataList": [
+    "1100_0_dio"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1110_01",
+   "part": 1,
+   "modelDataList": [
+    "1110_0_wanchan"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1110_02",
+   "part": 1,
+   "modelDataList": [
+    "1110_0_wanchan"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1110_03",
+   "part": 1,
+   "modelDataList": [
+    "1110_0_wanchan"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1120_01",
+   "part": 1,
+   "modelDataList": [
+    "1120_0_bruford"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1120_02",
+   "part": 1,
+   "modelDataList": [
+    "1120_0_bruford"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1120_03",
+   "part": 1,
+   "modelDataList": [
+    "1120_0_bruford"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1130_01",
+   "part": 1,
+   "modelDataList": [
+    "1130_0_tarkus"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1130_02",
+   "part": 1,
+   "modelDataList": [
+    "1130_0_tarkus"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1130_03",
+   "part": 1,
+   "modelDataList": [
+    "1130_0_tarkus"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1130_04",
+   "part": 1,
+   "modelDataList": [
+    "1130_0_tarkus"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "1130_13",
+   "part": 1,
+   "modelDataList": [
+    "1130_0_tarkus"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2000_01",
+   "part": 2,
+   "modelDataList": [
+    "2000_0_joseph"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2000_02",
+   "part": 2,
+   "modelDataList": [
+    "2000_0_joseph"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2000_03",
+   "part": 2,
+   "modelDataList": [
+    "2000_0_joseph"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2000_04",
+   "part": 2,
+   "modelDataList": [
+    "2000_0_joseph"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2000_12",
+   "part": 2,
+   "modelDataList": [
+    "2000_0_joseph"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2000_28",
+   "part": 2,
+   "modelDataList": [
+    "2000_0_joseph"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2010_01",
+   "part": 2,
+   "modelDataList": [
+    "2010_0_caesar"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2010_02",
+   "part": 2,
+   "modelDataList": [
+    "2010_0_caesar"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2010_03",
+   "part": 2,
+   "modelDataList": [
+    "2010_0_caesar"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2010_04",
+   "part": 2,
+   "modelDataList": [
+    "2010_0_caesar"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2010_13",
+   "part": 2,
+   "modelDataList": [
+    "2010_0_caesar"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2010_28",
+   "part": 2,
+   "modelDataList": [
+    "2010_0_caesar"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2020_01",
+   "part": 2,
+   "modelDataList": [
+    "2020_0_lisalisa"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2020_02",
+   "part": 2,
+   "modelDataList": [
+    "2020_0_lisalisa"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2020_03",
+   "part": 2,
+   "modelDataList": [
+    "2020_0_lisalisa"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2020_04",
+   "part": 2,
+   "modelDataList": [
+    "2020_0_lisalisa"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2040_01",
+   "part": 2,
+   "modelDataList": [
+    "2040_0_messina"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2040_02",
+   "part": 2,
+   "modelDataList": [
+    "2040_0_messina"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2040_03",
+   "part": 2,
+   "modelDataList": [
+    "2040_0_messina"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2050_01",
+   "part": 2,
+   "modelDataList": [
+    "2050_0_santana"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2050_02",
+   "part": 2,
+   "modelDataList": [
+    "2050_0_santana"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2050_03",
+   "part": 2,
+   "modelDataList": [
+    "2050_0_santana"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2050_04",
+   "part": 2,
+   "modelDataList": [
+    "2050_0_santana"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2050_12",
+   "part": 2,
+   "modelDataList": [
+    "2050_0_santana"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2060_01",
+   "part": 2,
+   "modelDataList": [
+    "2060_0_wamuu"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2060_02",
+   "part": 2,
+   "modelDataList": [
+    "2060_0_wamuu"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2060_03",
+   "part": 2,
+   "modelDataList": [
+    "2060_0_wamuu"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2070_01",
+   "part": 2,
+   "modelDataList": [
+    "2070_0_esidisi"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2070_02",
+   "part": 2,
+   "modelDataList": [
+    "2070_0_esidisi"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2070_03",
+   "part": 2,
+   "modelDataList": [
+    "2070_0_esidisi"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2080_01",
+   "part": 2,
+   "modelDataList": [
+    "2080_0_cars"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2080_02",
+   "part": 2,
+   "modelDataList": [
+    "2080_0_cars"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2080_03",
+   "part": 2,
+   "modelDataList": [
+    "2080_0_cars"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2081_11",
+   "part": 2,
+   "modelDataList": [
+    "2081_0_cars",
+    "2081_1_carsprotector"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2081_12",
+   "part": 2,
+   "modelDataList": [
+    "2081_0_cars",
+    "2081_1_carsprotector"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2081_13",
+   "part": 2,
+   "modelDataList": [
+    "2081_0_cars",
+    "2081_1_carsprotector"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2081_14",
+   "part": 2,
+   "modelDataList": [
+    "2081_0_cars",
+    "2081_1_carsprotector"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2100_03",
+   "part": 2,
+   "modelDataList": [
+    "2100_0_beck"
+   ],
+   "rarity": 5,
+   "statueType": 3,
+   "lv1": {
+    "hp": 1307,
+    "atk": 624,
+    "def": 505
+   },
+   "lv99": {
+    "hp": 13068,
+    "atk": 6237,
+    "def": 5049
+   },
+   "maxTree": {
+    "hp": 22368,
+    "atk": 14337,
+    "def": 5949
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "license": "CC BY-SA 3.0",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Wired_Beck_%28Fighting_Spirit%29",
+    "revid": 3301,
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2110_01",
+   "part": 2,
+   "modelDataList": [
+    "2110_0_stroheim"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2110_02",
+   "part": 2,
+   "modelDataList": [
+    "2110_0_stroheim"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2110_03",
+   "part": 2,
+   "modelDataList": [
+    "2110_0_stroheim"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2111_01",
+   "part": 2,
+   "modelDataList": [
+    "2111_0_stroheim"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2111_02",
+   "part": 2,
+   "modelDataList": [
+    "2111_0_stroheim"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "2111_03",
+   "part": 2,
+   "modelDataList": [
+    "2111_0_stroheim"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3000_01",
+   "part": 3,
+   "modelDataList": [
+    "3000_0_jotaro",
+    "3000_1_stapla"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3000_02",
+   "part": 3,
+   "modelDataList": [
+    "3000_0_jotaro",
+    "3000_1_stapla"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3000_03",
+   "part": 3,
+   "modelDataList": [
+    "3000_0_jotaro",
+    "3000_1_stapla"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3000_04",
+   "part": 3,
+   "modelDataList": [
+    "3000_0_jotaro",
+    "3000_1_stapla"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3000_13",
+   "part": 3,
+   "modelDataList": [
+    "3000_0_jotaro",
+    "3000_1_stapla"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3001_03",
+   "part": 3,
+   "modelDataList": [
+    "3001_0_jotaro",
+    "3001_1_stapla"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3001_04",
+   "part": 3,
+   "modelDataList": [
+    "3001_0_jotaro",
+    "3001_1_stapla"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3001_13",
+   "part": 3,
+   "modelDataList": [
+    "3001_0_jotaro",
+    "3001_1_stapla"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3002_03",
+   "part": 3,
+   "modelDataList": [
+    "3002_0_jotaro",
+    "3002_1_stapla"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3010_01",
+   "part": 3,
+   "modelDataList": [
+    "3010_0_joseph3"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3010_02",
+   "part": 3,
+   "modelDataList": [
+    "3010_0_joseph3"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3010_03",
+   "part": 3,
+   "modelDataList": [
+    "3010_0_joseph3"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3010_13",
+   "part": 3,
+   "modelDataList": [
+    "3010_0_joseph3"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3020_01",
+   "part": 3,
+   "modelDataList": [
+    "3020_0_abdul",
+    "3020_1_mred"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3020_02",
+   "part": 3,
+   "modelDataList": [
+    "3020_0_abdul",
+    "3020_1_mred"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3020_03",
+   "part": 3,
+   "modelDataList": [
+    "3020_0_abdul",
+    "3020_1_mred"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3020_12",
+   "part": 3,
+   "modelDataList": [
+    "3020_0_abdul",
+    "3020_1_mred"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3020_13",
+   "part": 3,
+   "modelDataList": [
+    "3020_0_abdul",
+    "3020_1_mred"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3020_28",
+   "part": 3,
+   "modelDataList": [
+    "3020_0_abdul",
+    "3020_1_mred"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3030_01",
+   "part": 3,
+   "modelDataList": [
+    "3030_0_noriaki",
+    "3030_1_hgreen"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3030_02",
+   "part": 3,
+   "modelDataList": [
+    "3030_0_noriaki",
+    "3030_1_hgreen"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3030_03",
+   "part": 3,
+   "modelDataList": [
+    "3030_0_noriaki",
+    "3030_1_hgreen"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3030_13",
+   "part": 3,
+   "modelDataList": [
+    "3030_0_noriaki",
+    "3030_1_hgreen"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3030_14",
+   "part": 3,
+   "modelDataList": [
+    "3030_0_noriaki",
+    "3030_1_hgreen"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3031_03",
+   "part": 3,
+   "modelDataList": [
+    "3031_0_noriaki",
+    "3031_1_hgreen"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3031_04",
+   "part": 3,
+   "modelDataList": [
+    "3031_0_noriaki",
+    "3031_1_hgreen"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3040_01",
+   "part": 3,
+   "modelDataList": [
+    "3040_0_polnareff",
+    "3040_1_chariot"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3040_02",
+   "part": 3,
+   "modelDataList": [
+    "3040_0_polnareff",
+    "3040_1_chariot"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3040_03",
+   "part": 3,
+   "modelDataList": [
+    "3040_0_polnareff",
+    "3040_1_chariot"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3040_04",
+   "part": 3,
+   "modelDataList": [
+    "3040_0_polnareff",
+    "3040_1_chariot"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3040_13",
+   "part": 3,
+   "modelDataList": [
+    "3040_0_polnareff",
+    "3040_1_chariot"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3041_03",
+   "part": 3,
+   "modelDataList": [
+    "3041_0_polnareff",
+    "3041_1_chariot"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3041_04",
+   "part": 3,
+   "modelDataList": [
+    "3041_0_polnareff",
+    "3041_1_chariot"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3050_01",
+   "part": 3,
+   "modelDataList": [
+    "3050_0_iggy",
+    "3050_1_fool"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3050_02",
+   "part": 3,
+   "modelDataList": [
+    "3050_0_iggy",
+    "3050_1_fool"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3050_03",
+   "part": 3,
+   "modelDataList": [
+    "3050_0_iggy",
+    "3050_1_fool"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3050_04",
+   "part": 3,
+   "modelDataList": [
+    "3050_0_iggy",
+    "3050_1_fool"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3060_01",
+   "part": 3,
+   "modelDataList": [
+    "3060_0_gfly",
+    "3060_1_tgray"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3060_02",
+   "part": 3,
+   "modelDataList": [
+    "3060_0_gfly",
+    "3060_1_tgray"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3060_03",
+   "part": 3,
+   "modelDataList": [
+    "3060_0_gfly",
+    "3060_1_tgray"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3070_01",
+   "part": 3,
+   "modelDataList": [
+    "3070_0_tennille",
+    "3070_1_dbmoon"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3070_02",
+   "part": 3,
+   "modelDataList": [
+    "3070_0_tennille",
+    "3070_1_dbmoon"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3070_03",
+   "part": 3,
+   "modelDataList": [
+    "3070_0_tennille",
+    "3070_1_dbmoon"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3090_01",
+   "part": 3,
+   "modelDataList": [
+    "3090_0_devo"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3090_02",
+   "part": 3,
+   "modelDataList": [
+    "3090_0_devo"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3090_03",
+   "part": 3,
+   "modelDataList": [
+    "3090_0_devo"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3100_01",
+   "part": 3,
+   "modelDataList": [
+    "3100_0_rsole",
+    "3100_1_yellowt"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3100_02",
+   "part": 3,
+   "modelDataList": [
+    "3100_0_rsole",
+    "3100_1_yellowt"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3100_03",
+   "part": 3,
+   "modelDataList": [
+    "3100_0_rsole",
+    "3100_1_yellowt"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3100_12",
+   "part": 3,
+   "modelDataList": [
+    "3100_0_rsole",
+    "3100_1_yellowt"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3110_01",
+   "part": 3,
+   "modelDataList": [
+    "3110_0_hol"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3110_02",
+   "part": 3,
+   "modelDataList": [
+    "3110_0_hol"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3110_03",
+   "part": 3,
+   "modelDataList": [
+    "3110_0_hol"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3110_13",
+   "part": 3,
+   "modelDataList": [
+    "3110_0_hol"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3110_14",
+   "part": 3,
+   "modelDataList": [
+    "3110_0_hol"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3150_01",
+   "part": 3,
+   "modelDataList": [
+    "3150_0_enya",
+    "3150_1_justice"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3150_02",
+   "part": 3,
+   "modelDataList": [
+    "3150_0_enya",
+    "3150_1_justice"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3150_03",
+   "part": 3,
+   "modelDataList": [
+    "3150_0_enya",
+    "3150_1_justice"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3150_04",
+   "part": 3,
+   "modelDataList": [
+    "3150_0_enya",
+    "3150_1_justice"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3150_12",
+   "part": 3,
+   "modelDataList": [
+    "3150_0_enya",
+    "3150_1_justice"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3210_01",
+   "part": 3,
+   "modelDataList": [
+    "3210_0_ndoul",
+    "3210_1_geb"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3210_02",
+   "part": 3,
+   "modelDataList": [
+    "3210_0_ndoul",
+    "3210_1_geb"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3210_03",
+   "part": 3,
+   "modelDataList": [
+    "3210_0_ndoul",
+    "3210_1_geb"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3210_12",
+   "part": 3,
+   "modelDataList": [
+    "3210_0_ndoul",
+    "3210_1_geb"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3210_13",
+   "part": 3,
+   "modelDataList": [
+    "3210_0_ndoul",
+    "3210_1_geb"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3240_11",
+   "part": 3,
+   "modelDataList": [
+    "3240_0_chaka",
+    "3240_1_anubis"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3240_12",
+   "part": 3,
+   "modelDataList": [
+    "3240_0_chaka",
+    "3240_1_anubis"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3240_13",
+   "part": 3,
+   "modelDataList": [
+    "3240_0_chaka",
+    "3240_1_anubis"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3270_01",
+   "part": 3,
+   "modelDataList": [
+    "3270_0_mariah"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3270_02",
+   "part": 3,
+   "modelDataList": [
+    "3270_0_mariah"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3270_03",
+   "part": 3,
+   "modelDataList": [
+    "3270_0_mariah"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3270_04",
+   "part": 3,
+   "modelDataList": [
+    "3270_0_mariah"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3300_01",
+   "part": 3,
+   "modelDataList": [
+    "3300_0_pshop",
+    "3300_1_horus"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3300_02",
+   "part": 3,
+   "modelDataList": [
+    "3300_0_pshop",
+    "3300_1_horus"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3300_03",
+   "part": 3,
+   "modelDataList": [
+    "3300_0_pshop",
+    "3300_1_horus"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3300_04",
+   "part": 3,
+   "modelDataList": [
+    "3300_0_pshop",
+    "3300_1_horus"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3321_03",
+   "part": 3,
+   "modelDataList": [
+    "3321_0_dio3",
+    "3321_1_world"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3321_18",
+   "part": 3,
+   "modelDataList": [
+    "3321_0_dio3",
+    "3321_1_world"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3322_08",
+   "part": 3,
+   "modelDataList": [
+    "3322_0_dio3",
+    "3322_1_world"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3323_08",
+   "part": 3,
+   "modelDataList": [
+    "3323_0_dio3",
+    "3323_1_world"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3330_01",
+   "part": 3,
+   "modelDataList": [
+    "3330_0_vanilla",
+    "3330_1_cream"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3330_02",
+   "part": 3,
+   "modelDataList": [
+    "3330_0_vanilla",
+    "3330_1_cream"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3330_03",
+   "part": 3,
+   "modelDataList": [
+    "3330_0_vanilla",
+    "3330_1_cream"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3330_04",
+   "part": 3,
+   "modelDataList": [
+    "3330_0_vanilla",
+    "3330_1_cream"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4000_01",
+   "part": 4,
+   "modelDataList": [
+    "4000_0_josuke",
+    "4000_1_crazyd"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4000_02",
+   "part": 4,
+   "modelDataList": [
+    "4000_0_josuke",
+    "4000_1_crazyd"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4000_03",
+   "part": 4,
+   "modelDataList": [
+    "4000_0_josuke",
+    "4000_1_crazyd"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4000_04",
+   "part": 4,
+   "modelDataList": [
+    "4000_0_josuke",
+    "4000_1_crazyd"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4000_12",
+   "part": 4,
+   "modelDataList": [
+    "4000_0_josuke",
+    "4000_1_crazyd"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4000_18",
+   "part": 4,
+   "modelDataList": [
+    "4000_0_josuke",
+    "4000_1_crazyd"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4000_23",
+   "part": 4,
+   "modelDataList": [
+    "4000_0_josuke",
+    "4000_1_crazyd"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4010_01",
+   "part": 4,
+   "modelDataList": [
+    "4010_0_koichi",
+    "4010_1_echoes1"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4010_13",
+   "part": 4,
+   "modelDataList": [
+    "4010_0_koichi",
+    "4010_1_echoes1"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4011_02",
+   "part": 4,
+   "modelDataList": [
+    "4011_0_koichi",
+    "4011_1_echoes2"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4011_03",
+   "part": 4,
+   "modelDataList": [
+    "4011_0_koichi",
+    "4011_1_echoes2"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4011_15",
+   "part": 4,
+   "modelDataList": [
+    "4011_0_koichi",
+    "4011_1_echoes2"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4011_16",
+   "part": 4,
+   "modelDataList": [
+    "4011_0_koichi",
+    "4011_1_echoes2"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4011_17",
+   "part": 4,
+   "modelDataList": [
+    "4011_0_koichi",
+    "4011_1_echoes2"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4011_18",
+   "part": 4,
+   "modelDataList": [
+    "4011_0_koichi",
+    "4011_1_echoes2"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4012_03",
+   "part": 4,
+   "modelDataList": [
+    "4012_0_koichi",
+    "4012_1_echoes3"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4012_11",
+   "part": 4,
+   "modelDataList": [
+    "4012_0_koichi",
+    "4012_1_echoes3"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4020_01",
+   "part": 4,
+   "modelDataList": [
+    "4020_0_okuyasu",
+    "4020_1_thehand"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4020_02",
+   "part": 4,
+   "modelDataList": [
+    "4020_0_okuyasu",
+    "4020_1_thehand"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4020_03",
+   "part": 4,
+   "modelDataList": [
+    "4020_0_okuyasu",
+    "4020_1_thehand"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4020_04",
+   "part": 4,
+   "modelDataList": [
+    "4020_0_okuyasu",
+    "4020_1_thehand"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4020_13",
+   "part": 4,
+   "modelDataList": [
+    "4020_0_okuyasu",
+    "4020_1_thehand"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4030_01",
+   "part": 4,
+   "modelDataList": [
+    "4030_0_rohan",
+    "4030_1_door"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4030_02",
+   "part": 4,
+   "modelDataList": [
+    "4030_0_rohan",
+    "4030_1_door"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4030_03",
+   "part": 4,
+   "modelDataList": [
+    "4030_0_rohan",
+    "4030_1_door"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4030_04",
+   "part": 4,
+   "modelDataList": [
+    "4030_0_rohan",
+    "4030_1_door"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4031_18",
+   "part": 4,
+   "modelDataList": [
+    "4031_0_rohan",
+    "4031_1_door"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4040_01",
+   "part": 4,
+   "modelDataList": [
+    "4040_0_jotaro4",
+    "4040_1_stapla4"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4040_12",
+   "part": 4,
+   "modelDataList": [
+    "4040_0_jotaro4",
+    "4040_1_stapla4"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4040_13",
+   "part": 4,
+   "modelDataList": [
+    "4040_0_jotaro4",
+    "4040_1_stapla4"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4040_14",
+   "part": 4,
+   "modelDataList": [
+    "4040_0_jotaro4",
+    "4040_1_stapla4"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4042_03",
+   "part": 4,
+   "modelDataList": [
+    "4042_0_jotaro4",
+    "4042_1_stapla4"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4043_08",
+   "part": 4,
+   "modelDataList": [
+    "4043_0_jotaro4",
+    "4043_1_stapla4"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4080_01",
+   "part": 4,
+   "modelDataList": [
+    "4080_0_yukako"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4080_02",
+   "part": 4,
+   "modelDataList": [
+    "4080_0_yukako"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4080_03",
+   "part": 4,
+   "modelDataList": [
+    "4080_0_yukako"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4080_04",
+   "part": 4,
+   "modelDataList": [
+    "4080_0_yukako"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4080_13",
+   "part": 4,
+   "modelDataList": [
+    "4080_0_yukako"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4110_01",
+   "part": 4,
+   "modelDataList": [
+    "4110_0_shigechi",
+    "4110_1_harvest"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4110_02",
+   "part": 4,
+   "modelDataList": [
+    "4110_0_shigechi",
+    "4110_1_harvest"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4110_13",
+   "part": 4,
+   "modelDataList": [
+    "4110_0_shigechi",
+    "4110_1_harvest"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4110_14",
+   "part": 4,
+   "modelDataList": [
+    "4110_0_shigechi",
+    "4110_1_harvest"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4130_01",
+   "part": 4,
+   "modelDataList": [
+    "4130_0_yuuya",
+    "4130_1_hstar"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4130_02",
+   "part": 4,
+   "modelDataList": [
+    "4130_0_yuuya",
+    "4130_1_hstar"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4130_03",
+   "part": 4,
+   "modelDataList": [
+    "4130_0_yuuya",
+    "4130_1_hstar"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4130_13",
+   "part": 4,
+   "modelDataList": [
+    "4130_0_yuuya",
+    "4130_1_hstar"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4130_25",
+   "part": 4,
+   "modelDataList": [
+    "4130_0_yuuya",
+    "4130_1_hstar"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4130_26",
+   "part": 4,
+   "modelDataList": [
+    "4130_0_yuuya",
+    "4130_1_hstar"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4130_27",
+   "part": 4,
+   "modelDataList": [
+    "4130_0_yuuya",
+    "4130_1_hstar"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4130_28",
+   "part": 4,
+   "modelDataList": [
+    "4130_0_yuuya",
+    "4130_1_hstar"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4150_01",
+   "part": 4,
+   "modelDataList": [
+    "4150_0_angelo",
+    "4150_1_aqua"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4150_02",
+   "part": 4,
+   "modelDataList": [
+    "4150_0_angelo",
+    "4150_1_aqua"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4150_03",
+   "part": 4,
+   "modelDataList": [
+    "4150_0_angelo",
+    "4150_1_aqua"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4160_01",
+   "part": 4,
+   "modelDataList": [
+    "4160_0_keicho",
+    "4160_1_bcarmy"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4160_02",
+   "part": 4,
+   "modelDataList": [
+    "4160_0_keicho",
+    "4160_1_bcarmy"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4160_03",
+   "part": 4,
+   "modelDataList": [
+    "4160_0_keicho",
+    "4160_1_bcarmy"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4160_12",
+   "part": 4,
+   "modelDataList": [
+    "4160_0_keicho",
+    "4160_1_bcarmy"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4170_01",
+   "part": 4,
+   "modelDataList": [
+    "4170_0_otoishi",
+    "4170_1_rhcp"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4170_02",
+   "part": 4,
+   "modelDataList": [
+    "4170_0_otoishi",
+    "4170_1_rhcp"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4170_03",
+   "part": 4,
+   "modelDataList": [
+    "4170_0_otoishi",
+    "4170_1_rhcp"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4170_15",
+   "part": 4,
+   "modelDataList": [
+    "4170_0_otoishi",
+    "4170_1_rhcp"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4170_16",
+   "part": 4,
+   "modelDataList": [
+    "4170_0_otoishi",
+    "4170_1_rhcp"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4170_17",
+   "part": 4,
+   "modelDataList": [
+    "4170_0_otoishi",
+    "4170_1_rhcp"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4170_18",
+   "part": 4,
+   "modelDataList": [
+    "4170_0_otoishi",
+    "4170_1_rhcp"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4190_13",
+   "part": 4,
+   "modelDataList": [
+    "4190_0_kira",
+    "4190_1_killerq"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4190_14",
+   "part": 4,
+   "modelDataList": [
+    "4190_0_kira",
+    "4190_1_killerq"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4191_01",
+   "part": 4,
+   "modelDataList": [
+    "4191_0_kawajiri",
+    "4191_1_killerq"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4191_02",
+   "part": 4,
+   "modelDataList": [
+    "4191_0_kawajiri",
+    "4191_1_killerq"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4191_03",
+   "part": 4,
+   "modelDataList": [
+    "4191_0_kawajiri",
+    "4191_1_killerq"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4191_04",
+   "part": 4,
+   "modelDataList": [
+    "4191_0_kawajiri",
+    "4191_1_killerq"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4192_03",
+   "part": 4,
+   "modelDataList": [
+    "4192_0_kawajiri",
+    "4192_1_killerq"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4192_04",
+   "part": 4,
+   "modelDataList": [
+    "4192_0_kawajiri",
+    "4192_1_killerq"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4193_08",
+   "part": 4,
+   "modelDataList": [
+    "4193_0_kira",
+    "4193_1_killerq"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4194_08",
+   "part": 4,
+   "modelDataList": [
+    "4194_0_kawajiri",
+    "4194_1_killerq"
+   ],
+   "rarity": 6,
+   "statueType": 1,
+   "lv1": {
+    "hp": 2354,
+    "atk": 1635,
+    "def": 1112
+   },
+   "lv99": {
+    "hp": 23544,
+    "atk": 16350,
+    "def": 11118
+   },
+   "maxTree": {
+    "hp": 36144,
+    "atk": 30750,
+    "def": 20118
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "license": "CC BY-SA 3.0",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Yoshikage_Kira_~_I%27m_at_my_limit%21_I%27ll_activate_it%21_~_%28Courage%29",
+    "revid": 4690,
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4240_11",
+   "part": 4,
+   "modelDataList": [
+    "4240_0_miyamoto",
+    "4240_1_enigma"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4240_12",
+   "part": 4,
+   "modelDataList": [
+    "4240_0_miyamoto",
+    "4240_1_enigma"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "4240_13",
+   "part": 4,
+   "modelDataList": [
+    "4240_0_miyamoto",
+    "4240_1_enigma"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "5000_03",
+   "part": 5,
+   "modelDataList": [
+    "5000_0_giorno",
+    "5000_1_golde"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "5000_04",
+   "part": 5,
+   "modelDataList": [
+    "5000_0_giorno",
+    "5000_1_golde"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "5000_22",
+   "part": 5,
+   "modelDataList": [
+    "5000_0_giorno",
+    "5000_1_golde"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "5000_23",
+   "part": 5,
+   "modelDataList": [
+    "5000_0_giorno",
+    "5000_1_golde"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "5000_24",
+   "part": 5,
+   "modelDataList": [
+    "5000_0_giorno",
+    "5000_1_golde"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "5001_14",
+   "part": 5,
+   "modelDataList": [
+    "5001_0_giorno",
+    "5001_1_golder"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "5010_04",
+   "part": 5,
+   "modelDataList": [
+    "5010_0_bucchi",
+    "5010_1_stickyf"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "5010_14",
+   "part": 5,
+   "modelDataList": [
+    "5010_0_bucchi",
+    "5010_1_stickyf"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "5030_04",
+   "part": 5,
+   "modelDataList": [
+    "5030_0_abba",
+    "5030_1_moodyb"
+   ],
+   "rarity": 6,
+   "statueType": 2,
+   "lv1": {
+    "hp": 2750,
+    "atk": 1600,
+    "def": 1880
+   },
+   "lv99": {
+    "hp": 27500,
+    "atk": 16000,
+    "def": 18800
+   },
+   "maxTree": {
+    "hp": 37400,
+    "atk": 28600,
+    "def": 32300
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "license": "CC BY-SA 3.0",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Leone_Abbacchio_%28Tactical%29",
+    "revid": 4591,
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "5050_03",
+   "part": 5,
+   "modelDataList": [
+    "5050_0_mista",
+    "5050_1_sexpistols"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "5050_04",
+   "part": 5,
+   "modelDataList": [
+    "5050_0_mista",
+    "5050_1_sexpistols"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "5080_04",
+   "part": 5,
+   "modelDataList": [
+    "5080_0_narancia",
+    "5080_1_aerosmith"
+   ],
+   "rarity": 6,
+   "statueType": 3,
+   "lv1": {
+    "hp": 3400,
+    "atk": 1680,
+    "def": 1480
+   },
+   "lv99": {
+    "hp": 34000,
+    "atk": 16800,
+    "def": 14800
+   },
+   "maxTree": {
+    "hp": 46600,
+    "atk": 30300,
+    "def": 24700
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "license": "CC BY-SA 3.0",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Narancia_Ghirga_%28Fighting_Spirit%29",
+    "revid": 4502,
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "5100_14",
+   "part": 5,
+   "modelDataList": [
+    "5100_0_fugo",
+    "5100_1_purpleh"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "5120_14",
+   "part": 5,
+   "modelDataList": [
+    "5120_0_prosciutto",
+    "5120_1_gratefuld"
+   ],
+   "rarity": 6,
+   "statueType": 4,
+   "lv1": {
+    "hp": 3400,
+    "atk": 1620,
+    "def": 1540
+   },
+   "lv99": {
+    "hp": 3400,
+    "atk": 16200,
+    "def": 15400
+   },
+   "maxTree": {
+    "hp": 46600,
+    "atk": 28800,
+    "def": 26200
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "license": "CC BY-SA 3.0",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Prosciutto_%28Unity%29",
+    "revid": 4544,
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "5140_04",
+   "part": 5,
+   "modelDataList": [
+    "5140_0_babyf",
+    "5140_1_melone"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "5150_04",
+   "part": 5,
+   "modelDataList": [
+    "5150_0_whitea",
+    "5150_1_ghiaccio"
+   ],
+   "rarity": 6,
+   "statueType": 3,
+   "lv1": {
+    "hp": 2750,
+    "atk": 1960,
+    "def": 2030
+   },
+   "lv99": {
+    "hp": 27500,
+    "atk": 19600,
+    "def": 20300
+   },
+   "maxTree": {
+    "hp": 36500,
+    "atk": 32200,
+    "def": 34700
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "license": "CC BY-SA 3.0",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Ghiaccio_%28Fighting_Spirit%29",
+    "revid": 4681,
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "5170_14",
+   "part": 5,
+   "modelDataList": [
+    "5170_0_diavolo",
+    "5170_1_kingc"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "5210_04",
+   "part": 5,
+   "modelDataList": [
+    "5210_0_trish",
+    "5210_1_spiceg"
+   ],
+   "rarity": 6,
+   "statueType": 1,
+   "lv1": {
+    "hp": 3080,
+    "atk": 1780,
+    "def": 1540
+   },
+   "lv99": {
+    "hp": 30800,
+    "atk": 17800,
+    "def": 15400
+   },
+   "maxTree": {
+    "hp": 42500,
+    "atk": 30400,
+    "def": 27100
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "license": "CC BY-SA 3.0",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Trish_Una_%28Courage%29",
+    "revid": 4714,
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "5220_14",
+   "part": 5,
+   "modelDataList": [
+    "5220_0_risotto"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "5290_04",
+   "part": 5,
+   "modelDataList": [
+    "5290_0_luca"
+   ],
+   "rarity": 6,
+   "statueType": 3,
+   "lv1": {
+    "hp": 401,
+    "atk": 401,
+    "def": 401
+   },
+   "lv99": {
+    "hp": 4010,
+    "atk": 4010,
+    "def": 4010
+   },
+   "maxTree": {
+    "hp": 24010,
+    "atk": 14010,
+    "def": 14010
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "license": "CC BY-SA 3.0",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Leaky-Eye_Luca_%28Fighting_Spirit%29",
+    "revid": 4558,
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "5320_04",
+   "part": 5,
+   "modelDataList": [
+    "5320_0_jotaro5",
+    "5320_1_stapla5"
+   ],
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "no unambiguous wiki match yet; server uses defaults"
+   }
+  }
+ ]
+}

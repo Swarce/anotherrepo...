@@ -64,7 +64,13 @@ fn builds_masterdata_with_player_engine_types() {
     let (ms, ab) = versionfile::find_template_types(&dir, key.as_bytes(), iv.as_bytes()).unwrap();
     let (b, tables) = jdr_services::masterdata::build_embedded(&ms, &ab).unwrap();
     if let Ok(o) = std::env::var("JDR_MASTERDATA_OUT") {
-        std::fs::write(o, &b).unwrap();
+        std::fs::write(&o, &b).unwrap();
+        // The generated tables as content files, so the UnityPy check can compare them too.
+        let gen = std::path::PathBuf::from(format!("{o}.generated"));
+        std::fs::create_dir_all(&gen).unwrap();
+        for (name, js) in jdr_services::masterdata::generated_tables() {
+            std::fs::write(gen.join(format!("{name}.json")), js).unwrap();
+        }
     }
     eprintln!(
         "{} tables, bundle {} bytes, md5 {}",
