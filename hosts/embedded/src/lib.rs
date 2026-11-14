@@ -24,7 +24,7 @@ use std::time::{Duration, Instant};
 /// Marker the patcher checks to make sure it embeds this library and not something else.
 #[used]
 #[no_mangle]
-pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_b003";
+pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_b004";
 
 pub const KEYS_ASSET: &str = "assets/jdr/keys.json";
 
@@ -271,6 +271,8 @@ pub fn serve_embedded(paths: &Paths, keys: Keys, port: u16, bind_retries: u32, t
     s.keys = Some(keys);
     let cdn = paths.external.join("cdn");
     s.files_dir = Some(cdn.clone());
+    // The game's own download folder, read-only (manifest source): <external>/../files
+    s.game_files_dir = paths.external.parent().map(|p| p.join("files"));
     // The previous game process may still be dying; retry the bind for a while.
     let mut tries = 0;
     let (listener, port) = loop {
@@ -295,6 +297,17 @@ pub fn serve_embedded(paths: &Paths, keys: Keys, port: u16, bind_retries: u32, t
     };
     let ctx = Arc::new(Ctx::new(s, false));
     ctx.port.store(port, Ordering::Relaxed);
+    {
+        // Build the manifest in the background so the game's first request is answered at once.
+        let c = ctx.clone();
+        let _ = std::thread::Builder::new()
+            .name("jdr-manifest".into())
+            .spawn(move || {
+                if let Err(e) = c.versionfile() {
+                    log::line("assets", &format!("versionfile not built yet: {e}"));
+                }
+            });
+    }
     BOUND_PORT.store(port, Ordering::Relaxed);
     log::line(
         "boot",
