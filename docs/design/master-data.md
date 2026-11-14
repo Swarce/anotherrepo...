@@ -10,9 +10,10 @@ was replaced by generation inside the server, on the phone; see "As built".
   in the background at boot and on demand, cached until `vcs.bytes` changes. Master data first, then
   the manifest, which lists it (`in_memory_master_data.bytes`, md5 + size of the exact bytes `/cdn`
   serves, `isEncrypt=false`: plain UnityFS).
-- **Schema:** `server/content/masterdata/schema.json` — every asset in the bundle with its class, and
-  the serialized fields of 147 types, from our analysis of the client's type metadata
-  (docs/research/09-master-data.md). Code identifiers only; no game text, no values.
+- **Schema:** `server/content/masterdata/schema.json` — the core assets with their classes and the
+  serialized fields of the types they reach, from our analysis of the client's type metadata
+  (docs/research/09-master-data.md). Code identifiers only; no game text, no values. It grows with
+  the content (battle tables join when they get rows), never as a full dump.
 - **Rows:** one JSON file per table in the same folder (`asset`, `sources`, `data`). Enums by name or
   number, `SecurityIntValue` as a plain number (written seed 0 / value), unknown fields refused.
   A core table without a file is written empty (every core loader accepts an empty list); battle-only

@@ -169,8 +169,9 @@ impl Ctx {
             let (ms, ab) = versionfile::find_template_types(dir, key, iv)?;
             let (md, tables) = masterdata::build_embedded(&ms, &ab)?;
             let md_name = masterdata::BUNDLE_NAME;
-            // The real server listed it too: the client fetches it into memory (never stored, never
-            // in vcs.bytes) and checks the download against this md5.
+            // Listed like any other file (expected to match the dead server; to be confirmed on a
+            // device): the client fetches it into memory, never stores it or records it in
+            // vcs.bytes, and is expected to check the download against this md5.
             entries.retain(|e| e.path != format!("{md_name}.bytes"));
             entries.push(versionfile::Entry {
                 path: format!("{md_name}.bytes"),
