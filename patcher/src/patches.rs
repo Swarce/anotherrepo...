@@ -312,20 +312,21 @@ pub const LIBUNITY_ARM64: &str = "lib/arm64-v8a/libunity.so";
 /// Replacement body (24 ARM64 instructions, our own code) for `UnityDefaultAllocator`'s
 /// constructor at 0x9ff824 in the verified libunity: it builds a `DynamicHeapAllocator` instead,
 /// field for field like the engine's own inline `ALLOC_FALLBACK` construction (MemoryManager
-/// @0x50d27c..0x50d2dc). Disassembly:
+/// @0x50d27c..0x50d2dc), except the pool size: 16 MiB instead of the fallback heap's 1 MiB, so the
+/// pool and large-allocation lists these busy heaps walk stay short. Disassembly:
 /// ```text
 /// stp x19,x30,[sp,#-16]! ; mov x19,x0 ; bl BaseAllocator::ctor(0x50f07c)
 /// adrp x8,0x12cd000 ; add x8,x8,#0x620          ; DynamicHeapAllocator vtable
 /// add x9,x19,#0xb8 ; add x10,x19,#0xc8 ; str xzr,[x19,#0xa8]
 /// stp x9,x9,[x19,#0xb8] ; stp x10,x10,[x19,#0xc8] ; str x8,[x19]
 /// add x0,x19,#0xd8 ; bl Mutex::ctor(0xa234c8)
-/// mov w10,#0x100000 ; stp x10,xzr,[x19,#0x108] ; mov w9,#1
+/// mov w10,#0x1000000 ; stp x10,xzr,[x19,#0x108] ; mov w9,#1
 /// str xzr,[x19,#0xb0] ; strb w9,[x19,#0x104] ; ldp x19,x30,[sp],#16 ; ret ; nop x4
 /// ```
 /// Equivalence proof on the real binary: tools/proofs/unity_heap_equiv.py.
 pub const UNITY_HEAP_CTOR: [u32; 24] = [
     0xa9bf7bf3, 0xaa0003f3, 0x97ec3e14, 0xd0004668, 0x91188108, 0x9102e269, 0x9103226a, 0xf900567f,
-    0xa90ba669, 0xa90caa6a, 0xf9000268, 0x91036260, 0x94008f1d, 0x52a0020a, 0xa910fe6a, 0x52800029,
+    0xa90ba669, 0xa90caa6a, 0xf9000268, 0x91036260, 0x94008f1d, 0x52a0200a, 0xa910fe6a, 0x52800029,
     0xf9005a7f, 0x39041269, 0xa8c17bf3, 0xd65f03c0, 0xd503201f, 0xd503201f, 0xd503201f, 0xd503201f,
 ];
 
@@ -381,12 +382,59 @@ impl Patch for UnityHeap {
     }
 }
 
+/// `mov w0, #1 ; ret`
+pub const RETURN_TRUE: [u32; 2] = [0x5280_0020, 0xd65f_03c0];
+
+/// Stops the game wiping its whole download folder on a fresh install.
+///
+/// `ResourceDownloadUIController.StartLoad` runs a one-time "cache clear of non-encrypted files"
+/// (`DoCacheClearProcess` -> `IOManager.DeleteAllInDirectory(persistentDataPath)`) whenever the
+/// PlayerPrefs flag read by `SaveDataManager.LoadNonObfuscatedClearFlag` is unset. That cleared
+/// caches of very old versions before re-downloading from the server; offline it destroys the
+/// player's only copy of the game data (seen on device after reinstalling). The patch makes the
+/// flag read return true; its only caller is that cache-clear routine.
+pub struct KeepFiles;
+
+impl Patch for KeepFiles {
+    fn id(&self) -> &'static str {
+        "keep-files"
+    }
+    fn description(&self) -> &'static str {
+        "Never run the one-time wipe of the downloaded files folder (fresh install / cleared storage)"
+    }
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        _cfg: &Config,
+        build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
+        let lib = apk.read(LIBIL2CPP_ARM64)?;
+        if sha256_hex(&lib) != build.libil2cpp_arm64_sha256 {
+            return Err("fingerprint mismatch: libil2cpp.so".into());
+        }
+        let (off, want) = build.clear_flag_fn;
+        let window = lib.get(off..off + 32).ok_or("libil2cpp.so too short")?;
+        if sha256_hex(window) != want {
+            return Err("fingerprint mismatch at LoadNonObfuscatedClearFlag".into());
+        }
+        let mut out = lib.clone();
+        let code: Vec<u8> = RETURN_TRUE.iter().flat_map(|w| w.to_le_bytes()).collect();
+        out[off..off + code.len()].copy_from_slice(&code);
+        let compress = apk.is_compressed(LIBIL2CPP_ARM64);
+        apk.put(LIBIL2CPP_ARM64, out, compress);
+        Ok(format!(
+            "libil2cpp.so @{off:#x}: LoadNonObfuscatedClearFlag -> return true"
+        ))
+    }
+}
+
 pub fn all() -> Vec<Box<dyn Patch>> {
     vec![
         Box::new(ServerUrl),
         Box::new(Cleartext),
         Box::new(DropArmv7),
         Box::new(UnityHeap),
+        Box::new(KeepFiles),
         Box::new(EmbedServer),
     ]
 }
@@ -424,6 +472,14 @@ mod tests {
         };
         assert_eq!(bl(2), 0x50f07c);
         assert_eq!(bl(12), 0xa234c8);
+    }
+
+    #[test]
+    fn return_true_encoding() {
+        // movz w0, #1 ; ret
+        assert_eq!(RETURN_TRUE[0] & 0xffe0_001f, 0x5280_0000);
+        assert_eq!((RETURN_TRUE[0] >> 5) & 0xffff, 1);
+        assert_eq!(RETURN_TRUE[1], 0xd65f_03c0);
     }
 
     #[test]
