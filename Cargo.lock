@@ -221,6 +221,7 @@ version = "0.1.0"
 dependencies = [
  "jdr-core",
  "jdr-services",
+ "serde_json",
 ]
 
 [[package]]

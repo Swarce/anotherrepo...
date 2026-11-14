@@ -1,2 +1,348 @@
-//! Embedded host (M2): `libjdrserver.so`, loaded into the game process via a `DT_NEEDED` entry on
-//! `libmain.so`; a constructor starts the server thread. Not built into the APK in Build 01.
+//! Embedded host: `libjdr.so`.
+//!
+//! The patcher renames `libmain.so`'s `liblog.so` dependency to `libjdr.so` (same length), and this
+//! library depends on `liblog.so` itself, so everything libmain imported still resolves. The
+//! dynamic linker runs our constructor while Unity loads `libmain`; the constructor only spawns a
+//! thread, so the game never waits on us and a failure here never takes the game down.
+//!
+//! Paths (user `n` = uid / 100000):
+//! - state (accounts, saves): `/data/user/<n>/<pkg>/jdr/`
+//! - logs mirror (reachable with adb): `/storage/emulated/<n>/Android/data/<pkg>/jdr/logs/`
+//! - extra CDN files (import folder): `/storage/emulated/<n>/Android/data/<pkg>/jdr/cdn/` — never
+//!   the game's own `files/` folder, which the client downloads into.
+
+pub mod apkzip;
+
+use jdr_core::settings::{Keys, Settings, DEFAULT_PORT};
+use jdr_core::{http, log};
+use jdr_services::{app, Ctx};
+use std::path::{Path, PathBuf};
+use std::sync::atomic::Ordering;
+use std::sync::Arc;
+use std::time::{Duration, Instant};
+
+/// Marker the patcher checks to make sure it embeds this library and not something else.
+#[used]
+#[no_mangle]
+pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_v001";
+
+pub const KEYS_ASSET: &str = "assets/jdr/keys.json";
+
+#[cfg(target_os = "android")]
+#[used]
+#[link_section = ".init_array"]
+static INIT: extern "C" fn() = jdr_init;
+
+#[cfg(target_os = "android")]
+extern "C" fn jdr_init() {
+    let _ = std::panic::catch_unwind(|| {
+        let _ = std::thread::Builder::new()
+            .name("jdr-server".into())
+            .spawn(|| {
+                let _ = std::panic::catch_unwind(run);
+            });
+    });
+}
+
+#[cfg(target_os = "android")]
+mod alog {
+    use std::ffi::CString;
+    use std::os::raw::{c_char, c_int};
+    #[link(name = "log")]
+    extern "C" {
+        fn __android_log_write(prio: c_int, tag: *const c_char, text: *const c_char) -> c_int;
+    }
+    pub fn write(tag: &str, msg: &str) {
+        let t = CString::new("JDR").unwrap();
+        let m = CString::new(format!("[{tag}] {msg}").replace('\0', " ")).unwrap_or_default();
+        unsafe {
+            __android_log_write(4, t.as_ptr(), m.as_ptr());
+        }
+    }
+}
+
+pub struct Paths {
+    pub pkg: String,
+    pub state: PathBuf,
+    pub external: PathBuf,
+}
+
+fn valid_pkg(p: &str) -> bool {
+    !p.is_empty()
+        && p.len() < 256
+        && p.bytes()
+            .all(|c| c.is_ascii_alphanumeric() || c == b'.' || c == b'_')
+}
+
+pub fn detect_paths() -> Result<Paths, String> {
+    let cmd = std::fs::read("/proc/self/cmdline").map_err(|e| e.to_string())?;
+    let pkg = String::from_utf8_lossy(cmd.split(|&b| b == 0 || b == b':').next().unwrap_or(&[]))
+        .to_string();
+    if !valid_pkg(&pkg) {
+        return Err(format!("unexpected process name {pkg:?}"));
+    }
+    let uid = status_uid().unwrap_or(0);
+    let user = uid / 100_000;
+    Ok(Paths {
+        state: PathBuf::from(format!("/data/user/{user}/{pkg}/jdr")),
+        external: PathBuf::from(format!("/storage/emulated/{user}/Android/data/{pkg}/jdr")),
+        pkg,
+    })
+}
+
+fn status_uid() -> Option<u32> {
+    let s = std::fs::read_to_string("/proc/self/status").ok()?;
+    s.lines()
+        .find_map(|l| l.strip_prefix("Uid:"))
+        .and_then(|v| v.split_whitespace().next())
+        .and_then(|v| v.parse().ok())
+}
+
+/// Keys: an override file in the state folder wins, else the asset the patcher put in the APK.
+pub fn load_keys(state: &Path) -> Result<Keys, String> {
+    let over = state.join("keys.json");
+    if over.is_file() {
+        return Settings::load_keys(&over);
+    }
+    let apk = apkzip::own_apk_path().ok_or("cannot find own base.apk in /proc/self/maps")?;
+    let b = apkzip::read_stored(&apk, KEYS_ASSET)?;
+    serde_json::from_slice(&b).map_err(|e| format!("{KEYS_ASSET}: {e}"))
+}
+
+/// Copy the current log to external storage once the game has created its folder there.
+fn mirror_logs(external: PathBuf) {
+    loop {
+        std::thread::sleep(Duration::from_secs(5));
+        if let Some(src) = log::current_path() {
+            let dir = external.join("logs");
+            if std::fs::create_dir_all(&dir).is_ok() {
+                if let Some(name) = src.file_name() {
+                    let _ = std::fs::copy(&src, dir.join(name));
+                }
+            }
+        }
+    }
+}
+
+pub fn run() {
+    let t0 = Instant::now();
+    #[cfg(target_os = "android")]
+    log::set_mirror(alog::write);
+    let paths = match detect_paths() {
+        Ok(p) => p,
+        Err(e) => {
+            log::line("boot", &format!("FATAL: {e}; embedded server not started"));
+            return;
+        }
+    };
+    let logp = log::init(Some(&paths.state.join("logs")), false);
+    let ms = || t0.elapsed().as_millis();
+    log::line(
+        "boot",
+        &format!(
+            "jdr embedded build {} in {} (+{}ms); log {:?}",
+            jdr_core::BUILD,
+            paths.pkg,
+            ms(),
+            logp
+        ),
+    );
+    {
+        let ext = paths.external.clone();
+        let _ = std::thread::Builder::new()
+            .name("jdr-logcopy".into())
+            .spawn(move || mirror_logs(ext));
+    }
+    let keys = match load_keys(&paths.state) {
+        Ok(k) => k,
+        Err(e) => {
+            log::line(
+                "boot",
+                &format!("FATAL: no keys ({e}); embedded server not started"),
+            );
+            return;
+        }
+    };
+    log::line(
+        "boot",
+        &format!(
+            "keys loaded (+{}ms); sound key {}",
+            ms(),
+            if keys.sound_key.is_some() {
+                "present"
+            } else {
+                "MISSING"
+            }
+        ),
+    );
+    serve_embedded(&paths, keys, DEFAULT_PORT, 30, t0);
+}
+
+/// The portable part of the embedded host: bind (with retries), build the context, serve.
+/// Returns when the listener fails. Host tests call this directly.
+pub fn serve_embedded(paths: &Paths, keys: Keys, port: u16, bind_retries: u32, t0: Instant) {
+    let ms = || t0.elapsed().as_millis();
+    let mut s = Settings::new(paths.state.clone());
+    s.ports = vec![port];
+    s.keys = Some(keys);
+    let cdn = paths.external.join("cdn");
+    s.files_dir = Some(cdn.clone());
+    // The previous game process may still be dying; retry the bind for a while.
+    let mut tries = 0;
+    let (listener, port) = loop {
+        match http::bind(&s.ports) {
+            Ok(x) => break x,
+            Err(e) if tries < bind_retries => {
+                if tries == 0 {
+                    log::line(
+                        "boot",
+                        &format!("bind 127.0.0.1:{port} failed ({e}); retrying"),
+                    );
+                }
+                tries += 1;
+                std::thread::sleep(Duration::from_millis(500));
+            }
+            Err(e) => {
+                log::line("boot", &format!("FATAL: cannot bind 127.0.0.1:{port}: {e}"));
+                return;
+            }
+        }
+    };
+    let ctx = Arc::new(Ctx::new(s, false));
+    ctx.port.store(port, Ordering::Relaxed);
+    BOUND_PORT.store(port, Ordering::Relaxed);
+    log::line(
+        "boot",
+        &format!(
+            "listening on 127.0.0.1:{port} (+{}ms); CDN import folder {}",
+            ms(),
+            cdn.display()
+        ),
+    );
+    let c2 = ctx.clone();
+    let _ = std::thread::Builder::new()
+        .name("jdr-status".into())
+        .spawn(move || loop {
+            std::thread::sleep(Duration::from_secs(60));
+            log::line("status", &c2.counters.status_line());
+        });
+    let h: http::Handler = Arc::new(move |r| app::handle(&ctx, r));
+    if let Err(e) = http::serve(listener, h) {
+        log::line("boot", &format!("server stopped: {e}"));
+    }
+}
+
+/// Port actually bound (0 until listening); for tests and diagnostics.
+pub static BOUND_PORT: std::sync::atomic::AtomicU16 = std::sync::atomic::AtomicU16::new(0);
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn reads_stored_entry_from_zip() {
+        // build a zip with the patcher's writer conventions (stored entry)
+        let d = std::env::temp_dir().join(format!("jdr-emb-{}", std::process::id()));
+        std::fs::create_dir_all(&d).unwrap();
+        let p = d.join("base.apk");
+        let raw = make_zip(&[
+            ("a.txt", b"hello"),
+            (KEYS_ASSET, br#"{"asset_key":"k","asset_iv":"i"}"#),
+        ]);
+        std::fs::write(&p, raw).unwrap();
+        let ps = p.to_string_lossy().to_string();
+        assert_eq!(apkzip::read_stored(&ps, "a.txt").unwrap(), b"hello");
+        let k: Keys =
+            serde_json::from_slice(&apkzip::read_stored(&ps, KEYS_ASSET).unwrap()).unwrap();
+        assert_eq!(k.asset_key, "k");
+        assert!(apkzip::read_stored(&ps, "missing").is_err());
+    }
+
+    /// Minimal stored-only zip writer for the test.
+    fn make_zip(entries: &[(&str, &[u8])]) -> Vec<u8> {
+        let mut out = vec![];
+        let mut cd = vec![];
+        for (name, data) in entries {
+            let off = out.len() as u32;
+            let mut lh = vec![];
+            lh.extend_from_slice(&0x0403_4b50u32.to_le_bytes());
+            lh.extend_from_slice(&[20, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+            lh.extend_from_slice(&0u32.to_le_bytes()); // crc (not checked)
+            lh.extend_from_slice(&(data.len() as u32).to_le_bytes());
+            lh.extend_from_slice(&(data.len() as u32).to_le_bytes());
+            lh.extend_from_slice(&(name.len() as u16).to_le_bytes());
+            lh.extend_from_slice(&3u16.to_le_bytes()); // extra field (to test skipping)
+            lh.extend_from_slice(name.as_bytes());
+            lh.extend_from_slice(&[0, 0, 0]);
+            out.extend_from_slice(&lh);
+            out.extend_from_slice(data);
+            cd.extend_from_slice(&0x0201_4b50u32.to_le_bytes());
+            cd.extend_from_slice(&[20, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+            cd.extend_from_slice(&0u32.to_le_bytes());
+            cd.extend_from_slice(&(data.len() as u32).to_le_bytes());
+            cd.extend_from_slice(&(data.len() as u32).to_le_bytes());
+            cd.extend_from_slice(&(name.len() as u16).to_le_bytes());
+            cd.extend_from_slice(&[0; 12]);
+            cd.extend_from_slice(&off.to_le_bytes());
+            cd.extend_from_slice(name.as_bytes());
+        }
+        let cd_off = out.len() as u32;
+        out.extend_from_slice(&cd);
+        out.extend_from_slice(&0x0605_4b50u32.to_le_bytes());
+        out.extend_from_slice(&[0, 0, 0, 0]);
+        out.extend_from_slice(&(entries.len() as u16).to_le_bytes());
+        out.extend_from_slice(&(entries.len() as u16).to_le_bytes());
+        out.extend_from_slice(&(cd.len() as u32).to_le_bytes());
+        out.extend_from_slice(&cd_off.to_le_bytes());
+        out.extend_from_slice(&[0, 0]);
+        out
+    }
+
+    #[test]
+    fn embedded_server_boots_from_apk_keys_and_answers() {
+        use jdr_core::envelope::{decode_response_like_client, encode_request_like_client};
+        use std::io::{Read, Write};
+        let d = std::env::temp_dir().join(format!("jdr-emb-run-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&d);
+        std::fs::create_dir_all(&d).unwrap();
+        let apk = d.join("base.apk");
+        let keys = br#"{"asset_key":"AAAAAAAAAAAAAAAA","asset_iv":"BBBBBBBBBBBBBBBB","http_key":"Synthetic-Key-16","sound_key":null}"#;
+        std::fs::write(&apk, make_zip(&[(KEYS_ASSET, keys)])).unwrap();
+        let k: Keys = serde_json::from_slice(
+            &apkzip::read_stored(&apk.to_string_lossy(), KEYS_ASSET).unwrap(),
+        )
+        .unwrap();
+        let paths = Paths {
+            pkg: "test.pkg".into(),
+            state: d.join("state"),
+            external: d.join("ext"),
+        };
+        std::thread::spawn(move || serve_embedded(&paths, k, 0, 0, Instant::now()));
+        let mut port = 0;
+        for _ in 0..100 {
+            port = BOUND_PORT.load(Ordering::Relaxed);
+            if port != 0 {
+                break;
+            }
+            std::thread::sleep(Duration::from_millis(20));
+        }
+        assert_ne!(port, 0, "server did not start");
+        let js = r#"{"uuid":"","session":"","language":1,"date":20261114103000,"platform":2,"version":"v","lzAccept":1,"lzEncode":0,"param":{}}"#;
+        let body = encode_request_like_client(js, b"Synthetic-Key-16", b"0123456789abcdef");
+        let mut s = std::net::TcpStream::connect(("127.0.0.1", port)).unwrap();
+        s.write_all(format!("POST /common/get_version HTTP/1.1\r\nHost: 127.0.0.1:{port}\r\nContent-Length: {}\r\nConnection: close\r\n\r\n", body.len()).as_bytes()).unwrap();
+        s.write_all(&body).unwrap();
+        let mut out = vec![];
+        s.read_to_end(&mut out).unwrap();
+        let split = out.windows(4).position(|w| w == b"\r\n\r\n").unwrap();
+        let v = decode_response_like_client(&out[split + 4..], b"Synthetic-Key-16").unwrap();
+        assert_eq!(v["param"]["url"], format!("http://127.0.0.1:{port}/api"));
+    }
+
+    #[test]
+    fn pkg_names() {
+        assert!(valid_pkg("com.bandainamcoent.jojodr"));
+        assert!(!valid_pkg("../x"));
+        assert!(!valid_pkg(""));
+    }
+}

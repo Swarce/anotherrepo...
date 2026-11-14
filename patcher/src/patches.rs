@@ -12,12 +12,18 @@ pub const LIBIL2CPP_ARM64: &str = "lib/arm64-v8a/libil2cpp.so";
 pub struct Config {
     /// Base URL the game will use instead of the dead production server.
     pub server_url: String,
+    /// The embedded server library (`libjdr.so`, aarch64) to put into the APK.
+    pub server_lib: Option<std::path::PathBuf>,
+    /// The player's keys.json (from `jdr-tool keys`), embedded as a stored asset.
+    pub keys_json: Option<Vec<u8>>,
 }
 
 impl Default for Config {
     fn default() -> Self {
         Self {
             server_url: format!("http://127.0.0.1:{}", DEFAULT_PORT),
+            server_lib: None,
+            keys_json: None,
         }
     }
 }
@@ -210,11 +216,92 @@ impl Patch for Cleartext {
     }
 }
 
+pub const LIBMAIN_ARM64: &str = "lib/arm64-v8a/libmain.so";
+pub const SERVER_LIB_ENTRY: &str = "lib/arm64-v8a/libjdr.so";
+pub const KEYS_ASSET: &str = "assets/jdr/keys.json";
+pub const SERVER_MARKER: &[u8] = b"JDR_EMBEDDED_SERVER_v";
+
+/// Check that a file is our aarch64 embedded server library.
+pub fn validate_server_lib(b: &[u8]) -> Result<(), Error> {
+    let e = crate::elf::Elf::parse(b)?;
+    if e.machine != crate::elf::EM_AARCH64 {
+        return Err("server library is not aarch64".into());
+    }
+    if !b.windows(SERVER_MARKER.len()).any(|w| w == SERVER_MARKER) {
+        return Err("server library has no JDR marker (wrong file?)".into());
+    }
+    if e.load_alignments().iter().any(|&a| a < 0x4000) {
+        return Err("server library is not 16 KiB page aligned".into());
+    }
+    Ok(())
+}
+
+/// Puts the embedded server into the game process: adds `libjdr.so`, makes `libmain.so` load it
+/// (its `liblog.so` dependency is renamed to `libjdr.so`, which itself depends on `liblog.so`),
+/// and embeds the player's keys as a stored asset.
+pub struct EmbedServer;
+
+impl Patch for EmbedServer {
+    fn id(&self) -> &'static str {
+        "embed-server"
+    }
+    fn description(&self) -> &'static str {
+        "Add libjdr.so (in-process server), load it from libmain.so, embed the player's keys"
+    }
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        cfg: &Config,
+        build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
+        let lib_path = cfg
+            .server_lib
+            .as_ref()
+            .ok_or("needs the server library (--server-lib, or libjdr.so next to jdr-patch)")?;
+        let keys = cfg
+            .keys_json
+            .as_ref()
+            .ok_or("needs --keys local/keys.json (from jdr-tool keys)")?;
+        let lib = std::fs::read(lib_path).map_err(|e| format!("{}: {e}", lib_path.display()))?;
+        validate_server_lib(&lib)?;
+        let k: serde_json::Value =
+            serde_json::from_slice(keys).map_err(|e| format!("keys.json: {e}"))?;
+        for f in ["asset_key", "asset_iv", "http_key"] {
+            if k.get(f)
+                .and_then(|v| v.as_str())
+                .map(str::is_empty)
+                .unwrap_or(true)
+            {
+                return Err(format!(
+                    "keys.json has no {f}; run jdr-tool keys --data ... --apk ..."
+                )
+                .into());
+            }
+        }
+        let main = apk.read(LIBMAIN_ARM64)?;
+        let sha = sha256_hex(&main);
+        if sha != build.libmain_arm64_sha256 {
+            return Err(format!("fingerprint mismatch: libmain.so sha256 {sha}").into());
+        }
+        let patched = crate::elf::replace_needed(&main, "liblog.so", "libjdr.so")?;
+        let compress = apk.is_compressed(LIBMAIN_ARM64);
+        apk.put(LIBMAIN_ARM64, patched, compress);
+        apk.put(SERVER_LIB_ENTRY, lib.clone(), true);
+        let slim = serde_json::json!({
+            "asset_key": k["asset_key"], "asset_iv": k["asset_iv"],
+            "http_key": k["http_key"], "sound_key": k.get("sound_key").cloned().unwrap_or(serde_json::Value::Null),
+        });
+        apk.put(KEYS_ASSET, serde_json::to_vec(&slim)?, false);
+        Ok(format!("libjdr.so ({} KiB, sha256 {}…), libmain NEEDED liblog.so -> libjdr.so, {KEYS_ASSET} (stored)", lib.len() / 1024, &sha256_hex(&lib)[..12]))
+    }
+}
+
 pub fn all() -> Vec<Box<dyn Patch>> {
     vec![
         Box::new(ServerUrl),
         Box::new(Cleartext),
         Box::new(DropArmv7),
+        Box::new(EmbedServer),
     ]
 }
 
