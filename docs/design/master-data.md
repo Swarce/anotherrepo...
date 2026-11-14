@@ -17,8 +17,9 @@ phone, so no player copy contains them:
 A tool in `tools/content-gen` (Python + UnityPy, run on the player's machine) builds both bundles
 from (a) the player's own files, (b) our own JSON in `server/content/master/`, and writes them to the
 server's data folder. The server lists them in `versionfile` and serves them via `getfiledata` like
-any other file. Nothing derived from game files is committed; the JSON in the repo holds only values
-we authored or sourced from public wikis (with citations).
+any other file. Nothing derived from game files is committed. The JSON in the repo holds values we
+authored or sourced from public wikis: **committed, with a `sources` list per file and credit in
+`CREDITS.md`** (owner decision; facts and numbers only, no copied prose).
 
 ### Bundle mechanics
 - Start from a real downloaded bundle as the template (same Unity version and serialization).

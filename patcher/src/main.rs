@@ -226,6 +226,16 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
         }
         rep.checks.push("no lib/armeabi-v7a entries".into());
     }
+    if !disabled.contains(&"unity-heap") {
+        let lib = chk.read(patches::LIBUNITY_ARM64)?;
+        let (off, _) = build.unity_default_alloc_ctor;
+        if lib.get(off..off + 96) != Some(&patches::unity_heap_bytes()[..]) {
+            return Err("post-check failed: libunity.so allocator patch not present".into());
+        }
+        rep.checks.push(format!(
+            "libunity.so @{off:#x} = DynamicHeapAllocator constructor"
+        ));
+    }
     if !disabled.contains(&"embed-server") {
         let main = chk.read(patches::LIBMAIN_ARM64)?;
         let needed = jdr_patch::elf::needed_of(&main)?;
