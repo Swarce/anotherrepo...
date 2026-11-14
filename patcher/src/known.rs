@@ -18,6 +18,9 @@ pub struct VerifiedBuild {
     /// File offset and SHA-256 (32-byte window) of `SaveDataManager.LoadNonObfuscatedClearFlag`
     /// in libil2cpp.so (the `keep-files` patch makes it return true).
     pub clear_flag_fn: (usize, &'static str),
+    /// File offset and SHA-256 (32-byte window) of `GrowthbeatBehaviour.Awake`, `.SendTag` and
+    /// `.SendEvent` in libil2cpp.so (the `no-growthbeat` patch makes each return at once).
+    pub growthbeat_fns: [(usize, &'static str); 3],
     /// SHA-256 of the binary `AndroidManifest.xml`.
     pub manifest_sha256: &'static str,
     /// SHA-256 of the Resources file holding `Text/ClientMes_JP` (`clientmes::ENTRY`).
@@ -44,6 +47,20 @@ pub const BUILDS: &[VerifiedBuild] = &[VerifiedBuild {
         0xfd1534,
         "306d717ddc15f17dab50cb35cec6fd9b4a87e3c88da61b1ac7c8e70a0ee4d7c4",
     ),
+    growthbeat_fns: [
+        (
+            0x2071f7c,
+            "e525d7fbc822f927cd7b5aa7508aee7becae77470f60b204e19f928275d2ad51",
+        ),
+        (
+            0x20720a0,
+            "3509a00ceedfbd591919d9085f72046b2be5edc3acad2d1c9e8def7c13a5673a",
+        ),
+        (
+            0x2072158,
+            "b43cd6d0bd5047950561df5ff70c6951634585af5a8a88eb1ba568200e8169f4",
+        ),
+    ],
     manifest_sha256: "a1d3a440e4e6ba6cc1bf6a8fa91cc03fd948058d55630c9aa41820dc11061257",
     clientmes_sha256: "eb62e1d6f6c8dcd3d186ffb0af05d2c0f02ff55594651ae5b72ad65e5b751501",
     server_url_literal: (4137, "https://jdr.channel.or.jp"),
