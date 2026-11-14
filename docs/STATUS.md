@@ -30,11 +30,15 @@ not help: in this release build its result is ignored.
   object → 129 bytes written, **0 bytes differ**, same mutex-init call.
 - Build number 3, server marker `JDR_EMBEDDED_SERVER_b003`.
 
-### Device checklist — expected; to be confirmed on a device
-- [ ] no "Using memoryadresses from more that 16GB" line, no SIGSEGV after login
-- [ ] terms page → `[account] created` → second login → getkey / get_system_config /
-      get_tutorial_step / getfiledata → the expected stall (M1.5)
-- [ ] the game runs for several minutes on the title/loading screens without a native crash
+### Device result (Galaxy S22, Android 16) — confirmed by device log
+- [x] no "Using memoryadresses from more that 16GB" line, no SIGSEGV after login (fix confirmed)
+- [x] terms page served (`GET /web/information/terms_a.html 200`), Accept → `get_nonce` →
+      `[account] created user_id=100000001` → second login with the new uuid
+- [x] `/api/client/getkey 200`, then `getfiledata` for **one** file: `versionfile` (decoded name) →
+      `GET /cdn/<obfuscated>.bytes 404` → the expected stall (M1.5 builds `versionfile`)
+- [ ] `get_system_config` / `get_tutorial_step` not seen yet (they come after the manifest)
+- Notes: Growthbeat throws offline and catches it itself (harmless; debloat in M6). The process
+  ended with SIG 9 (app closed), not a crash.
 
 ## Build 02 — embedded server (branch `wip/b02`)
 
