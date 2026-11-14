@@ -9,7 +9,7 @@ The download prompt appeared on the first boot; menu text labels show the Englis
 into images stay Japanese (the owner is redrawing them).
 
 ### What changed
-- **Second English batch (names): 23,310 rows** from 7,690 unique strings: statue/character, event
+- **Second English batch (names): 31,039 rows** from 7,690 unique strings: statue/character, event
   character and place names; skill, ability, buff and tarot names; Mind and item names, rewards and
   event shop items; chapter, stage, quest, tutorial and title names. With Build 07's batch, 33,336
   of the 50,845 text strings are English (0 stale), plus all 236 ClientMes messages.
