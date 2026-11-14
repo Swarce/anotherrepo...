@@ -10,6 +10,9 @@ Matching (strict; anything ambiguous falls back to marked defaults):
   - ShoutWiki entries attach by elimination: after the exact matches, when exactly one entry and
     exactly one statueId of that character remain, and the entry's rarity keeps rarity
     non-decreasing within the id's variant family (same tens digit of the suffix);
+  - the tactical basic attack (`dtAttack`): `SKILL_<first 3 digits>_99` when the statue's first model
+    has an ATTACK action set (the client maps skill number 99 to ATTACK), else its lowest SKILL_NN
+    action; none when the model has no tactical actions;
   - a record is used only when every stat has 5 <= Lv99 / Lv1 <= 20 (the wikis show Lv99 ~ 10 x Lv1);
     anything else is a wiki typo and the statue keeps defaults.
 Only numbers are written, each record citing its source page.
@@ -70,6 +73,15 @@ def plausible(lv1, lv99):
 rejected = []
 
 
+def dt_attack(s):
+    acts = s.get("dtActions") or []
+    if "ATTACK" in acts:
+        return f"SKILL_{s['statueId'][:3]}_99"
+    nums = sorted(int(x[6:]) for x in acts if re.fullmatch(r"SKILL_\d\d", x))
+    return f"SKILL_{s['statueId'][:3]}_{nums[0]:02d}" if nums else None
+
+
+
 def full(x):
     return isinstance(x, dict) and all(isinstance(x.get(k), int) for k in ("hp", "atk", "def"))
 
@@ -113,6 +125,7 @@ for s in obtainable:
         "statueId": sid,
         "part": s["part"],
         "modelDataList": s["modelDataList"],
+        "dtAttack": dt_attack(s),
         "rarity": None,
         "statueType": None,
         "lv1": None,

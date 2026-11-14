@@ -51,6 +51,7 @@ community wikis (each record cites its page) or are marked `jdr-default`.
 | Statue rarity, type, Lv99 | Gamerch (leader- or assist-ability name) and ShoutWiki (CC BY-SA 3.0, by elimination) | 140 of 266 (129 Gamerch, 11 ShoutWiki); the rest (mostly released after the 2018 snapshot) default |
 | Statue Lv1, max tree | the same pages where they show them | Lv1 from the wiki for 35 statues, Lv99 / 10 for the other 105 (in those 35, Lv99 / Lv1 is 9.5–10.0); max tree missing for 47 |
 | Stats per level | linear Lv1→Lv99 | all |
+| Tactical basic attack (`dtAttack`) | the statue's own action sets in the player's files (`SKILL_<psid3>_99` = ATTACK, else its lowest SKILL_NN) | all 266 (64 distinct ids) |
 | My Page background per statue | 21 backgrounds in the player's files, chosen by JoJo part (stable per statue id) | default choice |
 | Story chapters/stages/areas | player's files | 82 chapters (29 action, 53 tactical), 370 stages |
 | Stage AP, rank EXP, gold, recommended level | Gamerch (Wayback snapshot, chapters 1–23 matched by title) | 86 of 370 stages (gold blank on the wiki for 39 of them, so default); enemies and rewards default (the wiki shows them as images); the recommended level is used as the enemy level |
