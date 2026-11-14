@@ -866,6 +866,42 @@ mod tests {
         }
     }
 
+    /// Some loaders throw on a duplicate key at startup (CharacteristicTable.Init @0xF1D188,
+    /// LoadSkillUseConditionParameter @0xF1BECC; docs/research/12 §1), and duplicate model hashes,
+    /// bullets or camera ids would shadow each other: every keyed table has unique keys.
+    #[test]
+    fn keyed_tables_have_unique_keys() {
+        let doc = |name: &str| -> Value {
+            let js = TABLES.iter().find(|(n, _)| *n == name).unwrap().1;
+            serde_json::from_str::<Value>(js).unwrap()["data"].clone()
+        };
+        for (name, list, key) in [
+            ("characteristic_data", "paramList", &["id"][..]),
+            ("yogo_table", "paramList", &["yogo_Id"][..]),
+            ("model_table", "paramList", &["modelIdHash"][..]),
+            (
+                "bullet_parameter",
+                "param",
+                &["ownerModelIdHash", "bulletId"][..],
+            ),
+            ("skill_data_table", "paramList", &["skillId"][..]),
+            ("Set_el_camera_set_common", "listData", &["cameraID"][..]),
+            ("Node_el_camera_node_common", "listData", &["id"][..]),
+        ] {
+            let rows = doc(name)[list].as_array().unwrap().clone();
+            let keys: std::collections::HashSet<String> = rows
+                .iter()
+                .map(|r| {
+                    key.iter()
+                        .map(|k| r[*k].to_string())
+                        .collect::<Vec<_>>()
+                        .join("/")
+                })
+                .collect();
+            assert_eq!(keys.len(), rows.len(), "{name}: duplicate keys");
+        }
+    }
+
     #[test]
     fn tutorial_table_content() {
         let s = Schema::embedded().unwrap();
