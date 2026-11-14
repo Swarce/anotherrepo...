@@ -32,6 +32,15 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 - Content files must carry well-formed sources (`jdr-research` + doc, `jdr-default` + note, outside
   sources + page + access date); CONTRIBUTING and CREDITS updated.
 - `jdr-server --tutorial play` now warns: there are no tutorial scripts in the tables yet.
+- If the master tables ever fail to build, the manifest is still built and served (without them),
+  and the error is logged.
+- Two reviews (correctness; behaviour/risk). The correctness review compared our type trees with real
+  engine trees from the player's files (MonoBehaviour header, nested-class lists, strings, bools,
+  Vector3, vectors: exact match) and found nothing serious. Fixed: preload order now object → script
+  as the engine writes it; informational 0x8000 no longer set for lists of fixed-size structs;
+  `List<bool>` refused until its packing is needed; duplicate content files refused; the import
+  flag is set before the first request can arrive; the UnityPy check now compares every field
+  (defaults included) with the content.
 - Build number 6, server marker `JDR_EMBEDDED_SERVER_b006`.
 
 ### Verified off-device

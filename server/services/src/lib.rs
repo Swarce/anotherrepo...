@@ -19,7 +19,8 @@ type Stamp = (u64, std::time::SystemTime);
 /// (including the master tables, with their md5 and size).
 pub struct Generated {
     pub versionfile: Vec<u8>,
-    pub masterdata: Vec<u8>,
+    /// The master tables, or why they could not be built (the manifest is still served).
+    pub masterdata: Result<Vec<u8>, String>,
 }
 
 /// The generated bundles, or the last failure (with the vcs.bytes stamp it was computed for).
@@ -167,19 +168,24 @@ impl Ctx {
             })?;
             let mut entries = versionfile::entries_from_files(dir, key, iv)?;
             let (ms, ab) = versionfile::find_template_types(dir, key, iv)?;
-            let (md, tables) = masterdata::build_embedded(&ms, &ab)?;
             let md_name = masterdata::BUNDLE_NAME;
-            // Listed like any other file (expected to match the dead server; to be confirmed on a
-            // device): the client fetches it into memory, never stores it or records it in
-            // vcs.bytes, and is expected to check the download against this md5.
             entries.retain(|e| e.path != format!("{md_name}.bytes"));
-            entries.push(versionfile::Entry {
-                path: format!("{md_name}.bytes"),
-                obf: format!("{}.bytes", jdr_crypto::names::obfuscate(md_name, key)),
-                md5: versionfile::md5_hex(&md),
-                size: md.len() as i64,
-                encrypted: false,
-            });
+            let md = masterdata::build_embedded(&ms, &ab);
+            match &md {
+                // Listed like any other file (expected to match the dead server; to be confirmed
+                // on a device): the client fetches it into memory, never stores it or records it in
+                // vcs.bytes, and is expected to check the download against this md5.
+                Ok((md, _)) => entries.push(versionfile::Entry {
+                    path: format!("{md_name}.bytes"),
+                    obf: format!("{}.bytes", jdr_crypto::names::obfuscate(md_name, key)),
+                    md5: versionfile::md5_hex(md),
+                    size: md.len() as i64,
+                    encrypted: false,
+                }),
+                Err(e) => {
+                    jdr_core::log::line("assets", &format!("in_memory_master_data ERROR: {e}"))
+                }
+            }
             entries.sort_by(|a, b| a.path.cmp(&b.path));
             let vf = versionfile::build(
                 &entries,
@@ -190,23 +196,29 @@ impl Ctx {
             jdr_core::log::line(
                 "assets",
                 &format!(
-                    "versionfile built: {} entries, {} KiB; in_memory_master_data: {} tables ({}), {} KiB; {} ms",
+                    "versionfile built: {} entries, {} KiB; in_memory_master_data: {}; {} ms",
                     entries.len(),
                     vf.len() / 1024,
-                    tables.len(),
-                    tables
-                        .iter()
-                        .filter(|t| t.rows > 0)
-                        .map(|t| format!("{} {} rows", t.name, t.rows))
-                        .collect::<Vec<_>>()
-                        .join(", "),
-                    md.len() / 1024,
+                    match &md {
+                        Ok((b, tables)) => format!(
+                            "{} tables ({}), {} KiB",
+                            tables.len(),
+                            tables
+                                .iter()
+                                .filter(|t| t.rows > 0)
+                                .map(|t| format!("{} {} rows", t.name, t.rows))
+                                .collect::<Vec<_>>()
+                                .join(", "),
+                            b.len() / 1024
+                        ),
+                        Err(_) => "FAILED (see above)".into(),
+                    },
                     t0.elapsed().as_millis()
                 ),
             );
             let b = std::sync::Arc::new(Generated {
                 versionfile: vf,
-                masterdata: md,
+                masterdata: md.map(|(b, _)| b),
             });
             Ok::<_, String>((stamp, b))
         })();
