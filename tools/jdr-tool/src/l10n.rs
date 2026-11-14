@@ -49,7 +49,7 @@ pub fn cmd(a: &[String]) -> Result<(), Error> {
     match a.first().map(String::as_str) {
         Some("export") => export(&a[1..]),
         Some("import") => import(&a[1..]),
-        _ => Err("usage: jdr-tool l10n export --data <files> --keys <keys.json> [--apk <apk>] --out <work.tsv>\n       jdr-tool l10n import --in <work.tsv> --repo <checkout>".into()),
+        _ => Err("usage: jdr-tool l10n export --data <files> --keys <keys.json> [--apk <apk>] --out <work.tsv>\n       jdr-tool l10n import --in <work.tsv> [--expand-with <export.tsv>] --repo <checkout>".into()),
     }
 }
 
@@ -130,19 +130,108 @@ fn export(a: &[String]) -> Result<(), Error> {
     Ok(())
 }
 
+/// The text.jp tables of the first (menu) batch; everything else goes to `text_content`.
+const MENU_TABLES: &[&str] = &[
+    "AchievementText_All_JP",
+    "AttributeText_JP",
+    "Battle_JP",
+    "CharacteristicText_JP",
+    "DungeonSummary_JP",
+    "Evolution_JP",
+    "FilterText_JP",
+    "FollowFollower_JP",
+    "Formation_JP",
+    "Growth_JP",
+    "MindSale_JP",
+    "MyPage_JP",
+    "PvPHome_JP",
+    "QuestCondition_JP",
+    "QuestConfune_JP",
+    "QuestResult_JP",
+    "QuestType_JP",
+    "ResultText_JP",
+    "SkillTypeText_JP",
+    "SortText_JP",
+    "SpecialActionText_JP",
+    "StRateTypeText_JP",
+    "StatueTypeText_JP",
+    "ThumbnailTextLabel_JP",
+    "TitleText_JP",
+    "TreeGridLabel_JP",
+    "Tree_JP",
+    "TutorialMes_JP",
+    "gasha_JP",
+    "gasha_frenzy_JP",
+    "optionText_JP",
+    "shop_JP",
+];
+
 /// Which translation file a key belongs to.
 pub fn file_for(key: &str) -> &'static str {
     if key.starts_with("clientmes:") {
         "clientmes"
     } else if key.starts_with("ui:") {
         "ui_prefabs"
-    } else {
+    } else if MENU_TABLES.contains(&key.split(':').nth(1).unwrap_or("")) {
         "text_menu"
+    } else {
+        "text_content"
     }
 }
 
+/// With `--expand-with <export.tsv>`: every row of the export whose Japanese source equals a
+/// translated row's source gets the same English (translate unique strings once). Rows the
+/// input translates itself, and rows already translated in the repo, are left as they are.
+fn expand(
+    input: &str,
+    export: &str,
+    existing: &std::collections::HashSet<String>,
+) -> Result<String, Error> {
+    let mut by_source: std::collections::HashMap<String, String> = Default::default();
+    let mut keys: std::collections::HashSet<String> = Default::default();
+    let mut out = String::new();
+    for (i, line) in input.lines().enumerate() {
+        out.push_str(line);
+        out.push('\n');
+        if i == 0 {
+            continue;
+        }
+        let c: Vec<&str> = line.split('\t').collect();
+        if c.len() >= 4 && !c[2].trim().is_empty() {
+            by_source
+                .entry(c[3].to_string())
+                .or_insert_with(|| c[2].to_string());
+            keys.insert(c[0].to_string());
+        }
+    }
+    for line in export.lines().skip(1) {
+        let c: Vec<&str> = line.split('\t').collect();
+        if c.len() < 4 || keys.contains(c[0]) || !c[2].is_empty() || existing.contains(c[0]) {
+            continue;
+        }
+        if let Some(en) = by_source.get(c[3]) {
+            out.push_str(&format!("{}\t{}\t{}\t{}\n", c[0], c[1], en, c[3]));
+        }
+    }
+    Ok(out)
+}
+
 fn import(a: &[String]) -> Result<(), Error> {
-    let input = std::fs::read_to_string(opt(a, "--in").ok_or("--in is required")?)?;
+    let mut input = std::fs::read_to_string(opt(a, "--in").ok_or("--in is required")?)?;
+    let repo_dir = PathBuf::from(opt(a, "--repo").unwrap_or_else(|| ".".into()));
+    if let Some(e) = opt(a, "--expand-with") {
+        // Keys already translated in the repo's files (not the copy compiled into this binary).
+        let mut existing = std::collections::HashSet::new();
+        for f in std::fs::read_dir(repo_dir.join("server/content/l10n/en"))?.flatten() {
+            if f.path().extension().and_then(|x| x.to_str()) == Some("json") {
+                let v: Value = serde_json::from_slice(&std::fs::read(f.path())?)?;
+                if let Some(m) = v.get("entries").and_then(Value::as_object) {
+                    existing.extend(m.keys().cloned());
+                }
+            }
+        }
+        input = expand(&input, &std::fs::read_to_string(e)?, &existing)?;
+    }
     let repo = PathBuf::from(opt(a, "--repo").unwrap_or_else(|| ".".into()));
     let dir = repo.join("server/content/l10n/en");
     let mut files: std::collections::BTreeMap<&str, Value> = Default::default();
@@ -222,6 +311,16 @@ fn import(a: &[String]) -> Result<(), Error> {
 mod tests {
     use super::*;
     #[test]
+    fn expand_fills_same_source() {
+        let input = "key\thash\tenglish\tjapanese\nk1\taaaaaaaa\tSword\t剣\n";
+        let export = "key\thash\tenglish\tjapanese\tprevious_english\nk1\taaaaaaaa\t\t剣\t\nk2\taaaaaaaa\t\t剣\t\nk3\tbbbbbbbb\t\t盾\t\n";
+        let out = expand(input, export, &Default::default()).unwrap();
+        assert!(out.contains("k2\taaaaaaaa\tSword\t剣"));
+        assert!(!out.contains("k3"));
+        assert_eq!(out.matches("k1\t").count(), 1);
+    }
+
+    #[test]
     fn escaping_round_trips() {
         for s in ["a\tb\nc\\d", "", "\\n literal"] {
             assert_eq!(unesc(&esc(s)), s);
@@ -229,6 +328,7 @@ mod tests {
         assert_eq!(file_for("clientmes:X"), "clientmes");
         assert_eq!(file_for("ui:ui_mypage:0:1:m_Text"), "ui_prefabs");
         assert_eq!(file_for("text:MyPage_JP:A"), "text_menu");
+        assert_eq!(file_for("text:SkillName_JP:A"), "text_content");
         assert!(
             wanted("ui_mypage") && wanted("scene_vs") && wanted("text.jp") && !wanted("ui_tips_00")
         );

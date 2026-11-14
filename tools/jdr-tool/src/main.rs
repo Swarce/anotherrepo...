@@ -14,7 +14,8 @@ const USAGE: &str = "usage:
   jdr-tool names --data <files dir> --keys <keys.json>            decoded name <TAB> file <TAB> size
   jdr-tool decrypt --keys <keys.json> --in <file> --out <file>     JJEC bundle or vcs.bytes
   jdr-tool l10n export --data <files dir> --keys <keys.json> [--apk <apk>] --out <work.tsv>
-  jdr-tool l10n import --in <work.tsv> [--repo <checkout>]          merge English into the repo";
+  jdr-tool l10n import --in <work.tsv> [--expand-with <export.tsv>] [--repo <checkout>]
+                                         merge English into the repo (expand: same source, same English)";
 
 fn main() {
     let a: Vec<String> = std::env::args().skip(1).collect();

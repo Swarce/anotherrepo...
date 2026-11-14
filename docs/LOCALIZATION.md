@@ -69,11 +69,22 @@ files (your backup), not from a phone folder that already holds English files.
 The in-game terms-of-use text is replaced by a short notice that this is an unofficial offline
 build (the original terms no longer apply); it is not a translation of the publisher's terms.
 
-## Status (Build 07)
+## Status (Build 08)
 
-| Group | Strings | English |
+| Group | Strings (rows) | English |
 |---|---|---|
 | ClientMes | 236 | all |
 | UI prefab labels | 1,210 | all |
-| Menu text tables (My Page, options, title, team, training, filters, shop, gacha, arena, special actions, …) | 1,087 | all |
-| Other text tables (names, skills, items, missions, events, …) | ~48,500 | not yet |
+| Menu text tables | 1,087 | all (Build 07) |
+| Names: statues/characters, event characters, places | 2,072 | all |
+| Skill, ability, buff, tarot names | 2,331 | all |
+| Mind and item names, rewards, event shop | 12,440 | all |
+| Chapter, stage, quest, tutorial, glossary/achievement/tip titles | 13,062 | all |
+| Rows in other tables whose text is one of those names | 1,134 | all |
+| Descriptions: skill effects, missions, profiles, gifts, campaigns, login bonus, comments, … | 17,509 | next |
+| Story scripts | ~298k characters | later (tools for the player's own translator) |
+
+Character, Stand and place names follow one name list kept with the local working files (official
+English: anime/VIZ; Stands by their original names), so every batch spells them the same way.
+`jdr-tool l10n import --expand-with <export.tsv>` gives every row with the same Japanese source the
+same English, so each unique string is translated once.

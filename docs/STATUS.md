@@ -2,6 +2,36 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 08 — English names (branch `wip/b08`)
+
+### What the Build 07 device result showed
+The download prompt appeared on the first boot; menu text labels show the English. Labels drawn
+into images stay Japanese (the owner is redrawing them).
+
+### What changed
+- **Second English batch (names): 31,039 rows** from 7,690 unique strings: statue/character, event
+  character and place names; skill, ability, buff and tarot names; Mind and item names, rewards and
+  event shop items; chapter, stage, quest, tutorial and title names. With Build 07's batch, 33,336
+  of the 50,845 text strings are English (0 stale), plus all 236 ClientMes messages.
+- Names follow one name list (709 entries: characters, Stands, places, titles), so every batch
+  spells them the same way.
+- `jdr-tool l10n import --expand-with`: one translation per unique Japanese string, applied to
+  every row with that source. New translation file `text_content.json`.
+- Server log: `[l10n] … N already on the phone` (how many English files the client holds).
+- Build number 8, server marker `JDR_EMBEDDED_SERVER_b008`.
+- **Reviews:** code (nothing serious; `--expand-with` now checks the repo's files, not the compiled-in
+  copy) and translation quality ("good": glossary followed, no placeholder or line-break errors).
+  Fixed from the quality review: item names unified across tables, Hamon (not Ripple) throughout,
+  Mind/skill titles reused in shop and reward tables synced to one English, the team screen's type
+  labels (Bravery/Intellect/Tenacity/Maverick), a stray space in tarot effects, two mistranslations.
+
+### Verified off-device
+- Real data with the shipped translations: 32 English files, 33,336 strings replaced, 0 stale.
+
+### Device checklist — expected; to be confirmed on a device
+- [ ] Download prompt once (text.jp changed); names, skills, items, chapters show English
+- [ ] `[l10n] 32 English file(s) ready …`, then on the next boot `32 already on the phone`
+
 ## Build 07 — English menus, UI art export (branch `wip/b07`)
 
 ### What the Build 06 device log showed

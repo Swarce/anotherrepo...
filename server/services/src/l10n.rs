@@ -45,6 +45,10 @@ pub const FILES: &[(&str, &str)] = &[
         "text_menu",
         include_str!("../../content/l10n/en/text_menu.json"),
     ),
+    (
+        "text_content",
+        include_str!("../../content/l10n/en/text_content.json"),
+    ),
 ];
 
 /// First 8 hex digits of SHA-256 of the source string (UTF-8).
