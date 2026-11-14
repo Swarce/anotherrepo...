@@ -368,11 +368,22 @@ pub fn statue_setting_rows() -> Vec<Value> {
                 .map(|(_, ids)| *ids)
                 .unwrap_or(&[10]);
             // By a hash of the id, so a statue keeps its background when statues.json changes.
-            let h = d
-                .statue_id
-                .bytes()
-                .fold(0x811c_9dc5u32, |h, b| (h ^ b as u32).wrapping_mul(0x0100_0193));
-            json!({ "statueId": d.statue_id, "myPageId": ids[h as usize % ids.len()], "teamScaleScalar": 1.0 })
+            let h = d.statue_id.bytes().fold(0x811c_9dc5u32, |h, b| {
+                (h ^ b as u32).wrapping_mul(0x0100_0193)
+            });
+            // Positions are centimetres and teamScaleScalar a percentage (the client multiplies all of
+            // them by 0.01). My Page: the camera at the `CameraIdSet0` scene object (the origin,
+            // facing +Z) and the leader 3.66 m ahead, right of centre, turned towards the camera,
+            // which frames models 1.0-2.3 m tall. Team view: the slot anchors already face the
+            // camera, so no offset, at full size. (docs/research/11-battle-and-positions.md)
+            json!({
+                "statueId": d.statue_id, "myPageId": ids[h as usize % ids.len()],
+                "myPageCameraType": "CameraIdSet0",
+                "myPagePos": { "x": 82.0, "y": -115.0, "z": 366.0 },
+                "myPageRotation": { "x": 0.0, "y": 192.5, "z": 0.0 },
+                "teamScaleScalar": 100.0,
+                "mindFrameID": 1, "pvpAiId": 1, "pvpAiAutoBattleAiId": 1
+            })
         })
         .collect()
 }
