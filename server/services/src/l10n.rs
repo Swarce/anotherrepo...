@@ -385,6 +385,8 @@ pub struct Localized {
     pub size: i64,
     pub encrypted: bool,
     pub stats: Stats,
+    /// The game's folder already holds exactly this file (downloaded on an earlier boot).
+    pub on_device: bool,
 }
 
 #[derive(serde::Serialize, serde::Deserialize, Default, Clone)]
@@ -551,6 +553,7 @@ fn prepare_one(
             std::fs::metadata(&gen_path).map(|m| m.len() as i64).ok() == Some(p.out_size);
         let same_time = p.out_mtime != 0 && mtime_secs(&gen_path) == Some(p.out_mtime);
         if same_size && same_time {
+            let md5_on_device = p.out_md5.clone();
             return Ok(Some(Localized {
                 name: name.into(),
                 obf: obf.into(),
@@ -559,6 +562,7 @@ fn prepare_one(
                 size: p.out_size,
                 encrypted: p.encrypted,
                 stats: Stats::default(),
+                on_device: disk_md5 == md5_on_device,
             }));
         }
     }
@@ -605,6 +609,7 @@ fn prepare_one(
         size: bytes.len() as i64,
         encrypted,
         stats,
+        on_device: disk_md5 == out_md5,
     }))
 }
 
