@@ -16,6 +16,10 @@ pub struct Config {
     pub server_lib: Option<std::path::PathBuf>,
     /// The player's keys.json (from `jdr-tool keys`), embedded as a stored asset.
     pub keys_json: Option<Vec<u8>>,
+    /// The player's redrawn UI art pack (zip), and their game files folder (layouts for the
+    /// APK's own screens).
+    pub art_zip: Option<std::path::PathBuf>,
+    pub data_dir: Option<std::path::PathBuf>,
 }
 
 impl Default for Config {
@@ -24,6 +28,8 @@ impl Default for Config {
             server_url: format!("http://127.0.0.1:{}", DEFAULT_PORT),
             server_lib: None,
             keys_json: None,
+            art_zip: None,
+            data_dir: None,
         }
     }
 }
@@ -480,6 +486,35 @@ impl Patch for TranslateClientMes {
     }
 }
 
+/// The player's redrawn UI art (`--art`); nothing to do without a pack.
+pub struct UiArt;
+
+impl Patch for UiArt {
+    fn id(&self) -> &'static str {
+        "ui-art"
+    }
+    fn description(&self) -> &'static str {
+        "Redrawn UI art from the player's pack (--art): title screens here, menus on the phone"
+    }
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        cfg: &Config,
+        _build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
+        let Some(zip) = &cfg.art_zip else {
+            return Ok("no art pack given (--art): skipped".into());
+        };
+        let pack = crate::art::read_pack_zip(zip)?;
+        let total = pack.len();
+        let r = crate::art::apply(apk, pack, cfg.data_dir.as_deref(), cfg.keys_json.as_deref())?;
+        Ok(format!(
+            "{total} images: {} stored for the menus (applied on the phone), {} sprites replaced in {} title/boot screen file(s)",
+            r.stored, r.in_apk, r.apk_files
+        ))
+    }
+}
+
 pub fn all() -> Vec<Box<dyn Patch>> {
     vec![
         Box::new(ServerUrl),
@@ -489,6 +524,7 @@ pub fn all() -> Vec<Box<dyn Patch>> {
         Box::new(KeepFiles),
         Box::new(EmbedServer),
         Box::new(TranslateClientMes),
+        Box::new(UiArt),
     ]
 }
 
