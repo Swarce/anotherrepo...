@@ -2,6 +2,8 @@
 
 ## Done
 - Build 01: research M0 (in progress), key recovery from the player's files, patcher v0, standalone server v0.
+- Builds 02–05: embedded server, Unity allocator fix, generated asset manifest, keep-files + importer (device-confirmed up to the master-data request).
+- Build 06: `in_memory_master_data` generated on device (tutorial flags filled, other tables empty); device test pending.
 
 ## Milestones
 
@@ -9,6 +11,7 @@
 |---|---|---|
 | M0 | Research notes 01–08, protocol index, §2.2 decision | in progress (Build 01) |
 | M1 | URL-patched game reaches the home screen against the standalone server over `adb reverse` | started (Build 01) |
+| M1.5 | Rebuild `versionfile` (Build 04, device-confirmed) and `in_memory_master_data` (Build 06: boot-minimal content; battle tables and real rows follow with M4 content) | in progress |
 | M2 | Embedded `libjdr.so` (libmain.so's liblog.so dependency renamed to libjdr.so), no network — **built in Build 02, device test pending**. The CDN must never serve from the folder the client downloads into (WebClient truncates the destination first); serve from a read-only copy | |
 | M3 | Saves: verbatim storage, backups, export/import | |
 | M4 | Economy, gacha, shop, present box, coupons (content from public wikis, cited) | |

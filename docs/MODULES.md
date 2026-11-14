@@ -5,7 +5,8 @@
 ```
 hosts/standalone ─┐                 ┌─ server/services/* (one module per backend service)
                   ├─ server/core ───┤
-hosts/embedded ───┘                 └─ server/crypto (formats, key recovery)
+hosts/embedded ───┘                 ├─ server/crypto (formats, key recovery)
+                                    └─ server/unity (bundle/SerializedFile/type-tree writer)
 ```
 
 The **core and services are shared code**: the exact same source runs on a PC (standalone host,
@@ -37,3 +38,13 @@ dev loop) and inside the game process on the phone (embedded host).
 | `storage` | `write_atomic`, `rotate_backups`, `save_guarded` |
 | `settings` | `Settings`, `Keys`, `load_keys` |
 | `envelope` | request decode / response encode for the game's encrypted form posts |
+
+## Generated bundles (Builds 04, 06)
+
+| Module | What |
+|---|---|
+| `unity::managed` | `Ty`/`Val`: type-tree nodes and binary layout for managed fields, matching the engine's own trees (research 09 §4) |
+| `unity::objects` | AssetBundle and MonoScript object data |
+| `services::versionfile` | the asset manifest from the player's `vcs.bytes` + files on disk |
+| `services::masterdata` | `in_memory_master_data` from `server/content/masterdata/` (schema + content files) |
+| `Ctx::generated()` | builds both (master data first, then the manifest that lists it), cached per `vcs.bytes` stamp |
