@@ -8,6 +8,7 @@ pub mod cdn;
 pub mod collection;
 pub mod l10n;
 pub mod masterdata;
+pub mod quests;
 pub mod services;
 pub mod versionfile;
 pub mod web;

@@ -1,0 +1,7847 @@
+{
+ "about": "Story chapters and stages: identifiers from the player's own files (scan_quests.py); numbers from community wikis where merged, else marked defaults. See docs/CONTENT.md.",
+ "sources": [
+  {
+   "source": "jdr-default",
+   "note": "identifiers from the player's files; defaults where no wiki data",
+   "accessed": "2026-11-14"
+  }
+ ],
+ "chapters": [
+  {
+   "chapterId": "CHAPTER_ST_00",
+   "num": 0,
+   "stageType": 0,
+   "chapterMap": 0,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_00_01",
+     "areas": [
+      "area_st_00_01_01",
+      "area_st_00_01_02",
+      "area_st_00_01_03"
+     ],
+     "mapId": "map01_around01",
+     "useStamina": 5,
+     "gainRankExp": 10,
+     "gold": 200,
+     "enemyLevel": 1,
+     "enemies": [
+      "1000_01",
+      "1000_02",
+      "1000_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_01",
+   "num": 1,
+   "stageType": 0,
+   "chapterMap": 1,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_01_01",
+     "areas": [
+      "area_st_01_01_01",
+      "area_st_01_01_02",
+      "area_st_01_01_03",
+      "area_st_01_01_10"
+     ],
+     "mapId": "map02_snowfield03",
+     "useStamina": 5,
+     "gainRankExp": 15,
+     "gold": 300,
+     "enemyLevel": 4,
+     "enemies": [
+      "1110_02",
+      "1110_03",
+      "1120_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_01_02",
+     "areas": [
+      "area_st_01_02_01",
+      "area_st_01_02_02",
+      "area_st_01_02_03"
+     ],
+     "mapId": "map03_beach00",
+     "useStamina": 5,
+     "gainRankExp": 15,
+     "gold": 300,
+     "enemyLevel": 4,
+     "enemies": [
+      "1120_02",
+      "1120_03",
+      "1130_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_02",
+   "num": 2,
+   "stageType": 0,
+   "chapterMap": 2,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_02_01",
+     "areas": [
+      "area_st_02_01_01",
+      "area_st_02_01_02",
+      "area_st_02_01_03"
+     ],
+     "mapId": "map03_egypt03",
+     "useStamina": 6,
+     "gainRankExp": 20,
+     "gold": 400,
+     "enemyLevel": 7,
+     "enemies": [
+      "1090_13",
+      "1100_01",
+      "1100_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_02_02",
+     "areas": [
+      "area_st_02_02_01",
+      "area_st_02_02_02",
+      "area_st_02_02_03"
+     ],
+     "mapId": "map03_enya01",
+     "useStamina": 6,
+     "gainRankExp": 20,
+     "gold": 400,
+     "enemyLevel": 7,
+     "enemies": [
+      "1100_03",
+      "1100_11",
+      "1100_12"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_02_03",
+     "areas": [
+      "area_st_02_03_01",
+      "area_st_02_03_02",
+      "area_st_02_03_03"
+     ],
+     "mapId": "map03_enya02",
+     "useStamina": 6,
+     "gainRankExp": 20,
+     "gold": 400,
+     "enemyLevel": 7,
+     "enemies": [
+      "1100_13",
+      "1100_14",
+      "1100_28"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_03",
+   "num": 3,
+   "stageType": 0,
+   "chapterMap": 3,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_03_01",
+     "areas": [
+      "area_st_03_01_01",
+      "area_st_03_01_02",
+      "area_st_03_01_03"
+     ],
+     "mapId": "map03_tiger01",
+     "useStamina": 6,
+     "gainRankExp": 25,
+     "gold": 500,
+     "enemyLevel": 10,
+     "enemies": [
+      "1020_01",
+      "1020_02",
+      "1020_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_03_02",
+     "areas": [
+      "area_st_03_02_01",
+      "area_st_03_02_02",
+      "area_st_03_02_03"
+     ],
+     "mapId": "map03_tiger02",
+     "useStamina": 6,
+     "gainRankExp": 25,
+     "gold": 500,
+     "enemyLevel": 10,
+     "enemies": [
+      "1020_04",
+      "1080_01",
+      "1080_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_03_03",
+     "areas": [
+      "area_st_03_03_01",
+      "area_st_03_03_02",
+      "area_st_03_03_03"
+     ],
+     "mapId": "map04_country01",
+     "useStamina": 6,
+     "gainRankExp": 25,
+     "gold": 500,
+     "enemyLevel": 10,
+     "enemies": [
+      "1080_03",
+      "1090_01",
+      "1090_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_04",
+   "num": 4,
+   "stageType": 0,
+   "chapterMap": 4,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_04_01",
+     "areas": [
+      "area_st_04_01_01",
+      "area_st_04_01_02",
+      "area_st_04_01_03"
+     ],
+     "mapId": "map04_town01",
+     "useStamina": 7,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 13,
+     "enemies": [
+      "1000_01",
+      "1000_02",
+      "1000_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_04_02",
+     "areas": [
+      "area_st_04_02_01",
+      "area_st_04_02_02",
+      "area_st_04_02_03"
+     ],
+     "mapId": "map04_town03",
+     "useStamina": 7,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 13,
+     "enemies": [
+      "1000_04",
+      "1000_12",
+      "1000_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_04_03",
+     "areas": [
+      "area_st_04_03_01",
+      "area_st_04_03_02",
+      "area_st_04_03_03"
+     ],
+     "mapId": "map04_town04",
+     "useStamina": 7,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 13,
+     "enemies": [
+      "1000_28",
+      "1010_01",
+      "1010_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_05",
+   "num": 5,
+   "stageType": 0,
+   "chapterMap": 5,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_05_01",
+     "areas": [
+      "area_st_05_01_01",
+      "area_st_05_01_02",
+      "area_st_05_01_03"
+     ],
+     "mapId": "map05_school",
+     "useStamina": 7,
+     "gainRankExp": 35,
+     "gold": 700,
+     "enemyLevel": 16,
+     "enemies": [
+      "1110_02",
+      "1110_03",
+      "1120_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_05_02",
+     "areas": [
+      "area_st_05_02_01",
+      "area_st_05_02_02",
+      "area_st_05_02_03"
+     ],
+     "mapId": "map05_schoolgate",
+     "useStamina": 7,
+     "gainRankExp": 35,
+     "gold": 700,
+     "enemyLevel": 16,
+     "enemies": [
+      "1120_02",
+      "1120_03",
+      "1130_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_05_03",
+     "areas": [
+      "area_st_05_03_01",
+      "area_st_05_03_02",
+      "area_st_05_03_03"
+     ],
+     "mapId": "map05_town01",
+     "useStamina": 7,
+     "gainRankExp": 35,
+     "gold": 700,
+     "enemyLevel": 16,
+     "enemies": [
+      "1130_02",
+      "1130_03",
+      "1130_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_06",
+   "num": 6,
+   "stageType": 0,
+   "chapterMap": 6,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_06_01",
+     "areas": [
+      "area_st_06_01_01",
+      "area_st_06_01_02",
+      "area_st_06_01_03"
+     ],
+     "mapId": "map02_mexico01",
+     "useStamina": 8,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 19,
+     "enemies": [
+      "1090_13",
+      "1100_01",
+      "1100_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_06_02",
+     "areas": [
+      "area_st_06_02_01",
+      "area_st_06_02_02",
+      "area_st_06_02_03"
+     ],
+     "mapId": "map02_mexico02",
+     "useStamina": 8,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 19,
+     "enemies": [
+      "1100_03",
+      "1100_11",
+      "1100_12"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_06_03",
+     "areas": [
+      "area_st_06_03_01",
+      "area_st_06_03_02",
+      "area_st_06_03_03"
+     ],
+     "mapId": "map02_snowfield01",
+     "useStamina": 8,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 19,
+     "enemies": [
+      "1100_13",
+      "1100_14",
+      "1100_28"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_06_04",
+     "areas": [
+      "area_st_06_04_01"
+     ],
+     "mapId": "map02_snowfield02",
+     "useStamina": 8,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 19,
+     "enemies": [
+      "1110_01",
+      "1110_02",
+      "1110_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_07",
+   "num": 7,
+   "stageType": 0,
+   "chapterMap": 7,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_07_01",
+     "areas": [
+      "area_st_07_01_01",
+      "area_st_07_01_02",
+      "area_st_07_01_03"
+     ],
+     "mapId": "map03_diohouse06",
+     "useStamina": 8,
+     "gainRankExp": 45,
+     "gold": 900,
+     "enemyLevel": 22,
+     "enemies": [
+      "2081_12",
+      "2081_13",
+      "2081_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_07_02",
+     "areas": [
+      "area_st_07_02_01",
+      "area_st_07_02_02",
+      "area_st_07_02_03"
+     ],
+     "mapId": "map03_diohouse07",
+     "useStamina": 8,
+     "gainRankExp": 45,
+     "gold": 900,
+     "enemyLevel": 22,
+     "enemies": [
+      "2100_03",
+      "2110_01",
+      "2110_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_07_03",
+     "areas": [
+      "area_st_07_03_01",
+      "area_st_07_03_02",
+      "area_st_07_03_03"
+     ],
+     "mapId": "map03_egypt01",
+     "useStamina": 8,
+     "gainRankExp": 45,
+     "gold": 900,
+     "enemyLevel": 22,
+     "enemies": [
+      "2110_03",
+      "2111_01",
+      "2111_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_07_04",
+     "areas": [
+      "area_st_07_04_01",
+      "area_st_07_04_02",
+      "area_st_07_04_03"
+     ],
+     "mapId": "map03_egypt02",
+     "useStamina": 8,
+     "gainRankExp": 45,
+     "gold": 900,
+     "enemyLevel": 22,
+     "enemies": [
+      "2111_03",
+      "2000_01",
+      "2000_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_08",
+   "num": 8,
+   "stageType": 0,
+   "chapterMap": 8,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_08_01",
+     "areas": [
+      "area_st_08_01_01",
+      "area_st_08_01_02",
+      "area_st_08_01_03"
+     ],
+     "mapId": "map03_india03",
+     "useStamina": 9,
+     "gainRankExp": 50,
+     "gold": 1000,
+     "enemyLevel": 25,
+     "enemies": [
+      "2050_02",
+      "2050_03",
+      "2050_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_08_02",
+     "areas": [
+      "area_st_08_02_01",
+      "area_st_08_02_02",
+      "area_st_08_02_03"
+     ],
+     "mapId": "map03_jotatown01",
+     "useStamina": 9,
+     "gainRankExp": 50,
+     "gold": 1000,
+     "enemyLevel": 25,
+     "enemies": [
+      "2050_12",
+      "2060_01",
+      "2060_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_08_03",
+     "areas": [
+      "area_st_08_03_01",
+      "area_st_08_03_02",
+      "area_st_08_03_03"
+     ],
+     "mapId": "map03_jotatown02",
+     "useStamina": 9,
+     "gainRankExp": 50,
+     "gold": 1000,
+     "enemyLevel": 25,
+     "enemies": [
+      "2060_03",
+      "2070_01",
+      "2070_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_08_04",
+     "areas": [
+      "area_st_08_04_01",
+      "area_st_08_04_02",
+      "area_st_08_04_03"
+     ],
+     "mapId": "map03_jotatown03",
+     "useStamina": 9,
+     "gainRankExp": 50,
+     "gold": 1000,
+     "enemyLevel": 25,
+     "enemies": [
+      "2070_03",
+      "2080_01",
+      "2080_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_08_05",
+     "areas": [
+      "area_st_08_05_01",
+      "area_st_08_05_02",
+      "area_st_08_05_03"
+     ],
+     "mapId": "map03_tiger01",
+     "useStamina": 9,
+     "gainRankExp": 50,
+     "gold": 1000,
+     "enemyLevel": 25,
+     "enemies": [
+      "2080_03",
+      "2081_11",
+      "2081_12"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_09",
+   "num": 9,
+   "stageType": 0,
+   "chapterMap": 9,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_09_01",
+     "areas": [
+      "area_st_09_01_01",
+      "area_st_09_01_02",
+      "area_st_09_01_03"
+     ],
+     "mapId": "map04_mystery01",
+     "useStamina": 9,
+     "gainRankExp": 55,
+     "gold": 1100,
+     "enemyLevel": 28,
+     "enemies": [
+      "2010_01",
+      "2010_02",
+      "2010_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_09_02",
+     "areas": [
+      "area_st_09_02_01",
+      "area_st_09_02_02",
+      "area_st_09_02_03"
+     ],
+     "mapId": "map04_owson00",
+     "useStamina": 9,
+     "gainRankExp": 55,
+     "gold": 1100,
+     "enemyLevel": 28,
+     "enemies": [
+      "2010_04",
+      "2010_13",
+      "2010_28"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_09_03",
+     "areas": [
+      "area_st_09_03_01",
+      "area_st_09_03_02",
+      "area_st_09_03_03"
+     ],
+     "mapId": "map04_owson01",
+     "useStamina": 9,
+     "gainRankExp": 55,
+     "gold": 1100,
+     "enemyLevel": 28,
+     "enemies": [
+      "2020_01",
+      "2020_02",
+      "2020_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_09_04",
+     "areas": [
+      "area_st_09_04_01",
+      "area_st_09_04_02",
+      "area_st_09_04_03"
+     ],
+     "mapId": "map04_rohanhouse01",
+     "useStamina": 9,
+     "gainRankExp": 55,
+     "gold": 1100,
+     "enemyLevel": 28,
+     "enemies": [
+      "2020_04",
+      "2040_01",
+      "2040_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_09_05",
+     "areas": [
+      "area_st_09_05_01",
+      "area_st_09_05_02",
+      "area_st_09_05_03"
+     ],
+     "mapId": "map04_town01",
+     "useStamina": 9,
+     "gainRankExp": 55,
+     "gold": 1100,
+     "enemyLevel": 28,
+     "enemies": [
+      "2040_03",
+      "2050_01",
+      "2050_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_10",
+   "num": 10,
+   "stageType": 0,
+   "chapterMap": 10,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_10_01",
+     "areas": [
+      "area_st_10_01_01",
+      "area_st_10_01_02",
+      "area_st_10_01_03"
+     ],
+     "mapId": "map05_luciastation",
+     "useStamina": 10,
+     "gainRankExp": 60,
+     "gold": 1200,
+     "enemyLevel": 31,
+     "enemies": [
+      "2081_14",
+      "2100_03",
+      "2110_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_10_02",
+     "areas": [
+      "area_st_10_02_01",
+      "area_st_10_02_02",
+      "area_st_10_02_03"
+     ],
+     "mapId": "map05_maggiore",
+     "useStamina": 10,
+     "gainRankExp": 60,
+     "gold": 1200,
+     "enemyLevel": 31,
+     "enemies": [
+      "2110_02",
+      "2110_03",
+      "2111_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_10_03",
+     "areas": [
+      "area_st_10_03_01",
+      "area_st_10_03_02",
+      "area_st_10_03_03"
+     ],
+     "mapId": "map05_roof",
+     "useStamina": 10,
+     "gainRankExp": 60,
+     "gold": 1200,
+     "enemyLevel": 31,
+     "enemies": [
+      "2111_02",
+      "2111_03",
+      "2000_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_10_04",
+     "areas": [
+      "area_st_10_04_01",
+      "area_st_10_04_02",
+      "area_st_10_04_03"
+     ],
+     "mapId": "map05_sardinia",
+     "useStamina": 10,
+     "gainRankExp": 60,
+     "gold": 1200,
+     "enemyLevel": 31,
+     "enemies": [
+      "2000_02",
+      "2000_03",
+      "2000_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_10_05",
+     "areas": [
+      "area_st_10_05_01",
+      "area_st_10_05_02",
+      "area_st_10_05_03"
+     ],
+     "mapId": "map05_school",
+     "useStamina": 10,
+     "gainRankExp": 60,
+     "gold": 1200,
+     "enemyLevel": 31,
+     "enemies": [
+      "2000_12",
+      "2000_28",
+      "2010_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_11",
+   "num": 11,
+   "stageType": 0,
+   "chapterMap": 11,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_11_01",
+     "areas": [
+      "area_st_11_01_01",
+      "area_st_11_01_02",
+      "area_st_11_01_03"
+     ],
+     "mapId": "map01_around03",
+     "useStamina": 10,
+     "gainRankExp": 65,
+     "gold": 1300,
+     "enemyLevel": 34,
+     "enemies": [
+      "2050_04",
+      "2050_12",
+      "2060_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_11_02",
+     "areas": [
+      "area_st_11_02_01",
+      "area_st_11_02_02",
+      "area_st_11_02_03"
+     ],
+     "mapId": "map02_italia01",
+     "useStamina": 10,
+     "gainRankExp": 65,
+     "gold": 1300,
+     "enemyLevel": 34,
+     "enemies": [
+      "2060_02",
+      "2060_03",
+      "2070_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_11_03",
+     "areas": [
+      "area_st_11_03_01",
+      "area_st_11_03_02",
+      "area_st_11_03_03"
+     ],
+     "mapId": "map02_italia02",
+     "useStamina": 10,
+     "gainRankExp": 65,
+     "gold": 1300,
+     "enemyLevel": 34,
+     "enemies": [
+      "2070_02",
+      "2070_03",
+      "2080_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_11_04",
+     "areas": [
+      "area_st_11_04_01",
+      "area_st_11_04_02",
+      "area_st_11_04_03"
+     ],
+     "mapId": "map02_italia03",
+     "useStamina": 10,
+     "gainRankExp": 65,
+     "gold": 1300,
+     "enemyLevel": 34,
+     "enemies": [
+      "2080_02",
+      "2080_03",
+      "2081_11"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_11_05",
+     "areas": [
+      "area_st_11_05_01",
+      "area_st_11_05_02",
+      "area_st_11_05_03"
+     ],
+     "mapId": "map02_mexico01",
+     "useStamina": 10,
+     "gainRankExp": 65,
+     "gold": 1300,
+     "enemyLevel": 34,
+     "enemies": [
+      "2081_12",
+      "2081_13",
+      "2081_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_12",
+   "num": 12,
+   "stageType": 0,
+   "chapterMap": 12,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_12_01",
+     "areas": [
+      "area_st_12_01_01",
+      "area_st_12_01_02",
+      "area_st_12_01_03"
+     ],
+     "mapId": "map03_desert01",
+     "useStamina": 11,
+     "gainRankExp": 70,
+     "gold": 1400,
+     "enemyLevel": 37,
+     "enemies": [
+      "2010_03",
+      "2010_04",
+      "2010_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_12_02",
+     "areas": [
+      "area_st_12_02_01",
+      "area_st_12_02_02",
+      "area_st_12_02_03"
+     ],
+     "mapId": "map03_desert02",
+     "useStamina": 11,
+     "gainRankExp": 70,
+     "gold": 1400,
+     "enemyLevel": 37,
+     "enemies": [
+      "2010_28",
+      "2020_01",
+      "2020_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_12_03",
+     "areas": [
+      "area_st_12_03_01",
+      "area_st_12_03_02",
+      "area_st_12_03_03"
+     ],
+     "mapId": "map03_desert03",
+     "useStamina": 11,
+     "gainRankExp": 70,
+     "gold": 1400,
+     "enemyLevel": 37,
+     "enemies": [
+      "2020_03",
+      "2020_04",
+      "2040_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_12_04",
+     "areas": [
+      "area_st_12_04_01",
+      "area_st_12_04_02",
+      "area_st_12_04_03"
+     ],
+     "mapId": "map03_diohouse01",
+     "useStamina": 11,
+     "gainRankExp": 70,
+     "gold": 1400,
+     "enemyLevel": 37,
+     "enemies": [
+      "2040_02",
+      "2040_03",
+      "2050_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_12_05",
+     "areas": [
+      "area_st_12_05_01",
+      "area_st_12_05_02",
+      "area_st_12_05_03"
+     ],
+     "mapId": "map03_diohouse06",
+     "useStamina": 11,
+     "gainRankExp": 70,
+     "gold": 1400,
+     "enemyLevel": 37,
+     "enemies": [
+      "2050_02",
+      "2050_03",
+      "2050_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_13",
+   "num": 13,
+   "stageType": 0,
+   "chapterMap": 13,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_13_01",
+     "areas": [
+      "area_st_13_01_01",
+      "area_st_13_01_02",
+      "area_st_13_01_03"
+     ],
+     "mapId": "map03_enya02",
+     "useStamina": 11,
+     "gainRankExp": 75,
+     "gold": 1500,
+     "enemyLevel": 40,
+     "enemies": [
+      "3110_14",
+      "3150_01",
+      "3150_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_13_02",
+     "areas": [
+      "area_st_13_02_01",
+      "area_st_13_02_02",
+      "area_st_13_02_03"
+     ],
+     "mapId": "map03_enya03",
+     "useStamina": 11,
+     "gainRankExp": 75,
+     "gold": 1500,
+     "enemyLevel": 40,
+     "enemies": [
+      "3150_03",
+      "3150_04",
+      "3150_12"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_13_03",
+     "areas": [
+      "area_st_13_03_01",
+      "area_st_13_03_02",
+      "area_st_13_03_03"
+     ],
+     "mapId": "map03_india01",
+     "useStamina": 11,
+     "gainRankExp": 75,
+     "gold": 1500,
+     "enemyLevel": 40,
+     "enemies": [
+      "3210_01",
+      "3210_02",
+      "3210_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_13_04",
+     "areas": [
+      "area_st_13_04_01",
+      "area_st_13_04_02",
+      "area_st_13_04_03"
+     ],
+     "mapId": "map03_india02",
+     "useStamina": 11,
+     "gainRankExp": 75,
+     "gold": 1500,
+     "enemyLevel": 40,
+     "enemies": [
+      "3210_12",
+      "3210_13",
+      "3240_11"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_13_05",
+     "areas": [
+      "area_st_13_05_01",
+      "area_st_13_05_02",
+      "area_st_13_05_03"
+     ],
+     "mapId": "map03_india03",
+     "useStamina": 11,
+     "gainRankExp": 75,
+     "gold": 1500,
+     "enemyLevel": 40,
+     "enemies": [
+      "3240_12",
+      "3240_13",
+      "3270_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_14",
+   "num": 14,
+   "stageType": 0,
+   "chapterMap": 14,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_14_01",
+     "areas": [
+      "area_st_14_01_01",
+      "area_st_14_01_02",
+      "area_st_14_01_03"
+     ],
+     "mapId": "map04_country01",
+     "useStamina": 12,
+     "gainRankExp": 80,
+     "gold": 1600,
+     "enemyLevel": 43,
+     "enemies": [
+      "3000_01",
+      "3000_02",
+      "3000_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_14_02",
+     "areas": [
+      "area_st_14_02_01",
+      "area_st_14_02_02",
+      "area_st_14_02_03"
+     ],
+     "mapId": "map04_country03",
+     "useStamina": 12,
+     "gainRankExp": 80,
+     "gold": 1600,
+     "enemyLevel": 43,
+     "enemies": [
+      "3000_04",
+      "3000_13",
+      "3001_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_14_03",
+     "areas": [
+      "area_st_14_03_01",
+      "area_st_14_03_02",
+      "area_st_14_03_03"
+     ],
+     "mapId": "map04_country04",
+     "useStamina": 12,
+     "gainRankExp": 80,
+     "gold": 1600,
+     "enemyLevel": 43,
+     "enemies": [
+      "3001_04",
+      "3001_13",
+      "3002_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_14_04",
+     "areas": [
+      "area_st_14_04_01",
+      "area_st_14_04_02",
+      "area_st_14_04_03"
+     ],
+     "mapId": "map04_mego02",
+     "useStamina": 12,
+     "gainRankExp": 80,
+     "gold": 1600,
+     "enemyLevel": 43,
+     "enemies": [
+      "3010_01",
+      "3010_02",
+      "3010_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_14_05",
+     "areas": [
+      "area_st_14_05_01",
+      "area_st_14_05_02",
+      "area_st_14_05_03"
+     ],
+     "mapId": "map04_mystery01",
+     "useStamina": 12,
+     "gainRankExp": 80,
+     "gold": 1600,
+     "enemyLevel": 43,
+     "enemies": [
+      "3010_13",
+      "3020_01",
+      "3020_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_15",
+   "num": 15,
+   "stageType": 0,
+   "chapterMap": 15,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_15_01",
+     "areas": [
+      "area_st_15_01_01",
+      "area_st_15_01_02",
+      "area_st_15_01_03"
+     ],
+     "mapId": "map04_town04",
+     "useStamina": 12,
+     "gainRankExp": 85,
+     "gold": 1700,
+     "enemyLevel": 46,
+     "enemies": [
+      "3040_13",
+      "3041_03",
+      "3041_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_15_02",
+     "areas": [
+      "area_st_15_02_01",
+      "area_st_15_02_02",
+      "area_st_15_02_03"
+     ],
+     "mapId": "map04_town05",
+     "useStamina": 12,
+     "gainRankExp": 85,
+     "gold": 1700,
+     "enemyLevel": 46,
+     "enemies": [
+      "3050_01",
+      "3050_02",
+      "3050_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_15_03",
+     "areas": [
+      "area_st_15_03_01",
+      "area_st_15_03_02",
+      "area_st_15_03_03"
+     ],
+     "mapId": "map04_tunnel03",
+     "useStamina": 12,
+     "gainRankExp": 85,
+     "gold": 1700,
+     "enemyLevel": 46,
+     "enemies": [
+      "3050_04",
+      "3060_01",
+      "3060_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_15_04",
+     "areas": [
+      "area_st_15_04_01",
+      "area_st_15_04_02",
+      "area_st_15_04_03"
+     ],
+     "mapId": "map05_colosseum",
+     "useStamina": 12,
+     "gainRankExp": 85,
+     "gold": 1700,
+     "enemyLevel": 46,
+     "enemies": [
+      "3060_03",
+      "3070_01",
+      "3070_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_15_05",
+     "areas": [
+      "area_st_15_05_01",
+      "area_st_15_05_02",
+      "area_st_15_05_03"
+     ],
+     "mapId": "map05_luciastation",
+     "useStamina": 12,
+     "gainRankExp": 85,
+     "gold": 1700,
+     "enemyLevel": 46,
+     "enemies": [
+      "3070_03",
+      "3090_01",
+      "3090_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_16",
+   "num": 16,
+   "stageType": 0,
+   "chapterMap": 16,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_16_01",
+     "areas": [
+      "area_st_16_01_01",
+      "area_st_16_01_02",
+      "area_st_16_01_03"
+     ],
+     "mapId": "map05_town01",
+     "useStamina": 13,
+     "gainRankExp": 90,
+     "gold": 1800,
+     "enemyLevel": 49,
+     "enemies": [
+      "3210_01",
+      "3210_02",
+      "3210_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_16_02",
+     "areas": [
+      "area_st_16_02_01",
+      "area_st_16_02_02",
+      "area_st_16_02_03"
+     ],
+     "mapId": "map05_train00",
+     "useStamina": 13,
+     "gainRankExp": 90,
+     "gold": 1800,
+     "enemyLevel": 49,
+     "enemies": [
+      "3210_12",
+      "3210_13",
+      "3240_11"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_16_03",
+     "areas": [
+      "area_st_16_03_01",
+      "area_st_16_03_02",
+      "area_st_16_03_03"
+     ],
+     "mapId": "map01_around01",
+     "useStamina": 13,
+     "gainRankExp": 90,
+     "gold": 1800,
+     "enemyLevel": 49,
+     "enemies": [
+      "3240_12",
+      "3240_13",
+      "3270_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_16_04",
+     "areas": [
+      "area_st_16_04_01",
+      "area_st_16_04_02",
+      "area_st_16_04_03"
+     ],
+     "mapId": "map01_around02",
+     "useStamina": 13,
+     "gainRankExp": 90,
+     "gold": 1800,
+     "enemyLevel": 49,
+     "enemies": [
+      "3270_02",
+      "3270_03",
+      "3270_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_16_05",
+     "areas": [
+      "area_st_16_05_01",
+      "area_st_16_05_02",
+      "area_st_16_05_03"
+     ],
+     "mapId": "map01_around03",
+     "useStamina": 13,
+     "gainRankExp": 90,
+     "gold": 1800,
+     "enemyLevel": 49,
+     "enemies": [
+      "3300_01",
+      "3300_02",
+      "3300_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_17",
+   "num": 17,
+   "stageType": 0,
+   "chapterMap": 17,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_17_01",
+     "areas": [
+      "area_st_17_01_01",
+      "area_st_17_01_02",
+      "area_st_17_01_03"
+     ],
+     "mapId": "map02_snowfield01",
+     "useStamina": 13,
+     "gainRankExp": 95,
+     "gold": 1900,
+     "enemyLevel": 52,
+     "enemies": [
+      "3001_04",
+      "3001_13",
+      "3002_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_17_02",
+     "areas": [
+      "area_st_17_02_01",
+      "area_st_17_02_02",
+      "area_st_17_02_03"
+     ],
+     "mapId": "map02_snowfield02",
+     "useStamina": 13,
+     "gainRankExp": 95,
+     "gold": 1900,
+     "enemyLevel": 52,
+     "enemies": [
+      "3010_01",
+      "3010_02",
+      "3010_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_17_03",
+     "areas": [
+      "area_st_17_03_01",
+      "area_st_17_03_02",
+      "area_st_17_03_03"
+     ],
+     "mapId": "map02_snowfield03",
+     "useStamina": 13,
+     "gainRankExp": 95,
+     "gold": 1900,
+     "enemyLevel": 52,
+     "enemies": [
+      "3010_13",
+      "3020_01",
+      "3020_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_17_04",
+     "areas": [
+      "area_st_17_04_01",
+      "area_st_17_04_02",
+      "area_st_17_04_03"
+     ],
+     "mapId": "map03_beach00",
+     "useStamina": 13,
+     "gainRankExp": 95,
+     "gold": 1900,
+     "enemyLevel": 52,
+     "enemies": [
+      "3020_03",
+      "3020_12",
+      "3020_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_17_05",
+     "areas": [
+      "area_st_17_05_01",
+      "area_st_17_05_02",
+      "area_st_17_05_03"
+     ],
+     "mapId": "map03_desert01",
+     "useStamina": 13,
+     "gainRankExp": 95,
+     "gold": 1900,
+     "enemyLevel": 52,
+     "enemies": [
+      "3020_28",
+      "3030_01",
+      "3030_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_17_06",
+     "areas": [
+      "area_st_17_06_01",
+      "area_st_17_06_02",
+      "area_st_17_06_03"
+     ],
+     "mapId": "map03_desert02",
+     "useStamina": 13,
+     "gainRankExp": 95,
+     "gold": 1900,
+     "enemyLevel": 52,
+     "enemies": [
+      "3030_03",
+      "3030_13",
+      "3030_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_18",
+   "num": 18,
+   "stageType": 0,
+   "chapterMap": 18,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_18_01",
+     "areas": [
+      "area_st_18_01_01",
+      "area_st_18_01_02",
+      "area_st_18_01_03"
+     ],
+     "mapId": "map03_egypt01",
+     "useStamina": 14,
+     "gainRankExp": 100,
+     "gold": 2000,
+     "enemyLevel": 55,
+     "enemies": [
+      "3050_04",
+      "3060_01",
+      "3060_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_18_02",
+     "areas": [
+      "area_st_18_02_01",
+      "area_st_18_02_02",
+      "area_st_18_02_03"
+     ],
+     "mapId": "map03_egypt02",
+     "useStamina": 14,
+     "gainRankExp": 100,
+     "gold": 2000,
+     "enemyLevel": 55,
+     "enemies": [
+      "3060_03",
+      "3070_01",
+      "3070_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_18_03",
+     "areas": [
+      "area_st_18_03_01",
+      "area_st_18_03_02",
+      "area_st_18_03_03"
+     ],
+     "mapId": "map03_egypt03",
+     "useStamina": 14,
+     "gainRankExp": 100,
+     "gold": 2000,
+     "enemyLevel": 55,
+     "enemies": [
+      "3070_03",
+      "3090_01",
+      "3090_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_18_04",
+     "areas": [
+      "area_st_18_04_01",
+      "area_st_18_04_02",
+      "area_st_18_04_03"
+     ],
+     "mapId": "map03_enya01",
+     "useStamina": 14,
+     "gainRankExp": 100,
+     "gold": 2000,
+     "enemyLevel": 55,
+     "enemies": [
+      "3090_03",
+      "3100_01",
+      "3100_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_18_05",
+     "areas": [
+      "area_st_18_05_01",
+      "area_st_18_05_02",
+      "area_st_18_05_03"
+     ],
+     "mapId": "map03_enya02",
+     "useStamina": 14,
+     "gainRankExp": 100,
+     "gold": 2000,
+     "enemyLevel": 55,
+     "enemies": [
+      "3100_03",
+      "3100_12",
+      "3110_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_18_06",
+     "areas": [
+      "area_st_18_06_01",
+      "area_st_18_06_02",
+      "area_st_18_06_03"
+     ],
+     "mapId": "map03_enya03",
+     "useStamina": 14,
+     "gainRankExp": 100,
+     "gold": 2000,
+     "enemyLevel": 55,
+     "enemies": [
+      "3110_02",
+      "3110_03",
+      "3110_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_19",
+   "num": 19,
+   "stageType": 0,
+   "chapterMap": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_19_01",
+     "areas": [
+      "area_st_19_01_01",
+      "area_st_19_01_02",
+      "area_st_19_01_03"
+     ],
+     "mapId": "map03_jotatown02",
+     "useStamina": 14,
+     "gainRankExp": 105,
+     "gold": 2100,
+     "enemyLevel": 58,
+     "enemies": [
+      "4042_03",
+      "4043_08",
+      "4080_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_19_02",
+     "areas": [
+      "area_st_19_02_01",
+      "area_st_19_02_02",
+      "area_st_19_02_03"
+     ],
+     "mapId": "map03_jotatown03",
+     "useStamina": 14,
+     "gainRankExp": 105,
+     "gold": 2100,
+     "enemyLevel": 58,
+     "enemies": [
+      "4080_02",
+      "4080_03",
+      "4080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_19_03",
+     "areas": [
+      "area_st_19_03_01",
+      "area_st_19_03_02",
+      "area_st_19_03_03"
+     ],
+     "mapId": "map03_tiger01",
+     "useStamina": 14,
+     "gainRankExp": 105,
+     "gold": 2100,
+     "enemyLevel": 58,
+     "enemies": [
+      "4080_13",
+      "4110_01",
+      "4110_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_19_04",
+     "areas": [
+      "area_st_19_04_01",
+      "area_st_19_04_02",
+      "area_st_19_04_03"
+     ],
+     "mapId": "map03_tiger02",
+     "useStamina": 14,
+     "gainRankExp": 105,
+     "gold": 2100,
+     "enemyLevel": 58,
+     "enemies": [
+      "4110_13",
+      "4110_14",
+      "4130_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_19_05",
+     "areas": [
+      "area_st_19_05_01",
+      "area_st_19_05_02",
+      "area_st_19_05_03"
+     ],
+     "mapId": "map04_country01",
+     "useStamina": 14,
+     "gainRankExp": 105,
+     "gold": 2100,
+     "enemyLevel": 58,
+     "enemies": [
+      "4130_02",
+      "4130_03",
+      "4130_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_20",
+   "num": 20,
+   "stageType": 0,
+   "chapterMap": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_20_01",
+     "areas": [
+      "area_st_20_01_01",
+      "area_st_20_01_02",
+      "area_st_20_01_03"
+     ],
+     "mapId": "map04_owson01",
+     "useStamina": 15,
+     "gainRankExp": 110,
+     "gold": 2200,
+     "enemyLevel": 61,
+     "enemies": [
+      "4170_16",
+      "4170_17",
+      "4170_18"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_20_02",
+     "areas": [
+      "area_st_20_02_01",
+      "area_st_20_02_02",
+      "area_st_20_02_03"
+     ],
+     "mapId": "map04_rohanhouse01",
+     "useStamina": 15,
+     "gainRankExp": 110,
+     "gold": 2200,
+     "enemyLevel": 61,
+     "enemies": [
+      "4190_13",
+      "4190_14",
+      "4191_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_20_03",
+     "areas": [
+      "area_st_20_03_01",
+      "area_st_20_03_02",
+      "area_st_20_03_03"
+     ],
+     "mapId": "map04_town01",
+     "useStamina": 15,
+     "gainRankExp": 110,
+     "gold": 2200,
+     "enemyLevel": 61,
+     "enemies": [
+      "4191_02",
+      "4191_03",
+      "4191_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_20_04",
+     "areas": [
+      "area_st_20_04_01",
+      "area_st_20_04_02",
+      "area_st_20_04_03"
+     ],
+     "mapId": "map04_town03",
+     "useStamina": 15,
+     "gainRankExp": 110,
+     "gold": 2200,
+     "enemyLevel": 61,
+     "enemies": [
+      "4192_03",
+      "4192_04",
+      "4193_08"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_20_05",
+     "areas": [
+      "area_st_20_05_01",
+      "area_st_20_05_02",
+      "area_st_20_05_03"
+     ],
+     "mapId": "map04_town04",
+     "useStamina": 15,
+     "gainRankExp": 110,
+     "gold": 2200,
+     "enemyLevel": 61,
+     "enemies": [
+      "4194_08",
+      "4240_11",
+      "4240_12"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_21",
+   "num": 21,
+   "stageType": 0,
+   "chapterMap": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_21_01",
+     "areas": [
+      "area_st_21_01_01",
+      "area_st_21_01_02",
+      "area_st_21_01_03"
+     ],
+     "mapId": "map05_roof",
+     "useStamina": 15,
+     "gainRankExp": 115,
+     "gold": 2300,
+     "enemyLevel": 64,
+     "enemies": [
+      "4011_18",
+      "4012_03",
+      "4012_11"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_21_02",
+     "areas": [
+      "area_st_21_02_01",
+      "area_st_21_02_02",
+      "area_st_21_02_03"
+     ],
+     "mapId": "map05_sardinia",
+     "useStamina": 15,
+     "gainRankExp": 115,
+     "gold": 2300,
+     "enemyLevel": 64,
+     "enemies": [
+      "4020_01",
+      "4020_02",
+      "4020_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_21_03",
+     "areas": [
+      "area_st_21_03_01",
+      "area_st_21_03_02",
+      "area_st_21_03_03"
+     ],
+     "mapId": "map05_school",
+     "useStamina": 15,
+     "gainRankExp": 115,
+     "gold": 2300,
+     "enemyLevel": 64,
+     "enemies": [
+      "4020_04",
+      "4020_13",
+      "4030_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_21_04",
+     "areas": [
+      "area_st_21_04_01",
+      "area_st_21_04_02",
+      "area_st_21_04_03"
+     ],
+     "mapId": "map05_schoolgate",
+     "useStamina": 15,
+     "gainRankExp": 115,
+     "gold": 2300,
+     "enemyLevel": 64,
+     "enemies": [
+      "4030_02",
+      "4030_03",
+      "4030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_21_05",
+     "areas": [
+      "area_st_21_05_01",
+      "area_st_21_05_02",
+      "area_st_21_05_03"
+     ],
+     "mapId": "map05_town01",
+     "useStamina": 15,
+     "gainRankExp": 115,
+     "gold": 2300,
+     "enemyLevel": 64,
+     "enemies": [
+      "4031_18",
+      "4040_01",
+      "4040_12"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_22",
+   "num": 22,
+   "stageType": 0,
+   "chapterMap": 22,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_22_01",
+     "areas": [
+      "area_st_22_01_01",
+      "area_st_22_01_02",
+      "area_st_22_01_03"
+     ],
+     "mapId": "map02_italia02",
+     "useStamina": 16,
+     "gainRankExp": 120,
+     "gold": 2400,
+     "enemyLevel": 67,
+     "enemies": [
+      "4130_03",
+      "4130_13",
+      "4130_25"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_22_02",
+     "areas": [
+      "area_st_22_02_01",
+      "area_st_22_02_02",
+      "area_st_22_02_03"
+     ],
+     "mapId": "map02_italia03",
+     "useStamina": 16,
+     "gainRankExp": 120,
+     "gold": 2400,
+     "enemyLevel": 67,
+     "enemies": [
+      "4130_26",
+      "4130_27",
+      "4130_28"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_22_03",
+     "areas": [
+      "area_st_22_03_01",
+      "area_st_22_03_02",
+      "area_st_22_03_03"
+     ],
+     "mapId": "map02_mexico01",
+     "useStamina": 16,
+     "gainRankExp": 120,
+     "gold": 2400,
+     "enemyLevel": 67,
+     "enemies": [
+      "4150_01",
+      "4150_02",
+      "4150_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_22_04",
+     "areas": [
+      "area_st_22_04_01",
+      "area_st_22_04_02",
+      "area_st_22_04_03"
+     ],
+     "mapId": "map02_mexico02",
+     "useStamina": 16,
+     "gainRankExp": 120,
+     "gold": 2400,
+     "enemyLevel": 67,
+     "enemies": [
+      "4160_01",
+      "4160_02",
+      "4160_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_22_05",
+     "areas": [
+      "area_st_22_05_01",
+      "area_st_22_05_02",
+      "area_st_22_05_03"
+     ],
+     "mapId": "map02_snowfield01",
+     "useStamina": 16,
+     "gainRankExp": 120,
+     "gold": 2400,
+     "enemyLevel": 67,
+     "enemies": [
+      "4160_12",
+      "4170_01",
+      "4170_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_23",
+   "num": 23,
+   "stageType": 0,
+   "chapterMap": 23,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_23_01",
+     "areas": [
+      "area_st_23_01_01",
+      "area_st_23_01_02",
+      "area_st_23_01_03"
+     ],
+     "mapId": "map03_desert03",
+     "useStamina": 16,
+     "gainRankExp": 125,
+     "gold": 2500,
+     "enemyLevel": 70,
+     "enemies": [
+      "4240_11",
+      "4240_12",
+      "4240_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_23_02",
+     "areas": [
+      "area_st_23_02_01",
+      "area_st_23_02_02",
+      "area_st_23_02_03"
+     ],
+     "mapId": "map03_diohouse01",
+     "useStamina": 16,
+     "gainRankExp": 125,
+     "gold": 2500,
+     "enemyLevel": 70,
+     "enemies": [
+      "4000_01",
+      "4000_02",
+      "4000_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_23_03",
+     "areas": [
+      "area_st_23_03_01",
+      "area_st_23_03_02",
+      "area_st_23_03_03"
+     ],
+     "mapId": "map03_diohouse06",
+     "useStamina": 16,
+     "gainRankExp": 125,
+     "gold": 2500,
+     "enemyLevel": 70,
+     "enemies": [
+      "4000_04",
+      "4000_12",
+      "4000_18"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_23_04",
+     "areas": [
+      "area_st_23_04_01",
+      "area_st_23_04_02",
+      "area_st_23_04_03"
+     ],
+     "mapId": "map03_diohouse07",
+     "useStamina": 16,
+     "gainRankExp": 125,
+     "gold": 2500,
+     "enemyLevel": 70,
+     "enemies": [
+      "4000_23",
+      "4010_01",
+      "4010_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_23_05",
+     "areas": [
+      "area_st_23_05_01",
+      "area_st_23_05_02",
+      "area_st_23_05_03"
+     ],
+     "mapId": "map03_egypt01",
+     "useStamina": 16,
+     "gainRankExp": 125,
+     "gold": 2500,
+     "enemyLevel": 70,
+     "enemies": [
+      "4011_02",
+      "4011_03",
+      "4011_15"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_24",
+   "num": 24,
+   "stageType": 0,
+   "chapterMap": 24,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_24_01",
+     "areas": [
+      "area_st_24_01_01",
+      "area_st_24_01_02",
+      "area_st_24_01_03"
+     ],
+     "mapId": "map03_india01",
+     "useStamina": 17,
+     "gainRankExp": 130,
+     "gold": 2600,
+     "enemyLevel": 73,
+     "enemies": [
+      "4040_01",
+      "4040_12",
+      "4040_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_24_02",
+     "areas": [
+      "area_st_24_02_01",
+      "area_st_24_02_02",
+      "area_st_24_02_03"
+     ],
+     "mapId": "map03_india02",
+     "useStamina": 17,
+     "gainRankExp": 130,
+     "gold": 2600,
+     "enemyLevel": 73,
+     "enemies": [
+      "4040_14",
+      "4042_03",
+      "4043_08"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_24_03",
+     "areas": [
+      "area_st_24_03_01",
+      "area_st_24_03_02",
+      "area_st_24_03_03"
+     ],
+     "mapId": "map03_india03",
+     "useStamina": 17,
+     "gainRankExp": 130,
+     "gold": 2600,
+     "enemyLevel": 73,
+     "enemies": [
+      "4080_01",
+      "4080_02",
+      "4080_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_24_04",
+     "areas": [
+      "area_st_24_04_01",
+      "area_st_24_04_02",
+      "area_st_24_04_03"
+     ],
+     "mapId": "map03_jotatown01",
+     "useStamina": 17,
+     "gainRankExp": 130,
+     "gold": 2600,
+     "enemyLevel": 73,
+     "enemies": [
+      "4080_04",
+      "4080_13",
+      "4110_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_24_05",
+     "areas": [
+      "area_st_24_05_01",
+      "area_st_24_05_02",
+      "area_st_24_05_03"
+     ],
+     "mapId": "map03_jotatown02",
+     "useStamina": 17,
+     "gainRankExp": 130,
+     "gold": 2600,
+     "enemyLevel": 73,
+     "enemies": [
+      "4110_02",
+      "4110_13",
+      "4110_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_25",
+   "num": 25,
+   "stageType": 0,
+   "chapterMap": 25,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_25_01",
+     "areas": [
+      "area_st_25_01_01",
+      "area_st_25_01_02",
+      "area_st_25_01_03"
+     ],
+     "mapId": "map04_country04",
+     "useStamina": 17,
+     "gainRankExp": 135,
+     "gold": 2700,
+     "enemyLevel": 76,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_25_02",
+     "areas": [
+      "area_st_25_02_01",
+      "area_st_25_02_02",
+      "area_st_25_02_03"
+     ],
+     "mapId": "map04_mego02",
+     "useStamina": 17,
+     "gainRankExp": 135,
+     "gold": 2700,
+     "enemyLevel": 76,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_25_03",
+     "areas": [
+      "area_st_25_03_01",
+      "area_st_25_03_02",
+      "area_st_25_03_03"
+     ],
+     "mapId": "map04_mystery01",
+     "useStamina": 17,
+     "gainRankExp": 135,
+     "gold": 2700,
+     "enemyLevel": 76,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_25_04",
+     "areas": [
+      "area_st_25_04_01",
+      "area_st_25_04_02",
+      "area_st_25_04_03"
+     ],
+     "mapId": "map04_owson00",
+     "useStamina": 17,
+     "gainRankExp": 135,
+     "gold": 2700,
+     "enemyLevel": 76,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_25_05",
+     "areas": [
+      "area_st_25_05_01",
+      "area_st_25_05_02",
+      "area_st_25_05_03"
+     ],
+     "mapId": "map04_owson01",
+     "useStamina": 17,
+     "gainRankExp": 135,
+     "gold": 2700,
+     "enemyLevel": 76,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_26",
+   "num": 26,
+   "stageType": 0,
+   "chapterMap": 26,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_26_01",
+     "areas": [
+      "area_st_26_01_01",
+      "area_st_26_01_02",
+      "area_st_26_01_03"
+     ],
+     "mapId": "map04_tunnel03",
+     "useStamina": 18,
+     "gainRankExp": 140,
+     "gold": 2800,
+     "enemyLevel": 79,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_26_02",
+     "areas": [
+      "area_st_26_02_01",
+      "area_st_26_02_02",
+      "area_st_26_02_03"
+     ],
+     "mapId": "map05_colosseum",
+     "useStamina": 18,
+     "gainRankExp": 140,
+     "gold": 2800,
+     "enemyLevel": 79,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_26_03",
+     "areas": [
+      "area_st_26_03_01",
+      "area_st_26_03_02",
+      "area_st_26_03_03"
+     ],
+     "mapId": "map05_luciastation",
+     "useStamina": 18,
+     "gainRankExp": 140,
+     "gold": 2800,
+     "enemyLevel": 79,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_26_04",
+     "areas": [
+      "area_st_26_04_01",
+      "area_st_26_04_02",
+      "area_st_26_04_03"
+     ],
+     "mapId": "map05_maggiore",
+     "useStamina": 18,
+     "gainRankExp": 140,
+     "gold": 2800,
+     "enemyLevel": 79,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_26_05",
+     "areas": [
+      "area_st_26_05_01",
+      "area_st_26_05_02",
+      "area_st_26_05_03"
+     ],
+     "mapId": "map05_roof",
+     "useStamina": 18,
+     "gainRankExp": 140,
+     "gold": 2800,
+     "enemyLevel": 79,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_27",
+   "num": 27,
+   "stageType": 0,
+   "chapterMap": 27,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_27_01",
+     "areas": [
+      "area_st_27_01_01",
+      "area_st_27_01_02",
+      "area_st_27_01_03"
+     ],
+     "mapId": "map01_around01",
+     "useStamina": 18,
+     "gainRankExp": 145,
+     "gold": 2900,
+     "enemyLevel": 82,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_27_02",
+     "areas": [
+      "area_st_27_02_01",
+      "area_st_27_02_02",
+      "area_st_27_02_03"
+     ],
+     "mapId": "map01_around02",
+     "useStamina": 18,
+     "gainRankExp": 145,
+     "gold": 2900,
+     "enemyLevel": 82,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_27_03",
+     "areas": [
+      "area_st_27_03_01",
+      "area_st_27_03_02",
+      "area_st_27_03_03"
+     ],
+     "mapId": "map01_around03",
+     "useStamina": 18,
+     "gainRankExp": 145,
+     "gold": 2900,
+     "enemyLevel": 82,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_27_04",
+     "areas": [
+      "area_st_27_04_01",
+      "area_st_27_04_02",
+      "area_st_27_04_03"
+     ],
+     "mapId": "map02_italia01",
+     "useStamina": 18,
+     "gainRankExp": 145,
+     "gold": 2900,
+     "enemyLevel": 82,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_27_05",
+     "areas": [
+      "area_st_27_05_01",
+      "area_st_27_05_02",
+      "area_st_27_05_03"
+     ],
+     "mapId": "map02_italia02",
+     "useStamina": 18,
+     "gainRankExp": 145,
+     "gold": 2900,
+     "enemyLevel": 82,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_ST_28",
+   "num": 28,
+   "stageType": 0,
+   "chapterMap": 28,
+   "stages": [
+    {
+     "stageId": "STAGE_ST_28_01",
+     "areas": [
+      "area_st_28_01_01",
+      "area_st_28_01_02",
+      "area_st_28_01_03"
+     ],
+     "mapId": "map02_snowfield03",
+     "useStamina": 19,
+     "gainRankExp": 150,
+     "gold": 3000,
+     "enemyLevel": 85,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_28_02",
+     "areas": [
+      "area_st_28_02_01",
+      "area_st_28_02_02",
+      "area_st_28_02_03"
+     ],
+     "mapId": "map03_beach00",
+     "useStamina": 19,
+     "gainRankExp": 150,
+     "gold": 3000,
+     "enemyLevel": 85,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_28_03",
+     "areas": [
+      "area_st_28_03_01",
+      "area_st_28_03_02",
+      "area_st_28_03_03"
+     ],
+     "mapId": "map03_desert01",
+     "useStamina": 19,
+     "gainRankExp": 150,
+     "gold": 3000,
+     "enemyLevel": 85,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_28_04",
+     "areas": [
+      "area_st_28_04_01",
+      "area_st_28_04_02",
+      "area_st_28_04_03"
+     ],
+     "mapId": "map03_desert02",
+     "useStamina": 19,
+     "gainRankExp": 150,
+     "gold": 3000,
+     "enemyLevel": 85,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "STAGE_ST_28_05",
+     "areas": [
+      "area_st_28_05_01",
+      "area_st_28_05_02",
+      "area_st_28_05_03"
+     ],
+     "mapId": "map03_desert03",
+     "useStamina": 19,
+     "gainRankExp": 150,
+     "gold": 3000,
+     "enemyLevel": 85,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_00",
+   "num": 0,
+   "stageType": 1,
+   "chapterMap": 1000,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_00_01",
+     "areas": [],
+     "mapId": "map01_around01",
+     "useStamina": 5,
+     "gainRankExp": 10,
+     "gold": 200,
+     "enemyLevel": 1,
+     "enemies": [
+      "1000_01",
+      "1000_02",
+      "1000_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_00_02",
+     "areas": [],
+     "mapId": "map01_around02",
+     "useStamina": 5,
+     "gainRankExp": 10,
+     "gold": 200,
+     "enemyLevel": 1,
+     "enemies": [
+      "1000_04",
+      "1000_12",
+      "1000_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_00_03",
+     "areas": [],
+     "mapId": "map01_around03",
+     "useStamina": 5,
+     "gainRankExp": 10,
+     "gold": 200,
+     "enemyLevel": 1,
+     "enemies": [
+      "1000_28",
+      "1010_01",
+      "1010_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_00_04",
+     "areas": [],
+     "mapId": "map02_italia01",
+     "useStamina": 5,
+     "gainRankExp": 10,
+     "gold": 200,
+     "enemyLevel": 1,
+     "enemies": [
+      "1010_03",
+      "1020_01",
+      "1020_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_401",
+   "num": 401,
+   "stageType": 1,
+   "chapterMap": 1401,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_401_01",
+     "areas": [],
+     "mapId": "map03_desert03",
+     "useStamina": 205,
+     "gainRankExp": 2015,
+     "gold": 40300,
+     "enemyLevel": 1204,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_401_02",
+     "areas": [],
+     "mapId": "map03_diohouse01",
+     "useStamina": 205,
+     "gainRankExp": 2015,
+     "gold": 40300,
+     "enemyLevel": 1204,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_401_03",
+     "areas": [],
+     "mapId": "map03_diohouse06",
+     "useStamina": 205,
+     "gainRankExp": 2015,
+     "gold": 40300,
+     "enemyLevel": 1204,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_401_04",
+     "areas": [],
+     "mapId": "map03_diohouse07",
+     "useStamina": 205,
+     "gainRankExp": 2015,
+     "gold": 40300,
+     "enemyLevel": 1204,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_401_05",
+     "areas": [],
+     "mapId": "map03_egypt01",
+     "useStamina": 205,
+     "gainRankExp": 2015,
+     "gold": 40300,
+     "enemyLevel": 1204,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_402",
+   "num": 402,
+   "stageType": 1,
+   "chapterMap": 1402,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_402_01",
+     "areas": [],
+     "mapId": "map03_india01",
+     "useStamina": 206,
+     "gainRankExp": 2020,
+     "gold": 40400,
+     "enemyLevel": 1207,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_402_02",
+     "areas": [],
+     "mapId": "map03_india02",
+     "useStamina": 206,
+     "gainRankExp": 2020,
+     "gold": 40400,
+     "enemyLevel": 1207,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_402_03",
+     "areas": [],
+     "mapId": "map03_india03",
+     "useStamina": 206,
+     "gainRankExp": 2020,
+     "gold": 40400,
+     "enemyLevel": 1207,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_402_04",
+     "areas": [],
+     "mapId": "map03_jotatown01",
+     "useStamina": 206,
+     "gainRankExp": 2020,
+     "gold": 40400,
+     "enemyLevel": 1207,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_402_05",
+     "areas": [],
+     "mapId": "map03_jotatown02",
+     "useStamina": 206,
+     "gainRankExp": 2020,
+     "gold": 40400,
+     "enemyLevel": 1207,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_403",
+   "num": 403,
+   "stageType": 1,
+   "chapterMap": 1403,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_403_01",
+     "areas": [],
+     "mapId": "map04_country04",
+     "useStamina": 206,
+     "gainRankExp": 2025,
+     "gold": 40500,
+     "enemyLevel": 1210,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_403_02",
+     "areas": [],
+     "mapId": "map04_mego02",
+     "useStamina": 206,
+     "gainRankExp": 2025,
+     "gold": 40500,
+     "enemyLevel": 1210,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_403_03",
+     "areas": [],
+     "mapId": "map04_mystery01",
+     "useStamina": 206,
+     "gainRankExp": 2025,
+     "gold": 40500,
+     "enemyLevel": 1210,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_403_04",
+     "areas": [],
+     "mapId": "map04_owson00",
+     "useStamina": 206,
+     "gainRankExp": 2025,
+     "gold": 40500,
+     "enemyLevel": 1210,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_403_05",
+     "areas": [],
+     "mapId": "map04_owson01",
+     "useStamina": 206,
+     "gainRankExp": 2025,
+     "gold": 40500,
+     "enemyLevel": 1210,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_404",
+   "num": 404,
+   "stageType": 1,
+   "chapterMap": 1404,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_404_01",
+     "areas": [],
+     "mapId": "map04_tunnel03",
+     "useStamina": 207,
+     "gainRankExp": 2030,
+     "gold": 40600,
+     "enemyLevel": 1213,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_404_02",
+     "areas": [],
+     "mapId": "map05_colosseum",
+     "useStamina": 207,
+     "gainRankExp": 2030,
+     "gold": 40600,
+     "enemyLevel": 1213,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_404_03",
+     "areas": [],
+     "mapId": "map05_luciastation",
+     "useStamina": 207,
+     "gainRankExp": 2030,
+     "gold": 40600,
+     "enemyLevel": 1213,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_404_04",
+     "areas": [],
+     "mapId": "map05_maggiore",
+     "useStamina": 207,
+     "gainRankExp": 2030,
+     "gold": 40600,
+     "enemyLevel": 1213,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_404_05",
+     "areas": [],
+     "mapId": "map05_roof",
+     "useStamina": 207,
+     "gainRankExp": 2030,
+     "gold": 40600,
+     "enemyLevel": 1213,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_405",
+   "num": 405,
+   "stageType": 1,
+   "chapterMap": 1405,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_405_01",
+     "areas": [],
+     "mapId": "map01_around01",
+     "useStamina": 207,
+     "gainRankExp": 2035,
+     "gold": 40700,
+     "enemyLevel": 1216,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_405_02",
+     "areas": [],
+     "mapId": "map01_around02",
+     "useStamina": 207,
+     "gainRankExp": 2035,
+     "gold": 40700,
+     "enemyLevel": 1216,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_405_03",
+     "areas": [],
+     "mapId": "map01_around03",
+     "useStamina": 207,
+     "gainRankExp": 2035,
+     "gold": 40700,
+     "enemyLevel": 1216,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_405_04",
+     "areas": [],
+     "mapId": "map02_italia01",
+     "useStamina": 207,
+     "gainRankExp": 2035,
+     "gold": 40700,
+     "enemyLevel": 1216,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_405_05",
+     "areas": [],
+     "mapId": "map02_italia02",
+     "useStamina": 207,
+     "gainRankExp": 2035,
+     "gold": 40700,
+     "enemyLevel": 1216,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_406",
+   "num": 406,
+   "stageType": 1,
+   "chapterMap": 1406,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_406_01",
+     "areas": [],
+     "mapId": "map02_snowfield03",
+     "useStamina": 208,
+     "gainRankExp": 2040,
+     "gold": 40800,
+     "enemyLevel": 1219,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_406_02",
+     "areas": [],
+     "mapId": "map03_beach00",
+     "useStamina": 208,
+     "gainRankExp": 2040,
+     "gold": 40800,
+     "enemyLevel": 1219,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_406_03",
+     "areas": [],
+     "mapId": "map03_desert01",
+     "useStamina": 208,
+     "gainRankExp": 2040,
+     "gold": 40800,
+     "enemyLevel": 1219,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_406_04",
+     "areas": [],
+     "mapId": "map03_desert02",
+     "useStamina": 208,
+     "gainRankExp": 2040,
+     "gold": 40800,
+     "enemyLevel": 1219,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_406_05",
+     "areas": [],
+     "mapId": "map03_desert03",
+     "useStamina": 208,
+     "gainRankExp": 2040,
+     "gold": 40800,
+     "enemyLevel": 1219,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_407",
+   "num": 407,
+   "stageType": 1,
+   "chapterMap": 1407,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_407_01",
+     "areas": [],
+     "mapId": "map03_egypt03",
+     "useStamina": 208,
+     "gainRankExp": 2045,
+     "gold": 40900,
+     "enemyLevel": 1222,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_407_02",
+     "areas": [],
+     "mapId": "map03_enya01",
+     "useStamina": 208,
+     "gainRankExp": 2045,
+     "gold": 40900,
+     "enemyLevel": 1222,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_407_03",
+     "areas": [],
+     "mapId": "map03_enya02",
+     "useStamina": 208,
+     "gainRankExp": 2045,
+     "gold": 40900,
+     "enemyLevel": 1222,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_407_04",
+     "areas": [],
+     "mapId": "map03_enya03",
+     "useStamina": 208,
+     "gainRankExp": 2045,
+     "gold": 40900,
+     "enemyLevel": 1222,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_407_05",
+     "areas": [],
+     "mapId": "map03_india01",
+     "useStamina": 208,
+     "gainRankExp": 2045,
+     "gold": 40900,
+     "enemyLevel": 1222,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_408",
+   "num": 408,
+   "stageType": 1,
+   "chapterMap": 1408,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_408_01",
+     "areas": [],
+     "mapId": "map03_tiger01",
+     "useStamina": 209,
+     "gainRankExp": 2050,
+     "gold": 41000,
+     "enemyLevel": 1225,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_408_02",
+     "areas": [],
+     "mapId": "map03_tiger02",
+     "useStamina": 209,
+     "gainRankExp": 2050,
+     "gold": 41000,
+     "enemyLevel": 1225,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_408_03",
+     "areas": [],
+     "mapId": "map04_country01",
+     "useStamina": 209,
+     "gainRankExp": 2050,
+     "gold": 41000,
+     "enemyLevel": 1225,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_408_04",
+     "areas": [],
+     "mapId": "map04_country03",
+     "useStamina": 209,
+     "gainRankExp": 2050,
+     "gold": 41000,
+     "enemyLevel": 1225,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_408_05",
+     "areas": [],
+     "mapId": "map04_country04",
+     "useStamina": 209,
+     "gainRankExp": 2050,
+     "gold": 41000,
+     "enemyLevel": 1225,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_409",
+   "num": 409,
+   "stageType": 1,
+   "chapterMap": 1409,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_409_01",
+     "areas": [],
+     "mapId": "map04_town01",
+     "useStamina": 209,
+     "gainRankExp": 2055,
+     "gold": 41100,
+     "enemyLevel": 1228,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_409_02",
+     "areas": [],
+     "mapId": "map04_town03",
+     "useStamina": 209,
+     "gainRankExp": 2055,
+     "gold": 41100,
+     "enemyLevel": 1228,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_409_03",
+     "areas": [],
+     "mapId": "map04_town04",
+     "useStamina": 209,
+     "gainRankExp": 2055,
+     "gold": 41100,
+     "enemyLevel": 1228,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_410",
+   "num": 410,
+   "stageType": 1,
+   "chapterMap": 1410,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_410_01",
+     "areas": [],
+     "mapId": "map05_school",
+     "useStamina": 210,
+     "gainRankExp": 2060,
+     "gold": 41200,
+     "enemyLevel": 1231,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_410_02",
+     "areas": [],
+     "mapId": "map05_schoolgate",
+     "useStamina": 210,
+     "gainRankExp": 2060,
+     "gold": 41200,
+     "enemyLevel": 1231,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_410_03",
+     "areas": [],
+     "mapId": "map05_town01",
+     "useStamina": 210,
+     "gainRankExp": 2060,
+     "gold": 41200,
+     "enemyLevel": 1231,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_410_04",
+     "areas": [],
+     "mapId": "map05_train00",
+     "useStamina": 210,
+     "gainRankExp": 2060,
+     "gold": 41200,
+     "enemyLevel": 1231,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_410_05",
+     "areas": [],
+     "mapId": "map01_around01",
+     "useStamina": 210,
+     "gainRankExp": 2060,
+     "gold": 41200,
+     "enemyLevel": 1231,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_411",
+   "num": 411,
+   "stageType": 1,
+   "chapterMap": 1411,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_411_01",
+     "areas": [],
+     "mapId": "map02_mexico01",
+     "useStamina": 210,
+     "gainRankExp": 2065,
+     "gold": 41300,
+     "enemyLevel": 1234,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_411_02",
+     "areas": [],
+     "mapId": "map02_mexico02",
+     "useStamina": 210,
+     "gainRankExp": 2065,
+     "gold": 41300,
+     "enemyLevel": 1234,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_411_03",
+     "areas": [],
+     "mapId": "map02_snowfield01",
+     "useStamina": 210,
+     "gainRankExp": 2065,
+     "gold": 41300,
+     "enemyLevel": 1234,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_412",
+   "num": 412,
+   "stageType": 1,
+   "chapterMap": 1412,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_412_01",
+     "areas": [],
+     "mapId": "map03_diohouse06",
+     "useStamina": 211,
+     "gainRankExp": 2070,
+     "gold": 41400,
+     "enemyLevel": 1237,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_412_02",
+     "areas": [],
+     "mapId": "map03_diohouse07",
+     "useStamina": 211,
+     "gainRankExp": 2070,
+     "gold": 41400,
+     "enemyLevel": 1237,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_412_03",
+     "areas": [],
+     "mapId": "map03_egypt01",
+     "useStamina": 211,
+     "gainRankExp": 2070,
+     "gold": 41400,
+     "enemyLevel": 1237,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_412_04",
+     "areas": [],
+     "mapId": "map03_egypt02",
+     "useStamina": 211,
+     "gainRankExp": 2070,
+     "gold": 41400,
+     "enemyLevel": 1237,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_412_05",
+     "areas": [],
+     "mapId": "map03_egypt03",
+     "useStamina": 211,
+     "gainRankExp": 2070,
+     "gold": 41400,
+     "enemyLevel": 1237,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_413",
+   "num": 413,
+   "stageType": 1,
+   "chapterMap": 1413,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_413_01",
+     "areas": [],
+     "mapId": "map03_india03",
+     "useStamina": 211,
+     "gainRankExp": 2075,
+     "gold": 41500,
+     "enemyLevel": 1240,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_413_02",
+     "areas": [],
+     "mapId": "map03_jotatown01",
+     "useStamina": 211,
+     "gainRankExp": 2075,
+     "gold": 41500,
+     "enemyLevel": 1240,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_413_03",
+     "areas": [],
+     "mapId": "map03_jotatown02",
+     "useStamina": 211,
+     "gainRankExp": 2075,
+     "gold": 41500,
+     "enemyLevel": 1240,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_414",
+   "num": 414,
+   "stageType": 1,
+   "chapterMap": 1414,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_414_01",
+     "areas": [],
+     "mapId": "map04_mystery01",
+     "useStamina": 212,
+     "gainRankExp": 2080,
+     "gold": 41600,
+     "enemyLevel": 1243,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_414_02",
+     "areas": [],
+     "mapId": "map04_owson00",
+     "useStamina": 212,
+     "gainRankExp": 2080,
+     "gold": 41600,
+     "enemyLevel": 1243,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_414_03",
+     "areas": [],
+     "mapId": "map04_owson01",
+     "useStamina": 212,
+     "gainRankExp": 2080,
+     "gold": 41600,
+     "enemyLevel": 1243,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_414_04",
+     "areas": [],
+     "mapId": "map04_rohanhouse01",
+     "useStamina": 212,
+     "gainRankExp": 2080,
+     "gold": 41600,
+     "enemyLevel": 1243,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_414_05",
+     "areas": [],
+     "mapId": "map04_town01",
+     "useStamina": 212,
+     "gainRankExp": 2080,
+     "gold": 41600,
+     "enemyLevel": 1243,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_415",
+   "num": 415,
+   "stageType": 1,
+   "chapterMap": 1415,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_415_01",
+     "areas": [],
+     "mapId": "map05_luciastation",
+     "useStamina": 212,
+     "gainRankExp": 2085,
+     "gold": 41700,
+     "enemyLevel": 1246,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_415_02",
+     "areas": [],
+     "mapId": "map05_maggiore",
+     "useStamina": 212,
+     "gainRankExp": 2085,
+     "gold": 41700,
+     "enemyLevel": 1246,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_415_03",
+     "areas": [],
+     "mapId": "map05_roof",
+     "useStamina": 212,
+     "gainRankExp": 2085,
+     "gold": 41700,
+     "enemyLevel": 1246,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_416",
+   "num": 416,
+   "stageType": 1,
+   "chapterMap": 1416,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_416_01",
+     "areas": [],
+     "mapId": "map01_around03",
+     "useStamina": 213,
+     "gainRankExp": 2090,
+     "gold": 41800,
+     "enemyLevel": 1249,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_416_02",
+     "areas": [],
+     "mapId": "map02_italia01",
+     "useStamina": 213,
+     "gainRankExp": 2090,
+     "gold": 41800,
+     "enemyLevel": 1249,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_416_03",
+     "areas": [],
+     "mapId": "map02_italia02",
+     "useStamina": 213,
+     "gainRankExp": 2090,
+     "gold": 41800,
+     "enemyLevel": 1249,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_416_04",
+     "areas": [],
+     "mapId": "map02_italia03",
+     "useStamina": 213,
+     "gainRankExp": 2090,
+     "gold": 41800,
+     "enemyLevel": 1249,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_416_05",
+     "areas": [],
+     "mapId": "map02_mexico01",
+     "useStamina": 213,
+     "gainRankExp": 2090,
+     "gold": 41800,
+     "enemyLevel": 1249,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_417",
+   "num": 417,
+   "stageType": 1,
+   "chapterMap": 1417,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_417_01",
+     "areas": [],
+     "mapId": "map03_desert01",
+     "useStamina": 213,
+     "gainRankExp": 2095,
+     "gold": 41900,
+     "enemyLevel": 1252,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_417_02",
+     "areas": [],
+     "mapId": "map03_desert02",
+     "useStamina": 213,
+     "gainRankExp": 2095,
+     "gold": 41900,
+     "enemyLevel": 1252,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_417_03",
+     "areas": [],
+     "mapId": "map03_desert03",
+     "useStamina": 213,
+     "gainRankExp": 2095,
+     "gold": 41900,
+     "enemyLevel": 1252,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_418",
+   "num": 418,
+   "stageType": 1,
+   "chapterMap": 1418,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_418_01",
+     "areas": [],
+     "mapId": "map03_enya02",
+     "useStamina": 214,
+     "gainRankExp": 2100,
+     "gold": 42000,
+     "enemyLevel": 1255,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_418_02",
+     "areas": [],
+     "mapId": "map03_enya03",
+     "useStamina": 214,
+     "gainRankExp": 2100,
+     "gold": 42000,
+     "enemyLevel": 1255,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_418_03",
+     "areas": [],
+     "mapId": "map03_india01",
+     "useStamina": 214,
+     "gainRankExp": 2100,
+     "gold": 42000,
+     "enemyLevel": 1255,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_418_04",
+     "areas": [],
+     "mapId": "map03_india02",
+     "useStamina": 214,
+     "gainRankExp": 2100,
+     "gold": 42000,
+     "enemyLevel": 1255,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_418_05",
+     "areas": [],
+     "mapId": "map03_india03",
+     "useStamina": 214,
+     "gainRankExp": 2100,
+     "gold": 42000,
+     "enemyLevel": 1255,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_419",
+   "num": 419,
+   "stageType": 1,
+   "chapterMap": 1419,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_419_01",
+     "areas": [],
+     "mapId": "map04_country01",
+     "useStamina": 214,
+     "gainRankExp": 2105,
+     "gold": 42100,
+     "enemyLevel": 1258,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_419_02",
+     "areas": [],
+     "mapId": "map04_country03",
+     "useStamina": 214,
+     "gainRankExp": 2105,
+     "gold": 42100,
+     "enemyLevel": 1258,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_419_03",
+     "areas": [],
+     "mapId": "map04_country04",
+     "useStamina": 214,
+     "gainRankExp": 2105,
+     "gold": 42100,
+     "enemyLevel": 1258,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_419_04",
+     "areas": [],
+     "mapId": "map04_mego02",
+     "useStamina": 214,
+     "gainRankExp": 2105,
+     "gold": 42100,
+     "enemyLevel": 1258,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_419_05",
+     "areas": [],
+     "mapId": "map04_mystery01",
+     "useStamina": 214,
+     "gainRankExp": 2105,
+     "gold": 42100,
+     "enemyLevel": 1258,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_420",
+   "num": 420,
+   "stageType": 1,
+   "chapterMap": 1420,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_420_01",
+     "areas": [],
+     "mapId": "map04_town04",
+     "useStamina": 215,
+     "gainRankExp": 2110,
+     "gold": 42200,
+     "enemyLevel": 1261,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_420_02",
+     "areas": [],
+     "mapId": "map04_town05",
+     "useStamina": 215,
+     "gainRankExp": 2110,
+     "gold": 42200,
+     "enemyLevel": 1261,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_420_03",
+     "areas": [],
+     "mapId": "map04_tunnel03",
+     "useStamina": 215,
+     "gainRankExp": 2110,
+     "gold": 42200,
+     "enemyLevel": 1261,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_420_04",
+     "areas": [],
+     "mapId": "map05_colosseum",
+     "useStamina": 215,
+     "gainRankExp": 2110,
+     "gold": 42200,
+     "enemyLevel": 1261,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_420_05",
+     "areas": [],
+     "mapId": "map05_luciastation",
+     "useStamina": 215,
+     "gainRankExp": 2110,
+     "gold": 42200,
+     "enemyLevel": 1261,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_421",
+   "num": 421,
+   "stageType": 1,
+   "chapterMap": 1421,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_421_01",
+     "areas": [],
+     "mapId": "map05_town01",
+     "useStamina": 215,
+     "gainRankExp": 2115,
+     "gold": 42300,
+     "enemyLevel": 1264,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_421_02",
+     "areas": [],
+     "mapId": "map05_train00",
+     "useStamina": 215,
+     "gainRankExp": 2115,
+     "gold": 42300,
+     "enemyLevel": 1264,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_421_03",
+     "areas": [],
+     "mapId": "map01_around01",
+     "useStamina": 215,
+     "gainRankExp": 2115,
+     "gold": 42300,
+     "enemyLevel": 1264,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_422",
+   "num": 422,
+   "stageType": 1,
+   "chapterMap": 1422,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_422_01",
+     "areas": [],
+     "mapId": "map02_snowfield01",
+     "useStamina": 216,
+     "gainRankExp": 2120,
+     "gold": 42400,
+     "enemyLevel": 1267,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_422_02",
+     "areas": [],
+     "mapId": "map02_snowfield02",
+     "useStamina": 216,
+     "gainRankExp": 2120,
+     "gold": 42400,
+     "enemyLevel": 1267,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_422_03",
+     "areas": [],
+     "mapId": "map02_snowfield03",
+     "useStamina": 216,
+     "gainRankExp": 2120,
+     "gold": 42400,
+     "enemyLevel": 1267,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_422_04",
+     "areas": [],
+     "mapId": "map03_beach00",
+     "useStamina": 216,
+     "gainRankExp": 2120,
+     "gold": 42400,
+     "enemyLevel": 1267,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_422_05",
+     "areas": [],
+     "mapId": "map03_desert01",
+     "useStamina": 216,
+     "gainRankExp": 2120,
+     "gold": 42400,
+     "enemyLevel": 1267,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_423",
+   "num": 423,
+   "stageType": 1,
+   "chapterMap": 1423,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_423_01",
+     "areas": [],
+     "mapId": "map03_egypt01",
+     "useStamina": 216,
+     "gainRankExp": 2125,
+     "gold": 42500,
+     "enemyLevel": 1270,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_423_02",
+     "areas": [],
+     "mapId": "map03_egypt02",
+     "useStamina": 216,
+     "gainRankExp": 2125,
+     "gold": 42500,
+     "enemyLevel": 1270,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_423_03",
+     "areas": [],
+     "mapId": "map03_egypt03",
+     "useStamina": 216,
+     "gainRankExp": 2125,
+     "gold": 42500,
+     "enemyLevel": 1270,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_423_04",
+     "areas": [],
+     "mapId": "map03_enya01",
+     "useStamina": 216,
+     "gainRankExp": 2125,
+     "gold": 42500,
+     "enemyLevel": 1270,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_423_05",
+     "areas": [],
+     "mapId": "map03_enya02",
+     "useStamina": 216,
+     "gainRankExp": 2125,
+     "gold": 42500,
+     "enemyLevel": 1270,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_424",
+   "num": 424,
+   "stageType": 1,
+   "chapterMap": 1424,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_424_01",
+     "areas": [],
+     "mapId": "map03_jotatown02",
+     "useStamina": 217,
+     "gainRankExp": 2130,
+     "gold": 42600,
+     "enemyLevel": 1273,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_424_02",
+     "areas": [],
+     "mapId": "map03_jotatown03",
+     "useStamina": 217,
+     "gainRankExp": 2130,
+     "gold": 42600,
+     "enemyLevel": 1273,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_424_03",
+     "areas": [],
+     "mapId": "map03_tiger01",
+     "useStamina": 217,
+     "gainRankExp": 2130,
+     "gold": 42600,
+     "enemyLevel": 1273,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_424_04",
+     "areas": [],
+     "mapId": "map03_tiger02",
+     "useStamina": 217,
+     "gainRankExp": 2130,
+     "gold": 42600,
+     "enemyLevel": 1273,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_424_05",
+     "areas": [],
+     "mapId": "map04_country01",
+     "useStamina": 217,
+     "gainRankExp": 2130,
+     "gold": 42600,
+     "enemyLevel": 1273,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_425",
+   "num": 425,
+   "stageType": 1,
+   "chapterMap": 1425,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_425_01",
+     "areas": [],
+     "mapId": "map04_owson01",
+     "useStamina": 217,
+     "gainRankExp": 2135,
+     "gold": 42700,
+     "enemyLevel": 1276,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_425_02",
+     "areas": [],
+     "mapId": "map04_rohanhouse01",
+     "useStamina": 217,
+     "gainRankExp": 2135,
+     "gold": 42700,
+     "enemyLevel": 1276,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_425_03",
+     "areas": [],
+     "mapId": "map04_town01",
+     "useStamina": 217,
+     "gainRankExp": 2135,
+     "gold": 42700,
+     "enemyLevel": 1276,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_426",
+   "num": 426,
+   "stageType": 1,
+   "chapterMap": 1426,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_426_01",
+     "areas": [],
+     "mapId": "map05_roof",
+     "useStamina": 218,
+     "gainRankExp": 2140,
+     "gold": 42800,
+     "enemyLevel": 1279,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_426_02",
+     "areas": [],
+     "mapId": "map05_sardinia",
+     "useStamina": 218,
+     "gainRankExp": 2140,
+     "gold": 42800,
+     "enemyLevel": 1279,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_426_03",
+     "areas": [],
+     "mapId": "map05_school",
+     "useStamina": 218,
+     "gainRankExp": 2140,
+     "gold": 42800,
+     "enemyLevel": 1279,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_426_04",
+     "areas": [],
+     "mapId": "map05_schoolgate",
+     "useStamina": 218,
+     "gainRankExp": 2140,
+     "gold": 42800,
+     "enemyLevel": 1279,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_426_05",
+     "areas": [],
+     "mapId": "map05_town01",
+     "useStamina": 218,
+     "gainRankExp": 2140,
+     "gold": 42800,
+     "enemyLevel": 1279,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_427",
+   "num": 427,
+   "stageType": 1,
+   "chapterMap": 1427,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_427_01",
+     "areas": [],
+     "mapId": "map02_italia02",
+     "useStamina": 218,
+     "gainRankExp": 2145,
+     "gold": 42900,
+     "enemyLevel": 1282,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_427_02",
+     "areas": [],
+     "mapId": "map02_italia03",
+     "useStamina": 218,
+     "gainRankExp": 2145,
+     "gold": 42900,
+     "enemyLevel": 1282,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_427_03",
+     "areas": [],
+     "mapId": "map02_mexico01",
+     "useStamina": 218,
+     "gainRankExp": 2145,
+     "gold": 42900,
+     "enemyLevel": 1282,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_428",
+   "num": 428,
+   "stageType": 1,
+   "chapterMap": 1428,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_428_01",
+     "areas": [],
+     "mapId": "map03_desert03",
+     "useStamina": 219,
+     "gainRankExp": 2150,
+     "gold": 43000,
+     "enemyLevel": 1285,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_428_02",
+     "areas": [],
+     "mapId": "map03_diohouse01",
+     "useStamina": 219,
+     "gainRankExp": 2150,
+     "gold": 43000,
+     "enemyLevel": 1285,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_428_03",
+     "areas": [],
+     "mapId": "map03_diohouse06",
+     "useStamina": 219,
+     "gainRankExp": 2150,
+     "gold": 43000,
+     "enemyLevel": 1285,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_428_04",
+     "areas": [],
+     "mapId": "map03_diohouse07",
+     "useStamina": 219,
+     "gainRankExp": 2150,
+     "gold": 43000,
+     "enemyLevel": 1285,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_428_05",
+     "areas": [],
+     "mapId": "map03_egypt01",
+     "useStamina": 219,
+     "gainRankExp": 2150,
+     "gold": 43000,
+     "enemyLevel": 1285,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_429",
+   "num": 429,
+   "stageType": 1,
+   "chapterMap": 1429,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_429_01",
+     "areas": [],
+     "mapId": "map03_india01",
+     "useStamina": 219,
+     "gainRankExp": 2155,
+     "gold": 43100,
+     "enemyLevel": 1288,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_429_02",
+     "areas": [],
+     "mapId": "map03_india02",
+     "useStamina": 219,
+     "gainRankExp": 2155,
+     "gold": 43100,
+     "enemyLevel": 1288,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_429_03",
+     "areas": [],
+     "mapId": "map03_india03",
+     "useStamina": 219,
+     "gainRankExp": 2155,
+     "gold": 43100,
+     "enemyLevel": 1288,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_430",
+   "num": 430,
+   "stageType": 1,
+   "chapterMap": 1430,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_430_01",
+     "areas": [],
+     "mapId": "map04_country04",
+     "useStamina": 220,
+     "gainRankExp": 2160,
+     "gold": 43200,
+     "enemyLevel": 1291,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_430_02",
+     "areas": [],
+     "mapId": "map04_mego02",
+     "useStamina": 220,
+     "gainRankExp": 2160,
+     "gold": 43200,
+     "enemyLevel": 1291,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_430_03",
+     "areas": [],
+     "mapId": "map04_mystery01",
+     "useStamina": 220,
+     "gainRankExp": 2160,
+     "gold": 43200,
+     "enemyLevel": 1291,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_430_04",
+     "areas": [],
+     "mapId": "map04_owson00",
+     "useStamina": 220,
+     "gainRankExp": 2160,
+     "gold": 43200,
+     "enemyLevel": 1291,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_430_05",
+     "areas": [],
+     "mapId": "map04_owson01",
+     "useStamina": 220,
+     "gainRankExp": 2160,
+     "gold": 43200,
+     "enemyLevel": 1291,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_431",
+   "num": 431,
+   "stageType": 1,
+   "chapterMap": 1431,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_431_01",
+     "areas": [],
+     "mapId": "map04_tunnel03",
+     "useStamina": 220,
+     "gainRankExp": 2165,
+     "gold": 43300,
+     "enemyLevel": 1294,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_431_02",
+     "areas": [],
+     "mapId": "map05_colosseum",
+     "useStamina": 220,
+     "gainRankExp": 2165,
+     "gold": 43300,
+     "enemyLevel": 1294,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_431_03",
+     "areas": [],
+     "mapId": "map05_luciastation",
+     "useStamina": 220,
+     "gainRankExp": 2165,
+     "gold": 43300,
+     "enemyLevel": 1294,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_431_04",
+     "areas": [],
+     "mapId": "map05_maggiore",
+     "useStamina": 220,
+     "gainRankExp": 2165,
+     "gold": 43300,
+     "enemyLevel": 1294,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_431_05",
+     "areas": [],
+     "mapId": "map05_roof",
+     "useStamina": 220,
+     "gainRankExp": 2165,
+     "gold": 43300,
+     "enemyLevel": 1294,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_432",
+   "num": 432,
+   "stageType": 1,
+   "chapterMap": 1432,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_432_01",
+     "areas": [],
+     "mapId": "map01_around01",
+     "useStamina": 221,
+     "gainRankExp": 2170,
+     "gold": 43400,
+     "enemyLevel": 1297,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_432_02",
+     "areas": [],
+     "mapId": "map01_around02",
+     "useStamina": 221,
+     "gainRankExp": 2170,
+     "gold": 43400,
+     "enemyLevel": 1297,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_432_03",
+     "areas": [],
+     "mapId": "map01_around03",
+     "useStamina": 221,
+     "gainRankExp": 2170,
+     "gold": 43400,
+     "enemyLevel": 1297,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_432_04",
+     "areas": [],
+     "mapId": "map02_italia01",
+     "useStamina": 221,
+     "gainRankExp": 2170,
+     "gold": 43400,
+     "enemyLevel": 1297,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_432_05",
+     "areas": [],
+     "mapId": "map02_italia02",
+     "useStamina": 221,
+     "gainRankExp": 2170,
+     "gold": 43400,
+     "enemyLevel": 1297,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_433",
+   "num": 433,
+   "stageType": 1,
+   "chapterMap": 1433,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_433_01",
+     "areas": [],
+     "mapId": "map02_snowfield03",
+     "useStamina": 221,
+     "gainRankExp": 2175,
+     "gold": 43500,
+     "enemyLevel": 1300,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_433_02",
+     "areas": [],
+     "mapId": "map03_beach00",
+     "useStamina": 221,
+     "gainRankExp": 2175,
+     "gold": 43500,
+     "enemyLevel": 1300,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_433_03",
+     "areas": [],
+     "mapId": "map03_desert01",
+     "useStamina": 221,
+     "gainRankExp": 2175,
+     "gold": 43500,
+     "enemyLevel": 1300,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_433_04",
+     "areas": [],
+     "mapId": "map03_desert02",
+     "useStamina": 221,
+     "gainRankExp": 2175,
+     "gold": 43500,
+     "enemyLevel": 1300,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_433_05",
+     "areas": [],
+     "mapId": "map03_desert03",
+     "useStamina": 221,
+     "gainRankExp": 2175,
+     "gold": 43500,
+     "enemyLevel": 1300,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_434",
+   "num": 434,
+   "stageType": 1,
+   "chapterMap": 1434,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_434_01",
+     "areas": [],
+     "mapId": "map03_egypt03",
+     "useStamina": 222,
+     "gainRankExp": 2180,
+     "gold": 43600,
+     "enemyLevel": 1303,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_434_02",
+     "areas": [],
+     "mapId": "map03_enya01",
+     "useStamina": 222,
+     "gainRankExp": 2180,
+     "gold": 43600,
+     "enemyLevel": 1303,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_434_03",
+     "areas": [],
+     "mapId": "map03_enya02",
+     "useStamina": 222,
+     "gainRankExp": 2180,
+     "gold": 43600,
+     "enemyLevel": 1303,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_434_04",
+     "areas": [],
+     "mapId": "map03_enya03",
+     "useStamina": 222,
+     "gainRankExp": 2180,
+     "gold": 43600,
+     "enemyLevel": 1303,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_434_05",
+     "areas": [],
+     "mapId": "map03_india01",
+     "useStamina": 222,
+     "gainRankExp": 2180,
+     "gold": 43600,
+     "enemyLevel": 1303,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_435",
+   "num": 435,
+   "stageType": 1,
+   "chapterMap": 1435,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_435_01",
+     "areas": [],
+     "mapId": "map03_tiger01",
+     "useStamina": 222,
+     "gainRankExp": 2185,
+     "gold": 43700,
+     "enemyLevel": 1306,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_435_02",
+     "areas": [],
+     "mapId": "map03_tiger02",
+     "useStamina": 222,
+     "gainRankExp": 2185,
+     "gold": 43700,
+     "enemyLevel": 1306,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_435_03",
+     "areas": [],
+     "mapId": "map04_country01",
+     "useStamina": 222,
+     "gainRankExp": 2185,
+     "gold": 43700,
+     "enemyLevel": 1306,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_435_04",
+     "areas": [],
+     "mapId": "map04_country03",
+     "useStamina": 222,
+     "gainRankExp": 2185,
+     "gold": 43700,
+     "enemyLevel": 1306,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_435_05",
+     "areas": [],
+     "mapId": "map04_country04",
+     "useStamina": 222,
+     "gainRankExp": 2185,
+     "gold": 43700,
+     "enemyLevel": 1306,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_436",
+   "num": 436,
+   "stageType": 1,
+   "chapterMap": 1436,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_436_01",
+     "areas": [],
+     "mapId": "map04_town01",
+     "useStamina": 223,
+     "gainRankExp": 2190,
+     "gold": 43800,
+     "enemyLevel": 1309,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_436_02",
+     "areas": [],
+     "mapId": "map04_town03",
+     "useStamina": 223,
+     "gainRankExp": 2190,
+     "gold": 43800,
+     "enemyLevel": 1309,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_436_03",
+     "areas": [],
+     "mapId": "map04_town04",
+     "useStamina": 223,
+     "gainRankExp": 2190,
+     "gold": 43800,
+     "enemyLevel": 1309,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_436_04",
+     "areas": [],
+     "mapId": "map04_town05",
+     "useStamina": 223,
+     "gainRankExp": 2190,
+     "gold": 43800,
+     "enemyLevel": 1309,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_436_05",
+     "areas": [],
+     "mapId": "map04_tunnel03",
+     "useStamina": 223,
+     "gainRankExp": 2190,
+     "gold": 43800,
+     "enemyLevel": 1309,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_437",
+   "num": 437,
+   "stageType": 1,
+   "chapterMap": 1437,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_437_01",
+     "areas": [],
+     "mapId": "map05_school",
+     "useStamina": 223,
+     "gainRankExp": 2195,
+     "gold": 43900,
+     "enemyLevel": 1312,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_437_02",
+     "areas": [],
+     "mapId": "map05_schoolgate",
+     "useStamina": 223,
+     "gainRankExp": 2195,
+     "gold": 43900,
+     "enemyLevel": 1312,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_437_03",
+     "areas": [],
+     "mapId": "map05_town01",
+     "useStamina": 223,
+     "gainRankExp": 2195,
+     "gold": 43900,
+     "enemyLevel": 1312,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_437_04",
+     "areas": [],
+     "mapId": "map05_train00",
+     "useStamina": 223,
+     "gainRankExp": 2195,
+     "gold": 43900,
+     "enemyLevel": 1312,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_437_05",
+     "areas": [],
+     "mapId": "map01_around01",
+     "useStamina": 223,
+     "gainRankExp": 2195,
+     "gold": 43900,
+     "enemyLevel": 1312,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_438",
+   "num": 438,
+   "stageType": 1,
+   "chapterMap": 1438,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_438_01",
+     "areas": [],
+     "mapId": "map02_mexico01",
+     "useStamina": 224,
+     "gainRankExp": 2200,
+     "gold": 44000,
+     "enemyLevel": 1315,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_438_02",
+     "areas": [],
+     "mapId": "map02_mexico02",
+     "useStamina": 224,
+     "gainRankExp": 2200,
+     "gold": 44000,
+     "enemyLevel": 1315,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_438_03",
+     "areas": [],
+     "mapId": "map02_snowfield01",
+     "useStamina": 224,
+     "gainRankExp": 2200,
+     "gold": 44000,
+     "enemyLevel": 1315,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_438_04",
+     "areas": [],
+     "mapId": "map02_snowfield02",
+     "useStamina": 224,
+     "gainRankExp": 2200,
+     "gold": 44000,
+     "enemyLevel": 1315,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_438_05",
+     "areas": [],
+     "mapId": "map02_snowfield03",
+     "useStamina": 224,
+     "gainRankExp": 2200,
+     "gold": 44000,
+     "enemyLevel": 1315,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_439",
+   "num": 439,
+   "stageType": 1,
+   "chapterMap": 1439,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_439_01",
+     "areas": [],
+     "mapId": "map03_diohouse06",
+     "useStamina": 224,
+     "gainRankExp": 2205,
+     "gold": 44100,
+     "enemyLevel": 1318,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_439_02",
+     "areas": [],
+     "mapId": "map03_diohouse07",
+     "useStamina": 224,
+     "gainRankExp": 2205,
+     "gold": 44100,
+     "enemyLevel": 1318,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_439_03",
+     "areas": [],
+     "mapId": "map03_egypt01",
+     "useStamina": 224,
+     "gainRankExp": 2205,
+     "gold": 44100,
+     "enemyLevel": 1318,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_440",
+   "num": 440,
+   "stageType": 1,
+   "chapterMap": 1440,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_440_01",
+     "areas": [],
+     "mapId": "map03_india03",
+     "useStamina": 225,
+     "gainRankExp": 2210,
+     "gold": 44200,
+     "enemyLevel": 1321,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_440_02",
+     "areas": [],
+     "mapId": "map03_jotatown01",
+     "useStamina": 225,
+     "gainRankExp": 2210,
+     "gold": 44200,
+     "enemyLevel": 1321,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_440_03",
+     "areas": [],
+     "mapId": "map03_jotatown02",
+     "useStamina": 225,
+     "gainRankExp": 2210,
+     "gold": 44200,
+     "enemyLevel": 1321,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_440_04",
+     "areas": [],
+     "mapId": "map03_jotatown03",
+     "useStamina": 225,
+     "gainRankExp": 2210,
+     "gold": 44200,
+     "enemyLevel": 1321,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_440_05",
+     "areas": [],
+     "mapId": "map03_tiger01",
+     "useStamina": 225,
+     "gainRankExp": 2210,
+     "gold": 44200,
+     "enemyLevel": 1321,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_441",
+   "num": 441,
+   "stageType": 1,
+   "chapterMap": 1441,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_441_01",
+     "areas": [],
+     "mapId": "map04_mystery01",
+     "useStamina": 225,
+     "gainRankExp": 2215,
+     "gold": 44300,
+     "enemyLevel": 1324,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_441_02",
+     "areas": [],
+     "mapId": "map04_owson00",
+     "useStamina": 225,
+     "gainRankExp": 2215,
+     "gold": 44300,
+     "enemyLevel": 1324,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_441_03",
+     "areas": [],
+     "mapId": "map04_owson01",
+     "useStamina": 225,
+     "gainRankExp": 2215,
+     "gold": 44300,
+     "enemyLevel": 1324,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_442",
+   "num": 442,
+   "stageType": 1,
+   "chapterMap": 1442,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_442_01",
+     "areas": [],
+     "mapId": "map05_luciastation",
+     "useStamina": 226,
+     "gainRankExp": 2220,
+     "gold": 44400,
+     "enemyLevel": 1327,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_442_02",
+     "areas": [],
+     "mapId": "map05_maggiore",
+     "useStamina": 226,
+     "gainRankExp": 2220,
+     "gold": 44400,
+     "enemyLevel": 1327,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_442_03",
+     "areas": [],
+     "mapId": "map05_roof",
+     "useStamina": 226,
+     "gainRankExp": 2220,
+     "gold": 44400,
+     "enemyLevel": 1327,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_442_04",
+     "areas": [],
+     "mapId": "map05_sardinia",
+     "useStamina": 226,
+     "gainRankExp": 2220,
+     "gold": 44400,
+     "enemyLevel": 1327,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_442_05",
+     "areas": [],
+     "mapId": "map05_school",
+     "useStamina": 226,
+     "gainRankExp": 2220,
+     "gold": 44400,
+     "enemyLevel": 1327,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_443",
+   "num": 443,
+   "stageType": 1,
+   "chapterMap": 1443,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_443_01",
+     "areas": [],
+     "mapId": "map01_around03",
+     "useStamina": 226,
+     "gainRankExp": 2225,
+     "gold": 44500,
+     "enemyLevel": 1330,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_443_02",
+     "areas": [],
+     "mapId": "map02_italia01",
+     "useStamina": 226,
+     "gainRankExp": 2225,
+     "gold": 44500,
+     "enemyLevel": 1330,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_443_03",
+     "areas": [],
+     "mapId": "map02_italia02",
+     "useStamina": 226,
+     "gainRankExp": 2225,
+     "gold": 44500,
+     "enemyLevel": 1330,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_444",
+   "num": 444,
+   "stageType": 1,
+   "chapterMap": 1444,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_444_01",
+     "areas": [],
+     "mapId": "map03_desert01",
+     "useStamina": 227,
+     "gainRankExp": 2230,
+     "gold": 44600,
+     "enemyLevel": 1333,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_444_02",
+     "areas": [],
+     "mapId": "map03_desert02",
+     "useStamina": 227,
+     "gainRankExp": 2230,
+     "gold": 44600,
+     "enemyLevel": 1333,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_444_03",
+     "areas": [],
+     "mapId": "map03_desert03",
+     "useStamina": 227,
+     "gainRankExp": 2230,
+     "gold": 44600,
+     "enemyLevel": 1333,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_444_04",
+     "areas": [],
+     "mapId": "map03_diohouse01",
+     "useStamina": 227,
+     "gainRankExp": 2230,
+     "gold": 44600,
+     "enemyLevel": 1333,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_444_05",
+     "areas": [],
+     "mapId": "map03_diohouse06",
+     "useStamina": 227,
+     "gainRankExp": 2230,
+     "gold": 44600,
+     "enemyLevel": 1333,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_445",
+   "num": 445,
+   "stageType": 1,
+   "chapterMap": 1445,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_445_01",
+     "areas": [],
+     "mapId": "map03_enya02",
+     "useStamina": 227,
+     "gainRankExp": 2235,
+     "gold": 44700,
+     "enemyLevel": 1336,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_445_02",
+     "areas": [],
+     "mapId": "map03_enya03",
+     "useStamina": 227,
+     "gainRankExp": 2235,
+     "gold": 44700,
+     "enemyLevel": 1336,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_445_03",
+     "areas": [],
+     "mapId": "map03_india01",
+     "useStamina": 227,
+     "gainRankExp": 2235,
+     "gold": 44700,
+     "enemyLevel": 1336,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_445_04",
+     "areas": [],
+     "mapId": "map03_india02",
+     "useStamina": 227,
+     "gainRankExp": 2235,
+     "gold": 44700,
+     "enemyLevel": 1336,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_445_05",
+     "areas": [],
+     "mapId": "map03_india03",
+     "useStamina": 227,
+     "gainRankExp": 2235,
+     "gold": 44700,
+     "enemyLevel": 1336,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_446",
+   "num": 446,
+   "stageType": 1,
+   "chapterMap": 1446,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_446_01",
+     "areas": [],
+     "mapId": "map04_country01",
+     "useStamina": 228,
+     "gainRankExp": 2240,
+     "gold": 44800,
+     "enemyLevel": 1339,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_446_02",
+     "areas": [],
+     "mapId": "map04_country03",
+     "useStamina": 228,
+     "gainRankExp": 2240,
+     "gold": 44800,
+     "enemyLevel": 1339,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_446_03",
+     "areas": [],
+     "mapId": "map04_country04",
+     "useStamina": 228,
+     "gainRankExp": 2240,
+     "gold": 44800,
+     "enemyLevel": 1339,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_446_04",
+     "areas": [],
+     "mapId": "map04_mego02",
+     "useStamina": 228,
+     "gainRankExp": 2240,
+     "gold": 44800,
+     "enemyLevel": 1339,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_446_05",
+     "areas": [],
+     "mapId": "map04_mystery01",
+     "useStamina": 228,
+     "gainRankExp": 2240,
+     "gold": 44800,
+     "enemyLevel": 1339,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_453",
+   "num": 453,
+   "stageType": 1,
+   "chapterMap": 1453,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_453_01",
+     "areas": [],
+     "mapId": "map05_roof",
+     "useStamina": 231,
+     "gainRankExp": 2275,
+     "gold": 45500,
+     "enemyLevel": 1360,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_453_02",
+     "areas": [],
+     "mapId": "map05_sardinia",
+     "useStamina": 231,
+     "gainRankExp": 2275,
+     "gold": 45500,
+     "enemyLevel": 1360,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_453_03",
+     "areas": [],
+     "mapId": "map05_school",
+     "useStamina": 231,
+     "gainRankExp": 2275,
+     "gold": 45500,
+     "enemyLevel": 1360,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_453_04",
+     "areas": [],
+     "mapId": "map05_schoolgate",
+     "useStamina": 231,
+     "gainRankExp": 2275,
+     "gold": 45500,
+     "enemyLevel": 1360,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_453_05",
+     "areas": [],
+     "mapId": "map05_town01",
+     "useStamina": 231,
+     "gainRankExp": 2275,
+     "gold": 45500,
+     "enemyLevel": 1360,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_454",
+   "num": 454,
+   "stageType": 1,
+   "chapterMap": 1454,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_454_01",
+     "areas": [],
+     "mapId": "map02_italia02",
+     "useStamina": 232,
+     "gainRankExp": 2280,
+     "gold": 45600,
+     "enemyLevel": 1363,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_454_02",
+     "areas": [],
+     "mapId": "map02_italia03",
+     "useStamina": 232,
+     "gainRankExp": 2280,
+     "gold": 45600,
+     "enemyLevel": 1363,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_454_03",
+     "areas": [],
+     "mapId": "map02_mexico01",
+     "useStamina": 232,
+     "gainRankExp": 2280,
+     "gold": 45600,
+     "enemyLevel": 1363,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_454_04",
+     "areas": [],
+     "mapId": "map02_mexico02",
+     "useStamina": 232,
+     "gainRankExp": 2280,
+     "gold": 45600,
+     "enemyLevel": 1363,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_454_05",
+     "areas": [],
+     "mapId": "map02_snowfield01",
+     "useStamina": 232,
+     "gainRankExp": 2280,
+     "gold": 45600,
+     "enemyLevel": 1363,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_459",
+   "num": 459,
+   "stageType": 1,
+   "chapterMap": 1459,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_459_01",
+     "areas": [],
+     "mapId": "map01_around01",
+     "useStamina": 234,
+     "gainRankExp": 2305,
+     "gold": 46100,
+     "enemyLevel": 1378,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_459_02",
+     "areas": [],
+     "mapId": "map01_around02",
+     "useStamina": 234,
+     "gainRankExp": 2305,
+     "gold": 46100,
+     "enemyLevel": 1378,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_459_03",
+     "areas": [],
+     "mapId": "map01_around03",
+     "useStamina": 234,
+     "gainRankExp": 2305,
+     "gold": 46100,
+     "enemyLevel": 1378,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_459_04",
+     "areas": [],
+     "mapId": "map02_italia01",
+     "useStamina": 234,
+     "gainRankExp": 2305,
+     "gold": 46100,
+     "enemyLevel": 1378,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_459_05",
+     "areas": [],
+     "mapId": "map02_italia02",
+     "useStamina": 234,
+     "gainRankExp": 2305,
+     "gold": 46100,
+     "enemyLevel": 1378,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_460",
+   "num": 460,
+   "stageType": 1,
+   "chapterMap": 1460,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_460_01",
+     "areas": [],
+     "mapId": "map02_snowfield03",
+     "useStamina": 235,
+     "gainRankExp": 2310,
+     "gold": 46200,
+     "enemyLevel": 1381,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_460_02",
+     "areas": [],
+     "mapId": "map03_beach00",
+     "useStamina": 235,
+     "gainRankExp": 2310,
+     "gold": 46200,
+     "enemyLevel": 1381,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_460_03",
+     "areas": [],
+     "mapId": "map03_desert01",
+     "useStamina": 235,
+     "gainRankExp": 2310,
+     "gold": 46200,
+     "enemyLevel": 1381,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_460_04",
+     "areas": [],
+     "mapId": "map03_desert02",
+     "useStamina": 235,
+     "gainRankExp": 2310,
+     "gold": 46200,
+     "enemyLevel": 1381,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_460_05",
+     "areas": [],
+     "mapId": "map03_desert03",
+     "useStamina": 235,
+     "gainRankExp": 2310,
+     "gold": 46200,
+     "enemyLevel": 1381,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_479",
+   "num": 479,
+   "stageType": 1,
+   "chapterMap": 1479,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_479_01",
+     "areas": [],
+     "mapId": "map04_owson01",
+     "useStamina": 244,
+     "gainRankExp": 2405,
+     "gold": 48100,
+     "enemyLevel": 1438,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_479_02",
+     "areas": [],
+     "mapId": "map04_rohanhouse01",
+     "useStamina": 244,
+     "gainRankExp": 2405,
+     "gold": 48100,
+     "enemyLevel": 1438,
+     "enemies": [
+      "5050_03",
+      "5050_04",
+      "5080_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_479_03",
+     "areas": [],
+     "mapId": "map04_town01",
+     "useStamina": 244,
+     "gainRankExp": 2405,
+     "gold": 48100,
+     "enemyLevel": 1438,
+     "enemies": [
+      "5100_14",
+      "5120_14",
+      "5140_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_479_04",
+     "areas": [],
+     "mapId": "map04_town03",
+     "useStamina": 244,
+     "gainRankExp": 2405,
+     "gold": 48100,
+     "enemyLevel": 1438,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_479_05",
+     "areas": [],
+     "mapId": "map04_town04",
+     "useStamina": 244,
+     "gainRankExp": 2405,
+     "gold": 48100,
+     "enemyLevel": 1438,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_DT_ST_480",
+   "num": 480,
+   "stageType": 1,
+   "chapterMap": 1480,
+   "stages": [
+    {
+     "stageId": "DT_STAGE_ST_480_01",
+     "areas": [],
+     "mapId": "map05_roof",
+     "useStamina": 245,
+     "gainRankExp": 2410,
+     "gold": 48200,
+     "enemyLevel": 1441,
+     "enemies": [
+      "5150_04",
+      "5170_14",
+      "5210_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_480_02",
+     "areas": [],
+     "mapId": "map05_sardinia",
+     "useStamina": 245,
+     "gainRankExp": 2410,
+     "gold": 48200,
+     "enemyLevel": 1441,
+     "enemies": [
+      "5220_14",
+      "5290_04",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_480_03",
+     "areas": [],
+     "mapId": "map05_school",
+     "useStamina": 245,
+     "gainRankExp": 2410,
+     "gold": 48200,
+     "enemyLevel": 1441,
+     "enemies": [
+      "5000_03",
+      "5000_04",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_480_04",
+     "areas": [],
+     "mapId": "map05_schoolgate",
+     "useStamina": 245,
+     "gainRankExp": 2410,
+     "gold": 48200,
+     "enemyLevel": 1441,
+     "enemies": [
+      "5000_23",
+      "5000_24",
+      "5001_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    },
+    {
+     "stageId": "DT_STAGE_ST_480_05",
+     "areas": [],
+     "mapId": "map05_town01",
+     "useStamina": 245,
+     "gainRankExp": 2410,
+     "gold": 48200,
+     "enemyLevel": 1441,
+     "enemies": [
+      "5010_04",
+      "5010_14",
+      "5030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "no wiki data merged for this stage yet"
+     }
+    }
+   ]
+  }
+ ]
+}

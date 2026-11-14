@@ -7,12 +7,6 @@ use crate::Ctx;
 use jdr_core::envelope::RequestEnvelope;
 use serde_json::json;
 
-/// `BizarreSelectResponse`: no quest banners or campaigns. `dungeonLockFlg` 1 (`BoolType.True`)
-/// keeps the dungeon button locked, as for a new player (its routes are not served yet).
-pub fn get_bizarre_select(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    ok(json!({ "questList": [], "eventCampaignList": [], "dungeonLockFlg": 1 }))
-}
-
 /// `GetRecommendClanResponse`: no `clanInfo`, which the client shows as "no recommended Town
 /// found" (Towns are the multiplayer guild feature; offline there is none to join).
 pub fn clan_recommend(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
@@ -69,7 +63,7 @@ mod tests {
             (
                 "/bizarre/get_bizarre_select",
                 json!({}),
-                &["questList", "eventCampaignList"][..],
+                &["eventCampaignList"][..],
             ),
             (
                 "/present/present_list",

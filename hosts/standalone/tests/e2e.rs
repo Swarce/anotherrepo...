@@ -178,6 +178,54 @@ fn new_player_boot_sequence() {
         &uuid,
     );
     assert_eq!(si["param"]["statueInfo"]["statueId"], leader["statueId"]);
+    // Story: the story button, a chapter list, a stage list, start and end (clear recorded)
+    let sel = call_as(port, &ep("/bizarre/get_bizarre_select"), "{}", &uuid);
+    assert_eq!(sel["param"]["questList"][0]["bannerType"], 1);
+    let bl = call_as(
+        port,
+        &ep("/bizarre/bizarre_list"),
+        r#"{"category":1}"#,
+        &uuid,
+    );
+    let ch = &bl["param"]["chapterList"][1];
+    let chapter = ch["chapterId"].as_str().unwrap().to_string();
+    let stl = call_as(
+        port,
+        &ep("/bizarre/stage_list"),
+        &format!(
+            r#"{{"chapterId":"{chapter}","stageType":{}}}"#,
+            ch["stageType"]
+        ),
+        &uuid,
+    );
+    let stage = stl["param"]["stageList"][0]["stageId"]
+        .as_str()
+        .unwrap()
+        .to_string();
+    let st = call_as(
+        port,
+        &ep("/bizarre/bizarre_start"),
+        &format!(r#"{{"stageId":"{stage}","teamNo":1}}"#),
+        &uuid,
+    );
+    assert!(!st["param"]["areaList"].as_array().unwrap().is_empty());
+    let en = call_as(
+        port,
+        &ep("/bizarre/bizarre_end"),
+        &format!(r#"{{"stageId":"{stage}","result":0}}"#),
+        &uuid,
+    );
+    assert_eq!(en["param"]["clearRank"], 4);
+    let stl2 = call_as(
+        port,
+        &ep("/bizarre/stage_list"),
+        &format!(
+            r#"{{"chapterId":"{chapter}","stageType":{}}}"#,
+            ch["stageType"]
+        ),
+        &uuid,
+    );
+    assert_eq!(stl2["param"]["stageList"][0]["clearFlg"], 1);
 
     let k = call_as(port, &ep("/client/getkey"), "{}", &uuid);
     assert_eq!(k["param"]["assetkey"], "A".repeat(16));
@@ -233,7 +281,7 @@ fn new_player_boot_sequence() {
         (
             "/bizarre/get_bizarre_select",
             "{}",
-            &["questList", "eventCampaignList"][..],
+            &["eventCampaignList"][..],
         ),
         (
             "/present/present_list",
