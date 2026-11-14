@@ -1,8 +1,10 @@
 //! Backend services the game talks to, plus the shared server context.
 
+pub mod accounts;
 pub mod app;
 pub mod cdn;
 pub mod services;
+pub mod web;
 
 use jdr_core::envelope::RequestEnvelope;
 use jdr_core::log::Counters;
@@ -15,11 +17,22 @@ pub struct Ctx {
     /// Port actually bound (logged; used to build the URLs we hand out).
     pub port: AtomicU16,
     pub trace: bool,
+    pub accounts: accounts::Accounts,
+    /// Answer `get_tutorial_step` with all flags set (Build 01 default: the tutorial needs
+    /// master data that is not rebuilt yet).
+    pub skip_tutorial: bool,
 }
+
+/// Length of the all-ones tutorial list used to skip every tutorial (the real flag table is
+/// unknown; extra entries are ignored by the client).
+pub const TUTORIAL_FLAGS: usize = 256;
 
 impl Ctx {
     pub fn new(settings: Settings, trace: bool) -> Self {
+        let accounts = accounts::Accounts::new(&settings.data_dir);
         Self {
+            accounts,
+            skip_tutorial: true,
             settings,
             counters: Counters::default(),
             port: AtomicU16::new(0),

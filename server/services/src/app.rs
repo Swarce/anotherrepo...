@@ -64,6 +64,9 @@ fn route(ctx: &Arc<Ctx>, req: &Request) -> (Response, &'static str, String) {
             ),
         };
     }
+    if let Some(rel) = path.strip_prefix(crate::web::WEB_PREFIX) {
+        return (crate::web::page(rel), "web", String::new());
+    }
     if path == "/" || path == "/status" {
         return (
             Response::text(

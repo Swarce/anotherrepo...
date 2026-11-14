@@ -199,7 +199,7 @@ impl Axml {
                 return Err(format!("bad chunk size at {o:#x}"));
             }
             let c = &b[o..o + sz];
-            let (line, comment) = if t >= NS_START && t <= CDATA {
+            let (line, comment) = if (NS_START..=CDATA).contains(&t) {
                 (u32at(c, 8), u32at(c, 12))
             } else {
                 (0, 0)
