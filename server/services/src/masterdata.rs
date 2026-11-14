@@ -142,6 +142,10 @@ pub const TABLES: &[(&str, &str)] = &[
         "characterestic_skill_parameter",
         include_str!("../../content/masterdata/characterestic_skill_parameter.json"),
     ),
+    (
+        "skill_data_table",
+        include_str!("../../content/masterdata/skill_data_table.json"),
+    ),
 ];
 
 type Error = String;
