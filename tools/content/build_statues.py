@@ -13,6 +13,12 @@ Matching (strict; anything ambiguous falls back to marked defaults):
   - the tactical basic attack (`dtAttack`): `SKILL_<first 3 digits>_99` when the statue's first model
     has an ATTACK action set (the client maps skill number 99 to ATTACK), else its lowest SKILL_NN
     action; none when the model has no tactical actions;
+  - tactical skills (`dtSkills`, docs/research/12 §3): no source says which SKILL_NN belongs to which
+    variant, so variant k of a character (statueIds of one 3-digit prefix, sorted) takes
+    SKILL_{2k-1} (normal skill) and SKILL_{2k} (special), else the k-th available pair, among the
+    NN that both have an action set on the model and a DTbattle_SKILL_TEXT label. The skill text is
+    read locally only to classify it (damage or heal, one target or all, element); damage and heal
+    skills are kept, others wait for buff data. Only label keys, ids and our numbers are written;
   - a record is used only when every stat has 5 <= Lv99 / Lv1 <= 20 (the wikis show Lv99 ~ 10 x Lv1);
     anything else is a wiki typo and the statue keeps defaults.
 Only numbers are written, each record citing its source page.
@@ -73,6 +79,70 @@ def plausible(lv1, lv99):
 rejected = []
 
 
+DTSC = {k.split(":")[-1] for k in labels if ":DTSC_" in k}
+TEXT = {k.split(":")[-1]: v for k, v in labels.items() if ":DTbattle_SKILL_TEXT_" in k or ":SKILL_NAME_" in k}
+ATTR = {"PHYSICAL": "PHYSICAL", "STAND_PHYSICAL": "STAND_PHY", "HAMON": "HAMON", "UV": "UV", "VMP": "VMP",
+        "ELECT": "ELECTOCAL", "FLAME": "FIRE", "ICE": "PHYSICAL", "BOMB": "PHYSICAL"}
+
+
+def classify(t):
+    """(process, category label, TargetType, ProcessType, hit attribute) from a skill's text."""
+    elem = ("STAND_PHYSICAL" if "スタンド" in t else "HAMON" if "波紋" in t else "UV" if "紫外線" in t
+            else "VMP" if "吸血" in t else "FLAME" if ("炎" in t or "火" in t) else "ELECT" if "電" in t
+            else "ICE" if ("氷" in t or "冷" in t) else "BOMB" if "爆" in t else "PHYSICAL")
+    if "[DR{damagerank}]" in t:
+        allt = any(w in t for w in ("全体", "敵チーム", "広範囲", "周囲"))
+        cat = "DTSC_" + elem + ("_ALL" if allt else "")
+        if cat not in DTSC:
+            cat = "DTSC_PHYSICAL" + ("_ALL" if allt else "")
+        return "DAMAGE", cat, 2 if allt else 1, 1, ATTR[elem]
+    if "回復" in t:
+        base = "DTSC_" + ("HAMON" if "波紋" in t else "STAND" if "スタンド" in t else "PHYSICAL") + "_HEAL"
+        cat = base + ("_ALL" if ("チーム" in t or "全体" in t) else "_MINE" if ("自身" in t and "味方" not in t) else "")
+        if cat not in DTSC:
+            cat = base if base in DTSC else "DTSC_PHYSICAL_HEAL"
+        return "HEAL", cat, 4 if cat.endswith("_ALL") else 5 if cat.endswith("_MINE") else 3, 3, "NONE"
+    return None
+
+
+# Button icons by kind: single-target damage ONE_ATTACK 7 / SP_ONE_ATTACK 38, all-target DT_AREA_ATTACK
+# 83 / 90, heal DT_HEEL 75 / 82 (SkillButtonType; the icon choice is ours).
+BUTTON = {("DAMAGE", 1): (7, 38), ("DAMAGE", 2): (83, 90), ("HEAL", 3): (75, 82), ("HEAL", 4): (75, 82),
+          ("HEAL", 5): (75, 82)}
+by_prefix = collections.defaultdict(list)
+for s in obtainable:
+    by_prefix[s["statueId"][:3]].append(s["statueId"])
+
+
+def dt_skills(s):
+    sid, g = s["statueId"], s["statueId"][:3]
+    k = sorted(by_prefix[g]).index(sid)
+    acts = s.get("dtActions") or []
+    avail = sorted(int(x[6:]) for x in acts
+                   if re.fullmatch(r"SKILL_\d\d", x) and f"DTbattle_SKILL_TEXT_{g}_{int(x[6:]):02d}" in TEXT)
+    pair = [n for n in (2 * k + 1, 2 * k + 2) if n in avail]
+    if len(pair) < 2:
+        pairs = [avail[j:j + 2] for j in range(0, len(avail), 2)]
+        pair = pairs[min(k, len(pairs) - 1)] if pairs else []
+    out = []
+    for i, n in enumerate(pair):
+        key = f"{g}_{n:02d}"
+        c = classify(TEXT.get(f"DTbattle_SKILL_TEXT_{key}", ""))
+        if not c:
+            continue
+        process, cat, target, ptype, attr = c
+        special = i == 1
+        out.append({
+            "id": f"SKILL_{key}", "special": special,
+            "name": f"SKILL_NAME_{key}" if f"SKILL_NAME_{key}" in TEXT else "",
+            "text": f"DTbattle_SKILL_TEXT_{key}",
+            "button": BUTTON[(process, target)][1 if special else 0],
+            "damageRank": 150 if special else 125,
+            "category": cat, "targetType": target, "processType": ptype, "attr": attr,
+        })
+    return out
+
+
 def dt_attack(s):
     acts = s.get("dtActions") or []
     if "ATTACK" in acts:
@@ -126,6 +196,7 @@ for s in obtainable:
         "part": s["part"],
         "modelDataList": s["modelDataList"],
         "dtAttack": dt_attack(s),
+        "dtSkills": dt_skills(s),
         "rarity": None,
         "statueType": None,
         "lv1": None,

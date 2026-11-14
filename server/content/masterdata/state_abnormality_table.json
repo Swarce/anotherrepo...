@@ -1,0 +1,14 @@
+{
+ "asset": "state_abnormality_table",
+ "about": "Empty: action-battle buffs only; the same as a missing asset.",
+ "sources": [
+  {
+   "source": "jdr-default",
+   "note": "empty lists"
+  }
+ ],
+ "data": {
+  "paramList": [],
+  "buffDeleteSkillNamePairList": []
+ }
+}

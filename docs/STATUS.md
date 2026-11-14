@@ -2,6 +2,58 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 13 — the master data filled (branch `wip/b13`)
+
+### What the owner asked
+"Implement everything missing in the master data table minus the dead one" (`signboard_table`).
+
+### What changed (docs/research/12)
+- **Startup tables (11):**
+  - glossary (167 terms);
+  - characteristics;
+  - full 6×6 type-affinity matrices (the game's own chart, our percentages);
+  - ora-ora mode (the client's constants);
+  - affects (the 3 the client names);
+  - Towns (levels and objects);
+  - effect reduction, status abnormality and characteristic skills (neutral).
+- **Battle tables (11):**
+  - tactical and action reaction tables: hit and death animations. Without the death rows a killed
+    unit was never retired, so battles could stall;
+  - `model_table` (210 models);
+  - `bullet_parameter` (394 bullets; 7 statues' attacks fired bullets that died at launch);
+  - action-battle damage, combo and PvP status parameters.
+- **Core tables:**
+  - script cameras for every camera id the client hard-codes. Without them the tactical stage
+    finish and result probably wait forever;
+  - team rank (the client's formula, our thresholds);
+  - mind levels;
+  - the classic skill table (1,109 rows by label key).
+- **Tactical skills:** 382 normal and special skills (188 statues get 2 extra buttons, 73 get 1),
+  with the game's own names, texts, categories and animations. The damage rank table now has 256
+  entries, so a skill's rank sets its power (attack ×1.0, normal ×1.25, special ×1.5).
+- **Left out, with reasons in doc 12:**
+  - `statue_special_scene_data_table`, `assist_ability_condition_table`,
+    `map_gimmick_pattern_table`, `affect_text_rule_table`, `action_branch_data_table`: empty, since
+    no source exists and a wrong row can crash or spawn the wrong actor;
+  - `skill_create_character_table`, `additional_statue_load_table`: absent; summon and preload
+    only, no source;
+  - leader abilities: pending until their value units are verified.
+- Build number 13, server marker `JDR_EMBEDDED_SERVER_b013`.
+
+### Known gaps / risks (expected)
+- The statue-to-skill pairing is inferred (a variant may show a sibling's move).
+- Special skills might need a gauge or cut-in camera we have not traced. If they stall, they can be
+  sent as normal skills.
+- The affinity percentages, all tuning numbers and the camera shots are our own choices.
+- The new tables have not run on a device; the next log decides.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] Boot and My Page as before (the startup tables load)
+- [ ] Battle: hit and death animations; a killed unit leaves; the stage finish and result screens
+      appear
+- [ ] Skill buttons show names and texts; a normal skill and a special skill can be used
+- [ ] Glossary shows terms; the team rank letter appears on the formation screen
+
 ## Build 12 — real attacks, working turns and damage, team member changes (branch `wip/b12`)
 
 ### What the Build 11 device log showed

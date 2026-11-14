@@ -1,0 +1,23 @@
+{
+ "asset": "battle_combo_param",
+ "about": "PvP (action battle) combo damage multipliers by combo step; the client clamps the index to Count-1, so lists must not be empty. Not read by the tactical battle.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/12-master-data-fill.md §2",
+   "note": "how the client reads the table"
+  },
+  {
+   "source": "jdr-default",
+   "note": "neutral 1.0 multipliers"
+  }
+ ],
+ "data": {
+  "magnification": [
+   1.0
+  ],
+  "magnificationAIAutoBattle": [
+   1.0
+  ]
+ }
+}
