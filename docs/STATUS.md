@@ -2,6 +2,40 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 16 — the full non-story translation, attack spacing, draw buttons, win quotes, a real tree (branch `wip/b16`)
+
+### What the Build 15 device log and owner showed
+- Battles are seen from the side, but attackers walked into their targets.
+- Summon, Shop, the growth tree and the dictionary open, but Summon had no draw button.
+- The growth tree works but should be a real tree.
+- The win screen showed placeholder quotes.
+- Owner's request: finish the text translation, minus the story.
+
+### What changed
+- **Translation.** 17,151 more rows are in English: effects and buffs, achievements and missions,
+  campaign/inbox/login-bonus messages, skill texts and categories, item/mind/character
+  descriptions, win quotes, and Town/glossary/tips.
+  - The six batches follow local/l10n/GUIDE.md and the glossary, and were checked for
+    placeholders, line breaks and leftover Japanese.
+  - 50,725 of 51,081 text rows are now translated. The 356 left are story: chapter, event-chapter,
+    daily and dungeon scene text.
+- **Attack spacing.** Skill `dtRangeMin`/`dtRangeMax` are centimetres
+  (`CharacterProxy.SetSkillTargetPos` 0xEE9304); 0/0 walked attackers into the target's centre.
+  - Melee now stops 1–1.5 m away, bullet users 4–8 m, and heals move only when the ally is far.
+  - Move ranges and the bystanders' escape distance are also centimetres, and are fixed.
+- **Summon buttons.** Pay type Cash (4) draws no play buttons (jump table 0x223E70C); the banners
+  now use Free (2) at price 0.
+- **Win quotes.** `battleResultComment` is the game's own `Result_Chara_Comment_<statueId>`
+  label (264 statues), now translated.
+- **Growth tree.** Three branches from the start square (ATK, HP, DEF), with forks.
+- Build number 16, server marker `JDR_EMBEDDED_SERVER_b016`.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] Attackers stop in front of their target
+- [ ] Summon shows single and 10-draw buttons, and a draw plays
+- [ ] The win screen shows the character's quote in English
+- [ ] Skill, effect, item and achievement texts read in English; the growth tree branches
+
 ## Build 15 — battle from the side, menus open (branch `wip/b15`)
 
 ### What the Build 14 device log and owner showed
