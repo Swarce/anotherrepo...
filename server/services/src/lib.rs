@@ -2,6 +2,7 @@
 
 pub mod accounts;
 pub mod app;
+pub mod art;
 pub mod cdn;
 pub mod l10n;
 pub mod masterdata;
@@ -47,6 +48,8 @@ pub struct Ctx {
     pub versionfile_cache: std::sync::Mutex<Option<ManifestState>>,
     /// True while the embedded host imports staged game files (the key request waits for it).
     pub importing: std::sync::atomic::AtomicBool,
+    /// The player's redrawn UI art, if their APK carries a pack (applied with the English rebuild).
+    pub art: Option<art::ArtPack>,
     /// The last successful build, kept even when a later rebuild fails.
     pub last_built: std::sync::Mutex<Option<std::sync::Arc<Generated>>>,
     /// Serialises manifest builds.
@@ -66,6 +69,7 @@ impl Ctx {
             versionfile_cache: std::sync::Mutex::new(None),
             versionfile_build: std::sync::Mutex::new(()),
             last_built: std::sync::Mutex::new(None),
+            art: None,
             importing: std::sync::atomic::AtomicBool::new(false),
             settings,
             counters: Counters::default(),
@@ -206,7 +210,14 @@ impl Ctx {
             // English text bundles: listed with their own md5/size, so the client fetches them once.
             let t_l10n = std::time::Instant::now();
             let (loc, l10n_errors) = match l10n::Translations::embedded() {
-                Ok(tr) => l10n::prepare(dir, &self.settings.data_dir, key, iv, &tr),
+                Ok(tr) => l10n::prepare(
+                    dir,
+                    &self.settings.data_dir,
+                    key,
+                    iv,
+                    &tr,
+                    self.art.as_ref(),
+                ),
                 Err(e) => (Vec::new(), vec![e]),
             };
             for e in &l10n_errors {
@@ -229,6 +240,18 @@ impl Ctx {
                         a.2 + l.stats.stale,
                     )
                 });
+            if let Some(a) = &self.art {
+                let (done, unmatched) = loc.iter().fold((0, 0), |x, l| {
+                    (x.0 + l.stats.art, x.1 + l.stats.art_unmatched)
+                });
+                jdr_core::log::line(
+                    "art",
+                    &format!(
+                        "art pack: {} image(s); {done} sprite(s) replaced in this rebuild, {unmatched} unmatched",
+                        a.len()
+                    ),
+                );
+            }
             jdr_core::log::line(
                 "l10n",
                 &format!(
