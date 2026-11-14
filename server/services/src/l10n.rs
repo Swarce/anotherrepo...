@@ -580,6 +580,7 @@ fn prepare_one(
     std::fs::create_dir_all(gen_dir).map_err(|e| e.to_string())?;
     jdr_core::storage::write_atomic(&gen_path, &bytes).map_err(|e| e.to_string())?;
     let out_md5 = md5_hex(&bytes);
+    let on_device = disk_md5 == out_md5;
     let mut outputs = prev.map(|p| p.outputs).unwrap_or_default();
     // The original itself is never recorded as "ours" (a revert serves it unchanged).
     if out_md5 != src_md5 && !outputs.contains(&out_md5) {
@@ -609,7 +610,7 @@ fn prepare_one(
         size: bytes.len() as i64,
         encrypted,
         stats,
-        on_device: disk_md5 == out_md5,
+        on_device,
     }))
 }
 
