@@ -1,0 +1,37 @@
+{
+ "asset": "Node_el_camera_node_common",
+ "about": "The one camera node the sets use: the values of the client's own built-in test node ski_cam_00 (rotate -20 degrees, field of view 25, distance 13, look-at offset 0.6 m, no bone binding).",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/12-master-data-fill.md \u00a71",
+   "note": "node layout and values from the client's ScriptCameraTestData"
+  }
+ ],
+ "data": {
+  "listData": [
+   {
+    "id": "ski_cam_00",
+    "baseBoneID": 0,
+    "lookatBoneID": 0,
+    "rotate": {
+     "x": -20.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 25.0,
+    "length": 13.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.6,
+     "z": 0.0
+    }
+   }
+  ]
+ }
+}
