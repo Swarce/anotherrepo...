@@ -11,6 +11,11 @@
   test output; check for it before claiming a real-binary pass.
 - Translations are stored as `label -> English` plus a hash of the source line, never the Japanese
   source text.
+- **Server-only content** (values the dead server held: stats, skill numbers, curves, gacha pools,
+  prices, stages) is committed under `server/content/` as JSON **with its sources**: every file has a
+  `sources` list (site, page, date accessed), and every source appears in `CREDITS.md`. Numbers and
+  facts only; never copy descriptions or other prose from the sources. Values we chose ourselves are
+  marked `"source": "jdr-default"`.
 - No real payments, no tracking. Analytics/ads/crash endpoints are accepted and dropped.
 - Use real user data only from logs the user sends; synthetic data everywhere else.
 
