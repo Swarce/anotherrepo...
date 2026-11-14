@@ -206,7 +206,6 @@ pub fn apply(
     if images.is_empty() {
         return Ok(0);
     }
-    // Pass 1: find the sprites (file name -> texture + rectangle), as the exporter named them.
     let mut files = Vec::new();
     for n in nodes.iter() {
         files.push(if n.flags & 4 != 0 {
@@ -215,6 +214,30 @@ pub fn apply(
             None
         });
     }
+    let res: HashMap<String, Vec<u8>> = nodes
+        .iter()
+        .filter(|n| n.flags & 4 == 0)
+        .map(|n| (n.name.clone(), n.data.clone()))
+        .collect();
+    let (count, changed) = apply_files(&mut files, &res, images, unmatched)?;
+    for (i, (n, f)) in nodes.iter_mut().zip(files).enumerate() {
+        if let (true, Some(f)) = (changed.contains(&i), f) {
+            n.data = f.write();
+        }
+    }
+    Ok(count)
+}
+
+/// The core of [`apply`] on parsed files (`None` = not a serialized file). Files without type trees
+/// (in-APK Resources files) must have their Texture2D/Sprite type nodes filled in by the caller.
+/// Returns the number of sprites replaced and the indices of the files changed.
+pub fn apply_files(
+    files: &mut [Option<sfile::SFile>],
+    res: &HashMap<String, Vec<u8>>,
+    images: &HashMap<String, &[u8]>,
+    unmatched: &mut Vec<String>,
+) -> Result<(usize, std::collections::HashSet<usize>), Error> {
+    // Pass 1: find the sprites (file name -> texture + rectangle), as the exporter named them.
     let mut seen: HashMap<String, usize> = HashMap::new();
     let mut found: Vec<SpriteRef> = Vec::new();
     let mut used: std::collections::HashSet<String> = Default::default();
@@ -271,13 +294,8 @@ pub fn apply(
     }
     unmatched.extend(images.keys().filter(|k| !used.contains(*k)).cloned());
     if found.is_empty() {
-        return Ok(0);
+        return Ok((0, Default::default()));
     }
-    let res: HashMap<String, Vec<u8>> = nodes
-        .iter()
-        .filter(|n| n.flags & 4 == 0)
-        .map(|n| (n.name.clone(), n.data.clone()))
-        .collect();
     // Pass 2: per texture, decode, paste, store as RGBA32.
     let mut by_tex: BTreeMap<(usize, i64), Vec<&SpriteRef>> = BTreeMap::new();
     for s in &found {
@@ -351,12 +369,7 @@ pub fn apply(
         f.objects[oi].data = sfile::write_object(&tnodes, &v)?;
     }
     let changed: std::collections::HashSet<usize> = found.iter().map(|s| s.file_index).collect();
-    for (i, (n, f)) in nodes.iter_mut().zip(files).enumerate() {
-        if let (true, Some(f)) = (changed.contains(&i), f) {
-            n.data = f.write();
-        }
-    }
-    Ok(found.len())
+    Ok((found.len(), changed))
 }
 
 #[cfg(test)]
