@@ -178,7 +178,11 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         "newRecordFlg": 0, "teamInfo": team, "gold": gold, "rankExp": rank_exp, "levelExp": rank_exp,
         "mindGashaPoint": 0, "supportUserInfo": {},
         "eventResult": { "eventType": 0, "userEventPointAll": 0, "getUserEventPoint": 0, "eventRewardList": [], "getEventItemList": [] },
-        "dungeonClearFlag": 0, "dungeonGameoverFlag": 0, "nowEventRankingPoint": 0
+        "dungeonClearFlag": 0, "dungeonGameoverFlag": 0, "nowEventRankingPoint": 0,
+        // The result screen's high-score panel reads eventDataList.Count without a null check
+        // (BattleResultHighScoreUIController.Setup 0xC0D4B4); an empty list shows no panel.
+        "oldEventRankingResultInfo": { "point": 0, "eventDataList": [] },
+        "raidStageInfo": {}, "raidBossInfo": {}
     }))
 }
 

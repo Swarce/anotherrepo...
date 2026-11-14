@@ -328,7 +328,7 @@ pub fn statue_info(o: &OwnedStatue) -> Value {
         "maxLevel": MAX_LEVEL, "sellVm": 0, "level": o.level, "bounds": 0, "exp": o.exp,
         "hp": st.hp, "eng": 0, "atk": st.atk, "def": st.def,
         "skillList": [], "abilityList": [], "leaderAbilityInfo": {},
-        "dtSkillList": [], "dtAbilityList": [], "dtLeaderAbilityInfo": {},
+        "dtSkillList": [], "dtAbilityList": [], "dtLeaderAbilityInfo": leader_ability(sid),
         "characteristicList": [], "assistAttr": 0, "assistSkillInfo": {}, "assistAbilityList": [],
         "dtAssistSkillInfo": {}, "dtAssistAbilityList": [],
         "speed": 100, "evasion": 0, "hitrate": 100, "criticalRate": 5,
@@ -464,6 +464,35 @@ fn setting(c: &Collection, uid: i64) -> Value {
                            "mindLinkList": [], "assistStatueList": [], "AiId": "" })
         }
         None => empty_setting(),
+    }
+}
+
+/// The statue's tactical leader ability, when dtbattle_ability_data_table has its row
+/// `DT_LEAD_<statueId>` (docs/research/12 §4). The client takes the name and parameters from the
+/// table (`isInit` false) but needs a list here, and a level of 1..10 (values are interpolated from
+/// the wiki's level-1 value to its MAX value at level 10); level 1 is the wiki's base value.
+pub fn leader_ability(statue_id: &str) -> Value {
+    static IDS: std::sync::OnceLock<std::collections::HashSet<String>> = std::sync::OnceLock::new();
+    let ids = IDS.get_or_init(|| {
+        let js = crate::masterdata::TABLES
+            .iter()
+            .find(|(n, _)| *n == "dtbattle_ability_data_table")
+            .map(|(_, j)| *j)
+            .unwrap_or("{}");
+        serde_json::from_str::<Value>(js)
+            .ok()
+            .and_then(|v| v["data"]["paramList"].as_array().cloned())
+            .unwrap_or_default()
+            .iter()
+            .filter_map(|r| r["abilityId"].as_str().map(str::to_string))
+            .collect()
+    });
+    let id = format!("DT_LEAD_{statue_id}");
+    if ids.contains(&id) {
+        json!({ "abilityId": id, "abilityLevel": 1, "abilityName": "", "abilityParamList": [],
+                "isInit": false })
+    } else {
+        json!({})
     }
 }
 

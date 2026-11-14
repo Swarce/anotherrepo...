@@ -252,6 +252,12 @@
    "class": "Jjs.CharacteristicSkillParameter",
    "core": false,
    "confidence": "H"
+  },
+  {
+   "name": "dtbattle_ability_data_table",
+   "class": "Jjs.AbilityDataTable",
+   "core": false,
+   "confidence": "H"
   }
  ],
  "types": {
