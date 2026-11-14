@@ -6,6 +6,7 @@ use crate::Ctx;
 use jdr_core::envelope::RequestEnvelope;
 use serde_json::{json, Map, Value};
 
+pub mod bizarre;
 pub mod client;
 pub mod common;
 pub mod menu;
@@ -44,7 +45,15 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/statue/statue_info" => statue::statue_info(ctx, env),
         "/team/team_info" => misc::team_info(ctx, env),
         "/bizarre/bizarre_resumption" => misc::bizarre_resumption(ctx, env),
-        "/bizarre/get_bizarre_select" => menu::get_bizarre_select(ctx, env),
+        "/bizarre/bizarre_list" => bizarre::bizarre_list(ctx, env),
+        "/bizarre/stage_list" => bizarre::stage_list(ctx, env),
+        "/bizarre/bizarre_start" => bizarre::bizarre_start(ctx, env),
+        "/bizarre/bizarre_end" => bizarre::bizarre_end(ctx, env),
+        "/bizarre/bizarre_continue" => bizarre::bizarre_continue(ctx, env),
+        "/bizarre/destruction" => bizarre::destruction(ctx, env),
+        "/bizarre/check_timed_chapter" => bizarre::check_timed_chapter(ctx, env),
+        "/support/support_user_s" => bizarre::support_user_s(ctx, env),
+        "/bizarre/get_bizarre_select" => bizarre::get_bizarre_select(ctx, env),
         "/clan/recommend" => menu::clan_recommend(ctx, env),
         "/present/present_list" => menu::present_list(ctx, env),
         "/follow/follow_list" => menu::follow_list(ctx, env),
