@@ -55,6 +55,9 @@ pub fn read_pack_zip(path: &Path) -> Result<BTreeMap<String, Vec<u8>>, Error> {
 }
 
 /// Texture2D and Sprite type nodes from the player's downloaded bundles (same engine build).
+/// Texture2D and Sprite type nodes.
+type Templates = (Vec<TNode>, Vec<TNode>);
+
 /// The 16-byte old type hash of a (non-MonoBehaviour) type entry.
 fn type_hash(raw: &[u8]) -> Option<&[u8]> {
     raw.get(7..23)
@@ -66,7 +69,7 @@ pub fn template_nodes(
     iv: &[u8],
     want_tex: &[u8],
     want_sprite: &[u8],
-) -> Result<(Vec<TNode>, Vec<TNode>), Error> {
+) -> Result<Templates, Error> {
     let mut files: Vec<(u64, std::path::PathBuf)> = std::fs::read_dir(data_dir)
         .map_err(|e| format!("{}: {e}", data_dir.display()))?
         .flatten()
@@ -174,7 +177,7 @@ pub fn apply(
         return Ok(out);
     }
     let groups = ArtPack::from_files(in_apk)?;
-    let mut templates: HashMap<(Vec<u8>, Vec<u8>), (Vec<TNode>, Vec<TNode>)> = HashMap::new();
+    let mut templates: HashMap<(Vec<u8>, Vec<u8>), Templates> = HashMap::new();
     for b in groups.bundles() {
         let hash = b.strip_prefix("apk_").unwrap_or(&b);
         if hash.len() != 32 || !hash.bytes().all(|c| c.is_ascii_hexdigit()) {
