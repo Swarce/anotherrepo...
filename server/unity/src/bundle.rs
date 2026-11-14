@@ -49,7 +49,15 @@ impl<'a> R<'a> {
     }
 }
 
+/// Largest block or blocks-info we accept (game bundles are far smaller); a corrupt header must
+/// never make us allocate gigabytes inside the game process.
+pub const MAX_BLOCK: usize = 64 << 20;
+pub const MAX_TOTAL: usize = 512 << 20;
+
 fn decompress(kind: u32, src: &[u8], out_len: usize) -> Result<Vec<u8>, Error> {
+    if out_len > MAX_BLOCK {
+        return Err(format!("block too large ({out_len} bytes)"));
+    }
     match kind {
         0 => Ok(src.to_vec()),
         2 | 3 => {
@@ -93,6 +101,9 @@ pub fn read(b: &[u8]) -> Result<Vec<Node>, Error> {
     let info = decompress(flags & 0x3f, info_c, usize_)?;
     let mut ir = R { b: &info, o: 16 };
     let nblocks = ir.u32be()? as usize;
+    if nblocks > info.len() / 10 {
+        return Err("bad block count".into());
+    }
     let mut blocks = Vec::with_capacity(nblocks);
     for _ in 0..nblocks {
         let us = ir.u32be()? as usize;
@@ -101,6 +112,12 @@ pub fn read(b: &[u8]) -> Result<Vec<Node>, Error> {
         blocks.push((us, cs, fl));
     }
     let nnodes = ir.u32be()? as usize;
+    if nnodes > info.len() / 20 {
+        return Err("bad node count".into());
+    }
+    if blocks.iter().map(|b| b.0).sum::<usize>() > MAX_TOTAL {
+        return Err("bundle too large".into());
+    }
     let mut nodes_meta = Vec::with_capacity(nnodes);
     for _ in 0..nnodes {
         let off = ir.i64be()? as usize;
@@ -189,5 +206,10 @@ mod tests {
         assert_eq!(read(&b).unwrap(), nodes);
         assert!(read(b"nope").is_err());
         assert!(read(&b[..40]).is_err());
+        // a header claiming a huge block count must fail cleanly
+        let mut bad = b.clone();
+        let p = bad.windows(4).position(|w| w == [0, 0, 0, 1]).unwrap();
+        bad[p..p + 4].copy_from_slice(&0x7fff_ffffu32.to_be_bytes());
+        assert!(read(&bad).is_err());
     }
 }

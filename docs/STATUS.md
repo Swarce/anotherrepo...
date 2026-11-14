@@ -2,6 +2,51 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 05 — keep the game files, import them, review fixes (branch `wip/b05`)
+
+### What the Build 04 device logs showed (Galaxy S22, Android 16)
+- The account persisted across the update (login with the saved uuid, `existStatus 0`).
+- `vcs.bytes` was missing: the game had **deleted its whole download folder**. Cause, from the
+  client code: `ResourceDownloadUIController.StartLoad` runs a one-time "cache clear of non-encrypted
+  files" (`DoCacheClearProcess` → `IOManager.DeleteAllInDirectory(persistentDataPath)`) whenever the
+  PlayerPrefs flag behind `SaveDataManager.LoadNonObfuscatedClearFlag` is unset, which it is after a
+  reinstall. Our server never writes there.
+- After the owner pushed the files back with adb: `vcs.bytes: Permission denied`; the files belong to
+  the shell user, the game falls back to the title and logs in again in a loop.
+
+### What changed
+- **`keep-files` patch** (libil2cpp @0xfd1534, fingerprinted): `LoadNonObfuscatedClearFlag` returns
+  true, so the wipe never runs. `tools/proofs/keep_files_check.py` confirms on the player's binary
+  that the cache clear is its only caller.
+- **File importer** in the embedded host: copies `/data/local/tmp/jdr-import/files` into the game's
+  `files/` as the app (replacing unreadable shell-owned copies, `vcs.bytes` last, temp file +
+  rename, source untouched), then the manifest is built. Expected to work (apps may read
+  world-readable files there); to be confirmed on a device.
+- Boot diagnostics: `[assets] game files: N file(s), …` (vcs.bytes present? recorded files missing?).
+- Manifest build outside the lock, failures cached for 30 s, poison-safe, template scan capped.
+- **Review fixes (Builds 03–04):** `unity-heap` now uses 16 MiB pools (shorter pool/large lists in
+  busy heaps; the proof allows exactly that one field to differ and also checks the calling
+  convention, the callers and the storage size); bundle reader caps block/node counts and sizes;
+  type-tree flags match Unity's (0x8000 on variable-size nodes); UnityPy check script for the
+  manifest; `build.sh` lists skipped checks and requires the proofs when `JDR_APK` is set.
+- Docs: restore step via the staging folder, missing-files and permission troubleshooting,
+  `--disable unity-heap`, log redaction; CREDITS links.
+- Build number 5, server marker `JDR_EMBEDDED_SERVER_b005`.
+
+### Device result (Galaxy S22, Android 16) — confirmed by device logs
+- [x] Import from `/data/local/tmp/jdr-import/files` works (apps may read it): first run copied
+      11,000 files / 1.2 GB in ~20 s before the game was closed; the next run resumed and finished in
+      13 s (2,380 copied, 2,378 unreadable shell-owned copies replaced, 0 failed).
+- [x] `[assets] game files: 13480 file(s), all 13479 recorded files present`;
+      `versionfile built: 13479 entries, 1845 KiB, 3544 ms` (background, before the title).
+- [x] The client accepted the generated manifest: `[cdn] … 200 … (generated versionfile)`, **no other
+      downloads** (every local file judged up to date), no errors.
+- [x] Then `get_system_config`, `get_tutorial_step`, and `getfiledata` for `in_memory_master_data`
+      → 404: the expected M1.5 stop.
+- [ ] After a reinstall or "Clear storage", the files are no longer wiped (not tested yet).
+- Note: during an import the client loops title → login until `vcs.bytes` arrives (it is copied
+  last). Next build: hold `/client/getkey` until the import finishes; clean leftover temp files.
+
 ## Build 04 — generated asset manifest (branch `wip/b04`)
 
 ### What changed
@@ -19,7 +64,8 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 
 ### Verified off-device
 - Real data: 13,479 entries (4,368 encrypted), 1.89 MB bundle, built in ~0.1 s on a PC.
-- UnityPy (an independent Unity reader) parses the bundle: container
+- UnityPy (an independent Unity reader) parses the bundle (`tools/proofs/versionfile_check.py`, run
+  by `build.sh` with `JDR_DATA` + `JDR_KEYS`): container
   `assets/resources/version/android/versionfile.asset`, MonoScript
   `ScSystem.ScIO.AssetBundleVersionInfo` / `Assembly-CSharp.dll`, every entry decodes through our
   type tree.
@@ -57,11 +103,16 @@ server-data problem; Unity fixed it in a later 2018.4 release. The `-systemalloc
 not help: in this release build its result is ignored.
 
 ### What changed
-- **`unity-heap` patch:** replaces the 96-byte body of the `UnityDefaultAllocator` constructor
+- **`unity-heap` patch** (evidence: the boot crash is gone on the device; long sessions, memory use
+  and frame pacing with the new allocators are not yet observed): replaces the 96-byte body of the `UnityDefaultAllocator` constructor
   (libunity @0x9ff824, fingerprinted by library and window SHA-256) with code that builds a
-  `DynamicHeapAllocator`, field for field like the engine's own inline `ALLOC_FALLBACK` heap. Only
-  the three allocators above used that constructor; nothing else calls it or the page-table code.
-- **Equivalence proof on the real binary** (`tools/proofs/unity_heap_equiv.py`, run by `build.sh`):
+  `DynamicHeapAllocator`, field for field like the engine's own inline `ALLOC_FALLBACK` heap. The
+  proof script checks on the real binary that only the three allocators above call that
+  constructor, that the page-table code is reachable only from its own class, and that each object
+  has 0x140 bytes of storage (the constructor writes below 0x118). The new heaps lock (like the
+  fallback heap) and use 1 MiB pools.
+- **Equivalence proof on the real binary** (`tools/proofs/unity_heap_equiv.py`; `build.sh` runs it
+  and requires it whenever `JDR_APK` is set):
   arm64 emulation of the patched constructor vs the engine's inline construction on a poisoned
   object → 129 bytes written, **0 bytes differ**, same mutex-init call.
 - Build number 3, server marker `JDR_EMBEDDED_SERVER_b003`.
