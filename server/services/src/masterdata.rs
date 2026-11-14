@@ -641,6 +641,13 @@ mod tests {
         for r in sk["skillDataList"].as_array().unwrap() {
             assert!(cats.contains(&r["mainSkillCategory"].as_str().unwrap()));
         }
+        // Values that would zero damage (docs/research/11 §2.1).
+        let p = &doc("dtbattle_damage_param")["param"][0];
+        let f = |k: &str| p[k].as_f64().unwrap();
+        assert!(f("_limitRateMin") <= 1.0 && 1.0 <= f("_limitRateMax"));
+        assert!(f("_multiDealDamageMin") <= 1.0 && 1.0 <= f("_multiDealDamageMax"));
+        assert!(f("_addDamageMin") <= 0.0 && 0.0 <= f("_addDamageMax"));
+        assert!(f("_damageCap") > 0.0 && f("_damageGitterMax") > 0.0);
         let pat = doc("area_position_pattern_table");
         let row = pat["paramList"]
             .as_array()
@@ -651,7 +658,38 @@ mod tests {
         let sets = row["posSetList"].as_array().unwrap();
         assert_eq!(sets.len(), 6);
         for (i, s) in sets.iter().enumerate() {
-            assert_eq!(s["positionList"].as_array().unwrap().len(), i % 3 + 1);
+            let list = s["positionList"].as_array().unwrap();
+            assert_eq!(list.len(), i % 3 + 1);
+            for q in list.iter().flat_map(|p| [&p["rotate"], &p["startRotate"]]) {
+                let n: f64 = ["x", "y", "z", "w"]
+                    .iter()
+                    .map(|k| q[*k].as_f64().unwrap().powi(2))
+                    .sum();
+                assert!((n - 1.0).abs() < 1e-9, "unit quaternion");
+            }
+        }
+        // Statue rows: full-size team statues, the My Page camera object, positions in cm.
+        let rows = crate::collection::statue_setting_rows();
+        assert!(rows.iter().all(|r| r["teamScaleScalar"] == 100.0
+            && r["myPageCameraType"] == "CameraIdSet0"
+            && r["mindFrameID"] == 1
+            && r["myPagePos"]["z"].as_f64().unwrap() > 100.0));
+        // Tactical areas name the formation and send no boss; action areas name none.
+        for c in crate::quests::chapters().iter().take(40) {
+            let a = &crate::quests::area_list(c, &c.stages[0])[0];
+            let want = if c.stage_type == 1 {
+                crate::quests::DT_FORMATION
+            } else {
+                ""
+            };
+            assert_eq!(a["formation"], want);
+            for e in a["areaSettingList"].as_array().unwrap() {
+                assert_eq!(e["bossFlag"], 0);
+                assert_eq!(
+                    e["enemyStatueInfo"]["dtSkillList"][0]["skillId"],
+                    crate::collection::BASIC_ATTACK
+                );
+            }
         }
     }
 

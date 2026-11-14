@@ -1672,6 +1672,11 @@
      "name": "paramList",
      "type": "ScSystem.ScSecurity.SecurityIntValue",
      "list": true
+    },
+    {
+     "name": "debugParamStrList",
+     "type": "ScSystem.ScSecurity.SecurityStringValue",
+     "list": true
     }
    ]
   },
