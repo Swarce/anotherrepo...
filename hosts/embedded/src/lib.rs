@@ -343,7 +343,15 @@ fn run_import(ctx: &Ctx) {
         return;
     }
     let t0 = Instant::now();
+    // Cleared on every exit, panics included, so the key request never waits for a dead import.
+    struct Importing<'a>(&'a std::sync::atomic::AtomicBool);
+    impl Drop for Importing<'_> {
+        fn drop(&mut self) {
+            self.0.store(false, Ordering::Relaxed);
+        }
+    }
     ctx.importing.store(true, Ordering::Relaxed);
+    let _importing = Importing(&ctx.importing);
     log::line(
         "import",
         &format!(
@@ -373,7 +381,6 @@ fn run_import(ctx: &Ctx) {
         ),
         Err(e) => log::line("import", &format!("import FAILED: {e}")),
     }
-    ctx.importing.store(false, Ordering::Relaxed);
 }
 
 /// Port actually bound (0 until listening); for tests and diagnostics.

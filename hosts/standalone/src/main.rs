@@ -90,7 +90,7 @@ fn main() {
             if ctx.skip_tutorial {
                 "skipped (all flags set)"
             } else {
-                "played"
+                "played — WARNING: the master tables have no tutorial scripts yet, so the first tutorial starts with nothing to run (dev only)"
             }
         ),
     );
