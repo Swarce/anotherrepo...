@@ -34,6 +34,38 @@ pub fn statue_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "allStatueNum": list.len(), "statueList": list, "sortType": 0 }))
 }
 
+/// `MindListResponse`: every owned mind.
+pub fn mind_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let p = profile(ctx, env)?;
+    let list: Vec<Value> = p
+        .collection
+        .minds
+        .iter()
+        .map(collection::mind_info)
+        .collect();
+    ok(
+        json!({ "mindMax": collection::MIND_MAX, "mindList": list, "mindOverFlg": 0, "sortType": 0,
+               "materialSortType": 0, "goldRatioInteger": 0, "goldAddition": 0, "storageInfoList": [] }),
+    )
+}
+
+/// `MindInfoResponse` for one mind (`minduId`).
+pub fn mind_info(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let p = profile(ctx, env)?;
+    let uid = env
+        .param
+        .get("minduId")
+        .and_then(Value::as_i64)
+        .unwrap_or(0);
+    let o = p
+        .collection
+        .minds
+        .iter()
+        .find(|m| m.uid == uid)
+        .ok_or_else(|| ApiError::Internal(format!("no mind {uid}")))?;
+    ok(json!({ "mindInfo": collection::mind_info(o) }))
+}
+
 /// `StatueInfoResponse` for one statue (`statueuId`).
 pub fn statue_info(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let p = profile(ctx, env)?;
