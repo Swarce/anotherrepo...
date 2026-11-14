@@ -75,6 +75,23 @@ fn applies_the_art_pack() {
         size("gen") >> 20
     );
     // Removing the pack serves text-only bundles again (the atlases revert to the originals).
+    // Done on a copy of the state, so JDR_ART_OUT keeps the art build for the UnityPy check.
+    fn copy_dir(a: &std::path::Path, b: &std::path::Path) {
+        std::fs::create_dir_all(b).unwrap();
+        for e in std::fs::read_dir(a).unwrap().flatten() {
+            let to = b.join(e.file_name());
+            if e.path().is_dir() {
+                copy_dir(&e.path(), &to);
+            } else {
+                std::fs::copy(e.path(), &to).unwrap();
+            }
+        }
+    }
+    let state_copy =
+        std::env::temp_dir().join(format!("jdr-real-art-revert-{}", std::process::id()));
+    let _ = std::fs::remove_dir_all(&state_copy);
+    copy_dir(&state, &state_copy);
+    let state = state_copy;
     let (plain, errs) = l10n::prepare(std::path::Path::new(&dir), &state, key, iv, &tr, None);
     assert!(errs.is_empty(), "{errs:?}");
     assert!(plain.iter().all(|l| l.stats.art == 0));
@@ -104,4 +121,5 @@ fn applies_the_art_pack() {
         }
     }
     let _ = std::fs::remove_dir_all(&fresh);
+    let _ = std::fs::remove_dir_all(&state);
 }
