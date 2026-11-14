@@ -1,5 +1,5 @@
-//! MyPage menu screens for a fresh offline player: quest select, present box, follow list,
-//! items and shops. Every list is empty; M4/M5 fill them from server/content and the save.
+//! MyPage menu screens that are still empty offline: present box, follow list, items, shops and
+//! Town recommendations. Story quests live in `bizarre.rs`; the collection in `statue.rs`.
 
 use crate::app::ApiResult;
 use crate::services::ok;
