@@ -375,3 +375,82 @@ mod tests {
         assert!(exp_for_level(2) > exp_for_level(1));
     }
 }
+
+// ---------------------------------------------------------------------------------------------
+// Player rank (from the wiki's user-rank table).
+
+pub const RANKS_JSON: &str = include_str!("../../content/ranks.json");
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct RankRow {
+    pub rank: i64,
+    pub exp: i64,
+    #[serde(rename = "apMax")]
+    pub ap_max: i64,
+}
+
+pub fn ranks() -> &'static [RankRow] {
+    static CELL: std::sync::OnceLock<Vec<RankRow>> = std::sync::OnceLock::new();
+    CELL.get_or_init(|| {
+        #[derive(Deserialize)]
+        struct Doc {
+            ranks: Vec<RankRow>,
+        }
+        let mut v = serde_json::from_str::<Doc>(RANKS_JSON)
+            .map(|d| d.ranks)
+            .unwrap_or_default();
+        v.sort_by_key(|r| r.rank);
+        v
+    })
+}
+
+/// Rank reached with `exp` total rank EXP (1 if the table is empty).
+pub fn rank_for_exp(exp: i64) -> i64 {
+    ranks()
+        .iter()
+        .filter(|r| r.exp <= exp)
+        .map(|r| r.rank)
+        .max()
+        .unwrap_or(1)
+}
+
+/// AP (stamina) maximum at a rank (20 if unknown, the wiki's rank-1 value).
+pub fn ap_max(rank: i64) -> i64 {
+    ranks()
+        .iter()
+        .find(|r| r.rank == rank)
+        .map(|r| r.ap_max)
+        .unwrap_or(20)
+}
+
+/// Total EXP needed for the next rank (the current threshold at the top rank).
+pub fn next_rank_exp(rank: i64) -> i64 {
+    ranks()
+        .iter()
+        .find(|r| r.rank == rank + 1)
+        .or_else(|| ranks().last())
+        .map(|r| r.exp)
+        .unwrap_or(100)
+}
+
+/// Rows for `rank_table` (`PlayerRankTable.Param {rank, exp}`).
+pub fn rank_rows() -> Vec<Value> {
+    ranks()
+        .iter()
+        .map(|r| json!({ "rank": r.rank, "exp": r.exp }))
+        .collect()
+}
+
+#[cfg(test)]
+mod rank_tests {
+    use super::*;
+    #[test]
+    fn rank_table() {
+        assert!(ranks().len() >= 99);
+        assert_eq!(rank_for_exp(0), 1);
+        assert_eq!(rank_for_exp(39), 1);
+        assert_eq!(rank_for_exp(40), 2);
+        assert_eq!(ap_max(1), 20);
+        assert_eq!(next_rank_exp(1), 40);
+    }
+}

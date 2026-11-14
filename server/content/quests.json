@@ -5,6 +5,11 @@
    "source": "jdr-default",
    "note": "identifiers from the player's files; defaults where no wiki data",
    "accessed": "2026-11-14"
+  },
+  {
+   "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+   "page": "https://jojodr.gamerch.com/",
+   "accessed": "2026-11-14"
   }
  ],
  "chapters": [
@@ -24,7 +29,7 @@
      "mapId": "map01_around01",
      "useStamina": 5,
      "gainRankExp": 10,
-     "gold": 200,
+     "gold": 250,
      "enemyLevel": 1,
      "enemies": [
       "1000_01",
@@ -32,8 +37,10 @@
       "1000_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110190224/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%91%E7%AB%A0%E3%80%80%E6%9D%9C%E7%8E%8B%E7%94%BA%E3%81%AE%E5%96%A7%E9%A8%92",
+      "capture": "20241110190224",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -54,17 +61,19 @@
      ],
      "mapId": "map02_snowfield03",
      "useStamina": 5,
-     "gainRankExp": 15,
-     "gold": 300,
-     "enemyLevel": 4,
+     "gainRankExp": 20,
+     "gold": 500,
+     "enemyLevel": 2,
      "enemies": [
       "1110_02",
       "1110_03",
       "1120_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110193936/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%92%E7%AB%A0%E3%80%80%E3%82%A2%E3%83%B3%E3%82%B8%E3%82%A7%E3%83%AD%E3%82%92%E8%BF%BD%E3%81%88",
+      "capture": "20241110193936",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -76,17 +85,19 @@
      ],
      "mapId": "map03_beach00",
      "useStamina": 5,
-     "gainRankExp": 15,
-     "gold": 300,
-     "enemyLevel": 4,
+     "gainRankExp": 20,
+     "gold": 500,
+     "enemyLevel": 3,
      "enemies": [
       "1120_02",
       "1120_03",
       "1130_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110193936/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%92%E7%AB%A0%E3%80%80%E3%82%A2%E3%83%B3%E3%82%B8%E3%82%A7%E3%83%AD%E3%82%92%E8%BF%BD%E3%81%88",
+      "capture": "20241110193936",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -106,17 +117,19 @@
      ],
      "mapId": "map03_egypt03",
      "useStamina": 6,
-     "gainRankExp": 20,
-     "gold": 400,
-     "enemyLevel": 7,
+     "gainRankExp": 40,
+     "gold": 1000,
+     "enemyLevel": 4,
      "enemies": [
       "1090_13",
       "1100_01",
       "1100_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110173717/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%93%E7%AB%A0%E3%80%80%E7%9A%87%E5%B8%9D",
+      "capture": "20241110173717",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -128,17 +141,19 @@
      ],
      "mapId": "map03_enya01",
      "useStamina": 6,
-     "gainRankExp": 20,
-     "gold": 400,
-     "enemyLevel": 7,
+     "gainRankExp": 40,
+     "gold": 1231,
+     "enemyLevel": 5,
      "enemies": [
       "1100_03",
       "1100_11",
       "1100_12"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110173717/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%93%E7%AB%A0%E3%80%80%E7%9A%87%E5%B8%9D",
+      "capture": "20241110173717",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -149,18 +164,20 @@
       "area_st_02_03_03"
      ],
      "mapId": "map03_enya02",
-     "useStamina": 6,
-     "gainRankExp": 20,
-     "gold": 400,
-     "enemyLevel": 7,
+     "useStamina": 7,
+     "gainRankExp": 70,
+     "gold": 1231,
+     "enemyLevel": 6,
      "enemies": [
       "1100_13",
       "1100_14",
       "1100_28"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110173717/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%93%E7%AB%A0%E3%80%80%E7%9A%87%E5%B8%9D",
+      "capture": "20241110173717",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -179,18 +196,20 @@
       "area_st_03_01_03"
      ],
      "mapId": "map03_tiger01",
-     "useStamina": 6,
-     "gainRankExp": 25,
-     "gold": 500,
-     "enemyLevel": 10,
+     "useStamina": 4,
+     "gainRankExp": 70,
+     "gold": 1231,
+     "enemyLevel": 6,
      "enemies": [
       "1020_01",
       "1020_02",
       "1020_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110192453/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%94%E7%AB%A0%E3%80%80%E5%8F%8E%E7%A9%AB",
+      "capture": "20241110192453",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -201,18 +220,20 @@
       "area_st_03_02_03"
      ],
      "mapId": "map03_tiger02",
-     "useStamina": 6,
-     "gainRankExp": 25,
-     "gold": 500,
-     "enemyLevel": 10,
+     "useStamina": 4,
+     "gainRankExp": 70,
+     "gold": 1462,
+     "enemyLevel": 7,
      "enemies": [
       "1020_04",
       "1080_01",
       "1080_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110192453/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%94%E7%AB%A0%E3%80%80%E5%8F%8E%E7%A9%AB",
+      "capture": "20241110192453",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -223,18 +244,20 @@
       "area_st_03_03_03"
      ],
      "mapId": "map04_country01",
-     "useStamina": 6,
-     "gainRankExp": 25,
-     "gold": 500,
-     "enemyLevel": 10,
+     "useStamina": 4,
+     "gainRankExp": 100,
+     "gold": 1462,
+     "enemyLevel": 7,
      "enemies": [
       "1080_03",
       "1090_01",
       "1090_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110192453/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%94%E7%AB%A0%E3%80%80%E5%8F%8E%E7%A9%AB",
+      "capture": "20241110192453",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -253,18 +276,20 @@
       "area_st_04_01_03"
      ],
      "mapId": "map04_town01",
-     "useStamina": 7,
-     "gainRankExp": 30,
-     "gold": 600,
-     "enemyLevel": 13,
+     "useStamina": 4,
+     "gainRankExp": 100,
+     "gold": 1462,
+     "enemyLevel": 8,
      "enemies": [
       "1000_01",
       "1000_02",
       "1000_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110190634/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%95%E7%AB%A0%E3%80%80%E5%B1%B1%E5%B2%B8%E7%94%B1%E8%8A%B1%E5%AD%90%E3%81%AF%E6%81%8B%E3%82%92%E3%81%99%E3%82%8B%EF%BD%9E%E5%BA%B7%E4%B8%80%E7%B7%A8%EF%BD%9E",
+      "capture": "20241110190634",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -275,18 +300,20 @@
       "area_st_04_02_03"
      ],
      "mapId": "map04_town03",
-     "useStamina": 7,
-     "gainRankExp": 30,
-     "gold": 600,
-     "enemyLevel": 13,
+     "useStamina": 4,
+     "gainRankExp": 100,
+     "gold": 1693,
+     "enemyLevel": 8,
      "enemies": [
       "1000_04",
       "1000_12",
       "1000_13"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110190634/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%95%E7%AB%A0%E3%80%80%E5%B1%B1%E5%B2%B8%E7%94%B1%E8%8A%B1%E5%AD%90%E3%81%AF%E6%81%8B%E3%82%92%E3%81%99%E3%82%8B%EF%BD%9E%E5%BA%B7%E4%B8%80%E7%B7%A8%EF%BD%9E",
+      "capture": "20241110190634",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -297,18 +324,20 @@
       "area_st_04_03_03"
      ],
      "mapId": "map04_town04",
-     "useStamina": 7,
-     "gainRankExp": 30,
-     "gold": 600,
-     "enemyLevel": 13,
+     "useStamina": 4,
+     "gainRankExp": 140,
+     "gold": 1693,
+     "enemyLevel": 9,
      "enemies": [
       "1000_28",
       "1010_01",
       "1010_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110190634/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%95%E7%AB%A0%E3%80%80%E5%B1%B1%E5%B2%B8%E7%94%B1%E8%8A%B1%E5%AD%90%E3%81%AF%E6%81%8B%E3%82%92%E3%81%99%E3%82%8B%EF%BD%9E%E5%BA%B7%E4%B8%80%E7%B7%A8%EF%BD%9E",
+      "capture": "20241110190634",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -327,18 +356,20 @@
       "area_st_05_01_03"
      ],
      "mapId": "map05_school",
-     "useStamina": 7,
-     "gainRankExp": 35,
-     "gold": 700,
-     "enemyLevel": 16,
+     "useStamina": 4,
+     "gainRankExp": 140,
+     "gold": 1693,
+     "enemyLevel": 19,
      "enemies": [
       "1110_02",
       "1110_03",
       "1120_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110180003/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%96%E7%AB%A0%E3%80%80%E6%9F%B1%E3%81%AE%E7%94%B7%E3%82%B5%E3%83%B3%E3%82%BF%E3%83%8A%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
+      "capture": "20241110180003",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -349,18 +380,20 @@
       "area_st_05_02_03"
      ],
      "mapId": "map05_schoolgate",
-     "useStamina": 7,
-     "gainRankExp": 35,
-     "gold": 700,
-     "enemyLevel": 16,
+     "useStamina": 4,
+     "gainRankExp": 140,
+     "gold": 1924,
+     "enemyLevel": 19,
      "enemies": [
       "1120_02",
       "1120_03",
       "1130_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110180003/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%96%E7%AB%A0%E3%80%80%E6%9F%B1%E3%81%AE%E7%94%B7%E3%82%B5%E3%83%B3%E3%82%BF%E3%83%8A%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
+      "capture": "20241110180003",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -371,18 +404,20 @@
       "area_st_05_03_03"
      ],
      "mapId": "map05_town01",
-     "useStamina": 7,
-     "gainRankExp": 35,
-     "gold": 700,
-     "enemyLevel": 16,
+     "useStamina": 4,
+     "gainRankExp": 180,
+     "gold": 1924,
+     "enemyLevel": 19,
      "enemies": [
       "1130_02",
       "1130_03",
       "1130_04"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110180003/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%96%E7%AB%A0%E3%80%80%E6%9F%B1%E3%81%AE%E7%94%B7%E3%82%B5%E3%83%B3%E3%82%BF%E3%83%8A%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
+      "capture": "20241110180003",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -402,17 +437,19 @@
      ],
      "mapId": "map02_mexico01",
      "useStamina": 8,
-     "gainRankExp": 40,
-     "gold": 800,
-     "enemyLevel": 19,
+     "gainRankExp": 180,
+     "gold": 2155,
+     "enemyLevel": 23,
      "enemies": [
       "1090_13",
       "1100_01",
       "1100_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174918/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%97%E7%AB%A0%E3%80%80%E8%AC%8E%E3%81%AE%E7%B4%B3%E5%A3%AB",
+      "capture": "20241110174918",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -423,18 +460,20 @@
       "area_st_06_02_03"
      ],
      "mapId": "map02_mexico02",
-     "useStamina": 8,
-     "gainRankExp": 40,
-     "gold": 800,
-     "enemyLevel": 19,
+     "useStamina": 9,
+     "gainRankExp": 240,
+     "gold": 2155,
+     "enemyLevel": 23,
      "enemies": [
       "1100_03",
       "1100_11",
       "1100_12"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174918/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%97%E7%AB%A0%E3%80%80%E8%AC%8E%E3%81%AE%E7%B4%B3%E5%A3%AB",
+      "capture": "20241110174918",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -445,18 +484,20 @@
       "area_st_06_03_03"
      ],
      "mapId": "map02_snowfield01",
-     "useStamina": 8,
-     "gainRankExp": 40,
-     "gold": 800,
-     "enemyLevel": 19,
+     "useStamina": 9,
+     "gainRankExp": 240,
+     "gold": 2155,
+     "enemyLevel": 25,
      "enemies": [
       "1100_13",
       "1100_14",
       "1100_28"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174918/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%97%E7%AB%A0%E3%80%80%E8%AC%8E%E3%81%AE%E7%B4%B3%E5%A3%AB",
+      "capture": "20241110174918",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -465,18 +506,20 @@
       "area_st_06_04_01"
      ],
      "mapId": "map02_snowfield02",
-     "useStamina": 8,
-     "gainRankExp": 40,
-     "gold": 800,
-     "enemyLevel": 19,
+     "useStamina": 9,
+     "gainRankExp": 240,
+     "gold": 2386,
+     "enemyLevel": 25,
      "enemies": [
       "1110_01",
       "1110_02",
       "1110_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174918/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%97%E7%AB%A0%E3%80%80%E8%AC%8E%E3%81%AE%E7%B4%B3%E5%A3%AB",
+      "capture": "20241110174918",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -495,18 +538,20 @@
       "area_st_07_01_03"
      ],
      "mapId": "map03_diohouse06",
-     "useStamina": 8,
-     "gainRankExp": 45,
-     "gold": 900,
-     "enemyLevel": 22,
+     "useStamina": 9,
+     "gainRankExp": 240,
+     "gold": 2366,
+     "enemyLevel": 26,
      "enemies": [
       "2081_12",
       "2081_13",
       "2081_14"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174235/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%98%E7%AB%A0%E3%80%80%E8%99%B9%E6%9D%91%E5%85%84%E5%BC%9F%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
+      "capture": "20241110174235",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -517,18 +562,20 @@
       "area_st_07_02_03"
      ],
      "mapId": "map03_diohouse07",
-     "useStamina": 8,
-     "gainRankExp": 45,
+     "useStamina": 9,
+     "gainRankExp": 300,
      "gold": 900,
-     "enemyLevel": 22,
+     "enemyLevel": 26,
      "enemies": [
       "2100_03",
       "2110_01",
       "2110_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174235/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%98%E7%AB%A0%E3%80%80%E8%99%B9%E6%9D%91%E5%85%84%E5%BC%9F%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
+      "capture": "20241110174235",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -539,18 +586,20 @@
       "area_st_07_03_03"
      ],
      "mapId": "map03_egypt01",
-     "useStamina": 8,
-     "gainRankExp": 45,
+     "useStamina": 9,
+     "gainRankExp": 300,
      "gold": 900,
-     "enemyLevel": 22,
+     "enemyLevel": 29,
      "enemies": [
       "2110_03",
       "2111_01",
       "2111_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174235/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%98%E7%AB%A0%E3%80%80%E8%99%B9%E6%9D%91%E5%85%84%E5%BC%9F%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
+      "capture": "20241110174235",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -561,18 +610,20 @@
       "area_st_07_04_03"
      ],
      "mapId": "map03_egypt02",
-     "useStamina": 8,
-     "gainRankExp": 45,
-     "gold": 900,
-     "enemyLevel": 22,
+     "useStamina": 9,
+     "gainRankExp": 300,
+     "gold": 2617,
+     "enemyLevel": 29,
      "enemies": [
       "2111_03",
       "2000_01",
       "2000_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174235/https://jojodr.gamerch.com/%E7%AC%AC%EF%BC%98%E7%AB%A0%E3%80%80%E8%99%B9%E6%9D%91%E5%85%84%E5%BC%9F%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
+      "capture": "20241110174235",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -592,17 +643,19 @@
      ],
      "mapId": "map03_india03",
      "useStamina": 9,
-     "gainRankExp": 50,
-     "gold": 1000,
-     "enemyLevel": 25,
+     "gainRankExp": 300,
+     "gold": 2617,
+     "enemyLevel": 29,
      "enemies": [
       "2050_02",
       "2050_03",
       "2050_04"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110191022/https://jojodr.gamerch.com/%E7%AC%AC9%E7%AB%A0%E3%80%80%E3%80%8E%E7%8B%A9%E3%82%8A%E3%80%8F%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
+      "capture": "20241110191022",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -614,17 +667,19 @@
      ],
      "mapId": "map03_jotatown01",
      "useStamina": 9,
-     "gainRankExp": 50,
-     "gold": 1000,
-     "enemyLevel": 25,
+     "gainRankExp": 300,
+     "gold": 2617,
+     "enemyLevel": 29,
      "enemies": [
       "2050_12",
       "2060_01",
       "2060_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110191022/https://jojodr.gamerch.com/%E7%AC%AC9%E7%AB%A0%E3%80%80%E3%80%8E%E7%8B%A9%E3%82%8A%E3%80%8F%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
+      "capture": "20241110191022",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -635,18 +690,20 @@
       "area_st_08_03_03"
      ],
      "mapId": "map03_jotatown02",
-     "useStamina": 9,
-     "gainRankExp": 50,
+     "useStamina": 10,
+     "gainRankExp": 380,
      "gold": 1000,
-     "enemyLevel": 25,
+     "enemyLevel": 3,
      "enemies": [
       "2060_03",
       "2070_01",
       "2070_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110191022/https://jojodr.gamerch.com/%E7%AC%AC9%E7%AB%A0%E3%80%80%E3%80%8E%E7%8B%A9%E3%82%8A%E3%80%8F%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
+      "capture": "20241110191022",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -657,18 +714,20 @@
       "area_st_08_04_03"
      ],
      "mapId": "map03_jotatown03",
-     "useStamina": 9,
-     "gainRankExp": 50,
+     "useStamina": 10,
+     "gainRankExp": 390,
      "gold": 1000,
-     "enemyLevel": 25,
+     "enemyLevel": 31,
      "enemies": [
       "2070_03",
       "2080_01",
       "2080_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110191022/https://jojodr.gamerch.com/%E7%AC%AC9%E7%AB%A0%E3%80%80%E3%80%8E%E7%8B%A9%E3%82%8A%E3%80%8F%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
+      "capture": "20241110191022",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -679,18 +738,20 @@
       "area_st_08_05_03"
      ],
      "mapId": "map03_tiger01",
-     "useStamina": 9,
-     "gainRankExp": 50,
-     "gold": 1000,
-     "enemyLevel": 25,
+     "useStamina": 10,
+     "gainRankExp": 390,
+     "gold": 2848,
+     "enemyLevel": 31,
      "enemies": [
       "2080_03",
       "2081_11",
       "2081_12"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110191022/https://jojodr.gamerch.com/%E7%AC%AC9%E7%AB%A0%E3%80%80%E3%80%8E%E7%8B%A9%E3%82%8A%E3%80%8F%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91",
+      "capture": "20241110191022",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -709,18 +770,20 @@
       "area_st_09_01_03"
      ],
      "mapId": "map04_mystery01",
-     "useStamina": 9,
-     "gainRankExp": 55,
+     "useStamina": 10,
+     "gainRankExp": 500,
      "gold": 1100,
-     "enemyLevel": 28,
+     "enemyLevel": 34,
      "enemies": [
       "2010_01",
       "2010_02",
       "2010_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110190803/https://jojodr.gamerch.com/%E7%AC%AC10%E7%AB%A0%E3%80%80%E6%9F%B1%E3%81%AE%E7%94%B7%E3%82%B5%E3%83%B3%E3%82%BF%E3%83%8A%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110190803",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -731,18 +794,20 @@
       "area_st_09_02_03"
      ],
      "mapId": "map04_owson00",
-     "useStamina": 9,
-     "gainRankExp": 55,
+     "useStamina": 10,
+     "gainRankExp": 500,
      "gold": 1100,
-     "enemyLevel": 28,
+     "enemyLevel": 34,
      "enemies": [
       "2010_04",
       "2010_13",
       "2010_28"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110190803/https://jojodr.gamerch.com/%E7%AC%AC10%E7%AB%A0%E3%80%80%E6%9F%B1%E3%81%AE%E7%94%B7%E3%82%B5%E3%83%B3%E3%82%BF%E3%83%8A%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110190803",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -753,18 +818,20 @@
       "area_st_09_03_03"
      ],
      "mapId": "map04_owson01",
-     "useStamina": 9,
-     "gainRankExp": 55,
+     "useStamina": 10,
+     "gainRankExp": 500,
      "gold": 1100,
-     "enemyLevel": 28,
+     "enemyLevel": 34,
      "enemies": [
       "2020_01",
       "2020_02",
       "2020_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110190803/https://jojodr.gamerch.com/%E7%AC%AC10%E7%AB%A0%E3%80%80%E6%9F%B1%E3%81%AE%E7%94%B7%E3%82%B5%E3%83%B3%E3%82%BF%E3%83%8A%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110190803",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -775,18 +842,20 @@
       "area_st_09_04_03"
      ],
      "mapId": "map04_rohanhouse01",
-     "useStamina": 9,
-     "gainRankExp": 55,
+     "useStamina": 10,
+     "gainRankExp": 500,
      "gold": 1100,
-     "enemyLevel": 28,
+     "enemyLevel": 34,
      "enemies": [
       "2020_04",
       "2040_01",
       "2040_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110190803/https://jojodr.gamerch.com/%E7%AC%AC10%E7%AB%A0%E3%80%80%E6%9F%B1%E3%81%AE%E7%94%B7%E3%82%B5%E3%83%B3%E3%82%BF%E3%83%8A%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110190803",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -797,18 +866,20 @@
       "area_st_09_05_03"
      ],
      "mapId": "map04_town01",
-     "useStamina": 9,
-     "gainRankExp": 55,
+     "useStamina": 10,
+     "gainRankExp": 500,
      "gold": 1100,
-     "enemyLevel": 28,
+     "enemyLevel": 34,
      "enemies": [
       "2040_03",
       "2050_01",
       "2050_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110190803/https://jojodr.gamerch.com/%E7%AC%AC10%E7%AB%A0%E3%80%80%E6%9F%B1%E3%81%AE%E7%94%B7%E3%82%B5%E3%83%B3%E3%82%BF%E3%83%8A%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110190803",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -828,17 +899,19 @@
      ],
      "mapId": "map05_luciastation",
      "useStamina": 10,
-     "gainRankExp": 60,
+     "gainRankExp": 610,
      "gold": 1200,
-     "enemyLevel": 31,
+     "enemyLevel": 48,
      "enemies": [
       "2081_14",
       "2100_03",
       "2110_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110192758/https://jojodr.gamerch.com/%E7%AC%AC11%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110192758",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -850,17 +923,19 @@
      ],
      "mapId": "map05_maggiore",
      "useStamina": 10,
-     "gainRankExp": 60,
-     "gold": 1200,
-     "enemyLevel": 31,
+     "gainRankExp": 610,
+     "gold": 3079,
+     "enemyLevel": 48,
      "enemies": [
       "2110_02",
       "2110_03",
       "2111_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110192758/https://jojodr.gamerch.com/%E7%AC%AC11%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110192758",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -872,17 +947,19 @@
      ],
      "mapId": "map05_roof",
      "useStamina": 10,
-     "gainRankExp": 60,
-     "gold": 1200,
-     "enemyLevel": 31,
+     "gainRankExp": 610,
+     "gold": 3310,
+     "enemyLevel": 48,
      "enemies": [
       "2111_02",
       "2111_03",
       "2000_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110192758/https://jojodr.gamerch.com/%E7%AC%AC11%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110192758",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -894,17 +971,19 @@
      ],
      "mapId": "map05_sardinia",
      "useStamina": 10,
-     "gainRankExp": 60,
-     "gold": 1200,
-     "enemyLevel": 31,
+     "gainRankExp": 610,
+     "gold": 3310,
+     "enemyLevel": 49,
      "enemies": [
       "2000_02",
       "2000_03",
       "2000_04"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110192758/https://jojodr.gamerch.com/%E7%AC%AC11%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110192758",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -915,18 +994,20 @@
       "area_st_10_05_03"
      ],
      "mapId": "map05_school",
-     "useStamina": 10,
-     "gainRankExp": 60,
-     "gold": 1200,
-     "enemyLevel": 31,
+     "useStamina": 11,
+     "gainRankExp": 740,
+     "gold": 3310,
+     "enemyLevel": 50,
      "enemies": [
       "2000_12",
       "2000_28",
       "2010_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110192758/https://jojodr.gamerch.com/%E7%AC%AC11%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110192758",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -945,18 +1026,20 @@
       "area_st_11_01_03"
      ],
      "mapId": "map01_around03",
-     "useStamina": 10,
-     "gainRankExp": 65,
+     "useStamina": 11,
+     "gainRankExp": 740,
      "gold": 1300,
-     "enemyLevel": 34,
+     "enemyLevel": 53,
      "enemies": [
       "2050_04",
       "2050_12",
       "2060_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110185710/https://jojodr.gamerch.com/%E7%AC%AC12%E7%AB%A0%E3%80%80%E8%99%B9%E6%9D%91%E5%85%84%E5%BC%9F%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110185710",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -967,18 +1050,20 @@
       "area_st_11_02_03"
      ],
      "mapId": "map02_italia01",
-     "useStamina": 10,
-     "gainRankExp": 65,
+     "useStamina": 11,
+     "gainRankExp": 740,
      "gold": 1300,
-     "enemyLevel": 34,
+     "enemyLevel": 53,
      "enemies": [
       "2060_02",
       "2060_03",
       "2070_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110185710/https://jojodr.gamerch.com/%E7%AC%AC12%E7%AB%A0%E3%80%80%E8%99%B9%E6%9D%91%E5%85%84%E5%BC%9F%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110185710",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -989,18 +1074,20 @@
       "area_st_11_03_03"
      ],
      "mapId": "map02_italia02",
-     "useStamina": 10,
-     "gainRankExp": 65,
+     "useStamina": 11,
+     "gainRankExp": 870,
      "gold": 1300,
-     "enemyLevel": 34,
+     "enemyLevel": 53,
      "enemies": [
       "2070_02",
       "2070_03",
       "2080_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110185710/https://jojodr.gamerch.com/%E7%AC%AC12%E7%AB%A0%E3%80%80%E8%99%B9%E6%9D%91%E5%85%84%E5%BC%9F%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110185710",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1011,18 +1098,20 @@
       "area_st_11_04_03"
      ],
      "mapId": "map02_italia03",
-     "useStamina": 10,
-     "gainRankExp": 65,
+     "useStamina": 11,
+     "gainRankExp": 870,
      "gold": 1300,
-     "enemyLevel": 34,
+     "enemyLevel": 54,
      "enemies": [
       "2080_02",
       "2080_03",
       "2081_11"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110185710/https://jojodr.gamerch.com/%E7%AC%AC12%E7%AB%A0%E3%80%80%E8%99%B9%E6%9D%91%E5%85%84%E5%BC%9F%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110185710",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1033,18 +1122,20 @@
       "area_st_11_05_03"
      ],
      "mapId": "map02_mexico01",
-     "useStamina": 10,
-     "gainRankExp": 65,
-     "gold": 1300,
-     "enemyLevel": 34,
+     "useStamina": 11,
+     "gainRankExp": 870,
+     "gold": 3772,
+     "enemyLevel": 54,
      "enemies": [
       "2081_12",
       "2081_13",
       "2081_14"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110185710/https://jojodr.gamerch.com/%E7%AC%AC12%E7%AB%A0%E3%80%80%E8%99%B9%E6%9D%91%E5%85%84%E5%BC%9F%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110185710",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -1064,17 +1155,19 @@
      ],
      "mapId": "map03_desert01",
      "useStamina": 11,
-     "gainRankExp": 70,
+     "gainRankExp": 870,
      "gold": 1400,
-     "enemyLevel": 37,
+     "enemyLevel": 59,
      "enemies": [
       "2010_03",
       "2010_04",
       "2010_13"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110173827/https://jojodr.gamerch.com/%E7%AC%AC13%E7%AB%A0%E3%80%80%E6%BC%AB%E7%94%BB%E5%AE%B6%E3%81%AE%E3%81%86%E3%81%A1%E3%81%B8%E9%81%8A%E3%81%B3%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110173827",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1086,17 +1179,19 @@
      ],
      "mapId": "map03_desert02",
      "useStamina": 11,
-     "gainRankExp": 70,
+     "gainRankExp": 1000,
      "gold": 1400,
-     "enemyLevel": 37,
+     "enemyLevel": 59,
      "enemies": [
       "2010_28",
       "2020_01",
       "2020_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110173827/https://jojodr.gamerch.com/%E7%AC%AC13%E7%AB%A0%E3%80%80%E6%BC%AB%E7%94%BB%E5%AE%B6%E3%81%AE%E3%81%86%E3%81%A1%E3%81%B8%E9%81%8A%E3%81%B3%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110173827",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1108,17 +1203,19 @@
      ],
      "mapId": "map03_desert03",
      "useStamina": 11,
-     "gainRankExp": 70,
+     "gainRankExp": 1000,
      "gold": 1400,
-     "enemyLevel": 37,
+     "enemyLevel": 59,
      "enemies": [
       "2020_03",
       "2020_04",
       "2040_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110173827/https://jojodr.gamerch.com/%E7%AC%AC13%E7%AB%A0%E3%80%80%E6%BC%AB%E7%94%BB%E5%AE%B6%E3%81%AE%E3%81%86%E3%81%A1%E3%81%B8%E9%81%8A%E3%81%B3%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110173827",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1130,17 +1227,19 @@
      ],
      "mapId": "map03_diohouse01",
      "useStamina": 11,
-     "gainRankExp": 70,
+     "gainRankExp": 1000,
      "gold": 1400,
-     "enemyLevel": 37,
+     "enemyLevel": 59,
      "enemies": [
       "2040_02",
       "2040_03",
       "2050_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110173827/https://jojodr.gamerch.com/%E7%AC%AC13%E7%AB%A0%E3%80%80%E6%BC%AB%E7%94%BB%E5%AE%B6%E3%81%AE%E3%81%86%E3%81%A1%E3%81%B8%E9%81%8A%E3%81%B3%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110173827",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1151,18 +1250,20 @@
       "area_st_12_05_03"
      ],
      "mapId": "map03_diohouse06",
-     "useStamina": 11,
-     "gainRankExp": 70,
-     "gold": 1400,
-     "enemyLevel": 37,
+     "useStamina": 12,
+     "gainRankExp": 1140,
+     "gold": 4003,
+     "enemyLevel": 59,
      "enemies": [
       "2050_02",
       "2050_03",
       "2050_04"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110173827/https://jojodr.gamerch.com/%E7%AC%AC13%E7%AB%A0%E3%80%80%E6%BC%AB%E7%94%BB%E5%AE%B6%E3%81%AE%E3%81%86%E3%81%A1%E3%81%B8%E9%81%8A%E3%81%B3%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110173827",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -1181,18 +1282,20 @@
       "area_st_13_01_03"
      ],
      "mapId": "map03_enya02",
-     "useStamina": 11,
-     "gainRankExp": 75,
+     "useStamina": 12,
+     "gainRankExp": 1140,
      "gold": 1500,
-     "enemyLevel": 40,
+     "enemyLevel": 59,
      "enemies": [
       "3110_14",
       "3150_01",
       "3150_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110181234/https://jojodr.gamerch.com/%E7%AC%AC14%E7%AB%A0%E3%80%80%E6%B3%A2%E7%B4%8B%E3%81%AE%E4%BC%9D%E6%8E%88",
+      "capture": "20241110181234",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1203,18 +1306,20 @@
       "area_st_13_02_03"
      ],
      "mapId": "map03_enya03",
-     "useStamina": 11,
-     "gainRankExp": 75,
+     "useStamina": 12,
+     "gainRankExp": 1140,
      "gold": 1500,
-     "enemyLevel": 40,
+     "enemyLevel": 59,
      "enemies": [
       "3150_03",
       "3150_04",
       "3150_12"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110181234/https://jojodr.gamerch.com/%E7%AC%AC14%E7%AB%A0%E3%80%80%E6%B3%A2%E7%B4%8B%E3%81%AE%E4%BC%9D%E6%8E%88",
+      "capture": "20241110181234",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1225,18 +1330,20 @@
       "area_st_13_03_03"
      ],
      "mapId": "map03_india01",
-     "useStamina": 11,
-     "gainRankExp": 75,
+     "useStamina": 12,
+     "gainRankExp": 1280,
      "gold": 1500,
-     "enemyLevel": 40,
+     "enemyLevel": 59,
      "enemies": [
       "3210_01",
       "3210_02",
       "3210_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110181234/https://jojodr.gamerch.com/%E7%AC%AC14%E7%AB%A0%E3%80%80%E6%B3%A2%E7%B4%8B%E3%81%AE%E4%BC%9D%E6%8E%88",
+      "capture": "20241110181234",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1247,18 +1354,20 @@
       "area_st_13_04_03"
      ],
      "mapId": "map03_india02",
-     "useStamina": 11,
-     "gainRankExp": 75,
+     "useStamina": 12,
+     "gainRankExp": 1280,
      "gold": 1500,
-     "enemyLevel": 40,
+     "enemyLevel": 59,
      "enemies": [
       "3210_12",
       "3210_13",
       "3240_11"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110181234/https://jojodr.gamerch.com/%E7%AC%AC14%E7%AB%A0%E3%80%80%E6%B3%A2%E7%B4%8B%E3%81%AE%E4%BC%9D%E6%8E%88",
+      "capture": "20241110181234",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1269,18 +1378,20 @@
       "area_st_13_05_03"
      ],
      "mapId": "map03_india03",
-     "useStamina": 11,
-     "gainRankExp": 75,
+     "useStamina": 12,
+     "gainRankExp": 1420,
      "gold": 1500,
-     "enemyLevel": 40,
+     "enemyLevel": 59,
      "enemies": [
       "3240_12",
       "3240_13",
       "3270_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110181234/https://jojodr.gamerch.com/%E7%AC%AC14%E7%AB%A0%E3%80%80%E6%B3%A2%E7%B4%8B%E3%81%AE%E4%BC%9D%E6%8E%88",
+      "capture": "20241110181234",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -1300,17 +1411,19 @@
      ],
      "mapId": "map04_country01",
      "useStamina": 12,
-     "gainRankExp": 80,
+     "gainRankExp": 1420,
      "gold": 1600,
-     "enemyLevel": 43,
+     "enemyLevel": 60,
      "enemies": [
       "3000_01",
       "3000_02",
       "3000_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110193754/https://jojodr.gamerch.com/%E7%AC%AC15%E7%AB%A0%E3%80%80%E9%8A%80%E3%81%AE%E6%88%A6%E8%BB%8A",
+      "capture": "20241110193754",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1322,17 +1435,19 @@
      ],
      "mapId": "map04_country03",
      "useStamina": 12,
-     "gainRankExp": 80,
+     "gainRankExp": 1420,
      "gold": 1600,
-     "enemyLevel": 43,
+     "enemyLevel": 60,
      "enemies": [
       "3000_04",
       "3000_13",
       "3001_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110193754/https://jojodr.gamerch.com/%E7%AC%AC15%E7%AB%A0%E3%80%80%E9%8A%80%E3%81%AE%E6%88%A6%E8%BB%8A",
+      "capture": "20241110193754",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1343,18 +1458,20 @@
       "area_st_14_03_03"
      ],
      "mapId": "map04_country04",
-     "useStamina": 12,
-     "gainRankExp": 80,
+     "useStamina": 13,
+     "gainRankExp": 1580,
      "gold": 1600,
-     "enemyLevel": 43,
+     "enemyLevel": 60,
      "enemies": [
       "3001_04",
       "3001_13",
       "3002_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110193754/https://jojodr.gamerch.com/%E7%AC%AC15%E7%AB%A0%E3%80%80%E9%8A%80%E3%81%AE%E6%88%A6%E8%BB%8A",
+      "capture": "20241110193754",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1365,18 +1482,20 @@
       "area_st_14_04_03"
      ],
      "mapId": "map04_mego02",
-     "useStamina": 12,
-     "gainRankExp": 80,
+     "useStamina": 13,
+     "gainRankExp": 1580,
      "gold": 1600,
-     "enemyLevel": 43,
+     "enemyLevel": 60,
      "enemies": [
       "3010_01",
       "3010_02",
       "3010_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110193754/https://jojodr.gamerch.com/%E7%AC%AC15%E7%AB%A0%E3%80%80%E9%8A%80%E3%81%AE%E6%88%A6%E8%BB%8A",
+      "capture": "20241110193754",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1387,18 +1506,20 @@
       "area_st_14_05_03"
      ],
      "mapId": "map04_mystery01",
-     "useStamina": 12,
-     "gainRankExp": 80,
+     "useStamina": 13,
+     "gainRankExp": 1740,
      "gold": 1600,
-     "enemyLevel": 43,
+     "enemyLevel": 60,
      "enemies": [
       "3010_13",
       "3020_01",
       "3020_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110193754/https://jojodr.gamerch.com/%E7%AC%AC15%E7%AB%A0%E3%80%80%E9%8A%80%E3%81%AE%E6%88%A6%E8%BB%8A",
+      "capture": "20241110193754",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -1417,18 +1538,20 @@
       "area_st_15_01_03"
      ],
      "mapId": "map04_town04",
-     "useStamina": 12,
-     "gainRankExp": 85,
+     "useStamina": 13,
+     "gainRankExp": 1740,
      "gold": 1700,
-     "enemyLevel": 46,
+     "enemyLevel": 62,
      "enemies": [
       "3040_13",
       "3041_03",
       "3041_04"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110173344/https://jojodr.gamerch.com/%E7%AC%AC16%E7%AB%A0%E3%80%80%E3%80%8E%E7%8B%A9%E3%82%8A%E3%80%8F%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110173344",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1439,18 +1562,20 @@
       "area_st_15_02_03"
      ],
      "mapId": "map04_town05",
-     "useStamina": 12,
-     "gainRankExp": 85,
+     "useStamina": 13,
+     "gainRankExp": 1740,
      "gold": 1700,
-     "enemyLevel": 46,
+     "enemyLevel": 62,
      "enemies": [
       "3050_01",
       "3050_02",
       "3050_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110173344/https://jojodr.gamerch.com/%E7%AC%AC16%E7%AB%A0%E3%80%80%E3%80%8E%E7%8B%A9%E3%82%8A%E3%80%8F%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110173344",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1461,18 +1586,20 @@
       "area_st_15_03_03"
      ],
      "mapId": "map04_tunnel03",
-     "useStamina": 12,
-     "gainRankExp": 85,
+     "useStamina": 13,
+     "gainRankExp": 1900,
      "gold": 1700,
-     "enemyLevel": 46,
+     "enemyLevel": 62,
      "enemies": [
       "3050_04",
       "3060_01",
       "3060_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110173344/https://jojodr.gamerch.com/%E7%AC%AC16%E7%AB%A0%E3%80%80%E3%80%8E%E7%8B%A9%E3%82%8A%E3%80%8F%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110173344",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1483,18 +1610,20 @@
       "area_st_15_04_03"
      ],
      "mapId": "map05_colosseum",
-     "useStamina": 12,
-     "gainRankExp": 85,
+     "useStamina": 13,
+     "gainRankExp": 1900,
      "gold": 1700,
-     "enemyLevel": 46,
+     "enemyLevel": 62,
      "enemies": [
       "3060_03",
       "3070_01",
       "3070_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110173344/https://jojodr.gamerch.com/%E7%AC%AC16%E7%AB%A0%E3%80%80%E3%80%8E%E7%8B%A9%E3%82%8A%E3%80%8F%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110173344",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1505,18 +1634,20 @@
       "area_st_15_05_03"
      ],
      "mapId": "map05_luciastation",
-     "useStamina": 12,
-     "gainRankExp": 85,
+     "useStamina": 14,
+     "gainRankExp": 2080,
      "gold": 1700,
-     "enemyLevel": 46,
+     "enemyLevel": 62,
      "enemies": [
       "3070_03",
       "3090_01",
       "3090_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110173344/https://jojodr.gamerch.com/%E7%AC%AC16%E7%AB%A0%E3%80%80%E3%80%8E%E7%8B%A9%E3%82%8A%E3%80%8F%E3%81%AB%E3%81%84%E3%81%93%E3%81%86%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110173344",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -1535,18 +1666,20 @@
       "area_st_16_01_03"
      ],
      "mapId": "map05_town01",
-     "useStamina": 13,
-     "gainRankExp": 90,
+     "useStamina": 14,
+     "gainRankExp": 2080,
      "gold": 1800,
-     "enemyLevel": 49,
+     "enemyLevel": 63,
      "enemies": [
       "3210_01",
       "3210_02",
       "3210_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110180322/https://jojodr.gamerch.com/%E7%AC%AC17%E7%AB%A0%E3%80%80%E5%B1%B1%E5%B2%B8%E7%94%B1%E8%8A%B1%E5%AD%90%E3%81%AF%E6%81%8B%E3%82%92%E3%81%99%E3%82%8B%E3%80%80%EF%BD%9E%E4%BB%97%E5%8A%A9%E7%B7%A8%EF%BD%9E",
+      "capture": "20241110180322",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1557,18 +1690,20 @@
       "area_st_16_02_03"
      ],
      "mapId": "map05_train00",
-     "useStamina": 13,
-     "gainRankExp": 90,
+     "useStamina": 14,
+     "gainRankExp": 2080,
      "gold": 1800,
-     "enemyLevel": 49,
+     "enemyLevel": 63,
      "enemies": [
       "3210_12",
       "3210_13",
       "3240_11"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110180322/https://jojodr.gamerch.com/%E7%AC%AC17%E7%AB%A0%E3%80%80%E5%B1%B1%E5%B2%B8%E7%94%B1%E8%8A%B1%E5%AD%90%E3%81%AF%E6%81%8B%E3%82%92%E3%81%99%E3%82%8B%E3%80%80%EF%BD%9E%E4%BB%97%E5%8A%A9%E7%B7%A8%EF%BD%9E",
+      "capture": "20241110180322",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1579,18 +1714,20 @@
       "area_st_16_03_03"
      ],
      "mapId": "map01_around01",
-     "useStamina": 13,
-     "gainRankExp": 90,
+     "useStamina": 14,
+     "gainRankExp": 2080,
      "gold": 1800,
-     "enemyLevel": 49,
+     "enemyLevel": 63,
      "enemies": [
       "3240_12",
       "3240_13",
       "3270_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110180322/https://jojodr.gamerch.com/%E7%AC%AC17%E7%AB%A0%E3%80%80%E5%B1%B1%E5%B2%B8%E7%94%B1%E8%8A%B1%E5%AD%90%E3%81%AF%E6%81%8B%E3%82%92%E3%81%99%E3%82%8B%E3%80%80%EF%BD%9E%E4%BB%97%E5%8A%A9%E7%B7%A8%EF%BD%9E",
+      "capture": "20241110180322",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1601,18 +1738,20 @@
       "area_st_16_04_03"
      ],
      "mapId": "map01_around02",
-     "useStamina": 13,
-     "gainRankExp": 90,
+     "useStamina": 14,
+     "gainRankExp": 2260,
      "gold": 1800,
-     "enemyLevel": 49,
+     "enemyLevel": 63,
      "enemies": [
       "3270_02",
       "3270_03",
       "3270_04"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110180322/https://jojodr.gamerch.com/%E7%AC%AC17%E7%AB%A0%E3%80%80%E5%B1%B1%E5%B2%B8%E7%94%B1%E8%8A%B1%E5%AD%90%E3%81%AF%E6%81%8B%E3%82%92%E3%81%99%E3%82%8B%E3%80%80%EF%BD%9E%E4%BB%97%E5%8A%A9%E7%B7%A8%EF%BD%9E",
+      "capture": "20241110180322",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1623,18 +1762,20 @@
       "area_st_16_05_03"
      ],
      "mapId": "map01_around03",
-     "useStamina": 13,
-     "gainRankExp": 90,
+     "useStamina": 14,
+     "gainRankExp": 2260,
      "gold": 1800,
-     "enemyLevel": 49,
+     "enemyLevel": 63,
      "enemies": [
       "3300_01",
       "3300_02",
       "3300_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110180322/https://jojodr.gamerch.com/%E7%AC%AC17%E7%AB%A0%E3%80%80%E5%B1%B1%E5%B2%B8%E7%94%B1%E8%8A%B1%E5%AD%90%E3%81%AF%E6%81%8B%E3%82%92%E3%81%99%E3%82%8B%E3%80%80%EF%BD%9E%E4%BB%97%E5%8A%A9%E7%B7%A8%EF%BD%9E",
+      "capture": "20241110180322",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -1653,18 +1794,20 @@
       "area_st_17_01_03"
      ],
      "mapId": "map02_snowfield01",
-     "useStamina": 13,
-     "gainRankExp": 95,
+     "useStamina": 14,
+     "gainRankExp": 2440,
      "gold": 1900,
-     "enemyLevel": 52,
+     "enemyLevel": 65,
      "enemies": [
       "3001_04",
       "3001_13",
       "3002_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110175921/https://jojodr.gamerch.com/%E7%AC%AC18%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110175921",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1675,18 +1818,20 @@
       "area_st_17_02_03"
      ],
      "mapId": "map02_snowfield02",
-     "useStamina": 13,
-     "gainRankExp": 95,
+     "useStamina": 14,
+     "gainRankExp": 2620,
      "gold": 1900,
-     "enemyLevel": 52,
+     "enemyLevel": 65,
      "enemies": [
       "3010_01",
       "3010_02",
       "3010_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110175921/https://jojodr.gamerch.com/%E7%AC%AC18%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110175921",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1697,18 +1842,20 @@
       "area_st_17_03_03"
      ],
      "mapId": "map02_snowfield03",
-     "useStamina": 13,
-     "gainRankExp": 95,
+     "useStamina": 14,
+     "gainRankExp": 2620,
      "gold": 1900,
-     "enemyLevel": 52,
+     "enemyLevel": 65,
      "enemies": [
       "3010_13",
       "3020_01",
       "3020_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110175921/https://jojodr.gamerch.com/%E7%AC%AC18%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110175921",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1719,18 +1866,20 @@
       "area_st_17_04_03"
      ],
      "mapId": "map03_beach00",
-     "useStamina": 13,
-     "gainRankExp": 95,
+     "useStamina": 14,
+     "gainRankExp": 2620,
      "gold": 1900,
-     "enemyLevel": 52,
+     "enemyLevel": 65,
      "enemies": [
       "3020_03",
       "3020_12",
       "3020_13"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110175921/https://jojodr.gamerch.com/%E7%AC%AC18%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110175921",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1741,18 +1890,20 @@
       "area_st_17_05_03"
      ],
      "mapId": "map03_desert01",
-     "useStamina": 13,
-     "gainRankExp": 95,
+     "useStamina": 15,
+     "gainRankExp": 2620,
      "gold": 1900,
-     "enemyLevel": 52,
+     "enemyLevel": 65,
      "enemies": [
       "3020_28",
       "3030_01",
       "3030_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110175921/https://jojodr.gamerch.com/%E7%AC%AC18%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110175921",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1763,18 +1914,20 @@
       "area_st_17_06_03"
      ],
      "mapId": "map03_desert02",
-     "useStamina": 13,
-     "gainRankExp": 95,
+     "useStamina": 15,
+     "gainRankExp": 2620,
      "gold": 1900,
-     "enemyLevel": 52,
+     "enemyLevel": 65,
      "enemies": [
       "3030_03",
       "3030_13",
       "3030_14"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110175921/https://jojodr.gamerch.com/%E7%AC%AC18%E7%AB%A0%E3%80%80%E6%AD%A3%E7%BE%A9%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110175921",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -1793,18 +1946,20 @@
       "area_st_18_01_03"
      ],
      "mapId": "map03_egypt01",
-     "useStamina": 14,
-     "gainRankExp": 100,
+     "useStamina": 15,
+     "gainRankExp": 2800,
      "gold": 2000,
-     "enemyLevel": 55,
+     "enemyLevel": 70,
      "enemies": [
       "3050_04",
       "3060_01",
       "3060_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110181018/https://jojodr.gamerch.com/%E7%AC%AC19%E7%AB%A0%E3%80%80%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%EF%BC%81%E6%9D%B1%E6%96%B9%E4%BB%97%E5%8A%A9%E3%81%AB%E4%BC%9A%E3%81%86",
+      "capture": "20241110181018",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1815,18 +1970,20 @@
       "area_st_18_02_03"
      ],
      "mapId": "map03_egypt02",
-     "useStamina": 14,
-     "gainRankExp": 100,
-     "gold": 2000,
-     "enemyLevel": 55,
+     "useStamina": 15,
+     "gainRankExp": 2800,
+     "gold": 6313,
+     "enemyLevel": 70,
      "enemies": [
       "3060_03",
       "3070_01",
       "3070_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110181018/https://jojodr.gamerch.com/%E7%AC%AC19%E7%AB%A0%E3%80%80%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%EF%BC%81%E6%9D%B1%E6%96%B9%E4%BB%97%E5%8A%A9%E3%81%AB%E4%BC%9A%E3%81%86",
+      "capture": "20241110181018",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1837,18 +1994,20 @@
       "area_st_18_03_03"
      ],
      "mapId": "map03_egypt03",
-     "useStamina": 14,
-     "gainRankExp": 100,
-     "gold": 2000,
-     "enemyLevel": 55,
+     "useStamina": 15,
+     "gainRankExp": 2800,
+     "gold": 6613,
+     "enemyLevel": 70,
      "enemies": [
       "3070_03",
       "3090_01",
       "3090_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110181018/https://jojodr.gamerch.com/%E7%AC%AC19%E7%AB%A0%E3%80%80%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%EF%BC%81%E6%9D%B1%E6%96%B9%E4%BB%97%E5%8A%A9%E3%81%AB%E4%BC%9A%E3%81%86",
+      "capture": "20241110181018",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1859,18 +2018,20 @@
       "area_st_18_04_03"
      ],
      "mapId": "map03_enya01",
-     "useStamina": 14,
-     "gainRankExp": 100,
+     "useStamina": 15,
+     "gainRankExp": 3000,
      "gold": 2000,
-     "enemyLevel": 55,
+     "enemyLevel": 70,
      "enemies": [
       "3090_03",
       "3100_01",
       "3100_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110181018/https://jojodr.gamerch.com/%E7%AC%AC19%E7%AB%A0%E3%80%80%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%EF%BC%81%E6%9D%B1%E6%96%B9%E4%BB%97%E5%8A%A9%E3%81%AB%E4%BC%9A%E3%81%86",
+      "capture": "20241110181018",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1881,18 +2042,20 @@
       "area_st_18_05_03"
      ],
      "mapId": "map03_enya02",
-     "useStamina": 14,
-     "gainRankExp": 100,
-     "gold": 2000,
-     "enemyLevel": 55,
+     "useStamina": 15,
+     "gainRankExp": 3000,
+     "gold": 6613,
+     "enemyLevel": 70,
      "enemies": [
       "3100_03",
       "3100_12",
       "3110_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110181018/https://jojodr.gamerch.com/%E7%AC%AC19%E7%AB%A0%E3%80%80%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%EF%BC%81%E6%9D%B1%E6%96%B9%E4%BB%97%E5%8A%A9%E3%81%AB%E4%BC%9A%E3%81%86",
+      "capture": "20241110181018",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1903,18 +2066,20 @@
       "area_st_18_06_03"
      ],
      "mapId": "map03_enya03",
-     "useStamina": 14,
-     "gainRankExp": 100,
-     "gold": 2000,
-     "enemyLevel": 55,
+     "useStamina": 15,
+     "gainRankExp": 3000,
+     "gold": 6613,
+     "enemyLevel": 70,
      "enemies": [
       "3110_02",
       "3110_03",
       "3110_13"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110181018/https://jojodr.gamerch.com/%E7%AC%AC19%E7%AB%A0%E3%80%80%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%EF%BC%81%E6%9D%B1%E6%96%B9%E4%BB%97%E5%8A%A9%E3%81%AB%E4%BC%9A%E3%81%86",
+      "capture": "20241110181018",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -1933,18 +2098,20 @@
       "area_st_19_01_03"
      ],
      "mapId": "map03_jotatown02",
-     "useStamina": 14,
-     "gainRankExp": 105,
-     "gold": 2100,
-     "enemyLevel": 58,
+     "useStamina": 15,
+     "gainRankExp": 3300,
+     "gold": 7175,
+     "enemyLevel": 70,
      "enemies": [
       "4042_03",
       "4043_08",
       "4080_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174611/https://jojodr.gamerch.com/%E7%AC%AC20%E7%AB%A0%E3%80%80%E3%82%B7%E3%82%A2%E3%83%BC%E3%83%8F%E3%83%BC%E3%83%88%E3%82%A2%E3%82%BF%E3%83%83%E3%82%AF%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110174611",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1955,18 +2122,20 @@
       "area_st_19_02_03"
      ],
      "mapId": "map03_jotatown03",
-     "useStamina": 14,
-     "gainRankExp": 105,
-     "gold": 2100,
-     "enemyLevel": 58,
+     "useStamina": 15,
+     "gainRankExp": 3300,
+     "gold": 7190,
+     "enemyLevel": 70,
      "enemies": [
       "4080_02",
       "4080_03",
       "4080_04"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174611/https://jojodr.gamerch.com/%E7%AC%AC20%E7%AB%A0%E3%80%80%E3%82%B7%E3%82%A2%E3%83%BC%E3%83%8F%E3%83%BC%E3%83%88%E3%82%A2%E3%82%BF%E3%83%83%E3%82%AF%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110174611",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1977,18 +2146,20 @@
       "area_st_19_03_03"
      ],
      "mapId": "map03_tiger01",
-     "useStamina": 14,
-     "gainRankExp": 105,
-     "gold": 2100,
-     "enemyLevel": 58,
+     "useStamina": 15,
+     "gainRankExp": 3300,
+     "gold": 7200,
+     "enemyLevel": 70,
      "enemies": [
       "4080_13",
       "4110_01",
       "4110_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174611/https://jojodr.gamerch.com/%E7%AC%AC20%E7%AB%A0%E3%80%80%E3%82%B7%E3%82%A2%E3%83%BC%E3%83%8F%E3%83%BC%E3%83%88%E3%82%A2%E3%82%BF%E3%83%83%E3%82%AF%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110174611",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -1999,18 +2170,20 @@
       "area_st_19_04_03"
      ],
      "mapId": "map03_tiger02",
-     "useStamina": 14,
-     "gainRankExp": 105,
-     "gold": 2100,
-     "enemyLevel": 58,
+     "useStamina": 15,
+     "gainRankExp": 3600,
+     "gold": 7210,
+     "enemyLevel": 70,
      "enemies": [
       "4110_13",
       "4110_14",
       "4130_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174611/https://jojodr.gamerch.com/%E7%AC%AC20%E7%AB%A0%E3%80%80%E3%82%B7%E3%82%A2%E3%83%BC%E3%83%8F%E3%83%BC%E3%83%88%E3%82%A2%E3%82%BF%E3%83%83%E3%82%AF%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110174611",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -2021,18 +2194,20 @@
       "area_st_19_05_03"
      ],
      "mapId": "map04_country01",
-     "useStamina": 14,
-     "gainRankExp": 105,
-     "gold": 2100,
-     "enemyLevel": 58,
+     "useStamina": 15,
+     "gainRankExp": 3600,
+     "gold": 7250,
+     "enemyLevel": 70,
      "enemies": [
       "4130_02",
       "4130_03",
       "4130_13"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174611/https://jojodr.gamerch.com/%E7%AC%AC20%E7%AB%A0%E3%80%80%E3%82%B7%E3%82%A2%E3%83%BC%E3%83%8F%E3%83%BC%E3%83%88%E3%82%A2%E3%82%BF%E3%83%83%E3%82%AF%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110174611",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -2051,18 +2226,20 @@
       "area_st_20_01_03"
      ],
      "mapId": "map04_owson01",
-     "useStamina": 15,
-     "gainRankExp": 110,
-     "gold": 2200,
-     "enemyLevel": 61,
+     "useStamina": 16,
+     "gainRankExp": 3600,
+     "gold": 7500,
+     "enemyLevel": 75,
      "enemies": [
       "4170_16",
       "4170_17",
       "4170_18"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110183154/https://jojodr.gamerch.com/%E7%AC%AC21%E7%AB%A0%E3%80%80%E3%82%B7%E3%82%A2%E3%83%BC%E3%83%8F%E3%83%BC%E3%83%88%E3%82%A2%E3%82%BF%E3%83%83%E3%82%AF%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110183154",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -2073,18 +2250,20 @@
       "area_st_20_02_03"
      ],
      "mapId": "map04_rohanhouse01",
-     "useStamina": 15,
-     "gainRankExp": 110,
-     "gold": 2200,
-     "enemyLevel": 61,
+     "useStamina": 16,
+     "gainRankExp": 3800,
+     "gold": 7550,
+     "enemyLevel": 75,
      "enemies": [
       "4190_13",
       "4190_14",
       "4191_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110183154/https://jojodr.gamerch.com/%E7%AC%AC21%E7%AB%A0%E3%80%80%E3%82%B7%E3%82%A2%E3%83%BC%E3%83%8F%E3%83%BC%E3%83%88%E3%82%A2%E3%82%BF%E3%83%83%E3%82%AF%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110183154",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -2095,18 +2274,20 @@
       "area_st_20_03_03"
      ],
      "mapId": "map04_town01",
-     "useStamina": 15,
-     "gainRankExp": 110,
-     "gold": 2200,
-     "enemyLevel": 61,
+     "useStamina": 16,
+     "gainRankExp": 3800,
+     "gold": 7600,
+     "enemyLevel": 75,
      "enemies": [
       "4191_02",
       "4191_03",
       "4191_04"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110183154/https://jojodr.gamerch.com/%E7%AC%AC21%E7%AB%A0%E3%80%80%E3%82%B7%E3%82%A2%E3%83%BC%E3%83%8F%E3%83%BC%E3%83%88%E3%82%A2%E3%82%BF%E3%83%83%E3%82%AF%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110183154",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -2117,18 +2298,20 @@
       "area_st_20_04_03"
      ],
      "mapId": "map04_town03",
-     "useStamina": 15,
-     "gainRankExp": 110,
-     "gold": 2200,
-     "enemyLevel": 61,
+     "useStamina": 16,
+     "gainRankExp": 3800,
+     "gold": 7650,
+     "enemyLevel": 75,
      "enemies": [
       "4192_03",
       "4192_04",
       "4193_08"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110183154/https://jojodr.gamerch.com/%E7%AC%AC21%E7%AB%A0%E3%80%80%E3%82%B7%E3%82%A2%E3%83%BC%E3%83%8F%E3%83%BC%E3%83%88%E3%82%A2%E3%82%BF%E3%83%83%E3%82%AF%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110183154",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -2139,18 +2322,20 @@
       "area_st_20_05_03"
      ],
      "mapId": "map04_town04",
-     "useStamina": 15,
-     "gainRankExp": 110,
-     "gold": 2200,
-     "enemyLevel": 61,
+     "useStamina": 16,
+     "gainRankExp": 3900,
+     "gold": 7700,
+     "enemyLevel": 75,
      "enemies": [
       "4194_08",
       "4240_11",
       "4240_12"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110183154/https://jojodr.gamerch.com/%E7%AC%AC21%E7%AB%A0%E3%80%80%E3%82%B7%E3%82%A2%E3%83%BC%E3%83%8F%E3%83%BC%E3%83%88%E3%82%A2%E3%82%BF%E3%83%83%E3%82%AF%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110183154",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -2169,18 +2354,20 @@
       "area_st_21_01_03"
      ],
      "mapId": "map05_roof",
-     "useStamina": 15,
-     "gainRankExp": 115,
-     "gold": 2300,
-     "enemyLevel": 64,
+     "useStamina": 17,
+     "gainRankExp": 4100,
+     "gold": 7900,
+     "enemyLevel": 76,
      "enemies": [
       "4011_18",
       "4012_03",
       "4012_11"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110185938/https://jojodr.gamerch.com/%E7%AC%AC22%E7%AB%A0%E3%80%80%E3%83%87%E3%82%A3%E3%82%AA%E3%81%A8%E3%81%AE%E9%9D%92%E6%98%A5%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110185938",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -2191,18 +2378,20 @@
       "area_st_21_02_03"
      ],
      "mapId": "map05_sardinia",
-     "useStamina": 15,
-     "gainRankExp": 115,
-     "gold": 2300,
-     "enemyLevel": 64,
+     "useStamina": 17,
+     "gainRankExp": 4100,
+     "gold": 7930,
+     "enemyLevel": 70,
      "enemies": [
       "4020_01",
       "4020_02",
       "4020_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110185938/https://jojodr.gamerch.com/%E7%AC%AC22%E7%AB%A0%E3%80%80%E3%83%87%E3%82%A3%E3%82%AA%E3%81%A8%E3%81%AE%E9%9D%92%E6%98%A5%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110185938",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -2213,18 +2402,20 @@
       "area_st_21_03_03"
      ],
      "mapId": "map05_school",
-     "useStamina": 15,
-     "gainRankExp": 115,
-     "gold": 2300,
-     "enemyLevel": 64,
+     "useStamina": 17,
+     "gainRankExp": 4100,
+     "gold": 7950,
+     "enemyLevel": 76,
      "enemies": [
       "4020_04",
       "4020_13",
       "4030_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110185938/https://jojodr.gamerch.com/%E7%AC%AC22%E7%AB%A0%E3%80%80%E3%83%87%E3%82%A3%E3%82%AA%E3%81%A8%E3%81%AE%E9%9D%92%E6%98%A5%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110185938",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -2235,18 +2426,20 @@
       "area_st_21_04_03"
      ],
      "mapId": "map05_schoolgate",
-     "useStamina": 15,
-     "gainRankExp": 115,
-     "gold": 2300,
-     "enemyLevel": 64,
+     "useStamina": 17,
+     "gainRankExp": 4300,
+     "gold": 7980,
+     "enemyLevel": 76,
      "enemies": [
       "4030_02",
       "4030_03",
       "4030_04"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110185938/https://jojodr.gamerch.com/%E7%AC%AC22%E7%AB%A0%E3%80%80%E3%83%87%E3%82%A3%E3%82%AA%E3%81%A8%E3%81%AE%E9%9D%92%E6%98%A5%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110185938",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -2257,18 +2450,20 @@
       "area_st_21_05_03"
      ],
      "mapId": "map05_town01",
-     "useStamina": 15,
-     "gainRankExp": 115,
-     "gold": 2300,
-     "enemyLevel": 64,
+     "useStamina": 17,
+     "gainRankExp": 4300,
+     "gold": 8000,
+     "enemyLevel": 76,
      "enemies": [
       "4031_18",
       "4040_01",
       "4040_12"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110185938/https://jojodr.gamerch.com/%E7%AC%AC22%E7%AB%A0%E3%80%80%E3%83%87%E3%82%A3%E3%82%AA%E3%81%A8%E3%81%AE%E9%9D%92%E6%98%A5%E3%80%80%E3%81%9D%E3%81%AE1",
+      "capture": "20241110185938",
+      "accessed": "2026-11-14"
      }
     }
    ]
@@ -2287,18 +2482,20 @@
       "area_st_22_01_03"
      ],
      "mapId": "map02_italia02",
-     "useStamina": 16,
-     "gainRankExp": 120,
-     "gold": 2400,
-     "enemyLevel": 67,
+     "useStamina": 18,
+     "gainRankExp": 4500,
+     "gold": 8300,
+     "enemyLevel": 78,
      "enemies": [
       "4130_03",
       "4130_13",
       "4130_25"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174654/https://jojodr.gamerch.com/%E7%AC%AC23%E7%AB%A0%E3%80%80%E3%83%87%E3%82%A3%E3%82%AA%E3%81%A8%E3%81%AE%E9%9D%92%E6%98%A5%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110174654",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -2309,18 +2506,20 @@
       "area_st_22_02_03"
      ],
      "mapId": "map02_italia03",
-     "useStamina": 16,
-     "gainRankExp": 120,
-     "gold": 2400,
-     "enemyLevel": 67,
+     "useStamina": 18,
+     "gainRankExp": 4500,
+     "gold": 8350,
+     "enemyLevel": 78,
      "enemies": [
       "4130_26",
       "4130_27",
       "4130_28"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174654/https://jojodr.gamerch.com/%E7%AC%AC23%E7%AB%A0%E3%80%80%E3%83%87%E3%82%A3%E3%82%AA%E3%81%A8%E3%81%AE%E9%9D%92%E6%98%A5%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110174654",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -2331,18 +2530,20 @@
       "area_st_22_03_03"
      ],
      "mapId": "map02_mexico01",
-     "useStamina": 16,
-     "gainRankExp": 120,
-     "gold": 2400,
-     "enemyLevel": 67,
+     "useStamina": 18,
+     "gainRankExp": 5000,
+     "gold": 8390,
+     "enemyLevel": 78,
      "enemies": [
       "4150_01",
       "4150_02",
       "4150_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174654/https://jojodr.gamerch.com/%E7%AC%AC23%E7%AB%A0%E3%80%80%E3%83%87%E3%82%A3%E3%82%AA%E3%81%A8%E3%81%AE%E9%9D%92%E6%98%A5%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110174654",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -2353,18 +2554,20 @@
       "area_st_22_04_03"
      ],
      "mapId": "map02_mexico02",
-     "useStamina": 16,
-     "gainRankExp": 120,
-     "gold": 2400,
-     "enemyLevel": 67,
+     "useStamina": 18,
+     "gainRankExp": 5000,
+     "gold": 8420,
+     "enemyLevel": 78,
      "enemies": [
       "4160_01",
       "4160_02",
       "4160_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174654/https://jojodr.gamerch.com/%E7%AC%AC23%E7%AB%A0%E3%80%80%E3%83%87%E3%82%A3%E3%82%AA%E3%81%A8%E3%81%AE%E9%9D%92%E6%98%A5%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110174654",
+      "accessed": "2026-11-14"
      }
     },
     {
@@ -2375,18 +2578,20 @@
       "area_st_22_05_03"
      ],
      "mapId": "map02_snowfield01",
-     "useStamina": 16,
-     "gainRankExp": 120,
-     "gold": 2400,
-     "enemyLevel": 67,
+     "useStamina": 18,
+     "gainRankExp": 5000,
+     "gold": 8460,
+     "enemyLevel": 78,
      "enemies": [
       "4160_12",
       "4170_01",
       "4170_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "no wiki data merged for this stage yet"
+      "source": "Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110174654/https://jojodr.gamerch.com/%E7%AC%AC23%E7%AB%A0%E3%80%80%E3%83%87%E3%82%A3%E3%82%AA%E3%81%A8%E3%81%AE%E9%9D%92%E6%98%A5%E3%80%80%E3%81%9D%E3%81%AE2",
+      "capture": "20241110174654",
+      "accessed": "2026-11-14"
      }
     }
    ]

@@ -21,7 +21,21 @@ ap.add_argument("--out", required=True)
 a = ap.parse_args()
 scan = json.load(open(a.scan))
 statues = json.load(open(a.statues))["statues"]
-wiki = json.load(open(a.gamerch)) if a.gamerch else {}
+wiki = {}
+if a.gamerch:
+    # Gamerch stages.json (fetched from the Wayback Machine snapshot): AP, EXP, gold, recommended level.
+    for w in json.load(open(a.gamerch)).get("stages", []):
+        if not w.get("game_stage_id") or w.get("ap") is None:
+            continue
+        rec = {"useStamina": w["ap"], "source": {"source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+               "page": w["source"]["page_url"], "capture": w["source"].get("capture"), "accessed": w["source"].get("accessed")}}
+        if w.get("exp") is not None:
+            rec["gainRankExp"] = w["exp"]
+        if w.get("gold") is not None:
+            rec["gold"] = w["gold"]
+        if w.get("recommended_level") is not None:
+            rec["enemyLevel"] = w["recommended_level"]
+        wiki[w["game_stage_id"]] = rec
 battle_maps = [m["mapId"] for m in scan["maps"] if m["battle"] and not m["mapId"].startswith("map00_clan")]
 dt_maps = [m["mapId"] for m in scan["maps"] if m["dt"] and not m["mapId"].startswith("map00_clan")]
 by_part = {}
@@ -67,7 +81,9 @@ for c in scan["battle"] + scan["dt"]:
 doc = {
     "about": "Story chapters and stages: identifiers from the player's own files (scan_quests.py); numbers from community wikis where merged, else marked defaults. See docs/CONTENT.md.",
     "sources": [{"source": "jdr-default", "note": "identifiers from the player's files; defaults where no wiki data",
-                 "accessed": datetime.date.today().isoformat()}],
+                 "accessed": datetime.date.today().isoformat()}]
+               + ([{"source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)", "page": "https://jojodr.gamerch.com/",
+                    "accessed": datetime.date.today().isoformat()}] if a.gamerch else []),
     "chapters": chapters,
 }
 json.dump(doc, open(a.out, "w"), indent=1)

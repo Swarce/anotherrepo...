@@ -121,6 +121,7 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         p.progress.cleared.insert(stage_id.clone());
         p.gold += gold;
         p.exp += rank_exp;
+        p.rank = collection::rank_for_exp(p.exp);
     }
     ctx.accounts.save(&p).map_err(ApiError::Internal)?;
     let team = found
