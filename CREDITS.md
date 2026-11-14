@@ -12,7 +12,10 @@ game comes from the game's own files or is written by us.
 
 | Source | Used for | Files |
 |---|---|---|
-| _(no outside sources yet)_ | `tutorial_flag_table` uses only our own research (`jdr-research`, docs/research/09) and our own defaults (`jdr-default`) | `server/content/masterdata/` |
+| [Diamond Records Wiki (ShoutWiki)](https://jojodiamondrecords.shoutwiki.com/), CC BY-SA 3.0 | statue Lv1/Lv99/max stats, abilities (numbers only) | `server/content/statues.json` (per-record page + revision) |
+| [JoJo's Bizarre Encyclopedia (JoJoWiki)](https://jojowiki.com/Diamond_Records), CC BY-SA 4.0 | statue max stats (cross-check) | `server/content/statues.json` |
+| [Gamerch ジョジョDR攻略Wiki](https://jojodr.gamerch.com/) (via the Wayback Machine) | story stages, minds (in progress) | `server/content/quests.json` |
+| Our own research (`jdr-research`) and defaults (`jdr-default`) | tutorial flags, identifiers from the player's files | `server/content/masterdata/`, `statues.json`, `quests.json` |
 
 Thank you to the players and wiki editors who documented the game while it was running.
 
