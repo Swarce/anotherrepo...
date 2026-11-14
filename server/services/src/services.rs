@@ -68,6 +68,8 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/follow/follow_list" => menu::follow_list(ctx, env),
         "/item/item_list" => menu::item_list(ctx, env),
         "/shop/shop_list" => menu::shop_list(ctx, env),
+        "/info/notify_list" => menu::notify_list(ctx, env),
+        "/gasha/gasha_list" => menu::gasha_list(ctx, env),
         _ => return (Ok(Map::new()), false),
     };
     (r, true)
