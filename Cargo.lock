@@ -229,6 +229,8 @@ name = "jdr-patch"
 version = "0.1.0"
 dependencies = [
  "jdr-crypto",
+ "jdr-services",
+ "jdr-unity",
  "serde",
  "serde_json",
  "sha2",
@@ -255,6 +257,7 @@ dependencies = [
  "md-5",
  "serde",
  "serde_json",
+ "sha2",
 ]
 
 [[package]]
@@ -263,8 +266,10 @@ version = "0.1.0"
 dependencies = [
  "jdr-crypto",
  "jdr-patch",
+ "jdr-services",
  "serde",
  "serde_json",
+ "zip",
 ]
 
 [[package]]

@@ -20,6 +20,8 @@ pub struct VerifiedBuild {
     pub clear_flag_fn: (usize, &'static str),
     /// SHA-256 of the binary `AndroidManifest.xml`.
     pub manifest_sha256: &'static str,
+    /// SHA-256 of the Resources file holding `Text/ClientMes_JP` (`clientmes::ENTRY`).
+    pub clientmes_sha256: &'static str,
     /// Index and original value of the production server URL literal.
     pub server_url_literal: (usize, &'static str),
     /// Index of the request-envelope AES key literal (`HttpConst.HTTPRijndaelKey`); read by
@@ -43,6 +45,7 @@ pub const BUILDS: &[VerifiedBuild] = &[VerifiedBuild {
         "306d717ddc15f17dab50cb35cec6fd9b4a87e3c88da61b1ac7c8e70a0ee4d7c4",
     ),
     manifest_sha256: "a1d3a440e4e6ba6cc1bf6a8fa91cc03fd948058d55630c9aa41820dc11061257",
+    clientmes_sha256: "eb62e1d6f6c8dcd3d186ffb0af05d2c0f02ff55594651ae5b72ad65e5b751501",
     server_url_literal: (4137, "https://jdr.channel.or.jp"),
     http_key_literal: 4143,
 }];

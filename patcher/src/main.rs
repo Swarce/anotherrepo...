@@ -264,6 +264,17 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
             "libmain.so NEEDED = {needed:?}; libjdr.so valid; keys asset stored"
         ));
     }
+    if !disabled.contains(&"english-clientmes") {
+        let t = jdr_patch::clientmes::read(&chk.read(jdr_patch::clientmes::ENTRY)?)?;
+        let (_, n, total) = patches::translate_clientmes(&chk.read(jdr_patch::clientmes::ENTRY)?)?;
+        if t.rows.len() != total || n != 0 {
+            return Err("post-check failed: ClientMes not fully translated as planned".into());
+        }
+        rep.checks.push(format!(
+            "ClientMes parses ({} messages); re-applying the translations changes nothing",
+            t.rows.len()
+        ));
+    }
     rep.checks.push("zipalign -c -P 16 4 passed".into());
     rep.checks
         .push(format!("apksigner verify: {}", rep.schemes.join("+")));
