@@ -204,6 +204,9 @@ for s in obtainable:
         "modelDataList": s["modelDataList"],
         "dtAttack": dt_attack(s),
         "dtSkills": dt_skills(s),
+        # The win-screen quote: the game's own Result_Chara_Comment_<statueId> label, when present.
+        "resultComment": (f"Result_Chara_Comment_{sid}"
+                          if f"text:Result_Chara_Comment_JP:Result_Chara_Comment_{sid}" in labels else None),
         "rarity": None,
         "statueType": None,
         "lv1": None,
