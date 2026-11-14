@@ -7,6 +7,7 @@ use jdr_core::envelope::RequestEnvelope;
 use serde_json::{json, Map, Value};
 
 pub mod bizarre;
+pub mod book;
 pub mod client;
 pub mod common;
 pub mod gasha;
@@ -14,6 +15,7 @@ pub mod menu;
 pub mod misc;
 pub mod statue;
 pub mod team;
+pub mod tree;
 pub mod user;
 
 fn obj(v: Value) -> Map<String, Value> {
@@ -71,9 +73,34 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/follow/follow_list" => menu::follow_list(ctx, env),
         "/item/item_list" => menu::item_list(ctx, env),
         "/shop/shop_list" => menu::shop_list(ctx, env),
+        "/shop/shop_buy" => menu::shop_buy(ctx, env),
+        "/shop/event_shop_list" => menu::event_shop_list(ctx, env),
+        "/item/exp_item_list" => menu::exp_item_list(ctx, env),
+        "/present/get" | "/present/get_all" => menu::present_get(ctx, env),
+        "/trophy/trophy_result_get" | "/trophy/get_all_trophy_result" => {
+            menu::trophy_result_get(ctx, env)
+        }
+        "/mind/protect"
+        | "/statue/protect"
+        | "/mind/save_sort"
+        | "/statue/save_sort"
+        | "/mind/new_flg_release"
+        | "/statue/new_flg_release"
+        | "/follow/save_sort" => menu::accepted(ctx, env),
+        "/book/statue_list" => book::statue_list(ctx, env),
+        "/book/mind_list" => book::mind_list(ctx, env),
+        "/book/item_list" => book::item_list(ctx, env),
+        "/book/yogo_list" => book::yogo_list(ctx, env),
+        "/statue/evolution_info" => book::evolution_info(ctx, env),
+        "/statue/strengthening" | "/statue/strengthening_item" => {
+            book::statue_strengthening(ctx, env)
+        }
+        "/sell/sell" => book::sell(ctx, env),
         "/info/notify_list" => menu::notify_list(ctx, env),
         "/gasha/gasha_list" => gasha::gasha_list(ctx, env),
         "/gasha/gasha_play" => gasha::gasha_play(ctx, env),
+        "/tree/skill_list" => tree::skill_list(ctx, env),
+        "/tree/acquisition" => tree::acquisition(ctx, env),
         _ => return (Ok(Map::new()), false),
     };
     (r, true)

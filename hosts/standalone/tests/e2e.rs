@@ -305,7 +305,7 @@ fn new_player_boot_sequence() {
         ),
         ("/follow/follow_list", "{}", &["followList"][..]),
         ("/item/item_list", "{}", &["itemList"][..]),
-        ("/shop/shop_list", "{}", &["shopList", "itemList"][..]),
+        ("/shop/shop_list", "{}", &["itemList"][..]),
     ] {
         let r = call_as(port, &ep(p), param, &uuid);
         assert_eq!(r["param"]["status"], 10000, "{p}");
@@ -313,6 +313,9 @@ fn new_player_boot_sequence() {
             assert_eq!(r["param"][*f], serde_json::json!([]), "{p} {f}");
         }
     }
+    // The main shop reads shopList[0].goodsList without a length check: never empty.
+    let shop = call_as(port, &ep("/shop/shop_list"), "{}", &uuid);
+    assert!(shop["param"]["shopList"][0]["goodsList"].is_array());
     // an unknown device asking for its profile gets a session error, not a crash
     assert_eq!(
         call_as(port, &ep("/user/user_info"), "{}", "nobody")["param"]["status"],
