@@ -49,6 +49,13 @@ pub struct StatueDef {
     /// Label key of the win-screen quote (`Result_Chara_Comment_<statueId>`), when the game has one.
     #[serde(rename = "resultComment", default)]
     pub result_comment: Option<String>,
+    /// Team-view scale in percent (the bust shot frames 1.55-2.05 m; tools/content/build_statues.py).
+    #[serde(rename = "teamScale", default = "full_scale")]
+    pub team_scale: i64,
+}
+
+fn full_scale() -> i64 {
+    100
 }
 
 /// One tactical skill of a statue: label keys from the player's files, our numbers.
@@ -700,7 +707,7 @@ pub fn statue_setting_rows() -> Vec<Value> {
                 "myPageCameraType": "CameraIdSet0",
                 "myPagePos": { "x": 72.0, "y": -113.0, "z": 322.0 },
                 "myPageRotation": { "x": 0.0, "y": 192.5, "z": 0.0 },
-                "teamScaleScalar": 100.0,
+                "teamScaleScalar": d.team_scale as f64,
                 "mindFrameID": 1, "pvpAiId": 1, "pvpAiAutoBattleAiId": 1,
                 // The result screen shows this label (skipped when empty).
                 "battleResultComment": d.result_comment.clone().unwrap_or_default()
@@ -771,6 +778,7 @@ mod tests {
             dt_attack: None,
             dt_skills: Vec::new(),
             result_comment: None,
+            team_scale: 100,
             max_tree: None,
         };
         assert_eq!(d.stats_at(1).hp, 100);
