@@ -158,6 +158,13 @@ pub struct OwnedStatue {
     /// Growth tree squares opened (ids from `tree_squares`).
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub tree: Vec<String>,
+    /// Duplicate boosts (turtle items; shown as `convergence`).
+    #[serde(default, skip_serializing_if = "is_zero")]
+    pub boost: i64,
+}
+
+fn is_zero(n: &i64) -> bool {
+    *n == 0
 }
 
 /// One growth tree square: id, grid position, effect (1 ATK, 2 DEF, 3 HP; 0 = start), value, and
@@ -273,13 +280,36 @@ pub struct Collection {
     pub teams: Vec<Team>,
     #[serde(default)]
     pub minds: Vec<OwnedMind>,
+    /// Item counts by item id (Build 21; `server/content/items.json`).
+    #[serde(default)]
+    pub items: std::collections::BTreeMap<i64, i64>,
+    /// The starting item stock was granted (once; consumed items are not refilled).
+    #[serde(default)]
+    pub items_granted: bool,
 }
 
 impl Collection {
+    pub fn item_count(&self, id: i64) -> i64 {
+        self.items.get(&id).copied().unwrap_or(0)
+    }
+
+    /// Add (or with a negative `n`, take) items; never below zero.
+    pub fn add_item(&mut self, id: i64, n: i64) {
+        let c = self.items.entry(id).or_insert(0);
+        *c = (*c + n).max(0);
+    }
+
     /// Grant every obtainable statue not owned yet and make sure the teams exist. Returns true if
     /// anything changed (the caller saves).
     pub fn ensure(&mut self, now: &str) -> bool {
         let mut changed = false;
+        if !self.items_granted {
+            for (id, n) in crate::items::starting_stock() {
+                self.add_item(id, n);
+            }
+            self.items_granted = true;
+            changed = true;
+        }
         let mut next = self.statues.iter().map(|s| s.uid).max().unwrap_or(0) + 1;
         for d in statues() {
             if !self.statues.iter().any(|s| s.statue_id == d.statue_id) {
@@ -290,6 +320,7 @@ impl Collection {
                     exp: 0,
                     get_date: now.to_string(),
                     tree: Vec::new(),
+                    boost: 0,
                 });
                 next += 1;
                 changed = true;
@@ -454,7 +485,7 @@ pub fn statue_info(o: &OwnedStatue) -> Value {
         "speed": 100, "evasion": 0, "hitrate": 100, "criticalRate": 5,
         "stEffRateInfo": {}, "maxSp": 100, "useStageType": 0, "levelUpTable": [],
         "statueuId": o.uid, "treeuId": "", "newFlg": 0, "useFlg": 0, "protectedFlg": 0,
-        "limitReleaseCount": 0, "convergence": 0, "getDate": o.get_date,
+        "limitReleaseCount": 0, "convergence": o.boost, "getDate": o.get_date,
         "evolutionFlg": 0, "openEvolutionTreeFlg": 0, "evolutionLevel": 0,
         "evolutionConvergence": 0, "evolutionUseGold": 0, "evolutionUseItemList": []
     })
