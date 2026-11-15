@@ -270,7 +270,21 @@ pub struct Team {
     pub main: bool,
     /// Leader, left, right: statue uids (0 = empty).
     pub slots: [i64; 3],
+    /// Minds equipped per seat (leader, left, right): (slot seq 1..8, mind uid). They belong to
+    /// the seat, not the statue (docs/research/16-minds.md).
+    #[serde(default, skip_serializing_if = "seats_empty")]
+    pub minds: [Vec<(i64, i64)>; 3],
 }
+
+fn seats_empty(m: &[Vec<(i64, i64)>; 3]) -> bool {
+    m.iter().all(Vec::is_empty)
+}
+
+/// A statue's Mind capacity (CP; `StatueInfo.mindCapacity`, ours: three 4-star or four 3-star
+/// Minds at cost 3 x rarity).
+pub const MIND_CAPACITY: i64 = 40;
+/// Mind slots open per seat (the four golden frames, as at launch).
+pub const MIND_SLOTS_OPEN: i64 = 4;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Default)]
 pub struct Collection {
@@ -333,6 +347,7 @@ impl Collection {
                     uid: next_mind,
                     mind_id: d.mind_id.clone(),
                     get_date: now.to_string(),
+                    protected: false,
                 });
                 next_mind += 1;
                 changed = true;
@@ -357,6 +372,7 @@ impl Collection {
                     team_num,
                     main: team_num == 1,
                     slots,
+                    minds: Default::default(),
                 });
                 changed = true;
             }
@@ -474,7 +490,7 @@ pub fn statue_info(o: &OwnedStatue) -> Value {
         "description": format!("PROF_TEXT_{sid}"), "specialActionText": "",
         "charaTypeId": d.map(|d| d.psid()).unwrap_or(0),
         "tribeTypeList": [], "statueType": stype, "oraGauge": 0, "standRange": 0,
-        "modelDataList": models, "mindCapacity": 99, "useAttr": 1, "attckType": 0,
+        "modelDataList": models, "mindCapacity": MIND_CAPACITY, "useAttr": 1, "attckType": 0,
         "addProfileName": "", "addProfile": "",
         "maxLevel": MAX_LEVEL, "sellVm": 0, "level": o.level, "bounds": 0, "exp": o.exp,
         "hp": st.hp, "eng": 0, "atk": st.atk, "def": st.def,
@@ -653,13 +669,35 @@ fn empty_setting() -> Value {
             "mindLinkList": [], "assistStatueList": [], "AiId": "" })
 }
 
-fn setting(c: &Collection, uid: i64) -> Value {
+fn setting(c: &Collection, t: &Team, seat: usize) -> Value {
+    let uid = t.slots[seat];
     match c.known_statue(uid) {
         Some(o) => {
-            json!({ "statueuId": uid, "statueInfo": battle_statue_info(o), "equipMindList": [],
+            // Only filled slots: the client counts the list against the open slots.
+            let equipped: Vec<Value> = t.minds[seat]
+                .iter()
+                .filter_map(|(seq, muid)| {
+                    let m = c.minds.iter().find(|m| m.uid == *muid)?;
+                    let mut v = mind_info(m);
+                    v["seq"] = json!(seq);
+                    v["useFlg"] = json!(1);
+                    Some(v)
+                })
+                .collect();
+            json!({ "statueuId": uid, "statueInfo": battle_statue_info(o), "equipMindList": equipped,
                            "mindLinkList": [], "assistStatueList": [], "AiId": "" })
         }
         None => empty_setting(),
+    }
+}
+
+impl Collection {
+    /// Mind uids equipped anywhere.
+    pub fn equipped_minds(&self) -> std::collections::HashSet<i64> {
+        self.teams
+            .iter()
+            .flat_map(|t| t.minds.iter().flatten().map(|(_, u)| *u))
+            .collect()
     }
 }
 
@@ -697,9 +735,9 @@ pub fn team_info(c: &Collection, t: &Team) -> Value {
     json!({
         "teamNum": t.team_num, "stageType": t.stage_type, "mainFlg": t.main as i64, "useFlg": 1,
         "teamOrder": {
-            "leaderStatue": setting(c, t.slots[0]),
-            "memberLeftStatue": setting(c, t.slots[1]),
-            "memberRightStatue": setting(c, t.slots[2])
+            "leaderStatue": setting(c, t, 0),
+            "memberLeftStatue": setting(c, t, 1),
+            "memberRightStatue": setting(c, t, 2)
         },
         "jojoLinkList": []
     })
@@ -987,6 +1025,18 @@ pub struct OwnedMind {
     pub mind_id: String,
     #[serde(default)]
     pub get_date: String,
+    /// The heart lock (protects from sale and use as fodder).
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub protected: bool,
+}
+
+/// A Mind's CP cost (minds.json; 9 when unknown, as mind_info shows).
+pub fn mind_cost(mind_id: &str) -> i64 {
+    minds()
+        .iter()
+        .find(|m| m.mind_id == mind_id)
+        .map(|m| m.cost)
+        .unwrap_or(9)
 }
 
 /// `MindInfo` (level 1; abilities left to the master tables).
@@ -1006,6 +1056,6 @@ pub fn mind_info(o: &OwnedMind) -> Value {
         "limitCharacteristicList": [], "characteristicList": [], "levelUpTable": [],
         "minduId": o.uid, "sellRing": 0, "sellGet": 0, "stack": 1, "materialExp": 0,
         "bonusCondition": 0, "bonusRate": 0, "hp": hp, "eng": 0, "atk": atk, "def": def,
-        "newFlg": 0, "useFlg": 0, "protectedFlg": 0, "getDate": o.get_date
+        "newFlg": 0, "useFlg": 0, "protectedFlg": o.protected as i64, "getDate": o.get_date
     })
 }
