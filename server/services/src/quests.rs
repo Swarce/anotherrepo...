@@ -228,6 +228,7 @@ fn enemy_info(statue_id: &str, level: i64) -> Value {
         exp: 0,
         get_date: String::new(),
         tree: Vec::new(),
+        boost: 0,
     });
     v["useAttr"] = json!(3); // EnemyOnly
     v
