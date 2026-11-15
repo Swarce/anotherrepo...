@@ -197,3 +197,25 @@ team, not from the side, and the win shot was wrong.
   | Heals on allies | 0/1000 |
 
   A 3-digit skill prefix counts as a Stand user when any statue sharing it has a Stand model.
+
+## 7. Team view poses and framing (Build 18)
+
+What the Build 17 device test showed: some team-screen statues were out of frame or in a T-pose.
+
+- **Pose (H).** The team view (`SetStatueState` 0xCBB028, ViewType 1) plays the common action set
+  `FIGURE_BUSTUP`.
+  - Its FSM picks a clip by rarity (`FsmEventRarity` 0xDA8E80): 3 → `figure_R`, 4 → `figure_SR`,
+    5 → `figure_SSR`, 6 → `figure_UR`.
+  - `DoActionStatuePose` 0xCFD3A4 then adds a suffix from the statueId's last two digits.
+  - A missing clip is skipped silently (0xFB81E0), so a model with neither clip stays in its bind
+    pose: the T-pose.
+  - We had defaulted unknown rarities to 4, and 16 statues have no 4-star pose. A statue with no
+    wiki rarity now takes a rarity whose pose clip exists in the player's files, the one closest to
+    what the id's numbering suggests. `commonAnimeType` is ignored by dtbattle (a constant 2 at
+    0xFB830C).
+- **Framing (M).** The bust shot (camera at (0, 1.97, −9.75), field of view 10°) shows model
+  heights of about 1.04–2.13 m. Each statue's `teamScaleScalar` is now
+  round(100 × clamp(H, 1.55, 2.05) / H), with H the first model's height measured from the player's
+  bundles. 34 statues differ from 100, ranging from Iggy at 277 to Tarkus at 82.
+- Rebuild: `tools/content/scan_figure_clips.py` and `scan_model_heights.py`, then
+  `build_statues.py --clips --heights`.
