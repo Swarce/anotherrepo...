@@ -10,8 +10,7 @@ use serde_json::{json, Value};
 
 /// `BookStatueListResponse`: every statue, all met (everything is owned offline).
 pub fn statue_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    let list: Vec<Value> = collection::statues()
-        .iter()
+    let list: Vec<Value> = collection::playable_statues()
         .enumerate()
         .map(|(i, d)| {
             let at = |level: i64| {

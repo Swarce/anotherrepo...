@@ -98,6 +98,16 @@ def model_names(psid):
     return models[psid]
 
 
+# Thumbnails: the statue list and team screens show st_<statueId> from the ui_statue_* atlases; a
+# statue without one is a blank card (Build 17 device test), so it does not count as obtainable.
+thumbs = set()
+for b in sorted(n for n in names if re.fullmatch(r"ui_statue_\d+", n)):
+    env = load(b)
+    for k in (env.container.keys() if env else []):
+        m = re.search(r"/st_(\d{4}_\d{2})\.bytes$", k)
+        if m:
+            thumbs.add(m.group(1))
+
 rows = []
 for sid in ids:
     psid = sid[:4]
@@ -112,7 +122,7 @@ for sid in ids:
         "modelDataList": human[:1] + stand[:1],
         "dtActions": actions(psid).get(human[0], []) if human else [],
         "bundles": bundles,
-        "thumbnail": f"st_{sid}",
+        "thumbnail": sid in thumbs,
         "playable": bool(human) and f"animation_statue_common_{psid}" in names
                     and (f"actionset_statue_{psid}" in names or f"dt_actionset_statue_{psid}" in names),
     })
