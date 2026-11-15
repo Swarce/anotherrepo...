@@ -21,7 +21,8 @@ Battle quests retained.
 1. **Tactical Reversal is switched off** (`tactical.reversal`, `tactical.overkill`; documented).
    `dtbattle_damage_param` sends `_reversalEnable 0`, a Build 11 choice made only to get past
    BattleInit. It is a core tactical mechanic, and two of the game's missions use it.
-   → first patch (Build 20), see `docs/research/11` §5.
+   → **done in Build 20** (`docs/research/11` §5): Reversal on, gauge from skills, hits taken and
+   deaths; 3 actions with overkill.
 2. **Missions screen is empty** (`home.missions`, `quest.mission_predicates`).
    `trophy/trophy_list` returns nothing. Daily, cumulative and limited missions need definitions
    and rewards that no source gives. The text tables hold the mission wording.
@@ -109,8 +110,8 @@ We send its tables (reaction tables, `battle_damage_param`, `battle_combo_param`
 | tactical.targeting | client ✓ | — | — |
 | tactical.pause_auto | client | Auto and pause work; pause should now list the stage missions (Build 19) | unverified |
 | tactical.evasion_crit | server | `_missDamageRate 0.25`, `_criticalDamageRate 1.5` (wiki, Build 18) | — |
-| tactical.reversal | missing | `_reversalEnable 0` | **Priority 1: first patch** |
-| tactical.overkill | missing | Follows Reversal | First patch |
+| tactical.reversal | server | On since Build 20: gauge from `dododoRate` (10/15/20%), hits taken (10%) and deaths (25%); 3 actions at 10× speed, no cool-downs (values ours) | unverified on a device |
+| tactical.overkill | client | Remaining Reversal actions become overkill hits after a boss kill in the last area (`_reversalMaxTurn` 3) | unverified |
 | tactical.skill_families | partial | Damage, heal and single/all classification (`build_statues.py`) | Buff, debuff, bind and summon families wait for buff data |
 | tactical.time_stop | missing | Time-stop buffs have labels only | Later |
 
