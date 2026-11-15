@@ -1,6 +1,14 @@
 {
   "about": "English for the game's ui_prefabs strings: key -> [hash of the Japanese source, English]. See docs/LOCALIZATION.md.",
   "entries": {
+    "ui:minigame_01:0:2246668079917683041:m_Text": [
+      "c7a749ef",
+      "Pinzoro"
+    ],
+    "ui:minigame_01:0:5996089885754924711:m_Text": [
+      "c7a749ef",
+      "Pinzoro"
+    ],
     "ui:scene_battle:11:163:m_Text": [
       "f8c1827f",
       "Retire"
