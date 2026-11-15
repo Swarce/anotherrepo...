@@ -217,5 +217,19 @@ What the Build 17 device test showed: some team-screen statues were out of frame
   heights of about 1.04–2.13 m. Each statue's `teamScaleScalar` is now
   round(100 × clamp(H, 1.55, 2.05) / H), with H the first model's height measured from the player's
   bundles. 34 statues differ from 100, ranging from Iggy at 277 to Tarkus at 82.
-- Rebuild: `tools/content/scan_figure_clips.py` and `scan_model_heights.py`, then
-  `build_statues.py --clips --heights`.
+- **Framing from the pose (Build 18, second pass).** The Build 18 device test still showed statues
+  off centre. Bind-pose heights ignore the pose: a crouch, a lean or a Stand beside the user moves
+  the head away from the slot.
+  - `tools/content/pose_models.py` evaluates each statue's team clip on its own skeleton (generic
+    clip: streamed, dense, then constant curves, bound by CRC32 of the transform path), skins the
+    meshes, and records the posed HEAD and WAIST bones of the first model (H for the evaluation).
+  - Props the pose hides sit on bones scaled to 1% and parked 2 m below the floor; they are left out.
+  - `build_statues.py --pose` sets each statue's scale so its head bone sits at 1.45-1.70 m
+    (Jonathan's is 1.53 m at full size). The scale is capped by an upper-body width of 1.4 m and kept
+    at 50-150%. `teamPos.x` centres the head over the slot. A figure still too low (Iggy, Enya,
+    crouching poses) gets `teamPos.y` to lift its head to 1.45 m; the cards hide what is below (M).
+  - Result: 266 rows; 173 shifted sideways by 5 cm or more (at most 38 cm), 31 lifted, 128 not at 100%.
+  - `tools/content/render_team_view.py` draws the posed statues from the formation camera and
+    anchors, for checking locally. Images stay private.
+- Rebuild: `tools/content/scan_figure_clips.py`, `scan_model_heights.py` and `pose_models.py`,
+  then `build_statues.py --clips --heights --pose`.
