@@ -17,7 +17,12 @@ pub fn with_profile<R>(
 ) -> Result<(Profile, R), ApiError> {
     let now = ctx.server_date();
     match ctx.accounts.update(&env.uuid, |p| {
+        // The one-time starting stock (Build 21) comes with gold for enhancing (ours).
+        let fresh = !p.collection.items_granted;
         let granted = p.collection.ensure(&now);
+        if fresh {
+            p.gold += crate::items::STARTING_GOLD;
+        }
         let (r, change) = f(p);
         (r, if granted { Change::Progress } else { change })
     }) {
@@ -58,7 +63,7 @@ pub fn mind_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .collect();
     ok(
         json!({ "mindMax": collection::MIND_MAX, "mindList": list, "mindOverFlg": 0, "sortType": 0,
-               "materialSortType": 0, "goldRatioInteger": 0, "goldAddition": 0, "storageInfoList": [] }),
+               "materialSortType": 0, "goldRatioInteger": crate::items::GOLD_RATIO_DENOMINATOR, "goldAddition": 0, "storageInfoList": [] }),
     )
 }
 
