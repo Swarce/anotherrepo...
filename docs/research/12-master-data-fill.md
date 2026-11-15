@@ -168,8 +168,19 @@ team, not from the side, and the win shot was wrong.
     34, and on a missing id the camera stays in script mode and freezes on its last pose (M).
   - The set table now covers all 266 ids: the hard-coded ones plus every requested one, listed from
     the player's action sets.
-  - Result shots (301–314, 101001–101028) use `jdr_result`, a three-quarter front shot 4 m from
-    the winner, bound to the unit. The winner is moved to the map's `ResultPivot`.
+  - Result shots (301–314, 101001–101028) use `jdr_result`, a three-quarter front shot bound to
+    the unit. The winner is moved to the map's `ResultPivot`.
+  - Build 19: the win shot was framed too high (the owner's report).
+    - Node `baseBoneID`/`lookatBoneID` are `ScSystem.ScGraphics.CharacterBoneList.Bone`: NULL 0,
+      WAIST 1, RESERVE 2, SPINE1 3, SPINE2 4, NECK 5, HEAD 6, and so on (H).
+    - `ScriptCamera.GetTargetPositionSc` 0xD710E4 looks the bone up. A missing bone falls back to
+      RESERVE (2), then to the unit's own position, so it never fails (H).
+    - `ScrptCameraUpdate` reads these positions on every update, so the camera follows the bones (M-H).
+    - Our bone 0 resolved to RESERVE (about 1.1 m up on a normal-sized model). With a 1.1 m offset on top, the shot aimed
+      about 2.2 m up: winners sat low in the frame, and small ones fell out of it.
+    - `jdr_result` now stands 3.2 m from the winner's SPINE2 and looks at its NECK, with no offsets.
+      Every statue is centred on its own upper body (checked against the posed `evt_btl_lp`
+      appeal clip with `tools/content/pose_models.py --clip`, M).
   - Everything else uses `jdr_side`: world-fixed (`flagWorldSet`), on the −Z side of the acting
     unit, 9 m away. The client mirrors some ids for enemies; the world-fixed shot cannot be flipped.
   - Node values are ours (M).

@@ -870,6 +870,21 @@ mod tests {
             .iter()
             .map(|n| n["id"].as_str().unwrap())
             .collect();
+        // The win shot follows the winner's own chest and neck (CharacterBoneList.Bone SPINE2 4,
+        // NECK 5), so every statue is framed whatever its size or pose (docs/research/12 §5).
+        let result = nodes["listData"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .find(|n| n["id"] == "jdr_result")
+            .unwrap();
+        assert_eq!(
+            (
+                result["baseBoneID"].as_i64(),
+                result["lookatBoneID"].as_i64()
+            ),
+            (Some(4), Some(5))
+        );
         let list = sets["listData"].as_array().unwrap();
         let ids: Vec<i64> = list
             .iter()
