@@ -2,6 +2,43 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 19 — English that fits the UI (branch `wip/b19`)
+
+### What the Build 18 device test and owner showed
+- The team view works.
+- Some English overflows its UI, and some UI shows no text at all.
+
+### What changed
+- **Measuring (new `tools/l10n/ui_fit.py`).** Every one of the 4,863 `UI.Text` labels in the
+  player's UI bundles is laid out the way Unity's text generator does it: the box comes from the
+  prefab's RectTransforms, and the text is measured with the label's own font from the player's
+  files (FOT-NewRodin Pro, FOT-Matisse ProN, IPAex Gothic), with wrap, line height and best fit.
+  The original Japanese fits in 98.2% of the measurable labels, which checks the measurement.
+  - It includes 402 text-table rows that labels show through `BaseTextBox.defaultTextLabel`.
+  - Labels that size themselves (a ContentSizeFitter or a layout group) are compared with the
+    room the Japanese and the button art leave.
+- **Shorter English** where it overflowed (docs/LOCALIZATION.md, "Fitting the UI"):
+  - 89 UI labels, for example "Ability Description" → "Ability Info",
+    "Commercial Transactions Notice" → "Legal Notice", "Summon Details" → "Details",
+    "Withdraw Application" → "Cancel" and "Achievements" → "Records";
+  - about 3,000 text rows by consistent rules: "X Stone Shard" → "X Shard", "Calendar Slab" →
+    "Slab", Easy/Normal/Hard for 初級/中級/上級 (only where the Japanese has them), "Tarot: …",
+    "Memorial Mind", "Elite Raid", (S)/(M)/(L)/(XL) in buffs and skill texts, shorter skill
+    categories ("• Fire attack on one foe"), and a few menu, shop, Town and login-bonus labels.
+- **Best fit for runtime labels.** Until now only labels whose baked text we replaced could shrink.
+  The new `server/content/l10n/ui_layout.json` (label ids only) gives best fit to 1,015 labels
+  that the game fills at runtime. It also gives wrap and best fit to 23 labels that spilled
+  sideways. All of them are in bundles the server already rebuilds; the generator version is 3,
+  so cached English bundles are rebuilt once.
+- Remaining: 11 self-sizing labels within about 6% of their room, and 4 labels that shrink to
+  54-71%.
+- Build number 19, server marker `JDR_EMBEDDED_SERVER_b019`.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] Menus, buttons and popups: no text over the button art or outside its box
+- [ ] Labels that were blank now show text (please name any that are still blank)
+- [ ] Long names (skills, Minds, places) shrink to fit instead of overflowing
+
 ## Build 18 — team view fixed, research data merged (branch `wip/b18`)
 
 ### What the Build 17 device test and owner showed
