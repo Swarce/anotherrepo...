@@ -490,8 +490,12 @@ const RANGED_PREFIXES: &[&str] = &["311", "416", "418", "424", "522", "530"];
 
 /// Where a skill's user stops, as the client's (dtRangeMin, dtRangeMax) in centimetres
 /// (`CharacterProxy.SetSkillTargetPos` 0xEE9304: farther than max walks to max, nearer than min
-/// backs off to min; 0/0 walks into the target). Melee 1-1.5 m, bullet users 4-8 m, heals on
-/// allies (target types 3-5) move only when over 10 m away. Values are ours.
+/// backs off to min; 0/0 walks into the target). The attack itself then closes in to a fixed
+/// 1.05 m from the target (constant 0x223E5A4): a Stand appears on its user and rushes up to
+/// about 2.1 m forward, so Stand users stop 2-2.5 m away (closer, the Stand overlapped its
+/// user); units without a Stand lunge themselves and stop 1.2-1.5 m away, outside the snap
+/// distance; bullet users 4-8 m; heals on allies (target types 3-5) move only when over 10 m
+/// away. docs/research/12 §6. Values are ours.
 pub fn skill_range(skill_id: &str, target_type: i64) -> (i64, i64) {
     let prefix = skill_id
         .strip_prefix("SKILL_")
@@ -501,9 +505,20 @@ pub fn skill_range(skill_id: &str, target_type: i64) -> (i64, i64) {
         (0, 1000)
     } else if RANGED_PREFIXES.contains(&prefix) {
         (400, 800)
+    } else if stand_prefix(prefix) {
+        (200, 250)
     } else {
-        (100, 150)
+        (120, 150)
     }
+}
+
+/// Whether the statues sharing this 3-digit skill prefix fight with a Stand (a Stand model in
+/// their modelDataList).
+fn stand_prefix(prefix: &str) -> bool {
+    !prefix.is_empty()
+        && statues()
+            .iter()
+            .any(|d| d.statue_id.starts_with(prefix) && d.model_data_list.len() > 1)
 }
 
 /// The base skill table (server/content/dt_skills_base.json) plus one attack row per distinct

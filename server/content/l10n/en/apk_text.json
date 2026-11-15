@@ -1,0 +1,387 @@
+{
+  "about": "English for text built into the APK outside ClientMes: scene labels (apk:<file>:<path id>:m_Text) and player-visible C# string literals (literal:<index>), key -> [hash of the Japanese source, English]. Applied by the patcher (english-apk-text). See docs/LOCALIZATION.md.",
+  "entries": {
+    "apk:level10:162:m_Text": [
+      "c2ab387c",
+      "No\n"
+    ],
+    "apk:level10:168:m_Text": [
+      "8f90d85e",
+      "Yes"
+    ],
+    "apk:level11:216:m_Text": [
+      "66f029d2",
+      "User ID:"
+    ],
+    "apk:level11:272:m_Text": [
+      "e6023ab8",
+      "Debug:\nLog in without download"
+    ],
+    "apk:level11:318:m_Text": [
+      "dc6a939f",
+      "App Version:"
+    ],
+    "apk:level12:394:m_Text": [
+      "77402fcf",
+      "Downloading all data now shortens\nthe download times on each screen.\nYou can also download all data later\nfrom \"Options\" -> \"Data Download\"."
+    ],
+    "apk:level12:396:m_Text": [
+      "b13b9571",
+      "The download may take some time.\nWe recommend downloading over Wi-Fi.\n*Any data charges for the download are your responsibility.\n\nDownload now?"
+    ],
+    "apk:level12:402:m_Text": [
+      "ce192741",
+      "Data Download"
+    ],
+    "apk:level12:404:m_Text": [
+      "ccf6e1ef",
+      "Download all game data at once"
+    ],
+    "apk:level12:408:m_Text": [
+      "ff91090f",
+      "Download minimum data:"
+    ],
+    "apk:level12:409:m_Text": [
+      "ccf6e1ef",
+      "Download all game data at once"
+    ],
+    "apk:level12:412:m_Text": [
+      "0277d13b",
+      "Download All"
+    ],
+    "apk:level12:413:m_Text": [
+      "bca84ea5",
+      "Cancel"
+    ],
+    "apk:level12:414:m_Text": [
+      "cdd55853",
+      "Download Minimum Data"
+    ],
+    "apk:level12:420:m_Text": [
+      "b13b9571",
+      "The download may take some time.\nWe recommend downloading over Wi-Fi.\n*Any data charges for the download are your responsibility.\n\nDownload now?"
+    ],
+    "apk:level12:424:m_Text": [
+      "bca84ea5",
+      "Cancel"
+    ],
+    "apk:level12:425:m_Text": [
+      "d7c9996c",
+      "Start Download"
+    ],
+    "apk:level12:426:m_Text": [
+      "b13b9571",
+      "The download may take some time.\nWe recommend downloading over Wi-Fi.\n*Any data charges for the download are your responsibility.\n\nDownload now?"
+    ],
+    "apk:level12:427:m_Text": [
+      "7519019c",
+      "Starting the download of all game data.\nAre you sure?"
+    ],
+    "apk:level12:428:m_Text": [
+      "fccc259f",
+      "First Download"
+    ],
+    "apk:level12:431:m_Text": [
+      "2172de6b",
+      "Run"
+    ],
+    "apk:level12:432:m_Text": [
+      "37403890",
+      "Download all:"
+    ],
+    "apk:level12:434:m_Text": [
+      "b195f6a9",
+      " of game data will be downloaded."
+    ],
+    "apk:level12:436:m_Text": [
+      "e2be10eb",
+      " of game data will be downloaded."
+    ],
+    "apk:level12:437:m_Text": [
+      "d7c9996c",
+      "Start Download"
+    ],
+    "apk:level12:439:m_Text": [
+      "d9089ef7",
+      "New data is available."
+    ],
+    "apk:level12:447:m_Text": [
+      "1d695d96",
+      "Download All"
+    ],
+    "apk:level12:450:m_Text": [
+      "bca84ea5",
+      "Cancel"
+    ],
+    "apk:level14:41:m_Text": [
+      "bca84ea5",
+      "Cancel"
+    ],
+    "apk:level14:58:m_Text": [
+      "ee5a980d",
+      "Open Store"
+    ],
+    "apk:level14:62:m_Text": [
+      "aebfcf10",
+      "A new version of the app is available.\nPlease update the app."
+    ],
+    "apk:level15:125:m_Text": [
+      "8f90d85e",
+      "Yes"
+    ],
+    "apk:level15:134:m_Text": [
+      "48ef2b67",
+      "No"
+    ],
+    "apk:level15:138:m_Text": [
+      "90dc59bd",
+      "Error Code:"
+    ],
+    "apk:level15:99:m_Text": [
+      "90dc59bd",
+      "Error Code:"
+    ],
+    "apk:level16:117:m_Text": [
+      "90dc59bd",
+      "Error Code:"
+    ],
+    "apk:level16:119:m_Text": [
+      "07905861",
+      "Message text"
+    ],
+    "apk:level16:92:m_Text": [
+      "07905861",
+      "Message text"
+    ],
+    "apk:level16:96:m_Text": [
+      "90dc59bd",
+      "Error Code:"
+    ],
+    "apk:level20:40:m_Text": [
+      "f6c244f9",
+      "Close"
+    ],
+    "apk:level2:158:m_Text": [
+      "72a92e81",
+      "Downloadiiing!!"
+    ],
+    "apk:level2:169:m_Text": [
+      "17a8be42",
+      "Downloadiing...!"
+    ],
+    "apk:level2:170:m_Text": [
+      "251fea8d",
+      "---- Wi-Fi recommended for downloading ----"
+    ],
+    "apk:level2:198:m_Text": [
+      "5ba35da3",
+      "Connecting..."
+    ],
+    "apk:level6:67:m_Text": [
+      "146915ec",
+      "Delete"
+    ],
+    "apk:level6:70:m_Text": [
+      "48ef2b67",
+      "No"
+    ],
+    "apk:level6:74:m_Text": [
+      "9a478ce3",
+      "Clear Cache"
+    ],
+    "apk:level6:75:m_Text": [
+      "dd0546f2",
+      "All downloaded data will be deleted.\nAre you sure?\n*You should not normally need to do this."
+    ],
+    "apk:level7:102:m_Text": [
+      "66f029d2",
+      "User ID:"
+    ],
+    "apk:level7:76:m_Text": [
+      "8f90d85e",
+      "Yes"
+    ],
+    "apk:level7:82:m_Text": [
+      "70f7ae4a",
+      "Copy"
+    ],
+    "apk:level7:86:m_Text": [
+      "f3b7bc3c",
+      "Your User ID is required when contacting support.\nPress the Copy button to copy your User ID to your device."
+    ],
+    "apk:level7:88:m_Text": [
+      "f0ba774d",
+      "Open your browser and connect\nto the official website?"
+    ],
+    "apk:level7:92:m_Text": [
+      "48ef2b67",
+      "No"
+    ],
+    "apk:level7:99:m_Text": [
+      "a6c63435",
+      "Contact"
+    ],
+    "apk:level9:180:m_Text": [
+      "bca84ea5",
+      "Cancel"
+    ],
+    "apk:level9:181:m_Text": [
+      "d5498734",
+      "Start with New Data"
+    ],
+    "apk:level9:182:m_Text": [
+      "66f029d2",
+      "User ID:"
+    ],
+    "apk:level9:183:m_Text": [
+      "67481c51",
+      "User Name:"
+    ],
+    "apk:level9:184:m_Text": [
+      "a982273c",
+      "Data 1"
+    ],
+    "apk:level9:189:m_Text": [
+      "7592aca7",
+      "Select Save Data"
+    ],
+    "apk:level9:191:m_Text": [
+      "f1b81381",
+      "User Rank:"
+    ],
+    "apk:level9:195:m_Text": [
+      "f1b81381",
+      "User Rank:"
+    ],
+    "apk:level9:197:m_Text": [
+      "a982273c",
+      "Data 1"
+    ],
+    "apk:level9:201:m_Text": [
+      "66f029d2",
+      "User ID:"
+    ],
+    "apk:level9:204:m_Text": [
+      "0bf294c0",
+      "Data 2"
+    ],
+    "apk:level9:206:m_Text": [
+      "a7ba12bc",
+      "User Name"
+    ],
+    "apk:level9:207:m_Text": [
+      "2452b111",
+      "Description text"
+    ],
+    "apk:level9:213:m_Text": [
+      "3208e02d",
+      "Data 2"
+    ],
+    "apk:level9:216:m_Text": [
+      "5b231f66",
+      "Start with Existing Data"
+    ],
+    "apk:level9:218:m_Text": [
+      "67481c51",
+      "User Name:"
+    ],
+    "apk:level9:220:m_Text": [
+      "a7ba12bc",
+      "User Name"
+    ],
+    "literal:1052": [
+      "08002c66",
+      " yen"
+    ],
+    "literal:2624": [
+      "a9f54c59",
+      "Leader & Support"
+    ],
+    "literal:2625": [
+      "f9dba60f",
+      "Statues"
+    ],
+    "literal:2851": [
+      "6555e54b",
+      " (end)"
+    ],
+    "literal:3194": [
+      "09af1c11",
+      "Remove Follower"
+    ],
+    "literal:3195": [
+      "a5fbfd56",
+      "Cancel Removal"
+    ],
+    "literal:3196": [
+      "2197939b",
+      "Unfollow"
+    ],
+    "literal:3197": [
+      "577676df",
+      "Follow"
+    ],
+    "literal:326": [
+      "360361d5",
+      "{N/A}"
+    ],
+    "literal:4388": [
+      "ad8a9437",
+      "Could not complete purchase: "
+    ],
+    "literal:4389": [
+      "a1b41878",
+      "Purchase failed: "
+    ],
+    "literal:4697": [
+      "25633b92",
+      "Saving..."
+    ],
+    "literal:5655": [
+      "2dba4601",
+      "Current game mode: "
+    ],
+    "literal:5656": [
+      "70f00a26",
+      "."
+    ],
+    "literal:6806": [
+      "c4e0d76a",
+      "{0}d "
+    ],
+    "literal:6811": [
+      "b409fef7",
+      "#{0}"
+    ],
+    "literal:6813": [
+      "1aa9c417",
+      " "
+    ],
+    "literal:7352": [
+      "6de6cfd7",
+      "approx. "
+    ],
+    "literal:7355": [
+      "1f695632",
+      "Debug text"
+    ],
+    "literal:7870": [
+      "15fda73c",
+      "An error occurred."
+    ],
+    "literal:7878": [
+      "e7f73337",
+      "'Until' yyyy/MM/dd HH:mm"
+    ],
+    "literal:8455": [
+      "481070b8",
+      "N/A"
+    ]
+  },
+  "sources": [
+    {
+      "note": "translated by the project",
+      "source": "jdr-default"
+    }
+  ]
+}
