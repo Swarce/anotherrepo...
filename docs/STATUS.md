@@ -6,6 +6,7 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 
 ### What the Build 17 device test and owner showed
 - Everything works, but team-screen statues were sometimes out of frame or T-posing.
+- Some statues in the Growth Tree list were blank cards.
 - The owner gathered a research collection with an outside assistant (statues, systems).
 
 ### What changed
@@ -14,6 +15,10 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
     which has no clip for 16 of them) now take a rarity whose pose clip exists in the player's
     files (120 statues).
   - Each statue's team scale fits the bust shot from its measured height (34 differ from 100).
+- **Blank cards**: 49 statues have no list thumbnail (`st_<statueId>` in the `ui_statue_*` atlases)
+  in the player's files. They are now enemy-only: still used by story stages, but not granted,
+  listed, summoned or accepted in a team. Saves that hold them hide them and clear their team slots.
+  The player owns 217 statues.
 - **Research collection** (docs/CONTENT.md):
   - stats for 5 more statues (145 of 266 now have wiki stats), cited per ShoutWiki page;
   - 11 existing matches confirmed with identical numbers;
@@ -23,6 +28,7 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 ### Device checklist (expected; to be confirmed on a device)
 - [ ] Team setup: no T-poses; small models (Iggy, Pet Shop, Enya, Shigechi) and Tarkus framed
 - [ ] Star counts look right for the statues whose rarity now comes from the files
+- [ ] No blank cards in the statue, Growth Tree, team and book lists
 
 ## Build 17 — every visible text in English, Stands no longer overlap their user (branch `wip/b17`)
 

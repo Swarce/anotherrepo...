@@ -140,7 +140,7 @@ pub fn gasha_play(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                 .collection
                 .statues
                 .iter()
-                .filter(|o| collection::find(&o.statue_id).is_some())
+                .filter(|o| collection::find_playable(&o.statue_id).is_some())
                 .collect();
             let rar = |o: &&OwnedStatue| {
                 collection::find(&o.statue_id)
