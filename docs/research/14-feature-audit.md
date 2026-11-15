@@ -167,3 +167,28 @@ Out of scope offline, or later systems:
 
 `prior_numeric_data/` is the earlier collection, already merged in Build 18 (5 more statues, 11
 confirmed). It is unchanged, so there is nothing new to import.
+
+## Revision 2 of the research pack
+
+The owner sent a revised pack (filed privately as `local/wiki-raw/research-2026-11-15-v2/`). It
+adds 47 behaviour notes, 33 player flows, upright values for the 22 Tarot cards, 7 event
+examples and 8 event Minds. The numeric data is unchanged.
+
+| Note | Status | Our implementation | Gap / next |
+|---|---|---|---|
+| v2.growth.weekday | server | Daily enemies follow the material days: Mon/Thu Wisdom, Tue/Fri Spirit, Wed/Sat Courage, Sun all three (`build_extra_quests.py`, Build 20) | — |
+| v2.growth.party_exp | server | A clear gives statue EXP to the three statues that fought | Support and assist EXP not modelled |
+| v2.growth.launch_slots / cp_level / cp_reject | missing | No Mind equipment yet | Use as checks when the Mind equip routes are built; the four slots are launch-era (dated) |
+| v2.growth.tree_resources | partial | Server-built tree with stat squares | SP, DoDoDo stocks and Mind-capacity squares wait for Minds |
+| v2.growth.material_rarity / crossfeed | missing | No EXP-material inventory | Item system (later) |
+| v2.growth.assist_display / assist_conditions / assist_scaling | missing | No assists | The scaling rule is provisional: keep it configurable |
+| v2.action.armor_weak / armor_strong / crit_legacy / unity_phases / unity_stack / zeppeli_sacrifice | client | Action battle behaviour; the client's tables decide | Action battle is unverified offline |
+| v2.arena.* (8 rows) | missing | — | Keep the early (no switching, BP 5, cost lock) and later rule sets apart. Opponents were AI-controlled teams (2018 guide), which fits an offline build |
+| v2.labyrinth.* (10 rows) | missing | — | Pending rewards paid only on full clear or escape; Soul loss on defeat or retire; zero Souls forfeits. 22 Tarot identities, each used once until the deck resets; flipping all three costs 20 Mentality. Upright values only |
+| v2.countup.old_ticket / ticket_pool / ticket_delivery | missing | — | Per-banner config if ever built (20/30/50/50/50; the ticket goes to the present box) |
+| v2.events.* (9 rows) | offline / missing | Four event chapters playable (Build 20); no points, ranking or exchange | One-event examples, not general rules; never sum anniversary tiers |
+
+**Player flows** (`catalog/player_flows.json`, 33). Their audit checks match the boot, home,
+quest and battle rows above. The ordinary screens that are still empty or stubbed are Missions,
+Mind equipment, assists, enhancement materials, event exchange and box/Count Up summons. These
+stay the next priorities after the Build 20 device test.

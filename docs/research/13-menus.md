@@ -85,8 +85,9 @@ The owner asked for these tiles so more content can be tested. H unless marked, 
   any path).
 - **Content** (`server/content/quests_extra.json`, `tools/content/build_extra_quests.py`).
   - Daily: per weekday, the game's two quest lines (`CHAPTER_NAME_DY_<day>_01`/`_04`), each with
-    its Easy–Expert stages (`STAGE_DY2_<day>_001..004`, `_101..104`). Enemies are statues of the
-    type the quest names.
+    its Easy–Expert stages (`STAGE_DY2_<day>_001..004`, `_101..104`). Enemies follow the
+    documented material days (Mon/Thu Wisdom, Tue/Fri Spirit, Wed/Sat Courage, Sunday all three;
+    research pack v2.growth.weekday).
   - Events: 50035 Cinderella's Wizard, 50045 The Girl Standing in the Alley, 50032 Challenge
     Letters, 50077 2nd Anniversary. That is 72 chapters and 222 stages in all, each with its own
     chapter and stage label from the game's text and its banner (id `50032` → banner
