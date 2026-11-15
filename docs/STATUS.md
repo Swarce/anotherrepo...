@@ -13,7 +13,10 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
   - The bust-up pose clip is chosen by rarity. Statues with no wiki rarity (we defaulted to 4,
     which has no clip for 16 of them) now take a rarity whose pose clip exists in the player's
     files (120 statues).
-  - Each statue's team scale fits the bust shot from its measured height (34 differ from 100).
+  - Each statue is framed from its actual team pose: the pose is evaluated and skinned from the
+    player's files, the head is centred over its slot (`teamPos.x`), the head bone sits at
+    1.45-1.70 m (scale 50-150%), and very short figures are lifted (`teamPos.y`). This replaces the
+    first pass, which used bind-pose heights; the device still showed statues off centre.
 - **Research collection** (docs/CONTENT.md):
   - stats for 5 more statues (145 of 266 now have wiki stats), cited per ShoutWiki page;
   - 11 existing matches confirmed with identical numbers;
