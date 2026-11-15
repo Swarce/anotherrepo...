@@ -13,9 +13,32 @@ use serde_json::{json, Value};
 
 /// `BizarreSelectResponse`: the story button (daily and event categories come later).
 pub fn get_bizarre_select(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    ok(
-        json!({ "questList": [quests::story_quest_info()], "eventCampaignList": [], "dungeonLockFlg": 1 }),
-    )
+    // Tiles by bannerType (1 story, 2 daily, 3 event); `category` is what a tapped tile asks
+    // bizarre_list for. Every string must be a string: a null bannerFileName or eventMasterId
+    // crashes the screen (docs/research/13-menus.md, Quest Select).
+    let (open, close) = ("2020-01-01 00:00:00", "2099-12-31 23:59:59");
+    let mut list = vec![quests::story_quest_info()];
+    if let Some(d) = quests::daily_today() {
+        list.push(
+            json!({ "questHomeId": "DY", "category": d.category, "bannerType": 2,
+            "bannerFileName": d.banner, "day": d.category - 6, "Priority": 2, "eventMasterId": "",
+            "startDate": open, "endDate": close }),
+        );
+    }
+    let mut campaigns = Vec::new();
+    for (i, e) in quests::events().iter().enumerate() {
+        list.push(
+            json!({ "questHomeId": "EV", "category": e.category, "bannerType": 3,
+            "bannerFileName": e.banner, "day": 0, "Priority": 3 + i, "eventMasterId": e.event_id,
+            "startDate": open, "endDate": close }),
+        );
+        // Campaign Info: shown with bizarreHomeFlag, opens s3_url + htmlLink in the web view
+        // (our web module answers any path).
+        campaigns.push(json!({ "eventCampaignId": e.event_id, "banner": e.banner,
+            "htmlLink": format!("/information/campaign_{}.html", e.event_id),
+            "signboardPriority": i + 1, "bizarreHomeFlag": true, "signboardParam": "" }));
+    }
+    ok(json!({ "questList": list, "eventCampaignList": campaigns, "dungeonLockFlg": 1 }))
 }
 
 /// `BizarreListResponse` for a category: every story chapter (action and tactical; the client
@@ -27,15 +50,26 @@ pub fn bizarre_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .get("category")
         .and_then(Value::as_i64)
         .unwrap_or(STORY_CATEGORY);
-    let list: Vec<Value> = if category == STORY_CATEGORY {
-        quests::chapters()
-            .iter()
-            .map(|c| quests::chapter_info(c, &p.progress))
-            .collect()
-    } else {
-        Vec::new()
-    };
-    ok(json!({ "chapterList": list, "eventInfo": {}, "raidInfo": {} }))
+    let list: Vec<Value> = quests::chapters()
+        .iter()
+        .filter(|c| c.category == category)
+        .map(|c| quests::chapter_info(c, &p.progress))
+        .collect();
+    // Event Home backs out with an "expired" dialog unless eventCampaignId is set; ranking,
+    // collection points, shop, BGM and the event summon stay off (all 0 or "").
+    let event_info = quests::events()
+        .iter()
+        .find(|e| e.category == category)
+        .map(|e| {
+            json!({ "eventCampaignId": e.event_id, "eventShopFlg": 0, "eventCollectType": 0,
+                "eventRankingFlg": 0, "eventMissiongFlg": 0, "eventBg": "",
+                "htmlLink": format!("/information/event_{}.html", e.event_id), "eventBgm": "",
+                "eventTutorialImage": "", "eventItemList": [], "eventPointImage": "",
+                "userEventPoint": 0, "clanEventPoint": 0, "endDate": "", "finishedDate": "",
+                "banner": e.banner })
+        })
+        .unwrap_or_else(|| json!({}));
+    ok(json!({ "chapterList": list, "eventInfo": event_info, "raidInfo": {} }))
 }
 
 /// `StageListResponse` for one chapter.
@@ -270,5 +304,119 @@ mod tests {
         let p = ctx.accounts.get(&uuid).unwrap().unwrap();
         let done: Vec<i64> = p.progress.stars[&sid].iter().copied().collect();
         assert_eq!(done, [1, 10], "only mission types 1..16 are kept");
+    }
+
+    fn no_nulls(v: &Value) -> bool {
+        match v {
+            Value::Null => false,
+            Value::Array(a) => a.iter().all(no_nulls),
+            Value::Object(o) => o.values().all(no_nulls),
+            _ => true,
+        }
+    }
+
+    #[test]
+    fn daily_event_and_campaign_tiles_open_their_chapters() {
+        let dir = std::env::temp_dir().join(format!("jdr-select-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let ctx = Ctx::new(Settings::new(dir), false);
+        let uuid = ctx.accounts.create(&[]).unwrap().uuid;
+        let (r, _) = dispatch(&ctx, "/bizarre/get_bizarre_select", &env(&uuid, json!({})));
+        let r = r.unwrap();
+        assert!(
+            no_nulls(&Value::Object(r.clone())),
+            "a null string crashes the screen"
+        );
+        let tiles = r["questList"].as_array().unwrap();
+        let kinds: Vec<i64> = tiles
+            .iter()
+            .map(|q| q["bannerType"].as_i64().unwrap())
+            .collect();
+        assert_eq!(
+            kinds.iter().filter(|k| **k == 2).count(),
+            1,
+            "one daily tile (today)"
+        );
+        assert!(kinds.contains(&1) && kinds.iter().filter(|k| **k == 3).count() >= 3);
+        let camps = r["eventCampaignList"].as_array().unwrap();
+        assert!(
+            !camps.is_empty()
+                && camps.iter().all(|c| c["bizarreHomeFlag"] == true
+                    && c["htmlLink"].as_str().unwrap().starts_with('/'))
+        );
+        let tr = crate::l10n::Translations::embedded().unwrap();
+        let label = |l: &str| {
+            tr.english(&format!("text:ChapterName_JP:{l}")).is_some()
+                || tr.english(&format!("text:StageText_JP:{l}")).is_some()
+                || tr
+                    .english(&format!("text:EventChapterName_JP:{l}"))
+                    .is_some()
+        };
+        for q in tiles.iter().filter(|q| q["bannerType"] != 1) {
+            let cat = q["category"].as_i64().unwrap();
+            assert!(q["bannerFileName"].as_str().unwrap().len() > 3);
+            let (l, _) = dispatch(
+                &ctx,
+                "/bizarre/bizarre_list",
+                &env(&uuid, json!({"category": cat})),
+            );
+            let l = l.unwrap();
+            let chapters = l["chapterList"].as_array().unwrap();
+            assert!(
+                !chapters.is_empty(),
+                "an empty list shows an expired dialog ({cat})"
+            );
+            assert!(chapters.iter().all(|c| c["category"] == cat));
+            if q["bannerType"] == 3 {
+                assert_eq!(l["eventInfo"]["eventCampaignId"], q["eventMasterId"]);
+                assert!(
+                    cat >= 13,
+                    "event chapters return to Event Home only from 13 up"
+                );
+            }
+            for c in chapters {
+                assert!(label(c["name"].as_str().unwrap()), "{}", c["name"]);
+                for s in c["stageList"].as_array().unwrap() {
+                    assert!(label(s["stageId"].as_str().unwrap()), "{}", s["stageId"]);
+                }
+            }
+            // The first stage plays like a story stage.
+            let sid = chapters[0]["stageList"][0]["stageId"]
+                .as_str()
+                .unwrap()
+                .to_string();
+            let (s, _) = dispatch(
+                &ctx,
+                "/bizarre/bizarre_start",
+                &env(&uuid, json!({"stageId": sid, "teamNo": 1})),
+            );
+            assert_eq!(
+                s.unwrap()["stageInfo"]["starList"]
+                    .as_array()
+                    .unwrap()
+                    .len(),
+                3
+            );
+            let (e, _) = dispatch(
+                &ctx,
+                "/bizarre/bizarre_end",
+                &env(
+                    &uuid,
+                    json!({"stageId": sid, "result": 0, "starClearList": "1"}),
+                ),
+            );
+            assert!(e.is_ok());
+        }
+        // Story still lists only story chapters.
+        let (l, _) = dispatch(
+            &ctx,
+            "/bizarre/bizarre_list",
+            &env(&uuid, json!({"category": 1})),
+        );
+        assert!(l.unwrap()["chapterList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .all(|c| c["category"] == 1));
     }
 }
