@@ -88,7 +88,7 @@
     "hitRate": 100,
     "hitFlag": 1,
     "criticalRate": 5,
-    "dododoRate": 0,
+    "dododoRate": 10,
     "dtCamera": "",
     "dtPositioning": 0,
     "dtRange": 0,
