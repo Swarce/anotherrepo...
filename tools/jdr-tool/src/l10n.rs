@@ -1,7 +1,8 @@
 //! `jdr-tool l10n`: the translators' round trip.
 //!
 //! - `export` writes every translatable string from the player's own copy (text.jp, the UI
-//!   prefabs, the in-APK ClientMes) to a local TSV: `key, hash, English, Japanese source`. The TSV
+//!   prefabs; with `--apk` also the in-APK ClientMes, the labels of the APK's own scenes and the
+//!   player-visible C# literals) to a local TSV: `key, hash, English, Japanese source`. The TSV
 //!   contains game text: keep it out of the repo (`/local/` is git-ignored).
 //! - `import` merges a TSV's English column into the repo's translation files, which store only
 //!   `key -> [hash, English]`.
@@ -12,11 +13,13 @@ use jdr_services::l10n::{self, Found};
 use serde_json::{Map, Value};
 use std::path::{Path, PathBuf};
 
-/// Bundles whose strings we offer (UI prefabs and the text tables; story scripts come later).
+/// Bundles whose strings we offer (UI prefabs, the minigame screens and the text tables; story
+/// scripts come later).
 pub fn wanted(name: &str) -> bool {
     name == "text.jp"
         || (name.starts_with("ui_") && !name.starts_with("ui_tips"))
         || name.starts_with("scene_")
+        || name.starts_with("minigame_")
 }
 
 fn esc(s: &str) -> String {
@@ -80,17 +83,7 @@ fn export(a: &[String]) -> Result<(), Error> {
         found.extend(l10n::collect(&b, &name).map_err(|e| format!("{name}: {e}"))?);
     }
     if let Some(apk) = opt(a, "--apk") {
-        let mut z = zip::ZipArchive::new(std::fs::File::open(apk)?)?;
-        let mut file = Vec::new();
-        std::io::Read::read_to_end(&mut z.by_name(jdr_patch::clientmes::ENTRY)?, &mut file)?;
-        for (label, text) in jdr_patch::clientmes::read(&file)?.rows {
-            if l10n::has_japanese(&text) {
-                found.push(Found {
-                    key: format!("clientmes:{label}"),
-                    source: text,
-                });
-            }
-        }
+        found.extend(apk_strings(Path::new(&apk))?);
     }
     let mut tsv = String::from("key\thash\tenglish\tjapanese\tprevious_english\n");
     let (mut done, mut stale) = (0, 0);
@@ -128,6 +121,54 @@ fn export(a: &[String]) -> Result<(), Error> {
         out.display()
     );
     Ok(())
+}
+
+fn zip_read(z: &mut zip::ZipArchive<std::fs::File>, name: &str) -> Result<Vec<u8>, Error> {
+    let mut file = Vec::new();
+    std::io::Read::read_to_end(&mut z.by_name(name)?, &mut file)?;
+    Ok(file)
+}
+
+/// The strings inside the APK: ClientMes, the scene labels and the allow-listed C# literals.
+pub fn apk_strings(apk: &Path) -> Result<Vec<Found>, Error> {
+    use jdr_patch::{apktext, clientmes, known, patches};
+    let mut z = zip::ZipArchive::new(std::fs::File::open(apk)?)?;
+    let mut found = Vec::new();
+    for (label, text) in clientmes::read(&zip_read(&mut z, clientmes::ENTRY)?)?.rows {
+        if l10n::has_japanese(&text) {
+            found.push(Found {
+                key: format!("clientmes:{label}"),
+                source: text,
+            });
+        }
+    }
+    let mut scenes: Vec<(u32, String)> = z
+        .file_names()
+        .filter(|n| apktext::is_scene(n))
+        .filter_map(|n| Some((n.rsplit("level").next()?.parse().ok()?, n.to_owned())))
+        .collect();
+    scenes.sort();
+    for (_, entry) in scenes {
+        let file = entry.trim_start_matches(apktext::DATA_DIR).to_owned();
+        let data = zip_read(&mut z, &entry)?;
+        for (key, source) in
+            apktext::scene_sources(&file, &data).map_err(|e| format!("{entry}: {e}"))?
+        {
+            found.push(Found { key, source });
+        }
+    }
+    let meta = zip_read(&mut z, patches::METADATA_PATH)?;
+    match known::by_metadata(&patches::sha256_hex(&meta)) {
+        Some(build) => {
+            for (key, source) in apktext::literal_sources(&meta, build)? {
+                found.push(Found { key, source });
+            }
+        }
+        None => eprintln!(
+            "note: global-metadata.dat is not a verified build (or already patched): C# literals not exported"
+        ),
+    }
+    Ok(found)
 }
 
 /// The text.jp tables of the first (menu) batch; everything else goes to `text_content`.
@@ -170,6 +211,8 @@ const MENU_TABLES: &[&str] = &[
 pub fn file_for(key: &str) -> &'static str {
     if key.starts_with("clientmes:") {
         "clientmes"
+    } else if key.starts_with("apk:") || key.starts_with("literal:") {
+        "apk_text"
     } else if key.starts_with("ui:") {
         "ui_prefabs"
     } else if MENU_TABLES.contains(&key.split(':').nth(1).unwrap_or("")) {
@@ -246,7 +289,9 @@ fn import(a: &[String]) -> Result<(), Error> {
             .into());
         }
         let (key, hash, en) = (cols[0], cols[1], unesc(cols[2]));
-        if en.trim().is_empty() {
+        // An empty cell is untranslated; a cell of only spaces is a deliberate blank (a suffix
+        // that English does not need, e.g. after a number).
+        if en.is_empty() {
             continue;
         }
         if l10n::has_japanese(&en) {
@@ -329,8 +374,14 @@ mod tests {
         assert_eq!(file_for("ui:ui_mypage:0:1:m_Text"), "ui_prefabs");
         assert_eq!(file_for("text:MyPage_JP:A"), "text_menu");
         assert_eq!(file_for("text:SkillName_JP:A"), "text_content");
+        assert_eq!(file_for("apk:level2:158:m_Text"), "apk_text");
+        assert_eq!(file_for("literal:3197"), "apk_text");
         assert!(
-            wanted("ui_mypage") && wanted("scene_vs") && wanted("text.jp") && !wanted("ui_tips_00")
+            wanted("ui_mypage")
+                && wanted("scene_vs")
+                && wanted("text.jp")
+                && wanted("minigame_01")
+                && !wanted("ui_tips_00")
         );
     }
 }

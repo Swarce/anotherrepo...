@@ -292,6 +292,22 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
             "ClientMes: {got} of {total} messages are our English"
         ));
     }
+    if !disabled.contains(&"english-apk-text") {
+        // Expected: what the patch replaces on the untouched input.
+        let expected = patches::translate_apk_text(&mut ApkEdit::open(&input)?, build)?;
+        let (scenes, literals) = patches::apk_text_english(&mut chk, build)?;
+        if (scenes, literals) != (expected.scenes, expected.literals) {
+            return Err(format!(
+                "post-check failed: {scenes} scene labels and {literals} literals are English, expected {} and {}",
+                expected.scenes, expected.literals
+            )
+            .into());
+        }
+        rep.checks.push(format!(
+            "APK scenes: {scenes} of {} labels are our English; metadata: {literals} of {} UI literals",
+            expected.scene_total, expected.literal_total
+        ));
+    }
     if cfg.art_zip.is_some() && !disabled.contains(&"ui-art") {
         let msg = match chk.read(jdr_patch::art::ART_ASSET) {
             Ok(b) => {
