@@ -17,7 +17,7 @@ import UnityPy
 jp = re.compile("[぀-ヿ㐀-䶿一-鿿]")
 files = sorted(glob.glob(os.path.join(sys.argv[1], "*.bytes")))
 assert files, "no rebuilt files"
-objs = texts = english = best_fit = 0
+objs = texts = english = empty = japanese = best_fit = 0
 for p in files:
     env = UnityPy.load(p)
     for o in env.objects:
@@ -27,7 +27,12 @@ for p in files:
         objs += 1
         if "m_Text" in t:
             texts += 1
-            if t["m_Text"] and not jp.search(t["m_Text"]):
+            s = t["m_Text"]
+            if not s.strip():
+                empty += 1  # filled in by code at runtime
+            elif jp.search(s):
+                japanese += 1
+            else:
                 english += 1
             fd = t.get("m_FontData") or {}
             if fd.get("m_BestFit"):
@@ -35,5 +40,7 @@ for p in files:
                 assert 0 <= fd["m_MinSize"] <= fd["m_MaxSize"], (p, fd)
 assert objs > 0 and texts > 0, "nothing decoded"
 assert english > 0, "no UI text without Japanese: the English did not land"
+# Every exported UI label is translated, so a Japanese label means the pipeline missed one.
+assert japanese == 0, f"{japanese} UI texts still carry Japanese"
 print(f"OK: {len(files)} rebuilt bundles parse with UnityPy; {objs} MonoBehaviours, "
-      f"{texts} UI texts ({english} without Japanese, {best_fit} best fit)")
+      f"{texts} UI texts ({english} English, {empty} empty (set at runtime), 0 Japanese; {best_fit} best fit)")
