@@ -2,6 +2,75 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 17 — every visible text in English, Stands no longer overlap their user (branch `wip/b17`)
+
+### What the Build 16 device test and owner showed
+- Attackers stop in front of their target, but Stands sometimes overlapped their own user.
+- Draws and their cutscenes work, and the win quote shows.
+- Some text was still Japanese: loading screen text, minor descriptions and buttons. It is real
+  text, not art.
+
+### What changed
+- **Stands** (docs/research/12 §6). A Stand appears on its user and rushes about 2 m forward,
+  stopping 1.05 m from the target. Stand users now stop 2–2.5 m away; units without a Stand stop
+  1.2–1.5 m away.
+- **The last text** (survey: 0 Japanese left in the exported UI; the 883 "Japanese" labels the
+  check reported were empty runtime-filled fields):
+  - The 356 chapter-description and dungeon-UI rows are translated. All 51,081 text-table rows
+    are now English.
+  - New patch `english-apk-text`:
+    - It rewrites the 72 Japanese labels in the 11 scenes built into the APK (loading overlay,
+      download screen, title, save select, errors). It reads and writes them field by field and
+      refuses anything else; other objects stay byte-identical.
+    - It also rewrites 22 visible C# string literals (Follow buttons, rank and days-left text,
+      "until" dates, "Saving...", yen, purchase errors). Literals longer than the original are
+      relocated in global-metadata.dat.
+    - Every site is checked against its source hash, and a post-check confirms 72 of 72 labels
+      and 22 of 22 literals.
+  - The `minigame_01` hand names are exported and translated (33 bundles are rebuilt).
+  - `l10n_check.py` counts empty labels separately and fails on any Japanese UI text.
+- Build number 17, server marker `JDR_EMBEDDED_SERVER_b017`.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] Stands rush out in front of their user
+- [ ] The loading overlay, download screen, title and save select are in English; the long
+      download paragraphs fit their boxes (best fit is off)
+- [ ] Follow buttons, PvP rank text and banner dates are in English
+
+## Build 16 — the full non-story translation, attack spacing, draw buttons, win quotes, a real tree (branch `wip/b16`)
+
+### What the Build 15 device log and owner showed
+- Battles are seen from the side, but attackers walked into their targets.
+- Summon, Shop, the growth tree and the dictionary open, but Summon had no draw button.
+- The growth tree works but should be a real tree.
+- The win screen showed placeholder quotes.
+- Owner's request: finish the text translation, minus the story.
+
+### What changed
+- **Translation.** 17,151 more rows are in English: effects and buffs, achievements and missions,
+  campaign/inbox/login-bonus messages, skill texts and categories, item/mind/character
+  descriptions, win quotes, and Town/glossary/tips.
+  - The six batches follow local/l10n/GUIDE.md and the glossary, and were checked for
+    placeholders, line breaks and leftover Japanese.
+  - 50,725 of 51,081 text rows are now translated. The 356 left are story: chapter, event-chapter,
+    daily and dungeon scene text.
+- **Attack spacing.** Skill `dtRangeMin`/`dtRangeMax` are centimetres
+  (`CharacterProxy.SetSkillTargetPos` 0xEE9304); 0/0 walked attackers into the target's centre.
+  - Melee now stops 1–1.5 m away, bullet users 4–8 m, and heals move only when the ally is far.
+  - Move ranges and the bystanders' escape distance are also centimetres, and are fixed.
+- **Summon buttons.** Pay type Cash (4) draws no play buttons (jump table 0x223E70C); the banners
+  now use Free (2) at price 0.
+- **Win quotes.** `battleResultComment` is the game's own `Result_Chara_Comment_<statueId>`
+  label (264 statues), now translated.
+- **Growth tree.** Three branches from the start square (ATK, HP, DEF), with forks.
+- Build number 16, server marker `JDR_EMBEDDED_SERVER_b016`.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] Attackers stop in front of their target
+- [ ] Summon shows single and 10-draw buttons, and a draw plays
+- [ ] The win screen shows the character's quote in English
+- [ ] Skill, effect, item and achievement texts read in English; the growth tree branches
+
 ## Build 15 — battle from the side, menus open (branch `wip/b15`)
 
 ### What the Build 14 device log and owner showed

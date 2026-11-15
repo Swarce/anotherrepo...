@@ -534,6 +534,137 @@ impl Patch for TranslateClientMes {
     }
 }
 
+/// English for the Japanese built into the APK outside the ClientMes table: the `UI.Text` labels
+/// of the built-in scenes (loading overlay, download, save select, contact and error screens) and
+/// the player-visible C# string literals in `global-metadata.dat` (see `crate::apktext`). Each
+/// string is replaced only while its source still hashes as the translation expects.
+pub struct TranslateApkText;
+
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct ApkTextCount {
+    /// Scene labels in English / scene labels with Japanese.
+    pub scenes: usize,
+    pub scene_total: usize,
+    /// Allow-listed literals in English / allow-listed literals.
+    pub literals: usize,
+    pub literal_total: usize,
+    /// Literals longer than the original, moved to the end of the metadata file.
+    pub relocated: usize,
+}
+
+fn embedded_english(
+    tr: &jdr_services::l10n::Translations,
+    key: &str,
+    source: &str,
+) -> Option<String> {
+    match tr.lookup(key, source) {
+        jdr_services::l10n::Lookup::Found(en) => Some(en.to_string()),
+        _ => None,
+    }
+}
+
+fn literal_str(m: &Metadata, i: usize) -> Result<String, Error> {
+    String::from_utf8(m.literal(i)?.to_vec())
+        .map_err(|_| format!("metadata literal {i} is not UTF-8").into())
+}
+
+/// Apply the embedded English to the scenes and literals of `build` in `apk`.
+pub fn translate_apk_text(
+    apk: &mut ApkEdit,
+    build: &known::VerifiedBuild,
+) -> Result<ApkTextCount, Error> {
+    use crate::apktext;
+    let tr = jdr_services::l10n::Translations::embedded()?;
+    let mut c = ApkTextCount::default();
+    for (file, sha) in build.apk_text_scenes {
+        let entry = format!("{}{file}", apktext::DATA_DIR);
+        let data = apk.read(&entry)?;
+        if sha256_hex(&data) != *sha {
+            return Err(format!("fingerprint mismatch: {entry}").into());
+        }
+        c.scene_total += apktext::scene_texts(&data)?
+            .iter()
+            .filter(|(_, t)| jdr_services::l10n::has_japanese(t))
+            .count();
+        let (out, n) = apktext::rewrite_scene(&data, &|pid, text| {
+            embedded_english(&tr, &apktext::scene_key(file, pid), text)
+        })?;
+        if n > 0 {
+            let compress = apk.is_compressed(&entry);
+            apk.put(&entry, out, compress);
+        }
+        c.scenes += n;
+    }
+    let mut meta_file = apk.read(METADATA_PATH)?;
+    for (i, _) in build.ui_literals {
+        c.literal_total += 1;
+        let source = literal_str(&Metadata::parse(&meta_file)?, *i)?;
+        if let Some(en) = embedded_english(&tr, &apktext::literal_key(*i), &source) {
+            let (out, moved) = meta::set_literal(&meta_file, *i, en.as_bytes())?;
+            meta_file = out;
+            c.literals += 1;
+            c.relocated += moved as usize;
+        }
+    }
+    if c.literals > 0 {
+        let compress = apk.is_compressed(METADATA_PATH);
+        apk.put(METADATA_PATH, meta_file, compress);
+    }
+    Ok(c)
+}
+
+/// Post-check: scene labels and allow-listed literals of `apk` that are exactly our English.
+pub fn apk_text_english(
+    apk: &mut ApkEdit,
+    build: &known::VerifiedBuild,
+) -> Result<(usize, usize), Error> {
+    use crate::apktext;
+    let tr = jdr_services::l10n::Translations::embedded()?;
+    let mut scenes = 0;
+    for (file, _) in build.apk_text_scenes {
+        let data = apk.read(&format!("{}{file}", apktext::DATA_DIR))?;
+        scenes += apktext::scene_texts(&data)?
+            .iter()
+            .filter(|(pid, t)| tr.english(&apktext::scene_key(file, *pid)) == Some(t.as_str()))
+            .count();
+    }
+    let m_file = apk.read(METADATA_PATH)?;
+    let m = Metadata::parse(&m_file)?;
+    let mut literals = 0;
+    for (i, _) in build.ui_literals {
+        if tr.english(&apktext::literal_key(*i)).map(str::as_bytes) == Some(m.literal(*i)?) {
+            literals += 1;
+        }
+    }
+    Ok((scenes, literals))
+}
+
+impl Patch for TranslateApkText {
+    fn id(&self) -> &'static str {
+        "english-apk-text"
+    }
+    fn description(&self) -> &'static str {
+        "English labels in the APK's own scenes (loading, download, save select) and C# UI literals"
+    }
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        _cfg: &Config,
+        build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
+        let c = translate_apk_text(apk, build)?;
+        Ok(format!(
+            "scenes: {} of {} labels in English ({} files); metadata: {} of {} UI literals ({} relocated)",
+            c.scenes,
+            c.scene_total,
+            build.apk_text_scenes.len(),
+            c.literals,
+            c.literal_total,
+            c.relocated
+        ))
+    }
+}
+
 /// The player's redrawn UI art (`--art`); nothing to do without a pack.
 pub struct UiArt;
 
@@ -573,6 +704,7 @@ pub fn all() -> Vec<Box<dyn Patch>> {
         Box::new(NoGrowthbeat),
         Box::new(EmbedServer),
         Box::new(TranslateClientMes),
+        Box::new(TranslateApkText),
         Box::new(UiArt),
     ]
 }

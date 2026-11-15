@@ -173,3 +173,27 @@ team, not from the side, and the win shot was wrong.
   - Everything else uses `jdr_side`: world-fixed (`flagWorldSet`), on the −Z side of the acting
     unit, 9 m away. The client mirrors some ids for enemies; the world-fixed shot cannot be flipped.
   - Node values are ours (M).
+
+## 6. Attack distance and Stands (Builds 16–17)
+
+- **Where the user stops (H).** `CharacterProxy.SetSkillTargetPos` 0xEE9304 reads the skill's
+  `dtRangeMin`/`dtRangeMax` × 0.01 (centimetres). A user farther than the maximum walks to it; a
+  user nearer than the minimum backs off to it. With 0/0 the attacker walked into the target's
+  centre.
+- **Where the hit lands (H).** The attack then closes in to a fixed 1.05 m from the target
+  (float 0x223E5A4).
+  - A Stand appears on its user (`DoAdjustPairCharacterPose` 0xCFE298, offset 0 for almost all
+    Stands) and rushes forward (`ProcessMoveAhead`, `OnUpdateDtBattle` 0xDC3540). The rush is
+    typically 6 m/s for 0.35 s, about 2.1 m at most.
+  - So with the user only 1–1.5 m away, the Stand stayed inside its user or snapped behind it.
+- **`standRange` and model_table hit sizes play no part in the tactical battle (H).**
+- **Ranges we send** (ours):
+
+  | Unit | dtRangeMin/Max (cm) |
+  |---|---|
+  | Stand users | 200/250 |
+  | Units without a Stand (they lunge themselves) | 120/150 |
+  | Bullet users | 400/800 |
+  | Heals on allies | 0/1000 |
+
+  A 3-digit skill prefix counts as a Stand user when any statue sharing it has a Stand model.
