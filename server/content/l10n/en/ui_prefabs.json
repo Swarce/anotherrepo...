@@ -255,7 +255,7 @@
     ],
     "ui:scene_bizarre:17:2129:m_Text": [
       "4bc75322",
-      "After Recovery"
+      "After"
     ],
     "ui:scene_bizarre:17:2133:m_Text": [
       "965baa69",
@@ -447,7 +447,7 @@
     ],
     "ui:scene_bizarre:3:687:m_Text": [
       "1fd3686a",
-      "pcs"
+      " "
     ],
     "ui:scene_bizarre:3:722:m_Text": [
       "ed7b468c",
@@ -455,7 +455,7 @@
     ],
     "ui:scene_bizarre:3:727:m_Text": [
       "848cf7a6",
-      "Selected"
+      "Picked"
     ],
     "ui:scene_bizarre:3:739:m_Text": [
       "bce05a11",
@@ -555,11 +555,11 @@
     ],
     "ui:scene_bizarre:5:1327:m_Text": [
       "05734455",
-      "Can't Sortie"
+      "Barred"
     ],
     "ui:scene_bizarre:5:1332:m_Text": [
       "521f8727",
-      "Sortie Conditions"
+      "Requirements"
     ],
     "ui:scene_bizarre:5:1342:m_Text": [
       "2d03e73c",
@@ -571,7 +571,7 @@
     ],
     "ui:scene_bizarre:5:1346:m_Text": [
       "05734455",
-      "Can't Sortie"
+      "Barred"
     ],
     "ui:scene_bizarre:5:1351:m_Text": [
       "9f13700b",
@@ -591,11 +591,11 @@
     ],
     "ui:scene_bizarre:5:1383:m_Text": [
       "05734455",
-      "Can't Sortie"
+      "Barred"
     ],
     "ui:scene_bizarre:5:1391:m_Text": [
       "521f8727",
-      "Sortie Conditions"
+      "Requirements"
     ],
     "ui:scene_bizarre:5:1405:backString": [
       "1fd3686a",
@@ -663,7 +663,7 @@
     ],
     "ui:scene_bizarre:9:552:m_Text": [
       "521f8727",
-      "Sortie Conditions"
+      "Requirements"
     ],
     "ui:scene_build:11:268:m_Text": [
       "6555e54b",
@@ -951,7 +951,7 @@
     ],
     "ui:scene_clan:1:1104:m_Text": [
       "58f98c19",
-      "Win"
+      "W"
     ],
     "ui:scene_clan:1:1114:m_Text": [
       "ddadaa70",
@@ -991,7 +991,7 @@
     ],
     "ui:scene_clan:1:834:m_Text": [
       "848cf7a6",
-      "Selected"
+      "Picked"
     ],
     "ui:scene_clan:1:880:m_Text": [
       "02bd71f9",
@@ -1007,7 +1007,7 @@
     ],
     "ui:scene_clan:1:981:m_Text": [
       "1fd3686a",
-      "pcs"
+      " "
     ],
     "ui:scene_clan:3:1110:m_Text": [
       "ee56610a",
@@ -1075,7 +1075,7 @@
     ],
     "ui:scene_formation:11:1202:m_Text": [
       "53b78141",
-      "Ability Description"
+      "Ability Info"
     ],
     "ui:scene_formation:11:1236:defaultText": [
       "26354304",
@@ -1347,7 +1347,7 @@
     ],
     "ui:scene_formation:1:11376:m_Text": [
       "4345e979",
-      "Growth Tree"
+      "Tree"
     ],
     "ui:scene_formation:1:11381:m_Text": [
       "8dbff0de",
@@ -1359,7 +1359,7 @@
     ],
     "ui:scene_formation:1:11841:m_Text": [
       "9fb5292d",
-      "Awakening"
+      "Awaken"
     ],
     "ui:scene_formation:1:11872:defaultText": [
       "26354304",
@@ -1375,7 +1375,7 @@
     ],
     "ui:scene_formation:1:12654:m_Text": [
       "53b78141",
-      "Ability Description"
+      "Ability Info"
     ],
     "ui:scene_formation:1:12981:m_Text": [
       "dbe09aa5",
@@ -1663,11 +1663,11 @@
     ],
     "ui:scene_formation:21:845:m_Text": [
       "e220ac43",
-      "Remaining"
+      "Left"
     ],
     "ui:scene_formation:23:2125:m_Text": [
       "53b78141",
-      "Ability Description"
+      "Ability Info"
     ],
     "ui:scene_formation:23:2250:m_Text": [
       "8dbff0de",
@@ -1703,7 +1703,7 @@
     ],
     "ui:scene_formation:23:2617:m_Text": [
       "53b78141",
-      "Ability Description"
+      "Ability Info"
     ],
     "ui:scene_formation:23:2691:m_Text": [
       "9652e7b5",
@@ -1723,7 +1723,7 @@
     ],
     "ui:scene_formation:23:2827:m_Text": [
       "53b78141",
-      "Ability Description"
+      "Ability Info"
     ],
     "ui:scene_formation:23:2854:m_Text": [
       "6555e54b",
@@ -1739,7 +1739,7 @@
     ],
     "ui:scene_formation:23:2966:m_Text": [
       "53b78141",
-      "Ability Description"
+      "Ability Info"
     ],
     "ui:scene_formation:23:3050:m_Text": [
       "8dbff0de",
@@ -1847,7 +1847,7 @@
     ],
     "ui:scene_formation:3:2248:m_Text": [
       "53b78141",
-      "Ability Description"
+      "Ability Info"
     ],
     "ui:scene_formation:3:2262:m_Text": [
       "8587d8a7",
@@ -1963,7 +1963,7 @@
     ],
     "ui:scene_formation:5:2912:m_Text": [
       "53b78141",
-      "Ability Description"
+      "Ability Info"
     ],
     "ui:scene_formation:5:3263:m_Text": [
       "2ec2fec5",
@@ -2063,7 +2063,7 @@
     ],
     "ui:scene_formation_build_tree:3:1074:m_Text": [
       "53b78141",
-      "Ability Description"
+      "Ability Info"
     ],
     "ui:scene_formation_build_tree:3:1259:m_Text": [
       "53b78141",
@@ -2231,7 +2231,7 @@
     ],
     "ui:scene_gallery:9:1442:m_Text": [
       "53b78141",
-      "Ability Description"
+      "Ability Info"
     ],
     "ui:scene_gallery:9:1531:m_Text": [
       "6555e54b",
@@ -2275,7 +2275,7 @@
     ],
     "ui:scene_gasha:17:1183:m_Text": [
       "53b78141",
-      "Ability Description"
+      "Ability Info"
     ],
     "ui:scene_gasha:17:1295:m_Text": [
       "53b78141",
@@ -2319,7 +2319,7 @@
     ],
     "ui:scene_gasha:5:2898:m_Text": [
       "897ce3dc",
-      "Commercial Transactions Notice"
+      "Legal Notice"
     ],
     "ui:scene_gasha:5:2976:m_Text": [
       "f2a0fa7d",
@@ -2335,7 +2335,7 @@
     ],
     "ui:scene_gasha:5:3008:m_Text": [
       "45c1be1b",
-      "Summon Details"
+      "Details"
     ],
     "ui:scene_gasha:5:3083:m_Text": [
       "6da3e5c0",
@@ -2347,11 +2347,11 @@
     ],
     "ui:scene_gasha:5:3180:m_Text": [
       "5bd94862",
-      "Paid ×"
+      "Paid×"
     ],
     "ui:scene_gasha:5:3186:m_Text": [
       "45c1be1b",
-      "Summon Details"
+      "Details"
     ],
     "ui:scene_gasha:5:3201:m_Text": [
       "c98d5601",
@@ -2359,7 +2359,7 @@
     ],
     "ui:scene_gasha:5:3220:m_Text": [
       "da348e9b",
-      "1 ★5 Guaranteed!"
+      "★5 Guaranteed!"
     ],
     "ui:scene_gasha:5:3262:m_Text": [
       "c98d5601",
@@ -2367,7 +2367,7 @@
     ],
     "ui:scene_gasha:5:3282:m_Text": [
       "897ce3dc",
-      "Commercial Transactions Notice"
+      "Legal Notice"
     ],
     "ui:scene_gasha:5:3285:backString": [
       "6da3e5c0",
@@ -2395,7 +2395,7 @@
     ],
     "ui:scene_gasha:5:3351:m_Text": [
       "da348e9b",
-      "1 ★5 Guaranteed!"
+      "★5 Guaranteed!"
     ],
     "ui:scene_gasha:5:3443:m_Text": [
       "6da3e5c0",
@@ -2435,7 +2435,7 @@
     ],
     "ui:scene_gasha:5:3922:m_Text": [
       "1fd3686a",
-      "pcs"
+      " "
     ],
     "ui:scene_gasha:5:3925:m_Text": [
       "bac83e18",
@@ -2463,11 +2463,11 @@
     ],
     "ui:scene_gasha:5:4081:m_Text": [
       "6c4ea5bf",
-      "PT Cost"
+      "Cost"
     ],
     "ui:scene_gasha:5:4108:m_Text": [
       "5bd94862",
-      "Paid ×"
+      "Paid×"
     ],
     "ui:scene_gasha:5:4178:m_Text": [
       "37c1677e",
@@ -2479,11 +2479,11 @@
     ],
     "ui:scene_gasha:5:4189:m_Text": [
       "1fd3686a",
-      "pcs"
+      " "
     ],
     "ui:scene_gasha:5:4239:m_Text": [
       "6c4ea5bf",
-      "PT Cost"
+      "Cost"
     ],
     "ui:scene_gasha:5:4349:m_Text": [
       "e790abfa",
@@ -2495,7 +2495,7 @@
     ],
     "ui:scene_gasha:5:4428:m_Text": [
       "5bd94862",
-      "Paid ×"
+      "Paid×"
     ],
     "ui:scene_gasha:5:4528:m_Text": [
       "87dc1db9",
@@ -3123,7 +3123,7 @@
     ],
     "ui:scene_other:3:201:m_Text": [
       "e220ac43",
-      "Remaining"
+      "Left"
     ],
     "ui:scene_other:7:185:m_Text": [
       "3cc41252",
@@ -3163,7 +3163,7 @@
     ],
     "ui:scene_other:9:659:m_Text": [
       "41996b48",
-      "Next 100"
+      "↓100"
     ],
     "ui:scene_other:9:663:m_Text": [
       "be44c622",
@@ -3187,7 +3187,7 @@
     ],
     "ui:scene_other:9:674:m_Text": [
       "ebf93d52",
-      "Prev 100"
+      "↑100"
     ],
     "ui:scene_other:9:684:m_Text": [
       "1aa9c417",
@@ -3215,7 +3215,7 @@
     ],
     "ui:scene_other:9:705:m_Text": [
       "f85db1ba",
-      "Latest 100"
+      "Recent"
     ],
     "ui:scene_script:1:162:m_Text": [
       "821f6cc7",
@@ -3311,7 +3311,7 @@
     ],
     "ui:scene_shop:1:786:m_Text": [
       "1fd3686a",
-      "pcs"
+      " "
     ],
     "ui:scene_shop:1:869:m_Text": [
       "189930b6",
@@ -3323,7 +3323,7 @@
     ],
     "ui:scene_shop:1:907:m_Text": [
       "848cf7a6",
-      "Selected"
+      "Picked"
     ],
     "ui:scene_shop:1:940:m_Text": [
       "7d3cd39f",
@@ -3639,11 +3639,11 @@
     ],
     "ui:scene_vs:1:2002:m_Text": [
       "c98b8b8a",
-      "Demotion Zone!"
+      "Demotion!"
     ],
     "ui:scene_vs:1:2008:m_Text": [
       "7741de99",
-      "Promotion Zone!"
+      "Promotion!"
     ],
     "ui:scene_vs:1:2018:m_Text": [
       "ed643a80",
@@ -4027,7 +4027,7 @@
     ],
     "ui:ui_bizarre:0:-8735139958930398412:m_Text": [
       "4fe94f2f",
-      "Exchange ends in"
+      "Ends in"
     ],
     "ui:ui_bizarre:0:2253514334526056629:m_Text": [
       "1a66a44f",
@@ -4259,7 +4259,7 @@
     ],
     "ui:ui_formation:0:-3240618928454875299:m_Text": [
       "4345e979",
-      "Growth Tree"
+      "Tree"
     ],
     "ui:ui_formation:0:-3395868664485334512:defaultText": [
       "26354304",
@@ -4283,7 +4283,7 @@
     ],
     "ui:ui_formation:0:-5145688062700389192:m_Text": [
       "53b78141",
-      "Ability Description"
+      "Ability Info"
     ],
     "ui:ui_formation:0:-5857845129435810234:m_Text": [
       "1a5219a8",
@@ -4311,7 +4311,7 @@
     ],
     "ui:ui_formation:0:-7864891305955139772:m_Text": [
       "53b78141",
-      "Ability Description"
+      "Ability Info"
     ],
     "ui:ui_formation:0:-8049326305864679387:m_Text": [
       "a391ffe7",
@@ -4327,7 +4327,7 @@
     ],
     "ui:ui_formation:0:-8714276647648681132:m_Text": [
       "9fb5292d",
-      "Awakening"
+      "Awaken"
     ],
     "ui:ui_formation:0:1066743643193487341:m_Text": [
       "de36e71d",
@@ -4391,7 +4391,7 @@
     ],
     "ui:ui_formation:0:8358390140125139249:m_Text": [
       "53b78141",
-      "Ability Description"
+      "Ability Info"
     ],
     "ui:ui_gallery:0:-2323484953957204786:m_Text": [
       "c54dba18",
@@ -4407,7 +4407,7 @@
     ],
     "ui:ui_gasha:0:-3528946175399853923:m_Text": [
       "897ce3dc",
-      "Commercial Transactions Act"
+      "Legal Notice"
     ],
     "ui:ui_gasha:0:-4599892954583659945:m_Text": [
       "c98d5601",
@@ -4419,7 +4419,7 @@
     ],
     "ui:ui_gasha:0:-5743806993567608805:m_Text": [
       "6c4ea5bf",
-      "PT Cost"
+      "Cost"
     ],
     "ui:ui_gasha:0:-577194297062033305:m_Text": [
       "7cbacb55",
@@ -4427,11 +4427,11 @@
     ],
     "ui:ui_gasha:0:-6047367751277058194:m_Text": [
       "45c1be1b",
-      "Summon Details"
+      "Details"
     ],
     "ui:ui_gasha:0:-6381408975318641909:m_Text": [
       "45c1be1b",
-      "Summon Details"
+      "Details"
     ],
     "ui:ui_gasha:0:-6550539440486929044:m_Text": [
       "4a370323",
@@ -4443,7 +4443,7 @@
     ],
     "ui:ui_gasha:0:-7798700225551732604:m_Text": [
       "6c4ea5bf",
-      "PT Cost"
+      "Cost"
     ],
     "ui:ui_gasha:0:-8580385931840389207:m_Text": [
       "6c4ea5bf",
@@ -4459,11 +4459,11 @@
     ],
     "ui:ui_gasha:0:1610862007477045170:m_Text": [
       "897ce3dc",
-      "Commercial Transactions Act"
+      "Legal Notice"
     ],
     "ui:ui_gasha:0:2313773771411655170:m_Text": [
       "45c1be1b",
-      "Summon Details"
+      "Details"
     ],
     "ui:ui_gasha:0:4162424031015024129:m_Text": [
       "e790abfa",
@@ -4483,7 +4483,7 @@
     ],
     "ui:ui_gasha:0:7513293556802161404:m_Text": [
       "897ce3dc",
-      "Commercial Transactions Act"
+      "Legal Notice"
     ],
     "ui:ui_gasha:0:7751506953661100483:m_Text": [
       "e790abfa",
@@ -4523,7 +4523,7 @@
     ],
     "ui:ui_mypage:0:-6676233360239793973:m_Text": [
       "f9cd14b2",
-      "Incomplete"
+      "Not Done"
     ],
     "ui:ui_mypage:0:-7253781712673715091:m_Text": [
       "85217f7a",
@@ -4615,7 +4615,7 @@
     ],
     "ui:ui_other:0:-8271124855368217491:m_Text": [
       "53b78141",
-      "Ability Description"
+      "Ability Info"
     ],
     "ui:ui_other:0:-9075991501459304960:defaultText": [
       "26354304",
@@ -4647,7 +4647,7 @@
     ],
     "ui:ui_other:0:2531281295214870827:m_Text": [
       "53b78141",
-      "Ability Description"
+      "Ability Info"
     ],
     "ui:ui_other:0:2715501758753516247:m_Text": [
       "cdfb17d6",
@@ -4719,7 +4719,7 @@
     ],
     "ui:ui_other:0:8417974451624263968:m_Text": [
       "53b78141",
-      "Ability Description"
+      "Ability Info"
     ],
     "ui:ui_script:0:1000257855023758776:m_Text": [
       "a25978b2",
@@ -4747,7 +4747,7 @@
     ],
     "ui:ui_shop:0:-3847953320402048350:m_Text": [
       "4fe94f2f",
-      "Exchange ends in"
+      "Ends in"
     ],
     "ui:ui_shop:0:-4675635342766722247:m_Text": [
       "2be6a6c4",
@@ -4771,7 +4771,7 @@
     ],
     "ui:ui_shop:0:3829610289456216661:m_Text": [
       "4fe94f2f",
-      "Exchange ends in"
+      "Ends in"
     ],
     "ui:ui_shop:0:387751364482757765:m_Text": [
       "a0abec2a",

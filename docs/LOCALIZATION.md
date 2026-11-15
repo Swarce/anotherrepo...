@@ -101,6 +101,38 @@ build (the original terms no longer apply); it is not a translation of the publi
   Japanese `System.DateTime` patterns (parse-only, never shown); the product name in
   `globalgamemanagers` (not shown in game).
 
+## Fitting the UI (Build 19)
+
+English runs longer than Japanese, and the UI was laid out for Japanese.
+
+- **Check.** Run this from your own copy of the bundles (decrypted with `jdr-tool decrypt`):
+
+  ```bash
+  python3 -I tools/l10n/ui_fit.py --dec <decrypted bundles> --out local/l10n/fit.tsv --hints server/content/l10n/ui_layout.json
+  ```
+
+  It lays out every `UI.Text` label as Unity does: the box comes from the prefab's RectTransforms,
+  the label's own font is measured, and wrap, line height and best fit are applied. It writes a
+  private report (keys, numbers, our English) with a `problem` column. The original Japanese fits
+  in 98.2% of the labels it can measure (`--calibrate` prints this), which checks the
+  measurement. Labels that size themselves (an active ContentSizeFitter or a layout group) are
+  compared with the room the Japanese and the button art leave.
+- **Layout hints** (`server/content/l10n/ui_layout.json`, label ids `bundle:file:pathId` only).
+  The server applies them while it rebuilds a bundle:
+  - `bestFit`: labels that wrap and truncate get best fit, down to half size. Many are filled at
+    runtime from `text.jp`, so their baked text was never replaced.
+  - `wrap`: labels that spilled sideways with our English get wrap and truncate first, so best
+    fit has a box to fit.
+
+  Labels with the bitmap digit fonts (`Font_*Num*`) are never listed: they hold only digits and a
+  few symbols, so a letter put in one would not show at all.
+- **Writing for the UI.**
+  - Keep button and title text within the room the Japanese had. The report's `grows` and
+    `no wrap` problems name the label and its room in pixels.
+  - Prefer the short forms used across the game: Easy/Normal/Hard, (S)/(M)/(L)/(XL),
+    "X Shard", "X Slab", "Tarot: …", "• Fire attack on one foe".
+  - Character, Stand, skill and Mind names stay whole: best fit shrinks them instead.
+
 ## Redrawn UI art (Build 09)
 
 1. `tools/ui-assets/export_ui.py` exports every menu texture and each sprite cut out of its atlas
