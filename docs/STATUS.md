@@ -2,6 +2,38 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 20 — Reversal, daily and event quests, research audit (branch `wip/b20`)
+
+### What the owner asked and sent
+- Daily quests, event quests and campaigns enabled, to test more content.
+- A research pack (118 documented behaviours) and 13 more redrawn tip pictures.
+
+### What changed
+- **Audit** (docs/research/14). Every documented behaviour is mapped to our code, with
+  priorities.
+- **Reversal on** (docs/research/11 §5).
+  - The gauge fills from skills (10/15/20%), hits taken (10%) and statues lost (25%).
+  - Reversal gives 3 actions at 10× speed with no cool-downs; a boss kill in the last area turns
+    the remaining actions into overkill.
+  - Field meanings are from the client; the values are ours.
+- **Quest Select** (docs/research/13): today's Daily tile, four Event tiles and their Campaign
+  Info entries.
+  - 72 daily and event chapters and 222 stages, with the game's own names and banners.
+  - Stages use story maps; enemies and rewards are ours.
+- **Summon:** the tenth draw of a 10× summon is the guaranteed slot (★4 98.5%, ★5 1.5%; launch
+  guide).
+- **Art pack:** 13 more tip pictures (32 of 66 now redrawn). These say "Fighting Spirit" where the
+  rest of the game says "Spirit".
+- Build number 20, server marker `JDR_EMBEDDED_SERVER_b020`.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] Reversal gauge fills; tapping it at 100% gives extra actions; a boss kill in Reversal shows
+      overkill
+- [ ] Daily Quests tile shows today's banner and its two quest lines; stages play
+- [ ] Event tiles open Event Home with their chapters; stages play and return to Event Home
+- [ ] Campaign Info shows the banners; a tap opens a page
+- [ ] New tip pictures on the loading screen
+
 ## Build 19 — English that fits the UI (branch `wip/b19`)
 
 ### What the Build 18 device test and owner showed

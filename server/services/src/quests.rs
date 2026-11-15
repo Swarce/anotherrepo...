@@ -11,6 +11,8 @@ use serde_json::{json, Value};
 use std::collections::BTreeSet;
 
 pub const QUESTS_JSON: &str = include_str!("../../content/quests.json");
+/// Daily and event chapters (`tools/content/build_extra_quests.py`).
+pub const QUESTS_EXTRA_JSON: &str = include_str!("../../content/quests_extra.json");
 
 #[derive(Debug, Clone, Deserialize)]
 pub struct StageDef {
@@ -39,7 +41,54 @@ pub struct ChapterDef {
     pub stage_type: i64,
     #[serde(rename = "chapterMap")]
     pub chapter_map: Option<i64>,
+    /// BizarreCategoryType: 1 story, 6-12 daily (Sunday to Saturday), 13+ event.
+    #[serde(default = "story_category")]
+    pub category: i64,
     pub stages: Vec<StageDef>,
+}
+
+fn story_category() -> i64 {
+    STORY_CATEGORY
+}
+
+/// One weekday's daily tile, or one event tile (from `quests_extra.json`).
+#[derive(Debug, Clone, Deserialize)]
+pub struct DailyDef {
+    pub category: i64,
+    pub banner: String,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct EventDef {
+    #[serde(rename = "eventId")]
+    pub event_id: String,
+    pub category: i64,
+    pub banner: String,
+}
+
+#[derive(Deserialize)]
+struct ExtraDoc {
+    daily: std::collections::BTreeMap<String, DailyDef>,
+    events: Vec<EventDef>,
+    chapters: Vec<ChapterDef>,
+}
+
+fn extra() -> &'static ExtraDoc {
+    static CELL: std::sync::OnceLock<ExtraDoc> = std::sync::OnceLock::new();
+    CELL.get_or_init(|| serde_json::from_str(QUESTS_EXTRA_JSON).expect("quests_extra.json"))
+}
+
+/// The events with a tile, in order.
+pub fn events() -> &'static [EventDef] {
+    &extra().events
+}
+
+/// Today's daily tile: the game's day turns at 04:00 JST (research pack `economy.daily_reset`).
+pub fn daily_today() -> Option<&'static DailyDef> {
+    const CODES: [&str; 7] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "STA"];
+    let t = jdr_core::clock::now() + jdr_core::clock::TZ_OFFSET_SECS - 4 * 3600;
+    let weekday = (t.div_euclid(86400) + 4).rem_euclid(7) as usize; // 1970-01-01 was a Thursday
+    extra().daily.get(CODES[weekday])
 }
 
 pub fn chapters() -> &'static [ChapterDef] {
@@ -49,9 +98,11 @@ pub fn chapters() -> &'static [ChapterDef] {
         struct Doc {
             chapters: Vec<ChapterDef>,
         }
-        serde_json::from_str::<Doc>(QUESTS_JSON)
+        let mut all = serde_json::from_str::<Doc>(QUESTS_JSON)
             .map(|d| d.chapters)
-            .unwrap_or_default()
+            .unwrap_or_default();
+        all.extend(extra().chapters.iter().cloned());
+        all
     })
 }
 
@@ -158,7 +209,7 @@ pub fn chapter_info(c: &ChapterDef, p: &Progress) -> Value {
         })
         .collect();
     json!({
-        "chapterId": c.chapter_id, "name": name_label(c), "category": STORY_CATEGORY,
+        "chapterId": c.chapter_id, "name": name_label(c), "category": c.category,
         "summary": summary_label(c), "chapterNum": c.num,
         "startStageId": c.stages.first().map(|s| s.stage_id.as_str()).unwrap_or(""),
         "lastStageId": c.stages.last().map(|s| s.stage_id.as_str()).unwrap_or(""),
