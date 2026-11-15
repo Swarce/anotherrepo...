@@ -21,6 +21,9 @@ const BANNERS: &[(i64, i64, &str)] = &[
 /// Draw rates by rarity in percent (Gamerch's published rates: statues 5-star 1.5, 4-star 12.5,
 /// 3-star 86; minds 4-star 7, 3-star 93). Statues of 6 stars share the 5-star rate.
 const STATUE_RATES: &[(i64, f64)] = &[(3, 86.0), (4, 12.5), (5, 1.5)];
+/// The guaranteed slot of a 10x statue summon (launch guide: 4-star 98.5%, 5-star 1.5%;
+/// research pack `economy.guaranteed_slot`, launch-era banner evidence).
+const STATUE_GUARANTEED: &[(i64, f64)] = &[(4, 98.5), (5, 1.5)];
 const MIND_RATES: &[(i64, f64)] = &[(3, 93.0), (4, 7.0)];
 
 fn banner(id: i64, kind: i64, window: &str) -> Value {
@@ -134,7 +137,7 @@ pub fn gasha_play(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let mut rng = Rng::new();
     let mut results = Vec::new();
     let mut lv1 = Vec::new();
-    for _ in 0..count {
+    for i in 0..count {
         if kind == 1 {
             let owned: Vec<&OwnedStatue> = p
                 .collection
@@ -147,7 +150,13 @@ pub fn gasha_play(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                     .map(|d| d.rarity())
                     .unwrap_or(3)
             };
-            if let Some(o) = pick(&mut rng, STATUE_RATES, &owned, rar) {
+            // The tenth draw of a 10x summon is the guaranteed slot.
+            let rates = if multi && i == count - 1 {
+                STATUE_GUARANTEED
+            } else {
+                STATUE_RATES
+            };
+            if let Some(o) = pick(&mut rng, rates, &owned, rar) {
                 let info = collection::statue_info(o);
                 lv1.push(collection::statue_info(&OwnedStatue {
                     level: 1,
@@ -239,5 +248,18 @@ mod tests {
             assert_eq!(r["getResultList"].as_array().unwrap().len(), n);
             assert!(r["Lv1StatueMasterInfo"].is_array() && r["originalStatueInfo"].is_array());
         }
+    }
+
+    #[test]
+    fn the_guaranteed_slot_never_gives_a_3_star() {
+        let pool: Vec<i64> = (0..60).map(|i| 3 + i % 3).collect(); // rarities 3, 4, 5
+        let mut rng = super::Rng::new();
+        let mut fives = 0;
+        for _ in 0..4000 {
+            let r = *super::pick(&mut rng, super::STATUE_GUARANTEED, &pool, |r| *r).unwrap();
+            assert!(r >= 4);
+            fives += (r == 5) as i32;
+        }
+        assert!(fives < 200, "about 1.5% five-stars, got {fives}/4000");
     }
 }
