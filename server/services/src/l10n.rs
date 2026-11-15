@@ -14,7 +14,10 @@
 //!   label repeated in one table gets `#2`, `#3`, … from its second occurrence);
 //! - `ui:<bundle>:<file>:<path id>:<field>` for strings in UI prefabs (`m_Text`, `defaultText`, …;
 //!   `file` is the index of the serialized file inside the bundle, since scene bundles hold several);
-//! - `clientmes:<Label>` for the in-APK ClientMes table (applied by the patcher).
+//! - `clientmes:<Label>` for the in-APK ClientMes table (applied by the patcher);
+//! - `apk:<file>:<path id>:m_Text` for `UI.Text` labels in the scenes built into the APK
+//!   (`assets/bin/Data/level<N>`), and `literal:<index>` for player-visible C# string literals in
+//!   `global-metadata.dat` (both applied by the patcher, `english-apk-text`).
 //!
 //! The originals are kept (`<data>/l10n/orig/`) so the English files can always be rebuilt, and
 //! reverted, after the client has replaced its copies with ours.
@@ -36,6 +39,10 @@ pub const FILES: &[(&str, &str)] = &[
     (
         "clientmes",
         include_str!("../../content/l10n/en/clientmes.json"),
+    ),
+    (
+        "apk_text",
+        include_str!("../../content/l10n/en/apk_text.json"),
     ),
     (
         "ui_prefabs",

@@ -4,6 +4,11 @@
 //! string literal table (entries of `{u32 length, u32 data_index}`), pair 1 the literal data blob.
 //! Literals are UTF-8 with an explicit length, so a literal can be shortened in place by writing
 //! the new bytes at its data index and lowering its length; nothing else moves.
+//!
+//! A longer literal is relocated: its bytes are appended at the end of the file and its entry's
+//! data index points there (past the blob; the index is relative to the blob's start). The
+//! runtime maps the whole file and reads `data_offset + data_index` with no bounds check
+//! (`MetadataCache::GetStringLiteralFromIndex`), and nothing else in the file moves.
 
 pub const MAGIC: u32 = 0xFAB1_1BAF;
 
@@ -88,12 +93,19 @@ impl<'a> Metadata<'a> {
         Ok((rd(self.data, o) as usize, rd(self.data, o + 4) as usize))
     }
 
+    /// The bytes of literal `i` (in the blob, or past it for a relocated literal).
     pub fn literal(&self, i: usize) -> Result<&'a [u8], MetaError> {
         let (len, idx) = self.entry(i)?;
-        if idx + len > self.data_size {
+        let start = self.data_off + idx;
+        if start + len > self.data.len() || (idx < self.data_size && idx + len > self.data_size) {
             return Err(MetaError::BadIndex(i));
         }
-        Ok(&self.data[self.data_off + idx..self.data_off + idx + len])
+        Ok(&self.data[start..start + len])
+    }
+
+    /// True if literal `i` lies past the blob (relocated by [`set_literal`]).
+    pub fn is_relocated(&self, i: usize) -> Result<bool, MetaError> {
+        Ok(self.entry(i)?.1 >= self.data_size)
     }
 
     /// Indices of all literals equal to `value`.
@@ -123,6 +135,7 @@ impl<'a> Metadata<'a> {
 pub fn replace_literal(data: &[u8], i: usize, new: &[u8]) -> Result<Vec<u8>, MetaError> {
     let m = Metadata::parse(data)?;
     let (len, idx) = m.entry(i)?;
+    m.literal(i)?;
     if new.len() > len {
         return Err(MetaError::TooLong {
             have: len,
@@ -141,6 +154,30 @@ pub fn replace_literal(data: &[u8], i: usize, new: &[u8]) -> Result<Vec<u8>, Met
     let o = m.lit_off + i * 8;
     out[o..o + 4].copy_from_slice(&(new.len() as u32).to_le_bytes());
     Ok(out)
+}
+
+/// Return a copy of `data` with literal `i` set to `new`: in place when it fits (as
+/// [`replace_literal`]), otherwise relocated to the end of the file. Returns (file, relocated).
+pub fn set_literal(data: &[u8], i: usize, new: &[u8]) -> Result<(Vec<u8>, bool), MetaError> {
+    let m = Metadata::parse(data)?;
+    let (len, _) = m.entry(i)?;
+    m.literal(i)?;
+    if new.len() <= len {
+        return Ok((replace_literal(data, i, new)?, false));
+    }
+    let idx = data.len() - m.data_off;
+    if u32::try_from(idx + new.len()).is_err() {
+        return Err(MetaError::TooLong {
+            have: u32::MAX as usize - idx,
+            want: new.len(),
+        });
+    }
+    let mut out = data.to_vec();
+    out.extend_from_slice(new);
+    let o = m.lit_off + i * 8;
+    out[o..o + 4].copy_from_slice(&(new.len() as u32).to_le_bytes());
+    out[o + 4..o + 8].copy_from_slice(&(idx as u32).to_le_bytes());
+    Ok((out, true))
 }
 
 #[cfg(test)]
@@ -187,6 +224,40 @@ pub(crate) mod tests {
         assert_eq!(m2.literal(0).unwrap(), b"alpha");
         assert_eq!(m2.literal(2).unwrap(), b"omega");
         assert_eq!(out.len(), d.len());
+    }
+
+    #[test]
+    fn relocates_longer_literals() {
+        let d = synth(&[b"ab", b"cd", b"ef"]);
+        let (out, moved) = set_literal(&d, 1, b"a longer literal").unwrap();
+        assert!(moved);
+        // Header, the other entries and the blob are untouched; entry 1 is at 32..40.
+        assert_eq!(out[..32], d[..32]);
+        assert_eq!(out[40..d.len()], d[40..]);
+        assert_eq!(&out[d.len()..], b"a longer literal");
+        let m = Metadata::parse(&out).unwrap();
+        assert_eq!(m.literal(1).unwrap(), b"a longer literal");
+        assert!(m.is_relocated(1).unwrap() && !m.is_relocated(0).unwrap());
+        assert_eq!(m.literal(0).unwrap(), b"ab");
+        assert_eq!(m.literal(2).unwrap(), b"ef");
+        // A second relocation of the same literal appends again; a short one stays in place.
+        let (out2, moved2) = set_literal(&out, 1, b"an even longer literal").unwrap();
+        assert!(moved2);
+        let m2 = Metadata::parse(&out2).unwrap();
+        assert_eq!(m2.literal(1).unwrap(), b"an even longer literal");
+        let (out3, moved3) = set_literal(&out2, 2, b"x").unwrap();
+        assert!(!moved3);
+        assert_eq!(out3.len(), out2.len());
+        assert_eq!(Metadata::parse(&out3).unwrap().literal(2).unwrap(), b"x");
+        // Index out of range, and an entry that straddles the end of the blob.
+        assert_eq!(set_literal(&d, 3, b"x"), Err(MetaError::BadIndex(3)));
+        let mut bad = d.clone();
+        let o = 24 + 8 * 2 + 4;
+        bad[o..o + 4].copy_from_slice(&5u32.to_le_bytes());
+        assert_eq!(
+            Metadata::parse(&bad).unwrap().literal(2),
+            Err(MetaError::BadIndex(2))
+        );
     }
 
     #[test]
