@@ -149,3 +149,46 @@ description or rewards. No errors were logged.
   dataId, name, count}`. Build 12 lists the stage's gold as the steady reward. Chapter
   descriptions use the game's own `ChapterText_DT_ST_<nnn>` labels (000 and 401–478). Tactical
   stages have no description label of their own in the game's text (M).
+
+## 4. Stage missions and loading tips (Build 19)
+
+What the Build 19 device test showed: the stage window and the tactical results screen had three
+empty star rows, and the loading screen's tip board was blank.
+
+- **One source (H).** The BizarreStart handler (0xE0D690) keeps `response.stageInfo` as
+  `BizarreQuestSceneManager.selectedStageInfo`. The battle, the loading screen, the end request
+  and the result screen all read that copy. So `quests::stage_info()` feeds every symptom.
+- **Stage window rows** (loop 0xE0F378) (H).
+  - It shows min(3, `starList.Count`) rows in list order; `starNum` is not read.
+  - Each row sets the `{starParam}` tag to `param` (tag provider → `GetStarParamText` 0xE0C914),
+    shows `TextManager.GetString(comment)`, and lights its star when `clearFlg` is 1.
+  - `comment` is a label: `DTB_QuestMission_JP:DT_QM_Text_<nnn>`.
+- **Missions at the end of a battle** (H).
+  - `RequestBattleEnd` 0xEC5A3C calls `GetClearMissionStr(starList)` 0xBB6B88, which turns each
+    row into {`starTarget`, `param`}. `GetClearMissionList` 0xBB5F18 then checks each one against
+    DTBattleQuestMissionClearType 1..16, for example 1 quest won, 2 everyone alive, 10 turns ≤ `param`.
+  - The client sends the cleared types as `starClearList` ("1,2,10"). For tactical stages,
+    `starTarget` must be the DT type, not QuestMissionClearType.
+- **Result screen** (`BattleResultUIController.SetUI`, loop 0xC0EB90) (H).
+  - The rows come from the same `starList`.
+  - A star lights when `BizarreEndResponse.starClearList`, split on commas, contains the row's
+    `starTarget`. We echo the request's list.
+  - `clearStarList` has no reader we found (M).
+- **What we send.**
+  - Three missions per tactical stage: clear the quest (1), all members survive (2), and clear
+    within 10 + 5 × (areas − 1) turns (10; the limit is ours).
+  - `clearFlg` comes from the saved set of cleared types per stage (`Progress.stars`, the union
+    of `starClearList` over wins).
+  - Action stages send no rows (their mission types differ).
+- **Loading tips** (H).
+  - `BattleSceneController.CreateSceneChangeOption` 0xEC36F0 passes the stage's `questTips` to
+    the loading screen; there is no random pick.
+  - `LoadUIController.SetTipsInfo` 0xB74170 shows `GetString(tipsTitleText)` and
+    `GetString(tipsText)`.
+  - The picture is bundle `tipsPicture`, file
+    `Assets/Resources/Common/Graphics/GUI/Tips/<tipsPicture>.png` (`GetTipsPath` 0xB7440C).
+  - With `{}` the strings are null, so the board is blank. A missing `questTips` shows the
+    prefab's defaults. `tipsType`/`tipsId` are not read.
+  - We send `TipsTitle_<nnn>`, `TipsText_<nnn>` and `ui_tips_<nnn>`, picked by a hash of the stage
+    id from the 66 numbers that have a real title, text and picture (M for the numbering: every
+    `ui_tips_*` bundle matches such a title).

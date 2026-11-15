@@ -143,6 +143,18 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         match (won, found, pending.is_some()) {
             (true, Some((_, s)), true) => {
                 p.progress.cleared.insert(stage_id.clone());
+                // The client sends the missions it cleared ("1,2,10"); keep them for the stars.
+                let done = env
+                    .param
+                    .get("starClearList")
+                    .and_then(Value::as_str)
+                    .unwrap_or("");
+                let set = p.progress.stars.entry(stage_id.clone()).or_default();
+                set.extend(
+                    done.split(',')
+                        .filter_map(|x| x.trim().parse::<i64>().ok())
+                        .filter(|t| (1..=16).contains(t)),
+                );
                 p.gold += s.gold;
                 p.exp += s.gain_rank_exp;
                 p.rank = collection::rank_for_exp(p.exp);
@@ -195,4 +207,68 @@ pub fn bizarre_continue(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
 /// `BizarreDestructionResponse`: abandoning a stage needs no bookkeeping.
 pub fn destruction(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({}))
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::services::dispatch;
+    use crate::Ctx;
+    use jdr_core::envelope::RequestEnvelope;
+    use jdr_core::settings::Settings;
+    use serde_json::{json, Value};
+
+    fn env(uuid: &str, param: Value) -> RequestEnvelope {
+        RequestEnvelope {
+            uuid: uuid.into(),
+            session: String::new(),
+            language: 1,
+            date: 20261115103000,
+            platform: 2,
+            version: "vtest".into(),
+            lz_accept: 1,
+            lz_encode: 0,
+            param,
+        }
+    }
+
+    #[test]
+    fn a_win_records_the_missions_the_client_cleared() {
+        let dir = std::env::temp_dir().join(format!("jdr-bizarre-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let ctx = Ctx::new(Settings::new(dir), false);
+        let uuid = ctx.accounts.create(&[]).unwrap().uuid;
+        let c = crate::quests::chapters()
+            .iter()
+            .find(|c| c.stage_type == 1)
+            .unwrap();
+        let sid = c.stages[0].stage_id.clone();
+        let (r, _) = dispatch(
+            &ctx,
+            "/bizarre/bizarre_start",
+            &env(&uuid, json!({"stageId": sid, "teamNo": 1})),
+        );
+        let r = r.unwrap();
+        let stars = r["stageInfo"]["starList"].as_array().unwrap().clone();
+        assert_eq!(stars.len(), 3);
+        assert!(r["stageInfo"]["questTips"]["tipsTitleText"]
+            .as_str()
+            .unwrap()
+            .starts_with("TipsTitle_"));
+        let (r, _) = dispatch(
+            &ctx,
+            "/bizarre/bizarre_end",
+            &env(
+                &uuid,
+                json!({"stageId": sid, "result": 0, "starClearList": "1,10,99"}),
+            ),
+        );
+        assert_eq!(
+            r.unwrap()["starClearList"],
+            "1,10,99",
+            "echoed for the result screen"
+        );
+        let p = ctx.accounts.get(&uuid).unwrap().unwrap();
+        let done: Vec<i64> = p.progress.stars[&sid].iter().copied().collect();
+        assert_eq!(done, [1, 10], "only mission types 1..16 are kept");
+    }
 }
