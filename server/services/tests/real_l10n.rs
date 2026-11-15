@@ -24,8 +24,9 @@ fn rebuilds_every_text_bundle() {
         else {
             continue;
         };
-        let ui =
-            (name.starts_with("ui_") && !name.starts_with("ui_tips")) || name.starts_with("scene_");
+        let ui = (name.starts_with("ui_") && !name.starts_with("ui_tips"))
+            || name.starts_with("scene_")
+            || name.starts_with("minigame_");
         if !(ui || name == "text.jp") {
             continue;
         }
