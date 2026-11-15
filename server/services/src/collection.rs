@@ -52,6 +52,10 @@ pub struct StatueDef {
     /// Team-view scale in percent (the bust shot frames 1.55-2.05 m; tools/content/build_statues.py).
     #[serde(rename = "teamScale", default = "full_scale")]
     pub team_scale: i64,
+    /// No thumbnail in the player's files (a blank card in every list): used only as a story
+    /// enemy, never granted, listed or picked for a team.
+    #[serde(rename = "enemyOnly", default)]
+    pub enemy_only: bool,
 }
 
 fn full_scale() -> i64 {
@@ -141,6 +145,16 @@ pub fn statues() -> &'static [StatueDef] {
 
 pub fn find(statue_id: &str) -> Option<&'static StatueDef> {
     statues().iter().find(|s| s.statue_id == statue_id)
+}
+
+/// A statue the player can own: known and not enemy-only.
+pub fn find_playable(statue_id: &str) -> Option<&'static StatueDef> {
+    find(statue_id).filter(|d| !d.enemy_only)
+}
+
+/// The statues the player can own.
+pub fn playable_statues() -> impl Iterator<Item = &'static StatueDef> {
+    statues().iter().filter(|d| !d.enemy_only)
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Default)]
@@ -277,7 +291,7 @@ impl Collection {
     pub fn ensure(&mut self, now: &str) -> bool {
         let mut changed = false;
         let mut next = self.statues.iter().map(|s| s.uid).max().unwrap_or(0) + 1;
-        for d in statues() {
+        for d in playable_statues() {
             if !self.statues.iter().any(|s| s.statue_id == d.statue_id) {
                 self.statues.push(OwnedStatue {
                     uid: next,
@@ -336,7 +350,7 @@ impl Collection {
             .filter_map(|id| {
                 self.statues
                     .iter()
-                    .find(|s| s.statue_id == *id && find(&s.statue_id).is_some())
+                    .find(|s| s.statue_id == *id && find_playable(&s.statue_id).is_some())
                     .map(|s| s.uid)
             })
             .take(3)
@@ -345,7 +359,7 @@ impl Collection {
             if picked.len() >= 3 {
                 break;
             }
-            if !picked.contains(&s.uid) && find(&s.statue_id).is_some() {
+            if !picked.contains(&s.uid) && find_playable(&s.statue_id).is_some() {
                 picked.push(s.uid);
             }
         }
@@ -363,7 +377,8 @@ impl Collection {
     /// An owned statue the content still knows (a statue dropped from statues.json stays in the
     /// save but is not shown or used).
     pub fn known_statue(&self, uid: i64) -> Option<&OwnedStatue> {
-        self.statue(uid).filter(|o| find(&o.statue_id).is_some())
+        self.statue(uid)
+            .filter(|o| find_playable(&o.statue_id).is_some())
     }
 
     /// Clear team slots that point at nothing usable and refill a main team without a leader.
@@ -372,7 +387,7 @@ impl Collection {
         let usable: std::collections::HashSet<i64> = self
             .statues
             .iter()
-            .filter(|o| find(&o.statue_id).is_some())
+            .filter(|o| find_playable(&o.statue_id).is_some())
             .map(|o| o.uid)
             .collect();
         let starter = self.starter_slots();
@@ -737,11 +752,47 @@ mod tests {
     use super::*;
 
     #[test]
+    fn enemy_only_statues_are_never_owned() {
+        // Build 17 device test: statues without a thumbnail showed as blank cards in the lists.
+        let enemy: Vec<&StatueDef> = statues().iter().filter(|d| d.enemy_only).collect();
+        assert!(!enemy.is_empty() && enemy.len() < statues().len() / 2);
+        // Every starter in the content is playable, enough for a full main team.
+        assert!(STARTERS
+            .iter()
+            .all(|id| find(id).is_none_or(|d| !d.enemy_only)));
+        assert!(
+            STARTERS
+                .iter()
+                .filter(|id| find_playable(id).is_some())
+                .count()
+                >= 3
+        );
+        // An old save that holds an enemy-only statue in a team gets it cleared and hidden.
+        let mut c = Collection::default();
+        c.ensure("2026-11-15 00:00:00");
+        assert!(c
+            .statues
+            .iter()
+            .all(|o| find_playable(&o.statue_id).is_some()));
+        let uid = c.statues.iter().map(|s| s.uid).max().unwrap() + 1;
+        c.statues.push(OwnedStatue {
+            uid,
+            statue_id: enemy[0].statue_id.clone(),
+            level: 1,
+            ..Default::default()
+        });
+        c.teams[0].slots[1] = uid;
+        assert!(c.known_statue(uid).is_none());
+        c.ensure("x");
+        assert!(c.teams.iter().all(|t| !t.slots.contains(&uid)));
+    }
+
+    #[test]
     fn content_loads_and_grants() {
         assert!(statues().len() > 200, "statues.json loaded");
         let mut c = Collection::default();
         assert!(c.ensure("2026-11-14 00:00:00"));
-        assert_eq!(c.statues.len(), statues().len());
+        assert_eq!(c.statues.len(), playable_statues().count());
         assert!(!c.ensure("x"), "idempotent");
         let main = main_team(&c, 1).expect("tactical main team");
         assert!(main.slots.iter().all(|&u| u > 0));
@@ -779,6 +830,7 @@ mod tests {
             dt_skills: Vec::new(),
             result_comment: None,
             team_scale: 100,
+            enemy_only: false,
             max_tree: None,
         };
         assert_eq!(d.stats_at(1).hp, 100);

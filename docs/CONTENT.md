@@ -34,8 +34,10 @@ community wikis (each record cites its page) or are marked `jdr-default`.
 
 ## Offline rules (preservation sandbox)
 
-- The player owns every obtainable statue (266: model + animations + action set + leader ability in
-  the player's files) at level 1; teams: 5 per battle type, the tactical main team (Jonathan,
+- The player owns every obtainable statue (217: model + animations + action set + leader ability +
+  list thumbnail in the player's files) at level 1. The other 49 have no `st_<statueId>` thumbnail in
+  the `ui_statue_*` atlases (a blank card in every list); they stay in `statues.json` as `enemyOnly`
+  because story stages use them as enemies, and are never granted, listed or put in a team; teams: 5 per battle type, the tactical main team (Jonathan,
   Jotaro, Josuke when present) leads My Page.
 - All story chapters are open; a cleared stage is recorded; a clear grants the stage's gold and rank
   EXP, and the same amount as statue EXP to the three statues that fought (a `jdr-default` until a
@@ -47,7 +49,7 @@ community wikis (each record cites its page) or are marked `jdr-default`.
 
 | Data | Source | State |
 |---|---|---|
-| Statue ids, models, bundles | player's files | 266 obtainable |
+| Statue ids, models, bundles | player's files | 266 (217 obtainable, 49 enemy-only: no thumbnail) |
 | Statue rarity, type, Lv99 | Gamerch (leader- or assist-ability name) and ShoutWiki (CC BY-SA 3.0, by elimination) | 140 of 266 (129 Gamerch, 11 ShoutWiki); the rest (mostly released after the 2018 snapshot) default |
 | Statue Lv1, max tree | the same pages where they show them | Lv1 from the wiki for 35 statues, Lv99 / 10 for the other 105 (in those 35, Lv99 / Lv1 is 9.5–10.0); max tree missing for 47 |
 | Stats per level | linear Lv1→Lv99 | all |
