@@ -1,15 +1,20 @@
 {
  "asset": "Node_el_camera_node_common",
- "about": "Camera nodes: ski_cam_00 (the client's own test node), jdr_side (world-fixed side view of the acting unit, 9 m away, slightly above) and jdr_result (three-quarter front shot of the winner, 4 m away, bound to the unit).",
+ "about": "Camera nodes: ski_cam_00 (the client's own test node), jdr_side (world-fixed side view of the acting unit, 9 m away, slightly above) and jdr_result (three-quarter front shot of the winner, 3.2 m from its chest bone, looking at its neck bone, bound to the unit).",
  "sources": [
   {
    "source": "jdr-research",
-   "doc": "docs/research/12-master-data-fill.md \u00a75",
+   "doc": "docs/research/12-master-data-fill.md §5",
    "note": "node layout; ski_cam_00 values from the client's ScriptCameraTestData"
   },
   {
    "source": "jdr-default",
    "note": "jdr_side and jdr_result values are ours"
+  },
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/12-master-data-fill.md §5",
+   "note": "bone ids are the client's CharacterBoneList.Bone (SPINE2 4, NECK 5); a missing bone falls back to RESERVE, then the unit (ScriptCamera.GetTargetPositionSc 0xD710E4)"
   }
  ],
  "data": {
@@ -60,23 +65,23 @@
    },
    {
     "id": "jdr_result",
-    "baseBoneID": 0,
-    "lookatBoneID": 0,
+    "baseBoneID": 4,
+    "lookatBoneID": 5,
     "rotate": {
      "x": -5.0,
      "y": 25.0,
      "z": 0.0
     },
     "perspective": 30.0,
-    "length": 4.0,
+    "length": 3.2,
     "baseOffset": {
      "x": 0,
-     "y": 1.1,
+     "y": 0,
      "z": 0
     },
     "lookatOffset": {
      "x": 0,
-     "y": 1.1,
+     "y": 0,
      "z": 0
     }
    }
