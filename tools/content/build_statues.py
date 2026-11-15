@@ -39,6 +39,8 @@ ap = argparse.ArgumentParser()
 for x in ("--scan", "--export", "--shoutwiki", "--out"):
     ap.add_argument(x, required=True)
 ap.add_argument("--gamerch", help="local/wiki-raw/gamerch/statues.json (matched by leader-ability name)")
+ap.add_argument("--clips", help="local/content/figure_clips.tsv (scan_figure_clips.py): pose clips per model")
+ap.add_argument("--heights", help="local/content/model_heights.tsv (scan_model_heights.py): model heights")
 ap.add_argument("--extra", action="append", default=[],
                 help="research collections with exact statueId matches ({records:[{statueId, rarity, type, stats:{lv1,lv99,tree_max}, source, confidence}]}); "
                      "used for statues without a Gamerch match, medium/high confidence and plausible stats only")
@@ -153,6 +155,50 @@ def dt_skills(s):
     return out
 
 
+# Team view (docs/research/12 §7): the bust-up pose clip is chosen by rarity (3 figure_R, 4
+# figure_SR, 5 figure_SSR, 6 figure_UR; a suffix from the statueId's last two digits). With no clip
+# the model stays in its bind pose (T-pose), so a statue with no wiki rarity takes a rarity whose
+# pose exists for its first model; the bust shot frames 1.55-2.05 m, so models are scaled to fit.
+CLIPS = {}
+if a.clips:
+    for line in open(a.clips):
+        p = line.rstrip("\n").split("\t")
+        CLIPS[p[1]] = set(p[2].split()) if len(p) > 2 else set()
+HEIGHTS = {}
+if a.heights:
+    for line in open(a.heights):
+        p = line.rstrip("\n").split("\t")
+        HEIGHTS[p[1]] = float(p[3])
+POSE = {3: "figure_R", 4: "figure_SR", 5: "figure_SSR", 6: "figure_UR"}
+
+
+def pose_exists(sid, model, r):
+    c = int(sid[-2:])
+    tens, ones = (c % 100) // 10, c % 10
+    suffix = ("_" + (str(tens) if tens else "") + ("A" if ones >= 5 else "")) if (tens or ones >= 5) else ""
+    return POSE[r] + suffix in CLIPS.get(model, set())
+
+
+def pose_rarity(s):
+    """A rarity whose team-view pose exists (closest to the one the id's numbering suggests)."""
+    models = s.get("modelDataList") or []
+    if not models or models[0] not in CLIPS:
+        return None
+    ok = [r for r in (3, 4, 5, 6) if pose_exists(s["statueId"], models[0], r)]
+    if not ok:
+        return None
+    hint = 2 + int(s["statueId"][-1]) if s["statueId"][-1] in "1234" else 5
+    return min(ok, key=lambda r: (abs(r - hint), -r))
+
+
+def team_scale(s):
+    models = s.get("modelDataList") or []
+    h = HEIGHTS.get(models[0]) if models else None
+    if not h or h <= 0:
+        return 100
+    return round(100 * min(max(h, 1.55), 2.05) / h)
+
+
 def dt_attack(s):
     acts = s.get("dtActions") or []
     if "ATTACK" in acts:
@@ -222,6 +268,7 @@ for s in obtainable:
         "modelDataList": s["modelDataList"],
         "dtAttack": dt_attack(s),
         "dtSkills": dt_skills(s),
+        "teamScale": team_scale(s),
         # The win-screen quote: the game's own Result_Chara_Comment_<statueId> label, when present.
         "resultComment": (f"Result_Chara_Comment_{sid}"
                           if f"text:Result_Chara_Comment_JP:Result_Chara_Comment_{sid}" in labels else None),
@@ -292,6 +339,11 @@ for s in obtainable:
         })
         matched += 1
         by_source["extra"] += 1
+    if rec["rarity"] is None:
+        r = pose_rarity(s)
+        if r:
+            rec["rarity"] = r
+            rec["rarityFrom"] = "the team-view pose clips present in the player's files"
     out.append(rec)
 
 doc = {
