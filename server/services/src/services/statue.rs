@@ -41,7 +41,7 @@ pub fn statue_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .collection
         .statues
         .iter()
-        .filter(|o| collection::find_playable(&o.statue_id).is_some())
+        .filter(|o| collection::find(&o.statue_id).is_some())
         .map(collection::statue_info)
         .collect();
     ok(json!({ "allStatueNum": list.len(), "statueList": list, "sortType": 0 }))

@@ -53,7 +53,6 @@ for line in open(a.export, encoding="utf-8"):
     if len(c) >= 4:
         labels[c[0]] = c[3].replace("\\n", "\n")
 lead = {k.rsplit("_", 2)[-2] + "_" + k.rsplit("_", 1)[-1] for k in labels if k.startswith("text:Ability_Leader_Name_JP:ABI_LEAD_NAME_")}
-# Obtainable: playable, with a leader-ability label and a thumbnail (else a blank card in the lists).
 obtainable = [s for s in scan if s["playable"] and s["statueId"] in lead]
 jp_name = {s["statueId"]: labels.get(f"text:StatueName_JP:STATUE_NAME_{s['statueId']}", "") for s in obtainable}
 
@@ -270,9 +269,6 @@ for s in obtainable:
         "dtAttack": dt_attack(s),
         "dtSkills": dt_skills(s),
         "teamScale": team_scale(s),
-        # No st_<statueId> thumbnail in the ui_statue_* atlases: the lists would show a blank card
-        # (Build 17 device test). Story stages still use these as enemies, so they stay, enemy-only.
-        **({} if s.get("thumbnail") is True else {"enemyOnly": True}),
         # The win-screen quote: the game's own Result_Chara_Comment_<statueId> label, when present.
         "resultComment": (f"Result_Chara_Comment_{sid}"
                           if f"text:Result_Chara_Comment_JP:Result_Chara_Comment_{sid}" in labels else None),
@@ -362,5 +358,5 @@ doc = {
     "statues": out,
 }
 json.dump(doc, open(a.out, "w"), indent=1, ensure_ascii=False)
-print(f"{len(out)} statues ({sum(1 for r in out if r.get('enemyOnly'))} enemy-only, no thumbnail); {matched} with wiki stats ({dict(by_source)}), {len(out) - matched} on defaults; "
+print(f"{len(out)} obtainable statues; {matched} with wiki stats ({dict(by_source)}), {len(out) - matched} on defaults; "
       f"rejected as implausible or out of rarity order: {sorted(set(rejected))}")
