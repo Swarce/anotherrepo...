@@ -43,6 +43,7 @@ pub fn mind_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
                 uid: 0,
                 mind_id: d.mind_id.clone(),
                 get_date: String::new(),
+                protected: false,
             });
             json!({ "mindListId": i + 1, "mindId": d.mind_id, "mindInfo": info, "encountFlg": 1 })
         })
