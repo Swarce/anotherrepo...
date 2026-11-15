@@ -815,12 +815,17 @@ mod tests {
                 && r["mindFrameID"] == 1
                 && r["myPagePos"]["z"].as_f64().unwrap() > 100.0
         }));
-        // Most models already fit the team view's bust shot at full size.
+        // Most models already fit the team view's bust shot at full size; offsets stay small
+        // (centring a head over its slot) and only ever lift.
         let full = rows
             .iter()
             .filter(|r| r["teamScaleScalar"] == 100.0)
             .count();
         assert!(full * 2 > rows.len());
+        assert!(rows.iter().all(|r| {
+            let p = |k: &str| r["teamPos"][k].as_f64().unwrap();
+            p("x").abs() <= 100.0 && (0.0..=120.0).contains(&p("y")) && p("z") == 0.0
+        }));
         // Reward rows: dataId is a string the client parses as an int (Build 12 device log).
         for c in crate::quests::chapters().iter().take(40) {
             let s = crate::quests::stage_info(c, &c.stages[0], 0, &Default::default());

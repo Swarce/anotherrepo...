@@ -40,7 +40,8 @@ for x in ("--scan", "--export", "--shoutwiki", "--out"):
     ap.add_argument(x, required=True)
 ap.add_argument("--gamerch", help="local/wiki-raw/gamerch/statues.json (matched by leader-ability name)")
 ap.add_argument("--clips", help="local/content/figure_clips.tsv (scan_figure_clips.py): pose clips per model")
-ap.add_argument("--heights", help="local/content/model_heights.tsv (scan_model_heights.py): model heights")
+ap.add_argument("--heights", help="local/content/model_heights.tsv (scan_model_heights.py): model heights (fallback)")
+ap.add_argument("--pose", help="local/content/team_pose.tsv (pose_models.py): head and body of each statue in its team pose")
 ap.add_argument("--extra", action="append", default=[],
                 help="research collections with exact statueId matches ({records:[{statueId, rarity, type, stats:{lv1,lv99,tree_max}, source, confidence}]}); "
                      "used for statues without a Gamerch match, medium/high confidence and plausible stats only")
@@ -170,6 +171,12 @@ if a.heights:
         p = line.rstrip("\n").split("\t")
         HEIGHTS[p[1]] = float(p[3])
 POSE = {3: "figure_R", 4: "figure_SR", 5: "figure_SSR", 6: "figure_UR"}
+TEAM_POSE = {}
+if a.pose:
+    import csv
+    for r in csv.DictReader(open(a.pose), delimiter="\t"):
+        if r.get("head_y"):
+            TEAM_POSE[r["statueId"]] = {k: float(v) for k, v in r.items() if k != "statueId" and v != ""}
 
 
 def pose_exists(sid, model, r):
@@ -189,6 +196,24 @@ def pose_rarity(s):
         return None
     hint = 2 + int(s["statueId"][-1]) if s["statueId"][-1] in "1234" else 5
     return min(ok, key=lambda r: (abs(r - hint), -r))
+
+
+def team_frame(s):
+    """(teamScale %, teamPos cm) from the statue's team pose (docs/research/12 §7): the head bone at
+    1.45-1.70 m (Jonathan's is 1.53 m at full size), the upper body at most 1.4 m wide, scale 50-150% (short figures stay small);
+    the head (and upper body) centred over the slot; a model still below the shot is lifted so its
+    head reaches 1.45 m. Statues without a pose row fall back to team_scale()."""
+    p = TEAM_POSE.get(s["statueId"])
+    if not p:
+        return team_scale(s), [0, 0, 0]
+    hy, hx = p["head_y"], p["head_x"]
+    width = p["upper_xmax"] - p["upper_xmin"]
+    sc = min(max(hy, 1.45), 1.70) / hy if hy > 0.05 else 1.5
+    sc = min(max(min(sc, 1.4 / max(width, 1e-3)), 0.5), 1.5)
+    cx = 0.6 * hx + 0.4 * (p["upper_xmin"] + p["upper_xmax"]) / 2
+    # The anchors turn models 180 degrees and teamPos is added in world space: model +x is world -x.
+    lift = min(max(1.45 - hy * sc, 0.0), 1.2)
+    return round(100 * sc), [round(cx * sc * 100), round(lift * 100), 0]
 
 
 def team_scale(s):
@@ -268,7 +293,7 @@ for s in obtainable:
         "modelDataList": s["modelDataList"],
         "dtAttack": dt_attack(s),
         "dtSkills": dt_skills(s),
-        "teamScale": team_scale(s),
+        **dict(zip(("teamScale", "teamPos"), team_frame(s))),
         # The win-screen quote: the game's own Result_Chara_Comment_<statueId> label, when present.
         "resultComment": (f"Result_Chara_Comment_{sid}"
                           if f"text:Result_Chara_Comment_JP:Result_Chara_Comment_{sid}" in labels else None),

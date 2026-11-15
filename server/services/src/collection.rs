@@ -52,6 +52,10 @@ pub struct StatueDef {
     /// Team-view scale in percent (the bust shot frames 1.55-2.05 m; tools/content/build_statues.py).
     #[serde(rename = "teamScale", default = "full_scale")]
     pub team_scale: i64,
+    /// Team-view offset in cm (x, y, z), centring the posed head over the slot
+    /// (tools/content/build_statues.py, docs/research/12 §7).
+    #[serde(rename = "teamPos", default)]
+    pub team_pos: [i64; 3],
 }
 
 fn full_scale() -> i64 {
@@ -701,13 +705,14 @@ pub fn statue_setting_rows() -> Vec<Value> {
             // them by 0.01). My Page: the camera at the `CameraIdSet0` scene object (the origin,
             // facing +Z) and the leader 3.22 m ahead, right of centre (Build 12: 12% closer at the owner's request), turned towards the camera,
             // which frames models 1.0-2.3 m tall. Team view: the slot anchors already face the
-            // camera, so no offset, at full size. (docs/research/11-battle-and-positions.md)
+            // camera; each statue's scale and offset frame its posed head (docs/research/11 §1, 12 §7).
             json!({
                 "statueId": d.statue_id, "myPageId": ids[h as usize % ids.len()],
                 "myPageCameraType": "CameraIdSet0",
                 "myPagePos": { "x": 72.0, "y": -113.0, "z": 322.0 },
                 "myPageRotation": { "x": 0.0, "y": 192.5, "z": 0.0 },
                 "teamScaleScalar": d.team_scale as f64,
+                "teamPos": { "x": d.team_pos[0] as f64, "y": d.team_pos[1] as f64, "z": d.team_pos[2] as f64 },
                 "mindFrameID": 1, "pvpAiId": 1, "pvpAiAutoBattleAiId": 1,
                 // The result screen shows this label (skipped when empty).
                 "battleResultComment": d.result_comment.clone().unwrap_or_default()
@@ -779,6 +784,7 @@ mod tests {
             dt_skills: Vec::new(),
             result_comment: None,
             team_scale: 100,
+            team_pos: [0, 0, 0],
             max_tree: None,
         };
         assert_eq!(d.stats_at(1).hp, 100);
