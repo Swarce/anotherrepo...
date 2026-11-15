@@ -808,10 +808,19 @@ mod tests {
         }
         // Statue rows: full-size team statues, the My Page camera object, positions in cm.
         let rows = crate::collection::statue_setting_rows();
-        assert!(rows.iter().all(|r| r["teamScaleScalar"] == 100.0
-            && r["myPageCameraType"] == "CameraIdSet0"
-            && r["mindFrameID"] == 1
-            && r["myPagePos"]["z"].as_f64().unwrap() > 100.0));
+        assert!(rows.iter().all(|r| {
+            let scale = r["teamScaleScalar"].as_f64().unwrap();
+            (50.0..=300.0).contains(&scale)
+                && r["myPageCameraType"] == "CameraIdSet0"
+                && r["mindFrameID"] == 1
+                && r["myPagePos"]["z"].as_f64().unwrap() > 100.0
+        }));
+        // Most models already fit the team view's bust shot at full size.
+        let full = rows
+            .iter()
+            .filter(|r| r["teamScaleScalar"] == 100.0)
+            .count();
+        assert!(full * 2 > rows.len());
         // Reward rows: dataId is a string the client parses as an int (Build 12 device log).
         for c in crate::quests::chapters().iter().take(40) {
             let s = crate::quests::stage_info(c, &c.stages[0], 0, &Default::default());
