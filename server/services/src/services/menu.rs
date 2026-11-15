@@ -23,25 +23,10 @@ pub fn follow_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "sortType": 0, "followList": [] }))
 }
 
-/// `ItemListResponse`: no items owned.
-pub fn item_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    ok(json!({ "itemList": [] }))
-}
-
 /// `NotifyListResponse`: no notice pages offline (the client opens these URLs in a web view).
 pub fn notify_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "updateUrl": "", "failureUrl": "", "otherUrl": "",
                "updateNewFlg": 0, "failureNewFlg": 0, "otherNewFlg": 0 }))
-}
-
-/// `ShopListResponse`: one shop with no goods yet. The main shop reads
-/// `shopList[0].goodsList.Count` without a length check, so the list may not be empty.
-pub fn shop_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    ok(json!({ "shopList": shops(), "itemList": [], "pay": 0, "maxChargeDc": 0 }))
-}
-
-fn shops() -> Value {
-    json!([{ "shopId": 2, "shopName": "", "priority": 1, "displayMode": 0, "goodsList": [] }])
 }
 
 fn empty_item_set() -> Value {
@@ -49,23 +34,9 @@ fn empty_item_set() -> Value {
             "clanObjectList": [] })
 }
 
-/// `ShopBuyResponse`: nothing is for sale offline yet; answer with the unchanged state.
-pub fn shop_buy(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
-    let p = crate::services::statue::profile(ctx, env)?;
-    ok(
-        json!({ "userInfo": crate::services::user::user_info(&p), "itemSetInfo": empty_item_set(),
-               "shopList": shops(), "itemList": [], "haveItemSetInfo": empty_item_set() }),
-    )
-}
-
 /// `EventShopListResponse`: no event shops offline.
 pub fn event_shop_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "eventShopList": [], "itemList": [] }))
-}
-
-/// `ExpItemListResponse`: no EXP items yet (the enhance screen asks on entry).
-pub fn exp_item_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    ok(json!({ "itemList": [] }))
 }
 
 /// `PresentGetResponse` (inbox claim): the box is empty.
@@ -122,8 +93,6 @@ mod tests {
                 &["presentList"][..],
             ),
             ("/follow/follow_list", json!({}), &["followList"][..]),
-            ("/item/item_list", json!({}), &["itemList"][..]),
-            ("/shop/shop_list", json!({}), &["itemList"][..]),
         ] {
             let (r, known) = dispatch(&ctx, path, &env(param));
             assert!(known, "{path}");
