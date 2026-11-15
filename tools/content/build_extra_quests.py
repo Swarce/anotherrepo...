@@ -36,7 +36,9 @@ def h(*parts):
 
 
 def enemies(seed, stype=None, n=3):
-    pool = [s["statueId"] for s in statues if stype is None or s.get("statueType") == stype] or [s["statueId"] for s in statues]
+    """stype: None (any), one StatueType, or a list of them."""
+    types = None if stype is None else (set(stype) if isinstance(stype, (list, tuple, set)) else {stype})
+    pool = [s["statueId"] for s in statues if types is None or s.get("statueType") in types] or [s["statueId"] for s in statues]
     pool.sort()
     return [pool[h(seed, i) % len(pool)] for i in range(n)]
 
@@ -62,13 +64,20 @@ def label_text(lab):
     return en.get(k, "") if k else ""
 
 
-def theme(text):
+# Material days (research pack v2.growth.weekday, launch guide): Mon/Thu Wisdom, Tue/Fri Spirit,
+# Wed/Sat Courage, Sunday all three.
+SUNDAY = [1, 2, 3]
+
+
+def theme(text, day):
     found = [t for w, t in TYPE_WORDS.items() if w in text]
     if "Burning Spirit" in text:
         return 3
     if "Boundless Wit" in text:
         return 2
-    return found[0] if len(found) == 1 else None
+    if len(found) == 1:
+        return found[0]
+    return found or (SUNDAY if day == "SUN" else None)
 
 
 # ---- daily: two quest lines per weekday, four difficulties each ----
@@ -90,7 +99,7 @@ for i, (dy, dy2, ban) in enumerate(DAYS):
     for line, (first, base) in enumerate([("01", 0), ("04", 100)]):
         cid = f"CHAPTER_DY_{dy}_{first}"
         assert f"CHAPTER_NAME_DY_{dy}_{first}" in labels, cid
-        stype = theme(label_text(f"CHAPTER_NAME_DY_{dy}_{first}"))
+        stype = theme(label_text(f"CHAPTER_NAME_DY_{dy}_{first}"), dy)
         stages = []
         for t, (lv, apc, exp, gold) in enumerate(TIERS):
             sid = f"STAGE_DY2_{dy2}_{base + t + 1:03d}"
