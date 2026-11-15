@@ -1,6 +1,6 @@
 {
  "asset": "dtbattle_damage_param",
- "about": "Tactical battle damage tuning: one row (the client reads row 0 outside PvP). The real values died with the server; these are chosen so damage is neither zero nor capped (limit rates bracket 1.0, the random spread brackets 100% (in 1/10000: 9500-10500), a large cap) and the reversal mode is off. Assist-bonus fields are 0. Move ranges and the bystanders' escape distance are in centimetres (the client multiplies by 0.01): approach animations by distance 0.3/1.5/4/8 m, bystanders step 1.2 m aside.",
+ "about": "Tactical battle damage tuning: one row (the client reads row 0 outside PvP). The real values died with the server; these are chosen so damage is neither zero nor capped (limit rates bracket 1.0, the random spread brackets 100% (in 1/10000: 9500-10500), a large cap) and the reversal mode is off. Assist-bonus fields are 0. Move ranges and the bystanders' escape distance are in centimetres (the client multiplies by 0.01): approach animations by distance 0.3/1.5/4/8 m, bystanders step 1.2 m aside. The miss (0.25) and critical (1.5) rates follow the community wiki; the rest are ours.",
  "sources": [
   {
    "source": "jdr-research",
@@ -10,12 +10,19 @@
   {
    "source": "jdr-default",
    "note": "every number here is our choice (no source has the original tuning)"
+  },
+  {
+   "source": "Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/wiki/Tactical_Battle",
+   "license": "CC BY-SA 3.0",
+   "accessed": "2026-11-15",
+   "note": "an evaded attack deals 1/4 damage (_missDamageRate 0.25); critical hits x1.5 (_criticalDamageRate 1.5)"
   }
  ],
  "data": {
   "param": [
    {
-    "_missDamageRate": 0.5,
+    "_missDamageRate": 0.25,
     "_criticalDamageRate": 1.5,
     "_criticalDamageUpperLimit": 2.0,
     "_criticalDamageLowerLimit": 1.0,
