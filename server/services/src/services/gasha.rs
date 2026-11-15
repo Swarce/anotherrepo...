@@ -25,7 +25,10 @@ const MIND_RATES: &[(i64, f64)] = &[(3, 93.0), (4, 7.0)];
 
 fn banner(id: i64, kind: i64, window: &str) -> Value {
     json!({
-        "gashaId": id, "gashaType": kind, "payType": 4, "itemId": 0, "priority": if kind == 1 { 1 } else { 2 },
+        // payType 2 (free, item 10): the play buttons exist only for pay types 1, 2, 3 and 5
+        // (setupPlayButton, jump table 0x223E70C; Cash 4 shows none). Price 0, so the tap
+        // check (item 10 count - price) never comes up short.
+        "gashaId": id, "gashaType": kind, "payType": 2, "itemId": 0, "priority": if kind == 1 { 1 } else { 2 },
         "drowNum": 1, "price": 0, "limitNum": 0, "ticketId": -1,
         "drowNumMulti": 10, "priceMulti": 0, "limitNumMulti": 0, "ticketIdMulti": -1,
         "freeDrawFlag": 0, "freeDrawLimitNum": 0, "freeDrawRemainingNum": 0,

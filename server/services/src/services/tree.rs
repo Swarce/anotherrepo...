@@ -150,20 +150,31 @@ mod tests {
         for s in sq.iter().skip(1) {
             assert!(ids.contains(&s["beforeSquareId"].as_str().unwrap()));
         }
-        // Square 3 needs square 2 first; asking for both in order opens both.
+        // A2 needs A1 first; asking for both in order opens both. The tree branches: three
+        // squares hang off the start square.
+        assert_eq!(sq.iter().filter(|s| s["beforeSquareId"] == "S").count(), 3);
+        let open = |r: &serde_json::Map<String, Value>, id: &str| {
+            r["treeInfo"]["squareList"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .find(|s| s["squareId"] == id)
+                .unwrap()["openFlg"]
+                .clone()
+        };
         let (r, _) = dispatch(
             &ctx,
             "/tree/acquisition",
-            &env(&uuid, json!({"statueuId": o.uid, "squareId": ["3"]})),
+            &env(&uuid, json!({"statueuId": o.uid, "squareId": ["A2"]})),
         );
-        assert_eq!(r.unwrap()["treeInfo"]["squareList"][2]["openFlg"], 0);
+        assert_eq!(open(&r.unwrap(), "A2"), 0);
         let (r, _) = dispatch(
             &ctx,
             "/tree/acquisition",
-            &env(&uuid, json!({"statueuId": o.uid, "squareId": ["2", "3"]})),
+            &env(&uuid, json!({"statueuId": o.uid, "squareId": ["A1", "A2"]})),
         );
         let r = r.unwrap();
-        assert_eq!(r["treeInfo"]["squareList"][2]["openFlg"], 1);
+        assert_eq!(open(&r, "A2"), 1);
         let before = crate::collection::statue_info(&o);
         assert!(r["statueInfo"]["atk"].as_i64().unwrap() > before["atk"].as_i64().unwrap());
     }
