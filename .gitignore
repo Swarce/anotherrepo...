@@ -27,3 +27,5 @@ logcat*.txt
 *.png
 *.zip
 art.bin
+
+__pycache__/
