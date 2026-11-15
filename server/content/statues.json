@@ -797,7 +797,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_1080_01",
    "rarity": 3,
    "statueType": null,
@@ -936,7 +935,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_1090_01",
    "rarity": 3,
    "statueType": null,
@@ -983,7 +981,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_1090_02",
    "rarity": 4,
    "statueType": null,
@@ -1030,7 +1027,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_1090_03",
    "rarity": 5,
    "statueType": null,
@@ -1123,7 +1119,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_1100_01",
    "rarity": 3,
    "statueType": null,
@@ -1170,7 +1165,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_1100_02",
    "rarity": 4,
    "statueType": null,
@@ -1217,7 +1211,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_1100_03",
    "rarity": 5,
    "statueType": null,
@@ -1252,7 +1245,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_1100_11",
    "rarity": 3,
    "statueType": null,
@@ -1287,7 +1279,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_1100_12",
    "rarity": 4,
    "statueType": null,
@@ -1446,7 +1437,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_1110_01",
    "rarity": 3,
    "statueType": null,
@@ -1493,7 +1483,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_1110_02",
    "rarity": 4,
    "statueType": null,
@@ -1586,7 +1575,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_1120_01",
    "rarity": 3,
    "statueType": null,
@@ -1633,7 +1621,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_1120_02",
    "rarity": 4,
    "statueType": null,
@@ -1740,7 +1727,6 @@
     }
    ],
    "teamScale": 82,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_1130_01",
    "rarity": 3,
    "statueType": null,
@@ -2220,7 +2206,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_2000_12",
    "rarity": 4,
    "statueType": null,
@@ -2833,7 +2818,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_2040_01",
    "rarity": 3,
    "statueType": null,
@@ -2868,7 +2852,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_2040_02",
    "rarity": 4,
    "statueType": null,
@@ -2903,7 +2886,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_2040_03",
    "rarity": 5,
    "statueType": null,
@@ -3403,7 +3385,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_2070_01",
    "rarity": 3,
    "statueType": null,
@@ -3450,7 +3431,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_2070_02",
    "rarity": 4,
    "statueType": null,
@@ -3553,7 +3533,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_2080_01",
    "rarity": 3,
    "statueType": null,
@@ -3600,7 +3579,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_2080_02",
    "rarity": 4,
    "statueType": null,
@@ -3707,7 +3685,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_2081_11",
    "rarity": 3,
    "statueType": null,
@@ -3755,7 +3732,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_2081_12",
    "rarity": 4,
    "statueType": null,
@@ -4128,7 +4104,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_2111_01",
    "rarity": 3,
    "statueType": null,
@@ -4175,7 +4150,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_2111_02",
    "rarity": 4,
    "statueType": null,
@@ -4664,7 +4638,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": null,
    "rarity": null,
    "statueType": null,
@@ -5178,7 +5151,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_3020_12",
    "rarity": 4,
    "statueType": null,
@@ -6285,7 +6257,6 @@
     }
    ],
    "teamScale": 104,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_3060_01",
    "rarity": 3,
    "statueType": null,
@@ -6333,7 +6304,6 @@
     }
    ],
    "teamScale": 104,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_3060_02",
    "rarity": 4,
    "statueType": null,
@@ -6441,7 +6411,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_3070_01",
    "rarity": 3,
    "statueType": null,
@@ -6489,7 +6458,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_3070_02",
    "rarity": 4,
    "statueType": null,
@@ -6593,7 +6561,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_3090_01",
    "rarity": 3,
    "statueType": null,
@@ -6640,7 +6607,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_3090_02",
    "rarity": 4,
    "statueType": null,
@@ -7045,7 +7011,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_3110_03",
    "rarity": 5,
    "statueType": null,
@@ -7575,7 +7540,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_3210_03",
    "rarity": 5,
    "statueType": null,
@@ -7741,7 +7705,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_3240_11",
    "rarity": 3,
    "statueType": null,
@@ -7789,7 +7752,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_3240_12",
    "rarity": 4,
    "statueType": null,
@@ -7892,7 +7854,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_3270_01",
    "rarity": 3,
    "statueType": null,
@@ -7939,7 +7900,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_3270_02",
    "rarity": 4,
    "statueType": null,
@@ -8583,7 +8543,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_3330_02",
    "rarity": 4,
    "statueType": null,
@@ -10999,7 +10958,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_4130_01",
    "rarity": 3,
    "statueType": null,
@@ -11047,7 +11005,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_4130_02",
    "rarity": 4,
    "statueType": null,
@@ -11754,7 +11711,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_4160_12",
    "rarity": 4,
    "statueType": null,
@@ -11802,7 +11758,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_4170_01",
    "rarity": 3,
    "statueType": null,
@@ -12250,7 +12205,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_4191_01",
    "rarity": 3,
    "statueType": null,
@@ -12298,7 +12252,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_4191_02",
    "rarity": 4,
    "statueType": null,
@@ -12656,7 +12609,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_4240_11",
    "rarity": 3,
    "statueType": null,
@@ -12704,7 +12656,6 @@
     }
    ],
    "teamScale": 100,
-   "enemyOnly": true,
    "resultComment": "Result_Chara_Comment_4240_12",
    "rarity": 4,
    "statueType": null,
