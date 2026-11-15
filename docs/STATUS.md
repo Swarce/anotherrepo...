@@ -2,6 +2,28 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 18 — team view fixed, research data merged (branch `wip/b18`)
+
+### What the Build 17 device test and owner showed
+- Everything works, but team-screen statues were sometimes out of frame or T-posing.
+- The owner gathered a research collection with an outside assistant (statues, systems).
+
+### What changed
+- **Team view** (docs/research/12 §7).
+  - The bust-up pose clip is chosen by rarity. Statues with no wiki rarity (we defaulted to 4,
+    which has no clip for 16 of them) now take a rarity whose pose clip exists in the player's
+    files (120 statues).
+  - Each statue's team scale fits the bust shot from its measured height (34 differ from 100).
+- **Research collection** (docs/CONTENT.md):
+  - stats for 5 more statues (145 of 266 now have wiki stats), cited per ShoutWiki page;
+  - 11 existing matches confirmed with identical numbers;
+  - evaded hits deal 1/4 damage (wiki).
+- Build number 18, server marker `JDR_EMBEDDED_SERVER_b018`.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] Team setup: no T-poses; small models (Iggy, Pet Shop, Enya, Shigechi) and Tarkus framed
+- [ ] Star counts look right for the statues whose rarity now comes from the files
+
 ## Build 17 — every visible text in English, Stands no longer overlap their user (branch `wip/b17`)
 
 ### What the Build 16 device test and owner showed
