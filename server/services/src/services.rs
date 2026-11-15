@@ -54,6 +54,11 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/team/team_info" => misc::team_info(ctx, env),
         "/team/leader_change" => team::leader_change(ctx, env),
         "/team/set_team" => team::set_team(ctx, env),
+        "/team/equip_multiple_minds" => team::equip_multiple_minds(ctx, env),
+        "/team/equip_mind" => team::equip_mind(ctx, env),
+        "/team/unlock_mind_seq" => team::unlock_mind_seq(ctx, env),
+        "/mind/protect" => statue::mind_protect(ctx, env),
+        "/mind/protect_multi" => statue::mind_protect_multi(ctx, env),
         "/team/statue_select" => team::statue_select(ctx, env),
         "/user/user_info_mini" => team::user_info_mini(ctx, env),
         "/follow/follower_list" => team::follower_list(ctx, env),
@@ -81,8 +86,7 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/trophy/trophy_result_get" | "/trophy/get_all_trophy_result" => {
             menu::trophy_result_get(ctx, env)
         }
-        "/mind/protect"
-        | "/statue/protect"
+        "/statue/protect"
         | "/mind/save_sort"
         | "/statue/save_sort"
         | "/mind/new_flg_release"
