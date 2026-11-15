@@ -58,3 +58,17 @@ community wikis (each record cites its page) or are marked `jdr-default`.
 | Player rank: EXP per rank, AP max | Gamerch user-rank page | ranks 1–99 |
 | Minds: rarity, cost, flat stats | Gamerch (name) | 417 owned; cost is a default (3 × rarity) for 381 |
 | Items, events, gacha | Gamerch (fetched: 48 gacha, 22 events) | not served yet |
+
+## Research collections (Build 18)
+
+`tools/content/build_statues.py --extra <file>` reads an external research collection: records with
+an exact `statueId`, a confidence and a source page, gathered by the owner with an outside assistant
+from the community wikis and kept in `local/wiki-raw/` (git-ignored). A record is used only when:
+- the statue has no Gamerch or ShoutWiki match;
+- its confidence is medium or high;
+- its stats pass the Lv99/Lv1 plausibility check.
+
+The source page is cited per record. The first collection (2026-11-15) gave stats for 5 more
+statues, and independently confirmed 11 ShoutWiki matches with identical numbers. It also gave the
+tactical battle's evaded-hit damage (1/4) and critical multiplier (×1.5). Its skill damage ranks had
+no skill names and were inconsistent, so they were not used.

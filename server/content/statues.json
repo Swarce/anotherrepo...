@@ -4,13 +4,13 @@
   {
    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine snapshot)",
    "page": "https://jojodr.gamerch.com/",
-   "accessed": "2026-11-14"
+   "accessed": "2026-11-15"
   },
   {
    "source": "Diamond Records Wiki (ShoutWiki)",
    "page": "https://jojodiamondrecords.shoutwiki.com/",
    "license": "CC BY-SA 3.0",
-   "accessed": "2026-11-14"
+   "accessed": "2026-11-15"
   },
   {
    "source": "jdr-default",
@@ -3134,7 +3134,7 @@
     "license": "CC BY-SA 3.0",
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Wamuu_%28Courage%29",
     "revid": 3343,
-    "accessed": "2026-11-14"
+    "accessed": "2026-11-15"
    }
   },
   {
@@ -6172,14 +6172,28 @@
     }
    ],
    "resultComment": "Result_Chara_Comment_3060_03",
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 2,
+   "lv1": {
+    "hp": 1425,
+    "atk": 513,
+    "def": 485
+   },
+   "lv99": {
+    "hp": 14250,
+    "atk": 5130,
+    "def": 4845
+   },
+   "maxTree": {
+    "hp": 41850,
+    "atk": 7530,
+    "def": 6645
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Gray_Fly_(Tactical)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15"
    }
   },
   {
@@ -7999,7 +8013,7 @@
     "license": "CC BY-SA 3.0",
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Pet_Shop_%28Tactical%29",
     "revid": 4638,
-    "accessed": "2026-11-14"
+    "accessed": "2026-11-15"
    }
   },
   {
@@ -8185,14 +8199,28 @@
     }
    ],
    "resultComment": "Result_Chara_Comment_3323_08",
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 6,
+   "statueType": 3,
+   "lv1": {
+    "hp": 2500,
+    "atk": 2030,
+    "def": 1460
+   },
+   "lv99": {
+    "hp": 27500,
+    "atk": 20300,
+    "def": 14600
+   },
+   "maxTree": {
+    "hp": 36500,
+    "atk": 34700,
+    "def": 27200
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_DIO_~_There_is_no_Escape!_~_(Fighting_Spirit)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15"
    }
   },
   {
@@ -8716,14 +8744,28 @@
     }
    ],
    "resultComment": "Result_Chara_Comment_4000_23",
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 5,
+   "statueType": 3,
+   "lv1": {
+    "hp": 1425,
+    "atk": 485,
+    "def": 513
+   },
+   "lv99": {
+    "hp": 14250,
+    "atk": 4845,
+    "def": 5130
+   },
+   "maxTree": {
+    "hp": 41850,
+    "atk": 6645,
+    "def": 7530
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Josuke_Higashikata_(Fighting_Spirit)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15"
    }
   },
   {
@@ -9542,7 +9584,7 @@
     "license": "CC BY-SA 3.0",
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Okuyasu_Nijimura_%28Unity%29",
     "revid": 4621,
-    "accessed": "2026-11-14"
+    "accessed": "2026-11-15"
    }
   },
   {
@@ -9766,7 +9808,7 @@
     "license": "CC BY-SA 3.0",
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Rohan_Kishibe_%28Tactical%29",
     "revid": 4819,
-    "accessed": "2026-11-14"
+    "accessed": "2026-11-15"
    }
   },
   {
@@ -9804,14 +9846,28 @@
     }
    ],
    "resultComment": "Result_Chara_Comment_4031_18",
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 6,
+   "statueType": 4,
+   "lv1": {
+    "hp": 2747,
+    "atk": 1243,
+    "def": 1308
+   },
+   "lv99": {
+    "hp": 27468,
+    "atk": 12426,
+    "def": 13080
+   },
+   "maxTree": {
+    "hp": 39468,
+    "atk": 24426,
+    "def": 25080
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Rohan_Kishibe_(Unity)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15"
    }
   },
   {
@@ -10314,7 +10370,7 @@
     "license": "CC BY-SA 3.0",
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Yukako_Yamagishi_%28Courage%29",
     "revid": 4637,
-    "accessed": "2026-11-14"
+    "accessed": "2026-11-15"
    }
   },
   {
@@ -12170,7 +12226,7 @@
     "license": "CC BY-SA 3.0",
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Yoshikage_Kira_~_I%27m_at_my_limit%21_I%27ll_activate_it%21_~_%28Courage%29",
     "revid": 4690,
-    "accessed": "2026-11-14"
+    "accessed": "2026-11-15"
    }
   },
   {
@@ -12728,7 +12784,7 @@
     "license": "CC BY-SA 3.0",
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Leone_Abbacchio_%28Tactical%29",
     "revid": 4591,
-    "accessed": "2026-11-14"
+    "accessed": "2026-11-15"
    }
   },
   {
@@ -12878,7 +12934,7 @@
     "license": "CC BY-SA 3.0",
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Narancia_Ghirga_%28Fighting_Spirit%29",
     "revid": 4502,
-    "accessed": "2026-11-14"
+    "accessed": "2026-11-15"
    }
   },
   {
@@ -12916,14 +12972,28 @@
     }
    ],
    "resultComment": "Result_Chara_Comment_5100_14",
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 6,
+   "statueType": 5,
+   "lv1": {
+    "hp": 2620,
+    "atk": 1730,
+    "def": 1100
+   },
+   "lv99": {
+    "hp": 26200,
+    "atk": 17300,
+    "def": 11000
+   },
+   "maxTree": {
+    "hp": 37900,
+    "atk": 30800,
+    "def": 21800
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Pannacotta_Fugo_(Solitary)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15"
    }
   },
   {
@@ -13073,7 +13143,7 @@
     "license": "CC BY-SA 3.0",
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Ghiaccio_%28Fighting_Spirit%29",
     "revid": 4681,
-    "accessed": "2026-11-14"
+    "accessed": "2026-11-15"
    }
   },
   {
@@ -13178,7 +13248,7 @@
     "license": "CC BY-SA 3.0",
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Trish_Una_%28Courage%29",
     "revid": 4714,
-    "accessed": "2026-11-14"
+    "accessed": "2026-11-15"
    }
   },
   {
@@ -13281,7 +13351,7 @@
     "license": "CC BY-SA 3.0",
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Leaky-Eye_Luca_%28Fighting_Spirit%29",
     "revid": 4558,
-    "accessed": "2026-11-14"
+    "accessed": "2026-11-15"
    }
   },
   {
