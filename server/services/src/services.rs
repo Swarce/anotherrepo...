@@ -84,7 +84,7 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/item/exp_item_list" => item::exp_item_list(ctx, env),
         "/present/get" | "/present/get_all" => menu::present_get(ctx, env),
         "/trophy/trophy_result_get" | "/trophy/get_all_trophy_result" => {
-            menu::trophy_result_get(ctx, env)
+            team::trophy_claim(ctx, env)
         }
         "/statue/protect"
         | "/mind/save_sort"

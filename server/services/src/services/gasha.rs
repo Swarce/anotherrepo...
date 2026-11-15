@@ -182,7 +182,12 @@ pub fn gasha_play(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         }
     }
     // Nothing is charged or added (everything is owned); the touch keeps the login time fresh.
-    let (p, ()) = with_profile(ctx, env, |_| ((), Change::None))?;
+    let (p, ()) = with_profile(ctx, env, |p| {
+        p.progress
+            .missions
+            .bump("summon", 1, jdr_core::clock::now());
+        ((), Change::Bookkeeping)
+    })?;
     ok(
         json!({ "userInfo": crate::services::user::user_info(&p), "getResultList": results,
                "originalStatueInfo": [], "Lv1StatueMasterInfo": lv1 }),

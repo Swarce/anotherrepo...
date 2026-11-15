@@ -59,6 +59,11 @@ pub fn leader_change(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                 changed = true;
             }
         }
+        if changed {
+            p.progress
+                .missions
+                .bump("leader", 1, jdr_core::clock::now());
+        }
         (
             (),
             if changed {
@@ -149,6 +154,9 @@ pub fn set_team(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         for t in teams_numbered(&mut p.collection, team_num) {
             t.slots = slots;
         }
+        if slots.iter().all(|u| *u != 0) {
+            p.progress.missions.bump("team3", 1, jdr_core::clock::now());
+        }
         if main {
             for t in &mut p.collection.teams {
                 t.main = t.team_num == team_num;
@@ -176,8 +184,76 @@ pub fn block_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
 }
 
 /// `TrophyListResponse`: no achievements are tracked offline yet.
-pub fn trophy_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    ok(json!({ "trophyList": [] }))
+pub fn trophy_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let now = jdr_core::clock::now();
+    let (p, ()) = with_profile(ctx, env, |p| {
+        let day = p.progress.missions.day;
+        p.progress.missions.roll(now);
+        (
+            (),
+            if p.progress.missions.day != day {
+                Change::Bookkeeping
+            } else {
+                Change::None
+            },
+        )
+    })?;
+    ok(json!({ "trophyList": p.progress.missions.trophy_list(p.rank, now) }))
+}
+
+/// Grant a mission reward to the account: gold (item 20), free Diamond Coins (0/10), or a
+/// catalog item. Friend points have no wallet offline. (The screen then says the rewards went to
+/// the message box; our box is not built yet, so they arrive directly.)
+fn grant(p: &mut crate::accounts::Profile, r: &crate::missions::Reward) {
+    match r.item_id {
+        20 => p.gold += r.count,
+        0 | 10 => p.stone_free += r.count,
+        id if crate::items::find(id).is_some() => p.collection.add_item(id, r.count),
+        _ => {}
+    }
+}
+
+/// `/trophy/trophy_result_get {achievementId}` (one) and `/trophy/get_all_trophy_result {}`
+/// (every claimable mission): the full updated list replaces the client's.
+pub fn trophy_claim(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let one = env
+        .param
+        .get("achievementId")
+        .and_then(Value::as_str)
+        .map(str::to_owned);
+    let now = jdr_core::clock::now();
+    let (p, sets) = with_profile(ctx, env, |p| {
+        p.progress.missions.roll(now);
+        let ids: Vec<String> = match &one {
+            Some(id) => vec![id.clone()],
+            None => crate::missions::missions()
+                .iter()
+                .map(|m| m.id.clone())
+                .collect(),
+        };
+        let mut sets = Vec::new();
+        for id in ids {
+            if let Some(m) = p.progress.missions.claim(&id, p.rank) {
+                grant(p, &m.reward);
+                sets.push(crate::missions::reward_set(&m.reward));
+            }
+        }
+        let change = if sets.is_empty() {
+            Change::None
+        } else {
+            Change::Progress
+        };
+        (sets, change)
+    })?;
+    let list = p.progress.missions.trophy_list(p.rank, now);
+    let empty = json!({ "itemSetIcon": "", "itemSetNum": 0, "statueList": [], "mindList": [], "itemList": [], "clanObjectList": [] });
+    if one.is_some() {
+        ok(
+            json!({ "itemSetInfo": sets.first().cloned().unwrap_or(empty), "trophyList": list, "popupFlg": false }),
+        )
+    } else {
+        ok(json!({ "itemSetList": sets, "trophyList": list, "popupFlg": false }))
+    }
 }
 
 #[cfg(test)]
@@ -573,7 +649,14 @@ pub fn equip_multiple_minds(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .unwrap_or_default();
     let (p, r) = with_profile(ctx, env, |p| {
         match equip(&mut p.collection, team_num, seat, &changes) {
-            Ok(()) => (Ok(()), Change::Bookkeeping),
+            Ok(()) => {
+                if changes.iter().any(|(_, u)| *u != 0) {
+                    p.progress
+                        .missions
+                        .bump("equip_mind", 1, jdr_core::clock::now());
+                }
+                (Ok(()), Change::Bookkeeping)
+            }
             Err(code) => (Err(code), Change::None),
         }
     })?;
