@@ -39,6 +39,9 @@ ap = argparse.ArgumentParser()
 for x in ("--scan", "--export", "--shoutwiki", "--out"):
     ap.add_argument(x, required=True)
 ap.add_argument("--gamerch", help="local/wiki-raw/gamerch/statues.json (matched by leader-ability name)")
+ap.add_argument("--extra", action="append", default=[],
+                help="research collections with exact statueId matches ({records:[{statueId, rarity, type, stats:{lv1,lv99,tree_max}, source, confidence}]}); "
+                     "used for statues without a Gamerch match, medium/high confidence and plausible stats only")
 a = ap.parse_args()
 
 scan = json.load(open(a.scan))["statues"]
@@ -189,6 +192,21 @@ out = []
 matched = 0
 by_source = collections.Counter()
 claimed = collections.defaultdict(set)  # character key -> {(rarity, type)} taken by exact matches
+# Research collections: exact statueId matches only.
+extra = {}
+for path in a.extra:
+    for r in json.load(open(path)).get("records", []):
+        sid, st = r.get("statueId"), r.get("stats") or {}
+        if (sid in jp_name and sid not in gamerch and r.get("confidence") in ("high", "medium")
+                and full(st.get("lv1")) and full(st.get("lv99")) and plausible(st["lv1"], st["lv99"])):
+            url = r["source"]["url"]
+            site = ("Diamond Records Wiki (ShoutWiki)" if "shoutwiki" in url else
+                    "Gamerch ジョジョDR攻略Wiki (Wayback Machine)" if "gamerch" in url else None)
+            if site:
+                r["source"]["site"] = site
+                if "shoutwiki" in url:
+                    r["source"]["license"] = "CC BY-SA 3.0"
+                extra.setdefault(sid, r)
 for sid, g in gamerch.items():
     if sid in jp_name:
         claimed[jp_name[sid].replace(" ", "").replace("・", "")].add((g.get("rarity"), GAMERCH_TYPE.get(g.get("type"))))
@@ -257,6 +275,23 @@ for s in obtainable:
             })
             matched += 1
             by_source["shoutwiki"] += 1
+    # 3) Research collections with an exact statueId (medium/high confidence, plausible stats), for
+    #    statues still without numbers.
+    x = extra.get(sid)
+    if x and rec["lv99"] is None:
+        st = x["stats"]
+        rec.update({
+            "rarity": x.get("rarity"),
+            "statueType": GAMERCH_TYPE.get(x.get("type")),
+            "lv1": st["lv1"], "lv99": st["lv99"],
+            "maxTree": st["tree_max"] if full(st.get("tree_max")) else None,
+            "source": {"source": x["source"]["site"], "page": x["source"]["url"],
+                       **({"license": x["source"]["license"]} if x["source"].get("license") else {}),
+                       **({"capture": x["source"]["archive_url"]} if x["source"].get("archive_url") else {}),
+                       "accessed": x["source"].get("accessed", TODAY)},
+        })
+        matched += 1
+        by_source["extra"] += 1
     out.append(rec)
 
 doc = {
