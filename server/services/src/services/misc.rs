@@ -56,13 +56,7 @@ pub fn team_info(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .iter()
         .map(|t| crate::collection::team_info(&p.collection, t))
         .collect();
-    let seq: Vec<Value> = (1..=4)
-        .map(|s| json!({ "seq": s, "openFlg": 1, "goldenFlameFlg": 0, "onlySkillFlg": 0 }))
-        .collect();
-    ok(json!({
-        "teamList": teams,
-        "mindSeqInfo": { "seqInfoList": seq, "unlockInfo": { "openRank": 0, "openMaterialList": [], "itemList": [] } }
-    }))
+    ok(json!({ "teamList": teams, "mindSeqInfo": super::team::mind_seq_info() }))
 }
 
 /// 50301 = E_BIZALLE_NOT_START: no interrupted battle (10000 would offer to resume one).
