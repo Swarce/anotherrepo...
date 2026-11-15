@@ -36,6 +36,9 @@ pub struct StatueDef {
     pub statue_type: Option<i64>,
     pub lv1: Option<Stats>,
     pub lv99: Option<Stats>,
+    /// Stats with the growth tree complete (wiki), when known.
+    #[serde(rename = "maxTree", default)]
+    pub max_tree: Option<Stats>,
     /// Tactical basic attack skill id, chosen from the statue's action sets in the player's files
     /// (`tools/content/build_statues.py`).
     #[serde(rename = "dtAttack", default)]
@@ -43,6 +46,9 @@ pub struct StatueDef {
     /// Tactical skills (normal, special) from `tools/content/build_statues.py`.
     #[serde(rename = "dtSkills", default)]
     pub dt_skills: Vec<DtSkill>,
+    /// Label key of the win-screen quote (`Result_Chara_Comment_<statueId>`), when the game has one.
+    #[serde(rename = "resultComment", default)]
+    pub result_comment: Option<String>,
 }
 
 /// One tactical skill of a statue: label keys from the player's files, our numbers.
@@ -138,6 +144,104 @@ pub struct OwnedStatue {
     pub exp: i64,
     #[serde(default)]
     pub get_date: String,
+    /// Growth tree squares opened (ids from `tree_squares`).
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub tree: Vec<String>,
+}
+
+/// One growth tree square: id, grid position, effect (1 ATK, 2 DEF, 3 HP; 0 = start), value, and
+/// the square before it.
+#[derive(Debug, Clone, PartialEq)]
+pub struct TreeSquare {
+    pub id: String,
+    pub pos: (i64, i64),
+    pub effect: i64,
+    pub param: i64,
+    pub before: String,
+}
+
+/// The growth tree of a statue (docs/research/13-menus.md §3). The client has no tree data and
+/// none survives, so the layout is ours: from the start square three branches run right, ATK on
+/// top, HP in the middle and DEF below; the ATK and DEF branches fork halfway into a second line
+/// and the HP branch runs further. Each stat's squares share that stat's total: the wiki's
+/// tree-max minus Lv99 stats (else 20% of Lv99). Grid rows 0..4, the start square on row 2.
+pub fn tree_squares(d: &StatueDef) -> Vec<TreeSquare> {
+    let base = d.stats_at(MAX_LEVEL);
+    let total = match &d.max_tree {
+        Some(m) => Stats {
+            hp: (m.hp - base.hp).max(0),
+            atk: (m.atk - base.atk).max(0),
+            def: (m.def - base.def).max(0),
+        },
+        None => Stats {
+            hp: base.hp / 5,
+            atk: base.atk / 5,
+            def: base.def / 5,
+        },
+    };
+    // (id, x, y, effect 1 ATK / 2 DEF / 3 HP, parent id)
+    let mut layout: Vec<(String, i64, i64, i64, String)> = Vec::new();
+    for (tag, row, fork_row, effect, len) in
+        [("A", 1, 0, 1, 5), ("H", 2, -1, 3, 7), ("D", 3, 4, 2, 5)]
+    {
+        let mut parent = "S".to_string();
+        for x in 1..=len {
+            let id = format!("{tag}{x}");
+            layout.push((id.clone(), x, row, effect, parent.clone()));
+            if x == 3 && fork_row >= 0 {
+                // The fork: two squares one row out, from the third square of the branch.
+                layout.push((format!("{tag}f1"), 4, fork_row, effect, id.clone()));
+                layout.push((format!("{tag}f2"), 5, fork_row, effect, format!("{tag}f1")));
+            }
+            parent = id;
+        }
+    }
+    let counts: Vec<i64> = (0..4)
+        .map(|e| layout.iter().filter(|s| s.3 == e).count() as i64)
+        .collect();
+    let share = |stat: i64, e: usize| stat / counts[e].max(1);
+    let mut out = vec![TreeSquare {
+        id: "S".into(),
+        pos: (0, 2),
+        effect: 0,
+        param: 0,
+        before: String::new(),
+    }];
+    for (id, x, y, effect, before) in layout {
+        let param = match effect {
+            1 => share(total.atk, 1),
+            2 => share(total.def, 2),
+            _ => share(total.hp, 3),
+        };
+        out.push(TreeSquare {
+            id,
+            pos: (x, y),
+            effect,
+            param,
+            before,
+        });
+    }
+    out
+}
+
+/// Stat bonus from the opened squares.
+pub fn tree_bonus(o: &OwnedStatue) -> Stats {
+    let mut b = Stats {
+        hp: 0,
+        atk: 0,
+        def: 0,
+    };
+    if let Some(d) = find(&o.statue_id) {
+        for sq in tree_squares(d).iter().filter(|s| o.tree.contains(&s.id)) {
+            match sq.effect {
+                1 => b.atk += sq.param,
+                2 => b.def += sq.param,
+                3 => b.hp += sq.param,
+                _ => {}
+            }
+        }
+    }
+    b
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Default)]
@@ -174,6 +278,7 @@ impl Collection {
                     level: 1,
                     exp: 0,
                     get_date: now.to_string(),
+                    tree: Vec::new(),
                 });
                 next += 1;
                 changed = true;
@@ -311,11 +416,15 @@ pub fn statue_info(o: &OwnedStatue) -> Value {
         ),
         None => (1, 4, 1, Vec::new()),
     };
-    let st = d.map(|d| d.stats_at(o.level)).unwrap_or(Stats {
+    let mut st = d.map(|d| d.stats_at(o.level)).unwrap_or(Stats {
         hp: 1,
         atk: 1,
         def: 1,
     });
+    let tb = tree_bonus(o);
+    st.hp += tb.hp;
+    st.atk += tb.atk;
+    st.def += tb.def;
     let sid = &o.statue_id;
     json!({
         "statueId": sid, "name": format!("STATUE_NAME_{sid}"), "nameSortIndex": 0,
@@ -375,6 +484,43 @@ pub fn attack_skill(statue_id: &str) -> String {
         .unwrap_or_else(|| BASIC_ATTACK.to_string())
 }
 
+/// Characters whose attacks fire bullets (their models' bullet FSMs; docs/research/12 §2): the
+/// 3-digit skill prefixes of statues 3110, 4160, 4180/4181, 4240, 5220 and 5300.
+const RANGED_PREFIXES: &[&str] = &["311", "416", "418", "424", "522", "530"];
+
+/// Where a skill's user stops, as the client's (dtRangeMin, dtRangeMax) in centimetres
+/// (`CharacterProxy.SetSkillTargetPos` 0xEE9304: farther than max walks to max, nearer than min
+/// backs off to min; 0/0 walks into the target). The attack itself then closes in to a fixed
+/// 1.05 m from the target (constant 0x223E5A4): a Stand appears on its user and rushes up to
+/// about 2.1 m forward, so Stand users stop 2-2.5 m away (closer, the Stand overlapped its
+/// user); units without a Stand lunge themselves and stop 1.2-1.5 m away, outside the snap
+/// distance; bullet users 4-8 m; heals on allies (target types 3-5) move only when over 10 m
+/// away. docs/research/12 §6. Values are ours.
+pub fn skill_range(skill_id: &str, target_type: i64) -> (i64, i64) {
+    let prefix = skill_id
+        .strip_prefix("SKILL_")
+        .and_then(|s| s.get(..3))
+        .unwrap_or("");
+    if (3..=5).contains(&target_type) {
+        (0, 1000)
+    } else if RANGED_PREFIXES.contains(&prefix) {
+        (400, 800)
+    } else if stand_prefix(prefix) {
+        (200, 250)
+    } else {
+        (120, 150)
+    }
+}
+
+/// Whether the statues sharing this 3-digit skill prefix fight with a Stand (a Stand model in
+/// their modelDataList).
+fn stand_prefix(prefix: &str) -> bool {
+    !prefix.is_empty()
+        && statues()
+            .iter()
+            .any(|d| d.statue_id.starts_with(prefix) && d.model_data_list.len() > 1)
+}
+
 /// The base skill table (server/content/dt_skills_base.json) plus one attack row per distinct
 /// statue attack id: a copy of `JDR_ATK_00` with `dtSkillId` and `viewSkillId` set to the id, so the
 /// client plays the statue's own attack action set (skill number 99 means ATTACK).
@@ -400,6 +546,9 @@ pub fn dt_skill_table() -> Value {
             let mut row = template.clone();
             row["dtSkillId"] = json!(id);
             row["viewSkillId"] = json!(id);
+            let (min, max) = skill_range(&id, 1);
+            row["dtRangeMin"] = json!(min);
+            row["dtRangeMax"] = json!(max);
             list.push(row);
         }
     }
@@ -428,6 +577,8 @@ pub fn dt_skill_table() -> Value {
                 ("dtMinCoolTurn", json!(cool)),
                 ("dtMaxCoolTurn", json!(cool)),
                 ("mainSkillCategory", json!(s.category)),
+                ("dtRangeMin", json!(skill_range(&s.id, s.target_type).0)),
+                ("dtRangeMax", json!(skill_range(&s.id, s.target_type).1)),
             ] {
                 row[k] = v;
             }
@@ -550,7 +701,9 @@ pub fn statue_setting_rows() -> Vec<Value> {
                 "myPagePos": { "x": 72.0, "y": -113.0, "z": 322.0 },
                 "myPageRotation": { "x": 0.0, "y": 192.5, "z": 0.0 },
                 "teamScaleScalar": 100.0,
-                "mindFrameID": 1, "pvpAiId": 1, "pvpAiAutoBattleAiId": 1
+                "mindFrameID": 1, "pvpAiId": 1, "pvpAiAutoBattleAiId": 1,
+                // The result screen shows this label (skipped when empty).
+                "battleResultComment": d.result_comment.clone().unwrap_or_default()
             })
         })
         .collect()
@@ -617,6 +770,8 @@ mod tests {
             }),
             dt_attack: None,
             dt_skills: Vec::new(),
+            result_comment: None,
+            max_tree: None,
         };
         assert_eq!(d.stats_at(1).hp, 100);
         assert_eq!(d.stats_at(99).hp, 1000);

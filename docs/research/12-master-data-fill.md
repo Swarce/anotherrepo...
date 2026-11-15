@@ -145,3 +145,55 @@ What we send:
 - Rebuild: `tools/content/build_leader_abilities.py`.
 - Risk: the wiki numbers come from the action-battle era, so the balance is ours. The ability's
   description in the UI may be blank, because these stat affects have no text keys.
+
+## 5. Battle camera and formation (Build 15)
+
+What the Build 14 device log and owner showed: tactical battles were seen from behind the player
+team, not from the side, and the win shot was wrong.
+
+- **Turn camera** (H).
+  - Overview and focus call `UpdateNearFarCamera` with `cameraOffsetInWorld = 1` (0xCD3BE4,
+    0xCD3C2C). `CalculateNearFarCameraTargetPose` 0xCD4760 then looks at the midpoint of the two
+    team centres from midpoint + (0, height, length) **in world axes**.
+  - The built-in parameter asset has a negative length, so the camera always stands on world −Z
+    looking +Z.
+  - Our old formation (players at z = −3 facing +Z) put it directly behind the players.
+  - No dtbattle code reads AreaInfo `mapCamera`/`startCamera`/`rotate` (M-H). `mapPoint` picks the
+    `PosPivot/<n>` origin in `<mapId>_collider_dt`.
+- **Formation.** The teams now face each other along X: players at x = −3 facing +X, enemies at
+  x = +3 facing −X, spread in depth (z 0; ±1; −1.6/0/+1.6). The map arenas are about 11.2 × 7.7 m
+  (measured across 102 collider scenes). Axis and facing are H; the exact numbers are ours.
+- **Script cameras.**
+  - The statues' battle animations request 252 camera ids (ids 1000–2999 get +100000). We served
+    34, and on a missing id the camera stays in script mode and freezes on its last pose (M).
+  - The set table now covers all 266 ids: the hard-coded ones plus every requested one, listed from
+    the player's action sets.
+  - Result shots (301–314, 101001–101028) use `jdr_result`, a three-quarter front shot 4 m from
+    the winner, bound to the unit. The winner is moved to the map's `ResultPivot`.
+  - Everything else uses `jdr_side`: world-fixed (`flagWorldSet`), on the −Z side of the acting
+    unit, 9 m away. The client mirrors some ids for enemies; the world-fixed shot cannot be flipped.
+  - Node values are ours (M).
+
+## 6. Attack distance and Stands (Builds 16–17)
+
+- **Where the user stops (H).** `CharacterProxy.SetSkillTargetPos` 0xEE9304 reads the skill's
+  `dtRangeMin`/`dtRangeMax` × 0.01 (centimetres). A user farther than the maximum walks to it; a
+  user nearer than the minimum backs off to it. With 0/0 the attacker walked into the target's
+  centre.
+- **Where the hit lands (H).** The attack then closes in to a fixed 1.05 m from the target
+  (float 0x223E5A4).
+  - A Stand appears on its user (`DoAdjustPairCharacterPose` 0xCFE298, offset 0 for almost all
+    Stands) and rushes forward (`ProcessMoveAhead`, `OnUpdateDtBattle` 0xDC3540). The rush is
+    typically 6 m/s for 0.35 s, about 2.1 m at most.
+  - So with the user only 1–1.5 m away, the Stand stayed inside its user or snapped behind it.
+- **`standRange` and model_table hit sizes play no part in the tactical battle (H).**
+- **Ranges we send** (ours):
+
+  | Unit | dtRangeMin/Max (cm) |
+  |---|---|
+  | Stand users | 200/250 |
+  | Units without a Stand (they lunge themselves) | 120/150 |
+  | Bullet users | 400/800 |
+  | Heals on allies | 0/1000 |
+
+  A 3-digit skill prefix counts as a Stand user when any statue sharing it has a Stand model.
