@@ -183,6 +183,15 @@ fn new_player_boot_sequence() {
     // Story: the story button, a chapter list, a stage list, start and end (clear recorded)
     let sel = call_as(port, &ep("/bizarre/get_bizarre_select"), "{}", &uuid);
     assert_eq!(sel["param"]["questList"][0]["bannerType"], 1);
+    // Build 20: story, today's daily and the event tiles, each event with a Campaign Info entry.
+    let tiles = sel["param"]["questList"].as_array().unwrap();
+    assert!(
+        tiles.iter().any(|q| q["bannerType"] == 2) && tiles.iter().any(|q| q["bannerType"] == 3)
+    );
+    assert!(!sel["param"]["eventCampaignList"]
+        .as_array()
+        .unwrap()
+        .is_empty());
     let bl = call_as(
         port,
         &ep("/bizarre/bizarre_list"),
@@ -293,11 +302,6 @@ fn new_player_boot_sequence() {
     );
     // MyPage menu screens: handled (not the unknown-route fallback), every list present and empty
     for (p, param, lists) in [
-        (
-            "/bizarre/get_bizarre_select",
-            "{}",
-            &["eventCampaignList"][..],
-        ),
         (
             "/present/present_list",
             r#"{"prevNum":1,"receivedFlag":0}"#,

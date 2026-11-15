@@ -117,11 +117,6 @@ mod tests {
         let ctx = Ctx::new(Settings::new(dir), false);
         for (path, param, list_fields) in [
             (
-                "/bizarre/get_bizarre_select",
-                json!({}),
-                &["eventCampaignList"][..],
-            ),
-            (
                 "/present/present_list",
                 json!({"prevNum": 1, "receivedFlag": 0}),
                 &["presentList"][..],
