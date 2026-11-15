@@ -110,6 +110,13 @@ pub fn strengthening_item(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
             p.collection.add_item(*id, -n);
         }
         p.collection.add_statue_exp(&[uid], exp);
+        let now = jdr_core::clock::now();
+        if exp > 0 {
+            p.progress.missions.bump("enhance", 1, now);
+        }
+        if boosts > 0 {
+            p.progress.missions.bump("boost", 1, now);
+        }
         if let Some(s) = p.collection.statues.iter_mut().find(|s| s.uid == uid) {
             s.boost += boosts;
         }

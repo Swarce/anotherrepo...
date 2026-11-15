@@ -9,7 +9,8 @@ use jdr_core::envelope::RequestEnvelope;
 use serde_json::{json, Value};
 
 /// `BookStatueListResponse`: every statue, all met (everything is owned offline).
-pub fn statue_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
+pub fn statue_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    touch(ctx, env, "book_statue");
     let list: Vec<Value> = collection::statues()
         .iter()
         .enumerate()
@@ -34,7 +35,8 @@ pub fn statue_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
 }
 
 /// `BookMindListResponse`: every mind.
-pub fn mind_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
+pub fn mind_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    touch(ctx, env, "book_mind");
     let list: Vec<Value> = collection::minds()
         .iter()
         .enumerate()
@@ -106,4 +108,22 @@ pub fn sell(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         json!({ "userInfo": crate::services::user::user_info(&p), "dataList": {}, "vm": p.gold,
                "getItemList": [], "itemList": [] }),
     )
+}
+
+/// Count a first-time visit for the missions (opening an encyclopedia).
+fn touch(ctx: &Ctx, env: &RequestEnvelope, counter: &str) {
+    let _ = crate::services::statue::with_profile(ctx, env, |p| {
+        if p.progress
+            .missions
+            .totals
+            .get(counter)
+            .copied()
+            .unwrap_or(0)
+            > 0
+        {
+            return ((), crate::accounts::Change::None);
+        }
+        p.progress.missions.bump(counter, 1, jdr_core::clock::now());
+        ((), crate::accounts::Change::Bookkeeping)
+    });
 }

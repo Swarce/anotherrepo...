@@ -5,7 +5,7 @@ use crate::app::ApiResult;
 use crate::services::ok;
 use crate::Ctx;
 use jdr_core::envelope::RequestEnvelope;
-use serde_json::{json, Value};
+use serde_json::json;
 
 /// `GetRecommendClanResponse`: no `clanInfo`, which the client shows as "no recommended Town
 /// found" (Towns are the multiplayer guild feature; offline there is none to join).
@@ -29,11 +29,6 @@ pub fn notify_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
                "updateNewFlg": 0, "failureNewFlg": 0, "otherNewFlg": 0 }))
 }
 
-fn empty_item_set() -> Value {
-    json!({ "itemSetIcon": "", "itemSetNum": 0, "statueList": [], "mindList": [], "itemList": [],
-            "clanObjectList": [] })
-}
-
 /// `EventShopListResponse`: no event shops offline.
 pub fn event_shop_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "eventShopList": [], "itemList": [] }))
@@ -47,11 +42,6 @@ pub fn present_get(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                "userInfo": crate::services::user::user_info(&p), "dataList": {},
                "getPresentList": [], "originalStatueInfo": [] }),
     )
-}
-
-/// `TrophyResultGetResponse`: no achievements tracked offline.
-pub fn trophy_result_get(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    ok(json!({ "itemSetInfo": empty_item_set(), "trophyList": [], "popupFlg": false }))
 }
 
 /// Book-keeping routes the menus call (protect, sort order, "new" marks): accepted, nothing to
