@@ -10,6 +10,7 @@ pub mod items;
 pub mod l10n;
 pub mod masterdata;
 pub mod missions;
+pub mod presents;
 pub mod quests;
 pub mod services;
 pub mod versionfile;

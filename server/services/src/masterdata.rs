@@ -995,11 +995,29 @@ mod tests {
             .iter()
             .filter(|d| !crate::collection::leader_ability(&d.statue_id)["abilityId"].is_null())
             .count();
+        let lead = rows
+            .iter()
+            .filter(|r| r["abilityId"].as_str().unwrap().starts_with("DT_LEAD_"))
+            .count();
         assert_eq!(
-            with,
-            rows.len(),
-            "every row belongs to a statue in the roster"
+            with, lead,
+            "every leader row belongs to a statue in the roster"
         );
+        // Every Mind's ability names a row (Build 22).
+        let ids: std::collections::HashSet<&str> = rows
+            .iter()
+            .map(|r| r["abilityId"].as_str().unwrap())
+            .collect();
+        for m in crate::collection::minds() {
+            let a = crate::collection::mind_ability(&m.mind_id, 1);
+            assert!(
+                ids.contains(a["abilityId"].as_str().unwrap()),
+                "{}",
+                m.mind_id
+            );
+            assert_eq!(a["abilityParamList"], serde_json::json!([]), "never null");
+        }
+        assert_eq!(rows.len(), lead + 12, "only leader and Mind rows");
     }
 
     #[test]
