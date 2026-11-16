@@ -57,7 +57,7 @@ system (Arena, Labyrinth, Town, events) that the client needs a whole protocol f
 |---|---|---|---|
 | home.leader | server ✓ | Main tactical team leader on My Page (`statue_setting_table`, Build 12) | Alternate voice lines are client side |
 | home.resources | server ✓ | `user_info`: rank, AP (always full), gold, coins | — |
-| home.present_box | server | `present/present_list`, `present/get`, `get_all` (empty box) | — |
+| home.present_box | server | Message Box with mission rewards and a welcome gift; receive one or all (Build 22, docs/research/18) | Count Up tickets |
 | home.missions | missing | `trophy/trophy_list` empty | Priority 2 |
 | home.notices | partial | `info/*` routes return empty lists | Offline: no notices (choice) |
 | home.collection | server | `book/statue_list`, `mind_list`, `item_list`, `yogo_list` | Collection achievements depend on missions |

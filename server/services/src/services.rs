@@ -14,6 +14,7 @@ pub mod gasha;
 pub mod item;
 pub mod menu;
 pub mod misc;
+pub mod present;
 pub mod statue;
 pub mod team;
 pub mod tree;
@@ -75,14 +76,14 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/support/support_user_s" => bizarre::support_user_s(ctx, env),
         "/bizarre/get_bizarre_select" => bizarre::get_bizarre_select(ctx, env),
         "/clan/recommend" => menu::clan_recommend(ctx, env),
-        "/present/present_list" => menu::present_list(ctx, env),
+        "/present/present_list" => present::present_list(ctx, env),
         "/follow/follow_list" => menu::follow_list(ctx, env),
         "/item/item_list" => item::item_list(ctx, env),
         "/shop/shop_list" => item::shop_list(ctx, env),
         "/shop/shop_buy" => item::shop_buy(ctx, env),
         "/shop/event_shop_list" => menu::event_shop_list(ctx, env),
         "/item/exp_item_list" => item::exp_item_list(ctx, env),
-        "/present/get" | "/present/get_all" => menu::present_get(ctx, env),
+        "/present/get" | "/present/get_all" => present::present_get(ctx, env),
         "/trophy/trophy_result_get" | "/trophy/get_all_trophy_result" => {
             team::trophy_claim(ctx, env)
         }
