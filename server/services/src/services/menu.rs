@@ -1,4 +1,4 @@
-//! MyPage menu screens that are still empty offline: follow list, notices, event shops and Town
+//! MyPage menu screens that are still empty offline: follow list, notices and Town
 //! recommendations. Story quests live in `bizarre.rs`; the collection in `statue.rs`.
 
 use crate::app::ApiResult;
@@ -22,11 +22,6 @@ pub fn follow_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
 pub fn notify_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "updateUrl": "", "failureUrl": "", "otherUrl": "",
                "updateNewFlg": 0, "failureNewFlg": 0, "otherNewFlg": 0 }))
-}
-
-/// `EventShopListResponse`: no event shops offline.
-pub fn event_shop_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    ok(json!({ "eventShopList": [], "itemList": [] }))
 }
 
 /// Book-keeping routes the menus call (protect, sort order, "new" marks): accepted, nothing to

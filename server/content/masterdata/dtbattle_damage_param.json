@@ -22,6 +22,10 @@
    "source": "jdr-research",
    "doc": "docs/research/11-battle-and-positions.md §5",
    "note": "Reversal on (Build 20): field meanings and units read in the client's ReversalManager; the gauge values, 3 actions, 10x speed and no cooldowns during Reversal are ours"
+  },
+  {
+   "source": "jdr-default",
+   "note": "assist bonus (Build 22, ours): an assist adds (10% + up to 10/10/15/20% for rarity 3/4/5/6 at 10 boosts) of its own HP/ATK/DEF, x1.2 for the seat's statue type; formula read in the client (docs/research/19-assists.md)"
   }
  ],
  "data": {
@@ -83,7 +87,18 @@
     "_chain3Rate": 1.2,
     "_chain4Rate": 1.3,
     "_chain5Rate": 1.4,
-    "_statueAffinityThreshold": 100
+    "_statueAffinityThreshold": 100,
+    "_baseAssistBonusRate": 100,
+    "_sameTypeAssistBonusRate": 1200,
+    "_differentTypeAssistBonusRate": 1000,
+    "_limitRarity3AssistStatueAmplification": 10,
+    "_limitAddBonusRarity3AssistStatueAmplification": 100,
+    "_limitRarity4AssistStatueAmplification": 10,
+    "_limitAddBonusRarity4AssistStatueAmplification": 100,
+    "_limitRarity5AssistStatueAmplification": 10,
+    "_limitAddBonusRarity5AssistStatueAmplification": 150,
+    "_limitRarity6AssistStatueAmplification": 10,
+    "_limitAddBonusRarity6AssistStatueAmplification": 200
    }
   ]
  }
