@@ -134,6 +134,9 @@ pub struct Progress {
     /// The Message Box (Build 22).
     #[serde(default)]
     pub presents: crate::presents::PresentBox,
+    /// Box and Count Up summon progress (Build 22).
+    #[serde(default)]
+    pub gasha: crate::services::gasha::GashaState,
 }
 
 /// The three tactical missions of a stage (docs/research/11 §4): clear the quest, every member
