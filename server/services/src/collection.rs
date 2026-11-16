@@ -1040,6 +1040,37 @@ pub fn mind_cost(mind_id: &str) -> i64 {
 }
 
 /// `MindInfo` (level 1; abilities left to the master tables).
+/// The stat a Mind's ability raises: the one its wiki stats lean to (HP counts at two thirds,
+/// being the larger number), ATK when the wiki has none.
+pub fn mind_focus(mind_id: &str) -> &'static str {
+    let Some(d) = minds().iter().find(|m| m.mind_id == mind_id) else {
+        return "ATK";
+    };
+    let hp = d.hp * 2 / 3;
+    if d.def > d.atk && d.def > hp {
+        "DEF"
+    } else if hp > d.atk {
+        "HP"
+    } else {
+        "ATK"
+    }
+}
+
+/// A Mind's tactical ability (docs/research/16 §6): the shared row `DT_MIND_<stat>_<rarity>`
+/// in dtbattle_ability_data_table (ours). The client takes the parameters from the table
+/// (`isInit` false) at `abilityLevel` 1..10, which is the Mind's level.
+pub fn mind_ability(mind_id: &str, level: i64) -> Value {
+    let rarity = minds()
+        .iter()
+        .find(|m| m.mind_id == mind_id)
+        .map(|d| d.rarity)
+        .unwrap_or(3)
+        .clamp(1, 4);
+    json!({ "abilityId": format!("DT_MIND_{}_{rarity}", mind_focus(mind_id)),
+            "abilityLevel": level.clamp(1, 10), "abilityName": "", "abilityParamList": [],
+            "isInit": false })
+}
+
 pub fn mind_info(o: &OwnedMind) -> Value {
     let d = minds().iter().find(|m| m.mind_id == o.mind_id);
     let (rare, cost, hp, atk, def) = d
@@ -1049,7 +1080,7 @@ pub fn mind_info(o: &OwnedMind) -> Value {
     json!({
         "mindId": id, "name": format!("MIND_NAME_{id}"), "nameSortIndex": 0, "rare": rare, "cost": cost,
         "description": format!("MIND_TEXT_{id}"), "mindType": 1,
-        "abilityInfo": {}, "skillInfo": {}, "dtAbilityInfo": {}, "dtSkillInfo": {},
+        "abilityInfo": {}, "skillInfo": {}, "dtAbilityInfo": mind_ability(id, 1), "dtSkillInfo": {},
         "tokkouInfo": {}, "dtTokkouInfo": {}, "pvpAbilityInfo": {}, "dtPvpAbilityInfo": {},
         "maxLevel": 10, "sellVm": 0, "linkParam": "", "tipsText": "", "level": 1, "exp": 0,
         "limitCharaList": [], "limitTribeList": [], "limitStatueType": 0, "limitCount": 0,
