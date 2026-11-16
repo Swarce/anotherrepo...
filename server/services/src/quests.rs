@@ -131,6 +131,9 @@ pub struct Progress {
     /// Mission counters and claims (Build 21).
     #[serde(default)]
     pub missions: crate::missions::MissionState,
+    /// The Message Box (Build 22).
+    #[serde(default)]
+    pub presents: crate::presents::PresentBox,
 }
 
 /// The three tactical missions of a stage (docs/research/11 §4): clear the quest, every member

@@ -1,4 +1,4 @@
-# 16 — Mind equipment (Build 21)
+# 16 — Mind equipment (Build 21) and abilities (Build 22)
 
 Read in the 3.12.0 client (H read in code, M inferred).
 
@@ -32,8 +32,29 @@ Read in the 3.12.0 client (H read in code, M inferred).
 - **Effects (H).** In 3.12 a Mind's `hp`/`atk`/`def` are never read: stats, team power and battle
   use the statue's alone. A Mind acts only through ability and skill infos (`dtAbilityInfo`,
   `dtTokkouInfo`, `dtSkillInfo`, link abilities).
-  - Ours are empty `{}` for now (skipped safely), so equipped Minds show but do nothing in battle
-    yet.
-  - Next: `DT_MIND_<id>` rows in `dtbattle_ability_data_table`, using the existing rate-add
-    affects; the labels `ABI_MIND_NAME_<id>` exist.
+  - Build 21 sent empty `{}` (skipped safely), so equipped Minds did nothing in battle.
+
 - **Not yet:** Mind levelling (`/mind/strengthening*`, in the Build scene).
+
+## 6. Mind abilities (Build 22)
+
+- **Battle path (H).** For each equipped Mind the client applies `dtAbilityInfo` with the same
+  code as the leader ability: it looks the id up in `dtbattle_ability_data_table`, takes the name
+  and parameters from the row (`isInit` false), clamps `abilityLevel` to 1–10 and interpolates
+  Lv1→Lv10 (per mille). Abilities are always on (`giveLimit -1`). A Mind cap from
+  `affect_table`'s limit lists follows; our lists are empty, so no cap.
+- **Safe values (H).** An unknown or empty `abilityId` is skipped; `abilityParamList` must be
+  `[]`, never null. Inline parameters (`isInit` true) use the names `paramListLv1_0…`, not the
+  table's `paramLv1_0…`; we use the table.
+- **No numbers survive** for Mind abilities. Only 124 of our 417 Minds have an
+  `ABI_MIND_NAME_<id>` label, and the client never shows the name. So the rows are ours
+  (`tools/content/build_mind_abilities.py`, jdr-default):
+  - 12 shared rows `DT_MIND_<HP|ATK|DEF>_<rarity>`: Lv1 +2/3/5/8 % for rarity 1–4, doubled at
+    Lv10.
+  - Each Mind gets the stat its wiki stats lean to (`collection::mind_focus`: HP counted at two
+    thirds; ATK when the wiki has no stats, which is 258 of 417 Minds).
+  - `abilityLevel` is the Mind's level (1 until Mind levelling exists).
+- **Detail screen (H).** It shows no ability name, only an effect line built from each affect
+  row's `affectTextId` with `MindInfo.level`. Our affect rows have `affectTextId ""` (no label
+  says just "ATK +x%"), so that line is blank for now.
+- Abilities apply in slots 1–4 (7–8 too, which stay locked offline).

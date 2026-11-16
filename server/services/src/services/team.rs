@@ -201,18 +201,6 @@ pub fn trophy_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "trophyList": p.progress.missions.trophy_list(p.rank, now) }))
 }
 
-/// Grant a mission reward to the account: gold (item 20), free Diamond Coins (0/10), or a
-/// catalog item. Friend points have no wallet offline. (The screen then says the rewards went to
-/// the message box; our box is not built yet, so they arrive directly.)
-fn grant(p: &mut crate::accounts::Profile, r: &crate::missions::Reward) {
-    match r.item_id {
-        20 => p.gold += r.count,
-        0 | 10 => p.stone_free += r.count,
-        id if crate::items::find(id).is_some() => p.collection.add_item(id, r.count),
-        _ => {}
-    }
-}
-
 /// `/trophy/trophy_result_get {achievementId}` (one) and `/trophy/get_all_trophy_result {}`
 /// (every claimable mission): the full updated list replaces the client's.
 pub fn trophy_claim(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
@@ -234,7 +222,8 @@ pub fn trophy_claim(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         let mut sets = Vec::new();
         for id in ids {
             if let Some(m) = p.progress.missions.claim(&id, p.rank) {
-                grant(p, &m.reward);
+                // The screen says rewards go to the Message Box, so they do (Build 22).
+                crate::services::present::send_mission_reward(p, m, now);
                 sets.push(crate::missions::reward_set(&m.reward));
             }
         }
