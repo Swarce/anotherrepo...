@@ -2,6 +2,57 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 22 — Message Box, Mind abilities, assists, event exchange, box and Count Up summons (branch `wip/b22`)
+
+### What the owner asked
+- Fix the "SUCcess" lettering and look for leftover Japanese art (summons, events and others).
+- Continue with the Build 22 features: Mind abilities, assists, Message Box, event exchange, box
+  and Count Up summons.
+
+### What changed
+- **Art** (outside the repo; the player's art pack).
+  - "SUCCESS" letters rescaled to one height in all three result sets.
+  - A private redraw kit for the 71 images that still show Japanese, with sizes, meanings and
+    instructions.
+  - The duplicate-summon caption was not found in any text table, code string or texture.
+- **Message Box** (docs/research/18).
+  - Waiting and received tabs, pages, receive one or all.
+  - Mission rewards go there, as the Missions screen says, plus a one-time welcome gift
+    (100,000 gold and 500 Memory Rings).
+  - The Home badge counts waiting gifts.
+- **Mind abilities** (docs/research/16 §6).
+  - Equipped Minds now raise HP, ATK or DEF in tactical battle: +2/3/5/8% by rarity (ours; no
+    numbers survive).
+  - The Mind detail screen's effect line stays blank (the game has no plain "ATK +x%" label).
+- **Assists** (docs/research/19).
+  - Up to 3 assist statues per team seat: equip, move, clear.
+  - They add a share of their own stats in tactical battle (the client's formula, our
+    constants).
+  - Assist abilities and the assist character's skill are not built yet.
+- **Event exchange** (docs/research/20).
+  - Event Home's exchange button opens a shop of materials priced in Fight Coins.
+  - Each event-quest clear drops 20 Fight Coins.
+  - The currency and goods are ours.
+- **Box and Count Up summons** (docs/research/21).
+  - Statue Box Summon: 50 statues per box (1 five-star), with Reset and Box Status.
+  - Count Up rounds 1–5. A round ends after 20/30/50/50/50 pulls, and its Golden Summon Ticket
+    arrives in the Message Box.
+  - The ticket button draws one statue of four stars or better.
+  - Round 5's 10x ends in a five-star.
+- Build number 22, server marker `JDR_EMBEDDED_SERVER_b022`.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] "SUCCESS" letters are even on the level-up result
+- [ ] Message Box: the welcome gifts show; receive one and all; the received tab; the Home badge
+- [ ] A mission claim puts its reward in the Message Box
+- [ ] An equipped Mind raises the statue's stats in a tactical battle
+- [ ] Assists: equip, move and clear on the team screen; the team still loads into battle
+- [ ] Event Home shows the exchange button and the Fight Coin count; an event clear adds 20; a buy
+      works
+- [ ] Box Summon: pulls lower the count; Box Status opens; Reset refills
+- [ ] Count Up: after 20 pulls round 2 shows; the ticket is in the Message Box; the ticket button
+      draws
+
 ## Build 21 — Missions, Mind equipment, items and enhancement (branch `wip/b21`)
 
 ### What the owner asked
