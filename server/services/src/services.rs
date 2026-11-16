@@ -106,6 +106,8 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/info/notify_list" => menu::notify_list(ctx, env),
         "/gasha/gasha_list" => gasha::gasha_list(ctx, env),
         "/gasha/gasha_play" => gasha::gasha_play(ctx, env),
+        "/gasha/get_box_gasha" => gasha::get_box_gasha(ctx, env),
+        "/gasha/reset_box_gasha" => gasha::reset_box_gasha(ctx, env),
         "/tree/skill_list" => tree::skill_list(ctx, env),
         "/tree/acquisition" => tree::acquisition(ctx, env),
         _ => return (Ok(Map::new()), false),
