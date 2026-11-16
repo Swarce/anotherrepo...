@@ -274,7 +274,14 @@ pub struct Team {
     /// the seat, not the statue (docs/research/16-minds.md).
     #[serde(default, skip_serializing_if = "seats_empty")]
     pub minds: [Vec<(i64, i64)>; 3],
+    /// Assist statues per seat: (seq 1..3, statue uid); seq 1 is the leader assist
+    /// (docs/research/19-assists.md). They belong to the seat, like the Minds.
+    #[serde(default, skip_serializing_if = "seats_empty")]
+    pub assists: [Vec<(i64, i64)>; 3],
 }
+
+/// Assists per seat (client GameConst.MaxEquipAssistNum).
+pub const MAX_ASSISTS: i64 = 3;
 
 fn seats_empty(m: &[Vec<(i64, i64)>; 3]) -> bool {
     m.iter().all(Vec::is_empty)
@@ -373,6 +380,7 @@ impl Collection {
                     main: team_num == 1,
                     slots,
                     minds: Default::default(),
+                    assists: Default::default(),
                 });
                 changed = true;
             }
@@ -684,8 +692,19 @@ fn setting(c: &Collection, t: &Team, seat: usize) -> Value {
                     Some(v)
                 })
                 .collect();
+            // Each assist is a whole StatueInfo plus its seq; a statue that is now a main member of
+            // the team is not shown as an assist.
+            let assists: Vec<Value> = t.assists[seat]
+                .iter()
+                .filter(|(_, a)| !t.slots.contains(a))
+                .filter_map(|(seq, a)| {
+                    let mut v = battle_statue_info(c.known_statue(*a)?);
+                    v["seq"] = json!(seq);
+                    Some(v)
+                })
+                .collect();
             json!({ "statueuId": uid, "statueInfo": battle_statue_info(o), "equipMindList": equipped,
-                           "mindLinkList": [], "assistStatueList": [], "AiId": "" })
+                           "mindLinkList": [], "assistStatueList": assists, "AiId": "" })
         }
         None => empty_setting(),
     }

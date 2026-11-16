@@ -238,6 +238,87 @@ pub fn shop_buy(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     )
 }
 
+// ---- Event exchange (Shop3): Fight Coins for materials (docs/research/20-event-exchange.md) ----
+
+/// (goodsId, itemId, price in Fight Coins): the Ring Exchange goods at the same prices (ours).
+fn event_goods() -> Vec<(i64, i64, i64)> {
+    ring_goods()
+        .into_iter()
+        .map(|(_, item, price)| (60_000 + item, item, price))
+        .collect()
+}
+
+fn event_shops(event_id: &str) -> Value {
+    let goods: Vec<Value> = event_goods()
+        .into_iter()
+        .map(|(gid, item, price)| {
+            json!({ "goodsId": gid, "baseGoodsId": gid, "saleFlg": 0, "stepGoodsId": 0, "SaleType": "3",
+                "num": 1, "payType": 3, "payItemId": items::EVENT_COIN, "price": price, "productId": "",
+                "limitNum": -1, "remainNum": -1,
+                "goodsName": format!("ITEM_{item:04}_NAME"), "goodsNameReplace": "",
+                "goodsDetail": format!("ITEM_{item:04}_DETAIL"), "goodsDetailReplace": "",
+                "warningMessage": "", "goodsIcon": item.to_string(),
+                "goodsStart": "2000-01-01 00:00:00", "goodsend": NO_LIMIT, "itemSetInfo": item_set(item, 1) })
+        })
+        .collect();
+    // The screen reads eventShopList[0].goodsList.Count without a length check: never empty.
+    json!([{ "eventId": event_id, "eventName": "", "goodsList": goods }])
+}
+
+/// The event currency as ItemInfo (Event Home, Shop3 header; counts are absolute).
+pub fn event_coin_list(c: &collection::Collection) -> Value {
+    json!(items::find(items::EVENT_COIN)
+        .map(|d| vec![items::item_info(d, c.item_count(items::EVENT_COIN))])
+        .unwrap_or_default())
+}
+
+fn event_id(env: &RequestEnvelope) -> String {
+    match env.param.get("eventId") {
+        Some(Value::String(s)) => s.clone(),
+        Some(v) => v.to_string(),
+        None => String::new(),
+    }
+}
+
+/// `/shop/event_shop_list {eventId}`: one shop of goods for the event's Fight Coins.
+pub fn event_shop_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let p = profile(ctx, env)?;
+    ok(
+        json!({ "eventShopList": event_shops(&event_id(env)), "itemList": event_coin_list(&p.collection) }),
+    )
+}
+
+/// `/shop/event_shop_buy {eventId, goodsId, count}`: pay Fight Coins, receive the item. The client
+/// sets its coin count from `itemList` and does not add `haveItemSetInfo` itself.
+pub fn event_shop_buy(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let gid = env
+        .param
+        .get("goodsId")
+        .and_then(Value::as_i64)
+        .unwrap_or(0);
+    let count = env
+        .param
+        .get("count")
+        .and_then(Value::as_i64)
+        .unwrap_or(1)
+        .max(1);
+    let goods = event_goods().into_iter().find(|g| g.0 == gid);
+    let (p, res) = with_profile(ctx, env, |p| match goods {
+        Some((_, item, price)) if p.collection.item_count(items::EVENT_COIN) >= price * count => {
+            p.collection.add_item(items::EVENT_COIN, -price * count);
+            p.collection.add_item(item, count);
+            (Ok(item), Change::Progress)
+        }
+        _ => (Err(ApiError::Status(E_NOT_ENOUGH)), Change::None),
+    })?;
+    let item = res?;
+    ok(
+        json!({ "userInfo": crate::services::user::user_info(&p), "itemSetInfo": item_set(item, 1),
+               "eventShopList": event_shops(&event_id(env)), "itemList": event_coin_list(&p.collection),
+               "haveItemSetInfo": item_set(item, count) }),
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use crate::services::dispatch;
@@ -368,5 +449,51 @@ mod tests {
             json!({"shopId": 5, "goodsId": g["goodsId"], "count": 100000})
         )
         .is_err());
+    }
+
+    #[test]
+    fn event_exchange_sells_for_fight_coins() {
+        let dir = std::env::temp_dir().join(format!("jdr-evshop-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let ctx = Ctx::new(Settings::new(dir), false);
+        let uuid = ctx.accounts.create(&[]).unwrap().uuid;
+        let call = |path: &str, param: Value| dispatch(&ctx, path, &env(&uuid, param)).0;
+        let list = call("/shop/event_shop_list", json!({"eventId": "50035"})).unwrap();
+        let goods = list["eventShopList"][0]["goodsList"]
+            .as_array()
+            .unwrap()
+            .clone();
+        assert!(
+            !goods.is_empty(),
+            "never empty: the screen reads [0].goodsList"
+        );
+        for g in &goods {
+            assert!(g["goodsIcon"].as_str().unwrap().parse::<i64>().is_ok());
+            assert_eq!(g["goodsend"], "2036-01-01 00:00:00");
+            assert_eq!(g["payItemId"], crate::items::EVENT_COIN);
+        }
+        let g = &goods[0];
+        let gid = g["goodsId"].as_i64().unwrap();
+        let price = g["price"].as_i64().unwrap();
+        let buy = json!({"eventId": "50035", "goodsId": gid, "count": 1});
+        assert!(
+            call("/shop/event_shop_buy", buy.clone()).is_err(),
+            "no coins yet"
+        );
+        ctx.accounts
+            .update(&uuid, |p| {
+                p.collection.add_item(crate::items::EVENT_COIN, price);
+                ((), crate::accounts::Change::Progress)
+            })
+            .unwrap();
+        let r = call("/shop/event_shop_buy", buy).unwrap();
+        assert_eq!(r["itemList"][0]["itemId"], crate::items::EVENT_COIN);
+        assert_eq!(r["itemList"][0]["count"], 0, "absolute count after paying");
+        let item = g["itemSetInfo"]["itemList"][0]["itemId"].as_i64().unwrap();
+        assert_eq!(r["haveItemSetInfo"]["itemList"][0]["itemId"], item);
+        assert!(!r["eventShopList"][0]["goodsList"]
+            .as_array()
+            .unwrap()
+            .is_empty());
     }
 }
