@@ -66,7 +66,7 @@ The owner asked for these tiles so more content can be tested. H unless marked, 
   - `questHomeId`, `day`, `Priority` and the dates are not read.
   - Tutorial flags gate the tiles: daily needs OPEN_00, event needs OPEN_01. The embedded server
     skips the tutorial, so both are set.
-  - `dungeonLockFlg: 1` keeps the labyrinth locked.
+  - `dungeonLockFlg: 1` keeps the labyrinth locked; we now send 0 (docs/research/22-labyrinth.md).
   - A null `bannerFileName`, or a null `eventMasterId` while campaigns are shown, crashes the
     screen; an empty or missing banner just leaves the tile blank.
 - **Daily.** The client uses the first bannerType-2 entry for both its category and its art.
