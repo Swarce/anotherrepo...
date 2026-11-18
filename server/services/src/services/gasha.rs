@@ -37,6 +37,15 @@ const COUNT_UP_GROUP: i64 = 35001;
 pub const COUNT_UP_TIERS: [i64; 5] = [20, 30, 50, 50, 50];
 /// The ticket a finished round sends to the Message Box (ours): one draw, four stars or better.
 pub const COUNT_UP_TICKET: i64 = 282;
+/// The Friend Point Mind Summon (its name label and banner exist): pay item 40 (Friend Points).
+pub const FRIEND_ID: i64 = 290000;
+const FRIEND_WINDOW: &str = "gw_290000_9uwsb5se";
+const FRIEND_POINT_ITEM: i64 = 40;
+/// Friend Points per pull and per 10x (ours).
+pub const FRIEND_PRICE: i64 = 200;
+const E_FRIEND_POINT_LACK: i64 = 51304;
+/// Friend Point draws: mostly low-rarity Minds (ours).
+const FRIEND_RATES: &[(i64, f64)] = &[(1, 30.0), (2, 30.0), (3, 37.0), (4, 3.0)];
 /// GashaPlayType Ticket.
 const PLAY_TICKET: i64 = 4;
 const E_NOT_ENOUGH: i64 = 50001;
@@ -164,6 +173,22 @@ fn count_up_banner(g: &GashaState) -> Value {
     b
 }
 
+/// The Friend Point Mind Summon: payType 3 with pay item 40 (Friend Points).
+fn friend_banner() -> Value {
+    let mut b = banner(FRIEND_ID, 2, FRIEND_WINDOW);
+    for (k, v) in [
+        ("priority", json!(5)),
+        ("payType", json!(3)),
+        ("itemId", json!(FRIEND_POINT_ITEM)),
+        ("price", json!(FRIEND_PRICE)),
+        ("priceMulti", json!(FRIEND_PRICE * 10)),
+        ("gashaName", json!(format!("gs_{FRIEND_ID}_na"))),
+    ] {
+        b[k] = v;
+    }
+    b
+}
+
 /// `GashaListResponse`: the normal statue and mind banners first (the screen reads entry 0 of
 /// each tab's list without a length check), then the box and the Count Up round. `itemList`
 /// (never null) holds the ticket count for the ticket button.
@@ -173,9 +198,12 @@ pub fn gasha_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let mut list: Vec<Value> = BANNERS.iter().map(|(i, k, w)| banner(*i, *k, w)).collect();
     list.push(box_banner(g));
     list.push(count_up_banner(g));
+    list.push(friend_banner());
     let tickets = p.collection.item_count(COUNT_UP_TICKET);
+    // Item 40 with type 5 (summon points) gives the Friend Point banner its point buttons.
     ok(json!({ "gashaList": list,
-               "itemList": [{ "itemId": COUNT_UP_TICKET, "count": tickets }],
+               "itemList": [{ "itemId": COUNT_UP_TICKET, "count": tickets },
+                            { "itemId": FRIEND_POINT_ITEM, "name": "ITEM_0040_NAME", "type": 5, "count": p.friend_points }],
                "userInfo": crate::services::user::user_info(&p) }))
 }
 
@@ -313,6 +341,7 @@ pub fn gasha_play(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .find(|b| b.0 == id)
         .map(|b| b.1)
         .or((is_box || count_up.is_some()).then_some(1))
+        .or((id == FRIEND_ID).then_some(2))
         .ok_or_else(|| ApiError::Internal(format!("unknown gasha {id}")))?;
     let count = if multi && !ticket { 10 } else { 1 };
     let now = jdr_core::clock::now();
@@ -328,6 +357,14 @@ pub fn gasha_play(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         }
         if is_box && p.progress.gasha.box_remain() < count {
             return (Err(ApiError::Status(E_NOT_ENOUGH)), Change::None);
+        }
+        let friend = id == FRIEND_ID;
+        if friend {
+            let cost = FRIEND_PRICE * count;
+            if p.friend_points < cost {
+                return (Err(ApiError::Status(E_FRIEND_POINT_LACK)), Change::None);
+            }
+            p.friend_points -= cost;
         }
         let statues: Vec<OwnedStatue> = p
             .collection
@@ -368,7 +405,8 @@ pub fn gasha_play(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                         .map(|m| m.rarity)
                         .unwrap_or(3)
                 };
-                if let Some(o) = pick(&mut rng, MIND_RATES, &owned, rar) {
+                let rates = if friend { FRIEND_RATES } else { MIND_RATES };
+                if let Some(o) = pick(&mut rng, rates, &owned, rar) {
                     results.push(json!({ "dataType": 2, "dataInfo": { "statueInfo": null, "mindInfo": collection::mind_info(o), "itemInfo": null },
                         "datauId": o.uid, "level": 1, "newFlg": 0, "effectInfo": effect(rar(o)), "itemInfo": [] }));
                 }
@@ -388,7 +426,7 @@ pub fn gasha_play(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         }
         p.progress.missions.bump("summon", 1, now);
         // Nothing else is charged or added (everything is owned).
-        let change = if is_box || ticket || count_up.is_some() {
+        let change = if is_box || ticket || friend || count_up.is_some() {
             Change::Progress
         } else {
             Change::Bookkeeping
@@ -597,5 +635,64 @@ mod tests {
             350012,
             "ticket draws do not count for the round"
         );
+    }
+
+    #[test]
+    fn friend_points_pay_for_the_friend_summon() {
+        let dir = std::env::temp_dir().join(format!("jdr-fp-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let ctx = Ctx::new(Settings::new(dir), false);
+        let uuid = ctx.accounts.create(&[]).unwrap().uuid;
+        let call = |path: &str, param: Value| dispatch(&ctx, path, &env(&uuid, param)).0;
+        let l = call("/gasha/gasha_list", json!({"gashaType": 0})).unwrap();
+        let b = l["gashaList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .find(|g| g["gashaId"] == super::FRIEND_ID)
+            .cloned()
+            .unwrap();
+        assert_eq!(
+            (
+                b["payType"].as_i64(),
+                b["itemId"].as_i64(),
+                b["gashaType"].as_i64()
+            ),
+            (Some(3), Some(40), Some(2))
+        );
+        let fp = l["itemList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .find(|i| i["itemId"] == 40)
+            .cloned()
+            .unwrap();
+        assert_eq!(
+            (fp["type"].as_i64(), fp["count"].as_i64()),
+            (Some(5), Some(0))
+        );
+        let pull = json!({"gashaId": super::FRIEND_ID, "countType": 1, "playType": 1});
+        assert!(
+            call("/gasha/gasha_play", pull.clone()).is_err(),
+            "no Friend Points yet"
+        );
+        ctx.accounts
+            .update(&uuid, |p| {
+                p.friend_points = 2 * super::FRIEND_PRICE;
+                ((), crate::accounts::Change::Progress)
+            })
+            .unwrap();
+        let r = call("/gasha/gasha_play", pull).unwrap();
+        assert_eq!(r["getResultList"][0]["dataType"], 2, "a Mind");
+        assert_eq!(r["userInfo"]["mindGashaPoint"], super::FRIEND_PRICE);
+        let l = call("/gasha/gasha_list", json!({"gashaType": 0})).unwrap();
+        let fp = l["itemList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .find(|i| i["itemId"] == 40)
+            .cloned()
+            .unwrap();
+        assert_eq!(fp["count"], super::FRIEND_PRICE);
     }
 }

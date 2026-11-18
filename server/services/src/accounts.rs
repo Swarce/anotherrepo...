@@ -32,6 +32,9 @@ pub struct Profile {
     pub stone_free: i64,
     #[serde(default)]
     pub gold: i64,
+    /// Friend Points (UserInfo.mindGashaPoint; item 40 on the summon screen; Build 23).
+    #[serde(default)]
+    pub friend_points: i64,
     #[serde(default)]
     pub comment: String,
     /// Owned statues and teams (added in Build 10; older saves get them on their next login).
@@ -174,6 +177,7 @@ impl Accounts {
             tutorial_step: default_tutorial.to_vec(),
             stone_free: 0,
             gold: 0,
+            friend_points: 0,
             comment: String::new(),
             collection: Default::default(),
             progress: Default::default(),
