@@ -2,6 +2,55 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 23 — full retranslation with the story, Labyrinth, Arena and the remaining systems (branch `wip/b23`)
+
+### What the owner asked and sent
+- 46 more redrawn images (all merged; the art pack now has 510).
+- Build everything not built yet.
+- A full retranslation that reads like an official Bandai Namco localization, text only; for the
+  art, a list of the images whose wording should change, with suggested text.
+
+### What changed
+- **Retranslation** (docs/LOCALIZATION.md, "The Build 23 retranslation").
+  - Every string retranslated from the Japanese: 30,719 unique strings, 65,428 entries.
+  - A style guide and glossary based on Bandai Namco's English JoJo and mobile games. Original
+    Stand and character names and "Menacing", by the owner's choice.
+  - **The story is in English for the first time**: 14,232 dialogue lines from 1,609 scene
+    bundles (new `script:` keys).
+  - UI labels checked against their room; 55 shortened.
+- **Art.** All 510 redrawn images reviewed against the new style: 422 kept, 80 sent back as a
+  correction kit with suggested text (private), 8 ruby letters blanked.
+- **Labyrinth** (docs/research/22): the tile opens; 20 floors of rooms that reuse tactical stages,
+  Mentality (300, refilled daily), 3 Souls, Tarot select and flip, rewards in the Message Box on an
+  escape or a full clear. Contents and rewards ours.
+- **Arena** (docs/research/23): an always-open season against AI teams built from the roster (the
+  2019 rule set): a separate Arena roster, opponents and shuffle, durability and rest, Fever,
+  streaks, point and season rewards in the Message Box. Values ours.
+- **Mind levelling** (docs/research/16 §7): Minds level up with Mind medals or other Minds, with the
+  client's EXP and gold rules. It crashed before (empty reply).
+- **Auto team** (the auto formation popup): the best three statues by total, ATK, DEF or HP, with
+  Minds.
+- **Friend Points**: 10 per quest clear and from missions; the Friend Point Mind Summon.
+- **Growth tree costs**: each square costs a tree material of the statue's colour and gold; fork
+  squares need an Expansion Key (amounts ours).
+- **Event point rewards**: event 50045 earns points; its ten rewards arrive in the Message Box as
+  the points reach them.
+- Not built: the Mind/ability effect line (the client's effect text rules ship empty), assist
+  abilities and skills, Arena defence against other players, rankings.
+- Build number 23, server marker `JDR_EMBEDDED_SERVER_b023`.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] Menus, items, skills and missions read in the new English; story scenes show English dialogue
+- [ ] No label spills out of its box (Town, Summon, Options and Team screens especially)
+- [ ] Labyrinth: the tile opens; pick a room, Tarot, battle, next floor; escape pays into the
+      Message Box
+- [ ] Arena: the button on My Page; opponents; a battle and its points; durability and rest
+- [ ] Mind levelling with a Mind medal and with a Mind; no crash on the result screen
+- [ ] Auto team fills three statues and Minds
+- [ ] Friend Point Mind Summon after a few quest clears
+- [ ] Growth tree squares show and take their costs; a fork square needs a key
+- [ ] Event 50045 shows points; rewards arrive in the Message Box
+
 ## Build 22 — Message Box, Mind abilities, assists, event exchange, box and Count Up summons (branch `wip/b22`)
 
 ### What the owner asked
