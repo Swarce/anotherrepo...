@@ -62,13 +62,19 @@ pub fn bizarre_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .iter()
         .find(|e| e.category == category)
         .map(|e| {
-            json!({ "eventCampaignId": e.event_id, "eventShopFlg": 1, "eventCollectType": 2,
+            {
+            // A point event shows its points and the rewards button (collect type 1, shop
+            // flag 0); the others have the Fight Coin exchange (collect type 2, shop flag 1).
+            let point = crate::services::event::is_point_event(&e.event_id);
+            json!({ "eventCampaignId": e.event_id, "eventShopFlg": if point { 0 } else { 1 },
+                "eventCollectType": if point { 1 } else { 2 },
                 "eventRankingFlg": 0, "eventMissiongFlg": 0, "eventBg": "",
                 "htmlLink": format!("/information/event_{}.html", e.event_id), "eventBgm": "",
                 "eventTutorialImage": "",
                 "eventItemList": crate::services::item::event_coin_list(&p.collection), "eventPointImage": "",
-                "userEventPoint": 0, "clanEventPoint": 0, "endDate": "", "finishedDate": "",
-                "banner": e.banner })
+                "userEventPoint": crate::services::event::points(&p, &e.event_id), "clanEventPoint": 0,
+                "endDate": "", "finishedDate": "", "banner": e.banner })
+        }
         })
         .unwrap_or_else(|| json!({}));
     ok(json!({ "chapterList": list, "eventInfo": event_info, "raidInfo": {} }))
@@ -170,8 +176,17 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     }
     let won = result.unwrap_or(0) == 0;
     let found = quests::find_stage(&stage_id);
-    let is_event =
-        found.is_some_and(|(c, _)| quests::events().iter().any(|e| e.category == c.category));
+    let event_id = found.and_then(|(c, _)| {
+        quests::events()
+            .iter()
+            .find(|e| e.category == c.category)
+            .map(|e| e.event_id.clone())
+    });
+    let is_event = event_id.is_some();
+    let point_event = event_id
+        .as_deref()
+        .is_some_and(crate::services::event::is_point_event);
+    let mut event_rewards: Vec<Value> = Vec::new();
     let (p, (paid, team)) = with_profile(ctx, env, |p| {
         let pending = p.progress.pending.take_if(|b| b.stage_id == stage_id);
         let team = pending.as_ref().and_then(|b| {
@@ -210,8 +225,15 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                 }
                 let uids = team.as_ref().map(|t| t.slots.to_vec()).unwrap_or_default();
                 p.collection.add_statue_exp(&uids, s.gain_rank_exp);
-                // Event quests drop the exchange currency (Build 22).
-                if is_event {
+                // Event quests drop the exchange currency (Build 22) or event points (Build 23).
+                if point_event {
+                    event_rewards = crate::services::event::add_points(
+                        p,
+                        event_id.as_deref().unwrap_or(""),
+                        crate::services::event::POINTS_PER_CLEAR,
+                        now,
+                    );
+                } else if is_event {
                     p.collection.add_item(
                         crate::items::EVENT_COIN,
                         crate::items::EVENT_COINS_PER_CLEAR,
@@ -247,7 +269,12 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         "newRecordFlg": 0, "teamInfo": team, "gold": gold, "rankExp": rank_exp, "levelExp": rank_exp,
         "mindGashaPoint": if paid.is_some() { FRIEND_POINTS_PER_CLEAR } else { 0 }, "supportUserInfo": {},
         // eventType 3 (Item) lists the event currency gained; never null.
-        "eventResult": if is_event && paid.is_some() {
+        "eventResult": if point_event && paid.is_some() {
+            json!({ "eventType": 1,
+                    "userEventPointAll": crate::services::event::points(&p, event_id.as_deref().unwrap_or("")),
+                    "getUserEventPoint": crate::services::event::POINTS_PER_CLEAR,
+                    "eventRewardList": event_rewards, "getEventItemList": [] })
+        } else if is_event && paid.is_some() {
             json!({ "eventType": 3, "userEventPointAll": 0, "getUserEventPoint": 0, "eventRewardList": [],
                     "getEventItemList": [{ "itemId": crate::items::EVENT_COIN, "count": crate::items::EVENT_COINS_PER_CLEAR }] })
         } else {
@@ -398,9 +425,13 @@ mod tests {
             assert!(chapters.iter().all(|c| c["category"] == cat));
             if q["bannerType"] == 3 {
                 assert_eq!(l["eventInfo"]["eventCampaignId"], q["eventMasterId"]);
-                // The exchange button: shop flag 1 and an item collect type; Shop3 copies the list.
-                assert_eq!(l["eventInfo"]["eventShopFlg"], 1);
-                assert_eq!(l["eventInfo"]["eventCollectType"], 2);
+                // Exchange events: shop flag 1 and collect type 2; point events: flag 0 and type 1.
+                // Shop3 copies eventItemList, so it is always a list.
+                let point = l["eventInfo"]["eventShopFlg"] == 0;
+                assert_eq!(
+                    l["eventInfo"]["eventCollectType"],
+                    if point { 1 } else { 2 }
+                );
                 assert!(l["eventInfo"]["eventItemList"].is_array());
                 assert!(
                     cat >= 13,
