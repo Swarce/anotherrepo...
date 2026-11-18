@@ -73,7 +73,7 @@ system (Arena, Labyrinth, Town, events) that the client needs a whole protocol f
 | party.presets | partial | 5 teams per battle type (`collection.rs`, team numbers 1–5 since Build 11) | The launch narration says 10; check which count the 3.12.0 team screen pages through |
 | party.three | server ✓ | Leader, left, right slots per team | — |
 | party.variants | server ✓ | Each rarity/type variant is its own statue (`statues.json`, 266) | — |
-| party.jojo_links | missing | `Ability_JOJOlink_Name` labels exist; no link rows sent | Provisional source; needs stronger evidence |
+| party.jojo_links | client | Action mode only (H): the tactical battle passes `jojoLinkList` but never applies it, and the tactical formation hides the JoJo link window; we send `[]` (docs/research/26 §1) | Built only if the Action battle is served; 39 of the 42 archived rows match an `ABI_JOLINK_NAME_<nnn>` label |
 | party.mode_rosters | partial | Separate Action and Tactical teams | Priority 3 |
 | party.assists | partial | Assist ability labels exist; statues carry no assist Minds yet | Tied to Mind equipment |
 | party.assist_slots | missing | — | Needs the Mind equip routes (not called in our logs yet) |
@@ -106,14 +106,14 @@ We send its tables (reaction tables, `battle_damage_param`, `battle_combo_param`
 |---|---|---|---|
 | tactical.active_reserve | client ✓ | Formation rows (`area_position_pattern_table`) | — |
 | tactical.turn_queue | server ✓ | skillWait 100/50/0 drives the queue (docs/research/11 §3) | Values ours |
-| tactical.ct | partial | Skill cool turns 2 (normal) / 3 (special), ours | No source for per-skill CT |
+| tactical.ct | partial | Cool turns by skill level (client: min + ceil((max − min) / 10 × level)): 2/3 up to level 4, one less from 5, two less at 10; tree skill squares and Mind levels raise the level (Build 25, docs/research/26 §4) | Values ours; no source for per-skill CT |
 | tactical.targeting | client ✓ | — | — |
 | tactical.pause_auto | client | Auto and pause work; pause should now list the stage missions (Build 19) | unverified |
 | tactical.evasion_crit | server | `_missDamageRate 0.25`, `_criticalDamageRate 1.5` (wiki, Build 18) | — |
 | tactical.reversal | server | On since Build 20: gauge from `dododoRate` (10/15/20%), hits taken (10%) and deaths (25%); 3 actions at 10× speed, no cool-downs (values ours) | unverified on a device |
 | tactical.overkill | client | Remaining Reversal actions become overkill hits after a boss kill in the last area (`_reversalMaxTurn` 3) | unverified |
-| tactical.skill_families | partial | Damage, heal and single/all classification (`build_statues.py`) | Buff, debuff, bind and summon families wait for buff data |
-| tactical.time_stop | missing | Time-stop buffs have labels only | Later |
+| tactical.skill_families | partial | Damage, heal and single/all classification (`build_statues.py`); time stop (Build 25) | Buff, debuff and bind families need `dtBuff` rows; the client's own `DTSC_*` labels give each family's target and turns (docs/research/26 §5) |
+| tactical.time_stop | server | 7 skills whose text says the user acts in stopped time get the client's `DTSC_WORLD_LIGHT` / `_MIDDLE` sub category (ProcessType 4, 1 or 2 turns; Build 25, docs/research/26 §5) | Turn counts ours; unverified on a device |
 
 ## Progression
 
@@ -121,10 +121,10 @@ We send its tables (reaction tables, `battle_damage_param`, `battle_combo_param`
 |---|---|---|---|
 | progress.levels | partial | Level and EXP per statue; growth tree progress saved (`OwnedStatue.tree`) | Duplicate boosts and Minds are not modelled |
 | progress.tree | partial | Server-built branching tree (`tree_squares`) with material, gold and key costs (Build 23) | Original node graphs and costs unknown (ours) |
-| progress.mind_capacity / mind_links / mind_lock / mind_levels | missing | Mind list and Mind summon exist; no equip, links or locks | Needs the Mind equip/lock routes |
+| progress.mind_capacity / mind_links / mind_lock / mind_levels | server | Equip, capacity, lock and levels (Builds 21–23); Mind links (Build 25): ATK/DEF/HP links from Gamerch, a `mindLinkList` per seat, abilities ours and folded into the statue's abilities (docs/research/26 §2) | Link amounts ours; move-speed and crit links left out |
 | progress.material_bonuses / turtles / material_migration | missing | `statue/strengthening` accepted; no item inventory | Later (item system) |
 | progress.awakening / awakening_boost / awakening_requirements | offline | Every rarity variant is already owned; `statue/evolution_info` answers | Awakening transaction moot offline |
-| progress.skill_slots | partial | Normal and special skills per statue (Build 13) | Skill Minds wait for Mind equipment |
+| progress.skill_slots | server | Normal and special skills per statue (Build 13); skill Minds in frames 5 and 6 add a second normal or special skill (Build 25: 87 Minds, docs/research/26 §3); tree skill squares raise skill levels | Rows for Mind skills that are no statue's skill are ours |
 
 ## Economy
 

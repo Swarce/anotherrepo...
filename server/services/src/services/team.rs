@@ -337,8 +337,11 @@ const E_CP_OVER: i64 = 51705;
 const E_SLOT_LOCKED: i64 = 51709;
 
 /// Apply `(seq, uid)` changes to one seat of a team number (both battle types follow), in order:
-/// uid 0 empties the slot; a Mind already on another seat of the team moves here. The result
-/// must fit the statue's capacity.
+/// uid 0 empties the slot; a Mind already on another seat of the team moves here. A Mind must fit
+/// its frame and the statue (`collection::mind_fits`: ability Minds in the golden frames 1-4, a
+/// skill Mind in the frame of its kind and only for the statues on its list); a skill Mind the
+/// seat's statue can no longer use (the statue changed) is dropped. The result must fit the
+/// statue's capacity.
 pub fn equip(
     c: &mut Collection,
     roster: Roster,
@@ -349,9 +352,10 @@ pub fn equip(
     let Some(t) = roster.teams(c).iter().find(|t| t.team_num == team_num) else {
         return Err(E_NO_STATUE);
     };
-    if c.known_statue(t.slots[seat]).is_none() {
+    let Some(statue) = c.known_statue(t.slots[seat]) else {
         return Err(E_NO_STATUE);
-    }
+    };
+    let statue_id = statue.statue_id.clone();
     let mut seats = t.minds.clone();
     for (seq, uid) in changes {
         if !(1..=collection::MIND_SLOTS_OPEN).contains(seq) {
@@ -359,8 +363,11 @@ pub fn equip(
         }
         seats[seat].retain(|(s, _)| s != seq);
         if *uid != 0 {
-            if !c.minds.iter().any(|m| m.uid == *uid) {
+            let Some(m) = c.minds.iter().find(|m| m.uid == *uid) else {
                 return Err(E_MIND_MISSING);
+            };
+            if !collection::mind_fits(&m.mind_id, *seq, &statue_id) {
+                return Err(E_SLOT_LOCKED);
             }
             for s in seats.iter_mut() {
                 s.retain(|(_, u)| u != uid);
@@ -368,6 +375,11 @@ pub fn equip(
             seats[seat].push((*seq, *uid));
         }
     }
+    let fit: Vec<(i64, i64)> = collection::seat_minds(c, &seats[seat], &statue_id)
+        .iter()
+        .map(|(s, m)| (*s, m.uid))
+        .collect();
+    seats[seat] = fit;
     if seat_cost(c, &seats[seat]) > collection::MIND_CAPACITY {
         return Err(E_CP_OVER);
     }
@@ -550,11 +562,12 @@ pub fn auto_formation(
     if n < 3 {
         return Err(E_TEAM_EMPTY_MEMBER);
     }
-    // Minds: highest rarity (then level) first, each seat within slots 1-4 and capacity.
+    // Minds: highest rarity (then level) first, each seat within slots 1-4 and capacity; skill
+    // Minds are left to the player (their frames take one character's Minds only).
     let mut minds: Vec<(i64, i64, i64, i64)> = c
         .minds
         .iter()
-        .filter(|m| !busy_minds.contains(&m.uid))
+        .filter(|m| !busy_minds.contains(&m.uid) && collection::mind_skill(&m.mind_id).is_none())
         .map(|m| {
             (
                 collection::mind_rarity(&m.mind_id),
@@ -570,7 +583,7 @@ pub fn auto_formation(
     for seat in seats.iter_mut() {
         let mut cost = 0;
         for (_, _, c_, uid) in &minds {
-            if seat.len() as i64 == collection::MIND_SLOTS_OPEN {
+            if seat.len() as i64 == collection::MIND_GOLDEN_SLOTS {
                 break;
             }
             if taken.contains(uid) || cost + c_ > collection::MIND_CAPACITY {
@@ -629,10 +642,15 @@ pub fn one_change(env: &RequestEnvelope) -> (i64, i64) {
     )
 }
 
-/// The open Mind slots (`mindSeqInfo`): the four golden frames.
+/// The open Mind slots (`mindSeqInfo`): the four golden frames, the skill frame (5) and the SP
+/// skill frame (6) (docs/research/26 §3). The client takes each frame's kind from its seq
+/// (`GameConst.GetMindSeqType`); `onlySkillFlg` is set on the two skill frames (no reader found).
 pub fn mind_seq_info() -> Value {
     let seq: Vec<Value> = (1..=collection::MIND_SLOTS_OPEN)
-        .map(|s| json!({ "seq": s, "openFlg": 1, "goldenFlameFlg": 0, "onlySkillFlg": 0 }))
+        .map(|s| {
+            let skill = s > collection::MIND_GOLDEN_SLOTS;
+            json!({ "seq": s, "openFlg": 1, "goldenFlameFlg": 0, "onlySkillFlg": skill as i64 })
+        })
         .collect();
     json!({ "seqInfoList": seq, "unlockInfo": { "openRank": 0, "openMaterialList": [], "itemList": [] } })
 }
@@ -902,7 +920,7 @@ mod tests {
                 .len();
             assert_eq!(lead, 1);
         }
-        // Locked slot, unknown Mind and too much CP are refused.
+        // An ability Mind in the skill frame, an unknown Mind and too much CP are refused.
         assert!(call(
             "/team/equip_multiple_minds",
             json!({"teamNum": 1, "statueSeq": 1, "mindList": [{"equipSeq": 5, "minduId": b}]})
@@ -937,6 +955,54 @@ mod tests {
             .as_array()
             .unwrap()
             .is_empty());
+        // The skill frame (5) takes a skill Mind of the seat's character, not a golden frame
+        // (docs/research/26 §3).
+        let leader = r["teamInfo"]["teamOrder"]["leaderStatue"]["statueInfo"]["statueId"]
+            .as_str()
+            .unwrap()
+            .to_string();
+        let skill = crate::collection::mind_skills()
+            .iter()
+            .find(|m| !m.skill.special && m.statues.contains(&leader))
+            .expect("a skill Mind for the starter leader");
+        let su = p
+            .collection
+            .minds
+            .iter()
+            .find(|m| m.mind_id == skill.mind_id)
+            .unwrap()
+            .uid;
+        for seq in [1, 6] {
+            assert!(call(
+                "/team/equip_multiple_minds",
+                json!({"teamNum": 1, "statueSeq": 1, "mindList": [{"equipSeq": seq, "minduId": su}]})
+            )
+            .is_err());
+        }
+        let r = call(
+            "/team/equip_multiple_minds",
+            json!({"teamNum": 1, "statueSeq": 1, "mindList": [{"equipSeq": 5, "minduId": su}]}),
+        )
+        .unwrap();
+        let eq = &r["teamInfo"]["teamOrder"]["leaderStatue"]["equipMindList"];
+        assert_eq!(
+            (eq[0]["seq"].as_i64(), eq[0]["mindType"].as_i64()),
+            (Some(5), Some(2))
+        );
+        let info = call("/team/team_info", json!({})).unwrap();
+        let open: Vec<i64> = info["mindSeqInfo"]["seqInfoList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .filter(|s| s["openFlg"] == 1)
+            .map(|s| s["seq"].as_i64().unwrap())
+            .collect();
+        assert_eq!(open, [1, 2, 3, 4, 5, 6]);
+        call(
+            "/team/equip_multiple_minds",
+            json!({"teamNum": 1, "statueSeq": 1, "mindList": [{"equipSeq": 5, "minduId": 0}]}),
+        )
+        .unwrap();
         // The lock returns the full MindInfo (the client reads mindInfo.minduId).
         let r = call("/mind/protect", json!({"minduId": b, "protectedFlg": 1})).unwrap();
         assert_eq!(
