@@ -41839,7 +41839,7 @@
     ],
     "text:ClanText_JP:ClanApplication": [
       "7806ace4",
-      "Request"
+      "Apply"
     ],
     "text:ClanText_JP:ClanApplicationManagement": [
       "8ebf0083",
@@ -41847,7 +41847,7 @@
     ],
     "text:ClanText_JP:ClanApplicationReleased": [
       "5147770b",
-      "Cancel Request"
+      "Cancel"
     ],
     "text:ClanText_JP:ClanApproval_01": [
       "9b3c3dad",
@@ -42147,7 +42147,7 @@
     ],
     "text:ClanText_JP:Clan_Foundation_03": [
       "e4bd3686",
-      "After Donation"
+      "Donated"
     ],
     "text:ClanText_JP:Clan_Foundation_04": [
       "2e4a4855",
@@ -42395,7 +42395,7 @@
     ],
     "text:ClanText_JP:Clan_Remuneration_Button_02": [
       "bbd23594",
-      "Town Points"
+      "Town Pts"
     ],
     "text:ClanText_JP:Per_Ranking_Not_Participation": [
       "b48bcd66",
@@ -42647,7 +42647,7 @@
     ],
     "text:DTB_formationText_JP:DTB_Formation_Text_Button_005": [
       "d1135be3",
-      "Detailed Stats"
+      "Details"
     ],
     "text:DTB_formationText_JP:DTB_Formation_Text_Button_006": [
       "6f8567f6",
@@ -42671,7 +42671,7 @@
     ],
     "text:DTB_formationText_JP:DTB_Formation_Text_Button_011": [
       "ee0dc5f8",
-      "How to Obtain"
+      "Sources"
     ],
     "text:DTB_formationText_JP:DTB_Formation_Text_Button_012": [
       "f6c244f9",
