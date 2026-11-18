@@ -159,8 +159,14 @@ English runs longer than Japanese, and the UI was laid out for Japanese.
    from the player's own copy (`<bundle>/sprites/<sprite>.png`, exact rectangle size).
 2. The player redraws the sprites they want and zips them as `replacements/<bundle>/sprites/…`.
 3. `jdr-patch patch … --art <pack.zip> --data <files>`:
-   - images for the APK's own screens (`apk_<file>`: title, boot) are pasted into those textures
-     in the APK (layouts read from the player's bundles; every object must decode exactly);
+   - images for the APK's own screens (`apk_<file>`: title, boot, and the loading-screen sprite
+     atlas `apk_00000000000000000000000000000000/SpriteAtlasTexture-LoadAtlas-2048x2048-fmt47.png`,
+     a whole texture in a file that holds only that Texture2D) are pasted into those textures in
+     the APK. Those files carry no type trees: each Texture2D/Sprite layout is taken from a
+     downloaded bundle with the same type hash, and every object of those types must decode
+     through it exactly and encode back to the same bytes before anything is edited. A file
+     without such a layout (or whose pixels sit in a `.resS` stream missing from the APK) is left
+     unchanged and reported;
    - images for downloaded bundles are stored in the APK (`assets/jdr/art.bin`).
 4. On the phone the server pastes them into the decoded atlases while it rebuilds the English
    bundles (same originals, cache and one-time download), so menus and text change together.
