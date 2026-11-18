@@ -137,6 +137,9 @@ pub struct Progress {
     /// Box and Count Up summon progress (Build 22).
     #[serde(default)]
     pub gasha: crate::services::gasha::GashaState,
+    /// Event points per event (point events, Build 23).
+    #[serde(default)]
+    pub event_points: std::collections::BTreeMap<String, i64>,
 }
 
 /// The three tactical missions of a stage (docs/research/11 §4): clear the quest, every member
