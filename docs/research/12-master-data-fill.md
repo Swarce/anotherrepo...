@@ -100,11 +100,13 @@ returns the key itself when the label is missing (H).
   - `statue_special_scene_data_table`: rows trigger special death cameras and spawn a second actor;
     a guess can spawn the wrong one;
   - `map_gimmick_pattern_table`: old-mode gimmicks only;
-  - `affect_text_rule_table`: every row needs exactly 8 rules or it throws, and there is no source;
   - `action_branch_data_table`: needs affect data first.
 
   All four are null-safe when empty. `assist_ability_condition_table` was empty too until Build 24;
   it is now generated, one row per statue (docs/research/19-assists.md §5).
+- **`affect_text_rule_table` (Build 24).** Filled with our own rules, one per BaseAffectType our
+  abilities use, so ability effect lines show their amounts. A row needs at least 8 slots or the
+  lookup throws, and an empty table prints every amount as −1; see doc 16 §8.
 
 ## 4. Leader abilities in the tactical battle (Build 14)
 
