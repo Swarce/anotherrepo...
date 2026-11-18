@@ -537,8 +537,9 @@ pub fn statue_info(o: &OwnedStatue) -> Value {
         "hp": st.hp, "eng": 0, "atk": st.atk, "def": st.def,
         "skillList": [], "abilityList": [], "leaderAbilityInfo": {},
         "dtSkillList": [], "dtAbilityList": [], "dtLeaderAbilityInfo": leader_ability(sid),
-        "characteristicList": [], "assistAttr": 0, "assistSkillInfo": {}, "assistAbilityList": [],
-        "dtAssistSkillInfo": {}, "dtAssistAbilityList": [],
+        "characteristicList": [], "assistAttr": 0, "assistSkillInfo": {},
+        "assistAbilityList": assist_ability_list(sid), "dtAssistSkillInfo": assist_skill(sid),
+        "dtAssistAbilityList": dt_assist_ability_list(sid),
         "speed": 100, "evasion": 0, "hitrate": 100, "criticalRate": 5,
         "stEffRateInfo": {}, "maxSp": 100, "useStageType": 0, "levelUpTable": [],
         "statueuId": o.uid, "treeuId": "", "newFlg": 0, "useFlg": 0, "protectedFlg": 0,
@@ -563,17 +564,20 @@ pub fn battle_statue_info(o: &OwnedStatue) -> Value {
         .map(|d| d.dt_skills.as_slice())
         .unwrap_or(&[])
     {
-        // The client takes type, button and name from the table row; the level must be >= 1.
-        list.push(
-            json!({ "skillId": s.id, "skillLevel": 1, "name": "", "explanation": "",
-            "skillType": if s.special { 3 } else { 2 }, "bottunType": s.button, "coolDown": 0,
-            "limitCount": 0, "magnificationLv01": 0, "magnificationLv10": 0,
-            "pvpMagnificationLv01": 0, "pvpMagnificationLv10": 0, "skillParamList": [],
-            "isInit": false }),
-        );
+        list.push(dt_skill_info(s));
     }
     v["dtSkillList"] = json!(list);
     v
+}
+
+/// A tactical skill as a `SkillInfo`. The client takes type, button and name from the table row;
+/// the level must be >= 1.
+fn dt_skill_info(s: &DtSkill) -> Value {
+    json!({ "skillId": s.id, "skillLevel": 1, "name": "", "explanation": "",
+            "skillType": if s.special { 3 } else { 2 }, "bottunType": s.button, "coolDown": 0,
+            "limitCount": 0, "magnificationLv01": 0, "magnificationLv10": 0,
+            "pvpMagnificationLv01": 0, "pvpMagnificationLv10": 0, "skillParamList": [],
+            "isInit": false })
 }
 
 /// The statue's own attack (its `dtAttack`), else our fallback `JDR_ATK_00`.
@@ -736,8 +740,12 @@ fn setting(c: &Collection, t: &Team, seat: usize) -> Value {
                     Some(v)
                 })
                 .collect();
-            json!({ "statueuId": uid, "statueInfo": battle_statue_info(o), "equipMindList": equipped,
-                           "mindLinkList": [], "assistStatueList": assists, "AiId": "" })
+            // The tactical battle never applies assist abilities itself (19-assists §5), so the
+            // active ones ride on the seat statue's own ability list.
+            let mut info = battle_statue_info(o);
+            info["dtAbilityList"] = json!(active_assist_abilities(&assists));
+            json!({ "statueuId": uid, "statueInfo": info, "equipMindList": equipped,
+                    "mindLinkList": [], "assistStatueList": assists, "AiId": "" })
         }
         None => empty_setting(),
     }
@@ -781,6 +789,189 @@ pub fn leader_ability(statue_id: &str) -> Value {
     } else {
         json!({})
     }
+}
+
+// ---------------------------------------------------------------------------------------------
+// Assist abilities and the assist skill (docs/research/19-assists.md §5).
+
+pub const ASSIST_ABILITIES_JSON: &str = include_str!("../../content/assist_abilities.json");
+
+/// One `{statueType, count}` term of an assist ability's activation condition (`Jjs.CondData`):
+/// met when the seat's assists hold at least `count` statues of the type.
+#[derive(Debug, Clone, Deserialize)]
+pub struct AssistCond {
+    #[serde(rename = "statueType")]
+    pub statue_type: i64,
+    pub count: i64,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct AssistAbility {
+    #[serde(rename = "abilityId")]
+    pub ability_id: String,
+    pub conditions: Vec<AssistCond>,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct AssistDef {
+    #[serde(rename = "statueId")]
+    pub statue_id: String,
+    pub abilities: Vec<AssistAbility>,
+}
+
+pub fn assist_defs() -> &'static [AssistDef] {
+    static CELL: std::sync::OnceLock<Vec<AssistDef>> = std::sync::OnceLock::new();
+    CELL.get_or_init(|| {
+        #[derive(Deserialize)]
+        struct Doc {
+            statues: Vec<AssistDef>,
+        }
+        serde_json::from_str::<Doc>(ASSIST_ABILITIES_JSON)
+            .map(|d| d.statues)
+            .unwrap_or_default()
+    })
+}
+
+/// A statue's assist abilities, in the order both client lists carry them.
+pub fn assist_abilities(statue_id: &str) -> &'static [AssistAbility] {
+    assist_defs()
+        .iter()
+        .find(|d| d.statue_id == statue_id)
+        .map(|d| d.abilities.as_slice())
+        .unwrap_or(&[])
+}
+
+/// The rows of dtbattle_ability_data_table by id.
+fn ability_rows() -> &'static std::collections::HashMap<String, Value> {
+    static CELL: std::sync::OnceLock<std::collections::HashMap<String, Value>> =
+        std::sync::OnceLock::new();
+    CELL.get_or_init(|| {
+        let js = crate::masterdata::TABLES
+            .iter()
+            .find(|(n, _)| *n == "dtbattle_ability_data_table")
+            .map(|(_, j)| *j)
+            .unwrap_or("{}");
+        serde_json::from_str::<Value>(js)
+            .ok()
+            .and_then(|v| v["data"]["paramList"].as_array().cloned())
+            .unwrap_or_default()
+            .into_iter()
+            .filter_map(|r| Some((r["abilityId"].as_str()?.to_string(), r)))
+            .collect()
+    })
+}
+
+/// `assistAbilityList`: action-battle `AbilityInfo`s, read by the ability cards and the action
+/// battle. Their `SetupFromAbilityData` looks in the action-battle ability table, which we do not
+/// ship, so the name and parameters go inline (`isInit` true; parameters named `paramListLv…`).
+pub fn assist_ability_list(statue_id: &str) -> Vec<Value> {
+    assist_abilities(statue_id)
+        .iter()
+        .map(|a| {
+            let row = ability_rows().get(&a.ability_id);
+            let params: Vec<Value> = row
+                .and_then(|r| r["abilityParamList"].as_array())
+                .into_iter()
+                .flatten()
+                .map(|p| {
+                    let o: serde_json::Map<String, Value> = p
+                        .as_object()
+                        .into_iter()
+                        .flatten()
+                        .map(|(k, v)| {
+                            let k = match k.strip_prefix("paramLv") {
+                                Some(rest) => format!("paramListLv{rest}"),
+                                None => k.clone(),
+                            };
+                            (k, v.clone())
+                        })
+                        .collect();
+                    Value::Object(o)
+                })
+                .collect();
+            let name = row.map(|r| r["abilityName"].clone()).unwrap_or(json!(""));
+            json!({ "abilityId": a.ability_id, "abilityLevel": 1, "abilityName": name,
+                    "abilityParamList": params, "isInit": true })
+        })
+        .collect()
+}
+
+/// A tactical `DtAbilityInfo`; the client fills it from dtbattle_ability_data_table.
+fn dt_ability(id: &str) -> Value {
+    json!({ "abilityId": id, "abilityLevel": 1, "abilityName": "", "abilityParamList": [],
+            "isInit": false })
+}
+
+/// `dtAssistAbilityList`: the same abilities in the same order, as tactical `DtAbilityInfo`s.
+/// The client finds a condition's index in this list and reads that index from
+/// `assistAbilityList`, so the two lists must match.
+pub fn dt_assist_ability_list(statue_id: &str) -> Vec<Value> {
+    assist_abilities(statue_id)
+        .iter()
+        .map(|a| dt_ability(&a.ability_id))
+        .collect()
+}
+
+/// `dtAssistSkillInfo`: the skill the statue uses as the team's assist character (slot 6, the
+/// Assist button). It must name a dtbattle_skill_data_table row (the client throws on a missing
+/// one), so it is the statue's own normal skill, else its special, else none (`{}`: no button).
+pub fn assist_skill(statue_id: &str) -> Value {
+    let skills = find(statue_id)
+        .map(|d| d.dt_skills.as_slice())
+        .unwrap_or(&[]);
+    skills
+        .iter()
+        .find(|s| !s.special)
+        .or_else(|| skills.first())
+        .map(dt_skill_info)
+        .unwrap_or_else(|| json!({}))
+}
+
+/// The seat's active assist abilities, found as the client's own check does
+/// (`CreateAssistAbilityData` 0x157EE1C): each assist's abilities whose `{statueType, count}`
+/// terms the types of the seat's assists meet. They go into the seat statue's `dtAbilityList`.
+pub fn active_assist_abilities(assists: &[Value]) -> Vec<Value> {
+    assists
+        .iter()
+        .flat_map(|a| assist_abilities(a["statueId"].as_str().unwrap_or("")))
+        .filter(|ab| conditions_met(&ab.conditions, assists))
+        .map(|ab| dt_ability(&ab.ability_id))
+        .collect()
+}
+
+/// `CheckAssistAbilityActive` 0xC93910: every term's count of that statueType among the seat's
+/// assists (`CountType` 0x157F3AC, the owner included) is reached; no terms = always active.
+fn conditions_met(conds: &[AssistCond], assists: &[Value]) -> bool {
+    conds.iter().all(|c| {
+        let n = assists
+            .iter()
+            .filter(|a| a["statueType"].as_i64() == Some(c.statue_type))
+            .count() as i64;
+        n >= c.count
+    })
+}
+
+/// `assist_ability_condition_table` rows: one per statue with assist abilities, keyed by statueId.
+pub fn assist_condition_rows() -> Vec<Value> {
+    assist_defs()
+        .iter()
+        .filter(|d| !d.abilities.is_empty())
+        .map(|d| {
+            let conds: Vec<Value> = d
+                .abilities
+                .iter()
+                .map(|a| {
+                    let terms: Vec<Value> = a
+                        .conditions
+                        .iter()
+                        .map(|c| json!({ "statueType": c.statue_type, "count": c.count }))
+                        .collect();
+                    json!({ "assistAbilityId": a.ability_id, "assistAbilityCondition": terms })
+                })
+                .collect();
+            json!({ "statueId": d.statue_id, "conditionTableData": conds })
+        })
+        .collect()
 }
 
 /// `TeamInfo` for one team.
@@ -885,6 +1076,90 @@ mod tests {
             .unwrap()
             .starts_with("1000_0_"));
         assert_eq!(statue_setting_rows().len(), statues().len());
+    }
+
+    /// Assists (docs/research/19-assists.md §5): both ability lists match, the seat statue carries
+    /// its assists' active abilities, and the assist skill is one of the statue's own skills.
+    #[test]
+    fn assist_abilities_and_skill() {
+        let mut c = Collection::default();
+        c.ensure("2026-11-14 00:00:00");
+        for d in statues() {
+            let o = OwnedStatue {
+                statue_id: d.statue_id.clone(),
+                level: 1,
+                ..Default::default()
+            };
+            let v = statue_info(&o);
+            let (cl, dt) = (
+                v["assistAbilityList"].as_array().unwrap(),
+                v["dtAssistAbilityList"].as_array().unwrap(),
+            );
+            assert!(
+                !dt.is_empty(),
+                "{}: every statue has an assist ability",
+                d.statue_id
+            );
+            assert_eq!(cl.len(), dt.len(), "{}", d.statue_id);
+            for (a, b) in cl.iter().zip(dt) {
+                assert_eq!(a["abilityId"], b["abilityId"], "same order");
+                assert_eq!(a["isInit"], true);
+                assert!(!a["abilityParamList"].as_array().unwrap().is_empty());
+                assert!(a["abilityParamList"][0]["paramListLv1_0"].as_i64().unwrap() > 0);
+                assert!(a["abilityName"].as_str().unwrap().starts_with("ABI_AST_"));
+                assert_eq!(b["abilityParamList"], json!([]), "never null");
+            }
+            let s = &v["dtAssistSkillInfo"];
+            if d.dt_skills.is_empty() {
+                assert_eq!(*s, json!({}));
+            } else {
+                assert!(d.dt_skills.iter().any(|k| s["skillId"] == k.id.as_str()));
+                assert_eq!(s["skillLevel"], 1);
+            }
+        }
+        // A team with two assists on the leader seat.
+        let mut t = c.teams[0].clone();
+        let free: Vec<i64> = c
+            .statues
+            .iter()
+            .map(|o| o.uid)
+            .filter(|u| !t.slots.contains(u))
+            .take(2)
+            .collect();
+        t.assists[0] = vec![(1, free[0]), (2, free[1])];
+        let info = team_info(&c, &t);
+        let seat = &info["teamOrder"]["leaderStatue"];
+        let got: Vec<&Value> = seat["statueInfo"]["dtAbilityList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|a| &a["abilityId"])
+            .collect();
+        let want: Vec<Value> = free
+            .iter()
+            .flat_map(|u| assist_abilities(&c.statue(*u).unwrap().statue_id))
+            .map(|a| json!(a.ability_id))
+            .collect();
+        assert_eq!(got, want.iter().collect::<Vec<_>>());
+        assert_eq!(seat["assistStatueList"].as_array().unwrap().len(), 2);
+        // The other seats have no assists, so no assist abilities.
+        let left = &info["teamOrder"]["memberLeftStatue"]["statueInfo"]["dtAbilityList"];
+        assert_eq!(*left, json!([]));
+    }
+
+    #[test]
+    fn assist_conditions_count_the_seats_assist_types() {
+        let assists = [
+            json!({ "statueType": 1 }),
+            json!({ "statueType": 1 }),
+            json!({ "statueType": 3 }),
+        ];
+        let cond = |statue_type, count| AssistCond { statue_type, count };
+        assert!(conditions_met(&[], &assists), "no terms: always active");
+        assert!(conditions_met(&[cond(1, 2)], &assists));
+        assert!(conditions_met(&[cond(1, 1), cond(3, 1)], &assists));
+        assert!(!conditions_met(&[cond(1, 3)], &assists));
+        assert!(!conditions_met(&[cond(3, 1), cond(5, 1)], &assists));
     }
 
     #[test]
