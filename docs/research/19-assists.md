@@ -19,8 +19,10 @@ M = inferred.
 - The request is a diff: only changed slots; a cleared slot is sent with statueuId 0.
 - The reply's team replaces the cached team `teamNum`, so the whole edited team is returned.
 - The select screen offers any statue that is not a main member or already an assist in the team.
-- Not built: `/team/auto_set_and_equip` (auto formation, `{teamNum, changePlan}` → `{teamInfo}`)
-  and the PvP variant.
+- `/team/auto_set_and_equip {teamNum, changePlan}` → `{teamInfo}` (the auto formation popup;
+  changePlan 1 total power, 2 ATK, 3 DEF, 4 HP; H). Built in Build 23: the three best owned
+  statues by the plan, one per character, and per seat the highest-rarity Minds not on the team's
+  other seats or other teams that fit slots 1–4 and the capacity (ours). Assists are kept.
 
 ## 3. Battle (H)
 

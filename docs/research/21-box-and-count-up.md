@@ -42,3 +42,15 @@ Read in the 3.12.0 client: H = read in the disassembly, M = inferred.
   - The ticket button draws one statue of four stars or better (ours). Ticket pulls do not count
     for the round.
 - Everything is still free; draws pick from owned statues as before.
+
+## 4. Friend Point summon (Build 23)
+
+- **Client (H).** The summon screen counts the pay item in gasha_list's `itemList`, not
+  `userInfo`: a banner with `payType 3, itemId 40` pays in item 40 (Friend Points), and that item
+  needs `type 5` for the point buttons. `UserInfo.mindGashaPoint` holds the same total.
+  `bizarre_end.mindGashaPoint` is what a battle earned (the result screen shows it). Short draws:
+  51304.
+- **Server.** A Friend Point wallet on the account; 10 per quest clear (the wiki gives 10 for stage
+  1-1) and mission rewards of Friend Points now count. The game's Friend Point Mind Summon (290000,
+  its name label and banner exist) costs 200 per pull and draws mostly 1–3-star Minds (price and
+  rates ours).
