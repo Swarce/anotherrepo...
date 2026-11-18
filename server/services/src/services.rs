@@ -10,6 +10,7 @@ pub mod bizarre;
 pub mod book;
 pub mod client;
 pub mod common;
+pub mod dungeon;
 pub mod gasha;
 pub mod item;
 pub mod menu;
@@ -79,6 +80,12 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/bizarre/check_timed_chapter" => bizarre::check_timed_chapter(ctx, env),
         "/support/support_user_s" => bizarre::support_user_s(ctx, env),
         "/bizarre/get_bizarre_select" => bizarre::get_bizarre_select(ctx, env),
+        "/dungeon/dungeon_list" => dungeon::dungeon_list(ctx, env),
+        "/dungeon/stage_list" => dungeon::stage_list(ctx, env),
+        "/dungeon/tarot_select" => dungeon::tarot_select(ctx, env),
+        "/dungeon/tarot_flip" => dungeon::tarot_flip(ctx, env),
+        "/dungeon/earn_reward" => dungeon::earn_reward(ctx, env),
+        "/dungeon/reward_check" => dungeon::reward_check(ctx, env),
         "/clan/recommend" => menu::clan_recommend(ctx, env),
         "/present/present_list" => present::present_list(ctx, env),
         "/follow/follow_list" => menu::follow_list(ctx, env),
