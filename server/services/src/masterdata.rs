@@ -1035,10 +1035,20 @@ mod tests {
             .filter(|r| r["abilityId"].as_str().unwrap().starts_with("DT_AST_"))
             .count();
         assert_eq!(assist, 16, "4 kinds x 4 tiers");
+        let links = rows
+            .iter()
+            .filter(|r| r["abilityId"].as_str().unwrap().starts_with("DT_MLINK_"))
+            .count();
+        assert_eq!(links, 9, "3 Mind links x 2..4 Minds (docs/research/26 §2)");
+        for l in crate::collection::mind_link_defs() {
+            for a in l.abilities.values() {
+                assert!(ids.contains(a.as_str()), "{a}");
+            }
+        }
         assert_eq!(
             rows.len(),
-            lead + 12 + assist,
-            "only leader, Mind and assist rows"
+            lead + 12 + assist + links,
+            "only leader, Mind, assist and Mind link rows"
         );
     }
 
