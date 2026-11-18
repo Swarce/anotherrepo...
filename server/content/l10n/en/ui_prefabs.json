@@ -447,7 +447,7 @@
     ],
     "ui:scene_bizarre:3:687:m_Text": [
       "1fd3686a",
-      "pcs"
+      "pc"
     ],
     "ui:scene_bizarre:3:722:m_Text": [
       "ed7b468c",
@@ -455,7 +455,7 @@
     ],
     "ui:scene_bizarre:3:727:m_Text": [
       "848cf7a6",
-      "Selected"
+      "Set"
     ],
     "ui:scene_bizarre:3:739:m_Text": [
       "bce05a11",
@@ -539,7 +539,7 @@
     ],
     "ui:scene_bizarre:5:1291:m_Text": [
       "9f13700b",
-      "Owned:"
+      "Have:"
     ],
     "ui:scene_bizarre:5:1295:m_Text": [
       "9f13700b",
@@ -555,7 +555,7 @@
     ],
     "ui:scene_bizarre:5:1327:m_Text": [
       "05734455",
-      "Can't Deploy"
+      "Locked"
     ],
     "ui:scene_bizarre:5:1332:m_Text": [
       "521f8727",
@@ -571,7 +571,7 @@
     ],
     "ui:scene_bizarre:5:1346:m_Text": [
       "05734455",
-      "Can't Deploy"
+      "Locked"
     ],
     "ui:scene_bizarre:5:1351:m_Text": [
       "9f13700b",
@@ -591,7 +591,7 @@
     ],
     "ui:scene_bizarre:5:1383:m_Text": [
       "05734455",
-      "Can't Deploy"
+      "Locked"
     ],
     "ui:scene_bizarre:5:1391:m_Text": [
       "521f8727",
@@ -991,7 +991,7 @@
     ],
     "ui:scene_clan:1:834:m_Text": [
       "848cf7a6",
-      "Selected"
+      "Set"
     ],
     "ui:scene_clan:1:880:m_Text": [
       "02bd71f9",
@@ -1007,7 +1007,7 @@
     ],
     "ui:scene_clan:1:981:m_Text": [
       "1fd3686a",
-      "pcs"
+      "pc"
     ],
     "ui:scene_clan:3:1110:m_Text": [
       "ee56610a",
@@ -1347,7 +1347,7 @@
     ],
     "ui:scene_formation:1:11376:m_Text": [
       "4345e979",
-      "Growth Tree"
+      "Tree"
     ],
     "ui:scene_formation:1:11381:m_Text": [
       "8dbff0de",
@@ -1359,7 +1359,7 @@
     ],
     "ui:scene_formation:1:11841:m_Text": [
       "9fb5292d",
-      "Awakening"
+      "Awaken"
     ],
     "ui:scene_formation:1:11872:defaultText": [
       "26354304",
@@ -2335,7 +2335,7 @@
     ],
     "ui:scene_gasha:5:3008:m_Text": [
       "45c1be1b",
-      "Summon Details"
+      "Details"
     ],
     "ui:scene_gasha:5:3083:m_Text": [
       "6da3e5c0",
@@ -2347,11 +2347,11 @@
     ],
     "ui:scene_gasha:5:3180:m_Text": [
       "5bd94862",
-      "Paid ×"
+      "Paid"
     ],
     "ui:scene_gasha:5:3186:m_Text": [
       "45c1be1b",
-      "Summon Details"
+      "Details"
     ],
     "ui:scene_gasha:5:3201:m_Text": [
       "c98d5601",
@@ -2359,7 +2359,7 @@
     ],
     "ui:scene_gasha:5:3220:m_Text": [
       "da348e9b",
-      "1 ★5 Guaranteed!"
+      "★5 Guaranteed!"
     ],
     "ui:scene_gasha:5:3262:m_Text": [
       "c98d5601",
@@ -2395,7 +2395,7 @@
     ],
     "ui:scene_gasha:5:3351:m_Text": [
       "da348e9b",
-      "1 ★5 Guaranteed!"
+      "★5 Guaranteed!"
     ],
     "ui:scene_gasha:5:3443:m_Text": [
       "6da3e5c0",
@@ -2435,7 +2435,7 @@
     ],
     "ui:scene_gasha:5:3922:m_Text": [
       "1fd3686a",
-      "pcs"
+      " "
     ],
     "ui:scene_gasha:5:3925:m_Text": [
       "bac83e18",
@@ -2467,7 +2467,7 @@
     ],
     "ui:scene_gasha:5:4108:m_Text": [
       "5bd94862",
-      "Paid ×"
+      "Paid"
     ],
     "ui:scene_gasha:5:4178:m_Text": [
       "37c1677e",
@@ -2479,7 +2479,7 @@
     ],
     "ui:scene_gasha:5:4189:m_Text": [
       "1fd3686a",
-      "pcs"
+      " "
     ],
     "ui:scene_gasha:5:4239:m_Text": [
       "6c4ea5bf",
@@ -2495,7 +2495,7 @@
     ],
     "ui:scene_gasha:5:4428:m_Text": [
       "5bd94862",
-      "Paid ×"
+      "Paid"
     ],
     "ui:scene_gasha:5:4528:m_Text": [
       "87dc1db9",
@@ -2799,7 +2799,7 @@
     ],
     "ui:scene_option:5:198:m_Text": [
       "d7c9996c",
-      "Start Download"
+      "Download"
     ],
     "ui:scene_option:5:203:m_Text": [
       "82a81887",
@@ -3163,7 +3163,7 @@
     ],
     "ui:scene_other:9:659:m_Text": [
       "41996b48",
-      "Down 100"
+      "-100"
     ],
     "ui:scene_other:9:663:m_Text": [
       "be44c622",
@@ -3187,7 +3187,7 @@
     ],
     "ui:scene_other:9:674:m_Text": [
       "ebf93d52",
-      "Up 100"
+      "+100"
     ],
     "ui:scene_other:9:684:m_Text": [
       "1aa9c417",
@@ -3207,7 +3207,7 @@
     ],
     "ui:scene_other:9:693:m_Text": [
       "598a6eed",
-      "Personal"
+      "Solo"
     ],
     "ui:scene_other:9:701:m_Text": [
       "1de7dd56",
@@ -3215,7 +3215,7 @@
     ],
     "ui:scene_other:9:705:m_Text": [
       "f85db1ba",
-      "Latest 100"
+      "Recent"
     ],
     "ui:scene_script:1:162:m_Text": [
       "821f6cc7",
@@ -3311,7 +3311,7 @@
     ],
     "ui:scene_shop:1:786:m_Text": [
       "1fd3686a",
-      "pcs"
+      "pc"
     ],
     "ui:scene_shop:1:869:m_Text": [
       "189930b6",
@@ -3323,7 +3323,7 @@
     ],
     "ui:scene_shop:1:907:m_Text": [
       "848cf7a6",
-      "Selected"
+      "Set"
     ],
     "ui:scene_shop:1:940:m_Text": [
       "7d3cd39f",
@@ -3427,7 +3427,7 @@
     ],
     "ui:scene_tree:1:1114:m_Text": [
       "9f13700b",
-      "Owned:"
+      "Have:"
     ],
     "ui:scene_tree:1:1123:m_Text": [
       "a391ffe7",
@@ -3479,7 +3479,7 @@
     ],
     "ui:scene_tree:1:970:m_Text": [
       "9f13700b",
-      "Owned:"
+      "Have:"
     ],
     "ui:scene_tree:1:994:m_Text": [
       "56ff6dc4",
@@ -3639,11 +3639,11 @@
     ],
     "ui:scene_vs:1:2002:m_Text": [
       "c98b8b8a",
-      "Demotion Zone!"
+      "Demotion!"
     ],
     "ui:scene_vs:1:2008:m_Text": [
       "7741de99",
-      "Promotion Zone!"
+      "Promotion!"
     ],
     "ui:scene_vs:1:2018:m_Text": [
       "ed643a80",
@@ -4259,7 +4259,7 @@
     ],
     "ui:ui_formation:0:-3240618928454875299:m_Text": [
       "4345e979",
-      "Growth Tree"
+      "Tree"
     ],
     "ui:ui_formation:0:-3395868664485334512:defaultText": [
       "26354304",
@@ -4327,7 +4327,7 @@
     ],
     "ui:ui_formation:0:-8714276647648681132:m_Text": [
       "9fb5292d",
-      "Awakening"
+      "Awaken"
     ],
     "ui:ui_formation:0:1066743643193487341:m_Text": [
       "de36e71d",
@@ -4427,11 +4427,11 @@
     ],
     "ui:ui_gasha:0:-6047367751277058194:m_Text": [
       "45c1be1b",
-      "Summon Details"
+      "Details"
     ],
     "ui:ui_gasha:0:-6381408975318641909:m_Text": [
       "45c1be1b",
-      "Summon Details"
+      "Details"
     ],
     "ui:ui_gasha:0:-6550539440486929044:m_Text": [
       "4a370323",
@@ -4463,7 +4463,7 @@
     ],
     "ui:ui_gasha:0:2313773771411655170:m_Text": [
       "45c1be1b",
-      "Summon Details"
+      "Details"
     ],
     "ui:ui_gasha:0:4162424031015024129:m_Text": [
       "e790abfa",
@@ -4523,7 +4523,7 @@
     ],
     "ui:ui_mypage:0:-6676233360239793973:m_Text": [
       "f9cd14b2",
-      "Incomplete"
+      "Not Done"
     ],
     "ui:ui_mypage:0:-7253781712673715091:m_Text": [
       "85217f7a",
@@ -4807,7 +4807,7 @@
     ],
     "ui:ui_tree:0:-3582225300046506308:m_Text": [
       "9f13700b",
-      "Owned:"
+      "Have:"
     ],
     "ui:ui_vs:0:-2434800229124443211:m_Text": [
       "16d50dc5",
