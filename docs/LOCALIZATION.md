@@ -13,7 +13,7 @@ UI images with Japanese lettering can be replaced with redrawn art (see "Redrawn
 | `Text/ClientMes_JP` in the APK (boot, download, error dialogs) | 236 strings | the patcher (`english-clientmes`) |
 | `UI.Text` labels of the scenes built into the APK (`assets/bin/Data/level*`: loading overlay, first download, save select, contact, cache, error screens) | 72 strings in 11 scenes | the patcher (`english-apk-text`) |
 | C# string literals in `global-metadata.dat` that the player sees (Follow buttons, arena rank and days left, end dates, "approx.", "Saving...", yen, purchase errors) | 22 of the 139 Japanese literals | the patcher (`english-apk-text`) |
-| Story scripts (`*_script_text_jp`, 1,609 bundles: one MonoBehaviour `{m_Name, text: [line, …]}` each) | 14,259 lines (7,568 unique, ~200k characters) | the server rebuilds the bundles (keys `script:<bundle>:<line>`, `en/story.json`; Build 23) |
+| Story scripts (`*_script_text_jp`, 1,609 bundles: one MonoBehaviour `{m_Name, text: [line, …]}` each) | 14,259 lines (7,568 unique, ~200k characters) | the server rebuilds the bundles (keys `script:<bundle>:<path id>:<line>`, `en/story.json`; Build 23) |
 
 ## How the English reaches the game
 
