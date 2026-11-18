@@ -96,6 +96,16 @@ pub fn item_info(d: &ItemDef, count: i64) -> Value {
             "priority": d.priority, "count": count })
 }
 
+/// An ItemInfo for a reward or goods item set (any item id, catalog or not). Every string must be
+/// set: reward panels build the thumbnail from `icon` (the Arena home crashed on a null `icon`).
+pub fn reward_item(item_id: i64, count: i64) -> Value {
+    let typ = find(item_id).map(|d| d.item_type).unwrap_or(0);
+    json!({ "itemId": item_id, "name": format!("ITEM_{item_id:04}_NAME"),
+            "comment": format!("ITEM_{item_id:04}_DETAIL"), "icon": format!("{item_id:04}"),
+            "bg": 0, "flame": 0, "type": typ, "value": 0, "unit": "", "sell": 0, "priority": 0,
+            "count": count })
+}
+
 /// `ExpItemInfo` (exp_item_list): ItemInfo plus the enhancement numbers the client computes with.
 pub fn exp_item_info(d: &ItemDef, count: i64) -> Value {
     let mut v = item_info(d, count);
