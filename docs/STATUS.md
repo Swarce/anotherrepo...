@@ -2,6 +2,38 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 24 — Arena fix, ability effect lines, assist abilities, the loading atlas (branch `wip/b24`)
+
+### What the Build 23 device test and owner showed
+- Everything worked except the Arena, which loaded forever (device log: a NullReferenceException
+  in `PvPHomeData.SetRewardInformation`).
+- Build the rest of what was pending.
+
+### What changed
+- **Fixed: the Arena home hang.** The reward panel builds each reward's thumbnail from
+  `ItemInfo.icon`, which our reward items did not send. Every reward and goods item set
+  (missions, Labyrinth, Arena, events, shops) now sends a complete ItemInfo.
+- **Ability effect lines** (docs/research/16 §8): Mind detail, leader ability, formation, pause
+  and support screens show effect lines such as "ATK+5.0％". Our `affect_text_rule_table` fills
+  the table the game ships empty, and every ability affect names an existing game label.
+- **Assists** (docs/research/19 §5): assist abilities (16 shared rows; 35 statues from ShoutWiki,
+  the rest a default; ours) and the assist character's skill (button 6, the statue's own normal
+  skill; ours). The 3.12 tactical battle never applies assist abilities, so the server copies a
+  seat's active ones onto the seat statue's own abilities (ours).
+- **The redrawn loading-screen atlas** is applied in the APK: the patcher asked for a Sprite type
+  the file does not have. It now asks only for the types each file has and proves every object
+  round-trips before editing.
+ARENA_PLACEHOLDER
+- Build number 24, server marker `JDR_EMBEDDED_SERVER_b024`.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] The Arena home loads; opponents, a battle and its result
+- [ ] Mind detail shows its effect line ("ATK+5.0％" etc.); leader abilities show theirs
+- [ ] A team with a leader assist: the Assist button in tactical battle and its skill; battles
+      without assists unchanged
+- [ ] The loading screen shows the redrawn English atlas
+ARENA_CHECK_PLACEHOLDER
+
 ## Build 23 — full retranslation with the story, Labyrinth, Arena and the remaining systems (branch `wip/b23`)
 
 ### What the owner asked and sent
