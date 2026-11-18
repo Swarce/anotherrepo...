@@ -227,11 +227,13 @@ pub fn file_for(key: &str) -> &'static str {
 
 /// With `--expand-with <export.tsv>`: every row of the export whose Japanese source equals a
 /// translated row's source gets the same English (translate unique strings once). Rows the
-/// input translates itself, and rows already translated in the repo, are left as they are.
+/// input translates itself, and rows already translated in the repo, are left as they are; with
+/// `replace` (`--replace`, a retranslation) the rows already translated get the new English too.
 fn expand(
     input: &str,
     export: &str,
     existing: &std::collections::HashSet<String>,
+    replace: bool,
 ) -> Result<String, Error> {
     let mut by_source: std::collections::HashMap<String, String> = Default::default();
     let mut keys: std::collections::HashSet<String> = Default::default();
@@ -252,7 +254,10 @@ fn expand(
     }
     for line in export.lines().skip(1) {
         let c: Vec<&str> = line.split('\t').collect();
-        if c.len() < 4 || keys.contains(c[0]) || !c[2].is_empty() || existing.contains(c[0]) {
+        if c.len() < 4
+            || keys.contains(c[0])
+            || (!replace && (!c[2].is_empty() || existing.contains(c[0])))
+        {
             continue;
         }
         if let Some(en) = by_source.get(c[3]) {
@@ -276,7 +281,8 @@ fn import(a: &[String]) -> Result<(), Error> {
                 }
             }
         }
-        input = expand(&input, &std::fs::read_to_string(e)?, &existing)?;
+        let replace = a.iter().any(|x| x == "--replace");
+        input = expand(&input, &std::fs::read_to_string(e)?, &existing, replace)?;
     }
     let repo = PathBuf::from(opt(a, "--repo").unwrap_or_else(|| ".".into()));
     let dir = repo.join("server/content/l10n/en");
@@ -362,10 +368,18 @@ mod tests {
     fn expand_fills_same_source() {
         let input = "key\thash\tenglish\tjapanese\nk1\taaaaaaaa\tSword\t剣\n";
         let export = "key\thash\tenglish\tjapanese\tprevious_english\nk1\taaaaaaaa\t\t剣\t\nk2\taaaaaaaa\t\t剣\t\nk3\tbbbbbbbb\t\t盾\t\n";
-        let out = expand(input, export, &Default::default()).unwrap();
+        let out = expand(input, export, &Default::default(), false).unwrap();
         assert!(out.contains("k2\taaaaaaaa\tSword\t剣"));
         assert!(!out.contains("k3"));
         assert_eq!(out.matches("k1\t").count(), 1);
+        // A row already translated keeps its English unless --replace.
+        let export = "key\thash\tenglish\tjapanese\nk2\taaaaaaaa\tBlade\t剣\n";
+        assert!(!expand(input, export, &Default::default(), false)
+            .unwrap()
+            .contains("k2"));
+        assert!(expand(input, export, &Default::default(), true)
+            .unwrap()
+            .contains("k2\taaaaaaaa\tSword\t剣"));
     }
 
     #[test]
