@@ -13,10 +13,11 @@ use jdr_services::l10n::{self, Found};
 use serde_json::{Map, Value};
 use std::path::{Path, PathBuf};
 
-/// Bundles whose strings we offer (UI prefabs, the minigame screens and the text tables; story
-/// scripts come later).
+/// Bundles whose strings we offer (UI prefabs, the minigame screens, the text tables and the
+/// story scripts' dialogue).
 pub fn wanted(name: &str) -> bool {
     name == "text.jp"
+        || name.ends_with("_script_text_jp")
         || (name.starts_with("ui_") && !name.starts_with("ui_tips"))
         || name.starts_with("scene_")
         || name.starts_with("minigame_")
@@ -215,6 +216,8 @@ pub fn file_for(key: &str) -> &'static str {
         "apk_text"
     } else if key.starts_with("ui:") {
         "ui_prefabs"
+    } else if key.starts_with("script:") {
+        "story"
     } else if MENU_TABLES.contains(&key.split(':').nth(1).unwrap_or("")) {
         "text_menu"
     } else {
@@ -372,6 +375,7 @@ mod tests {
         }
         assert_eq!(file_for("clientmes:X"), "clientmes");
         assert_eq!(file_for("ui:ui_mypage:0:1:m_Text"), "ui_prefabs");
+        assert_eq!(file_for("script:r_ev_tuto_s01_script_text_jp:3"), "story");
         assert_eq!(file_for("text:MyPage_JP:A"), "text_menu");
         assert_eq!(file_for("text:SkillName_JP:A"), "text_content");
         assert_eq!(file_for("apk:level2:158:m_Text"), "apk_text");
@@ -381,6 +385,8 @@ mod tests {
                 && wanted("scene_vs")
                 && wanted("text.jp")
                 && wanted("minigame_01")
+                && wanted("r_ev_tuto_s01_script_text_jp")
+                && !wanted("r_ev_tuto_s01")
                 && !wanted("ui_tips_00")
         );
     }

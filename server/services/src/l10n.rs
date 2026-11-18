@@ -15,6 +15,8 @@
 //! - `ui:<bundle>:<file>:<path id>:<field>` for strings in UI prefabs (`m_Text`, `defaultText`, …;
 //!   `file` is the index of the serialized file inside the bundle, since scene bundles hold several);
 //! - `clientmes:<Label>` for the in-APK ClientMes table (applied by the patcher);
+//! - `script:<bundle>:<line>` for the story scripts' dialogue lines (`*_script_text_jp` bundles:
+//!   one MonoBehaviour `{m_Name: "<name>_script_text_JP", text: [line, …]}`; `line` counts from 0);
 //! - `apk:<file>:<path id>:m_Text` for `UI.Text` labels in the scenes built into the APK
 //!   (`assets/bin/Data/level<N>`), and `literal:<index>` for player-visible C# string literals in
 //!   `global-metadata.dat` (both applied by the patcher, `english-apk-text`).
@@ -94,6 +96,7 @@ pub const FILES: &[(&str, &str)] = &[
         "text_content",
         include_str!("../../content/l10n/en/text_content.json"),
     ),
+    ("story", include_str!("../../content/l10n/en/story.json")),
 ];
 
 /// First 8 hex digits of SHA-256 of the source string (UTF-8).
@@ -230,6 +233,23 @@ impl Translations {
         v
     }
 
+    /// Story script bundles with at least one translated line (from `script:<bundle>:…` keys).
+    pub fn script_bundles(&self) -> Vec<String> {
+        let mut v: Vec<String> = self
+            .map
+            .keys()
+            .filter_map(|k| {
+                k.strip_prefix("script:")?
+                    .split(':')
+                    .next()
+                    .map(str::to_owned)
+            })
+            .collect();
+        v.sort();
+        v.dedup();
+        v
+    }
+
     /// All entries with a prefix (e.g. `clientmes:`), for the patcher.
     pub fn with_prefix(&self, prefix: &str) -> BTreeMap<String, (String, String)> {
         self.map
@@ -307,6 +327,26 @@ fn visit_object(
             }
         }
         return changed;
+    }
+    // Story script dialogue: {m_Name: "<name>_script_text_JP", text: [line, …]}.
+    if table
+        .as_deref()
+        .is_some_and(|t| t.ends_with("_script_text_JP"))
+    {
+        if let Some(V::Arr(lines)) = v.get_mut("text") {
+            for (i, line) in lines.iter_mut().enumerate() {
+                let Some(s) = line.as_str().filter(|s| has_japanese(s)).map(str::to_owned) else {
+                    continue;
+                };
+                stats.strings += 1;
+                if let Some(en) = edit(&format!("script:{bundle_name}:{i}"), &s) {
+                    *line = V::Str(en.into_bytes());
+                    stats.replaced += 1;
+                    changed = true;
+                }
+            }
+            return changed;
+        }
     }
     // Prefab components: top-level string fields with Japanese (m_Text, defaultText, …).
     let mut replaced_text = false;
@@ -544,10 +584,12 @@ fn parses(bytes: &[u8], key: &[u8], iv: &[u8]) -> bool {
     }
 }
 
-/// The bundles we localize: text.jp plus every UI bundle with a prefab translation.
+/// The bundles we localize: text.jp plus every UI bundle with a prefab translation and every story
+/// script bundle with a translated line.
 pub fn targets(tr: &Translations) -> Vec<String> {
     let mut v = vec!["text.jp".to_string()];
     v.extend(tr.ui_bundles());
+    v.extend(tr.script_bundles());
     v
 }
 
@@ -917,6 +959,56 @@ mod tests {
                 assert!(targets.contains(&b), "{b} is rebuilt");
             }
         }
+    }
+
+    #[test]
+    fn translates_story_script_lines_by_index() {
+        let mut v = V::Obj(vec![
+            ("m_Name".into(), V::Str(b"r_ev_x_script_text_JP".to_vec())),
+            (
+                "text".into(),
+                V::Arr(vec![
+                    V::Str("波紋だ".as_bytes().to_vec()),
+                    V::Str(b"...".to_vec()),
+                    V::Str("無駄".as_bytes().to_vec()),
+                ]),
+            ),
+        ]);
+        let mut seen = Vec::new();
+        let mut st = Stats::default();
+        let mut edit = |k: &str, _: &str| {
+            seen.push(k.to_string());
+            (k.ends_with(":2")).then(|| "Useless!".to_string())
+        };
+        assert!(visit_object(
+            "r_ev_x_script_text_jp",
+            0,
+            1,
+            &mut v,
+            &mut edit,
+            &mut st
+        ));
+        assert_eq!(
+            seen,
+            [
+                "script:r_ev_x_script_text_jp:0",
+                "script:r_ev_x_script_text_jp:2"
+            ],
+            "lines without Japanese are skipped but keep their index"
+        );
+        assert_eq!((st.strings, st.replaced), (2, 1));
+        let V::Arr(lines) = v.get("text").unwrap() else {
+            panic!()
+        };
+        assert_eq!(lines[2].as_str(), Some("Useless!"));
+        assert_eq!(lines[0].as_str(), Some("波紋だ"));
+        let t = Translations::parse(&[(
+            "story",
+            r#"{"sources":[{"source":"jdr-default","note":"n"}],"entries":{"script:r_ev_x_script_text_jp:2":["0011aabb","Useless!"]}}"#,
+        )])
+        .unwrap();
+        assert_eq!(t.script_bundles(), ["r_ev_x_script_text_jp"]);
+        assert!(targets(&t).contains(&"r_ev_x_script_text_jp".to_string()));
     }
 
     #[test]
