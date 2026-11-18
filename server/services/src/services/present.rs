@@ -13,11 +13,12 @@ fn int(env: &RequestEnvelope, k: &str) -> Option<i64> {
     env.param.get(k).and_then(Value::as_i64)
 }
 
-/// Apply a received present to the account. Friend Points have no wallet offline.
+/// Apply a received present to the account.
 pub fn apply(p: &mut Profile, g: &Gift) {
     match g.data_type {
         presents::DATA_MONEY => p.gold += g.count,
         presents::DATA_STONE => p.stone_free += g.count,
+        presents::DATA_FRIEND_POINT => p.friend_points += g.count,
         presents::DATA_ITEM if crate::items::find(g.data_id).is_some() => {
             p.collection.add_item(g.data_id, g.count)
         }
