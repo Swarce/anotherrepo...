@@ -6,6 +6,7 @@ use crate::Ctx;
 use jdr_core::envelope::RequestEnvelope;
 use serde_json::{json, Map, Value};
 
+pub mod arena;
 pub mod bizarre;
 pub mod book;
 pub mod client;
@@ -94,7 +95,6 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/shop/shop_list" => item::shop_list(ctx, env),
         "/shop/shop_buy" => item::shop_buy(ctx, env),
         "/shop/event_shop_list" => item::event_shop_list(ctx, env),
-        "/event/point_reward_list" => event::point_reward_list(ctx, env),
         "/shop/event_shop_buy" => item::event_shop_buy(ctx, env),
         "/item/exp_item_list" => item::exp_item_list(ctx, env),
         "/present/get" | "/present/get_all" => present::present_get(ctx, env),
@@ -122,6 +122,25 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/gasha/reset_box_gasha" => gasha::reset_box_gasha(ctx, env),
         "/tree/skill_list" => tree::skill_list(ctx, env),
         "/tree/acquisition" => tree::acquisition(ctx, env),
+        "/pvp/get_pvp_config" => arena::get_pvp_config(ctx, env),
+        "/event/point_reward_list" => arena::point_reward_list(ctx, env),
+        "/item/heal_item_list" => arena::heal_item_list(ctx, env),
+        "/pvp/home_acqusition_check" => arena::home_acqusition_check(ctx, env),
+        "/pvp/home" => arena::home(ctx, env),
+        "/pvp/enemy_player_list" => arena::enemy_player_list(ctx, env),
+        "/pvp/pvp_start" => arena::pvp_start(ctx, env),
+        "/pvp/pvp_end" => arena::pvp_end(ctx, env),
+        "/pvp/recover_hp_pvp" => arena::recover_hp_pvp(ctx, env),
+        "/pvp/fever_mode" => arena::fever_mode(ctx, env),
+        "/pvp/team_info_pvp" => arena::team_info_pvp(ctx, env),
+        "/pvp/set_team_all_pvp" => arena::set_team_all_pvp(ctx, env),
+        "/pvp/set_team_pvp" => arena::set_team_pvp(ctx, env),
+        "/pvp/statue_select_pvp" => arena::statue_select_pvp(ctx, env),
+        "/pvp/leader_change_pvp" => arena::leader_change_pvp(ctx, env),
+        "/pvp/equip_mind_pvp" => arena::equip_mind_pvp(ctx, env),
+        "/pvp/equip_multiple_minds_pvp" => arena::equip_multiple_minds_pvp(ctx, env),
+        "/pvp/equip_multiple_assist_pvp" => arena::equip_multiple_assist_pvp(ctx, env),
+        "/pvp/auto_set_and_equip" => arena::auto_set_and_equip_pvp(ctx, env),
         _ => return (Ok(Map::new()), false),
     };
     (r, true)
