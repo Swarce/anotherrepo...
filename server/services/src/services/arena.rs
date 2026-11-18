@@ -1231,6 +1231,37 @@ mod tests {
             .collect()
     }
 
+    /// Every ItemInfo the Arena home draws as a reward carries its strings: the reward panel
+    /// builds the thumbnail from `icon` (a null `icon` hung the home in Build 23).
+    #[test]
+    fn reward_items_carry_icon_and_name() {
+        let (ctx, uuid) = setup("icons");
+        let home = call(&ctx, &uuid, "/pvp/home", json!({})).unwrap();
+        let list = call(
+            &ctx,
+            &uuid,
+            "/event/point_reward_list",
+            json!({"eventCampaignId": CAMPAIGN_ID}),
+        )
+        .unwrap();
+        let mut sets = vec![home["pvpUserInfo"]["nextEventItem"].clone()];
+        sets.extend(
+            list["userPointRewardList"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .map(|r| r["itemSetInfo"].clone()),
+        );
+        assert!(sets.len() > 1);
+        for s in sets {
+            for it in s["itemList"].as_array().unwrap() {
+                for k in ["icon", "name", "comment", "unit"] {
+                    assert!(it[k].is_string(), "{k} in {it}");
+                }
+            }
+        }
+    }
+
     #[test]
     fn my_page_entry_and_home() {
         let (ctx, uuid) = setup("home");
