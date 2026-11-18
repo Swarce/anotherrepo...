@@ -15,7 +15,7 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
   - Every string retranslated from the Japanese: 30,719 unique strings, 65,428 entries.
   - A style guide and glossary based on Bandai Namco's English JoJo and mobile games. Original
     Stand and character names and "Menacing", by the owner's choice.
-  - **The story is in English for the first time**: 14,232 dialogue lines from 1,609 scene
+  - **The story is in English for the first time**: 14,259 dialogue lines from 1,609 scene
     bundles (new `script:` keys).
   - UI labels checked against their room; 55 shortened.
 - **Art.** All 510 redrawn images reviewed against the new style: 422 kept, 80 sent back as a

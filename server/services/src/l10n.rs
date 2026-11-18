@@ -15,8 +15,9 @@
 //! - `ui:<bundle>:<file>:<path id>:<field>` for strings in UI prefabs (`m_Text`, `defaultText`, …;
 //!   `file` is the index of the serialized file inside the bundle, since scene bundles hold several);
 //! - `clientmes:<Label>` for the in-APK ClientMes table (applied by the patcher);
-//! - `script:<bundle>:<line>` for the story scripts' dialogue lines (`*_script_text_jp` bundles:
-//!   one MonoBehaviour `{m_Name: "<name>_script_text_JP", text: [line, …]}`; `line` counts from 0);
+//! - `script:<bundle>:<path id>:<line>` for the story scripts' dialogue lines (`*_script_text_jp`
+//!   bundles: MonoBehaviours `{m_Name: "<name>_script_text_JP", text: [line, …]}`, usually one,
+//!   up to four in a few bundles; `line` counts from 0);
 //! - `apk:<file>:<path id>:m_Text` for `UI.Text` labels in the scenes built into the APK
 //!   (`assets/bin/Data/level<N>`), and `literal:<index>` for player-visible C# string literals in
 //!   `global-metadata.dat` (both applied by the patcher, `english-apk-text`).
@@ -339,7 +340,7 @@ fn visit_object(
                     continue;
                 };
                 stats.strings += 1;
-                if let Some(en) = edit(&format!("script:{bundle_name}:{i}"), &s) {
+                if let Some(en) = edit(&format!("script:{bundle_name}:{path_id}:{i}"), &s) {
                     *line = V::Str(en.into_bytes());
                     stats.replaced += 1;
                     changed = true;
@@ -991,8 +992,8 @@ mod tests {
         assert_eq!(
             seen,
             [
-                "script:r_ev_x_script_text_jp:0",
-                "script:r_ev_x_script_text_jp:2"
+                "script:r_ev_x_script_text_jp:1:0",
+                "script:r_ev_x_script_text_jp:1:2"
             ],
             "lines without Japanese are skipped but keep their index"
         );
@@ -1004,7 +1005,7 @@ mod tests {
         assert_eq!(lines[0].as_str(), Some("波紋だ"));
         let t = Translations::parse(&[(
             "story",
-            r#"{"sources":[{"source":"jdr-default","note":"n"}],"entries":{"script:r_ev_x_script_text_jp:2":["0011aabb","Useless!"]}}"#,
+            r#"{"sources":[{"source":"jdr-default","note":"n"}],"entries":{"script:r_ev_x_script_text_jp:1:2":["0011aabb","Useless!"]}}"#,
         )])
         .unwrap();
         assert_eq!(t.script_bundles(), ["r_ev_x_script_text_jp"]);
