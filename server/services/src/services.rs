@@ -19,6 +19,9 @@ pub mod menu;
 pub mod mind;
 pub mod misc;
 pub mod present;
+pub mod ranking;
+#[cfg(test)]
+pub mod shapes;
 pub mod statue;
 pub mod team;
 pub mod tree;
@@ -124,6 +127,9 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/tree/acquisition" => tree::acquisition(ctx, env),
         "/pvp/get_pvp_config" => arena::get_pvp_config(ctx, env),
         "/event/point_reward_list" => arena::point_reward_list(ctx, env),
+        "/event/get_event_ranking_list" => ranking::ranking_list(ctx, env),
+        "/event/get_event_ranking_detail" => ranking::ranking_detail(ctx, env),
+        "/event/get_event_ranking_reward" => ranking::ranking_reward(ctx, env),
         "/item/heal_item_list" => arena::heal_item_list(ctx, env),
         "/pvp/home_acqusition_check" => arena::home_acqusition_check(ctx, env),
         "/pvp/home" => arena::home(ctx, env),
