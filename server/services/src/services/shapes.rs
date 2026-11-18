@@ -28,6 +28,13 @@ const EXEMPT: &[(&str, &str, &str)] = &[
     ("Jjs.UserInfo", "staminaLocalInfo", "client cache"),
     ("Jjs.UserInfo", "bpLocalInfo", "client cache"),
     ("Jjs.UserInfo", "rpLocalInfo", "client cache"),
+    // No support player offline: the result screen tests UserInfoMini.Valid (a non-empty `id`)
+    // and skips the support panel for `{}` (BattleResultUIController.SetUI, docs/research/25).
+    (
+        "Jjs.BizarreEndResponse",
+        "supportUserInfo",
+        "no support user",
+    ),
 ];
 
 /// Sub-objects of the shared statue and Mind builders (collection::statue_info, mind_info) that
