@@ -10,6 +10,7 @@ pub mod bizarre;
 pub mod book;
 pub mod client;
 pub mod common;
+pub mod event;
 pub mod gasha;
 pub mod item;
 pub mod menu;
@@ -86,6 +87,7 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/shop/shop_list" => item::shop_list(ctx, env),
         "/shop/shop_buy" => item::shop_buy(ctx, env),
         "/shop/event_shop_list" => item::event_shop_list(ctx, env),
+        "/event/point_reward_list" => event::point_reward_list(ctx, env),
         "/shop/event_shop_buy" => item::event_shop_buy(ctx, env),
         "/item/exp_item_list" => item::exp_item_list(ctx, env),
         "/present/get" | "/present/get_all" => present::present_get(ctx, env),
