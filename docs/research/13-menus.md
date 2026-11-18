@@ -41,6 +41,8 @@ other notes. No game text is reproduced.
   - together they add the wiki's tree-max minus Lv99 stats (20% of Lv99 when unknown);
   - squares open in order (`/tree/acquisition`: a square needs the one before it);
   - opened squares are saved per statue and added to its stats.
+  - Build 25: up to four skill-level squares (effects 4 and 5) after the ATK and DEF lines and
+    their forks; each adds 2 levels to the normal or special skill (docs/research/26 §4).
 - **Costs (Build 23).**
   - **Client (H):** it checks costs only against the tree screen's own `itemList`; gold is an
     ordinary material, item 20. A locked square (`unlockFlg 0`) needs `openMaterialList` and

@@ -80,6 +80,15 @@ pub struct DtSkill {
     pub attr: String,
 }
 
+impl DtSkill {
+    /// The skill's own key `SKILL_<p>_<NN>`: the action set (the number after the last `_`) and
+    /// the classic skill row. A Mind's copy of a statue skill of the other kind has the row id
+    /// `MSKILL_<p>_<NN>` (tools/content/build_mind_skills.py).
+    pub fn view_id(&self) -> String {
+        self.id.strip_prefix('M').unwrap_or(&self.id).to_string()
+    }
+}
+
 impl StatueDef {
     pub fn psid(&self) -> i64 {
         self.statue_id
@@ -239,7 +248,50 @@ pub fn tree_squares(d: &StatueDef) -> Vec<TreeSquare> {
             before,
         });
     }
+    // Skill level squares (docs/research/26 §4): after the ATK line and its fork, effect 4 (the
+    // game's "raises Skill Level" tile), after the DEF line and its fork effect 5 ("raises SP
+    // Skill Level"), each +2 levels, for the skills the statue has. Placement and amounts are ours.
+    let has = |special: bool| d.dt_skills.iter().any(|s| s.special == special);
+    for (id, x, y, effect, before, special) in [
+        ("A6", 6, 1, TREE_SKILL, "A5", false),
+        ("Af3", 6, 0, TREE_SKILL, "Af2", false),
+        ("D6", 6, 3, TREE_SP_SKILL, "D5", true),
+        ("Df3", 6, 4, TREE_SP_SKILL, "Df2", true),
+    ] {
+        if has(special) {
+            out.push(TreeSquare {
+                id: id.into(),
+                pos: (x, y),
+                effect,
+                param: TREE_SKILL_LEVELS,
+                before: before.into(),
+            });
+        }
+    }
     out
+}
+
+/// Tree square effects that raise a skill's level (client tile texts Tree_Message_08 / _09).
+pub const TREE_SKILL: i64 = 4;
+pub const TREE_SP_SKILL: i64 = 5;
+/// Levels one skill square adds (ours).
+const TREE_SKILL_LEVELS: i64 = 2;
+/// Skill level cap (the client interpolates cool turns over levels 0..10).
+pub const SKILL_MAX_LEVEL: i64 = 10;
+
+/// The statue's (normal, special) skill levels: 1 plus the opened skill squares.
+pub fn skill_levels(o: &OwnedStatue) -> (i64, i64) {
+    let mut lv = (1, 1);
+    if let Some(d) = find(&o.statue_id) {
+        for sq in tree_squares(d).iter().filter(|s| o.tree.contains(&s.id)) {
+            match sq.effect {
+                TREE_SKILL => lv.0 += sq.param,
+                TREE_SP_SKILL => lv.1 += sq.param,
+                _ => {}
+            }
+        }
+    }
+    (lv.0.min(SKILL_MAX_LEVEL), lv.1.min(SKILL_MAX_LEVEL))
 }
 
 /// Stat bonus from the opened squares.
@@ -290,8 +342,17 @@ fn seats_empty(m: &[Vec<(i64, i64)>; 3]) -> bool {
 /// A statue's Mind capacity (CP; `StatueInfo.mindCapacity`, ours: three 4-star or four 3-star
 /// Minds at cost 3 x rarity).
 pub const MIND_CAPACITY: i64 = 40;
-/// Mind slots open per seat (the four golden frames, as at launch).
-pub const MIND_SLOTS_OPEN: i64 = 4;
+/// Mind slots open per seat: the four golden frames (seq 1-4), the skill frame (5) and the SP
+/// skill frame (6) (client `GameConst.GetMindSeqType`: 1-4 golden, 5 skill, 6 SP skill, 7-8 sub;
+/// docs/research/26-links-and-skills.md §3).
+pub const MIND_SLOTS_OPEN: i64 = 6;
+/// The golden frames: ability Minds (mindType 1) only.
+pub const MIND_GOLDEN_SLOTS: i64 = 4;
+/// The skill frame takes a Mind whose skill is a normal skill (SkillType 2)...
+pub const MIND_SKILL_SLOT: i64 = 5;
+/// ...and the SP skill frame one whose skill is special (SkillType 3)
+/// (`MindSelectUIController.IsPossibleEquip` 0xD66E50).
+pub const MIND_SP_SKILL_SLOT: i64 = 6;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Default)]
 pub struct Collection {
@@ -560,20 +621,22 @@ pub const BASIC_ATTACK: &str = "JDR_ATK_00";
 pub fn battle_statue_info(o: &OwnedStatue) -> Value {
     let mut v = statue_info(o);
     let mut list = vec![basic_attack(&attack_skill(&o.statue_id))];
+    let (normal, special) = skill_levels(o);
     for s in find(&o.statue_id)
         .map(|d| d.dt_skills.as_slice())
         .unwrap_or(&[])
     {
-        list.push(dt_skill_info(s));
+        list.push(dt_skill_info(s, if s.special { special } else { normal }));
     }
     v["dtSkillList"] = json!(list);
     v
 }
 
 /// A tactical skill as a `SkillInfo`. The client takes type, button and name from the table row;
-/// the level must be >= 1.
-fn dt_skill_info(s: &DtSkill) -> Value {
-    json!({ "skillId": s.id, "skillLevel": 1, "name": "", "explanation": "",
+/// the level must be >= 1. The level sets the cool turn (`SkillParameter` ctor 0xD8C894:
+/// dtMinCoolTurn + CeilToInt((dtMaxCoolTurn - dtMinCoolTurn) / 10 x level)).
+fn dt_skill_info(s: &DtSkill, level: i64) -> Value {
+    json!({ "skillId": s.id, "skillLevel": level.clamp(1, SKILL_MAX_LEVEL), "name": "", "explanation": "",
             "skillType": if s.special { 3 } else { 2 }, "bottunType": s.button, "coolDown": 0,
             "limitCount": 0, "magnificationLv01": 0, "magnificationLv10": 0,
             "pvpMagnificationLv01": 0, "pvpMagnificationLv10": 0, "skillParamList": [],
@@ -658,20 +721,35 @@ pub fn dt_skill_table() -> Value {
     // Normal and special skills (docs/research/12 §3): one row per skill id, one category row per
     // category label. Numbers are ours: wait 100 (ends the turn), cool-down 2 turns (special 3,
     // with 3 uses), the same hit and critical rates as the attack, no SP cost, and Reversal gauge
-    // 15% (special 20%; the attack's is 10%, docs/research/11 §5).
+    // 15% (special 20%; the attack's is 10%, docs/research/11 §5). Skill Minds add the rows of
+    // their skills that no statue has (docs/research/26 §3).
+    if let Some(src) = doc["sources"].as_array_mut() {
+        src.push(json!({ "source": "jdr-research", "doc": "docs/research/26-links-and-skills.md",
+            "note": "Mind skill rows (server/content/mind_skills.json), time-stop sub categories (the client's DTSC_WORLD_* categories: ProcessType 4, turn 1/2) and cool turns by skill level (dtMinCoolTurn at level 0, dtMaxCoolTurn at level 10; the values are ours)" }));
+    }
     let mut skills = std::collections::BTreeMap::new();
     let mut cats = std::collections::BTreeMap::new();
-    for s in statues().iter().flat_map(|d| d.dt_skills.iter()) {
+    for s in statues()
+        .iter()
+        .flat_map(|d| d.dt_skills.iter())
+        .chain(mind_skills().iter().map(|m| &m.skill))
+    {
         skills.entry(s.id.clone()).or_insert(s);
         cats.entry(s.category.clone()).or_insert(s);
     }
+    let mut worlds = std::collections::BTreeSet::new();
     if let Some(list) = doc["data"]["skillDataList"].as_array_mut() {
         for s in skills.values() {
             let mut row = template.clone();
             let cool = if s.special { 3 } else { 2 };
+            let view = s.view_id();
+            let sub = time_stop(&s.id).unwrap_or("");
+            if !sub.is_empty() {
+                worlds.insert(sub);
+            }
             for (k, v) in [
                 ("dtSkillId", json!(s.id)),
-                ("viewSkillId", json!(s.id)),
+                ("viewSkillId", json!(view)),
                 ("dtSkillName", json!(s.name)),
                 ("dtSkillProfileText", json!(s.text)),
                 ("dtSkillType", json!(if s.special { 3 } else { 2 })),
@@ -680,11 +758,14 @@ pub fn dt_skill_table() -> Value {
                 ("dtLimitCount", json!(if s.special { 3 } else { 0 })),
                 // Reversal gauge, in percent, added when a player unit picks the skill (ours).
                 ("dododoRate", json!(if s.special { 20 } else { 15 })),
+                // Cool turn = min + CeilToInt((max - min) / 10 x level): the old 2 (special 3)
+                // up to level 4, one turn less from level 5, two at level 10.
                 ("dtMinCoolTurn", json!(cool)),
-                ("dtMaxCoolTurn", json!(cool)),
+                ("dtMaxCoolTurn", json!(cool - COOL_TURN_LEVEL_GAIN)),
                 ("mainSkillCategory", json!(s.category)),
-                ("dtRangeMin", json!(skill_range(&s.id, s.target_type).0)),
-                ("dtRangeMax", json!(skill_range(&s.id, s.target_type).1)),
+                ("subSkillCategory", json!(sub)),
+                ("dtRangeMin", json!(skill_range(&view, s.target_type).0)),
+                ("dtRangeMax", json!(skill_range(&view, s.target_type).1)),
             ] {
                 row[k] = v;
             }
@@ -698,8 +779,110 @@ pub fn dt_skill_table() -> Value {
                 "ProcessType": s.process_type, "turn": 0, "paramList": [s.attr] }),
             );
         }
+        // Time stop (`Character.OnTurnMain` 0xFABE54: a category with ProcessType 4 WORLD calls
+        // `TimeStopManager.StartTimeStop(user, turn)`), as the client's own labels name them.
+        for id in worlds {
+            let turn = match id {
+                "DTSC_WORLD_LIGHT" => 1,
+                "DTSC_WORLD_MIDDLE" => 2,
+                "DTSC_WORLD_HEAVY" => 3,
+                _ => 5,
+            };
+            list.push(
+                json!({ "dtSkillCategoryId": id, "TargetType": 5, "ProcessType": 4,
+                              "turn": turn, "paramList": [] }),
+            );
+        }
     }
     doc
+}
+
+/// Cool turns a skill loses from level 0 to level 10 (ours; docs/research/26 §4).
+pub const COOL_TURN_LEVEL_GAIN: i64 = 2;
+
+/// The cool turn the client computes for a skill row at a level (`SkillParameter` ctor 0xD8C894).
+pub fn cool_turn(min: i64, max: i64, level: i64) -> i64 {
+    min + ((max - min) as f64 / 10.0 * level as f64).ceil() as i64
+}
+
+// ---------------------------------------------------------------------------------------------
+// Skill Minds and time-stop skills (docs/research/26-links-and-skills.md §3, §5).
+
+pub const MIND_SKILLS_JSON: &str = include_str!("../../content/mind_skills.json");
+
+/// A Mind that grants a skill (mindType 2): the skill row it names and the statues that can use
+/// it (`limitCharaList`, statueIds; the unit plays the skill's action set on its own model).
+#[derive(Debug, Clone, Deserialize)]
+pub struct MindSkill {
+    #[serde(rename = "mindId")]
+    pub mind_id: String,
+    pub skill: DtSkill,
+    pub statues: Vec<String>,
+}
+
+#[derive(Debug, Default, Deserialize)]
+struct MindSkillsDoc {
+    minds: Vec<MindSkill>,
+    #[serde(rename = "timeStop", default)]
+    time_stop: std::collections::BTreeMap<String, String>,
+}
+
+fn mind_skills_doc() -> &'static MindSkillsDoc {
+    static CELL: std::sync::OnceLock<MindSkillsDoc> = std::sync::OnceLock::new();
+    CELL.get_or_init(|| serde_json::from_str(MIND_SKILLS_JSON).unwrap_or_default())
+}
+
+pub fn mind_skills() -> &'static [MindSkill] {
+    &mind_skills_doc().minds
+}
+
+pub fn mind_skill(mind_id: &str) -> Option<&'static MindSkill> {
+    mind_skills().iter().find(|m| m.mind_id == mind_id)
+}
+
+/// The time-stop category of a skill (`DTSC_WORLD_<n>`), when its text says the user acts in
+/// stopped time.
+pub fn time_stop(skill_id: &str) -> Option<&'static str> {
+    mind_skills_doc()
+        .time_stop
+        .get(skill_id)
+        .map(String::as_str)
+}
+
+/// A skill Mind's skill as a `SkillInfo` at the Mind's level ("Raising the Mind Level improves
+/// the Skill", MIND_TEXT_<id>). The client reads `skillType` from here, not from the table: 2
+/// puts the skill on the second normal button, 3 on the second special one
+/// (`SkillStatusTable.CreateSkillStatus` 0xD8E46C), and the formation lets it into slot 5 or 6.
+/// `skillInfo` (the action battle's) names the classic row `SKILL_<p>_<NN>`.
+fn mind_skill_info(m: &MindSkill, level: i64, dt: bool) -> Value {
+    let id = if dt {
+        m.skill.id.clone()
+    } else {
+        m.skill.view_id()
+    };
+    json!({ "skillId": id, "skillLevel": level.clamp(1, SKILL_MAX_LEVEL), "name": "",
+            "explanation": "", "skillType": if m.skill.special { 3 } else { 2 },
+            "bottunType": m.skill.button, "coolDown": 0, "limitCount": 0,
+            "magnificationLv01": 0, "magnificationLv10": 0, "pvpMagnificationLv01": 0,
+            "pvpMagnificationLv10": 0, "skillParamList": [], "isInit": false })
+}
+
+/// Whether a Mind may sit in this seat for this statue: a skill Mind only when the statue is on
+/// its list (the client compares `limitCharaList` with the statueId,
+/// `GameConst.IsEnableEquipMind` 0xDB5720), and only in the frame of its kind; an ability Mind
+/// only in the golden frames.
+pub fn mind_fits(mind_id: &str, seq: i64, statue_id: &str) -> bool {
+    match mind_skill(mind_id) {
+        Some(m) => {
+            let frame = if m.skill.special {
+                MIND_SP_SKILL_SLOT
+            } else {
+                MIND_SKILL_SLOT
+            };
+            seq == frame && m.statues.iter().any(|s| s == statue_id)
+        }
+        None => (1..=MIND_GOLDEN_SLOTS).contains(&seq),
+    }
 }
 
 fn basic_attack(id: &str) -> Value {
@@ -718,17 +901,20 @@ fn setting(c: &Collection, t: &Team, seat: usize) -> Value {
     let uid = t.slots[seat];
     match c.known_statue(uid) {
         Some(o) => {
-            // Only filled slots: the client counts the list against the open slots.
-            let equipped: Vec<Value> = t.minds[seat]
+            // Only filled slots: the client counts the list against the open slots. A skill Mind
+            // left in a seat whose statue cannot use it (the seat's statue changed) is not sent:
+            // the battle would add its skill to a model without that action set.
+            let minds = seat_minds(c, &t.minds[seat], &o.statue_id);
+            let equipped: Vec<Value> = minds
                 .iter()
-                .filter_map(|(seq, muid)| {
-                    let m = c.minds.iter().find(|m| m.uid == *muid)?;
+                .map(|(seq, m)| {
                     let mut v = mind_info(m);
                     v["seq"] = json!(seq);
                     v["useFlg"] = json!(1);
-                    Some(v)
+                    v
                 })
                 .collect();
+            let links = mind_link_list(&minds);
             // Each assist is a whole StatueInfo plus its seq; a statue that is now a main member of
             // the team is not shown as an assist.
             let assists: Vec<Value> = t.assists[seat]
@@ -740,15 +926,103 @@ fn setting(c: &Collection, t: &Team, seat: usize) -> Value {
                     Some(v)
                 })
                 .collect();
-            // The tactical battle never applies assist abilities itself (19-assists §5), so the
-            // active ones ride on the seat statue's own ability list.
+            // The tactical battle never applies assist abilities or Mind links itself
+            // (19-assists §5, 26 §2), so the active ones ride on the seat statue's own ability
+            // list.
             let mut info = battle_statue_info(o);
-            info["dtAbilityList"] = json!(active_assist_abilities(&assists));
+            let mut abilities = active_assist_abilities(&assists);
+            abilities.extend(
+                links
+                    .iter()
+                    .filter_map(|l| Some(dt_ability(l["abilityInfo"]["abilityId"].as_str()?))),
+            );
+            info["dtAbilityList"] = json!(abilities);
             json!({ "statueuId": uid, "statueInfo": info, "equipMindList": equipped,
-                    "mindLinkList": [], "assistStatueList": assists, "AiId": "" })
+                    "mindLinkList": links, "assistStatueList": assists, "AiId": "" })
         }
         None => empty_setting(),
     }
+}
+
+/// A seat's Minds that the statue can use, in slot order: owned, in an open slot, and fitting
+/// it ([`mind_fits`]).
+pub fn seat_minds<'a>(
+    c: &'a Collection,
+    seat: &[(i64, i64)],
+    statue_id: &str,
+) -> Vec<(i64, &'a OwnedMind)> {
+    seat.iter()
+        .filter_map(|(seq, u)| {
+            let m = c.minds.iter().find(|m| m.uid == *u)?;
+            mind_fits(&m.mind_id, *seq, statue_id).then_some((*seq, m))
+        })
+        .collect()
+}
+
+// ---------------------------------------------------------------------------------------------
+// Mind links (docs/research/26-links-and-skills.md §2).
+
+pub const MIND_LINKS_JSON: &str = include_str!("../../content/mind_links.json");
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct MindLinkDef {
+    #[serde(rename = "mindLinkId")]
+    pub mind_link_id: String,
+    /// Ability id by number of linked Minds ("2".."4").
+    pub abilities: std::collections::BTreeMap<String, String>,
+}
+
+#[derive(Debug, Default, Deserialize)]
+struct MindLinksDoc {
+    links: Vec<MindLinkDef>,
+    /// Mind id -> link id.
+    minds: std::collections::BTreeMap<String, String>,
+}
+
+fn mind_links_doc() -> &'static MindLinksDoc {
+    static CELL: std::sync::OnceLock<MindLinksDoc> = std::sync::OnceLock::new();
+    CELL.get_or_init(|| serde_json::from_str(MIND_LINKS_JSON).unwrap_or_default())
+}
+
+pub fn mind_link_defs() -> &'static [MindLinkDef] {
+    &mind_links_doc().links
+}
+
+/// The link a Mind belongs to, if any.
+pub fn mind_link_of(mind_id: &str) -> Option<&'static MindLinkDef> {
+    let doc = mind_links_doc();
+    let id = doc.minds.get(mind_id)?;
+    doc.links.iter().find(|l| &l.mind_link_id == id)
+}
+
+/// A seat's `mindLinkList`: one `MindLinkInfo` per link with at least two equipped Minds:
+/// `dataList` holds their minduIds (the formation draws its link lines between the frames whose
+/// Mind has one of them, `StatueMindUIController.SetupEnableMindLinkEffect` 0xE6CA64), and the
+/// ability for that many Minds goes inline (`isInit` true): `MindLinkInfo.abilityInfo` is an
+/// action-battle `AbilityInfo`, which looks in a table we do not ship. `MindLinkInfo.IsValid`
+/// 0xD61530 needs the id, a non-empty `dataList` and a valid ability; an empty id with a null
+/// `dataList` throws.
+pub fn mind_link_list(minds: &[(i64, &OwnedMind)]) -> Vec<Value> {
+    let mut by_link: std::collections::BTreeMap<&str, (&MindLinkDef, Vec<i64>)> =
+        Default::default();
+    for (_, m) in minds {
+        if let Some(l) = mind_link_of(&m.mind_id) {
+            by_link
+                .entry(l.mind_link_id.as_str())
+                .or_insert((l, Vec::new()))
+                .1
+                .push(m.uid);
+        }
+    }
+    by_link
+        .into_values()
+        .filter_map(|(l, uids)| {
+            let n = uids.len().min(4);
+            let ability = l.abilities.get(&n.to_string())?;
+            Some(json!({ "mindLinkId": l.mind_link_id, "dataList": uids,
+                         "abilityInfo": inline_ability(ability) }))
+        })
+        .collect()
 }
 
 impl Collection {
@@ -867,33 +1141,37 @@ fn ability_rows() -> &'static std::collections::HashMap<String, Value> {
 pub fn assist_ability_list(statue_id: &str) -> Vec<Value> {
     assist_abilities(statue_id)
         .iter()
-        .map(|a| {
-            let row = ability_rows().get(&a.ability_id);
-            let params: Vec<Value> = row
-                .and_then(|r| r["abilityParamList"].as_array())
+        .map(|a| inline_ability(&a.ability_id))
+        .collect()
+}
+
+/// An action-battle `AbilityInfo` with the name and parameters of a dtbattle_ability_data_table
+/// row inline (`isInit` true; the parameters are named `paramListLv…`).
+pub fn inline_ability(ability_id: &str) -> Value {
+    let row = ability_rows().get(ability_id);
+    let params: Vec<Value> = row
+        .and_then(|r| r["abilityParamList"].as_array())
+        .into_iter()
+        .flatten()
+        .map(|p| {
+            let o: serde_json::Map<String, Value> = p
+                .as_object()
                 .into_iter()
                 .flatten()
-                .map(|p| {
-                    let o: serde_json::Map<String, Value> = p
-                        .as_object()
-                        .into_iter()
-                        .flatten()
-                        .map(|(k, v)| {
-                            let k = match k.strip_prefix("paramLv") {
-                                Some(rest) => format!("paramListLv{rest}"),
-                                None => k.clone(),
-                            };
-                            (k, v.clone())
-                        })
-                        .collect();
-                    Value::Object(o)
+                .map(|(k, v)| {
+                    let k = match k.strip_prefix("paramLv") {
+                        Some(rest) => format!("paramListLv{rest}"),
+                        None => k.clone(),
+                    };
+                    (k, v.clone())
                 })
                 .collect();
-            let name = row.map(|r| r["abilityName"].clone()).unwrap_or(json!(""));
-            json!({ "abilityId": a.ability_id, "abilityLevel": 1, "abilityName": name,
-                    "abilityParamList": params, "isInit": true })
+            Value::Object(o)
         })
-        .collect()
+        .collect();
+    let name = row.map(|r| r["abilityName"].clone()).unwrap_or(json!(""));
+    json!({ "abilityId": ability_id, "abilityLevel": 1, "abilityName": name,
+            "abilityParamList": params, "isInit": true })
 }
 
 /// A tactical `DtAbilityInfo`; the client fills it from dtbattle_ability_data_table.
@@ -923,7 +1201,7 @@ pub fn assist_skill(statue_id: &str) -> Value {
         .iter()
         .find(|s| !s.special)
         .or_else(|| skills.first())
-        .map(dt_skill_info)
+        .map(|s| dt_skill_info(s, 1))
         .unwrap_or_else(|| json!({}))
 }
 
@@ -1474,17 +1752,284 @@ pub fn mind_info(o: &OwnedMind) -> Value {
         .enumerate()
         .map(|(i, e)| json!({ "level": i + 1, "exp": e }))
         .collect();
+    // A skill Mind (mindType 2) grants its skill instead of an ability (docs/research/26 §3).
+    // The battle adds `dtSkillInfo` for every equipped mindType 2 Mind without a null check, so
+    // it always carries a real row.
+    let skill = mind_skill(id);
+    let (mind_type, ability, skill_info, dt_skill, limit) = match skill {
+        Some(m) => (
+            2,
+            json!({}),
+            mind_skill_info(m, o.level, false),
+            mind_skill_info(m, o.level, true),
+            json!(m.statues),
+        ),
+        None => (
+            1,
+            mind_ability(id, o.level),
+            json!({}),
+            json!({}),
+            json!([]),
+        ),
+    };
     json!({
         "mindId": id, "name": format!("MIND_NAME_{id}"), "nameSortIndex": 0, "rare": rare, "cost": cost,
-        "description": format!("MIND_TEXT_{id}"), "mindType": 1,
-        "abilityInfo": {}, "skillInfo": {}, "dtAbilityInfo": mind_ability(id, o.level), "dtSkillInfo": {},
+        "description": format!("MIND_TEXT_{id}"), "mindType": mind_type,
+        "abilityInfo": {}, "skillInfo": skill_info, "dtAbilityInfo": ability, "dtSkillInfo": dt_skill,
         "tokkouInfo": {}, "dtTokkouInfo": {}, "pvpAbilityInfo": {}, "dtPvpAbilityInfo": {},
         "maxLevel": MIND_MAX_LEVEL, "sellVm": 0, "linkParam": "", "tipsText": "", "level": o.level.max(1), "exp": o.exp,
-        "limitCharaList": [], "limitTribeList": [], "limitStatueType": 0, "limitCount": 0,
+        "limitCharaList": limit, "limitTribeList": [], "limitStatueType": 0, "limitCount": 0,
         "limitCharacteristicList": [], "characteristicList": [], "levelUpTable": level_table,
         "minduId": o.uid, "sellRing": 0, "sellGet": 0, "stack": 1,
         "materialExp": mind_material_exp(rare, o.level),
         "bonusCondition": 0, "bonusRate": 0, "hp": hp, "eng": 0, "atk": atk, "def": def,
         "newFlg": 0, "useFlg": 0, "protectedFlg": o.protected as i64, "getDate": o.get_date
     })
+}
+
+/// Skill Minds, Mind links, skill levels and time stop (docs/research/26-links-and-skills.md).
+#[cfg(test)]
+mod links_and_skills_tests {
+    use super::*;
+    use crate::services::shapes::assert_complete;
+
+    fn rows() -> (Vec<Value>, Vec<Value>) {
+        let t = dt_skill_table();
+        (
+            t["data"]["skillDataList"].as_array().unwrap().clone(),
+            t["data"]["categoryList"].as_array().unwrap().clone(),
+        )
+    }
+
+    fn owned(c: &Collection, statue_id: &str) -> i64 {
+        c.statues
+            .iter()
+            .find(|o| o.statue_id == statue_id)
+            .unwrap()
+            .uid
+    }
+
+    fn mind_uid(c: &Collection, mind_id: &str) -> i64 {
+        c.minds.iter().find(|m| m.mind_id == mind_id).unwrap().uid
+    }
+
+    /// Crash traps (CreateSkillStatus 0xD8E46C, CreateSkillParameter 0xD8D5FC): every mindType 2
+    /// Mind carries a dtSkillInfo whose id has a row, with an existing category, and the type
+    /// the client slots it by.
+    #[test]
+    fn skill_minds_name_real_rows() {
+        let (skills, cats) = rows();
+        let cat_ids: Vec<&str> = cats
+            .iter()
+            .map(|c| c["dtSkillCategoryId"].as_str().unwrap())
+            .collect();
+        assert!(mind_skills().len() > 50, "mind_skills.json loaded");
+        let mut c = Collection::default();
+        c.ensure("2026-11-18 00:00:00");
+        let mut seen = 0;
+        for m in &c.minds {
+            let v = mind_info(m);
+            assert_complete("Jjs.MindInfo", &v);
+            let Some(ms) = mind_skill(&m.mind_id) else {
+                assert_eq!(v["mindType"], 1);
+                assert_eq!(v["dtSkillInfo"], json!({}));
+                continue;
+            };
+            seen += 1;
+            assert_eq!(v["mindType"], 2);
+            let id = v["dtSkillInfo"]["skillId"].as_str().unwrap();
+            let row = skills
+                .iter()
+                .find(|r| r["dtSkillId"] == id)
+                .unwrap_or_else(|| panic!("{}: no row {id}", m.mind_id));
+            let kind = if ms.skill.special { 3 } else { 2 };
+            assert_eq!(v["dtSkillInfo"]["skillType"], kind);
+            assert_eq!(
+                v["skillInfo"]["skillType"], kind,
+                "the formation checks skillInfo"
+            );
+            assert_eq!(row["dtSkillType"], kind);
+            assert!(v["dtSkillInfo"]["skillLevel"].as_i64().unwrap() >= 1);
+            assert!(cat_ids.contains(&row["mainSkillCategory"].as_str().unwrap()));
+            let view = row["viewSkillId"].as_str().unwrap();
+            assert!(view.starts_with("SKILL_") && v["skillInfo"]["skillId"] == view);
+            assert!(!ms.statues.is_empty());
+            for s in &ms.statues {
+                assert!(find(s).is_some(), "{s} in the roster");
+                assert!(view[6..].starts_with(&s[..3]), "{view} is {s}'s own skill");
+            }
+            assert_eq!(v["limitCharaList"], json!(ms.statues));
+        }
+        assert_eq!(seen, mind_skills().len());
+    }
+
+    /// Time stop: a WORLD category (ProcessType 4) with a positive turn count for every sub
+    /// category used; a sub category that names no row would cut the skill short
+    /// (SkillParameter ctor returns early).
+    #[test]
+    fn time_stop_skills_have_world_categories() {
+        let (skills, cats) = rows();
+        let mut n = 0;
+        for r in &skills {
+            let sub = r["subSkillCategory"].as_str().unwrap_or("");
+            if sub.is_empty() {
+                continue;
+            }
+            n += 1;
+            let cat = cats
+                .iter()
+                .find(|c| c["dtSkillCategoryId"] == sub)
+                .unwrap_or_else(|| panic!("no category {sub}"));
+            assert_eq!(cat["ProcessType"], 4);
+            assert!(cat["turn"].as_i64().unwrap() >= 1);
+        }
+        assert!(n >= 5, "DIO's and Jotaro's time stops");
+        assert_eq!(time_stop("SKILL_300_10"), Some("DTSC_WORLD_MIDDLE"));
+    }
+
+    /// Cool turns by level: level 1 keeps the old 2 (special 3) turns, so existing battles are
+    /// unchanged; level 10 is two turns shorter, never negative.
+    #[test]
+    fn cool_turns_by_skill_level() {
+        let (skills, _) = rows();
+        for r in skills.iter().filter(|r| {
+            let t = r["dtSkillType"].as_i64().unwrap();
+            t == 2 || t == 3
+        }) {
+            let (min, max) = (
+                r["dtMinCoolTurn"].as_i64().unwrap(),
+                r["dtMaxCoolTurn"].as_i64().unwrap(),
+            );
+            let old = if r["dtSkillType"] == 3 { 3 } else { 2 };
+            assert_eq!(cool_turn(min, max, 1), old, "{}", r["dtSkillId"]);
+            assert_eq!(cool_turn(min, max, 4), old);
+            assert_eq!(cool_turn(min, max, 5), old - 1);
+            assert_eq!(cool_turn(min, max, 10), old - 2);
+        }
+    }
+
+    /// The tree's skill squares raise the statue's skill levels; a statue without them keeps
+    /// level 1 (the battle input of Build 24).
+    #[test]
+    fn tree_skill_squares_raise_skill_levels() {
+        let d = statues()
+            .iter()
+            .find(|d| d.dt_skills.len() == 2)
+            .expect("a statue with both skills");
+        let squares = tree_squares(d);
+        for id in ["A6", "Af3", "D6", "Df3"] {
+            let sq = squares.iter().find(|s| s.id == id).unwrap();
+            assert!(squares.iter().any(|b| b.id == sq.before));
+        }
+        let mut o = OwnedStatue {
+            uid: 1,
+            statue_id: d.statue_id.clone(),
+            level: 1,
+            exp: 0,
+            get_date: String::new(),
+            tree: Vec::new(),
+            boost: 0,
+        };
+        assert_eq!(skill_levels(&o), (1, 1));
+        let before = tree_bonus(&o).atk;
+        o.tree = vec!["A6".into(), "Af3".into(), "D6".into()];
+        assert_eq!(skill_levels(&o), (5, 3));
+        assert_eq!(tree_bonus(&o).atk, before, "skill squares add no stats");
+        let v = battle_statue_info(&o);
+        let lv: Vec<(bool, i64)> = v["dtSkillList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .skip(1)
+            .map(|s| (s["skillType"] == 3, s["skillLevel"].as_i64().unwrap()))
+            .collect();
+        assert!(lv.contains(&(false, 5)) && lv.contains(&(true, 3)));
+        // Statues without a skill get no square for it.
+        if let Some(none) = statues().iter().find(|d| d.dt_skills.is_empty()) {
+            assert!(tree_squares(none).iter().all(|s| s.effect < TREE_SKILL));
+        }
+    }
+
+    /// A seat with a skill Mind in the skill frame and three ATK-link Minds: the skill Mind is
+    /// sent with its skill, the link lists the three minduIds with the 3-Mind ability, and the
+    /// ability rides on the statue's ability list. Moving the seat to another character drops
+    /// the skill Mind from the battle input.
+    #[test]
+    fn seat_with_skill_mind_and_link() {
+        let mut c = Collection::default();
+        c.ensure("2026-11-18 00:00:00");
+        let ms = mind_skills()
+            .iter()
+            .find(|m| !m.skill.special && m.mind_id == "4001")
+            .expect("Mind 4001 grants a normal skill");
+        let statue = owned(&c, &ms.statues[0]);
+        let links = ["3006", "7243", "7317"].map(|m| mind_uid(&c, m));
+        let mut t = main_team(&c, 1).unwrap().clone();
+        t.slots[0] = statue;
+        t.minds[0] = vec![
+            (1, links[0]),
+            (2, links[1]),
+            (3, links[2]),
+            (MIND_SKILL_SLOT, mind_uid(&c, "4001")),
+        ];
+        let v = team_info(&c, &t);
+        assert_complete("Jjs.TeamOrder", &v["teamOrder"]);
+        let seat = &v["teamOrder"]["leaderStatue"];
+        let minds = seat["equipMindList"].as_array().unwrap();
+        assert_eq!(minds.len(), 4);
+        assert!(minds
+            .iter()
+            .any(|m| m["mindType"] == 2 && m["seq"] == MIND_SKILL_SLOT));
+        let l = seat["mindLinkList"].as_array().unwrap();
+        assert_eq!(l.len(), 1);
+        assert_eq!(l[0]["mindLinkId"], "MIND_LINK_001");
+        assert_eq!(l[0]["dataList"], json!(links));
+        assert_eq!(l[0]["abilityInfo"]["abilityId"], "DT_MLINK_ATK_3");
+        assert_eq!(l[0]["abilityInfo"]["isInit"], true);
+        assert!(!l[0]["abilityInfo"]["abilityParamList"]
+            .as_array()
+            .unwrap()
+            .is_empty());
+        assert!(seat["statueInfo"]["dtAbilityList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .any(|a| a["abilityId"] == "DT_MLINK_ATK_3"));
+        // Another character in the seat: the skill Mind is not sent, the link stays.
+        let other = c
+            .statues
+            .iter()
+            .find(|o| !ms.statues.contains(&o.statue_id))
+            .unwrap()
+            .uid;
+        t.slots[0] = other;
+        let v = team_info(&c, &t);
+        let seat = &v["teamOrder"]["leaderStatue"];
+        assert_eq!(seat["equipMindList"].as_array().unwrap().len(), 3);
+        assert_eq!(seat["mindLinkList"].as_array().unwrap().len(), 1);
+        // One linked Mind is no link.
+        t.minds[0] = vec![(1, links[0])];
+        let v = team_info(&c, &t);
+        assert_eq!(v["teamOrder"]["leaderStatue"]["mindLinkList"], json!([]));
+    }
+
+    #[test]
+    fn mind_frames() {
+        let ms = mind_skill("4001").unwrap();
+        let s = &ms.statues[0];
+        assert!(mind_fits("4001", MIND_SKILL_SLOT, s));
+        assert!(!mind_fits("4001", MIND_SP_SKILL_SLOT, s), "wrong frame");
+        assert!(!mind_fits("4001", 1, s), "no skill Mind in a golden frame");
+        assert!(
+            !mind_fits("4001", MIND_SKILL_SLOT, "9999_99"),
+            "another character"
+        );
+        assert!(mind_fits("0001", 4, s));
+        assert!(
+            !mind_fits("0001", MIND_SKILL_SLOT, s),
+            "no ability Mind in a skill frame"
+        );
+        let sp = mind_skills().iter().find(|m| m.skill.special).unwrap();
+        assert!(mind_fits(&sp.mind_id, MIND_SP_SKILL_SLOT, &sp.statues[0]));
+    }
 }
