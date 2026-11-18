@@ -99,7 +99,7 @@ pub fn is_point_event(event_id: &str) -> bool {
 }
 
 /// The label id form of an event (`50045` -> `500045`).
-fn label_id(event_id: &str) -> String {
+pub fn label_id(event_id: &str) -> String {
     if event_id.len() == 5 {
         format!("{}0{}", &event_id[..2], &event_id[2..])
     } else {
