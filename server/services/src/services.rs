@@ -19,6 +19,7 @@ pub mod menu;
 pub mod mind;
 pub mod misc;
 pub mod present;
+pub mod raid;
 pub mod ranking;
 #[cfg(test)]
 pub mod shapes;
@@ -127,6 +128,12 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/tree/acquisition" => tree::acquisition(ctx, env),
         "/pvp/get_pvp_config" => arena::get_pvp_config(ctx, env),
         "/event/point_reward_list" => arena::point_reward_list(ctx, env),
+        "/raid/raid_list" => raid::raid_list(ctx, env),
+        "/raid/raid_start" => raid::raid_start(ctx, env),
+        "/raid/raid_end" => raid::raid_end(ctx, env),
+        "/raid/raid_offer_rescue" => raid::raid_offer_rescue(ctx, env),
+        "/raid/raid_history_list" => raid::raid_history_list(ctx, env),
+        "/raid/get_raid_reward" => raid::get_raid_reward(ctx, env),
         "/event/get_event_ranking_list" => ranking::ranking_list(ctx, env),
         "/event/get_event_ranking_detail" => ranking::ranking_detail(ctx, env),
         "/event/get_event_ranking_reward" => ranking::ranking_reward(ctx, env),
