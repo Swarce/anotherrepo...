@@ -35,6 +35,12 @@ community wikis (each record cites its page) or are marked `jdr-default`.
    `server/content/assist_abilities.json` and the `DT_AST_*` rows of
    `dtbattle_ability_data_table`; the server generates `assist_ability_condition_table` from it
    (docs/research/19-assists.md §5).
+7. Skill Minds and time stop (Build 25): `tools/content/build_mind_skills.py` →
+   `server/content/mind_skills.json` (which Mind grants which skill, read from the game's own
+   `MIND_TEXT_<id>` and `SKILL_NAME_<p>_<NN>` labels, and which skills stop time). Mind links:
+   `tools/content/build_mind_links.py` → `server/content/mind_links.json` (Gamerch's link stat per
+   Mind) and the `DT_MLINK_*` rows of `dtbattle_ability_data_table`
+   (docs/research/26-links-and-skills.md).
 
 ## Offline rules (preservation sandbox)
 

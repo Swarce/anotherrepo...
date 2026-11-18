@@ -1,0 +1,1865 @@
+{
+ "about": "Skill Minds (mindType 2) and time-stop skills, from the game's own labels (MIND_TEXT_<id> names the skill; SKILL_NAME_<p>_<NN> carries it) and action sets. See tools/content/build_mind_skills.py and docs/research/26.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/26-links-and-skills.md",
+   "note": "label keys (MIND_TEXT, SKILL_NAME, DTbattle_SKILL_TEXT, DTSC_WORLD_*) and statue action sets from the player's files"
+  },
+  {
+   "source": "jdr-default",
+   "note": "damage ranks, buttons and the classification of skills that are no statue's skill are ours; time-stop turns: 1 for normal skills, 2 for special ones (ours)"
+  }
+ ],
+ "minds": [
+  {
+   "mindId": "4001",
+   "skill": {
+    "id": "SKILL_100_09",
+    "special": false,
+    "name": "SKILL_NAME_100_09",
+    "text": "DTbattle_SKILL_TEXT_100_09",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "1000_01",
+    "1000_02",
+    "1000_03",
+    "1000_04",
+    "1000_12",
+    "1000_13",
+    "1000_28"
+   ]
+  },
+  {
+   "mindId": "4003",
+   "skill": {
+    "id": "SKILL_101_05",
+    "special": false,
+    "name": "SKILL_NAME_101_05",
+    "text": "DTbattle_SKILL_TEXT_101_05",
+    "button": 83,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL_ALL",
+    "targetType": 2,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "1010_01",
+    "1010_02",
+    "1010_03"
+   ]
+  },
+  {
+   "mindId": "4004",
+   "skill": {
+    "id": "SKILL_101_10",
+    "name": "SKILL_NAME_101_10",
+    "text": "DTbattle_SKILL_TEXT_101_10",
+    "button": 38,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL",
+    "special": true,
+    "damageRank": 150
+   },
+   "statues": [
+    "1010_01",
+    "1010_02",
+    "1010_03"
+   ]
+  },
+  {
+   "mindId": "4007",
+   "skill": {
+    "id": "MSKILL_200_02",
+    "special": false,
+    "name": "SKILL_NAME_200_02",
+    "text": "DTbattle_SKILL_TEXT_200_02",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_HAMON",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "HAMON"
+   },
+   "statues": [
+    "2000_01",
+    "2000_02",
+    "2000_03",
+    "2000_04",
+    "2000_12",
+    "2000_28"
+   ]
+  },
+  {
+   "mindId": "4008",
+   "skill": {
+    "id": "SKILL_200_10",
+    "special": true,
+    "name": "SKILL_NAME_200_10",
+    "text": "DTbattle_SKILL_TEXT_200_10",
+    "button": 90,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL_ALL",
+    "targetType": 2,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "2000_01",
+    "2000_02",
+    "2000_03",
+    "2000_04",
+    "2000_12",
+    "2000_28"
+   ]
+  },
+  {
+   "mindId": "4011",
+   "skill": {
+    "id": "SKILL_202_09",
+    "name": "SKILL_NAME_202_09",
+    "text": "DTbattle_SKILL_TEXT_202_09",
+    "button": 7,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL",
+    "special": false,
+    "damageRank": 125
+   },
+   "statues": [
+    "2020_01",
+    "2020_02",
+    "2020_03",
+    "2020_04"
+   ]
+  },
+  {
+   "mindId": "4012",
+   "skill": {
+    "id": "SKILL_202_10",
+    "name": "SKILL_NAME_202_10",
+    "text": "DTbattle_SKILL_TEXT_202_10",
+    "button": 38,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL",
+    "special": true,
+    "damageRank": 150
+   },
+   "statues": [
+    "2020_01",
+    "2020_02",
+    "2020_03",
+    "2020_04"
+   ]
+  },
+  {
+   "mindId": "4013",
+   "skill": {
+    "id": "SKILL_205_03",
+    "special": false,
+    "name": "SKILL_NAME_205_03",
+    "text": "DTbattle_SKILL_TEXT_205_03",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "2050_01",
+    "2050_02",
+    "2050_03",
+    "2050_04",
+    "2050_12"
+   ]
+  },
+  {
+   "mindId": "4014",
+   "skill": {
+    "id": "SKILL_205_08",
+    "special": true,
+    "name": "SKILL_NAME_205_08",
+    "text": "DTbattle_SKILL_TEXT_205_08",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "2050_01",
+    "2050_02",
+    "2050_03",
+    "2050_04",
+    "2050_12"
+   ]
+  },
+  {
+   "mindId": "4015",
+   "skill": {
+    "id": "SKILL_211_01",
+    "special": false,
+    "name": "SKILL_NAME_211_01",
+    "text": "DTbattle_SKILL_TEXT_211_01",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "2110_01",
+    "2110_02",
+    "2110_03"
+   ]
+  },
+  {
+   "mindId": "4016",
+   "skill": {
+    "id": "SKILL_211_06",
+    "special": true,
+    "name": "SKILL_NAME_211_06",
+    "text": "DTbattle_SKILL_TEXT_211_06",
+    "button": 90,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL_ALL",
+    "targetType": 2,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "2110_01",
+    "2110_02",
+    "2110_03"
+   ]
+  },
+  {
+   "mindId": "4017",
+   "skill": {
+    "id": "SKILL_300_01",
+    "special": false,
+    "name": "SKILL_NAME_300_01",
+    "text": "DTbattle_SKILL_TEXT_300_01",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "3000_01",
+    "3000_02",
+    "3000_03",
+    "3000_04",
+    "3000_13",
+    "3002_03"
+   ]
+  },
+  {
+   "mindId": "4018",
+   "skill": {
+    "id": "MSKILL_300_07",
+    "special": true,
+    "name": "SKILL_NAME_300_07",
+    "text": "DTbattle_SKILL_TEXT_300_07",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "3000_01",
+    "3000_02",
+    "3000_03",
+    "3000_04",
+    "3000_13",
+    "3002_03"
+   ]
+  },
+  {
+   "mindId": "4019",
+   "skill": {
+    "id": "MSKILL_301_02",
+    "special": false,
+    "name": "SKILL_NAME_301_02",
+    "text": "DTbattle_SKILL_TEXT_301_02",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "3010_01",
+    "3010_02",
+    "3010_03",
+    "3010_13"
+   ]
+  },
+  {
+   "mindId": "4020",
+   "skill": {
+    "id": "SKILL_301_10",
+    "name": "SKILL_NAME_301_10",
+    "text": "DTbattle_SKILL_TEXT_301_10",
+    "button": 38,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY",
+    "special": true,
+    "damageRank": 150
+   },
+   "statues": [
+    "3010_01",
+    "3010_02",
+    "3010_03",
+    "3010_13"
+   ]
+  },
+  {
+   "mindId": "4022",
+   "skill": {
+    "id": "SKILL_302_08",
+    "special": true,
+    "name": "SKILL_NAME_302_08",
+    "text": "DTbattle_SKILL_TEXT_302_08",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "3020_01",
+    "3020_02",
+    "3020_03",
+    "3020_12",
+    "3020_13",
+    "3020_28"
+   ]
+  },
+  {
+   "mindId": "4024",
+   "skill": {
+    "id": "SKILL_303_05",
+    "special": false,
+    "name": "SKILL_NAME_303_05",
+    "text": "DTbattle_SKILL_TEXT_303_05",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "3030_01",
+    "3030_02",
+    "3030_03",
+    "3030_13",
+    "3030_14",
+    "3031_03",
+    "3031_04"
+   ]
+  },
+  {
+   "mindId": "4025",
+   "skill": {
+    "id": "SKILL_304_09",
+    "special": false,
+    "name": "SKILL_NAME_304_09",
+    "text": "DTbattle_SKILL_TEXT_304_09",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "3040_01",
+    "3040_02",
+    "3040_03",
+    "3040_04",
+    "3040_13"
+   ]
+  },
+  {
+   "mindId": "4026",
+   "skill": {
+    "id": "SKILL_304_10",
+    "special": true,
+    "name": "SKILL_NAME_304_10",
+    "text": "DTbattle_SKILL_TEXT_304_10",
+    "button": 90,
+    "damageRank": 150,
+    "category": "DTSC_STAND_PHYSICAL_ALL",
+    "targetType": 2,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "3040_01",
+    "3040_02",
+    "3040_03",
+    "3040_04",
+    "3040_13"
+   ]
+  },
+  {
+   "mindId": "4028",
+   "skill": {
+    "id": "MSKILL_305_03",
+    "special": true,
+    "name": "SKILL_NAME_305_03",
+    "text": "DTbattle_SKILL_TEXT_305_03",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "3050_01",
+    "3050_02",
+    "3050_03",
+    "3050_04"
+   ]
+  },
+  {
+   "mindId": "4029",
+   "skill": {
+    "id": "SKILL_311_07",
+    "special": false,
+    "name": "SKILL_NAME_311_07",
+    "text": "DTbattle_SKILL_TEXT_311_07",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "3110_01",
+    "3110_02",
+    "3110_03",
+    "3110_13",
+    "3110_14"
+   ]
+  },
+  {
+   "mindId": "4031",
+   "skill": {
+    "id": "SKILL_315_01",
+    "special": false,
+    "name": "SKILL_NAME_315_01",
+    "text": "DTbattle_SKILL_TEXT_315_01",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "3150_01",
+    "3150_02",
+    "3150_03",
+    "3150_04",
+    "3150_12"
+   ]
+  },
+  {
+   "mindId": "4032",
+   "skill": {
+    "id": "SKILL_315_10",
+    "special": true,
+    "name": "SKILL_NAME_315_10",
+    "text": "DTbattle_SKILL_TEXT_315_10",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "3150_01",
+    "3150_02",
+    "3150_03",
+    "3150_04",
+    "3150_12"
+   ]
+  },
+  {
+   "mindId": "4033",
+   "skill": {
+    "id": "MSKILL_330_04",
+    "special": false,
+    "name": "SKILL_NAME_330_04",
+    "text": "DTbattle_SKILL_TEXT_330_04",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "3300_01",
+    "3300_02",
+    "3300_03",
+    "3300_04"
+   ]
+  },
+  {
+   "mindId": "4035",
+   "skill": {
+    "id": "SKILL_332_07",
+    "name": "SKILL_NAME_332_07",
+    "text": "DTbattle_SKILL_TEXT_332_07",
+    "button": 7,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY",
+    "special": false,
+    "damageRank": 125
+   },
+   "statues": [
+    "3323_08"
+   ]
+  },
+  {
+   "mindId": "4038",
+   "skill": {
+    "id": "MSKILL_400_05",
+    "special": true,
+    "name": "SKILL_NAME_400_05",
+    "text": "DTbattle_SKILL_TEXT_400_05",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "4000_01",
+    "4000_02",
+    "4000_03",
+    "4000_04",
+    "4000_12",
+    "4000_18",
+    "4000_23"
+   ]
+  },
+  {
+   "mindId": "4039",
+   "skill": {
+    "id": "SKILL_401_09",
+    "name": "SKILL_NAME_401_09",
+    "text": "DTbattle_SKILL_TEXT_401_09",
+    "button": 7,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY",
+    "special": false,
+    "damageRank": 125
+   },
+   "statues": [
+    "4010_01",
+    "4010_13"
+   ]
+  },
+  {
+   "mindId": "4040",
+   "skill": {
+    "id": "SKILL_401_10",
+    "name": "SKILL_NAME_401_10",
+    "text": "DTbattle_SKILL_TEXT_401_10",
+    "button": 38,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY",
+    "special": true,
+    "damageRank": 150
+   },
+   "statues": [
+    "4010_01",
+    "4010_13"
+   ]
+  },
+  {
+   "mindId": "4042",
+   "skill": {
+    "id": "SKILL_401_18",
+    "special": true,
+    "name": "SKILL_NAME_401_18",
+    "text": "DTbattle_SKILL_TEXT_401_18",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "4011_02",
+    "4011_03",
+    "4011_15",
+    "4011_16",
+    "4011_17",
+    "4011_18"
+   ]
+  },
+  {
+   "mindId": "4045",
+   "skill": {
+    "id": "SKILL_402_01",
+    "special": false,
+    "name": "SKILL_NAME_402_01",
+    "text": "DTbattle_SKILL_TEXT_402_01",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "4020_01",
+    "4020_02",
+    "4020_03",
+    "4020_04",
+    "4020_13"
+   ]
+  },
+  {
+   "mindId": "4046",
+   "skill": {
+    "id": "SKILL_402_02",
+    "special": true,
+    "name": "SKILL_NAME_402_02",
+    "text": "DTbattle_SKILL_TEXT_402_02",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "4020_01",
+    "4020_02",
+    "4020_03",
+    "4020_04",
+    "4020_13"
+   ]
+  },
+  {
+   "mindId": "4049",
+   "skill": {
+    "id": "SKILL_404_05",
+    "special": false,
+    "name": "SKILL_NAME_404_05",
+    "text": "DTbattle_SKILL_TEXT_404_05",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "4040_01",
+    "4040_12",
+    "4040_13",
+    "4040_14",
+    "4042_03"
+   ]
+  },
+  {
+   "mindId": "4050",
+   "skill": {
+    "id": "SKILL_404_10",
+    "special": true,
+    "name": "SKILL_NAME_404_10",
+    "text": "DTbattle_SKILL_TEXT_404_10",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "4040_01",
+    "4040_12",
+    "4040_13",
+    "4040_14",
+    "4042_03"
+   ]
+  },
+  {
+   "mindId": "4052",
+   "skill": {
+    "id": "SKILL_408_08",
+    "special": true,
+    "name": "SKILL_NAME_408_08",
+    "text": "DTbattle_SKILL_TEXT_408_08",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "4080_01",
+    "4080_02",
+    "4080_03",
+    "4080_04",
+    "4080_13"
+   ]
+  },
+  {
+   "mindId": "4053",
+   "skill": {
+    "id": "MSKILL_411_02",
+    "special": false,
+    "name": "SKILL_NAME_411_02",
+    "text": "DTbattle_SKILL_TEXT_411_02",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "4110_01",
+    "4110_02",
+    "4110_13",
+    "4110_14"
+   ]
+  },
+  {
+   "mindId": "4054",
+   "skill": {
+    "id": "SKILL_411_06",
+    "special": true,
+    "name": "SKILL_NAME_411_06",
+    "text": "DTbattle_SKILL_TEXT_411_06",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "4110_01",
+    "4110_02",
+    "4110_13",
+    "4110_14"
+   ]
+  },
+  {
+   "mindId": "4057",
+   "skill": {
+    "id": "SKILL_416_01",
+    "special": false,
+    "name": "SKILL_NAME_416_01",
+    "text": "DTbattle_SKILL_TEXT_416_01",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_BOMB",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "4160_01",
+    "4160_02",
+    "4160_03",
+    "4160_12"
+   ]
+  },
+  {
+   "mindId": "4058",
+   "skill": {
+    "id": "SKILL_416_04",
+    "special": true,
+    "name": "SKILL_NAME_416_04",
+    "text": "DTbattle_SKILL_TEXT_416_04",
+    "button": 90,
+    "damageRank": 150,
+    "category": "DTSC_STAND_PHYSICAL_ALL",
+    "targetType": 2,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "4160_01",
+    "4160_02",
+    "4160_03",
+    "4160_12"
+   ]
+  },
+  {
+   "mindId": "4059",
+   "skill": {
+    "id": "SKILL_419_06",
+    "name": "SKILL_NAME_419_06",
+    "text": "DTbattle_SKILL_TEXT_419_06",
+    "button": 7,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY",
+    "special": false,
+    "damageRank": 125
+   },
+   "statues": [
+    "4190_13",
+    "4190_14",
+    "4193_08"
+   ]
+  },
+  {
+   "mindId": "4060",
+   "skill": {
+    "id": "SKILL_419_08",
+    "name": "SKILL_NAME_419_08",
+    "text": "DTbattle_SKILL_TEXT_419_08",
+    "button": 38,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL",
+    "special": true,
+    "damageRank": 150
+   },
+   "statues": [
+    "4190_13",
+    "4190_14",
+    "4193_08"
+   ]
+  },
+  {
+   "mindId": "4061",
+   "skill": {
+    "id": "MSKILL_321_04",
+    "special": false,
+    "name": "SKILL_NAME_321_04",
+    "text": "DTbattle_SKILL_TEXT_321_04",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "3210_01",
+    "3210_02",
+    "3210_03",
+    "3210_12",
+    "3210_13"
+   ]
+  },
+  {
+   "mindId": "4062",
+   "skill": {
+    "id": "MSKILL_321_07",
+    "special": true,
+    "name": "SKILL_NAME_321_07",
+    "text": "DTbattle_SKILL_TEXT_321_07",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "3210_01",
+    "3210_02",
+    "3210_03",
+    "3210_12",
+    "3210_13"
+   ]
+  },
+  {
+   "mindId": "4063",
+   "skill": {
+    "id": "MSKILL_310_02",
+    "special": false,
+    "name": "SKILL_NAME_310_02",
+    "text": "DTbattle_SKILL_TEXT_310_02",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "3100_01",
+    "3100_02",
+    "3100_03",
+    "3100_12"
+   ]
+  },
+  {
+   "mindId": "4064",
+   "skill": {
+    "id": "SKILL_310_06",
+    "special": true,
+    "name": "SKILL_NAME_310_06",
+    "text": "DTbattle_SKILL_TEXT_310_06",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "3100_01",
+    "3100_02",
+    "3100_03",
+    "3100_12"
+   ]
+  },
+  {
+   "mindId": "4065",
+   "skill": {
+    "id": "SKILL_206_03",
+    "special": false,
+    "name": "SKILL_NAME_206_03",
+    "text": "DTbattle_SKILL_TEXT_206_03",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "2060_01",
+    "2060_02",
+    "2060_03"
+   ]
+  },
+  {
+   "mindId": "4066",
+   "skill": {
+    "id": "SKILL_206_07",
+    "name": "SKILL_NAME_206_07",
+    "text": "DTbattle_SKILL_TEXT_206_07",
+    "button": 38,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL",
+    "special": true,
+    "damageRank": 150
+   },
+   "statues": [
+    "2060_01",
+    "2060_02",
+    "2060_03"
+   ]
+  },
+  {
+   "mindId": "4068",
+   "skill": {
+    "id": "SKILL_110_06",
+    "special": true,
+    "name": "SKILL_NAME_110_06",
+    "text": "DTbattle_SKILL_TEXT_110_06",
+    "button": 90,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL_ALL",
+    "targetType": 2,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "1100_01",
+    "1100_02",
+    "1100_03",
+    "1100_11",
+    "1100_12",
+    "1100_13",
+    "1100_14",
+    "1100_28"
+   ]
+  },
+  {
+   "mindId": "4069",
+   "skill": {
+    "id": "MSKILL_413_04",
+    "special": false,
+    "name": "SKILL_NAME_413_04",
+    "text": "DTbattle_SKILL_TEXT_413_04",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "4130_01",
+    "4130_02",
+    "4130_03",
+    "4130_13",
+    "4130_25",
+    "4130_26",
+    "4130_27",
+    "4130_28"
+   ]
+  },
+  {
+   "mindId": "4070",
+   "skill": {
+    "id": "MSKILL_413_05",
+    "special": true,
+    "name": "SKILL_NAME_413_05",
+    "text": "DTbattle_SKILL_TEXT_413_05",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "4130_01",
+    "4130_02",
+    "4130_03",
+    "4130_13",
+    "4130_25",
+    "4130_26",
+    "4130_27",
+    "4130_28"
+   ]
+  },
+  {
+   "mindId": "4071",
+   "skill": {
+    "id": "MSKILL_112_04",
+    "special": false,
+    "name": "SKILL_NAME_112_04",
+    "text": "DTbattle_SKILL_TEXT_112_04",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "1120_01",
+    "1120_02",
+    "1120_03"
+   ]
+  },
+  {
+   "mindId": "4073",
+   "skill": {
+    "id": "SKILL_109_03",
+    "special": false,
+    "name": "SKILL_NAME_109_03",
+    "text": "DTbattle_SKILL_TEXT_109_03",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "1090_01",
+    "1090_02",
+    "1090_03",
+    "1090_13"
+   ]
+  },
+  {
+   "mindId": "4074",
+   "skill": {
+    "id": "SKILL_109_02",
+    "special": true,
+    "name": "SKILL_NAME_109_02",
+    "text": "DTbattle_SKILL_TEXT_109_02",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_HAMON",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "HAMON"
+   },
+   "statues": [
+    "1090_01",
+    "1090_02",
+    "1090_03",
+    "1090_13"
+   ]
+  },
+  {
+   "mindId": "4075",
+   "skill": {
+    "id": "SKILL_108_01",
+    "special": false,
+    "name": "SKILL_NAME_108_01",
+    "text": "DTbattle_SKILL_TEXT_108_01",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "1080_01",
+    "1080_02",
+    "1080_03"
+   ]
+  },
+  {
+   "mindId": "4077",
+   "skill": {
+    "id": "SKILL_207_01",
+    "special": false,
+    "name": "SKILL_NAME_207_01",
+    "text": "DTbattle_SKILL_TEXT_207_01",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "2070_01",
+    "2070_02",
+    "2070_03"
+   ]
+  },
+  {
+   "mindId": "4079",
+   "skill": {
+    "id": "MSKILL_208_02",
+    "special": false,
+    "name": "SKILL_NAME_208_02",
+    "text": "DTbattle_SKILL_TEXT_208_02",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "2080_01",
+    "2080_02",
+    "2080_03"
+   ]
+  },
+  {
+   "mindId": "4080",
+   "skill": {
+    "id": "MSKILL_208_05",
+    "special": true,
+    "name": "SKILL_NAME_208_05",
+    "text": "DTbattle_SKILL_TEXT_208_05",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "2080_01",
+    "2080_02",
+    "2080_03"
+   ]
+  },
+  {
+   "mindId": "4081",
+   "skill": {
+    "id": "MSKILL_333_04",
+    "special": false,
+    "name": "SKILL_NAME_333_04",
+    "text": "DTbattle_SKILL_TEXT_333_04",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "3330_01",
+    "3330_02",
+    "3330_03",
+    "3330_04"
+   ]
+  },
+  {
+   "mindId": "4082",
+   "skill": {
+    "id": "SKILL_333_10",
+    "name": "SKILL_NAME_333_10",
+    "text": "DTbattle_SKILL_TEXT_333_10",
+    "button": 90,
+    "category": "DTSC_STAND_PHYSICAL_ALL",
+    "targetType": 2,
+    "processType": 1,
+    "attr": "STAND_PHY",
+    "special": true,
+    "damageRank": 150
+   },
+   "statues": [
+    "3330_01",
+    "3330_02",
+    "3330_03",
+    "3330_04"
+   ]
+  },
+  {
+   "mindId": "4083",
+   "skill": {
+    "id": "SKILL_417_03",
+    "special": false,
+    "name": "SKILL_NAME_417_03",
+    "text": "DTbattle_SKILL_TEXT_417_03",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_ELECT",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "ELECTOCAL"
+   },
+   "statues": [
+    "4170_01",
+    "4170_02",
+    "4170_03",
+    "4170_15",
+    "4170_16",
+    "4170_17",
+    "4170_18"
+   ]
+  },
+  {
+   "mindId": "4084",
+   "skill": {
+    "id": "MSKILL_417_01",
+    "special": true,
+    "name": "SKILL_NAME_417_01",
+    "text": "DTbattle_SKILL_TEXT_417_01",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_ELECT",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "ELECTOCAL"
+   },
+   "statues": [
+    "4170_01",
+    "4170_02",
+    "4170_03",
+    "4170_15",
+    "4170_16",
+    "4170_17",
+    "4170_18"
+   ]
+  },
+  {
+   "mindId": "4085",
+   "skill": {
+    "id": "MSKILL_327_04",
+    "special": false,
+    "name": "SKILL_NAME_327_04",
+    "text": "DTbattle_SKILL_TEXT_327_04",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "3270_01",
+    "3270_02",
+    "3270_03",
+    "3270_04"
+   ]
+  },
+  {
+   "mindId": "4086",
+   "skill": {
+    "id": "MSKILL_327_05",
+    "special": true,
+    "name": "SKILL_NAME_327_05",
+    "text": "DTbattle_SKILL_TEXT_327_05",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "3270_01",
+    "3270_02",
+    "3270_03",
+    "3270_04"
+   ]
+  },
+  {
+   "mindId": "4088",
+   "skill": {
+    "id": "MSKILL_309_05",
+    "special": true,
+    "name": "SKILL_NAME_309_05",
+    "text": "DTbattle_SKILL_TEXT_309_05",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "3090_01",
+    "3090_02",
+    "3090_03"
+   ]
+  },
+  {
+   "mindId": "4091",
+   "skill": {
+    "id": "MSKILL_332_14",
+    "special": false,
+    "name": "SKILL_NAME_332_14",
+    "text": "DTbattle_SKILL_TEXT_332_14",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "3321_03",
+    "3321_18"
+   ]
+  },
+  {
+   "mindId": "4092",
+   "skill": {
+    "id": "SKILL_332_15",
+    "name": "SKILL_NAME_332_15",
+    "text": "DTbattle_SKILL_TEXT_332_15",
+    "button": 38,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL",
+    "special": true,
+    "damageRank": 150
+   },
+   "statues": [
+    "3321_03",
+    "3321_18"
+   ]
+  },
+  {
+   "mindId": "4094",
+   "skill": {
+    "id": "MSKILL_113_05",
+    "special": true,
+    "name": "SKILL_NAME_113_05",
+    "text": "DTbattle_SKILL_TEXT_113_05",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "1130_01",
+    "1130_02",
+    "1130_03",
+    "1130_04",
+    "1130_13"
+   ]
+  },
+  {
+   "mindId": "4095",
+   "skill": {
+    "id": "MSKILL_111_04",
+    "special": false,
+    "name": "SKILL_NAME_111_04",
+    "text": "DTbattle_SKILL_TEXT_111_04",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "1110_01",
+    "1110_02",
+    "1110_03"
+   ]
+  },
+  {
+   "mindId": "4097",
+   "skill": {
+    "id": "MSKILL_306_04",
+    "special": false,
+    "name": "SKILL_NAME_306_04",
+    "text": "DTbattle_SKILL_TEXT_306_04",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "3060_01",
+    "3060_02",
+    "3060_03"
+   ]
+  },
+  {
+   "mindId": "4098",
+   "skill": {
+    "id": "MSKILL_306_05",
+    "special": true,
+    "name": "SKILL_NAME_306_05",
+    "text": "DTbattle_SKILL_TEXT_306_05",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "3060_01",
+    "3060_02",
+    "3060_03"
+   ]
+  },
+  {
+   "mindId": "4099",
+   "skill": {
+    "id": "MSKILL_324_04",
+    "special": false,
+    "name": "SKILL_NAME_324_04",
+    "text": "DTbattle_SKILL_TEXT_324_04",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "3240_11",
+    "3240_12",
+    "3240_13"
+   ]
+  },
+  {
+   "mindId": "4100",
+   "skill": {
+    "id": "MSKILL_324_05",
+    "special": true,
+    "name": "SKILL_NAME_324_05",
+    "text": "DTbattle_SKILL_TEXT_324_05",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "3240_11",
+    "3240_12",
+    "3240_13"
+   ]
+  },
+  {
+   "mindId": "4102",
+   "skill": {
+    "id": "SKILL_419_14",
+    "name": "SKILL_NAME_419_14",
+    "text": "DTbattle_SKILL_TEXT_419_14",
+    "button": 7,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL",
+    "special": false,
+    "damageRank": 125
+   },
+   "statues": [
+    "4191_01",
+    "4191_02",
+    "4191_03",
+    "4191_04"
+   ]
+  },
+  {
+   "mindId": "4103",
+   "skill": {
+    "id": "MSKILL_419_15",
+    "special": true,
+    "name": "SKILL_NAME_419_15",
+    "text": "DTbattle_SKILL_TEXT_419_15",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "4191_01",
+    "4191_02",
+    "4191_03",
+    "4191_04"
+   ]
+  },
+  {
+   "mindId": "4104",
+   "skill": {
+    "id": "MSKILL_304_04",
+    "special": false,
+    "name": "SKILL_NAME_304_04",
+    "text": "DTbattle_SKILL_TEXT_304_04",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "3040_01",
+    "3040_02",
+    "3040_03",
+    "3040_04",
+    "3040_13"
+   ]
+  },
+  {
+   "mindId": "4108",
+   "skill": {
+    "id": "MSKILL_424_04",
+    "special": false,
+    "name": "SKILL_NAME_424_04",
+    "text": "DTbattle_SKILL_TEXT_424_04",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "4240_11",
+    "4240_12",
+    "4240_13"
+   ]
+  },
+  {
+   "mindId": "4109",
+   "skill": {
+    "id": "MSKILL_424_05",
+    "special": true,
+    "name": "SKILL_NAME_424_05",
+    "text": "DTbattle_SKILL_TEXT_424_05",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "4240_11",
+    "4240_12",
+    "4240_13"
+   ]
+  },
+  {
+   "mindId": "4110",
+   "skill": {
+    "id": "MSKILL_208_14",
+    "special": false,
+    "name": "SKILL_NAME_208_14",
+    "text": "DTbattle_SKILL_TEXT_208_14",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "2081_11",
+    "2081_12",
+    "2081_13",
+    "2081_14"
+   ]
+  },
+  {
+   "mindId": "4111",
+   "skill": {
+    "id": "MSKILL_208_15",
+    "special": true,
+    "name": "SKILL_NAME_208_15",
+    "text": "DTbattle_SKILL_TEXT_208_15",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_HAMON",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "HAMON"
+   },
+   "statues": [
+    "2081_11",
+    "2081_12",
+    "2081_13",
+    "2081_14"
+   ]
+  },
+  {
+   "mindId": "4112",
+   "skill": {
+    "id": "MSKILL_211_12",
+    "special": false,
+    "name": "SKILL_NAME_211_12",
+    "text": "DTbattle_SKILL_TEXT_211_12",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_UV",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "UV"
+   },
+   "statues": [
+    "2111_01",
+    "2111_02",
+    "2111_03"
+   ]
+  },
+  {
+   "mindId": "4113",
+   "skill": {
+    "id": "MSKILL_211_15",
+    "special": true,
+    "name": "SKILL_NAME_211_15",
+    "text": "DTbattle_SKILL_TEXT_211_15",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_UV",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "UV"
+   },
+   "statues": [
+    "2111_01",
+    "2111_02",
+    "2111_03"
+   ]
+  },
+  {
+   "mindId": "4114",
+   "skill": {
+    "id": "SKILL_419_24",
+    "name": "SKILL_NAME_419_24",
+    "text": "DTbattle_SKILL_TEXT_419_24",
+    "button": 7,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL",
+    "special": false,
+    "damageRank": 125
+   },
+   "statues": [
+    "4192_03",
+    "4192_04"
+   ]
+  },
+  {
+   "mindId": "4115",
+   "skill": {
+    "id": "MSKILL_419_25",
+    "special": true,
+    "name": "SKILL_NAME_419_25",
+    "text": "DTbattle_SKILL_TEXT_419_25",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_BOMB",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "4192_03",
+    "4192_04"
+   ]
+  },
+  {
+   "mindId": "4116",
+   "skill": {
+    "id": "MSKILL_300_14",
+    "special": false,
+    "name": "SKILL_NAME_300_14",
+    "text": "DTbattle_SKILL_TEXT_300_14",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "3001_03",
+    "3001_04",
+    "3001_13"
+   ]
+  },
+  {
+   "mindId": "4117",
+   "skill": {
+    "id": "MSKILL_300_15",
+    "special": true,
+    "name": "SKILL_NAME_300_15",
+    "text": "DTbattle_SKILL_TEXT_300_15",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "3001_03",
+    "3001_04",
+    "3001_13"
+   ]
+  },
+  {
+   "mindId": "4119",
+   "skill": {
+    "id": "MSKILL_307_05",
+    "special": true,
+    "name": "SKILL_NAME_307_05",
+    "text": "DTbattle_SKILL_TEXT_307_05",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "3070_01",
+    "3070_02",
+    "3070_03"
+   ]
+  },
+  {
+   "mindId": "4124",
+   "skill": {
+    "id": "SKILL_300_10",
+    "special": true,
+    "name": "SKILL_NAME_300_10",
+    "text": "DTbattle_SKILL_TEXT_300_10",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL"
+   },
+   "statues": [
+    "3000_01",
+    "3000_02",
+    "3000_03",
+    "3000_04",
+    "3000_13",
+    "3002_03"
+   ]
+  },
+  {
+   "mindId": "4128",
+   "skill": {
+    "id": "SKILL_332_25",
+    "name": "SKILL_NAME_332_25",
+    "text": "DTbattle_SKILL_TEXT_332_25",
+    "button": 90,
+    "category": "DTSC_PHYSICAL_ALL",
+    "targetType": 2,
+    "processType": 1,
+    "attr": "PHYSICAL",
+    "special": true,
+    "damageRank": 150
+   },
+   "statues": [
+    "3322_08"
+   ]
+  }
+ ],
+ "timeStop": {
+  "MSKILL_300_14": "DTSC_WORLD_LIGHT",
+  "SKILL_300_10": "DTSC_WORLD_MIDDLE",
+  "SKILL_300_14": "DTSC_WORLD_MIDDLE",
+  "SKILL_332_11": "DTSC_WORLD_LIGHT",
+  "SKILL_404_06": "DTSC_WORLD_MIDDLE",
+  "SKILL_404_10": "DTSC_WORLD_MIDDLE",
+  "SKILL_532_01": "DTSC_WORLD_LIGHT"
+ }
+}
