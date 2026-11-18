@@ -249,6 +249,8 @@ pub fn trophy_claim(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
 
 /// Status codes the client shows (ResponseParameterCode.Status).
 const E_MIND_MISSING: i64 = 51103;
+/// Not enough statues for a team (client ErrorCode).
+const E_TEAM_EMPTY_MEMBER: i64 = 51706;
 const E_NO_STATUE: i64 = 51702;
 const E_CP_OVER: i64 = 51705;
 const E_SLOT_LOCKED: i64 = 51709;
@@ -402,6 +404,100 @@ pub fn equip_multiple_assist(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         }
     })?;
     r.map_err(ApiError::Status)?;
+    ok(json!({ "teamInfo": shown(&p.collection, team_num) }))
+}
+
+/// `/team/auto_set_and_equip {teamNum, changePlan}` (the auto formation popup): the three best
+/// owned statues by the plan (1 total of HP/ATK/DEF, 2 ATK, 3 DEF, 4 HP), one per character, and
+/// for each seat the highest-rarity free Minds that fit slots 1-4 and the Mind capacity (ours).
+/// Assists stay as they were (one that became a main member is no longer shown).
+pub fn auto_set_and_equip(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let team_num = team_num(env)?;
+    let plan = int(env, "changePlan").unwrap_or(1);
+    let (p, ok_) = with_profile(ctx, env, |p| {
+        let c = &p.collection;
+        let score = |o: &collection::OwnedStatue| {
+            let v = collection::statue_info(o);
+            let g = |k: &str| v[k].as_i64().unwrap_or(0);
+            match plan {
+                2 => g("atk"),
+                3 => g("def"),
+                4 => g("hp"),
+                _ => g("hp") + g("atk") + g("def"),
+            }
+        };
+        let mut ranked: Vec<(i64, i64, String)> = c
+            .statues
+            .iter()
+            .filter(|o| c.known_statue(o.uid).is_some())
+            .map(|o| {
+                let chara = o.statue_id.split('_').next().unwrap_or("").to_string();
+                (score(o), o.uid, chara)
+            })
+            .collect();
+        ranked.sort_by(|a, b| b.0.cmp(&a.0).then(a.1.cmp(&b.1)));
+        let mut slots = [0i64; 3];
+        let mut charas: Vec<String> = Vec::new();
+        let mut n = 0;
+        for (_, uid, chara) in &ranked {
+            if n == 3 {
+                break;
+            }
+            if charas.contains(chara) {
+                continue;
+            }
+            charas.push(chara.clone());
+            slots[n] = *uid;
+            n += 1;
+        }
+        if n < 3 {
+            return (Err(E_TEAM_EMPTY_MEMBER), Change::None);
+        }
+        // Minds: highest rarity (then level) first, each seat within slots 1-4 and capacity.
+        let other_teams: std::collections::HashSet<i64> = c
+            .teams
+            .iter()
+            .filter(|t| t.team_num != team_num)
+            .flat_map(|t| t.minds.iter().flatten().map(|(_, u)| *u))
+            .collect();
+        let mut minds: Vec<(i64, i64, i64, i64)> = c
+            .minds
+            .iter()
+            .filter(|m| !other_teams.contains(&m.uid))
+            .map(|m| {
+                (
+                    collection::mind_rarity(&m.mind_id),
+                    m.level,
+                    collection::mind_cost(&m.mind_id),
+                    m.uid,
+                )
+            })
+            .collect();
+        minds.sort_by(|a, b| (b.0, b.1).cmp(&(a.0, a.1)).then(a.3.cmp(&b.3)));
+        let mut seats: [Vec<(i64, i64)>; 3] = Default::default();
+        let mut taken = std::collections::HashSet::new();
+        for seat in seats.iter_mut() {
+            let mut cost = 0;
+            for (_, _, c_, uid) in &minds {
+                if seat.len() as i64 == collection::MIND_SLOTS_OPEN {
+                    break;
+                }
+                if taken.contains(uid) || cost + c_ > collection::MIND_CAPACITY {
+                    continue;
+                }
+                cost += c_;
+                taken.insert(*uid);
+                seat.push((seat.len() as i64 + 1, *uid));
+            }
+        }
+        for t in teams_numbered(&mut p.collection, team_num) {
+            t.slots = slots;
+            t.minds = seats.clone();
+        }
+        p.progress.missions.bump("team3", 1, jdr_core::clock::now());
+        (Ok(()), Change::Bookkeeping)
+    })?;
+    ok_.map_err(ApiError::Status)?;
     ok(json!({ "teamInfo": shown(&p.collection, team_num) }))
 }
 
@@ -832,5 +928,61 @@ mod tests {
             r["teamInfo"]["teamOrder"]["leaderStatue"]["assistStatueList"],
             json!([])
         );
+    }
+
+    #[test]
+    fn auto_formation_picks_three_and_equips_minds() {
+        let dir = std::env::temp_dir().join(format!("jdr-auto-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let ctx = Ctx::new(Settings::new(dir), false);
+        let uuid = ctx.accounts.create(&[]).unwrap().uuid;
+        let call = |path: &str, param: Value| dispatch(&ctx, path, &env(&uuid, param)).0;
+        call("/team/team_info", json!({})).unwrap();
+        for plan in 1..=4 {
+            let r = call(
+                "/team/auto_set_and_equip",
+                json!({"teamNum": 2, "changePlan": plan}),
+            )
+            .unwrap();
+            let order = &r["teamInfo"]["teamOrder"];
+            let seats = ["leaderStatue", "memberLeftStatue", "memberRightStatue"];
+            let ids: Vec<String> = seats
+                .iter()
+                .map(|s| {
+                    order[*s]["statueInfo"]["statueId"]
+                        .as_str()
+                        .unwrap()
+                        .to_string()
+                })
+                .collect();
+            let charas: std::collections::HashSet<&str> =
+                ids.iter().map(|i| i.split('_').next().unwrap()).collect();
+            assert_eq!(charas.len(), 3, "one statue per character: {ids:?}");
+            for s in seats {
+                let minds = order[s]["equipMindList"].as_array().unwrap();
+                assert!(!minds.is_empty() && minds.len() <= 4);
+                let cost: i64 = minds.iter().map(|m| m["cost"].as_i64().unwrap()).sum();
+                assert!(cost <= crate::collection::MIND_CAPACITY);
+                assert!(order[s]["assistStatueList"].is_array());
+            }
+        }
+        // ATK plan: the leader has the highest ATK of any owned statue.
+        let r = call(
+            "/team/auto_set_and_equip",
+            json!({"teamNum": 2, "changePlan": 2}),
+        )
+        .unwrap();
+        let lead_atk = r["teamInfo"]["teamOrder"]["leaderStatue"]["statueInfo"]["atk"]
+            .as_i64()
+            .unwrap();
+        let all = call("/statue/statue_list", json!({})).unwrap();
+        let best = all["statueList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|s| s["atk"].as_i64().unwrap())
+            .max()
+            .unwrap();
+        assert_eq!(lead_atk, best);
     }
 }
