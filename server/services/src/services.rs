@@ -9,6 +9,7 @@ use serde_json::{json, Map, Value};
 pub mod arena;
 pub mod bizarre;
 pub mod book;
+pub mod clan;
 pub mod client;
 pub mod common;
 pub mod dungeon;
@@ -92,7 +93,32 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/dungeon/tarot_flip" => dungeon::tarot_flip(ctx, env),
         "/dungeon/earn_reward" => dungeon::earn_reward(ctx, env),
         "/dungeon/reward_check" => dungeon::reward_check(ctx, env),
-        "/clan/recommend" => menu::clan_recommend(ctx, env),
+        "/clan/recommend" => clan::recommend(ctx, env),
+        "/clan/search" => clan::search(ctx, env),
+        "/clan/create" => clan::create(ctx, env),
+        "/clan/add" => clan::add(ctx, env),
+        "/clan/cancel_approval" => clan::cancel_approval(ctx, env),
+        "/clan/info" => clan::info(ctx, env),
+        "/clan/sync_server_info" => clan::sync_server_info(ctx, env),
+        "/clan/check_add_request" => clan::check_add_request(ctx, env),
+        "/clan/add_request_list" => clan::add_request_list(ctx, env),
+        "/clan/add_approval" => clan::add_approval(ctx, env),
+        "/clan/denial_approval" => clan::denial_approval(ctx, env),
+        "/clan/expulsion" => clan::expulsion(ctx, env),
+        "/clan/set_sub_leader" => clan::set_sub_leader(ctx, env),
+        "/clan/change_info" => clan::change_info(ctx, env),
+        "/clan/secession" => clan::secession(ctx, env),
+        "/clan/invitation" => clan::invitation(ctx, env),
+        "/clan/clan_object_list" => clan::clan_object_list(ctx, env),
+        "/clan/clan_bg_list" => clan::clan_bg_list(ctx, env),
+        "/clan/donation_item_list" => clan::donation_item_list(ctx, env),
+        "/clan/clan_donation" => clan::clan_donation(ctx, env),
+        "/event/clan_member_event_point_list" => clan::member_point_list(ctx, env),
+        "/clan/room_info"
+        | "/clan/set_object"
+        | "/clan/del_object"
+        | "/clan/all_del_object"
+        | "/clan/set_object_comment" => clan::room_dead(ctx, env),
         "/present/present_list" => present::present_list(ctx, env),
         "/follow/follow_list" => menu::follow_list(ctx, env),
         "/item/item_list" => item::item_list(ctx, env),

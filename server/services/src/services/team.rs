@@ -248,11 +248,18 @@ pub fn members_of(env: &RequestEnvelope) -> [i64; 3] {
     ]
 }
 
-/// `UserInfoMiniResponse` for the profile card: this player (offline there is nobody else), with
-/// the tactical main team's leader as the card's statue.
+/// `UserInfoMiniResponse` for the profile card: this player, with the tactical main team's leader
+/// as the card's statue, or (`id`) an AI member of the player's Town.
 pub fn user_info_mini(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let p = crate::services::statue::profile(ctx, env)?;
-    ok(json!({ "userInfoMini": crate::services::user::user_info_mini(&p) }))
+    let id = match env.param.get("id") {
+        Some(Value::String(s)) => s.clone(),
+        Some(Value::Number(n)) => n.to_string(),
+        _ => String::new(),
+    };
+    let card = crate::services::user::ai_user_info_mini(&p, &id)
+        .unwrap_or_else(|| crate::services::user::user_info_mini(&p));
+    ok(json!({ "userInfoMini": card }))
 }
 
 /// `FollowerListResponse` / `BlockListResponse`: nobody, offline.

@@ -19,7 +19,9 @@ pub fn apply(p: &mut Profile, g: &Gift) {
         presents::DATA_MONEY => p.gold += g.count,
         presents::DATA_STONE => p.stone_free += g.count,
         presents::DATA_FRIEND_POINT => p.friend_points += g.count,
-        presents::DATA_ITEM if crate::items::find(g.data_id).is_some() => {
+        presents::DATA_ITEM
+            if crate::items::find(g.data_id).is_some() || g.data_id == crate::town::MEDAL_ITEM =>
+        {
             p.collection.add_item(g.data_id, g.count)
         }
         _ => {}
