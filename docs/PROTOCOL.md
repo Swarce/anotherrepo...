@@ -241,37 +241,37 @@ Notes:
 | `/raid/raid_offer_rescue` | `RaidOfferRescueRequest` | `RaidOfferRescueResponse` | logged as unknown |
 | `/raid/raid_start` | `RaidStartRequest` | `RaidStartResponse` | logged as unknown |
 
-### pvp — PvP (17, 0 implemented)
+### pvp — PvP (17, 17 implemented)
 
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
-| `/pvp/auto_set_and_equip` | `PvpAutoFomationRequest` | `PvpAutoFomationResponse` | logged as unknown |
-| `/pvp/enemy_player_list` | `PvpOpponentInfoRequest` | `PvpOpponentInfoResponse` | logged as unknown |
-| `/pvp/equip_mind_pvp` | `PvpEquipMindRequest` | `PvpEquipMindResponse` | logged as unknown |
-| `/pvp/equip_multiple_assist_pvp` | `PvpEquipMultipleAssistRequest` | `PvpEquipMultipleAssistResponse` | logged as unknown |
-| `/pvp/equip_multiple_minds_pvp` | `PvpEquipMultipleMindsRequest` | `PvpEquipMultipleMindsResponse` | logged as unknown |
-| `/pvp/fever_mode` | `PvpFeverModeStartRequest` | `PvpFeverModeStartResponse` | logged as unknown |
-| `/pvp/get_pvp_config` | `Pvp2GetConfigRequest` | `Pvp2GetConfigResponse` | logged as unknown |
-| `/pvp/home` | `PvpHomeInfoRequest` | `PvpHomeInfoResponse` | logged as unknown |
-| `/pvp/home_acqusition_check` | `PvpHomeAcqusitionCheckRequest` | `PvpHomeAcqusitionCheckResponse` | logged as unknown |
-| `/pvp/leader_change_pvp` | `PvpLeaderChangeRequest` | `PvpLeaderChangeResponse` | logged as unknown |
-| `/pvp/pvp_end` | `PvpBattleEndRequest` | `PvpBattleEndResponse` | logged as unknown |
-| `/pvp/pvp_start` | `PvpBattleStartRequest` | `PvpBattleStartResponse` | logged as unknown |
-| `/pvp/recover_hp_pvp` | `Pvp2RecoveryHpRequest` | `Pvp2RecoveryHpResponse` | logged as unknown |
-| `/pvp/set_team_all_pvp` | `PvpSetTeamAllRequest` | `PvpSetTeamAllResponse` | logged as unknown |
-| `/pvp/set_team_pvp` | `PvpSetTeamRequest` | `PvpSetTeamResponse` (M) | logged as unknown |
-| `/pvp/statue_select_pvp` | `PvpStatueChangeRequest` | `PvpStatueChangeResponse` | logged as unknown |
-| `/pvp/team_info_pvp` | `PvpTeamInfoPvpRequest` | `PvpTeamInfoPvpResponse` | logged as unknown |
+| `/pvp/auto_set_and_equip` | `PvpAutoFomationRequest` | `PvpAutoFomationResponse` | implemented (Build 23, research/23) |
+| `/pvp/enemy_player_list` | `PvpOpponentInfoRequest` | `PvpOpponentInfoResponse` | implemented (Build 23, research/23) |
+| `/pvp/equip_mind_pvp` | `PvpEquipMindRequest` | `PvpEquipMindResponse` | implemented (Build 23, research/23) |
+| `/pvp/equip_multiple_assist_pvp` | `PvpEquipMultipleAssistRequest` | `PvpEquipMultipleAssistResponse` | implemented (Build 23, research/23) |
+| `/pvp/equip_multiple_minds_pvp` | `PvpEquipMultipleMindsRequest` | `PvpEquipMultipleMindsResponse` | implemented (Build 23, research/23) |
+| `/pvp/fever_mode` | `PvpFeverModeStartRequest` | `PvpFeverModeStartResponse` | implemented (Build 23, research/23) |
+| `/pvp/get_pvp_config` | `Pvp2GetConfigRequest` | `Pvp2GetConfigResponse` | implemented (Build 23, research/23) |
+| `/pvp/home` | `PvpHomeInfoRequest` | `PvpHomeInfoResponse` | implemented (Build 23, research/23) |
+| `/pvp/home_acqusition_check` | `PvpHomeAcqusitionCheckRequest` | `PvpHomeAcqusitionCheckResponse` | implemented (Build 23, research/23) |
+| `/pvp/leader_change_pvp` | `PvpLeaderChangeRequest` | `PvpLeaderChangeResponse` | implemented (Build 23, research/23) |
+| `/pvp/pvp_end` | `PvpBattleEndRequest` | `PvpBattleEndResponse` | implemented (Build 23, research/23) |
+| `/pvp/pvp_start` | `PvpBattleStartRequest` | `PvpBattleStartResponse` | implemented (Build 23, research/23) |
+| `/pvp/recover_hp_pvp` | `Pvp2RecoveryHpRequest` | `Pvp2RecoveryHpResponse` | implemented (Build 23, research/23) |
+| `/pvp/set_team_all_pvp` | `PvpSetTeamAllRequest` | `PvpSetTeamAllResponse` | implemented (Build 23, research/23) |
+| `/pvp/set_team_pvp` | `PvpSetTeamRequest` | `PvpSetTeamResponse` (M) | implemented (Build 23, research/23) |
+| `/pvp/statue_select_pvp` | `PvpStatueChangeRequest` | `PvpStatueChangeResponse` | implemented (Build 23, research/23) |
+| `/pvp/team_info_pvp` | `PvpTeamInfoPvpRequest` | `PvpTeamInfoPvpResponse` | implemented (Build 23, research/23) |
 
-### event — event points and rankings (5, 0 implemented)
+### event — event points and rankings (5, 4 implemented)
 
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
 | `/event/clan_member_event_point_list` | `EventClanMemberPointListRequest` | `EventClanMemberPointListResponse` | logged as unknown |
-| `/event/get_event_ranking_detail` | `RankingDetailRequest` | `RankingDetailResponse` | logged as unknown |
-| `/event/get_event_ranking_list` | `RankingListRequest` | `RankingListResponse` | logged as unknown |
-| `/event/get_event_ranking_reward` | `RankingRewardRequest` | `RankingRewardResponse` | logged as unknown |
-| `/event/point_reward_list` | `EventPointListRequest` | `EventPointListResponse` | logged as unknown |
+| `/event/get_event_ranking_detail` | `RankingDetailRequest` | `RankingDetailResponse` | implemented (Build 24, research/23 §3) |
+| `/event/get_event_ranking_list` | `RankingListRequest` | `RankingListResponse` | implemented (Build 24) |
+| `/event/get_event_ranking_reward` | `RankingRewardRequest` | `RankingRewardResponse` | implemented (Build 24) |
+| `/event/point_reward_list` | `EventPointListRequest` | `EventPointListResponse` | implemented (Build 23) |
 
 ### support — support (helper) players (1, 0 implemented)
 
