@@ -140,6 +140,9 @@ pub struct Progress {
     /// Event points per event (point events, Build 23).
     #[serde(default)]
     pub event_points: std::collections::BTreeMap<String, i64>,
+    /// Mentality and the Labyrinth run in progress (docs/research/22-labyrinth.md).
+    #[serde(default)]
+    pub dungeon: crate::labyrinth::DungeonState,
 }
 
 /// The three tactical missions of a stage (docs/research/11 §4): clear the quest, every member
