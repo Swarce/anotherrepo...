@@ -389,7 +389,7 @@ mod tests {
         }
         assert_eq!(file_for("clientmes:X"), "clientmes");
         assert_eq!(file_for("ui:ui_mypage:0:1:m_Text"), "ui_prefabs");
-        assert_eq!(file_for("script:r_ev_tuto_s01_script_text_jp:3"), "story");
+        assert_eq!(file_for("script:r_ev_tuto_s01_script_text_jp:7:3"), "story");
         assert_eq!(file_for("text:MyPage_JP:A"), "text_menu");
         assert_eq!(file_for("text:SkillName_JP:A"), "text_content");
         assert_eq!(file_for("apk:level2:158:m_Text"), "apk_text");
