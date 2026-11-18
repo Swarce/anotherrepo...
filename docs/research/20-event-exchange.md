@@ -34,7 +34,8 @@ are points.
 
 ## 4. Server (Build 22)
 
-- Every event has the exchange on: `eventShopFlg 1`, `eventCollectType 2`, `eventItemList` = the
+- Every event had the exchange on (Build 25: by kind, docs/research/25-events-raids.md):
+  `eventShopFlg 1`, `eventCollectType 2`, `eventItemList` = the
   player's Fight Coins.
 - **Currency:** Fight Coin (item 3017) for every event. The events' own currencies are not
   recorded, so this is ours. An event-quest clear drops 20 coins (ours) and the result screen

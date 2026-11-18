@@ -164,9 +164,19 @@ Out of scope offline, or later systems:
     and `dungeonGameoverFlag`.
   - Correction: `quests.json` has **no** labyrinth chapters. Rooms reuse tactical story stages
     by floor (ours).
-- **Offline (open calendar):** `event.quiz`, `event.high_score`, `event.town_ranking`,
-  `event.bonuses`, `event.reruns`, `event.end_service`. Event chapters are open; scoring and
-  rewards are not implemented.
+- **Server (Build 25, docs/research/25-events-raids.md):**
+  - `event.high_score`: events 560001 (with the high-score shop) and 560005; each stage's scoring
+    rule comes from its name and is sent as `eventPointSettingList`; the score uses the client's
+    `eventRankingSendInfo`; stage bests, the result panel, the stage banner box and a ranking of
+    the summed bests. The score formula and the shop coin are ours.
+  - `event.quiz`: event 50090's ten quizzes, the right answers from the event's own scripts; the
+    first answer after the question counts; certificate tiers by items collected (ours).
+  - `event.bonuses`: three bonus statues and two bonus Minds per event raise the drops (+25 % /
+    +10 %, cap +100 %); the units are ours. Mind tokkou abilities are not built.
+  - Raids: the client's raid screens are not in the player's files, so a raid boss never appears;
+    the six `/raid/*` routes answer an inactive raid.
+- **Offline (open calendar):** `event.town_ranking` (clan/Town hidden), `event.reruns`,
+  `event.end_service`. Events never close.
 
 ## Presentation
 
@@ -199,7 +209,7 @@ examples and 8 event Minds. The numeric data is unchanged.
 | v2.arena.* (8 rows) | server | AI-controlled opponents (as the 2018 guide describes) built from our roster; the 2019 rule set only; Fever 10 minutes (`early_fever`); a missing result counts as a loss, and since Build 24 so does a battle left without its result (`early_failure`, `forceDefeatFlg`); AI rivals also attack while the player is away (defence log) and rank against the player (docs/research/23-arena.md §1.7-1.12, §2-4) | The early rules (no switching, BP regeneration, rising costs and the cost lock) are not modelled: BP stays 5 and every team costs 1 offline, so the four-battle cost recovery (`recoveryTimes`) stays 0 |
 | v2.labyrinth.* (10 rows) | server (unverified) | 20 floors. Floor rewards (ours) wait in the run and go to the Message Box on a full clear or an escape. A defeat or retire costs a Soul; the last Soul forfeits the run. Escape restores the Souls. 22 Tarot identities, three offered, each used once until the deck resets. Flipping all three costs 20 Mentality. Room costs are 22–35 (docs/research/22) | Card effects follow the client's 3.12.0 texts where an existing affect fits (else none). Rooms have one area. Not yet seen on a device |
 | v2.countup.old_ticket / ticket_pool / ticket_delivery | server | Tiers 20/30/50/50/50; the ticket goes to the Message Box (Build 22) | Which ticket each round gave is unknown (ours) |
-| v2.events.* (9 rows) | partial | Four event chapters playable (Build 20); the Fight Coin exchange (Build 22); event 50045's points and point rewards (Build 23); its ranking against AI rivals (Build 24, docs/research/23-arena.md §3) | No ranking rewards (events never close offline); one-event examples, not general rules; never sum anniversary tiers |
+| v2.events.* (9 rows) | partial | Nine events playable (Build 20, 25): the Fight Coin exchange (Build 22); event 50045's points and point rewards (Build 23) and ranking against AI rivals (Build 24, docs/research/23-arena.md §3); high-score events 560001/560005 with per-stage rules, bests, the result panel, a ranking and a high-score shop; quiz event 50090 with certificates; event bonus units; campaign banners on Quest Select and the Arena home (Build 25, docs/research/25-events-raids.md) | No ranking rewards (events never close offline); raids unreachable (no raid scene in the player's files); one-event examples, not general rules; never sum anniversary tiers |
 
 **Player flows** (`catalog/player_flows.json`, 33). Their audit checks match the boot, home,
 quest and battle rows above. The ordinary screens that are still empty or stubbed are Missions,
