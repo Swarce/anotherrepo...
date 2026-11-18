@@ -149,6 +149,9 @@ pub fn bizarre_start(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
 
 /// `BizarreEndResponse`: for the battle `bizarre_start` began, records a clear (result 0) and
 /// grants gold, rank EXP and statue EXP to the team that fought, once (a resent request pays
+/// Friend Points per quest clear (the wiki gives 10 for stage 1-1 without a friend; ours for all).
+pub const FRIEND_POINTS_PER_CLEAR: i64 = 10;
+
 /// nothing more).
 pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let stage_id = env
@@ -194,6 +197,7 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                         .filter(|t| (1..=16).contains(t)),
                 );
                 p.gold += s.gold;
+                p.friend_points += FRIEND_POINTS_PER_CLEAR;
                 p.exp += s.gain_rank_exp;
                 p.rank = collection::rank_for_exp(p.exp);
                 let now = jdr_core::clock::now();
@@ -241,7 +245,7 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         "userInfo": crate::services::user::user_info(&p),
         "rewardList": empty(), "dropList": empty(), "firstRewardList": empty(), "starRewardList": empty(),
         "newRecordFlg": 0, "teamInfo": team, "gold": gold, "rankExp": rank_exp, "levelExp": rank_exp,
-        "mindGashaPoint": 0, "supportUserInfo": {},
+        "mindGashaPoint": if paid.is_some() { FRIEND_POINTS_PER_CLEAR } else { 0 }, "supportUserInfo": {},
         // eventType 3 (Item) lists the event currency gained; never null.
         "eventResult": if is_event && paid.is_some() {
             json!({ "eventType": 3, "userEventPointAll": 0, "getUserEventPoint": 0, "eventRewardList": [],
