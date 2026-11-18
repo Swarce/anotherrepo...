@@ -38,7 +38,23 @@ if sys.argv[1] == "--apk":
                 if base not in seen:
                     sprites[f"{base}.png"] = sp
                 seen.add(base)
-        for f in sorted(os.listdir(os.path.join(reps, b, "sprites"))):
+        # Whole textures (`<bundle>/<texture>.png`): the texture equals the PNG.
+        textures, tseen = {}, set()
+        for o in env.objects:
+            if o.type.name == "Texture2D":
+                t = o.read()
+                base = safe(t.m_Name)
+                textures.setdefault(f"{base}.png" if base not in tseen else f"{base}__{o.path_id}.png", t)
+                textures.setdefault(f"{base}__{o.path_id}.png", t)
+                tseen.add(base)
+        for f in sorted(x for x in os.listdir(os.path.join(reps, b)) if x.endswith(".png")):
+            t = textures[f]
+            assert int(t.m_TextureFormat) == 4, (b, f, t.m_TextureFormat)
+            png = Image.open(os.path.join(reps, b, f)).convert("RGBA")
+            assert ImageChops.difference(t.image.convert("RGBA"), png).getbbox() is None, (b, f)
+            n += 1
+        sdir = os.path.join(reps, b, "sprites")
+        for f in sorted(os.listdir(sdir) if os.path.isdir(sdir) else []):
             s = sprites[f]
             t = s.m_RD.texture.read()
             assert int(t.m_TextureFormat) == 4, (b, f, t.m_TextureFormat)
@@ -71,7 +87,9 @@ for gen in sorted(glob.glob(os.path.join(state, "l10n", "gen", "*.bytes"))):
     env = UnityPy.load(gen)
     name = bundle_name(env)
     sdir = os.path.join(reps, name or "", "sprites")
-    if not name or not os.path.isdir(sdir):
+    bdir = os.path.join(reps, name or "")
+    whole_pngs = [x for x in os.listdir(bdir) if x.endswith(".png")] if name and os.path.isdir(bdir) else []
+    if not name or not (os.path.isdir(sdir) or whole_pngs):
         continue
     orig_path = os.path.join(state, "l10n", "orig", os.path.basename(gen))
     orig_env = UnityPy.load(orig_path) if open(orig_path, "rb").read(4) != b"JJEC" else None
@@ -80,12 +98,19 @@ for gen in sorted(glob.glob(os.path.join(state, "l10n", "gen", "*.bytes"))):
     # texture) with a non-empty box were exported and take part in the naming. The textures are
     # judged on the ORIGINAL bundle (sizes and names do not change).
     src_env = orig_env or env
-    exported = {}
+    exported, whole, tseen = {}, {}, set()
     for o in src_env.objects:
         if o.type.name == "Texture2D":
             t0 = o.read()
             if t0.m_Width and t0.m_Height and t0.m_Name != "Font Texture":
                 exported[o.path_id] = t0.m_Height
+                base = safe(t0.m_Name)
+                cands = ([f"{base}.png"] if base not in tseen else []) + [f"{base}__{o.path_id}.png"]
+                tseen.add(base)
+                f = next((c for c in cands if c in whole_pngs), None)
+                if f:
+                    whole[o.path_id] = f
+                    by_tex.setdefault(o.path_id, [])
     for o in env.objects:
         if o.type.name != "Sprite":
             continue
@@ -110,6 +135,12 @@ for gen in sorted(glob.glob(os.path.join(state, "l10n", "gen", "*.bytes"))):
         img = t.image.convert("RGBA")
         h = img.height
         mask = Image.new("L", img.size, 0)
+        base_img = None
+        if tex_id in whole:
+            # A whole-texture image: everything outside the sprites pasted over it equals it.
+            base_img = Image.open(os.path.join(bdir, whole[tex_id])).convert("RGBA")
+            assert base_img.size == img.size, (name, whole[tex_id], base_img.size, img.size)
+            checked += 1
         for r, f in sprites:
             box = (int(round(r.x)), int(round(h - r.y - r.height)), int(round(r.x + r.width)), int(round(h - r.y)))
             png = Image.open(os.path.join(sdir, f)).convert("RGBA")
@@ -118,7 +149,11 @@ for gen in sorted(glob.glob(os.path.join(state, "l10n", "gen", "*.bytes"))):
             assert ImageChops.difference(got, png).getbbox() is None, (name, f, "pixels differ")
             mask.paste(255, box)
             checked += 1
-        if orig_env is not None:
+        if base_img is not None:
+            diff = ImageChops.difference(base_img, img)
+            diff.paste((0, 0, 0, 0), mask=mask)
+            assert diff.getbbox() is None, (name, whole[tex_id], "texture differs from its PNG")
+        elif orig_env is not None:
             ot = next(o for o in orig_env.objects if o.path_id == tex_id).read().image.convert("RGBA")
             diff = ImageChops.difference(ot, img)
             diff.paste((0, 0, 0, 0), mask=mask)
