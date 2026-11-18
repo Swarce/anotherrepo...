@@ -51,6 +51,9 @@ UI images with Japanese lettering can be replaced with redrawn art (see "Redrawn
   `literal:<index>` (both in `apk_text.json`).
 - `{name}` placeholders must be kept exactly; the importer requires the Japanese column and refuses
   a placeholder mismatch, a wrong or malformed hash, or Japanese characters in the English column.
+- Only strings with Japanese script are offered and replaced. Rows without it stay as the game has
+  them, e.g. the stat labels `AFFECT_ATK_RATEADD_TEXT` = `ATK+{decimal_Param0}％` (the full-width
+  `％` is not Japanese script); the ability effect lines use them (research doc 16 §8).
 - An empty `english` cell means "not translated". A cell of only spaces is imported as is: a
   deliberate blank, for a Japanese suffix English does not need (`literal:6813`, the rank suffix
   after the no-rank text).
