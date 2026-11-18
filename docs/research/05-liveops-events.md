@@ -40,7 +40,14 @@ Full list with response classes: [../PROTOCOL.md](../PROTOCOL.md).
   Raid rescue by NPC helpers. Clan events: hidden with the clan room.
 - Content source for schedules and rewards: public wikis, cited here in M5.
 
+## 4. Built since
+
+- Event Home gating and the exchange: [13](13-menus.md), [20](20-event-exchange.md).
+- Rankings: [23](23-arena.md) §3.
+- High scores, quizzes, event bonuses, campaigns, and why raids cannot appear with the player's
+  files: [25](25-events-raids.md).
+
 ## Open points
 
-- Which `EventCampaignInfo` fields gate the event home screen and its quests (M5).
-- Ranking reward tiers and raid boss tables (content, M5).
+- Ranking reward tiers (events never close offline).
+- Raid boss tables: moot until a client has the raid scenes ([25](25-events-raids.md) §1).
