@@ -1,11 +1,11 @@
 //! `/bizarre/*` and `/support/support_user_s`: the story quest flow.
 
-use crate::accounts::Change;
+use crate::accounts::{Change, Profile};
 use crate::app::{ApiError, ApiResult};
 use crate::collection;
 use crate::quests::{self, PendingBattle, STORY_CATEGORY};
-use crate::services::ok;
 use crate::services::statue::{profile, with_profile};
+use crate::services::{dungeon, ok};
 use crate::Ctx;
 use jdr_core::envelope::RequestEnvelope;
 use jdr_core::log;
@@ -38,7 +38,8 @@ pub fn get_bizarre_select(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
             "htmlLink": format!("/information/campaign_{}.html", e.event_id),
             "signboardPriority": i + 1, "bizarreHomeFlag": true, "signboardParam": "" }));
     }
-    ok(json!({ "questList": list, "eventCampaignList": campaigns, "dungeonLockFlg": 1 }))
+    // dungeonLockFlg 0 opens the Labyrinth tile (docs/research/22-labyrinth.md).
+    ok(json!({ "questList": list, "eventCampaignList": campaigns, "dungeonLockFlg": 0 }))
 }
 
 /// `BizarreListResponse` for a category: every story chapter (action and tactical; the client
@@ -119,6 +120,9 @@ pub fn bizarre_start(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .get("stageId")
         .and_then(Value::as_str)
         .unwrap_or("");
+    if dungeon::is_dungeon_battle(env, stage_id) {
+        return dungeon::bizarre_start(ctx, env, stage_id);
+    }
     let (c, s) = quests::find_stage(stage_id)
         .ok_or_else(|| ApiError::Internal(format!("unknown stage {stage_id:?}")))?;
     let team_no = env.param.get("teamNo").and_then(Value::as_i64).unwrap_or(1);
@@ -175,6 +179,9 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         );
     }
     let won = result.unwrap_or(0) == 0;
+    if dungeon::is_dungeon_battle(env, &stage_id) {
+        return dungeon::bizarre_end(ctx, env, &stage_id, won);
+    }
     let found = quests::find_stage(&stage_id);
     let event_id = found.and_then(|(c, _)| {
         quests::events()
@@ -260,27 +267,69 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         })
         .map(|t| collection::team_info(&p.collection, &t))
         .unwrap_or_else(|| json!({}));
+    // eventType 1 (points) or 3 (Item: the event currency gained); never null.
+    let event_result = if point_event && paid.is_some() {
+        json!({ "eventType": 1,
+                "userEventPointAll": crate::services::event::points(&p, event_id.as_deref().unwrap_or("")),
+                "getUserEventPoint": crate::services::event::POINTS_PER_CLEAR,
+                "eventRewardList": event_rewards, "getEventItemList": [] })
+    } else if is_event && paid.is_some() {
+        json!({ "eventType": 3, "userEventPointAll": 0, "getUserEventPoint": 0, "eventRewardList": [],
+                "getEventItemList": [{ "itemId": crate::items::EVENT_COIN, "count": crate::items::EVENT_COINS_PER_CLEAR }] })
+    } else {
+        no_event()
+    };
+    end_response(
+        &p,
+        env,
+        EndInfo {
+            won,
+            gold,
+            rank_exp,
+            team,
+            event_result,
+            clear: 0,
+            gameover: 0,
+            friend_points: if paid.is_some() {
+                FRIEND_POINTS_PER_CLEAR
+            } else {
+                0
+            },
+        },
+    )
+}
+
+/// What a `BizarreEndResponse` reports besides the echo of the request.
+pub(crate) struct EndInfo {
+    pub won: bool,
+    pub gold: i64,
+    pub rank_exp: i64,
+    pub team: Value,
+    pub event_result: Value,
+    /// `dungeonClearFlag` / `dungeonGameoverFlag` (labyrinth battles only).
+    pub clear: i64,
+    pub gameover: i64,
+    /// Friend Points this battle earned (`mindGashaPoint`).
+    pub friend_points: i64,
+}
+
+/// `eventResult` of a battle outside an event (never null).
+pub(crate) fn no_event() -> Value {
+    json!({ "eventType": 0, "userEventPointAll": 0, "getUserEventPoint": 0, "eventRewardList": [], "getEventItemList": [] })
+}
+
+/// `BizarreEndResponse`, shared by story, event and labyrinth battles.
+pub(crate) fn end_response(p: &Profile, env: &RequestEnvelope, e: EndInfo) -> ApiResult {
     let empty = || json!({ "itemSetIcon": "", "itemSetNum": 0, "statueList": [], "mindList": [], "itemList": [], "clanObjectList": [] });
     ok(json!({
-        "clearRank": if won { 4 } else { 0 },
+        "clearRank": if e.won { 4 } else { 0 },
         "starClearList": env.param.get("starClearList").cloned().unwrap_or(json!("")),
-        "userInfo": crate::services::user::user_info(&p),
+        "userInfo": crate::services::user::user_info(p),
         "rewardList": empty(), "dropList": empty(), "firstRewardList": empty(), "starRewardList": empty(),
-        "newRecordFlg": 0, "teamInfo": team, "gold": gold, "rankExp": rank_exp, "levelExp": rank_exp,
-        "mindGashaPoint": if paid.is_some() { FRIEND_POINTS_PER_CLEAR } else { 0 }, "supportUserInfo": {},
-        // eventType 3 (Item) lists the event currency gained; never null.
-        "eventResult": if point_event && paid.is_some() {
-            json!({ "eventType": 1,
-                    "userEventPointAll": crate::services::event::points(&p, event_id.as_deref().unwrap_or("")),
-                    "getUserEventPoint": crate::services::event::POINTS_PER_CLEAR,
-                    "eventRewardList": event_rewards, "getEventItemList": [] })
-        } else if is_event && paid.is_some() {
-            json!({ "eventType": 3, "userEventPointAll": 0, "getUserEventPoint": 0, "eventRewardList": [],
-                    "getEventItemList": [{ "itemId": crate::items::EVENT_COIN, "count": crate::items::EVENT_COINS_PER_CLEAR }] })
-        } else {
-            json!({ "eventType": 0, "userEventPointAll": 0, "getUserEventPoint": 0, "eventRewardList": [], "getEventItemList": [] })
-        },
-        "dungeonClearFlag": 0, "dungeonGameoverFlag": 0, "nowEventRankingPoint": 0,
+        "newRecordFlg": 0, "teamInfo": e.team, "gold": e.gold, "rankExp": e.rank_exp, "levelExp": e.rank_exp,
+        "mindGashaPoint": e.friend_points, "supportUserInfo": {},
+        "eventResult": e.event_result,
+        "dungeonClearFlag": e.clear, "dungeonGameoverFlag": e.gameover, "nowEventRankingPoint": 0,
         // The result screen's high-score panel reads eventDataList.Count without a null check
         // (BattleResultHighScoreUIController.Setup 0xC0D4B4); an empty list shows no panel.
         "oldEventRankingResultInfo": { "point": 0, "eventDataList": [] },
