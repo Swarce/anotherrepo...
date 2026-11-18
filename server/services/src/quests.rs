@@ -146,6 +146,9 @@ pub struct Progress {
     /// Arena standing, team durability and opponents (docs/research/23-arena.md).
     #[serde(default)]
     pub arena: crate::services::arena::ArenaState,
+    /// The Town and its AI members (docs/research/24-town.md).
+    #[serde(default)]
+    pub town: crate::town::TownState,
 }
 
 /// The three tactical missions of a stage (docs/research/11 §4): clear the quest, every member

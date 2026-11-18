@@ -144,8 +144,25 @@ We send its tables (reaction tables, `battle_damage_param`, `battle_combo_param`
 
 Out of scope offline, or later systems:
 
-- **No backend yet (offline):** `social.friends`, `social.town`, `social.town_points`,
-  `social.town_growth`, `social.town_payout`. Follow lists, blocks and Town search return empty.
+- **No backend yet (offline):** `social.friends`. Follow lists and blocks return empty.
+- **Server, solo Town with AI members (Build 25, docs/research/24-town.md):**
+  - `social.town`: create a Town (and lead it) or join one of twelve AI Towns from the
+    recommend and search screens (open Towns at once; "Approval Required" ones after a minute).
+    The Town home runs over the client's realtime socket, served on the HTTP port: the player
+    and the AI members appear, AI members walk and act, chat is kept (100 lines). Master and
+    Sub-Master rights: approve or deny AI applicants, expel, up to 3 Sub-Masters, change info.
+    Up to 15 members. AI Towns, names and AI behaviour are ours.
+  - `social.town_points` / `social.town_growth`: Town Medals (item 41) donated, at most 500 at a
+    time, 10 Town points each (ours); levels 1-20 from `clan_table` (cumulative curve ours);
+    Sub-Masters at Town Rank 3 (pack guide), object placement at 8 and background change at 10
+    (labels). AI members donate every game day (ours). Each level unlocks two of the 20 Town
+    objects that have a model in the player's files; four backgrounds.
+  - `social.town_payout`: the donation gift (gold, ours) and the level rewards (Diamond Coins,
+    ours) go to the Message Box; the Town sends 100 Town Medals a day and 300 once on joining
+    (ours). Membership-change rules of the original are unknown; leaving keeps nothing.
+- **Unverified on a device:** the Town maps' spawn points (everybody starts near the origin;
+  AI members only walk where the player walked), the Town Medal icon (item 41 has none in
+  `ui_item_00`), object models matched to titles by name.
 - **Server (2019 rule set):** `arena.*` (12 rows). Client 3.12.0 only reaches the 2019 home, so
   that is the one built: an always-open campaign, a separate five-team roster, AI opponents from
   our roster, durability with a 30-minute rest (`arena.durability_2019`), Fever after four
@@ -166,7 +183,9 @@ Out of scope offline, or later systems:
     by floor (ours).
 - **Offline (open calendar):** `event.quiz`, `event.high_score`, `event.town_ranking`,
   `event.bonuses`, `event.reruns`, `event.end_service`. Event chapters are open; scoring and
-  rewards are not implemented.
+  rewards are not implemented. Town ranking events: the Town home's event panel stays hidden
+  (`eventInfo.eventCampaignName` empty) and the member point list shows 0 for everyone; the
+  routes answer with valid shapes (Build 25).
 
 ## Presentation
 

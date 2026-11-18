@@ -54,10 +54,17 @@ pub fn get_menu_notify(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let p = super::statue::profile(ctx, env)?;
     let mut m = p.progress.missions.clone();
     m.roll(jdr_core::clock::now());
+    // Town badges: members (the AI members are always around), unread chat, applicants waiting
+    // for the Master or a Sub-Master (docs/research/24-town.md §1.1).
+    let town = p.progress.town.town.as_ref();
+    let members = town.map(|t| t.member_count()).unwrap_or(0);
+    let unread = town.is_some_and(|t| t.unread_chat());
+    let waiting = town.is_some_and(|t| t.can_manage(&p.user_id) && !t.applicants.is_empty());
     ok(json!({
         "notAllowedFunction": [], "unopenedNotify": 0, "unopenedPresent": p.progress.presents.waiting(),
         "unopenedAchievement": m.claimable(p.rank),
-        "unopenedFollower": 0, "gashaPlayNum": 0, "myTownMember": 0, "unreadChatFlg": 0, "unapprovedMemberFlg": 0
+        "unopenedFollower": 0, "gashaPlayNum": 0, "myTownMember": members,
+        "unreadChatFlg": i64::from(unread), "unapprovedMemberFlg": i64::from(waiting)
     }))
 }
 
