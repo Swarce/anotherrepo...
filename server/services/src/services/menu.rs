@@ -1,17 +1,11 @@
-//! MyPage menu screens that are still empty offline: follow list, notices and Town
-//! recommendations. Story quests live in `bizarre.rs`; the collection in `statue.rs`.
+//! MyPage menu screens that are still empty offline: follow list and notices. Story quests live
+//! in `bizarre.rs`; the collection in `statue.rs`; the Town in `clan.rs`.
 
 use crate::app::ApiResult;
 use crate::services::ok;
 use crate::Ctx;
 use jdr_core::envelope::RequestEnvelope;
 use serde_json::json;
-
-/// `GetRecommendClanResponse`: no `clanInfo`, which the client shows as "no recommended Town
-/// found" (Towns are the multiplayer guild feature; offline there is none to join).
-pub fn clan_recommend(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    ok(json!({}))
-}
 
 /// `FollowListResponse`: nobody followed; `sortType` 0 is `FollowListSort.SortType.Default`.
 pub fn follow_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {

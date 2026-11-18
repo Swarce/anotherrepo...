@@ -263,11 +263,11 @@ Notes:
 | `/pvp/statue_select_pvp` | `PvpStatueChangeRequest` | `PvpStatueChangeResponse` | implemented (Build 23, research/23) |
 | `/pvp/team_info_pvp` | `PvpTeamInfoPvpRequest` | `PvpTeamInfoPvpResponse` | implemented (Build 23, research/23) |
 
-### event — event points and rankings (5, 4 implemented)
+### event — event points and rankings (5, 5 implemented)
 
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
-| `/event/clan_member_event_point_list` | `EventClanMemberPointListRequest` | `EventClanMemberPointListResponse` | logged as unknown |
+| `/event/clan_member_event_point_list` | `EventClanMemberPointListRequest` | `EventClanMemberPointListResponse` | implemented (Build 25, research/24) |
 | `/event/get_event_ranking_detail` | `RankingDetailRequest` | `RankingDetailResponse` | implemented (Build 24, research/23 §3) |
 | `/event/get_event_ranking_list` | `RankingListRequest` | `RankingListResponse` | implemented (Build 24) |
 | `/event/get_event_ranking_reward` | `RankingRewardRequest` | `RankingRewardResponse` | implemented (Build 24) |
@@ -294,34 +294,34 @@ Notes:
 | `/follow/set_follow` | `SetFollowRequest` | `SetFollowResponse` | logged as unknown |
 | `/follow/unblock` | `UnblockUserRequest` | `UnblockUserResponse` | logged as unknown |
 
-### clan — clan and clan room (hidden offline) (27, 0 implemented)
+### clan — the Town, offline with AI members (27, 27 implemented)
 
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
-| `/clan/add` | `AddClanRequest` | `AddClanResponse` | logged as unknown |
-| `/clan/add_approval` | `AddApprovalClanRequest` | `AddApprovalClanResponse` | logged as unknown |
-| `/clan/add_request_list` | `AddListClanRequest` | `AddListClanResponse` | logged as unknown |
-| `/clan/all_del_object` | `AllRemoveHasObjectRequest` | `AllRemoveHasObjectResponse` (M) | logged as unknown |
-| `/clan/cancel_approval` | `CancelAddClanRequest` | `CancelAddClanResponse` | logged as unknown |
-| `/clan/change_info` | `ChangeClanInfoRequest` | `ChangeClanInfoResponse` | logged as unknown |
-| `/clan/check_add_request` | `CheckAddRequest` | `CheckAddResponse` | logged as unknown |
-| `/clan/clan_bg_list` | `ClanBgListRequest` | `ClanBgListResponse` | logged as unknown |
-| `/clan/clan_donation` | `DonationRequest` | `DonationResponse` | logged as unknown |
-| `/clan/clan_object_list` | `ClanObjectListRequest` | `ClanObjectListResponse` | logged as unknown |
-| `/clan/create` | `CreateClanRequest` | `CreateClanResponse` | logged as unknown |
-| `/clan/del_object` | `RemoveClanObjectRequest` | `RemoveClanObjectResponse` (M) | logged as unknown |
-| `/clan/denial_approval` | `DenialApprovalClanRequest` | `DenialApprovalClanResponse` | logged as unknown |
-| `/clan/donation_item_list` | `DonationItemListRequest` | `DonationItemListResponse` | logged as unknown |
-| `/clan/expulsion` | `ExplusionClanRequest` | `ExplusionClanResponse` | logged as unknown |
-| `/clan/info` | `GetClanInfoRequest` | `GetClanInfoResponse` | logged as unknown |
-| `/clan/invitation` | `InviteClanRequest` | `InviteClanResponse` | logged as unknown |
-| `/clan/recommend` | `GetRecommendClanRequest` | `GetRecommendClanResponse` | implemented |
-| `/clan/room_info` | `GetClanRoomInfoRequest` | `GetClanRoomInfoResponse` (M) | logged as unknown |
-| `/clan/search` | `SearchIDClanRequest` | `SearchClanResponse` | logged as unknown |
-| `/clan/search` | `SearchNameClanRequest` | `SearchClanResponse` | logged as unknown |
-| `/clan/search` | `SearchPolicyClanRequest` | `SearchClanResponse` | logged as unknown |
-| `/clan/secession` | `LeaveClanRequest` | `LeaveClanResponse` | logged as unknown |
-| `/clan/set_object` | `SetClanObjectRequest` | `SetClanObjectResponse` (M) | logged as unknown |
-| `/clan/set_object_comment` | `SetCommentClanObjectRequest` | `SetCommentClanObjectResponse` (M) | logged as unknown |
-| `/clan/set_sub_leader` | `SetSubMasterRequest` | `SetSubMasterResponse` | logged as unknown |
-| `/clan/sync_server_info` | `GetConnectServerInfoRequest` | `GetConnectServerInfoResponse` | logged as unknown |
+| `/clan/add` | `AddClanRequest` | `AddClanResponse` | implemented (Build 25, research/24) |
+| `/clan/add_approval` | `AddApprovalClanRequest` | `AddApprovalClanResponse` | implemented (Build 25, research/24) |
+| `/clan/add_request_list` | `AddListClanRequest` | `AddListClanResponse` | implemented (Build 25, research/24) |
+| `/clan/all_del_object` | `AllRemoveHasObjectRequest` | `AllRemoveHasObjectResponse` (M) | implemented (Build 25: no caller in 3.12.0, empty `objList`) |
+| `/clan/cancel_approval` | `CancelAddClanRequest` | `CancelAddClanResponse` | implemented (Build 25, research/24) |
+| `/clan/change_info` | `ChangeClanInfoRequest` | `ChangeClanInfoResponse` | implemented (Build 25, research/24) |
+| `/clan/check_add_request` | `CheckAddRequest` | `CheckAddResponse` | implemented (Build 25, research/24) |
+| `/clan/clan_bg_list` | `ClanBgListRequest` | `ClanBgListResponse` | implemented (Build 25, research/24) |
+| `/clan/clan_donation` | `DonationRequest` | `DonationResponse` | implemented (Build 25, research/24) |
+| `/clan/clan_object_list` | `ClanObjectListRequest` | `ClanObjectListResponse` | implemented (Build 25, research/24) |
+| `/clan/create` | `CreateClanRequest` | `CreateClanResponse` | implemented (Build 25, research/24) |
+| `/clan/del_object` | `RemoveClanObjectRequest` | `RemoveClanObjectResponse` (M) | implemented (Build 25: no caller in 3.12.0, empty `objList`) |
+| `/clan/denial_approval` | `DenialApprovalClanRequest` | `DenialApprovalClanResponse` | implemented (Build 25, research/24) |
+| `/clan/donation_item_list` | `DonationItemListRequest` | `DonationItemListResponse` | implemented (Build 25, research/24) |
+| `/clan/expulsion` | `ExplusionClanRequest` | `ExplusionClanResponse` | implemented (Build 25, research/24) |
+| `/clan/info` | `GetClanInfoRequest` | `GetClanInfoResponse` | implemented (Build 25, research/24) |
+| `/clan/invitation` | `InviteClanRequest` | `InviteClanResponse` | implemented (Build 25, research/24) |
+| `/clan/recommend` | `GetRecommendClanRequest` | `GetRecommendClanResponse` | implemented (Build 25, research/24) |
+| `/clan/room_info` | `GetClanRoomInfoRequest` | `GetClanRoomInfoResponse` (M) | implemented (Build 25: no caller in 3.12.0, empty `objList`) |
+| `/clan/search` | `SearchIDClanRequest` | `SearchClanResponse` | implemented (Build 25, research/24) |
+| `/clan/search` | `SearchNameClanRequest` | `SearchClanResponse` | implemented (Build 25, research/24) |
+| `/clan/search` | `SearchPolicyClanRequest` | `SearchClanResponse` | implemented (Build 25, research/24) |
+| `/clan/secession` | `LeaveClanRequest` | `LeaveClanResponse` | implemented (Build 25, research/24) |
+| `/clan/set_object` | `SetClanObjectRequest` | `SetClanObjectResponse` (M) | implemented (Build 25: no caller in 3.12.0, empty `objList`) |
+| `/clan/set_object_comment` | `SetCommentClanObjectRequest` | `SetCommentClanObjectResponse` (M) | implemented (Build 25: no caller in 3.12.0, empty `objList`) |
+| `/clan/set_sub_leader` | `SetSubMasterRequest` | `SetSubMasterResponse` | implemented (Build 25, research/24) |
+| `/clan/sync_server_info` | `GetConnectServerInfoRequest` | `GetConnectServerInfoResponse` | implemented (Build 25, research/24) |
