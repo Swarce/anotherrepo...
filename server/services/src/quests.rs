@@ -58,18 +58,61 @@ pub struct DailyDef {
     pub banner: String,
 }
 
+/// An event with a tile (docs/research/25-events-raids.md). `kind`: "exchange", "point",
+/// "high_score", "high_score_shop" or "quiz"; `currency` the item its quests drop (0 = none).
 #[derive(Debug, Clone, Deserialize)]
 pub struct EventDef {
     #[serde(rename = "eventId")]
     pub event_id: String,
     pub category: i64,
     pub banner: String,
+    #[serde(default = "exchange_kind")]
+    pub kind: String,
+    #[serde(default)]
+    pub currency: i64,
+    /// Event bonus units (ours): statues in the team and Minds on it raise the event's drops.
+    #[serde(default, rename = "bonusStatues")]
+    pub bonus_statues: Vec<String>,
+    #[serde(default, rename = "bonusMinds")]
+    pub bonus_minds: Vec<String>,
+    /// High-score stages and their scoring rule (DTEventPointType: 2 turns, 3 max damage,
+    /// 4 total damage), from the stage names.
+    #[serde(default)]
+    pub scoring: std::collections::BTreeMap<String, Vec<i64>>,
+    #[serde(default)]
+    pub quiz: Vec<QuizDef>,
+}
+
+fn exchange_kind() -> String {
+    "exchange".into()
+}
+
+/// A quiz chapter: the question stage, the three answer stages and the right one (from the
+/// event's own answer scripts).
+#[derive(Debug, Clone, Deserialize)]
+pub struct QuizDef {
+    #[serde(rename = "chapterId")]
+    pub chapter_id: String,
+    pub question: String,
+    pub answers: Vec<String>,
+    pub correct: String,
+}
+
+/// A campaign banner (Campaign Info): `ec_<id>_..._start` with a name label.
+#[derive(Debug, Clone, Deserialize)]
+pub struct CampaignDef {
+    #[serde(rename = "campaignId")]
+    pub campaign_id: String,
+    pub banner: String,
+    pub name: String,
 }
 
 #[derive(Deserialize)]
 struct ExtraDoc {
     daily: std::collections::BTreeMap<String, DailyDef>,
     events: Vec<EventDef>,
+    #[serde(default)]
+    campaigns: Vec<CampaignDef>,
     chapters: Vec<ChapterDef>,
 }
 
@@ -81,6 +124,27 @@ fn extra() -> &'static ExtraDoc {
 /// The events with a tile, in order.
 pub fn events() -> &'static [EventDef] {
     &extra().events
+}
+
+/// The campaign banners, in order.
+pub fn campaigns() -> &'static [CampaignDef] {
+    &extra().campaigns
+}
+
+pub fn event_by_id(id: &str) -> Option<&'static EventDef> {
+    events().iter().find(|e| e.event_id == id)
+}
+
+pub fn event_for_category(category: i64) -> Option<&'static EventDef> {
+    events().iter().find(|e| e.category == category)
+}
+
+/// The scoring rule of a high-score stage (None for every other stage).
+pub fn scoring_of(stage_id: &str) -> Option<&'static [i64]> {
+    events()
+        .iter()
+        .find_map(|e| e.scoring.get(stage_id))
+        .map(Vec::as_slice)
 }
 
 /// Today's daily tile: the game's day turns at 04:00 JST (research pack `economy.daily_reset`).
@@ -146,6 +210,12 @@ pub struct Progress {
     /// Arena standing, team durability and opponents (docs/research/23-arena.md).
     #[serde(default)]
     pub arena: crate::services::arena::ArenaState,
+    /// Best result per high-score stage (docs/research/25-events-raids.md).
+    #[serde(default)]
+    pub high_scores: std::collections::BTreeMap<String, crate::services::event::HighScore>,
+    /// The answer stage first cleared per quiz chapter (the player's answer).
+    #[serde(default)]
+    pub quiz_answers: std::collections::BTreeMap<String, String>,
 }
 
 /// The three tactical missions of a stage (docs/research/11 §4): clear the quest, every member
@@ -296,8 +366,13 @@ pub fn stage_info(c: &ChapterDef, s: &StageDef, n: usize, p: &Progress) -> Value
         "staminaCoefficientList": { "rate": 1.0, "add": 0 },
         "expCoefficientList": { "rate": 1.0, "add": 0 },
         "goldCoefficientList": { "rate": 1.0, "add": 0 },
-        "bizarreEffectList": [], "limitTurn": 0, "endureTurn": 0, "eventPointSettingList": [],
-        "dayNight": 0, "clearStarList": [], "useStatueCount": 3, "highScore": 0,
+        // High-score stages list their scoring rule (the battle's condition text, "Scored on:
+        // ...") and show the best score on the stage banner; -1 hides the banner's high-score box
+        // (BizarreStageBannerController.SetDtBattleIcon, docs/research/25-events-raids.md).
+        "bizarreEffectList": [], "limitTurn": 0, "endureTurn": 0,
+        "eventPointSettingList": crate::services::event::point_settings(&s.stage_id),
+        "dayNight": 0, "clearStarList": [], "useStatueCount": 3,
+        "highScore": crate::services::event::stage_high_score(p, &s.stage_id),
         "cannotContinue": 0, "presetTeamId": ""
     })
 }

@@ -424,6 +424,20 @@ pub fn campaign_entry() -> Value {
             "eventEndDate": OPEN_UNTIL, "eventFinishedDate": OPEN_UNTIL })
 }
 
+/// The Arena home's campaign banner (banner bundle of an Arena campaign in the player's files;
+/// the campaign's own, 510027, has none: ours).
+pub const CAMPAIGN_BANNER: &str = "eq_510002_6ae62gte_start";
+
+/// The `/pvp/home` `eventCampaignList` entry (EventCampaignInfo): the home keeps the entries whose
+/// `eventCampaignId` equals its campaign (String.CompareTo on each id, so none may be null) and
+/// shows their `banner + "_small"` in its campaign panel; a tap opens `htmlLink` in the web view
+/// (docs/research/25-events-raids.md §5).
+pub fn campaign_panel() -> Value {
+    json!({ "eventCampaignId": CAMPAIGN_ID, "banner": CAMPAIGN_BANNER,
+            "htmlLink": "/information/arena.html", "signboardPriority": 1,
+            "bizarreHomeFlag": false, "signboardParam": "" })
+}
+
 /// `userBattleInfo.fieverEndTime`: My Page parses it as a date, so it is always one.
 pub fn fever_end_time(st: &ArenaState, now: i64) -> String {
     if st.fever_on(now) {
@@ -911,7 +925,7 @@ pub fn home(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         "pvpUserInfo": pvp_user_info(st, now, crazy_notify),
         "todaysPoint": st.todays_points.max(0), "recoveryTimes": 0,
         "selectedTeamId": st.selected_team.clamp(1, collection::TEAMS_PER_TYPE),
-        "pollingTimes": POLLING_SECS, "damageInfo": damage, "eventCampaignList": [],
+        "pollingTimes": POLLING_SECS, "damageInfo": damage, "eventCampaignList": [campaign_panel()],
         "forceDefeatFlg": forced, "battleType": BATTLE_TYPE_PVP_AUTO
     }))
 }
@@ -1568,7 +1582,10 @@ mod tests {
         assert!(u.is_object(), "pvpUserInfo never null");
         assert!(u["nextEventItem"]["itemList"].is_array());
         assert!(u["feverEndDate"].is_string());
-        assert_eq!(h["eventCampaignList"], json!([]));
+        // The campaign panel: one entry for this campaign, its banner a bundle of the player's
+        // files (docs/research/25-events-raids.md §5).
+        assert_eq!(h["eventCampaignList"][0]["eventCampaignId"], CAMPAIGN_ID);
+        assert_eq!(h["eventCampaignList"][0]["banner"], CAMPAIGN_BANNER);
         assert_eq!(h["damageInfo"], json!([]));
         assert_eq!(h["battleType"], 2);
     }
@@ -2152,16 +2169,10 @@ mod tests {
             assert_complete(class, &v);
             v
         };
-        // My Page: the Arena's entry and the Fever date (raidInfo is the raid's, not walked).
+        // My Page: the Arena's entry, the Fever date and an inactive raid (services/raid.rs).
         let ev = Value::Object(call(&ctx, &uuid, "/info/event_list", json!({})).unwrap());
-        assert_complete(
-            "Jjs.EventListResponse/EventCampaignInfo",
-            &ev["eventList"][0],
-        );
-        assert_complete(
-            "Jjs.EventListResponse/UserBattleInfo",
-            &ev["userBattleInfo"],
-        );
+        assert_complete("Jjs.EventListResponse", &ev);
+        assert_eq!(ev["raidInfo"]["raidStageInfo"]["raidStageUid"], 0);
         walk(
             "/pvp/get_pvp_config",
             "Jjs.Pvp2GetConfigResponse",

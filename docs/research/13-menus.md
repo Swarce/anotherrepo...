@@ -102,7 +102,8 @@ The owner asked for these tiles so more content can be tested. H unless marked, 
   - Events: 50035 Cinderella's Wizard, 50045 The Girl Standing in the Alley, 50032 Challenge
     Letters, 50077 2nd Anniversary. That is 72 chapters and 222 stages in all, each with its own
     chapter and stage label from the game's text and its banner (id `50032` → banner
-    `eq_500032_…`; earlier event ids map ambiguously, so they are left out).
+    `eq_500032_…`; earlier event ids map ambiguously, so they are left out). Build 25 adds five
+    more events (high score, quiz, exchange): 139 chapters and 393 stages (docs/research/25 §6).
   - Every stage reuses a tactical story stage's map. Enemies, levels and rewards are ours,
     except the Easy-tier daily AP/EXP/gold (wiki). Clears and stars are kept per stage, apart
     from the story.

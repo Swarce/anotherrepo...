@@ -42,7 +42,7 @@ pub fn event_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .unwrap_or_else(|_| super::arena::fever_end_time(&Default::default(), now));
     ok(json!({ "eventList": [super::arena::campaign_entry()],
                "userBattleInfo": { "fieverEndTime": fever },
-               "raidInfo": { "totalRescueCount": 0 } }))
+               "raidInfo": super::raid::raid_info() }))
 }
 
 pub fn banner_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {

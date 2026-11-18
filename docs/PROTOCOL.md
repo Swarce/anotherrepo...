@@ -95,8 +95,8 @@ Notes:
 | `/shop/buy_complete` | `BuyCompleteRequest` | `BuyCompleteResponse` | logged as unknown |
 | `/shop/buy_list` | `BuyListRequest` | `BuyListResponse` | logged as unknown |
 | `/shop/buy_trans` | `BuyTransRequest` | `BuyTransResponse` (M) | logged as unknown |
-| `/shop/event_shop_buy` | `EventShopBuyRequest` | `EventShopBuyResponse` | logged as unknown |
-| `/shop/event_shop_list` | `EventShopListRequest` | `EventShopListResponse` | logged as unknown |
+| `/shop/event_shop_buy` | `EventShopBuyRequest` | `EventShopBuyResponse` | implemented (Build 22; the event's currency, Build 25) |
+| `/shop/event_shop_list` | `EventShopListRequest` | `EventShopListResponse` | implemented (Build 22) |
 | `/shop/product_list` | `ProductListRequest` | `ProductListResponse` | implemented |
 | `/shop/shop_buy` | `ShopBuyRequest` | `ShopBuyResponse` | logged as unknown |
 | `/shop/shop_list` | `ShopListRequest` | `ShopListResponse` | implemented |
@@ -230,16 +230,16 @@ Notes:
 | `/dungeon/tarot_flip` | `DungeonTarotFlipRequest` | `DungeonTarotFlipResponse` | logged as unknown |
 | `/dungeon/tarot_select` | `DungeonTarotSelectRequest` | `DungeonTarotSelectResponse` | logged as unknown |
 
-### raid — raid battles (6, 0 implemented)
+### raid — raid battles (6, 6 implemented: an inactive raid, docs/research/25-events-raids.md §1)
 
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
-| `/raid/get_raid_reward` | `GetRaidRewardRequest` | `GetRaidRewardResponse` (M) | logged as unknown |
-| `/raid/raid_end` | `RaidEndRequest` | `RaidEndResponse` | logged as unknown |
-| `/raid/raid_history_list` | `RaidHistoryListRequest` | `RaidHistoryListResponse` (M) | logged as unknown |
-| `/raid/raid_list` | `RaidListRequest` | `RaidListResponse` (M) | logged as unknown |
-| `/raid/raid_offer_rescue` | `RaidOfferRescueRequest` | `RaidOfferRescueResponse` | logged as unknown |
-| `/raid/raid_start` | `RaidStartRequest` | `RaidStartResponse` | logged as unknown |
+| `/raid/get_raid_reward` | `GetRaidRewardRequest` | `GetRaidRewardResponse` | implemented (Build 25; no caller in 3.12) |
+| `/raid/raid_end` | `RaidEndRequest` | `RaidEndResponse` | implemented (Build 25; a withdrawal) |
+| `/raid/raid_history_list` | `RaidHistoryListRequest` | `RaidHistoryListResponse` | implemented (Build 25; no caller in 3.12) |
+| `/raid/raid_list` | `RaidListRequest` | `RaidListResponse` | implemented (Build 25; no caller in 3.12) |
+| `/raid/raid_offer_rescue` | `RaidOfferRescueRequest` | `RaidOfferRescueResponse` | implemented (Build 25; fails) |
+| `/raid/raid_start` | `RaidStartRequest` | `RaidStartResponse` | implemented (Build 25; refused, timed out) |
 
 ### pvp — PvP (17, 17 implemented)
 
