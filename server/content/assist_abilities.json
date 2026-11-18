@@ -1,0 +1,3619 @@
+{
+ "about": "Assist abilities per statue (docs/research/19-assists.md §5): ids of the shared dtbattle_ability_data_table rows DT_AST_<kind><tier>, with the client's activation conditions ([{statueType, count}] over the seat's assists; empty = always). Built by tools/content/build_assist_abilities.py.",
+ "sources": [
+  {
+   "source": "Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/",
+   "license": "CC BY-SA 3.0",
+   "accessed": "2026-11-15"
+  },
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/19-assists.md"
+  },
+  {
+   "source": "jdr-default",
+   "note": "statues without wiki assist numbers: the leaning stat at tier rarity - 2; conditions empty"
+  }
+ ],
+ "statues": [
+  {
+   "statueId": "1000_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1000_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1000_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1000_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1000_12",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1000_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1000_28",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1010_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1010_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1010_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1020_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1020_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1020_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1020_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1080_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1080_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1080_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1090_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1090_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1090_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1090_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1100_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1100_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1100_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1100_11",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1100_12",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1100_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1100_14",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1100_28",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1110_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1110_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1110_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1120_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1120_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1120_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1130_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1130_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1130_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1130_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1130_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2000_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2000_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2000_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2000_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2000_12",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2000_28",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2010_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2010_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2010_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2010_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2010_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2010_28",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2020_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2020_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2020_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2020_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2040_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2040_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2040_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2050_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2050_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2050_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2050_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2050_12",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2060_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Wamuu_%28Courage%29",
+    "revid": 3343,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "2060_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Wamuu_%28Courage%29",
+    "revid": 3422,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "2060_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Wamuu_%28Courage%29",
+    "revid": 3254,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "2070_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2070_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2070_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2080_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2080_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2080_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2081_11",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2081_12",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2081_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2081_14",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2100_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2110_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2110_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Rudol_von_Stroheim_%28Fighting_Spirit%29",
+    "revid": 3419,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "2110_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2111_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2111_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2111_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3000_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Jotaro_Kujo_%28Courage%29",
+    "revid": 3161,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "3000_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Jotaro_Kujo_%28Courage%29",
+    "revid": 3434,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "3000_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Jotaro_Kujo_%28Courage%29",
+    "revid": 3274,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "3000_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3000_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DMG_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Jotaro_Kujo_%28Solitary%29",
+    "revid": 3883,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "3001_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3001_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3001_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3002_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3010_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3010_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3010_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3010_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3020_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3020_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3020_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Muhammad_Avdol_%28Fighting_Spirit%29",
+    "revid": 3252,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "3020_12",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3020_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Muhammad_Avdol_%28Unity%29",
+    "revid": 2321,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "3020_28",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3030_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Noriaki_Kakyoin_%28Tactical%29",
+    "revid": 3166,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "3030_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3030_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3030_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3030_14",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3031_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3031_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3040_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3040_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3040_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3040_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3040_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3041_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3041_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3050_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3050_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Iggy_%28Fighting_Spirit%29",
+    "revid": 2724,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "3050_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3050_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Iggy_%28Fighting_Spirit%29",
+    "revid": 4639,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "3060_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3060_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3060_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3070_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3070_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3070_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3090_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3090_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3090_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3100_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3100_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3100_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3100_12",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3110_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3110_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Hol_Horse_%28Tactical%29",
+    "revid": 4815,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "3110_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3110_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Hol_Horse_%28Unity%29",
+    "revid": 3260,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "3110_14",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3150_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3150_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3150_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3150_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3150_12",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3210_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3210_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_N%27Doul_%28Tactical%29",
+    "revid": 3442,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "3210_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3210_12",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3210_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3240_11",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3240_12",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3240_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3270_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3270_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3270_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3270_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3300_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3300_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3300_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3300_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3321_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_High_DIO_%28Fighting_Spirit%29",
+    "revid": 3467,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "3321_18",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3322_08",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3323_08",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3330_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3330_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3330_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DMG_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Vanilla_Ice_%28Courage%29",
+    "revid": 4150,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "3330_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4000_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4000_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Josuke_Higashikata_%28Courage%29",
+    "revid": 3554,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "4000_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Josuke_Higashikata_%28Courage%29",
+    "revid": 3276,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "4000_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4000_12",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4000_18",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4000_23",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4010_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4010_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4011_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4011_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4011_15",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4011_16",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4011_17",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4011_18",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4012_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4012_11",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4020_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DMG_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Okuyasu_Nijimura_%28Fighting_Spirit%29",
+    "revid": 3016,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "4020_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DMG_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Okuyasu_Nijimura_%28Fighting_Spirit%29",
+    "revid": 2335,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "4020_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DMG_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Okuyasu_Nijimura_%28Fighting_Spirit%29",
+    "revid": 3270,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "4020_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DMG_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Okuyasu_Nijimura_%28Fighting_Spirit%29",
+    "revid": 4636,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "4020_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4030_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Rohan_Kishibe_%28Tactical%29",
+    "revid": 3559,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "4030_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4030_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Rohan_Kishibe_%28Tactical%29",
+    "revid": 3275,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "4030_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Rohan_Kishibe_%28Tactical%29",
+    "revid": 4819,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "4031_18",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4040_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Jotaro_Kujo_%28Tactical%29",
+    "revid": 3014,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "4040_12",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Jotaro_Kujo_%28Unity%29",
+    "revid": 3262,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "4040_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4040_14",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4042_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4043_08",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4080_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Yukako_Yamagishi_%28Courage%29",
+    "revid": 3018,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "4080_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4080_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Yukako_Yamagishi_%28Courage%29",
+    "revid": 3259,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "4080_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4080_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DMG_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Yukako_Yamagishi_%28Solitary%29",
+    "revid": 3286,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "4110_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4110_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4110_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4110_14",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4130_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4130_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4130_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4130_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4130_25",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4130_26",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4130_27",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4130_28",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4150_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4150_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4150_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4160_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Keicho_Nijimura_%28Tactical%29",
+    "revid": 3432,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "4160_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4160_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4160_12",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4170_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4170_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Akira_Otoishi_%28Fighting_Spirit%29",
+    "revid": 3570,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "4170_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Akira_Otoishi_%28Fighting_Spirit%29",
+    "revid": 3271,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+   }
+  },
+  {
+   "statueId": "4170_15",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4170_16",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4170_17",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4170_18",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4190_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4190_14",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4191_01",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4191_02",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4191_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4191_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4192_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4192_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4193_08",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4194_08",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4240_11",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD1",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4240_12",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4240_13",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5000_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5000_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5000_22",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD2",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5000_23",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5000_24",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5001_14",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5010_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5010_14",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5030_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5050_03",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5050_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5080_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5100_14",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5120_14",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5140_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5150_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_DEF_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5170_14",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5210_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5220_14",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5290_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5320_04",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  }
+ ]
+}
