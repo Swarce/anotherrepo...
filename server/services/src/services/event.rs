@@ -109,7 +109,7 @@ fn label_id(event_id: &str) -> String {
 
 fn item_set(item: i64, count: i64) -> Value {
     json!({ "itemSetIcon": "", "itemSetNum": 1, "statueList": [], "mindList": [], "clanObjectList": [],
-            "itemList": [{ "itemId": item, "name": format!("ITEM_{item:04}_NAME"), "count": count, "type": 0 }] })
+            "itemList": [crate::items::reward_item(item, count)] })
 }
 
 pub fn points(p: &Profile, event_id: &str) -> i64 {
