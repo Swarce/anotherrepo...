@@ -484,6 +484,43 @@ pub fn collect(data: &[u8], bundle_name: &str) -> Result<Vec<Found>, Error> {
     Ok(out)
 }
 
+/// The label of every row of every text table in a bundle (`text:<Table>:<Label>` -> text, the
+/// first row of a label in its table), with or without Japanese. `collect` offers only rows with
+/// Japanese, and some labels the client uses hold none (stat labels such as `ATK+…％`: the
+/// full-width percent sign is not Japanese script). The client registers every label once across
+/// all tables, the first row winning (`TextManager.RegistTextData` 0xB8926C).
+pub fn text_labels(data: &[u8]) -> Result<BTreeMap<String, String>, Error> {
+    let mut out = BTreeMap::new();
+    for node in bundle::read(data)?.iter().filter(|n| n.flags & 4 != 0) {
+        let f = sfile::parse(&node.data)?;
+        for o in &f.objects {
+            let t = &f.types[o.type_index as usize];
+            if t.entry.class_id != jdr_unity::CLASS_MONOBEHAVIOUR {
+                continue;
+            }
+            let Ok(v) = sfile::read_object(&t.nodes, &o.data) else {
+                continue;
+            };
+            let (Some(table), Some(V::Arr(rows))) =
+                (v.get("m_Name").and_then(V::as_str), v.get("Contents"))
+            else {
+                continue;
+            };
+            for r in rows {
+                let (Some(l), Some(s)) = (
+                    r.get("Label").and_then(V::as_str),
+                    r.get("Text").and_then(V::as_str),
+                ) else {
+                    continue;
+                };
+                out.entry(format!("text:{table}:{l}"))
+                    .or_insert_with(|| s.to_string());
+            }
+        }
+    }
+    Ok(out)
+}
+
 /// Apply translations to a bundle.
 pub fn translate_bundle(
     data: &[u8],
@@ -1047,6 +1084,21 @@ mod tests {
             .unwrap()
             .0
             .is_none());
+    }
+
+    #[test]
+    fn lists_every_text_label() {
+        let b = text_bundle(&[("A", "テスト"), ("C", "+{Param0}％"), ("A", "x")]);
+        let labels = text_labels(&b).unwrap();
+        assert_eq!(
+            labels.iter().collect::<Vec<_>>(),
+            [
+                (&"text:MyPage_JP:A".to_string(), &"テスト".to_string()),
+                (&"text:MyPage_JP:C".to_string(), &"+{Param0}％".to_string())
+            ],
+            "rows without Japanese too (collect skips them); a repeated label keeps its first row"
+        );
+        assert_eq!(collect(&b, "text.jp").unwrap().len(), 1);
     }
 
     #[test]
