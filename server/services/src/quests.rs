@@ -143,6 +143,9 @@ pub struct Progress {
     /// Mentality and the Labyrinth run in progress (docs/research/22-labyrinth.md).
     #[serde(default)]
     pub dungeon: crate::labyrinth::DungeonState,
+    /// Arena standing, team durability and opponents (docs/research/23-arena.md).
+    #[serde(default)]
+    pub arena: crate::services::arena::ArenaState,
 }
 
 /// The three tactical missions of a stage (docs/research/11 §4): clear the quest, every member
