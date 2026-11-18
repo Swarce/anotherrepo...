@@ -22,11 +22,13 @@ def safe(s):
 
 
 if sys.argv[1] == "--apk":
-    # In-APK screens: every apk_<file> image must equal its sprite in the patched APK, and the
-    # textures must be RGBA32.
+    # In-APK screens: every apk_<file> image must equal its sprite (or, for a whole texture such
+    # as the loading-screen atlas, the texture) in the patched APK, and the textures must be RGBA32.
     import zipfile
     patched, original, reps = zipfile.ZipFile(sys.argv[2]), zipfile.ZipFile(sys.argv[3]), sys.argv[4]
-    n = skipped = 0
+    n = skipped = whole = retyped = 0
+    # The fields a rewritten texture changes (in-file RGBA32, one mip).
+    TEXTURE_EDITED = {"m_TextureFormat", "m_CompleteImageSize", "m_MipCount", "m_MipMap", "image data", "m_StreamData"}
     for b in sorted(d for d in os.listdir(reps) if d.startswith("apk_")):
         entry = "assets/bin/Data/" + b[4:]
         if patched.read(entry) == original.read(entry):
@@ -50,11 +52,14 @@ if sys.argv[1] == "--apk":
             if o.type.name == "Texture2D":
                 t = o.read()
                 base = safe(t.m_Name)
-                textures.setdefault(f"{base}.png" if base not in tseen else f"{base}__{o.path_id}.png", t)
-                textures.setdefault(f"{base}__{o.path_id}.png", t)
+                textures.setdefault(f"{base}.png" if base not in tseen else f"{base}__{o.path_id}.png", (o.path_id, t))
+                textures.setdefault(f"{base}__{o.path_id}.png", (o.path_id, t))
                 tseen.add(base)
+        touched = set()
         for f in sorted(x for x in os.listdir(os.path.join(reps, b)) if x.endswith(".png")):
-            t = textures[f]
+            pid, t = textures[f]
+            touched.add(pid)
+            whole += 1
             assert int(t.m_TextureFormat) == 4, (b, f, t.m_TextureFormat)
             png = Image.open(os.path.join(reps, b, f)).convert("RGBA")
             assert ImageChops.difference(t.image.convert("RGBA"), png).getbbox() is None, (b, f)
@@ -62,6 +67,7 @@ if sys.argv[1] == "--apk":
         sdir = os.path.join(reps, b, "sprites")
         for f in sorted(os.listdir(sdir) if os.path.isdir(sdir) else []):
             s = sprites[f]
+            touched.add(s.m_RD.texture.path_id)
             t = s.m_RD.texture.read()
             assert int(t.m_TextureFormat) == 4, (b, f, t.m_TextureFormat)
             img = t.image.convert("RGBA")
@@ -70,8 +76,32 @@ if sys.argv[1] == "--apk":
             png = Image.open(os.path.join(reps, b, "sprites", f)).convert("RGBA")
             assert ImageChops.difference(img.crop(box), png).getbbox() is None, (b, f)
             n += 1
+        # Nothing else changed: the same objects, every object but the touched textures
+        # byte-identical, and the touched textures' other fields as before. The files carry no
+        # type trees, so UnityPy reads them through its own class database for this Unity
+        # version, and each read must consume its object exactly (an independent check of the
+        # layout the patcher wrote with).
+        env0 = UnityPy.load(original.read(entry))
+        o0 = {o.path_id: o for o in env0.objects}
+        o1 = {o.path_id: o for o in env.objects}
+        assert sorted(o0) == sorted(o1), (entry, "object table changed")
+        for pid, a in o0.items():
+            c = o1[pid]
+            assert a.type.name == c.type.name, (entry, pid)
+            if pid not in touched:
+                assert a.get_raw_data() == c.get_raw_data(), (entry, pid, "changed")
+                continue
+            assert a.type.name == "Texture2D", (entry, pid)
+            d0, d1 = a.parse_as_dict(), c.parse_as_dict()
+            assert list(d0) == list(d1), (entry, pid)
+            for k in d0:
+                if k not in TEXTURE_EDITED:
+                    assert d0[k] == d1[k], (entry, pid, k)
+            assert d1["m_StreamData"]["size"] == 0 and len(d1["image data"]) == d1["m_Width"] * d1["m_Height"] * 4
+            retyped += 1
     assert n > 0 or skipped > 0, "no in-APK images in the pack"
-    print(f"OK: {n} redrawn sprites in the APK's own screens match their PNGs exactly (RGBA32)")
+    print(f"OK: {n} redrawn images in the APK's own screens ({whole} whole textures) match their PNGs exactly (RGBA32);"
+          f" {retyped} textures rewritten, every other object byte-identical; {skipped} files left unchanged")
     sys.exit(0)
 
 state, reps = sys.argv[1], sys.argv[2]
