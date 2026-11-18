@@ -339,6 +339,8 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope, stage_id: &str, won: bool) 
             clear: (outcome == Outcome::Cleared) as i64,
             gameover: (outcome == Outcome::GameOver) as i64,
             friend_points: 0,
+            now_point: 0,
+            old_result: crate::services::event::no_ranking_result(),
         },
     )
 }
