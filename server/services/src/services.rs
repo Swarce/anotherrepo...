@@ -13,6 +13,7 @@ pub mod common;
 pub mod gasha;
 pub mod item;
 pub mod menu;
+pub mod mind;
 pub mod misc;
 pub mod present;
 pub mod statue;
@@ -50,6 +51,7 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/info/get_menu_notify" => misc::get_menu_notify(ctx, env),
         "/mind/mind_list" => statue::mind_list(ctx, env),
         "/mind/mind_info" => statue::mind_info(ctx, env),
+        "/mind/strengthening" | "/mind/strengthening_item" => mind::strengthening(ctx, env),
         "/statue/statue_list" => statue::statue_list(ctx, env),
         "/statue/statue_info" => statue::statue_info(ctx, env),
         "/team/team_info" => misc::team_info(ctx, env),
@@ -57,6 +59,7 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/team/set_team" => team::set_team(ctx, env),
         "/team/equip_multiple_minds" => team::equip_multiple_minds(ctx, env),
         "/team/equip_multiple_assist" => team::equip_multiple_assist(ctx, env),
+        "/team/auto_set_and_equip" => team::auto_set_and_equip(ctx, env),
         "/team/equip_mind" => team::equip_mind(ctx, env),
         "/team/unlock_mind_seq" => team::unlock_mind_seq(ctx, env),
         "/mind/protect" => statue::mind_protect(ctx, env),
