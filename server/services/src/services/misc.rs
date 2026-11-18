@@ -32,8 +32,17 @@ pub fn check_forced_notify(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "category": 0 }))
 }
 
-pub fn event_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    ok(json!({ "eventList": [], "userBattleInfo": {}, "raidInfo": { "totalRescueCount": 0 } }))
+/// `EventListResponse` (My Page): the always-open Arena campaign (services/arena.rs). My Page
+/// shows the Arena button for the first entry of eventType 6/7 and parses its two dates and
+/// `userBattleInfo.fieverEndTime` (client, docs/research/23-arena.md), so all three are dates.
+pub fn event_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let now = jdr_core::clock::now();
+    let fever = super::statue::profile(ctx, env)
+        .map(|p| super::arena::fever_end_time(&p.progress.arena, now))
+        .unwrap_or_else(|_| super::arena::fever_end_time(&Default::default(), now));
+    ok(json!({ "eventList": [super::arena::campaign_entry()],
+               "userBattleInfo": { "fieverEndTime": fever },
+               "raidInfo": { "totalRescueCount": 0 } }))
 }
 
 pub fn banner_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {

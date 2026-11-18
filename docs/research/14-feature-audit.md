@@ -146,8 +146,13 @@ Out of scope offline, or later systems:
 
 - **No backend yet (offline):** `social.friends`, `social.town`, `social.town_points`,
   `social.town_growth`, `social.town_payout`. Follow lists, blocks and Town search return empty.
-- **Missing:** `arena.*` (12 rows, two rule sets: 2017 and 2019). The client's Arena needs its
-  own routes, none of which appear in our logs. Keep the rule sets apart if it is ever built.
+- **Server (2019 rule set):** `arena.*` (12 rows). Client 3.12.0 only reaches the 2019 home, so
+  that is the one built: an always-open campaign, a separate five-team roster, AI opponents from
+  our roster, durability with a 30-minute rest (`arena.durability_2019`), Fever after four
+  battles at triple points (`arena.fever`), streak and team-power scoring, point and season
+  rewards in the Message Box (docs/research/23-arena.md). Scoring values, opponent strength,
+  seasons and rewards are ours; the 2017 rules (one-hour rest, revive-all threshold, cost decay)
+  stay out. Defense, Crazy Diamond and the BP economy are not modelled (BP stays full).
 - **Missing:** `labyrinth.*` (5 rows). The labyrinth chapters exist in `quests.json`. Mentality,
   souls, tarot and route choice need the dungeon routes, and `bizarre_end`'s `dungeonClearFlag`
   is 0.
@@ -183,7 +188,7 @@ examples and 8 event Minds. The numeric data is unchanged.
 | v2.growth.material_rarity / crossfeed | missing | No EXP-material inventory | Item system (later) |
 | v2.growth.assist_display / assist_conditions / assist_scaling | partial | Assists equip per seat; the stat bonus formula is the client's, constants ours (Build 22, docs/research/19) | Assist abilities and skills |
 | v2.action.armor_weak / armor_strong / crit_legacy / unity_phases / unity_stack / zeppeli_sacrifice | client | Action battle behaviour; the client's tables decide | Action battle is unverified offline |
-| v2.arena.* (8 rows) | missing | — | Keep the early (no switching, BP 5, cost lock) and later rule sets apart. Opponents were AI-controlled teams (2018 guide), which fits an offline build |
+| v2.arena.* (8 rows) | server | AI-controlled opponents (as the 2018 guide describes) built from our roster; the 2019 rule set only; Fever 10 minutes (`early_fever`); a missing result counts as a loss (`early_failure`) (docs/research/23-arena.md) | The early rules (no switching, BP regeneration, rising costs and the cost lock) are not modelled: BP stays 5 and every team costs 1 offline |
 | v2.labyrinth.* (10 rows) | missing | — | Pending rewards paid only on full clear or escape; Soul loss on defeat or retire; zero Souls forfeits. 22 Tarot identities, each used once until the deck resets; flipping all three costs 20 Mentality. Upright values only |
 | v2.countup.old_ticket / ticket_pool / ticket_delivery | server | Tiers 20/30/50/50/50; the ticket goes to the Message Box (Build 22) | Which ticket each round gave is unknown (ours) |
 | v2.events.* (9 rows) | offline / missing | Four event chapters playable (Build 20); no points, ranking or exchange | One-event examples, not general rules; never sum anniversary tiers |

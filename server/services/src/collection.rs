@@ -299,6 +299,10 @@ pub struct Collection {
     pub statues: Vec<OwnedStatue>,
     #[serde(default)]
     pub teams: Vec<Team>,
+    /// The Arena's own five teams (docs/research/23-arena.md; stage type 1, the Arena battle is
+    /// tactical). Older saves get them on their next login.
+    #[serde(default)]
+    pub arena_teams: Vec<Team>,
     #[serde(default)]
     pub minds: Vec<OwnedMind>,
     /// Item counts by item id (Build 21; `server/content/items.json`).
@@ -387,6 +391,25 @@ impl Collection {
                 changed = true;
             }
         }
+        // The Arena roster: team 1 starts as a copy of the tactical main team's members (ours).
+        for team_num in 1..=TEAMS_PER_TYPE {
+            if self.arena_teams.iter().any(|t| t.team_num == team_num) {
+                continue;
+            }
+            let slots = match team_num {
+                1 => main_team(self, 1).map(|t| t.slots).unwrap_or([0; 3]),
+                _ => [0; 3],
+            };
+            self.arena_teams.push(Team {
+                stage_type: 1,
+                team_num,
+                main: team_num == 1,
+                slots,
+                minds: Default::default(),
+                assists: Default::default(),
+            });
+            changed = true;
+        }
         changed |= self.repair_teams();
         changed
     }
@@ -437,6 +460,14 @@ impl Collection {
             .map(|o| o.uid)
             .collect();
         let starter = self.starter_slots();
+        for t in &mut self.arena_teams {
+            for s in &mut t.slots {
+                if *s != 0 && !usable.contains(s) {
+                    *s = 0;
+                    changed = true;
+                }
+            }
+        }
         for t in &mut self.teams {
             for s in &mut t.slots {
                 if *s != 0 && !usable.contains(s) {
@@ -713,10 +744,11 @@ fn setting(c: &Collection, t: &Team, seat: usize) -> Value {
 }
 
 impl Collection {
-    /// Mind uids equipped anywhere.
+    /// Mind uids equipped anywhere (story and Arena teams).
     pub fn equipped_minds(&self) -> std::collections::HashSet<i64> {
         self.teams
             .iter()
+            .chain(&self.arena_teams)
             .flat_map(|t| t.minds.iter().flatten().map(|(_, u)| *u))
             .collect()
     }
