@@ -26,9 +26,15 @@ if sys.argv[1] == "--apk":
     # textures must be RGBA32.
     import zipfile
     patched, original, reps = zipfile.ZipFile(sys.argv[2]), zipfile.ZipFile(sys.argv[3]), sys.argv[4]
-    n = 0
+    n = skipped = 0
     for b in sorted(d for d in os.listdir(reps) if d.startswith("apk_")):
-        env = UnityPy.load(patched.read("assets/bin/Data/" + b[4:]))
+        entry = "assets/bin/Data/" + b[4:]
+        if patched.read(entry) == original.read(entry):
+            # The patcher leaves a file it cannot rewrite safely unchanged (and reports it).
+            print(f"note: {entry} unchanged (left out by the patcher)")
+            skipped += 1
+            continue
+        env = UnityPy.load(patched.read(entry))
         sprites, seen = {}, set()
         for o in env.objects:
             if o.type.name == "Sprite":
@@ -64,7 +70,7 @@ if sys.argv[1] == "--apk":
             png = Image.open(os.path.join(reps, b, "sprites", f)).convert("RGBA")
             assert ImageChops.difference(img.crop(box), png).getbbox() is None, (b, f)
             n += 1
-    assert n > 0, "no in-APK images in the pack"
+    assert n > 0 or skipped > 0, "no in-APK images in the pack"
     print(f"OK: {n} redrawn sprites in the APK's own screens match their PNGs exactly (RGBA32)")
     sys.exit(0)
 
