@@ -120,7 +120,7 @@ We send its tables (reaction tables, `battle_damage_param`, `battle_combo_param`
 | Feature | Status | Our implementation | Gap / next |
 |---|---|---|---|
 | progress.levels | partial | Level and EXP per statue; growth tree progress saved (`OwnedStatue.tree`) | Duplicate boosts and Minds are not modelled |
-| progress.tree | partial | Server-built branching tree (`tree_squares`) | Original node graphs unknown (gap noted by the pack too) |
+| progress.tree | partial | Server-built branching tree (`tree_squares`) with material, gold and key costs (Build 23) | Original node graphs and costs unknown (ours) |
 | progress.mind_capacity / mind_links / mind_lock / mind_levels | missing | Mind list and Mind summon exist; no equip, links or locks | Needs the Mind equip/lock routes |
 | progress.material_bonuses / turtles / material_migration | missing | `statue/strengthening` accepted; no item inventory | Later (item system) |
 | progress.awakening / awakening_boost / awakening_requirements | offline | Every rarity variant is already owned; `statue/evolution_info` answers | Awakening transaction moot offline |
@@ -133,7 +133,7 @@ We send its tables (reaction tables, `battle_damage_param`, `battle_combo_param`
 | economy.wallets | partial | Gold and rank EXP are real; coins 0; AP always full | Offline choice |
 | economy.summon_prices | offline | Banners free (`payType 2`, price 0) | Choice: no payments |
 | economy.guaranteed_slot | server | Normal draws 86/12.5/1.5 (3/4/5-star); the tenth draw of a 10x summon is the guaranteed slot, 98.5/1.5 (4/5-star; launch guide), since Build 20 | — |
-| economy.friend_gacha | missing | — | Friend points have no use offline |
+| economy.friend_gacha | server | Friend Points from quest clears and missions; the Friend Point Mind Summon (Build 23) | Price and rates ours |
 | economy.inventory_expand / refill_revive | offline | Continue is free; no inventory cap | — |
 | economy.box / count_up | server | Statue Box Summon (50 per box, Reset, Box Status) and the Count Up rounds with tickets in the Message Box (Build 22, docs/research/21) | Contents and ticket ours |
 | economy.exchange | server | Ring Exchange (Build 21); event exchange for Fight Coins from event quests (Build 22, docs/research/20) | Currency and goods ours |
