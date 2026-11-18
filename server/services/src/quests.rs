@@ -216,6 +216,9 @@ pub struct Progress {
     /// The answer stage first cleared per quiz chapter (the player's answer).
     #[serde(default)]
     pub quiz_answers: std::collections::BTreeMap<String, String>,
+    /// The Town and its AI members (docs/research/24-town.md).
+    #[serde(default)]
+    pub town: crate::town::TownState,
 }
 
 /// The three tactical missions of a stage (docs/research/11 §4): clear the quest, every member

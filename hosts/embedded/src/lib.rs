@@ -351,8 +351,10 @@ pub fn serve_embedded(paths: &Paths, keys: Keys, port: u16, bind_retries: u32, t
             std::thread::sleep(Duration::from_secs(60));
             log::line("status", &c2.counters.status_line());
         });
+    // The Town home's socket shares the port (docs/research/24-town.md).
+    let town = jdr_services::town_socket::hook(ctx.clone());
     let h: http::Handler = Arc::new(move |r| app::handle(&ctx, r));
-    if let Err(e) = http::serve(listener, h) {
+    if let Err(e) = http::serve_with(listener, h, Some(town)) {
         log::line("boot", &format!("server stopped: {e}"));
     }
 }

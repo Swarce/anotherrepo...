@@ -1,138 +1,138 @@
 {
  "asset": "clan_table",
- "about": "Clan (Town) levels 1..N, one per ClanFunctionText label. The clan room is hidden offline.",
+ "about": "Town (clan) levels 1..20. exp is the cumulative total a level needs (client: GetTotalRankUpPoint); function_Id is the ClanFunctionType name the level unlocks (client: IsClanFunction looks the name up in ClanInfo.clanFunctionList). See docs/research/24-town.md.",
  "sources": [
   {
    "source": "jdr-research",
-   "doc": "docs/research/12-master-data-fill.md §1",
-   "note": "levels and function_Text from ClanFunctionText label keys"
+   "doc": "docs/research/24-town.md §1.3",
+   "note": "levels and function texts from ClanFunctionText label keys: _0002 Sub-Master, _0003 object layout, _0004 background map; Clan_Object_Object_Unlock (rank 8) and Clan_Object_Bg_Unlock (rank 10); Sub-Master rank 3 from the research pack's guide"
   },
   {
    "source": "jdr-default",
-   "note": "exp and function_Id chosen by us"
+   "note": "exp curve 250*(L-1)*L chosen by us"
   }
  ],
  "data": {
   "paramList": [
    {
     "level": 1,
-    "exp": 1000,
+    "exp": 0,
     "function_Id": "",
     "function_Text": "ClanFunctionText_0001"
    },
    {
     "level": 2,
-    "exp": 2000,
+    "exp": 500,
     "function_Id": "",
-    "function_Text": "ClanFunctionText_0002"
+    "function_Text": "ClanFunctionText_0001"
    },
    {
     "level": 3,
-    "exp": 3000,
-    "function_Id": "",
-    "function_Text": "ClanFunctionText_0003"
+    "exp": 1500,
+    "function_Id": "TOWN_FUNCTION_SUBMASTER",
+    "function_Text": "ClanFunctionText_0002"
    },
    {
     "level": 4,
-    "exp": 4000,
+    "exp": 3000,
     "function_Id": "",
-    "function_Text": "ClanFunctionText_0004"
+    "function_Text": "ClanFunctionText_0001"
    },
    {
     "level": 5,
     "exp": 5000,
     "function_Id": "",
-    "function_Text": "ClanFunctionText_0005"
+    "function_Text": "ClanFunctionText_0001"
    },
    {
     "level": 6,
-    "exp": 6000,
+    "exp": 7500,
     "function_Id": "",
-    "function_Text": "ClanFunctionText_0006"
+    "function_Text": "ClanFunctionText_0001"
    },
    {
     "level": 7,
-    "exp": 7000,
+    "exp": 10500,
     "function_Id": "",
-    "function_Text": "ClanFunctionText_0007"
+    "function_Text": "ClanFunctionText_0001"
    },
    {
     "level": 8,
-    "exp": 8000,
-    "function_Id": "",
-    "function_Text": "ClanFunctionText_0008"
+    "exp": 14000,
+    "function_Id": "TOWN_FUNCTION_OBJECT_SET",
+    "function_Text": "ClanFunctionText_0003"
    },
    {
     "level": 9,
-    "exp": 9000,
+    "exp": 18000,
     "function_Id": "",
-    "function_Text": "ClanFunctionText_0009"
+    "function_Text": "ClanFunctionText_0001"
    },
    {
     "level": 10,
-    "exp": 10000,
-    "function_Id": "",
-    "function_Text": "ClanFunctionText_0010"
+    "exp": 22500,
+    "function_Id": "TOWN_FUNCTION_MAP_CHANGE",
+    "function_Text": "ClanFunctionText_0004"
    },
    {
     "level": 11,
-    "exp": 11000,
+    "exp": 27500,
     "function_Id": "",
-    "function_Text": "ClanFunctionText_0011"
+    "function_Text": "ClanFunctionText_0001"
    },
    {
     "level": 12,
-    "exp": 12000,
+    "exp": 33000,
     "function_Id": "",
-    "function_Text": "ClanFunctionText_0012"
+    "function_Text": "ClanFunctionText_0001"
    },
    {
     "level": 13,
-    "exp": 13000,
+    "exp": 39000,
     "function_Id": "",
-    "function_Text": "ClanFunctionText_0013"
+    "function_Text": "ClanFunctionText_0001"
    },
    {
     "level": 14,
-    "exp": 14000,
+    "exp": 45500,
     "function_Id": "",
-    "function_Text": "ClanFunctionText_0014"
+    "function_Text": "ClanFunctionText_0001"
    },
    {
     "level": 15,
-    "exp": 15000,
+    "exp": 52500,
     "function_Id": "",
-    "function_Text": "ClanFunctionText_0015"
+    "function_Text": "ClanFunctionText_0001"
    },
    {
     "level": 16,
-    "exp": 16000,
+    "exp": 60000,
     "function_Id": "",
-    "function_Text": "ClanFunctionText_0016"
+    "function_Text": "ClanFunctionText_0001"
    },
    {
     "level": 17,
-    "exp": 17000,
+    "exp": 68000,
     "function_Id": "",
-    "function_Text": "ClanFunctionText_0017"
+    "function_Text": "ClanFunctionText_0001"
    },
    {
     "level": 18,
-    "exp": 18000,
+    "exp": 76500,
     "function_Id": "",
-    "function_Text": "ClanFunctionText_0018"
+    "function_Text": "ClanFunctionText_0001"
    },
    {
     "level": 19,
-    "exp": 19000,
+    "exp": 85500,
     "function_Id": "",
-    "function_Text": "ClanFunctionText_0019"
+    "function_Text": "ClanFunctionText_0001"
    },
    {
     "level": 20,
-    "exp": 20000,
+    "exp": 95000,
     "function_Id": "",
-    "function_Text": "ClanFunctionText_0020"
+    "function_Text": "ClanFunctionText_0001"
    }
   ]
  }
