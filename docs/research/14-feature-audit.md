@@ -148,9 +148,13 @@ Out of scope offline, or later systems:
   `social.town_growth`, `social.town_payout`. Follow lists, blocks and Town search return empty.
 - **Missing:** `arena.*` (12 rows, two rule sets: 2017 and 2019). The client's Arena needs its
   own routes, none of which appear in our logs. Keep the rule sets apart if it is ever built.
-- **Missing:** `labyrinth.*` (5 rows). The labyrinth chapters exist in `quests.json`. Mentality,
-  souls, tarot and route choice need the dungeon routes, and `bizarre_end`'s `dungeonClearFlag`
-  is 0.
+- **Server (unverified):** `labyrinth.*` (5 rows), see docs/research/22-labyrinth.md.
+  - The tile is open, and the six `dungeon/*` routes are served.
+  - Mentality: cap 300, full again at 04:00 JST. That refill is ours; the pack says +100 a day.
+  - 3 Souls and Tarot select/flip. `bizarre_end` advances floors and sets `dungeonClearFlag`
+    and `dungeonGameoverFlag`.
+  - Correction: `quests.json` has **no** labyrinth chapters. Rooms reuse tactical story stages
+    by floor (ours).
 - **Offline (open calendar):** `event.quiz`, `event.high_score`, `event.town_ranking`,
   `event.bonuses`, `event.reruns`, `event.end_service`. Event chapters are open; scoring and
   rewards are not implemented.
@@ -184,7 +188,7 @@ examples and 8 event Minds. The numeric data is unchanged.
 | v2.growth.assist_display / assist_conditions / assist_scaling | partial | Assists equip per seat; the stat bonus formula is the client's, constants ours (Build 22, docs/research/19) | Assist abilities and skills |
 | v2.action.armor_weak / armor_strong / crit_legacy / unity_phases / unity_stack / zeppeli_sacrifice | client | Action battle behaviour; the client's tables decide | Action battle is unverified offline |
 | v2.arena.* (8 rows) | missing | — | Keep the early (no switching, BP 5, cost lock) and later rule sets apart. Opponents were AI-controlled teams (2018 guide), which fits an offline build |
-| v2.labyrinth.* (10 rows) | missing | — | Pending rewards paid only on full clear or escape; Soul loss on defeat or retire; zero Souls forfeits. 22 Tarot identities, each used once until the deck resets; flipping all three costs 20 Mentality. Upright values only |
+| v2.labyrinth.* (10 rows) | server (unverified) | 20 floors. Floor rewards (ours) wait in the run and go to the Message Box on a full clear or an escape. A defeat or retire costs a Soul; the last Soul forfeits the run. Escape restores the Souls. 22 Tarot identities, three offered, each used once until the deck resets. Flipping all three costs 20 Mentality. Room costs are 22–35 (docs/research/22) | Card effects follow the client's 3.12.0 texts where an existing affect fits (else none). Rooms have one area. Not yet seen on a device |
 | v2.countup.old_ticket / ticket_pool / ticket_delivery | server | Tiers 20/30/50/50/50; the ticket goes to the Message Box (Build 22) | Which ticket each round gave is unknown (ours) |
 | v2.events.* (9 rows) | offline / missing | Four event chapters playable (Build 20); no points, ranking or exchange | One-event examples, not general rules; never sum anniversary tiers |
 
