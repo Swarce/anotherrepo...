@@ -18,33 +18,34 @@ const GOLD_ITEM: i64 = 20;
 const E_VM_LACK: i64 = 10102;
 const E_ITEM_LACK: i64 = 10108;
 
-/// Tree materials by tier for a statue type (ours): Courage red, Wisdom blue, Spirit green,
-/// Unity white, Solitude black; Stone, Brooch, Gem, Tablet, Slab (or Tablet, Slab, Chain, Crown).
+/// Tree materials by tier for a statue type. The colours are the game's (the item details: Courage
+/// blue, Wisdom green, Spirit red); which tier each depth uses is ours: Shard, Stone, Brooch, Gem,
+/// Tablet, Slab; Unity white and Solitude black (Gray Shard, Tablet, Slab, Chain, Crown).
 fn materials(statue_type: i64) -> &'static [i64] {
     match statue_type {
-        1 => &[1004, 1007, 1010, 1017, 1020],
-        2 => &[1002, 1005, 1008, 1015, 1018],
-        3 => &[1003, 1006, 1009, 1016, 1019],
-        4 => &[1030, 1032, 1034, 1036],
-        _ => &[1031, 1033, 1035, 1037],
+        1 => &[1011, 1002, 1005, 1008, 1015, 1018],
+        2 => &[1012, 1003, 1006, 1009, 1016, 1019],
+        3 => &[1013, 1004, 1007, 1010, 1017, 1020],
+        4 => &[1014, 1030, 1032, 1034, 1036],
+        _ => &[1014, 1031, 1033, 1035, 1037],
     }
 }
 
-/// The Expansion Key that unlocks a statue type's fork squares (ours).
+/// The Expansion Key that unlocks a statue type's fork squares (colour as above; ours).
 fn key(statue_type: i64) -> i64 {
     match statue_type {
-        1 => 1023,
-        2 => 1021,
-        3 => 1022,
+        1 => 1021,
+        2 => 1022,
+        3 => 1023,
         _ => 1038,
     }
 }
 
 /// What a square costs to open (materials, gold last) and, for a locked square, its key.
-fn cost(
-    d: &collection::StatueDef,
-    sq: &collection::TreeSquare,
-) -> (Vec<(i64, i64)>, Vec<(i64, i64)>) {
+/// (item id, count) pairs.
+type Costs = Vec<(i64, i64)>;
+
+fn cost(d: &collection::StatueDef, sq: &collection::TreeSquare) -> (Costs, Costs) {
     if sq.effect == 0 {
         return (Vec::new(), Vec::new());
     }
