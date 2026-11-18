@@ -85,6 +85,15 @@ impl Response {
 
 pub type Handler = Arc<dyn Fn(&Request) -> Response + Send + Sync>;
 
+/// A connection that is not HTTP: the first four bytes it sends (`magic`) pick it out, and the
+/// stream is handed over whole (the Town socket, which the client opens to the host and port
+/// `/clan/sync_server_info` names: ours, the same port).
+#[derive(Clone)]
+pub struct StreamHook {
+    pub magic: [u8; 4],
+    pub handler: Arc<dyn Fn(TcpStream) + Send + Sync>,
+}
+
 fn reason(code: u16) -> &'static str {
     match code {
         200 => "OK",
@@ -118,6 +127,15 @@ pub fn bind(ports: &[u16]) -> std::io::Result<(TcpListener, u16)> {
 
 /// Accept loop; returns only on listener error.
 pub fn serve(listener: TcpListener, handler: Handler) -> std::io::Result<()> {
+    serve_with(listener, handler, None)
+}
+
+/// Accept loop with an optional hook for one non-HTTP protocol on the same port.
+pub fn serve_with(
+    listener: TcpListener,
+    handler: Handler,
+    hook: Option<StreamHook>,
+) -> std::io::Result<()> {
     use std::sync::atomic::Ordering;
     for conn in listener.incoming() {
         let Ok(stream) = conn else { continue };
@@ -129,11 +147,16 @@ pub fn serve(listener: TcpListener, handler: Handler) -> std::io::Result<()> {
         }
         ACTIVE.fetch_add(1, Ordering::Relaxed);
         let h = handler.clone();
+        let hook = hook.clone();
         let spawned = std::thread::Builder::new()
             .name("jdr-http".into())
             .spawn(move || {
-                let _ = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
-                    handle_connection(stream, h)
+                let _ = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| match hook {
+                    Some(k) if starts_with(&stream, &k.magic) => {
+                        (k.handler)(stream);
+                        Ok(())
+                    }
+                    _ => handle_connection(stream, h),
                 }));
                 ACTIVE.fetch_sub(1, Ordering::Relaxed);
             });
@@ -142,6 +165,28 @@ pub fn serve(listener: TcpListener, handler: Handler) -> std::io::Result<()> {
         }
     }
     Ok(())
+}
+
+/// Whether the first bytes the peer sends are `magic` (waits up to 20 s for them). An HTTP
+/// request line starts with a method, never with the Town socket's magic.
+fn starts_with(stream: &TcpStream, magic: &[u8; 4]) -> bool {
+    if stream
+        .set_read_timeout(Some(Duration::from_secs(20)))
+        .is_err()
+    {
+        return false;
+    }
+    let mut b = [0u8; 4];
+    for _ in 0..2000 {
+        match stream.peek(&mut b) {
+            Ok(n) if n >= 4 => return &b == magic,
+            Ok(0) => return false,
+            Ok(n) if b[..n] != magic[..n] => return false,
+            Ok(_) => std::thread::sleep(Duration::from_millis(10)),
+            Err(_) => return false,
+        }
+    }
+    false
 }
 
 pub fn handle_connection(stream: TcpStream, handler: Handler) -> std::io::Result<()> {
@@ -421,5 +466,31 @@ mod tests {
         s.read_to_string(&mut out).unwrap();
         assert!(out.contains("POST 3"), "{out}");
         assert!(out.contains("GET 0"), "{out}");
+    }
+
+    #[test]
+    fn stream_hook_takes_its_magic_and_leaves_http() {
+        let (l, port) = bind(&[0]).unwrap();
+        let h: Handler = Arc::new(|_r: &Request| Response::ok("text/plain", b"http".to_vec()));
+        let hook = StreamHook {
+            magic: *b"GLPH",
+            handler: Arc::new(|mut s: TcpStream| {
+                let mut b = [0u8; 6];
+                s.read_exact(&mut b).unwrap();
+                s.write_all(&b[4..]).unwrap();
+            }),
+        };
+        std::thread::spawn(move || serve_with(l, h, Some(hook)));
+        let mut s = TcpStream::connect(("127.0.0.1", port)).unwrap();
+        s.write_all(b"GLPHok").unwrap();
+        let mut out = Vec::new();
+        s.read_to_end(&mut out).unwrap();
+        assert_eq!(out, b"ok");
+        let mut s = TcpStream::connect(("127.0.0.1", port)).unwrap();
+        s.write_all(b"GET /b HTTP/1.1\r\nConnection: close\r\n\r\n")
+            .unwrap();
+        let mut out = String::new();
+        s.read_to_string(&mut out).unwrap();
+        assert!(out.ends_with("http"), "{out}");
     }
 }
