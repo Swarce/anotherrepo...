@@ -75,7 +75,7 @@ fn patches_and_rereads_apk_text() {
         Metadata::parse(&out_meta).unwrap(),
     );
     let allow: Vec<usize> = build.ui_literals.iter().map(|(i, _)| *i).collect();
-    let mut relocated = 0;
+    let (mut relocated, mut longer) = (0, 0);
     for i in 0..m0.literal_count() {
         let (a, b) = (m0.literal(i).unwrap(), m1.literal(i).unwrap());
         if allow.contains(&i) {
@@ -83,12 +83,18 @@ fn patches_and_rereads_apk_text() {
             assert_eq!(b, en.as_bytes(), "literal {i}");
             assert!(has_japanese(std::str::from_utf8(a).unwrap()));
             relocated += m1.is_relocated(i).unwrap() as usize;
+            // English that does not fit in the original bytes is appended and repointed.
+            longer += (en.len() > a.len()) as usize;
         } else if i != build.server_url_literal.0 {
             assert_eq!(a, b, "literal {i}");
         }
     }
     assert_eq!(allow.len(), 22);
-    assert_eq!(relocated, 4);
+    assert_eq!(
+        relocated, longer,
+        "relocated exactly the literals that grew"
+    );
+    assert!(relocated > 0);
     assert_eq!(out_meta[..24], orig_meta[..24], "header unchanged");
     assert!(out_meta.len() > orig_meta.len());
 
