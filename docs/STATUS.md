@@ -23,7 +23,20 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 - **The redrawn loading-screen atlas** is applied in the APK: the patcher asked for a Sprite type
   the file does not have. It now asks only for the types each file has and proves every object
   round-trips before editing.
-ARENA_PLACEHOLDER
+- **Arena, finished** (docs/research/23):
+  - `/pvp/home` sent `pollingTimes 0`: the client re-polls every frame with the buttons locked.
+    It now sends 30 s (ours); likely a second cause of the hang.
+  - Rankings: the Arena board ranks the player among 999 AI rivals per season, and event 50045
+    has its own board (the three `event/get_event_ranking_*` routes).
+  - Defence: after 15 minutes away, up to 3 simulated attacks on the Arena teams, shown as the
+    client's defence messages.
+  - Crazy Diamond: a gauge filled by durability lost; when full, the Full Revive button revives
+    every resting team.
+  - A battle that was started and never ended counts as a loss, with the client's
+    "connection lost" notice. Win streaks raise ATK/DEF (+2% per win, up to +10%).
+  - Every Arena and ranking reply is checked in tests against the client's own class fields: no
+    string, list or object it reads is missing or null.
+  - The values are ours.
 - Build number 24, server marker `JDR_EMBEDDED_SERVER_b024`.
 
 ### Device checklist (expected; to be confirmed on a device)
@@ -32,7 +45,9 @@ ARENA_PLACEHOLDER
 - [ ] A team with a leader assist: the Assist button in tactical battle and its skill; battles
       without assists unchanged
 - [ ] The loading screen shows the redrawn English atlas
-ARENA_CHECK_PLACEHOLDER
+- [ ] Arena rankings (top 100 and around me); event 50045 ranking button
+- [ ] After 15+ minutes away: defence messages on the Arena home; Full Revive when the gauge is
+      full
 
 ## Build 23 — full retranslation with the story, Labyrinth, Arena and the remaining systems (branch `wip/b23`)
 
