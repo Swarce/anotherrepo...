@@ -79,6 +79,14 @@ for jp, (word, val) in STYPE.items():
 MAXRE = re.compile(r'\((?:MAX ?)?([+-]?)' + NUM + r'(?:%|' + J_TIMES + r')?\)')
 MAXJUNK = re.compile(r'\(MAX[^)]*\)')  # e.g. '(MAX+?%)': no usable Lv10 value
 
+# affectTextId of a new affect row: the game's affectText_JP label AFFECT_<cond>_<stat>_TEXT with
+# the same meaning (docs/research/16-minds.md section 8). DYING takes the near-death (FNT) labels,
+# FULL_HP the FULL ones.
+def text_id(affect_id):
+    s = affect_id[len('DTAF_'):]
+    s = s.replace('DYING_', 'FNT_', 1).replace('FULL_HP_', 'FULL_', 1)
+    return 'AFFECT_' + s + '_TEXT'
+
 
 def norm(s):
     return unicodedata.normalize('NFKC', s).replace('\u2212', '-').strip()
@@ -223,12 +231,12 @@ def main():
     # affect_table: keep the existing rows, add ours
     old = base_affect['data']['paramList']
     old_ids = {r['affectId'] for r in old}
-    new_rows = [{'affectId': i, 'affectTextId': '', 'prvs': affects[i][1], 'baseAffect': affects[i][0],
+    new_rows = [{'affectId': i, 'affectTextId': text_id(i), 'prvs': affects[i][1], 'baseAffect': affects[i][0],
                  'affectLimitNormal': [], 'affectLimitExtra': [], 'textSortIndex': 0}
                 for i in sorted(affects) if i not in old_ids]
     affect_doc = {
         'asset': 'affect_table',
-        'about': 'The three affect ids the client names in code, plus one row per affect id used by the leader abilities in dtbattle_ability_data_table. Each id names one BaseAffectType and one AffectCondition; the amount comes from the ability row (per-mille, negative for the *_SUB ids). Empty limit lists mean no cap. affectTextId is empty: the player\'s labels have no text key for these plain stat ids.',
+        'about': 'The three affect ids the client names in code, plus one row per affect id used by the leader abilities and Mind abilities in dtbattle_ability_data_table. Each id names one BaseAffectType and one AffectCondition; the amount comes from the ability row (per-mille, negative for the *_SUB ids). Empty limit lists mean no cap. affectTextId is the game\'s own affectText_JP label with the same meaning (AFFECT_[COND_]STAT_OP_TEXT; DYING takes the near-death FNT labels, FULL_HP the FULL ones): the detail screens build the effect line from it, with the amounts merged by affect_text_rule_table.',
         'sources': base_affect.get('sources', []) + [research,
                     {'source': 'jdr-default', 'note': 'affect id names are ours, in the DTAF_[COND_]STAT_OP style of the client\'s DTAF_* label keys; textSortIndex 0'}],
         'data': {'paramList': old + new_rows}}
