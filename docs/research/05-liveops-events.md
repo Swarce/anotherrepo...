@@ -35,6 +35,8 @@ Full list with response classes: [../PROTOCOL.md](../PROTOCOL.md).
 - Rotation: deterministic from the server clock; survives time jumps and missed days.
 - Texts: rewritten in our own words, no real dates; no copied event text.
 - Rankings: local only (the player against generated rivals). PvP against generated rival teams.
+  Built in Build 24 for the Arena and the point events: research/23-arena.md §1.12 (client) and
+  §3 (server).
   Raid rescue by NPC helpers. Clan events: hidden with the clan room.
 - Content source for schedules and rewards: public wikis, cited here in M5.
 

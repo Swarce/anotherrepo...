@@ -18,6 +18,12 @@
 //!   refills it.
 //! - The formation routes (`*_pvp`) edit the Arena's own five teams like `/team/*` edits the
 //!   story teams (services/team.rs).
+//! - Defence (`damageInfo`): AI rivals attack the player's Arena teams while the player is away;
+//!   the home tells what happened and the banners show the durability lost (client). The
+//!   attacks are ours: a few, bounded and deterministic.
+//! - Crazy Diamond: a gauge that shows the Full Revive button when full (client); ours, it fills
+//!   with the durability the teams lose.
+//! - Rankings (services/ranking.rs): the player against a field of AI rivals per season.
 
 use crate::accounts::{Change, Profile};
 use crate::app::{ApiError, ApiResult};
@@ -25,6 +31,7 @@ use crate::collection::{self, Collection, OwnedStatue, Team};
 use crate::missions::{self, Reward};
 use crate::presents;
 use crate::services::ok;
+use crate::services::ranking::{self, Rng, HANDLES};
 use crate::services::statue::with_profile;
 use crate::services::team::{self, Roster};
 use crate::Ctx;
@@ -47,7 +54,7 @@ pub const FEVER_GAUGE_MAX: i64 = 10_000;
 /// GameConst.PVP_TIME_LIMIT_SEC (client).
 const TIME_LIMIT_SECS: i64 = 120;
 /// The campaign never closes offline (ours).
-const OPEN_UNTIL: &str = "2099-12-31 23:59:59";
+pub const OPEN_UNTIL: &str = "2099-12-31 23:59:59";
 /// A date in the past: no Fever running.
 const PAST: &str = "2000-01-01 00:00:00";
 /// Battle turn limit (ours; the client needs a battleModeInfo and reads the limit from it).
@@ -101,29 +108,41 @@ const SEASON_REWARDS: &[(i64, i64, i64)] = &[
     (500, 10, 150),
     (i64::MAX, 10, 50),
 ];
-/// Ranking positions are against a virtual field (ours): position 1 at this many points, one
-/// place lower for every RANKING_STEP points short of it.
-const RANKING_TOP: i64 = 10_000;
-const RANKING_STEP: i64 = 10;
-/// Opponent handles (ours; never game text).
-const HANDLES: [&str; 8] = [
-    "Rival",
-    "Challenger",
-    "Duelist",
-    "Contender",
-    "Ace",
-    "Veteran",
-    "Drifter",
-    "Wanderer",
-];
 /// Opponent ids start here (ours; `enemyuId` is an Int32).
 const ENEMY_UID_BASE: i64 = 100_000;
+/// `pollingTimes`: seconds between the home's polls (client: the interval is this number of
+/// seconds; 0 polls on every frame). Ours.
+pub const POLLING_SECS: i64 = 30;
+/// GameConst.PVP_CRAZYDIAMOND_MAX (client): a full gauge shows the Full Revive button.
+pub const CRAZY_DIAMOND_MAX: i64 = 10_000;
+/// A battle `pvp_start` began and no `pvp_end` settled is a loss once the home is polled this
+/// long after its start (ours; the client stops polling while it starts a battle).
+pub const ABANDON_SECS: i64 = 10;
+/// Defence (ours): attacks happen only after an absence of at least AWAY_SECS since the last
+/// home; at most one per ATTACK_SLOT_SECS slot, with ATTACK_CHANCE_PCT percent per slot, and at
+/// most MAX_ATTACKS per absence. A defence is won DEFENCE_WIN_PCT percent of the time; a lost
+/// one costs DEFENCE_DAMAGE durability (half a lost battle).
+pub const AWAY_SECS: i64 = 15 * 60;
+pub const ATTACK_SLOT_SECS: i64 = 2 * 3600;
+const ATTACK_CHANCE_PCT: u64 = 50;
+pub const MAX_ATTACKS: usize = 3;
+const DEFENCE_WIN_PCT: u64 = 60;
+pub const DEFENCE_DAMAGE: i64 = LOSS_DAMAGE / 2;
+/// Win-streak battle bonus (ours): `winningStreakAtkRate`/`DefRate` per win of the running
+/// streak, up to STREAK_BONUS_MAX. The tactical battle adds a tenth of each to the player's
+/// units' ATK and DEF rates (client), so 20 per win is +2 %, at most +10 %.
+const STREAK_BONUS_PER_WIN: i64 = 20;
+const STREAK_BONUS_MAX: i64 = 100;
 
 /// Status codes (client E_PVP_*).
 const E_PVP_ENEMY_NOT_FOUND: i64 = 52002;
 const E_PVP_FEVER_LACK: i64 = 52003;
 const E_PVP_NO_LEADER: i64 = 52006;
+const E_PVP_RECOVER_MATERIAL_LACK: i64 = 52010;
 const E_PVP_TEAM_INTERVAL: i64 = 52015;
+/// Pvp2RecoveryHpRequest.typeId = hpRecoveryMethodType (client): CrazyDiamond 0 (Full Revive:
+/// every retired team), DiamondCoin 1, Item 2 (the team).
+const RECOVER_CRAZY_DIAMOND: i64 = 0;
 
 /// A team's durability below full (teams at full are not stored).
 #[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq)]
@@ -195,6 +214,28 @@ pub struct ArenaState {
     pub pending: Option<PendingArena>,
     #[serde(default)]
     pub selected_team: i64,
+    /// The last `/pvp/home` (unix seconds): attacks happen in the absence after it.
+    #[serde(default)]
+    pub last_seen: i64,
+    /// The Crazy Diamond gauge, 0..=CRAZY_DIAMOND_MAX.
+    #[serde(default)]
+    pub crazy_diamond: i64,
+    /// Whether the full gauge was announced (`crazyDiamondNotifyFlg` is sent once).
+    #[serde(default)]
+    pub crazy_notified: bool,
+    /// An abandoned battle was counted as a loss and the home has not said so yet.
+    #[serde(default)]
+    pub force_defeat: bool,
+}
+
+/// One simulated attack on an Arena team (PvpHomeInfoResponse.DefenseInfo).
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub struct Defence {
+    pub at: i64,
+    pub enemy: String,
+    /// Durability lost (0: the attack was driven off).
+    pub damage: i64,
+    pub team_num: i64,
 }
 
 /// The season of a moment (ours): weeks of game days, starting on Monday.
@@ -202,9 +243,25 @@ pub fn season_of(now: i64) -> i64 {
     (missions::game_day(now) + 3).div_euclid(7) // 1970-01-01 (day 0) was a Thursday
 }
 
-/// The ranking position for a point total (ours; see RANKING_TOP).
-pub fn ranking(points: i64) -> i64 {
-    1 + (RANKING_TOP - points).max(0) / RANKING_STEP
+/// The ranking place for a point total now (services/ranking.rs: the season's field of rivals).
+pub fn ranking(points: i64, now: i64) -> i64 {
+    let season = season_of(now);
+    ranking::position(&ranking::arena_field(season, now), points)
+}
+
+/// The final place of a finished season.
+pub fn final_ranking(season: i64, points: i64) -> i64 {
+    ranking::position(&ranking::arena_final_field(season), points)
+}
+
+/// The season-end reward tiers (at most this place, item, count), for the ranking screen.
+pub fn season_reward_tiers() -> Vec<(i64, i64, i64)> {
+    SEASON_REWARDS.to_vec()
+}
+
+/// An ItemSetInfo for a reward.
+pub fn reward_set_of(item_id: i64, count: i64) -> Value {
+    reward_set(item_id, count)
 }
 
 fn date(t: i64) -> String {
@@ -230,15 +287,31 @@ impl ArenaState {
             .map(|h| h.until)
     }
 
-    fn damage(&mut self, team_num: i64, n: i64, now: i64) {
-        let h = self.hp.entry(team_num).or_insert(TeamHp {
-            hp: TEAM_HP_MAX,
-            until: 0,
-        });
-        h.hp = (h.hp - n).max(0);
-        if h.hp == 0 {
-            h.until = now + REST_SECS;
+    /// Take durability from a team at a moment (a team whose rest ended by then is full); the
+    /// durability lost fills the Crazy Diamond gauge. Returns the durability lost.
+    fn damage(&mut self, team_num: i64, n: i64, now: i64) -> i64 {
+        let before = self.hp_of(team_num, now);
+        let hp = (before - n.max(0)).max(0);
+        if hp >= TEAM_HP_MAX {
+            return 0; // nothing taken (teams at full are not stored)
         }
+        self.hp.insert(
+            team_num,
+            TeamHp {
+                hp,
+                until: if hp == 0 { now + REST_SECS } else { 0 },
+            },
+        );
+        let lost = before - hp;
+        self.crazy_diamond = (self.crazy_diamond + lost).min(CRAZY_DIAMOND_MAX);
+        lost
+    }
+
+    /// Full Revive: every retired (resting) team back at full. Returns how many.
+    fn revive_retired(&mut self, now: i64) -> usize {
+        let before = self.hp.len();
+        self.hp.retain(|_, h| h.hp > 0 || h.until <= now);
+        before - self.hp.len()
     }
 
     /// Refill one team (or every team); returns whether anything changed.
@@ -274,7 +347,8 @@ impl ArenaState {
         if self.season == season {
             return (changed, None);
         }
-        let finished = (self.season != 0 && self.season_battles > 0).then(|| ranking(self.points));
+        let finished = (self.season != 0 && self.season_battles > 0)
+            .then(|| final_ranking(self.season, self.points));
         self.season = season;
         self.points = 0;
         self.streak = 0;
@@ -406,17 +480,20 @@ fn reward_set(item_id: i64, count: i64) -> Value {
     missions::reward_set(&Reward { item_id, count })
 }
 
-/// PvpUserInfo (client: must never be null; `nextEventItem` is an ItemSetInfo).
-fn pvp_user_info(st: &ArenaState, now: i64) -> Value {
+/// PvpUserInfo (client: must never be null; `nextEventItem` is an ItemSetInfo, `feverEndDate` a
+/// date). `crazyDiamondPoint` at CRAZY_DIAMOND_MAX shows the Full Revive button and
+/// `crazyDiamondNotifyFlg` announces it ("Full Revive is now available", client).
+fn pvp_user_info(st: &ArenaState, now: i64, crazy_notify: bool) -> Value {
     let next = LADDER.iter().find(|(need, ..)| !st.claimed.contains(need));
     let fever = st.fever_on(now);
     json!({
         "rankingPoint": st.points, "feverEndDate": fever_end_time(st, now),
         "feverGauge": st.fever_gauge, "feverAddTime": 0, "feverAddFlag": 0,
-        "feverRate": if fever { FEVER_RATE } else { 0 }, "rank": ranking(st.points),
+        "feverRate": if fever { FEVER_RATE } else { 0 }, "rank": ranking(st.points, now),
         "winningStreak": st.streak, "nextEventPoint": next.map(|l| l.0).unwrap_or(0),
         "nextEventItem": next.map(|l| reward_set(l.1, l.2)).unwrap_or_else(empty_set),
-        "crazyDiamondPoint": 0, "crazyDiamondNotifyFlg": false
+        "crazyDiamondPoint": st.crazy_diamond.clamp(0, CRAZY_DIAMOND_MAX),
+        "crazyDiamondNotifyFlg": crazy_notify
     })
 }
 
@@ -485,21 +562,6 @@ pub fn battle_points(win_points: i64, rank: usize, streak: i64) -> i64 {
 
 // ---- Opponents ----
 
-struct Rng(u64);
-impl Rng {
-    fn next(&mut self) -> u64 {
-        // splitmix64
-        self.0 = self.0.wrapping_add(0x9e37_79b9_7f4a_7c15);
-        let mut z = self.0;
-        z = (z ^ (z >> 30)).wrapping_mul(0xbf58_476d_1ce4_e5b9);
-        z = (z ^ (z >> 27)).wrapping_mul(0x94d0_49bb_1331_11eb);
-        z ^ (z >> 31)
-    }
-    fn below(&mut self, n: usize) -> usize {
-        (self.next() % n.max(1) as u64) as usize
-    }
-}
-
 /// Three statues of different characters, of one rarity (any lower rarity fills in when the
 /// rarity has too few characters).
 fn pick_three(rng: &mut Rng, rarity: i64) -> Vec<String> {
@@ -555,18 +617,32 @@ fn make_opponents(st: &mut ArenaState, c: &Collection, team_num: i64, user_rank:
             / n
     };
     let mut rng = Rng(now as u64 ^ (st.next_enemy as u64).rotate_left(29) ^ 0xa7e4_a5ee_d000_0001);
+    // The opponents are rivals of the ranking field: one ranked below the player, one near and
+    // one above (ours), so their names and points match the ranking screen.
+    let field = ranking::arena_field(season_of(now), now);
+    let me = ranking::position(&field, st.points) as usize - 1; // rivals ahead of the player
     let mut list = Vec::new();
     for (i, (dl, dr, win)) in TIERS.iter().enumerate() {
         st.next_enemy += 1;
+        let spread = 3 + rng.below(12);
+        let at = match i {
+            0 => me + spread,
+            1 => me + rng.below(3),
+            _ => me.saturating_sub(spread),
+        }
+        .min(field.len().saturating_sub(1));
+        let rival = field.get(at);
         list.push(Opponent {
             uid: ENEMY_UID_BASE + st.next_enemy,
-            name: format!(
-                "{} {}",
-                HANDLES[rng.below(HANDLES.len())],
-                100 + rng.below(900)
-            ),
+            name: rival.map(|r| r.name.clone()).unwrap_or_else(|| {
+                format!(
+                    "{} {}",
+                    HANDLES[rng.below(HANDLES.len())],
+                    100 + rng.below(900)
+                )
+            }),
             user_rank: (user_rank + dl + rng.below(5) as i64 - 2).max(1),
-            points: (st.points + (i as i64 - 1) * 40 + rng.below(30) as i64).max(0),
+            points: rival.map(|r| r.points).unwrap_or(st.points),
             level: (level + st.points / 100 + dl).clamp(1, collection::MAX_LEVEL),
             statues: pick_three(&mut rng, (rarity + st.points / 2000 + dr).clamp(3, 6)),
             win_points: *win,
@@ -690,19 +766,159 @@ pub fn home_acqusition_check(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "result": 0 }))
 }
 
-/// `/pvp/home {eventCampaignId, pollingFlg}`: teams, the player's Arena standing and today's
-/// points. Nobody attacks offline, so `damageInfo` is empty; lists are never null (client).
+/// `last_seen` is written at most this often while the home polls (ours: fewer saves; an
+/// absence is measured from it).
+const LAST_SEEN_STEP: i64 = 5 * 60;
+
+/// The rival a defence faces: one ranked near the player (ours).
+fn rival_near(points: i64, now: i64, rng: &mut Rng) -> String {
+    let field = ranking::arena_field(season_of(now), now);
+    let me = ranking::position(&field, points) as usize - 1;
+    let at = (me + rng.below(21))
+        .saturating_sub(10)
+        .min(field.len().saturating_sub(1));
+    field
+        .get(at)
+        .map(|r| r.name.clone())
+        .unwrap_or_else(|| HANDLES[0].to_string())
+}
+
+/// Attacks on the player's Arena teams in an absence from `from` to `now` (ours, deterministic:
+/// the same absence brings the same attacks). Only an absence of AWAY_SECS or more, only this
+/// season; one possible attack per ATTACK_SLOT_SECS slot, at most MAX_ATTACKS (the latest), on a
+/// team that has a leader and is not resting at that moment. A lost defence costs
+/// DEFENCE_DAMAGE durability (a team can retire and rest like after a lost battle).
+pub fn simulate_defence(
+    st: &mut ArenaState,
+    c: &Collection,
+    user_id: &str,
+    from: i64,
+    now: i64,
+) -> Vec<Defence> {
+    if from <= 0 || now - from < AWAY_SECS {
+        return Vec::new();
+    }
+    let start = from.max(ranking::arena_season_start(season_of(now)));
+    let seed = ranking::hash(user_id) ^ 0xdef3_0ce0_0000_0000;
+    let mut slots: Vec<(i64, u64)> = Vec::new();
+    let mut s = now.div_euclid(ATTACK_SLOT_SECS);
+    while slots.len() < MAX_ATTACKS && (s + 1) * ATTACK_SLOT_SECS > start {
+        let mut rng = Rng(seed ^ (s as u64).wrapping_mul(0x2545_f491_4f6c_dd1d));
+        let t = s * ATTACK_SLOT_SECS + rng.below(ATTACK_SLOT_SECS as usize) as i64;
+        if t > start && t <= now && rng.next_u64() % 100 < ATTACK_CHANCE_PCT {
+            slots.push((t, rng.0));
+        }
+        s -= 1;
+    }
+    slots.reverse();
+    let mut out = Vec::new();
+    for (t, state) in slots {
+        let mut rng = Rng(state);
+        let mut teams: Vec<&Team> = c
+            .arena_teams
+            .iter()
+            .filter(|t2| c.known_statue(t2.slots[0]).is_some())
+            .filter(|t2| st.resting_until(t2.team_num, t).is_none())
+            .collect();
+        teams.sort_by_key(|t2| t2.team_num);
+        if teams.is_empty() {
+            continue;
+        }
+        let team_num = teams[rng.below(teams.len())].team_num;
+        let enemy = rival_near(st.points, t, &mut rng);
+        let held = rng.next_u64() % 100 < DEFENCE_WIN_PCT;
+        let damage = if held {
+            0
+        } else {
+            st.damage(team_num, DEFENCE_DAMAGE, t)
+        };
+        out.push(Defence {
+            at: t,
+            enemy,
+            damage,
+            team_num,
+        });
+    }
+    out
+}
+
+/// A battle lost (pvp_end with a loss, or an abandoned one): the streak ends and the team loses
+/// LOSS_DAMAGE durability.
+fn lose(st: &mut ArenaState, team_num: i64, now: i64) {
+    st.losses += 1;
+    st.streak = 0;
+    st.damage(team_num, LOSS_DAMAGE, now);
+}
+
+/// `/pvp/home {eventCampaignId, pollingFlg}` (polled every `pollingTimes` seconds): teams, the
+/// player's Arena standing and today's points, plus
+/// - `damageInfo`: the attacks of the absence since the last home (simulate_defence), sent once;
+///   the client shows them when it enters the home and plays the banners' durability loss.
+/// - `forceDefeatFlg`: true once after a battle that `pvp_start` began and no `pvp_end` settled
+///   was counted as a loss ("Connection was lost during battle. The previous battle counts as a
+///   loss.", client; research pack `v2.arena.early_failure`).
+/// - `recoveryTimes` 0: it is the client's four-battle gauge of the BP cost recovery ("After 4
+///   battles, the BP cost of all teams except the one used dropped by 1"); our costs never rise
+///   (BP is always full), so there is no cycle.
+///
+/// Lists are never null (client).
 pub fn home(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
-    let (p, ()) = with_arena(ctx, env, |_, _| ((), Change::None))?;
+    let (p, (defence, forced, crazy_notify)) = with_arena(ctx, env, |p, now| {
+        let mut change = Change::None;
+        let user = p.user_id.clone();
+        let st = &mut p.progress.arena;
+        if let Some(b) = st.pending.clone() {
+            if now - b.started >= ABANDON_SECS {
+                st.pending = None;
+                st.season_battles += 1;
+                lose(st, b.team_num, now);
+                if !st.fever_on(now) {
+                    st.fever_gauge =
+                        (st.fever_gauge + FEVER_GAUGE_MAX / FEVER_BATTLES).min(FEVER_GAUGE_MAX);
+                }
+                st.opponents.clear();
+                st.force_defeat = true;
+                change = Change::Progress;
+            }
+        }
+        let from = st.last_seen;
+        let defence = simulate_defence(st, &p.collection, &user, from, now);
+        if !defence.is_empty() {
+            change = Change::Progress;
+        }
+        if now - from >= LAST_SEEN_STEP || !defence.is_empty() {
+            st.last_seen = now;
+            change = change.max(Change::Bookkeeping);
+        }
+        let forced = std::mem::take(&mut st.force_defeat);
+        let crazy_notify = st.crazy_diamond >= CRAZY_DIAMOND_MAX && !st.crazy_notified;
+        if crazy_notify {
+            st.crazy_notified = true;
+            change = change.max(Change::Bookkeeping);
+        }
+        ((defence, forced, crazy_notify), change)
+    })?;
     let now = jdr_core::clock::now();
     let st = &p.progress.arena;
+    let damage: Vec<Value> = defence
+        .iter()
+        .map(|d| {
+            json!({ "type": 0, "enemyName": d.enemy, "damage": d.damage, "teamNo": d.team_num })
+        })
+        .collect();
     ok(json!({
         "endDate": OPEN_UNTIL, "finishDate": OPEN_UNTIL, "pvpTeamList": team_list(&p, now),
-        "pvpUserInfo": pvp_user_info(st, now), "todaysPoint": st.todays_points.max(0),
-        "recoveryTimes": 0, "selectedTeamId": st.selected_team.clamp(1, collection::TEAMS_PER_TYPE),
-        "pollingTimes": 0, "damageInfo": [], "eventCampaignList": [], "forceDefeatFlg": false,
-        "battleType": BATTLE_TYPE_PVP_AUTO
+        "pvpUserInfo": pvp_user_info(st, now, crazy_notify),
+        "todaysPoint": st.todays_points.max(0), "recoveryTimes": 0,
+        "selectedTeamId": st.selected_team.clamp(1, collection::TEAMS_PER_TYPE),
+        "pollingTimes": POLLING_SECS, "damageInfo": damage, "eventCampaignList": [],
+        "forceDefeatFlg": forced, "battleType": BATTLE_TYPE_PVP_AUTO
     }))
+}
+
+/// The player's Arena standing after the day and season turned (services/ranking.rs).
+pub fn standing(ctx: &Ctx, env: &RequestEnvelope) -> Result<Profile, ApiError> {
+    with_arena(ctx, env, |_, _| ((), Change::None)).map(|(p, ())| p)
 }
 
 /// `/pvp/enemy_player_list {eventCampaignId, teamNo, reChoiceFlg}`: three opponents for the
@@ -766,16 +982,18 @@ pub fn pvp_start(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let now = jdr_core::clock::now();
     let st = &p.progress.arena;
     let (oc, ot) = opponent_team(&o);
+    let streak_bonus = (st.streak * STREAK_BONUS_PER_WIN).clamp(0, STREAK_BONUS_MAX);
     ok(json!({
         "userInfo": crate::services::user::user_info(&p),
         "pvpTeamInfo": arena_team_info(&p, team_num, now),
         "pvpEnemyTeamInfo": pvp_team_info(&oc, None, &ot, now),
-        "pvpEnemyInfo": { "enemyName": o.name, "enemyRank": o.user_rank, "rank": ranking(o.points),
+        "pvpEnemyInfo": { "enemyName": o.name, "enemyRank": o.user_rank, "rank": ranking(o.points, now),
                           "enemyEventPoint": o.points, "enemyComment": "" },
         "winningStreak": st.streak,
         "battleModeInfo": { "battleType": BATTLE_TYPE_PVP_AUTO, "battleTimelimit": TIME_LIMIT_SECS,
                             "battleTurnlimit": TURN_LIMIT },
-        "userRank": p.rank.max(1), "winningStreakAtkRate": 0, "winningStreakDefRate": 0,
+        "userRank": p.rank.max(1), "winningStreakAtkRate": streak_bonus,
+        "winningStreakDefRate": streak_bonus,
         "seed": now & 0x7fff_ffff, "dayNight": 0
     }))
 }
@@ -855,9 +1073,7 @@ pub fn pvp_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
             }
             r.rest_bonus = SURVIVOR_POINTS * hps.iter().filter(|h| **h > 0).count().min(3) as i64;
         } else {
-            st.losses += 1;
-            st.streak = 0;
-            st.damage(b.team_num, LOSS_DAMAGE, now);
+            lose(st, b.team_num, now);
         }
         if st.fever_on(now) {
             r.fever = true;
@@ -922,15 +1138,32 @@ pub fn pvp_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     }))
 }
 
-/// `/pvp/recover_hp_pvp {typeId (0 Diamond Coins, 1 item), itemId, eventCampaignId, teamNum}`:
-/// refills the team's durability (every team when `teamNum` names none). Free offline: no coins
-/// or items are taken (ours).
+/// `/pvp/recover_hp_pvp {typeId, itemId, eventCampaignId, teamNum}`; typeId is the client's
+/// hpRecoveryMethodType:
+/// - 0 Crazy Diamond (the Full Revive button, "All Retired teams will be revived", client):
+///   needs a full gauge (52010 otherwise) and revives every resting team; the gauge empties
+///   when it revived one.
+/// - 1 Diamond Coins, 2 an item: refills the team (every team when `teamNum` names none). Free
+///   offline: no coins or items are taken (ours).
 pub fn recover_hp_pvp(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let kind = int(env, "typeId").unwrap_or(1);
     let team_num = int(env, "teamNum").filter(|n| (1..=collection::TEAMS_PER_TYPE).contains(n));
-    let (p, ()) = with_arena(ctx, env, |p, _| {
-        let changed = p.progress.arena.heal(team_num);
+    let (p, r) = with_arena(ctx, env, |p, now| {
+        let st = &mut p.progress.arena;
+        if kind == RECOVER_CRAZY_DIAMOND {
+            if st.crazy_diamond < CRAZY_DIAMOND_MAX {
+                return (Err(E_PVP_RECOVER_MATERIAL_LACK), Change::None);
+            }
+            if st.revive_retired(now) == 0 {
+                return (Ok(()), Change::None);
+            }
+            st.crazy_diamond = 0;
+            st.crazy_notified = false;
+            return (Ok(()), Change::Progress);
+        }
+        let changed = st.heal(team_num);
         (
-            (),
+            Ok(()),
             if changed {
                 Change::Bookkeeping
             } else {
@@ -938,6 +1171,7 @@ pub fn recover_hp_pvp(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
             },
         )
     })?;
+    r.map_err(ApiError::Status)?;
     ok(json!({ "userInfo": crate::services::user::user_info(&p), "itemList": [] }))
 }
 
@@ -1701,11 +1935,11 @@ mod tests {
         let mut st = ArenaState::default();
         let t = 1_800_000_000; // 2027-01-15
         assert_eq!(st.roll(t).1, None, "a first season has nothing to reward");
-        st.points = 9_995;
+        st.points = ranking::ARENA_TOP * 2;
         st.season_battles = 1;
         assert_eq!(st.roll(t + 3600).1, None, "same season");
         let next = st.roll(t + 8 * 86_400);
-        assert_eq!(next, (true, Some(1)));
+        assert_eq!(next, (true, Some(1)), "ahead of the whole field");
         assert_eq!(st.points, 0);
         st.season_battles = 0;
         assert_eq!(
@@ -1715,8 +1949,15 @@ mod tests {
         );
         assert_eq!(season_reward(1), (10, 500));
         assert_eq!(season_reward(5_000), (10, 50));
-        assert_eq!(ranking(0), 1 + RANKING_TOP / RANKING_STEP);
-        assert_eq!(ranking(RANKING_TOP * 2), 1);
+        let last = ranking(0, t);
+        assert!(
+            last > 900 && last <= ranking::FIELD_SIZE as i64 + 1,
+            "near the bottom with no points: {last}"
+        );
+        assert_eq!(ranking(ranking::ARENA_TOP * 2, t), 1);
+        let start = ranking::arena_season_start(season_of(t));
+        assert_eq!(season_of(start), season_of(t));
+        assert_eq!(season_of(start - 1), season_of(t) - 1);
         // Mondays at 04:00 JST start a season.
         let monday_4am_jst = 1_794_769_200; // 2026-11-16 04:00 JST, a Monday
         assert_eq!(season_of(monday_4am_jst), season_of(monday_4am_jst - 1) + 1);
@@ -1896,5 +2137,396 @@ mod tests {
             &env(&uuid, json!({"teamNum": 9, "leaderstatueuId": free[0]})),
         );
         assert!(r.is_err());
+    }
+
+    /// Every Arena response, walked like the client's reader fills its classes: no string, list
+    /// or object the client reads may be missing or null (services/shapes.rs), in every state
+    /// the routes produce: a new player, opponents, a battle, a loss, a rest, a defence log, a
+    /// full Crazy Diamond gauge, the Full Revive, Fever, the formation routes.
+    #[test]
+    fn every_arena_response_is_complete() {
+        use crate::services::shapes::assert_complete;
+        let (ctx, uuid) = setup("shapes");
+        let walk = |path: &str, class: &str, param: Value| -> Value {
+            let v = Value::Object(call(&ctx, &uuid, path, param).unwrap());
+            assert_complete(class, &v);
+            v
+        };
+        // My Page: the Arena's entry and the Fever date (raidInfo is the raid's, not walked).
+        let ev = Value::Object(call(&ctx, &uuid, "/info/event_list", json!({})).unwrap());
+        assert_complete(
+            "Jjs.EventListResponse/EventCampaignInfo",
+            &ev["eventList"][0],
+        );
+        assert_complete(
+            "Jjs.EventListResponse/UserBattleInfo",
+            &ev["userBattleInfo"],
+        );
+        walk(
+            "/pvp/get_pvp_config",
+            "Jjs.Pvp2GetConfigResponse",
+            json!({"eventCampaignId": CAMPAIGN_ID}),
+        );
+        walk(
+            "/event/point_reward_list",
+            "Jjs.EventPointListResponse",
+            json!({"eventCampaignId": CAMPAIGN_ID}),
+        );
+        walk(
+            "/item/heal_item_list",
+            "Jjs.HealItemListResponse",
+            json!({"type": 2}),
+        );
+        walk(
+            "/pvp/home_acqusition_check",
+            "Jjs.PvpHomeAcqusitionCheckResponse",
+            json!({"eventCampaignId": CAMPAIGN_ID}),
+        );
+        let home = |flg: i64| {
+            walk(
+                "/pvp/home",
+                "Jjs.PvpHomeInfoResponse",
+                json!({"eventCampaignId": CAMPAIGN_ID, "pollingFlg": flg}),
+            )
+        };
+        home(0);
+        walk(
+            "/user/user_info_mini",
+            "Jjs.UserInfoMiniResponse",
+            json!({"id": ""}),
+        );
+        let battle = |result: i64| {
+            let l = walk(
+                "/pvp/enemy_player_list",
+                "Jjs.PvpOpponentInfoResponse",
+                json!({"eventCampaignId": CAMPAIGN_ID, "teamNo": 1, "reChoiceFlg": 0}),
+            );
+            walk(
+                "/pvp/enemy_player_list",
+                "Jjs.PvpOpponentInfoResponse",
+                json!({"eventCampaignId": CAMPAIGN_ID, "teamNo": 1, "reChoiceFlg": 1}),
+            );
+            let _ = l;
+            let l = call(&ctx, &uuid, "/pvp/enemy_player_list", json!({"teamNo": 1})).unwrap();
+            let uid = l["pvpTeamList"][1]["enemyuId"].as_i64().unwrap();
+            walk(
+                "/pvp/pvp_start",
+                "Jjs.PvpBattleStartResponse",
+                json!({"eventCampaignId": CAMPAIGN_ID, "teamNum": 1, "enemyuId": uid,
+                       "enemyTeamNum": 1}),
+            );
+            walk(
+                "/pvp/pvp_end",
+                "Jjs.PvpBattleEndResponse",
+                json!({"result": result, "teamNo": 1, "defeatedEnemyList": [], "battleTime": "60",
+                       "battleTurn": 5, "myTeamInfoList": [{"hp": 100}, {"hp": 0}, {"hp": 5}],
+                       "myTeamPower": 10, "enemyTeamPower": 10}),
+            )
+        };
+        let won = battle(0);
+        assert!(won["eventRewardList"].is_array());
+        // Point rewards in the result.
+        ctx.accounts
+            .update(&uuid, |p| {
+                p.progress.arena.points = 990;
+                ((), Change::Bookkeeping)
+            })
+            .unwrap();
+        let rewarded = battle(0);
+        assert!(!rewarded["eventRewardList"].as_array().unwrap().is_empty());
+        for _ in 0..4 {
+            battle(1);
+        }
+        // Team 1 rests; Fever is ready; the gauge is full.
+        let h = home(0);
+        assert_eq!(h["pvpTeamList"][0]["hp"], 0);
+        assert_eq!(h["pvpUserInfo"]["crazyDiamondPoint"], CRAZY_DIAMOND_MAX);
+        walk(
+            "/pvp/fever_mode",
+            "Jjs.PvpFeverModeStartResponse",
+            json!({}),
+        );
+        home(1);
+        walk(
+            "/pvp/recover_hp_pvp",
+            "Jjs.Pvp2RecoveryHpResponse",
+            json!({"typeId": 0, "itemId": 0, "eventCampaignId": CAMPAIGN_ID, "teamNum": 1}),
+        );
+        // An absence with attacks.
+        ctx.accounts
+            .update(&uuid, |p| {
+                p.progress.arena.last_seen = jdr_core::clock::now() - 2 * 86_400;
+                ((), Change::Bookkeeping)
+            })
+            .unwrap();
+        let away = home(0);
+        assert!(!away["damageInfo"].as_array().unwrap().is_empty());
+        walk(
+            "/pvp/recover_hp_pvp",
+            "Jjs.Pvp2RecoveryHpResponse",
+            json!({"typeId": 1, "itemId": 0, "eventCampaignId": CAMPAIGN_ID, "teamNum": 2}),
+        );
+        // The formation routes (teams with empty seats included).
+        walk(
+            "/pvp/team_info_pvp",
+            "Jjs.PvpTeamInfoPvpResponse",
+            json!({}),
+        );
+        walk(
+            "/pvp/leader_change_pvp",
+            "Jjs.PvpLeaderChangeResponse",
+            json!({"teamNum": 1, "statueSeq": 2}),
+        );
+        walk(
+            "/pvp/auto_set_and_equip",
+            "Jjs.PvpAutoFomationResponse",
+            json!({"teamNum": 4, "changePlan": 1}),
+        );
+        walk(
+            "/pvp/equip_multiple_minds_pvp",
+            "Jjs.PvpEquipMultipleMindsResponse",
+            json!({"teamNum": 4, "statueSeq": 1, "mindList": []}),
+        );
+        walk(
+            "/pvp/set_team_all_pvp",
+            "Jjs.PvpSetTeamAllResponse",
+            json!({"teamList": []}),
+        );
+        home(0);
+    }
+
+    /// The defence log: attacks only after an absence, at most MAX_ATTACKS, the same for the same
+    /// absence, each on a team that can fight; a lost one costs DEFENCE_DAMAGE durability and the
+    /// home sends each attack once.
+    #[test]
+    fn defence_attacks_while_away() {
+        let (ctx, uuid) = setup("defence");
+        let h = call(&ctx, &uuid, "/pvp/home", json!({})).unwrap();
+        assert_eq!(
+            h["damageInfo"],
+            json!([]),
+            "a first visit: nobody attacked yet"
+        );
+        assert_eq!(
+            h["pollingTimes"], POLLING_SECS,
+            "0 would poll on every frame"
+        );
+        let p = ctx.accounts.get(&uuid).unwrap().unwrap();
+        let now = jdr_core::clock::now();
+        // A short absence: nothing.
+        let mut st = p.progress.arena.clone();
+        assert!(simulate_defence(&mut st, &p.collection, &p.user_id, now - 60, now).is_empty());
+        // Long absences: bounded, deterministic, on fightable teams.
+        let mut seen_attack = false;
+        for days in 1..=6 {
+            let from = now - days * 86_400;
+            let mut a = p.progress.arena.clone();
+            let mut b = p.progress.arena.clone();
+            let la = simulate_defence(&mut a, &p.collection, &p.user_id, from, now);
+            let lb = simulate_defence(&mut b, &p.collection, &p.user_id, from, now);
+            assert_eq!(la, lb, "deterministic");
+            assert_eq!(a, b);
+            assert!(la.len() <= MAX_ATTACKS);
+            for d in &la {
+                seen_attack = true;
+                assert!(d.at > from && d.at <= now);
+                assert!(d.damage == 0 || d.damage == DEFENCE_DAMAGE, "{d:?}");
+                let t = arena_team(&p.collection, d.team_num);
+                assert!(
+                    p.collection.known_statue(t.slots[0]).is_some(),
+                    "a team with a leader"
+                );
+                assert!(!d.enemy.is_empty());
+            }
+            let lost: i64 = la.iter().map(|d| d.damage).sum();
+            let left: i64 = (1..=5).map(|n| TEAM_HP_MAX - a.hp_of(n, now)).sum();
+            assert!(left <= lost, "durability lost only to the attacks");
+            assert_eq!(
+                a.crazy_diamond, lost,
+                "the gauge fills with the durability lost"
+            );
+        }
+        assert!(seen_attack, "six absences brought at least one attack");
+        // Through the home: sent once.
+        ctx.accounts
+            .update(&uuid, |p| {
+                p.progress.arena.last_seen = jdr_core::clock::now() - 3 * 86_400;
+                ((), Change::Bookkeeping)
+            })
+            .unwrap();
+        let mut sent = 0;
+        for _ in 0..5 {
+            let h = call(&ctx, &uuid, "/pvp/home", json!({})).unwrap();
+            let log = h["damageInfo"].as_array().unwrap().clone();
+            for d in &log {
+                assert_eq!(d["type"], 0);
+                assert!(d["enemyName"].is_string());
+                let n = d["teamNo"].as_i64().unwrap();
+                assert!((1..=5).contains(&n));
+                if d["damage"] != 0 {
+                    assert!(h["pvpTeamList"][n as usize - 1]["hp"].as_i64().unwrap() < TEAM_HP_MAX);
+                }
+            }
+            sent += log.len();
+            if !log.is_empty() {
+                let again = call(&ctx, &uuid, "/pvp/home", json!({})).unwrap();
+                assert_eq!(again["damageInfo"], json!([]), "each attack is sent once");
+                break;
+            }
+            // No attack in that absence: try another one.
+            ctx.accounts
+                .update(&uuid, |p| {
+                    p.progress.arena.last_seen -= 2 * 86_400;
+                    ((), Change::Bookkeeping)
+                })
+                .unwrap();
+        }
+        assert!(sent > 0);
+    }
+
+    /// Crazy Diamond: the gauge fills with durability lost, is announced once when full, and the
+    /// Full Revive (recover_hp_pvp typeId 0) revives every resting team and empties it.
+    #[test]
+    fn crazy_diamond_full_revive() {
+        let (ctx, uuid) = setup("crazy");
+        assert_eq!(
+            call(
+                &ctx,
+                &uuid,
+                "/pvp/recover_hp_pvp",
+                json!({"typeId": 0, "teamNum": 1})
+            ),
+            Err(E_PVP_RECOVER_MATERIAL_LACK),
+            "an empty gauge cannot revive"
+        );
+        for _ in 0..(TEAM_HP_MAX / LOSS_DAMAGE) {
+            let l = call(&ctx, &uuid, "/pvp/enemy_player_list", json!({"teamNo": 1})).unwrap();
+            let uid = l["pvpTeamList"][0]["enemyuId"].as_i64().unwrap();
+            call(
+                &ctx,
+                &uuid,
+                "/pvp/pvp_start",
+                json!({"teamNum": 1, "enemyuId": uid, "enemyTeamNum": 1}),
+            )
+            .unwrap();
+            call(
+                &ctx,
+                &uuid,
+                "/pvp/pvp_end",
+                json!({"result": 1, "teamNo": 1}),
+            )
+            .unwrap();
+        }
+        let h = call(&ctx, &uuid, "/pvp/home", json!({})).unwrap();
+        assert_eq!(h["pvpUserInfo"]["crazyDiamondPoint"], CRAZY_DIAMOND_MAX);
+        assert_eq!(h["pvpUserInfo"]["crazyDiamondNotifyFlg"], true);
+        let h = call(&ctx, &uuid, "/pvp/home", json!({})).unwrap();
+        assert_eq!(
+            h["pvpUserInfo"]["crazyDiamondNotifyFlg"], false,
+            "announced once"
+        );
+        assert_eq!(h["pvpTeamList"][0]["hp"], 0, "team 1 retired");
+        call(
+            &ctx,
+            &uuid,
+            "/pvp/recover_hp_pvp",
+            json!({"typeId": 0, "itemId": 0, "eventCampaignId": CAMPAIGN_ID, "teamNum": 1}),
+        )
+        .unwrap();
+        let h = call(&ctx, &uuid, "/pvp/home", json!({})).unwrap();
+        assert_eq!(h["pvpTeamList"][0]["hp"], TEAM_HP_MAX, "revived");
+        assert_eq!(
+            h["pvpUserInfo"]["crazyDiamondPoint"], 0,
+            "the gauge is spent"
+        );
+    }
+
+    /// A battle without its pvp_end counts as a loss on the next home, which says so once
+    /// (forceDefeatFlg); a late pvp_end pays nothing.
+    #[test]
+    fn abandoned_battle_counts_as_a_loss() {
+        let (ctx, uuid) = setup("abandon");
+        let l = call(&ctx, &uuid, "/pvp/enemy_player_list", json!({"teamNo": 1})).unwrap();
+        let uid = l["pvpTeamList"][0]["enemyuId"].as_i64().unwrap();
+        call(
+            &ctx,
+            &uuid,
+            "/pvp/pvp_start",
+            json!({"teamNum": 1, "enemyuId": uid, "enemyTeamNum": 1}),
+        )
+        .unwrap();
+        let h = call(&ctx, &uuid, "/pvp/home", json!({})).unwrap();
+        assert_eq!(
+            h["forceDefeatFlg"], false,
+            "a battle just started is not abandoned"
+        );
+        ctx.accounts
+            .update(&uuid, |p| {
+                p.progress.arena.streak = 3;
+                if let Some(b) = p.progress.arena.pending.as_mut() {
+                    b.started -= 600;
+                }
+                ((), Change::Bookkeeping)
+            })
+            .unwrap();
+        let h = call(&ctx, &uuid, "/pvp/home", json!({})).unwrap();
+        assert_eq!(h["forceDefeatFlg"], true);
+        assert_eq!(h["pvpTeamList"][0]["hp"], TEAM_HP_MAX - LOSS_DAMAGE);
+        assert_eq!(h["pvpUserInfo"]["winningStreak"], 0);
+        let st = ctx.accounts.get(&uuid).unwrap().unwrap().progress.arena;
+        assert_eq!((st.losses, st.pending.is_none()), (1, true));
+        let h = call(&ctx, &uuid, "/pvp/home", json!({})).unwrap();
+        assert_eq!(h["forceDefeatFlg"], false, "said once");
+        let late = call(
+            &ctx,
+            &uuid,
+            "/pvp/pvp_end",
+            json!({"result": 0, "teamNo": 1}),
+        )
+        .unwrap();
+        assert_eq!(late["getRankingPoint"], 0);
+    }
+
+    /// The streak's battle bonus (winningStreakAtkRate/DefRate) grows with the running streak.
+    #[test]
+    fn streak_battle_bonus() {
+        let (ctx, uuid) = setup("streakrate");
+        let start = |ctx: &Ctx| {
+            let l = call(ctx, &uuid, "/pvp/enemy_player_list", json!({"teamNo": 1})).unwrap();
+            let uid = l["pvpTeamList"][0]["enemyuId"].as_i64().unwrap();
+            call(
+                ctx,
+                &uuid,
+                "/pvp/pvp_start",
+                json!({"teamNum": 1, "enemyuId": uid, "enemyTeamNum": 1}),
+            )
+            .unwrap()
+        };
+        let s = start(&ctx);
+        assert_eq!(s["winningStreakAtkRate"], 0);
+        call(
+            &ctx,
+            &uuid,
+            "/pvp/pvp_end",
+            json!({"result": 0, "teamNo": 1}),
+        )
+        .unwrap();
+        let s = start(&ctx);
+        assert_eq!(s["winningStreakAtkRate"], STREAK_BONUS_PER_WIN);
+        assert_eq!(s["winningStreakDefRate"], STREAK_BONUS_PER_WIN);
+        call(
+            &ctx,
+            &uuid,
+            "/pvp/pvp_end",
+            json!({"result": 0, "teamNo": 1}),
+        )
+        .unwrap();
+        ctx.accounts
+            .update(&uuid, |p| {
+                p.progress.arena.streak = 40;
+                ((), Change::Bookkeeping)
+            })
+            .unwrap();
+        assert_eq!(start(&ctx)["winningStreakAtkRate"], STREAK_BONUS_MAX);
     }
 }
