@@ -395,7 +395,7 @@
     ],
     "text:Evolution_JP:Evolution_Button_03": [
       "b2b3ae26",
-      "Enhance Statue"
+      "Enhance"
     ],
     "text:Evolution_JP:Evolution_Button_04": [
       "24b21a51",
@@ -427,7 +427,7 @@
     ],
     "text:Evolution_JP:Evolution_Button_11": [
       "d1135be3",
-      "Detailed Stats"
+      "Details"
     ],
     "text:Evolution_JP:Evolution_Button_12": [
       "2c8202f8",
@@ -467,7 +467,7 @@
     ],
     "text:Evolution_JP:Evolution_Image_07": [
       "8587d8a7",
-      "Awakenable Statues Owned"
+      "Awakenable"
     ],
     "text:Evolution_JP:Evolution_Image_08": [
       "e2581bb5",
@@ -651,7 +651,7 @@
     ],
     "text:FilterText_JP:FILTER_NONE": [
       "e9178a1a",
-      "Show All"
+      "All"
     ],
     "text:FilterText_JP:FILTER_TENACITY": [
       "51a80cd6",
@@ -679,7 +679,7 @@
     ],
     "text:FollowFollower_JP:FollowFollower_0006": [
       "577676df",
-      "Following"
+      "Follow"
     ],
     "text:FollowFollower_JP:FollowFollower_0007": [
       "3481a937",
@@ -727,7 +727,7 @@
     ],
     "text:Formation_JP:Formation_Assist_Autoset_1": [
       "ac32ea14",
-      "Overall Power Focus"
+      "Power Focus"
     ],
     "text:Formation_JP:Formation_Assist_Autoset_2": [
       "dd26236c",
@@ -955,7 +955,7 @@
     ],
     "text:MindSale_JP:MindSale_Message_05": [
       "902d2c4b",
-      "Memory Rings Gained:"
+      "Gained:"
     ],
     "text:MindSale_JP:MindSale_Message_06": [
       "882d6a59",
@@ -963,7 +963,7 @@
     ],
     "text:MindSale_JP:MindSale_Message_07": [
       "7ca5608d",
-      "Memory Rings Owned:"
+      "Rings Owned:"
     ],
     "text:MindSale_JP:MindSale_Message_08": [
       "788c27fa",
@@ -2199,7 +2199,7 @@
     ],
     "text:gasha_JP:GASHA_Massage_03": [
       "535e4274",
-      "Team & Enhance"
+      "Team/Enhance"
     ],
     "text:gasha_JP:GASHA_Massage_04": [
       "ef61b4fa",
@@ -3103,7 +3103,7 @@
     ],
     "text:optionText_JP:button_dc_rireki_00": [
       "a3dca27f",
-      "Diamond Coin Purchase History"
+      "DC Purchase History"
     ],
     "text:optionText_JP:button_decision": [
       "df3535a6",
@@ -3279,11 +3279,11 @@
     ],
     "text:optionText_JP:option_category_07": [
       "c90ccd2c",
-      "Issue Transfer Password"
+      "Transfer Code"
     ],
     "text:optionText_JP:option_category_08": [
       "f5f1ecc6",
-      "History / Breakdown"
+      "History"
     ],
     "text:optionText_JP:option_category_09": [
       "fe117f6a",
