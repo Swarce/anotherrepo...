@@ -41,6 +41,9 @@ community wikis (each record cites its page) or are marked `jdr-default`.
 - The player owns every obtainable statue (266: model + animations + action set + leader ability in
   the player's files) at level 1; teams: 5 per battle type, the tactical main team (Jonathan,
   Jotaro, Josuke when present) leads My Page.
+- Build 25: plus the 26 assist-only statues (`assistOnly` in statues.json: a model, animations,
+  an action set and their own `ABI_AST_<id>_N` label, no leader ability). They can be assists,
+  never team members (docs/research/19-assists.md §6).
 - All story chapters are open; a cleared stage is recorded; a clear grants the stage's gold and rank
   EXP, and the same amount as statue EXP to the three statues that fought (a `jdr-default` until a
   source gives statue EXP per stage). A clear pays once per started battle.
