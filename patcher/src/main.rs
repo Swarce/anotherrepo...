@@ -9,7 +9,7 @@ use std::path::PathBuf;
 
 const USAGE: &str = "usage:
   jdr-patch patch --apk <in.apk> --out <out.apk> --keys <keys.json> [--server-lib libjdr.so] [--port N] [--disable <patch-id>]... [--keystore <p12>] [--force]
-        [--art <your redrawn art pack.zip> --data <your game files folder>]
+        [--art <your redrawn art pack.zip> [--art <more, e.g. portraits.zip>] --data <your game files folder>]
         (--disable embed-server: dev-loop APK that talks to jdr-server on a PC)
   jdr-patch list                 list patches
   jdr-patch init-key [--keystore <p12>]   create the signing key if missing
@@ -132,7 +132,11 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
         Some(k) => Some(std::fs::read(&k).map_err(|e| format!("--keys {k}: {e}"))?),
         None => None,
     };
-    cfg.art_zip = opt(args, "--art").map(PathBuf::from);
+    cfg.art_zips = args
+        .windows(2)
+        .filter(|w| w[0] == "--art")
+        .map(|w| PathBuf::from(&w[1]))
+        .collect();
     cfg.data_dir = opt(args, "--data").map(PathBuf::from);
     cfg.server_lib = opt(args, "--server-lib")
         .map(PathBuf::from)
@@ -318,7 +322,7 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
             expected.scene_total, expected.literal_total
         ));
     }
-    if cfg.art_zip.is_some() && !disabled.contains(&"ui-art") {
+    if !cfg.art_zips.is_empty() && !disabled.contains(&"ui-art") {
         let msg = match chk.read(jdr_patch::art::ART_ASSET) {
             Ok(b) => {
                 if chk.is_compressed(jdr_patch::art::ART_ASSET) {

@@ -6,10 +6,11 @@
 #   JDR_KEYS   your local keys.json                        -> patch test embeds the server
 #   ANDROID_NDK  Android NDK folder                        -> builds libjdr.so (embedded server)
 #   JDR_ART_ZIP  your redrawn UI art pack (zip)            -> patch test stores/applies it, art checks
+#   JDR_PORTRAITS_ZIP  portraits.zip from tools/content/render_portraits.py -> patched in as a second --art
 set -euo pipefail
 cd "$(dirname "$0")/.."
 # Tests run from each crate's folder: pass file paths on as absolute paths.
-for v in JDR_KEYS JDR_DATA JDR_APK JDR_ART_ZIP; do
+for v in JDR_KEYS JDR_DATA JDR_APK JDR_ART_ZIP JDR_PORTRAITS_ZIP; do
   if [[ -n "${!v:-}" ]]; then export "$v=$(realpath "${!v}")"; fi
 done
 
@@ -72,6 +73,9 @@ if [[ -n "${JDR_APK:-}" && -n "${JDR_BUILD_TOOLS:-}" ]]; then
   if [[ -n "${JDR_ART_ZIP:-}" && -n "${JDR_DATA:-}" && -n "${JDR_KEYS:-}" ]]; then
     embed+=(--keys "$JDR_KEYS" --art "$JDR_ART_ZIP" --data "$JDR_DATA")
   fi
+  if [[ -n "${JDR_PORTRAITS_ZIP:-}" && -n "${JDR_DATA:-}" && -n "${JDR_KEYS:-}" ]]; then
+    embed+=(--keys "$JDR_KEYS" --art "$JDR_PORTRAITS_ZIP" --data "$JDR_DATA")
+  fi
   JDR_KEYSTORE="${JDR_KEYSTORE:-$HOME/.config/JDR/jdr-signing.p12}" \
     ./target/release/jdr-patch patch --apk "$JDR_APK" --out deliver/jdr-test.apk --force "${embed[@]}"
   if [[ -n "${JDR_ART_ZIP:-}" ]] && python3 -c "import UnityPy" 2>/dev/null; then
@@ -97,6 +101,10 @@ if [[ -n "${JDR_DATA:-}" && -n "${JDR_KEYS:-}" ]]; then
     python3 -I tools/proofs/versionfile_check.py "$out"
     python3 -I tools/proofs/masterdata_check.py "$md" server/content/masterdata
     python3 -I tools/proofs/l10n_check.py "$l10n_out/l10n/gen"
+    po="$(pwd)/deliver/portrait-check.bytes"
+    JDR_PORTRAIT_OUT="$po" cargo test -q --release -p jdr-services --test real_portraits
+    python3 -I tools/proofs/portrait_check.py "$po" "$JDR_KEYS" target/release/jdr-tool
+    rm -f "$po"
     if [[ -n "${JDR_ART_ZIP:-}" ]]; then
       art_dir="$(mktemp -d)"; art_out="$(pwd)/deliver/art-check"
       python3 -I -c 'import sys,zipfile; zipfile.ZipFile(sys.argv[1]).extractall(sys.argv[2])' "$JDR_ART_ZIP" "$art_dir"
