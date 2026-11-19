@@ -161,6 +161,7 @@ fn ring_goods() -> Vec<(i64, i64, i64)> {
                 }],
                 "tree" => 20,
                 "key" => 200,
+                "bp" => 50,
                 _ => return None,
             };
             Some((50_000 + d.item_id, d.item_id, price))

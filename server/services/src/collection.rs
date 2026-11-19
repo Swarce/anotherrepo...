@@ -56,6 +56,11 @@ pub struct StatueDef {
     /// (tools/content/build_statues.py, docs/research/12 §7).
     #[serde(rename = "teamPos", default)]
     pub team_pos: [i64; 3],
+    /// An assist-only statue (`_6x`/`_7x` with their own `ABI_AST_<id>_N` label and no leader
+    /// ability; docs/research/19-assists.md §6): the client's `assistAttr` OnlyAssist (1). It may
+    /// be an assist but never a team member.
+    #[serde(rename = "assistOnly", default)]
+    pub assist_only: bool,
 }
 
 fn full_scale() -> i64 {
@@ -154,6 +159,16 @@ pub fn statues() -> &'static [StatueDef] {
 
 pub fn find(statue_id: &str) -> Option<&'static StatueDef> {
     statues().iter().find(|s| s.statue_id == statue_id)
+}
+
+/// The statues that may be team members (every statue but the assist-only ones), in content order.
+pub fn members() -> impl Iterator<Item = &'static StatueDef> {
+    statues().iter().filter(|d| !d.assist_only)
+}
+
+/// Whether an owned statue may sit in a team seat (known and not assist-only).
+pub fn can_be_member(statue_id: &str) -> bool {
+    find(statue_id).is_some_and(|d| !d.assist_only)
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Default)]
@@ -481,7 +496,7 @@ impl Collection {
             .filter_map(|id| {
                 self.statues
                     .iter()
-                    .find(|s| s.statue_id == *id && find(&s.statue_id).is_some())
+                    .find(|s| s.statue_id == *id && can_be_member(&s.statue_id))
                     .map(|s| s.uid)
             })
             .take(3)
@@ -490,7 +505,7 @@ impl Collection {
             if picked.len() >= 3 {
                 break;
             }
-            if !picked.contains(&s.uid) && find(&s.statue_id).is_some() {
+            if !picked.contains(&s.uid) && can_be_member(&s.statue_id) {
                 picked.push(s.uid);
             }
         }
@@ -511,13 +526,18 @@ impl Collection {
         self.statue(uid).filter(|o| find(&o.statue_id).is_some())
     }
 
+    /// An owned statue that may sit in a team seat (known and not assist-only).
+    pub fn member_statue(&self, uid: i64) -> Option<&OwnedStatue> {
+        self.statue(uid).filter(|o| can_be_member(&o.statue_id))
+    }
+
     /// Clear team slots that point at nothing usable and refill a main team without a leader.
     fn repair_teams(&mut self) -> bool {
         let mut changed = false;
         let usable: std::collections::HashSet<i64> = self
             .statues
             .iter()
-            .filter(|o| find(&o.statue_id).is_some())
+            .filter(|o| can_be_member(&o.statue_id))
             .map(|o| o.uid)
             .collect();
         let starter = self.starter_slots();
@@ -598,7 +618,7 @@ pub fn statue_info(o: &OwnedStatue) -> Value {
         "hp": st.hp, "eng": 0, "atk": st.atk, "def": st.def,
         "skillList": [], "abilityList": [], "leaderAbilityInfo": {},
         "dtSkillList": [], "dtAbilityList": [], "dtLeaderAbilityInfo": leader_ability(sid),
-        "characteristicList": [], "assistAttr": 0, "assistSkillInfo": {},
+        "characteristicList": [], "assistAttr": d.is_some_and(|d| d.assist_only) as i64, "assistSkillInfo": {},
         "assistAbilityList": assist_ability_list(sid), "dtAssistSkillInfo": assist_skill(sid),
         "dtAssistAbilityList": dt_assist_ability_list(sid),
         "speed": 100, "evasion": 0, "hitrate": 100, "criticalRate": 5,
@@ -1463,6 +1483,7 @@ mod tests {
             result_comment: None,
             team_scale: 100,
             team_pos: [0, 0, 0],
+            assist_only: false,
             max_tree: None,
         };
         assert_eq!(d.stats_at(1).hp, 100);

@@ -66,12 +66,16 @@ pub fn user_info(p: &Profile) -> Value {
     // Souls and Mentality: the Labyrinth reads them from here (docs/research/22-labyrinth.md).
     let lab = &p.progress.dungeon;
     let clan = p.progress.town.user_fields(&p.user_id);
+    // Arena BP (services/arena.rs): spent on battles, one back every BP_SECS.
+    let arena = &p.progress.arena;
+    let bp_use = if arena.bp_spent > 0 { arena.bp_at } else { t };
     json!({
         "username": p.username, "userRank": p.rank.max(1), "birthday": "", "exp": p.exp,
         "nextExp": crate::collection::next_rank_exp(p.rank.max(1)),
         "clanId": clan.0, "clanName": clan.1, "position": clan.2, "addStatus": clan.3,
         "staminaPt": crate::collection::ap_max(p.rank.max(1)), "staminaMax": crate::collection::ap_max(p.rank.max(1)), "staminaUseTime": now, "staminaMaxTime": now,
-        "battlePoint": 5, "battlePointMax": 5, "battlePointUseTime": now, "battlePointMaxTime": now,
+        "battlePoint": arena.bp(t), "battlePointMax": crate::services::arena::BP_MAX,
+        "battlePointUseTime": date(bp_use), "battlePointMaxTime": date(arena.bp_full_at(t)),
         "raidPoint": 3, "raidPointMax": 3, "raidPointUseTime": now, "raidPointMaxTime": now,
         "statueNum": p.collection.statues.len(), "mindNum": p.collection.minds.len(), "mindMax": crate::collection::MIND_MAX, "followNum": 0, "followMax": 50,
         "followerNum": 0, "followerMax": 50, "blockMax": 50, "comment": p.comment,

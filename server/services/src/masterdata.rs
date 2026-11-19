@@ -1034,7 +1034,20 @@ mod tests {
             .iter()
             .filter(|r| r["abilityId"].as_str().unwrap().starts_with("DT_AST_"))
             .count();
-        assert_eq!(assist, 16, "4 kinds x 4 tiers");
+        // 4 kinds x 4 tiers, and one own row per assist-only statue (its ABI_AST_<id>_N label).
+        let own = crate::collection::statues()
+            .iter()
+            .filter(|d| d.assist_only)
+            .count();
+        assert_eq!(assist, 16 + own, "4 kinds x 4 tiers + assist-only rows");
+        for d in crate::collection::statues()
+            .iter()
+            .filter(|d| d.assist_only)
+        {
+            let id = format!("DT_AST_{}", d.statue_id);
+            let row = rows.iter().find(|r| r["abilityId"] == id.as_str()).unwrap();
+            assert_eq!(row["abilityName"], format!("ABI_AST_{}_N", d.statue_id));
+        }
         let links = rows
             .iter()
             .filter(|r| r["abilityId"].as_str().unwrap().starts_with("DT_MLINK_"))
