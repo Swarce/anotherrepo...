@@ -8,6 +8,10 @@
 //!
 //! The patcher stores the pack in the APK (`assets/jdr/art.bin`, see [`ArtPack::to_bin`]); the
 //! server applies it while it rebuilds the English bundles (same originals, cache and manifest).
+//!
+//! A pack can also add statue thumbnails the player's files have none for
+//! (`ui_statue_01/thumbs/st_<statueId>.png`, made by `tools/content/render_portraits.py`): see
+//! [`add_thumbnails`] and docs/research/28-portraits.md.
 
 use jdr_unity::bundle::Node;
 use jdr_unity::sfile::{self, V};
@@ -18,9 +22,11 @@ type Error = String;
 
 pub const MAGIC: &[u8; 8] = b"JDRART1\n";
 /// Bump when the way art is applied changes, so phones rebuild their cached files.
-pub const ART_GEN_VERSION: u32 = 2;
+pub const ART_GEN_VERSION: u32 = 3;
 /// Unity class ids.
 const CLASS_TEXTURE2D: i32 = 28;
+const CLASS_TEXTASSET: i32 = 49;
+const CLASS_ASSETBUNDLE: i32 = 142;
 const CLASS_SPRITE: i32 = 213;
 /// Caps for a pack read from the APK.
 const MAX_FILES: usize = 20_000;
@@ -54,18 +60,33 @@ fn digest_of(files: &BTreeMap<String, Vec<u8>>) -> String {
 pub fn valid_path(p: &str) -> bool {
     let parts: Vec<&str> = p.split('/').collect();
     parts.len() == 3
-        && (parts[1] == "sprites" || parts[1] == "textures")
+        && match parts[1] {
+            "sprites" | "textures" => true,
+            "thumbs" => is_thumb_file(parts[2]),
+            _ => false,
+        }
         && parts[2].ends_with(".png")
         && parts
             .iter()
             .all(|c| !c.is_empty() && *c != "." && *c != ".." && !c.contains('\\'))
 }
 
+/// `st_<4 digits>_<2 digits>.png`, a statue thumbnail's file name.
+fn is_thumb_file(f: &str) -> bool {
+    let b = f.as_bytes();
+    b.len() == 14
+        && f.starts_with("st_")
+        && f.ends_with(".png")
+        && b[3..7].iter().all(u8::is_ascii_digit)
+        && b[7] == b'_'
+        && b[8..10].iter().all(u8::is_ascii_digit)
+}
+
 impl ArtPack {
     pub fn from_files(files: BTreeMap<String, Vec<u8>>) -> Result<Self, Error> {
         if let Some(bad) = files.keys().find(|k| !valid_path(k)) {
             return Err(format!(
-                "art pack: unexpected path {bad:?} (want <bundle>/sprites/<name>.png or <bundle>/textures/<name>.png)"
+                "art pack: unexpected path {bad:?} (want <bundle>/sprites/<name>.png, <bundle>/textures/<name>.png or <bundle>/thumbs/st_<id>.png)"
             ));
         }
         let digest = digest_of(&files);
@@ -163,21 +184,30 @@ impl ArtPack {
         v
     }
 
-    /// `<file>.png` (sprites) and `textures/<file>.png` (whole textures) -> PNG bytes for one
-    /// bundle.
+    /// `<file>.png` (sprites), `textures/<file>.png` (whole textures) and `thumbs/<file>.png`
+    /// (new thumbnails) -> PNG bytes for one bundle.
     pub fn for_bundle(&self, bundle: &str) -> HashMap<String, &[u8]> {
         let sprites = format!("{bundle}/sprites/");
         let textures = format!("{bundle}/textures/");
+        let thumbs = format!("{bundle}/thumbs/");
         self.files
             .iter()
             .filter_map(|(k, v)| {
-                let key = match k.strip_prefix(&sprites) {
-                    Some(f) => f.to_string(),
-                    None => format!("textures/{}", k.strip_prefix(&textures)?),
+                let key = if let Some(f) = k.strip_prefix(&sprites) {
+                    f.to_string()
+                } else if let Some(f) = k.strip_prefix(&textures) {
+                    format!("textures/{f}")
+                } else {
+                    format!("thumbs/{}", k.strip_prefix(&thumbs)?)
                 };
                 Some((key, v.as_slice()))
             })
             .collect()
+    }
+
+    /// How many new thumbnails the pack adds.
+    pub fn thumbs(&self) -> usize {
+        self.files.keys().filter(|k| k.contains("/thumbs/")).count()
     }
 }
 
@@ -224,6 +254,8 @@ struct SpriteRef {
 #[derive(Debug, Default)]
 pub struct Applied {
     pub replaced: usize,
+    /// New thumbnails added.
+    pub added: usize,
     /// Indices of the serialized files that changed.
     pub changed: std::collections::HashSet<usize>,
     /// Images that match no sprite.
@@ -232,11 +264,24 @@ pub struct Applied {
     pub errors: Vec<String>,
 }
 
-/// Replace sprites in a decoded bundle's nodes.
-pub fn apply(nodes: &mut [Node], images: &HashMap<String, &[u8]>) -> Result<Applied, Error> {
+/// Asset key and IV (keys.json `asset_key`, `asset_iv`): new thumbnails are encrypted with them.
+pub type Keys<'a> = Option<(&'a [u8], &'a [u8])>;
+
+/// Replace sprites in a decoded bundle's nodes, and add new thumbnails (`thumbs/...`, which need
+/// `keys`).
+pub fn apply(
+    nodes: &mut [Node],
+    images: &HashMap<String, &[u8]>,
+    keys: Keys,
+) -> Result<Applied, Error> {
     if images.is_empty() {
         return Ok(Applied::default());
     }
+    type Images<'a> = HashMap<String, &'a [u8]>;
+    let (thumbs, sprites): (Images, Images) = images
+        .iter()
+        .map(|(k, v)| (k.clone(), *v))
+        .partition(|(k, _)| k.starts_with("thumbs/"));
     let mut files = Vec::new();
     for n in nodes.iter() {
         files.push(if n.flags & 4 != 0 {
@@ -245,20 +290,318 @@ pub fn apply(nodes: &mut [Node], images: &HashMap<String, &[u8]>) -> Result<Appl
             None
         });
     }
-    let r = {
+    let mut r = if sprites.is_empty() {
+        Applied::default()
+    } else {
         let res: HashMap<&str, &[u8]> = nodes
             .iter()
             .filter(|n| n.flags & 4 == 0)
             .map(|n| (n.name.as_str(), n.data.as_slice()))
             .collect();
-        apply_files(&mut files, &res, images)
+        apply_files(&mut files, &res, &sprites)
     };
+    if !thumbs.is_empty() {
+        match keys {
+            Some((key, iv)) => add_thumbnails(&mut files, &thumbs, key, iv, &mut r),
+            None => r.errors.push(format!(
+                "{} new thumbnails need the asset key",
+                thumbs.len()
+            )),
+        }
+    }
     for (i, (n, f)) in nodes.iter_mut().zip(files).enumerate() {
         if let (true, Some(f)) = (r.changed.contains(&i), f) {
             n.data = f.write();
         }
     }
     Ok(r)
+}
+
+/// Add statue thumbnails (`thumbs/st_<id>.png`, 128x128) to a thumbnail bundle (`ui_statue_*`).
+/// Each thumbnail there is a TextAsset `st_<id>` holding an encrypted bundle of its own (a
+/// Texture2D, a Sprite and an AssetBundle); the client finds it by the container key
+/// `.../<bundle>/st_<id>.bytes` (`ResourceManager` registers every container key of a loaded
+/// bundle). A new one is cloned from the first thumbnail already there: renamed, its pixels stored
+/// as RGBA32, its serialized file given a name of its own, encrypted, and listed in the container
+/// and the preload table. Thumbnails the bundle already has are left alone.
+fn add_thumbnails(
+    files: &mut [Option<sfile::SFile>],
+    thumbs: &HashMap<String, &[u8]>,
+    key: &[u8],
+    iv: &[u8],
+    out: &mut Applied,
+) {
+    let Some(fi) = files.iter().position(|f| {
+        f.as_ref().is_some_and(|f| {
+            f.objects
+                .iter()
+                .any(|o| class_of(f, o) == CLASS_ASSETBUNDLE)
+        })
+    }) else {
+        out.errors.push("thumbnails: no AssetBundle object".into());
+        return;
+    };
+    let f = files[fi].as_mut().expect("serialized file");
+    let r = (|| -> Result<usize, Error> {
+        let ab_i = f
+            .objects
+            .iter()
+            .position(|o| class_of(f, o) == CLASS_ASSETBUNDLE)
+            .ok_or("no AssetBundle")?;
+        // The template: the thumbnail whose sprite covers the most of its texture. Thumbnail
+        // sprites are tight meshes around their own outline, and a new portrait must not be
+        // clipped to another frame's: a full 128x128 quad (4 vertices) draws all of it.
+        let mut best: Option<(f64, i64, usize, V, Vec<u8>)> = None;
+        for (i, o) in f.objects.iter().enumerate() {
+            if class_of(f, o) != CLASS_TEXTASSET {
+                continue;
+            }
+            let t = &f.types[o.type_index as usize];
+            let Ok(v) = sfile::read_object(&t.nodes, &o.data) else {
+                continue;
+            };
+            let script = match v.get("m_Script") {
+                Some(V::Str(b)) | Some(V::Bytes(b)) => b.clone(),
+                _ => continue,
+            };
+            let inner = if jdr_crypto::Jjec::is_jjec(&script) {
+                match jdr_crypto::Jjec::decrypt(&script, key, iv) {
+                    Ok(b) => b,
+                    Err(_) => continue,
+                }
+            } else {
+                script
+            };
+            let Some((area, verts)) = sprite_cover(&inner) else {
+                continue;
+            };
+            if best.as_ref().is_none_or(|b| (area, -verts) > (b.0, -b.1)) {
+                best = Some((area, verts, i, v, inner));
+            }
+        }
+        let (_, _, tpl_i, tpl, tpl_inner) = best.ok_or("no thumbnail to clone")?;
+        let ab_t = f.objects[ab_i].type_index as usize;
+        let tx_t = f.objects[tpl_i].type_index as usize;
+        let mut ab = sfile::read_object(&f.types[ab_t].nodes, &f.objects[ab_i].data)?;
+        let tpl_name = tpl
+            .get("m_Name")
+            .and_then(V::as_str)
+            .ok_or("template name")?
+            .to_string();
+        let (prefix, mut keys) = {
+            let Some(V::Arr(items)) = ab.get("m_Container") else {
+                return Err("no m_Container".into());
+            };
+            let keys: Vec<Vec<u8>> = items
+                .iter()
+                .filter_map(|e| match e.get("first") {
+                    Some(V::Str(k)) => Some(k.clone()),
+                    _ => None,
+                })
+                .collect();
+            let first =
+                String::from_utf8_lossy(keys.first().ok_or("empty container")?).into_owned();
+            (
+                first[..first.rfind('/').ok_or("container key without folder")? + 1].to_string(),
+                keys,
+            )
+        };
+        let mut used: std::collections::HashSet<i64> =
+            f.objects.iter().map(|o| o.path_id).collect();
+        let mut added = 0;
+        let mut names: Vec<&String> = thumbs.keys().collect();
+        names.sort();
+        for file in names {
+            let name = file.trim_start_matches("thumbs/").trim_end_matches(".png");
+            let ckey = format!("{prefix}{name}.bytes").into_bytes();
+            if keys.contains(&ckey) {
+                out.errors
+                    .push(format!("{name}: the bundle already has it"));
+                continue;
+            }
+            let inner = match make_thumbnail(&tpl_inner, &tpl_name, name, thumbs[file]) {
+                Ok(b) => b,
+                Err(e) => {
+                    out.errors.push(format!("{name}: {e}"));
+                    continue;
+                }
+            };
+            let enc = jdr_crypto::Jjec::encrypt(&inner, key, iv, inner.len())
+                .map_err(|e| e.to_string())?;
+            let mut pid = path_id_for(name);
+            while used.contains(&pid) {
+                pid = pid.wrapping_add(1);
+            }
+            used.insert(pid);
+            let mut tv = tpl.clone();
+            set(&mut tv, "m_Name", V::Str(name.as_bytes().to_vec()));
+            set(&mut tv, "m_Script", V::Str(enc));
+            f.objects.push(jdr_unity::serialized::Object {
+                path_id: pid,
+                type_index: tx_t as i32,
+                data: sfile::write_object(&f.types[tx_t].nodes, &tv)?,
+            });
+            f.layout.push(f.objects.len() - 1);
+            // preload table and container entry (kept sorted by key, as the engine writes it)
+            let pre_len = match ab.get_mut("m_PreloadTable") {
+                Some(V::Arr(pre)) => {
+                    let mut e = pre.first().cloned().ok_or("empty preload table")?;
+                    set(&mut e, "m_FileID", V::I(0));
+                    set(&mut e, "m_PathID", V::I(pid));
+                    pre.push(e);
+                    pre.len() - 1
+                }
+                _ => return Err("no m_PreloadTable".into()),
+            };
+            let Some(V::Arr(items)) = ab.get_mut("m_Container") else {
+                return Err("no m_Container".into());
+            };
+            let mut e = items.first().cloned().ok_or("empty container")?;
+            set(&mut e, "first", V::Str(ckey.clone()));
+            if let Some(sec) = e.get_mut("second") {
+                set(sec, "preloadIndex", V::I(pre_len as i64));
+                set(sec, "preloadSize", V::I(1));
+                if let Some(a) = sec.get_mut("asset") {
+                    set(a, "m_FileID", V::I(0));
+                    set(a, "m_PathID", V::I(pid));
+                }
+            }
+            let at = keys.partition_point(|k| k < &ckey);
+            keys.insert(at, ckey);
+            items.insert(at, e);
+            added += 1;
+        }
+        if added > 0 {
+            f.objects[ab_i].data = sfile::write_object(&f.types[ab_t].nodes, &ab)?;
+        }
+        Ok(added)
+    })();
+    match r {
+        Ok(n) if n > 0 => {
+            out.added += n;
+            out.changed.insert(fi);
+        }
+        Ok(_) => {}
+        Err(e) => out.errors.push(format!("thumbnails: {e}")),
+    }
+}
+
+/// A thumbnail bundle's sprite: the area of its texture rectangle and its mesh's vertex count.
+fn sprite_cover(inner: &[u8]) -> Option<(f64, i64)> {
+    let nodes = jdr_unity::bundle::read(inner).ok()?;
+    let f = sfile::parse(&nodes.iter().find(|n| n.flags & 4 != 0)?.data).ok()?;
+    let o = f.objects.iter().find(|o| class_of(&f, o) == CLASS_SPRITE)?;
+    let v = sfile::read_object(&f.types[o.type_index as usize].nodes, &o.data).ok()?;
+    let rd = v.get("m_RD")?;
+    let r = rd.get("textureRect")?;
+    let area = num(r.get("width"))? * num(r.get("height"))?;
+    let verts = rd
+        .get("m_VertexData")
+        .and_then(|d| d.get("m_VertexCount"))
+        .and_then(V::as_i64)
+        .unwrap_or(i64::MAX);
+    Some((area, verts))
+}
+
+fn class_of(f: &sfile::SFile, o: &jdr_unity::serialized::Object) -> i32 {
+    f.types[o.type_index as usize].entry.class_id
+}
+
+/// Set a field that exists, keeping its integer kind (signed or unsigned) as stored.
+fn set(v: &mut V, k: &str, x: V) {
+    if let Some(slot) = v.get_mut(k) {
+        *slot = match (&*slot, x) {
+            (V::U(_), V::I(i)) => V::U(i as u64),
+            (_, x) => x,
+        };
+    }
+}
+
+/// A stable path id for a new object (the name's SHA-256, never 0).
+fn path_id_for(name: &str) -> i64 {
+    use sha2::{Digest, Sha256};
+    let h = Sha256::digest(format!("jdr-thumb:{name}").as_bytes());
+    let v = i64::from_le_bytes(h[..8].try_into().expect("8 bytes"));
+    if v == 0 {
+        1
+    } else {
+        v
+    }
+}
+
+/// One thumbnail's own bundle: `tpl` (a thumbnail named `old`) renamed `new`, with `png` as its
+/// pixels (stored RGBA32 in the serialized file, so the `.resS` stream goes) and its serialized
+/// file renamed `CAB-<md5 of new>` (the engine refuses two loaded bundles with the same file).
+pub fn make_thumbnail(tpl: &[u8], old: &str, new: &str, png: &[u8]) -> Result<Vec<u8>, Error> {
+    use md5::{Digest, Md5};
+    let mut nodes = jdr_unity::bundle::read(tpl)?;
+    let si = nodes
+        .iter()
+        .position(|n| n.flags & 4 != 0)
+        .ok_or("no serialized file")?;
+    let mut f = sfile::parse(&nodes[si].data)?;
+    let (iw, ih, img) = texture::decode_png(png)?;
+    let rename =
+        |s: &[u8]| -> Vec<u8> { String::from_utf8_lossy(s).replace(old, new).into_bytes() };
+    let mut textures = 0;
+    for i in 0..f.objects.len() {
+        let t = f.objects[i].type_index as usize;
+        let class = f.types[t].entry.class_id;
+        if ![CLASS_TEXTURE2D, CLASS_SPRITE, CLASS_ASSETBUNDLE].contains(&class) {
+            continue;
+        }
+        let mut v = sfile::read_object(&f.types[t].nodes, &f.objects[i].data)?;
+        set(&mut v, "m_Name", V::Str(new.as_bytes().to_vec()));
+        match class {
+            CLASS_TEXTURE2D => {
+                let w = v.get("m_Width").and_then(V::as_i64).ok_or("no m_Width")? as usize;
+                let h = v.get("m_Height").and_then(V::as_i64).ok_or("no m_Height")? as usize;
+                if (iw, ih) != (w, h) {
+                    return Err(format!("image is {iw}x{ih}, thumbnails are {w}x{h}"));
+                }
+                let mut px = vec![0u8; w * h * 4];
+                texture::paste(&mut px, w, h, &img, iw, ih, 0, 0)?;
+                set(&mut v, "m_TextureFormat", V::I(texture::FMT_RGBA32));
+                set(&mut v, "m_CompleteImageSize", V::I((w * h * 4) as i64));
+                set(&mut v, "m_MipCount", V::I(1));
+                set(&mut v, "m_MipMap", V::U(0));
+                set(&mut v, "image data", V::Bytes(px));
+                if let Some(sd) = v.get_mut("m_StreamData") {
+                    set(sd, "offset", V::U(0));
+                    set(sd, "size", V::U(0));
+                    set(sd, "path", V::Str(Vec::new()));
+                }
+                textures += 1;
+            }
+            CLASS_ASSETBUNDLE => {
+                set(&mut v, "m_AssetBundleName", V::Str(new.as_bytes().to_vec()));
+                if let Some(V::Arr(items)) = v.get_mut("m_Container") {
+                    for e in items {
+                        if let Some(V::Str(k)) = e.get_mut("first") {
+                            *k = rename(k);
+                        }
+                    }
+                }
+            }
+            _ => {}
+        }
+        f.objects[i].data = sfile::write_object(&f.types[t].nodes, &v)?;
+    }
+    if textures != 1 {
+        return Err(format!("template has {textures} textures, expected 1"));
+    }
+    let cab: String = Md5::digest(new.as_bytes())
+        .iter()
+        .map(|b| format!("{b:02x}"))
+        .collect();
+    nodes[si].data = f.write();
+    nodes[si].name = format!("CAB-{cab}");
+    // the pixels now live in the serialized file: the old stream file goes
+    nodes.retain(|n| n.flags & 4 != 0 || !n.name.ends_with(".resS"));
+    Ok(jdr_unity::bundle::write_lz4(
+        &nodes,
+        jdr_unity::UNITY_VERSION,
+    ))
 }
 
 /// The sprite's pixel box exactly as the exporter cut it (`export_ui.py`): edges rounded with
@@ -579,9 +922,23 @@ mod tests {
             "../sprites/x.png",
             "ui/sprites/../x.png",
             "ui/other/x.png",
+            "ui_statue_01/thumbs/x.png",
+            "ui_statue_01/thumbs/st_1080_1.png",
+            "ui_statue_01/thumbs/st_1080_01.jpg",
+            "ui_statue_01/thumbs/st_10a0_01.png",
         ] {
             assert!(!valid_path(bad), "{bad}");
         }
+        assert!(valid_path("ui_statue_01/thumbs/st_1080_01.png"));
+        let mut m = BTreeMap::new();
+        m.insert("ui_statue_01/thumbs/st_1080_01.png".to_string(), vec![1]);
+        m.insert("ui_mypage/sprites/A.png".to_string(), vec![2]);
+        let p = ArtPack::from_files(m).unwrap();
+        assert_eq!(p.thumbs(), 1);
+        assert_eq!(
+            p.for_bundle("ui_statue_01").keys().collect::<Vec<_>>(),
+            ["thumbs/st_1080_01.png"]
+        );
         assert_eq!(safe_name("ガシャ:01"), "____01");
     }
 }

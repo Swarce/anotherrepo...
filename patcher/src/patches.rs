@@ -18,7 +18,9 @@ pub struct Config {
     pub keys_json: Option<Vec<u8>>,
     /// The player's redrawn UI art pack (zip), and their game files folder (layouts for the
     /// APK's own screens).
-    pub art_zip: Option<std::path::PathBuf>,
+    /// The player's art packs (`--art`, repeatable: e.g. the redrawn UI art and the generated
+    /// statue portraits); merged in order, a later pack winning on the same path.
+    pub art_zips: Vec<std::path::PathBuf>,
     pub data_dir: Option<std::path::PathBuf>,
 }
 
@@ -28,7 +30,7 @@ impl Default for Config {
             server_url: format!("http://127.0.0.1:{}", DEFAULT_PORT),
             server_lib: None,
             keys_json: None,
-            art_zip: None,
+            art_zips: Vec::new(),
             data_dir: None,
         }
     }
@@ -734,11 +736,15 @@ impl Patch for UiArt {
         cfg: &Config,
         _build: &known::VerifiedBuild,
     ) -> Result<String, Error> {
-        let Some(zip) = &cfg.art_zip else {
+        if cfg.art_zips.is_empty() {
             return Ok("no art pack given (--art): skipped".into());
-        };
-        let pack = crate::art::read_pack_zip(zip)?;
+        }
+        let mut pack = std::collections::BTreeMap::new();
+        for zip in &cfg.art_zips {
+            pack.extend(crate::art::read_pack_zip(zip)?);
+        }
         let total = pack.len();
+        let thumbs = pack.keys().filter(|k| k.contains("/thumbs/")).count();
         let r = crate::art::apply(apk, pack, cfg.data_dir.as_deref(), cfg.keys_json.as_deref())?;
         let skipped = if r.skipped.is_empty() {
             String::new()
@@ -746,7 +752,7 @@ impl Patch for UiArt {
             format!("; left unchanged: {}", r.skipped.join("; "))
         };
         Ok(format!(
-            "{total} images: {} stored for the menus (applied on the phone), {} sprites replaced in {} title/boot screen file(s){skipped}",
+            "{total} images: {} stored for the menus (applied on the phone; {thumbs} new statue thumbnails), {} sprites replaced in {} title/boot screen file(s){skipped}",
             r.stored, r.in_apk, r.apk_files
         ))
     }
