@@ -375,7 +375,11 @@ fn add_thumbnails(
             let Some((area, verts)) = sprite_cover(&inner) else {
                 continue;
             };
-            if best.as_ref().is_none_or(|b| (area, -verts) > (b.0, -b.1)) {
+            let better = match &best {
+                None => true,
+                Some(b) => (area, -verts) > (b.0, -b.1),
+            };
+            if better {
                 best = Some((area, verts, i, v, inner));
             }
         }
