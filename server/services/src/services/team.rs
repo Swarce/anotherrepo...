@@ -102,7 +102,7 @@ pub fn select_statue(
     seq: i64,
     uid: i64,
 ) -> bool {
-    let usable = uid == 0 || c.known_statue(uid).is_some();
+    let usable = uid == 0 || c.member_statue(uid).is_some();
     if !(1..=3).contains(&seq) || !usable || (seq == 1 && uid == 0) {
         return false;
     }
@@ -136,7 +136,7 @@ pub fn select_statue(
 /// left (such a team is not saved).
 pub fn clean_members(c: &Collection, wanted: [i64; 3]) -> Option<[i64; 3]> {
     let mut slots = wanted.map(|u| {
-        if u != 0 && c.known_statue(u).is_some() {
+        if u != 0 && c.member_statue(u).is_some() {
             u
         } else {
             0
@@ -545,7 +545,7 @@ pub fn auto_formation(
     let mut ranked: Vec<(i64, i64, String)> = c
         .statues
         .iter()
-        .filter(|o| c.known_statue(o.uid).is_some() && !busy_statues.contains(&o.uid))
+        .filter(|o| c.member_statue(o.uid).is_some() && !busy_statues.contains(&o.uid))
         .map(|o| {
             let chara = o.statue_id.split('_').next().unwrap_or("").to_string();
             (score(o), o.uid, chara)
@@ -1121,6 +1121,101 @@ mod tests {
         assert_eq!(
             r["teamInfo"]["teamOrder"]["leaderStatue"]["assistStatueList"],
             json!([])
+        );
+    }
+
+    /// Assist-only statues (docs/research/19-assists.md §6): owned, sent with assistAttr 1, their
+    /// own assist ability (named by their ABI_AST_<id>_N label) and an assist skill; they may be
+    /// assists but never team members (seat, auto formation, Arena opponents and rivals).
+    #[test]
+    fn assist_only_statues_assist_but_never_fight() {
+        use crate::collection::{self, Collection};
+        use crate::services::team::{auto_formation, equip_assists, select_statue, Roster};
+        let only: Vec<&collection::StatueDef> = collection::statues()
+            .iter()
+            .filter(|d| d.assist_only)
+            .collect();
+        assert_eq!(
+            only.len(),
+            26,
+            "the assist-only statues with a model in the player's files"
+        );
+        let tr = crate::l10n::Translations::embedded().unwrap();
+        let mut c = Collection::default();
+        c.ensure("2026-11-18 00:00:00");
+        for d in &only {
+            assert!(d.statue_id[5..6] == *"6" || d.statue_id[5..6] == *"7");
+            let o = c
+                .statues
+                .iter()
+                .find(|o| o.statue_id == d.statue_id)
+                .unwrap();
+            let v = collection::statue_info(o);
+            assert_eq!(v["assistAttr"], 1, "{}", d.statue_id);
+            assert_eq!(
+                v["dtAssistAbilityList"][0]["abilityId"],
+                format!("DT_AST_{}", d.statue_id)
+            );
+            let name = v["assistAbilityList"][0]["abilityName"].as_str().unwrap();
+            assert_eq!(name, format!("ABI_AST_{}_N", d.statue_id));
+            assert!(tr
+                .english(&format!("text:Ability_Assist_Name_JP:{name}"))
+                .is_some());
+            assert!(tr
+                .english(&format!("text:StatueName_JP:STATUE_NAME_{}", d.statue_id))
+                .is_some());
+            assert!(
+                v["dtAssistSkillInfo"]["skillId"]
+                    .as_str()
+                    .is_some_and(|s| !s.is_empty()),
+                "{}: an assist skill",
+                d.statue_id
+            );
+            assert!(!collection::can_be_member(&d.statue_id));
+        }
+        let o = c
+            .statues
+            .iter()
+            .find(|o| o.statue_id == only[0].statue_id)
+            .unwrap()
+            .uid;
+        // Never a member: not on the starting team, refused in a seat, skipped by the auto team.
+        assert!(c.teams.iter().all(|t| !t.slots.contains(&o)));
+        assert!(!select_statue(&mut c, Roster::Story, 1, 2, o));
+        assert!(!select_statue(&mut c, Roster::Arena, 1, 1, o));
+        for plan in 1..=4 {
+            auto_formation(&mut c, Roster::Story, 1, plan).unwrap();
+            let t = c
+                .teams
+                .iter()
+                .find(|t| t.stage_type == 1 && t.team_num == 1)
+                .unwrap();
+            assert!(t
+                .slots
+                .iter()
+                .all(|u| collection::can_be_member(&c.statue(*u).unwrap().statue_id)));
+        }
+        // An assist: yes.
+        equip_assists(&mut c, Roster::Story, 1, 0, &[(1, o)]).unwrap();
+        let t = c
+            .teams
+            .iter()
+            .find(|t| t.stage_type == 1 && t.team_num == 1)
+            .unwrap();
+        assert_eq!(t.assists[0], vec![(1, o)]);
+        let info = collection::team_info(&c, t);
+        let seat = &info["teamOrder"]["leaderStatue"];
+        assert_eq!(seat["assistStatueList"][0]["assistAttr"], 1);
+        assert!(seat["statueInfo"]["dtAbilityList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .any(|a| a["abilityId"] == format!("DT_AST_{}", only[0].statue_id)));
+        // AI teams (Arena opponents, ranking rivals) pick from the members only.
+        assert!(collection::members().all(|d| !d.assist_only));
+        assert_eq!(
+            collection::members().count() + only.len(),
+            collection::statues().len()
         );
     }
 
