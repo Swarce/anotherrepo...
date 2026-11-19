@@ -4,6 +4,10 @@ own files (scan_statues.py) and numbers from the community wikis.
 
 Matching (strict; anything ambiguous falls back to marked defaults):
   - a statueId is obtainable when it has a model + animations + action set AND a leader-ability label;
+    one with a model, animations and an action set, its own ABI_AST_<id>_N assist-ability label and no
+    leader-ability label joins as assist-only (`assistOnly`, the client's assistAttr 1), after the
+    others, with one tactical skill (its assist skill: SKILL_<p>_09 when present) and Gamerch stats
+    by its assist-ability name where they match exactly;
   - Gamerch statue pages attach by their leader-ability name (or, for assist-only statues, the
     assist-ability name), compared after NFKC normalisation with the game's own
     ABI_LEAD_NAME_<id> / ABI_AST_<id>_N labels; a name that maps to more than one statueId is skipped;
@@ -56,6 +60,13 @@ for line in open(a.export, encoding="utf-8"):
 lead = {k.rsplit("_", 2)[-2] + "_" + k.rsplit("_", 1)[-1] for k in labels if k.startswith("text:Ability_Leader_Name_JP:ABI_LEAD_NAME_")}
 obtainable = [s for s in scan if s["playable"] and s["statueId"] in lead]
 jp_name = {s["statueId"]: labels.get(f"text:StatueName_JP:STATUE_NAME_{s['statueId']}", "") for s in obtainable}
+# Assist-only statues (docs/research/19-assists.md §5): a model, animations and an action set, their
+# own ABI_AST_<id>_N assist-ability label and no leader-ability label. They join the roster as
+# assist-only (assistAttr 1) after the others, so nothing above changes for the rest.
+ast_label = {m.group(1) for k in labels
+             for m in [re.fullmatch(r"text:Ability_Assist_Name_JP:ABI_AST_(\d{4}_\d{2})_N", k)] if m}
+assist_only = [s for s in scan if s["playable"] and s["statueId"] in ast_label and s["statueId"] not in lead]
+ast_jp_name = {s["statueId"]: labels.get(f"text:StatueName_JP:STATUE_NAME_{s['statueId']}", "") for s in assist_only}
 
 wiki = json.load(open(a.shoutwiki))
 by_name = collections.defaultdict(list)
@@ -242,7 +253,7 @@ by_ability = collections.defaultdict(set)
 for k, v in labels.items():
     m = re.fullmatch(r"text:Ability_Leader_Name_JP:ABI_LEAD_NAME_(\d{4}_\d{2})", k) or \
         re.fullmatch(r"text:Ability_Assist_Name_JP:ABI_AST_(\d{4}_\d{2})_N", k)
-    if m and m.group(1) in jp_name:
+    if m and (m.group(1) in jp_name or m.group(1) in ast_jp_name):
         by_ability[norm(v)].add(m.group(1))
 gamerch = {}
 if a.gamerch:
@@ -371,6 +382,65 @@ for s in obtainable:
             rec["rarityFrom"] = "the team-view pose clips present in the player's files"
     out.append(rec)
 
+
+
+def assist_skill(s):
+    """The assist-only statue's one tactical skill (its Assist button): SKILL_<p>_09 when the model
+    has it (their only tactical action is often SKILL_09; docs/research/19 §5.2, M), else its lowest
+    SKILL_NN with a DTbattle_SKILL_TEXT label; classified like any skill."""
+    g = s["statueId"][:3]
+    acts = s.get("dtActions") or []
+    avail = sorted(int(x[6:]) for x in acts
+                   if re.fullmatch(r"SKILL_\d\d", x) and f"DTbattle_SKILL_TEXT_{g}_{int(x[6:]):02d}" in TEXT)
+    for n in ([9] if 9 in avail else []) + [n for n in avail if n != 9]:
+        key = f"{g}_{n:02d}"
+        c = classify(TEXT.get(f"DTbattle_SKILL_TEXT_{key}", ""))
+        if not c:
+            continue
+        process, cat, target, ptype, attr = c
+        return [{"id": f"SKILL_{key}", "special": False,
+                 "name": f"SKILL_NAME_{key}" if f"SKILL_NAME_{key}" in TEXT else "",
+                 "text": f"DTbattle_SKILL_TEXT_{key}", "button": BUTTON[(process, target)][0],
+                 "damageRank": 125, "category": cat, "targetType": target, "processType": ptype, "attr": attr}]
+    return []
+
+
+n_assist = 0
+for s in assist_only:
+    sid = s["statueId"]
+    rec = {
+        "statueId": sid, "part": s["part"], "modelDataList": s["modelDataList"], "assistOnly": True,
+        # No attack row: an assist never acts as a unit, and its SKILL_<p>_NN attack id could be a
+        # roster skill id of the same prefix.
+        "dtAttack": None, "dtSkills": assist_skill(s),
+        # Never in a team seat; the height fallback can blow tiny models up, so cap the scale.
+        **dict(zip(("teamScale", "teamPos"), (lambda f: (min(f[0], 150), f[1]))(team_frame(s)))),
+        "resultComment": (f"Result_Chara_Comment_{sid}"
+                          if f"text:Result_Chara_Comment_JP:Result_Chara_Comment_{sid}" in labels else None),
+        "rarity": None, "statueType": None, "lv1": None, "lv99": None, "maxTree": None,
+        "source": {"source": "jdr-default", "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"},
+    }
+    g = gamerch.get(sid)
+    if g:
+        lv99 = g["lv99"]
+        lv1 = g["lv1"] if full(g.get("lv1")) else {k: round(v / 10) for k, v in lv99.items()}
+        rec.update({
+            "rarity": g.get("rarity"), "statueType": GAMERCH_TYPE.get(g.get("type")), "lv1": lv1, "lv99": lv99,
+            "maxTree": g["max_tree"] if full(g.get("max_tree")) else None,
+            "source": {"source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)", "page": g["source"]["page_url"],
+                       "capture": g["source"].get("capture"), "accessed": g["source"].get("accessed", TODAY),
+                       **({} if full(g.get("lv1")) else {"note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"})},
+        })
+        matched += 1
+        by_source["gamerch_assist"] += 1
+    if rec["rarity"] is None:
+        r = pose_rarity(s)
+        if r:
+            rec["rarity"] = r
+            rec["rarityFrom"] = "the team-view pose clips present in the player's files"
+    out.append(rec)
+    n_assist += 1
+
 doc = {
     "about": "Obtainable statues: identifiers from the player's own files (scan_statues.py), stats from community wikis where the match is unambiguous (each record cites its page). See docs/CONTENT.md.",
     "sources": [
@@ -383,5 +453,5 @@ doc = {
     "statues": out,
 }
 json.dump(doc, open(a.out, "w"), indent=1, ensure_ascii=False)
-print(f"{len(out)} obtainable statues; {matched} with wiki stats ({dict(by_source)}), {len(out) - matched} on defaults; "
+print(f"{len(out)} obtainable statues ({n_assist} assist-only); {matched} with wiki stats ({dict(by_source)}), {len(out) - matched} on defaults; "
       f"rejected as implausible or out of rarity order: {sorted(set(rejected))}")

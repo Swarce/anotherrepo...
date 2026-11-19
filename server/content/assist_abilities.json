@@ -1,5 +1,5 @@
 {
- "about": "Assist abilities per statue (docs/research/19-assists.md §5): ids of the shared dtbattle_ability_data_table rows DT_AST_<kind><tier>, with the client's activation conditions ([{statueType, count}] over the seat's assists; empty = always). Built by tools/content/build_assist_abilities.py.",
+ "about": "Assist abilities per statue (docs/research/19-assists.md §5, §6): ids of the shared dtbattle_ability_data_table rows DT_AST_<kind><tier> (an assist-only statue has its own row DT_AST_<statueId>), with the client's activation conditions ([{statueType, count}] over the seat's assists; empty = always). Built by tools/content/build_assist_abilities.py.",
  "sources": [
   {
    "source": "Diamond Records Wiki (ShoutWiki)",
@@ -14,6 +14,10 @@
   {
    "source": "jdr-default",
    "note": "statues without wiki assist numbers: the leaning stat at tier rarity - 2; conditions empty"
+  },
+  {
+   "source": "jdr-default",
+   "note": "assist-only statues: their own row under their own ABI_AST_<statueId>_N label, values of the kind and tier above"
   }
  ],
  "statues": [
@@ -3607,6 +3611,344 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "1030_62",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_1030_62",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2011_72",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_2011_72",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2040_72",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_2040_72",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2150_71",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_2150_71",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "2150_72",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_2150_72",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3160_71",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_3160_71",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3180_62",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_3180_62",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3230_61",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_3230_61",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3230_62",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_3230_62",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3230_63",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_3230_63",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3290_61",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_3290_61",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "3290_62",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_3290_62",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4000_62",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_4000_62",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4090_71",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_4090_71",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4090_72",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_4090_72",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4090_73",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_4090_73",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4120_62",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_4120_62",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4181_72",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_4181_72",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4220_71",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_4220_71",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4220_72",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_4220_72",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4220_73",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_4220_73",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4260_72",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_4260_72",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "4280_72",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_4280_72",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5000_62",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_5000_62",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5290_62",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_5290_62",
+     "conditions": []
+    }
+   ],
+   "source": {
+    "source": "jdr-default",
+    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+   }
+  },
+  {
+   "statueId": "5330_72",
+   "abilities": [
+    {
+     "abilityId": "DT_AST_5330_72",
      "conditions": []
     }
    ],
