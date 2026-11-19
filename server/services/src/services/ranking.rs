@@ -105,7 +105,7 @@ pub struct Rival {
 /// `top x (1 - i/N)^2`, give or take a tenth; stronger rivals lead rarer statues (ours).
 fn generate(seed: u64, top: i64, battles: bool) -> Vec<Rival> {
     let mut rng = Rng(seed);
-    let all = collection::statues();
+    let all: Vec<&collection::StatueDef> = collection::members().collect();
     let n = FIELD_SIZE as f64;
     let mut out: Vec<Rival> = (0..FIELD_SIZE)
         .map(|i| {
@@ -113,8 +113,11 @@ fn generate(seed: u64, top: i64, battles: bool) -> Vec<Rival> {
             let jitter = 0.9 + (rng.below(2001) as f64) / 10_000.0;
             let points = ((top as f64) * share * share * jitter).round().max(0.0) as i64;
             let rarity = (6 - (i * 4 / FIELD_SIZE) as i64).clamp(3, 6);
-            let pool: Vec<&collection::StatueDef> =
-                all.iter().filter(|d| d.rarity() == rarity).collect();
+            let pool: Vec<&collection::StatueDef> = all
+                .iter()
+                .copied()
+                .filter(|d| d.rarity() == rarity)
+                .collect();
             let statue_id = if pool.is_empty() {
                 all.get(rng.below(all.len()))
                     .map(|d| d.statue_id.clone())

@@ -25,6 +25,7 @@ pub mod ranking;
 #[cfg(test)]
 pub mod shapes;
 pub mod statue;
+pub mod support;
 pub mod team;
 pub mod tree;
 pub mod user;
@@ -77,7 +78,7 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/follow/follower_list" => team::follower_list(ctx, env),
         "/follow/block_list" => team::block_list(ctx, env),
         "/trophy/trophy_list" => team::trophy_list(ctx, env),
-        "/bizarre/bizarre_resumption" => misc::bizarre_resumption(ctx, env),
+        "/bizarre/bizarre_resumption" => bizarre::bizarre_resumption(ctx, env),
         "/bizarre/bizarre_list" => bizarre::bizarre_list(ctx, env),
         "/bizarre/stage_list" => bizarre::stage_list(ctx, env),
         "/bizarre/bizarre_start" => bizarre::bizarre_start(ctx, env),
@@ -164,6 +165,7 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/event/get_event_ranking_detail" => ranking::ranking_detail(ctx, env),
         "/event/get_event_ranking_reward" => ranking::ranking_reward(ctx, env),
         "/item/heal_item_list" => arena::heal_item_list(ctx, env),
+        "/user/recover_battle_point" => arena::recover_battle_point(ctx, env),
         "/pvp/home_acqusition_check" => arena::home_acqusition_check(ctx, env),
         "/pvp/home" => arena::home(ctx, env),
         "/pvp/enemy_player_list" => arena::enemy_player_list(ctx, env),

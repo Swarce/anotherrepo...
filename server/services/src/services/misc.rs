@@ -1,7 +1,7 @@
-//! Small boot-path answers: system config, shop product list, info/notify, team, resumption.
+//! Small boot-path answers: system config, shop product list, info/notify, team.
 //! Values here are Build 01 placeholders; M4/M5 move them to server/content.
 
-use crate::app::{ApiError, ApiResult};
+use crate::app::ApiResult;
 use crate::services::ok;
 use crate::Ctx;
 use jdr_core::envelope::RequestEnvelope;
@@ -61,7 +61,10 @@ pub fn get_menu_notify(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let unread = town.is_some_and(|t| t.unread_chat());
     let waiting = town.is_some_and(|t| t.can_manage(&p.user_id) && !t.applicants.is_empty());
     ok(json!({
-        "notAllowedFunction": [], "unopenedNotify": 0, "unopenedPresent": p.progress.presents.waiting(),
+        // Notices: this build's notes not opened yet (services/menu.rs notify_list).
+        "notAllowedFunction": [],
+        "unopenedNotify": i64::from(p.progress.notes_seen_build != jdr_core::BUILD),
+        "unopenedPresent": p.progress.presents.waiting(),
         "unopenedAchievement": m.claimable(p.rank),
         "unopenedFollower": 0, "gashaPlayNum": 0, "myTownMember": members,
         "unreadChatFlg": i64::from(unread), "unapprovedMemberFlg": i64::from(waiting)
@@ -78,9 +81,4 @@ pub fn team_info(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .map(|t| crate::collection::team_info(&p.collection, t))
         .collect();
     ok(json!({ "teamList": teams, "mindSeqInfo": super::team::mind_seq_info() }))
-}
-
-/// 50301 = E_BIZALLE_NOT_START: no interrupted battle (10000 would offer to resume one).
-pub fn bizarre_resumption(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    Err(ApiError::Status(50301))
 }

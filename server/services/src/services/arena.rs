@@ -59,10 +59,24 @@ pub const OPEN_UNTIL: &str = "2099-12-31 23:59:59";
 const PAST: &str = "2000-01-01 00:00:00";
 /// Battle turn limit (ours; the client needs a battleModeInfo and reads the limit from it).
 pub const TURN_LIMIT: i64 = 20;
-/// A team's BP cost (`fatiguCount`, client: shown and charged as the BP cost). Ours: BP never
-/// runs out offline (UserInfo always reports 5 of 5), so every cost stays at one, which also
-/// keeps the 2019 edit gate (no edits until the cost is back to one, `arena.edit_gate`) open.
+/// BP when full (GameConst `battlePointFull` 5, client).
+pub const BP_MAX: i64 = 5;
+/// Seconds per BP regained (our `bpOneRecoveryTime`, services/misc.rs get_system_config).
+pub const BP_SECS: i64 = 1800;
+/// A team's base BP cost (`fatiguCount`, client: shown and charged as the BP cost; research pack
+/// `arena.bp_cost`: it rises by one after each battle and resets when BP is full again).
 const TEAM_COST: i64 = 1;
+/// The highest a team's cost rises (ours: one full bar).
+pub const TEAM_COST_MAX: i64 = BP_MAX;
+/// Battles in a cost recovery cycle: "After 4 battles, the BP cost of all teams except the one
+/// used dropped by 1" (client text PVPHOME_00029; `recoveryTimes` lights its four-segment gauge).
+pub const COST_CYCLE: i64 = 4;
+/// BP Recovery Cola items and the BP each restores (their detail texts: 1, 2 and 5 BP; research
+/// pack `economy.cola`: normal 5, small 2).
+pub const BP_ITEMS: [(i64, i64); 3] = [(1100, 1), (1101, 2), (1102, 5)];
+/// E_BATTLE_POINT_FULL / E_BATTLE_POINT_LACK (client).
+const E_BP_FULL: i64 = 10116;
+const E_BP_LACK: i64 = 10117;
 /// Durability a lost battle costs (ours: four defeats empty the bar).
 pub const LOSS_DAMAGE: i64 = 2_500;
 /// A team at 0 durability rests for thirty minutes (research pack `arena.durability_2019`).
@@ -226,6 +240,17 @@ pub struct ArenaState {
     /// An abandoned battle was counted as a loss and the home has not said so yet.
     #[serde(default)]
     pub force_defeat: bool,
+    /// BP below full at `bp_at` (0 = full); one comes back every BP_SECS after `bp_at`.
+    #[serde(default)]
+    pub bp_spent: i64,
+    #[serde(default)]
+    pub bp_at: i64,
+    /// Team BP costs above the base one, by team number.
+    #[serde(default)]
+    pub costs: BTreeMap<i64, i64>,
+    /// Battles in the running cost recovery cycle, 0..=COST_CYCLE (`recoveryTimes`).
+    #[serde(default)]
+    pub cost_cycle: i64,
 }
 
 /// One simulated attack on an Arena team (PvpHomeInfoResponse.DefenseInfo).
@@ -330,6 +355,92 @@ impl ArenaState {
         self.fever_end > now
     }
 
+    /// BP now (BP_SECS per point since `bp_at`, up to BP_MAX).
+    pub fn bp(&self, now: i64) -> i64 {
+        if self.bp_spent <= 0 {
+            return BP_MAX;
+        }
+        let back = (now - self.bp_at).max(0) / BP_SECS;
+        (BP_MAX - self.bp_spent + back).clamp(0, BP_MAX)
+    }
+
+    /// When BP is full again (now when it is).
+    pub fn bp_full_at(&self, now: i64) -> i64 {
+        if self.bp(now) >= BP_MAX {
+            now
+        } else {
+            self.bp_at + self.bp_spent * BP_SECS
+        }
+    }
+
+    /// Bank the BP regained; when BP is full again every team's cost goes back to one (research
+    /// pack `arena.bp_cost`; client text PVPHOME_00015 "BP cost will recover once BP reaches
+    /// {0} or more"). Returns whether anything changed.
+    fn settle_bp(&mut self, now: i64) -> bool {
+        if self.bp_spent <= 0 {
+            return false;
+        }
+        let back = ((now - self.bp_at).max(0) / BP_SECS).min(self.bp_spent);
+        if back == 0 {
+            return false;
+        }
+        self.bp_spent -= back;
+        self.bp_at += back * BP_SECS;
+        if self.bp_spent == 0 {
+            self.costs.clear();
+            self.cost_cycle = 0;
+        }
+        true
+    }
+
+    /// Restore `n` BP (an item, or a full bar for Diamond Coins); a full bar resets the costs.
+    fn restore_bp(&mut self, n: i64, now: i64) {
+        self.settle_bp(now);
+        self.bp_spent = (self.bp_spent - n.max(0)).max(0);
+        if self.bp_spent == 0 {
+            self.costs.clear();
+            self.cost_cycle = 0;
+        }
+    }
+
+    /// Charge a battle's BP; `Err(10117)` when short (nothing charged).
+    fn spend_bp(&mut self, n: i64, now: i64) -> Result<(), i64> {
+        self.settle_bp(now);
+        if self.bp(now) < n {
+            return Err(E_BP_LACK);
+        }
+        if self.bp_spent == 0 {
+            self.bp_at = now;
+        }
+        self.bp_spent += n;
+        Ok(())
+    }
+
+    /// A team's BP cost (`fatiguCount`).
+    pub fn cost(&self, team_num: i64) -> i64 {
+        self.costs.get(&team_num).copied().unwrap_or(TEAM_COST)
+    }
+
+    /// After a settled battle: the team's cost rises by one; every fourth battle the other teams'
+    /// costs drop by one (PVPHOME_00029). The count stays at COST_CYCLE until the next battle so
+    /// the home shows the full gauge and its notice.
+    fn count_battle_cost(&mut self, team_num: i64) {
+        let c = (self.cost(team_num) + 1).min(TEAM_COST_MAX);
+        self.costs.insert(team_num, c);
+        if self.cost_cycle >= COST_CYCLE {
+            self.cost_cycle = 0;
+        }
+        self.cost_cycle += 1;
+        if self.cost_cycle == COST_CYCLE {
+            for (n, c) in self.costs.iter_mut() {
+                if *n != team_num {
+                    *c -= 1;
+                }
+            }
+            self.costs.retain(|_, c| *c > TEAM_COST);
+        }
+    }
+
     /// Turn the day and the season; rested teams come back. Returns whether anything changed
     /// and, when a season with battles finished, its final ranking position.
     fn roll(&mut self, now: i64) -> (bool, Option<i64>) {
@@ -343,6 +454,7 @@ impl ArenaState {
         let before = self.hp.len();
         self.hp.retain(|_, h| !(h.hp <= 0 && h.until <= now));
         changed |= self.hp.len() != before;
+        changed |= self.settle_bp(now);
         let season = season_of(now);
         if self.season == season {
             return (changed, None);
@@ -455,7 +567,7 @@ fn pvp_team_info(c: &Collection, st: Option<&ArenaState>, t: &Team, now: i64) ->
     let back = st.and_then(|s| s.resting_until(t.team_num, now));
     v["hp"] = json!(hp);
     v["recoveryTime"] = json!(date(back.unwrap_or(now)));
-    v["fatiguCount"] = json!(TEAM_COST);
+    v["fatiguCount"] = json!(st.map(|s| s.cost(t.team_num)).unwrap_or(TEAM_COST));
     v
 }
 
@@ -579,17 +691,24 @@ pub fn battle_points(win_points: i64, rank: usize, streak: i64) -> i64 {
 /// Three statues of different characters, of one rarity (any lower rarity fills in when the
 /// rarity has too few characters).
 fn pick_three(rng: &mut Rng, rarity: i64) -> Vec<String> {
-    let all = collection::statues();
+    let all: Vec<&collection::StatueDef> = collection::members().collect();
     let distinct = |pool: &[&collection::StatueDef]| {
         pool.iter().map(|d| d.psid()).collect::<HashSet<_>>().len()
     };
-    let mut pool: Vec<&collection::StatueDef> =
-        all.iter().filter(|d| d.rarity() == rarity).collect();
+    let mut pool: Vec<&collection::StatueDef> = all
+        .iter()
+        .copied()
+        .filter(|d| d.rarity() == rarity)
+        .collect();
     if distinct(&pool) < 3 {
-        pool = all.iter().filter(|d| d.rarity() <= rarity).collect();
+        pool = all
+            .iter()
+            .copied()
+            .filter(|d| d.rarity() <= rarity)
+            .collect();
     }
     if distinct(&pool) < 3 {
-        pool = all.iter().collect();
+        pool = all.clone();
     }
     let mut out = Vec::new();
     let mut charas = Vec::new();
@@ -706,7 +825,7 @@ fn opponent_info(o: &Opponent, now: i64) -> Value {
 /// A team can fight when it has a leader and is not resting.
 fn check_team(c: &Collection, st: &ArenaState, team_num: i64, now: i64) -> Result<(), i64> {
     let t = arena_team(c, team_num);
-    if c.known_statue(t.slots[0]).is_none() {
+    if c.member_statue(t.slots[0]).is_none() {
         return Err(E_PVP_NO_LEADER);
     }
     if st.resting_until(team_num, now).is_some() {
@@ -768,12 +887,61 @@ pub fn point_reward_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     )
 }
 
-/// `/item/heal_item_list {type}` (2 = BP items in the Arena home): held recovery items. Our item
-/// catalog has none (no cola or recovery item ids are recorded), so the list is empty and the
-/// home offers its Diamond Coin option, which is free offline.
-pub fn heal_item_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    ok(json!({ "itemList": [] }))
+/// The BP Recovery Colas the player holds, as ItemInfos (never null).
+fn bp_items(c: &Collection) -> Vec<Value> {
+    BP_ITEMS
+        .iter()
+        .filter_map(|(id, _)| {
+            let n = c.item_count(*id);
+            let d = crate::items::find(*id)?;
+            (n > 0).then(|| crate::items::item_info(d, n))
+        })
+        .collect()
 }
+
+/// `/item/heal_item_list {type}` (recovery item types AP 1 / BP 2 / all 3, client): the BP
+/// Recovery Colas held for BP; no AP items (AP is never spent offline). The Arena home lists them
+/// after its Diamond Coin option.
+pub fn heal_item_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let p = crate::services::statue::profile(ctx, env)?;
+    let list = match int(env, "type") {
+        Some(1) => Vec::new(),
+        _ => bp_items(&p.collection),
+    };
+    ok(json!({ "itemList": list }))
+}
+
+/// `/user/recover_battle_point {payType, itemId}` ("Use 1 {0} to restore BP?", client): a BP
+/// Recovery Cola restores its 1, 2 or 5 BP (one item taken; 10108 when none is held); Diamond
+/// Coins (any other pay type) fill the bar, free offline (ours). 10116 when BP is already full. A
+/// full bar resets every team's cost. Reply: `userInfo` and the colas held (`itemList`).
+pub fn recover_battle_point(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let item = int(env, "itemId").unwrap_or(0);
+    let cola = BP_ITEMS.iter().find(|(id, _)| *id == item).copied();
+    let (p, r) = with_arena(ctx, env, |p, now| {
+        if p.progress.arena.bp(now) >= BP_MAX {
+            return (Err(E_BP_FULL), Change::None);
+        }
+        let n = match cola {
+            Some((id, n)) => {
+                if p.collection.item_count(id) < 1 {
+                    return (Err(E_ITEM_LACK), Change::None);
+                }
+                p.collection.add_item(id, -1);
+                n
+            }
+            None => BP_MAX,
+        };
+        p.progress.arena.restore_bp(n, now);
+        (Ok(()), Change::Progress)
+    })?;
+    r.map_err(ApiError::Status)?;
+    ok(json!({ "userInfo": crate::services::user::user_info(&p),
+               "itemList": bp_items(&p.collection) }))
+}
+
+/// E_ITEM_LACK (client).
+const E_ITEM_LACK: i64 = 10108;
 
 /// `/pvp/home_acqusition_check {eventCampaignId}` (polled): nothing to collect offline.
 pub fn home_acqusition_check(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
@@ -871,9 +1039,9 @@ fn lose(st: &mut ArenaState, team_num: i64, now: i64) {
 /// - `forceDefeatFlg`: true once after a battle that `pvp_start` began and no `pvp_end` settled
 ///   was counted as a loss ("Connection was lost during battle. The previous battle counts as a
 ///   loss.", client; research pack `v2.arena.early_failure`).
-/// - `recoveryTimes` 0: it is the client's four-battle gauge of the BP cost recovery ("After 4
-///   battles, the BP cost of all teams except the one used dropped by 1"); our costs never rise
-///   (BP is always full), so there is no cycle.
+/// - `recoveryTimes`: the battles of the BP cost recovery cycle, 0..4; at 4 after a battle the
+///   home says "After 4 battles, the BP cost of all teams except the one used dropped by 1"
+///   (`ArenaState::count_battle_cost`).
 ///
 /// Lists are never null (client).
 pub fn home(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
@@ -885,6 +1053,7 @@ pub fn home(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
             if now - b.started >= ABANDON_SECS {
                 st.pending = None;
                 st.season_battles += 1;
+                st.count_battle_cost(b.team_num);
                 lose(st, b.team_num, now);
                 if !st.fever_on(now) {
                     st.fever_gauge =
@@ -923,7 +1092,7 @@ pub fn home(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     ok(json!({
         "endDate": OPEN_UNTIL, "finishDate": OPEN_UNTIL, "pvpTeamList": team_list(&p, now),
         "pvpUserInfo": pvp_user_info(st, now, crazy_notify),
-        "todaysPoint": st.todays_points.max(0), "recoveryTimes": 0,
+        "todaysPoint": st.todays_points.max(0), "recoveryTimes": st.cost_cycle,
         "selectedTeamId": st.selected_team.clamp(1, collection::TEAMS_PER_TYPE),
         "pollingTimes": POLLING_SECS, "damageInfo": damage, "eventCampaignList": [campaign_panel()],
         "forceDefeatFlg": forced, "battleType": BATTLE_TYPE_PVP_AUTO
@@ -971,7 +1140,8 @@ pub fn enemy_player_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
 
 /// `/pvp/pvp_start {eventCampaignId, teamNum, enemyuId, enemyTeamNum}`: both teams and the
 /// battle mode (battleType 2 = the AI arena, `battleModeInfo` must not be null, client). The
-/// client picks the map and the formation itself. BP is not charged (UserInfo keeps 5 of 5).
+/// client picks the map and the formation itself. The team's BP cost is charged (10117 when BP is
+/// short; the client checks first, "You need {0} BP to start a battle").
 pub fn pvp_start(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let team_num = arena_team_num(env, "teamNum")?;
     let enemy = int(env, "enemyuId").unwrap_or(0);
@@ -984,6 +1154,10 @@ pub fn pvp_start(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
             return (Err(E_PVP_ENEMY_NOT_FOUND), Change::None);
         };
         let st = &mut p.progress.arena;
+        let cost = st.cost(team_num);
+        if let Err(code) = st.spend_bp(cost, now) {
+            return (Err(code), Change::None);
+        }
         st.pending = Some(PendingArena {
             enemy_uid: enemy,
             team_num,
@@ -1074,6 +1248,7 @@ pub fn pvp_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
             .sum();
         let st = &mut p.progress.arena;
         st.season_battles += 1;
+        st.count_battle_cost(b.team_num);
         if won {
             st.wins += 1;
             st.streak += 1;
@@ -1454,7 +1629,26 @@ mod tests {
         }
     }
 
+    /// A request; a battle start first refills BP (the BP economy has its own test,
+    /// `bp_costs_rise_regenerate_and_recover`), so the other tests can fight as often as they need.
     fn call(ctx: &Ctx, uuid: &str, path: &str, param: Value) -> Result<Map<String, Value>, i64> {
+        if path == "/pvp/pvp_start" {
+            ctx.accounts
+                .update(uuid, |p| {
+                    p.progress.arena.bp_spent = 0;
+                    ((), Change::Bookkeeping)
+                })
+                .unwrap();
+        }
+        call_raw(ctx, uuid, path, param)
+    }
+
+    fn call_raw(
+        ctx: &Ctx,
+        uuid: &str,
+        path: &str,
+        param: Value,
+    ) -> Result<Map<String, Value>, i64> {
         let (r, known) = dispatch(ctx, path, &env(uuid, param));
         assert!(known, "{path} is routed");
         match r {
@@ -1756,6 +1950,154 @@ mod tests {
         assert_eq!(h["todaysPoint"], st.points);
         assert_eq!(h["pvpUserInfo"]["rankingPoint"], st.points);
         assert_eq!(h["pvpUserInfo"]["winningStreak"], 0);
+    }
+
+    /// The 2019 BP economy (research pack `arena.bp_cost`; client texts PVPHOME_00012/15/22/29):
+    /// a battle charges the team's cost, the cost rises by one after each battle, every fourth
+    /// battle the other teams' costs drop by one, BP comes back one per BP_SECS and a full bar
+    /// resets every cost; Colas and Diamond Coins restore BP.
+    #[test]
+    fn bp_costs_rise_regenerate_and_recover() {
+        use crate::services::shapes::assert_complete;
+        // The rules on the state.
+        let now = 1_800_000_000;
+        let mut st = ArenaState::default();
+        assert_eq!((st.bp(now), st.cost(1)), (BP_MAX, 1));
+        st.spend_bp(1, now).unwrap();
+        st.count_battle_cost(1);
+        assert_eq!((st.bp(now), st.cost(1), st.cost_cycle), (BP_MAX - 1, 2, 1));
+        st.costs.insert(2, 3);
+        for _ in 0..3 {
+            st.count_battle_cost(1);
+        }
+        assert_eq!(
+            st.cost_cycle, COST_CYCLE,
+            "the home shows the full gauge and its notice"
+        );
+        assert_eq!(
+            st.cost(2),
+            2,
+            "the fourth battle drops the other teams' costs"
+        );
+        assert_eq!(st.cost(1), TEAM_COST_MAX, "capped");
+        st.count_battle_cost(1);
+        assert_eq!(st.cost_cycle, 1, "a new cycle");
+        assert_eq!(st.spend_bp(BP_MAX, now), Err(E_BP_LACK), "4 BP left");
+        assert_eq!(st.bp(now + BP_SECS - 1), BP_MAX - 1);
+        assert_eq!(st.bp(now + BP_SECS), BP_MAX);
+        assert_eq!(st.bp_full_at(now), now + BP_SECS);
+        assert!(st.settle_bp(now + BP_SECS));
+        assert_eq!(
+            (st.bp_spent, st.cost(1), st.cost(2), st.cost_cycle),
+            (0, 1, 1, 0)
+        );
+
+        // The routes.
+        let (ctx, uuid) = setup("bp");
+        let h = call(&ctx, &uuid, "/pvp/home", json!({})).unwrap();
+        assert_eq!(
+            (
+                h["recoveryTimes"].as_i64(),
+                h["pvpTeamList"][0]["fatiguCount"].as_i64()
+            ),
+            (Some(0), Some(1))
+        );
+        let bp = || {
+            call(&ctx, &uuid, "/user/user_info", json!({})).unwrap()["userInfo"]["battlePoint"]
+                .as_i64()
+                .unwrap()
+        };
+        assert_eq!(bp(), BP_MAX);
+        let fight = || {
+            let l = call(&ctx, &uuid, "/pvp/enemy_player_list", json!({"teamNo": 1})).unwrap();
+            let uid = l["pvpTeamList"][0]["enemyuId"].as_i64().unwrap();
+            let s = call_raw(
+                &ctx,
+                &uuid,
+                "/pvp/pvp_start",
+                json!({"teamNum": 1, "enemyuId": uid, "enemyTeamNum": 1}),
+            )?;
+            call(
+                &ctx,
+                &uuid,
+                "/pvp/pvp_end",
+                json!({"result": 0, "teamNo": 1}),
+            )
+            .unwrap();
+            Ok::<_, i64>(s)
+        };
+        let s = fight().unwrap();
+        assert_eq!(s["userInfo"]["battlePoint"], BP_MAX - 1, "cost 1 charged");
+        let h = call(&ctx, &uuid, "/pvp/home", json!({})).unwrap();
+        assert_eq!(
+            (
+                h["recoveryTimes"].as_i64(),
+                h["pvpTeamList"][0]["fatiguCount"].as_i64()
+            ),
+            (Some(1), Some(2))
+        );
+        fight().unwrap();
+        assert_eq!(bp(), BP_MAX - 3, "cost 2 charged");
+        assert_eq!(fight().err(), Some(E_BP_LACK), "cost 3 with 2 BP left");
+        let u = call(&ctx, &uuid, "/user/user_info", json!({})).unwrap();
+        assert!(u["userInfo"]["battlePointMaxTime"].as_str().unwrap() > ctx.server_date().as_str());
+        // Colas from the starting stock.
+        let items =
+            Value::Object(call(&ctx, &uuid, "/item/heal_item_list", json!({"type": 2})).unwrap());
+        assert_complete("Jjs.HealItemListResponse", &items);
+        let held: Vec<i64> = items["itemList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|i| i["itemId"].as_i64().unwrap())
+            .collect();
+        assert_eq!(held, [1101, 1102]);
+        assert_eq!(
+            call(&ctx, &uuid, "/item/heal_item_list", json!({"type": 1})).unwrap()["itemList"],
+            json!([])
+        );
+        let r = Value::Object(
+            call(
+                &ctx,
+                &uuid,
+                "/user/recover_battle_point",
+                json!({"payType": 3, "itemId": 1101}),
+            )
+            .unwrap(),
+        );
+        assert_complete("Jjs.RecoveryBattlePointResponse", &r);
+        assert_eq!(r["userInfo"]["battlePoint"], BP_MAX - 1);
+        assert_eq!(r["itemList"][0]["count"], 4);
+        assert_eq!(
+            call(
+                &ctx,
+                &uuid,
+                "/user/recover_battle_point",
+                json!({"payType": 3, "itemId": 1100})
+            ),
+            Err(E_ITEM_LACK),
+            "no XS Cola held"
+        );
+        // Diamond Coins: a full bar (free offline), which resets the costs.
+        call(
+            &ctx,
+            &uuid,
+            "/user/recover_battle_point",
+            json!({"payType": 4, "itemId": 0}),
+        )
+        .unwrap();
+        assert_eq!(bp(), BP_MAX);
+        let h = call(&ctx, &uuid, "/pvp/home", json!({})).unwrap();
+        assert_eq!(h["pvpTeamList"][0]["fatiguCount"], 1);
+        assert_eq!(
+            call(
+                &ctx,
+                &uuid,
+                "/user/recover_battle_point",
+                json!({"payType": 4, "itemId": 0})
+            ),
+            Err(E_BP_FULL)
+        );
     }
 
     #[test]

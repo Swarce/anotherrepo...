@@ -13,8 +13,9 @@
 //! identities, three offered per room, each used once until the deck resets (after all 22, an
 //! escape or losing every Soul); reversing the offer costs 20 Mentality.
 //!
-//! Ours: the one dungeon and its rooms (our quest data has no labyrinth stages, so rooms reuse
-//! tactical story stages picked by floor), room costs within the pack's range, the rewards, the
+//! Ours: the three dungeons (the game's Beginner/Intermediate/Advanced names of one mansion) and
+//! their rooms (our quest data has no labyrinth stages, so rooms reuse tactical story stages picked
+//! by floor, stronger in the harder dungeons), room costs within the pack's range, the rewards, the
 //! Tarot effects mapped onto existing affects, and the Mentality refill (full at the 04:00 JST day
 //! roll).
 
@@ -23,17 +24,64 @@ use crate::quests::{self, ChapterDef, StageDef};
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 
-/// Our one labyrinth. Its name label is the game's "The Hidden, Sealed Mansion", whose rooms
-/// have name labels `STAGE_DU01_<floor>_<room>` (floors 1–20); the summary label is the game's
-/// "Explore the Labyrinth of the Mind." (ours: which labels the original paired).
+/// One labyrinth of the dungeon list (docs/research/22 §3.1).
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct Dungeon {
+    /// `DUnn`; its rooms are `STAGE_DUnn_<floor:02>_<room:02>`.
+    pub id: &'static str,
+    /// Name label: the game's `CHAPTER_NAME_D_01..03` ("Beginner/Intermediate/Advanced: The
+    /// Hidden and Sealed Mansion", DungeonName_JP).
+    pub name: &'static str,
+    /// Summary label (`DUNGEON_MES_001..003`, all "Explore the Mind Labyrinth.").
+    pub summary: &'static str,
+    /// `Difficluty` E 0 … SSS+ 10 (client enum; the grade is ours).
+    pub difficulty: i64,
+    /// Levels added to the room's story-stage enemies (ours; capped at Lv99).
+    pub level_add: i64,
+    /// Floor rewards are multiplied by this (ours).
+    pub reward_mult: i64,
+}
+
+/// The three dungeons: the game names one mansion in three grades (`CHAPTER_NAME_D_01..03`); its
+/// room labels `STAGE_DU01_<floor>_<room>` (floors 1–20) name the rooms of all three (ours: which
+/// labels the original paired, the grades and their strength).
+pub const DUNGEONS: [Dungeon; 3] = [
+    Dungeon {
+        id: "DU01",
+        name: "CHAPTER_NAME_D_01",
+        summary: "DUNGEON_MES_001",
+        difficulty: 2, // C
+        level_add: 0,
+        reward_mult: 1,
+    },
+    Dungeon {
+        id: "DU02",
+        name: "CHAPTER_NAME_D_02",
+        summary: "DUNGEON_MES_002",
+        difficulty: 4, // A
+        level_add: 15,
+        reward_mult: 2,
+    },
+    Dungeon {
+        id: "DU03",
+        name: "CHAPTER_NAME_D_03",
+        summary: "DUNGEON_MES_003",
+        difficulty: 7, // SS
+        level_add: 30,
+        reward_mult: 3,
+    },
+];
+/// The Beginner dungeon (the one Build 23 served; an empty `dungeonId` is taken as it).
 pub const DUNGEON_ID: &str = "DU01";
-const DUNGEON_NAME: &str = "DUNGEON_NAME_002";
-const DUNGEON_SUMMARY: &str = "DUNGEON_MES_001";
-/// `bizarre_dungeon_002.png` (bundles 000–004 exist); matches the name's index (ours).
+/// `bizarre_dungeon_002.png` (bundles 000–004 exist): the mansion's picture for all three (ours).
 const DUNGEON_IMG: i64 = 2;
-/// `Difficluty` C (ours).
-const DUNGEON_DIFFICULTY: i64 = 2;
-const ROOM_PREFIX: &str = "STAGE_DU01_";
+/// The room name labels the client has (`DungeonStageName_JP`): the Beginner dungeon's.
+const ROOM_LABEL_PREFIX: &str = "STAGE_DU01_";
+
+/// The dungeon behind an id.
+pub fn dungeon(id: &str) -> Option<&'static Dungeon> {
+    DUNGEONS.iter().find(|d| d.id == id)
+}
 /// Floors (research pack, 20 shown on every screenshot).
 pub const FLOORS: i64 = 20;
 /// GameConst DUNGEON_SOUL_MAX (client).
@@ -56,14 +104,17 @@ pub const E_INVALID: i64 = 10103;
 /// One room of a floor: a tactical story stage under the room's own id and name label.
 #[derive(Debug, Clone)]
 pub struct Room {
-    /// `STAGE_DU01_<floor:02>_<room:02>`: both the stage id the client sends back and the name
-    /// label the room banner shows.
+    /// `STAGE_DUnn_<floor:02>_<room:02>`: the stage id the client sends back.
     pub id: String,
+    /// `STAGE_DU01_<floor:02>_<room:02>`: the name label the room banner shows.
+    pub label: String,
+    pub dungeon: &'static Dungeon,
     pub floor: i64,
     pub index: usize,
     pub cost: i64,
     pub chapter: &'static ChapterDef,
-    pub stage: &'static StageDef,
+    /// The story stage, its enemies raised by the dungeon's `level_add`.
+    pub stage: StageDef,
 }
 
 /// Tactical story stages, easiest first (by enemy level, then id).
@@ -101,9 +152,10 @@ pub fn room_cost(floor: i64, index: usize) -> i64 {
     }
 }
 
-/// The rooms of a floor (1..=FLOORS). Each floor takes its twentieth of the stage pool, so the
-/// enemies get stronger floor by floor; a single room takes the hardest stage of its slice.
-pub fn rooms(floor: i64) -> Vec<Room> {
+/// The rooms of a floor (1..=FLOORS) of a dungeon. Each floor takes its twentieth of the stage
+/// pool, so the enemies get stronger floor by floor; a single room takes the hardest stage of its
+/// slice. The harder dungeons raise the enemies' level.
+pub fn rooms_in(d: &'static Dungeon, floor: i64) -> Vec<Room> {
     let pool = pool();
     if pool.is_empty() || !(1..=FLOORS).contains(&floor) {
         return Vec::new();
@@ -120,8 +172,12 @@ pub fn rooms(floor: i64) -> Vec<Room> {
                 r * span / k + span / (2 * k)
             };
             let (chapter, stage) = pool[(base + off).min(n - 1)];
+            let mut stage = stage.clone();
+            stage.enemy_level = (stage.enemy_level + d.level_add).min(crate::collection::MAX_LEVEL);
             Room {
-                id: format!("{ROOM_PREFIX}{floor:02}_{:02}", r + 1),
+                id: format!("STAGE_{}_{floor:02}_{:02}", d.id, r + 1),
+                label: format!("{ROOM_LABEL_PREFIX}{floor:02}_{:02}", r + 1),
+                dungeon: d,
                 floor,
                 index: r,
                 cost: room_cost(floor, r),
@@ -132,25 +188,32 @@ pub fn rooms(floor: i64) -> Vec<Room> {
         .collect()
 }
 
-/// The room behind a room id, if it is one.
+/// The rooms of a floor of the Beginner dungeon.
+pub fn rooms(floor: i64) -> Vec<Room> {
+    rooms_in(&DUNGEONS[0], floor)
+}
+
+/// The room behind a room id (`STAGE_DUnn_ff_rr`), if it is one.
 pub fn find_room(id: &str) -> Option<Room> {
-    let rest = id.strip_prefix(ROOM_PREFIX)?;
+    let rest = id.strip_prefix("STAGE_")?;
+    let (d, rest) = rest.split_once('_')?;
+    let d = dungeon(d)?;
     let (f, r) = rest.split_once('_')?;
     let (f, r): (i64, usize) = (f.parse().ok()?, r.parse().ok()?);
-    rooms(f).into_iter().nth(r.checked_sub(1)?)
+    rooms_in(d, f).into_iter().nth(r.checked_sub(1)?)
 }
 
 /// `StageInfo` of a room: the stage's battle data under the room's id and name label, its
 /// Mentality cost, and the floor's reward as the "possible rewards" row (shown while clearFlg is
 /// not 1). Star missions start unlit and play counts at 0: room progress is not story progress.
 pub fn room_stage_info(r: &Room) -> Value {
-    let mut v = quests::stage_info(r.chapter, r.stage, r.index, &quests::Progress::default());
-    let reward = floor_reward(r.floor);
+    let mut v = quests::stage_info(r.chapter, &r.stage, r.index, &quests::Progress::default());
+    let reward = floor_reward(r.dungeon, r.floor);
     let (data_type, data_id) = crate::presents::reward_kind(reward.item_id);
     for (k, x) in [
         ("stageId", json!(r.id)),
-        ("name", json!(r.id)),
-        ("text", json!(r.id)),
+        ("name", json!(r.label)),
+        ("text", json!(r.label)),
         ("useMentality", json!(r.cost)),
         ("useStamina", json!(0)),
         ("nextStageIdList", json!([])),
@@ -169,9 +232,17 @@ pub fn room_stage_info(r: &Room) -> Value {
 
 /// The reward a floor earns (ours, one item per floor so any list row shows it): Memory Rings
 /// every fifth floor, gold on the other odd floors, trophies (enhancement material for any
-/// statue, 6112–6115 by tier) on the other even floors. Item ids as missions give them
-/// (20 = gold).
-pub fn floor_reward(floor: i64) -> Reward {
+/// statue, 6112–6115 by tier) on the other even floors, times the dungeon's `reward_mult`. Item
+/// ids as missions give them (20 = gold).
+pub fn floor_reward(d: &Dungeon, floor: i64) -> Reward {
+    let r = base_floor_reward(floor);
+    Reward {
+        item_id: r.item_id,
+        count: r.count * d.reward_mult,
+    }
+}
+
+fn base_floor_reward(floor: i64) -> Reward {
     let (item_id, count) = match floor {
         f if f % 5 == 0 => (crate::items::MEMORY_RING, 100 * (f / 5)),
         f if f % 2 == 1 => (20, 2_000 + 1_000 * f),
@@ -316,9 +387,16 @@ pub struct DungeonState {
     pub mentality_day: i64,
     #[serde(default)]
     pub run: Option<Run>,
-    /// The deepest floor ever cleared (shown as `floorClearNum`; ours).
+    /// The deepest floor ever cleared in the Beginner dungeon (saves before Build 25; ours).
     #[serde(default)]
     pub best_floor: i64,
+    /// The deepest floor ever cleared, per dungeon (shown as `floorClearNum`; ours).
+    #[serde(default)]
+    pub best_floors: std::collections::BTreeMap<String, i64>,
+    /// The suspended state the player declined to resume (`/bizarre/destruction` after the
+    /// resume dialog): the room whose Tarot pick is not offered again.
+    #[serde(default)]
+    pub declined: Option<String>,
     /// Full clears (bookkeeping).
     #[serde(default)]
     pub clears: i64,
@@ -386,6 +464,20 @@ impl DungeonState {
         Ok(())
     }
 
+    /// The deepest floor cleared in a dungeon.
+    pub fn best(&self, dungeon_id: &str) -> i64 {
+        let legacy = if dungeon_id == DUNGEON_ID {
+            self.best_floor
+        } else {
+            0
+        };
+        self.best_floors
+            .get(dungeon_id)
+            .copied()
+            .unwrap_or(0)
+            .max(legacy)
+    }
+
     /// Souls left (full when no run is in progress).
     pub fn souls(&self) -> i64 {
         self.run
@@ -429,7 +521,8 @@ impl DungeonState {
             return Outcome::Cleared;
         }
         run.earned.push(run.floor);
-        self.best_floor = self.best_floor.max(run.floor);
+        let best = self.best_floors.entry(run.dungeon_id.clone()).or_insert(0);
+        *best = (*best).max(run.floor);
         run.floor += 1;
         if run.floor > FLOORS {
             Outcome::Cleared
@@ -512,18 +605,18 @@ impl Run {
 }
 
 /// `DungeonInfo` for the dungeon list.
-pub fn dungeon_info(s: &DungeonState) -> Value {
-    json!({ "dungeonId": DUNGEON_ID, "name": DUNGEON_NAME, "summary": DUNGEON_SUMMARY,
-            "floorMax": FLOORS, "floorNum": s.floor_num(DUNGEON_ID), "floorClearNum": s.best_floor,
-            "difficulty": DUNGEON_DIFFICULTY, "imgNo": DUNGEON_IMG, "stageType": 1 })
+pub fn dungeon_info(d: &Dungeon, s: &DungeonState) -> Value {
+    json!({ "dungeonId": d.id, "name": d.name, "summary": d.summary,
+            "floorMax": FLOORS, "floorNum": s.floor_num(d.id), "floorClearNum": s.best(d.id),
+            "difficulty": d.difficulty, "imgNo": DUNGEON_IMG, "stageType": 1 })
 }
 
 /// `DungeonRewardInfo` rows for the reward review: one per floor. The client marks a row
 /// achieved while the run's floor is past it.
-pub fn reward_rows() -> Vec<Value> {
+pub fn reward_rows(d: &Dungeon) -> Vec<Value> {
     (1..=FLOORS)
         .map(|f| {
-            json!({ "rewardItemSet": crate::missions::reward_set(&floor_reward(f)), "floorNum": f,
+            json!({ "rewardItemSet": crate::missions::reward_set(&floor_reward(d, f)), "floorNum": f,
                     "reward_title": "", "reward_text": "" })
         })
         .collect()
@@ -559,18 +652,64 @@ mod tests {
         }
         assert!(find_room("STAGE_DU01_21_01").is_none());
         assert!(find_room("STAGE_DU01_10_02").is_none());
+        assert!(find_room("STAGE_DU04_01_01").is_none());
         assert!(find_room("DT_STAGE_ST_00_01").is_none());
+    }
+
+    /// The Intermediate and Advanced dungeons: the same rooms (and labels) with stronger enemies
+    /// and larger rewards; their room ids find their own dungeon.
+    #[test]
+    fn harder_dungeons_raise_levels_and_rewards() {
+        for f in [1, 10, 20] {
+            let easy = rooms_in(&DUNGEONS[0], f);
+            for d in &DUNGEONS[1..] {
+                let hard = rooms_in(d, f);
+                assert_eq!(hard.len(), easy.len());
+                for (e, h) in easy.iter().zip(&hard) {
+                    assert_eq!(
+                        h.label, e.label,
+                        "one label set names every dungeon's rooms"
+                    );
+                    assert_eq!(
+                        h.id,
+                        format!("STAGE_{}_{}", d.id, &e.id["STAGE_DU01_".len()..])
+                    );
+                    assert_eq!(
+                        h.stage.enemy_level,
+                        (e.stage.enemy_level + d.level_add).min(99)
+                    );
+                    assert!(h.stage.enemy_level >= e.stage.enemy_level);
+                    let back = find_room(&h.id).unwrap();
+                    assert_eq!(back.dungeon.id, d.id);
+                    let info = room_stage_info(h);
+                    assert_eq!(info["name"], e.label.as_str());
+                    assert_eq!(
+                        info["enemyList"][0]["level"].as_i64(),
+                        Some(h.stage.enemy_level)
+                    );
+                }
+                assert_eq!(
+                    floor_reward(d, f).count,
+                    floor_reward(&DUNGEONS[0], f).count * d.reward_mult
+                );
+            }
+        }
+        assert!(DUNGEONS
+            .windows(2)
+            .all(|w| w[0].difficulty < w[1].difficulty));
     }
 
     #[test]
     fn labels_exist_for_names_rooms_and_cards() {
         let tr = crate::l10n::Translations::embedded().unwrap();
         let has = |table: &str, key: &str| tr.english(&format!("text:{table}:{key}")).is_some();
-        assert!(has("DungeonName_JP", DUNGEON_NAME));
-        assert!(has("DungeonSceneText_JP", DUNGEON_SUMMARY));
-        for f in 1..=FLOORS {
-            for r in rooms(f) {
-                assert!(has("DungeonStageName_JP", &r.id), "{}", r.id);
+        for d in &DUNGEONS {
+            assert!(has("DungeonName_JP", d.name), "{}", d.name);
+            assert!(has("DungeonSceneText_JP", d.summary), "{}", d.summary);
+            for f in 1..=FLOORS {
+                for r in rooms_in(d, f) {
+                    assert!(has("DungeonStageName_JP", &r.label), "{}", r.label);
+                }
             }
         }
         for id in 0..TAROT_CARDS {
@@ -680,11 +819,13 @@ mod tests {
 
     #[test]
     fn rewards_are_one_known_item_per_floor() {
-        for f in 1..=FLOORS {
-            let r = floor_reward(f);
-            assert!(r.count > 0);
-            assert!(r.item_id == 20 || crate::items::find(r.item_id).is_some());
+        for d in &DUNGEONS {
+            for f in 1..=FLOORS {
+                let r = floor_reward(d, f);
+                assert!(r.count > 0);
+                assert!(r.item_id == 20 || crate::items::find(r.item_id).is_some());
+            }
+            assert_eq!(reward_rows(d).len(), FLOORS as usize);
         }
-        assert_eq!(reward_rows().len(), FLOORS as usize);
     }
 }

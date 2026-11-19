@@ -68,7 +68,7 @@ Notes:
 | `/user/get_nonce` | `GetNonceRequest` | `GetNonceResponse` | implemented |
 | `/user/get_tutorial_step` | `TutorialStepRequest` | `TutorialStepResponse` | implemented |
 | `/user/login` | `LoginRequest` | `LoginResponse` | implemented |
-| `/user/recover_battle_point` | `RecoveryBattlePointRequest` | `RecoveryBattlePointResponse` | logged as unknown |
+| `/user/recover_battle_point` | `RecoveryBattlePointRequest` | `RecoveryBattlePointResponse` | implemented (Arena BP, Build 25, research/23) |
 | `/user/recover_stamina` | `RecoverStaminaRequest` | `RecoverStaminaResponse` | logged as unknown |
 | `/user/select` | `UserSelectRequest` | `UserSelectResponse` | logged as unknown |
 | `/user/tutorial` | `UpdateTutorialStepRequest` | `UpdateTutorialStepResponse` | implemented |
@@ -85,7 +85,7 @@ Notes:
 | `/info/check_forced_notify` | `CheckForcedNotifyRequest` | `CheckForcedNotifyResponse` | implemented |
 | `/info/event_list` | `EventListRequest` | `EventListResponse` | implemented |
 | `/info/get_menu_notify` | `GetMenuNotifyRequest` | `GetMenuNotifyResponse` | implemented |
-| `/info/notify_list` | `NotifyListRequest` | `NotifyListResponse` | logged as unknown |
+| `/info/notify_list` | `NotifyListRequest` | `NotifyListResponse` | implemented (Build 25, research/24) |
 
 ### shop — IAP (disabled offline) and in-game shops (9, 2 implemented)
 
@@ -171,7 +171,7 @@ Notes:
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
 | `/item/exp_item_list` | `ExpItemListRequest` | `ExpItemListResponse` | logged as unknown |
-| `/item/heal_item_list` | `HealItemListRequest` | `HealItemListResponse` | logged as unknown |
+| `/item/heal_item_list` | `HealItemListRequest` | `HealItemListResponse` | implemented (BP Colas, Build 25, research/23) |
 | `/item/item_list` | `ItemListRequest` | `ItemListResponse` | implemented |
 
 ### sell — selling (1, 0 implemented)
@@ -211,10 +211,10 @@ Notes:
 | `/bizarre/bizarre_continue` | `BizarreContinueRequest` | `BizarreContinueResponse` | implemented |
 | `/bizarre/bizarre_end` | `BizarreEndRequest` | `BizarreEndResponse` | implemented |
 | `/bizarre/bizarre_list` | `BizarreListRequest` | `BizarreListResponse` | implemented |
-| `/bizarre/bizarre_resumption` | `BizarreResumptionRequest` | `BizarreResumptionResponse` | implemented |
+| `/bizarre/bizarre_resumption` | `BizarreResumptionRequest` | `BizarreResumptionResponse` | implemented (resumes suspended battles and Tarot picks, Build 25, research/22 §1.8) |
 | `/bizarre/bizarre_start` | `BizarreStartRequest` | `BizarreStartResponse` | implemented |
 | `/bizarre/check_timed_chapter` | `CheckTimedChapterRequest` | `CheckTimedChapterResponse` (M) | implemented |
-| `/bizarre/destruction` | `BizarreDestructionRequest` | `BizarreDestructionResponse` | implemented |
+| `/bizarre/destruction` | `BizarreDestructionRequest` | `BizarreDestructionResponse` | implemented (declines a resumption, Build 25) |
 | `/bizarre/get_bizarre_select` | `BizarreSelectRequest` | `BizarreSelectResponse` | implemented |
 | `/bizarre/stage_list` | `StageListRequest` | `StageListResponse` | implemented |
 | `/bizarre/unlock` | `BizarreUnlockRequest` | `BizarreUnlockResponse` | logged as unknown |
@@ -277,7 +277,7 @@ Notes:
 
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
-| `/support/support_user_s` | `SupportUserRequest` | `SupportUserResponse` | implemented |
+| `/support/support_user_s` | `SupportUserRequest` | `SupportUserResponse` | implemented (AI supporters, Build 25, research/24) |
 
 ### follow — follow list (social) (10, 1 implemented)
 
