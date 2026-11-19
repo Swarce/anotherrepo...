@@ -21,6 +21,10 @@ pub struct VerifiedBuild {
     /// File offset and SHA-256 (32-byte window) of `GrowthbeatBehaviour.Awake`, `.SendTag` and
     /// `.SendEvent` in libil2cpp.so (the `no-growthbeat` patch makes each return at once).
     pub growthbeat_fns: [(usize, &'static str); 3],
+    /// File offset and SHA-256 (`patches::TOWN_DNS_LEN`-byte window) of the nine instructions in
+    /// `Jjs.Socket.SocketBase.Connect` that swap the server's address for
+    /// `Dns.GetHostEntry(ip).HostName` (the `town-direct-ip` patch removes them).
+    pub town_dns_site: (usize, &'static str),
     /// SHA-256 of the binary `AndroidManifest.xml`.
     pub manifest_sha256: &'static str,
     /// SHA-256 of the Resources file holding `Text/ClientMes_JP` (`clientmes::ENTRY`).
@@ -67,6 +71,10 @@ pub const BUILDS: &[VerifiedBuild] = &[VerifiedBuild {
             "b43cd6d0bd5047950561df5ff70c6951634585af5a8a88eb1ba568200e8169f4",
         ),
     ],
+    town_dns_site: (
+        0xcadda4,
+        "6be3fa8bf1014f7372682e9fb6ce85b8de4982385331725954179cc582f6c64c",
+    ),
     manifest_sha256: "a1d3a440e4e6ba6cc1bf6a8fa91cc03fd948058d55630c9aa41820dc11061257",
     clientmes_sha256: "eb62e1d6f6c8dcd3d186ffb0af05d2c0f02ff55594651ae5b72ad65e5b751501",
     apk_text_scenes: &[

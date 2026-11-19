@@ -253,6 +253,16 @@ fn cmd_patch(args: &[String]) -> Result<(), Error> {
         rep.checks
             .push("libil2cpp.so GrowthbeatBehaviour Awake/SendTag/SendEvent = ret".into());
     }
+    if !disabled.contains(&"town-direct-ip") {
+        let lib = chk.read(patches::LIBIL2CPP_ARM64)?;
+        let (off, _) = build.town_dns_site;
+        if lib.get(off..off + patches::TOWN_DNS_LEN) != Some(&patches::town_dns_nops()[..]) {
+            return Err("post-check failed: town-direct-ip patch not present".into());
+        }
+        rep.checks.push(format!(
+            "libil2cpp.so @{off:#x} = SocketBase.Connect without the DNS lookup"
+        ));
+    }
     if !disabled.contains(&"unity-heap") {
         let lib = chk.read(patches::LIBUNITY_ARM64)?;
         let (off, _) = build.unity_default_alloc_ctor;
