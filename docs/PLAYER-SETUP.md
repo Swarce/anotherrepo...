@@ -70,6 +70,19 @@
    Title and boot screens are repainted in the APK; menu art is stored in the APK and applied by
    the server on the phone (one download, together with the English text files). Keep your art
    pack private: it is made from the game's own images.
+
+   **Optional: portraits for the statues that have none.** 55 roster statues have no thumbnail in
+   the game files. `tools/content/render_portraits.py` draws them from your own files (each
+   statue's model in its menu pose, with the frame, stars and attribute badge of the real ones;
+   docs/research/28). It needs your decrypted bundles, the `st_*` thumbnails decrypted with
+   `jdr-tool decrypt`, Node with Playwright, and three.js (`npm pack three@0.160.0`):
+
+   ```bash
+   python3 -I tools/content/render_portraits.py --dec local/dec --thumbs local/thumbs --statues server/content/statues.json --three local/three/package/build/three.min.js --out local/portraits
+   ```
+
+   Then add `--art local/portraits/portraits.zip` to the patch command, after your art pack
+   (`--art` may be given more than once). Keep it private as well.
 5. **Install.** First time only, the original game must go (back up first, step 1):
 
    ```bash

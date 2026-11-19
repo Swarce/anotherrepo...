@@ -3,7 +3,8 @@
 //! The pack (a zip as exported by `tools/ui-assets/export_ui.py` and redrawn by the player, with
 //! `replacements/<bundle>/sprites/<sprite>.png`) is split in two:
 //! - images for downloaded bundles go into the APK as a stored asset (`assets/jdr/art.bin`); the
-//!   embedded server applies them when it rebuilds those bundles on the phone;
+//!   embedded server applies them when it rebuilds those bundles on the phone (new statue
+//!   thumbnails, `ui_statue_01/thumbs/st_<id>.png`, are added there too);
 //! - images for the APK's own screens (`apk_<file>`, e.g. the title) are applied here, to the
 //!   Resources files inside the APK. Those files carry no type trees, so the Texture2D/Sprite
 //!   layouts are taken from the player's own downloaded bundles (`--data`), matched by the type
@@ -285,8 +286,9 @@ pub fn apply(
             raw
         };
         let mut nodes = bundle::read(&plain).map_err(|e| format!("{b}: {e}"))?;
-        let r =
-            art::apply(&mut nodes, &stored_pack.for_bundle(&b)).map_err(|e| format!("{b}: {e}"))?;
+        let keys = Some((key.as_bytes(), iv.as_bytes()));
+        let r = art::apply(&mut nodes, &stored_pack.for_bundle(&b), keys)
+            .map_err(|e| format!("{b}: {e}"))?;
         if !r.unmatched.is_empty() || !r.errors.is_empty() {
             return Err(format!(
                 "art pack does not fit bundle {b}: images match no sprite: {:?}; errors: {:?}",
