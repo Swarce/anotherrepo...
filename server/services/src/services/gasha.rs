@@ -48,6 +48,13 @@ const E_FRIEND_POINT_LACK: i64 = 51304;
 const FRIEND_RATES: &[(i64, f64)] = &[(1, 30.0), (2, 30.0), (3, 37.0), (4, 3.0)];
 /// GashaPlayType Ticket.
 const PLAY_TICKET: i64 = 4;
+/// GashaPlayType Free: the banner's free button (`freeDrawFlag`; the client sends countType 1).
+const PLAY_FREE: i64 = 3;
+/// E_GASHA_REMAIN_FREE_EMPTY (client): no free draw left today.
+const E_FREE_EMPTY: i64 = 51302;
+/// Free Friend Point draws a day (research pack `economy.daily_reset`: a daily free friend draw,
+/// turning at 04:00 JST; one is ours).
+pub const FRIEND_FREE_PER_DAY: i64 = 1;
 const E_NOT_ENOUGH: i64 = 50001;
 
 /// Box and Count Up progress (saved with the story progress).
@@ -61,6 +68,9 @@ pub struct GashaState {
     pub round: usize,
     #[serde(default)]
     pub round_pulls: i64,
+    /// The game day (04:00 JST, `missions::game_day`) of the last free Friend Point draw; 0 = never.
+    #[serde(default)]
+    pub friend_free_day: i64,
 }
 
 impl GashaState {
@@ -96,6 +106,15 @@ impl GashaState {
 
     /// Count `n` Count Up pulls; true when the round finished (the next round starts; after
     /// round 5 the series starts again).
+    /// Free Friend Point draws left today (the count turns at 04:00 JST).
+    pub fn friend_free_left(&self, now: i64) -> i64 {
+        if self.friend_free_day == crate::missions::game_day(now) {
+            0
+        } else {
+            FRIEND_FREE_PER_DAY
+        }
+    }
+
     fn count_up(&mut self, n: i64) -> bool {
         self.round_pulls += n;
         if self.round_pulls >= COUNT_UP_TIERS[self.round.min(4)] {
@@ -173,10 +192,15 @@ fn count_up_banner(g: &GashaState) -> Value {
     b
 }
 
-/// The Friend Point Mind Summon: payType 3 with pay item 40 (Friend Points).
-fn friend_banner() -> Value {
+/// The Friend Point Mind Summon: payType 3 with pay item 40 (Friend Points), and the daily free
+/// draw: `freeDrawFlag` 1 adds the free button (play button type 10, setupPlayButton 0xDE21B8), lit
+/// while `freeDrawRemainingNum` > 0 (0xDE2B34); it sends countType 1, playType 3 (H).
+fn friend_banner(g: &GashaState, now: i64) -> Value {
     let mut b = banner(FRIEND_ID, 2, FRIEND_WINDOW);
     for (k, v) in [
+        ("freeDrawFlag", json!(1)),
+        ("freeDrawLimitNum", json!(FRIEND_FREE_PER_DAY)),
+        ("freeDrawRemainingNum", json!(g.friend_free_left(now))),
         ("priority", json!(5)),
         ("payType", json!(3)),
         ("itemId", json!(FRIEND_POINT_ITEM)),
@@ -198,12 +222,14 @@ pub fn gasha_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let mut list: Vec<Value> = BANNERS.iter().map(|(i, k, w)| banner(*i, *k, w)).collect();
     list.push(box_banner(g));
     list.push(count_up_banner(g));
-    list.push(friend_banner());
+    list.push(friend_banner(g, jdr_core::clock::now()));
     let tickets = p.collection.item_count(COUNT_UP_TICKET);
-    // Item 40 with type 5 (summon points) gives the Friend Point banner its point buttons.
+    // Item 40 with type 5 (summon points) gives the Friend Point banner its point buttons. Both
+    // are complete ItemLongInfos (every string set).
+    let mut points = crate::items::reward_item(FRIEND_POINT_ITEM, p.friend_points);
+    points["type"] = json!(5);
     ok(json!({ "gashaList": list,
-               "itemList": [{ "itemId": COUNT_UP_TICKET, "count": tickets },
-                            { "itemId": FRIEND_POINT_ITEM, "name": "ITEM_0040_NAME", "type": 5, "count": p.friend_points }],
+               "itemList": [crate::items::reward_item(COUNT_UP_TICKET, tickets), points],
                "userInfo": crate::services::user::user_info(&p) }))
 }
 
@@ -333,7 +359,9 @@ pub fn gasha_play(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .and_then(Value::as_i64)
         .unwrap_or(0);
     let multi = env.param.get("countType").and_then(Value::as_i64) == Some(2);
-    let ticket = env.param.get("playType").and_then(Value::as_i64) == Some(PLAY_TICKET);
+    let play_type = env.param.get("playType").and_then(Value::as_i64);
+    let ticket = play_type == Some(PLAY_TICKET);
+    let free = play_type == Some(PLAY_FREE);
     let is_box = id == BOX_ID;
     let count_up = COUNT_UP.iter().position(|c| c.0 == id);
     let kind = BANNERS
@@ -343,7 +371,7 @@ pub fn gasha_play(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .or((is_box || count_up.is_some()).then_some(1))
         .or((id == FRIEND_ID).then_some(2))
         .ok_or_else(|| ApiError::Internal(format!("unknown gasha {id}")))?;
-    let count = if multi && !ticket { 10 } else { 1 };
+    let count = if multi && !ticket && !free { 10 } else { 1 };
     let now = jdr_core::clock::now();
     let (p, results) = with_profile(ctx, env, |p| {
         let mut rng = Rng::new();
@@ -359,7 +387,13 @@ pub fn gasha_play(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
             return (Err(ApiError::Status(E_NOT_ENOUGH)), Change::None);
         }
         let friend = id == FRIEND_ID;
-        if friend {
+        if free {
+            // Only the Friend Point summon has a free draw (one a day).
+            if !friend || p.progress.gasha.friend_free_left(now) < 1 {
+                return (Err(ApiError::Status(E_FREE_EMPTY)), Change::None);
+            }
+            p.progress.gasha.friend_free_day = crate::missions::game_day(now);
+        } else if friend {
             let cost = FRIEND_PRICE * count;
             if p.friend_points < cost {
                 return (Err(ApiError::Status(E_FRIEND_POINT_LACK)), Change::None);
@@ -694,5 +728,73 @@ mod tests {
             .cloned()
             .unwrap();
         assert_eq!(fp["count"], super::FRIEND_PRICE);
+    }
+
+    /// The daily free Friend Point draw (research pack `economy.daily_reset`): the free button is
+    /// lit once a day, a free pull costs nothing, a second one is refused (51302), and the count
+    /// comes back at the 04:00 JST day turn.
+    #[test]
+    fn the_friend_summon_has_one_free_draw_a_day() {
+        let dir = std::env::temp_dir().join(format!("jdr-fpfree-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let ctx = Ctx::new(Settings::new(dir), false);
+        let uuid = ctx.accounts.create(&[]).unwrap().uuid;
+        let call = |path: &str, param: Value| dispatch(&ctx, path, &env(&uuid, param)).0;
+        let banner = || {
+            call("/gasha/gasha_list", json!({"gashaType": 0})).unwrap()["gashaList"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .find(|g| g["gashaId"] == super::FRIEND_ID)
+                .cloned()
+                .unwrap()
+        };
+        let b = banner();
+        assert_eq!(
+            (
+                b["freeDrawFlag"].as_i64(),
+                b["freeDrawLimitNum"].as_i64(),
+                b["freeDrawRemainingNum"].as_i64()
+            ),
+            (Some(1), Some(1), Some(1))
+        );
+        // Both replies walked like the client's reader (services/shapes.rs).
+        crate::services::shapes::assert_complete(
+            "Jjs.GashaListResponse",
+            &Value::Object(call("/gasha/gasha_list", json!({"gashaType": 0})).unwrap()),
+        );
+        // No Friend Points needed; the 10x countType is ignored for a free draw.
+        let free = json!({"gashaId": super::FRIEND_ID, "countType": 2, "playType": 3});
+        let r = call("/gasha/gasha_play", free.clone()).unwrap();
+        crate::services::shapes::assert_complete(
+            "Jjs.GashaPlayResponse",
+            &Value::Object(r.clone()),
+        );
+        assert_eq!(r["getResultList"].as_array().unwrap().len(), 1);
+        assert_eq!(r["userInfo"]["mindGashaPoint"], 0);
+        assert_eq!(banner()["freeDrawRemainingNum"], 0);
+        assert!(matches!(
+            call("/gasha/gasha_play", free),
+            Err(crate::app::ApiError::Status(51302))
+        ));
+        // Other banners have no free draw.
+        assert!(matches!(
+            call(
+                "/gasha/gasha_play",
+                json!({"gashaId": 300000, "countType": 1, "playType": 3})
+            ),
+            Err(crate::app::ApiError::Status(51302))
+        ));
+        // The day turns at 04:00 JST (19:00 UTC).
+        let g = super::GashaState {
+            friend_free_day: crate::missions::game_day(1_700_000_000),
+            ..Default::default()
+        };
+        let next_4am_jst = (1_700_000_000i64 + 9 * 3600 - 4 * 3600).div_euclid(86_400) * 86_400
+            + 86_400
+            - 9 * 3600
+            + 4 * 3600;
+        assert_eq!(g.friend_free_left(next_4am_jst - 1), 0);
+        assert_eq!(g.friend_free_left(next_4am_jst), 1);
     }
 }

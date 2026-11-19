@@ -28,6 +28,13 @@ const EXEMPT: &[(&str, &str, &str)] = &[
     ("Jjs.UserInfo", "staminaLocalInfo", "client cache"),
     ("Jjs.UserInfo", "bpLocalInfo", "client cache"),
     ("Jjs.UserInfo", "rpLocalInfo", "client cache"),
+    // A summon result fills the one of its three objects its dataType names (1 statue, 2 Mind);
+    // the readers dereference only that one (GetStatueThumnailAssetName 0xE50AC4 reads
+    // statueInfo of a statue result). Summons have run on a device with the other two null since
+    // Build 10, so a `{}` there is not risked.
+    ("Jjs.GashaDataInfo", "statueInfo", "by dataType"),
+    ("Jjs.GashaDataInfo", "mindInfo", "by dataType"),
+    ("Jjs.GashaDataInfo", "itemInfo", "by dataType"),
 ];
 
 /// Sub-objects of the shared statue and Mind builders (collection::statue_info, mind_info) that
@@ -35,7 +42,17 @@ const EXEMPT: &[(&str, &str, &str)] = &[
 /// bonus-target (tokkou) ability. Their fields are private or protected in the client (filled
 /// from the master tables, `isInit` false); the story battle, the team screens and the Arena
 /// banners have read them this way since the tactical battle first ran.
+///
+/// Two battle objects mean "none" as `{}` too, as every story battle has sent them since the
+/// first ones ran on a device (Build 06 onwards): `AreaInfo.mapGimmickInfo` (no map gimmick) and
+/// `supportUserInfo` (a UserInfoMini: no friend support); and a story start's `tarotInfo` (no
+/// card; the battle takes its Tarot from `selectTarotList`, docs/research/22 §1.8), sent so since
+/// Build 23 with the story battles still playing on the device. A filled one is still walked in
+/// full.
 const NONE_AS_EMPTY: &[&str] = &[
+    "Jjs.MapGimmickInfo",
+    "Jjs.UserInfoMini",
+    "Jjs.TarotInfo",
     "Jjs.AbilityInfo",
     "Jjs.DtAbilityInfo",
     "Jjs.SkillInfo",

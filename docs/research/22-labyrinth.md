@@ -76,8 +76,7 @@ otherwise nothing is sent and nothing happens.
 6. On a defeat or retire, the client takes a Soul from the `bizarre_start` userInfo for its own
    display. At 0 it shows DUNGEON_DIALOG_006, then follows the same flags.
 7. Escape: DUNGEON_DIALOG_003 → `earn_reward` → the retire panel lists `rewardItemList`.
-8. Resumption (`bizarre_resumption` returnDestination TarotSelect/Battle) exists; we keep 50301
-   (no resumption).
+8. Resumption: see §1.8 (built in Build 25).
 
 ### 1.5 Tarot ability path (H for the code path, M for the effect)
 
@@ -113,6 +112,27 @@ Card labels:
   - Strength has no upright text and Tower no reversed text.
 - Ability names `DT_ABI_TAROT_UP/RV_NAME_nnn`.
 
+### 1.8 Resumption (H, Build 25)
+
+- My Page asks `/bizarre/bizarre_resumption` on every load (`MypageUIController` StartLoad
+  0xC39368). Status 10000 opens a Yes/Cancel dialog: Client_Mes_0009 ("Suspended game data was
+  found…") when `dungeonId` is empty, Client_Mes_0010 (the Mind Labyrinth one, "If you quit
+  during Tarot Card selection, you will return to Tarot Card selection") when it is set
+  (0xC3A1C0). Any other status (we send 50301, E_BIZALLE_NOT_START) shows nothing.
+- Yes, by `returnDestination`:
+  - 0 TarotSelect: `BizarreDungeonManager.SetResumptionCard(selectTarotList, usedTarotList,
+    dungeonId, stageInfo, floorNum, teamInfo)` 0xD4936C, then the card scene (1006). Picking a
+    card sends the usual `bizarre_start`.
+  - 1 Battle: `BizarreQuestSceneManager` takes userInfo, chapterInfo, stageInfo, teamInfo,
+    areaList, continueCount, both Tarot lists, dungeonId, floorNum and `seed`; with a dungeonId
+    it sets `dungeonStartFlg` 1 and the dungeon manager's return flag, then
+    `StartBizarreQuest`. The battle's card is `selectTarotList[0]` (`GetSelectTarotInfo`
+    0xE03604, read by the battle's `OnSceneLoadCallback`).
+- Cancel: `/bizarre/destruction {stageType}` (`DestroyBizarreResumption` 0xC37A48, the route's
+  only caller).
+- `BizarreResumptionResponse` = the start reply's fields plus `returnDestination`,
+  `selectTarotList`, `usedTarotList`, `isRaidDelete` (no `tarotInfo`).
+
 ## 2. Research pack facts
 
 - 20 floors. Room costs seen: 22–35 Mentality, 1–5 areas.
@@ -134,15 +154,31 @@ Card labels:
   the used cards and the floors earned.
 - The best floor and the full-clear count.
 
+**Dungeons (Build 25, ours):** three grades of one mansion, named by the game's
+`CHAPTER_NAME_D_01..03` ("Beginner/Intermediate/Advanced: The Hidden and Sealed Mansion"):
+
+| id | Name | Summary | Difficulty | Enemy levels | Floor rewards |
+|---|---|---|---|---|---|
+| DU01 | CHAPTER_NAME_D_01 | DUNGEON_MES_001 | C (2) | the story stage's | ×1 |
+| DU02 | CHAPTER_NAME_D_02 | DUNGEON_MES_002 | A (4) | +15 (≤ 99) | ×2 |
+| DU03 | CHAPTER_NAME_D_03 | DUNGEON_MES_003 | SS (7) | +30 (≤ 99) | ×3 |
+
+- The same rooms, costs and picture in all three. Room ids are `STAGE_DUnn_ff_rr`; the banner
+  shows the Beginner room labels (`STAGE_DU01_ff_rr`, the only room labels the client has).
+- One run at a time (52101 for another dungeon, as the client itself warns). The best floor is
+  kept per dungeon (`best_floors`; saves before Build 25 keep theirs as the Beginner one's).
+- The other `DUNGEON_NAME_000..005` names (castle, colosseum, town, two towers) stay unused: no
+  rooms, floor plans or labels belong to them.
+
 **Routes:**
 - `get_bizarre_select`: `dungeonLockFlg` 0.
 - `user_info`: `soul` = 3 − Souls lost in the run (3 without one); `mentality` = current.
-- `dungeon_list`: one dungeon, `DU01`.
-  - Fields: name DUNGEON_NAME_002, summary DUNGEON_MES_001, `floorMax` 20, `imgNo` 2,
-    difficulty C, `floorClearNum` = best floor cleared.
+- `dungeon_list`: the three dungeons.
+  - Fields: name, summary and difficulty as above, `floorMax` 20, `imgNo` 2, `floorClearNum` =
+    best floor cleared there.
   - `floorNum` is -1 with no run, the floor otherwise, and 21 once floor 20 is cleared.
-- `stage_list`: starts the run on floor 1 if none. Returns the floor's rooms and every tactical
-  team.
+- `stage_list {dungeonId}`: starts the run on floor 1 if none (an empty id means the run's
+  dungeon, else the Beginner one). Returns the floor's rooms and every tactical team.
 - `tarot_select`: the room must be on the current floor (else 10103).
   - Charges `useMentality` (52102 when short), then deals up to 3 cards not used since the
     deck reset (all 22 used → the deck resets first). Cards are dealt upright.
@@ -163,7 +199,18 @@ Card labels:
   - Every pending floor reward goes to the Message Box; `rewardItemList` lists them (one
     ItemSetInfo each).
   - Souls and the deck start fresh. A second call pays nothing.
-- `reward_check`: one row per floor.
+- `reward_check {dungeonId}`: one row per floor, with that dungeon's rewards.
+- `bizarre_resumption` (Build 25, §1.8):
+  - a room battle started and not ended → Battle (1), with the card it started with as
+    `selectTarotList[0]`, the run's used cards, the room's stage, chapter and areas and the
+    team that started it;
+  - a room paid for whose cards are still on offer → TarotSelect (0), with the offer;
+  - a story, daily or event battle started and not ended → Battle with `dungeonId` "" (checked
+    first; services/bizarre.rs);
+  - otherwise 50301.
+- `/bizarre/destruction` (No): a story battle is dropped (nothing paid); a room battle counts
+  as retired (a Soul, ours: the pack says a retire costs one); a Tarot pick is no longer offered
+  (`declined`), while the room and its cards stay paid for.
 
 **Content (ours):**
 - Rooms reuse the 240 tactical story stages, sorted by enemy level. Each floor takes its
@@ -210,6 +257,8 @@ Wisdom/Unity/Spirit cards (no matching affect) send `{}`.
 - The full daily Mentality refill.
 - The Tarot-to-affect mapping, Strength upright and Tower reversed.
 - Free resent `tarot_select`; unlimited flips at 20 each.
+- The three grades, their level steps and reward multipliers; the room labels shared by all three.
+- A declined room battle costs a Soul; a declined Tarot pick keeps the room paid for.
 - Rank EXP for labyrinth wins; `floorClearNum` as the best floor.
 - The deck also resets on a full clear.
 
@@ -218,9 +267,10 @@ Wisdom/Unity/Spirit cards (no matching affect) send `{}`.
 - Not yet run on a device. In particular, the tarot ability path (`isInit` inline parameters)
   and the room banner's use of `STAGE_DU01_*` labels are M.
 - Multi-area rooms: our stages have one area. Map gimmicks are off (`mapGimmickFlg` 0).
-- Only one dungeon; the game's other names (DUNGEON_NAME_000/001/003–005, Easy/Normal/Hard
-  CHAPTER_NAME_D_*) are unused.
-- No battle resumption inside a run (50301 as before).
+- The game's other dungeon names (DUNGEON_NAME_000/001/003–005) are unused (no rooms or labels
+  for them).
+- Resumption has not run on a device: the dialog, the card scene from Resume, and a resumed
+  battle's Tarot (taken from `selectTarotList[0]`, H for the read, M for the whole flow).
 - Continues inside a labyrinth battle stay free.
-- Retiring through `/bizarre/destruction`, if the client ever does, does not cost a Soul (we saw
-  only `bizarre_end` on that path).
+- `/bizarre/destruction` is sent only by the resume dialog's Cancel (H, Build 25); a retire inside
+  the battle goes through `bizarre_end`.

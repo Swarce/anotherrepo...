@@ -15,8 +15,10 @@ Sources, in order (ids, enum names and numbers only; no wiki text goes into the 
 
 Label keys: the game names its generic assist abilities ABI_AST_<KIND><1-4>_N
 (Ability_Assist_Name_JP); each row takes the key of its kind and tier. The per-statue keys
-ABI_AST_<statueId>_N belong to assist-only statues outside the roster (except 2100_03, whose
-effect is unknown), so they are not used.
+ABI_AST_<statueId>_N belong to the assist-only statues (`assistOnly` in statues.json; 2100_03,
+a roster statue with one, keeps the shared rows since its effect is unknown): each assist-only
+statue gets its own row DT_AST_<statueId> under its own label, with the kind and tier it would
+otherwise take (wiki, else the default).
 
 Conditions: none (always active). The client's condition rows ([{statueType, count}]) are the
 server's assist_ability_condition_table, generated from the content file.
@@ -73,6 +75,10 @@ for kind in KINDS:
         k = f"text:Ability_Assist_Name_JP:{name_key(kind, t)}"
         assert k in labels, f"missing label {k}"
 
+statues = json.load(open(a.statues))["statues"]
+OWN = {s["statueId"] for s in statues if s.get("assistOnly")
+       and f"text:Ability_Assist_Name_JP:ABI_AST_{s['statueId']}_N" in labels}
+
 # 1) The rows.
 doc = json.load(open(a.table))
 rows = [r for r in doc["data"]["paramList"] if not r["abilityId"].startswith("DT_AST_")]
@@ -83,7 +89,7 @@ for kind, (affect, values) in KINDS.items():
              **{f"paramLv10_{i}": v if i == 0 else 0 for i in range(8)}}
         rows.append({"abilityId": row_id(kind, t), "abilityName": name_key(kind, t),
                      "abilityParamList": [p]})
-doc["data"]["paramList"] = rows
+own_rows = []  # filled with the statues below, appended before the table is written
 note = ("Assist abilities DT_AST_<KIND><tier> (tools/content/build_assist_abilities.py): names are the "
         "game's ABI_AST_<KIND><tier>_N label keys; values per tier follow the ShoutWiki assist numbers "
         "where it has them (HP 5/6/10%, ATK 4/6/8/20%, DEF 6/8%, damage dealt 3/5/7/18%), the rest are ours; "
@@ -93,11 +99,9 @@ if not any(s.get("note") == note for s in doc["sources"]):
     doc["sources"].append({"source": "jdr-default", "note": note})
 if "DT_AST" not in doc["about"]:
     doc["about"] += " Rows DT_AST_<kind><tier> are the assist abilities (docs/research/19-assists.md)."
-json.dump(doc, open(a.table, "w"), ensure_ascii=False, indent=1)
-open(a.table, "a").write("\n")
+
 
 # 2) Statue -> abilities.
-statues = json.load(open(a.statues))["statues"]
 wiki = json.load(open(a.shoutwiki))
 
 
@@ -159,12 +163,31 @@ for s in statues:
         kinds = [(lean(s), max(1, min(4, (s.get("rarity") or 4) - 2)))]
         src = {"source": "jdr-default", "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"}
         by_src["default"] += 1
-    out.append({"statueId": sid, "abilities": [{"abilityId": row_id(k, t), "conditions": []} for k, t in kinds],
+    if sid in OWN:
+        # Assist-only: its own label; the first kind/tier gives the values (ours).
+        k, t = kinds[0]
+        affect, values = KINDS[k]
+        p = {"affectId": affect, "giveLimit": -1,
+             **{f"paramLv1_{i}": values[t - 1] if i == 0 else 0 for i in range(8)},
+             **{f"paramLv10_{i}": values[t - 1] if i == 0 else 0 for i in range(8)}}
+        own_rows.append({"abilityId": f"DT_AST_{sid}", "abilityName": f"ABI_AST_{sid}_N",
+                         "abilityParamList": [p]})
+        ids = [f"DT_AST_{sid}"]
+        by_src["assist_only"] += 1
+    else:
+        ids = [row_id(k, t) for k, t in kinds]
+    out.append({"statueId": sid, "abilities": [{"abilityId": i, "conditions": []} for i in ids],
                 "source": src})
 
+rows += own_rows
+doc["data"]["paramList"] = rows
+json.dump(doc, open(a.table, "w"), ensure_ascii=False, indent=1)
+open(a.table, "a").write("\n")
+
 json.dump({
-    "about": "Assist abilities per statue (docs/research/19-assists.md §5): ids of the shared "
-             "dtbattle_ability_data_table rows DT_AST_<kind><tier>, with the client's activation "
+    "about": "Assist abilities per statue (docs/research/19-assists.md §5, §6): ids of the shared "
+             "dtbattle_ability_data_table rows DT_AST_<kind><tier> (an assist-only statue has its own "
+             "row DT_AST_<statueId>), with the client's activation "
              "conditions ([{statueType, count}] over the seat's assists; empty = always). Built by "
              "tools/content/build_assist_abilities.py.",
     "sources": [
@@ -172,6 +195,7 @@ json.dump({
          "license": "CC BY-SA 3.0", "accessed": "2026-11-15"},
         {"source": "jdr-research", "doc": "docs/research/19-assists.md"},
         {"source": "jdr-default", "note": "statues without wiki assist numbers: the leaning stat at tier rarity - 2; conditions empty"},
+        {"source": "jdr-default", "note": "assist-only statues: their own row under their own ABI_AST_<statueId>_N label, values of the kind and tier above"},
     ],
     "statues": out,
 }, open(a.out, "w"), ensure_ascii=False, indent=1)

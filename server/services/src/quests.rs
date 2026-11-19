@@ -85,9 +85,14 @@ pub fn events() -> &'static [EventDef] {
 
 /// Today's daily tile: the game's day turns at 04:00 JST (research pack `economy.daily_reset`).
 pub fn daily_today() -> Option<&'static DailyDef> {
+    daily_on(jdr_core::clock::now())
+}
+
+/// The daily tile of a moment: the weekday of its game day (`missions::game_day`, 04:00 JST).
+pub fn daily_on(now: i64) -> Option<&'static DailyDef> {
     const CODES: [&str; 7] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "STA"];
-    let t = jdr_core::clock::now() + jdr_core::clock::TZ_OFFSET_SECS - 4 * 3600;
-    let weekday = (t.div_euclid(86400) + 4).rem_euclid(7) as usize; // 1970-01-01 was a Thursday
+    // 1970-01-01 (game day 0) was a Thursday.
+    let weekday = (crate::missions::game_day(now) + 4).rem_euclid(7) as usize;
     extra().daily.get(CODES[weekday])
 }
 
@@ -146,6 +151,9 @@ pub struct Progress {
     /// Arena standing, team durability and opponents (docs/research/23-arena.md).
     #[serde(default)]
     pub arena: crate::services::arena::ArenaState,
+    /// The build whose notes the player has opened (Notices; docs/research/24-support-and-news.md).
+    #[serde(default)]
+    pub notes_seen_build: u32,
 }
 
 /// The three tactical missions of a stage (docs/research/11 §4): clear the quest, every member
@@ -188,6 +196,9 @@ pub struct PendingBattle {
     pub stage_id: String,
     pub stage_type: i64,
     pub team_num: i64,
+    /// The AI supporter picked for the battle (services/support.rs), if any.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub support: Option<String>,
 }
 
 const OPEN: &str = "2020-01-01 00:00:00";
@@ -373,6 +384,25 @@ pub fn team_for(c: &Collection, stage_type: i64, team_no: i64) -> Option<&collec
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// The daily rotation (docs/research/13-menus.md, Quest Select): category 6 + weekday, the
+    /// weekday turning at 04:00 JST, every weekday with its own tile and chapters.
+    #[test]
+    fn the_daily_tile_follows_the_weekday_from_4am_jst() {
+        // 2026-11-16 (a Monday) 04:00 JST = 2026-11-15 19:00 UTC.
+        let monday_4am = 1_794_769_200;
+        assert_eq!(jdr_core::clock::format(monday_4am), "2026/11/16 04:00:00");
+        assert_eq!(
+            daily_on(monday_4am - 1).unwrap().category,
+            6,
+            "Sunday until 04:00"
+        );
+        for d in 0..7 {
+            let tile = daily_on(monday_4am + d * 86_400).unwrap();
+            assert_eq!(tile.category, 6 + (1 + d) % 7);
+            assert!(chapters().iter().any(|c| c.category == tile.category));
+        }
+    }
 
     #[test]
     fn missions_and_tips_name_real_labels() {
