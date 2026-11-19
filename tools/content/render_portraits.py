@@ -18,7 +18,8 @@ none for, made from the player's own files (docs/research/28-portraits.md):
 
 Inputs: decrypted bundles (statue_*, animation_statue_common_*) and the decrypted thumbnail
 bundles (`st_*` from ui_statue_00/01, each decrypted with `jdr-tool decrypt`). Output: one PNG per
-statue, private (game-derived art stays out of the repository).
+statue and `portraits.zip` (`replacements/ui_statue_01/thumbs/st_<id>.png`), an art pack for
+`jdr-patch patch ... --art portraits.zip`; private (game-derived art stays out of the repository).
 
 usage: python3 -I tools/content/render_portraits.py --dec DIR --thumbs DIR --statues server/content/statues.json \
          --three three.min.js --out local/portraits [--only ID,...] [--fit-lattice]
@@ -37,6 +38,8 @@ LATTICE = (18.8, 20.5, 6.75, 14.75)
 # 0.5 cm to the side (median of the real thumbnails matched to renders of the same statues).
 FRAMING = {"fov": 20, "dist": 0.95, "dy": 0.024, "dx": -0.005, "outline": 0.0015, "size": 512}
 
+# The thumbnail bundle new portraits are added to (the smaller of ui_statue_00/01).
+PACK_BUNDLE = "ui_statue_01"
 # Star centres along the strip (px): x = STAR_X0 + k * STAR_DX, measured on a 6-star thumbnail.
 STAR_X0, STAR_DX = 17.1, 12.65
 
@@ -378,6 +381,12 @@ def main():
         compose(kit, face, r, t, asst).save(os.path.join(a.out, f"st_{sid}.png"))
         report.append(f"{sid}\trarity {r}\ttype {t}\t{'assist' if asst else ''}\t{note}")
     open(os.path.join(a.out, "report.tsv"), "w").write("\n".join(report) + "\n")
+    # the art pack: jdr-patch ... --art portraits.zip adds them to ui_statue_01 on the phone
+    import zipfile
+    with zipfile.ZipFile(os.path.join(a.out, "portraits.zip"), "w", zipfile.ZIP_STORED) as z:
+        for f in sorted(os.listdir(a.out)):
+            if f.startswith("st_") and f.endswith(".png"):
+                z.write(os.path.join(a.out, f), f"replacements/{PACK_BUNDLE}/thumbs/{f}")
     print(f"{sum(1 for r in report if 'EMPTY' not in r)} portraits in {a.out}", file=sys.stderr)
 
 
