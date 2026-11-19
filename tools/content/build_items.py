@@ -43,6 +43,8 @@ def kind(i):
         return "exp", 0
     if 3000 <= i <= 3184:
         return "exchange", 11
+    if 1100 <= i <= 1102:  # BP Recovery Cola XS/S/normal (1/2/5 BP, their detail texts)
+        return "bp", 14  # ENERGY_RECOVER_ADDITION
     return None, 0
 
 

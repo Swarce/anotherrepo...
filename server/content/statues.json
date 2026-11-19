@@ -15114,6 +15114,1064 @@
     "note": "no unambiguous wiki match yet; server uses defaults"
    },
    "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "1030_62",
+   "part": 1,
+   "modelDataList": [
+    "1030_0_eleanor"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_103_09",
+     "special": false,
+     "name": "SKILL_NAME_103_09",
+     "text": "DTbattle_SKILL_TEXT_103_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 100,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "2011_72",
+   "part": 2,
+   "modelDataList": [
+    "2011_0_caesar"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_201_19",
+     "special": false,
+     "name": "SKILL_NAME_201_19",
+     "text": "DTbattle_SKILL_TEXT_201_19",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_HAMON",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "HAMON"
+    }
+   ],
+   "teamScale": 100,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "2040_72",
+   "part": 2,
+   "modelDataList": [
+    "2040_0_messina"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_204_09",
+     "special": false,
+     "name": "SKILL_NAME_204_09",
+     "text": "DTbattle_SKILL_TEXT_204_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_HAMON",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "HAMON"
+    }
+   ],
+   "teamScale": 100,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "2150_71",
+   "part": 2,
+   "modelDataList": [
+    "2150_0_suzi"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_215_09",
+     "special": false,
+     "name": "SKILL_NAME_215_09",
+     "text": "DTbattle_SKILL_TEXT_215_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 100,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 3,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "2150_72",
+   "part": 2,
+   "modelDataList": [
+    "2150_0_suzi"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_215_09",
+     "special": false,
+     "name": "SKILL_NAME_215_09",
+     "text": "DTbattle_SKILL_TEXT_215_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 100,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "3160_71",
+   "part": 3,
+   "modelDataList": [
+    "3160_0_dan",
+    "3160_1_lovers"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_316_09",
+     "special": false,
+     "name": "SKILL_NAME_316_09",
+     "text": "DTbattle_SKILL_TEXT_316_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 100,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 3,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "3180_62",
+   "part": 3,
+   "modelDataList": [
+    "3180_0_mannishb",
+    "3180_1_death"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_318_09",
+     "special": false,
+     "name": "SKILL_NAME_318_09",
+     "text": "DTbattle_SKILL_TEXT_318_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 150,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": null,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   }
+  },
+  {
+   "statueId": "3230_61",
+   "part": 3,
+   "modelDataList": [
+    "3230_0_boingo"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_323_01",
+     "special": false,
+     "name": "SKILL_NAME_323_01",
+     "text": "DTbattle_SKILL_TEXT_323_01",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 142,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "3230_62",
+   "part": 3,
+   "modelDataList": [
+    "3230_0_boingo"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_323_01",
+     "special": false,
+     "name": "SKILL_NAME_323_01",
+     "text": "DTbattle_SKILL_TEXT_323_01",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 142,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "3230_63",
+   "part": 3,
+   "modelDataList": [
+    "3230_0_boingo"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_323_01",
+     "special": false,
+     "name": "SKILL_NAME_323_01",
+     "text": "DTbattle_SKILL_TEXT_323_01",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 142,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 5,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "3290_61",
+   "part": 3,
+   "modelDataList": [
+    "3290_0_daniel",
+    "3290_1_osiris"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_329_09",
+     "special": false,
+     "name": "SKILL_NAME_329_09",
+     "text": "DTbattle_SKILL_TEXT_329_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 100,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 3,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "3290_62",
+   "part": 3,
+   "modelDataList": [
+    "3290_0_daniel",
+    "3290_1_osiris"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_329_09",
+     "special": false,
+     "name": "SKILL_NAME_329_09",
+     "text": "DTbattle_SKILL_TEXT_329_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 100,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "4000_62",
+   "part": 4,
+   "modelDataList": [
+    "4000_0_josuke",
+    "4000_1_crazyd"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_400_09",
+     "special": false,
+     "name": "SKILL_NAME_400_09",
+     "text": "DTbattle_SKILL_TEXT_400_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 100,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "4090_71",
+   "part": 4,
+   "modelDataList": [
+    "4090_0_tonio"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_409_01",
+     "special": false,
+     "name": "SKILL_NAME_409_01",
+     "text": "DTbattle_SKILL_TEXT_409_01",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 100,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "4090_72",
+   "part": 4,
+   "modelDataList": [
+    "4090_0_tonio"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_409_01",
+     "special": false,
+     "name": "SKILL_NAME_409_01",
+     "text": "DTbattle_SKILL_TEXT_409_01",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 100,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "4090_73",
+   "part": 4,
+   "modelDataList": [
+    "4090_0_tonio"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_409_01",
+     "special": false,
+     "name": "SKILL_NAME_409_01",
+     "text": "DTbattle_SKILL_TEXT_409_01",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 100,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 5,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "4120_62",
+   "part": 4,
+   "modelDataList": [
+    "4120_0_aya",
+    "4120_1_cinderella"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_412_09",
+     "special": false,
+     "name": "SKILL_NAME_412_09",
+     "text": "DTbattle_SKILL_TEXT_412_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 100,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "4181_72",
+   "part": 4,
+   "modelDataList": [
+    "4181_0_nezumi",
+    "4181_1_ratt"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_418_09",
+     "special": false,
+     "name": "SKILL_NAME_418_09",
+     "text": "DTbattle_SKILL_TEXT_418_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_STAND_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "STAND_PHY"
+    }
+   ],
+   "teamScale": 150,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "4220_71",
+   "part": 4,
+   "modelDataList": [
+    "4220_0_nekokusa"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_422_01",
+     "special": false,
+     "name": "SKILL_NAME_422_01",
+     "text": "DTbattle_SKILL_TEXT_422_01",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 138,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 3,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "4220_72",
+   "part": 4,
+   "modelDataList": [
+    "4220_0_nekokusa"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_422_01",
+     "special": false,
+     "name": "SKILL_NAME_422_01",
+     "text": "DTbattle_SKILL_TEXT_422_01",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 138,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "4220_73",
+   "part": 4,
+   "modelDataList": [
+    "4220_0_nekokusa"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_422_01",
+     "special": false,
+     "name": "SKILL_NAME_422_01",
+     "text": "DTbattle_SKILL_TEXT_422_01",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 138,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "4260_72",
+   "part": 4,
+   "modelDataList": [
+    "4260_0_sugimoto",
+    "4260_1_arnold"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_426_09",
+     "special": false,
+     "name": "SKILL_NAME_426_09",
+     "text": "DTbattle_SKILL_TEXT_426_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 100,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": 4,
+   "lv1": {
+    "hp": 798,
+    "atk": 441,
+    "def": 420
+   },
+   "lv99": {
+    "hp": 7980,
+    "atk": 4410,
+    "def": 4200
+   },
+   "maxTree": null,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E6%9D%89%E6%9C%AC%E9%88%B4%E7%BE%8E%E2%98%854%EF%BC%88%E8%83%8C%E4%B8%AD%E3%81%AB%E5%8F%97%E3%81%91%E3%81%9F%E5%82%B7%EF%BC%89",
+    "capture": "20210410121730",
+    "accessed": "2026-11-14",
+    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+   }
+  },
+  {
+   "statueId": "4280_72",
+   "part": 4,
+   "modelDataList": [
+    "4280_0_hayato"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_428_09",
+     "special": false,
+     "name": "SKILL_NAME_428_09",
+     "text": "DTbattle_SKILL_TEXT_428_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 138,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "5000_62",
+   "part": 5,
+   "modelDataList": [
+    "5000_0_giorno",
+    "5000_1_golde"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_500_09",
+     "special": false,
+     "name": "SKILL_NAME_500_09",
+     "text": "DTbattle_SKILL_TEXT_500_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 100,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "5290_62",
+   "part": 5,
+   "modelDataList": [
+    "5290_0_luca"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_529_09",
+     "special": false,
+     "name": "SKILL_NAME_529_09",
+     "text": "DTbattle_SKILL_TEXT_529_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 100,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
+  },
+  {
+   "statueId": "5330_72",
+   "part": 5,
+   "modelDataList": [
+    "5330_0_blacks"
+   ],
+   "assistOnly": true,
+   "dtAttack": null,
+   "dtSkills": [
+    {
+     "id": "SKILL_533_09",
+     "special": false,
+     "name": "SKILL_NAME_533_09",
+     "text": "DTbattle_SKILL_TEXT_533_09",
+     "button": 7,
+     "damageRank": 125,
+     "category": "DTSC_PHYSICAL",
+     "targetType": 1,
+     "processType": 1,
+     "attr": "PHYSICAL"
+    }
+   ],
+   "teamScale": 100,
+   "teamPos": [
+    0,
+    0,
+    0
+   ],
+   "resultComment": null,
+   "rarity": 4,
+   "statueType": null,
+   "lv1": null,
+   "lv99": null,
+   "maxTree": null,
+   "source": {
+    "source": "jdr-default",
+    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   },
+   "rarityFrom": "the team-view pose clips present in the player's files"
   }
  ]
 }
