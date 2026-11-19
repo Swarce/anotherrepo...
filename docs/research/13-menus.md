@@ -19,6 +19,13 @@ other notes. No game text is reproduced.
   - Each result is `{dataType, dataInfo, datauId, level, newFlg, effectInfo{statue…, mind…}}`.
   - Rarity follows the Gamerch rates: statues ★5 1.5%, ★4 12.5%, ★3 86%; minds ★4 7%, ★3 93%.
   - Everything is already owned offline, so a draw shows the owned copy.
+- **Free draw (Build 25).** `freeDrawFlag` > 0 adds a free play button (button type 10,
+  `setupPlayButton` iterator 0xDE21B8); it is lit while `freeDrawRemainingNum` > 0 (0xDE2B34) and
+  sends `countType` 1, `playType` 3 (`GashaButtonSetEvent` lambda 0xE665EC) (H). The Friend Point
+  summon (290000) sends flag 1, limit 1 and today's remaining count; a free pull costs nothing
+  and a second one gets 51302 (E_GASHA_REMAIN_FREE_EMPTY). One a day, at 04:00 JST, is ours
+  (research pack `economy.daily_reset`). `discountDraw*` (the one-coin offer, checked first at
+  0xDE2160) stays 0.
 
 ## 2. Shop
 - **Why it hung (H).** `Shop1UIController.Update` 0xD82C5C reads `shopList[0].goodsList.Count` with
@@ -94,6 +101,16 @@ The owner asked for these tiles so more content can be tested. H unless marked, 
 - **Campaign Info.** Items with `bizarreHomeFlag` true, ordered by `signboardPriority`, with art
   `banner + "_small"`. A tap opens `s3_url + htmlLink` in the web view (our web module answers
   any path).
+- **Rotation and reset (Build 25 check).** The tile, its category and the art follow the weekday
+  of the game day (`quests::daily_on`, `missions::game_day`: the day turns at 04:00 JST; tested
+  for all seven days and the 03:59/04:00 edge). Every weekday has its own chapters. A daily
+  category asked for after the day turned is still served (the research pack's
+  `obscure.cached_daily` describes the same leniency; ours). Daily missions and the Labyrinth's
+  Mentality turn on the same boundary.
+  - The research pack's `economy.daily_reset` names a daily free friend draw: the Friend Point
+    Mind Summon now has one free single draw a day (§1, Build 25).
+  - Not built: the daily one-coin summon offer (`discountDraw*`; paid currency, no payments
+    offline) and per-day play limits on daily stages (no source gives any).
 - **Content** (`server/content/quests_extra.json`, `tools/content/build_extra_quests.py`).
   - Daily: per weekday, the game's two quest lines (`CHAPTER_NAME_DY_<day>_01`/`_04`), each with
     its Easy–Expert stages (`STAGE_DY2_<day>_001..004`, `_101..104`). Enemies follow the
