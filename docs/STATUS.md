@@ -2,6 +2,35 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 26 — the Town home connects offline (branch `wip/b26`)
+
+### What the owner asked
+- Opening the Town home while in a Town showed "Connection error, Error Code: E_00900030"
+  (Build 25 device log and screenshot).
+
+### What the log and the client show
+- The log has `/clan/sync_server_info` answered, then no `[town] socket connected`: the client
+  never opened the socket connection.
+- E_00900030 is the client's `Socket.OnConnectError`, queued only by the catch in
+  `SocketBase.Connect` (0xCADB70). That method replaces the address it is given with
+  `Dns.GetHostEntry(ip).HostName` before `new TcpClient(host, port)`. For 127.0.0.1 that means a
+  reverse lookup and then a forward lookup of the name. Unity 2018.4's libil2cpp does the forward
+  lookup with `AI_ADDRCONFIG`. On Android that returns no IPv4 address when the phone has no
+  network, so the lookup throws (inferred from the code; the log has no exception text).
+
+### What changed
+- **New patch `town-direct-ip`** (libil2cpp.so @0xcadda4, nine instructions → `nop`):
+  `SocketBase.Connect` hands the IP string from `sync_server_info` straight to `TcpClient`. For
+  an IP literal, `Dns.GetHostAddresses` returns the address without the resolver. The patch is
+  fingerprinted (SHA-256 of the 36-byte site), post-checked, listed in the patch report, and can
+  be turned off with `--disable town-direct-ip`. The server side is unchanged.
+- Build number 26, server marker `JDR_EMBEDDED_SERVER_b026`.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] The Town home opens while in a Town, with the phone online and in airplane mode; the log
+      shows `[town] socket connected`; members walk; chat works
+- [ ] The Build 25 list below, still unconfirmed apart from the Town error
+
 ## Build 25 — Town, more events, skill Minds and links, Labyrinth grades, Arena BP, supporters (branch `wip/b25`)
 
 ### What the owner asked
