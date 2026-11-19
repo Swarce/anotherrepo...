@@ -532,9 +532,7 @@ impl Patch for TownDirectIp {
 
 /// The bytes the `town-direct-ip` site becomes.
 pub fn town_dns_nops() -> Vec<u8> {
-    std::iter::repeat_n(NOP.to_le_bytes(), TOWN_DNS_LEN / 4)
-        .flatten()
-        .collect()
+    NOP.to_le_bytes().repeat(TOWN_DNS_LEN / 4)
 }
 
 /// English for the in-APK ClientMes table (boot, download and error messages), from the
