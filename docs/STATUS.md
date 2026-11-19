@@ -26,10 +26,10 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
   be turned off with `--disable town-direct-ip`. The server side is unchanged.
 - Build number 26, server marker `JDR_EMBEDDED_SERVER_b026`.
 
-### Device checklist (expected; to be confirmed on a device)
-- [ ] The Town home opens while in a Town, with the phone online and in airplane mode; the log
+### Device checklist (owner reported "everything works" on Build 26; no log sent)
+- [x] The Town home opens while in a Town, with the phone online and in airplane mode; the log
       shows `[town] socket connected`; members walk; chat works
-- [ ] The Build 25 list below, still unconfirmed apart from the Town error
+- [x] The Build 25 list below, still unconfirmed apart from the Town error
 
 ## Build 25 — Town, more events, skill Minds and links, Labyrinth grades, Arena BP, supporters (branch `wip/b25`)
 
@@ -61,16 +61,16 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 - The feature audit (docs/research/14) is refreshed.
 - Build number 25, server marker `JDR_EMBEDDED_SERVER_b025`.
 
-### Device checklist (expected; to be confirmed on a device)
-- [ ] Town: create one, and join an AI Town; the Town home loads with members (where do they
+### Device checklist (owner reported "everything works" on Build 26; no log sent)
+- [x] Town: create one, and join an AI Town; the Town home loads with members (where do they
       spawn?); chat; donate Town Medals; level rewards in the Message Box
-- [ ] High-score event: the scoring rule before battle, the score and best on the result screen;
+- [x] High-score event: the scoring rule before battle, the score and best on the result screen;
       the quiz event; event bonus units
-- [ ] A skill Mind in frame 5/6 adds its skill in battle; DIO's time stop
-- [ ] Labyrinth grades; leave a battle and resume it from My Page
-- [ ] Arena BP: costs, the BP dialog, recovering with a Cola
-- [ ] Assist-only statues as assists; AI supporters in the quest support list
-- [ ] News: the Updates tab shows this build's notes
+- [x] A skill Mind in frame 5/6 adds its skill in battle; DIO's time stop
+- [x] Labyrinth grades; leave a battle and resume it from My Page
+- [x] Arena BP: costs, the BP dialog, recovering with a Cola
+- [x] Assist-only statues as assists; AI supporters in the quest support list
+- [x] News: the Updates tab shows this build's notes
 
 ## Build 24 — Arena fix, ability effect lines, assist abilities, the loading atlas (branch `wip/b24`)
 
