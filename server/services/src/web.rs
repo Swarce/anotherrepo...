@@ -127,6 +127,11 @@ const NOTES: &[&str] = &[
     "Arena: battles cost BP. A team's cost rises after each battle, every fourth battle lowers the others, and a full bar resets them. BP comes back over time; BP Recovery Colas and Diamond Coins restore it.",
     "26 assist-only statues join the collection. They can be equipped as assists, with their own assist ability and skill.",
     "Quests offer AI supporters each day. A supporter's leader ability helps the team in tactical battles, and a clear with one earns extra Friend Points.",
+    "The Town: create and lead your own Town or join one of twelve AI Towns. Members walk the Town home, donations of Town Medals raise its level and unlock objects, and rewards arrive in the Message Box.",
+    "New events: high-score events with their own scoring rules and a ranking, a quiz event and two more exchange events. Each event has bonus statues and Minds that raise its drops.",
+    "Skill Minds add a second skill or SP skill in the two skill frames. Growth tree skill squares raise skill levels, which shorten cool turns.",
+    "Mind Links: Minds of the same link on one statue raise its ATK, DEF or HP.",
+    "DIO's and Jotaro's time-stop skills stop time.",
     "These notices.",
 ];
 
