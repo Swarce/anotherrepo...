@@ -43,6 +43,9 @@ fn digest_of(files: &BTreeMap<String, Vec<u8>>) -> String {
     use sha2::{Digest, Sha256};
     let mut h = Sha256::new();
     h.update(ART_GEN_VERSION.to_le_bytes());
+    // the build too: how art is applied can change with the code (a probe build did not rebuild
+    // its bundles because the images had not changed)
+    h.update(jdr_core::BUILD.to_le_bytes());
     for (k, v) in files {
         h.update((k.len() as u32).to_le_bytes());
         h.update(k.as_bytes());
@@ -511,6 +514,7 @@ const PROBES: &[(&str, &str, &str)] = &[
     ("st_1090_01", "st_1100_89", "reenc"),
     ("st_1090_02", "st_2000_89", "rename"),
     ("st_1090_03", "st_2000_28", "rebuild"),
+    ("st_1100_02", "st_1000_98", "raw"),
 ];
 
 fn probe_entry(

@@ -2,6 +2,27 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 30 (probe, again) — the Build 29 probe never ran (branch `wip/b29-probe`)
+
+### What the Build 29 log shows
+- `[art] ui_statue_01: 0 image(s) in this rebuild, served as … md5 0a2f22b2…, already on the
+  phone`: the Build 28 file. The art cache key held the images and `ART_GEN_VERSION` only; the
+  images had not changed, so the phone kept its Build 28 rebuild and the probe code never ran.
+  All slots blank as in Build 28.
+
+### What changed
+- The art cache key includes the build number (`art.rs` `digest_of`): every build rebuilds the
+  art bundles once.
+- Two more probe slots, in `ui_statue_00` (the pack moves them there): 1100_01, our rebuild;
+  1100_02, a byte copy of st_1000_98's entry. The four Build 29 slots stay.
+- Build number 30, server marker `JDR_EMBEDDED_SERVER_b030`.
+
+### Device checklist
+- [ ] Log: `[art] ui_statue_01: N image(s) in this rebuild` with N > 0, and the same for
+      `ui_statue_00`
+- [ ] Which of 1080_01, 1090_01, 1090_02, 1090_03 (ui_statue_01) and 1100_01, 1100_02
+      (ui_statue_00) show a portrait
+
 ## Build 29 (probe) — why added portraits do not show (branch `wip/b29-probe`)
 
 ### What the owner reported (Build 28)
