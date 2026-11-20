@@ -2,6 +2,35 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 29 (probe) — why added portraits do not show (branch `wip/b29-probe`)
+
+### What the owner reported (Build 28)
+- The frames look right; the portraits still do not show. Blank too: 1000_04 (Lv50 +2) and
+  1020_04 (Lv99), which have real thumbnails in `ui_statue_01`; 1000_28 from the same bundle
+  shows.
+
+### What the log shows
+- `[art] ui_statue_01: … served as 165e175855561906137b6814.bytes (4827539 bytes, md5
+  0a2f22b2…)`: byte for byte the bundle the rebuild here produces from the same APK's `art.bin`
+  on the player's files. Its 220 entries all resolve (container → preload → TextAsset), and
+  1000_04, 1020_04, 1000_28 and 1080_01 all decrypt to bundles whose sprites load (UnityPy).
+- No Unity error in the log: the client fails silently.
+
+### The probe
+Four slots take a variant each (`art.rs` `PROBES`); the other 51 are built as in Build 28:
+- 1080_01: the real entry of st_1000_89 copied byte for byte (shows that statue's face): tests
+  adding an entry to the bundle.
+- 1090_01: st_1100_89 decrypted and encrypted again by us: tests our encryption.
+- 1090_02: st_2000_89 with only its names and serialized-file name changed (texture and .resS
+  kept): tests the renaming.
+- 1090_03: our full rebuild cloned from st_2000_28 (pixels RGBA32 inline, no .resS): tests the
+  rebuild with another template than 1000_04.
+- Build number 29, server marker `JDR_EMBEDDED_SERVER_b029`.
+
+### Device checklist
+- [ ] Which of 1080_01, 1090_01, 1090_02, 1090_03 show a portrait (a screenshot of the list)
+- [ ] Do 1000_04 and 1020_04 still show blank?
+
 ## Build 28 — portraits: real frames, and a log line for the device (branch `wip/b28`)
 
 ### What the owner reported (Build 27)
