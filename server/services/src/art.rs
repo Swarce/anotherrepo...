@@ -428,17 +428,11 @@ fn add_thumbnails(
                     .push(format!("{name}: the bundle already has it"));
                 continue;
             }
-            // Probe build (Build 29): a few slots take variants that each test one step.
-            let probe = PROBES.iter().find(|p| p.0 == name).map(|p| (p.1, p.2));
-            let built = match probe {
-                Some((src, mode)) => probe_entry(f, src, mode, name, thumbs[file], key, iv),
-                None => {
-                    make_thumbnail(&tpl_inner, &tpl_name, name, thumbs[file]).and_then(|inner| {
-                        jdr_crypto::Jjec::encrypt(&inner, key, iv, inner.len())
-                            .map_err(|e| e.to_string())
-                    })
-                }
-            };
+            let built =
+                make_thumbnail(&tpl_inner, &tpl_name, name, thumbs[file]).and_then(|inner| {
+                    jdr_crypto::Jjec::encrypt(&inner, key, iv, inner.len())
+                        .map_err(|e| e.to_string())
+                });
             let enc = match built {
                 Ok(b) => b,
                 Err(e) => {
@@ -491,6 +485,8 @@ fn add_thumbnails(
         }
         if added > 0 {
             f.objects[ab_i].data = sfile::write_object(&f.types[ab_t].nodes, &ab)?;
+            // the engine finds objects by binary search over path ids
+            f.sort_objects();
         }
         Ok(added)
     })();
@@ -502,113 +498,6 @@ fn add_thumbnails(
         Ok(_) => {}
         Err(e) => out.errors.push(format!("thumbnails: {e}")),
     }
-}
-
-/// Probe build: (new thumbnail, real thumbnail in the same bundle, what is done to it).
-/// - `raw`: the real entry's bytes as they are (tests adding an entry);
-/// - `reenc`: decrypted and encrypted again by us (tests the encryption);
-/// - `rename`: names and serialized-file name changed, texture and .resS kept (tests renaming);
-/// - `rebuild`: our full rebuild (RGBA32 pixels inline, no .resS) from this template.
-const PROBES: &[(&str, &str, &str)] = &[
-    ("st_1080_01", "st_1000_89", "raw"),
-    ("st_1090_01", "st_1100_89", "reenc"),
-    ("st_1090_02", "st_2000_89", "rename"),
-    ("st_1090_03", "st_2000_28", "rebuild"),
-    ("st_1100_02", "st_1000_98", "raw"),
-];
-
-fn probe_entry(
-    f: &sfile::SFile,
-    src: &str,
-    mode: &str,
-    name: &str,
-    png: &[u8],
-    key: &[u8],
-    iv: &[u8],
-) -> Result<Vec<u8>, Error> {
-    let o = f
-        .objects
-        .iter()
-        .find(|o| {
-            class_of(f, o) == CLASS_TEXTASSET
-                && sfile::read_object(&f.types[o.type_index as usize].nodes, &o.data)
-                    .ok()
-                    .and_then(|v| v.get("m_Name").and_then(V::as_str).map(|n| n == src))
-                    .unwrap_or(false)
-        })
-        .ok_or_else(|| format!("probe source {src} not in the bundle"))?;
-    let v = sfile::read_object(&f.types[o.type_index as usize].nodes, &o.data)?;
-    let script = match v.get("m_Script") {
-        Some(V::Str(b)) | Some(V::Bytes(b)) => b.clone(),
-        _ => return Err("probe source without m_Script".into()),
-    };
-    let inner = || jdr_crypto::Jjec::decrypt(&script, key, iv).map_err(|e| e.to_string());
-    let enc = |b: &[u8]| jdr_crypto::Jjec::encrypt(b, key, iv, b.len()).map_err(|e| e.to_string());
-    match mode {
-        "raw" => Ok(script.clone()),
-        "reenc" => enc(&inner()?),
-        "rename" => enc(&rename_thumbnail(&inner()?, src, name)?),
-        _ => enc(&make_thumbnail(&inner()?, src, name, png)?),
-    }
-}
-
-/// A thumbnail's bundle renamed only: objects, container keys and the serialized file (and its
-/// .resS, with the texture's stream path), pixels untouched.
-fn rename_thumbnail(tpl: &[u8], old: &str, new: &str) -> Result<Vec<u8>, Error> {
-    use md5::{Digest, Md5};
-    let mut nodes = jdr_unity::bundle::read(tpl)?;
-    let si = nodes
-        .iter()
-        .position(|n| n.flags & 4 != 0)
-        .ok_or("no serialized file")?;
-    let old_cab = nodes[si].name.clone();
-    let cab: String = Md5::digest(new.as_bytes())
-        .iter()
-        .map(|b| format!("{b:02x}"))
-        .collect();
-    let new_cab = format!("CAB-{cab}");
-    let mut f = sfile::parse(&nodes[si].data)?;
-    let swap = |s: &[u8]| -> Vec<u8> {
-        String::from_utf8_lossy(s)
-            .replace(old, new)
-            .replace(&old_cab, &new_cab)
-            .into_bytes()
-    };
-    for i in 0..f.objects.len() {
-        let t = f.objects[i].type_index as usize;
-        let class = f.types[t].entry.class_id;
-        if ![CLASS_TEXTURE2D, CLASS_SPRITE, CLASS_ASSETBUNDLE].contains(&class) {
-            continue;
-        }
-        let mut v = sfile::read_object(&f.types[t].nodes, &f.objects[i].data)?;
-        set(&mut v, "m_Name", V::Str(new.as_bytes().to_vec()));
-        if class == CLASS_ASSETBUNDLE {
-            set(&mut v, "m_AssetBundleName", V::Str(new.as_bytes().to_vec()));
-            if let Some(V::Arr(items)) = v.get_mut("m_Container") {
-                for e in items {
-                    if let Some(V::Str(k)) = e.get_mut("first") {
-                        *k = swap(k);
-                    }
-                }
-            }
-        }
-        if class == CLASS_TEXTURE2D {
-            if let Some(sd) = v.get_mut("m_StreamData") {
-                if let Some(V::Str(p)) = sd.get_mut("path") {
-                    *p = swap(p);
-                }
-            }
-        }
-        f.objects[i].data = sfile::write_object(&f.types[t].nodes, &v)?;
-    }
-    nodes[si].data = f.write();
-    for n in nodes.iter_mut() {
-        n.name = n.name.replace(&old_cab, &new_cab);
-    }
-    Ok(jdr_unity::bundle::write_lz4(
-        &nodes,
-        jdr_unity::UNITY_VERSION,
-    ))
 }
 
 /// A thumbnail bundle's sprite: the area of its texture rectangle and its mesh's vertex count.

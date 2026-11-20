@@ -84,7 +84,10 @@ the repository: the tool reads the player's files and writes a private art pack.
   - rename its objects, store the pixels as RGBA32, drop the `.resS`, rename the serialized
     file `CAB-<md5 of the name>`;
   - encrypt the result with the asset key and add it as a TextAsset with a preload entry and a
-    container key (kept sorted).
+    container key (kept sorted);
+  - keep the object table sorted by path id (Build 31). The engine finds objects by binary
+    search; appended out of order, the new ones were never found and some originals were
+    hidden (Builds 27–30 on the device).
 - Thumbnails the bundle already has are left alone and reported.
 - **Checks.** `tests/real_portraits.rs` runs on the player's `ui_statue_01` with synthetic images:
   original objects stay byte-identical, the container stays sorted, and each new entry decrypts to

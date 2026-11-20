@@ -2,6 +2,30 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 31 — added portraits findable: object table sorted (branch `wip/b31`)
+
+### What the Build 30 probe showed
+- Both thumbnail bundles were rebuilt and downloaded (`[art] ui_statue_01: 53 image(s) …`,
+  `ui_statue_00: 2 …`, then `GET /cdn/165e…6814` and `…6815`), and every probe slot stayed blank:
+  even byte copies of real entries under a new name. 1000_04 and 1020_04 showed again.
+- So the new entries were not found at all. Unity's `AssetBundle.Contains` (libunity 0x338aa0 →
+  0x2c308c) looks the name up in the bundle's path and name tables, and the object behind it is
+  then found in the serialized file by binary search over path ids. The engine writes object
+  tables sorted by path id (ui_statue_00, ui_statue_01 and the thumbnails' own bundles all are);
+  ours appended the new objects at the end with hashed ids, so they could not be found, and
+  depending on where they fell some original ones could not either (1000_04 and 1020_04 in
+  Build 28, not in Build 30).
+
+### What changed
+- `SFile::sort_objects` orders the object table by path id (the data stays in place);
+  `add_thumbnails` calls it. `tests/real_portraits.rs` checks the table stays sorted.
+- Probes removed; all 55 portraits back in `ui_statue_01`.
+- Build number 31, server marker `JDR_EMBEDDED_SERVER_b031`.
+
+### Device checklist
+- [ ] The generated portraits show (1080_01, 1090_01–03, 1100_01–03 … in the first rows)
+- [ ] 1000_04 and 1020_04 still show
+
 ## Build 30 (probe, again) — the Build 29 probe never ran (branch `wip/b29-probe`)
 
 ### What the Build 29 log shows
