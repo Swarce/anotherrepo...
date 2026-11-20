@@ -640,6 +640,7 @@ pub const BASIC_ATTACK: &str = "JDR_ATK_00";
 /// `statue_info` for a battle unit: with the basic attack.
 pub fn battle_statue_info(o: &OwnedStatue) -> Value {
     let mut v = statue_info(o);
+    v["skillList"] = json!(action_skill_list(o));
     let mut list = vec![basic_attack(&attack_skill(&o.statue_id))];
     let (normal, special) = skill_levels(o);
     for s in find(&o.statue_id)
@@ -650,6 +651,67 @@ pub fn battle_statue_info(o: &OwnedStatue) -> Value {
     }
     v["dtSkillList"] = json!(list);
     v
+}
+
+/// Action-battle skills per statue (server/content/action_skills.json, docs/research/30).
+pub const ACTION_SKILLS_JSON: &str = include_str!("../../content/action_skills.json");
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct ActionSkillRef {
+    pub id: String,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct ActionSkills {
+    pub attack: String,
+    pub skill: Option<ActionSkillRef>,
+    pub sp: Option<ActionSkillRef>,
+    pub finisher: Option<ActionSkillRef>,
+}
+
+pub fn action_skills(statue_id: &str) -> Option<&'static ActionSkills> {
+    static CELL: std::sync::OnceLock<std::collections::HashMap<String, ActionSkills>> =
+        std::sync::OnceLock::new();
+    CELL.get_or_init(|| {
+        #[derive(Deserialize)]
+        struct Doc {
+            statues: std::collections::HashMap<String, ActionSkills>,
+        }
+        serde_json::from_str::<Doc>(ACTION_SKILLS_JSON)
+            .map(|d| d.statues)
+            .unwrap_or_default()
+    })
+    .get(statue_id)
+}
+
+/// The action battle's `skillList`, read by index (`CharacterStatus.SetStatueInfo` 0xF17DC4 with
+/// `GameConst.GetSkillTypeFromSkillArray` 0xDB5254): 0 attack, 1 skill 1, 2 skill 2, 3 SP 1, 4 SP 2.
+/// Ids only (`isInit` false): the client fills name, type, cool-down and uses from
+/// skill_data_table. An entry without a skill id is skipped by the client (an empty name or a level
+/// under 1 is, `SetSkillInfo` 0xF18838), so unused slots are `{}`. The finisher is the second SP
+/// skill, unlocked at rarity 5 and above (docs/research/30).
+pub fn action_skill_list(o: &OwnedStatue) -> Vec<Value> {
+    let Some(a) = action_skills(&o.statue_id) else {
+        return Vec::new();
+    };
+    let (normal, special) = skill_levels(o);
+    let info = |id: &str, level: i64| {
+        json!({ "skillId": id, "skillLevel": level.clamp(1, SKILL_MAX_LEVEL), "name": "", "explanation": "",
+                "skillType": 0, "bottunType": 0, "coolDown": 0, "limitCount": 0,
+                "magnificationLv01": 0, "magnificationLv10": 0, "pvpMagnificationLv01": 0,
+                "pvpMagnificationLv10": 0, "skillParamList": [], "isInit": false })
+    };
+    let rare = find(&o.statue_id).map(|d| d.rarity()).unwrap_or(4);
+    vec![
+        info(&a.attack, 1),
+        a.skill.as_ref().map_or(json!({}), |x| info(&x.id, normal)),
+        json!({}),
+        a.sp.as_ref().map_or(json!({}), |x| info(&x.id, special)),
+        a.finisher
+            .as_ref()
+            .filter(|_| rare >= 5)
+            .map_or(json!({}), |x| info(&x.id, special)),
+    ]
 }
 
 /// A tactical skill as a `SkillInfo`. The client takes type, button and name from the table row;
@@ -673,6 +735,13 @@ pub fn attack_skill(statue_id: &str) -> String {
 /// Characters whose attacks fire bullets (their models' bullet FSMs; docs/research/12 §2): the
 /// 3-digit skill prefixes of statues 3110, 4160, 4180/4181, 4240, 5220 and 5300.
 const RANGED_PREFIXES: &[&str] = &["311", "416", "418", "424", "522", "530"];
+
+/// Whether a statue fights at range (its skill prefix is one of the bullet users').
+pub fn is_ranged(statue_id: &str) -> bool {
+    statue_id
+        .get(..3)
+        .is_some_and(|p| RANGED_PREFIXES.contains(&p))
+}
 
 /// Where a skill's user stops, as the client's (dtRangeMin, dtRangeMax) in centimetres
 /// (`CharacterProxy.SetSkillTargetPos` 0xEE9304: farther than max walks to max, nearer than min
@@ -1477,6 +1546,55 @@ mod tests {
                 );
             }
         }
+    }
+
+    #[test]
+    fn action_skill_lists_follow_the_client_slots() {
+        // skillList by index: 0 attack, 1 skill 1, 2 skill 2, 3 SP 1, 4 SP 2 (docs/research/30);
+        // every id is a skill_data_table row, whose type matches the slot.
+        let table: Value = serde_json::from_str(include_str!(
+            "../../content/masterdata/skill_data_table.json"
+        ))
+        .unwrap();
+        let ty: std::collections::HashMap<String, i64> = table["data"]["paramList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|r| {
+                (
+                    r["skillId"].as_str().unwrap().to_owned(),
+                    r["skillType"].as_i64().unwrap(),
+                )
+            })
+            .collect();
+        let mut with_sp = 0;
+        for d in statues() {
+            let o = OwnedStatue {
+                uid: 1,
+                statue_id: d.statue_id.clone(),
+                level: 1,
+                exp: 0,
+                get_date: String::new(),
+                tree: Vec::new(),
+                boost: 0,
+            };
+            let list = action_skill_list(&o);
+            assert_eq!(list.len(), 5, "{}", d.statue_id);
+            let id = |i: usize| list[i]["skillId"].as_str().map(str::to_owned);
+            assert!(id(0).unwrap().ends_with("_99"));
+            assert_eq!(ty[&id(0).unwrap()], 1, "attack is a combo");
+            assert_eq!(list[2], json!({}), "no second skill");
+            for i in [1, 3, 4] {
+                if let Some(x) = id(i) {
+                    assert!(ty.contains_key(&x), "{x} is a table row");
+                    assert!(list[i]["skillLevel"].as_i64().unwrap() >= 1);
+                }
+            }
+            if id(3).is_some() {
+                with_sp += 1;
+            }
+        }
+        assert!(with_sp > 200, "{with_sp}");
     }
 
     #[test]
