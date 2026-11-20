@@ -25,7 +25,10 @@ H = read in the 3.12.0 disassembly or the player's files, F = seen in frames of 
 - **Boss intro:** low on the legs, a crane up the body to a tilted low full-body shot with the name
   card, about 2 s.
 - **Stage finish:** the camera on the ground beside the downed boss, then CLEAR!!.
-- **Win pose:** a low chest-up shot with a ~0.5 s push-in, held for about 4–5 s.
+- **Win pose** (full frames: ZCUC-PwLXxA 5:17–5:22 and 9:06, X9xSMXBpsQw 6:16–6:20): a tight
+  head-and-chest shot from well below (about 25–30° up at the face), the winner right of centre
+  and turned towards screen left, where WIN! and the quote strip sit. It opens closer and more
+  turned, settles over about 1 s and holds for about 4 s.
 
 ## 2. How the client drives it (H)
 
@@ -67,7 +70,11 @@ H = read in the 3.12.0 disassembly or the player's files, F = seen in frames of 
   that side.
 - The first Build 33 shots (over the shoulder, a front close-up, a reverse from beyond the target, a
   near-ground angle) put 74 poses on the far side of the arena even after the delta fix.
-- The win shots: low, chest up, a 0.5 s push-in, held. The boss intro: low on the legs, a
+- The win shots (third package): 1.15 m from the chest, 26° below, 27° to the side, the look
+  point offset so the winner sits right of centre; opening at 1.0 m, 30° and 34° and settling over
+  1 s, then held (rendered with the statues' own win-appeal clip, `pose_models.py --clip
+  evt_btl_lp`). The first Build 33 shot was 2.05 m away and 8° below, head to waist and centred.
+  Very small models (Iggy, Pet Shop) put the camera at or under the floor in this shot. The boss intro: low on the legs, a
   crane up to a tilted full-body shot. Stage finishes: a low shot beside the downed unit.
 - The boss intro is on again for the boss of each chapter's last stage (the first enemy of its last
   area); it had been off since Build 18 for want of a working camera.

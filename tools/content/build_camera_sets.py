@@ -95,9 +95,12 @@ EXTRA_NODES = [
     # the client's own test node and the old side view (kept for ids nothing else claims)
     node("ski_cam_00", 0, 0, (-20, 0, 0), 13.0, 25.0, (0, 0, 0), (0, 0.6, 0)),
     node("jdr_side", 0, 0, (-8, 180, 0), 9.0, 30.0, (0, 1.0, 0), (0, 1.0, 0)),
-    # win pose: low, chest up, a short push-in (footage: 0.5 s ease-in, then held)
-    node("jdr_result", SPINE2, NECK, (8, 22, 0), 2.6, 30),
-    node("jdr_result_b", SPINE2, NECK, (8, 24, 0), 2.05, 30),
+    # win pose (footage: ZCUC-PwLXxA 5:17-5:22 and 9:06, X9xSMXBpsQw 6:16-6:20): a tight head-and-
+    # chest shot from well below (about 25-30 degrees up at the face), the winner right of centre
+    # and turned towards screen left where WIN! sits; it starts closer and more turned and settles
+    # over about 1 s, then holds
+    node("jdr_result", SPINE2, NECK, (30, 34, 0), 1.0, 34, (0, 0, 0), (0.2, 0.12, 0)),
+    node("jdr_result_b", SPINE2, NECK, (26, 27, 0), 1.15, 34, (0, 0, 0), (0.26, 0.1, 0)),
     # boss intro (id 201, not mirrored, always an enemy facing -X: a negative rotate.y is the
     # watched side): low on the legs, then a tilted low full-body shot (crane up)
     node("jdr_boss_a", WAIST, WAIST, (22, -24, 0), 2.0, 34, (0, 0, 0), (0, -0.4, 0)),
@@ -172,7 +175,7 @@ def cam_set(cid, data, begin=0.0, end=0.3):
 sets, used = [], collections.Counter()
 for cid in sorted(set(old_ids) | set(roles)):
     if cid in RESULT:
-        data = [step("jdr_result", 0.5), step("jdr_result_to_b", 4.0)]
+        data = [step("jdr_result", 1.0), step("jdr_result_to_b", 4.0)]
         used["result"] += 1
         sets.append(cam_set(cid, data))
     elif cid in BOSS_INTRO:
