@@ -1,4 +1,4 @@
-# 31 — The battle camera (Build 33)
+# 31 — The battle camera, and the menu cameras (Build 33)
 
 H = read in the 3.12.0 disassembly or the player's files, F = seen in frames of original footage
 (the owner's video research package, 77 observations from 17 videos, private, under
@@ -58,7 +58,25 @@ H = read in the 3.12.0 disassembly or the player's files, F = seen in frames of 
   area); it had been off since Build 18 for want of a working camera.
 - Camera heights were checked numerically against a 1.8 m model: all above the floor.
 
-## 4. Open (M)
+## 5. The team screen and My Page (F, H)
+
+Neither screen uses a script camera; both place the statue in front of a fixed camera, so the
+framing comes from the statue rows we send (`statue_setting_table`, docs/research/11 §1).
+
+- **Team screen (F).** The original (2017 and 2019 footage) shows the three statues thighs-up, each
+  centred over its card, heads at about the same height in every slot, the leader as large as the
+  others. Ours (H for the camera and anchors) had the leader's head clearly lower for every short
+  model: the leader stands nearer the camera, and we lifted heads only to 1.45 m. Every head is now
+  lifted to 1.68 m (`build_statues.py` `team_frame`; docs/research/12 §7).
+- **My Page (F).** The leader stands right of centre (about two thirds across), framed from mid-thigh
+  up, the head in the upper quarter, turned slightly to screen left; the camera does not move. Read
+  against the client's camera (the origin, 40°): about 1.8 m away, 0.35 m right, the head bone a
+  quarter metre above the camera. Ours stood 3.2 m away with the whole body down to the feet in view.
+  `myPagePos` is now per statue: (35, 25 − head height, 180) cm, the head height from the team pose
+  but at least 80% of the model's standing height (a crouching team pose would sink it).
+- The original hid a statue's Stand on My Page (2019, Jotaro); that is the client's choice of model.
+
+## 6. Open (M)
 
 - The SP cinematics depend on animator assets in the player's files and on the skill rows; whether
   ours trigger them is not checked yet.

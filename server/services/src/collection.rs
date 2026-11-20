@@ -56,6 +56,10 @@ pub struct StatueDef {
     /// (tools/content/build_statues.py, docs/research/12 §7).
     #[serde(rename = "teamPos", default)]
     pub team_pos: [i64; 3],
+    /// My Page offset in cm from the `CameraIdSet0` camera: right of centre, 1.8 m ahead, the head
+    /// bone a quarter metre above the camera (tools/content/build_statues.py, docs/research/31 §5).
+    #[serde(rename = "myPagePos", default = "my_page_pos")]
+    pub my_page_pos: [i64; 3],
     /// An assist-only statue (`_6x`/`_7x` with their own `ABI_AST_<id>_N` label and no leader
     /// ability; docs/research/19-assists.md §6): the client's `assistAttr` OnlyAssist (1). It may
     /// be an assist but never a team member.
@@ -65,6 +69,10 @@ pub struct StatueDef {
 
 fn full_scale() -> i64 {
     100
+}
+
+fn my_page_pos() -> [i64; 3] {
+    [35, -140, 180]
 }
 
 /// One tactical skill of a statue: label keys from the player's files, our numbers.
@@ -1419,13 +1427,16 @@ pub fn statue_setting_rows() -> Vec<Value> {
             });
             // Positions are centimetres and teamScaleScalar a percentage (the client multiplies all of
             // them by 0.01). My Page: the camera at the `CameraIdSet0` scene object (the origin,
-            // facing +Z) and the leader 3.22 m ahead, right of centre (Build 12: 12% closer at the owner's request), turned towards the camera,
-            // which frames models 1.0-2.3 m tall. Team view: the slot anchors already face the
-            // camera; each statue's scale and offset frame its posed head (docs/research/11 §1, 12 §7).
+            // facing +Z, 40 degrees) and the leader 1.8 m ahead, right of centre, turned towards the
+            // camera: thighs up with the head in the upper quarter, as in the original's footage.
+            // Team view: the slot anchors already face the camera; each statue's scale and offset put
+            // its posed head at the same height in every slot (docs/research/11 §1, 12 §7, 31 §5).
             json!({
                 "statueId": d.statue_id, "myPageId": ids[h as usize % ids.len()],
                 "myPageCameraType": "CameraIdSet0",
-                "myPagePos": { "x": 72.0, "y": -113.0, "z": 322.0 },
+                "myPagePos": {
+                    "x": d.my_page_pos[0] as f64, "y": d.my_page_pos[1] as f64, "z": d.my_page_pos[2] as f64
+                },
                 "myPageRotation": { "x": 0.0, "y": 192.5, "z": 0.0 },
                 "teamScaleScalar": d.team_scale as f64,
                 "teamPos": { "x": d.team_pos[0] as f64, "y": d.team_pos[1] as f64, "z": d.team_pos[2] as f64 },
@@ -1668,6 +1679,7 @@ mod tests {
             result_comment: None,
             team_scale: 100,
             team_pos: [0, 0, 0],
+            my_page_pos: my_page_pos(),
             assist_only: false,
             max_tree: None,
         };
