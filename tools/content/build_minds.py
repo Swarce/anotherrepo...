@@ -46,6 +46,15 @@ def flat(effects, stat):
     return 0
 
 
+# Cost by rarity: the wiki lists a cost for some Minds, and every Mind of a rarity with a known cost
+# has the same one (1: 3, 2: 5, 3: 8, 4: 12 in the 2026-11-14 capture). Minds without one get it.
+by_rarity = {}
+for r in recs:
+    rr = re.sub(r"\D", "", str(r.get("rarity") or ""))
+    if isinstance(r.get("cost"), int) and rr:
+        by_rarity.setdefault(int(rr), set()).add(r["cost"])
+COST = {k: next(iter(v)) for k, v in by_rarity.items() if len(v) == 1}
+
 out, seen = [], set()
 for r in recs:
     ids = ids_by_name.get(norm(r.get("name_jp")), set())
@@ -57,13 +66,15 @@ for r in recs:
     out.append({
         "mindId": mid,
         "rarity": rarity,
-        "cost": r["cost"] if isinstance(r.get("cost"), int) else rarity * 3,
+        "cost": r["cost"] if isinstance(r.get("cost"), int) else COST.get(rarity, rarity * 3),
         "hp": flat(r.get("effects"), "HP"),
         "atk": flat(r.get("effects"), "ATK"),
         "def": flat(r.get("effects"), "DEF"),
         "source": {"source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)", "page": r["source"]["page_url"],
                    "accessed": r["source"].get("accessed"),
-                   **({} if isinstance(r.get("cost"), int) else {"note": "cost = 3 x rarity (jdr-default)"})},
+                   **({} if isinstance(r.get("cost"), int) else
+                      {"note": "cost of every Mind of this rarity on the wiki" if rarity in COST
+                       else "cost = 3 x rarity (jdr-default)"})},
     })
 out.sort(key=lambda m: m["mindId"])
 json.dump({"about": "Minds matched to game ids on the Gamerch wiki: rarity, cost, flat stats (numbers only). See docs/CONTENT.md.",
