@@ -72,6 +72,116 @@ fn layout() -> &'static Layout {
     })
 }
 
+/// Scene edits by object id (`hide`, `moveTo`): the Options menu without Google Play Games.
+pub const EDITS: &str = include_str!("../../content/l10n/ui_edits.json");
+
+struct Edits {
+    hide: Vec<String>,
+    move_to: Vec<(String, String)>,
+}
+
+fn edits() -> &'static Edits {
+    static CELL: std::sync::OnceLock<Edits> = std::sync::OnceLock::new();
+    CELL.get_or_init(|| {
+        let v: Value = serde_json::from_str(EDITS).expect("ui_edits.json");
+        let strs = |x: &Value| x.as_str().map(str::to_owned);
+        Edits {
+            hide: v["hide"]
+                .as_array()
+                .map(|a| a.iter().filter_map(strs).collect())
+                .unwrap_or_default(),
+            move_to: v["moveTo"]
+                .as_array()
+                .map(|a| {
+                    a.iter()
+                        .filter_map(|p| Some((strs(&p[0])?, strs(&p[1])?)))
+                        .collect()
+                })
+                .unwrap_or_default(),
+        }
+    })
+}
+
+/// Apply the scene edits that fall in one serialized file (`prefix` is `bundle:file:`): hide
+/// GameObjects, and give RectTransforms the anchors and position their slot had in the original
+/// file (all slots are read before any is written, so moves can chain).
+fn apply_edits(f: &mut sfile::SFile, prefix: &str, stats: &mut Stats) -> bool {
+    let e = edits();
+    let local = |id: &str| id.strip_prefix(prefix)?.parse::<i64>().ok();
+    let find = |f: &sfile::SFile, pid: i64| f.objects.iter().position(|o| o.path_id == pid);
+    let nodes =
+        |f: &sfile::SFile, i: usize| f.types[f.objects[i].type_index as usize].nodes.clone();
+    let mut changed = false;
+    for pid in e.hide.iter().filter_map(|id| local(id)) {
+        let r = (|| -> Result<(), Error> {
+            let i = find(f, pid).ok_or("no object")?;
+            if f.types[f.objects[i].type_index as usize].entry.class_id != CLASS_GAMEOBJECT {
+                return Err("not a GameObject".into());
+            }
+            let n = nodes(f, i);
+            let mut v = sfile::read_object(&n, &f.objects[i].data)?;
+            set_int(v.get_mut("m_IsActive").ok_or("no m_IsActive")?, 0);
+            f.objects[i].data = sfile::write_object(&n, &v)?;
+            Ok(())
+        })();
+        match r {
+            Ok(()) => {
+                stats.edits += 1;
+                changed = true;
+            }
+            Err(err) => stats
+                .layout_errors
+                .push(format!("{prefix}{pid}: hide: {err}")),
+        }
+    }
+    const SLOT: [&str; 3] = ["m_AnchorMin", "m_AnchorMax", "m_AnchoredPosition"];
+    let read_rt = |f: &sfile::SFile, pid: i64| -> Result<(usize, V), Error> {
+        let i = find(f, pid).ok_or("no object")?;
+        if f.types[f.objects[i].type_index as usize].entry.class_id != CLASS_RECTTRANSFORM {
+            return Err("not a RectTransform".into());
+        }
+        Ok((i, sfile::read_object(&nodes(f, i), &f.objects[i].data)?))
+    };
+    let moves: Vec<(i64, i64)> = e
+        .move_to
+        .iter()
+        .filter_map(|(a, b)| Some((local(a)?, local(b)?)))
+        .collect();
+    let mut slots = Vec::new();
+    for &(pid, slot) in &moves {
+        match read_rt(f, slot) {
+            Ok((_, v)) => slots.push(Some(SLOT.map(|k| v.get(k).cloned()))),
+            Err(err) => {
+                stats
+                    .layout_errors
+                    .push(format!("{prefix}{slot}: slot of {pid}: {err}"));
+                slots.push(None);
+            }
+        }
+    }
+    for (&(pid, _), slot) in moves.iter().zip(slots) {
+        let Some(slot) = slot else { continue };
+        let r = (|| -> Result<(), Error> {
+            let (i, mut v) = read_rt(f, pid)?;
+            for (k, val) in SLOT.iter().zip(slot) {
+                *v.get_mut(k).ok_or("missing field")? = val.ok_or("slot without field")?;
+            }
+            f.objects[i].data = sfile::write_object(&nodes(f, i), &v)?;
+            Ok(())
+        })();
+        match r {
+            Ok(()) => {
+                stats.edits += 1;
+                changed = true;
+            }
+            Err(err) => stats
+                .layout_errors
+                .push(format!("{prefix}{pid}: move: {err}")),
+        }
+    }
+    changed
+}
+
 /// Smallest font size a statue name may shrink to in its box (every English name fits at 16).
 const NAME_MIN_SIZE: i64 = 12;
 const CLASS_GAMEOBJECT: i32 = 1;
@@ -299,7 +409,9 @@ pub struct Stats {
     pub art_errors: Vec<String>,
     /// Labels given a fixed box (`fit_box`): statue names (two lines) and one-line labels.
     pub name_boxes: usize,
-    /// Hinted labels whose layout did not have the expected shape (left alone).
+    /// Scene edits applied (`ui_edits.json`: objects hidden or moved).
+    pub edits: usize,
+    /// Hinted labels or edits whose objects did not have the expected shape (left alone).
     pub layout_errors: Vec<String>,
 }
 
@@ -636,6 +748,7 @@ pub fn rewrite_bundle(
                 Err(e) => stats.layout_errors.push(format!("{id_prefix}{pid}: {e}")),
             }
         }
+        file_changed |= apply_edits(&mut f, &id_prefix, &mut stats);
         if file_changed {
             node.data = f.write();
             any = true;

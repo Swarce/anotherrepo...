@@ -537,6 +537,220 @@ pub fn town_dns_nops() -> Vec<u8> {
     NOP.to_le_bytes().repeat(TOWN_DNS_LEN / 4)
 }
 
+/// `mov w0, #0`
+pub const MOV_W0_0: u32 = 0x5280_0000;
+/// `mov w8, #0`
+pub const MOV_W8_0: u32 = 0x5280_0008;
+
+/// Manifest elements `debloat` removes: `(tag, android:name)`. Firebase (messaging, analytics,
+/// instance id), Google Mobile Ads, Google Sign-In, Google Play Games, app measurement, Adjust
+/// and Growth Push (already never started by `no-growthbeat`), plus the push and phone-state
+/// permissions. Kept: the launcher, Unity, the game's local notifications
+/// (`jp.co.spchun.localpushlib`) and in-app billing (prime31; no real payments are made).
+pub const DEBLOAT_ELEMENTS: &[(&str, &str)] = &[
+    ("uses-permission", "android.permission.READ_PHONE_STATE"),
+    (
+        "uses-permission",
+        "com.google.android.c2dm.permission.RECEIVE",
+    ),
+    (
+        "uses-permission",
+        "com.bandainamcoent.jojodr.permission.C2D_MESSAGE",
+    ),
+    (
+        "permission",
+        "com.bandainamcoent.jojodr.permission.C2D_MESSAGE",
+    ),
+    ("activity", "com.growthpush.view.AlertActivity"),
+    ("activity", "com.google.android.gms.ads.AdActivity"),
+    (
+        "activity",
+        "com.google.android.gms.auth.api.signin.internal.SignInHubActivity",
+    ),
+    (
+        "activity",
+        "com.google.android.gms.common.api.GoogleApiActivity",
+    ),
+    ("activity", "com.google.games.bridge.NativeBridgeActivity"),
+    ("service", "com.growthpush.TokenRefreshService"),
+    ("service", "com.growthpush.ReceiverService"),
+    (
+        "service",
+        "com.google.firebase.messaging.MessageForwardingService",
+    ),
+    (
+        "service",
+        "com.google.android.gms.auth.api.signin.RevocationBoundService",
+    ),
+    (
+        "service",
+        "com.google.android.gms.measurement.AppMeasurementService",
+    ),
+    (
+        "service",
+        "com.google.android.gms.measurement.AppMeasurementJobService",
+    ),
+    (
+        "service",
+        "com.google.firebase.components.ComponentDiscoveryService",
+    ),
+    (
+        "service",
+        "com.google.firebase.messaging.FirebaseMessagingService",
+    ),
+    (
+        "service",
+        "com.google.firebase.messaging.cpp.ListenerService",
+    ),
+    (
+        "service",
+        "com.google.firebase.messaging.cpp.FcmInstanceIDListenerService",
+    ),
+    (
+        "service",
+        "com.google.firebase.messaging.cpp.RegistrationIntentService",
+    ),
+    ("receiver", "com.adjust.sdk.AdjustReferrerReceiver"),
+    (
+        "receiver",
+        "com.google.android.gms.measurement.AppMeasurementReceiver",
+    ),
+    (
+        "receiver",
+        "com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver",
+    ),
+    (
+        "receiver",
+        "com.google.firebase.iid.FirebaseInstanceIdReceiver",
+    ),
+    (
+        "provider",
+        "com.google.firebase.provider.FirebaseInitProvider",
+    ),
+    ("meta-data", "com.google.android.gms.games.APP_ID"),
+    ("meta-data", "com.google.android.gms.games.unityVersion"),
+];
+
+/// Native libraries `debloat` removes. Nothing links them (no `DT_NEEDED`); only the SDKs above
+/// load them, and none of those starts any more.
+pub const DEBLOAT_LIBS: &[&str] = &[
+    "lib/arm64-v8a/libFirebaseCppApp-5.6.1.so",
+    "lib/arm64-v8a/libFirebaseCppMessaging.so",
+    "lib/arm64-v8a/libSmartBeatNdk.so",
+    "lib/arm64-v8a/libgpg.so",
+];
+
+/// The bytes a stubbed method starts with.
+pub fn stub_bytes(s: known::Stub) -> Vec<u8> {
+    match s {
+        known::Stub::Ret => RET.to_le_bytes().to_vec(),
+        known::Stub::RetFalse => [MOV_W0_0, RET]
+            .iter()
+            .flat_map(|w| w.to_le_bytes())
+            .collect(),
+    }
+}
+
+/// Takes out the analytics, crash-reporting, ads, push and Play Games SDKs, which an offline
+/// game cannot use: their entry points in the game code return at once (SmartBeat, Adjust,
+/// Play Games activation and auto sign-in; the title's Play Games button stays hidden), their
+/// Android components and the push and phone-state permissions leave the manifest, and their
+/// native libraries leave the APK (about 8 MB).
+pub struct Debloat;
+
+impl Patch for Debloat {
+    fn id(&self) -> &'static str {
+        "debloat"
+    }
+    fn description(&self) -> &'static str {
+        "Remove Firebase, ads, SmartBeat, Adjust, Growth Push and Play Games (stubs, manifest, native libs)"
+    }
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        _cfg: &Config,
+        build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
+        // Check everything before changing anything.
+        let mut lib = apk.read(LIBIL2CPP_ARM64)?;
+        let (bo, bsha) = build.title_play_games_button;
+        let sites = build
+            .sdk_stubs
+            .iter()
+            .map(|&(o, sha, what, _)| (o, sha, what))
+            .chain([(
+                bo,
+                bsha,
+                "TitleUIController.SetupGooglePlayGamesLoginButton",
+            )]);
+        for (off, sha, what) in sites {
+            let window = lib.get(off..off + 32).ok_or("libil2cpp.so too short")?;
+            if sha256_hex(window) != sha {
+                return Err(format!("fingerprint mismatch at {what} ({off:#x})").into());
+            }
+        }
+        let data = apk.read(MANIFEST)?;
+        let mut x = crate::axml::Axml::parse(&data)?;
+        if crate::axml::Axml::parse(&x.write())? != x {
+            return Err("manifest does not round-trip; refusing".into());
+        }
+        let have = x.elements();
+        for (tag, name) in DEBLOAT_ELEMENTS {
+            let n = have.iter().filter(|(t, v)| t == tag && v == name).count();
+            if n != 1 {
+                return Err(format!("manifest: expected one <{tag} {name}>, found {n}").into());
+            }
+        }
+        for l in DEBLOAT_LIBS {
+            if !apk.exists(l) {
+                return Err(format!("no {l}").into());
+            }
+        }
+        // libil2cpp.so
+        for &(off, _, _, stub) in build.sdk_stubs {
+            let b = stub_bytes(stub);
+            lib[off..off + b.len()].copy_from_slice(&b);
+        }
+        lib[bo..bo + 4].copy_from_slice(&MOV_W8_0.to_le_bytes());
+        let compress = apk.is_compressed(LIBIL2CPP_ARM64);
+        apk.put(LIBIL2CPP_ARM64, lib, compress);
+        // manifest
+        let gone = x.remove_elements(|t, v| DEBLOAT_ELEMENTS.contains(&(t, v)));
+        let out = x.write();
+        let check = crate::axml::Axml::parse(&out)?;
+        let left = check.elements();
+        if let Some((t, v)) = left
+            .iter()
+            .find(|(t, v)| DEBLOAT_ELEMENTS.contains(&(t.as_str(), v.as_str())))
+        {
+            return Err(format!("post-check failed: <{t} {v}> still in the manifest").into());
+        }
+        for keep in [
+            ("application", ""),
+            (
+                "activity",
+                "com.google.firebase.MessagingUnityPlayerActivity",
+            ),
+        ] {
+            if !left.iter().any(|(t, v)| (t.as_str(), v.as_str()) == keep) {
+                return Err(format!("post-check failed: <{} {}> missing", keep.0, keep.1).into());
+            }
+        }
+        let compress = apk.is_compressed(MANIFEST);
+        apk.put(MANIFEST, out, compress);
+        // native libraries
+        for l in DEBLOAT_LIBS {
+            apk.remove(l);
+        }
+        Ok(format!(
+            "libil2cpp.so: {} SDK entry points stubbed, title Play Games button hidden; manifest: {} elements removed; {} native libraries removed",
+            build.sdk_stubs.len(),
+            gone.len(),
+            DEBLOAT_LIBS.len()
+        ))
+    }
+}
+
 /// English for the in-APK ClientMes table (boot, download and error messages), from the
 /// project's translation file; rows without a current translation stay as they are.
 pub struct TranslateClientMes;
@@ -767,6 +981,7 @@ pub fn all() -> Vec<Box<dyn Patch>> {
         Box::new(KeepFiles),
         Box::new(NoGrowthbeat),
         Box::new(TownDirectIp),
+        Box::new(Debloat),
         Box::new(EmbedServer),
         Box::new(TranslateClientMes),
         Box::new(TranslateApkText),
