@@ -49,6 +49,7 @@ ap.add_argument("--pose", help="local/content/team_pose.tsv (pose_models.py): he
 ap.add_argument("--extra", action="append", default=[],
                 help="research collections with exact statueId matches ({records:[{statueId, rarity, type, stats:{lv1,lv99,tree_max}, source, confidence}]}); "
                      "used for statues without a Gamerch match, medium/high confidence and plausible stats only")
+ap.add_argument("--accessed", help="access date for wiki records that carry none (default: today)")
 a = ap.parse_args()
 
 scan = json.load(open(a.scan))["statues"]
@@ -79,7 +80,7 @@ for sid, n in jp_name.items():
 
 STATUE_TYPE = {"Courage": 1, "Tactical": 2, "Fighting Spirit": 3, "Unity": 4, "Solitary": 5}
 GAMERCH_TYPE = {"勇気": 1, "知略": 2, "闘志": 3, "団結": 4, "孤高": 5}
-TODAY = datetime.date.today().isoformat()
+TODAY = a.accessed or datetime.date.today().isoformat()
 
 
 def norm(x):
@@ -283,11 +284,14 @@ for path in a.extra:
                 and full(st.get("lv1")) and full(st.get("lv99")) and plausible(st["lv1"], st["lv99"])):
             url = r["source"]["url"]
             site = ("Diamond Records Wiki (ShoutWiki)" if "shoutwiki" in url else
+                    "JoJo's Bizarre Encyclopedia (JoJoWiki)" if "jojowiki" in url else
                     "Gamerch ジョジョDR攻略Wiki (Wayback Machine)" if "gamerch" in url else None)
             if site:
                 r["source"]["site"] = site
                 if "shoutwiki" in url:
                     r["source"]["license"] = "CC BY-SA 3.0"
+                elif "jojowiki" in url:
+                    r["source"]["license"] = "CC BY-SA 4.0"
                 extra.setdefault(sid, r)
 for sid, g in gamerch.items():
     if sid in jp_name:
@@ -354,7 +358,7 @@ for s in obtainable:
                 "maxTree": w["max"] if all(w["max"].values()) else None,
                 "source": {"source": w["source"]["site"], "license": w["source"]["license"],
                            "page": w["source"]["page"], "revid": w["source"]["revid"],
-                           "accessed": datetime.date.today().isoformat()},
+                           "accessed": TODAY},
             })
             matched += 1
             by_source["shoutwiki"] += 1
@@ -445,9 +449,11 @@ doc = {
     "about": "Obtainable statues: identifiers from the player's own files (scan_statues.py), stats from community wikis where the match is unambiguous (each record cites its page). See docs/CONTENT.md.",
     "sources": [
         {"source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine snapshot)", "page": "https://jojodr.gamerch.com/",
-         "accessed": datetime.date.today().isoformat()},
+         "accessed": TODAY},
         {"source": "Diamond Records Wiki (ShoutWiki)", "page": "https://jojodiamondrecords.shoutwiki.com/", "license": "CC BY-SA 3.0",
-         "accessed": datetime.date.today().isoformat()},
+         "accessed": TODAY},
+        *([{"source": "JoJo's Bizarre Encyclopedia (JoJoWiki)", "page": "https://jojowiki.com/Diamond_Records",
+            "license": "CC BY-SA 4.0", "accessed": TODAY}] if any("jojowiki" in json.dumps(r.get("source")) for r in out) else []),
         {"source": "jdr-default", "note": "identifiers and model names from the player's files; defaults where no wiki match"},
     ],
     "statues": out,
