@@ -60,8 +60,13 @@
    "teamScale": 100,
    "teamPos": [
     2,
-    0,
+    15,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1000_01",
    "rarity": 3,
@@ -125,8 +130,13 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    19,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1000_02",
    "rarity": 4,
@@ -187,11 +197,16 @@
      "attr": "HAMON"
     }
    ],
-   "teamScale": 106,
+   "teamScale": 100,
    "teamPos": [
     1,
-    0,
+    31,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1000_03",
    "rarity": 5,
@@ -248,11 +263,16 @@
      "attr": "HAMON"
     }
    ],
-   "teamScale": 106,
+   "teamScale": 100,
    "teamPos": [
     1,
-    0,
+    31,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1000_04",
    "rarity": 6,
@@ -315,8 +335,13 @@
    "teamScale": 100,
    "teamPos": [
     -11,
-    0,
+    22,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1000_12",
    "rarity": 4,
@@ -367,8 +392,13 @@
    "teamScale": 100,
    "teamPos": [
     -21,
-    0,
+    7,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1000_13",
    "rarity": 5,
@@ -416,8 +446,13 @@
    "teamScale": 100,
    "teamPos": [
     -4,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1000_28",
    "rarity": 6,
@@ -477,8 +512,13 @@
    "teamScale": 100,
    "teamPos": [
     -10,
-    0,
+    3,
     0
+   ],
+   "myPagePos": [
+    35,
+    -140,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1010_01",
    "rarity": 3,
@@ -539,11 +579,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 101,
+   "teamScale": 100,
    "teamPos": [
     6,
-    0,
+    24,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1010_02",
    "rarity": 4,
@@ -604,11 +649,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 108,
+   "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    34,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1010_03",
    "rarity": 5,
@@ -668,8 +718,13 @@
    "teamScale": 100,
    "teamPos": [
     6,
-    0,
+    21,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1020_01",
    "rarity": 3,
@@ -733,8 +788,13 @@
    "teamScale": 100,
    "teamPos": [
     3,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1020_02",
    "rarity": 4,
@@ -783,11 +843,16 @@
      "attr": "HAMON"
     }
    ],
-   "teamScale": 121,
+   "teamScale": 109,
    "teamPos": [
     5,
-    0,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1020_03",
    "rarity": 5,
@@ -847,11 +912,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 121,
+   "teamScale": 109,
    "teamPos": [
     5,
-    0,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1020_04",
    "rarity": 6,
@@ -911,11 +981,16 @@
      "attr": "HAMON"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     5,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -149,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1080_01",
    "rarity": 3,
@@ -965,8 +1040,13 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1080_02",
    "rarity": 4,
@@ -1029,8 +1109,13 @@
    "teamScale": 100,
    "teamPos": [
     8,
-    0,
+    13,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1080_03",
    "rarity": 5,
@@ -1090,11 +1175,16 @@
      "attr": "HAMON"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     3,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -146,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1090_01",
    "rarity": 3,
@@ -1141,11 +1231,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     -2,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -147,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1090_02",
    "rarity": 4,
@@ -1192,11 +1287,16 @@
      "attr": "HAMON"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
-    3,
+    4,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1090_03",
    "rarity": 5,
@@ -1243,11 +1343,16 @@
      "attr": "HAMON"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
-    3,
+    4,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1090_13",
    "rarity": 5,
@@ -1303,11 +1408,16 @@
      "attr": "VMP"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -3,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1100_01",
    "rarity": 3,
@@ -1360,6 +1470,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -146,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_1100_02",
    "rarity": 4,
    "statueType": null,
@@ -1405,11 +1520,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -1,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1100_03",
    "rarity": 5,
@@ -1444,11 +1564,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -3,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1100_11",
    "rarity": 3,
@@ -1489,6 +1614,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -146,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_1100_12",
    "rarity": 4,
    "statueType": null,
@@ -1522,11 +1652,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -1,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1100_13",
    "rarity": 5,
@@ -1570,11 +1705,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -1,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1100_14",
    "rarity": 6,
@@ -1622,11 +1762,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -5,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1100_28",
    "rarity": 6,
@@ -1683,11 +1828,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 116,
+   "teamScale": 104,
    "teamPos": [
     0,
-    0,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -102,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1110_01",
    "rarity": 3,
@@ -1737,8 +1887,13 @@
    "teamScale": 138,
    "teamPos": [
     2,
-    26,
+    49,
     0
+   ],
+   "myPagePos": [
+    35,
+    -102,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1110_02",
    "rarity": 4,
@@ -1785,11 +1940,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 125,
+   "teamScale": 112,
    "teamPos": [
     4,
-    0,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -102,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1110_03",
    "rarity": 5,
@@ -1839,8 +1999,13 @@
    "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    6,
     0
+   ],
+   "myPagePos": [
+    35,
+    -137,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1120_01",
    "rarity": 3,
@@ -1887,11 +2052,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 113,
+   "teamScale": 101,
    "teamPos": [
-    -9,
-    0,
+    -8,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -129,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1120_02",
    "rarity": 4,
@@ -1943,6 +2113,11 @@
     -2,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -144,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1120_03",
    "rarity": 5,
@@ -2003,11 +2178,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 88,
+   "teamScale": 94,
    "teamPos": [
     -1,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -176,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1130_01",
    "rarity": 3,
@@ -2054,11 +2234,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 88,
+   "teamScale": 94,
    "teamPos": [
     3,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -176,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1130_02",
    "rarity": 4,
@@ -2121,8 +2306,13 @@
    "teamScale": 100,
    "teamPos": [
     -23,
-    0,
+    18,
     0
+   ],
+   "myPagePos": [
+    35,
+    -176,
+    180
    ],
    "resultComment": null,
    "rarity": 5,
@@ -2186,8 +2376,13 @@
    "teamScale": 100,
    "teamPos": [
     -23,
-    0,
+    18,
     0
+   ],
+   "myPagePos": [
+    35,
+    -176,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1130_04",
    "rarity": 6,
@@ -2250,8 +2445,13 @@
    "teamScale": 100,
    "teamPos": [
     -22,
-    0,
+    15,
     0
+   ],
+   "myPagePos": [
+    35,
+    -176,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1130_13",
    "rarity": 5,
@@ -2311,8 +2511,13 @@
    "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    6,
     0
+   ],
+   "myPagePos": [
+    35,
+    -137,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2000_01",
    "rarity": 3,
@@ -2376,8 +2581,13 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    15,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2000_02",
    "rarity": 4,
@@ -2441,8 +2651,13 @@
    "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    22,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2000_03",
    "rarity": 5,
@@ -2505,8 +2720,13 @@
    "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    22,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2000_04",
    "rarity": 6,
@@ -2566,11 +2786,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     9,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -149,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2000_12",
    "rarity": 4,
@@ -2608,8 +2833,13 @@
    "teamScale": 100,
    "teamPos": [
     23,
-    0,
+    20,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2000_28",
    "rarity": 6,
@@ -2669,8 +2899,13 @@
    "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2010_01",
    "rarity": 3,
@@ -2734,8 +2969,13 @@
    "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    21,
     0
+   ],
+   "myPagePos": [
+    35,
+    -127,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2010_02",
    "rarity": 4,
@@ -2795,8 +3035,13 @@
    "teamScale": 100,
    "teamPos": [
     -4,
-    0,
+    3,
     0
+   ],
+   "myPagePos": [
+    35,
+    -140,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2010_03",
    "rarity": 5,
@@ -2860,8 +3105,13 @@
    "teamScale": 100,
    "teamPos": [
     -4,
-    0,
+    3,
     0
+   ],
+   "myPagePos": [
+    35,
+    -140,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2010_04",
    "rarity": 6,
@@ -2924,8 +3174,13 @@
    "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    4,
     0
+   ],
+   "myPagePos": [
+    35,
+    -139,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2010_13",
    "rarity": 5,
@@ -2978,6 +3233,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -154,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2010_28",
    "rarity": 6,
@@ -3037,8 +3297,13 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -131,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2020_01",
    "rarity": 3,
@@ -3098,8 +3363,13 @@
    "teamScale": 100,
    "teamPos": [
     8,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2020_02",
    "rarity": 4,
@@ -3163,8 +3433,13 @@
    "teamScale": 100,
    "teamPos": [
     -13,
-    0,
+    15,
     0
+   ],
+   "myPagePos": [
+    35,
+    -128,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2020_03",
    "rarity": 5,
@@ -3228,8 +3503,13 @@
    "teamScale": 100,
    "teamPos": [
     -13,
-    0,
+    15,
     0
+   ],
+   "myPagePos": [
+    35,
+    -128,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2020_04",
    "rarity": 6,
@@ -3280,8 +3560,13 @@
    "teamScale": 100,
    "teamPos": [
     -4,
-    0,
+    5,
     0
+   ],
+   "myPagePos": [
+    35,
+    -138,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2040_01",
    "rarity": 3,
@@ -3316,11 +3601,16 @@
      "attr": "HAMON"
     }
    ],
-   "teamScale": 103,
+   "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    28,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2040_02",
    "rarity": 4,
@@ -3358,8 +3648,13 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2040_03",
    "rarity": 5,
@@ -3411,6 +3706,11 @@
     -5,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -146,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2050_01",
    "rarity": 3,
@@ -3471,11 +3771,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 111,
+   "teamScale": 100,
    "teamPos": [
-    11,
-    0,
+    10,
+    37,
     0
+   ],
+   "myPagePos": [
+    35,
+    -139,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2050_02",
    "rarity": 4,
@@ -3535,8 +3840,13 @@
    "teamScale": 100,
    "teamPos": [
     -8,
-    0,
+    20,
     0
+   ],
+   "myPagePos": [
+    35,
+    -139,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2050_03",
    "rarity": 5,
@@ -3600,8 +3910,13 @@
    "teamScale": 100,
    "teamPos": [
     -8,
-    0,
+    20,
     0
+   ],
+   "myPagePos": [
+    35,
+    -139,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2050_04",
    "rarity": 6,
@@ -3667,6 +3982,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -145,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_2050_12",
    "rarity": 4,
    "statueType": 5,
@@ -3722,11 +4042,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 119,
+   "teamScale": 106,
    "teamPos": [
     -4,
-    0,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -134,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2060_01",
    "rarity": 3,
@@ -3793,6 +4118,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -146,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_2060_02",
    "rarity": 4,
    "statueType": 1,
@@ -3848,11 +4178,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 107,
+   "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    32,
     0
+   ],
+   "myPagePos": [
+    35,
+    -134,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2060_03",
    "rarity": 5,
@@ -3918,6 +4253,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -143,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_2070_01",
    "rarity": 3,
    "statueType": null,
@@ -3966,8 +4306,13 @@
    "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    8,
     0
+   ],
+   "myPagePos": [
+    35,
+    -138,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2070_02",
    "rarity": 4,
@@ -4014,11 +4359,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 104,
+   "teamScale": 100,
    "teamPos": [
     -10,
-    0,
+    28,
     0
+   ],
+   "myPagePos": [
+    35,
+    -138,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2070_03",
    "rarity": 5,
@@ -4078,8 +4428,13 @@
    "teamScale": 100,
    "teamPos": [
     9,
-    0,
+    9,
     0
+   ],
+   "myPagePos": [
+    35,
+    -134,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2080_01",
    "rarity": 3,
@@ -4129,8 +4484,13 @@
    "teamScale": 100,
    "teamPos": [
     10,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -132,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2080_02",
    "rarity": 4,
@@ -4177,11 +4537,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 108,
+   "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    34,
     0
+   ],
+   "myPagePos": [
+    35,
+    -128,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2080_03",
    "rarity": 5,
@@ -4245,8 +4610,13 @@
    "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    3,
     0
+   ],
+   "myPagePos": [
+    35,
+    -140,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2081_11",
    "rarity": 3,
@@ -4294,11 +4664,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 108,
+   "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    33,
     0
+   ],
+   "myPagePos": [
+    35,
+    -128,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2081_12",
    "rarity": 4,
@@ -4349,8 +4724,13 @@
    "teamScale": 50,
    "teamPos": [
     -1,
-    62,
+    85,
     0
+   ],
+   "myPagePos": [
+    35,
+    -142,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2081_13",
    "rarity": 5,
@@ -4414,8 +4794,13 @@
    "teamScale": 50,
    "teamPos": [
     -1,
-    62,
+    85,
     0
+   ],
+   "myPagePos": [
+    35,
+    -142,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2081_14",
    "rarity": 6,
@@ -4475,11 +4860,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 103,
+   "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    27,
     0
+   ],
+   "myPagePos": [
+    35,
+    -143,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2100_03",
    "rarity": 5,
@@ -4529,6 +4919,11 @@
     -5,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -144,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2110_01",
    "rarity": 3,
@@ -4589,11 +4984,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 105,
+   "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    30,
     0
+   ],
+   "myPagePos": [
+    35,
+    -132,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2110_02",
    "rarity": 4,
@@ -4653,8 +5053,13 @@
    "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    1,
     0
+   ],
+   "myPagePos": [
+    35,
+    -142,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2110_03",
    "rarity": 5,
@@ -4720,6 +5125,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -143,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_2111_01",
    "rarity": 3,
    "statueType": null,
@@ -4768,8 +5178,13 @@
    "teamScale": 100,
    "teamPos": [
     -1,
-    0,
+    21,
     0
+   ],
+   "myPagePos": [
+    35,
+    -132,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2111_02",
    "rarity": 4,
@@ -4819,8 +5234,13 @@
    "teamScale": 100,
    "teamPos": [
     -11,
-    0,
+    14,
     0
+   ],
+   "myPagePos": [
+    35,
+    -132,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2111_03",
    "rarity": 5,
@@ -4882,11 +5302,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     14,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -147,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3000_01",
    "rarity": 3,
@@ -4948,11 +5373,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 90,
+   "teamScale": 95,
    "teamPos": [
-    -19,
+    -20,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -164,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3000_02",
    "rarity": 4,
@@ -5014,11 +5444,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -1,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3000_03",
    "rarity": 5,
@@ -5080,11 +5515,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -1,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3000_04",
    "rarity": 6,
@@ -5151,6 +5591,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -143,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_3000_13",
    "rarity": 5,
    "statueType": 5,
@@ -5207,11 +5652,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -146,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3001_03",
    "rarity": 5,
@@ -5259,11 +5709,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -146,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3001_04",
    "rarity": 6,
@@ -5327,8 +5782,13 @@
    "teamScale": 72,
    "teamPos": [
     0,
-    16,
+    39,
     0
+   ],
+   "myPagePos": [
+    35,
+    -153,
+    180
    ],
    "resultComment": null,
    "rarity": null,
@@ -5375,11 +5835,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     4,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -147,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3002_03",
    "rarity": 5,
@@ -5440,11 +5905,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     -3,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -147,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3010_01",
    "rarity": 3,
@@ -5508,8 +5978,13 @@
    "teamScale": 142,
    "teamPos": [
     -20,
-    22,
+    45,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3010_02",
    "rarity": 4,
@@ -5570,11 +6045,16 @@
      "attr": "NONE"
     }
    ],
-   "teamScale": 106,
+   "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    31,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3010_03",
    "rarity": 5,
@@ -5637,8 +6117,13 @@
    "teamScale": 96,
    "teamPos": [
     -17,
-    0,
+    3,
     0
+   ],
+   "myPagePos": [
+    35,
+    -147,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3010_13",
    "rarity": 5,
@@ -5703,8 +6188,13 @@
    "teamScale": 100,
    "teamPos": [
     -28,
-    0,
+    1,
     0
+   ],
+   "myPagePos": [
+    35,
+    -142,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3020_01",
    "rarity": 3,
@@ -5765,8 +6255,13 @@
    "teamScale": 100,
    "teamPos": [
     12,
-    0,
+    21,
     0
+   ],
+   "myPagePos": [
+    35,
+    -129,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3020_02",
    "rarity": 4,
@@ -5831,8 +6326,13 @@
    "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    3,
     0
+   ],
+   "myPagePos": [
+    35,
+    -140,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3020_03",
    "rarity": 5,
@@ -5882,11 +6382,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 102,
+   "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    25,
     0
+   ],
+   "myPagePos": [
+    35,
+    -129,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3020_12",
    "rarity": 4,
@@ -5937,8 +6442,13 @@
    "teamScale": 100,
    "teamPos": [
     -4,
-    0,
+    3,
     0
+   ],
+   "myPagePos": [
+    35,
+    -140,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3020_13",
    "rarity": 5,
@@ -5987,8 +6497,13 @@
    "teamScale": 100,
    "teamPos": [
     -5,
-    0,
+    6,
     0
+   ],
+   "myPagePos": [
+    35,
+    -137,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3020_28",
    "rarity": 6,
@@ -6049,8 +6564,13 @@
    "teamScale": 100,
    "teamPos": [
     -21,
-    0,
+    8,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3030_01",
    "rarity": 3,
@@ -6115,8 +6635,13 @@
    "teamScale": 100,
    "teamPos": [
     -15,
-    0,
+    9,
     0
+   ],
+   "myPagePos": [
+    35,
+    -134,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3030_02",
    "rarity": 4,
@@ -6181,8 +6706,13 @@
    "teamScale": 100,
    "teamPos": [
     4,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3030_03",
    "rarity": 5,
@@ -6246,8 +6776,13 @@
    "teamScale": 100,
    "teamPos": [
     -11,
-    0,
+    7,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3030_13",
    "rarity": 5,
@@ -6312,8 +6847,13 @@
    "teamScale": 100,
    "teamPos": [
     -11,
-    0,
+    7,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3030_14",
    "rarity": 6,
@@ -6377,8 +6917,13 @@
    "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3031_03",
    "rarity": 5,
@@ -6442,8 +6987,13 @@
    "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3031_04",
    "rarity": 6,
@@ -6498,6 +7048,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -145,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_3040_01",
    "rarity": 3,
    "statueType": 1,
@@ -6551,6 +7106,11 @@
     -17,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -145,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3040_02",
    "rarity": 4,
@@ -6612,11 +7172,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     23,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -146,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3040_03",
    "rarity": 5,
@@ -6677,11 +7242,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     23,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -146,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3040_04",
    "rarity": 6,
@@ -6742,11 +7312,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 110,
+   "teamScale": 100,
    "teamPos": [
     -4,
-    0,
+    36,
     0
+   ],
+   "myPagePos": [
+    35,
+    -131,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3040_13",
    "rarity": 5,
@@ -6807,11 +7382,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     9,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -146,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3041_03",
    "rarity": 5,
@@ -6859,11 +7439,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     9,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -146,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3041_04",
    "rarity": 6,
@@ -6914,8 +7499,13 @@
    "teamScale": 150,
    "teamPos": [
     27,
-    106,
+    120,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3050_01",
    "rarity": 3,
@@ -6980,8 +7570,13 @@
    "teamScale": 150,
    "teamPos": [
     4,
-    110,
+    120,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3050_02",
    "rarity": 4,
@@ -7046,8 +7641,13 @@
    "teamScale": 150,
    "teamPos": [
     38,
-    79,
+    102,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3050_03",
    "rarity": 5,
@@ -7099,8 +7699,13 @@
    "teamScale": 150,
    "teamPos": [
     38,
-    79,
+    102,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3050_04",
    "rarity": 6,
@@ -7158,11 +7763,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 129,
+   "teamScale": 115,
    "teamPos": [
-    9,
-    0,
+    8,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -94,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3060_01",
    "rarity": 3,
@@ -7210,11 +7820,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 141,
+   "teamScale": 126,
    "teamPos": [
-    -11,
-    0,
+    -10,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -94,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3060_02",
    "rarity": 4,
@@ -7265,8 +7880,13 @@
    "teamScale": 150,
    "teamPos": [
     5,
-    119,
+    120,
     0
+   ],
+   "myPagePos": [
+    35,
+    -94,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3060_03",
    "rarity": 5,
@@ -7327,11 +7947,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 97,
+   "teamScale": 100,
    "teamPos": [
-    -21,
+    -22,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -149,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3070_01",
    "rarity": 3,
@@ -7379,11 +8004,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -5,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3070_02",
    "rarity": 4,
@@ -7436,6 +8066,11 @@
     12,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -145,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3070_03",
    "rarity": 5,
@@ -7495,8 +8130,13 @@
    "teamScale": 100,
    "teamPos": [
     3,
-    0,
+    3,
     0
+   ],
+   "myPagePos": [
+    35,
+    -140,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3090_01",
    "rarity": 3,
@@ -7546,8 +8186,13 @@
    "teamScale": 150,
    "teamPos": [
     -28,
-    26,
+    49,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3090_02",
    "rarity": 4,
@@ -7597,8 +8242,13 @@
    "teamScale": 100,
    "teamPos": [
     -5,
-    0,
+    19,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3090_03",
    "rarity": 5,
@@ -7662,8 +8312,13 @@
    "teamScale": 100,
    "teamPos": [
     -1,
-    0,
+    9,
     0
+   ],
+   "myPagePos": [
+    35,
+    -152,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3100_01",
    "rarity": 3,
@@ -7724,8 +8379,13 @@
    "teamScale": 100,
    "teamPos": [
     -1,
-    0,
+    5,
     0
+   ],
+   "myPagePos": [
+    35,
+    -152,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3100_02",
    "rarity": 4,
@@ -7783,11 +8443,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 101,
+   "teamScale": 100,
    "teamPos": [
     -11,
-    0,
+    25,
     0
+   ],
+   "myPagePos": [
+    35,
+    -152,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3100_03",
    "rarity": 5,
@@ -7852,8 +8517,13 @@
    "teamScale": 100,
    "teamPos": [
     -8,
-    0,
+    5,
     0
+   ],
+   "myPagePos": [
+    35,
+    -152,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3100_12",
    "rarity": 4,
@@ -7904,8 +8574,13 @@
    "teamScale": 100,
    "teamPos": [
     -18,
-    0,
+    11,
     0
+   ],
+   "myPagePos": [
+    35,
+    -132,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3110_01",
    "rarity": 3,
@@ -7955,8 +8630,13 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    5,
     0
+   ],
+   "myPagePos": [
+    35,
+    -138,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3110_02",
    "rarity": 4,
@@ -8016,8 +8696,13 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    14,
     0
+   ],
+   "myPagePos": [
+    35,
+    -129,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3110_03",
    "rarity": 5,
@@ -8067,8 +8752,13 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    14,
     0
+   ],
+   "myPagePos": [
+    35,
+    -129,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3110_13",
    "rarity": 5,
@@ -8131,8 +8821,13 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    14,
     0
+   ],
+   "myPagePos": [
+    35,
+    -129,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3110_14",
    "rarity": 6,
@@ -8196,8 +8891,13 @@
    "teamScale": 150,
    "teamPos": [
     0,
-    50,
+    73,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3150_01",
    "rarity": 3,
@@ -8248,8 +8948,13 @@
    "teamScale": 150,
    "teamPos": [
     1,
-    29,
+    52,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3150_02",
    "rarity": 4,
@@ -8310,8 +9015,13 @@
    "teamScale": 150,
    "teamPos": [
     -12,
-    56,
+    80,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3150_03",
    "rarity": 5,
@@ -8376,8 +9086,13 @@
    "teamScale": 150,
    "teamPos": [
     -12,
-    56,
+    80,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3150_04",
    "rarity": 6,
@@ -8438,11 +9153,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 149,
    "teamPos": [
     -6,
-    14,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -62,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3150_12",
    "rarity": 4,
@@ -8506,8 +9226,13 @@
    "teamScale": 150,
    "teamPos": [
     -7,
-    51,
+    74,
     0
+   ],
+   "myPagePos": [
+    35,
+    -122,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3210_01",
    "rarity": 3,
@@ -8569,11 +9294,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 141,
+   "teamScale": 126,
    "teamPos": [
     0,
-    0,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -122,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3210_02",
    "rarity": 4,
@@ -8631,11 +9361,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 148,
    "teamPos": [
     1,
-    13,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -122,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3210_03",
    "rarity": 5,
@@ -8686,8 +9421,13 @@
    "teamScale": 100,
    "teamPos": [
     -1,
-    0,
+    6,
     0
+   ],
+   "myPagePos": [
+    35,
+    -137,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3210_12",
    "rarity": 4,
@@ -8749,11 +9489,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 148,
    "teamPos": [
     2,
-    13,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -122,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3210_13",
    "rarity": 5,
@@ -8814,8 +9559,13 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    15,
     0
+   ],
+   "myPagePos": [
+    35,
+    -128,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3240_11",
    "rarity": 3,
@@ -8863,11 +9613,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 106,
+   "teamScale": 100,
    "teamPos": [
-    -5,
-    0,
+    -4,
+    31,
     0
+   ],
+   "myPagePos": [
+    35,
+    -120,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3240_12",
    "rarity": 4,
@@ -8918,8 +9673,13 @@
    "teamScale": 84,
    "teamPos": [
     -6,
-    15,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -129,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3240_13",
    "rarity": 5,
@@ -8975,11 +9735,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 103,
+   "teamScale": 100,
    "teamPos": [
     2,
-    0,
+    27,
     0
+   ],
+   "myPagePos": [
+    35,
+    -116,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3270_01",
    "rarity": 3,
@@ -9026,11 +9791,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 113,
+   "teamScale": 101,
    "teamPos": [
-    -7,
-    0,
+    -6,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -107,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3270_02",
    "rarity": 4,
@@ -9077,11 +9847,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 124,
+   "teamScale": 111,
    "teamPos": [
-    -6,
-    0,
+    -5,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -107,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3270_03",
    "rarity": 5,
@@ -9142,11 +9917,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 124,
+   "teamScale": 111,
    "teamPos": [
-    -6,
-    0,
+    -5,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -107,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3270_04",
    "rarity": 6,
@@ -9200,6 +9980,11 @@
     17,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -143,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3300_01",
    "rarity": 3,
@@ -9264,8 +10049,13 @@
    "teamScale": 65,
    "teamPos": [
     -4,
-    77,
+    100,
     0
+   ],
+   "myPagePos": [
+    35,
+    -79,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3300_02",
    "rarity": 4,
@@ -9330,8 +10120,13 @@
    "teamScale": 150,
    "teamPos": [
     15,
-    52,
+    75,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3300_03",
    "rarity": 5,
@@ -9396,8 +10191,13 @@
    "teamScale": 150,
    "teamPos": [
     15,
-    52,
+    75,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3300_04",
    "rarity": 6,
@@ -9459,11 +10259,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 102,
+   "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    25,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3321_03",
    "rarity": 5,
@@ -9528,8 +10333,13 @@
    "teamScale": 100,
    "teamPos": [
     -7,
-    0,
+    1,
     0
+   ],
+   "myPagePos": [
+    35,
+    -142,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3321_18",
    "rarity": 6,
@@ -9578,8 +10388,13 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    6,
     0
+   ],
+   "myPagePos": [
+    35,
+    -137,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3322_08",
    "rarity": 6,
@@ -9625,11 +10440,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 113,
+   "teamScale": 101,
    "teamPos": [
-    -27,
-    0,
+    -25,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3323_08",
    "rarity": 6,
@@ -9693,8 +10513,13 @@
    "teamScale": 100,
    "teamPos": [
     -4,
-    0,
+    4,
     0
+   ],
+   "myPagePos": [
+    35,
+    -139,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3330_01",
    "rarity": 3,
@@ -9761,6 +10586,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -126,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_3330_02",
    "rarity": 4,
    "statueType": null,
@@ -9810,8 +10640,13 @@
    "teamScale": 100,
    "teamPos": [
     -13,
-    0,
+    9,
     0
+   ],
+   "myPagePos": [
+    35,
+    -134,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3330_03",
    "rarity": 5,
@@ -9875,8 +10710,13 @@
    "teamScale": 100,
    "teamPos": [
     -13,
-    0,
+    9,
     0
+   ],
+   "myPagePos": [
+    35,
+    -134,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3330_04",
    "rarity": 6,
@@ -9940,8 +10780,13 @@
    "teamScale": 100,
    "teamPos": [
     -10,
-    0,
+    11,
     0
+   ],
+   "myPagePos": [
+    35,
+    -132,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4000_01",
    "rarity": 3,
@@ -10005,8 +10850,13 @@
    "teamScale": 100,
    "teamPos": [
     -19,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4000_02",
    "rarity": 4,
@@ -10064,11 +10914,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 109,
+   "teamScale": 100,
    "teamPos": [
-    19,
-    0,
+    17,
+    35,
     0
+   ],
+   "myPagePos": [
+    35,
+    -123,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4000_03",
    "rarity": 5,
@@ -10129,11 +10984,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 109,
+   "teamScale": 100,
    "teamPos": [
-    19,
-    0,
+    17,
+    35,
     0
+   ],
+   "myPagePos": [
+    35,
+    -123,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4000_04",
    "rarity": 6,
@@ -10197,8 +11057,13 @@
    "teamScale": 100,
    "teamPos": [
     16,
-    0,
+    2,
     0
+   ],
+   "myPagePos": [
+    35,
+    -141,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4000_12",
    "rarity": 4,
@@ -10247,8 +11112,13 @@
    "teamScale": 100,
    "teamPos": [
     8,
-    0,
+    4,
     0
+   ],
+   "myPagePos": [
+    35,
+    -139,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4000_18",
    "rarity": 6,
@@ -10296,8 +11166,13 @@
    "teamScale": 100,
    "teamPos": [
     15,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4000_23",
    "rarity": 5,
@@ -10346,11 +11221,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 128,
+   "teamScale": 115,
    "teamPos": [
-    8,
-    0,
+    7,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -88,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4010_01",
    "rarity": 3,
@@ -10412,11 +11292,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 130,
+   "teamScale": 116,
    "teamPos": [
     -6,
-    0,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -87,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4010_13",
    "rarity": 5,
@@ -10478,11 +11363,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 147,
+   "teamScale": 131,
    "teamPos": [
     4,
-    0,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -84,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4011_02",
    "rarity": 4,
@@ -10540,11 +11430,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 125,
+   "teamScale": 112,
    "teamPos": [
-    11,
-    0,
+    10,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -91,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4011_03",
    "rarity": 5,
@@ -10606,11 +11501,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 134,
    "teamPos": [
-    12,
-    0,
+    11,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -84,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4011_15",
    "rarity": 3,
@@ -10671,11 +11571,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 134,
    "teamPos": [
-    12,
-    0,
+    11,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -84,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4011_16",
    "rarity": 4,
@@ -10736,11 +11641,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 134,
    "teamPos": [
-    12,
-    0,
+    11,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -84,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4011_17",
    "rarity": 5,
@@ -10801,11 +11711,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 134,
    "teamPos": [
-    12,
-    0,
+    11,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -84,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4011_18",
    "rarity": 6,
@@ -10866,11 +11781,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 136,
    "teamPos": [
-    16,
-    2,
+    14,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -91,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4012_03",
    "rarity": 5,
@@ -10932,11 +11852,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 141,
    "teamPos": [
-    -19,
-    7,
+    -18,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -91,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4012_11",
    "rarity": 3,
@@ -11001,8 +11926,13 @@
    "teamScale": 100,
    "teamPos": [
     11,
-    0,
+    9,
     0
+   ],
+   "myPagePos": [
+    35,
+    -134,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4020_01",
    "rarity": 3,
@@ -11067,8 +11997,13 @@
    "teamScale": 100,
    "teamPos": [
     -23,
-    0,
+    16,
     0
+   ],
+   "myPagePos": [
+    35,
+    -127,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4020_02",
    "rarity": 4,
@@ -11130,11 +12065,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 141,
+   "teamScale": 127,
    "teamPos": [
-    5,
-    0,
+    4,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -118,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4020_03",
    "rarity": 5,
@@ -11195,11 +12135,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 141,
+   "teamScale": 127,
    "teamPos": [
-    5,
-    0,
+    4,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -118,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4020_04",
    "rarity": 6,
@@ -11260,8 +12205,13 @@
    "teamScale": 100,
    "teamPos": [
     -16,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -131,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4020_13",
    "rarity": 5,
@@ -11314,8 +12264,13 @@
    "teamScale": 100,
    "teamPos": [
     1,
-    0,
+    16,
     0
+   ],
+   "myPagePos": [
+    35,
+    -127,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4030_01",
    "rarity": 3,
@@ -11377,11 +12332,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 130,
+   "teamScale": 116,
    "teamPos": [
-    -4,
-    0,
+    -3,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -115,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4030_02",
    "rarity": 4,
@@ -11442,8 +12402,13 @@
    "teamScale": 100,
    "teamPos": [
     9,
-    0,
+    17,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4030_03",
    "rarity": 5,
@@ -11508,8 +12473,13 @@
    "teamScale": 100,
    "teamPos": [
     9,
-    0,
+    17,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4030_04",
    "rarity": 6,
@@ -11574,8 +12544,13 @@
    "teamScale": 100,
    "teamPos": [
     1,
-    0,
+    16,
     0
+   ],
+   "myPagePos": [
+    35,
+    -127,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4031_18",
    "rarity": 6,
@@ -11642,6 +12617,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -145,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_4040_01",
    "rarity": 3,
    "statueType": 2,
@@ -11702,11 +12682,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -21,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4040_12",
    "rarity": 4,
@@ -11770,8 +12755,13 @@
    "teamScale": 100,
    "teamPos": [
     16,
-    0,
+    7,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4040_13",
    "rarity": 5,
@@ -11831,8 +12821,13 @@
    "teamScale": 100,
    "teamPos": [
     16,
-    0,
+    7,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4040_14",
    "rarity": 6,
@@ -11893,11 +12888,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     -2,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -146,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4042_03",
    "rarity": 5,
@@ -11946,11 +12946,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
-    14,
+    15,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4043_08",
    "rarity": 6,
@@ -11998,8 +13003,13 @@
    "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    21,
     0
+   ],
+   "myPagePos": [
+    35,
+    -122,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4080_01",
    "rarity": 3,
@@ -12048,11 +13058,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 106,
+   "teamScale": 100,
    "teamPos": [
-    8,
-    0,
+    7,
+    31,
     0
+   ],
+   "myPagePos": [
+    35,
+    -112,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4080_02",
    "rarity": 4,
@@ -12116,8 +13131,13 @@
    "teamScale": 100,
    "teamPos": [
     -13,
-    0,
+    19,
     0
+   ],
+   "myPagePos": [
+    35,
+    -124,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4080_03",
    "rarity": 5,
@@ -12164,8 +13184,13 @@
    "teamScale": 100,
    "teamPos": [
     -13,
-    0,
+    19,
     0
+   ],
+   "myPagePos": [
+    35,
+    -124,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4080_04",
    "rarity": 6,
@@ -12226,11 +13251,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 108,
+   "teamScale": 100,
    "teamPos": [
-    8,
-    0,
+    7,
+    34,
     0
+   ],
+   "myPagePos": [
+    35,
+    -109,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4080_13",
    "rarity": 5,
@@ -12295,8 +13325,13 @@
    "teamScale": 150,
    "teamPos": [
     0,
-    20,
+    43,
     0
+   ],
+   "myPagePos": [
+    35,
+    -60,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4110_01",
    "rarity": 3,
@@ -12360,8 +13395,13 @@
    "teamScale": 150,
    "teamPos": [
     -1,
-    21,
+    44,
     0
+   ],
+   "myPagePos": [
+    35,
+    -60,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4110_02",
    "rarity": 4,
@@ -12410,8 +13450,13 @@
    "teamScale": 150,
    "teamPos": [
     4,
-    19,
+    42,
     0
+   ],
+   "myPagePos": [
+    35,
+    -60,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4110_13",
    "rarity": 5,
@@ -12463,8 +13508,13 @@
    "teamScale": 150,
    "teamPos": [
     4,
-    19,
+    42,
     0
+   ],
+   "myPagePos": [
+    35,
+    -60,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4110_14",
    "rarity": 6,
@@ -12528,8 +13578,13 @@
    "teamScale": 100,
    "teamPos": [
     17,
-    0,
+    13,
     0
+   ],
+   "myPagePos": [
+    35,
+    -130,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4130_01",
    "rarity": 3,
@@ -12580,8 +13635,13 @@
    "teamScale": 100,
    "teamPos": [
     22,
-    0,
+    16,
     0
+   ],
+   "myPagePos": [
+    35,
+    -127,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4130_02",
    "rarity": 4,
@@ -12632,8 +13692,13 @@
    "teamScale": 100,
    "teamPos": [
     22,
-    0,
+    16,
     0
+   ],
+   "myPagePos": [
+    35,
+    -127,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4130_03",
    "rarity": 5,
@@ -12691,11 +13756,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 108,
+   "teamScale": 100,
    "teamPos": [
     2,
-    0,
+    34,
     0
+   ],
+   "myPagePos": [
+    35,
+    -115,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4130_13",
    "rarity": 5,
@@ -12755,8 +13825,13 @@
    "teamScale": 100,
    "teamPos": [
     17,
-    0,
+    13,
     0
+   ],
+   "myPagePos": [
+    35,
+    -130,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4130_25",
    "rarity": 3,
@@ -12820,8 +13895,13 @@
    "teamScale": 100,
    "teamPos": [
     17,
-    0,
+    13,
     0
+   ],
+   "myPagePos": [
+    35,
+    -130,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4130_26",
    "rarity": 4,
@@ -12885,8 +13965,13 @@
    "teamScale": 100,
    "teamPos": [
     17,
-    0,
+    13,
     0
+   ],
+   "myPagePos": [
+    35,
+    -130,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4130_27",
    "rarity": 5,
@@ -12950,8 +14035,13 @@
    "teamScale": 100,
    "teamPos": [
     17,
-    0,
+    13,
     0
+   ],
+   "myPagePos": [
+    35,
+    -130,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4130_28",
    "rarity": 6,
@@ -13012,11 +14102,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 97,
+   "teamScale": 100,
    "teamPos": [
     4,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -149,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4150_01",
    "rarity": 3,
@@ -13084,6 +14179,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -144,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_4150_02",
    "rarity": 4,
    "statueType": 3,
@@ -13143,8 +14243,13 @@
    "teamScale": 150,
    "teamPos": [
     -10,
-    91,
+    114,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4150_03",
    "rarity": 5,
@@ -13212,6 +14317,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -144,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_4160_01",
    "rarity": 3,
    "statueType": 2,
@@ -13275,8 +14385,13 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    2,
     0
+   ],
+   "myPagePos": [
+    35,
+    -141,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4160_02",
    "rarity": 4,
@@ -13337,8 +14452,13 @@
    "teamScale": 97,
    "teamPos": [
     -9,
-    0,
+    6,
     0
+   ],
+   "myPagePos": [
+    35,
+    -142,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4160_03",
    "rarity": 5,
@@ -13403,8 +14523,13 @@
    "teamScale": 100,
    "teamPos": [
     -11,
-    0,
+    4,
     0
+   ],
+   "myPagePos": [
+    35,
+    -139,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4160_12",
    "rarity": 4,
@@ -13455,8 +14580,13 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    21,
     0
+   ],
+   "myPagePos": [
+    35,
+    -122,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4170_01",
    "rarity": 3,
@@ -13507,8 +14637,13 @@
    "teamScale": 100,
    "teamPos": [
     16,
-    0,
+    16,
     0
+   ],
+   "myPagePos": [
+    35,
+    -127,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4170_02",
    "rarity": 4,
@@ -13566,11 +14701,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 131,
+   "teamScale": 117,
    "teamPos": [
-    18,
-    0,
+    16,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -116,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4170_03",
    "rarity": 5,
@@ -13634,8 +14774,13 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    21,
     0
+   ],
+   "myPagePos": [
+    35,
+    -122,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4170_15",
    "rarity": 3,
@@ -13699,8 +14844,13 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    21,
     0
+   ],
+   "myPagePos": [
+    35,
+    -122,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4170_16",
    "rarity": 4,
@@ -13764,8 +14914,13 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    21,
     0
+   ],
+   "myPagePos": [
+    35,
+    -122,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4170_17",
    "rarity": 5,
@@ -13829,8 +14984,13 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    21,
     0
+   ],
+   "myPagePos": [
+    35,
+    -122,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4170_18",
    "rarity": 6,
@@ -13894,8 +15054,13 @@
    "teamScale": 100,
    "teamPos": [
     -25,
-    0,
+    8,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4190_13",
    "rarity": 5,
@@ -13947,8 +15112,13 @@
    "teamScale": 100,
    "teamPos": [
     -25,
-    0,
+    8,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4190_14",
    "rarity": 6,
@@ -14012,8 +15182,13 @@
    "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4191_01",
    "rarity": 3,
@@ -14064,8 +15239,13 @@
    "teamScale": 100,
    "teamPos": [
     -8,
-    0,
+    14,
     0
+   ],
+   "myPagePos": [
+    35,
+    -129,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4191_02",
    "rarity": 4,
@@ -14116,8 +15296,13 @@
    "teamScale": 100,
    "teamPos": [
     -14,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -130,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4191_03",
    "rarity": 5,
@@ -14182,8 +15367,13 @@
    "teamScale": 100,
    "teamPos": [
     -14,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -130,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4191_04",
    "rarity": 6,
@@ -14247,8 +15437,13 @@
    "teamScale": 100,
    "teamPos": [
     -29,
-    0,
+    17,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4192_03",
    "rarity": 5,
@@ -14313,8 +15508,13 @@
    "teamScale": 100,
    "teamPos": [
     -29,
-    0,
+    17,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4192_04",
    "rarity": 6,
@@ -14366,8 +15566,13 @@
    "teamScale": 100,
    "teamPos": [
     12,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -131,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4193_08",
    "rarity": 6,
@@ -14416,8 +15621,13 @@
    "teamScale": 150,
    "teamPos": [
     -5,
-    37,
+    60,
     0
+   ],
+   "myPagePos": [
+    35,
+    -117,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4194_08",
    "rarity": 6,
@@ -14482,8 +15692,13 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    22,
     0
+   ],
+   "myPagePos": [
+    35,
+    -120,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4240_11",
    "rarity": 3,
@@ -14534,8 +15749,13 @@
    "teamScale": 100,
    "teamPos": [
     -1,
-    0,
+    22,
     0
+   ],
+   "myPagePos": [
+    35,
+    -121,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4240_12",
    "rarity": 4,
@@ -14583,11 +15803,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 126,
+   "teamScale": 113,
    "teamPos": [
-    -5,
-    0,
+    -4,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -112,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4240_13",
    "rarity": 5,
@@ -14649,11 +15874,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 111,
+   "teamScale": 100,
    "teamPos": [
     1,
-    0,
+    37,
     0
+   ],
+   "myPagePos": [
+    35,
+    -116,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5000_03",
    "rarity": 5,
@@ -14701,11 +15931,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 111,
+   "teamScale": 100,
    "teamPos": [
     1,
-    0,
+    37,
     0
+   ],
+   "myPagePos": [
+    35,
+    -116,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5000_04",
    "rarity": 6,
@@ -14756,8 +15991,13 @@
    "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    16,
     0
+   ],
+   "myPagePos": [
+    35,
+    -127,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5000_22",
    "rarity": 4,
@@ -14818,11 +16058,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 102,
+   "teamScale": 100,
    "teamPos": [
     8,
-    0,
+    26,
     0
+   ],
+   "myPagePos": [
+    35,
+    -117,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5000_23",
    "rarity": 5,
@@ -14870,11 +16115,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 102,
+   "teamScale": 100,
    "teamPos": [
     8,
-    0,
+    26,
     0
+   ],
+   "myPagePos": [
+    35,
+    -117,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5000_24",
    "rarity": 6,
@@ -14913,8 +16163,13 @@
    "teamScale": 100,
    "teamPos": [
     11,
-    0,
+    17,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5001_14",
    "rarity": 6,
@@ -14978,8 +16233,13 @@
    "teamScale": 100,
    "teamPos": [
     4,
-    0,
+    13,
     0
+   ],
+   "myPagePos": [
+    35,
+    -130,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5010_04",
    "rarity": 6,
@@ -15043,8 +16303,13 @@
    "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -131,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5010_14",
    "rarity": 6,
@@ -15095,8 +16360,13 @@
    "teamScale": 100,
    "teamPos": [
     7,
-    0,
+    5,
     0
+   ],
+   "myPagePos": [
+    35,
+    -138,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5030_04",
    "rarity": 6,
@@ -15158,11 +16428,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 107,
+   "teamScale": 100,
    "teamPos": [
     2,
-    0,
+    33,
     0
+   ],
+   "myPagePos": [
+    35,
+    -119,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5050_03",
    "rarity": 5,
@@ -15223,11 +16498,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 107,
+   "teamScale": 100,
    "teamPos": [
     2,
-    0,
+    33,
     0
+   ],
+   "myPagePos": [
+    35,
+    -119,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5050_04",
    "rarity": 6,
@@ -15288,11 +16568,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 131,
+   "teamScale": 117,
    "teamPos": [
-    21,
-    0,
+    19,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -112,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5080_04",
    "rarity": 6,
@@ -15357,8 +16642,13 @@
    "teamScale": 100,
    "teamPos": [
     10,
-    0,
+    19,
     0
+   ],
+   "myPagePos": [
+    35,
+    -124,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5100_14",
    "rarity": 6,
@@ -15422,8 +16712,13 @@
    "teamScale": 100,
    "teamPos": [
     -26,
-    0,
+    11,
     0
+   ],
+   "myPagePos": [
+    35,
+    -132,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5120_14",
    "rarity": 6,
@@ -15471,11 +16766,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 124,
+   "teamScale": 111,
    "teamPos": [
-    -22,
-    0,
+    -20,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -93,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5140_04",
    "rarity": 6,
@@ -15536,11 +16836,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 147,
+   "teamScale": 132,
    "teamPos": [
-    -15,
-    0,
+    -14,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -125,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5150_04",
    "rarity": 6,
@@ -15605,8 +16910,13 @@
    "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5170_14",
    "rarity": 6,
@@ -15667,11 +16977,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 102,
+   "teamScale": 100,
    "teamPos": [
-    -19,
-    0,
+    -18,
+    26,
     0
+   ],
+   "myPagePos": [
+    35,
+    -116,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5210_04",
    "rarity": 6,
@@ -15735,8 +17050,13 @@
    "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    7,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5220_14",
    "rarity": 6,
@@ -15796,11 +17116,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 110,
+   "teamScale": 100,
    "teamPos": [
-    13,
-    0,
+    12,
+    36,
     0
+   ],
+   "myPagePos": [
+    35,
+    -114,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5290_04",
    "rarity": 6,
@@ -15862,11 +17187,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 97,
+   "teamScale": 100,
    "teamPos": [
     -2,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -151,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5320_04",
    "rarity": 6,
@@ -15921,6 +17251,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -112,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -15960,6 +17295,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": null,
    "rarity": 4,
@@ -16001,6 +17341,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -133,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -16041,6 +17386,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -109,
+    180
+   ],
    "resultComment": null,
    "rarity": 3,
    "statueType": null,
@@ -16080,6 +17430,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -109,
+    180
    ],
    "resultComment": null,
    "rarity": 4,
@@ -16122,6 +17477,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -127,
+    180
+   ],
    "resultComment": null,
    "rarity": 3,
    "statueType": null,
@@ -16163,6 +17523,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -55,
+    180
+   ],
    "resultComment": null,
    "rarity": null,
    "statueType": null,
@@ -16201,6 +17566,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -62,
+    180
    ],
    "resultComment": null,
    "rarity": 4,
@@ -16242,6 +17612,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -62,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -16281,6 +17656,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -62,
+    180
    ],
    "resultComment": null,
    "rarity": 5,
@@ -16323,6 +17703,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -125,
+    180
+   ],
    "resultComment": null,
    "rarity": 3,
    "statueType": null,
@@ -16363,6 +17748,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -125,
+    180
    ],
    "resultComment": null,
    "rarity": 4,
@@ -16405,6 +17795,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -123,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -16444,6 +17839,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -130,
+    180
    ],
    "resultComment": null,
    "rarity": 4,
@@ -16485,6 +17885,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -130,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -16524,6 +17929,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -130,
+    180
    ],
    "resultComment": null,
    "rarity": 5,
@@ -16566,6 +17976,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -109,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -16607,6 +18022,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -55,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -16646,6 +18066,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -65,
+    180
    ],
    "resultComment": null,
    "rarity": 3,
@@ -16687,6 +18112,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -65,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -16726,6 +18156,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -65,
+    180
    ],
    "resultComment": null,
    "rarity": 4,
@@ -16767,6 +18202,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -108,
+    180
    ],
    "resultComment": null,
    "rarity": 4,
@@ -16818,6 +18258,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -65,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -16859,6 +18304,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -116,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -16899,6 +18349,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -114,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -16938,6 +18393,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -109,
+    180
    ],
    "resultComment": null,
    "rarity": 4,

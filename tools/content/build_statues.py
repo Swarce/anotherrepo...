@@ -211,21 +211,41 @@ def pose_rarity(s):
 
 
 def team_frame(s):
-    """(teamScale %, teamPos cm) from the statue's team pose (docs/research/12 §7): the head bone at
-    1.45-1.70 m (Jonathan's is 1.53 m at full size), the upper body at most 1.4 m wide, scale 50-150% (short figures stay small);
-    the head (and upper body) centred over the slot; a model still below the shot is lifted so its
-    head reaches 1.45 m. Statues without a pose row fall back to team_scale()."""
+    """(teamScale %, teamPos cm) from the statue's team pose (docs/research/12 §7). In the original's
+    team view (video frames, docs/research/31 §5) every slot shows its statue thighs-up with the head
+    at about the same height, the leader's included: models keep their size (a head bone 1.30-1.80 m;
+    shorter ones grow, at most 150%, taller ones shrink; the upper body at most 1.4 m wide) and are
+    lifted until the head bone is at 1.68 m; the head (and upper body) centred over the slot.
+    Statues without a pose row fall back to team_scale()."""
     p = TEAM_POSE.get(s["statueId"])
     if not p:
         return team_scale(s), [0, 0, 0]
     hy, hx = p["head_y"], p["head_x"]
     width = p["upper_xmax"] - p["upper_xmin"]
-    sc = min(max(hy, 1.45), 1.70) / hy if hy > 0.05 else 1.5
+    sc = min(max(hy, 1.30), 1.80) / hy if hy > 0.05 else 1.5
     sc = min(max(min(sc, 1.4 / max(width, 1e-3)), 0.5), 1.5)
     cx = 0.6 * hx + 0.4 * (p["upper_xmin"] + p["upper_xmax"]) / 2
     # The anchors turn models 180 degrees and teamPos is added in world space: model +x is world -x.
-    lift = min(max(1.45 - hy * sc, 0.0), 1.2)
+    lift = min(max(HEAD_Y - hy * sc, 0.0), 1.2)
     return round(100 * sc), [round(cx * sc * 100), round(lift * 100), 0]
+
+
+HEAD_Y = 1.68  # team view: the head bone's height after the lift (m)
+# My Page (docs/research/11 §1, 31 §5): the camera at the origin looking along +Z, 40 degrees; the
+# original framed the leader right of centre from mid-thigh up, about 1.8 m away, the head bone a
+# quarter metre above the camera.
+MY_PAGE = {"x": 35, "z": 180, "head": 0.25}
+
+
+def my_page_pos(s):
+    """myPagePos (cm) for the My Page leader: the head bone at the same place for every model. The
+    team pose may crouch or sit, so the head is at least 80% of the model's standing height."""
+    p = TEAM_POSE.get(s["statueId"])
+    models = s.get("modelDataList") or []
+    stand = 0.8 * HEIGHTS[models[0]] if models and HEIGHTS.get(models[0], 0) > 0 else 0.0
+    hy = max(p["head_y"] if p else 0.0, stand) or 1.55
+    hy = min(max(hy, 0.8), 2.2)
+    return [MY_PAGE["x"], round(100 * (MY_PAGE["head"] - hy)), MY_PAGE["z"]]
 
 
 def team_scale(s):
@@ -309,6 +329,7 @@ for s in obtainable:
         "dtAttack": dt_attack(s),
         "dtSkills": dt_skills(s),
         **dict(zip(("teamScale", "teamPos"), team_frame(s))),
+        "myPagePos": my_page_pos(s),
         # The win-screen quote: the game's own Result_Chara_Comment_<statueId> label, when present.
         "resultComment": (f"Result_Chara_Comment_{sid}"
                           if f"text:Result_Chara_Comment_JP:Result_Chara_Comment_{sid}" in labels else None),
@@ -419,6 +440,7 @@ for s in assist_only:
         "dtAttack": None, "dtSkills": assist_skill(s),
         # Never in a team seat; the height fallback can blow tiny models up, so cap the scale.
         **dict(zip(("teamScale", "teamPos"), (lambda f: (min(f[0], 150), f[1]))(team_frame(s)))),
+        "myPagePos": my_page_pos(s),
         "resultComment": (f"Result_Chara_Comment_{sid}"
                           if f"text:Result_Chara_Comment_JP:Result_Chara_Comment_{sid}" in labels else None),
         "rarity": None, "statueType": None, "lv1": None, "lv99": None, "maxTree": None,
