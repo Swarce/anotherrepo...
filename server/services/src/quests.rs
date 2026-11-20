@@ -398,7 +398,55 @@ pub const DT_ENEMY_AI: &str = "zako01_cmn";
 /// Our pattern in area_position_pattern_table (server/content/masterdata).
 pub const DT_FORMATION: &str = "JDR_DT_DEFAULT";
 
+/// Spawn points of the action-battle area scenes (server/content/action_areas.json).
+pub const ACTION_AREAS_JSON: &str = include_str!("../../content/action_areas.json");
+
+/// The first spawn group (`WAVE_<X>`, alphabetically) of an action area scene and its number of
+/// spawn points.
+fn action_wave_group(area: &str) -> Option<(String, i64)> {
+    static CELL: std::sync::OnceLock<Value> = std::sync::OnceLock::new();
+    let doc = CELL.get_or_init(|| serde_json::from_str(ACTION_AREAS_JSON).unwrap_or(Value::Null));
+    doc["areas"][area]["waves"]
+        .as_object()?
+        .iter()
+        .find_map(|(k, v)| Some((k.clone(), v.as_i64().filter(|&n| n > 0)?)))
+}
+
+/// Whether the statue's model has an action-mode action set (actionset_statue_<psid>); ten late
+/// statues only have the tactical one and are left out of action waves.
+fn has_action_set(statue_id: &str) -> bool {
+    static CELL: std::sync::OnceLock<std::collections::HashSet<String>> =
+        std::sync::OnceLock::new();
+    let sets = CELL.get_or_init(|| {
+        let doc: Value = serde_json::from_str(ACTION_AREAS_JSON).unwrap_or(Value::Null);
+        doc["actionSets"]
+            .as_array()
+            .map(|a| {
+                a.iter()
+                    .filter_map(|x| x.as_str().map(str::to_owned))
+                    .collect()
+            })
+            .unwrap_or_default()
+    });
+    collection::find(statue_id)
+        .and_then(|d| d.model_data_list.first())
+        .and_then(|m| m.split('_').next())
+        .is_some_and(|psid| sets.contains(psid))
+}
+
+/// Action AIs (aipack's AIType list): 7 a balanced melee mob with frequent attacks, 13 the ranged
+/// one, 14 the generic boss.
+const ACTION_AI_MOB: i64 = 7;
+const ACTION_AI_RANGED: i64 = 13;
+const ACTION_AI_BOSS: i64 = 14;
+
 /// The battle description: one AreaInfo per area scene, one wave of the stage's enemies each.
+///
+/// Action areas (docs/research/30-action-battle.md): `GameObjectSpawnManager.SetupSpawnData`
+/// 0xDB9CAC starts a spawn group at each new `waveNum` (rows of type `RESPAWN` or `TRIGGER` set the
+/// group up) and creates one enemy per row of type `NORMAL_SET`; `SpawnData.Init` 0xCB1E9C finds
+/// the row's `pivot` with GameObject.Find and spawns at its child number `offset`. So every enemy
+/// is a `NORMAL_SET` row on the area scene's first `WAVE_<X>` group, one spawn point each.
 pub fn area_list(c: &ChapterDef, s: &StageDef) -> Vec<Value> {
     let areas: Vec<String> = if s.areas.is_empty() {
         vec![String::new()]
@@ -409,18 +457,30 @@ pub fn area_list(c: &ChapterDef, s: &StageDef) -> Vec<Value> {
         .iter()
         .enumerate()
         .map(|(i, area)| {
-            let waves: Vec<Value> = s
-                .enemies
-                .iter()
-                .enumerate()
-                .map(|(k, e)| {
-                    json!({ "areaId": area, "waveNum": 1, "type": "WAVE_A", "pivot": format!("{:02}", k + 1),
-                            "offset": 0, "enemyStatueInfo": enemy_info(e, s.enemy_level), "AIId": 2,
-                            "dropList": [], "label": "", "cutinEvent": 0, "cameraTarget": "",
-                            "intervalTime": 0, "spawnNum": 1, "disappear": 0,
-                            "bossFlag": (i + 1 == areas.len() && k == 0) as i64 })
-                })
-                .collect();
+            let group = action_wave_group(area);
+            let waves: Vec<Value> = match &group {
+                Some((pivot, points)) => s
+                    .enemies
+                    .iter()
+                    .filter(|e| has_action_set(e))
+                    .enumerate()
+                    .map(|(k, e)| {
+                        let boss = i + 1 == areas.len() && k == 0;
+                        let ai = if boss {
+                            ACTION_AI_BOSS
+                        } else if collection::is_ranged(e) {
+                            ACTION_AI_RANGED
+                        } else {
+                            ACTION_AI_MOB
+                        };
+                        json!({ "areaId": area, "waveNum": 1, "type": "NORMAL_SET", "pivot": pivot,
+                                "offset": k as i64 % points, "enemyStatueInfo": enemy_info(e, s.enemy_level),
+                                "AIId": ai, "dropList": [], "label": "", "cutinEvent": 0, "cameraTarget": "",
+                                "intervalTime": 0, "spawnNum": 1, "disappear": 0, "bossFlag": boss as i64 })
+                    })
+                    .collect(),
+                None => Vec::new(),
+            };
             let dt_settings: Vec<Value> = s
                 .enemies
                 .iter()
@@ -529,6 +589,38 @@ mod tests {
             .map(|x| x["clearFlg"].as_i64().unwrap())
             .collect();
         assert_eq!(lit, [1, 0, 1]);
+    }
+
+    #[test]
+    fn action_waves_use_the_scene_spawn_points() {
+        // GameObjectSpawnManager.SetupSpawnData creates enemies only from NORMAL_SET rows, and
+        // SpawnData.Init finds the pivot by name in the area scene (docs/research/30).
+        let doc: Value = serde_json::from_str(ACTION_AREAS_JSON).unwrap();
+        let mut rows = 0;
+        for c in chapters().iter().filter(|c| c.stage_type == 0) {
+            for s in &c.stages {
+                for (i, a) in area_list(c, s).iter().enumerate() {
+                    let area = s.areas.get(i).cloned().unwrap_or_default();
+                    for w in a["waveList"].as_array().unwrap() {
+                        assert_eq!(w["type"], "NORMAL_SET");
+                        let pivot = w["pivot"].as_str().unwrap();
+                        let points = doc["areas"][&area]["waves"][pivot].as_i64().unwrap();
+                        assert!(w["offset"].as_i64().unwrap() < points, "{area} {pivot}");
+                        assert!(has_action_set(
+                            w["enemyStatueInfo"]["statueId"].as_str().unwrap()
+                        ));
+                        rows += 1;
+                    }
+                }
+            }
+        }
+        assert!(rows > 500, "{rows}");
+        // Tactical stages have no waves (their enemies are in areaSettingList).
+        let c = chapters().iter().find(|c| c.stage_type == 1).unwrap();
+        assert!(area_list(c, &c.stages[0])[0]["waveList"]
+            .as_array()
+            .unwrap()
+            .is_empty());
     }
 
     #[test]
