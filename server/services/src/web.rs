@@ -121,6 +121,7 @@ pub const ABOUT_PAGE: &str = "/information/about.html";
 
 /// What this build adds, for the Notices screen's Updates tab (our words; no game text).
 const NOTES: &[&str] = &[
+    "Build 32: long statue names shrink to fit their plate (two lines at most) instead of spilling onto the tabs, and the Town list's policy and hours fit their bars. The analytics, crash-reporting, ads, push and Play Games libraries are gone from the app (about 8 MB), with the Play Games buttons.",
     "Build 31: the generated portraits show in the statue lists (the game could not find them).",
     "Build 28: the generated portraits keep a real portrait's frame, stars and badge pixel for pixel; only the inside is new.",
     "Build 27: statues the game files have no portrait for get one, drawn from their menu pose with the frame, stars and attribute of the others.",

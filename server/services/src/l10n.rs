@@ -265,7 +265,8 @@ pub fn has_japanese(s: &str) -> bool {
 pub struct Translations {
     /// key -> (source hash, English)
     map: HashMap<String, (String, String)>,
-    /// Identifies this set of translations (plus the generator version), for cache keys.
+    /// Identifies this set of translations (plus the generator version, layout hints and scene
+    /// edits), for cache keys.
     pub digest: String,
 }
 
@@ -275,6 +276,9 @@ impl Translations {
         let mut map = HashMap::new();
         let mut h = Sha256::new();
         h.update(GEN_VERSION.to_le_bytes());
+        // the layout hints and scene edits change the rebuilt files too
+        h.update(LAYOUT.as_bytes());
+        h.update(EDITS.as_bytes());
         for (name, js) in files {
             h.update(js.as_bytes());
             let v: Value = serde_json::from_str(js).map_err(|e| format!("{name}.json: {e}"))?;

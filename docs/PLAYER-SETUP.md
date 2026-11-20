@@ -165,6 +165,9 @@ from your asset key.
 - **A new crash inside `libunity.so`:** the `unity-heap` engine fix can be switched off. Patch the same
   APK again with the same key and `--disable unity-heap`, then `adb install -r`, and send the logcat
   (without it the game is expected to crash right after login on Android 11+).
+- **Something stopped working since Build 32** (a crash at start, a screen that never opens): the
+  SDK removal can be switched off. Patch the same APK again with the same key and
+  `--disable debloat`, then `adb install -r`, and send the logcat.
 - **`FATAL` in the `JDR` lines:** keys missing (re-patch with `--keys`) or the port is taken.
   The usual cause is a leftover `adb reverse` from the PC dev loop: run `adb reverse --remove-all`
   and restart the game. Otherwise another app holds 127.0.0.1:18080 (the server keeps retrying and
