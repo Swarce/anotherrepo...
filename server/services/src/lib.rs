@@ -250,6 +250,9 @@ impl Ctx {
                     )
                 });
             for l in &loc {
+                for e in l.stats.layout_errors.iter().take(5) {
+                    jdr_core::log::line("l10n", &format!("{}: layout left alone: {e}", l.name));
+                }
                 for e in l.stats.art_errors.iter().take(5) {
                     jdr_core::log::line("art", &format!("{}: skipped: {e}", l.name));
                 }
@@ -288,14 +291,15 @@ impl Ctx {
             jdr_core::log::line(
                 "l10n",
                 &format!(
-                    "{} English file(s) ready in {} ms, {} already on the phone ({} rebuilt now: {} of {} strings replaced, {} stale)",
+                    "{} English file(s) ready in {} ms, {} already on the phone ({} rebuilt now: {} of {} strings replaced, {} stale, {} name box(es))",
                     localized.len(),
                     t_l10n.elapsed().as_millis(),
                     loc.iter().filter(|l| l.on_device).count(),
                     loc.iter().filter(|l| l.stats.strings > 0).count(),
                     replaced,
                     strings,
-                    stale
+                    stale,
+                    loc.iter().map(|l| l.stats.name_boxes).sum::<usize>()
                 ),
             );
             let vf = versionfile::build(
