@@ -60,6 +60,14 @@ fn rebuilds_every_text_bundle() {
     let strings: usize = loc.iter().map(|l| l.stats.strings).sum();
     assert_eq!(replaced, strings, "every string replaced");
     assert!(replaced > 50_000, "{replaced}");
+    // Every label hinted for a fixed box got one (docs/LOCALIZATION.md).
+    let errs: Vec<&String> = loc.iter().flat_map(|l| &l.stats.layout_errors).collect();
+    assert!(errs.is_empty(), "{errs:?}");
+    let boxes: usize = loc.iter().map(|l| l.stats.name_boxes).sum();
+    let doc = serde_json::from_str::<serde_json::Value>(l10n::LAYOUT).unwrap();
+    let hinted =
+        doc["nameBox"].as_array().unwrap().len() + doc["lineBox"].as_array().unwrap().len();
+    assert_eq!(boxes, hinted, "fixed boxes");
     // Rebuilt bundles hold no Japanese strings any more and are plain (not JJEC).
     for l in &loc {
         let b = std::fs::read(&l.file).unwrap();
