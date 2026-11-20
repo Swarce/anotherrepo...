@@ -10,12 +10,12 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
   looks locked compared with the original (the owner's video research package: 77 observations
   from 17 original videos, frame by frame); then: what about the team screen and My Page cameras?
 - First Build 33 package: most battle cameras stood very far away, under the ground or away from
-  the character.
+  the character. Second package: still not right; the owner sent the full 2 fps frames.
 
 ### What changed
-- **Battle camera** (docs/research/31): every attack and skill now cuts to shots on the acting unit
-  (over the shoulder, low close-up, reverse, side, ground, pose, high wide for big moves), as in the
-  original footage; we had one fixed side view for all 245 camera ids the animations request. Win
+- **Battle camera** (docs/research/31): every attack and skill now cuts to shots on the acting unit,
+  all from the side the turn camera watches (side-on two-shot, three-quarters behind, closer side,
+  slightly low, high wide for big moves), as in the original footage; we had one fixed side view for all 245 camera ids the animations request. Win
   shot: a low chest-up push-in. Boss intro back on (chapter-final boss), with a crane-up camera.
 - **Action battles** (docs/research/30): enemies spawn at the area scene's spawn points (we sent the
   wrong wave type and pivot), and statues get their attack, skill, SP and finisher (`skillList` was
@@ -30,6 +30,12 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
   step by adding every later node to the first one, so later nodes are deltas. We sent absolute end
   poses, which doubled distance, angles and field of view on the second step. Sets now send a start
   node and a delta; simulated on the client's formula, every shot stays above the floor and close.
+- **Shots from the full frames** (third package): the original's action shots all stay on the side
+  the turn camera watches. Ours also looked from in front of the attacker and from beyond the
+  target, and the client does not mirror every id for enemies, so 74 shots landed on the far side
+  of the arena. The shot set is now only the footage's: side-on, three-quarters behind, closer,
+  slightly low, high wide; straight behind for the ids the client does not mirror; the boss intro
+  and finish framed for the enemy side.
 - **Team screen and My Page framing** (docs/research/31 §5): in the original the team screen shows
   every statue's head at about the same height, the leader's too; ours left short leaders low. My
   Page framed the leader from mid-thigh up, right of centre; ours stood 3.2 m away, feet in view.
