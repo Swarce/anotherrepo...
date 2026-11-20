@@ -22,9 +22,9 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 - Probes removed; all 55 portraits back in `ui_statue_01`.
 - Build number 31, server marker `JDR_EMBEDDED_SERVER_b031`.
 
-### Device checklist
-- [ ] The generated portraits show (1080_01, 1090_01–03, 1100_01–03 … in the first rows)
-- [ ] 1000_04 and 1020_04 still show
+### Device checklist (owner: "they show up fine now", screenshots of the statue lists)
+- [x] The generated portraits show (1080_01, 1090_01–03, 1100_01–03 … in the first rows)
+- [x] 1000_04 and 1020_04 still show
 
 ## Build 30 (probe, again) — the Build 29 probe never ran (branch `wip/b29-probe`)
 
