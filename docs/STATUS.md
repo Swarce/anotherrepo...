@@ -2,6 +2,39 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 33 — the original's camera, action battles, the research pass (branch `wip/b33`)
+
+### What the owner asked and showed
+- Build 32 worked. An action chapter loaded with no enemies, and nothing could attack.
+- Match the original's cool turns; fill missing data with a wide research pass; the battle camera
+  looks locked compared with the original (the owner's video research package: 77 observations
+  from 17 original videos, frame by frame).
+
+### What changed
+- **Battle camera** (docs/research/31): every attack and skill now cuts to shots on the acting unit
+  (over the shoulder, low close-up, reverse, side, ground, pose, high wide for big moves), as in the
+  original footage; we had one fixed side view for all 245 camera ids the animations request. Win
+  shot: a low chest-up push-in. Boss intro back on (chapter-final boss), with a crane-up camera.
+- **Action battles** (docs/research/30): enemies spawn at the area scene's spawn points (we sent the
+  wrong wave type and pivot), and statues get their attack, skill, SP and finisher (`skillList` was
+  empty); skill roles, cool-downs and uses from the Gamerch pages for 109 statues.
+- **Cool turns** as documented for the original (at the highest skill level): attack skills 3,
+  time stops 6/9/10, heals 8, SP 5 with 3 uses; 24 skills with their own documented values.
+- **Research pass** (5 agents, `local/wiki-raw/research-b33/`, private): stats for 60 more statues
+  (206 of 292), assist conditions for 116, Mind costs per rarity, Reversal/chain/type-chart/assist
+  tuning from the tactical-era atwiki (the chain bonus was ×1.01 by a unit slip), daily-quest
+  numbers for 15 stages.
+- Build number 33, server marker `JDR_EMBEDDED_SERVER_b033`.
+
+### Device checklist
+- [ ] Tactical battle: attacks and skills cut to close shots and back; enemies' turns too; no
+      camera stuck after an action
+- [ ] Chapter-final boss: the intro plays and the battle starts (no hang)
+- [ ] Win pose: low chest-up shot with a push-in
+- [ ] Action chapter: enemies appear; attack, skill and SP buttons work; the area clears
+- [ ] Skills come round more slowly (attack skills about every 4–5 turns at level 1)
+- [ ] Log: no errors around battle start
+
 ## Build 32 — names that fit, a lighter APK, no Play Games (branch `wip/b32`)
 
 ### What the owner asked
