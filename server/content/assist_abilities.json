@@ -26,12 +26,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Jonathan_Joestar_(Courage)",
+    "revid": 3780,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -39,12 +52,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Jonathan_Joestar_(Courage)",
+    "revid": 3779,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -52,19 +78,32 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Jonathan_Joestar_(Courage)",
+    "revid": 3777,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "1000_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -78,12 +117,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Jonathan_Joestar_(Unity)",
+    "revid": 3778,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -91,12 +143,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Jonathan_Joestar_(Unity)",
+    "revid": 3776,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -143,12 +208,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Robert_E._O._Speedwagon_(Courage)",
+    "revid": 3782,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -156,12 +234,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 4,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_William_Anthonio_Zeppeli_(Fighting_Spirit)",
+    "revid": 3783,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -169,32 +260,58 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 4,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_William_Anthonio_Zeppeli_(Fighting_Spirit)",
+    "revid": 3784,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "1020_03",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": [
+      {
+       "statueType": 4,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_William_Anthonio_Zeppeli_(Fighting_Spirit)",
+    "revid": 3785,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "1020_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -220,7 +337,7 @@
    "statueId": "1080_02",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD2",
+     "abilityId": "DT_AST_HP_RATEADD2",
      "conditions": []
     }
    ],
@@ -233,13 +350,22 @@
    "statueId": "1080_03",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Dire_(Courage)",
+    "revid": 3786,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -285,13 +411,26 @@
    "statueId": "1090_13",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Straizo_(Solitary)",
+    "revid": 3787,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -364,19 +503,32 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Dio_Brando_(Solitary)",
+    "revid": 3793,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "1100_14",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -390,12 +542,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Dio_Brando_~_Emperor_in_the_Moonlight_(Fighting_Spirit)",
+    "revid": 4648,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -429,12 +598,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Wang_Chan_(Fighting_Spirit)",
+    "revid": 3864,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -468,12 +650,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Bruford_(Courage)",
+    "revid": 3791,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -493,13 +688,26 @@
    "statueId": "1130_02",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Tarkus_(Fighting_Spirit)",
+    "revid": 3788,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -507,19 +715,32 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Tarkus_(Fighting_Spirit)",
+    "revid": 3790,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "1130_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -533,12 +754,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Tarkus_(Solitary)",
+    "revid": 3789,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -546,12 +780,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Joseph_Joestar_(Courage)",
+    "revid": 4821,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -559,12 +806,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Joseph_Joestar_(Courage)",
+    "revid": 3416,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -572,19 +832,32 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Joseph_Joestar_(Courage).png",
+    "revid": 3391,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "2000_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -624,12 +897,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Caesar_Anthonio_Zeppeli_(Tactical)",
+    "revid": 3406,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -637,12 +923,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Caesar_Anthonio_Zeppeli_(Tactical)",
+    "revid": 3417,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -650,25 +949,55 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Caesar_Anthonio_Zeppeli_(Tactical)",
+    "revid": 2183,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "2010_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Caesar_Anthonio_Zeppeli_(Tactical)",
+    "revid": 3389,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -676,12 +1005,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Caesar_Anthonio_Zeppeli_(Unity)",
+    "revid": 2180,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -702,12 +1044,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Lisa_Lisa_(Tactical)",
+    "revid": 3408,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -715,12 +1070,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Lisa_Lisa_(Tactical)",
+    "revid": 3418,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -728,19 +1096,32 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Lisa_Lisa_(Fighting_Spirit)",
+    "revid": 3255,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "2020_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -793,12 +1174,21 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Santana_(Courage)",
+    "revid": 3337,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -806,12 +1196,21 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Santana_(Courage)",
+    "revid": 3420,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -819,19 +1218,28 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Santana_(Courage)",
+    "revid": 3280,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "2050_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -845,12 +1253,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Santana_(Solitary)",
+    "revid": 3421,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -935,12 +1356,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Esidisi_(Fighting_Spirit)",
+    "revid": 3246,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -974,12 +1408,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Kars_(Tactical)",
+    "revid": 3256,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1025,7 +1472,7 @@
    "statueId": "2081_14",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -1039,12 +1486,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Wired_Beck_(Fighting_Spirit)",
+    "revid": 3301,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1052,12 +1516,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Rudol_von_Stroheim_(Fighting_Spirit)",
+    "revid": 3344,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1082,12 +1559,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Rudol_von_Stroheim_(Fighting_Spirit)",
+    "revid": 3281,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1121,12 +1611,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Stroheim_~_I'm_back_from_Hell_~_(Courage)",
+    "revid": 4423,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1185,12 +1688,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Jotaro_Kujo_(Courage)",
+    "revid": 4640,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1254,12 +1774,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Jotaro_Kujo_(Tactical)",
+    "revid": 2375,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1267,12 +1800,21 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Joseph_Joestar_(Tactical)",
+    "revid": 3162,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1280,12 +1822,21 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Old_Joseph_(Tactical)",
+    "revid": 2481,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1293,12 +1844,21 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Joseph_Joestar_(Tactical)",
+    "revid": 3258,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1306,12 +1866,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Joseph_Joestar_(Unity)",
+    "revid": 3303,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1319,12 +1892,21 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Muhammad_Avdol_(Tactical)",
+    "revid": 3163,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1332,12 +1914,21 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Muhammad_Avdol_(Tactical)",
+    "revid": 3435,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1391,13 +1982,30 @@
    "statueId": "3020_28",
    "abilities": [
     {
-     "abilityId": "DT_AST_HP_RATEADD4",
-     "conditions": []
+     "abilityId": "DT_AST_DMG_RATEADD4",
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Muhammad_Avdol_~_The_Magician's_revival_~_(Courage)",
+    "revid": 4646,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1422,12 +2030,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Noriaki_Kakyoin_(Tactical)",
+    "revid": 3436,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1435,12 +2056,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Noriaki_Kakyoin_(Tactical)",
+    "revid": 3273,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1448,19 +2082,32 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Noriaki_Kakyoin_(Unity)",
+    "revid": 3306,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "3030_14",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -1474,19 +2121,32 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Noriaki_Kakyoin_~_Fear_Overcame_(Courage)",
+    "revid": 2266,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "3031_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -1500,12 +2160,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Jean_Pierre_Polnareff_(Courage)",
+    "revid": 3745,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1513,12 +2186,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Jean_Pierre_Polnareff_(Courage)",
+    "revid": 3744,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1526,12 +2212,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Jean_Pierre_Polnareff_(Courage)",
+    "revid": 3743,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1539,19 +2238,36 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Jean_Pierre_Polnareff_(Courage)",
+    "revid": 4642,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "3040_13",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
+     "abilityId": "DT_AST_HP_RATEADD3",
      "conditions": []
     }
    ],
@@ -1565,12 +2281,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 4,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Jean_Pierre_Polnareff_~_God_Anubis'_Posession_(Tactical)",
+    "revid": 4149,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1591,12 +2320,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Iggy_(Fighting_Spirit)",
+    "revid": 3150,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1621,12 +2363,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Iggy_(Fighting_Spirit)",
+    "revid": 3268,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1677,12 +2432,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Gray_Fly_(Tactical)",
+    "revid": 3293,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1716,12 +2484,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Impostor_Captain_Tennille_(Tactical)",
+    "revid": 3283,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1754,13 +2535,26 @@
    "statueId": "3090_03",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "abilityId": "DT_AST_DMG_RATEADD2",
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Devo_the_Cursed_(Courage)",
+    "revid": 3245,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1794,19 +2588,28 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Rubber_Soul_(Fighting_Spirit)",
+    "revid": 3237,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "3100_12",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD2",
+     "abilityId": "DT_AST_DEF_RATEADD2",
      "conditions": []
     }
    ],
@@ -1820,12 +2623,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Hol_Horse_(Tactical)",
+    "revid": 4814,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1880,12 +2696,21 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 4,
+       "count": 3
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Hol_Horse_(Unity)",
+    "revid": 4720,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1906,12 +2731,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Enya_the_Hag_(Tactical)",
+    "revid": 3439,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1919,19 +2757,32 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Enya_the_Hag_(Tactical)",
+    "revid": 3307,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "3150_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -1944,13 +2795,26 @@
    "statueId": "3150_12",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "abilityId": "DT_AST_HP_RATEADD2",
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Enya_the_Hag_(Unity)",
+    "revid": 3440,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1958,12 +2822,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_N'Doul_(Tactical)",
+    "revid": 3441,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2001,12 +2878,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_N'Doul_(Solitary)",
+    "revid": 3443,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2014,12 +2904,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_N'Doul_(Solitary)",
+    "revid": 3248,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2053,12 +2956,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Chaka_(Solitary)",
+    "revid": 3241,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2092,19 +3008,32 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Mariah_(Tactical)",
+    "revid": 3257,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "3270_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_DEF_RATEADD4",
      "conditions": []
     }
    ],
@@ -2118,12 +3047,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Pet_Shop_(Tactical)",
+    "revid": 3169,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2131,12 +3073,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Pet_Shop_(Tactical)",
+    "revid": 2342,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2144,12 +3099,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Pet_Shop_(Tactical)",
+    "revid": 3269,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2157,12 +3125,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Pet_Shop_(Tactical)",
+    "revid": 4638,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2225,13 +3210,26 @@
    "statueId": "3330_01",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD1",
-     "conditions": []
+     "abilityId": "DT_AST_DMG_RATEADD1",
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Vanilla_Ice_(Courage)",
+    "revid": 3020,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2268,7 +3266,7 @@
    "statueId": "3330_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -2282,12 +3280,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Josuke_Higashikata_(Courage)",
+    "revid": 3012,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2328,7 +3339,7 @@
    "statueId": "4000_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -2342,12 +3353,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Josuke_Higashikata_(Unity)",
+    "revid": 3553,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2368,12 +3392,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Josuke_Higashikata_(Fighting_Spirit)",
+    "revid": 2333,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2381,25 +3418,51 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Koichi_Hirose_(Tactical)",
+    "revid": 3130,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "4010_13",
    "abilities": [
     {
-     "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": [
+      {
+       "statueType": 4,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Koichi_Hirose_(Unity)",
+    "revid": 3294,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2407,58 +3470,110 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Koichi_Hirose_(Courage)",
+    "revid": 3556,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "4011_03",
    "abilities": [
     {
-     "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "abilityId": "DT_AST_ATK_RATEADD3",
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Koichi_Hirose_(Courage)",
+    "revid": 3290,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "4011_15",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "abilityId": "DT_AST_DEF_RATEADD1",
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Koichi_Hirose_(Solitary)",
+    "revid": 3004,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "4011_16",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "abilityId": "DT_AST_DEF_RATEADD2",
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Koichi_Hirose_(Solitary)",
+    "revid": 3558,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "4011_17",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
+     "abilityId": "DT_AST_DEF_RATEADD3",
      "conditions": []
     }
    ],
@@ -2471,13 +3586,30 @@
    "statueId": "4011_18",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Koichi_Hirose_~_ACT_2_The_young_man_who_evolves_(Solitary)",
+    "revid": 2789,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2485,12 +3617,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Koichi_Hirose_(Tactical)",
+    "revid": 3277,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2609,12 +3754,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Rohan_Kishibe_(Tactical)",
+    "revid": 3561,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2703,19 +3861,32 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Jotaro_Kujo_(Unity)",
+    "revid": 3249,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "4040_14",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -2728,13 +3899,26 @@
    "statueId": "4042_03",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "abilityId": "DT_AST_HP_RATEADD3",
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Jotaro_Kujo_(Fighting_Spirit)",
+    "revid": 2269,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2772,12 +3956,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Yukako_Yamagishi_(Courage)",
+    "revid": 2337,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2802,12 +3999,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Yukako_Yamagishi_(Courage)",
+    "revid": 4637,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2832,12 +4046,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)Shigekiyo_Yangu_(Fighting_Spirit)",
+    "revid": 3019,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2845,12 +4072,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)Shigekiyo_Yangu_(Fighting_Spirit)",
+    "revid": 3563,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2858,19 +4098,32 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Shigekiyo_Yangu_(Unity)",
+    "revid": 3263,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "4110_14",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -2910,12 +4163,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Yuya_Fungami_(Courage)",
+    "revid": 3304,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2923,19 +4189,32 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Yuya_Fungami_(Unity)",
+    "revid": 3253,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "4130_25",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
+     "abilityId": "DT_AST_HP_RATEADD1",
      "conditions": []
     }
    ],
@@ -2948,7 +4227,7 @@
    "statueId": "4130_26",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
+     "abilityId": "DT_AST_HP_RATEADD2",
      "conditions": []
     }
    ],
@@ -2961,7 +4240,7 @@
    "statueId": "4130_27",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
+     "abilityId": "DT_AST_HP_RATEADD3",
      "conditions": []
     }
    ],
@@ -2974,7 +4253,7 @@
    "statueId": "4130_28",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -2988,12 +4267,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Anjuro_Katagiri_(Fighting_Spirit)",
+    "revid": 3009,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3001,12 +4293,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Anjuro_Katagiri_(Fighting_Spirit)",
+    "revid": 3565,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3014,12 +4319,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Anjuro_Katagiri_(Fighting_Spirit)",
+    "revid": 2309,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3044,12 +4362,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Keicho_Nijimura_(Tactical)",
+    "revid": 3568,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3057,12 +4388,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Keicho_Nijimura_(Tactical)",
+    "revid": 2513,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3129,20 +4473,29 @@
    "statueId": "4170_15",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "abilityId": "DT_AST_HP_RATEADD1",
+     "conditions": [
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Akira_Otoishi_(Solitary)",
+    "revid": 3022,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "4170_16",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
+     "abilityId": "DT_AST_HP_RATEADD2",
      "conditions": []
     }
    ],
@@ -3155,7 +4508,7 @@
    "statueId": "4170_17",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
+     "abilityId": "DT_AST_HP_RATEADD3",
      "conditions": []
     }
    ],
@@ -3168,13 +4521,26 @@
    "statueId": "4170_18",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "abilityId": "DT_AST_ATK_RATEADD4",
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Akira_Otoishi_(Solitary)",
+    "revid": 2969,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3194,7 +4560,7 @@
    "statueId": "4190_14",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -3234,19 +4600,32 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Kosaku_Kawajiri_(Courage)",
+    "revid": 3238,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "4191_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -3259,13 +4638,26 @@
    "statueId": "4192_03",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "abilityId": "DT_AST_DMG_RATEADD4",
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Yoshikage_Kira_(Kosaku_Kawajiri)_(Fighting_Spirit)",
+    "revid": 2247,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3273,12 +4665,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Yoshikage_Kira_(Kosaku_Kawajiri)_(Fighting_Spirit)",
+    "revid": 4687,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3299,12 +4708,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Yoshikage_Kira_~_I'm_at_my_limit!_I'll_activate_it!_~_(Courage)",
+    "revid": 4690,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3338,12 +4764,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Terunosuke_Miyamoto_(Solitary)",
+    "revid": 3233,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3376,7 +4815,7 @@
    "statueId": "5000_22",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD2",
+     "abilityId": "DT_AST_HP_RATEADD2",
      "conditions": []
     }
    ],
@@ -3415,7 +4854,7 @@
    "statueId": "5001_14",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -3467,7 +4906,7 @@
    "statueId": "5050_03",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
+     "abilityId": "DT_AST_HP_RATEADD3",
      "conditions": []
     }
    ],
@@ -3480,7 +4919,7 @@
    "statueId": "5050_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -3532,7 +4971,7 @@
    "statueId": "5140_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -3558,7 +4997,7 @@
    "statueId": "5170_14",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_DEF_RATEADD4",
      "conditions": []
     }
    ],
@@ -3584,7 +5023,7 @@
    "statueId": "5220_14",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -3610,7 +5049,7 @@
    "statueId": "5320_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -3663,12 +5102,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_2150_71",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Suzi_Q_(Unity)",
+    "revid": 3296,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3689,12 +5141,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_3160_71",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Steely_Dan_(Solitary)",
+    "revid": 3326,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3754,12 +5219,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_3290_61",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Daniel_J_D'Arby_(Tactical)",
+    "revid": 3298,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3858,12 +5336,21 @@
    "abilities": [
     {
      "abilityId": "DT_AST_4220_71",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 5,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Stray_Cat_(Solitary)",
+    "revid": 3291,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3897,12 +5384,21 @@
    "abilities": [
     {
      "abilityId": "DT_AST_4260_72",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Reimi_Sugimoto_(Unity)",
+    "revid": 3775,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
