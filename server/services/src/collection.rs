@@ -1417,11 +1417,16 @@ mod tests {
         }
         // A team with two assists on the leader seat.
         let mut t = c.teams[0].clone();
+        // (assists whose abilities have no activation condition, so they apply in any team)
         let free: Vec<i64> = c
             .statues
             .iter()
+            .filter(|o| !t.slots.contains(&o.uid))
+            .filter(|o| {
+                let abs = assist_abilities(&o.statue_id);
+                !abs.is_empty() && abs.iter().all(|a| a.conditions.is_empty())
+            })
             .map(|o| o.uid)
-            .filter(|u| !t.slots.contains(u))
             .take(2)
             .collect();
         t.assists[0] = vec![(1, free[0]), (2, free[1])];
@@ -1443,6 +1448,35 @@ mod tests {
         // The other seats have no assists, so no assist abilities.
         let left = &info["teamOrder"]["memberLeftStatue"]["statueInfo"]["dtAbilityList"];
         assert_eq!(*left, json!([]));
+        // An assist whose condition asks for two or more statues adds nothing when it is the
+        // seat's only assist.
+        let picky = c.statues.iter().find(|o| {
+            !t.slots.contains(&o.uid)
+                && assist_abilities(&o.statue_id)
+                    .iter()
+                    .any(|a| a.conditions.iter().map(|x| x.count).sum::<i64>() > 1)
+        });
+        if let Some(o) = picky {
+            let mut t2 = c.teams[0].clone();
+            t2.assists[0] = vec![(1, o.uid)];
+            let info = team_info(&c, &t2);
+            let list = &info["teamOrder"]["leaderStatue"]["statueInfo"]["dtAbilityList"];
+            let ids: Vec<String> = assist_abilities(&o.statue_id)
+                .iter()
+                .filter(|a| a.conditions.iter().map(|x| x.count).sum::<i64>() > 1)
+                .map(|a| a.ability_id.clone())
+                .collect();
+            for id in ids {
+                assert!(
+                    !list
+                        .as_array()
+                        .unwrap()
+                        .iter()
+                        .any(|a| a["abilityId"] == json!(id)),
+                    "{id} needs more assists than one"
+                );
+            }
+        }
     }
 
     #[test]
