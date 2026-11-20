@@ -9,6 +9,8 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 - Match the original's cool turns; fill missing data with a wide research pass; the battle camera
   looks locked compared with the original (the owner's video research package: 77 observations
   from 17 original videos, frame by frame); then: what about the team screen and My Page cameras?
+- First Build 33 package: most battle cameras stood very far away, under the ground or away from
+  the character.
 
 ### What changed
 - **Battle camera** (docs/research/31): every attack and skill now cuts to shots on the acting unit
@@ -24,6 +26,10 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
   (206 of 292), assist conditions for 116, Mind costs per rarity, Reversal/chain/type-chart/assist
   tuning from the tactical-era atwiki (the chain bonus was ×1.01 by a unit slip), daily-quest
   numbers for 15 stages.
+- **Camera fix after the first package** (docs/research/31 §2–3): the client builds each camera
+  step by adding every later node to the first one, so later nodes are deltas. We sent absolute end
+  poses, which doubled distance, angles and field of view on the second step. Sets now send a start
+  node and a delta; simulated on the client's formula, every shot stays above the floor and close.
 - **Team screen and My Page framing** (docs/research/31 §5): in the original the team screen shows
   every statue's head at about the same height, the leader's too; ours left short leaders low. My
   Page framed the leader from mid-thigh up, right of centre; ours stood 3.2 m away, feet in view.

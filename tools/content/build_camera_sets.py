@@ -15,8 +15,14 @@ What the client does with a set (H, docs/research/31 §2):
     bone(lookat) + R * lookatOffset, R being the unit's own rotation (flagWorldSet off), with the
     bones followed every frame (flagBindBase/flagBindLookat): rotate.y 0 is in front of the unit,
     180 behind it; a negative rotate.x is above it;
-  - the steps of a set's dataList play in turn, `inter` blending into each; the last pose is held
-    until the next camera request (holdFinalPose).
+  - the steps of a set's dataList play in turn: during step i the camera moves from step i's pose
+    to step i+1's over step i's `sec`; the last pose is held until the next camera request
+    (holdFinalPose);
+  - step i's pose is NOT its node alone: CreateNodeParam 0xD70D44 starts from the first step's node
+    and adds the rotate, length, perspective and both offsets of every later node up to i (only the
+    bones come from node i). Later nodes are deltas; Build 33 sent absolute ones, which doubled
+    distance, angles and field of view on the second step (cameras far away, under the floor or
+    looking away, the owner's device test).
 
 Every requested id gets one of a few shots that the footage shows (over the shoulder, a low front
 close-up, the reverse from the target's side, a side two-shot, a near-ground angle, a high wide
@@ -48,7 +54,15 @@ def node(nid, base, look, rot, length, fov=30.0, boff=(0, 0, 0), loff=(0, 0, 0))
             "length": float(length), "baseOffset": v(boff), "lookatOffset": v(loff)}
 
 
-# Shots: (start node, end node). The unit faces local +Z; its target stands 1-3 m ahead.
+def delta(nid, a, b):
+    """The node that takes a set from pose a to pose b (b's bones; CreateNodeParam adds it to a)."""
+    d = lambda k: {c: round(b[k][c] - a[k][c], 4) for c in "xyz"}
+    return {"id": nid, "baseBoneID": b["baseBoneID"], "lookatBoneID": b["lookatBoneID"], "rotate": d("rotate"),
+            "perspective": round(b["perspective"] - a["perspective"], 4), "length": round(b["length"] - a["length"], 4),
+            "baseOffset": d("baseOffset"), "lookatOffset": d("lookatOffset")}
+
+
+# Shots: (start node, end node), both absolute here; the end node is sent as a delta. The unit faces local +Z; its target stands 1-3 m ahead.
 SHOTS = {
     # behind the attacker's shoulder, looking past it towards the target
     "ots": (node("jdr_ots_a", NECK, NECK, (-6, 160, 0), 2.0, 32, (0.35, 0.05, 0), (0, -0.25, 2.6)),
@@ -129,10 +143,14 @@ BOSS_INTRO = {201}
 FINISH = {100300, 100301, 100310, 100311, 350, 351}
 
 
+def step(nid, sec):
+    return {"cameraNode": nid, "sec": sec, "inter": 0.0, "targetIDBase": 0, "targetIDLookat": 0}
+
+
 def steps(shot, push=1.2):
-    s0, s1 = SHOTS[shot]
-    return [{"cameraNode": s0["id"], "sec": 0.05, "inter": 0.0, "targetIDBase": 0, "targetIDLookat": 0},
-            {"cameraNode": s1["id"], "sec": push, "inter": push, "targetIDBase": 0, "targetIDLookat": 0}]
+    # a slow push-in from the start pose to the end pose over `push` seconds, then held
+    s0, _ = SHOTS[shot]
+    return [step(s0["id"], push), step(s0["id"] + "_to_b", 0.5)]
 
 
 def cam_set(cid, data, begin=0.0, end=0.3):
@@ -144,19 +162,15 @@ def cam_set(cid, data, begin=0.0, end=0.3):
 sets, used = [], collections.Counter()
 for cid in sorted(set(old_ids) | set(roles)):
     if cid in RESULT:
-        data = [{"cameraNode": "jdr_result", "sec": 0.05, "inter": 0.0, "targetIDBase": 0, "targetIDLookat": 0},
-                {"cameraNode": "jdr_result_b", "sec": 0.5, "inter": 0.5, "targetIDBase": 0, "targetIDLookat": 0},
-                {"cameraNode": "jdr_result_b", "sec": 4.0, "inter": 0.0, "targetIDBase": 0, "targetIDLookat": 0}]
+        data = [step("jdr_result", 0.5), step("jdr_result_to_b", 4.0)]
         used["result"] += 1
         sets.append(cam_set(cid, data))
     elif cid in BOSS_INTRO:
-        data = [{"cameraNode": "jdr_boss_a", "sec": 0.05, "inter": 0.0, "targetIDBase": 0, "targetIDLookat": 0},
-                {"cameraNode": "jdr_boss_b", "sec": 1.4, "inter": 1.4, "targetIDBase": 0, "targetIDLookat": 0},
-                {"cameraNode": "jdr_boss_b", "sec": 0.8, "inter": 0.0, "targetIDBase": 0, "targetIDLookat": 0}]
+        data = [step("jdr_boss_a", 1.4), step("jdr_boss_a_to_b", 0.8)]
         used["boss"] += 1
         sets.append(cam_set(cid, data))
     elif cid in FINISH:
-        data = [{"cameraNode": "jdr_finish", "sec": 1.5, "inter": 0.0, "targetIDBase": 0, "targetIDLookat": 0}]
+        data = [step("jdr_finish", 1.5)]
         used["finish"] += 1
         sets.append(cam_set(cid, data))
     elif cid in roles:
@@ -177,12 +191,17 @@ for cid in sorted(set(old_ids) | set(roles)):
         sets[-1]["flagBindBase"] = sets[-1]["flagBindLookat"] = False
         used["side"] += 1
 
-nodes = [n for pair in SHOTS.values() for n in pair] + EXTRA_NODES
+by_id = {n["id"]: n for n in EXTRA_NODES}
+nodes = [n for a0, b0 in SHOTS.values() for n in (a0, delta(a0["id"] + "_to_b", a0, b0))]
+nodes += [n for n in EXTRA_NODES if n["id"] not in ("jdr_result_b", "jdr_boss_b")]
+nodes += [delta("jdr_result_to_b", by_id["jdr_result"], by_id["jdr_result_b"]),
+          delta("jdr_boss_a_to_b", by_id["jdr_boss_a"], by_id["jdr_boss_b"])]
 old_nodes = json.load(open(node_path))
 old_nodes["about"] = ("Camera nodes (tools/content/build_camera_sets.py, docs/research/31-battle-camera.md): the shots of the "
                       "original battle footage, framed on the acting unit's bones (CharacterBoneList.Bone WAIST 1, SPINE2 4, "
                       "NECK 5, HEAD 6): over the shoulder, low front close-up, reverse from the target's side, side two-shot, "
-                      "near-ground, high wide and pose close-up (each a start and a pushed-in end node); the win, boss-intro "
+                      "near-ground, high wide and pose close-up (each a start node and a <id>_to_b node: the client adds every "
+                      "later step's node to the first, so later nodes are deltas); the win, boss-intro "
                       "and finish shots; ski_cam_00 (the client's test node) and jdr_side (the old world-fixed side view). "
                       "Values are ours.")
 old_nodes["data"]["listData"] = nodes

@@ -1,6 +1,6 @@
 {
  "asset": "Node_el_camera_node_common",
- "about": "Camera nodes (tools/content/build_camera_sets.py, docs/research/31-battle-camera.md): the shots of the original battle footage, framed on the acting unit's bones (CharacterBoneList.Bone WAIST 1, SPINE2 4, NECK 5, HEAD 6): over the shoulder, low front close-up, reverse from the target's side, side two-shot, near-ground, high wide and pose close-up (each a start and a pushed-in end node); the win, boss-intro and finish shots; ski_cam_00 (the client's test node) and jdr_side (the old world-fixed side view). Values are ours.",
+ "about": "Camera nodes (tools/content/build_camera_sets.py, docs/research/31-battle-camera.md): the shots of the original battle footage, framed on the acting unit's bones (CharacterBoneList.Bone WAIST 1, SPINE2 4, NECK 5, HEAD 6): over the shoulder, low front close-up, reverse from the target's side, side two-shot, near-ground, high wide and pose close-up (each a start node and a <id>_to_b node: the client adds every later step's node to the first, so later nodes are deltas); the win, boss-intro and finish shots; ski_cam_00 (the client's test node) and jdr_side (the old world-fixed side view). Values are ours.",
  "sources": [
   {
    "source": "jdr-research",
@@ -42,25 +42,25 @@
     }
    },
    {
-    "id": "jdr_ots_b",
+    "id": "jdr_ots_a_to_b",
     "baseBoneID": 5,
     "lookatBoneID": 5,
     "rotate": {
-     "x": -6.0,
-     "y": 162.0,
+     "x": 0.0,
+     "y": 2.0,
      "z": 0.0
     },
-    "perspective": 32.0,
-    "length": 1.75,
+    "perspective": 0.0,
+    "length": -0.25,
     "baseOffset": {
-     "x": 0.35,
-     "y": 0.05,
+     "x": 0.0,
+     "y": 0.0,
      "z": 0.0
     },
     "lookatOffset": {
      "x": 0.0,
-     "y": -0.25,
-     "z": 2.6
+     "y": 0.0,
+     "z": 0.0
     }
    },
    {
@@ -86,16 +86,16 @@
     }
    },
    {
-    "id": "jdr_low_b",
+    "id": "jdr_low_a_to_b",
     "baseBoneID": 4,
     "lookatBoneID": 5,
     "rotate": {
-     "x": 14.0,
-     "y": 36.0,
+     "x": 0.0,
+     "y": 4.0,
      "z": 0.0
     },
-    "perspective": 34.0,
-    "length": 1.6,
+    "perspective": 0.0,
+    "length": -0.3,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
@@ -130,16 +130,16 @@
     }
    },
    {
-    "id": "jdr_rev_b",
+    "id": "jdr_rev_a_to_b",
     "baseBoneID": 1,
     "lookatBoneID": 4,
     "rotate": {
-     "x": -4.0,
-     "y": 16.0,
+     "x": 0.0,
+     "y": 4.0,
      "z": 0.0
     },
-    "perspective": 30.0,
-    "length": 3.8,
+    "perspective": 0.0,
+    "length": -0.4,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
@@ -147,7 +147,7 @@
     },
     "lookatOffset": {
      "x": 0.0,
-     "y": 0.1,
+     "y": 0.0,
      "z": 0.0
     }
    },
@@ -174,16 +174,16 @@
     }
    },
    {
-    "id": "jdr_side2_b",
+    "id": "jdr_side2_a_to_b",
     "baseBoneID": 4,
     "lookatBoneID": 4,
     "rotate": {
-     "x": -5.0,
-     "y": 100.0,
+     "x": 0.0,
+     "y": 4.0,
      "z": 0.0
     },
-    "perspective": 32.0,
-    "length": 3.0,
+    "perspective": 0.0,
+    "length": -0.4,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
@@ -191,8 +191,8 @@
     },
     "lookatOffset": {
      "x": 0.0,
-     "y": -0.1,
-     "z": 1.2
+     "y": 0.0,
+     "z": 0.0
     }
    },
    {
@@ -218,16 +218,16 @@
     }
    },
    {
-    "id": "jdr_gnd_b",
+    "id": "jdr_gnd_a_to_b",
     "baseBoneID": 1,
     "lookatBoneID": 6,
     "rotate": {
-     "x": 18.0,
-     "y": -42.0,
+     "x": 0.0,
+     "y": -4.0,
      "z": 0.0
     },
-    "perspective": 36.0,
-    "length": 1.7,
+    "perspective": 0.0,
+    "length": -0.2,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
@@ -262,16 +262,16 @@
     }
    },
    {
-    "id": "jdr_wide_b",
+    "id": "jdr_wide_a_to_b",
     "baseBoneID": 1,
     "lookatBoneID": 1,
     "rotate": {
-     "x": -38.0,
-     "y": 128.0,
+     "x": -2.0,
+     "y": 3.0,
      "z": 0.0
     },
-    "perspective": 34.0,
-    "length": 8.0,
+    "perspective": 0.0,
+    "length": -0.6,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
@@ -280,7 +280,7 @@
     "lookatOffset": {
      "x": 0.0,
      "y": 0.0,
-     "z": 2.0
+     "z": 0.0
     }
    },
    {
@@ -306,16 +306,16 @@
     }
    },
    {
-    "id": "jdr_pose_b",
+    "id": "jdr_pose_a_to_b",
     "baseBoneID": 5,
     "lookatBoneID": 5,
     "rotate": {
      "x": 0.0,
-     "y": 26.0,
+     "y": 4.0,
      "z": 0.0
     },
-    "perspective": 30.0,
-    "length": 1.4,
+    "perspective": 0.0,
+    "length": -0.2,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
@@ -394,28 +394,6 @@
     }
    },
    {
-    "id": "jdr_result_b",
-    "baseBoneID": 4,
-    "lookatBoneID": 5,
-    "rotate": {
-     "x": 8.0,
-     "y": 24.0,
-     "z": 0.0
-    },
-    "perspective": 30.0,
-    "length": 2.05,
-    "baseOffset": {
-     "x": 0.0,
-     "y": 0.0,
-     "z": 0.0
-    },
-    "lookatOffset": {
-     "x": 0.0,
-     "y": 0.0,
-     "z": 0.0
-    }
-   },
-   {
     "id": "jdr_boss_a",
     "baseBoneID": 1,
     "lookatBoneID": 1,
@@ -438,28 +416,6 @@
     }
    },
    {
-    "id": "jdr_boss_b",
-    "baseBoneID": 1,
-    "lookatBoneID": 6,
-    "rotate": {
-     "x": 14.0,
-     "y": 30.0,
-     "z": -10.0
-    },
-    "perspective": 34.0,
-    "length": 3.2,
-    "baseOffset": {
-     "x": 0.0,
-     "y": 0.0,
-     "z": 0.0
-    },
-    "lookatOffset": {
-     "x": 0.0,
-     "y": 0.0,
-     "z": 0.0
-    }
-   },
-   {
     "id": "jdr_finish",
     "baseBoneID": 1,
     "lookatBoneID": 1,
@@ -478,6 +434,50 @@
     "lookatOffset": {
      "x": 0.0,
      "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_result_to_b",
+    "baseBoneID": 4,
+    "lookatBoneID": 5,
+    "rotate": {
+     "x": 0.0,
+     "y": 2.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": -0.55,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_boss_a_to_b",
+    "baseBoneID": 1,
+    "lookatBoneID": 6,
+    "rotate": {
+     "x": -8.0,
+     "y": 6.0,
+     "z": -10.0
+    },
+    "perspective": 0.0,
+    "length": 1.2,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.4,
      "z": 0.0
     }
    }
