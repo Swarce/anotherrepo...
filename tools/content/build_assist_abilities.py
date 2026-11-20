@@ -20,8 +20,17 @@ a roster statue with one, keeps the shared rows since its effect is unknown): ea
 statue gets its own row DT_AST_<statueId> under its own label, with the kind and tier it would
 otherwise take (wiki, else the default).
 
-Conditions: none (always active). The client's condition rows ([{statueType, count}]) are the
-server's assist_ability_condition_table, generated from the content file.
+Research facts (--research, Build 33): an assist_ability record of medium or high confidence for a
+statue gives
+  - its activation condition: the attributes the wiki lists (one per required assist, e.g. two
+    Fighting Spirit) as [{statueType, count}];
+  - its effects where the tactical battle has an affect for them (HP, ATK, DEF, damage dealt, as
+    percentages; nearest tier). Action-era effects (move speed, DoDoDo, cool-down, damage to a
+    race, one stat from another) have none: the statue then keeps its ShoutWiki or default kind,
+    under the wiki's condition.
+
+Conditions otherwise: none (always active). The client's condition rows ([{statueType, count}])
+are the server's assist_ability_condition_table, generated from the content file.
 
 Idempotent: replaces any DT_AST_* rows and keeps every other row as it is.
 
@@ -31,7 +40,7 @@ usage: python3 -I tools/content/build_assist_abilities.py \
          [--table server/content/masterdata/dtbattle_ability_data_table.json] \
          [--out server/content/assist_abilities.json]
 """
-import argparse, collections, json
+import argparse, collections, json, re
 
 # kind -> (affect id, per-mille value of tiers 1..4). Tier values follow the ShoutWiki numbers
 # (HP 5/6/10%, ATK 4/6/8/20%, DEF 6/8%, damage dealt 3/5/7/18%); the others are ours.
@@ -53,6 +62,8 @@ ap.add_argument("--labels", required=True, help="l10n export (key, hash, english
 ap.add_argument("--statues", default="server/content/statues.json")
 ap.add_argument("--table", default="server/content/masterdata/dtbattle_ability_data_table.json")
 ap.add_argument("--out", default="server/content/assist_abilities.json")
+ap.add_argument("--research", help="a research pass's statue facts (results.jsonl): assist_ability records "
+                "with statueId, effects, condition attributes, page and confidence")
 a = ap.parse_args()
 
 labels = {}
@@ -143,6 +154,51 @@ def lean(s):
     return "HP_RATEADD" if hp > st["atk"] else "ATK_RATEADD"
 
 
+# 3) Research facts: per statue, the condition and the effects with a tactical affect.
+TYPE_JP = {"勇気": 1, "知略": 2, "闘志": 3, "団結": 4, "孤高": 5}
+GENERIC = [(re.compile(r"^\s*HP\s*\+\s*([\d.]+)\s*%\s*$", re.I), "HP_RATEADD"),
+           (re.compile(r"^\s*ATK\s*\+\s*([\d.]+)\s*%\s*$", re.I), "ATK_RATEADD"),
+           (re.compile(r"^\s*DEF\s*\+\s*([\d.]+)\s*%\s*$", re.I), "DEF_RATEADD"),
+           (re.compile(r"^\s*Damage\s+(?:Dealt|Given)\s*\+\s*([\d.]+)\s*%\s*$", re.I), "DMG_RATEADD")]
+research = {}
+if a.research:
+    RANK = {"high": 3, "medium": 2}
+    for line in open(a.research, encoding="utf-8"):
+        r = json.loads(line)
+        if r.get("field") != "assist_ability" or r.get("confidence") not in RANK:
+            continue
+        old = research.get(r["statueId"])
+        if old is None or RANK[r["confidence"]] > RANK[old["confidence"]]:
+            research[r["statueId"]] = r
+        elif RANK[r["confidence"]] == RANK[old["confidence"]] and r["value"] != old["value"]:
+            research[r["statueId"]] = {"conflict": True, "confidence": r["confidence"]}
+
+
+def research_kinds(r):
+    out = []
+    for e in r["value"].get("effects") or []:
+        for rx, kind in GENERIC:
+            m = rx.match(e)
+            if m:
+                vals = KINDS[kind][1]
+                out.append((kind, 1 + min(range(4), key=lambda i: abs(vals[i] - 10 * float(m.group(1))))))
+    return out
+
+
+def research_conditions(r):
+    types = [TYPE_JP.get(t) for t in r["value"].get("condition_attributes_jp") or []]
+    if None in types:
+        return None
+    c = collections.Counter(types)
+    return [{"statueType": t, "count": n} for t, n in sorted(c.items())]
+
+
+def research_page(r):
+    url = r["url"].split(" (")[0]
+    rev = re.search(r"\(revid (\d+)", r["url"])
+    return url, (int(rev.group(1)) if rev else None)
+
+
 out, by_src = [], collections.Counter()
 for s in statues:
     sid = s["statueId"]
@@ -163,6 +219,27 @@ for s in statues:
         kinds = [(lean(s), max(1, min(4, (s.get("rarity") or 4) - 2)))]
         src = {"source": "jdr-default", "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"}
         by_src["default"] += 1
+    conditions = []
+    r = research.get(sid)
+    if r and not r.get("conflict"):
+        rk, rc = research_kinds(r), research_conditions(r)
+        page, revid = research_page(r)
+        site = ("Diamond Records Wiki (ShoutWiki)" if "shoutwiki" in page else
+                "JoJo's Bizarre Encyclopedia (JoJoWiki)" if "jojowiki" in page else
+                "Gamerch ジョジョDR攻略Wiki (Wayback Machine)" if "gamerch" in page else None)
+        if site and (rk or rc):
+            if rk and src["source"] == "jdr-default":
+                kinds = rk
+            if rc is not None:
+                conditions = rc
+            src = {"source": site, "page": page, **({"revid": revid} if revid else {}),
+                   **({"license": "CC BY-SA 3.0"} if "shoutwiki" in page else
+                      {"license": "CC BY-SA 4.0"} if "jojowiki" in page else {}),
+                   "accessed": r.get("accessed") or "2026-11-14",
+                   "note": ("condition and " if rc else "") +
+                           ("stat and value" if rk else "no tactical affect for the effect: ours")
+                           + " (action-battle era); tier = nearest value"}
+            by_src["research"] += 1
     if sid in OWN:
         # Assist-only: its own label; the first kind/tier gives the values (ours).
         k, t = kinds[0]
@@ -176,7 +253,7 @@ for s in statues:
         by_src["assist_only"] += 1
     else:
         ids = [row_id(k, t) for k, t in kinds]
-    out.append({"statueId": sid, "abilities": [{"abilityId": i, "conditions": []} for i in ids],
+    out.append({"statueId": sid, "abilities": [{"abilityId": i, "conditions": conditions} for i in ids],
                 "source": src})
 
 rows += own_rows
