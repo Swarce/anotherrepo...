@@ -38,8 +38,11 @@ H = read in the 3.12.0 disassembly or the player's files, F = seen in frames of 
 - `ScrptCameraUpdate` 0xD6EDAC: the camera stands at bone(base) + R × Euler(rotate) × (0, 0,
   length) and looks at bone(lookat) + R × lookatOffset; R is the unit's rotation unless
   `flagWorldSet`. With `flagBindBase`/`flagBindLookat` the bones are followed every frame, without
-  them their positions are taken once. A set's `dataList` steps play in turn, each blending in over
-  `inter` seconds; the last pose is held.
+  them their positions are taken once. A set's `dataList` steps play in turn: during step i the
+  camera moves from step i's pose to step i+1's over step i's `sec`; the last pose is held.
+- **Later nodes are deltas.** `ScriptCamera.CreateNodeParam` 0xD70D44 builds step i's pose from a
+  copy of the first step's node plus the `rotate`, `length`, `perspective`, `baseOffset` and
+  `lookatOffset` of every later node up to i; only the bones come from node i itself.
 - Bones: `CharacterBoneList.Bone` WAIST 1, SPINE2 4, NECK 5, HEAD 6 (docs/research/12 §5).
 
 ## 3. What we send (ours, Build 33)
@@ -56,7 +59,15 @@ H = read in the 3.12.0 disassembly or the player's files, F = seen in frames of 
   crane up to a tilted full-body shot. Stage finishes: a low shot beside the downed unit.
 - The boss intro is on again for the boss of each chapter's last stage (the first enemy of its last
   area); it had been off since Build 18 for want of a working camera.
-- Camera heights were checked numerically against a 1.8 m model: all above the floor.
+- **Build 33 device test:** most cameras stood very far away, under the ground or away from the
+  character. The first Build 33 package sent each push-in's end pose as an absolute node, so the
+  client added it to the start pose: distance, angles and field of view doubled on the second step
+  (tripled on the win shot's third). A simulation of the client's code on that data gives cameras
+  down to 5.4 m under the floor, up to 17 m away and fields of view up to 102°.
+- Now each set sends its start node and one delta node (`<shot>_to_b`); the push-in runs over the
+  first step's `sec` and the end pose is held. The same simulation, for allies and mirrored enemies
+  on a 1.8 m model, keeps every pose above the floor, within 9.2 m and at 30–36°; a test checks the
+  summed distance, field of view and pitch of every step.
 
 ## 5. The team screen and My Page (F, H)
 
