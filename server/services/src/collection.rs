@@ -830,7 +830,7 @@ pub fn dt_skill_table() -> Value {
     if let Some(list) = doc["data"]["skillDataList"].as_array_mut() {
         for s in skills.values() {
             let mut row = template.clone();
-            let cool = if s.special { 3 } else { 2 };
+            let (cool, uses) = dt_cool_turn(s);
             let view = s.view_id();
             let sub = time_stop(&s.id).unwrap_or("");
             if !sub.is_empty() {
@@ -844,13 +844,13 @@ pub fn dt_skill_table() -> Value {
                 ("dtSkillType", json!(if s.special { 3 } else { 2 })),
                 ("dtButtonType", json!(s.button)),
                 ("damageRank", json!(s.damage_rank)),
-                ("dtLimitCount", json!(if s.special { 3 } else { 0 })),
+                ("dtLimitCount", json!(uses)),
                 // Reversal gauge, in percent, added when a player unit picks the skill (ours).
                 ("dododoRate", json!(if s.special { 20 } else { 15 })),
-                // Cool turn = min + CeilToInt((max - min) / 10 x level): the old 2 (special 3)
-                // up to level 4, one turn less from level 5, two at level 10.
-                ("dtMinCoolTurn", json!(cool)),
-                ("dtMaxCoolTurn", json!(cool - COOL_TURN_LEVEL_GAIN)),
+                // Cool turn = min + CeilToInt((max - min) / 10 x level): the documented value at
+                // level 10 (dt_cool_turn), COOL_TURN_LEVEL_GAIN more at level 0.
+                ("dtMinCoolTurn", json!(cool + COOL_TURN_LEVEL_GAIN)),
+                ("dtMaxCoolTurn", json!(cool)),
                 ("mainSkillCategory", json!(s.category)),
                 ("subSkillCategory", json!(sub)),
                 ("dtRangeMin", json!(skill_range(&view, s.target_type).0)),
@@ -888,6 +888,39 @@ pub fn dt_skill_table() -> Value {
 
 /// Cool turns a skill loses from level 0 to level 10 (ours; docs/research/26 §4).
 pub const COOL_TURN_LEVEL_GAIN: i64 = 2;
+
+/// Documented tactical cool turns per skill id (server/content/dt_cool_turns.json).
+pub const DT_COOL_TURNS_JSON: &str = include_str!("../../content/dt_cool_turns.json");
+
+/// A tactical skill's cool turn at the highest skill level and its uses (0 = unlimited).
+/// Players listed the cool turn at the highest level (the tactical-era atwiki and the Bahamut forum,
+/// docs/research/26 §4): the skill's own value where its name matched, else its family's usual one
+/// there: attack skills 3, time stops 6/9/10 for 1/2/3 stopped turns, heals 8, special (SP) skills 5
+/// with 3 uses. How much the levels below take off is not documented (COOL_TURN_LEVEL_GAIN, ours).
+pub fn dt_cool_turn(s: &DtSkill) -> (i64, i64) {
+    static CELL: std::sync::OnceLock<Value> = std::sync::OnceLock::new();
+    let doc = CELL.get_or_init(|| serde_json::from_str(DT_COOL_TURNS_JSON).unwrap_or(Value::Null));
+    let known = &doc["skills"][&s.id];
+    let default_uses = if s.special { 3 } else { 0 };
+    let uses = known["uses"].as_i64().unwrap_or(default_uses);
+    if let Some(ct) = known["coolTurn"].as_i64() {
+        return (ct, uses);
+    }
+    let ct = if s.special {
+        5
+    } else if let Some(sub) = time_stop(&s.id) {
+        match sub {
+            "DTSC_WORLD_LIGHT" => 6,
+            "DTSC_WORLD_MIDDLE" => 9,
+            _ => 10,
+        }
+    } else if s.category.contains("HEAL") {
+        8
+    } else {
+        3
+    };
+    (ct, uses)
+}
 
 /// The cool turn the client computes for a skill row at a level (`SkillParameter` ctor 0xD8C894).
 pub fn cool_turn(min: i64, max: i64, level: i64) -> i64 {
@@ -2073,11 +2106,29 @@ mod links_and_skills_tests {
                 r["dtMinCoolTurn"].as_i64().unwrap(),
                 r["dtMaxCoolTurn"].as_i64().unwrap(),
             );
-            let old = if r["dtSkillType"] == 3 { 3 } else { 2 };
-            assert_eq!(cool_turn(min, max, 1), old, "{}", r["dtSkillId"]);
-            assert_eq!(cool_turn(min, max, 4), old);
-            assert_eq!(cool_turn(min, max, 5), old - 1);
-            assert_eq!(cool_turn(min, max, 10), old - 2);
+            // The documented value at the highest level, two more at level 1 to 4, one more
+            // from 5 (docs/research/26 §4).
+            let id = r["dtSkillId"].as_str().unwrap();
+            let top = max;
+            assert!((2..=11).contains(&top), "{id}: {top} turns at level 10");
+            assert_eq!(cool_turn(min, max, 1), top + 2, "{id}");
+            assert_eq!(cool_turn(min, max, 4), top + 2);
+            assert_eq!(cool_turn(min, max, 5), top + 1);
+            assert_eq!(cool_turn(min, max, 10), top);
+        }
+        // Documented skills keep their own value; the families take theirs.
+        let row = |id: &str| skills.iter().find(|r| r["dtSkillId"] == id).cloned();
+        if let Some(r) = row("SKILL_332_11") {
+            assert_eq!(
+                r["dtMaxCoolTurn"], 9,
+                "DIO's time stop: 9 turns at the highest level"
+            );
+        }
+        if let Some(r) = row("SKILL_532_03") {
+            assert_eq!(
+                (r["dtMaxCoolTurn"].clone(), r["dtLimitCount"].clone()),
+                (json!(4), json!(3))
+            );
         }
     }
 
