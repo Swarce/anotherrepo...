@@ -16,7 +16,12 @@ fn applies_the_art_pack() {
     };
     let k = jdr_core::settings::Settings::load_keys(std::path::Path::new(&keys)).unwrap();
     let (key, iv) = (k.asset_key.as_bytes(), k.asset_iv.as_bytes());
-    let pack = ArtPack::from_dir(std::path::Path::new(&art)).unwrap();
+    // a replacements/ folder, or the art.bin a patched APK carries (what the phone reads)
+    let pack = if art.ends_with(".bin") {
+        ArtPack::from_bin(&std::fs::read(&art).unwrap()).unwrap()
+    } else {
+        ArtPack::from_dir(std::path::Path::new(&art)).unwrap()
+    };
     // In-APK screens (apk_*) are the patcher's job; count only the downloaded bundles here.
     let want: usize = pack
         .bundles()
