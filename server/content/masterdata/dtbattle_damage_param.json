@@ -21,11 +21,23 @@
   {
    "source": "jdr-research",
    "doc": "docs/research/11-battle-and-positions.md §5",
-   "note": "Reversal on (Build 20): field meanings and units read in the client's ReversalManager; the gauge values, 3 actions, 10x speed and no cooldowns during Reversal are ours"
+   "note": "Reversal on (Build 20): field meanings and units read in the client's ReversalManager; the gauge values are ours"
   },
   {
    "source": "jdr-default",
-   "note": "assist bonus (Build 22, ours): an assist adds (10% + up to 10/10/15/20% for rarity 3/4/5/6 at 10 boosts) of its own HP/ATK/DEF, x1.2 for the seat's statue type; formula read in the client (docs/research/19-assists.md)"
+   "note": "assist bonus (Build 22): an assist adds (10% + up to 10/10/15/20% for rarity 3/4/5/6 at 10 boosts) of its own HP/ATK/DEF, formula read in the client (docs/research/19-assists.md); the limits are ours"
+  },
+  {
+   "source": "atwiki ジョジョDR２ @ ウィキ (Wayback Machine)",
+   "page": "https://www65.atwiki.jp/jojodrr/pages/24.html",
+   "accessed": "2026-11-20",
+   "note": "tactical battle basics (captures 2019-07/08): Reversal lasts 4 turns with speed +200% (_reversalAddSpeedUpRate 30000) and cool turns counting down twice as fast (_reversalAddSkillCoolTimeRate 5000); chain multipliers x1.1/x1.35/x1.5/x2.0 from the 1st to 4th consecutive action (_chain1..5Rate in percent added: the client takes 1 + rate/100, ChainManager.GetChainRate 0xFAABF0)"
+  },
+  {
+   "source": "Bahamut forum (gamer.com.tw), JoJo DR board",
+   "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=773",
+   "accessed": "2026-11-20",
+   "note": "since 2019-02-26 an assist of the seat's own type passes on twice its share (_sameTypeAssistBonusRate 2000); Reversal: 4 turns, cool-downs halved (snA=703, 2018-08-30)"
   }
  ],
  "data": {
@@ -68,9 +80,9 @@
     "_reversalAddGaugeDamage": 1000,
     "_reversalAddGaugeDead": 2500,
     "_reversalAddSkillStock": 1,
-    "_reversalMaxTurn": 3,
-    "_reversalAddSpeedUpRate": 100000,
-    "_reversalAddSkillCoolTimeRate": 0,
+    "_reversalMaxTurn": 4,
+    "_reversalAddSpeedUpRate": 30000,
+    "_reversalAddSkillCoolTimeRate": 5000,
     "_moveRangeNon": 30,
     "_moveRangeVeryNear": 150,
     "_moveRangeNear": 400,
@@ -82,14 +94,14 @@
     "_moveSkillRangeVeryNear": 150,
     "_moveSkillRangeNear": 400,
     "_moveSkillRangeFar": 800,
-    "_chain1Rate": 1.0,
-    "_chain2Rate": 1.1,
-    "_chain3Rate": 1.2,
-    "_chain4Rate": 1.3,
-    "_chain5Rate": 1.4,
+    "_chain1Rate": 10.0,
+    "_chain2Rate": 35.0,
+    "_chain3Rate": 50.0,
+    "_chain4Rate": 100.0,
+    "_chain5Rate": 100.0,
     "_statueAffinityThreshold": 100,
     "_baseAssistBonusRate": 100,
-    "_sameTypeAssistBonusRate": 1200,
+    "_sameTypeAssistBonusRate": 2000,
     "_differentTypeAssistBonusRate": 1000,
     "_limitRarity3AssistStatueAmplification": 10,
     "_limitAddBonusRarity3AssistStatueAmplification": 100,
