@@ -68,6 +68,14 @@ fn rebuilds_every_text_bundle() {
     let hinted =
         doc["nameBox"].as_array().unwrap().len() + doc["lineBox"].as_array().unwrap().len();
     assert_eq!(boxes, hinted, "fixed boxes");
+    // The Options menu edits (Achievements hidden, the buttons after it moved up).
+    let ed = serde_json::from_str::<serde_json::Value>(l10n::EDITS).unwrap();
+    let want = ed["hide"].as_array().unwrap().len() + ed["moveTo"].as_array().unwrap().len();
+    assert_eq!(
+        loc.iter().map(|l| l.stats.edits).sum::<usize>(),
+        want,
+        "scene edits"
+    );
     // Rebuilt bundles hold no Japanese strings any more and are plain (not JJEC).
     for l in &loc {
         let b = std::fs::read(&l.file).unwrap();
