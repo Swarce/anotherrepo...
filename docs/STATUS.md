@@ -36,6 +36,8 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
   of the arena. The shot set is now only the footage's: side-on, three-quarters behind, closer,
   slightly low, high wide; straight behind for the ids the client does not mirror; the boss intro
   and finish framed for the enemy side.
+- **Win shot from the full frames:** tight head and chest from well below, the winner right of
+  centre and turned towards WIN!, settling over 1 s (ours was head to waist, centred, barely low).
 - **Team screen and My Page framing** (docs/research/31 §5): in the original the team screen shows
   every statue's head at about the same height, the leader's too; ours left short leaders low. My
   Page framed the leader from mid-thigh up, right of centre; ours stood 3.2 m away, feet in view.
@@ -50,7 +52,8 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 - [ ] Tactical battle: attacks and skills cut to close shots and back; enemies' turns too; no
       camera stuck after an action
 - [ ] Chapter-final boss: the intro plays and the battle starts (no hang)
-- [ ] Win pose: low chest-up shot with a push-in
+- [ ] Win pose: tight head-and-chest shot from well below, winner right of centre, settling in
+      about 1 s
 - [ ] Action chapter: enemies appear; attack, skill and SP buttons work; the area clears
 - [ ] Skills come round more slowly (attack skills about every 4–5 turns at level 1)
 - [ ] Log: no errors around battle start
