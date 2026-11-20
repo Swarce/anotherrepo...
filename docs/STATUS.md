@@ -2,6 +2,40 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 32 — names that fit, a lighter APK, no Play Games (branch `wip/b32`)
+
+### What the owner asked
+- Long statue names spill over the "Stats" tab (Change Statue and the statue screens), and the
+  Town list's values spill out of their bars; keep the names whole.
+- Remove crash reporting, ads and other unused SDKs, and Google Play Games.
+
+### What changed
+- **Text that fits** (docs/LOCALIZATION.md, `ui_layout.json`). The labels were sized by a
+  ContentSizeFitter that grew them by a line, so best fit never ran.
+  - Statue names (16 labels): a fixed two-line box with best fit from 24 down to 12. Every
+    English name fits at 16 px or more.
+  - 31 one-line labels (Town policy, active hours and join requirement; filter checkboxes;
+    follow buttons; others): a fixed one-line box with best fit.
+- **`debloat`** (new patch, docs/research/29-debloat.md):
+  - SmartBeat, Adjust and Play Games entry points stubbed. Play Games is never activated, so
+    libgpg never loads.
+  - The title's Play Games button stays hidden.
+  - 27 manifest elements removed (Firebase, measurement, ads, sign-in, Play Games, Adjust,
+    Growth Push), plus the push and phone-state permissions.
+  - Firebase, SmartBeat and Play Games native libraries removed (about 8 MB).
+- **Options menu:** the Achievements button is gone and the buttons after it move up one place
+  (`ui_edits.json`).
+- `GEN_VERSION` 4: phones rebuild their English files once.
+- Build number 32, server marker `JDR_EMBEDDED_SERVER_b032`.
+
+### Device checklist
+- [ ] The game starts and logs in as before (no crash at start from the removed SDKs)
+- [ ] Change Statue / statue info: long names (Kakyoin ~Conqueror of Fear~, DIO ~Feeling
+      Absolutely "HIGH"!~) shrink or take two lines on the plate, not over the Stats tab
+- [ ] Town "Pick Up" list: policy, active hours and join requirement stay inside their bars
+- [ ] Title screen: no Play Games button; Options: no Achievements button, no gap in the grid
+- [ ] Log: `l10n … N name box(es)` with N > 0, no `layout left alone` lines
+
 ## Build 31 — added portraits findable: object table sorted (branch `wip/b31`)
 
 ### What the Build 30 probe showed

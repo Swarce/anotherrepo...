@@ -4,7 +4,7 @@
 Every MonoBehaviour must decode through its type tree consuming exactly its bytes; translated
 labels must carry no Japanese; UI labels set to best fit must have a sane size range (min <= max; the game itself uses min 0);
 the statue name labels have their fixed box (no vertical fitter, two lines tall, best fit from the design size), and the
-Town list values a one-line box.
+Town list values a one-line box; the Options menu has no Achievements button and no two buttons share a place.
 
 usage: python3 tools/proofs/l10n_check.py <dir with rebuilt .bytes files>
 requires: pip install UnityPy
@@ -20,7 +20,7 @@ jp = re.compile("[぀-ヿ㐀-䶿一-鿿]")
 files = sorted(glob.glob(os.path.join(sys.argv[1], "*.bytes")))
 assert files, "no rebuilt files"
 objs = texts = english = empty = japanese = best_fit = 0
-name_boxes = line_boxes = 0
+name_boxes = line_boxes = options_edited = 0
 lines = line_jp = 0
 for p in files:
     env = UnityPy.load(p)
@@ -59,6 +59,21 @@ for p in files:
             name_boxes += 1
         elif fit["m_VerticalFit"] == 2 and fd["m_BestFit"] and abs(fd["m_LineSpacing"] - 1.0) < 1e-6:
             raise AssertionError(f"{p}: {g['m_Name']} is still sized by its fitter")
+    # Options menu: Achievements (Google Play Games) hidden, the other 14 buttons in distinct grid slots
+    opts = {}
+    for o in env.objects:
+        if o.type.name == "GameObject":
+            g = o.read_typetree()
+            if g["m_Name"].startswith("Btn_Option") and g["m_Name"][10:].isdigit():
+                rt = next(o.assets_file.objects[c["component"]["m_PathID"]].read_typetree() for c in g["m_Component"]
+                          if o.assets_file.objects[c["component"]["m_PathID"]].type.name == "RectTransform")
+                slot = (round(rt["m_AnchorMin"]["y"], 3), rt["m_AnchoredPosition"]["x"], rt["m_AnchoredPosition"]["y"])
+                opts[int(g["m_Name"][10:])] = (g["m_IsActive"], slot)
+    if len(opts) == 15:
+        assert not opts[7][0], (p, "Achievements button still active")
+        shown = [opts[k][1] for k in range(1, 16) if opts[k][0]]
+        assert len(shown) == 14 == len(set(shown)), (p, "Options buttons overlap")
+        options_edited += 1
     for o in env.objects:
         if o.type.name != "MonoBehaviour":
             continue
@@ -84,10 +99,11 @@ for p in files:
 assert objs > 0 and texts > 0, "nothing decoded"
 assert name_boxes >= 16, f"{name_boxes} statue name boxes"
 assert line_boxes >= 9, f"{line_boxes} Town value boxes"
+assert options_edited == 1, f"Options menu edited in {options_edited} files"
 assert english > 0, "no UI text without Japanese: the English did not land"
 # Every exported UI label is translated, so a Japanese label means the pipeline missed one.
 assert japanese == 0, f"{japanese} UI texts still carry Japanese"
 assert line_jp == 0, f"{line_jp} story lines still carry Japanese"
 print(f"OK: {len(files)} rebuilt bundles parse with UnityPy; {objs} MonoBehaviours, "
       f"{texts} UI texts ({english} English, {empty} empty (set at runtime), 0 Japanese; {best_fit} best fit); "
-      f"{lines} story lines, 0 Japanese; {name_boxes} statue name boxes, {line_boxes} Town value boxes")
+      f"{lines} story lines, 0 Japanese; {name_boxes} statue name boxes, {line_boxes} Town value boxes; Options menu without Achievements")
