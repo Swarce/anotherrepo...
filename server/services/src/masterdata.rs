@@ -880,7 +880,10 @@ mod tests {
             };
             assert_eq!(a["formation"], want);
             for e in a["areaSettingList"].as_array().unwrap() {
-                assert_eq!(e["bossFlag"], 0);
+                // only the last area of a chapter's last stage has a boss (with its intro)
+                if c.stages.len() > 1 {
+                    assert_eq!(e["bossFlag"], 0);
+                }
                 let sid = e["enemyStatueInfo"]["statueId"].as_str().unwrap();
                 assert_eq!(
                     e["enemyStatueInfo"]["dtSkillList"][0]["skillId"],
