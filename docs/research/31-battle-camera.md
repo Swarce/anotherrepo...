@@ -11,9 +11,13 @@ H = read in the 3.12.0 disassembly or the player's files, F = seen in frames of 
 - **Input phase:** one fixed default view, side-on and slightly 3/4, allies on the left third and
   enemies on the right, at chest height. No idle movement.
 - **Every action, ally or enemy, cuts away** for about 1.5–3 s: the camera closes in on the
-  attacker and cuts 2–4 times (low close-up, over the shoulder, from behind the target looking
-  back, reverse angle). Big area finishers land in a high, wide view. Then a ~0.5 s settle back into
-  the default view.
+  attacker and cuts 2–4 times. In the full 2 fps frames (the owner's second package: X9xSMXBpsQw
+  0:56–1:07 and 5:12–5:18, ZCUC-PwLXxA 3:49–3:52) every cut stays on the side the default view
+  watches from: side-on to three-quarters behind the attacker, at chest height or a little lower,
+  attacker and target framed from the knees or waist up at about 3–5 m, the attacker in the
+  foreground. None looks from in front of the attacker or from beyond the target (the first
+  package's notes said "reverse angle"; the frames do not show one). Big area finishers land in a
+  high, wide view. Then a ~0.5 s settle back into the default view.
 - **SP skills:** an 8–13 s cinematic on its own stage, or a ~3.5 s cut-in, then the hit on the
   field.
 - **Time stop:** a cyan negative wave, then the field in blue-grey monochrome (HUD in colour).
@@ -49,13 +53,21 @@ H = read in the 3.12.0 disassembly or the player's files, F = seen in frames of 
 
 - Before: every id played one world-fixed side view 9 m away (Build 13), so every action looked
   like the input phase: the "locked" camera the owner reported.
-- Now (`build_camera_sets.py`): each requested id plays one shot of the footage's grammar, framed
-  on the acting unit and mirrored for enemies, each with a slow push-in:
-  - over the shoulder, a low front close-up, the reverse from the target's side, a side two-shot,
-    a near-ground angle, a pose close-up, and a high wide view for the 14xxxx family;
-  - picked by the role of the states that request the id (wind-up → shoulder/low/pose, hit →
-    reverse/side/ground, loop → side/reverse/ground, wrap-up → side/pose/shoulder), varied by id.
-- The win shots: low, chest up, a 0.5 s push-in, held. The boss intro (201): low on the legs, a
+- Now (`build_camera_sets.py`): each requested id plays one of the footage's shots, framed on the
+  acting unit, each with a slow push-in, all on the watched side:
+  - a side-on two-shot, three-quarters behind the attacker, a closer side shot, a slightly low side
+    shot, and a high wide view for the 14xxxx family;
+  - picked by the role of the states that request the id (wind-up → side/back/close, hit →
+    side/low/close, loop → side/back, wrap-up → side/close), varied by id.
+- The client mirrors only ids 100400–100999 and 110000–149999 for enemies
+  (`GameConst.IsMirroringCameraId` 0xDB66E4, ranges set in its constructor, H). Those are 2,250 of
+  the 2,545 requests. The few other action ids (102xxx, 150000/150001) get a shot straight behind
+  the attacker, which looks the same for either team; the boss intro (201, and 202/204/100201 that
+  the boss's entrance appeal requests) and the stage finish are always an enemy and are framed for
+  that side.
+- The first Build 33 shots (over the shoulder, a front close-up, a reverse from beyond the target, a
+  near-ground angle) put 74 poses on the far side of the arena even after the delta fix.
+- The win shots: low, chest up, a 0.5 s push-in, held. The boss intro: low on the legs, a
   crane up to a tilted full-body shot. Stage finishes: a low shot beside the downed unit.
 - The boss intro is on again for the boss of each chapter's last stage (the first enemy of its last
   area); it had been off since Build 18 for want of a working camera.
@@ -65,9 +77,10 @@ H = read in the 3.12.0 disassembly or the player's files, F = seen in frames of 
   (tripled on the win shot's third). A simulation of the client's code on that data gives cameras
   down to 5.4 m under the floor, up to 17 m away and fields of view up to 102°.
 - Now each set sends its start node and one delta node (`<shot>_to_b`); the push-in runs over the
-  first step's `sec` and the end pose is held. The same simulation, for allies and mirrored enemies
-  on a 1.8 m model, keeps every pose above the floor, within 9.2 m and at 30–36°; a test checks the
-  summed distance, field of view and pitch of every step.
+  first step's `sec` and the end pose is held. The same simulation, for allies and enemies (mirrored
+  only where the client mirrors) on a 1.8 m model, keeps every pose above the floor, on the watched
+  side, within 9.2 m and at 30–36°; a test checks the summed distance, field of view and pitch of
+  every step.
 
 ## 5. The team screen and My Page (F, H)
 

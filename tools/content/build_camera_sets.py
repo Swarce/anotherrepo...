@@ -24,10 +24,10 @@ What the client does with a set (H, docs/research/31 §2):
     distance, angles and field of view on the second step (cameras far away, under the floor or
     looking away, the owner's device test).
 
-Every requested id gets one of a few shots that the footage shows (over the shoulder, a low front
-close-up, the reverse from the target's side, a side two-shot, a near-ground angle, a high wide
-view, a pose close-up), picked by the role of the states that request it (wind-up, hit, loop, wrap
-up) and varied by id, each with a slow push-in. The win, boss-intro and finish shots follow the
+Every requested id gets one of the shots the footage shows, all from the side the turn camera
+watches (side-on two-shot, three-quarters behind, closer side, slightly low; a high wide view for
+big moves; straight behind for ids the client does not mirror), picked by the role of the states
+that request it (wind-up, hit, loop, wrap up) and varied by id, each with a slow push-in. The win, boss-intro and finish shots follow the
 footage too. Shot values are ours.
 
 usage: python3 -I tools/content/build_camera_sets.py --requests local/content/camera_requests.tsv \
@@ -62,29 +62,34 @@ def delta(nid, a, b):
             "baseOffset": d("baseOffset"), "lookatOffset": d("lookatOffset")}
 
 
-# Shots: (start node, end node), both absolute here; the end node is sent as a delta. The unit faces local +Z; its target stands 1-3 m ahead.
+# Shots: (start node, end node), both absolute here; the end node is sent as a delta.
+# The unit faces local +Z, its target 1-3 m ahead. rotate.y 90 puts the camera on the unit's right:
+# for an ally (facing +X) that is world -Z, the side the turn camera watches from; the client mirrors
+# ids 100400-100999 and 110000-149999 for enemies (GameConst DTBattleCameraIdMirroring*, H), so
+# their shots land on the same side. In the original footage (owner's frame package: X9xSMXBpsQw
+# 0:56-1:07 and 5:12-5:18, ZCUC-PwLXxA 3:49-3:52) every action shot stays on that side: side-on to
+# three-quarters behind the attacker, at chest height or a little lower, framing attacker and target
+# from the knees or waist up, about 3-5 m away; big area moves land in a high wide view.
 SHOTS = {
-    # behind the attacker's shoulder, looking past it towards the target
-    "ots": (node("jdr_ots_a", NECK, NECK, (-6, 160, 0), 2.0, 32, (0.35, 0.05, 0), (0, -0.25, 2.6)),
-            node("jdr_ots_b", NECK, NECK, (-6, 162, 0), 1.75, 32, (0.35, 0.05, 0), (0, -0.25, 2.6))),
-    # low front three-quarter close-up of the attacker
-    "low": (node("jdr_low_a", SPINE2, NECK, (14, 32, 0), 1.9, 34),
-            node("jdr_low_b", SPINE2, NECK, (14, 36, 0), 1.6, 34)),
-    # from beyond the target, looking back at the attacker (the reverse angle)
-    "rev": (node("jdr_rev_a", WAIST, SPINE2, (-4, 12, 0), 4.2, 30, (0, 0, 0), (0, 0.1, 0)),
-            node("jdr_rev_b", WAIST, SPINE2, (-4, 16, 0), 3.8, 30, (0, 0, 0), (0, 0.1, 0))),
-    # side two-shot of attacker and target
-    "side": (node("jdr_side2_a", SPINE2, SPINE2, (-5, 96, 0), 3.4, 32, (0, 0, 0), (0, -0.1, 1.2)),
-             node("jdr_side2_b", SPINE2, SPINE2, (-5, 100, 0), 3.0, 32, (0, 0, 0), (0, -0.1, 1.2))),
-    # near the ground, looking up at the attacker
-    "ground": (node("jdr_gnd_a", WAIST, HEAD, (18, -38, 0), 1.9, 36),
-               node("jdr_gnd_b", WAIST, HEAD, (18, -42, 0), 1.7, 36)),
+    # side-on two-shot of attacker and target, chest height
+    "side": (node("jdr_side_a", SPINE2, SPINE2, (-4, 100, 0), 4.6, 30, (0, 0, 0), (0, 0, 1.0)),
+             node("jdr_side_b", SPINE2, SPINE2, (-4, 98, 0), 4.2, 30, (0, 0, 0), (0, 0, 1.0))),
+    # three-quarters behind the attacker, looking past it at the target
+    "back": (node("jdr_back_a", SPINE2, SPINE2, (-7, 130, 0), 4.2, 30, (0, 0, 0), (0, -0.15, 1.8)),
+             node("jdr_back_b", SPINE2, SPINE2, (-7, 127, 0), 3.8, 30, (0, 0, 0), (0, -0.15, 1.8))),
+    # closer side shot on the attacker
+    "close": (node("jdr_close_a", SPINE2, NECK, (0, 90, 0), 3.2, 30, (0, 0, 0), (0, -0.1, 0.6)),
+              node("jdr_close_b", SPINE2, NECK, (0, 88, 0), 2.9, 30, (0, 0, 0), (0, -0.1, 0.6))),
+    # a little low, looking up slightly at the attacker and target
+    "low": (node("jdr_low_a", WAIST, NECK, (6, 95, 0), 3.8, 30, (0, 0, 0), (0, 0, 0.9)),
+            node("jdr_low_b", WAIST, NECK, (6, 93, 0), 3.5, 30, (0, 0, 0), (0, 0, 0.9))),
     # high and wide, for the big area hits
-    "wide": (node("jdr_wide_a", WAIST, WAIST, (-36, 125, 0), 8.6, 34, (0, 0, 0), (0, 0, 2.0)),
-             node("jdr_wide_b", WAIST, WAIST, (-38, 128, 0), 8.0, 34, (0, 0, 0), (0, 0, 2.0))),
-    # chest-height pose close-up of the acting unit
-    "pose": (node("jdr_pose_a", NECK, NECK, (0, 22, 0), 1.6, 30),
-             node("jdr_pose_b", NECK, NECK, (0, 26, 0), 1.4, 30)),
+    "wide": (node("jdr_wide_a", WAIST, WAIST, (-22, 105, 0), 8.0, 32, (0, 0, 0), (0, -0.3, 1.5)),
+             node("jdr_wide_b", WAIST, WAIST, (-22, 103, 0), 7.4, 32, (0, 0, 0), (0, -0.3, 1.5))),
+    # straight behind the attacker: for the few action ids the client does not mirror (102xxx),
+    # which must look right for either team
+    "behind": (node("jdr_behind_a", SPINE2, SPINE2, (-10, 180, 0), 4.0, 30, (0, 0, 0), (0, -0.2, 1.6)),
+               node("jdr_behind_b", SPINE2, SPINE2, (-10, 180, 0), 3.6, 30, (0, 0, 0), (0, -0.2, 1.6))),
 }
 EXTRA_NODES = [
     # the client's own test node and the old side view (kept for ids nothing else claims)
@@ -93,20 +98,25 @@ EXTRA_NODES = [
     # win pose: low, chest up, a short push-in (footage: 0.5 s ease-in, then held)
     node("jdr_result", SPINE2, NECK, (8, 22, 0), 2.6, 30),
     node("jdr_result_b", SPINE2, NECK, (8, 24, 0), 2.05, 30),
-    # boss intro: low on the legs, then a tilted low full-body shot (crane up)
-    node("jdr_boss_a", WAIST, WAIST, (22, 24, 0), 2.0, 34, (0, 0, 0), (0, -0.4, 0)),
-    node("jdr_boss_b", WAIST, HEAD, (14, 30, -10), 3.2, 34),
-    # stage finish: on the ground beside the downed unit
-    node("jdr_finish", WAIST, WAIST, (-6, 62, 0), 2.3, 36),
+    # boss intro (id 201, not mirrored, always an enemy facing -X: a negative rotate.y is the
+    # watched side): low on the legs, then a tilted low full-body shot (crane up)
+    node("jdr_boss_a", WAIST, WAIST, (22, -24, 0), 2.0, 34, (0, 0, 0), (0, -0.4, 0)),
+    node("jdr_boss_b", WAIST, HEAD, (14, -30, 10), 3.2, 34),
+    # stage finish (not mirrored, the downed enemy): on the ground beside it, watched side
+    node("jdr_finish", WAIST, WAIST, (-6, -62, 0), 2.3, 36),
 ]
 
 ROLE_SHOTS = {
-    "in": ["ots", "low", "pose", "ots", "low"],
-    "hit": ["rev", "side", "ground", "rev", "low"],
-    "loop": ["side", "rev", "ground"],
-    "out": ["side", "pose", "ots"],
-    "any": ["ots", "rev", "low", "side", "ground", "pose"],
+    "in": ["side", "back", "close"],
+    "hit": ["side", "low", "close"],
+    "loop": ["side", "back"],
+    "out": ["side", "close"],
+    "any": ["side", "back", "low", "close"],
 }
+
+
+def mirrored(i):
+    return 100400 <= i <= 100999 or 110000 <= i <= 149999
 
 
 def role(state):
@@ -139,7 +149,7 @@ old_sets = json.load(open(set_path))
 old_ids = [s["cameraID"] for s in old_sets["data"]["listData"]]
 
 RESULT = set(range(301, 315)) | set(range(101001, 101029))
-BOSS_INTRO = {201}
+BOSS_INTRO = {201, 202, 204, 100201}  # 201 the client's; 202/204/100201 requested by the boss's entrance appeal
 FINISH = {100300, 100301, 100310, 100311, 350, 351}
 
 
@@ -175,7 +185,9 @@ for cid in sorted(set(old_ids) | set(roles)):
         sets.append(cam_set(cid, data))
     elif cid in roles:
         rc = roles[cid]
-        if 140000 <= cid < 150000:
+        if not mirrored(cid):
+            shot = "behind"  # the same for either team
+        elif 140000 <= cid < 150000:
             shot = "wide"  # the 14xxxx family: big moves (e.g. the road roller)
         else:
             top = rc.most_common(1)[0][0]
@@ -199,8 +211,8 @@ nodes += [delta("jdr_result_to_b", by_id["jdr_result"], by_id["jdr_result_b"]),
 old_nodes = json.load(open(node_path))
 old_nodes["about"] = ("Camera nodes (tools/content/build_camera_sets.py, docs/research/31-battle-camera.md): the shots of the "
                       "original battle footage, framed on the acting unit's bones (CharacterBoneList.Bone WAIST 1, SPINE2 4, "
-                      "NECK 5, HEAD 6): over the shoulder, low front close-up, reverse from the target's side, side two-shot, "
-                      "near-ground, high wide and pose close-up (each a start node and a <id>_to_b node: the client adds every "
+                      "NECK 5, HEAD 6), all on the side the turn camera watches: side-on two-shot, three-quarters behind, closer "
+                      "side, slightly low, high wide, straight behind (each a start node and a <id>_to_b node: the client adds every "
                       "later step's node to the first, so later nodes are deltas); the win, boss-intro "
                       "and finish shots; ski_cam_00 (the client's test node) and jdr_side (the old world-fixed side view). "
                       "Values are ours.")
