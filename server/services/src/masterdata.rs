@@ -938,11 +938,36 @@ mod tests {
         {
             assert!(ids.contains(&id), "camera {id}");
         }
+        let node = |id: &str| {
+            nodes["listData"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .find(|n| n["id"] == id)
+                .unwrap()
+                .clone()
+        };
         for s in list {
             assert_eq!(s["flagMaintain"], false);
+            // The client adds every later step's node to the first one (CreateNodeParam 0xD70D44,
+            // docs/research/31 §2): the summed distance, field of view and pitch of each step stay
+            // those of a close shot (Build 33 first sent absolute nodes: doubled values).
+            let (mut length, mut fov, mut pitch) = (0.0, 0.0, 0.0);
+            let id = s["cameraID"].as_i64().unwrap();
             for d in s["dataList"].as_array().unwrap() {
-                assert!(node_ids.contains(&d["cameraNode"].as_str().unwrap()));
+                let name = d["cameraNode"].as_str().unwrap();
+                assert!(node_ids.contains(&name));
                 assert!(d["sec"].as_f64().unwrap() > 0.0);
+                let n = node(name);
+                length += n["length"].as_f64().unwrap();
+                fov += n["perspective"].as_f64().unwrap();
+                pitch += n["rotate"]["x"].as_f64().unwrap();
+                assert!(
+                    (1.0..=10.0).contains(&length),
+                    "camera {id} length {length}"
+                );
+                assert!((20.0..=45.0).contains(&fov), "camera {id} fov {fov}");
+                assert!((-45.0..=25.0).contains(&pitch), "camera {id} pitch {pitch}");
             }
         }
     }
