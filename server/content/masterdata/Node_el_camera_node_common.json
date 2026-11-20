@@ -1,6 +1,6 @@
 {
  "asset": "Node_el_camera_node_common",
- "about": "Camera nodes: ski_cam_00 (the client's own test node), jdr_side (world-fixed side view of the acting unit, 9 m away, slightly above) and jdr_result (three-quarter front shot of the winner, 3.2 m from its chest bone, looking at its neck bone, bound to the unit).",
+ "about": "Camera nodes (tools/content/build_camera_sets.py, docs/research/31-battle-camera.md): the shots of the original battle footage, framed on the acting unit's bones (CharacterBoneList.Bone WAIST 1, SPINE2 4, NECK 5, HEAD 6): over the shoulder, low front close-up, reverse from the target's side, side two-shot, near-ground, high wide and pose close-up (each a start and a pushed-in end node); the win, boss-intro and finish shots; ski_cam_00 (the client's test node) and jdr_side (the old world-fixed side view). Values are ours.",
  "sources": [
   {
    "source": "jdr-research",
@@ -20,6 +20,314 @@
  "data": {
   "listData": [
    {
+    "id": "jdr_ots_a",
+    "baseBoneID": 5,
+    "lookatBoneID": 5,
+    "rotate": {
+     "x": -6.0,
+     "y": 160.0,
+     "z": 0.0
+    },
+    "perspective": 32.0,
+    "length": 2.0,
+    "baseOffset": {
+     "x": 0.35,
+     "y": 0.05,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.25,
+     "z": 2.6
+    }
+   },
+   {
+    "id": "jdr_ots_b",
+    "baseBoneID": 5,
+    "lookatBoneID": 5,
+    "rotate": {
+     "x": -6.0,
+     "y": 162.0,
+     "z": 0.0
+    },
+    "perspective": 32.0,
+    "length": 1.75,
+    "baseOffset": {
+     "x": 0.35,
+     "y": 0.05,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.25,
+     "z": 2.6
+    }
+   },
+   {
+    "id": "jdr_low_a",
+    "baseBoneID": 4,
+    "lookatBoneID": 5,
+    "rotate": {
+     "x": 14.0,
+     "y": 32.0,
+     "z": 0.0
+    },
+    "perspective": 34.0,
+    "length": 1.9,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_low_b",
+    "baseBoneID": 4,
+    "lookatBoneID": 5,
+    "rotate": {
+     "x": 14.0,
+     "y": 36.0,
+     "z": 0.0
+    },
+    "perspective": 34.0,
+    "length": 1.6,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_rev_a",
+    "baseBoneID": 1,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -4.0,
+     "y": 12.0,
+     "z": 0.0
+    },
+    "perspective": 30.0,
+    "length": 4.2,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.1,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_rev_b",
+    "baseBoneID": 1,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -4.0,
+     "y": 16.0,
+     "z": 0.0
+    },
+    "perspective": 30.0,
+    "length": 3.8,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.1,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_side2_a",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -5.0,
+     "y": 96.0,
+     "z": 0.0
+    },
+    "perspective": 32.0,
+    "length": 3.4,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.1,
+     "z": 1.2
+    }
+   },
+   {
+    "id": "jdr_side2_b",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -5.0,
+     "y": 100.0,
+     "z": 0.0
+    },
+    "perspective": 32.0,
+    "length": 3.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.1,
+     "z": 1.2
+    }
+   },
+   {
+    "id": "jdr_gnd_a",
+    "baseBoneID": 1,
+    "lookatBoneID": 6,
+    "rotate": {
+     "x": 18.0,
+     "y": -38.0,
+     "z": 0.0
+    },
+    "perspective": 36.0,
+    "length": 1.9,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_gnd_b",
+    "baseBoneID": 1,
+    "lookatBoneID": 6,
+    "rotate": {
+     "x": 18.0,
+     "y": -42.0,
+     "z": 0.0
+    },
+    "perspective": 36.0,
+    "length": 1.7,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_wide_a",
+    "baseBoneID": 1,
+    "lookatBoneID": 1,
+    "rotate": {
+     "x": -36.0,
+     "y": 125.0,
+     "z": 0.0
+    },
+    "perspective": 34.0,
+    "length": 8.6,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 2.0
+    }
+   },
+   {
+    "id": "jdr_wide_b",
+    "baseBoneID": 1,
+    "lookatBoneID": 1,
+    "rotate": {
+     "x": -38.0,
+     "y": 128.0,
+     "z": 0.0
+    },
+    "perspective": 34.0,
+    "length": 8.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 2.0
+    }
+   },
+   {
+    "id": "jdr_pose_a",
+    "baseBoneID": 5,
+    "lookatBoneID": 5,
+    "rotate": {
+     "x": 0.0,
+     "y": 22.0,
+     "z": 0.0
+    },
+    "perspective": 30.0,
+    "length": 1.6,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_pose_b",
+    "baseBoneID": 5,
+    "lookatBoneID": 5,
+    "rotate": {
+     "x": 0.0,
+     "y": 26.0,
+     "z": 0.0
+    },
+    "perspective": 30.0,
+    "length": 1.4,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
     "id": "ski_cam_00",
     "baseBoneID": 0,
     "lookatBoneID": 0,
@@ -31,14 +339,14 @@
     "perspective": 25.0,
     "length": 13.0,
     "baseOffset": {
-     "x": 0,
-     "y": 0,
-     "z": 0
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
     },
     "lookatOffset": {
-     "x": 0,
+     "x": 0.0,
      "y": 0.6,
-     "z": 0
+     "z": 0.0
     }
    },
    {
@@ -53,14 +361,14 @@
     "perspective": 30.0,
     "length": 9.0,
     "baseOffset": {
-     "x": 0,
+     "x": 0.0,
      "y": 1.0,
-     "z": 0
+     "z": 0.0
     },
     "lookatOffset": {
-     "x": 0,
+     "x": 0.0,
      "y": 1.0,
-     "z": 0
+     "z": 0.0
     }
    },
    {
@@ -68,21 +376,109 @@
     "baseBoneID": 4,
     "lookatBoneID": 5,
     "rotate": {
-     "x": -5.0,
-     "y": 25.0,
+     "x": 8.0,
+     "y": 22.0,
      "z": 0.0
     },
     "perspective": 30.0,
-    "length": 3.2,
+    "length": 2.6,
     "baseOffset": {
-     "x": 0,
-     "y": 0,
-     "z": 0
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
     },
     "lookatOffset": {
-     "x": 0,
-     "y": 0,
-     "z": 0
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_result_b",
+    "baseBoneID": 4,
+    "lookatBoneID": 5,
+    "rotate": {
+     "x": 8.0,
+     "y": 24.0,
+     "z": 0.0
+    },
+    "perspective": 30.0,
+    "length": 2.05,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_boss_a",
+    "baseBoneID": 1,
+    "lookatBoneID": 1,
+    "rotate": {
+     "x": 22.0,
+     "y": 24.0,
+     "z": 0.0
+    },
+    "perspective": 34.0,
+    "length": 2.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.4,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_boss_b",
+    "baseBoneID": 1,
+    "lookatBoneID": 6,
+    "rotate": {
+     "x": 14.0,
+     "y": 30.0,
+     "z": -10.0
+    },
+    "perspective": 34.0,
+    "length": 3.2,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_finish",
+    "baseBoneID": 1,
+    "lookatBoneID": 1,
+    "rotate": {
+     "x": -6.0,
+     "y": 62.0,
+     "z": 0.0
+    },
+    "perspective": 36.0,
+    "length": 2.3,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
     }
    }
   ]

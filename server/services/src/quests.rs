@@ -457,6 +457,7 @@ pub fn area_list(c: &ChapterDef, s: &StageDef) -> Vec<Value> {
         .iter()
         .enumerate()
         .map(|(i, area)| {
+            let last_stage = c.stages.last().is_some_and(|l| l.stage_id == s.stage_id);
             let group = action_wave_group(area);
             let waves: Vec<Value> = match &group {
                 Some((pivot, points)) => s
@@ -489,8 +490,10 @@ pub fn area_list(c: &ChapterDef, s: &StageDef) -> Vec<Value> {
                     json!({ "enemyStatueInfo": enemy_info(e, s.enemy_level), "seq": k + 1,
                             "difficultyTable": "", "difficultyLevel": 1, "AiId": DT_ENEMY_AI, "fastStrike": false,
                             "enemySkillTable": "", "dropList": [], "disappear": 0, "hideEnemyInfo": 0,
-                            // No boss intro until it is known to work offline.
-                            "bossFlag": 0, "backFlag": 0 })
+                            // The boss intro (script camera 201, a crane up to a tilted shot and
+                            // the name card; docs/research/31 §1) for the boss of a chapter's last
+                            // stage: the first enemy of its last area.
+                            "bossFlag": (last_stage && i + 1 == areas.len() && k == 0) as i64, "backFlag": 0 })
                 })
                 .collect();
             json!({
@@ -621,6 +624,16 @@ mod tests {
             .as_array()
             .unwrap()
             .is_empty());
+        // The boss intro: only the first enemy of the last area of a chapter's last stage.
+        let last = c.stages.last().unwrap();
+        let areas = area_list(c, last);
+        let flags: i64 = areas
+            .iter()
+            .flat_map(|a| a["areaSettingList"].as_array().unwrap().iter())
+            .map(|e| e["bossFlag"].as_i64().unwrap())
+            .sum();
+        assert_eq!(flags, 1, "one boss");
+        assert_eq!(areas.last().unwrap()["areaSettingList"][0]["bossFlag"], 1);
     }
 
     #[test]
