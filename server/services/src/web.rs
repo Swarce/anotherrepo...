@@ -121,6 +121,7 @@ pub const ABOUT_PAGE: &str = "/information/about.html";
 
 /// What this build adds, for the Notices screen's Updates tab (our words; no game text).
 const NOTES: &[&str] = &[
+    "Build 29 (probe): four portrait slots test how the game loads added portraits.",
     "Build 28: the generated portraits keep a real portrait's frame, stars and badge pixel for pixel; only the inside is new.",
     "Build 27: statues the game files have no portrait for get one, drawn from their menu pose with the frame, stars and attribute of the others.",
     "Build 26: the Town home connects without a network (it showed a connection error offline).",
