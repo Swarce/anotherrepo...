@@ -30,12 +30,12 @@ logged CharacterController "Step Offset" warnings.
   | Field | Value |
   |---|---|
   | `myPageCameraType` | `CameraIdSet0` |
-  | `myPagePos` | (72, -113, 322) (Build 12; was (82, -115, 366)) |
+  | `myPagePos` | per statue (35, 25 − head height, 180) (Build 33, docs/research/31 §5; was (72, -113, 322)) |
   | `myPageRotation` | (0, 192.5, 0) |
-  | `teamScaleScalar` | 100 |
+  | `teamScaleScalar`, `teamPos` | per statue (docs/research/12 §7) |
 
-  These put models 1.0–2.3 m tall where the My Page leader touch area is. Six very tall models
-  may need a per-height position later.
+  Since Build 33 the My Page leader stands 1.8 m from the camera, framed thighs-up as in the
+  original's footage, with its head at the same place whatever its height.
 - Other fields:
 
   | Field | Effect | Value we send |

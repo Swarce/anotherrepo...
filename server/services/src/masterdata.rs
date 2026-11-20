@@ -850,10 +850,12 @@ mod tests {
             (50.0..=300.0).contains(&scale)
                 && r["myPageCameraType"] == "CameraIdSet0"
                 && r["mindFrameID"] == 1
-                && r["myPagePos"]["z"].as_f64().unwrap() > 100.0
+                && r["myPagePos"]["x"] == 35.0
+                && r["myPagePos"]["z"] == 180.0
+                && (-180.0..=-50.0).contains(&r["myPagePos"]["y"].as_f64().unwrap())
         }));
-        // Most models already fit the team view's bust shot at full size; offsets stay small
-        // (centring a head over its slot) and only ever lift.
+        // Most models keep their size in the team view; offsets centre a head over its slot and only
+        // ever lift it (to the same height in every slot, as in the original's footage).
         let full = rows
             .iter()
             .filter(|r| r["teamScaleScalar"] == 100.0)

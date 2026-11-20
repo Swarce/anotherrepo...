@@ -8,7 +8,7 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 - Build 32 worked. An action chapter loaded with no enemies, and nothing could attack.
 - Match the original's cool turns; fill missing data with a wide research pass; the battle camera
   looks locked compared with the original (the owner's video research package: 77 observations
-  from 17 original videos, frame by frame).
+  from 17 original videos, frame by frame); then: what about the team screen and My Page cameras?
 
 ### What changed
 - **Battle camera** (docs/research/31): every attack and skill now cuts to shots on the acting unit
@@ -24,9 +24,17 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
   (206 of 292), assist conditions for 116, Mind costs per rarity, Reversal/chain/type-chart/assist
   tuning from the tactical-era atwiki (the chain bonus was ×1.01 by a unit slip), daily-quest
   numbers for 15 stages.
+- **Team screen and My Page framing** (docs/research/31 §5): in the original the team screen shows
+  every statue's head at about the same height, the leader's too; ours left short leaders low. My
+  Page framed the leader from mid-thigh up, right of centre; ours stood 3.2 m away, feet in view.
+  Heads are now lifted to the same height in every slot, and the My Page leader stands 1.8 m away
+  with its head at the same place whatever its height (`myPagePos` per statue).
 - Build number 33, server marker `JDR_EMBEDDED_SERVER_b033`.
 
 ### Device checklist
+- [ ] My Page: the leader right of centre, thighs up, head in the upper part of the screen (not
+      cut off, not under the menus); tapping the leader still reacts
+- [ ] Team screen: the three heads at about the same height, the leader not lower than the others
 - [ ] Tactical battle: attacks and skills cut to close shots and back; enemies' turns too; no
       camera stuck after an action
 - [ ] Chapter-final boss: the intro plays and the battle starts (no hang)
