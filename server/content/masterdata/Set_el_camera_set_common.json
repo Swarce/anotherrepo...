@@ -189,7 +189,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -218,7 +218,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -247,7 +247,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -276,7 +276,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -305,7 +305,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -334,7 +334,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -832,7 +832,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -861,7 +861,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -890,7 +890,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -919,7 +919,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -948,7 +948,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -977,7 +977,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1006,7 +1006,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1035,7 +1035,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1064,7 +1064,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1093,7 +1093,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1122,7 +1122,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1151,7 +1151,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1180,7 +1180,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1209,7 +1209,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1238,7 +1238,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1267,7 +1267,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1296,7 +1296,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1325,7 +1325,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1354,7 +1354,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1383,7 +1383,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1412,7 +1412,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1441,7 +1441,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1470,7 +1470,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1499,7 +1499,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1528,7 +1528,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1557,7 +1557,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1586,7 +1586,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -1615,7 +1615,7 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
-      "sec": 0.5,
+      "sec": 1.0,
       "inter": 0.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
