@@ -1,4 +1,5 @@
-//! Binary AndroidManifest.xml (AXML) editing: just enough to add or set an attribute on an element.
+//! Binary AndroidManifest.xml (AXML) editing: just enough to add or set an attribute on an element
+//! and to remove elements.
 //!
 //! Layout: `RES_XML` header, a string pool, a resource map (resource ids for the first N strings,
 //! which are the attribute names that have framework ids), then XML node chunks whose fields are
@@ -22,6 +23,8 @@ const NONE: u32 = 0xFFFF_FFFF;
 pub const TYPE_STRING: u8 = 0x03;
 pub const TYPE_INT_BOOLEAN: u8 = 0x12;
 pub const ANDROID_NS: &str = "http://schemas.android.com/apk/res/android";
+/// `android:name`
+pub const ATTR_NAME: u32 = 0x0101_0003;
 
 pub type Error = String;
 
@@ -547,6 +550,66 @@ impl Axml {
         Ok("added")
     }
 
+    /// The tag of a start node and its `android:name` (resource id `ATTR_NAME`), if a string.
+    pub fn tag_and_name(&self, n: &Node) -> Option<(&str, Option<&str>)> {
+        let Node::Start { name, attrs, .. } = n else {
+            return None;
+        };
+        let tag = self.strings.get(*name as usize)?.as_str();
+        let value = attrs
+            .iter()
+            .find(|a| self.resid_of(a.name) == Some(ATTR_NAME) && a.vtype == TYPE_STRING)
+            .and_then(|a| self.strings.get(a.data as usize))
+            .map(String::as_str);
+        Some((tag, value))
+    }
+
+    /// Every `(tag, android:name)` of the document's elements, in order.
+    pub fn elements(&self) -> Vec<(String, String)> {
+        self.nodes
+            .iter()
+            .filter_map(|n| self.tag_and_name(n))
+            .map(|(t, v)| (t.to_owned(), v.unwrap_or("").to_owned()))
+            .collect()
+    }
+
+    /// Remove every element (with its children) whose `(tag, android:name)` `pick` accepts.
+    /// Returns what was removed, in document order. Unused strings stay in the pool.
+    pub fn remove_elements(&mut self, pick: impl Fn(&str, &str) -> bool) -> Vec<(String, String)> {
+        let mut removed = Vec::new();
+        let mut i = 0;
+        while i < self.nodes.len() {
+            let hit = self
+                .tag_and_name(&self.nodes[i])
+                .filter(|(t, v)| pick(t, v.unwrap_or("")))
+                .map(|(t, v)| (t.to_owned(), v.unwrap_or("").to_owned()));
+            let Some(hit) = hit else {
+                i += 1;
+                continue;
+            };
+            // the matching end: same depth
+            let mut depth = 0usize;
+            let mut j = i;
+            loop {
+                match self.nodes.get(j) {
+                    Some(Node::Start { .. }) => depth += 1,
+                    Some(Node::End { .. }) => {
+                        depth -= 1;
+                        if depth == 0 {
+                            break;
+                        }
+                    }
+                    Some(_) => {}
+                    None => return removed, // unbalanced: leave the rest alone
+                }
+                j += 1;
+            }
+            self.nodes.drain(i..=j);
+            removed.push(hit);
+        }
+        removed
+    }
+
     /// Boolean value of `android:<resid>` on the first `<element>`, if present.
     pub fn get_android_bool(&self, element: &str, resid: u32) -> Option<bool> {
         let el = self.string_index(element)?;
@@ -696,6 +759,45 @@ mod tests {
         if let Node::Start { attrs, style, .. } = &x.nodes[2] {
             assert_eq!(x.strings[attrs[0].name as usize], "aaa");
             assert_eq!(*style, 3);
+        }
+    }
+
+    #[test]
+    fn removes_elements_with_their_children() {
+        let mut x = synth(false);
+        // name the application "x" through android:name: map string 0 to the name id
+        x.resmap[0] = ATTR_NAME;
+        let child = Node::Start {
+            line: 3,
+            comment: NONE,
+            ns: NONE,
+            name: 4,
+            id: 0,
+            class: 0,
+            style: 0,
+            attrs: vec![],
+        };
+        let end = Node::End {
+            line: 3,
+            comment: NONE,
+            ns: NONE,
+            name: 4,
+        };
+        x.nodes.insert(3, end);
+        x.nodes.insert(3, child);
+        assert_eq!(x.elements()[1], ("application".to_owned(), "x".to_owned()));
+        let before = x.nodes.len();
+        let gone = x.remove_elements(|t, v| t == "application" && v == "x");
+        assert_eq!(gone, vec![("application".to_owned(), "x".to_owned())]);
+        assert_eq!(x.nodes.len(), before - 4);
+        let y = Axml::parse(&x.write()).unwrap();
+        assert_eq!(y.elements(), vec![("manifest".to_owned(), String::new())]);
+        assert!(y.remove_elements_dry(|_, _| true) == 1);
+    }
+
+    impl Axml {
+        fn remove_elements_dry(&self, pick: impl Fn(&str, &str) -> bool) -> usize {
+            self.clone().remove_elements(pick).len()
         }
     }
 

@@ -1,6 +1,15 @@
 //! Builds the patcher has been verified against. Every patch site is fingerprinted here;
 //! if the player's copy does not match, that patch refuses (nothing half-patches).
 
+/// What a stubbed method becomes.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Stub {
+    /// `ret` (a `void` method that does nothing).
+    Ret,
+    /// `mov w0, #0; ret` (a `bool` method that answers false).
+    RetFalse,
+}
+
 pub struct VerifiedBuild {
     pub version_name: &'static str,
     pub version_code: u32,
@@ -25,6 +34,13 @@ pub struct VerifiedBuild {
     /// `Jjs.Socket.SocketBase.Connect` that swap the server's address for
     /// `Dns.GetHostEntry(ip).HostName` (the `town-direct-ip` patch removes them).
     pub town_dns_site: (usize, &'static str),
+    /// SDK entry points the `debloat` patch stubs: file offset, SHA-256 (32-byte window), the
+    /// method, and what it becomes.
+    pub sdk_stubs: &'static [(usize, &'static str, &'static str, Stub)],
+    /// File offset and SHA-256 (32-byte window) of the `mvn w8, w20` in
+    /// `TitleUIController.SetupGooglePlayGamesLoginButton` (`SetActive(!Authenticated)`); `debloat`
+    /// makes it `mov w8, #0`, so the title's Play Games button stays hidden.
+    pub title_play_games_button: (usize, &'static str),
     /// SHA-256 of the binary `AndroidManifest.xml`.
     pub manifest_sha256: &'static str,
     /// SHA-256 of the Resources file holding `Text/ClientMes_JP` (`clientmes::ENTRY`).
@@ -74,6 +90,64 @@ pub const BUILDS: &[VerifiedBuild] = &[VerifiedBuild {
     town_dns_site: (
         0xcadda4,
         "6be3fa8bf1014f7372682e9fb6ce85b8de4982385331725954179cc582f6c64c",
+    ),
+    sdk_stubs: &[
+        // SmartBeat (crash reporting): never initialised, its native library never loaded
+        (
+            0x107ed5c,
+            "a777bd87ab3365c9a4e593d40d3c6ac4910eed4ddc8e294e27f62f944e05ebf3",
+            "SmartBeat.SmartBeatBehaviour.Awake",
+            Stub::Ret,
+        ),
+        (
+            0x107f1a4,
+            "a76c712dac692395732159546bdd69b11181044ccd2b151420bb8c97c1f98d9c",
+            "SmartBeat.SmartBeatBehaviour.OnApplicationPause",
+            Stub::Ret,
+        ),
+        (
+            0x107f208,
+            "838837cf48802fc38021471f452627065fa2d09231b99584cb8e3434ca69bfba",
+            "SmartBeat.SmartBeatBehaviour.Update",
+            Stub::Ret,
+        ),
+        // Adjust (install and event tracking)
+        (
+            0x18f8af0,
+            "b13f38f0ef664d8d22563b8c692f397ed6029becc48754b55c971ffb20e7cba5",
+            "com.adjust.sdk.Adjust.start",
+            Stub::Ret,
+        ),
+        (
+            0x18f93f0,
+            "ff7cde1e4d6ba0d85e88f17486a254fd7ec96ae4b3589c59694eae3d81a571d0",
+            "com.adjust.sdk.Adjust.trackEvent",
+            Stub::Ret,
+        ),
+        (
+            0x18f9100,
+            "47b6003469e9595ccb80cf7147a7f406a537a3983d681b3b11e905dd72552494",
+            "com.adjust.sdk.Adjust.OnApplicationPause",
+            Stub::Ret,
+        ),
+        // Google Play Games: never activated (UnityEngine.Social keeps Unity's own local
+        // platform), so libgpg is never loaded; no automatic sign-in
+        (
+            0x10612b0,
+            "697178122da20031e8db7e9752f570d8eb4c410d5fe82d5bd60f0399223e1b3d",
+            "ScSystem.ScSocial.AchievementManager.Init",
+            Stub::Ret,
+        ),
+        (
+            0x20602f8,
+            "ad174ab9b4641e58891d790bef0a6c38ed06bdeeb7cab2073000269eb69e4c27",
+            "Jjs.AchievementUtil.get_NeedAutoSignIn",
+            Stub::RetFalse,
+        ),
+    ],
+    title_play_games_button: (
+        0xb90da4,
+        "ccaddce7da666ff67c2b76ac08db6d4760ab4d399a7f34520135b37707ff56b8",
     ),
     manifest_sha256: "a1d3a440e4e6ba6cc1bf6a8fa91cc03fd948058d55630c9aa41820dc11061257",
     clientmes_sha256: "eb62e1d6f6c8dcd3d186ffb0af05d2c0f02ff55594651ae5b72ad65e5b751501",
