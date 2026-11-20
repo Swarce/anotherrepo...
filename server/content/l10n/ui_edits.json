@@ -1,0 +1,14 @@
+{
+"about": "Scene edits by object id (bundle:file:pathId; no game text). hide: GameObjects made inactive. moveTo: [RectTransform, slot]: the RectTransform takes the anchors and position the slot RectTransform had in the original file. Options menu (scene_option file 9, BuildPlayer-OptionUI): Btn_Option7 (Achievements, Google Play Games) is hidden and Btn_Option8..15 move back one place in the 3-column grid. See docs/research/29-debloat.md.",
+"hide": ["scene_option:9:25"],
+"moveTo": [
+["scene_option:9:174", "scene_option:9:182"],
+["scene_option:9:184", "scene_option:9:174"],
+["scene_option:9:163", "scene_option:9:184"],
+["scene_option:9:187", "scene_option:9:163"],
+["scene_option:9:185", "scene_option:9:187"],
+["scene_option:9:169", "scene_option:9:185"],
+["scene_option:9:183", "scene_option:9:169"],
+["scene_option:9:193", "scene_option:9:183"]
+]
+}
