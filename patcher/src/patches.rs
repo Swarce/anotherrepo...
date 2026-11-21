@@ -482,6 +482,59 @@ impl Patch for NoGrowthbeat {
     }
 }
 
+/// `nop`
+pub const NOP: u32 = 0xd503_201f;
+
+/// Length of the `town-direct-ip` site: nine instructions.
+pub const TOWN_DNS_LEN: usize = 36;
+
+/// Lets the Town home connect without a name lookup. `SocketBase.Connect` (the client's
+/// realtime socket) replaces the address `/clan/sync_server_info` gives with
+/// `Dns.GetHostEntry(ip).HostName` before opening `TcpClient(host, port)`. That is a reverse
+/// lookup of 127.0.0.1 and then a forward lookup of the name; Unity 2018.4's libil2cpp asks with
+/// `AI_ADDRCONFIG`, which on Android finds no IPv4 address when the phone has no network, so
+/// `Connect` throws, catches it and shows "Connection error E_00900030" without ever opening a
+/// connection (seen on device, Build 25). The patch removes the nine instructions
+/// (`bl GetHostEntry` .. `bl get_HostName; mov x22, x0`), so the IP string itself goes to
+/// `TcpClient`, whose `Dns.GetHostAddresses` returns an IP literal without asking the resolver.
+pub struct TownDirectIp;
+
+impl Patch for TownDirectIp {
+    fn id(&self) -> &'static str {
+        "town-direct-ip"
+    }
+    fn description(&self) -> &'static str {
+        "Town socket connects to the server's IP without a DNS lookup (failed offline: E_00900030)"
+    }
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        _cfg: &Config,
+        build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
+        // Runs after keep-files (which checks the whole file), so only the site is checked.
+        let mut out = apk.read(LIBIL2CPP_ARM64)?;
+        let (off, want) = build.town_dns_site;
+        let window = out
+            .get(off..off + TOWN_DNS_LEN)
+            .ok_or("libil2cpp.so too short")?;
+        if sha256_hex(window) != want {
+            return Err(format!("fingerprint mismatch at SocketBase.Connect {off:#x}").into());
+        }
+        out[off..off + TOWN_DNS_LEN].copy_from_slice(&town_dns_nops());
+        let compress = apk.is_compressed(LIBIL2CPP_ARM64);
+        apk.put(LIBIL2CPP_ARM64, out, compress);
+        Ok(format!(
+            "libil2cpp.so @{off:#x}: SocketBase.Connect uses the IP as given (no Dns.GetHostEntry)"
+        ))
+    }
+}
+
+/// The bytes the `town-direct-ip` site becomes.
+pub fn town_dns_nops() -> Vec<u8> {
+    NOP.to_le_bytes().repeat(TOWN_DNS_LEN / 4)
+}
+
 /// English for the in-APK ClientMes table (boot, download and error messages), from the
 /// project's translation file; rows without a current translation stay as they are.
 pub struct TranslateClientMes;
@@ -707,6 +760,7 @@ pub fn all() -> Vec<Box<dyn Patch>> {
         Box::new(UnityHeap),
         Box::new(KeepFiles),
         Box::new(NoGrowthbeat),
+        Box::new(TownDirectIp),
         Box::new(EmbedServer),
         Box::new(TranslateClientMes),
         Box::new(TranslateApkText),
@@ -726,6 +780,24 @@ mod tests {
         assert!(validate_server_url("https://127.0.0.1:18080", 25).is_err());
         assert!(validate_server_url("http://127.0.0.1:0", 25).is_err());
         assert!(validate_server_url("http://127.0.0.1:x", 25).is_err());
+    }
+
+    #[test]
+    fn town_direct_ip_is_nine_nops_after_the_other_lib_patches() {
+        let b = town_dns_nops();
+        assert_eq!(b.len(), TOWN_DNS_LEN);
+        assert!(b.chunks(4).all(|w| w == NOP.to_le_bytes()));
+        let ids: Vec<&str> = all().iter().map(|p| p.id()).collect();
+        let at = |id| ids.iter().position(|&i| i == id).unwrap();
+        // keep-files checks the whole libil2cpp.so first; this patch checks only its site.
+        assert!(at("keep-files") < at("town-direct-ip"));
+        let (off, _) = known::BUILDS[0].town_dns_site;
+        let others = [known::BUILDS[0].clear_flag_fn.0]
+            .into_iter()
+            .chain(known::BUILDS[0].growthbeat_fns.iter().map(|f| f.0));
+        for o in others {
+            assert!(o + 32 <= off || off + TOWN_DNS_LEN <= o, "sites overlap");
+        }
     }
 
     #[test]
