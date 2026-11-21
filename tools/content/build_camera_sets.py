@@ -230,6 +230,9 @@ for cid in sorted(set(old_ids) | set(roles)):
         data = [step("jdr_result", 5.0)]
         used["result"] += 1
         sets.append(cam_set(cid, data))
+        # still while the appeal animation plays: the bones' positions are taken on the first frame
+        # (playStartPosBase/Lookat, ScrptCameraUpdate 0xD6FAC8) instead of followed every frame
+        sets[-1]["flagBindBase"] = sets[-1]["flagBindLookat"] = False
     elif cid in BOSS_INTRO:
         data = [step("jdr_boss_a", 1.4), step("jdr_boss_a_to_b", 0.8)]
         used["boss"] += 1
