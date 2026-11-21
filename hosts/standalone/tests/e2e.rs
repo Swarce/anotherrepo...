@@ -300,15 +300,21 @@ fn new_player_boot_sequence() {
         call_as(port, &ep("/bizarre/bizarre_resumption"), "{}", &uuid)["param"]["status"],
         50301
     );
+    // The Message Box holds the welcome gifts (Build 22); every row's dataId parses.
+    let box_ = call_as(
+        port,
+        &ep("/present/present_list"),
+        r#"{"prevNum":1,"receivedFlag":0}"#,
+        &uuid,
+    );
+    assert_eq!(box_["param"]["status"], 10000);
+    let rows = box_["param"]["presentList"].as_array().unwrap();
+    assert!(!rows.is_empty());
+    assert!(rows
+        .iter()
+        .all(|r| r["dataId"].as_str().unwrap().parse::<i64>().is_ok()));
     // MyPage menu screens: handled (not the unknown-route fallback), every list present and empty
-    for (p, param, lists) in [
-        (
-            "/present/present_list",
-            r#"{"prevNum":1,"receivedFlag":0}"#,
-            &["presentList"][..],
-        ),
-        ("/follow/follow_list", "{}", &["followList"][..]),
-    ] {
+    for (p, param, lists) in [("/follow/follow_list", "{}", &["followList"][..])] {
         let r = call_as(port, &ep(p), param, &uuid);
         assert_eq!(r["param"]["status"], 10000, "{p}");
         for f in lists {

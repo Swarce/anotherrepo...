@@ -62,7 +62,7 @@ Read in the 3.12.0 client (H read in code, M inferred).
   counts.
 
 ## Not yet
-- Event exchange: it needs an event with `eventShopFlg` and the unrouted `/shop/event_shop_buy`
-  and `/event/event_point_list`.
+- Event exchange: built in Build 22 (docs/research/20). The point-reward route is
+  `/event/point_reward_list`; there is no `/event/event_point_list`.
 - Growth-tree squares still cost nothing.
 - Mind levelling (`/mind/strengthening*`) is not routed yet.

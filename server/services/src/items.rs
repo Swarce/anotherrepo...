@@ -11,6 +11,11 @@ pub const ITEMS_JSON: &str = include_str!("../../content/items.json");
 pub const MEMORY_RING: i64 = 31;
 /// `goldRatioInteger` is divided by this (client GameConst): 100000 = gold costs as listed.
 pub const GOLD_RATIO_DENOMINATOR: i64 = 100_000;
+/// Fight Coin: the offline event-exchange currency for every event (the events' own currencies
+/// are not recorded; ours).
+pub const EVENT_COIN: i64 = 3017;
+/// Fight Coins per event-quest clear (ours).
+pub const EVENT_COINS_PER_CLEAR: i64 = 20;
 /// Gold granted once with the starting item stock (offline sandbox; ours).
 pub const STARTING_GOLD: i64 = 1_000_000;
 
