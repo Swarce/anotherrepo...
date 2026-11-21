@@ -771,7 +771,7 @@ mod tests {
                 .unwrap_or_else(|| panic!("no row for {id}"));
             assert!(id == crate::collection::BASIC_ATTACK || row["viewSkillId"] == id.as_str());
             assert_eq!(row["skillWait"], 100, "an attack ends the unit's turn");
-            // attacks stay on the client's Overview two-shot (docs/research/31 §9)
+            // attacks stay on the client's Overview two-shot (docs/research/31 §8)
             assert_eq!(row["forceNormalCamera"], 1, "{id} on the two-shot");
             assert!(
                 row["dtRangeMax"].as_i64().unwrap() >= 100,

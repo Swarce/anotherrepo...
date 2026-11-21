@@ -2,6 +2,46 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 39 — attacks on the client's two-shot; every win camera still (branch `wip/b39`)
+
+### What the owner said
+- Device recording of Build 38: the win camera was right for Jotaro, but completely off for
+  Polnareff in an earlier run; it must look like Jotaro's for every character.
+- The camera when you attack or get attacked is very off centre, either left or right. Still not
+  good overall.
+
+### What changed
+- **Win camera for everyone:** Polnareff 3040's win appeal requests 101008, which Build 38 had
+  given an attack wrap-up shot (a pull-out following the bones). Every id a win appeal requests
+  (301–314, 101001–101028; 193 requests) now plays the still win shot.
+- **Attacks on the client's own two-shot** (docs/research/31 §8): the screen centre is always a
+  script shot's look point, and ours sat 1.8–3.2 m ahead of an attacker who strikes from 1–2.5 m,
+  so the pair landed on one side. The client's Overview camera follows the midpoint of the
+  attacker and its targets from the world −Z side and zooms with their distance: allies left,
+  enemies right, centred, no cut, the measured original layout. `forceNormalCamera` 1 on
+  `JDR_ATK_00` and every attack row turns script cameras off for the attack; skill rows set 0.
+  This also removes the hard cut back to the turn view in the middle of each attack.
+- **Skill shots:** 111000 / 131000 / 131101 (still requested by blue skills) look half way to the
+  target; 131000 sits 0.6 m lower for Stands. Cuts inside skills are clean (0.001 s blend steps
+  instead of 0.05 s, which showed in-between frames). The low behind shot no longer stands inside
+  a Stand user's back, and plays one angle (the time stop had 7 cuts).
+- Build number 39, server marker `JDR_EMBEDDED_SERVER_b039`; `Node_el_camera_node_common 54 rows`.
+
+### Known trade-offs
+- With script cameras off, an attack hit that would knock the target away plays the big-damage
+  reaction instead (the client does the same on finishing blows).
+- A few original units cut inside their normal attack (Abbacchio; a low party-side shot on some
+  enemy attacks); every attack is on the two-shot now.
+
+### Device checklist
+- [ ] Log: `[boot] jdr embedded build 39`, `Node_el_camera_node_common 54 rows`
+- [ ] Attacks (yours and the enemy's): attacker and target side by side, the middle of the pair
+      in the middle of the screen, allies on the left; no cut during the attack
+- [ ] Skills: still cut, with no in-between frame; the time stop shows Jotaro and Star Platinum,
+      not the back of his coat
+- [ ] Win: still for every character (Polnareff, Jotaro, …)
+- [ ] Any shot that looks wrong: its time in a recording and the statue's name
+
 ## Build 38 — the camera measured on every original action; a still win shot (branch `wip/b38`)
 
 ### What the owner said
