@@ -147,6 +147,18 @@ owner's private pack, dated guides and screenshots) are cited by their id. Every
   `IsFormationInterval`). Costs rise with use and fall every four battles (the 00029 text);
   the rise itself is server-side.
 
+- The 3.12.0 home carries the whole BP economy (H, its texts): "Starting the battle … {2}
+  Battle Points will be used" (00004, `ConsumptionBpConfirmDialogFunc` 0xDCA8FC reads the team's
+  `fatiguCount`), "You need {0} BP to start a battle" (00012), "BP cannot be restored any
+  further" (00014), "BP cost will recover once BP reaches {0} or more" (00015), "Use 1 {0} to
+  restore BP?" (00022) and the four-battle notice (00029). So the 2019 rules use it.
+- `/user/recover_battle_point {payType, itemId}` → `{userInfo, itemList}`
+  (`RecoveryBattlePointRequest`, H). Status codes E_BATTLE_POINT_FULL 10116 and
+  E_BATTLE_POINT_LACK 10117; E_PVP_TEAM_FATIGU_NOT_EMPTY 52005 is the edit gate's (H, enum).
+- UserInfo `battlePoint`, `battlePointMax`, `battlePointUseTime`, `battlePointMaxTime`; GameConst
+  `battlePointFull` 5. The BP Recovery Colas are items 1100–1102 (their texts: 1, 2 and 5 BP);
+  the player's files hold icons for 1101 and 1102 only.
+
 ### 1.11 Win-streak rates (H)
 
 - `pvp_start`'s `winningStreakAtkRate` / `winningStreakDefRate` go to the tactical battle's
@@ -191,8 +203,26 @@ owner's private pack, dated guides and screenshots) are cited by their id. Every
   the `/team/*` logic (`team::Roster::Arena`). Single-team edits behave like the story ones;
   `set_team_all_pvp` (whose reply carries the whole roster) and the auto formation keep a statue
   to one Arena team. Arena Minds count as equipped (`useFlg`, fodder protection).
-- **BP and cost:** BP stays 5 of 5 (as AP is never spent offline) and every team costs 1, so the
-  edit gate never closes.
+- **BP and cost (Build 25):**
+  - BP 5 (`battlePointFull`); one comes back every 30 minutes (our `bpOneRecoveryTime` 1800).
+    `user_info` sends the current BP, `battlePointUseTime` (when the regaining started) and
+    `battlePointMaxTime` (when it is full).
+  - `pvp_start` charges the team's cost (`fatiguCount`); 10117 when BP is short (the client
+    checks first).
+  - A settled battle (a result, or an abandoned one) raises its team's cost by one, up to 5
+    (research pack `arena.bp_cost`; the cap is ours). Every fourth battle lowers every other
+    team's cost by one, never below 1 (00029).
+  - `recoveryTimes` is the battle count of that cycle, 0–4; it stays 4 after the fourth battle
+    (the home's notice and full gauge) until the next one.
+  - When BP is full again (regained, a Cola or Diamond Coins), every cost goes back to 1 and the
+    cycle restarts (`arena.bp_cost`, 00015).
+  - `/item/heal_item_list {type 2}` lists the Colas held; `/user/recover_battle_point` takes one
+    Cola for its BP (10108 when none is held), or fills the bar for Diamond Coins (free offline;
+    ours); 10116 when BP is full.
+  - Colas: 5 of each in the starting stock (new saves) and 50 Memory Rings each at the Ring
+    Exchange (ours).
+  - The edit gate (no edits while a team's cost is above one, `arena.edit_gate`) is the client's
+    (`IsPossibleFormationTeam` 0xF289EC); the server does not refuse the edit.
 - **Opponents:** three AI teams of three statues of different characters, kept until a battle or
   a shuffle (shuffles are free). They scale on the chosen team's average level and rarity and on
   the season points: easier (level -3, rarity -1, 10 base points), even (15) and harder (level +5,
@@ -241,15 +271,16 @@ owner's private pack, dated guides and screenshots) are cited by their id. Every
   the home is polled 10 seconds or more after it started (the client stops polling while it
   starts a battle): streak 0, a loss, 2500 durability, a battle for Fever; `forceDefeatFlg` is
   true once. A late `pvp_end` pays nothing.
-- **recoveryTimes:** 0. Costs never rise offline (BP is always full and every team costs 1, see
-  "BP and cost"), so the four-battle recovery cycle (§1.10) has nothing to count, and the 00029
-  notice would be untrue.
+- **recoveryTimes:** the cost recovery cycle's battle count (see "BP and cost", Build 25).
 - **Win-streak rates (Build 24):** 20 per win of the running streak, at most 100, for both: +2 %
   ATK and DEF per win for the player's units, at most +10 % (§1.11).
 - **Opponents' names:** rivals of the ranking field (one below the player, one near, one above),
   with their points.
-- **Not built:** clan rankings and clan points (no Towns offline), the rising BP costs,
-  `eventCampaignList` (empty), ranking rewards for events (events never close offline).
+- **Not built:** clan rankings and clan points (no Towns offline), `eventCampaignList` (empty),
+  ranking rewards for events (events never close offline), the 2017 rules (one-hour rest, cost
+  decay counters).
+- **Opponents and rivals** never lead with an assist-only statue (Build 25,
+  docs/research/19-assists.md §6).
 - **Formation pattern:** `area_position_pattern_table` gets a `PatternPVP` row with the story
   positions.
 

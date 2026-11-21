@@ -35,12 +35,21 @@ community wikis (each record cites its page) or are marked `jdr-default`.
    `server/content/assist_abilities.json` and the `DT_AST_*` rows of
    `dtbattle_ability_data_table`; the server generates `assist_ability_condition_table` from it
    (docs/research/19-assists.md §5).
+7. Skill Minds and time stop (Build 25): `tools/content/build_mind_skills.py` →
+   `server/content/mind_skills.json` (which Mind grants which skill, read from the game's own
+   `MIND_TEXT_<id>` and `SKILL_NAME_<p>_<NN>` labels, and which skills stop time). Mind links:
+   `tools/content/build_mind_links.py` → `server/content/mind_links.json` (Gamerch's link stat per
+   Mind) and the `DT_MLINK_*` rows of `dtbattle_ability_data_table`
+   (docs/research/26-links-and-skills.md).
 
 ## Offline rules (preservation sandbox)
 
 - The player owns every obtainable statue (266: model + animations + action set + leader ability in
   the player's files) at level 1; teams: 5 per battle type, the tactical main team (Jonathan,
   Jotaro, Josuke when present) leads My Page.
+- Build 25: plus the 26 assist-only statues (`assistOnly` in statues.json: a model, animations,
+  an action set and their own `ABI_AST_<id>_N` label, no leader ability). They can be assists,
+  never team members (docs/research/19-assists.md §6).
 - All story chapters are open; a cleared stage is recorded; a clear grants the stage's gold and rank
   EXP, and the same amount as statue EXP to the three statues that fought (a `jdr-default` until a
   source gives statue EXP per stage). A clear pays once per started battle.

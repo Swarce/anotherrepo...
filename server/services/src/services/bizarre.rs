@@ -5,7 +5,7 @@ use crate::app::{ApiError, ApiResult};
 use crate::collection;
 use crate::quests::{self, PendingBattle, STORY_CATEGORY};
 use crate::services::statue::{profile, with_profile};
-use crate::services::{dungeon, ok};
+use crate::services::{dungeon, ok, support};
 use crate::Ctx;
 use jdr_core::envelope::RequestEnvelope;
 use jdr_core::log;
@@ -38,6 +38,15 @@ pub fn get_bizarre_select(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
             "htmlLink": format!("/information/campaign_{}.html", e.event_id),
             "signboardPriority": i + 1, "bizarreHomeFlag": true, "signboardParam": "" }));
     }
+    // The campaign banners of the player's files (`ec_<id>_..._start`), after the events.
+    let n = campaigns.len();
+    for (i, c) in quests::campaigns().iter().enumerate() {
+        campaigns.push(
+            json!({ "eventCampaignId": c.campaign_id, "banner": c.banner,
+            "htmlLink": format!("/information/campaign_{}.html", c.campaign_id),
+            "signboardPriority": n + i + 1, "bizarreHomeFlag": true, "signboardParam": "" }),
+        );
+    }
     // dungeonLockFlg 0 opens the Labyrinth tile (docs/research/22-labyrinth.md).
     ok(json!({ "questList": list, "eventCampaignList": campaigns, "dungeonLockFlg": 0 }))
 }
@@ -56,31 +65,14 @@ pub fn bizarre_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .filter(|c| c.category == category)
         .map(|c| quests::chapter_info(c, &p.progress))
         .collect();
-    // Event Home backs out with an "expired" dialog unless eventCampaignId is set. The exchange
-    // is on (collect type 2 = items, Build 22): its button needs eventShopFlg 1, and Shop3 copies
-    // eventItemList (never null). A point event has a ranking (eventRankingFlg 1: the home asks
-    // for /event/get_event_ranking_list and shows its ranking button, services/ranking.rs). BGM
-    // and the event summon stay off.
-    let event_info = quests::events()
-        .iter()
-        .find(|e| e.category == category)
-        .map(|e| {
-            {
-            // A point event shows its points and the rewards button (collect type 1, shop
-            // flag 0); the others have the Fight Coin exchange (collect type 2, shop flag 1).
-            let point = crate::services::event::is_point_event(&e.event_id);
-            json!({ "eventCampaignId": e.event_id, "eventShopFlg": if point { 0 } else { 1 },
-                "eventCollectType": if point { 1 } else { 2 },
-                "eventRankingFlg": i64::from(point), "eventMissiongFlg": 0, "eventBg": "",
-                "htmlLink": format!("/information/event_{}.html", e.event_id), "eventBgm": "",
-                "eventTutorialImage": "",
-                "eventItemList": crate::services::item::event_coin_list(&p.collection), "eventPointImage": "",
-                "userEventPoint": crate::services::event::points(&p, &e.event_id), "clanEventPoint": 0,
-                "endDate": "", "finishedDate": "", "banner": e.banner })
-        }
-        })
+    // Event Home: eventInfo by the event's kind (services/event.rs). Outside an event (story,
+    // daily) the client does not read it. raidInfo is never read by Event Home in 3.12
+    // (UpdateUiRaidBoss has no caller); it carries an inactive raid (services/raid.rs).
+    let event_info = quests::event_for_category(category)
+        .map(|e| crate::services::event::event_info(&p, e))
         .unwrap_or_else(|| json!({}));
-    ok(json!({ "chapterList": list, "eventInfo": event_info, "raidInfo": {} }))
+    ok(json!({ "chapterList": list, "eventInfo": event_info,
+               "raidInfo": crate::services::raid::raid_info() }))
 }
 
 /// `StageListResponse` for one chapter.
@@ -110,9 +102,10 @@ pub fn check_timed_chapter(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "chapterList": [] }))
 }
 
-/// `SupportUserResponse`: no other players offline.
-pub fn support_user_s(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    ok(json!({ "supportUserList": [] }))
+/// `SupportUserResponse`: today's AI supporters (services/support.rs; no other players offline).
+pub fn support_user_s(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let p = profile(ctx, env)?;
+    ok(support::support_list(&p, jdr_core::clock::now()))
 }
 
 /// `BizarreStartResponse`: the battle description for the chosen stage and team.
@@ -128,6 +121,12 @@ pub fn bizarre_start(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let (c, s) = quests::find_stage(stage_id)
         .ok_or_else(|| ApiError::Internal(format!("unknown stage {stage_id:?}")))?;
     let team_no = env.param.get("teamNo").and_then(Value::as_i64).unwrap_or(1);
+    // The supporter picked on the support list (an id we handed out; anything else: none).
+    let support = env
+        .param
+        .get("supportId")
+        .and_then(Value::as_str)
+        .and_then(support::Supporter::parse);
     let (p, team) = with_profile(ctx, env, |p| {
         let team = quests::team_for(&p.collection, c.stage_type, team_no).cloned();
         *p.progress
@@ -138,26 +137,114 @@ pub fn bizarre_start(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
             stage_id: stage_id.to_string(),
             stage_type: t.stage_type,
             team_num: t.team_num,
+            support: support.as_ref().map(|s| s.id.clone()),
         });
         (team, Change::Bookkeeping)
     })?;
+    let mut reply = battle_reply(&p, c, s, team.as_ref());
+    reply["tarotInfo"] = json!({});
+    ok(reply)
+}
+
+/// The battle's `supportUserInfo`: the supporter of the pending battle as a mutual friend (the
+/// tactical battle applies its statue's leader ability), else `{}` (none).
+fn support_info(p: &Profile) -> Value {
+    p.progress
+        .pending
+        .as_ref()
+        .and_then(|b| b.support.as_deref())
+        .and_then(support::Supporter::parse)
+        .map(|s| support::battle_support_info(&s, jdr_core::clock::now()))
+        .unwrap_or_else(|| json!({}))
+}
+
+/// The battle description `bizarre_start` and `bizarre_resumption` share for a story, daily or
+/// event stage: the areas, the chapter, the stage and the team.
+fn battle_reply(
+    p: &Profile,
+    c: &quests::ChapterDef,
+    s: &quests::StageDef,
+    team: Option<&collection::Team>,
+) -> Value {
     let team = team
-        .map(|t| collection::team_info(&p.collection, &t))
+        .map(|t| collection::team_info(&p.collection, t))
         .unwrap_or_else(|| json!({}));
     let n = c
         .stages
         .iter()
-        .position(|x| x.stage_id == stage_id)
+        .position(|x| x.stage_id == s.stage_id)
         .unwrap_or(0);
-    ok(json!({
-        "userInfo": crate::services::user::user_info(&p),
-        "areaList": quests::area_list(c, s), "minigameInfo": {}, "supportUserInfo": {},
+    json!({
+        "userInfo": crate::services::user::user_info(p),
+        "areaList": quests::area_list(c, s), "minigameInfo": {}, "supportUserInfo": support_info(p),
         "chapterInfo": quests::chapter_info(c, &p.progress),
         "teamInfo": team, "stageInfo": quests::stage_info(c, s, n, &p.progress),
-        "continueCount": 0, "tarotInfo": {}, "dungeonId": "", "floorNum": 0,
+        "continueCount": 0, "dungeonId": "", "floorNum": 0,
         "seed": (jdr_core::clock::now() & 0x7fff_ffff)
-    }))
+    })
 }
+
+/// The story, daily or event battle `bizarre_start` began and no `bizarre_end` settled.
+fn suspended_story_battle(
+    p: &Profile,
+) -> Option<(&'static quests::ChapterDef, &'static quests::StageDef)> {
+    let b = p.progress.pending.as_ref()?;
+    if crate::labyrinth::find_room(&b.stage_id).is_some() {
+        return None;
+    }
+    quests::find_stage(&b.stage_id)
+}
+
+/// `/bizarre/bizarre_resumption` (My Page, every load; docs/research/22 §1.8): status 10000 with
+/// the suspended battle makes the client ask "Resume?" (Client_Mes_0009, or Client_Mes_0010 when
+/// `dungeonId` is set); Yes replays it from this reply (`returnDestination` 1 Battle) or reopens the
+/// labyrinth's card scene (0 TarotSelect), No sends `/bizarre/destruction`. 50301
+/// (E_BIZALLE_NOT_START) when nothing is suspended. Suspended: a battle `bizarre_start` began and
+/// no `bizarre_end` settled (story, daily, event or labyrinth room), or a labyrinth room paid for
+/// whose Tarot pick was not made.
+pub fn bizarre_resumption(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let Ok(p) = profile(ctx, env) else {
+        return Err(ApiError::Status(E_NOT_START));
+    };
+    if let Some((c, s)) = suspended_story_battle(&p) {
+        let team = p.progress.pending.as_ref().and_then(|b| {
+            p.collection
+                .teams
+                .iter()
+                .find(|t| t.stage_type == b.stage_type && t.team_num == b.team_num)
+        });
+        let mut reply = battle_reply(&p, c, s, team);
+        for (k, v) in [
+            ("returnDestination", json!(1)),
+            ("selectTarotList", json!([])),
+            ("usedTarotList", json!([])),
+            ("isRaidDelete", json!(0)),
+        ] {
+            reply[k] = v;
+        }
+        log::line("bizarre", &format!("resumption offered: {}", s.stage_id));
+        return ok(reply);
+    }
+    if let Some(reply) = dungeon::resumption(&p) {
+        log::line(
+            "dungeon",
+            &format!(
+                "resumption offered: {} ({})",
+                reply["stageInfo"]["stageId"].as_str().unwrap_or(""),
+                if reply["returnDestination"] == 1 {
+                    "battle"
+                } else {
+                    "tarot select"
+                }
+            ),
+        );
+        return ok(reply);
+    }
+    Err(ApiError::Status(E_NOT_START))
+}
+
+/// E_BIZALLE_NOT_START: nothing to resume.
+const E_NOT_START: i64 = 50301;
 
 /// `BizarreEndResponse`: for the battle `bizarre_start` began, records a clear (result 0) and
 /// grants gold, rank EXP and statue EXP to the team that fought, once (a resent request pays
@@ -185,19 +272,12 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         return dungeon::bizarre_end(ctx, env, &stage_id, won);
     }
     let found = quests::find_stage(&stage_id);
-    let event_id = found.and_then(|(c, _)| {
-        quests::events()
-            .iter()
-            .find(|e| e.category == c.category)
-            .map(|e| e.event_id.clone())
-    });
-    let is_event = event_id.is_some();
-    let point_event = event_id
-        .as_deref()
-        .is_some_and(crate::services::event::is_point_event);
-    let mut event_rewards: Vec<Value> = Vec::new();
+    let event = found.and_then(|(c, _)| quests::event_for_category(c.category));
+    let mut settled: Option<crate::services::event::Settlement> = None;
+    let mut support_points = 0;
     let (p, (paid, team)) = with_profile(ctx, env, |p| {
         let pending = p.progress.pending.take_if(|b| b.stage_id == stage_id);
+        let supported = pending.as_ref().is_some_and(|b| b.support.is_some());
         let team = pending.as_ref().and_then(|b| {
             p.collection
                 .teams
@@ -222,6 +302,10 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                 );
                 p.gold += s.gold;
                 p.friend_points += FRIEND_POINTS_PER_CLEAR;
+                if supported {
+                    support_points = support::SUPPORT_FRIEND_POINTS;
+                    p.friend_points += support_points;
+                }
                 p.exp += s.gain_rank_exp;
                 p.rank = collection::rank_for_exp(p.exp);
                 let now = jdr_core::clock::now();
@@ -234,19 +318,17 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                 }
                 let uids = team.as_ref().map(|t| t.slots.to_vec()).unwrap_or_default();
                 p.collection.add_statue_exp(&uids, s.gain_rank_exp);
-                // Event quests drop the exchange currency (Build 22) or event points (Build 23).
-                if point_event {
-                    event_rewards = crate::services::event::add_points(
+                // Event quests pay by the event's kind (services/event.rs).
+                if let (Some(e), Some((c, _))) = (event, found) {
+                    settled = Some(crate::services::event::settle(
                         p,
-                        event_id.as_deref().unwrap_or(""),
-                        crate::services::event::POINTS_PER_CLEAR,
+                        e,
+                        &c.chapter_id,
+                        &stage_id,
+                        team.as_ref(),
+                        env,
                         now,
-                    );
-                } else if is_event {
-                    p.collection.add_item(
-                        crate::items::EVENT_COIN,
-                        crate::items::EVENT_COINS_PER_CLEAR,
-                    );
+                    ));
                 }
                 ((Some(s), team), Change::Progress)
             }
@@ -269,17 +351,10 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         })
         .map(|t| collection::team_info(&p.collection, &t))
         .unwrap_or_else(|| json!({}));
-    // eventType 1 (points) or 3 (Item: the event currency gained); never null.
-    let event_result = if point_event && paid.is_some() {
-        json!({ "eventType": 1,
-                "userEventPointAll": crate::services::event::points(&p, event_id.as_deref().unwrap_or("")),
-                "getUserEventPoint": crate::services::event::POINTS_PER_CLEAR,
-                "eventRewardList": event_rewards, "getEventItemList": [] })
-    } else if is_event && paid.is_some() {
-        json!({ "eventType": 3, "userEventPointAll": 0, "getUserEventPoint": 0, "eventRewardList": [],
-                "getEventItemList": [{ "itemId": crate::items::EVENT_COIN, "count": crate::items::EVENT_COINS_PER_CLEAR }] })
-    } else {
-        no_event()
+    // eventResult (never null): type 1 points, 3 items, 8 high-score shop items, else 0.
+    let (event_result, now_point, old_result) = match settled {
+        Some(s) => (s.event_result, s.now_point, s.old_result),
+        None => (no_event(), 0, crate::services::event::no_ranking_result()),
     };
     end_response(
         &p,
@@ -293,10 +368,12 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
             clear: 0,
             gameover: 0,
             friend_points: if paid.is_some() {
-                FRIEND_POINTS_PER_CLEAR
+                FRIEND_POINTS_PER_CLEAR + support_points
             } else {
                 0
             },
+            now_point,
+            old_result,
         },
     )
 }
@@ -313,6 +390,9 @@ pub(crate) struct EndInfo {
     pub gameover: i64,
     /// Friend Points this battle earned (`mindGashaPoint`).
     pub friend_points: i64,
+    /// `nowEventRankingPoint` and `oldEventRankingResultInfo` (high-score stages; services/event.rs).
+    pub now_point: i64,
+    pub old_result: Value,
 }
 
 /// `eventResult` of a battle outside an event (never null).
@@ -331,11 +411,16 @@ pub(crate) fn end_response(p: &Profile, env: &RequestEnvelope, e: EndInfo) -> Ap
         "newRecordFlg": 0, "teamInfo": e.team, "gold": e.gold, "rankExp": e.rank_exp, "levelExp": e.rank_exp,
         "mindGashaPoint": e.friend_points, "supportUserInfo": {},
         "eventResult": e.event_result,
-        "dungeonClearFlag": e.clear, "dungeonGameoverFlag": e.gameover, "nowEventRankingPoint": 0,
+        "dungeonClearFlag": e.clear, "dungeonGameoverFlag": e.gameover,
         // The result screen's high-score panel reads eventDataList.Count without a null check
-        // (BattleResultHighScoreUIController.Setup 0xC0D4B4); an empty list shows no panel.
-        "oldEventRankingResultInfo": { "point": 0, "eventDataList": [] },
-        "raidStageInfo": {}, "raidBossInfo": {}
+        // (BattleResultHighScoreUIController.Setup 0xC0D4B4); an empty list shows no panel. With
+        // rows it shows the stage's best (`point`, "-" on a first clear) against this battle's
+        // `nowEventRankingPoint` and the client's own turn / damage values of the same modes.
+        "nowEventRankingPoint": e.now_point, "oldEventRankingResultInfo": e.old_result,
+        // A valid raidStageInfo (raidStageUid != 0) would make a raid boss appear, whose scenes
+        // the player's files lack (services/raid.rs): always an inactive one.
+        "raidStageInfo": crate::services::raid::inactive_stage(),
+        "raidBossInfo": crate::services::raid::no_boss()
     }))
 }
 
@@ -345,8 +430,21 @@ pub fn bizarre_continue(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "userInfo": crate::services::user::user_info(&p), "continueCount": 1 }))
 }
 
-/// `BizarreDestructionResponse`: abandoning a stage needs no bookkeeping.
-pub fn destruction(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
+/// `/bizarre/destruction {stageType}`: sent only when the player answers No to the resume dialog
+/// (`DestroyBizarreResumption` 0xC37A48, its one caller). A suspended story battle is dropped
+/// (nothing paid); a labyrinth run's suspended battle counts as retired and its Tarot pick is not
+/// offered again (`dungeon::decline`).
+pub fn destruction(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    with_profile(ctx, env, |p| {
+        if suspended_story_battle(p).is_some() {
+            p.progress.pending = None;
+            return ((), Change::Bookkeeping);
+        }
+        if dungeon::decline(p) {
+            return ((), Change::Progress);
+        }
+        ((), Change::None)
+    })?;
     ok(json!({}))
 }
 
@@ -370,6 +468,73 @@ mod tests {
             lz_encode: 0,
             param,
         }
+    }
+
+    /// AI supporters (services/support.rs): the list walked against SupportUserResponse; a pick
+    /// starts the battle with the supporter as a mutual friend (its whole statue, walked against
+    /// BizarreStartResponse) and pays extra Friend Points on the clear.
+    #[test]
+    fn an_ai_supporter_joins_a_quest() {
+        use crate::services::shapes::assert_complete;
+        let dir = std::env::temp_dir().join(format!("jdr-support-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let ctx = Ctx::new(Settings::new(dir), false);
+        let uuid = ctx.accounts.create(&[]).unwrap().uuid;
+        let call = |path: &str, param: Value| {
+            Value::Object(dispatch(&ctx, path, &env(&uuid, param)).0.unwrap())
+        };
+        let l = call(
+            "/support/support_user_s",
+            json!({"dummyFlg": 0, "stageType": 1}),
+        );
+        assert_complete("Jjs.SupportUserResponse", &l);
+        let list = l["supportUserList"].as_array().unwrap();
+        assert_eq!(list.len(), crate::services::support::SUPPORTERS);
+        let pick = &list[0]["supportUserInfo"];
+        assert_eq!(
+            pick["followStatus"], 3,
+            "the tactical battle uses FollowEach only"
+        );
+        assert!(pick["dtLeaderAbilityInfo"]["abilityId"].is_string());
+        let c = crate::quests::chapters()
+            .iter()
+            .find(|c| c.stage_type == 1)
+            .unwrap();
+        let sid = c.stages[0].stage_id.clone();
+        let st = call(
+            "/bizarre/bizarre_start",
+            json!({"stageId": sid, "teamNo": 1, "supportId": pick["id"]}),
+        );
+        assert_complete("Jjs.BizarreStartResponse", &st);
+        let sup = &st["supportUserInfo"];
+        assert_eq!(sup["id"], pick["id"]);
+        assert_eq!(sup["followStatus"], 3);
+        assert_eq!(
+            sup["statueInfo"]["statueId"],
+            pick["statueInfoSupport"]["statueId"]
+        );
+        assert_eq!(
+            sup["statueInfo"]["dtLeaderAbilityInfo"]["abilityId"],
+            pick["dtLeaderAbilityInfo"]["abilityId"]
+        );
+        let fp0 = ctx.accounts.get(&uuid).unwrap().unwrap().friend_points;
+        let end = call(
+            "/bizarre/bizarre_end",
+            json!({"stageId": sid, "result": 0, "starClearList": ""}),
+        );
+        let paid = super::FRIEND_POINTS_PER_CLEAR + crate::services::support::SUPPORT_FRIEND_POINTS;
+        assert_eq!(end["mindGashaPoint"], paid);
+        assert_eq!(
+            ctx.accounts.get(&uuid).unwrap().unwrap().friend_points,
+            fp0 + paid
+        );
+        // Without a pick (or with an id we never handed out) the battle has no support.
+        let st = call(
+            "/bizarre/bizarre_start",
+            json!({"stageId": sid, "teamNo": 1, "supportId": "someone"}),
+        );
+        assert_eq!(st["supportUserInfo"], json!({}));
+        assert_complete("Jjs.BizarreStartResponse", &st);
     }
 
     #[test]
@@ -451,6 +616,20 @@ mod tests {
                 && camps.iter().all(|c| c["bizarreHomeFlag"] == true
                     && c["htmlLink"].as_str().unwrap().starts_with('/'))
         );
+        crate::services::shapes::assert_complete(
+            "Jjs.BizarreSelectResponse",
+            &Value::Object(r.clone()),
+        );
+        // The campaign banners follow the events (docs/research/25-events-raids.md §5), and their
+        // pages name them in English.
+        let ec: Vec<&Value> = camps
+            .iter()
+            .filter(|c| c["banner"].as_str().unwrap().starts_with("ec_"))
+            .collect();
+        assert!(ec.len() >= 3);
+        let page = crate::web::page(ec[0]["htmlLink"].as_str().unwrap());
+        let page = String::from_utf8(page.body).unwrap();
+        assert!(!page.contains("EC_") && page.contains("Campaign"), "{page}");
         let tr = crate::l10n::Translations::embedded().unwrap();
         let label = |l: &str| {
             tr.english(&format!("text:ChapterName_JP:{l}")).is_some()
@@ -476,14 +655,23 @@ mod tests {
             assert!(chapters.iter().all(|c| c["category"] == cat));
             if q["bannerType"] == 3 {
                 assert_eq!(l["eventInfo"]["eventCampaignId"], q["eventMasterId"]);
-                // Exchange events: shop flag 1 and collect type 2; point events: flag 0 and type 1.
-                // Shop3 copies eventItemList, so it is always a list.
-                let point = l["eventInfo"]["eventShopFlg"] == 0;
-                assert_eq!(
-                    l["eventInfo"]["eventCollectType"],
-                    if point { 1 } else { 2 }
+                // Shop flag and collect type by kind (services/event.rs): exchange 1/2, point 0/1,
+                // high score 0/4, high-score shop 1/5, quiz 0/2. Shop3 copies eventItemList, so
+                // it is always a list; every string the screen reads is set.
+                let info = &l["eventInfo"];
+                let flags = (
+                    info["eventShopFlg"].as_i64().unwrap(),
+                    info["eventCollectType"].as_i64().unwrap(),
                 );
-                assert!(l["eventInfo"]["eventItemList"].is_array());
+                assert!(
+                    [(1, 2), (0, 1), (0, 4), (1, 5), (0, 2)].contains(&flags),
+                    "{flags:?}"
+                );
+                assert!(info["eventItemList"].is_array());
+                crate::services::shapes::assert_complete(
+                    "Jjs.BizarreListResponse",
+                    &Value::Object(l.clone()),
+                );
                 assert!(
                     cat >= 13,
                     "event chapters return to Event Home only from 13 up"

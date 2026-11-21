@@ -57,7 +57,7 @@ pub fn find(id: i64) -> Option<&'static ItemDef> {
 }
 
 /// The one-time starting stock (offline sandbox; amounts ours): enhancement materials, turtles,
-/// growth-tree materials, keys and Memory Rings.
+/// growth-tree materials, keys, BP Recovery Colas and Memory Rings.
 pub fn starting_stock() -> Vec<(i64, i64)> {
     items()
         .iter()
@@ -68,6 +68,7 @@ pub fn starting_stock() -> Vec<(i64, i64)> {
                 "exp" => [99, 50, 20, 10][(i.exp_tier()) as usize],
                 "tree" => 300,
                 "key" => 20,
+                "bp" => 5,
                 "ring" => 3000,
                 _ => return None,
             };
