@@ -45,6 +45,13 @@ H = read in the 3.12.0 disassembly or the player's files, F = seen in frames of 
   `flagWorldSet`. With `flagBindBase`/`flagBindLookat` the bones are followed every frame, without
   them their positions are taken once. A set's `dataList` steps play in turn: during step i the
   camera moves from step i's pose to step i+1's over step i's `sec`; the last pose is held.
+- **`inter` moves the camera** (`ScriptCamera.SetCameraInfo` 0xD6FE60): every frame the camera goes
+  to `Lerp(current position, computed position, inter)` and the field of view to
+  `Lerp(current, computed, inter)`; the rotation is `LookRotation(look-at − position)` with the roll
+  lerped by `inter`. `inter` is the current step's, a per-frame share (not scaled by time): 0 never
+  moves the camera, 1 cuts and follows exactly; the client's sample sets
+  (`ScriptCameraTestData.CreateSetAsset` 0xD7236C) and the step constructor use 0.3. `beginInter`
+  only matters when exactly 1.0 (a first-frame snap). Builds 33–36 sent 0 on every step.
 - **Later nodes are deltas.** `ScriptCamera.CreateNodeParam` 0xD70D44 builds step i's pose from a
   copy of the first step's node plus the `rotate`, `length`, `perspective`, `baseOffset` and
   `lookatOffset` of every later node up to i; only the bones come from node i itself.
@@ -77,9 +84,10 @@ H = read in the 3.12.0 disassembly or the player's files, F = seen in frames of 
   that side.
 - The first Build 33 shots (over the shoulder, a front close-up, a reverse from beyond the target, a
   near-ground angle) put 74 poses on the far side of the arena even after the delta fix.
-- The win shots are turned 180° about the winner (Build 35): on the result pivot the winner faces
-  away from the battle frame, and the owner's Build 34 recording showed the shot from behind. The
-  values below are as framed in the battle frame.
+- The win shot (Build 37, from the owner's screenshot of the original): still, 2.4 m from the
+  chest, 5° below, 16° to the side, the winner about 70 % across and framed to the upper thighs.
+  Build 35 had turned it 180°, read from the Build 34 recording where the camera never moved
+  (`inter` 0) and only turned to the winner; that is undone.
 - The win shots (third package): 1.15 m from the chest, 26° below, 27° to the side, the look
   point offset so the winner sits right of centre; opening at 1.0 m, 30° and 34° and settling over
   1 s, then held (rendered with the statues' own win-appeal clip, `pose_models.py --clip
