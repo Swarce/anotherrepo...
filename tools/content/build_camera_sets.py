@@ -77,8 +77,12 @@ def P(base, look, rot, length, fov=30.0, boff=(0, 0, 0), loff=(0, 0, 0)):
 # Shots measured on every tactical action of the owner's footage (6 videos, 223 actions, read frame
 # by frame with background alignment; private, local/wiki-raw/research-b33/camera-pack/, workflow
 # notes in docs/research/31 §3). Each shot is a list of steps (absolute pose, sec, inter):
-#   - `inter` is the per-frame share of the way to the pose (SetCameraInfo 0xD6FE60): 0.09 is the
-#     original's glide (about 93 % of the way in 0.5 s, the measured push-in), 1.0 a hard cut;
+#   - `inter` is the per-frame share of the way to the pose (SetCameraInfo 0xD6FE60), applied once
+#     per rendered frame (30 fps by default, 60 with the high performance setting) and only to the
+#     position and fov: the aim is always a LookRotation to the look point, so a pose change under
+#     inter < 1 jumps the aim in one frame and then drags the position. Every step uses inter 1
+#     (Build 40): moves are timed step blends (game time, the same at any frame rate), eased with
+#     sub-steps (`move`), and a glide shot enters from a pose that matches the client's Overview;
 #   - during step i the pose blends to step i+1's over step i's sec, so (A, h), (A, m), (B, ...)
 #     holds A for h and then moves to B over m;
 #   - later poses are sent as deltas (CreateNodeParam adds every later node to the first).
@@ -105,27 +109,78 @@ LFW = P(SPINE2, SPINE2, (18, 35, 0), 2.0, 45, (0, 0, 0), (0, 0.2, 0))
 BAL = P(SPINE2, SPINE2, (5, 145, 0), 3.6, 32, (0, 0, 0), (0, 0, 2.0))
 REV = P(SPINE2, SPINE2, (0, 15, 0), 6.0, 30, (0, 0, 0), (0, -0.1, 0.5))
 KNEE = P(SPINE2, SPINE2, (6, 88, 0), 2.6, 30, (0, 0, 1.0), (0, -0.1, 1.0))
+
+
+def lerp_pose(a, b, f):
+    """The pose a fraction f of the way from a to b (b's bones)."""
+    out = dict(a)
+    for k in ("rotate", "baseOffset", "lookatOffset"):
+        out[k] = {c: round(a[k][c] + (b[k][c] - a[k][c]) * f, 4) for c in "xyz"}
+    for k in ("perspective", "length"):
+        out[k] = round(a[k] + (b[k] - a[k]) * f, 4)
+    out["baseBoneID"], out["lookatBoneID"] = b["baseBoneID"], b["lookatBoneID"]
+    return out
+
+
+OUT4 = (0.0, 0.4375, 0.75, 0.9375)       # ease-out 1-(1-t)^2 at t = 0, 1/4, 1/2, 3/4
+IO5 = (0.0, 0.104, 0.352, 0.648, 0.896)  # smoothstep at t = 0, 1/5 .. 4/5
+
+
+def move(a, b, T, prof=OUT4):
+    """Steps that take the camera from a to b in T s of game time with an eased speed (each step
+    blends linearly to the next over its sec; inter 1, so the camera is exactly on the blend)."""
+    return [(lerp_pose(a, b, f), T / len(prof), 1.0) for f in prof]
+
+
+def ov_lead(p):
+    """p's look point seen from where the client's Overview stands for a melee pair (camera 1.31 m
+    up and 3.36 m out on the turn view's side, look 1.05 m up, fov 40: JjsCameraParameter overview
+    row 1), so a glide shot's first frame matches the two-shot it replaces instead of jumping."""
+    return dict(p, rotate={"x": -3.0, "y": 90.0, "z": 0.0}, length=3.4, perspective=40.0)
+
+
+ST3_A = P(SPINE2, SPINE2, (5, 82, 0), 4.6, 32, (0, -0.6, 1.0), (0, -0.7, 1.0))
+ST3_B = P(SPINE2, SPINE2, (5, 82, 0), 4.9, 32, (0, -0.6, 1.1), (0, -0.7, 1.1))
+FOL_A = P(SPINE2, SPINE2, (8, 85, 0), 4.4, 32, (0, 0, 0.9), (0, -0.1, 0.9))
+FOL_B = P(SPINE2, SPINE2, (8, 85, 0), 4.7, 32, (0, 0, 0.95), (0, -0.1, 0.95))
+SP_B = P(SPINE2, SPINE2, (0, 85, 0), 4.0, 30, (0, 0, 0.8), (0, -0.1, 0.8))
+SPC_B = P(SPINE2, SPINE2, (1, 90, 0), 3.5, 30, (0, 0, 0.8), (0, -0.1, 0.8))
+SG_B = P(SPINE2, SPINE2, (4, 88, 0), 3.6, 30, (0, 0, 1.5), (0, -0.1, 1.5))
+# DEFAULT_HOLD used DEFAULT_REF ((-5, 75, 0), 6.5 m, fov 30, look z 1.8); it is now the Overview's
+# own pose with a slow 0.2 m drift out
+DH_A = P(SPINE2, SPINE2, (-3, 90, 0), 3.4, 40, (0, 0, 1.1), (0, -0.2, 1.1))
+DH_B = dict(DH_A, length=3.6)
+NDW_A = P(SPINE2, SPINE2, (-6, 88, 0), 7.0, 30, (0, 0, 2.2), (0, -0.2, 2.2))
+NDW_B = dict(NDW_A, length=7.35)
+TD_A = P(WAIST, WAIST, (-65, 90, 0), 8.0, 35, (0, 0, 2.5), (0, 0, 2.5))
+TD_B = P(WAIST, WAIST, (-60, 90, 0), 10.0, 35, (0, 0, 2.5), (0, 0, 2.5))
+HBP_A = P(SPINE2, SPINE2, (-45, 150, 0), 8.0, 35, (0, 0, 0), (0, 0, 3.0))
+HBP_B = dict(HBP_A, length=10.0)
+HBD_A = P(SPINE2, SPINE2, (-40, 160, 0), 6.0, 35, (0, 0, 0), (0, 0, 3.0))
+HBD_B = dict(HBD_A, length=6.8)
+BH_A = P(SPINE2, SPINE2, (-6, 180, 0), 4.0, 36, (0, 0, 0), (0, -0.2, 1.6))
+BH_B = dict(BH_A, length=3.6)
 SHOTS = {
     # 111000: glide in on the pair, hold, then a slight pull-out (no truck: the look point stays
     # half way to the target)
-    "NA_PUSH": [(NA_A, 0.6, 0.09), (NA_A, 1.5, 0.09), (NA_B, 2.0, 0.09)],
+    # (from the Overview's pose, eased in over 0.6 s: 94 % at 0.45 s, the original's 85-96 % in 0.5 s)
+    "NA_PUSH": move(ov_lead(NA_A), NA_A, 0.6) + [(NA_A, 0.9, 1.0)] + move(NA_A, NA_B, 1.6, IO5)
+    + [(NA_B, 1.0, 1.0)],
     # a later request inside the same attack: stay (no visible change)
     "NA_HOLD": [(NA_B, 2.0, 0.05)],
     # 131000 (Stand pair): the same, a little lower and closer; centred whether the shot binds to
     # the Stand (about 1 m from the target) or its user (2-2.5 m)
     # (Stand sets make 26 of its 29 requests, and a floating Stand's SPINE2 is about 2.3 m up, so
     # both points sit 0.6 m lower to keep the camera at chest height)
-    "ST3_PUSH": [(P(SPINE2, SPINE2, (5, 82, 0), 4.6, 32, (0, -0.6, 1.0), (0, -0.7, 1.0)), 0.5, 0.09),
-                 (P(SPINE2, SPINE2, (5, 82, 0), 4.6, 32, (0, -0.6, 1.0), (0, -0.7, 1.0)), 1.2, 0.09),
-                 (P(SPINE2, SPINE2, (5, 82, 0), 4.9, 32, (0, -0.6, 1.1), (0, -0.7, 1.1)), 1.5, 0.09)],
+    "ST3_PUSH": move(ov_lead(ST3_A), ST3_A, 0.7) + [(ST3_A, 0.5, 1.0)] + move(ST3_A, ST3_B, 1.2, IO5)
+    + [(ST3_B, 1.0, 1.0)],
     # 131101: a lower, waist-to-knee-up follow
-    "FOLLOW": [(P(SPINE2, SPINE2, (8, 85, 0), 4.4, 32, (0, 0, 0.9), (0, -0.1, 0.9)), 0.3, 0.09),
-               (P(SPINE2, SPINE2, (8, 85, 0), 4.4, 32, (0, 0, 0.9), (0, -0.1, 0.9)), 1.2, 0.09),
-               (P(SPINE2, SPINE2, (8, 85, 0), 4.7, 32, (0, 0, 0.95), (0, -0.1, 0.95)), 1.0, 0.09)],
+    "FOLLOW": move(ov_lead(FOL_A), FOL_A, 0.7) + [(FOL_A, 0.3, 1.0)] + move(FOL_A, FOL_B, 1.0, IO5)
+    + [(FOL_B, 1.0, 1.0)],
     # 101008 wrap-up: glide out towards the turn view
     "PULL_OUT": [(P(SPINE2, SPINE2, (-2, 78, 0), 5.6, 30, (0, 0, 1.8), (0, -0.2, 1.8)), 0.5, 0.1)],
-    # a request that should change nothing visible: the turn view, glided very slowly
-    "DEFAULT_HOLD": [(DEFAULT_REF, 1.0, 0.05)],
+    # a request that should change nothing visible: the Overview's pose, drifting out slowly
+    "DEFAULT_HOLD": move(DH_A, DH_B, 1.2, IO5) + [(DH_B, 0.3, 1.0)],
     # skills and SPs (cuts). The original holds an angle 0.5-1 s inside a skill (measured mean 3.5
     # cuts per blue skill, 5.7 per SP with its cinematic), so a cut shot holds its first angle and
     # then cuts once more: a 0.001 s blend step (0.05 s showed its in-between pose for a few frames;
@@ -135,18 +190,15 @@ SHOTS = {
     "BEHIND_ACTOR_LOW": [(BAL, 1.0, 1.0)],
     "REVERSE": [(REV, 0.85, 1.0), (REV, 0.001, 1.0), (KNEE, 1.0, 1.0)],
     "SIDE_CLOSE": [(P(SPINE2, SPINE2, (6, 88, 0), 2.6, 30, (0, 0, 1.0), (0, -0.1, 1.0)), 3.2, 1.0)],
-    "NEAR_DEFAULT_WIDE": [(P(SPINE2, SPINE2, (-6, 88, 0), 7.0, 30, (0, 0, 2.2), (0, -0.2, 2.2)), 1.0, 1.0),
-                          (P(SPINE2, SPINE2, (-6, 88, 0), 7.35, 30, (0, 0, 2.2), (0, -0.2, 2.2)), 1.0, 1.0)],
+    # (moving shots ease out into their hold instead of stopping dead)
+    "NEAR_DEFAULT_WIDE": move(NDW_A, NDW_B, 1.0) + [(NDW_B, 1.0, 1.0)],
     "HIGH_3Q": [(P(SPINE2, SPINE2, (-40, 30, 0), 5.5, 35, (0, 0, 0), (0, 0, 2.5)), 1.5, 1.0)],
-    "TOPDOWN": [(P(WAIST, WAIST, (-65, 90, 0), 8.0, 35, (0, 0, 2.5), (0, 0, 2.5)), 1.0, 1.0),
-                (P(WAIST, WAIST, (-60, 90, 0), 10.0, 35, (0, 0, 2.5), (0, 0, 2.5)), 1.5, 1.0)],
-    "HIGH_BEHIND_PARTY": [(P(SPINE2, SPINE2, (-45, 150, 0), 8.0, 35, (0, 0, 0), (0, 0, 3.0)), 2.5, 1.0),
-                          (P(SPINE2, SPINE2, (-45, 150, 0), 10.0, 35, (0, 0, 0), (0, 0, 3.0)), 1.0, 1.0)],
-    "HIGH_BEHIND_DRIFT": [(P(SPINE2, SPINE2, (-40, 160, 0), 6.0, 35, (0, 0, 0), (0, 0, 3.0)), 1.5, 1.0),
-                          (P(SPINE2, SPINE2, (-40, 160, 0), 6.8, 35, (0, 0, 0), (0, 0, 3.0)), 1.0, 1.0)],
-    "STAND_PUSH": [(P(SPINE2, SPINE2, (0, 85, 0), 4.0, 30, (0, 0, 0.8), (0, -0.1, 0.8)), 1.0, 0.09)],
-    "STAND_PUSH_CLOSE": [(P(SPINE2, SPINE2, (1, 90, 0), 3.5, 30, (0, 0, 0.8), (0, -0.1, 0.8)), 1.0, 0.09)],
-    "SIDE_GLIDE": [(P(SPINE2, SPINE2, (4, 88, 0), 3.6, 30, (0, 0, 1.5), (0, -0.1, 1.5)), 1.0, 0.09)],
+    "TOPDOWN": move(TD_A, TD_B, 1.0) + [(TD_B, 1.5, 1.0)],
+    "HIGH_BEHIND_PARTY": move(HBP_A, HBP_B, 2.5) + [(HBP_B, 1.0, 1.0)],
+    "HIGH_BEHIND_DRIFT": move(HBD_A, HBD_B, 1.5) + [(HBD_B, 1.0, 1.0)],
+    "STAND_PUSH": move(ov_lead(SP_B), SP_B, 1.0) + [(SP_B, 0.5, 1.0)],
+    "STAND_PUSH_CLOSE": move(ov_lead(SPC_B), SPC_B, 0.9) + [(SPC_B, 0.5, 1.0)],
+    "SIDE_GLIDE": move(ov_lead(SG_B), SG_B, 1.0) + [(SG_B, 0.5, 1.0)],
     "TWO_SHOT_FRONT_LOW": [(P(SPINE2, SPINE2, (17, 30, 0), 2.2, 34, (0, 0, 0), (0, 0, 0.3)), 0.7, 1.0)],
     "STAND_LOOM": [(P(NECK, NECK, (20, 35, 0), 2.3, 35, (0, 0, 0), (0, -0.2, 0)), 1.0, 1.0)],
     "CHEST_UP": [(P(NECK, NECK, (10, 20, 0), 1.8, 35, (0, 0, 0), (0, -0.1, 0)), 0.6, 1.0)],
@@ -156,8 +208,7 @@ SHOTS = {
     "RUSH_CUTS": [x for pz in RUSH for x in ((pz, 0.5, 1.0), (pz, 0.001, 1.0))],
     # straight behind the attacker: for the few action ids the client does not mirror (102xxx),
     # which must look right for either team
-    "behind": [(P(SPINE2, SPINE2, (-6, 180, 0), 4.0, 36, (0, 0, 0), (0, -0.2, 1.6)), 1.2, 1.0),
-               (P(SPINE2, SPINE2, (-6, 180, 0), 3.6, 36, (0, 0, 0), (0, -0.2, 1.6)), 0.5, 1.0)],
+    "behind": move(BH_A, BH_B, 1.2) + [(BH_B, 0.5, 1.0)],
 }
 
 # ids whose shot was observed in the footage (the measurement's id mapping)
@@ -368,8 +419,9 @@ old_nodes["data"]["listData"] = nodes
 old_sets["about"] = ("Script camera sets for every camera id the client hard-codes and every id the statues' tactical action "
                      "sets request (tools/content/build_camera_sets.py, docs/research/31-battle-camera.md): each requested id "
                      "plays the shot measured for it in the original footage, or one chosen by the kind of action and the role of "
-                     "the states that request it with the measured frequencies; normal attacks glide (inter 0.09), skills and SPs "
-                     "cut (inter 1.0); win shots (301-314, 101001-101028) a still facing shot; the boss intro (201) a "
+                     "the states that request it with the measured frequencies; attacks stay on the client's Overview two-shot "
+                     "(forceNormalCamera); every step has inter 1: glides are eased timed blends that enter from the Overview's pose, "
+                     "cuts are 0.001 s steps; win shots (301-314, 101001-101028) a still facing shot; the boss intro (201) a "
                      "crane up to a tilted full-body shot; stage finishes (100300-100311, 350/351) a ground-level shot. "
                      "flagMaintain stays false so each shot ends on its own.")
 old_sets["data"]["listData"] = sets
