@@ -864,7 +864,7 @@ pub fn dt_skill_table() -> Value {
                 ("dtRangeMin", json!(skill_range(&view, s.target_type).0)),
                 ("dtRangeMax", json!(skill_range(&view, s.target_type).1)),
                 // the template (JDR_ATK_00) keeps attacks on the client's Overview two-shot;
-                // skills play their script cameras (docs/research/31 §9)
+                // skills play their script cameras (docs/research/31 §8)
                 ("forceNormalCamera", json!(0)),
             ] {
                 row[k] = v;
