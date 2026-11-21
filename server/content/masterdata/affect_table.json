@@ -1,6 +1,6 @@
 {
  "asset": "affect_table",
- "about": "The three affect ids the client names in code, plus one row per affect id used by the leader abilities in dtbattle_ability_data_table. Each id names one BaseAffectType and one AffectCondition; the amount comes from the ability row (per-mille, negative for the *_SUB ids). Empty limit lists mean no cap. affectTextId is empty: the player's labels have no text key for these plain stat ids.",
+ "about": "The three affect ids the client names in code, plus one row per affect id used by the leader abilities and Mind abilities in dtbattle_ability_data_table. Each id names one BaseAffectType and one AffectCondition; the amount comes from the ability row (per-mille, negative for the *_SUB ids). Empty limit lists mean no cap. affectTextId is the game's own affectText_JP label with the same meaning (AFFECT_[COND_]STAT_OP_TEXT; DYING takes the near-death FNT labels, FULL_HP the FULL ones): the detail screens build the effect line from it, with the amounts merged by affect_text_rule_table.",
  "sources": [
   {
    "source": "jdr-research",
@@ -19,6 +19,11 @@
   {
    "source": "jdr-default",
    "note": "affect id names are ours, in the DTAF_[COND_]STAT_OP style of the client's DTAF_* label keys; textSortIndex 0"
+  },
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/16-minds.md §8",
+   "note": "affectTextId: label keys and their placeholders ({decimal_Param0}, {mag_Param0}) read in the player's text.jp; the AFFECT_* label is chosen by meaning (M for DYING = near death)"
   }
  ],
  "data": {
@@ -52,7 +57,7 @@
    },
    {
     "affectId": "DTAF_ALONE_ATK_RATEADD",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_ALONE_ATK_RATEADD_TEXT",
     "prvs": "PRVS_ALONE",
     "baseAffect": "BASE_ATK_RATECON",
     "affectLimitNormal": [],
@@ -61,7 +66,7 @@
    },
    {
     "affectId": "DTAF_ALONE_DEF_RATEADD",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_ALONE_DEF_RATEADD_TEXT",
     "prvs": "PRVS_ALONE",
     "baseAffect": "BASE_DEF_RATECON",
     "affectLimitNormal": [],
@@ -70,7 +75,7 @@
    },
    {
     "affectId": "DTAF_ATK_RATEADD",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_ATK_RATEADD_TEXT",
     "prvs": "PRVS_NONE",
     "baseAffect": "BASE_ATK_RATECON",
     "affectLimitNormal": [],
@@ -79,7 +84,7 @@
    },
    {
     "affectId": "DTAF_BRAVE_STYPE_DMG_RATEADD",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_BRAVE_STYPE_DMG_RATEADD_TEXT",
     "prvs": "PRVS_NONE",
     "baseAffect": "BASE_DT_STYPE_DMG_RATECON",
     "affectLimitNormal": [],
@@ -88,7 +93,7 @@
    },
    {
     "affectId": "DTAF_BRAVE_STYPE_VCT_DAM_RATESUB",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_BRAVE_STYPE_VCT_DAM_RATESUB_TEXT",
     "prvs": "PRVS_NONE",
     "baseAffect": "BASE_DT_STYPE_VCT_DAM_RATECON",
     "affectLimitNormal": [],
@@ -97,7 +102,7 @@
    },
    {
     "affectId": "DTAF_CRT_DMG_RATEADD",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_CRT_DMG_RATEADD_TEXT",
     "prvs": "PRVS_NONE",
     "baseAffect": "BASE_CRT_DMG_RATECON",
     "affectLimitNormal": [],
@@ -106,7 +111,7 @@
    },
    {
     "affectId": "DTAF_DEF_RATEADD",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_DEF_RATEADD_TEXT",
     "prvs": "PRVS_NONE",
     "baseAffect": "BASE_DEF_RATECON",
     "affectLimitNormal": [],
@@ -115,7 +120,7 @@
    },
    {
     "affectId": "DTAF_DMG_RATEADD",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_DMG_RATEADD_TEXT",
     "prvs": "PRVS_NONE",
     "baseAffect": "BASE_DT_DMG_RATECON",
     "affectLimitNormal": [],
@@ -124,7 +129,7 @@
    },
    {
     "affectId": "DTAF_DYING_ATK_RATEADD",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_FNT_ATK_RATEADD_TEXT",
     "prvs": "PRVS_DYING",
     "baseAffect": "BASE_ATK_RATECON",
     "affectLimitNormal": [],
@@ -133,7 +138,7 @@
    },
    {
     "affectId": "DTAF_DYING_CRT_DMG_RATEADD",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_FNT_CRT_DMG_RATEADD_TEXT",
     "prvs": "PRVS_DYING",
     "baseAffect": "BASE_CRT_DMG_RATECON",
     "affectLimitNormal": [],
@@ -142,7 +147,7 @@
    },
    {
     "affectId": "DTAF_DYING_DEF_RATEADD",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_FNT_DEF_RATEADD_TEXT",
     "prvs": "PRVS_DYING",
     "baseAffect": "BASE_DEF_RATECON",
     "affectLimitNormal": [],
@@ -151,7 +156,7 @@
    },
    {
     "affectId": "DTAF_FULL_HP_ATK_RATEADD",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_FULL_ATK_RATEADD_TEXT",
     "prvs": "PRVS_FULL_HP",
     "baseAffect": "BASE_ATK_RATECON",
     "affectLimitNormal": [],
@@ -160,7 +165,7 @@
    },
    {
     "affectId": "DTAF_FULL_HP_DMG_RATEADD",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_FULL_DMG_RATEADD_TEXT",
     "prvs": "PRVS_FULL_HP",
     "baseAffect": "BASE_DT_DMG_RATECON",
     "affectLimitNormal": [],
@@ -169,7 +174,7 @@
    },
    {
     "affectId": "DTAF_HP_RATEADD",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_HP_RATEADD_TEXT",
     "prvs": "PRVS_NONE",
     "baseAffect": "BASE_HP_RATECON",
     "affectLimitNormal": [],
@@ -178,7 +183,7 @@
    },
    {
     "affectId": "DTAF_INTELLI_STYPE_DMG_RATEADD",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_INTELLI_STYPE_DMG_RATEADD_TEXT",
     "prvs": "PRVS_NONE",
     "baseAffect": "BASE_DT_STYPE_DMG_RATECON",
     "affectLimitNormal": [],
@@ -187,7 +192,7 @@
    },
    {
     "affectId": "DTAF_MAVERICK_STYPE_DMG_RATEADD",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_MAVERICK_STYPE_DMG_RATEADD_TEXT",
     "prvs": "PRVS_NONE",
     "baseAffect": "BASE_DT_STYPE_DMG_RATECON",
     "affectLimitNormal": [],
@@ -196,7 +201,7 @@
    },
    {
     "affectId": "DTAF_MAVERICK_STYPE_VCT_DAM_RATESUB",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_MAVERICK_STYPE_VCT_DAM_RATESUB_TEXT",
     "prvs": "PRVS_NONE",
     "baseAffect": "BASE_DT_STYPE_VCT_DAM_RATECON",
     "affectLimitNormal": [],
@@ -205,7 +210,7 @@
    },
    {
     "affectId": "DTAF_TENACITY_STYPE_DMG_RATEADD",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_TENACITY_STYPE_DMG_RATEADD_TEXT",
     "prvs": "PRVS_NONE",
     "baseAffect": "BASE_DT_STYPE_DMG_RATECON",
     "affectLimitNormal": [],
@@ -214,7 +219,7 @@
    },
    {
     "affectId": "DTAF_UNITY_STYPE_DMG_RATEADD",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_UNITY_STYPE_DMG_RATEADD_TEXT",
     "prvs": "PRVS_NONE",
     "baseAffect": "BASE_DT_STYPE_DMG_RATECON",
     "affectLimitNormal": [],
@@ -223,7 +228,7 @@
    },
    {
     "affectId": "DTAF_VCT_CRT_DMG_RATESUB",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_VCT_CRT_DMG_RATESUB_TEXT",
     "prvs": "PRVS_NONE",
     "baseAffect": "BASE_VCT_CRT_DMG_RATECON",
     "affectLimitNormal": [],
@@ -232,7 +237,7 @@
    },
    {
     "affectId": "DTAF_VCT_DAM_RATESUB",
-    "affectTextId": "",
+    "affectTextId": "AFFECT_VCT_DAM_RATESUB_TEXT",
     "prvs": "PRVS_NONE",
     "baseAffect": "BASE_DT_VCT_DAM_RATECON",
     "affectLimitNormal": [],

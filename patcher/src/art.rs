@@ -6,13 +6,18 @@
 //!   embedded server applies them when it rebuilds those bundles on the phone;
 //! - images for the APK's own screens (`apk_<file>`, e.g. the title) are applied here, to the
 //!   Resources files inside the APK. Those files carry no type trees, so the Texture2D/Sprite
-//!   layouts are taken from the player's own downloaded bundles (`--data`); every object decoded
-//!   that way must consume exactly its bytes.
+//!   layouts are taken from the player's own downloaded bundles (`--data`), matched by the type
+//!   entry's old type hash, one class at a time (a file may hold only a Texture2D, as the
+//!   loading-screen sprite-atlas texture does: its sprites and atlas live in other files). Before
+//!   anything is edited, every object of a filled type must decode through its tree consuming
+//!   exactly its bytes and encode back to the same bytes; otherwise the file is left unchanged and
+//!   reported.
 
 use crate::apk::{ApkEdit, Error};
 use jdr_crypto::Jjec;
 use jdr_services::art::{self, ArtPack};
-use jdr_unity::{bundle, sfile, typetree::TNode};
+use jdr_unity::sfile::{self, V};
+use jdr_unity::{bundle, typetree::TNode};
 use std::collections::{BTreeMap, HashMap};
 use std::io::Read;
 use std::path::Path;
@@ -61,22 +66,33 @@ pub fn read_pack_zip(path: &Path) -> Result<BTreeMap<String, Vec<u8>>, Error> {
     Ok(out)
 }
 
-/// Texture2D and Sprite type nodes from the player's downloaded bundles (same engine build).
-/// Texture2D and Sprite type nodes.
-type Templates = (Vec<TNode>, Vec<TNode>);
+/// A type entry the patcher fills in: (class id, old type hash).
+pub type TypeKey = (i32, Vec<u8>);
 
 /// The 16-byte old type hash of a (non-MonoBehaviour) type entry.
 fn type_hash(raw: &[u8]) -> Option<&[u8]> {
     raw.get(7..23)
 }
 
+fn class_name(c: i32) -> &'static str {
+    match c {
+        CLASS_TEXTURE2D => "Texture2D",
+        CLASS_SPRITE => "Sprite",
+        _ => "?",
+    }
+}
+
+/// Type trees for the given (class, old type hash) pairs, from the player's downloaded bundles
+/// (the same old type hash means the same engine type layout). Each pair may come from a
+/// different bundle. Fails unless every pair is found.
 pub fn template_nodes(
     data_dir: &Path,
     key: &[u8],
     iv: &[u8],
-    want_tex: &[u8],
-    want_sprite: &[u8],
-) -> Result<Templates, Error> {
+    wants: &[TypeKey],
+) -> Result<HashMap<TypeKey, Vec<TNode>>, Error> {
+    let mut found: HashMap<TypeKey, Vec<TNode>> = HashMap::new();
+    let all = |found: &HashMap<TypeKey, Vec<TNode>>| wants.iter().all(|w| found.contains_key(w));
     let mut files: Vec<(u64, std::path::PathBuf)> = std::fs::read_dir(data_dir)
         .map_err(|e| format!("{}: {e}", data_dir.display()))?
         .flatten()
@@ -87,6 +103,9 @@ pub fn template_nodes(
         .collect();
     files.sort();
     for (_, p) in files.iter().take(2000) {
+        if all(&found) {
+            break;
+        }
         let Ok(mut d) = std::fs::read(p) else {
             continue;
         };
@@ -103,26 +122,122 @@ pub fn template_nodes(
             let Ok(f) = sfile::parse(&n.data) else {
                 continue;
             };
-            // Same class and same type hash as the APK's own entries: same layout.
-            let find = |c: i32, want: &[u8]| {
-                f.types
-                    .iter()
-                    .find(|t| {
-                        t.entry.class_id == c
-                            && !t.nodes.is_empty()
-                            && type_hash(&t.entry.raw) == Some(want)
-                    })
-                    .map(|t| t.nodes.clone())
-            };
-            if let (Some(t), Some(s)) = (
-                find(CLASS_TEXTURE2D, want_tex),
-                find(CLASS_SPRITE, want_sprite),
-            ) {
-                return Ok((t, s));
+            for t in f.types.iter().filter(|t| !t.nodes.is_empty()) {
+                let Some(h) = type_hash(&t.entry.raw) else {
+                    continue;
+                };
+                let k = (t.entry.class_id, h.to_vec());
+                if wants.contains(&k) {
+                    found.entry(k).or_insert_with(|| t.nodes.clone());
+                }
             }
         }
     }
-    Err("no downloaded bundle with Texture2D and Sprite type trees of the same build found in --data".into())
+    if !all(&found) {
+        let mut missing: Vec<&str> = wants
+            .iter()
+            .filter(|w| !found.contains_key(*w))
+            .map(|w| class_name(w.0))
+            .collect();
+        missing.dedup();
+        return Err(format!(
+            "no downloaded bundle with {} type trees of the same build found in --data",
+            missing.join(" and ")
+        )
+        .into());
+    }
+    Ok(found)
+}
+
+/// Fill the file's Texture2D and Sprite type entries that carry no tree from `templates`
+/// (fetched from `--data` as needed), then prove the layout on this very file: every object of a
+/// filled type must decode through it consuming exactly its bytes and encode back to the same
+/// bytes. On error the file is left as it was (the caller reports it).
+fn fill_types(
+    f: &mut sfile::SFile,
+    templates: &mut HashMap<TypeKey, Vec<TNode>>,
+    data_dir: &Path,
+    key: &[u8],
+    iv: &[u8],
+) -> Result<(), Error> {
+    let mut wants: Vec<(usize, TypeKey)> = Vec::new();
+    for (i, t) in f.types.iter().enumerate() {
+        let c = t.entry.class_id;
+        if t.nodes.is_empty() && (c == CLASS_TEXTURE2D || c == CLASS_SPRITE) {
+            let h = type_hash(&t.entry.raw)
+                .ok_or_else(|| format!("{} type entry without a type hash", class_name(c)))?;
+            wants.push((i, (c, h.to_vec())));
+        }
+    }
+    let mut missing: Vec<TypeKey> = wants
+        .iter()
+        .map(|(_, k)| k.clone())
+        .filter(|k| !templates.contains_key(k))
+        .collect();
+    missing.sort();
+    missing.dedup();
+    if !missing.is_empty() {
+        templates.extend(template_nodes(data_dir, key, iv, &missing)?);
+    }
+    let mut filled = f.clone();
+    for (i, k) in &wants {
+        filled.types[*i].nodes = templates[k].clone();
+    }
+    for o in &filled.objects {
+        let ti = o.type_index as usize;
+        if !wants.iter().any(|(i, _)| *i == ti) {
+            continue;
+        }
+        let nodes = &filled.types[ti].nodes;
+        let what = || {
+            format!(
+                "{} {} does not decode exactly through the type tree of the same type hash",
+                class_name(filled.types[ti].entry.class_id),
+                o.path_id
+            )
+        };
+        let v = sfile::read_object(nodes, &o.data).map_err(|e| format!("{}: {e}", what()))?;
+        if sfile::write_object(nodes, &v).map_err(|e| format!("{}: {e}", what()))? != o.data {
+            return Err(what().into());
+        }
+    }
+    *f = filled;
+    Ok(())
+}
+
+/// The `.resS` streams this file's textures read their pixels from, read from the APK next to it
+/// (`assets/bin/Data/<name>`), by the name the texture gives. A texture whose stream is not in the
+/// APK makes the file one we cannot rewrite.
+fn stream_files(f: &sfile::SFile, apk: &mut ApkEdit) -> Result<HashMap<String, Vec<u8>>, Error> {
+    let mut out = HashMap::new();
+    for o in &f.objects {
+        let t = &f.types[o.type_index as usize];
+        if t.entry.class_id != CLASS_TEXTURE2D || t.nodes.is_empty() {
+            continue;
+        }
+        let v = sfile::read_object(&t.nodes, &o.data)?;
+        let Some(sd) = v.get("m_StreamData") else {
+            continue;
+        };
+        if sd.get("size").and_then(V::as_i64).unwrap_or(0) == 0 {
+            continue;
+        }
+        let path = sd.get("path").and_then(V::as_str).unwrap_or("");
+        let name = path.rsplit('/').next().unwrap_or(path);
+        if name.is_empty() || name == "." || name == ".." || out.contains_key(name) {
+            continue;
+        }
+        let entry = format!("assets/bin/Data/{name}");
+        if !apk.exists(&entry) {
+            return Err(format!(
+                "texture {} reads its pixels from {path:?}, not in the APK",
+                o.path_id
+            )
+            .into());
+        }
+        out.insert(name.to_string(), apk.read(&entry)?);
+    }
+    Ok(out)
 }
 
 pub struct Applied {
@@ -187,7 +302,7 @@ pub fn apply(
         return Ok(out);
     }
     let groups = ArtPack::from_files(in_apk)?;
-    let mut templates: HashMap<(Vec<u8>, Vec<u8>), Templates> = HashMap::new();
+    let mut templates: HashMap<TypeKey, Vec<TNode>> = HashMap::new();
     for b in groups.bundles() {
         let hash = b.strip_prefix("apk_").unwrap_or(&b);
         if hash.len() != 32 || !hash.bytes().all(|c| c.is_ascii_hexdigit()) {
@@ -196,41 +311,33 @@ pub fn apply(
         let entry = format!("assets/bin/Data/{hash}");
         let raw = apk.read(&entry)?;
         let mut f = sfile::parse(&raw).map_err(|e| format!("{entry}: {e}"))?;
-        let hash_of = |c: i32| {
-            f.types
-                .iter()
-                .find(|t| t.entry.class_id == c)
-                .and_then(|t| type_hash(&t.entry.raw))
-                .map(<[u8]>::to_vec)
-                .unwrap_or_default()
+        // Without a proven type layout for this file's Texture2D/Sprite (no downloaded bundle of
+        // the same build has it, or an object does not round-trip through it), or with pixels in
+        // a stream the APK lacks, the file cannot be rewritten safely: leave it as it is.
+        if let Err(e) = fill_types(
+            &mut f,
+            &mut templates,
+            data_dir,
+            key.as_bytes(),
+            iv.as_bytes(),
+        ) {
+            out.skipped.push(format!("{b}: {e}"));
+            continue;
+        }
+        let streams = match stream_files(&f, apk) {
+            Ok(s) => s,
+            Err(e) => {
+                out.skipped.push(format!("{b}: {e}"));
+                continue;
+            }
         };
-        let want = (hash_of(CLASS_TEXTURE2D), hash_of(CLASS_SPRITE));
-        if !templates.contains_key(&want) {
-            // Without the type layout of this file's Texture2D/Sprite (no downloaded bundle of the
-            // same build has it) the file cannot be rewritten safely: leave it as it is.
-            match template_nodes(data_dir, key.as_bytes(), iv.as_bytes(), &want.0, &want.1) {
-                Ok(t) => {
-                    templates.insert(want.clone(), t);
-                }
-                Err(e) => {
-                    out.skipped.push(format!("{b}: {e}"));
-                    continue;
-                }
-            }
-        }
-        let (tex_nodes, sprite_nodes) = &templates[&want];
-        for t in f.types.iter_mut() {
-            if t.nodes.is_empty() {
-                match t.entry.class_id {
-                    CLASS_TEXTURE2D => t.nodes = tex_nodes.clone(),
-                    CLASS_SPRITE => t.nodes = sprite_nodes.clone(),
-                    _ => {}
-                }
-            }
-        }
+        let res: HashMap<&str, &[u8]> = streams
+            .iter()
+            .map(|(k, v)| (k.as_str(), v.as_slice()))
+            .collect();
         let images = groups.for_bundle(&b);
         let mut files = vec![Some(f)];
-        let r = art::apply_files(&mut files, &HashMap::new(), &images);
+        let r = art::apply_files(&mut files, &res, &images);
         if !r.unmatched.is_empty() || !r.errors.is_empty() {
             return Err(format!(
                 "{entry}: images match no sprite: {:?}; errors: {:?}",
@@ -246,4 +353,26 @@ pub fn apply(
         out.apk_files += 1;
     }
     Ok(out)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn templates_are_asked_for_per_class() {
+        // Only the classes asked for are required (a file with only a Texture2D needs no Sprite
+        // tree), and a missing one is named in the reason the file is left unchanged.
+        let dir = std::env::temp_dir().join(format!("jdr-art-templates-{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        assert!(template_nodes(&dir, b"k", b"iv", &[]).unwrap().is_empty());
+        let e = template_nodes(&dir, b"k", b"iv", &[(CLASS_TEXTURE2D, vec![0; 16])])
+            .unwrap_err()
+            .to_string();
+        assert!(
+            e.contains("no downloaded bundle with Texture2D type trees"),
+            "{e}"
+        );
+        std::fs::remove_dir_all(&dir).unwrap();
+    }
 }

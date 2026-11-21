@@ -152,7 +152,11 @@ Out of scope offline, or later systems:
   battles at triple points (`arena.fever`), streak and team-power scoring, point and season
   rewards in the Message Box (docs/research/23-arena.md). Scoring values, opponent strength,
   seasons and rewards are ours; the 2017 rules (one-hour rest, revive-all threshold, cost decay)
-  stay out. Defense, Crazy Diamond and the BP economy are not modelled (BP stays full).
+  stay out. Build 24: rankings against a field of AI rivals (per season; and one per point
+  event), simulated defence while away (`damageInfo`, bounded and deterministic), the Crazy
+  Diamond gauge and Full Revive, abandoned battles counted as losses (`forceDefeatFlg`,
+  `v2.arena.early_failure`), win-streak battle rates, `pollingTimes` 30 (0 locked the home).
+  The BP economy is still not modelled (BP stays full, costs 1, so `recoveryTimes` stays 0).
 - **Server (unverified):** `labyrinth.*` (5 rows), see docs/research/22-labyrinth.md.
   - The tile is open, and the six `dungeon/*` routes are served.
   - Mentality: cap 300, full again at 04:00 JST. That refill is ours; the pack says +100 a day.
@@ -192,10 +196,10 @@ examples and 8 event Minds. The numeric data is unchanged.
 | v2.growth.material_rarity / crossfeed | missing | No EXP-material inventory | Item system (later) |
 | v2.growth.assist_display / assist_conditions / assist_scaling | partial | Assists equip per seat; the stat bonus formula is the client's, constants ours (Build 22, docs/research/19) | Assist abilities and skills |
 | v2.action.armor_weak / armor_strong / crit_legacy / unity_phases / unity_stack / zeppeli_sacrifice | client | Action battle behaviour; the client's tables decide | Action battle is unverified offline |
-| v2.arena.* (8 rows) | server | AI-controlled opponents (as the 2018 guide describes) built from our roster; the 2019 rule set only; Fever 10 minutes (`early_fever`); a missing result counts as a loss (`early_failure`) (docs/research/23-arena.md) | The early rules (no switching, BP regeneration, rising costs and the cost lock) are not modelled: BP stays 5 and every team costs 1 offline |
+| v2.arena.* (8 rows) | server | AI-controlled opponents (as the 2018 guide describes) built from our roster; the 2019 rule set only; Fever 10 minutes (`early_fever`); a missing result counts as a loss, and since Build 24 so does a battle left without its result (`early_failure`, `forceDefeatFlg`); AI rivals also attack while the player is away (defence log) and rank against the player (docs/research/23-arena.md §1.7-1.12, §2-4) | The early rules (no switching, BP regeneration, rising costs and the cost lock) are not modelled: BP stays 5 and every team costs 1 offline, so the four-battle cost recovery (`recoveryTimes`) stays 0 |
 | v2.labyrinth.* (10 rows) | server (unverified) | 20 floors. Floor rewards (ours) wait in the run and go to the Message Box on a full clear or an escape. A defeat or retire costs a Soul; the last Soul forfeits the run. Escape restores the Souls. 22 Tarot identities, three offered, each used once until the deck resets. Flipping all three costs 20 Mentality. Room costs are 22–35 (docs/research/22) | Card effects follow the client's 3.12.0 texts where an existing affect fits (else none). Rooms have one area. Not yet seen on a device |
 | v2.countup.old_ticket / ticket_pool / ticket_delivery | server | Tiers 20/30/50/50/50; the ticket goes to the Message Box (Build 22) | Which ticket each round gave is unknown (ours) |
-| v2.events.* (9 rows) | offline / missing | Four event chapters playable (Build 20); no points, ranking or exchange | One-event examples, not general rules; never sum anniversary tiers |
+| v2.events.* (9 rows) | partial | Four event chapters playable (Build 20); the Fight Coin exchange (Build 22); event 50045's points and point rewards (Build 23); its ranking against AI rivals (Build 24, docs/research/23-arena.md §3) | No ranking rewards (events never close offline); one-event examples, not general rules; never sum anniversary tiers |
 
 **Player flows** (`catalog/player_flows.json`, 33). Their audit checks match the boot, home,
 quest and battle rows above. The ordinary screens that are still empty or stubbed are Missions,

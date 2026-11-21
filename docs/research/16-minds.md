@@ -54,13 +54,9 @@ Read in the 3.12.0 client (H read in code, M inferred).
     thirds; ATK when the wiki has no stats, which is 258 of 417 Minds).
   - `abilityLevel` is the Mind's level (1 until Mind levelling exists).
 - **Detail screen (H).** It shows no ability name, only an effect line built from each affect
-  row's `affectTextId` with `MindInfo.level`. Our affect rows have `affectTextId ""` (no label
-  says just "ATK +x%"), so that line is blank for now.
+  row's `affectTextId` with `MindInfo.level`. Until Build 24 our affect rows had
+  `affectTextId ""`, so that line was blank; see §8.
 - Abilities apply in slots 1–4 (7–8 too, which stay locked offline).
-
-- **Effect line (H).** The line comes from the affect row's `affectTextId` label, grouped by the
-  client's `affect_text_rule_table`. The shipped table is **empty**, so no ability effect line shows
-  in 3.12 (leader abilities too). Showing one needs rules in that table and label rows; not yet.
 
 ## 7. Mind levelling (Build 23)
 
@@ -83,3 +79,82 @@ Read in the 3.12.0 client (H read in code, M inferred).
   Mind and sends `levelUpTable` and `dtAbilityInfo.abilityLevel` = level. `materialExp` is ours:
   100 × rarity × level. Every Mind stays owned offline, so a Mind used as fodder comes back as a
   fresh level-1 copy.
+
+## 8. Effect lines (Build 24)
+
+The Mind detail screen, the statue detail (leader ability), the formation ability window, the
+battle pause screen and the support pick all print ability effects through
+`AffectTextUtil.CreateAffectText` (H: callers of 0xDAB998/0xDABD54, among them
+`MindInfoUIController.DtUpdateUI` through `UIUtil.SetAbilityText` 0xBA0808,
+`StatueInfoUIController.DtUpdateUI`, `FormationUIController.DtUpdateAbilityInfoWindowUI`).
+
+- **Inputs (H, `AddAffectTextParamList` 0xDABA5C).** Each ability parameter becomes one entry
+  `{giveLimit, params[8], affectId, affectTextId, condition, baseAffectType, textSortIndex}`. The
+  params are the values at the ability level (Lv1→Lv10 lerp); condition, base and text id come
+  from the `affect_table` row. A parameter with an empty `affectId` or no `affect_table` row is
+  skipped; an empty `affectTextId` is not.
+- **Merging (H, `CreateAffectText` 0xDABD54).** The entries are grouped by `affectTextId`. The rule
+  of a group is `AffectTextRuleTable.GetRuleParametor(condition, baseAffectType)` of its first
+  entry (0xC8FA8C → `GetParametor` 0xC8FC2C, cached under `base × 1000 + condition`):
+  - it starts as 8 slots of `Invalid`;
+  - if `pvrsRuleList` has a row for the condition, all 8 slots are copied from it;
+  - if `baseAffectRuleList` has a row for the base, its non-`Invalid` slots override;
+  - a row with fewer than 8 slots throws (IndexOutOfRange); `GameConst.AffectParamCount` = 8
+    (cctor 0xDB40F0). The lists are keyed by `pvrs` (+0x10) and `baseAffectType` (+0x14); the
+    first row of a key wins (`OnInit` 0xC8F85C).
+  - Inside a group, entries whose `Solo` slots hold the same values merge into one line
+    (key = the `Solo` values, other slots `INVALID`); `giveLimit`s add up.
+  - Per slot, `CombineParam` 0xDAD198: `Combine` (1) adds, `Solo` (2) takes the value, `Invalid`
+    (0) gives `GameConst.InvalidAffectParam` = **−1** (cctor 0xDB3264).
+  - **No rule does not skip the line (H).** An earlier note said it did. Instead every slot
+    shows −1, so `{decimal_Param0}` prints "0.1" and `{mag_Param0}` "0.99". With the empty
+    table we sent before Build 24, every effect line would have read that way.
+- **Text (H).** Lines are sorted by condition, then `textSortIndex`, and joined with "\r\n". Each
+  is `TextManager.GetString(affectTextId)` with the replace tags bound to the merged slots
+  (`{Param<i>}` |p|, `{decimal_Param<i>}` |p|/10 as "0.0" 0xDAD7D8, `{mag_Param<i>}`
+  ((p+1000)/10)/100 as "0.00" 0xDAD8F4, `{StatueType_Param<i>}`, …). `{BaseAffect}` is
+  `GetString("BASE_AFFECT_TEXT_<base>")` and `{Prvs}` is `GetString("PRVS_TEXT_<condition>")`
+  (0xDAE01C, 0xDAE174; the number is the enum's int). With a limit mode and a capped Mind
+  ability, `AFFECT_UTIL_LIMIT` is appended.
+- **Labels (H, read in the player's text.jp).** The client registers each label once across all
+  tables, the first row winning (`RegistTextData` 0xB8926C, keyed by the label's hash).
+  - `affectText_JP` has `AFFECT_HP_RATEADD_TEXT`, `AFFECT_ATK_RATEADD_TEXT` and
+    `AFFECT_DEF_RATEADD_TEXT` = `<STAT>+{decimal_Param0}％`. The earlier note "no label says just
+    ATK +x%" was wrong: their text holds no Japanese script (`％` is not in the detector's
+    ranges), so they are absent from the translation export, and they need no English.
+    `BASE_AFFECT_TEXT_2/4/6` are the same strings.
+  - It also has `DTAF_<id>_TEXT` = `{Prvs}{BaseAffect}` for 16 of our 21 ability affect ids,
+    the plain HP/ATK/DEF ones among them (our ids follow the client's naming).
+    `DTAF_DYING_*` and `DTAF_FULL_HP_*` do not exist. That composite is probably the original
+    wiring (M). We do not use it. In Japanese it gives the same text as the single label
+    (`PRVS_TEXT_3` + `BASE_AFFECT_TEXT_4` equals `AFFECT_ALONE_ATK_RATEADD_TEXT`). In English, our
+    `PRVS_TEXT_<n>` ends in a comma with no space before the stat ("…remains,ATK+5.0％").
+  - Every other affect has an `AFFECT_[COND_]STAT_OP_TEXT` label of the same meaning, already in
+    English:
+    - `ALONE`: "When only 1 team member remains, …";
+    - `FULL`: "At full HP, …";
+    - `FNT`: "When near death, …";
+    - the per-type `BRAVE/INTELLI/TENACITY/UNITY/MAVERICK` damage lines;
+    - damage dealt and taken;
+    - critical damage, `{mag_Param0}x`.
+  - The condition labels match the conditions. In the Japanese source, the `AFFECT_FNT_*` texts
+    begin with exactly `PRVS_TEXT_2` (DYING), `AFFECT_FULL_*` with `PRVS_TEXT_7` (FULL_HP), and
+    `AFFECT_ALONE_*` with `PRVS_TEXT_3` (ALONE).
+- **What we send (ours).**
+  - `affect_table`: each ability affect `DTAF_X` names `AFFECT_X_TEXT`, with `DYING` → `FNT` and
+    `FULL_HP` → `FULL`. Every one is a real label (`real_l10n` checks them against the player's
+    text.jp), so no rows are added to text.jp.
+  - `affect_text_rule_table`: one `baseAffectRuleList` row per BaseAffectType we use, with slot 0
+    `Combine`. For the two `*_STYPE_*` bases, slot 1 (the StatueType) is `Solo`, so different
+    types never merge. There are no condition rows. The rules are ours: there is no source.
+    `Combine` sums the same line across Minds, as the battle sums the affects.
+  - Lines now show, e.g. "ATK+5.0％" for a ★3 ATK Mind at Lv1 (50 per mille). The plain stat
+    labels have no Japanese, so they look the same in both languages. A leader ability gives one
+    line per effect, e.g. "When only 1 team member remains, ATK +x%", and a crit line of 200 per
+    mille reads "Critical damage dealt 1.20x".
+- **Unverified (M).**
+  - The text on a device: the font's `％`, line wrapping in the Mind box, and whether the support
+    and pause screens print the same lines.
+  - Whether `StatueInfoUIController` prints the leader ability through these lines or through its
+    `ABI_LEAD_TEXT_*` description.
+  - The original rules (our `Combine` and `Solo` choice).

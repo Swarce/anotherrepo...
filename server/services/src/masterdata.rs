@@ -123,6 +123,10 @@ pub const TABLES: &[(&str, &str)] = &[
         include_str!("../../content/masterdata/affect_table.json"),
     ),
     (
+        "affect_text_rule_table",
+        include_str!("../../content/masterdata/affect_text_rule_table.json"),
+    ),
+    (
         "clan_table",
         include_str!("../../content/masterdata/clan_table.json"),
     ),
@@ -579,6 +583,7 @@ pub fn generated_tables() -> Vec<(String, String)> {
             "note": "statue_setting_table: the My Page position/rotation, background choice, mindFrameID and PvP AI ids are our values" }));
     }
     let rank_src = sources_of(crate::collection::RANKS_JSON);
+    let assist_src = sources_of(crate::collection::ASSIST_ABILITIES_JSON);
     let skills = crate::collection::dt_skill_table();
     let doc = |asset: &str, src: &Value, rows: Vec<Value>| {
         serde_json::json!({ "asset": asset, "sources": src, "data": { "paramList": rows } })
@@ -610,6 +615,14 @@ pub fn generated_tables() -> Vec<(String, String)> {
         (
             "rank_table".into(),
             doc("rank_table", &rank_src, crate::collection::rank_rows()),
+        ),
+        (
+            "assist_ability_condition_table".into(),
+            doc(
+                "assist_ability_condition_table",
+                &assist_src,
+                crate::collection::assist_condition_rows(),
+            ),
         ),
     ]
 }
@@ -1017,7 +1030,204 @@ mod tests {
             );
             assert_eq!(a["abilityParamList"], serde_json::json!([]), "never null");
         }
-        assert_eq!(rows.len(), lead + 12, "only leader and Mind rows");
+        let assist = rows
+            .iter()
+            .filter(|r| r["abilityId"].as_str().unwrap().starts_with("DT_AST_"))
+            .count();
+        assert_eq!(assist, 16, "4 kinds x 4 tiers");
+        assert_eq!(
+            rows.len(),
+            lead + 12 + assist,
+            "only leader, Mind and assist rows"
+        );
+    }
+
+    /// Assist abilities (docs/research/19-assists.md §5): every id names a row, the condition
+    /// table has one row per statue (keyed by statueId, unique) whose ids are in the statue's
+    /// dtAssistAbilityList, which matches assistAbilityList; the assist skill names a tactical row.
+    #[test]
+    fn assist_abilities_are_consistent() {
+        let doc = |name: &str| -> Value {
+            let js = TABLES.iter().find(|(n, _)| *n == name).unwrap().1;
+            serde_json::from_str::<Value>(js).unwrap()["data"].clone()
+        };
+        let rows = doc("dtbattle_ability_data_table")["paramList"]
+            .as_array()
+            .unwrap()
+            .clone();
+        let ids: std::collections::HashSet<&str> = rows
+            .iter()
+            .map(|r| r["abilityId"].as_str().unwrap())
+            .collect();
+        let generated = generated_tables();
+        let gen = |name: &str| -> Value {
+            let js = &generated.iter().find(|(n, _)| n == name).unwrap().1;
+            serde_json::from_str::<Value>(js).unwrap()["data"].clone()
+        };
+        let cond = gen("assist_ability_condition_table")["paramList"]
+            .as_array()
+            .unwrap()
+            .clone();
+        let skill_ids: std::collections::HashSet<String> = gen("dtbattle_skill_data_table")
+            ["skillDataList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|r| r["dtSkillId"].as_str().unwrap().to_string())
+            .collect();
+        let mut seen = std::collections::HashSet::new();
+        for r in &cond {
+            let sid = r["statueId"].as_str().unwrap();
+            assert!(seen.insert(sid), "{sid}: one row per statue");
+            let o = crate::collection::OwnedStatue {
+                statue_id: sid.into(),
+                level: 1,
+                ..Default::default()
+            };
+            let v = crate::collection::statue_info(&o);
+            let dt: Vec<&Value> = v["dtAssistAbilityList"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .map(|a| &a["abilityId"])
+                .collect();
+            let cl: Vec<&Value> = v["assistAbilityList"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .map(|a| &a["abilityId"])
+                .collect();
+            assert_eq!(dt, cl, "{sid}: both lists equal (the client's index trap)");
+            for c in r["conditionTableData"].as_array().unwrap() {
+                let id = c["assistAbilityId"].as_str().unwrap();
+                assert!(ids.contains(id), "{sid}: {id} names a row");
+                assert!(dt.contains(&&c["assistAbilityId"]), "{sid}: {id} is listed");
+                assert!(c["assistAbilityCondition"].is_array(), "never null");
+            }
+            let s = &v["dtAssistSkillInfo"];
+            if let Some(k) = s["skillId"].as_str() {
+                assert!(skill_ids.contains(k), "{sid}: {k} is a tactical row");
+            }
+        }
+        assert_eq!(seen.len(), crate::collection::statues().len());
+        // The generated table goes through the schema.
+        let t = tables(&Schema::embedded().unwrap(), &[]).unwrap();
+        assert!(t.iter().any(|t| t.name == "assist_ability_condition_table"));
+        let all: Vec<(&str, &str)> = generated
+            .iter()
+            .map(|(a, b)| (a.as_str(), b.as_str()))
+            .collect();
+        let t = tables(&Schema::embedded().unwrap(), &all).unwrap();
+        let row = t
+            .iter()
+            .find(|t| t.name == "assist_ability_condition_table")
+            .unwrap();
+        assert_eq!(row.rows, cond.len());
+    }
+
+    /// Effect lines (docs/research/16-minds.md §8): every affect row a Mind or leader ability uses
+    /// names a game label with English that shows the amount, and its (prvs, baseAffect) has a
+    /// text rule whose amount slot is not Invalid (an Invalid slot shows -1, "0.1"). Every rule
+    /// row has the 8 slots the client copies (fewer throws). The real-data test `real_l10n`
+    /// checks the labels against the player's text.jp.
+    #[test]
+    fn effect_lines_have_labels_and_rules() {
+        let doc = |name: &str| -> Value {
+            let js = TABLES.iter().find(|(n, _)| *n == name).unwrap().1;
+            serde_json::from_str::<Value>(js).unwrap()["data"].clone()
+        };
+        let rules = doc("affect_text_rule_table");
+        let slots = |list: &str, key: &str| -> Vec<(String, Vec<String>)> {
+            rules[list]
+                .as_array()
+                .unwrap()
+                .iter()
+                .map(|r| {
+                    let k = r[key].as_str().unwrap().to_string();
+                    let s: Vec<String> = r["paramRuleTypeList"]
+                        .as_array()
+                        .unwrap()
+                        .iter()
+                        .map(|x| x.as_str().unwrap().to_string())
+                        .collect();
+                    assert_eq!(s.len(), 8, "{k}: 8 slots");
+                    (k, s)
+                })
+                .collect()
+        };
+        let by_prvs = slots("pvrsRuleList", "pvrs");
+        let by_base = slots("baseAffectRuleList", "baseAffectType");
+        // The client's lookup: the condition's row, then the base row's non-Invalid slots.
+        let rule = |prvs: &str, base: &str| -> Vec<String> {
+            let mut r = by_prvs
+                .iter()
+                .find(|(k, _)| k == prvs)
+                .map(|(_, s)| s.clone())
+                .unwrap_or_else(|| vec!["Invalid".to_string(); 8]);
+            if let Some((_, s)) = by_base.iter().find(|(k, _)| k == base) {
+                for (i, x) in s.iter().enumerate() {
+                    if x != "Invalid" {
+                        r[i] = x.clone();
+                    }
+                }
+            }
+            r
+        };
+        let tr = crate::l10n::Translations::embedded().unwrap();
+        // These rows hold no Japanese (`<STAT>+{decimal_Param0}％`), so they need no translation
+        // and are not in our files; real_l10n checks them in the player's text.jp.
+        let untranslated = [
+            "AFFECT_HP_RATEADD_TEXT",
+            "AFFECT_ATK_RATEADD_TEXT",
+            "AFFECT_DEF_RATEADD_TEXT",
+        ];
+        let english = |label: &str| -> Option<String> {
+            if untranslated.contains(&label) {
+                return Some("{decimal_Param0}".into());
+            }
+            tr.english(&format!("text:affectText_JP:{label}"))
+                .map(str::to_owned)
+        };
+        let used: std::collections::HashSet<String> = doc("dtbattle_ability_data_table")
+            ["paramList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .flat_map(|r| r["abilityParamList"].as_array().unwrap().clone())
+            .map(|p| p["affectId"].as_str().unwrap().to_string())
+            .collect();
+        let affects = doc("affect_table")["paramList"].as_array().unwrap().clone();
+        let mut lines = 0;
+        for a in &affects {
+            let id = a["affectId"].as_str().unwrap();
+            if !used.contains(id) {
+                continue;
+            }
+            let text = a["affectTextId"].as_str().unwrap();
+            let en = english(text).unwrap_or_else(|| panic!("{id}: no English for {text:?}"));
+            assert!(
+                en.contains("{decimal_Param0}") || en.contains("{mag_Param0}"),
+                "{id}: the line shows the amount"
+            );
+            let r = rule(
+                a["prvs"].as_str().unwrap(),
+                a["baseAffect"].as_str().unwrap(),
+            );
+            assert_ne!(r[0], "Invalid", "{id}: the amount slot has a rule");
+            if id.contains("_STYPE_") {
+                assert_eq!(r[1], "Solo", "{id}: one line per StatueType");
+            }
+            lines += 1;
+        }
+        assert_eq!(lines, used.len(), "every used affect is in affect_table");
+        // Mind abilities: one plain stat line each.
+        for stat in ["HP", "ATK", "DEF"] {
+            let row = affects
+                .iter()
+                .find(|a| a["affectId"] == format!("DTAF_{stat}_RATEADD"))
+                .unwrap();
+            assert_eq!(row["affectTextId"], format!("AFFECT_{stat}_RATEADD_TEXT"));
+        }
     }
 
     #[test]

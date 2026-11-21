@@ -99,7 +99,7 @@ pub fn is_point_event(event_id: &str) -> bool {
 }
 
 /// The label id form of an event (`50045` -> `500045`).
-fn label_id(event_id: &str) -> String {
+pub fn label_id(event_id: &str) -> String {
     if event_id.len() == 5 {
         format!("{}0{}", &event_id[..2], &event_id[2..])
     } else {
@@ -109,7 +109,7 @@ fn label_id(event_id: &str) -> String {
 
 fn item_set(item: i64, count: i64) -> Value {
     json!({ "itemSetIcon": "", "itemSetNum": 1, "statueList": [], "mindList": [], "clanObjectList": [],
-            "itemList": [{ "itemId": item, "name": format!("ITEM_{item:04}_NAME"), "count": count, "type": 0 }] })
+            "itemList": [crate::items::reward_item(item, count)] })
 }
 
 pub fn points(p: &Profile, event_id: &str) -> i64 {
