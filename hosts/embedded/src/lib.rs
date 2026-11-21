@@ -25,7 +25,7 @@ use std::time::{Duration, Instant};
 /// Marker the patcher checks to make sure it embeds this library and not something else.
 #[used]
 #[no_mangle]
-pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_b040";
+pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_b041";
 
 pub const KEYS_ASSET: &str = "assets/jdr/keys.json";
 /// The player's redrawn UI art, stored in their APK by the patcher (optional).
@@ -136,6 +136,21 @@ pub fn load_keys(state: &Path, pkg: &str) -> Result<Keys, String> {
         }
     }
     Err(format!("keys asset not found; tried {cands:?}: {errs:?}"))
+}
+
+/// Identity of the installed APK (path, size, modification time): Android installs an update
+/// under a new path with a new time, so this changes exactly when the APK is updated.
+pub fn apk_identity(pkg: &str) -> Option<String> {
+    let maps = std::fs::read_to_string("/proc/self/maps").ok()?;
+    let apk = apkzip::own_apk_candidates(&maps, pkg).into_iter().next()?;
+    let md = std::fs::metadata(&apk).ok()?;
+    let t = md
+        .modified()
+        .ok()?
+        .duration_since(std::time::UNIX_EPOCH)
+        .ok()?
+        .as_nanos();
+    Some(format!("{apk}|{}|{t}", md.len()))
 }
 
 /// The art pack from our own APK, if the patcher stored one.
@@ -310,6 +325,8 @@ pub fn serve_embedded(paths: &Paths, keys: Keys, port: u16, bind_retries: u32, t
         }
     };
     let mut ctx = Ctx::new(s, false);
+    // The generated bundles are kept between launches and rebuilt only when this APK changes.
+    ctx.build_identity = apk_identity(&paths.pkg);
     match load_art(&paths.pkg) {
         Some(Ok(a)) => {
             log::line("art", &format!("art pack loaded: {} image(s)", a.len()));

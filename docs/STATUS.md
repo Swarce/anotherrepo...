@@ -2,6 +2,44 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 41 — missing and guessed data filled, action-battle abilities and JoJo Links, tables built once per update (branch `wip/b41`)
+
+### What I asked for
+- Merge what we lack or only guessed, using the tables I extracted from a fan-made PC client
+  (kept private in `local/pc-master/`, never committed), plus the action-battle cameras.
+- Add the action-battle leader and assist abilities and JoJo Links as well.
+- Build the master tables once per update, not at every start.
+
+### What changed
+- **The PC tables** turned out to be a fan rewrite's data: mostly wiki numbers and its own designs.
+  They were used as a cross-check; every merged value comes from our own wiki data or the player's
+  files, except 9 Mind Lv10 values from original-game screenshots, labelled as such.
+- **Items:** 85 more (329 → 414), each with an icon and a name in the player's files.
+- **Statues:** Lv1 rounds x.5 up like the wikis; 43 tree maximums; four 6-star statues had the
+  tree maximum as Lv99; types and stats for 22 of the placeholder statues (3 more get their type).
+- **Minds:** 17 more (417 → 434), 23 Lv1 fixes, per-Mind Lv10 stats for 156.
+- **Assists and leaders:** conditions for 59 more statues (175 in all); 4 more leader rows.
+- **Action battle:**
+  - skill slots matched to the wiki properly (149 changes); the finisher plays each statue's
+    original SP cinematic (the client picks the camera clip from the player's files; no table
+    does, docs/research/30);
+  - leader abilities (142 statues, applied to the whole team) and assist effects (104 statues) as
+    the action battle reads them: inline per-mille params by ability level (docs/research/30 §7);
+  - statue traits (261 statues) and 53 JoJo Links, active from the team's members or traits.
+  - Left out until confirmed: gold/EXP bonuses, barriers, two-condition lines, 25 links.
+- **Tables built once per update:** the versionfile, master tables and English file list are
+  saved in the state folder (`generated/`) with a key made of the installed APK (path, size, time),
+  the build number and the game files' record. A later start with the same APK reuses them
+  (6 ms instead of a full rebuild, measured on the real files); an update rebuilds them.
+- Build number 41, server marker `JDR_EMBEDDED_SERVER_b041`.
+
+### Device checklist
+- [ ] Log: `[boot] jdr embedded build 41`; first start `generated bundles saved`, next start
+      `... reused: built once for this APK`
+- [ ] Action battle: the team leader's ability and JoJo Links show and apply; SP finishers play
+      their cinematic (Polnareff, Kakyoin, Vanilla Ice and others)
+- [ ] New items, Minds and corrected statue stats show in their menus
+
 ## Build 40 — a smoother battle camera (branch `wip/b40`)
 
 ### What the owner said
