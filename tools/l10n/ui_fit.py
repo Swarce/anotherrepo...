@@ -20,6 +20,7 @@ ap.add_argument("--out", required=True)
 ap.add_argument("--line", type=float, default=None, help="line height / font size (default: calibrated)")
 ap.add_argument("--calibrate", action="store_true")
 ap.add_argument("--hints", help="write label layout hints (ids only) for the server, e.g. server/content/l10n/ui_layout.json")
+ap.add_argument("--list-boxes", action="store_true", help="print the fixed-box labels")
 ap.add_argument("--screen", default="1280x720", help="reference canvas size for stretched roots")
 a = ap.parse_args()
 SW, SH = (float(x) for x in a.screen.split("x"))
@@ -393,9 +394,36 @@ if a.hints:
             wd = max(width(l, fd["m_FontSize"]) for l in RICH.sub("", r["en"]).replace("\\n", "\n").split("\n"))
             if wd > r["w"] + 1:
                 wrapl.add(r["id"])
+    # statue name labels sized by a vertical ContentSizeFitter: the fitter grows them by a line for long
+    # English names (best fit never runs), and they spill onto the tabs below. The server gives them a
+    # fixed box instead (two lines at most) so best fit shrinks the full name.
+    names = set()
+    for r in rows:
+        fd = r["fd"]
+        if (r["path"].rsplit("/", 1)[-1].startswith("Txt_StatueName") and r["driven"] == "fitter-v" and fd["m_BestFit"]
+                and fd["m_HorizontalOverflow"] == 0 and abs(fd["m_LineSpacing"] - 1.0) < 1e-6 and fd["m_FontSize"] > 0):
+            names.add(r["id"])
+    # one-line labels sized by a vertical ContentSizeFitter: the Japanese takes one line at the design
+    # size, so the fitter keeps them one line tall; longer English wraps and the fitter grows them over
+    # what lies above and below. The server gives them a fixed one-line box with best fit. Not: boxes 600 px
+# or wider (cautions and descriptions filled at runtime) and tight line spacing (laid out for two lines).
+    lines1 = set()
+    for r in rows:
+        fd = r["fd"]
+        if (r["id"] in names or r["driven"] != "fitter-v" or fd["m_HorizontalOverflow"] != 0 or r["font"] not in FONT_FILES
+                or fd["m_FontSize"] <= 0 or not 16 <= r["w"] < 600 or fd["m_LineSpacing"] < 1.0 - 1e-6 or not JP.search(r["src"]) or "\\n" in r["src"] or "\n" in r["src"]):
+            continue
+        CUR[0] = r["font"]
+        if len(wrap(r["src"], fd["m_FontSize"], r["w"])) == 1:
+            lines1.add(r["id"])
+            if a.list_boxes:
+                print("lineBox", r["id"], r["path"].rsplit("/", 2)[-2:], r["w"], fd["m_FontSize"], file=sys.stderr)
     doc = {"about": "UI.Text layout hints from tools/l10n/ui_fit.py (label ids bundle:file:pathId; no game text). "
                     "bestFit: labels that wrap and truncate get best fit (down to half size); wrap: labels that spill "
-                    "sideways with our English get wrap, truncate and best fit. See docs/LOCALIZATION.md.",
-           "bestFit": sorted(best), "wrap": sorted(wrapl)}
+                    "sideways with our English get wrap, truncate and best fit; nameBox: statue name labels that a "
+                    "ContentSizeFitter grows by a line get a fixed box of up to two lines and best fit; lineBox: one-line "
+                    "labels a ContentSizeFitter grows when the English wraps get a fixed one-line box and best fit. "
+                    "See docs/LOCALIZATION.md.",
+           "bestFit": sorted(best), "wrap": sorted(wrapl), "nameBox": sorted(names), "lineBox": sorted(lines1)}
     json.dump(doc, open(a.hints, "w"), indent=0)
-    print("hints:", len(best), "best fit,", len(wrapl), "wrap ->", a.hints, file=sys.stderr)
+    print("hints:", len(best), "best fit,", len(wrapl), "wrap,", len(names), "name boxes,", len(lines1), "line boxes ->", a.hints, file=sys.stderr)
