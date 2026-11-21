@@ -958,6 +958,9 @@ mod tests {
                 let name = d["cameraNode"].as_str().unwrap();
                 assert!(node_ids.contains(&name));
                 assert!(d["sec"].as_f64().unwrap() > 0.0);
+                // `inter` is the per-frame share of the way to the pose (SetCameraInfo 0xD6FE60):
+                // 0 leaves the camera where it was (Builds 33-36), so every step moves it.
+                assert!(d["inter"].as_f64().unwrap() > 0.0, "camera {id} inter 0");
                 let n = node(name);
                 length += n["length"].as_f64().unwrap();
                 fov += n["perspective"].as_f64().unwrap();
