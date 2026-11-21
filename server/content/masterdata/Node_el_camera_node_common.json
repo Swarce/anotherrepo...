@@ -27,17 +27,17 @@
      "y": 82.0,
      "z": 0.0
     },
-    "perspective": 30.0,
-    "length": 4.0,
+    "perspective": 32.0,
+    "length": 5.0,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
-     "z": 1.8
+     "z": 1.1
     },
     "lookatOffset": {
      "x": 0.0,
      "y": -0.1,
-     "z": 1.8
+     "z": 1.1
     },
     "id": "jdr_NA_PUSH_0"
    },
@@ -73,37 +73,37 @@
      "z": 0.0
     },
     "perspective": 0.0,
-    "length": 0.5,
+    "length": 0.3,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
-     "z": 1.0
+     "z": 0.0
     },
     "lookatOffset": {
      "x": 0.0,
      "y": 0.0,
-     "z": 1.0
+     "z": 0.0
     }
    },
    {
     "baseBoneID": 4,
     "lookatBoneID": 4,
     "rotate": {
-     "x": 7.0,
+     "x": 5.0,
      "y": 82.0,
      "z": 0.0
     },
-    "perspective": 30.0,
-    "length": 3.2,
+    "perspective": 32.0,
+    "length": 4.6,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
-     "z": 2.0
+     "z": 1.0
     },
     "lookatOffset": {
      "x": 0.0,
      "y": -0.1,
-     "z": 2.0
+     "z": 1.0
     },
     "id": "jdr_ST3_PUSH_0"
    },
@@ -139,37 +139,37 @@
      "z": 0.0
     },
     "perspective": 0.0,
-    "length": 0.4,
+    "length": 0.3,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
-     "z": 1.2
+     "z": 0.1
     },
     "lookatOffset": {
      "x": 0.0,
      "y": 0.0,
-     "z": 1.2
+     "z": 0.1
     }
    },
    {
     "baseBoneID": 4,
     "lookatBoneID": 4,
     "rotate": {
-     "x": 10.0,
+     "x": 8.0,
      "y": 85.0,
      "z": 0.0
     },
-    "perspective": 30.0,
-    "length": 2.6,
+    "perspective": 32.0,
+    "length": 4.4,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
-     "z": 2.4
+     "z": 0.9
     },
     "lookatOffset": {
      "x": 0.0,
      "y": -0.1,
-     "z": 2.4
+     "z": 0.9
     },
     "id": "jdr_FOLLOW_0"
    },
@@ -205,16 +205,16 @@
      "z": 0.0
     },
     "perspective": 0.0,
-    "length": 0.0,
+    "length": 0.3,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
-     "z": 1.0
+     "z": 0.05
     },
     "lookatOffset": {
      "x": 0.0,
      "y": 0.0,
-     "z": 1.0
+     "z": 0.05
     }
    },
    {

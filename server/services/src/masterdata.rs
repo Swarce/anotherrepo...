@@ -771,6 +771,8 @@ mod tests {
                 .unwrap_or_else(|| panic!("no row for {id}"));
             assert!(id == crate::collection::BASIC_ATTACK || row["viewSkillId"] == id.as_str());
             assert_eq!(row["skillWait"], 100, "an attack ends the unit's turn");
+            // attacks stay on the client's Overview two-shot (docs/research/31 §9)
+            assert_eq!(row["forceNormalCamera"], 1, "{id} on the two-shot");
             assert!(
                 row["dtRangeMax"].as_i64().unwrap() >= 100,
                 "attackers stop in front, not inside"
@@ -778,6 +780,18 @@ mod tests {
         }
         let unique: std::collections::HashSet<_> = ids.iter().collect();
         assert_eq!(unique.len(), ids.len(), "skill ids are unique");
+        // every other row (skills, SPs, Mind skills) keeps its script cameras
+        let attacks: std::collections::HashSet<String> = crate::collection::statues()
+            .iter()
+            .map(|d| crate::collection::attack_skill(&d.statue_id))
+            .chain([crate::collection::BASIC_ATTACK.to_string()])
+            .collect();
+        for r in sk["skillDataList"].as_array().unwrap() {
+            let id = r["dtSkillId"].as_str().unwrap();
+            if !attacks.contains(id) {
+                assert_eq!(r["forceNormalCamera"], 0, "{id} plays its script cameras");
+            }
+        }
         let cats: Vec<&str> = sk["categoryList"]
             .as_array()
             .unwrap()
