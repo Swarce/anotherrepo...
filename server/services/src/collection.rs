@@ -565,7 +565,8 @@ pub fn dt_skill_table() -> Value {
     }
     // Normal and special skills (docs/research/12 §3): one row per skill id, one category row per
     // category label. Numbers are ours: wait 100 (ends the turn), cool-down 2 turns (special 3,
-    // with 3 uses), the same hit and critical rates as the attack, no SP cost.
+    // with 3 uses), the same hit and critical rates as the attack, no SP cost, and Reversal gauge
+    // 15% (special 20%; the attack's is 10%, docs/research/11 §5).
     let mut skills = std::collections::BTreeMap::new();
     let mut cats = std::collections::BTreeMap::new();
     for s in statues().iter().flat_map(|d| d.dt_skills.iter()) {
@@ -585,6 +586,8 @@ pub fn dt_skill_table() -> Value {
                 ("dtButtonType", json!(s.button)),
                 ("damageRank", json!(s.damage_rank)),
                 ("dtLimitCount", json!(if s.special { 3 } else { 0 })),
+                // Reversal gauge, in percent, added when a player unit picks the skill (ours).
+                ("dododoRate", json!(if s.special { 20 } else { 15 })),
                 ("dtMinCoolTurn", json!(cool)),
                 ("dtMaxCoolTurn", json!(cool)),
                 ("mainSkillCategory", json!(s.category)),

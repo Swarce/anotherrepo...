@@ -55,3 +55,43 @@ other notes. No game text is reproduced.
 
 All three priority diagnoses and every field layout are H. The secondary screens were checked for
 which route they call and which lists must be non-null (M).
+
+## Quest Select: Daily, Event and Campaign (Build 20)
+
+The owner asked for these tiles so more content can be tested. H unless marked, from
+`BizarreCategorySelectUIController` (OnLoad 0xD3E398).
+
+- **Tiles.** Picked by `bannerType` only: 1 story, 2 daily, 3 event. A tapped tile sends
+  `bizarre_list{category}`.
+  - `questHomeId`, `day`, `Priority` and the dates are not read.
+  - Tutorial flags gate the tiles: daily needs OPEN_00, event needs OPEN_01. The embedded server
+    skips the tutorial, so both are set.
+  - `dungeonLockFlg: 1` keeps the labyrinth locked.
+  - A null `bannerFileName`, or a null `eventMasterId` while campaigns are shown, crashes the
+    screen; an empty or missing banner just leaves the tile blank.
+- **Daily.** The client uses the first bannerType-2 entry for both its category and its art.
+  - We send today's weekday (category 6 + weekday, the day turning at 04:00 JST, research pack
+    `economy.daily_reset`) with art `bizarre_type_daily_<sun|mon|tue|wed|thu|fri|sta>`.
+  - An empty chapter list shows an "expired" dialog. The story ChapterInfo with the daily
+    category works.
+- **Event.** Categories 13–1000 open Event Home.
+  - `eventInfo.eventCampaignId` must be set, or the screen backs out with "expired".
+  - Ranking, collection points, shop, BGM and the event summon stay off (0 or "").
+  - Event chapters need category ≥ 13 to return to Event Home after a battle.
+  - The tile art is `bannerFileName + "_large"`; the player's files hold 180 such banners
+    (`eq_<6-digit id>_<hash>_start_large`).
+- **Campaign Info.** Items with `bizarreHomeFlag` true, ordered by `signboardPriority`, with art
+  `banner + "_small"`. A tap opens `s3_url + htmlLink` in the web view (our web module answers
+  any path).
+- **Content** (`server/content/quests_extra.json`, `tools/content/build_extra_quests.py`).
+  - Daily: per weekday, the game's two quest lines (`CHAPTER_NAME_DY_<day>_01`/`_04`), each with
+    its Easy–Expert stages (`STAGE_DY2_<day>_001..004`, `_101..104`). Enemies follow the
+    documented material days (Mon/Thu Wisdom, Tue/Fri Spirit, Wed/Sat Courage, Sunday all three;
+    research pack v2.growth.weekday).
+  - Events: 50035 Cinderella's Wizard, 50045 The Girl Standing in the Alley, 50032 Challenge
+    Letters, 50077 2nd Anniversary. That is 72 chapters and 222 stages in all, each with its own
+    chapter and stage label from the game's text and its banner (id `50032` → banner
+    `eq_500032_…`; earlier event ids map ambiguously, so they are left out).
+  - Every stage reuses a tactical story stage's map. Enemies, levels and rewards are ours,
+    except the Easy-tier daily AP/EXP/gold (wiki). Clears and stars are kept per stage, apart
+    from the story.
