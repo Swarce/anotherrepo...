@@ -65,9 +65,22 @@ Read in the 3.12.0 client: H = read in the disassembly, M = inferred. Code:
 
 ### 2.2 Server (ours)
 
-- Update tab: `<base>/web/information/build_notes.html`, a short page of what this build adds
-  (our words; `web::NOTES`, kept with the build). Fault tab: an offline "no maintenance" page.
-  Other tab: an about page.
+- Build 42: the three tabs are pages of collapsible posts, one data file for all of them:
+  `server/content/news.json` (our words; format in docs/CONTENT.md "Notices"), rendered by
+  `web.rs` (`notice_page`). Update tab `<base>/web/information/build_notes.html`: one post per
+  build, newest first (a post with `build` above `jdr_core::BUILD` is not shown yet). Fault tab
+  `maintenance.html`: the offline "no maintenance" post. Other tab `about.html`: what the offline
+  build includes, and the about post.
+- Layout: `article.notice > button.headline (time.date, span.title) + section.content`, our own
+  CSS (`server/content/notice.css`, every shape drawn in CSS; no retail notice images or
+  stylesheet) and a small inline script, so a page loads no other file and names no URL. Rich
+  text keeps only `<color=#RRGGBB>`, `<b>`, `<i>` and line breaks; anything else is shown as text.
+- The page is sent with every post open; the script folds all but the first and toggles a post on
+  a tap. So with scripts off the page still reads, all expanded. The client's web view runs
+  scripts (H): `com.onevcat.uniwebview.UniWebView.<init>` in the APK's `classes.dex` calls
+  `WebSettings.setJavaScriptEnabled(true)`, and the C# side (`UniWebView`, dump.cs) has no call
+  that turns it off.
 - `updateNewFlg` and the Home badge (`get_menu_notify.unopenedNotify`) are 1 until the player
-  opens the Notices once on this build (`Progress.notes_seen_build`).
-- Not run on a device: the three tabs loading our pages.
+  opens the Notices once on this build (`Progress.notes_seen_build`). Kept per build, not per
+  post: news.json is built into the server, so new posts only arrive with a new build.
+- Not run on a device: the three tabs loading our pages, and the tap toggling a post.

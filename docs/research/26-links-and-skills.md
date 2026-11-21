@@ -160,8 +160,10 @@ M = inferred. No game text is reproduced; labels are cited by key.
   `coolTurn = dtMinCoolTurn + CeilToInt((dtMaxCoolTurn − dtMinCoolTurn) / 10 × skillLevel)`.
   "Min" is the value at level 0 and "Max" the value at level 10. The level is the SkillInfo's.
   Beyond this, the level is read only by counter skills (`registCounterSkill`).
-- **Tree (labels).** Square effect 4 is "raises Skill Level" (`Tree_Message_08`), 5 "raises SP
-  Skill Level" (`_09`), 9 the finisher SP skill (`_11`).
+- **Tree (labels).** Square effect 4 raises the skill level (`Tree_Message_08`), 5 the SP skill
+  level (`_09`), 9 the finisher's (`_11`), 13 the assist skill's (`_18`); the full list is in
+  docs/research/13 §3. Build 42: finisher squares set the action `skillList[4]` level (it used
+  the SP skill level), assist squares the `dtAssistSkillInfo` level.
 - **What we send (ours).**
   - Rows keep `dtMinCoolTurn` 2 (special 3) and get `dtMaxCoolTurn` 0 (special 1). Level 1–4
     gives the old 2/3 turns, level 5–9 one less, level 10 two less.

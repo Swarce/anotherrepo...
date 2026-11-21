@@ -1,4 +1,4 @@
-# 19 — Assists (Builds 22, 24, 25)
+# 19 — Assists (Builds 22, 24, 25, 42)
 
 Assist statues back up a team seat. Read in the 3.12.0 client: H = read in the disassembly,
 M = inferred.
@@ -37,6 +37,37 @@ M = inferred.
 - **Assist character:** in tactical battle the leader seat's seq-1 assist joins as the team's
   assist character, using `dtAssistSkillInfo` as its skill (§5.2). No skill is made while that is
   empty.
+
+### 3.1 Action stat bonus (Build 42)
+
+Read in our 3.12.0 binary (H):
+
+- `Jjs.CharacterStatus.SetStatueInfo` (the action battle) and `AffectStatus.SetStatueInfo` call
+  `AssistStatueAddParamCalculator.CalcAddParam` (0x157EA30), which sums `CalcBonusParam`
+  (0xC93510) over the seat's assists. The formation's assist mini panel and the auto set also
+  call `CalcBonusParam`; the tactical side uses `DTCalcAddParam` (the §3 formula) instead.
+- `CalcBonusParam` reads the assist's own `convergence` (StatueInfo) and four ints of the
+  **system config we send** (`SystemConfigManager.SystemConfig`, `ConfigInfo` +0x58..+0x64):
+  `assistStatusAddPercent`, `assistStatusConvergenceCount`, `assistStatusConvergencePercent`,
+  `assistStatusConvergenceLimitCount`. They are not client constants and not a master table.
+- `CalcMagnification` (0xC936C4):
+  `(add + Min(convergence / count, limit) × step) / parts` with integer steps (a count below 1
+  gives 0 steps) and an f32 division. `parts` is the class's static float, set to 1000.0 by its
+  `.cctor` (`mov w9, #0x447a0000` at 0xC93E68).
+- `CalcAddHp`/`Atk`/`Def` (0xC937A8, 0xC93820, 0xC93898): `FloorToInt(stat × magnification)`
+  of the assist's own HP/ATK/DEF, added to the seat.
+
+Ours (`services/misc.rs`, `/common/get_system_config`): add 100, count 5, step 20, limit 45, so
+10% unboosted, +2% per 5 boosts, 100% of the assist's stats at 225 boosts. Community-sourced:
+Gamerch player posts 101615739 (2017-11-24), 101635727 (2017-11-27) and 104155773
+(2019-08-20); the original server's values are not recovered. Before Build 42 we sent
+10/5/50/10 (placeholders: 1% base, 51% at 50 boosts). Every assist record on a seat carries its
+`convergence` and stats (`collection::team_info`), so nothing else is sent. The tactical
+formula (§3, §4) is unchanged.
+
+Not verified: the device check (the action formation shows a bigger share for a boosted assist);
+the Gamerch posts were not re-read in this session (the values are as the batch handoff quotes
+them).
 
 ## 4. Server (Build 22)
 

@@ -2308,6 +2308,226 @@
     }
    },
    {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -20.0,
+     "y": 180.0,
+     "z": 0.0
+    },
+    "perspective": 38.0,
+    "length": 3.5,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.1,
+     "z": 0.6
+    },
+    "id": "jdr_ACT_WINDUP_0"
+   },
+   {
+    "id": "jdr_ACT_WINDUP_1",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": -0.4,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -38.0,
+     "y": 180.0,
+     "z": 0.0
+    },
+    "perspective": 38.0,
+    "length": 4.8,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.2,
+     "z": 1.0
+    },
+    "id": "jdr_ACT_COMBO_0"
+   },
+   {
+    "id": "jdr_ACT_COMBO_1",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 0.2,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -28.0,
+     "y": 180.0,
+     "z": 0.0
+    },
+    "perspective": 38.0,
+    "length": 4.4,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.2,
+     "z": 1.2
+    },
+    "id": "jdr_ACT_STRIKE_0"
+   },
+   {
+    "id": "jdr_ACT_STRIKE_1",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 0.4,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -42.0,
+     "y": 180.0,
+     "z": 0.0
+    },
+    "perspective": 40.0,
+    "length": 6.4,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.3,
+     "z": 1.5
+    },
+    "id": "jdr_ACT_WIDE_0"
+   },
+   {
+    "id": "jdr_ACT_WIDE_1",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 0.5,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -40.0,
+     "y": 180.0,
+     "z": 0.0
+    },
+    "perspective": 38.0,
+    "length": 5.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.2,
+     "z": 0.8
+    },
+    "id": "jdr_ACT_RECOVER_0"
+   },
+   {
+    "id": "jdr_ACT_RECOVER_1",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 0.4,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
     "id": "ski_cam_00",
     "baseBoneID": 0,
     "lookatBoneID": 0,
@@ -2358,6 +2578,28 @@
     "rotate": {
      "x": 5.0,
      "y": 16.0,
+     "z": 0.0
+    },
+    "perspective": 34.0,
+    "length": 2.4,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.5,
+     "y": -0.35,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_result_front",
+    "baseBoneID": 4,
+    "lookatBoneID": 5,
+    "rotate": {
+     "x": 5.0,
+     "y": 0.0,
      "z": 0.0
     },
     "perspective": 34.0,

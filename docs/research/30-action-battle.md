@@ -122,9 +122,12 @@ files, M = inferred. Code: `server/services/src/quests.rs` (`area_list`, `has_ac
 
 ## 6. Open (M)
 
-- Action-stage star missions, the callable support and Mind Links in action battles (JoJo Links:
-  §7, Build 41).
+- The callable support and Mind Links in action battles (JoJo Links: §7, Build 41). Star
+  missions are served since Build 42 (7/8/20, docs/research/11 §4); not yet seen on a device.
 - Waves beyond the first group of each area; respawning and trigger groups.
+- Script cameras: since Build 42 every id the action sets request has a set (62 were missing and
+  left the camera frozen; docs/research/31 §10). Our shots stay near the follow camera; the
+  client's own shots for these ids are unknown.
 
 ## 7. Leader and assist abilities, statue traits, JoJo Links (Build 41)
 
@@ -171,6 +174,10 @@ Read in the 3.12.0 client (H unless marked). Code: `collection.rs` (`action_lead
   ApplyJojoLinkAbilityAffect 0xF17A30 applies each entry whose abilityInfo is valid (source 4,
   key charaLinkId, so the ids must be unique). type, dataList, name and matchType are never read,
   and the client checks no members: the server decides (doc 26 §1).
+- **Level (Build 42).** `abilityLevel` is 1 plus the statue's opened leader squares (tree effect
+  11, +3 each, three squares: Lv10 with all), on both `leaderAbilityInfo` and
+  `dtLeaderAbilityInfo`. The tree screen shows `leaderAbilityInfo.abilityLevel` as the current
+  level. Supporters stay at 1.
 - **Sources.** BattleSceneUtil.CreateTeam 0xC11564 applies the leader seat statue's
   `leaderAbilityInfo` to all three members; a supporter's when `followStatus` is 3 (we send 3).
   Assist abilities: per seat statue, found by id in that assist's `assistAbilityList`

@@ -363,6 +363,7 @@ pub fn equip(
         return Err(E_NO_STATUE);
     };
     let statue_id = statue.statue_id.clone();
+    let capacity = collection::mind_capacity(statue);
     let mut seats = t.minds.clone();
     for (seq, uid) in changes {
         if !(1..=collection::MIND_SLOTS_OPEN).contains(seq) {
@@ -387,7 +388,7 @@ pub fn equip(
         .map(|(s, m)| (*s, m.uid))
         .collect();
     seats[seat] = fit;
-    if seat_cost(c, &seats[seat]) > collection::MIND_CAPACITY {
+    if seat_cost(c, &seats[seat]) > capacity {
         return Err(E_CP_OVER);
     }
     for s in seats.iter_mut() {
@@ -587,13 +588,16 @@ pub fn auto_formation(
     minds.sort_by(|a, b| (b.0, b.1).cmp(&(a.0, a.1)).then(a.3.cmp(&b.3)));
     let mut seats: [Vec<(i64, i64)>; 3] = Default::default();
     let mut taken = std::collections::HashSet::new();
-    for seat in seats.iter_mut() {
+    for (seat, uid) in seats.iter_mut().zip(slots) {
+        let capacity = c
+            .known_statue(uid)
+            .map_or(collection::MIND_CAPACITY, collection::mind_capacity);
         let mut cost = 0;
         for (_, _, c_, uid) in &minds {
             if seat.len() as i64 == collection::MIND_GOLDEN_SLOTS {
                 break;
             }
-            if taken.contains(uid) || cost + c_ > collection::MIND_CAPACITY {
+            if taken.contains(uid) || cost + c_ > capacity {
                 continue;
             }
             cost += c_;
@@ -670,6 +674,59 @@ pub fn unlock_mind_seq(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
 #[cfg(test)]
 mod tests {
     use crate::services::dispatch;
+
+    /// Four 4-star Minds (48 CP) are refused with 51705 on a statue at the floor of 40 and fit
+    /// once its tree's CP squares are open (docs/research/16 §Capacity, Build 42).
+    #[test]
+    fn capacity_follows_the_tree_and_over_capacity_is_51705() {
+        use crate::collection::{self, Collection};
+        let mut c = Collection::default();
+        c.ensure("2026-11-18 00:00:00");
+        let big: Vec<i64> = c
+            .minds
+            .iter()
+            .filter(|m| {
+                collection::mind_cost(&m.mind_id) == 12
+                    && collection::mind_skill(&m.mind_id).is_none()
+            })
+            .map(|m| m.uid)
+            .take(4)
+            .collect();
+        let changes: Vec<(i64, i64)> = big
+            .iter()
+            .enumerate()
+            .map(|(i, u)| (i as i64 + 1, *u))
+            .collect();
+        let uid = super::Roster::Story
+            .teams(&c)
+            .iter()
+            .find(|t| t.team_num == 1)
+            .unwrap()
+            .slots[0];
+        assert_eq!(
+            super::equip(&mut c, super::Roster::Story, 1, 0, &changes),
+            Err(super::E_CP_OVER)
+        );
+        let o = c.statues.iter_mut().find(|o| o.uid == uid).unwrap();
+        let d = collection::find(&o.statue_id).unwrap();
+        o.tree = collection::tree_squares(d)
+            .into_iter()
+            .filter(|s| s.effect == collection::TREE_CP)
+            .map(|s| s.id)
+            .collect();
+        assert_eq!(collection::mind_capacity(o), 48);
+        assert_eq!(
+            super::equip(&mut c, super::Roster::Story, 1, 0, &changes),
+            Ok(())
+        );
+        assert_eq!(
+            super::seat_cost(
+                &c,
+                &c.teams.iter().find(|t| t.team_num == 1).unwrap().minds[0]
+            ),
+            48
+        );
+    }
     use crate::Ctx;
     use jdr_core::envelope::RequestEnvelope;
     use jdr_core::settings::Settings;

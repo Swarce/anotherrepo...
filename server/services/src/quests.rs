@@ -194,7 +194,8 @@ pub struct Progress {
     /// The battle started and not yet ended: `bizarre_end` pays out only for it, once.
     #[serde(default)]
     pub pending: Option<PendingBattle>,
-    /// Tactical missions cleared per stage (DT_QM types, from the clients' `starClearList`).
+    /// Missions cleared per stage, from the clients' `starClearList`: DT types on tactical
+    /// stages, QuestMissionClearType on action ones.
     #[serde(default)]
     pub stars: std::collections::BTreeMap<String, BTreeSet<i64>>,
     /// Mission counters and claims (Build 21).
@@ -241,6 +242,33 @@ pub fn dt_missions(s: &StageDef) -> [(i64, &'static str, String); 3] {
         (2, "DT_QM_Text_002", String::new()),
         (10, "DT_QM_Text_010", turns.to_string()),
     ]
+}
+
+/// The three action-stage missions (docs/research/11 §4, 30 §6): all team members survive
+/// (QuestMissionClearType 7 NobodyDied), defeat all enemies (8 KillAllEnemy) and use a Skill
+/// (20 UseSkill), in our translations of the labels. `starTarget` is the action enum:
+/// `BattleLogManager.GetClearMissionList` 0xC05DFC checks each row's type itself, with the thresholds built into the type, so `param` is
+/// not read (empty, as the labels have no `{starParam}`). Labels are the game's own
+/// `QuestMission_JP:QuestMissionText_<type + 2>` (texts 0-2 are counters; 3 is type 1 UseSupport,
+/// 16 is type 14 NoCondition), shown through our translations.
+/// The choice of these three: design borrowed from the Diamond Records PC playtest.
+pub fn action_missions(_s: &StageDef) -> [(i64, &'static str, String); 3] {
+    [
+        (7, "QuestMissionText_9", String::new()),
+        (8, "QuestMissionText_10", String::new()),
+        (20, "QuestMissionText_22", String::new()),
+    ]
+}
+
+/// The mission types the client can report as cleared for a stage type: DT types 1..16 for
+/// tactical stages, QuestMissionClearType 1..46 for action ones (0 None and 47 NoContinue fall
+/// outside the action check's switch and never clear).
+pub fn mission_types(stage_type: i64) -> std::ops::RangeInclusive<i64> {
+    if stage_type == 1 {
+        1..=16
+    } else {
+        1..=46
+    }
 }
 
 /// Loading-screen tips with a title, a text and a picture in the player's files
@@ -341,12 +369,13 @@ fn enemy_info(statue_id: &str, level: i64) -> Value {
 }
 
 fn star_list(c: &ChapterDef, s: &StageDef, p: &Progress) -> Vec<Value> {
-    if c.stage_type != 1 {
-        return Vec::new(); // action-battle missions use another type list; not served
-    }
     let done = p.stars.get(&s.stage_id);
-    dt_missions(s)
-        .iter()
+    let rows = if c.stage_type == 1 {
+        dt_missions(s)
+    } else {
+        action_missions(s)
+    };
+    rows.iter()
         .enumerate()
         .map(|(i, (ty, label, param))| {
             json!({
@@ -592,6 +621,56 @@ mod tests {
             .map(|x| x["clearFlg"].as_i64().unwrap())
             .collect();
         assert_eq!(lit, [1, 0, 1]);
+    }
+
+    /// Action stages list three QuestMissionClearType missions with the game's own labels
+    /// (docs/research/11 §4); tactical stages keep their DT types.
+    #[test]
+    fn action_stages_list_their_own_missions() {
+        let tr = crate::l10n::Translations::embedded().unwrap();
+        for c in chapters().iter().filter(|c| c.stage_type == 0) {
+            let s = &c.stages[0];
+            let info = stage_info(c, s, 0, &Progress::default());
+            let stars = info["starList"].as_array().unwrap();
+            assert_eq!(stars.len(), 3, "{}", c.chapter_id);
+            for st in stars {
+                let t = st["starTarget"].as_i64().unwrap();
+                assert!(mission_types(0).contains(&t), "{st}");
+                // QuestMissionText_<type + 2> (3 = UseSupport 1, 49 = NoContinue 47).
+                let label = st["comment"].as_str().unwrap();
+                assert_eq!(label, format!("QuestMissionText_{}", t + 2));
+                assert!(
+                    tr.english(&format!("text:QuestMission_JP:{label}"))
+                        .is_some(),
+                    "{label}"
+                );
+                assert_eq!(st["param"], "", "the action check does not read param");
+                assert_eq!(st["clearFlg"], 0);
+            }
+        }
+        // Saved missions light their stars; types from other stages do not.
+        let c = chapters().iter().find(|c| c.stage_type == 0).unwrap();
+        let s = &c.stages[0];
+        let mut p = Progress::default();
+        p.stars
+            .insert(s.stage_id.clone(), [8, 20, 1].into_iter().collect());
+        let lit: Vec<i64> = stage_info(c, s, 0, &p)["starList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|x| x["clearFlg"].as_i64().unwrap())
+            .collect();
+        assert_eq!(lit, [0, 1, 1]);
+        // Tactical stages are unchanged.
+        let t = chapters().iter().find(|c| c.stage_type == 1).unwrap();
+        let targets: Vec<i64> = stage_info(t, &t.stages[0], 0, &Progress::default())["starList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|x| x["starTarget"].as_i64().unwrap())
+            .collect();
+        assert_eq!(targets, [1, 2, 10]);
+        assert_eq!(mission_types(1), 1..=16);
     }
 
     #[test]

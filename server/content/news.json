@@ -1,0 +1,346 @@
+{
+ "schemaVersion": 1,
+ "about": "JDR Offline's notices (our own words): one post per build on the Update tab, the offline maintenance note on the Fault tab, the overview and about posts on the Other tab. Rendered by server/services/src/web.rs; format in docs/CONTENT.md.",
+ "blockKinds": {
+  "heading": "section title (rich text)",
+  "paragraph": "body text (rich text)",
+  "note": "small grey footnote (rich text)",
+  "banner": "name of one of our own images served next to the page (none yet)"
+ },
+ "richText": "only <color=#RRGGBB>..</color>, <b>..</b>, <i>..</i> and \\n are kept; everything else is shown as text",
+ "tabs": {
+  "update": "Update tab (updateUrl, build_notes.html)",
+  "fault": "Fault tab (failureUrl, maintenance.html)",
+  "other": "Other tab (otherUrl, about.html)"
+ },
+ "posts": [
+  {
+   "id": "build-042",
+   "build": 42,
+   "date": "2026-11-21",
+   "title": "Build 42",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• Growth Trees now hold every kind of square: Skill and SP Skill levels, finisher level, Mind Capacity, leader ability level, Diamond Coins, Assist Skill level and awakening."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Action battles: assist statues add a share of their own HP, ATK and DEF to the statue they back up, from 10% up to 100% as they are boosted."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Action stages have three Quest Missions each: all team members survive, defeat all enemies, and use a Skill."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• The shops are open: Diamond Coin Exchange (keys, Rainbow Trophies, turtles and every statue), Memory Ring Exchange (materials and ability Minds), Sandwiches to restore AP and BP Recovery Cola, all paid with Diamond Coins, gold or Memory Rings."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Town objects unlock one per Town Rank from Rank 2."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Action battles: the camera no longer freezes after a skill or a win pose; skills and finishers now move it smoothly behind your character."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• The Notices screen shows one post per update, which opens and closes with a tap; the Maintenance and Other tabs use the same layout."
+    }
+   ]
+  },
+  {
+   "id": "build-041",
+   "build": 41,
+   "date": "2026-11-21",
+   "title": "Build 41",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• More real data: 85 more items, corrected statue stats and types, Mind level-10 stats and 17 more Minds, more assist conditions; in action battles, team leader and assist abilities, JoJo Links, and SP finishers that play each statue's original cinematic."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• The game's tables are now built once per update instead of at every start."
+    }
+   ]
+  },
+  {
+   "id": "build-040",
+   "build": 40,
+   "date": "2026-11-21",
+   "title": "Build 40",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• A smoother battle camera: skill shots ease in from the attack view instead of jumping, and moving shots slow down into their hold."
+    }
+   ]
+  },
+  {
+   "id": "build-039",
+   "build": 39,
+   "date": "2026-11-21",
+   "title": "Build 39",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• Attacks are filmed like the original, attacker and target side by side in the middle of the screen (the game's own two-shot camera), allies on the left and enemies on the right; skill cuts are cleaner; every character's win camera holds still like Jotaro's."
+    }
+   ]
+  },
+  {
+   "id": "build-038",
+   "build": 38,
+   "date": "2026-11-21",
+   "title": "Build 38",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• The battle camera moves like the original's, measured on every action of six original videos: normal attacks glide in towards the target with no cut, skills cut about three times, SP skills more; the win camera holds still while the winner poses."
+    }
+   ]
+  },
+  {
+   "id": "build-037",
+   "build": 37,
+   "date": "2026-11-21",
+   "title": "Build 37",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• The battle cameras finally move."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Since Build 33 the camera stayed where the turn view was and only turned towards the attacker; now attacks and skills cut to their own shots (low from the front side, or over the shoulder), SP skills to several angles, and the win shot is the original's still, facing shot."
+    }
+   ]
+  },
+  {
+   "id": "build-036",
+   "build": 36,
+   "date": "2026-11-21",
+   "title": "Build 36 — camera calibration test",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• Every attack and skill is filmed from one deliberately odd place, high up, in front of the attacker and to its right, with a wide view, so that we can tell whether the phone is showing the camera data at all and which way the game reads it."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Not how the game will stay."
+    }
+   ]
+  },
+  {
+   "id": "build-035",
+   "build": 35,
+   "date": "2026-11-21",
+   "title": "Build 35",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• Attacks and skills are filmed as in the original videos (low, from the front side, the attacker at the left and the target nearer the camera, or over the attacker's shoulder), and the win shot faces the winner (it showed their back)."
+    }
+   ]
+  },
+  {
+   "id": "build-034",
+   "build": 34,
+   "date": "2026-11-21",
+   "title": "Build 34",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• The same game data as the last Build 33 package, numbered 34 so you can see at a glance that the new app is running."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Battle cameras follow the kind of action (attacks stay near the turn view, SP skills cut between several angles), the win shot is the original's close low shot, and the My Page and team screens frame statues as the original did."
+    }
+   ]
+  },
+  {
+   "id": "build-033",
+   "build": 33,
+   "date": "2026-11-20",
+   "title": "Build 33",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• The battle camera cuts to its own shots on every attack and skill, as the original did, and bosses get their intro again."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Action chapters: enemies appear and your statues can attack, use their skill and SP."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Skill cool turns follow the original's; more statues have their real stats; assist abilities need their real conditions."
+    }
+   ]
+  },
+  {
+   "id": "build-032",
+   "build": 32,
+   "date": "2026-11-20",
+   "title": "Build 32",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• Long statue names shrink to fit their plate (two lines at most) instead of spilling onto the tabs, and the Town list's policy and hours fit their bars."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• The analytics, crash-reporting, ads, push and Play Games libraries are gone from the app (about 8 MB), with the Play Games buttons."
+    }
+   ]
+  },
+  {
+   "id": "build-031",
+   "build": 31,
+   "date": "2026-11-20",
+   "title": "Build 31",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• The generated portraits show in the statue lists (the game could not find them)."
+    }
+   ]
+  },
+  {
+   "id": "build-028",
+   "build": 28,
+   "date": "2026-11-20",
+   "title": "Build 28",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• The generated portraits keep a real portrait's frame, stars and badge pixel for pixel; only the inside is new."
+    }
+   ]
+  },
+  {
+   "id": "build-027",
+   "build": 27,
+   "date": "2026-11-19",
+   "title": "Build 27",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• Statues the game files have no portrait for get one, drawn from their menu pose with the frame, stars and attribute of the others."
+    }
+   ]
+  },
+  {
+   "id": "build-026",
+   "build": 26,
+   "date": "2026-11-19",
+   "title": "Build 26",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• The Town home connects without a network (it showed a connection error offline)."
+    }
+   ]
+  },
+  {
+   "id": "features-overview",
+   "title": "What this offline build includes",
+   "category": "other",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• Daily quests rotate by weekday; the day turns at 04:00 JST. The Friend Point summon has one free draw a day."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Labyrinth: Beginner, Intermediate and Advanced dungeons. A battle or a Tarot pick left unfinished can be resumed from My Page."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Story battles left unfinished can be resumed from My Page too."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Arena: battles cost BP. A team's cost rises after each battle, every fourth battle lowers the others, and a full bar resets them. BP comes back over time; BP Recovery Colas and Diamond Coins restore it."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• 26 assist-only statues join the collection. They can be equipped as assists, with their own assist ability and skill."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Quests offer AI supporters each day. A supporter's leader ability helps the team in tactical battles, and a clear with one earns extra Friend Points."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• The Town: create and lead your own Town or join one of twelve AI Towns. Members walk the Town home, donations of Town Medals raise its level and unlock objects, and rewards arrive in the Message Box."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• New events: high-score events with their own scoring rules and a ranking, a quiz event and two more exchange events. Each event has bonus statues and Minds that raise its drops."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Skill Minds add a second skill or SP skill in the two skill frames. Growth tree skill squares raise skill levels, which shorten cool turns."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Mind Links: Minds of the same link on one statue raise its ATK, DEF or HP."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• DIO's and Jotaro's time-stop skills stop time."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• These notices."
+    },
+    {
+     "kind": "note",
+     "text": "<color=#A9A9A9>Values the original servers held (prices, rewards, enemy strength) are this project's choices.</color>"
+    }
+   ]
+  },
+  {
+   "id": "no-maintenance",
+   "title": "Maintenance",
+   "category": "fault",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "This copy runs on a local server on your own device, so there is no maintenance and no downtime."
+    }
+   ]
+  },
+  {
+   "id": "about-this-build",
+   "title": "About this build",
+   "category": "other",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "An unofficial, non-commercial preservation build. The online service has ended; everything runs locally, with no purchases and no tracking."
+    }
+   ]
+  }
+ ]
+}

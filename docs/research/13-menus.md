@@ -41,8 +41,32 @@ other notes. No game text is reproduced.
   - Non-null `openMaterialList` and `lockList`.
   - When closed, a `beforeSquareId` that names an existing square.
   - The root square is open, with effect 0.
-- **Effect ids.** 1 ATK, 2 DEF, 3 HP, 4 skill, 5/7/9 special, 10 mind capacity, 11 leader, 12
-  diamonds, 13 assist, 14 evolution.
+- **Effect ids (H, Build 42).** Read in `GrowthTreeBoardUIController`: the tile icon
+  (`ConvEffectIdToTextureIndex` 0xDECF3C, jump table 0x223E7C0, enum `EffectTextureId`), the tile
+  label (`GetTreeEffectName` 0xDECCB8) and the window text (`GetTreeEffectExplainName` 0xDECDC0;
+  both accept 1-14 except 6 and 8, mask 0x3F5F, labels via the relocated tables 0x2B5B6A0 /
+  0x2B5B710), and the status preview (`UpdateUI` 0xDED0EC, jump table 0x223E80C).
+
+  | Id | Icon | Tile label / text | Preview adds to |
+  |---|---|---|---|
+  | 1, 2, 3 | `Tip_Atk/Def/Hp_000-002` by `iconLevel` | `GRID_LABEL_ATTACK/_DEFENSE/_HP`, `Tree_Message_05/06/07` | ATK, DEF, HP |
+  | 4 | `Tip_Skill1_000` | `GRID_LABEL_NORMAL_SKILL_1`, `_08` | skill 1 |
+  | 5 | `Tip_SPSkill1_000` | `GRID_LABEL_SP_SKILL_NEW`, `_09` | SP skill 1 |
+  | 6, 8 | `Tip_Skill2_001`, `Tip_Skill2_000` | none (masked out) | 8: skill 2 |
+  | 7 | `Tip_SPSkill2_001` | `GRID_LABEL_SP_NEW` (finisher unlocked), `_10` | nothing |
+  | 9 | `Tip_SPSkill2_000` | `GRID_LABEL__SP_SKILL_2`, `_11` | SP skill 2 (finisher) |
+  | 10 | `Tip_Cp_000/001` by `iconLevel` | `GRID_LABEL_MIND_CAPAXITY`, `_12` | Mind capacity (+param) |
+  | 11 | `Tip_LAbility_000` | `GRID_LABEL_LEADER_ABILITY`, `_13` | leader ability level |
+  | 12 | `Tip_Item_000` | `GRID_LABEL_STORN` (one Diamond Coin), `_14` | nothing |
+  | 13 | `Tip_AssistSkill_000` | `GRID_LABEL_ASSIST_SKILL`, `_18` | assist skill level |
+  | 14 | `Tip_Evolution_000` | `GRID_LABEL_EVOLUTION`, `_19` | nothing |
+
+  This confirms our old list (12 diamonds, 13 assist, 14 evolution). The PC playtest's ids
+  differ (12 evolution, 13 item, assist on 4); the client wins.
+- **The window (H).** Current values come from the StatueInfo: `mindCapacity` (a fixed text
+  instead for `assistAttr` 1), `leaderAbilityInfo.abilityLevel` (`dtLeaderAbilityInfo` when
+  `useStageType` is 2; we send 0) and the `skillList` levels; the selected path's params are
+  shown as "+N" / the next level.
 - **No original layout survives, so ours is:**
   - a start square, then 14 squares in a line cycling ATK, DEF, HP;
   - together they add the wiki's tree-max minus Lv99 stats (20% of Lv99 when unknown; from
@@ -52,6 +76,17 @@ other notes. No game text is reproduced.
   - opened squares are saved per statue and added to its stats.
   - Build 25: up to four skill-level squares (effects 4 and 5) after the ATK and DEF lines and
     their forks; each adds 2 levels to the normal or special skill (docs/research/26 §4).
+  - Build 42 (ours, docs/CONTENT.md "Growth tree square kinds"): finisher squares (9) after the
+    SP fork; past the HP line eight CP squares (10, +4) in two arms ending in a Diamond Coin
+    square (12, the coin is granted when it opens), three leader squares (11, +3 levels) in the
+    middle and the awakening square (14, cosmetic) last. Assist-only statues get three assist
+    squares (13, +3 levels) instead of CP and leader. Not built: 6/8 (no second skill in 3.12)
+    and 7 (a finisher gate would lock what rarity 5 gives today).
+  - Effects: `mindCapacity` = max(40, 16 + CP squares) (docs/research/16); the leader level
+    goes into both `leaderAbilityInfo` and `dtLeaderAbilityInfo`; the finisher level into the
+    action `skillList[4]`; the assist level into `dtAssistSkillInfo`.
+  - Open (device): the board now reaches column 13; whether the tree screen's scroll area shows
+    it all, and the new tiles' icons and texts.
 - **Costs (Build 23).**
   - **Client (H):** it checks costs only against the tree screen's own `itemList`; gold is an
     ordinary material, item 20. A locked square (`unlockFlg 0`) needs `openMaterialList` and

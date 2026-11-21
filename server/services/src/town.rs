@@ -7,7 +7,9 @@
 //! total of a level); `clanFunctionList` holds the `ClanFunctionType` names the level unlocks;
 //! Town Medals (item 41) are donated, at most 500 at a time, and the donation gift goes to the
 //! Message Box (label `Clan_Foundation_10`); a background is a `clan_object_table` row whose
-//! model is the map name. Everything else here (AI Towns, AI members, numbers, rewards) is ours.
+//! model is the map name. The object unlock ranks (`OBJECT_UNLOCKS`) are design borrowed from the
+//! Diamond Records PC playtest. Everything else here (AI Towns, AI members, numbers, rewards) is
+//! ours.
 
 use crate::collection::{self, OwnedStatue};
 use crate::services::ranking::{hash, Rng};
@@ -64,12 +66,36 @@ pub const FUNCTIONS: [(i64, &str); 3] = [
 pub const BACKGROUNDS: [i64; 4] = [9001, 9002, 9003, 9004];
 pub const DEFAULT_BACKGROUND: i64 = 9001;
 
-/// Town objects with a model in the player's `clan_instance_object_00`, in the order Town
-/// levels unlock them (ours): two per level from Town Rank 2.
-pub const OBJECTS: [i64; 20] = [
-    27, 44, 42, 24, 52, 34, 62, 70, 21, 22, 75, 79, 82, 89, 93, 91, 67, 8017, 8018, 8019,
+/// The 20 Town objects with a model in the player's `clan_instance_object_00`, each with the
+/// Town Rank that unlocks it, in unlock order. Ids and models are ours (the player's files); the
+/// unlock order and ranks are design borrowed from the Diamond Records PC playtest (its trophy
+/// list, matched to our ids by model). Rank 21 (`cl_roadroller`) is above our top level and
+/// unlocks at `level_max()`. The 3.12.0 client has no per-object rank or cost
+/// (`ClanObjectTable/Param` has none; `/clan/clan_object_list` is only ids), so objects stay free.
+/// Objects below Rank 8 are owned but, by the client's rule, can only be placed from Rank 8
+/// (`TOWN_FUNCTION_OBJECT_SET`, label `Clan_Object_Object_Unlock`); docs/research/24-town.md.
+pub const OBJECT_UNLOCKS: [(i64, i64); 20] = [
+    (52, 2),
+    (42, 3),
+    (27, 4),
+    (8017, 5),
+    (44, 6),
+    (34, 7),
+    (21, 8),
+    (22, 9),
+    (70, 10),
+    (67, 11),
+    (82, 12),
+    (89, 13),
+    (79, 14),
+    (75, 15),
+    (24, 16),
+    (91, 17),
+    (8019, 18),
+    (8018, 19),
+    (93, 20),
+    (62, 21),
 ];
-pub const OBJECTS_PER_LEVEL: usize = 2;
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct TownState {
@@ -271,10 +297,21 @@ pub fn functions(level: i64) -> Vec<&'static str> {
         .collect()
 }
 
-/// Objects a Town of this level owns (ours: two per level from Town Rank 2).
+/// The Town Rank that unlocks an object (`OBJECT_UNLOCKS`, capped at `level_max()`), if it is one.
+pub fn object_rank(id: i64) -> Option<i64> {
+    OBJECT_UNLOCKS
+        .iter()
+        .find(|(o, _)| *o == id)
+        .map(|(_, r)| (*r).min(level_max()))
+}
+
+/// Objects a Town of this level owns, in unlock order (`OBJECT_UNLOCKS`).
 pub fn objects_for(level: i64) -> Vec<i64> {
-    let n = ((level - 1).max(0) as usize * OBJECTS_PER_LEVEL).min(OBJECTS.len());
-    OBJECTS[..n].to_vec()
+    OBJECT_UNLOCKS
+        .iter()
+        .filter(|(_, r)| (*r).min(level_max()) <= level)
+        .map(|(o, _)| *o)
+        .collect()
 }
 
 /// Backgrounds a Town can choose (ours: all four once it may change the map).
@@ -893,9 +930,32 @@ mod tests {
         assert_eq!(functions(2), Vec::<&str>::new());
         assert_eq!(functions(10).len(), 3);
         assert_eq!(objects_for(1), Vec::<i64>::new());
-        assert_eq!(objects_for(level_max()).len(), OBJECTS.len());
-        for o in OBJECTS {
+        assert_eq!(objects_for(2), vec![52]);
+        // Below Rank 8 objects are owned but not placeable (the client's rule is kept).
+        assert_eq!(objects_for(7).len(), 6);
+        assert!(!functions(7).contains(&"TOWN_FUNCTION_OBJECT_SET"));
+        assert!(functions(8).contains(&"TOWN_FUNCTION_OBJECT_SET"));
+        // Rank 8 (placement unlocks): the seven objects of ranks 2..8, in unlock order.
+        assert_eq!(objects_for(8), vec![52, 42, 27, 8017, 44, 34, 21]);
+        assert_eq!(objects_for(level_max() - 1).len(), OBJECT_UNLOCKS.len() - 2);
+        // Rank 21 is capped at the top level: every object by then.
+        assert_eq!(object_rank(62), Some(level_max()));
+        assert_eq!(object_rank(1), None);
+        let all = objects_for(level_max());
+        assert_eq!(all.len(), OBJECT_UNLOCKS.len());
+        assert_eq!(objects_for(level_max() + 5), all);
+        let mut ids = all.clone();
+        ids.sort();
+        ids.dedup();
+        assert_eq!(ids.len(), all.len(), "unique ids");
+        let mut prev = 0;
+        for (o, r) in OBJECT_UNLOCKS {
             assert!(!object_model(o).is_empty(), "{o}");
+            assert!(r > prev, "one object per rank, ascending: {o}");
+            prev = r;
+            let rank = object_rank(o).unwrap();
+            assert!(objects_for(rank).contains(&o), "{o}");
+            assert!(!objects_for(rank - 1).contains(&o), "{o}");
         }
     }
 
@@ -984,7 +1044,8 @@ mod tests {
         t.point = t.point.max(level_total(4));
         t.settle(&mut pb, later);
         assert_eq!(t.objects, objects_for(t.level()));
-        assert!(t.objects.len() >= 3 * OBJECTS_PER_LEVEL);
+        assert!(t.objects.len() >= 3);
+        assert!(t.objects.starts_with(&[52, 42, 27]));
         assert!(pb.list.iter().any(|p| p.comment == "Town Rank 4 reward"));
     }
 

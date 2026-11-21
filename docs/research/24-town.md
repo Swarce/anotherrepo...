@@ -118,8 +118,18 @@ in 3.12.0: objects and the background are set over the socket.
 - **Own Town** (id 1001): the player leads it; three AI players apply at once and one or two more
   every game day while there is room; an open Town takes them in at once.
 - **Days**: every AI member donates 5-30 Town Medals a game day (up to 7 days caught up).
-- **Levels** (`clan_table`): 20 levels, exp 250·(L−1)·L; functions at 3/8/10 (above). Each
-  level from 2 unlocks two of the 20 objects with a model; all four backgrounds at Rank 10.
+- **Levels** (`clan_table`): 20 levels, exp 250·(L−1)·L; functions at 3/8/10 (above); all four
+  backgrounds at Rank 10.
+- **Objects** (Build 42, `town.rs::OBJECT_UNLOCKS`): one of the 20 objects with a model per Town
+  Rank from 2, in an order that is design borrowed from the Diamond Records PC playtest (its
+  trophy list, matched to our ids by model): 52, 42, 27, 8017, 44, 34, 21 (Rank 8), 22, 70, 67,
+  82, 89, 79, 75, 24, 91, 8019, 8018, 93 (Rank 20), and 62, whose PC rank 21 is above our top
+  level, also at Rank 20. The client's rule stays: objects reached before Rank 8 are owned (listed
+  by `/clan/clan_object_list`) but only a Master or Sub-Master of a Rank 8+ Town can place them
+  (`TOWN_FUNCTION_OBJECT_SET`, `Clan_Object_Object_Unlock`); the ranks are not shifted. Objects are
+  free: the 3.12.0 `ClanObjectTable/Param` has no cost or unlock field, no Town label asks for a
+  payment, and the PC's coin costs are not used. A save from before Build 42 keeps the objects it
+  owns; reaching a rank adds that rank's objects.
 - **Donation**: 10 Town points per Town Medal; gift 100 gold per medal to the Message Box.
 - **Payout** (Message Box): level reward 10·L Diamond Coins per level reached; 100 Town Medals a
   game day while in a Town; 300 once on first joining.
@@ -144,6 +154,8 @@ in 3.12.0: objects and the background are set over the socket.
 - Object models matched to titles by name (M); `clanObjectSize` 0 fits every slot; object icons
   (`clanObjectIcon`) are 0.
 - Background row ids 9001-9004 and their order (Morioh Station first, M).
+- The original server's object unlock order and any object cost (ours: the PC playtest's order,
+  free; the client stores neither).
 - `myTownMember` as the member count (it is shown as a number on My Page).
 - What the original server did with chat notices to the sender, membership changes during Town
   events, and leaving one's own Town (ours: the Town closes).

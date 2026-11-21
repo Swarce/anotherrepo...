@@ -1,8 +1,9 @@
 //! `/tree/*`: the growth tree. The client has no tree data, so the server sends the whole square
 //! graph (`collection::tree_squares`) with the player's progress. Since Build 23 squares cost tree
 //! materials and gold, and the fork squares are locked behind an Expansion Key (amounts ours; the
-//! client checks costs only against the tree screen's `itemList`, gold being item 20).
-//! docs/research/13-menus.md §3.
+//! client checks costs only against the tree screen's `itemList`, gold being item 20). Build 42
+//! adds the client's other square kinds (`collection::TREE_*`); a Diamond Coin square grants its
+//! coin when it opens. docs/research/13-menus.md §3.
 
 use crate::accounts::Change;
 use crate::app::{ApiError, ApiResult};
@@ -222,6 +223,10 @@ pub fn acquisition(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                 .find(|o| o.uid == id)
                 .expect("statue");
             o.tree.push(w.clone());
+            // A Diamond Coin square pays out once, as it opens (the reply's userInfo shows it).
+            if sq.effect == collection::TREE_DIAMONDS {
+                p.stone_free += sq.param;
+            }
             opened += 1;
         }
         match (opened, short) {
@@ -318,6 +323,110 @@ mod tests {
         assert_eq!(open(&r, "A2"), 1);
         let before = crate::collection::statue_info(&o);
         assert!(r["statueInfo"]["atk"].as_i64().unwrap() > before["atk"].as_i64().unwrap());
+    }
+
+    /// Every kind we build goes out as its own `squareEffectList` object with its value, and the
+    /// ids are the client's (13 only on assist-only statues).
+    #[test]
+    fn every_kind_round_trips_through_square_effect_list() {
+        use crate::collection::{self as c, OwnedStatue};
+        let pick = |f: &dyn Fn(&c::StatueDef) -> bool| {
+            let d = c::statues().iter().find(|d| f(d)).unwrap();
+            let o = OwnedStatue {
+                uid: 1,
+                statue_id: d.statue_id.clone(),
+                level: 1,
+                ..Default::default()
+            };
+            let t = super::tree_info(&o);
+            let squares = c::tree_squares(d);
+            let sent = t["squareList"].as_array().unwrap().clone();
+            assert_eq!(sent.len(), squares.len());
+            for (v, s) in sent.iter().zip(&squares) {
+                assert_eq!(v["squareId"], s.id.as_str());
+                assert_eq!(v["squareEffectList"]["squareEffectId"], s.effect);
+                assert_eq!(v["squareEffectList"]["param"], s.param);
+            }
+            let mut kinds: Vec<i64> = squares.iter().map(|s| s.effect).collect();
+            kinds.sort();
+            kinds.dedup();
+            kinds
+        };
+        let combat =
+            pick(&|d| c::has_finisher(d) && c::has_leader(&d.statue_id) && d.dt_skills.len() == 2);
+        assert_eq!(
+            combat,
+            [
+                0,
+                1,
+                2,
+                3,
+                c::TREE_SKILL,
+                c::TREE_SP_SKILL,
+                c::TREE_SP2_SKILL,
+                c::TREE_CP,
+                c::TREE_LEADER,
+                c::TREE_DIAMONDS,
+                c::TREE_EVOLUTION
+            ]
+        );
+        let assist = pick(&|d| d.assist_only && !d.dt_skills.is_empty());
+        assert!(assist.contains(&c::TREE_ASSIST) && !assist.contains(&c::TREE_CP));
+    }
+
+    /// A Diamond Coin square grants its coin once, when it opens.
+    #[test]
+    fn diamond_square_grants_one_coin_once() {
+        let dir = std::env::temp_dir().join(format!("jdr-treedc-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let ctx = Ctx::new(Settings::new(dir), false);
+        let uuid = ctx.accounts.create(&[]).unwrap().uuid;
+        let call = |path: &str, param: Value| dispatch(&ctx, path, &env(&uuid, param)).0;
+        call("/team/team_info", json!({})).unwrap();
+        let (uid, before) = ctx
+            .accounts
+            .update(&uuid, |p| {
+                let o = p
+                    .collection
+                    .statues
+                    .iter_mut()
+                    .find(|o| !crate::collection::find(&o.statue_id).unwrap().assist_only)
+                    .unwrap();
+                let d = crate::collection::find(&o.statue_id).unwrap();
+                let squares = crate::collection::tree_squares(d);
+                // Everything up to G1's square is open; plenty to pay with.
+                let g1 = squares.iter().find(|s| s.id == "G1").unwrap();
+                o.tree = squares
+                    .iter()
+                    .filter(|s| s.effect != 0 && s.id != "G1" && s.id != "G2")
+                    .map(|s| s.id.clone())
+                    .collect();
+                assert!(o.tree.contains(&g1.before));
+                let uid = o.uid;
+                for id in super::materials(d.statue_type()) {
+                    p.collection.add_item(*id, 1000);
+                }
+                p.gold = 100_000_000;
+                ((uid, p.stone_free), crate::accounts::Change::Progress)
+            })
+            .unwrap()
+            .unwrap()
+            .1;
+        let r = call(
+            "/tree/acquisition",
+            json!({"statueuId": uid, "squareId": ["G1"], "multiOpen": 0}),
+        )
+        .unwrap();
+        let after = ctx.accounts.get(&uuid).unwrap().unwrap().stone_free;
+        assert_eq!(after, before + 1);
+        assert!(r["userInfo"].is_object());
+        // Asking again opens nothing and grants nothing.
+        call(
+            "/tree/acquisition",
+            json!({"statueuId": uid, "squareId": ["G1"], "multiOpen": 0}),
+        )
+        .unwrap();
+        assert_eq!(ctx.accounts.get(&uuid).unwrap().unwrap().stone_free, after);
     }
 
     #[test]

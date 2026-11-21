@@ -138,7 +138,7 @@ What we send:
 - 88 statues get `DT_LEAD_<statueId>`, with the name label `ABI_LEAD_NAME_<statueId>`. Each
   ability carries the wiki's leader-ability numbers, the level-1 value and the MAX value as level 10.
 - 21 new affect rows join the 3 existing ones.
-- The server sends `abilityLevel` 1.
+- The server sends `abilityLevel` 1 plus the statue's opened tree leader squares (Build 42, max 10).
 - Left out:
   - action-battle-only effects (move speed, cool-down seconds, gold…);
   - DoDoDo mode (reversal is off);

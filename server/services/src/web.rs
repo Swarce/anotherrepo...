@@ -119,45 +119,168 @@ pub const NOTES_PAGE: &str = "/information/build_notes.html";
 pub const MAINTENANCE_PAGE: &str = "/information/maintenance.html";
 pub const ABOUT_PAGE: &str = "/information/about.html";
 
-/// What this build adds, for the Notices screen's Updates tab (our words; no game text).
-const NOTES: &[&str] = &[
-    "Build 41: more real data: 85 more items, corrected statue stats and types, Mind level-10 stats and 17 more Minds, more assist conditions; in action battles, team leader and assist abilities, JoJo Links, and SP finishers that play each statue's original cinematic. The game's tables are now built once per update instead of at every start.",
-    "Build 40: a smoother battle camera: skill shots ease in from the attack view instead of jumping, and moving shots slow down into their hold.",
-    "Build 39: attacks are filmed like the original, attacker and target side by side in the middle of the screen (the game's own two-shot camera), allies on the left and enemies on the right; skill cuts are cleaner; every character's win camera holds still like Jotaro's.",
-    "Build 38: the battle camera moves like the original's, measured on every action of six original videos: normal attacks glide in towards the target with no cut, skills cut about three times, SP skills more; the win camera holds still while the winner poses.",
-    "Build 37: the battle cameras finally move. Since Build 33 the camera stayed where the turn view was and only turned towards the attacker; now attacks and skills cut to their own shots (low from the front side, or over the shoulder), SP skills to several angles, and the win shot is the original's still, facing shot.",
-    "Build 36 (camera calibration test): every attack and skill is filmed from one deliberately odd place, high up, in front of the attacker and to its right, with a wide view, so that we can tell whether the phone is showing the camera data at all and which way the game reads it. Not how the game will stay.",
-    "Build 35: attacks and skills are filmed as in the original videos (low, from the front side, the attacker at the left and the target nearer the camera, or over the attacker's shoulder), and the win shot faces the winner (it showed their back).",
-    "Build 34: the same game data as the last Build 33 package, numbered 34 so you can see at a glance that the new app is running. Battle cameras follow the kind of action (attacks stay near the turn view, SP skills cut between several angles), the win shot is the original's close low shot, and the My Page and team screens frame statues as the original did.",
-    "Build 33: the battle camera cuts to its own shots on every attack and skill, as the original did, and bosses get their intro again. Action chapters: enemies appear and your statues can attack, use their skill and SP. Skill cool turns follow the original's; more statues have their real stats; assist abilities need their real conditions.",
-    "Build 32: long statue names shrink to fit their plate (two lines at most) instead of spilling onto the tabs, and the Town list's policy and hours fit their bars. The analytics, crash-reporting, ads, push and Play Games libraries are gone from the app (about 8 MB), with the Play Games buttons.",
-    "Build 31: the generated portraits show in the statue lists (the game could not find them).",
-    "Build 28: the generated portraits keep a real portrait's frame, stars and badge pixel for pixel; only the inside is new.",
-    "Build 27: statues the game files have no portrait for get one, drawn from their menu pose with the frame, stars and attribute of the others.",
-    "Build 26: the Town home connects without a network (it showed a connection error offline).",
-    "Daily quests rotate by weekday; the day turns at 04:00 JST. The Friend Point summon has one free draw a day.",
-    "Labyrinth: Beginner, Intermediate and Advanced dungeons. A battle or a Tarot pick left unfinished can be resumed from My Page.",
-    "Story battles left unfinished can be resumed from My Page too.",
-    "Arena: battles cost BP. A team's cost rises after each battle, every fourth battle lowers the others, and a full bar resets them. BP comes back over time; BP Recovery Colas and Diamond Coins restore it.",
-    "26 assist-only statues join the collection. They can be equipped as assists, with their own assist ability and skill.",
-    "Quests offer AI supporters each day. A supporter's leader ability helps the team in tactical battles, and a clear with one earns extra Friend Points.",
-    "The Town: create and lead your own Town or join one of twelve AI Towns. Members walk the Town home, donations of Town Medals raise its level and unlock objects, and rewards arrive in the Message Box.",
-    "New events: high-score events with their own scoring rules and a ranking, a quiz event and two more exchange events. Each event has bonus statues and Minds that raise its drops.",
-    "Skill Minds add a second skill or SP skill in the two skill frames. Growth tree skill squares raise skill levels, which shorten cool turns.",
-    "Mind Links: Minds of the same link on one statue raise its ATK, DEF or HP.",
-    "DIO's and Jotaro's time-stop skills stop time.",
-    "These notices.",
-];
+/// The Notices posts (`server/content/news.json`, our words; docs/CONTENT.md "Notices").
+pub const NEWS_JSON: &str = include_str!("../../content/news.json");
+/// The notice pages' style: our own CSS, every shape drawn in CSS (no retail images or sheet).
+const NOTICE_CSS: &str = include_str!("../../content/notice.css");
+/// Collapses every post but the first. Without it (scripts off) every post stays open: the page
+/// is sent expanded and only this script folds it (docs/research/27-support-and-news.md §2.2).
+const NOTICE_JS: &str = "document.querySelectorAll('.headline').forEach(function(b,i){var s=document.getElementById(b.getAttribute('aria-controls'));function set(o){s.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');}set(i===0);b.addEventListener('click',function(){set(s.hidden);});});";
 
-fn notes() -> Response {
-    let items: String = NOTES.iter().map(|n| format!("<li>{n}</li>")).collect();
-    html(
-        &format!("Build {}", jdr_core::BUILD),
-        &format!(
-            "<p>What is new in this offline build.</p><ul>{items}</ul>\
-             <p>Values the original servers held (prices, rewards, enemy strength) are this project's choices.</p>"
-        ),
+#[derive(serde::Deserialize)]
+struct News {
+    posts: Vec<Post>,
+}
+
+#[derive(serde::Deserialize)]
+pub struct Post {
+    pub id: String,
+    /// The build that brings the post; it is shown from that build on.
+    #[serde(default)]
+    pub build: Option<u32>,
+    #[serde(default)]
+    pub date: String,
+    pub title: String,
+    /// `update` | `fault` | `other`: the tab it is on.
+    pub category: String,
+    pub blocks: Vec<Block>,
+}
+
+#[derive(serde::Deserialize)]
+pub struct Block {
+    pub kind: String,
+    #[serde(default)]
+    pub text: String,
+}
+
+fn all_posts() -> &'static [Post] {
+    static CELL: std::sync::OnceLock<Vec<Post>> = std::sync::OnceLock::new();
+    CELL.get_or_init(|| {
+        serde_json::from_str::<News>(NEWS_JSON)
+            .expect("server/content/news.json")
+            .posts
+    })
+}
+
+/// The posts of one tab this build shows, in file order (newest first).
+pub fn posts(category: &str) -> impl Iterator<Item = &'static Post> + '_ {
+    all_posts().iter().filter(move |p| {
+        p.category == category && !matches!(p.build, Some(b) if b > jdr_core::BUILD)
+    })
+}
+
+fn esc_attr(s: &str) -> String {
+    esc(s).replace('"', "&quot;").replace('\'', "&#39;")
+}
+
+/// Rich text → HTML: `<color=#RRGGBB>`, `<b>`, `<i>` (properly nested) and `\n` are kept, anything
+/// else is shown as text; tags left open are closed at the end of the block.
+pub fn rich(t: &str) -> String {
+    let mut out = String::new();
+    let mut open: Vec<&str> = Vec::new();
+    let mut rest = t;
+    while let Some(i) = rest.find('<') {
+        out.push_str(&esc(&rest[..i]));
+        let tail = &rest[i..];
+        let tag = |name: &str| tail.starts_with(name).then_some(name.len());
+        let color = tail
+            .strip_prefix("<color=#")
+            .filter(|c| c.len() > 6 && c.as_bytes()[6] == b'>')
+            .map(|c| &c[..6])
+            .filter(|h| h.bytes().all(|x| x.is_ascii_hexdigit()));
+        let used = if let Some(hex) = color {
+            out.push_str(&format!("<span style=\"color:#{hex}\">"));
+            open.push("color");
+            Some(15)
+        } else if let Some(n) = tag("<b>").or_else(|| tag("<i>")) {
+            let k = &tail[1..2];
+            out.push_str(&tail[..n]);
+            open.push(if k == "b" { "b" } else { "i" });
+            Some(n)
+        } else {
+            let close = [("</color>", "color"), ("</b>", "b"), ("</i>", "i")]
+                .into_iter()
+                .find(|(c, k)| tail.starts_with(c) && open.last() == Some(k));
+            close.map(|(c, k)| {
+                open.pop();
+                out.push_str(if k == "color" { "</span>" } else { c });
+                c.len()
+            })
+        };
+        let n = used.unwrap_or_else(|| {
+            out.push_str("&lt;");
+            1
+        });
+        rest = &tail[n..];
+    }
+    out.push_str(&esc(rest));
+    while let Some(k) = open.pop() {
+        out.push_str(match k {
+            "color" => "</span>",
+            "b" => "</b>",
+            _ => "</i>",
+        });
+    }
+    out.replace('\n', "<br>")
+}
+
+/// One post: a headline button (date above title) and its body; unknown block kinds are skipped.
+fn render_post(p: &Post) -> String {
+    let id: String =
+        p.id.to_ascii_lowercase()
+            .chars()
+            .map(|c| {
+                if c.is_ascii_alphanumeric() || c == '-' {
+                    c
+                } else {
+                    '-'
+                }
+            })
+            .collect();
+    let body: String = p
+        .blocks
+        .iter()
+        .filter_map(|b| match b.kind.as_str() {
+            "heading" => Some(format!("<p class=\"subhead\">{}</p>", rich(&b.text))),
+            "paragraph" => Some(format!("<p class=\"paragraph\">{}</p>", rich(&b.text))),
+            "note" => Some(format!("<p class=\"note\">{}</p>", rich(&b.text))),
+            // Our own images only, next to the page (`<name>.png`); a name is [a-z0-9_-].
+            "banner"
+                if !b.text.is_empty()
+                    && b.text.bytes().all(|c| {
+                        c.is_ascii_lowercase() || c.is_ascii_digit() || c == b'_' || c == b'-'
+                    }) =>
+            {
+                Some(format!(
+                    "<img class=\"banner\" src=\"{}.png\" alt=\"\">",
+                    b.text
+                ))
+            }
+            _ => None,
+        })
+        .collect();
+    let date = if p.date.is_empty() {
+        String::new()
+    } else {
+        format!(
+            "<time class=\"date\" datetime=\"{d}\">{}</time>",
+            esc(&p.date),
+            d = esc_attr(&p.date)
+        )
+    };
+    format!(
+        "<article class=\"notice\" id=\"{id}\"><button type=\"button\" class=\"headline\" aria-expanded=\"true\" aria-controls=\"b-{id}\">{date}<span class=\"title\">{}</span></button><section class=\"content\" id=\"b-{id}\">{body}</section></article>",
+        esc(&p.title)
     )
+}
+
+/// A Notices tab: its posts as collapsible notices, CSS and script inline (no other files).
+fn notice_page(title: &str, category: &str) -> Response {
+    let posts: String = posts(category).map(render_post).collect();
+    let s = format!(
+        "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>{title}</title><style>{NOTICE_CSS}</style></head><body><main>{posts}</main><script>{NOTICE_JS}</script></body></html>"
+    );
+    Response::ok("text/html; charset=utf-8", s.into_bytes())
 }
 
 pub fn page(rel: &str) -> Response {
@@ -177,15 +300,9 @@ pub fn page(rel: &str) -> Response {
             "Arena",
             "<p>Offline, the Arena season runs every week against AI rivals built from the roster. Durability, Fever and the season rewards follow the 2019 rules.</p>",
         ),
-        NOTES_PAGE => notes(),
-        MAINTENANCE_PAGE => html(
-            "Maintenance",
-            "<p>This copy runs on a local server on your own device, so there is no maintenance and no downtime.</p>",
-        ),
-        ABOUT_PAGE => html(
-            "About this build",
-            "<p>An unofficial, non-commercial preservation build. The online service has ended; everything runs locally, with no purchases and no tracking.</p>",
-        ),
+        NOTES_PAGE => notice_page("Updates", "update"),
+        MAINTENANCE_PAGE => notice_page("Maintenance", "fault"),
+        ABOUT_PAGE => notice_page("About this build", "other"),
         "/information/terms_a.html" => html(
             "Offline preservation build",
             "<p>The online service for this game has ended. This copy talks only to a local preservation server on your own devices. There are no purchases and no tracking.</p><p>Tap <b>Accept</b> to continue.</p>",
@@ -195,5 +312,147 @@ pub fn page(rel: &str) -> Response {
             "<p>Unofficial, non-commercial preservation build. All rights to the game and to JoJo's Bizarre Adventure belong to their respective owners.</p>",
         ),
         _ => html("Offline", "<p>This page was part of the online service and is not available offline.</p>"),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn body(rel: &str) -> String {
+        String::from_utf8(page(rel).body).unwrap()
+    }
+
+    /// Only the kept rich-text tags become HTML; a `<script>` in a post stays text, a stray or
+    /// badly nested tag is shown as text and an open tag is closed within its block.
+    #[test]
+    fn rich_text_is_escaped() {
+        assert_eq!(
+            rich("<script>alert('x')</script> & co"),
+            "&lt;script&gt;alert('x')&lt;/script&gt; &amp; co"
+        );
+        assert_eq!(
+            rich("<color=#FFD700><b>Gold</b></color>\nline <i>two</i>"),
+            "<span style=\"color:#FFD700\"><b>Gold</b></span><br>line <i>two</i>"
+        );
+        assert_eq!(rich("</b>a<b>open"), "&lt;/b&gt;a<b>open</b>");
+        assert_eq!(rich("<b><i>x</b></i>"), "<b><i>x&lt;/b&gt;</i></b>");
+        assert_eq!(
+            rich("<color=#12345>x<color=#12345z>"),
+            "&lt;color=#12345&gt;x&lt;color=#12345z&gt;"
+        );
+        assert_eq!(rich("<color=red>x"), "&lt;color=red&gt;x");
+        assert_eq!(rich("a <"), "a &lt;");
+    }
+
+    /// news.json is well formed: unique ids, known tabs, every tab has a post, Update posts carry
+    /// their build and date, newest first; every post this build shows renders on its tab.
+    #[test]
+    fn every_post_renders() {
+        let mut ids = std::collections::HashSet::new();
+        for p in all_posts() {
+            assert!(ids.insert(p.id.as_str()), "duplicate id {}", p.id);
+            assert!(
+                ["update", "fault", "other"].contains(&p.category.as_str()),
+                "{}",
+                p.id
+            );
+            assert!(!p.blocks.is_empty(), "{}", p.id);
+        }
+        let mut last = u32::MAX;
+        for p in all_posts().iter().filter(|p| p.category == "update") {
+            let b = p.build.unwrap_or_else(|| panic!("{} has no build", p.id));
+            assert!(b < last, "{}: update posts go newest first", p.id);
+            assert_eq!(p.id, format!("build-{b:03}"));
+            assert_eq!(p.date.len(), 10, "{}: date YYYY-MM-DD", p.id);
+            last = b;
+        }
+        for (rel, cat) in [
+            (NOTES_PAGE, "update"),
+            (MAINTENANCE_PAGE, "fault"),
+            (ABOUT_PAGE, "other"),
+        ] {
+            let page = body(rel);
+            let shown: Vec<&Post> = posts(cat).collect();
+            assert!(!shown.is_empty(), "{cat}");
+            assert_eq!(
+                page.matches("<article class=\"notice\"").count(),
+                shown.len()
+            );
+            for p in shown {
+                assert!(page.contains(&format!("<span class=\"title\">{}</span>", esc(&p.title))));
+                assert!(page.contains(&format!("id=\"b-{}\"", p.id)), "{}", p.id);
+            }
+        }
+    }
+
+    /// A block kind the renderer does not know is left out; a banner names one of our images.
+    #[test]
+    fn unknown_block_kinds_are_skipped() {
+        let block = |kind: &str, text: &str| Block {
+            kind: kind.into(),
+            text: text.into(),
+        };
+        let p = Post {
+            id: "Test Post".into(),
+            build: None,
+            date: String::new(),
+            title: "T <1>".into(),
+            category: "other".into(),
+            blocks: vec![
+                block("heading", "Head"),
+                block("video", "clip"),
+                block("paragraph", "Body"),
+                block("banner", "../x"),
+                block("banner", "event_01"),
+                block("note", "Small"),
+            ],
+        };
+        let h = render_post(&p);
+        assert!(!h.contains("clip") && !h.contains("../x"));
+        assert!(h.contains("id=\"test-post\"") && h.contains("T &lt;1&gt;"));
+        assert!(h.contains(
+            "<section class=\"content\" id=\"b-test-post\"><p class=\"subhead\">Head</p><p class=\"paragraph\">Body</p><img class=\"banner\" src=\"event_01.png\" alt=\"\"><p class=\"note\">Small</p></section>"
+        ));
+        assert!(!h.contains("<time"), "no date, no time element");
+    }
+
+    /// The pages are self-contained: CSS and script inline, nothing fetched from anywhere, and
+    /// sent expanded (the inline script folds all but the first post).
+    #[test]
+    fn notice_pages_have_no_external_urls() {
+        for rel in [NOTES_PAGE, MAINTENANCE_PAGE, ABOUT_PAGE] {
+            let page = body(rel);
+            for bad in [
+                "://", "src=\"/", "href=", "url(", "@import", "<link", " hidden",
+            ] {
+                assert!(!page.contains(bad), "{rel}: {bad}");
+            }
+            assert!(
+                page.contains("<style>") && page.contains("<script>"),
+                "{rel}"
+            );
+            assert!(!page.contains("[["), "{rel}: a placeholder is shown");
+        }
+    }
+
+    /// The Update tab opens on this build's post; a post for a later build stays hidden.
+    #[test]
+    fn update_page_leads_with_the_current_build() {
+        let page = body(NOTES_PAGE);
+        let first = page.find("<article").unwrap();
+        assert_eq!(
+            &page[first..first + 38],
+            format!(
+                "<article class=\"notice\" id=\"build-{:03}\"",
+                jdr_core::BUILD
+            )
+        );
+        assert!(page.contains(&format!(">Build {}</span>", jdr_core::BUILD)));
+        for p in all_posts() {
+            if p.build.is_some_and(|b| b > jdr_core::BUILD) {
+                assert!(!page.contains(&format!("id=\"{}\"", p.id)), "{}", p.id);
+            }
+        }
     }
 }

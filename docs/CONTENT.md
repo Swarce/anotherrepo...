@@ -69,6 +69,115 @@ community wikis (each record cites its page) or are marked `jdr-default`.
    `tools/content/action_vocab.py`, keep existing table rows and are idempotent; the commands are
    in the scripts' docstrings.
 
+## Notices (Build 42)
+
+`server/content/news.json` holds the Notices screen's posts (our own words; no game or other
+builds' text), rendered by `server/services/src/web.rs` into the three tabs
+(docs/research/27-support-and-news.md §2):
+
+- `posts[]`: `{id, build?, date, title, category, blocks[]}`, in display order (newest first).
+  `category` is `update` (Update tab), `fault` (Fault tab) or `other` (Other tab). Update posts
+  are `build-NNN` with their `build` and release `date` (YYYY-MM-DD); a post whose `build` is
+  above the server's build is not shown yet.
+- `blocks[]`: `{kind, text}` with `kind` `heading`, `paragraph`, `note` (small grey) or `banner`
+  (`text` names one of our own images served next to the page, `[a-z0-9_-]`; none yet). Other
+  kinds are skipped. `text` may use `<color=#RRGGBB>`, `<b>`, `<i>` and `\n`; anything else is
+  shown as text.
+- Each build adds one post at the top, in player-facing words (from STATUS.md "What changed").
+  A `[[...]]` placeholder must not reach a shown post (test `notice_pages_have_no_external_urls`).
+- The style is `server/content/notice.css` (ours).
+
+## Town object unlocks (Build 42)
+
+`server/services/src/town.rs::OBJECT_UNLOCKS` gives each of the 20 Town objects (ids and models
+from the player's files) the Town Rank that unlocks it: one per rank from 2, the 21st capped at
+Rank 20. The order is design borrowed from the Diamond Records PC playtest (its trophy list,
+matched by model); no PC text or file is used, and its coin costs are not: objects stay free
+because the 3.12.0 client has no object cost. Placement still needs Rank 8 (client rule;
+docs/research/24-town.md §2).
+
+## Main shop (Build 42)
+
+`server/services/src/services/item.rs::catalog()` holds the goods of the six shops of the 3.12.0
+client (ids, `SHOP_000NN_NAME` labels and `ShopTypeIcon_000NN` sprites from the player's files;
+docs/research/15 §Shops). Goods names are the game's own labels with our translations
+(`GOODS_NNNN_*` where one fits, else `ITEM_`, `STATUE_NAME_` and `MIND_NAME_`/`MIND_TEXT_`);
+no text from other builds. Which goods each shop sells and every price are ours:
+
+| Shop | Pays with | Goods (ours) |
+|---|---|---|
+| 1 Buy Diamond Coins | gold (item 20) | 1/6/12/30/60/90 coins (`GOODS_0001-0006`), 10,000 gold a coin; the client empties this shop offline (no store), so it is listed last |
+| 2 Expand Mind Box | Diamond Coins | 5 slots, 10 coins (the box is at its offline maximum: no change) |
+| 3 Restore AP | Diamond Coins | Sandwich 10 |
+| 4 Diamond Coin Exchange | gold, Diamond Coins | the same coin packs for gold; keys and Rainbow Trophy 5, turtles 3/10/30/60, every statue 30/60/150/300 by rarity (owned: +1 boost) |
+| 5 Memory Ring Exchange | Memory Rings | the materials as before; every ability Mind 10/30/100/300 by rarity (a new Lv1 copy) |
+| 6 Buy BP Recovery Cola | Diamond Coins | the 5-BP cola x1/x5/x12 for 5/20/40 |
+
+Diamond Coins are a real wallet in the shop (the coin packs, Town payouts, presents); nothing
+else charges them. No PC price is used.
+
+## Growth tree square kinds (Build 42)
+
+`server/services/src/collection.rs::tree_squares` builds every statue's board (docs/research/13
+§3). The kinds, their tile icons and their labels are the 3.12.0 client's (`TREE_*` constants,
+`GRID_LABEL_*` / `Tree_Message_NN` with our translations); placement and amounts are ours. No
+PC board, value or cost is used.
+
+| Effect | Squares (ours) | Each |
+|---|---|---|
+| 1/2/3 ATK/DEF/HP | the three lines and two forks, as before | the stat's share of the tree max |
+| 4/5 skill, SP skill | `A6`, `Af3` / `D6`, `Df3` for the skills the statue has | +2 levels |
+| 9 finisher level | `P1`, `P2` after `Df3`, rarity 5+ statues with a finisher | +2 levels |
+| 10 Mind capacity | `C1`-`C8` past the HP line, combat statues | +4 |
+| 11 leader ability level | `L1`-`L3`, statues with a leader ability | +3 levels |
+| 12 Diamond Coin | `G1`, `G2` at the ends | 1 coin, once, when opened |
+| 13 assist skill level | `K1`-`K3`, assist-only statues | +3 levels |
+| 14 awakening | `E`, last | nothing (cosmetic) |
+
+Mind capacity is max(40, 16 + the opened CP squares): 40 until the seventh square, 48 with all
+eight (the base of 16 is design borrowed from the Diamond Records PC playtest; the +4 squares and
+the floor of 40 are ours). Levels are 1 plus the squares, capped at 10. Costs follow the depth
+rule of docs/research/13 §3.
+
+## Action-stage star missions (Build 42)
+
+`server/services/src/quests.rs::action_missions` gives every action stage three star missions
+(docs/research/11 §4): QuestMissionClearType 7 all team members survive, 8 defeat all enemies and
+20 use a Skill (our translations of the labels). The types and the labels are the 3.12.0 client's
+(`QuestMission_JP:QuestMissionText_<type + 2>`, shown through our translations); `param` is
+empty (the client's check has the thresholds built in). The choice of these three is design
+borrowed from the Diamond Records PC playtest; no PC text is used. Cleared types are kept per
+stage in `Progress.stars` (types 1-46) and the result screen echoes the client's list, as for
+tactical stages.
+
+## Action assist bonus (Build 42)
+
+`server/services/src/services/misc.rs` (`ASSIST_*`, sent in `/common/get_system_config`) holds
+the four `assistStatus*` ints the 3.12.0 client reads to give each assist a share of its own
+HP/ATK/DEF in the action battle (docs/research/19-assists.md §3.1): add 100, count 5, step 20,
+limit 45, so 10% unboosted, +2% per 5 boosts and 100% at 225 boosts. Source: Gamerch player
+posts 101615739 (2017-11-24), 101635727 (2017-11-27) and 104155773 (2019-08-20). The tactical
+assist constants (`dtbattle_damage_param`) are unchanged.
+
+## Action-battle script cameras (Build 42)
+
+The action-mode action sets request 88 script camera ids, 62 of which had no row in
+`Set_el_camera_set_common.json` (the client then stays frozen in script mode). Rebuild
+(docs/research/31 §10):
+
+```
+python3 -I tools/content/scan_camera_requests.py --data <files dir> --keys local/keys.json \
+  --tool target/release/jdr-tool --out local/content/action_camera_requests.tsv \
+  --prefix actionset_statue_ --prefix actionset_common --prefix actionset_gmc
+python3 -I tools/content/build_camera_sets.py --requests local/content/camera_requests.tsv \
+  --action-requests local/content/action_camera_requests.tsv --masterdata server/content/masterdata
+```
+
+Ids 1003–2303 get one of five shots of ours (`ACT_WINDUP`, `ACT_COMBO`, `ACT_STRIKE`, `ACT_WIDE`,
+`ACT_RECOVER`), all straight behind and above the acting unit and glided into; 302–314 the win
+shot, 315–320 its front-on variant. Ids and numbers only; nothing from other builds. Test:
+`masterdata::action_battle_cameras_cover_the_action_sets`.
+
 ## Offline rules (preservation sandbox)
 
 - The player owns every obtainable statue (266: model + animations + action set + leader ability in

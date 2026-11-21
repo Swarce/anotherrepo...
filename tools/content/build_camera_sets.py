@@ -30,7 +30,15 @@ big moves; straight behind for ids the client does not mirror), picked by the ro
 that request it (wind-up, hit, loop, wrap up) and varied by id, each with a slow push-in. The win, boss-intro and finish shots follow the
 footage too. Shot values are ours.
 
+The action battle (docs/research/31 §10) requests its own ids from the action-mode action sets
+(actionset_statue_<psid>, actionset_common: local/content/action_camera_requests.tsv from
+scan_camera_requests.py --prefix actionset_statue_ ...). Its camera manager passes the id unchanged
+(no +100000 for 1000-2999, no mirroring) with the acting unit as the only bone target, so those ids
+get shots straight behind and above the unit, near the action battle's follow camera, entered with a
+per-frame glide instead of a cut.
+
 usage: python3 -I tools/content/build_camera_sets.py --requests local/content/camera_requests.tsv \
+         --action-requests local/content/action_camera_requests.tsv \
          --masterdata server/content/masterdata [--statues server/content/statues.json]
 """
 import argparse
@@ -42,6 +50,8 @@ import re
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--requests", required=True)
+ap.add_argument("--action-requests", default="local/content/action_camera_requests.tsv",
+                help="the action-mode action sets' camera requests (scan_camera_requests.py --prefix actionset_statue_ ...)")
 ap.add_argument("--masterdata", required=True)
 ap.add_argument("--statues", default="server/content/statues.json")
 ap.add_argument("--calibrate", action="store_true",
@@ -160,6 +170,24 @@ HBD_A = P(SPINE2, SPINE2, (-40, 160, 0), 6.0, 35, (0, 0, 0), (0, 0, 3.0))
 HBD_B = dict(HBD_A, length=6.8)
 BH_A = P(SPINE2, SPINE2, (-6, 180, 0), 4.0, 36, (0, 0, 0), (0, -0.2, 1.6))
 BH_B = dict(BH_A, length=3.6)
+# The action battle (docs/research/31 §10): the follow camera stands behind and above the player's
+# character, 40-50 degrees down, and never cuts in combat (footage, docs/research/32 §3). Its script
+# cameras get the acting unit alone (ChangeCameraActionBattle 0xCFF9A4; tgt1 is only the parent of a
+# child object) and are never mirrored, so every action shot stands straight behind the unit (rotate.y
+# 180, no sideways offset: the same for the player and an enemy) and looks a little ahead of it. They
+# glide in from wherever the camera is with inter 0.1 per frame (about 95 % in 1 s at 30 fps): the
+# aim, always a LookRotation to the unit, barely moves, since the follow camera already watches it.
+ACT_IN_A = P(SPINE2, SPINE2, (-20, 180, 0), 3.5, 38, (0, 0, 0), (0, -0.1, 0.6))
+ACT_IN_B = dict(ACT_IN_A, length=3.1)
+ACT_COMBO_A = P(SPINE2, SPINE2, (-38, 180, 0), 4.8, 38, (0, 0, 0), (0, -0.2, 1.0))
+ACT_COMBO_B = dict(ACT_COMBO_A, length=5.0)
+ACT_HIT_A = P(SPINE2, SPINE2, (-28, 180, 0), 4.4, 38, (0, 0, 0), (0, -0.2, 1.2))
+ACT_HIT_B = dict(ACT_HIT_A, length=4.8)
+ACT_WIDE_A = P(SPINE2, SPINE2, (-42, 180, 0), 6.4, 40, (0, 0, 0), (0, -0.3, 1.5))
+ACT_WIDE_B = dict(ACT_WIDE_A, length=6.9)
+ACT_OUT_A = P(SPINE2, SPINE2, (-40, 180, 0), 5.0, 38, (0, 0, 0), (0, -0.2, 0.8))
+ACT_OUT_B = dict(ACT_OUT_A, length=5.4)
+ACT_INTER = 0.1
 SHOTS = {
     # 111000: glide in on the pair, hold, then a slight pull-out (no truck: the look point stays
     # half way to the target)
@@ -209,6 +237,17 @@ SHOTS = {
     # straight behind the attacker: for the few action ids the client does not mirror (102xxx),
     # which must look right for either team
     "behind": move(BH_A, BH_B, 1.2) + [(BH_B, 0.5, 1.0)],
+    # action battle (no step is a cut: inter 0.1 throughout, the poses change slowly)
+    # wind-up: closer and flatter, a slow push-in on the unit
+    "ACT_WINDUP": [(ACT_IN_A, 1.2, ACT_INTER), (ACT_IN_B, 1.0, ACT_INTER)],
+    # a combo stage: next to the follow camera, a slight drift out
+    "ACT_COMBO": [(ACT_COMBO_A, 1.0, ACT_INTER), (ACT_COMBO_B, 1.0, ACT_INTER)],
+    # a hit: lower and nearer than the follow camera, looking between the unit and its target
+    "ACT_STRIKE": [(ACT_HIT_A, 1.0, ACT_INTER), (ACT_HIT_B, 1.0, ACT_INTER)],
+    # a wide hit: higher and farther, the area in front of the unit in view
+    "ACT_WIDE": [(ACT_WIDE_A, 1.2, ACT_INTER), (ACT_WIDE_B, 1.0, ACT_INTER)],
+    # wrap-up: back towards the follow camera's height and distance
+    "ACT_RECOVER": [(ACT_OUT_A, 0.8, ACT_INTER), (ACT_OUT_B, 1.0, ACT_INTER)],
 }
 
 # ids whose shot was observed in the footage (the measurement's id mapping)
@@ -242,6 +281,12 @@ KIND_SHOTS = {
 }
 
 
+# action battle: by the role of the requesting states; ids that combo stages (ATTACK sets) request
+# get the combo shot, the least change from the follow camera
+ACTION_ROLE_SHOTS = {"in": ["ACT_WINDUP"], "hit": ["ACT_STRIKE", "ACT_STRIKE", "ACT_WIDE"], "loop": ["ACT_STRIKE"],
+                     "out": ["ACT_RECOVER"], "any": ["ACT_STRIKE"]}
+
+
 def pick(choices, cid):
     return choices[(cid * 2654435761 % 2 ** 32) % len(choices)]
 
@@ -255,6 +300,10 @@ EXTRA_NODES = [
     # centre (about 70 % across), framed from the top of the head to the upper thighs, the camera a
     # little below chest height. Checked by rendering the statues' own win-appeal clip.
     node("jdr_result", SPINE2, NECK, (5, 16, 0), 2.4, 34, (0, 0, 0), (0.5, -0.35, 0)),
+    # the same win shot from straight in front, for the win ids only the action battle requests
+    # (315-320): the camera on the unit's front axis (the same for either team, never mirrored), the
+    # look point to its side so the winner still stands right of centre
+    node("jdr_result_front", SPINE2, NECK, (5, 0, 0), 2.4, 34, (0, 0, 0), (0.5, -0.35, 0)),
     # boss intro (id 201, not mirrored, always an enemy facing -X: a negative rotate.y is the
     # watched side): low on the legs, then a tilted low full-body shot (crane up)
     node("jdr_boss_a", WAIST, WAIST, (22, -24, 0), 2.0, 34, (0, 0, 0), (0, -0.4, 0)),
@@ -343,9 +392,34 @@ def cam_set(cid, data, begin=0.0, end=0.3):
             "flagForcusAhead": False, "flagNotUpdateBonePosition": False, "flagNotInter": False, "dataList": data}
 
 
+# The action battle's requests (docs/research/31 §10): ids as requested (its camera manager adds
+# nothing), the role of the states and whether a combo stage (ATTACK set) requests them.
+act_roles = collections.defaultdict(collections.Counter)
+act_attack = collections.Counter()
+for r in csv.DictReader(open(a.action_requests, encoding="utf-8"), delimiter="\t"):
+    if r["cameraType"] != "1" or not r["scriptCameraId"]:
+        continue
+    cid = int(r["scriptCameraId"])
+    act_roles[cid][role(r["state"])] += 1
+    if re.search(r"_\d{3}_ATTACK$", r.get("template", "")):
+        act_attack[cid] += 1
+ACTION_RESULT = set(range(315, 321))  # win appeals only the action sets request (301-314 are RESULT)
+# ids only the action battle requests: 1000-2999 never reach the table from the tactical battle (its
+# camera manager adds 100000 to them, 0xFA65F8), and 315-320
+ACTION_ONLY = {cid for cid in act_roles if 1000 <= cid < 3000} | (ACTION_RESULT & set(act_roles))
+
 sets, used = [], collections.Counter()
-for cid in sorted(set(old_ids) | set(roles)):
-    if cid in RESULT:
+for cid in sorted(set(old_ids) | set(roles) | set(act_roles)):
+    if cid in ACTION_ONLY and cid in ACTION_RESULT:
+        used["result_front"] += 1
+        sets.append(cam_set(cid, [step("jdr_result_front", 5.0)]))
+        sets[-1]["flagBindBase"] = sets[-1]["flagBindLookat"] = False
+    elif cid in ACTION_ONLY:
+        top = act_roles[cid].most_common(1)[0][0]
+        shot = "ACT_COMBO" if act_attack[cid] else pick(ACTION_ROLE_SHOTS[top], cid)
+        used[shot] += 1
+        sets.append(cam_set(cid, steps(shot)))
+    elif cid in RESULT:
         # every id a win appeal requests (101007/101008 too: Polnareff 3040 wins on 101008, and
         # Build 38 gave it an action shot) gets the still win shot; the skills that share those ids
         # use it as well
@@ -363,6 +437,11 @@ for cid in sorted(set(old_ids) | set(roles)):
         data = [step("jdr_finish", 1.5)]
         used["finish"] += 1
         sets.append(cam_set(cid, data))
+    elif cid not in roles and cid in act_roles and cid not in old_ids:
+        # a new action-battle id outside the families above (none in 3.12.0): the straight-behind
+        # shot, the same for either team
+        used["behind"] += 1
+        sets.append(cam_set(cid, steps("behind")))
     elif cid in roles and a.calibrate:
         # one shot for every action: 4.5 m from the unit's chest, 50 degrees above, 40 degrees to
         # the right of its front (rotate.y 40), looking at its chest, 45-degree field; held 2.5 s
@@ -423,7 +502,9 @@ old_sets["about"] = ("Script camera sets for every camera id the client hard-cod
                      "(forceNormalCamera); every step has inter 1: glides are eased timed blends that enter from the Overview's pose, "
                      "cuts are 0.001 s steps; win shots (301-314, 101001-101028) a still facing shot; the boss intro (201) a "
                      "crane up to a tilted full-body shot; stage finishes (100300-100311, 350/351) a ground-level shot. "
-                     "flagMaintain stays false so each shot ends on its own.")
+                     "flagMaintain stays false so each shot ends on its own. The action battle's own ids (1003-2303 and "
+                     "302-320 as its action sets request them) play shots straight behind and above the acting unit near "
+                     "its follow camera, glided into with inter 0.1, and the win shot.")
 old_sets["data"]["listData"] = sets
 for path, doc in ((node_path, old_nodes), (set_path, old_sets)):
     json.dump(doc, open(path, "w"), ensure_ascii=False, indent=1)
