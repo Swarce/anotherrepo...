@@ -2,6 +2,30 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 28 — portraits: real frames, and a log line for the device (branch `wip/b28`)
+
+### What the owner reported (Build 27)
+- The portraits did not show in game (no log).
+- The generated ones had tiny artefacts from other frames and portraits. Wanted: the original
+  frame pixel for pixel, with only the inside removed, cut back to the frame's inner edge. The
+  background is a game texture (the statue manage menu's background).
+
+### What changed
+- **Frames from a real thumbnail** (`render_portraits.py`, docs/research/28 §3): each portrait
+  keeps one real thumbnail's frame, stars, badge and mark, pixel for pixel. A pixel is cut only if
+  it is not art shared by that thumbnail's group, and the cut region is the part connected to the
+  middle. Attributes for the grouping come from the badges (146/146 right).
+- **Device log:** for `ui_statue_00`/`01` the server logs the images added and the file served
+  (`[art] ui_statue_01: … image(s) …, served as … md5 …`).
+- The standalone server's `--art <folder>` now also reads `thumbs/`.
+- Background: still the fitted lattice; the game texture was not found yet (see below).
+- Build number 28, server marker `JDR_EMBEDDED_SERVER_b028`.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] The statue list shows the generated portraits; if not, the log's `[art] ui_statue_01:` line
+      and any `[art] ... skipped` lines
+- [ ] The frames look exactly like the real ones
+
 ## Build 27 — portraits for the statues that have none (branch `wip/b27`)
 
 ### What the owner asked

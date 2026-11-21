@@ -2,19 +2,18 @@
 """Portraits (the 128x128 `st_<statueId>` thumbnails) for roster statues the player's files have
 none for, made from the player's own files (docs/research/28-portraits.md):
 
-  1. kit: the real thumbnails have the frame, stars, attribute badge and assist mark drawn in.
-     Each layer is the per-pixel mode of the thumbnails that share it (the mean of those in the
-     winning colour bin, which averages out their texture compression): frame, bottom bar and
-     gold stars from the thumbnails of that rarity with no empty star slots (the server sends
-     rareMax = rare); the face opening is what they do not share, connected to the middle; the
-     badge from the attribute's thumbnails, inside a circle fitted to its firm core; the assist
-     mark from the assist-only ones. The background is a diamond lattice in the attribute's
-     colour: its geometry is fixed (LATTICE, measured with --fit-lattice), its colour field is
-     fitted per attribute.
+  1. frame: each portrait keeps one real roster thumbnail's frame, stars, badge and assist mark,
+     pixel for pixel, and only its inside is replaced. The donor has the same frame rarity, badge
+     attribute and mark, and no empty star slots where one exists. A donor pixel is kept when it
+     is art its group shares: at least 60% of the group (frame rarity; rarity without empty
+     slots; attribute; assist-only) equal the group median there, within TOL. The inside is what
+     is not kept, connected to the middle, cut back to the frame's inner edge. The background is
+     a diamond lattice in the attribute's colour: its geometry is fixed (LATTICE, measured with
+     --fit-lattice), its colour field is fitted per attribute.
   2. faces: the statue's model in its menu pose (posing.py, the figure clip), rendered unlit with an
      outline by render_portraits.js, framed on the HEAD bone like the real thumbnails (FRAMING,
      calibrated against them).
-  3. compose: background, face, frame, badge corner, stars, assist mark, outline alpha.
+  3. compose: background and face in the opening, the donor's pixels everywhere else.
 
 Inputs: decrypted bundles (statue_*, animation_statue_common_*) and the decrypted thumbnail
 bundles (`st_*` from ui_statue_00/01, each decrypted with `jdr-tool decrypt`). Output: one PNG per
@@ -99,22 +98,6 @@ def load_thumbs(d):
     return names, np.stack(imgs)
 
 
-def mode_layer(G, step=20):
-    """Per pixel: the most common colour (quantised, transparent apart; the mean of the thumbnails
-    in that bin, which also averages out their compression noise) and its share."""
-    q = (G[..., :3] // step).astype(int)
-    key = (q[..., 0] * 1000 + q[..., 1] * 31 + q[..., 2]) + (G[..., 3] < 128) * 10 ** 7
-    out, agree = np.zeros((128, 128, 4)), np.zeros((128, 128))
-    for y in range(128):
-        for x in range(128):
-            k = key[:, y, x]
-            u, c = np.unique(k, return_counts=True)
-            j = c.argmax()
-            out[y, x] = G[k == u[j], y, x].mean(0)
-            agree[y, x] = c[j] / len(k)
-    return out, agree
-
-
 def lattice_dist(lat=LATTICE):
     W, H, OX, OY = lat
     u = (xx - OX) / W + (yy - OY) / H
@@ -149,96 +132,171 @@ def fit_lattice(img):
     return best
 
 
+# Two pixels are "the same" within this much per channel (texture compression noise).
+TOL = 24
+
+
+def same_as(img, ref):
+    return (np.abs(img[..., :3] - ref[..., :3]).max(-1) <= TOL) & ((img[..., 3] >= 128) == (ref[..., 3] >= 128))
+
+
+def fill_small_holes(m, most=40):
+    """Fill holes in `m` of at most `most` pixels (compression specks), keeping larger openings."""
+    holes = fill_holes(m) & ~m
+    out = m.copy()
+    seen = np.zeros_like(m)
+    for y, x in zip(*np.nonzero(holes)):
+        if seen[y, x]:
+            continue
+        comp = flood(holes, (int(x), int(y))) & holes
+        seen |= comp
+        if comp.sum() <= most:
+            out |= comp
+    return out
+
+
 def build_kit(names, X, statues):
+    """Groups of the real roster thumbnails by frame rarity, badge attribute and assist mark, with
+    the per-pixel medians that tell their shared pixels (frame, stars, badge, mark) from the face."""
     st = {d["statueId"]: d for d in statues}
     roster = [i for i, n in enumerate(names) if n in st]
     # rarity from the frame: nearest mean border of each wiki rarity (the wiki is wrong for a few)
     ring = (np.minimum(np.minimum(xx, 127 - xx), np.minimum(yy, 127 - yy)) < 7) & ~((xx > 88) & (yy > 88))
     F = X[:, ring][:, :, :3].reshape(len(X), -1)
     cent = {r: F[[i for i in roster if st[names[i]].get("rarity") == r]].mean(0) for r in (3, 4, 5, 6)}
-    rar = {names[i]: min(cent, key=lambda r: ((F[i] - cent[r]) ** 2).mean()) for i in roster}
-    assist = {names[i]: bool(st[names[i]].get("assistOnly")) for i in roster}
-    stype = {names[i]: st[names[i]].get("statueType") for i in roster}
-    idx_of = {n: i for i, n in enumerate(names)}
-
-    def group(f):
-        return [idx_of[n] for n in rar if f(n)]
-
-    def donor(idx, mode, mask):
-        errs = [np.abs(X[i][mask][:, :3] - mode[mask][:, :3]).mean() for i in idx]
-        j = int(np.argmin(errs))
-        return idx[j]
-
-    kit = {"rarity_by_frame": rar}
-    T = {t: mode_layer(X[group(lambda n, t=t: stype[n] == t)]) for t in range(1, 6)}
-    A = mode_layer(X[group(lambda n: assist[n])])
-    # the star strip: six stars (gold, or dark for an upgrade not reached) on a black backing,
-    # centred at x = STAR_X0 + k * STAR_DX
+    rar = {i: min(cent, key=lambda r: ((F[i] - cent[r]) ** 2).mean()) for i in roster}
+    # attribute from the badge: nearest mean badge centre of the statues whose attribute is known
+    # (right for all of them, leave-one-out)
+    core = ((yy - 108) ** 2 + (xx - 110) ** 2) <= 81
+    B = X[:, core][:, :, :3].reshape(len(X), -1)
+    lab = [(i, st[names[i]]["statueType"]) for i in roster if st[names[i]].get("statueType")]
+    bc = {t: B[[i for i, tt in lab if tt == t]].mean(0) for t in range(1, 6)}
+    typ = {i: min(bc, key=lambda t: ((B[i] - bc[t]) ** 2).mean()) for i in roster}
+    assist = {i: bool(st[names[i]].get("assistOnly")) for i in roster}
     band = (yy >= 99) & (yy <= 121) & (xx >= 8) & (xx <= 90)
-    layers = {}
-    for r in (3, 4, 5, 6):
-        # Thumbnails of this rarity with no empty star slots (statues at their top rarity, as the
-        # server sends every statue): their frame, bottom bar and gold stars are the same pixels
-        # in all of them. Empty slots are grey and neutral; look for them past the last gold star.
-        cut = STAR_X0 + STAR_DX * (r - 1) + STAR_DX / 2
-        past = band & (xx > cut) & (yy >= 102) & (yy <= 114)
 
-        def empties(i):
-            D = X[i]
-            mx, mn = D[..., :3].max(-1), D[..., :3].min(-1)
-            return ((mx > 25) & (mx < 110) & (mx - mn < 18))[past].mean() if past.any() else 0.0
-        idx = group(lambda n, r=r: rar[n] == r and not assist[n])   # no assist mark
-        clean = [i for i in idx if empties(i) < 0.12] or idx
-        c, a = mode_layer(X[clean], step=28)
-        same = (a >= 0.55) & (c[..., 3] > 128)
-        # the badge corner: frame only where thumbnails of every attribute agree (each group
-        # leans to some attributes, whose badges would otherwise leave slivers)
-        zone = (xx > 74) & (yy > 74)
-        mixed = [i for i in idx if (stype[names[i]] or 0) > 0]
-        by_t = {t: [i for i in mixed if stype[names[i]] == t] for t in range(1, 6)}
-        pick = [i for t in range(1, 6) for i in by_t[t][:4]]     # an even mix of attributes
-        if pick:
-            _, a_mix = mode_layer(X[pick], step=28)
-            same &= ~zone | (a_mix >= 0.7)
-        # the opening: what they do not share, connected to the middle; pinholes closed
-        win = flood(~dil(same, 5), (64, 50))        # gaps in the ring sealed for the fill
-        win = fill_holes(dil(win, 5) & ~same)       # grown back to the frame's own edge
-        chrome = ~win & (c[..., 3] > 128)
-        frame = np.zeros((128, 128, 4))
-        frame[chrome] = c[chrome]
-        frame[chrome, 3] = 255
-        alpha = win | chrome
-        layers[r] = {"frame": frame, "alpha": alpha}
-        print(f"rarity {r}: frame from {len(clean)} of {len(idx)} thumbnails (no empty slots)", file=sys.stderr)
-    badges = {}
-    for t in range(1, 6):
-        c, a = T[t]
-        # the badge alone: what its attribute group agrees on firmly (the frame corner under it
-        # differs by rarity), holes filled, not grown
-        core = (a >= 0.7) & (xx >= 89) & (yy > 74) & (c[..., 3] > 128)
-        core = fill_holes(ero(dil(core, 3), 3))
-        cy, cx = np.argwhere(core).mean(0)
-        rad = np.sqrt(((np.argwhere(core) - [cy, cx]) ** 2).sum(1)).max()
-        # the round badge with its rim: a circle a little past the core, opaque pixels only
-        m = ((yy - cy) ** 2 + (xx - cx) ** 2 <= (rad + 2.5) ** 2) & (c[..., 3] > 128)
-        m &= a >= 0.5        # inside the circle, what is not the badge is the frame beneath
-        b = np.zeros((128, 128, 4))
-        b[m] = c[m]          # averaged over the attribute's thumbnails
-        b[m, 3] = 255
-        badges[t] = b
-    c, a = A
-    m = (a > 0.5) & (xx > 88) & (yy > 58) & (yy < 100) & (c[..., 3] > 128)
-    m = fill_holes(ero(dil(m, 3), 3)) & (xx > 88) & (yy > 58) & (yy < 96)
-    D = X[donor(group(lambda n: assist[n]), c, m)]
-    amark = np.zeros((128, 128, 4))
-    amark[m] = np.where((a[m] >= 0.5)[:, None], c[m], D[m])
-    amark[m, 3] = 255
-    # background colour field per attribute, from pixels three or more thumbnails agree on
+    def empties(i):
+        # empty star slots (grey, neutral) past the last gold star
+        r = rar[i]
+        past = band & (xx > STAR_X0 + STAR_DX * (r - 1) + STAR_DX / 2) & (yy >= 102) & (yy <= 114)
+        D = X[i]
+        mx, mn = D[..., :3].max(-1), D[..., :3].min(-1)
+        return ((mx > 25) & (mx < 110) & (mx - mn < 18))[past].mean() if past.any() else 0.0
+    clean = {i: empties(i) < 0.12 for i in roster}
+
+    def med(idx):
+        """(median, shared): the per-pixel median of a group and where it is shared art, i.e.
+        where at least 60% of the group equal the median (a face never is)."""
+        if not idx:
+            return None
+        m = np.median(X[idx], 0)
+        share = np.mean([same_as(X[i], m) for i in idx], 0)
+        return m, share >= 0.6
+    M = {
+        "rarity": {r: med([i for i in roster if rar[i] == r]) for r in (3, 4, 5, 6)},
+        "clean": {r: med([i for i in roster if rar[i] == r and clean[i]]) for r in (3, 4, 5, 6)},
+        "type": {t: med([i for i in roster if typ[i] == t]) for t in range(1, 6)},
+        "assist": med([i for i in roster if assist[i]]),
+    }
+    return {"names": names, "X": X, "roster": roster, "rar": rar, "typ": typ, "assist": assist,
+            "clean": clean, "M": M, "rarity_by_frame": {names[i]: r for i, r in rar.items()}}
+
+
+def pick_donor(kit, r, t, asst):
+    """The real thumbnail to take the frame from: same frame rarity, same badge, the same assist
+    mark, no empty star slots, in that order of preference (a regular portrait never takes an
+    assist-only donor: it would bring the mark). Returns (frame donor, badge donor, mark donor)."""
+    R, X = kit["roster"], kit["X"]
+    rar, typ, ast, clean, M = kit["rar"], kit["typ"], kit["assist"], kit["clean"], kit["M"]
+    ringm = (np.minimum(np.minimum(xx, 127 - xx), np.minimum(yy, 127 - yy)) < 12)
+
+    def best(c):
+        c = list(c)
+        if not c:
+            return None
+        ref = M["rarity"][r]
+        return min(c, key=lambda i: np.abs(X[i][ringm][:, :3] - ref[0][ringm][:, :3]).mean())
+    ok_mark = (lambda i: ast[i] == asst) if not asst else (lambda i: True)
+    frame = (best(i for i in R if rar[i] == r and typ[i] == t and ast[i] == asst and clean[i])
+             or best(i for i in R if rar[i] == r and typ[i] == t and ok_mark(i) and clean[i])
+             or best(i for i in R if rar[i] == r and ok_mark(i) and clean[i] and not ast[i])
+             or best(i for i in R if rar[i] == r and not ast[i]))
+    badge = frame if typ[frame] == t else (
+        best(i for i in R if rar[i] == r and typ[i] == t) or best(i for i in R if typ[i] == t))
+    mark = None
+    if asst and not ast[frame]:
+        mark = best(i for i in R if ast[i] and rar[i] == r) or best(i for i in R if ast[i])
+    return frame, badge, mark
+
+
+def keep_mask(kit, D, r, t, with_mark):
+    """The donor's pixels that are the shared art (frame, gold stars, badge, mark): those equal,
+    within the compression tolerance, to the median of a group that shares that art."""
+    M = kit["M"]
+
+    def ok(g, zone=True):
+        if g is None:
+            return np.zeros((128, 128), bool)
+        m, shared = g
+        return zone & shared & same_as(D, m)
+    k = ok(M["rarity"][r]) | ok(M["clean"][r])
+    k |= ok(M["type"][t], (xx > 80) & (yy > 80))
+    if with_mark:
+        k |= ok(M["assist"], (xx > 86) & (yy > 56) & (yy < 100))
+    # outside the thumbnail's outline: transparent where the group is
+    return k
+
+
+def compose(kit, face, bg, r, t, asst):
+    """A real thumbnail with everything inside its frame cut away, down to the frame's inner edge;
+    the background and the face go in the opening. Frame, stars, badge and mark are the donor's
+    own pixels, unchanged."""
+    X = kit["X"]
+    fd, bd, md = pick_donor(kit, r, t, asst)
+    D = X[fd].copy()
+    keep = keep_mask(kit, D, r, t, asst and kit["assist"][fd])
+    corner = (xx > 80) & (yy > 80)
+    if bd != fd:
+        # another attribute's badge: take this badge from a thumbnail that has it
+        Bd = X[bd]
+        tm, tsh = kit["M"]["type"][t]
+        bk = corner & tsh & same_as(Bd, tm)                  # the badge as its attribute has it
+        om, osh = kit["M"]["type"][kit["typ"][fd]]
+        keep &= ~(corner & osh & same_as(D, om))             # the donor's own badge goes
+        D[bk] = Bd[bk]
+        keep |= bk
+    if md is not None:
+        Md = X[md]
+        am, ash = kit["M"]["assist"]
+        rm, rsh = kit["M"]["rarity"][kit["rar"][md]]
+        mk = (xx > 86) & (yy > 56) & (yy < 100) & ash & same_as(Md, am) & ~(rsh & same_as(Md, rm))
+        D[mk] = Md[mk]
+        keep |= mk
+    keep = fill_small_holes(keep)
+    # the opening: what is not shared art, connected to the middle (gaps in the frame sealed for
+    # the fill, then grown back to its own edge)
+    win = flood(~dil(keep, 5), (64, 50))
+    win = dil(win, 5) & ~keep
+    win = fill_small_holes(win, 20)      # stray donor pixels left inside the opening go too
+    img = np.zeros((128, 128, 4))
+    inside = Image.fromarray(np.dstack([bg, np.full((128, 128), 255)]).astype(np.uint8))
+    inside.alpha_composite(face)
+    ins = np.asarray(inside, float)
+    img[win] = ins[win]
+    img[~win] = D[~win]
+    return Image.fromarray(img.clip(0, 255).astype(np.uint8)), (kit["names"][fd], kit["names"][bd],
+                                                                kit["names"][md] if md is not None else "")
+
+
+def make_backgrounds(kit):
+    """Background per attribute: a colour field fitted to the pixels three or more thumbnails agree
+    on, with the diamond lattice drawn over it."""
+    X, R, typ = kit["X"], kit["roster"], kit["typ"]
     Dl = lattice_dist()
     inner = (xx > 17) & (xx < 111) & (yy > 17) & (yy < 96)
     bgs = {}
     for t in range(1, 6):
-        G = X[group(lambda n, t=t: stype[n] == t)][..., :3]
+        G = X[[i for i in R if typ[i] == t]][..., :3]
         q = (G // 10).astype(int)
         key = q[..., 0] * 10000 + q[..., 1] * 100 + q[..., 2]
         bg, cnt = np.zeros((128, 128, 3)), np.zeros((128, 128))
@@ -254,27 +312,7 @@ def build_kit(names, X, statues):
         base = np.stack([basis(xx, yy) @ f for f in fields], -1)
         bgs[t] = (base * (1 - 0.30 * np.exp(-(Dl / 0.75) ** 2))[..., None]
                   + 10 * np.exp(-((Dl - 1.4) / 0.5) ** 2)[..., None]).clip(0, 255)
-    kit.update(layers=layers, badges=badges, amark=amark, bgs=bgs)
-    return kit
-
-
-def compose(kit, face, r, t, asst):
-    L = kit["layers"][r]
-    img = Image.fromarray(np.dstack([kit["bgs"][t], np.full((128, 128), 255)]).astype(np.uint8))
-    img.alpha_composite(face)
-
-    def put(a):
-        img.alpha_composite(Image.fromarray(a.clip(0, 255).astype(np.uint8)))
-    put(L["frame"])              # frame, bottom bar and gold stars
-    put(kit["badges"][t])
-    if asst:
-        put(kit["amark"])
-    shape = L["alpha"] | (kit["badges"][t][..., 3] > 0)
-    if asst:
-        shape |= kit["amark"][..., 3] > 0        # the mark reaches past the frame's outline
-    out = np.asarray(img).copy()
-    out[..., 3] = np.where(shape, out[..., 3], 0)
-    return Image.fromarray(out)
+    return bgs
 
 
 # ---------- faces
@@ -342,6 +380,7 @@ def main():
         targets = [d for d in statues if d["statueId"] in only]
     os.makedirs(os.path.join(a.out, "work"), exist_ok=True)
     kit = build_kit(names, X, statues)
+    bgs = make_backgrounds(kit)
     bundles = posing.Bundles(a.dec)
     jobs, rows = [], []
     for d in targets:
@@ -378,8 +417,10 @@ def main():
             report.append(f"{sid}\tEMPTY\t{note}")
             print(sid, "empty render", note, file=sys.stderr)
             continue
-        compose(kit, face, r, t, asst).save(os.path.join(a.out, f"st_{sid}.png"))
-        report.append(f"{sid}\trarity {r}\ttype {t}\t{'assist' if asst else ''}\t{note}")
+        img, donors = compose(kit, face, bgs[t], r, t, asst)
+        img.save(os.path.join(a.out, f"st_{sid}.png"))
+        report.append(f"{sid}\trarity {r}\ttype {t}\t{'assist' if asst else ''}\tframe/badge/mark from "
+                      f"{'/'.join(donors)}\t{note}")
     open(os.path.join(a.out, "report.tsv"), "w").write("\n".join(report) + "\n")
     # the art pack: jdr-patch ... --art portraits.zip adds them to ui_statue_01 on the phone
     import zipfile
