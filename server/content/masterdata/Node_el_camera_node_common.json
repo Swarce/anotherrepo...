@@ -1,6 +1,6 @@
 {
  "asset": "Node_el_camera_node_common",
- "about": "Camera nodes (tools/content/build_camera_sets.py, docs/research/31-battle-camera.md): the shots of the original battle footage, framed on the acting unit's bones (CharacterBoneList.Bone WAIST 1, SPINE2 4, NECK 5, HEAD 6), all on the side the turn camera watches: side-on two-shot, three-quarters behind, closer side, slightly low, high wide, straight behind (each a start node and a <id>_to_b node: the client adds every later step's node to the first, so later nodes are deltas); the win, boss-intro and finish shots; ski_cam_00 (the client's test node) and jdr_side (the old world-fixed side view). Values are ours.",
+ "about": "Camera nodes (tools/content/build_camera_sets.py, docs/research/31-battle-camera.md): the shots of the original battle footage, framed on the acting unit's bones (CharacterBoneList.Bone WAIST 1, SPINE2 4, NECK 5, HEAD 6), measured on every tactical action of the original footage: glides for normal attacks, cuts for skills and SPs (jdr_<shot>_0 is a pose, jdr_<shot>_<k> the delta to its next step: the client adds every later step's node to the first); the win, boss-intro and finish shots; ski_cam_00 (the client's test node) and jdr_side (the old world-fixed side view). Values are ours.",
  "sources": [
   {
    "source": "jdr-research",
@@ -20,38 +20,38 @@
  "data": {
   "listData": [
    {
-    "id": "jdr_two_a",
     "baseBoneID": 4,
     "lookatBoneID": 4,
     "rotate": {
-     "x": 2.0,
-     "y": 45.0,
+     "x": 3.0,
+     "y": 82.0,
      "z": 0.0
     },
-    "perspective": 36.0,
+    "perspective": 32.0,
     "length": 5.0,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
-     "z": 0.0
+     "z": 1.1
     },
     "lookatOffset": {
      "x": 0.0,
      "y": -0.1,
      "z": 1.1
-    }
+    },
+    "id": "jdr_NA_PUSH_0"
    },
    {
-    "id": "jdr_two_a_to_b",
+    "id": "jdr_NA_PUSH_1",
     "baseBoneID": 4,
     "lookatBoneID": 4,
     "rotate": {
      "x": 0.0,
-     "y": -1.0,
+     "y": 0.0,
      "z": 0.0
     },
     "perspective": 0.0,
-    "length": -0.4,
+    "length": 0.0,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
@@ -64,16 +64,191 @@
     }
    },
    {
-    "id": "jdr_twow_a",
+    "id": "jdr_NA_PUSH_2",
     "baseBoneID": 4,
     "lookatBoneID": 4,
     "rotate": {
      "x": 0.0,
-     "y": 60.0,
+     "y": 0.0,
      "z": 0.0
     },
-    "perspective": 36.0,
-    "length": 6.2,
+    "perspective": 0.0,
+    "length": 0.3,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 5.0,
+     "y": 82.0,
+     "z": 0.0
+    },
+    "perspective": 32.0,
+    "length": 4.6,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 1.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.1,
+     "z": 1.0
+    },
+    "id": "jdr_ST3_PUSH_0"
+   },
+   {
+    "id": "jdr_ST3_PUSH_1",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 0.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_ST3_PUSH_2",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 0.3,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.1
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.1
+    }
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 8.0,
+     "y": 85.0,
+     "z": 0.0
+    },
+    "perspective": 32.0,
+    "length": 4.4,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.9
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.1,
+     "z": 0.9
+    },
+    "id": "jdr_FOLLOW_0"
+   },
+   {
+    "id": "jdr_FOLLOW_1",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 0.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_FOLLOW_2",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 0.3,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.05
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.05
+    }
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -5.0,
+     "y": 75.0,
+     "z": 0.0
+    },
+    "perspective": 30.0,
+    "length": 6.5,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 1.8
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.2,
+     "z": 1.8
+    },
+    "id": "jdr_DEFAULT_HOLD_0"
+   },
+   {
+    "baseBoneID": 5,
+    "lookatBoneID": 5,
+    "rotate": {
+     "x": 20.0,
+     "y": 30.0,
+     "z": 0.0
+    },
+    "perspective": 35.0,
+    "length": 1.3,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
@@ -82,20 +257,21 @@
     "lookatOffset": {
      "x": 0.0,
      "y": -0.1,
-     "z": 1.0
-    }
+     "z": 0.0
+    },
+    "id": "jdr_CLOSE_FRONT_LOW_0"
    },
    {
-    "id": "jdr_twow_a_to_b",
-    "baseBoneID": 4,
-    "lookatBoneID": 4,
+    "id": "jdr_CLOSE_FRONT_LOW_1",
+    "baseBoneID": 5,
+    "lookatBoneID": 5,
     "rotate": {
      "x": 0.0,
-     "y": -1.0,
+     "y": 0.0,
      "z": 0.0
     },
     "perspective": 0.0,
-    "length": -0.5,
+    "length": 0.0,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
@@ -108,38 +284,60 @@
     }
    },
    {
-    "id": "jdr_ots_a",
+    "id": "jdr_CLOSE_FRONT_LOW_2",
     "baseBoneID": 4,
     "lookatBoneID": 4,
     "rotate": {
      "x": -2.0,
-     "y": 150.0,
+     "y": 5.0,
      "z": 0.0
     },
-    "perspective": 36.0,
-    "length": 3.8,
+    "perspective": 10.0,
+    "length": 0.7,
     "baseOffset": {
-     "x": 0.3,
+     "x": 0.0,
      "y": 0.0,
      "z": 0.0
     },
     "lookatOffset": {
      "x": 0.0,
-     "y": -0.2,
-     "z": 2.0
+     "y": 0.3,
+     "z": 0.0
     }
    },
    {
-    "id": "jdr_ots_a_to_b",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 18.0,
+     "y": 35.0,
+     "z": 0.0
+    },
+    "perspective": 45.0,
+    "length": 2.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.2,
+     "z": 0.0
+    },
+    "id": "jdr_LOW_FRONT_WIDE_0"
+   },
+   {
+    "id": "jdr_LOW_FRONT_WIDE_1",
     "baseBoneID": 4,
     "lookatBoneID": 4,
     "rotate": {
      "x": 0.0,
-     "y": 2.0,
+     "y": 0.0,
      "z": 0.0
     },
     "perspective": 0.0,
-    "length": -0.3,
+    "length": 0.0,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
@@ -152,104 +350,16 @@
     }
    },
    {
-    "id": "jdr_flow_a",
-    "baseBoneID": 4,
-    "lookatBoneID": 5,
-    "rotate": {
-     "x": 12.0,
-     "y": 40.0,
-     "z": 0.0
-    },
-    "perspective": 36.0,
-    "length": 2.4,
-    "baseOffset": {
-     "x": 0.0,
-     "y": 0.0,
-     "z": 0.0
-    },
-    "lookatOffset": {
-     "x": 0.0,
-     "y": 0.0,
-     "z": 0.0
-    }
-   },
-   {
-    "id": "jdr_flow_a_to_b",
-    "baseBoneID": 4,
-    "lookatBoneID": 5,
-    "rotate": {
-     "x": 0.0,
-     "y": 4.0,
-     "z": 0.0
-    },
-    "perspective": 0.0,
-    "length": -0.25,
-    "baseOffset": {
-     "x": 0.0,
-     "y": 0.0,
-     "z": 0.0
-    },
-    "lookatOffset": {
-     "x": 0.0,
-     "y": 0.0,
-     "z": 0.0
-    }
-   },
-   {
-    "id": "jdr_rev_a",
+    "id": "jdr_LOW_FRONT_WIDE_2",
     "baseBoneID": 4,
     "lookatBoneID": 4,
     "rotate": {
-     "x": 3.0,
-     "y": 20.0,
+     "x": -18.0,
+     "y": -20.0,
      "z": 0.0
     },
-    "perspective": 36.0,
-    "length": 4.6,
-    "baseOffset": {
-     "x": 0.0,
-     "y": 0.0,
-     "z": 0.0
-    },
-    "lookatOffset": {
-     "x": 0.0,
-     "y": 0.0,
-     "z": 0.6
-    }
-   },
-   {
-    "id": "jdr_rev_a_to_b",
-    "baseBoneID": 4,
-    "lookatBoneID": 4,
-    "rotate": {
-     "x": 0.0,
-     "y": 2.0,
-     "z": 0.0
-    },
-    "perspective": 0.0,
-    "length": -0.4,
-    "baseOffset": {
-     "x": 0.0,
-     "y": 0.0,
-     "z": 0.0
-    },
-    "lookatOffset": {
-     "x": 0.0,
-     "y": 0.0,
-     "z": 0.0
-    }
-   },
-   {
-    "id": "jdr_wide_a",
-    "baseBoneID": 1,
-    "lookatBoneID": 1,
-    "rotate": {
-     "x": -50.0,
-     "y": 115.0,
-     "z": 0.0
-    },
-    "perspective": 36.0,
-    "length": 7.2,
+    "perspective": -15.0,
+    "length": 4.0,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
@@ -258,20 +368,42 @@
     "lookatOffset": {
      "x": 0.0,
      "y": -0.3,
-     "z": 1.5
+     "z": 0.5
     }
    },
    {
-    "id": "jdr_wide_a_to_b",
-    "baseBoneID": 1,
-    "lookatBoneID": 1,
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 5.0,
+     "y": 160.0,
+     "z": 0.0
+    },
+    "perspective": 32.0,
+    "length": 2.5,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 3.0
+    },
+    "id": "jdr_BEHIND_ACTOR_LOW_0"
+   },
+   {
+    "id": "jdr_BEHIND_ACTOR_LOW_1",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
     "rotate": {
      "x": 0.0,
-     "y": -2.0,
+     "y": 0.0,
      "z": 0.0
     },
     "perspective": 0.0,
-    "length": -0.6,
+    "length": -0.17,
     "baseOffset": {
      "x": 0.0,
      "y": 0.0,
@@ -284,7 +416,688 @@
     }
    },
    {
-    "id": "jdr_behind_a",
+    "id": "jdr_BEHIND_ACTOR_LOW_2",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 0.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_BEHIND_ACTOR_LOW_3",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -5.0,
+     "y": -145.0,
+     "z": 0.0
+    },
+    "perspective": -2.0,
+    "length": 3.67,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.1,
+     "z": -2.5
+    }
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 15.0,
+     "z": 0.0
+    },
+    "perspective": 30.0,
+    "length": 6.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.1,
+     "z": 0.5
+    },
+    "id": "jdr_REVERSE_0"
+   },
+   {
+    "id": "jdr_REVERSE_1",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 0.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_REVERSE_2",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 6.0,
+     "y": 73.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": -3.4,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 1.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.5
+    }
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 6.0,
+     "y": 88.0,
+     "z": 0.0
+    },
+    "perspective": 30.0,
+    "length": 2.6,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 1.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.1,
+     "z": 1.0
+    },
+    "id": "jdr_SIDE_CLOSE_0"
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -6.0,
+     "y": 88.0,
+     "z": 0.0
+    },
+    "perspective": 30.0,
+    "length": 7.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 2.2
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.2,
+     "z": 2.2
+    },
+    "id": "jdr_NEAR_DEFAULT_WIDE_0"
+   },
+   {
+    "id": "jdr_NEAR_DEFAULT_WIDE_1",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 0.35,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -40.0,
+     "y": 30.0,
+     "z": 0.0
+    },
+    "perspective": 35.0,
+    "length": 5.5,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 2.5
+    },
+    "id": "jdr_HIGH_3Q_0"
+   },
+   {
+    "baseBoneID": 1,
+    "lookatBoneID": 1,
+    "rotate": {
+     "x": -65.0,
+     "y": 90.0,
+     "z": 0.0
+    },
+    "perspective": 35.0,
+    "length": 8.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 2.5
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 2.5
+    },
+    "id": "jdr_TOPDOWN_0"
+   },
+   {
+    "id": "jdr_TOPDOWN_1",
+    "baseBoneID": 1,
+    "lookatBoneID": 1,
+    "rotate": {
+     "x": 5.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 2.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -45.0,
+     "y": 150.0,
+     "z": 0.0
+    },
+    "perspective": 35.0,
+    "length": 8.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 3.0
+    },
+    "id": "jdr_HIGH_BEHIND_PARTY_0"
+   },
+   {
+    "id": "jdr_HIGH_BEHIND_PARTY_1",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 2.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -40.0,
+     "y": 160.0,
+     "z": 0.0
+    },
+    "perspective": 35.0,
+    "length": 6.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 3.0
+    },
+    "id": "jdr_HIGH_BEHIND_DRIFT_0"
+   },
+   {
+    "id": "jdr_HIGH_BEHIND_DRIFT_1",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 0.8,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 85.0,
+     "z": 0.0
+    },
+    "perspective": 30.0,
+    "length": 4.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.8
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.1,
+     "z": 0.8
+    },
+    "id": "jdr_STAND_PUSH_0"
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 1.0,
+     "y": 90.0,
+     "z": 0.0
+    },
+    "perspective": 30.0,
+    "length": 3.5,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.8
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.1,
+     "z": 0.8
+    },
+    "id": "jdr_STAND_PUSH_CLOSE_0"
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 4.0,
+     "y": 88.0,
+     "z": 0.0
+    },
+    "perspective": 30.0,
+    "length": 3.6,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 1.5
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.1,
+     "z": 1.5
+    },
+    "id": "jdr_SIDE_GLIDE_0"
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 17.0,
+     "y": 30.0,
+     "z": 0.0
+    },
+    "perspective": 34.0,
+    "length": 2.2,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.3
+    },
+    "id": "jdr_TWO_SHOT_FRONT_LOW_0"
+   },
+   {
+    "baseBoneID": 5,
+    "lookatBoneID": 5,
+    "rotate": {
+     "x": 10.0,
+     "y": 20.0,
+     "z": 0.0
+    },
+    "perspective": 35.0,
+    "length": 1.8,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": -0.1,
+     "z": 0.0
+    },
+    "id": "jdr_CHEST_UP_0"
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 15.0,
+     "y": 40.0,
+     "z": 0.0
+    },
+    "perspective": 45.0,
+    "length": 1.4,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.2,
+     "z": 0.0
+    },
+    "id": "jdr_LOW_FRONT_STAND_0"
+   },
+   {
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 15.0,
+     "y": 90.0,
+     "z": 0.0
+    },
+    "perspective": 38.0,
+    "length": 1.5,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.8
+    },
+    "id": "jdr_RUSH_CUTS_0"
+   },
+   {
+    "id": "jdr_RUSH_CUTS_1",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 0.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_RUSH_CUTS_2",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 5.0,
+     "y": -30.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": -0.1,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_RUSH_CUTS_3",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 0.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_RUSH_CUTS_4",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -10.0,
+     "y": 60.0,
+     "z": 10.0
+    },
+    "perspective": 0.0,
+    "length": 0.2,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_RUSH_CUTS_5",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 0.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_RUSH_CUTS_6",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 15.0,
+     "y": -30.0,
+     "z": -10.0
+    },
+    "perspective": 0.0,
+    "length": -0.4,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_RUSH_CUTS_7",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 0.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_RUSH_CUTS_8",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -20.0,
+     "y": -15.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 1.8,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
+    "id": "jdr_RUSH_CUTS_9",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 0.0,
+    "length": 0.0,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
     "baseBoneID": 4,
     "lookatBoneID": 4,
     "rotate": {
@@ -303,10 +1116,11 @@
      "x": 0.0,
      "y": -0.2,
      "z": 1.6
-    }
+    },
+    "id": "jdr_behind_0"
    },
    {
-    "id": "jdr_behind_a_to_b",
+    "id": "jdr_behind_1",
     "baseBoneID": 4,
     "lookatBoneID": 4,
     "rotate": {
