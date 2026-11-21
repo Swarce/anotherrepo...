@@ -1,14 +1,17 @@
 [package]
 name = "jdr-embedded"
-description = "Embedded host: libjdrserver.so started inside the game process (M2)"
+description = "Embedded host: libjdr.so, loaded into the game process (DT_NEEDED of libmain.so) and started from a constructor"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 publish.workspace = true
+
 [lib]
+name = "jdr"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 jdr-core = { path = "../../server/core" }
 jdr-services = { path = "../../server/services" }
+serde_json.workspace = true

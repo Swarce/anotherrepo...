@@ -1,0 +1,85 @@
+{
+ "asset": "Node_el_camera_node_common",
+ "about": "Camera nodes: ski_cam_00 (the client's own test node), jdr_side (world-fixed side view of the acting unit, 9 m away, slightly above) and jdr_result (three-quarter front shot of the winner, 4 m away, bound to the unit).",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/12-master-data-fill.md \u00a75",
+   "note": "node layout; ski_cam_00 values from the client's ScriptCameraTestData"
+  },
+  {
+   "source": "jdr-default",
+   "note": "jdr_side and jdr_result values are ours"
+  }
+ ],
+ "data": {
+  "listData": [
+   {
+    "id": "ski_cam_00",
+    "baseBoneID": 0,
+    "lookatBoneID": 0,
+    "rotate": {
+     "x": -20.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "perspective": 25.0,
+    "length": 13.0,
+    "baseOffset": {
+     "x": 0,
+     "y": 0,
+     "z": 0
+    },
+    "lookatOffset": {
+     "x": 0,
+     "y": 0.6,
+     "z": 0
+    }
+   },
+   {
+    "id": "jdr_side",
+    "baseBoneID": 0,
+    "lookatBoneID": 0,
+    "rotate": {
+     "x": -8.0,
+     "y": 180.0,
+     "z": 0.0
+    },
+    "perspective": 30.0,
+    "length": 9.0,
+    "baseOffset": {
+     "x": 0,
+     "y": 1.0,
+     "z": 0
+    },
+    "lookatOffset": {
+     "x": 0,
+     "y": 1.0,
+     "z": 0
+    }
+   },
+   {
+    "id": "jdr_result",
+    "baseBoneID": 0,
+    "lookatBoneID": 0,
+    "rotate": {
+     "x": -5.0,
+     "y": 25.0,
+     "z": 0.0
+    },
+    "perspective": 30.0,
+    "length": 4.0,
+    "baseOffset": {
+     "x": 0,
+     "y": 1.1,
+     "z": 0
+    },
+    "lookatOffset": {
+     "x": 0,
+     "y": 1.1,
+     "z": 0
+    }
+   }
+  ]
+ }
+}

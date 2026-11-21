@@ -1,0 +1,63 @@
+{
+ "asset": "team_rank_table",
+ "about": "Team rank letters E..SSS+ shown on the formation screen. The client computes score = hp/1000 + atk/2000 + def/2000 + ora + 0.003 x mind capacity over the team and shows the highest rank whose passingScore <= score. The original cut-offs are unknown; ours are spaced so a level-1 3-star team reads E and a fully trained 6-star team SSS+.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/12-master-data-fill.md §3",
+   "note": "the score formula"
+  },
+  {
+   "source": "jdr-default",
+   "note": "passingScore thresholds"
+  }
+ ],
+ "data": {
+  "paramList": [
+   {
+    "rank": 0,
+    "passingScore": 0
+   },
+   {
+    "rank": 1,
+    "passingScore": 10
+   },
+   {
+    "rank": 2,
+    "passingScore": 20
+   },
+   {
+    "rank": 3,
+    "passingScore": 30
+   },
+   {
+    "rank": 4,
+    "passingScore": 45
+   },
+   {
+    "rank": 5,
+    "passingScore": 60
+   },
+   {
+    "rank": 6,
+    "passingScore": 80
+   },
+   {
+    "rank": 7,
+    "passingScore": 100
+   },
+   {
+    "rank": 8,
+    "passingScore": 125
+   },
+   {
+    "rank": 9,
+    "passingScore": 150
+   },
+   {
+    "rank": 10,
+    "passingScore": 185
+   }
+  ]
+ }
+}

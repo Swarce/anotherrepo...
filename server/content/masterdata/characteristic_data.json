@@ -1,0 +1,97 @@
+{
+ "asset": "characteristic_data",
+ "about": "Mind characteristics: id 1..6 in CHARACTERISTIC_NAME_n order; strongId/weakId per the client's own CHARACTERISTIC_*_TEXT / *_WEAK_TEXT labels. levelList is read by position (level-1), clamped to SystemConfig.characteristicLevelUpperLimit (10); affect is the damage bonus in percent against strongId. ids must be unique: Init uses Dictionary.Add without a ContainsKey guard.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/12-master-data-fill.md §1",
+   "note": "id order and strong/weak pairs from the CharacteristicText label keys"
+  },
+  {
+   "source": "shoutwiki",
+   "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Guido_Mista_%28Courage%29",
+   "accessed": "2026-11-14",
+   "note": "characteristic Lv1 = +10% (also the Prosciutto (Unity) page)"
+  },
+  {
+   "source": "jdr-default",
+   "note": "Lv2..10 = +11..+19% chosen by us"
+  }
+ ],
+ "data": {
+  "paramList": [
+   {
+    "id": 1,
+    "strongId": 5,
+    "weakId": 3
+   },
+   {
+    "id": 2,
+    "strongId": 6,
+    "weakId": 4
+   },
+   {
+    "id": 3,
+    "strongId": 1,
+    "weakId": 5
+   },
+   {
+    "id": 4,
+    "strongId": 2,
+    "weakId": 6
+   },
+   {
+    "id": 5,
+    "strongId": 3,
+    "weakId": 1
+   },
+   {
+    "id": 6,
+    "strongId": 4,
+    "weakId": 2
+   }
+  ],
+  "levelList": [
+   {
+    "level": 1,
+    "affect": 10
+   },
+   {
+    "level": 2,
+    "affect": 11
+   },
+   {
+    "level": 3,
+    "affect": 12
+   },
+   {
+    "level": 4,
+    "affect": 13
+   },
+   {
+    "level": 5,
+    "affect": 14
+   },
+   {
+    "level": 6,
+    "affect": 15
+   },
+   {
+    "level": 7,
+    "affect": 16
+   },
+   {
+    "level": 8,
+    "affect": 17
+   },
+   {
+    "level": 9,
+    "affect": 18
+   },
+   {
+    "level": 10,
+    "affect": 19
+   }
+  ]
+ }
+}

@@ -8,7 +8,7 @@
 | API server `jdr.channel.or.jp` (encrypted form posts, ~171 endpoints) | **dead** → our server |
 | Asset CDN (S3, URLs handed out by `/client/getfiledata`) | **dead** → our server serves the player's own downloaded files |
 | `versionfile` bundle (server's asset manifest, fetched into memory each boot) | **dead, never stored** → we build it |
-| `in_memory_master_data` bundle (18 master tables, fetched into memory each boot) | **dead, never stored** → we rebuild it (M1.5) |
+| `in_memory_master_data` bundle (master tables, fetched into memory each boot) | **dead, never stored** → we build it from our own schema + content (Build 06; research 09) |
 | Asset/sound keys (`/client/getkey`) | **dead, never stored** → recovered from the player's files / public sound-key list |
 | Clan room (realtime socket) | dead → hidden |
 | Firebase, Play Games, AdMob, Adjust, GrowthPush, SmartBeat, Prime31 IAP | IAP stays uninitialised (empty product key); the others are expected to fail harmlessly (to be confirmed on a device); removal in M6 (debloat) |
@@ -22,7 +22,7 @@
  │   → local/keys.json          │         │  libil2cpp (unchanged code)            │
  │ jdr-patch     ← your APK     │ ──────► │  metadata: server URL → 127.0.0.1:18080│
  │   → deliver/*.apk + report   │  adb    │  manifest: usesCleartextTraffic        │
- │ jdr-server (dev loop) ◄──────┼─reverse─┤  (M2: libjdrserver.so in-process)      │
+ │ jdr-server (dev loop) ◄──────┼─reverse─┤  or: libjdr.so in-process (embed-server)│
  └──────────────────────────────┘         └────────────────────────────────────────┘
 ```
 
@@ -30,7 +30,14 @@
 - `server/core` — HTTP/1.1 server (std only), envelope codec, logger, clock (JST), storage.
 - `server/services` — dispatch + one module per service; `app.rs` routes `/common/get_version`
   (bare host), `/api/*` (envelope), `/cdn/*` (asset files), `/web/*` (WebView pages).
-- `hosts/standalone` — `jdr-server` for the dev loop. `hosts/embedded` — M2.
+- `hosts/standalone` — `jdr-server` for the dev loop.
+- `hosts/embedded` — `libjdr.so` (aarch64, 16 KiB pages). The `embed-server` patch renames
+  `libmain.so`'s `liblog.so` dependency to `libjdr.so` (same length, in place); `libjdr.so` itself
+  depends on `liblog.so`, so libmain's imports still resolve. Its constructor only spawns a thread
+  that reads the keys from `assets/jdr/keys.json` in the app's own APK (stored by the patcher),
+  binds 127.0.0.1:18080 and serves. State: `/data/user/<n>/<pkg>/jdr/`; logs copied to
+  `/sdcard/Android/data/<pkg>/jdr/logs/` and mirrored to logcat (tag `JDR`); extra CDN files from
+  `/sdcard/Android/data/<pkg>/jdr/cdn/` (never the game's own `files/` folder).
 - `patcher` — `jdr-patch`: fingerprinted patches, zip rewrite, zipalign, apksigner, report.
 - `tools/jdr-tool` — keys, decoded name listing, decryption of the player's files.
 
