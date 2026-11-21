@@ -1728,13 +1728,14 @@ pub fn rank_for_exp(exp: i64) -> i64 {
         .unwrap_or(1)
 }
 
-/// AP (stamina) maximum at a rank (20 if unknown, the wiki's rank-1 value).
+/// AP (stamina) maximum at a rank: the table's, else rank + 19, which every value seen in the
+/// original's footage follows (rank 37: 56, rank 100: 119, rank 109: 128; docs/research/32).
 pub fn ap_max(rank: i64) -> i64 {
     ranks()
         .iter()
         .find(|r| r.rank == rank)
         .map(|r| r.ap_max)
-        .unwrap_or(20)
+        .unwrap_or(rank.max(1) + 19)
 }
 
 /// Total EXP needed for the next rank. At the top rank there is none: one past the top threshold,
@@ -1764,6 +1765,9 @@ mod rank_tests {
         assert_eq!(rank_for_exp(39), 1);
         assert_eq!(rank_for_exp(40), 2);
         assert_eq!(ap_max(1), 20);
+        // past the table: rank + 19, as in the original (rank 100: 119, rank 109: 128)
+        assert_eq!(ap_max(109), 128);
+        assert!(ranks().iter().all(|r| r.ap_max == r.rank + 19));
         assert_eq!(next_rank_exp(1), 40);
         let top = ranks().last().unwrap();
         assert!(

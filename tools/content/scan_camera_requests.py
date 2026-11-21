@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Inventory the camera requests in the statues' tactical action sets (dt_actionset_statue_<psid>):
-every DoChangeCamera / DoChangeCameraDelay action of their PlayMaker FSMs, with the action set
-(e.g. 1080_0_dire_002_ATTACK), the state, the camera type (0 normal, 1 script), the script camera
+every DoChangeCamera / DoChangeCameraDelay action of their PlayMaker FSMs, with the FSM's name, the
+template asset (e.g. 3000_1_stapla_016_SKILL_06: the action set, which names the skill), the state, the camera type (0 normal, 1 script), the script camera
 id, the delay and the flags. The script camera ids are rows of Set_el_camera_set_common
 (docs/research/31-battle-camera.md). Ids, names of action sets and states, numbers only.
 
@@ -68,11 +68,11 @@ with tempfile.TemporaryDirectory() as tmp:
                     a0 = starts[i]
                     a1 = starts[i + 1] if i + 1 < len(starts) else len(ad["paramName"])
                     p = {ad["paramName"][k]: decode(ad, k) for k in range(a0, a1)}
-                    rows.append([name.replace(a.prefix, ""), f.get("name", ""), st.get("name", ""), short,
+                    rows.append([name.replace(a.prefix, ""), f.get("name", ""), t.get("m_Name", ""), st.get("name", ""), short,
                                  p.get("cameraType"), p.get("scriptCameraId"), p.get("delaySec"),
                                  p.get("targetMainCharacter"), p.get("setBattleCameraDefaultPose")])
 with open(a.out, "w", encoding="utf-8") as out:
-    out.write("psid\tactionset\tstate\taction\tcameraType\tscriptCameraId\tdelaySec\ttargetMain\tdefaultPose\n")
+    out.write("psid\tactionset\ttemplate\tstate\taction\tcameraType\tscriptCameraId\tdelaySec\ttargetMain\tdefaultPose\n")
     for r in rows:
         out.write("\t".join("" if x is None else str(x) for x in r) + "\n")
 print(len(rows), "camera requests ->", a.out)

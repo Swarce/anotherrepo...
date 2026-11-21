@@ -967,8 +967,9 @@ mod tests {
                     "camera {id} length {length}"
                 );
                 assert!((20.0..=45.0).contains(&fov), "camera {id} fov {fov}");
-                // (the win shot looks up at the winner's face from about 30 degrees below)
-                assert!((-45.0..=32.0).contains(&pitch), "camera {id} pitch {pitch}");
+                // (the win shot looks up at the winner's face from about 30 degrees below; the high
+                // wide view of big moves looks 45-60 degrees down, docs/research/32 §1)
+                assert!((-60.0..=32.0).contains(&pitch), "camera {id} pitch {pitch}");
             }
         }
     }
