@@ -241,6 +241,27 @@ pub fn parse(b: &[u8]) -> Result<SFile, Error> {
 }
 
 impl SFile {
+    /// Order the object table by path id, as the engine writes it: it finds objects by binary
+    /// search, so an object added out of order cannot be found (and can hide others). The data
+    /// stays where it is.
+    pub fn sort_objects(&mut self) {
+        let mut idx: Vec<usize> = (0..self.objects.len()).collect();
+        idx.sort_by_key(|&i| self.objects[i].path_id);
+        let mut new_of = vec![0usize; idx.len()];
+        for (new, &old) in idx.iter().enumerate() {
+            new_of[old] = new;
+        }
+        let objects = std::mem::take(&mut self.objects);
+        let mut slots: Vec<Option<Object>> = objects.into_iter().map(Some).collect();
+        self.objects = idx
+            .iter()
+            .map(|&i| slots[i].take().expect("each once"))
+            .collect();
+        for l in self.layout.iter_mut() {
+            *l = new_of[*l];
+        }
+    }
+
     /// Serialize back (objects 8-aligned, data 16-aligned, as the engine does).
     pub fn write(&self) -> Vec<u8> {
         let entries: Vec<TypeEntry> = self.types.iter().map(|t| t.entry.clone()).collect();
