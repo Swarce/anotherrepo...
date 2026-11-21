@@ -89,7 +89,7 @@ def P(base, look, rot, length, fov=30.0, boff=(0, 0, 0), loff=(0, 0, 0)):
 # single-unit shot frames the unit and its target only when the look point sits about half way
 # between them: z ~ half the strike distance (melee 1.05-1.5 m, Stand users 2-2.5 m). Attacks
 # themselves no longer play these (forceNormalCamera 1: the client's Overview two-shot, research
-# 31 §9); the blue skills that request 111000 / 131000 / 131101 still do.
+# 31 §8); the blue skills that request 111000 / 131000 / 131101 still do.
 NA_A = P(SPINE2, SPINE2, (3, 82, 0), 5.0, 32, (0, 0, 1.1), (0, -0.1, 1.1))
 NA_B = P(SPINE2, SPINE2, (3, 82, 0), 5.3, 32, (0, 0, 1.1), (0, -0.1, 1.1))
 DEFAULT_REF = P(SPINE2, SPINE2, (-5, 75, 0), 6.5, 30, (0, 0, 1.8), (0, -0.2, 1.8))
