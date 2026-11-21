@@ -155,7 +155,7 @@ cut from a glide; a mapping stage aligned each action with the camera ids its ac
   sets: normal attacks 0.02 cuts (85 of 86 none), blue skills 3.2 (median 3), SPs 3.1 field cuts
   plus the client's cinematic wipes.
 
-## 6. Open (M)
+## 8. Open (M)
 
 - The SP cinematics depend on animator assets in the player's files and on the skill rows; whether
   ours trigger them is not checked yet.
