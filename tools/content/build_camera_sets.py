@@ -120,8 +120,12 @@ EXTRA_NODES = [
     # chest shot from well below (about 25-30 degrees up at the face), the winner right of centre
     # and turned towards screen left where WIN! sits; it starts closer and more turned and settles
     # over about 1 s, then holds
-    node("jdr_result", SPINE2, NECK, (30, 34, 0), 1.0, 34, (0, 0, 0), (0.2, 0.12, 0)),
-    node("jdr_result_b", SPINE2, NECK, (26, 27, 0), 1.15, 34, (0, 0, 0), (0.26, 0.1, 0)),
+    # The winner stands on the result pivot facing away from the frame the battle shots use: the
+    # owner's recording of Build 34 (0:48-0:52) showed this shot from behind. So the result nodes
+    # are those numbers turned 180 degrees about the winner (rotate.y + 180, offsets' x and z
+    # negated).
+    node("jdr_result", SPINE2, NECK, (30, 214, 0), 1.0, 34, (0, 0, 0), (-0.2, 0.12, 0)),
+    node("jdr_result_b", SPINE2, NECK, (26, 207, 0), 1.15, 34, (0, 0, 0), (-0.26, 0.1, 0)),
     # boss intro (id 201, not mirrored, always an enemy facing -X: a negative rotate.y is the
     # watched side): low on the legs, then a tilted low full-body shot (crane up)
     node("jdr_boss_a", WAIST, WAIST, (22, -24, 0), 2.0, 34, (0, 0, 0), (0, -0.4, 0)),
