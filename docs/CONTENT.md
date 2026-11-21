@@ -31,6 +31,10 @@ community wikis (each record cites its page) or are marked `jdr-default`.
 5. The server serves them: statue list/teams (`collection.rs`), story quests (`quests.rs`), and the
    generated master tables `statue_setting_table` (My Page background per statue) and
    `statue_level_table` (stats per level).
+6. Assist abilities (Build 24): `tools/content/build_assist_abilities.py` →
+   `server/content/assist_abilities.json` and the `DT_AST_*` rows of
+   `dtbattle_ability_data_table`; the server generates `assist_ability_condition_table` from it
+   (docs/research/19-assists.md §5).
 
 ## Offline rules (preservation sandbox)
 

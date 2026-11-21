@@ -169,9 +169,8 @@ fn ring_goods() -> Vec<(i64, i64, i64)> {
 }
 
 fn item_set(item: i64, count: i64) -> Value {
-    let typ = items::find(item).map(|d| d.item_type).unwrap_or(0);
     json!({ "itemSetIcon": "", "itemSetNum": 1, "statueList": [], "mindList": [], "clanObjectList": [],
-            "itemList": [{ "itemId": item, "name": format!("ITEM_{item:04}_NAME"), "count": count, "type": typ }] })
+            "itemList": [items::reward_item(item, count)] })
 }
 
 fn shops() -> Value {

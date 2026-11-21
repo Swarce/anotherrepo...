@@ -998,7 +998,18 @@ mod tests {
             list[0]["statueId"].as_str().is_some_and(|s| !s.is_empty()),
             "a whole StatueInfo"
         );
-        assert_eq!(list[0]["assistAbilityList"], list[0]["dtAssistAbilityList"]);
+        // Both ability lists carry the same ids in the same order (the client's index trap).
+        let ids = |k: &str| -> Vec<Value> {
+            list[0][k]
+                .as_array()
+                .unwrap()
+                .iter()
+                .map(|x| x["abilityId"].clone())
+                .collect()
+        };
+        assert!(!ids("dtAssistAbilityList").is_empty());
+        assert_eq!(ids("assistAbilityList"), ids("dtAssistAbilityList"));
+        assert!(list[0]["dtAssistSkillInfo"].is_object());
 
         // Move `a` to the left seat: it leaves the leader.
         let r = call(

@@ -1,0 +1,146 @@
+{
+ "asset": "affect_text_rule_table",
+ "about": "How the client merges the affects of one effect line (AffectTextUtil.CreateAffectText): affects with the same affectTextId are merged per parameter slot by the rule of their (prvs, baseAffect). A rule is the pvrsRuleList row of the condition, overridden by every non-Invalid slot of the baseAffectRuleList row of the BaseAffectType; a row needs 8 slots (GameConst.AffectParamCount). Invalid shows -1 (GameConst.InvalidAffectParam), Combine adds the values, Solo keeps one line per distinct value. One baseAffectRuleList row per BaseAffectType our affect_table uses: slot 0 (the amount) Combine, slot 1 Solo for the *_STYPE_* affects (it holds the StatueType). No condition rows: no slot of our affects depends on the condition.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/16-minds.md \u00a78",
+   "note": "field layout, lookup order, the 8-slot copy and the three RuleType values read in the client (AffectTextRuleTable.GetParametor 0xC8FC2C, AffectTextUtil.CreateAffectText 0xDABD54, CombineParam 0xDAD198)"
+  },
+  {
+   "source": "jdr-default",
+   "note": "the rows are ours: the shipped table is empty and no source has the original rules"
+  }
+ ],
+ "data": {
+  "pvrsRuleList": [],
+  "baseAffectRuleList": [
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_HP_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_ATK_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_DEF_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_CRT_DMG_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_VCT_CRT_DMG_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_DT_DMG_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_DT_VCT_DAM_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_DT_STYPE_DMG_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Solo",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_DT_STYPE_VCT_DAM_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Solo",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   }
+  ]
+ }
+}
