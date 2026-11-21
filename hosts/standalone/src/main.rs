@@ -9,7 +9,7 @@ use std::sync::atomic::Ordering;
 use std::sync::Arc;
 use std::time::Duration;
 
-const USAGE: &str = "usage: jdr-server --keys <keys.json> --files <copy of the game's files/ dir> [--data <state dir>] [--port N] [--trace] [--clock-offset SECS] [--tutorial skip|play]";
+const USAGE: &str = "usage: jdr-server --keys <keys.json> --files <copy of the game's files/ dir> [--data <state dir>] [--port N] [--trace] [--clock-offset SECS] [--tutorial skip|play] [--art <replacements dir>]";
 
 fn opt(a: &[String], n: &str) -> Option<String> {
     a.iter()
@@ -38,6 +38,7 @@ fn main() {
     s.ports = vec![port];
     let keys = opt(&a, "--keys").unwrap_or_else(|| die(USAGE));
     s.keys = Some(Settings::load_keys(&PathBuf::from(&keys)).unwrap_or_else(|e| die(&e)));
+    s.game_files_dir = opt(&a, "--files").map(PathBuf::from);
     s.files_dir = Some(PathBuf::from(opt(&a, "--files").unwrap_or_else(|| die("--files is required: a copy of the game's files/ folder (the CDN serves your files from it)"))));
     if let Some(off) = opt(&a, "--clock-offset") {
         jdr_core::clock::set_offset(off.parse().unwrap_or_else(|_| die("bad --clock-offset")));
@@ -77,6 +78,15 @@ fn main() {
             ))
         });
     let mut ctx = Ctx::new(s, a.iter().any(|x| x == "--trace"));
+    if let Some(d) = opt(&a, "--art") {
+        let pack =
+            jdr_services::art::ArtPack::from_dir(&PathBuf::from(&d)).unwrap_or_else(|e| die(&e));
+        log::line(
+            "art",
+            &format!("art pack loaded from {d}: {} image(s)", pack.len()),
+        );
+        ctx.art = Some(pack);
+    }
     ctx.skip_tutorial = match opt(&a, "--tutorial").as_deref() {
         None | Some("skip") => true,
         Some("play") => false,
@@ -89,7 +99,7 @@ fn main() {
             if ctx.skip_tutorial {
                 "skipped (all flags set)"
             } else {
-                "played"
+                "played — WARNING: the master tables have no tutorial scripts yet, so the first tutorial starts with nothing to run (dev only)"
             }
         ),
     );
@@ -99,6 +109,7 @@ fn main() {
         "boot",
         &format!("listening on http://127.0.0.1:{port} (adb reverse tcp:{port} tcp:{port})"),
     );
+    ctx.log_files_report();
     let c2 = ctx.clone();
     std::thread::spawn(move || loop {
         std::thread::sleep(Duration::from_secs(60));

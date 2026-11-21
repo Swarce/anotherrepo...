@@ -1,0 +1,331 @@
+{
+ "asset": "statue_affinity_table",
+ "about": "Type chart for the action battle (PvP/VS paths), [attacker][receiver] 6x6 with no bounds checks; damagePercent indexed 0 (not PvP), 1 (PvP), 2 (PvP AI arena), no bounds check, so 3 entries each.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/12-master-data-fill.md §1",
+   "note": "which side beats which: TipsText_003/004/005/072/073"
+  },
+  {
+   "source": "jdr-default",
+   "note": "percentages chosen by us"
+  }
+ ],
+ "data": {
+  "affinityMatrix": [
+   {
+    "paramList": [
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     }
+    ]
+   },
+   {
+    "paramList": [
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Lose",
+      "damagePercent": [
+       75,
+       75,
+       75
+      ]
+     },
+     {
+      "statueTypeAffinity": "Win",
+      "damagePercent": [
+       150,
+       150,
+       150
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     }
+    ]
+   },
+   {
+    "paramList": [
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Win",
+      "damagePercent": [
+       150,
+       150,
+       150
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Lose",
+      "damagePercent": [
+       75,
+       75,
+       75
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     }
+    ]
+   },
+   {
+    "paramList": [
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Lose",
+      "damagePercent": [
+       75,
+       75,
+       75
+      ]
+     },
+     {
+      "statueTypeAffinity": "Win",
+      "damagePercent": [
+       150,
+       150,
+       150
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     }
+    ]
+   },
+   {
+    "paramList": [
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Win",
+      "damagePercent": [
+       150,
+       150,
+       150
+      ]
+     }
+    ]
+   },
+   {
+    "paramList": [
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     },
+     {
+      "statueTypeAffinity": "Win",
+      "damagePercent": [
+       150,
+       150,
+       150
+      ]
+     },
+     {
+      "statueTypeAffinity": "Even",
+      "damagePercent": [
+       100,
+       100,
+       100
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

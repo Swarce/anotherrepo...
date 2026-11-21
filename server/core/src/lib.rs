@@ -12,4 +12,4 @@ pub mod settings;
 pub mod storage;
 
 /// Build number, shown in the log and on the settings page.
-pub const BUILD: u32 = 1;
+pub const BUILD: u32 = 18;

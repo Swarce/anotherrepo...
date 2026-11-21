@@ -21,8 +21,10 @@ pub struct Settings {
     pub ports: Vec<u16>,
     /// Server state: accounts, saves, logs.
     pub data_dir: PathBuf,
-    /// The player's copy of the game's downloaded files (served as the CDN).
+    /// Folder the CDN serves extra files from (never the game's own download folder on a device).
     pub files_dir: Option<PathBuf>,
+    /// The game's own downloaded files (`files/`), read-only: source for the generated manifest.
+    pub game_files_dir: Option<PathBuf>,
     pub keys: Option<Keys>,
 }
 
@@ -35,6 +37,7 @@ impl Settings {
             ports: vec![DEFAULT_PORT, FALLBACK_PORT],
             data_dir,
             files_dir: None,
+            game_files_dir: None,
             keys: None,
         }
     }
