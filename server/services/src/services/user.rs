@@ -184,6 +184,9 @@ pub fn update_comment(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let (p, ()) = with_profile(ctx, env, |p| match comment {
         Some(c) => {
             p.comment = c;
+            p.progress
+                .missions
+                .bump("profile", 1, jdr_core::clock::now());
             ((), Change::Progress)
         }
         None => ((), Change::None),

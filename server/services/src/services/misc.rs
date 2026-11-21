@@ -40,9 +40,14 @@ pub fn banner_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "bannerList": [] }))
 }
 
-pub fn get_menu_notify(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
+pub fn get_menu_notify(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    // The Missions badge: claimable missions.
+    let p = super::statue::profile(ctx, env)?;
+    let mut m = p.progress.missions.clone();
+    m.roll(jdr_core::clock::now());
     ok(json!({
-        "notAllowedFunction": [], "unopenedNotify": 0, "unopenedPresent": 0, "unopenedAchievement": 0,
+        "notAllowedFunction": [], "unopenedNotify": 0, "unopenedPresent": 0,
+        "unopenedAchievement": m.claimable(p.rank),
         "unopenedFollower": 0, "gashaPlayNum": 0, "myTownMember": 0, "unreadChatFlg": 0, "unapprovedMemberFlg": 0
     }))
 }
@@ -56,13 +61,7 @@ pub fn team_info(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .iter()
         .map(|t| crate::collection::team_info(&p.collection, t))
         .collect();
-    let seq: Vec<Value> = (1..=4)
-        .map(|s| json!({ "seq": s, "openFlg": 1, "goldenFlameFlg": 0, "onlySkillFlg": 0 }))
-        .collect();
-    ok(json!({
-        "teamList": teams,
-        "mindSeqInfo": { "seqInfoList": seq, "unlockInfo": { "openRank": 0, "openMaterialList": [], "itemList": [] } }
-    }))
+    ok(json!({ "teamList": teams, "mindSeqInfo": super::team::mind_seq_info() }))
 }
 
 /// 50301 = E_BIZALLE_NOT_START: no interrupted battle (10000 would offer to resume one).

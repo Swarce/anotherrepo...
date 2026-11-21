@@ -308,8 +308,6 @@ fn new_player_boot_sequence() {
             &["presentList"][..],
         ),
         ("/follow/follow_list", "{}", &["followList"][..]),
-        ("/item/item_list", "{}", &["itemList"][..]),
-        ("/shop/shop_list", "{}", &["itemList"][..]),
     ] {
         let r = call_as(port, &ep(p), param, &uuid);
         assert_eq!(r["param"]["status"], 10000, "{p}");

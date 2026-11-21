@@ -192,6 +192,14 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                 p.gold += s.gold;
                 p.exp += s.gain_rank_exp;
                 p.rank = collection::rank_for_exp(p.exp);
+                let now = jdr_core::clock::now();
+                let m = &mut p.progress.missions;
+                m.bump("clear", 1, now);
+                m.bump("exp", s.gain_rank_exp, now);
+                m.bump("gold", s.gold, now);
+                if found.is_some_and(|(c, _)| (6..=12).contains(&c.category)) {
+                    m.bump("daily_quest", 1, now);
+                }
                 let uids = team.as_ref().map(|t| t.slots.to_vec()).unwrap_or_default();
                 p.collection.add_statue_exp(&uids, s.gain_rank_exp);
                 ((Some(s), team), Change::Progress)
@@ -418,5 +426,91 @@ mod tests {
             .unwrap()
             .iter()
             .all(|c| c["category"] == 1));
+    }
+
+    #[test]
+    fn missions_count_clears_and_pay_out() {
+        let dir = std::env::temp_dir().join(format!("jdr-missions-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let ctx = Ctx::new(Settings::new(dir), false);
+        let uuid = ctx.accounts.create(&[]).unwrap().uuid;
+        let call = |path: &str, param: Value| dispatch(&ctx, path, &env(&uuid, param)).0;
+        let list = call("/trophy/trophy_list", json!({"allFlag": 0})).unwrap();
+        let rows = list["trophyList"].as_array().unwrap().clone();
+        assert!(!rows.is_empty());
+        for r in &rows {
+            // The row drawing throws on a missing list or an unparseable end date.
+            for k in ["statueList", "mindList", "itemList"] {
+                assert!(r["itemSetInfo"][k].is_array(), "{r}");
+            }
+            assert!(r["acEnd"].as_str().unwrap().len() == 19);
+            let day = r["day"].as_i64().unwrap();
+            assert!((0..=7).contains(&day));
+        }
+        let days: std::collections::BTreeSet<i64> = rows
+            .iter()
+            .map(|r| r["day"].as_i64().unwrap())
+            .filter(|d| *d > 0)
+            .collect();
+        assert_eq!(days.len(), 1, "only today's dailies");
+        let status = |l: &serde_json::Map<String, Value>, id: &str| {
+            l["trophyList"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .find(|r| r["achievementId"] == id)
+                .unwrap()["status"]
+                .as_i64()
+                .unwrap()
+        };
+        assert_eq!(status(&list, "daily_0001"), 0);
+        // Win a stage: a clear, its EXP and gold count.
+        let c = crate::quests::chapters()
+            .iter()
+            .find(|c| c.stage_type == 1)
+            .unwrap();
+        let sid = c.stages[0].stage_id.clone();
+        call(
+            "/bizarre/bizarre_start",
+            json!({"stageId": sid, "teamNo": 1}),
+        )
+        .unwrap();
+        call(
+            "/bizarre/bizarre_end",
+            json!({"stageId": sid, "result": 0, "starClearList": ""}),
+        )
+        .unwrap();
+        let list = call("/trophy/trophy_list", json!({"allFlag": 0})).unwrap();
+        assert_eq!(status(&list, "daily_0001"), 1);
+        assert_eq!(status(&list, "daily_0002"), 0);
+        let badge = call("/info/get_menu_notify", json!({})).unwrap()["unopenedAchievement"]
+            .as_i64()
+            .unwrap();
+        assert!(badge >= 1);
+        // Claim one: status 2, the reward recorded; claiming it again pays nothing.
+        let r = call(
+            "/trophy/trophy_result_get",
+            json!({"achievementId": "daily_0001"}),
+        )
+        .unwrap();
+        assert_eq!(status(&r, "daily_0001"), 2);
+        assert_eq!(r["popupFlg"], false);
+        let r2 = call(
+            "/trophy/trophy_result_get",
+            json!({"achievementId": "daily_0001"}),
+        )
+        .unwrap();
+        assert_eq!(r2["itemSetInfo"]["itemList"].as_array().unwrap().len(), 0);
+        // Claim all: nothing claimable is left.
+        let all = call("/trophy/get_all_trophy_result", json!({})).unwrap();
+        assert!(all["trophyList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .all(|r| r["status"] != 1));
+        assert_eq!(
+            call("/info/get_menu_notify", json!({})).unwrap()["unopenedAchievement"],
+            0
+        );
     }
 }
