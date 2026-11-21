@@ -83,6 +83,11 @@ in 3.12.0: objects and the background are set over the socket.
   `ipAddress`, `port`; send/receive timeouts 30 s), LoginRequest (1000) `{uu_id}`; a LoginResult
   with status 10000 sets IsLogin. The home (StartLoad 0xCEC7E4) then calls `info` and
   `check_add_request` and needs the player's own user id in the login notice.
+- `SocketBase.Connect` (0xCADB70) swaps the address for `Dns.GetHostEntry(ip).HostName` and
+  catches any exception as a connect error (E_00900030, `Socket.OnConnectError`). On the device,
+  with 127.0.0.1, it failed before any connection (Build 25 log). Unity 2018.4's libil2cpp looks
+  names up with `AI_ADDRCONFIG` (inferred cause). The `town-direct-ip` patch removes the lookup
+  (Build 26).
 - Frame: 26-byte little-endian header — `"GLPH"`, int64 version, int16 platform, int32 body size,
   int32 protocol id, int32 user id — then the body. Body: MsgPack of the message object as a map
   of field names (kazuki ObjectPacker; old spec: FixRaw/Raw16/Raw32 strings, no str8; Single only
