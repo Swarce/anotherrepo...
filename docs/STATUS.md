@@ -2,6 +2,62 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 19 — English that fits the UI (branch `wip/b19`)
+
+### What the Build 18 device test and owner showed
+- The team view works.
+- Some English overflows its UI, and some UI shows no text at all.
+
+### What changed
+- **Measuring (new `tools/l10n/ui_fit.py`).** Every one of the 4,863 `UI.Text` labels in the
+  player's UI bundles is laid out the way Unity's text generator does it: the box comes from the
+  prefab's RectTransforms, and the text is measured with the label's own font from the player's
+  files (FOT-NewRodin Pro, FOT-Matisse ProN, IPAex Gothic), with wrap, line height and best fit.
+  The original Japanese fits in 98.2% of the measurable labels, which checks the measurement.
+  - It includes 402 text-table rows that labels show through `BaseTextBox.defaultTextLabel`.
+  - Labels that size themselves (a ContentSizeFitter or a layout group) are compared with the
+    room the Japanese and the button art leave.
+- **Shorter English** where it overflowed (docs/LOCALIZATION.md, "Fitting the UI"):
+  - 89 UI labels, for example "Ability Description" → "Ability Info",
+    "Commercial Transactions Notice" → "Legal Notice", "Summon Details" → "Details",
+    "Withdraw Application" → "Cancel" and "Achievements" → "Records";
+  - about 3,000 text rows by consistent rules: "X Stone Shard" → "X Shard", "Calendar Slab" →
+    "Slab", Easy/Normal/Hard for 初級/中級/上級 (only where the Japanese has them), "Tarot: …",
+    "Memorial Mind", "Elite Raid", (S)/(M)/(L)/(XL) in buffs and skill texts, shorter skill
+    categories ("• Fire attack on one foe"), and a few menu, shop, Town and login-bonus labels.
+- **Best fit for runtime labels.** Until now only labels whose baked text we replaced could shrink.
+  The new `server/content/l10n/ui_layout.json` (label ids only) gives best fit to 1,015 labels
+  that the game fills at runtime. It also gives wrap and best fit to 23 labels that spilled
+  sideways. All of them are in bundles the server already rebuilds; the generator version is 3,
+  so cached English bundles are rebuilt once.
+- Remaining: 11 self-sizing labels within about 6% of their room, and 4 labels that shrink to
+  54-71%.
+- **Second device test (screenshots).**
+  - Empty star rows in the stage window and on the results screen, and a blank tip board on the
+    loading screen: the server sent `starList: []` and `questTips: {}`.
+  - Tactical stages now carry three missions: clear the quest, all members survive, and clear
+    within N turns. They use the game's own mission labels, the client checks them itself, and
+    the stars stay lit per stage once cleared.
+  - Each stage also has a loading tip: one of the game's 66 tips with a title, text and picture
+    (docs/research/11 §4).
+- **Win shot** (the owner asked to redo the win poses).
+  - The result camera aimed at a fixed 2.2 m, so winners sat low in the frame and small ones left
+    it.
+  - It now follows each winner's chest and neck bones from 3.2 m (docs/research/12 §5).
+- **Art pack:** "First Clear Rewards" runs into the "Special Rewards" tab.
+  - It is the redrawn sprite `ui_bizarre/sprites/Bizarre_005_lbl_000_2.png` (174×40). The
+    original lettering also spans the full width.
+  - A redraw with about 12–15 px of free space on the right (or "First Clear") fixes it.
+- Build number 19, server marker `JDR_EMBEDDED_SERVER_b019`.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] Menus, buttons and popups: no text over the button art or outside its box
+- [ ] Labels that were blank now show text (please name any that are still blank)
+- [ ] Long names (skills, Minds, places) shrink to fit instead of overflowing
+- [ ] Stage window and results: three mission rows with text; stars light for cleared missions
+- [ ] Loading screen: tip title, text and picture
+- [ ] Win screen: the winner centred, small characters in frame
+
 ## Build 18 — team view fixed, research data merged (branch `wip/b18`)
 
 ### What the Build 17 device test and owner showed
