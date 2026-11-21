@@ -43,6 +43,9 @@ fn digest_of(files: &BTreeMap<String, Vec<u8>>) -> String {
     use sha2::{Digest, Sha256};
     let mut h = Sha256::new();
     h.update(ART_GEN_VERSION.to_le_bytes());
+    // the build too: how art is applied can change with the code (a probe build did not rebuild
+    // its bundles because the images had not changed)
+    h.update(jdr_core::BUILD.to_le_bytes());
     for (k, v) in files {
         h.update((k.len() as u32).to_le_bytes());
         h.update(k.as_bytes());
@@ -425,15 +428,18 @@ fn add_thumbnails(
                     .push(format!("{name}: the bundle already has it"));
                 continue;
             }
-            let inner = match make_thumbnail(&tpl_inner, &tpl_name, name, thumbs[file]) {
+            let built =
+                make_thumbnail(&tpl_inner, &tpl_name, name, thumbs[file]).and_then(|inner| {
+                    jdr_crypto::Jjec::encrypt(&inner, key, iv, inner.len())
+                        .map_err(|e| e.to_string())
+                });
+            let enc = match built {
                 Ok(b) => b,
                 Err(e) => {
                     out.errors.push(format!("{name}: {e}"));
                     continue;
                 }
             };
-            let enc = jdr_crypto::Jjec::encrypt(&inner, key, iv, inner.len())
-                .map_err(|e| e.to_string())?;
             let mut pid = path_id_for(name);
             while used.contains(&pid) {
                 pid = pid.wrapping_add(1);
@@ -479,6 +485,8 @@ fn add_thumbnails(
         }
         if added > 0 {
             f.objects[ab_i].data = sfile::write_object(&f.types[ab_t].nodes, &ab)?;
+            // the engine finds objects by binary search over path ids
+            f.sort_objects();
         }
         Ok(added)
     })();
