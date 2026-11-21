@@ -92,8 +92,7 @@ battles and shows the English text and art. Every build lists what changed and w
 | English menus, names and redrawn art | Works (tested on a phone) |
 | Portraits for statues without one | Works (Build 31, tested on a phone) |
 | Tactical battles: turns, damage, skills, win screen | Works (tested on a phone) |
-| Battle camera: attacks and the win shot | Works (Build 39, tested on a phone) |
-| Battle camera: smoother skill shots | Built (Build 40), waiting for a phone test |
+| Battle camera: attacks, skills and the win shot | Works (Builds 39 and 40, tested on a phone) |
 | Action battles | Built, waiting for a phone test |
 | Town home over the realtime socket | Works (Build 26, tested on a phone) |
 | Missions, Message Box, summons, Labyrinth, Arena, events | Built; partly tested on a phone |
