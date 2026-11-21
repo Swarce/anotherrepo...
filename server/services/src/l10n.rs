@@ -32,7 +32,45 @@ use std::path::{Path, PathBuf};
 type Error = String;
 
 /// Bump when the rewrite logic changes, so cached English files are rebuilt.
-pub const GEN_VERSION: u32 = 2;
+pub const GEN_VERSION: u32 = 3;
+
+/// UI.Text layout hints (`tools/l10n/ui_fit.py`): label ids `bundle:file:pathId`, no game text.
+pub const LAYOUT: &str = include_str!("../../content/l10n/ui_layout.json");
+
+/// Labels that get best fit (they wrap and truncate) and labels that get wrap, truncate and best
+/// fit (they spilled sideways with our English).
+struct Layout {
+    best_fit: std::collections::HashSet<String>,
+    wrap: std::collections::HashSet<String>,
+}
+
+fn layout() -> &'static Layout {
+    static CELL: std::sync::OnceLock<Layout> = std::sync::OnceLock::new();
+    CELL.get_or_init(|| {
+        let v: Value = serde_json::from_str(LAYOUT).expect("ui_layout.json");
+        let set = |k: &str| {
+            v[k].as_array()
+                .map(|a| {
+                    a.iter()
+                        .filter_map(|x| x.as_str().map(str::to_owned))
+                        .collect()
+                })
+                .unwrap_or_default()
+        };
+        Layout {
+            best_fit: set("bestFit"),
+            wrap: set("wrap"),
+        }
+    })
+}
+
+/// Set an integer field, keeping its stored kind (signed or unsigned).
+fn set_int(v: &mut V, n: i64) {
+    *v = match v {
+        V::U(_) => V::U(n.max(0) as u64),
+        _ => V::I(n),
+    };
+}
 
 /// The translation files compiled into the server.
 pub const FILES: &[(&str, &str)] = &[
@@ -292,9 +330,25 @@ fn visit_object(
             }
         }
     }
-    // English runs longer than Japanese: let a UI.Text we changed shrink to fit its box.
-    if replaced_text {
+    // English runs longer than Japanese: let a UI.Text shrink to fit its box. That is every label
+    // we changed, and the labels the layout hints list: those that wrap and truncate (the game
+    // fills many at runtime from text.jp), and those that spilled sideways with our English, which
+    // first get wrap and truncate so best fit has a box to fit.
+    let id = format!("{bundle_name}:{file_index}:{path_id}");
+    let hints = layout();
+    let wrap = hints.wrap.contains(&id);
+    if replaced_text || wrap || hints.best_fit.contains(&id) {
         if let Some(fd) = v.get_mut("m_FontData") {
+            if wrap {
+                for k in ["m_HorizontalOverflow", "m_VerticalOverflow"] {
+                    if let Some(x) = fd.get_mut(k) {
+                        if x.as_i64() != Some(0) {
+                            set_int(x, 0);
+                            changed = true;
+                        }
+                    }
+                }
+            }
             let size = fd.get("m_FontSize").and_then(V::as_i64);
             let best = fd.get("m_BestFit").and_then(V::as_i64);
             if let (Some(size @ 1..), Some(0)) = (size, best) {
@@ -307,6 +361,7 @@ fn visit_object(
                     *x = V::I(size);
                 }
                 stats.best_fit += 1;
+                changed = true;
             }
         }
     }
@@ -786,6 +841,82 @@ mod tests {
         let js = serde_json::json!({"sources":[{"source":"jdr-default","note":"t"}],"entries":e})
             .to_string();
         Translations::parse(&[("t", js.as_str())]).unwrap()
+    }
+
+    fn label(h_overflow: i64, v_overflow: i64) -> V {
+        let fd = V::Obj(vec![
+            ("m_FontSize".into(), V::I(20)),
+            ("m_BestFit".into(), V::U(0)),
+            ("m_MinSize".into(), V::I(10)),
+            ("m_MaxSize".into(), V::I(40)),
+            ("m_HorizontalOverflow".into(), V::I(h_overflow)),
+            ("m_VerticalOverflow".into(), V::I(v_overflow)),
+        ]);
+        V::Obj(vec![
+            ("m_Name".into(), V::Str(Vec::new())),
+            ("m_FontData".into(), fd),
+            ("m_Text".into(), V::Str(b"123".to_vec())),
+        ])
+    }
+
+    #[test]
+    fn layout_hints_fit_labels() {
+        let doc: Value = serde_json::from_str(LAYOUT).unwrap();
+        let first = |k: &str| doc[k][0].as_str().unwrap().to_owned();
+        let parse = |id: &str| {
+            let p: Vec<&str> = id.split(':').collect();
+            (
+                p[0].to_owned(),
+                p[1].parse::<usize>().unwrap(),
+                p[2].parse::<i64>().unwrap(),
+            )
+        };
+        let fd = |v: &V, k: &str| {
+            v.get("m_FontData")
+                .unwrap()
+                .get(k)
+                .unwrap()
+                .as_i64()
+                .unwrap()
+        };
+        let mut st = Stats::default();
+        let mut none = |_: &str, _: &str| None;
+        // A runtime label that wraps: best fit, down to half size.
+        let (b, f, p) = parse(&first("bestFit"));
+        let mut v = label(0, 0);
+        assert!(visit_object(&b, f, p, &mut v, &mut none, &mut st));
+        assert_eq!(
+            (
+                fd(&v, "m_BestFit"),
+                fd(&v, "m_MinSize"),
+                fd(&v, "m_MaxSize")
+            ),
+            (1, 10, 20)
+        );
+        // A label that spilled sideways: wrap and truncate first.
+        let (b, f, p) = parse(&first("wrap"));
+        let mut v = label(1, 1);
+        assert!(visit_object(&b, f, p, &mut v, &mut none, &mut st));
+        assert_eq!(
+            (
+                fd(&v, "m_HorizontalOverflow"),
+                fd(&v, "m_VerticalOverflow"),
+                fd(&v, "m_BestFit")
+            ),
+            (0, 0, 1)
+        );
+        // Not listed and not translated: untouched.
+        let mut v = label(1, 1);
+        assert!(!visit_object("ui_none", 0, 1, &mut v, &mut none, &mut st));
+        assert_eq!(fd(&v, "m_BestFit"), 0);
+        // Every hinted label is in a bundle the server rebuilds.
+        let targets = targets(&Translations::embedded().unwrap());
+        for k in ["bestFit", "wrap"] {
+            for id in doc[k].as_array().unwrap() {
+                let (b, _, _) = parse(id.as_str().unwrap());
+                assert!(targets.contains(&b), "{b} is rebuilt");
+            }
+        }
     }
 
     #[test]

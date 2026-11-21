@@ -29,6 +29,8 @@ ap.add_argument("--statues", required=True)
 ap.add_argument("--out", required=True)
 ap.add_argument("--png")
 ap.add_argument("--only")
+ap.add_argument("--clip", help="pose every model with this common clip suffix (e.g. evt_btl_lp, the win appeal) "
+                               "instead of the team-view figure clip")
 a = ap.parse_args()
 
 POSE = {3: "figure_R", 4: "figure_SR", 5: "figure_SSR", 6: "figure_UR"}
@@ -265,11 +267,12 @@ for d in statues:
         mdl = load_model(model)
         if mdl is None:
             continue
-        ok = apply_clip(mdl, f"{model}_{clip_name(sid, r)}")
+        ok = apply_clip(mdl, f"{model}_{a.clip or clip_name(sid, r)}")
         posed.append(ok)
         if len(posed) == 1:
             W = world(mdl)
-            bones = {n: W[mdl["named"][n]][:3, 3] for n in ("HEAD", "WAIST") if n in mdl["named"]}
+            bones = {n: W[mdl["named"][n]][:3, 3] for n in ("HEAD", "NECK", "SPINE2", "WAIST", "RESERVE")
+                     if n in mdl["named"]}
         meshes += [(pv, tr, len(posed) - 1) for pv, tr in skinned(mdl)]
     if not meshes:
         continue

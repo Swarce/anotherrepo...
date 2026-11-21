@@ -74,6 +74,44 @@ pub struct Progress {
     /// The battle started and not yet ended: `bizarre_end` pays out only for it, once.
     #[serde(default)]
     pub pending: Option<PendingBattle>,
+    /// Tactical missions cleared per stage (DT_QM types, from the clients' `starClearList`).
+    #[serde(default)]
+    pub stars: std::collections::BTreeMap<String, BTreeSet<i64>>,
+}
+
+/// The three tactical missions of a stage (docs/research/11 §4): clear the quest, every member
+/// survives, clear within a number of turns. `starTarget` is the DTBattleQuestMissionClearType the
+/// client checks itself when the battle ends; `comment` is the mission's text label, with
+/// `{starParam}` replaced by `param`.
+pub fn dt_missions(s: &StageDef) -> [(i64, &'static str, String); 3] {
+    // Turn limit: ours (jdr-default), 10 turns for the first area and 5 more for each further one.
+    let turns = 10 + 5 * (s.areas.len().max(1) as i64 - 1);
+    [
+        (1, "DT_QM_Text_001", String::new()),
+        (2, "DT_QM_Text_002", String::new()),
+        (10, "DT_QM_Text_010", turns.to_string()),
+    ]
+}
+
+/// Loading-screen tips with a title, a text and a picture in the player's files
+/// (`TipsTitle_<nnn>`, `TipsText_<nnn>`, bundle `ui_tips_<nnn>`; docs/research/11 §4).
+const TIPS: &[u16] = &[
+    1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 24, 25, 26, 27, 28, 29, 30,
+    31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 50, 51, 52, 53, 55, 56, 57, 58,
+    59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 72, 73, 74, 100,
+];
+
+/// The stage's loading tip: a stable pick by the stage id.
+pub fn quest_tips(stage_id: &str) -> Value {
+    let h = stage_id.bytes().fold(0x811c_9dc5u32, |h, b| {
+        (h ^ b as u32).wrapping_mul(0x0100_0193)
+    });
+    let n = TIPS[h as usize % TIPS.len()];
+    json!({
+        "tipsId": n.to_string(), "tipsType": 0,
+        "tipsTitleText": format!("TipsTitle_{n:03}"), "tipsText": format!("TipsText_{n:03}"),
+        "tipsPicture": format!("ui_tips_{n:03}")
+    })
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -144,6 +182,23 @@ fn enemy_info(statue_id: &str, level: i64) -> Value {
     v
 }
 
+fn star_list(c: &ChapterDef, s: &StageDef, p: &Progress) -> Vec<Value> {
+    if c.stage_type != 1 {
+        return Vec::new(); // action-battle missions use another type list; not served
+    }
+    let done = p.stars.get(&s.stage_id);
+    dt_missions(s)
+        .iter()
+        .enumerate()
+        .map(|(i, (ty, label, param))| {
+            json!({
+                "starNum": i + 1, "starTarget": ty, "comment": label, "param": param,
+                "clearFlg": done.is_some_and(|d| d.contains(ty)) as i64
+            })
+        })
+        .collect()
+}
+
 pub fn stage_info(c: &ChapterDef, s: &StageDef, n: usize, p: &Progress) -> Value {
     let cleared = p.cleared.contains(&s.stage_id);
     json!({
@@ -156,12 +211,13 @@ pub fn stage_info(c: &ChapterDef, s: &StageDef, n: usize, p: &Progress) -> Value
         // (RewardItemSet {dataType 5 = Money, dataId: string, name, count}. dataId is a string
         // the stage window parses with Int32.Parse (ItemIconController.SetThumnail), so it must
         // hold a number: "" threw, the window never filled in and the battle could not start.)
-        "starList": [], "rewardItemSet": [], "reward3StarsItemSet": [],
+        // Mission rows: stage window, battle end and result screen all read this list.
+        "starList": star_list(c, s, p), "rewardItemSet": [], "reward3StarsItemSet": [],
         "steadyItemSet": [{ "dataType": 5, "dataId": "0", "name": "", "count": s.gold }],
         "bossDropItemSet": [], "useStamina": s.use_stamina, "gainRankExp": s.gain_rank_exp,
         "mindGashaPoint": 0, "playCount": p.play_counts.get(&s.stage_id).copied().unwrap_or(0),
         "clearFlg": cleared as i64, "clearCount": cleared as i64, "clearRank": if cleared { 4 } else { 0 },
-        "specialRewardFlg": 0, "questTips": {}, "meisyoId": 0, "limitTime": 0, "endureTime": 0,
+        "specialRewardFlg": 0, "questTips": quest_tips(&s.stage_id), "meisyoId": 0, "limitTime": 0, "endureTime": 0,
         "enemyList": s.enemies.iter().map(|e| enemy_info(e, s.enemy_level)).collect::<Vec<_>>(),
         "staminaCoefficientList": { "rate": 1.0, "add": 0 },
         "expCoefficientList": { "rate": 1.0, "add": 0 },
@@ -243,6 +299,55 @@ pub fn team_for(c: &Collection, stage_type: i64, team_no: i64) -> Option<&collec
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn missions_and_tips_name_real_labels() {
+        let tr = crate::l10n::Translations::embedded().unwrap();
+        let has = |label: &str| {
+            ["DTB_QuestMission_JP", "TipsTitle_JP", "TipsText_JP"]
+                .iter()
+                .any(|t| tr.english(&format!("text:{t}:{label}")).is_some())
+        };
+        let c = chapters().iter().find(|c| c.stage_type == 1).unwrap();
+        let s = &c.stages[0];
+        let mut p = Progress::default();
+        let info = stage_info(c, s, 0, &p);
+        let stars = info["starList"].as_array().unwrap();
+        assert_eq!(stars.len(), 3);
+        for st in stars {
+            assert!(has(st["comment"].as_str().unwrap()), "{st}");
+            assert!((1..=16).contains(&st["starTarget"].as_i64().unwrap()));
+            assert_eq!(st["clearFlg"], 0);
+        }
+        assert_eq!(stars[2]["starTarget"], 10, "turn limit mission");
+        assert!(stars[2]["param"].as_str().unwrap().parse::<i64>().unwrap() >= 10);
+        let tips = &info["questTips"];
+        assert!(
+            has(tips["tipsTitleText"].as_str().unwrap()) && has(tips["tipsText"].as_str().unwrap())
+        );
+        assert!(tips["tipsPicture"]
+            .as_str()
+            .unwrap()
+            .starts_with("ui_tips_"));
+        // Every tip number we pick has both labels translated.
+        for n in TIPS {
+            assert!(
+                has(&format!("TipsTitle_{n:03}")) && has(&format!("TipsText_{n:03}")),
+                "{n}"
+            );
+        }
+        // Cleared missions light their stars.
+        p.stars
+            .insert(s.stage_id.clone(), [1, 10].into_iter().collect());
+        let info = stage_info(c, s, 0, &p);
+        let lit: Vec<i64> = info["starList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|x| x["clearFlg"].as_i64().unwrap())
+            .collect();
+        assert_eq!(lit, [1, 0, 1]);
+    }
 
     #[test]
     fn content_loads() {
