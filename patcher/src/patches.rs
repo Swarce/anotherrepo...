@@ -12,12 +12,24 @@ pub const LIBIL2CPP_ARM64: &str = "lib/arm64-v8a/libil2cpp.so";
 pub struct Config {
     /// Base URL the game will use instead of the dead production server.
     pub server_url: String,
+    /// The embedded server library (`libjdr.so`, aarch64) to put into the APK.
+    pub server_lib: Option<std::path::PathBuf>,
+    /// The player's keys.json (from `jdr-tool keys`), embedded as a stored asset.
+    pub keys_json: Option<Vec<u8>>,
+    /// The player's redrawn UI art pack (zip), and their game files folder (layouts for the
+    /// APK's own screens).
+    pub art_zip: Option<std::path::PathBuf>,
+    pub data_dir: Option<std::path::PathBuf>,
 }
 
 impl Default for Config {
     fn default() -> Self {
         Self {
             server_url: format!("http://127.0.0.1:{}", DEFAULT_PORT),
+            server_lib: None,
+            keys_json: None,
+            art_zip: None,
+            data_dir: None,
         }
     }
 }
@@ -210,11 +222,490 @@ impl Patch for Cleartext {
     }
 }
 
+pub const LIBMAIN_ARM64: &str = "lib/arm64-v8a/libmain.so";
+pub const SERVER_LIB_ENTRY: &str = "lib/arm64-v8a/libjdr.so";
+pub const KEYS_ASSET: &str = "assets/jdr/keys.json";
+pub const SERVER_MARKER: &[u8] = b"JDR_EMBEDDED_SERVER_";
+
+/// The build tag after the marker (e.g. `b002`), if present.
+pub fn server_lib_tag(b: &[u8]) -> Option<String> {
+    let i = b
+        .windows(SERVER_MARKER.len())
+        .position(|w| w == SERVER_MARKER)?;
+    let tag = b.get(i + SERVER_MARKER.len()..i + SERVER_MARKER.len() + 4)?;
+    tag.iter()
+        .all(|c| c.is_ascii_alphanumeric())
+        .then(|| String::from_utf8_lossy(tag).into_owned())
+}
+
+/// Check that a file is our aarch64 embedded server library.
+pub fn validate_server_lib(b: &[u8]) -> Result<(), Error> {
+    let e = crate::elf::Elf::parse(b)?;
+    if e.machine != crate::elf::EM_AARCH64 {
+        return Err("server library is not aarch64".into());
+    }
+    if !b.windows(SERVER_MARKER.len()).any(|w| w == SERVER_MARKER) {
+        return Err("server library has no JDR marker (wrong file?)".into());
+    }
+    if e.load_alignments().iter().any(|&a| a < 0x4000) {
+        return Err("server library is not 16 KiB page aligned".into());
+    }
+    Ok(())
+}
+
+/// Puts the embedded server into the game process: adds `libjdr.so`, makes `libmain.so` load it
+/// (its `liblog.so` dependency is renamed to `libjdr.so`, which itself depends on `liblog.so`),
+/// and embeds the player's keys as a stored asset.
+pub struct EmbedServer;
+
+impl Patch for EmbedServer {
+    fn id(&self) -> &'static str {
+        "embed-server"
+    }
+    fn description(&self) -> &'static str {
+        "Add libjdr.so (in-process server), load it from libmain.so, embed the player's keys"
+    }
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        cfg: &Config,
+        build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
+        let lib_path = cfg
+            .server_lib
+            .as_ref()
+            .ok_or("needs the server library (--server-lib, or libjdr.so next to jdr-patch)")?;
+        let keys = cfg
+            .keys_json
+            .as_ref()
+            .ok_or("needs --keys local/keys.json (from jdr-tool keys)")?;
+        let lib = std::fs::read(lib_path).map_err(|e| format!("{}: {e}", lib_path.display()))?;
+        validate_server_lib(&lib)?;
+        let k: serde_json::Value =
+            serde_json::from_slice(keys).map_err(|e| format!("keys.json: {e}"))?;
+        for f in ["asset_key", "asset_iv", "http_key"] {
+            if k.get(f)
+                .and_then(|v| v.as_str())
+                .map(str::is_empty)
+                .unwrap_or(true)
+            {
+                return Err(format!(
+                    "keys.json has no {f}; run jdr-tool keys --data ... --apk ..."
+                )
+                .into());
+            }
+        }
+        let main = apk.read(LIBMAIN_ARM64)?;
+        let sha = sha256_hex(&main);
+        if sha != build.libmain_arm64_sha256 {
+            return Err(format!("fingerprint mismatch: libmain.so sha256 {sha}").into());
+        }
+        let patched = crate::elf::replace_needed(&main, "liblog.so", "libjdr.so")?;
+        let compress = apk.is_compressed(LIBMAIN_ARM64);
+        apk.put(LIBMAIN_ARM64, patched, compress);
+        apk.put(SERVER_LIB_ENTRY, lib.clone(), true);
+        let slim = serde_json::json!({
+            "asset_key": k["asset_key"], "asset_iv": k["asset_iv"],
+            "http_key": k["http_key"], "sound_key": k.get("sound_key").cloned().unwrap_or(serde_json::Value::Null),
+        });
+        apk.put(KEYS_ASSET, serde_json::to_vec(&slim)?, false);
+        Ok(format!("libjdr.so JDR_EMBEDDED_SERVER_{} ({} KiB, sha256 {}…), libmain NEEDED liblog.so -> libjdr.so, {KEYS_ASSET} (stored)", server_lib_tag(&lib).unwrap_or_else(|| "?".into()), lib.len() / 1024, &sha256_hex(&lib)[..12]))
+    }
+}
+
+pub const LIBUNITY_ARM64: &str = "lib/arm64-v8a/libunity.so";
+
+/// Replacement body (24 ARM64 instructions, our own code) for `UnityDefaultAllocator`'s
+/// constructor at 0x9ff824 in the verified libunity: it builds a `DynamicHeapAllocator` instead,
+/// field for field like the engine's own inline `ALLOC_FALLBACK` construction (MemoryManager
+/// @0x50d27c..0x50d2dc), except the pool size: 16 MiB instead of the fallback heap's 1 MiB, so the
+/// pool and large-allocation lists these busy heaps walk stay short. Disassembly:
+/// ```text
+/// stp x19,x30,[sp,#-16]! ; mov x19,x0 ; bl BaseAllocator::ctor(0x50f07c)
+/// adrp x8,0x12cd000 ; add x8,x8,#0x620          ; DynamicHeapAllocator vtable
+/// add x9,x19,#0xb8 ; add x10,x19,#0xc8 ; str xzr,[x19,#0xa8]
+/// stp x9,x9,[x19,#0xb8] ; stp x10,x10,[x19,#0xc8] ; str x8,[x19]
+/// add x0,x19,#0xd8 ; bl Mutex::ctor(0xa234c8)
+/// mov w10,#0x1000000 ; stp x10,xzr,[x19,#0x108] ; mov w9,#1
+/// str xzr,[x19,#0xb0] ; strb w9,[x19,#0x104] ; ldp x19,x30,[sp],#16 ; ret ; nop x4
+/// ```
+/// Equivalence proof on the real binary: tools/proofs/unity_heap_equiv.py.
+pub const UNITY_HEAP_CTOR: [u32; 24] = [
+    0xa9bf7bf3, 0xaa0003f3, 0x97ec3e14, 0xd0004668, 0x91188108, 0x9102e269, 0x9103226a, 0xf900567f,
+    0xa90ba669, 0xa90caa6a, 0xf9000268, 0x91036260, 0x94008f1d, 0x52a0200a, 0xa910fe6a, 0x52800029,
+    0xf9005a7f, 0x39041269, 0xa8c17bf3, 0xd65f03c0, 0xd503201f, 0xd503201f, 0xd503201f, 0xd503201f,
+];
+
+pub fn unity_heap_bytes() -> Vec<u8> {
+    UNITY_HEAP_CTOR
+        .iter()
+        .flat_map(|w| w.to_le_bytes())
+        .collect()
+}
+
+/// Fixes Unity 2018's "Using memoryadresses from more that 16GB of memory" crash on Android 11+.
+///
+/// `UnityDefaultAllocator` (used for ALLOC_DEFAULT, ALLOC_GAMEOBJECT, ALLOC_GFX) records every
+/// malloc'd block in a page table with only 5 slots of 4 GiB windows; Android's Scudo allocator
+/// spreads memory over more windows, the lookup returns slot -1 and the engine crashes. The patch
+/// makes those three allocators `DynamicHeapAllocator`s, which the engine already uses for its
+/// fallback heap and which have no such table.
+pub struct UnityHeap;
+
+impl Patch for UnityHeap {
+    fn id(&self) -> &'static str {
+        "unity-heap"
+    }
+    fn description(&self) -> &'static str {
+        "Fix Unity 2018 16GB-address crash on Android 11+: default allocators become DynamicHeapAllocators"
+    }
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        _cfg: &Config,
+        build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
+        let lib = apk.read(LIBUNITY_ARM64)?;
+        let sha = sha256_hex(&lib);
+        if sha != build.libunity_arm64_sha256 {
+            return Err(format!("fingerprint mismatch: libunity.so sha256 {sha}").into());
+        }
+        let (off, want) = build.unity_default_alloc_ctor;
+        let new = unity_heap_bytes();
+        let window = lib
+            .get(off..off + new.len())
+            .ok_or("libunity.so too short")?;
+        if sha256_hex(window) != want {
+            return Err("fingerprint mismatch at the UnityDefaultAllocator constructor".into());
+        }
+        let mut out = lib.clone();
+        out[off..off + new.len()].copy_from_slice(&new);
+        let compress = apk.is_compressed(LIBUNITY_ARM64);
+        apk.put(LIBUNITY_ARM64, out, compress);
+        Ok(format!(
+            "libunity.so @{off:#x}: UnityDefaultAllocator ctor -> DynamicHeapAllocator (96 bytes)"
+        ))
+    }
+}
+
+/// `mov w0, #1 ; ret`
+pub const RETURN_TRUE: [u32; 2] = [0x5280_0020, 0xd65f_03c0];
+
+/// Stops the game wiping its whole download folder on a fresh install.
+///
+/// `ResourceDownloadUIController.StartLoad` runs a one-time "cache clear of non-encrypted files"
+/// (`DoCacheClearProcess` -> `IOManager.DeleteAllInDirectory(persistentDataPath)`) whenever the
+/// PlayerPrefs flag read by `SaveDataManager.LoadNonObfuscatedClearFlag` is unset. That cleared
+/// caches of very old versions before re-downloading from the server; offline it destroys the
+/// player's only copy of the game data (seen on device after reinstalling). The patch makes the
+/// flag read return true; its only caller is that cache-clear routine.
+pub struct KeepFiles;
+
+impl Patch for KeepFiles {
+    fn id(&self) -> &'static str {
+        "keep-files"
+    }
+    fn description(&self) -> &'static str {
+        "Never run the one-time wipe of the downloaded files folder (fresh install / cleared storage)"
+    }
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        _cfg: &Config,
+        build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
+        let lib = apk.read(LIBIL2CPP_ARM64)?;
+        if sha256_hex(&lib) != build.libil2cpp_arm64_sha256 {
+            return Err("fingerprint mismatch: libil2cpp.so".into());
+        }
+        let (off, want) = build.clear_flag_fn;
+        let window = lib.get(off..off + 32).ok_or("libil2cpp.so too short")?;
+        if sha256_hex(window) != want {
+            return Err("fingerprint mismatch at LoadNonObfuscatedClearFlag".into());
+        }
+        let mut out = lib.clone();
+        let code: Vec<u8> = RETURN_TRUE.iter().flat_map(|w| w.to_le_bytes()).collect();
+        out[off..off + code.len()].copy_from_slice(&code);
+        let compress = apk.is_compressed(LIBIL2CPP_ARM64);
+        apk.put(LIBIL2CPP_ARM64, out, compress);
+        Ok(format!(
+            "libil2cpp.so @{off:#x}: LoadNonObfuscatedClearFlag -> return true"
+        ))
+    }
+}
+
+/// `ret`
+pub const RET: u32 = 0xd65f_03c0;
+
+/// Turns off the Growthbeat analytics/push SDK. Offline it cannot reach its server: its Java
+/// thread dies at startup with "Failed create HttpURLConnection" (logged as a FATAL EXCEPTION,
+/// though Growthbeat's own handler keeps the app alive). Every game call goes through
+/// `GrowthbeatBehaviour.Awake` (initialise + push token), `.SendTag` and `.SendEvent`; each now
+/// returns at once, so the SDK is never started and nothing is tracked.
+pub struct NoGrowthbeat;
+
+impl Patch for NoGrowthbeat {
+    fn id(&self) -> &'static str {
+        "no-growthbeat"
+    }
+    fn description(&self) -> &'static str {
+        "Never start the Growthbeat analytics SDK (its thread crashed at startup offline)"
+    }
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        _cfg: &Config,
+        build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
+        // Runs after keep-files (which checks the whole file), so only the sites are checked.
+        let mut out = apk.read(LIBIL2CPP_ARM64)?;
+        for (off, want) in build.growthbeat_fns {
+            let window = out.get(off..off + 32).ok_or("libil2cpp.so too short")?;
+            if sha256_hex(window) != want {
+                return Err(format!("fingerprint mismatch at Growthbeat site {off:#x}").into());
+            }
+        }
+        for (off, _) in build.growthbeat_fns {
+            out[off..off + 4].copy_from_slice(&RET.to_le_bytes());
+        }
+        let compress = apk.is_compressed(LIBIL2CPP_ARM64);
+        apk.put(LIBIL2CPP_ARM64, out, compress);
+        let sites: Vec<String> = build
+            .growthbeat_fns
+            .iter()
+            .map(|(o, _)| format!("{o:#x}"))
+            .collect();
+        Ok(format!(
+            "libil2cpp.so @{}: GrowthbeatBehaviour Awake/SendTag/SendEvent -> return",
+            sites.join(", ")
+        ))
+    }
+}
+
+/// English for the in-APK ClientMes table (boot, download and error messages), from the
+/// project's translation file; rows without a current translation stay as they are.
+pub struct TranslateClientMes;
+
+/// Apply the embedded English to a ClientMes Resources file. Returns (file, replaced, total).
+pub fn translate_clientmes(file: &[u8]) -> Result<(Vec<u8>, usize, usize), Error> {
+    let tr = jdr_services::l10n::Translations::embedded()?;
+    let total = crate::clientmes::read(file)?.rows.len();
+    let (out, n) = crate::clientmes::rewrite(file, &|label, text| match tr
+        .lookup(&format!("clientmes:{label}"), text)
+    {
+        jdr_services::l10n::Lookup::Found(en) => Some(en.to_string()),
+        _ => None,
+    })?;
+    Ok((out, n, total))
+}
+
+/// Rows of a ClientMes file whose text is exactly our English for that label.
+pub fn clientmes_english_rows(file: &[u8]) -> Result<usize, Error> {
+    let tr = jdr_services::l10n::Translations::embedded()?;
+    Ok(crate::clientmes::read(file)?
+        .rows
+        .iter()
+        .filter(|(l, t)| tr.english(&format!("clientmes:{l}")) == Some(t.as_str()))
+        .count())
+}
+
+impl Patch for TranslateClientMes {
+    fn id(&self) -> &'static str {
+        "english-clientmes"
+    }
+    fn description(&self) -> &'static str {
+        "English boot/download/error messages (in-APK ClientMes table)"
+    }
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        _cfg: &Config,
+        build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
+        let entry = crate::clientmes::ENTRY;
+        let file = apk.read(entry)?;
+        if sha256_hex(&file) != build.clientmes_sha256 {
+            return Err("fingerprint mismatch: ClientMes".into());
+        }
+        let (out, n, total) = translate_clientmes(&file)?;
+        let compress = apk.is_compressed(entry);
+        apk.put(entry, out, compress);
+        Ok(format!("ClientMes: {n} of {total} messages in English"))
+    }
+}
+
+/// English for the Japanese built into the APK outside the ClientMes table: the `UI.Text` labels
+/// of the built-in scenes (loading overlay, download, save select, contact and error screens) and
+/// the player-visible C# string literals in `global-metadata.dat` (see `crate::apktext`). Each
+/// string is replaced only while its source still hashes as the translation expects.
+pub struct TranslateApkText;
+
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct ApkTextCount {
+    /// Scene labels in English / scene labels with Japanese.
+    pub scenes: usize,
+    pub scene_total: usize,
+    /// Allow-listed literals in English / allow-listed literals.
+    pub literals: usize,
+    pub literal_total: usize,
+    /// Literals longer than the original, moved to the end of the metadata file.
+    pub relocated: usize,
+}
+
+fn embedded_english(
+    tr: &jdr_services::l10n::Translations,
+    key: &str,
+    source: &str,
+) -> Option<String> {
+    match tr.lookup(key, source) {
+        jdr_services::l10n::Lookup::Found(en) => Some(en.to_string()),
+        _ => None,
+    }
+}
+
+fn literal_str(m: &Metadata, i: usize) -> Result<String, Error> {
+    String::from_utf8(m.literal(i)?.to_vec())
+        .map_err(|_| format!("metadata literal {i} is not UTF-8").into())
+}
+
+/// Apply the embedded English to the scenes and literals of `build` in `apk`.
+pub fn translate_apk_text(
+    apk: &mut ApkEdit,
+    build: &known::VerifiedBuild,
+) -> Result<ApkTextCount, Error> {
+    use crate::apktext;
+    let tr = jdr_services::l10n::Translations::embedded()?;
+    let mut c = ApkTextCount::default();
+    for (file, sha) in build.apk_text_scenes {
+        let entry = format!("{}{file}", apktext::DATA_DIR);
+        let data = apk.read(&entry)?;
+        if sha256_hex(&data) != *sha {
+            return Err(format!("fingerprint mismatch: {entry}").into());
+        }
+        c.scene_total += apktext::scene_texts(&data)?
+            .iter()
+            .filter(|(_, t)| jdr_services::l10n::has_japanese(t))
+            .count();
+        let (out, n) = apktext::rewrite_scene(&data, &|pid, text| {
+            embedded_english(&tr, &apktext::scene_key(file, pid), text)
+        })?;
+        if n > 0 {
+            let compress = apk.is_compressed(&entry);
+            apk.put(&entry, out, compress);
+        }
+        c.scenes += n;
+    }
+    let mut meta_file = apk.read(METADATA_PATH)?;
+    for (i, _) in build.ui_literals {
+        c.literal_total += 1;
+        let source = literal_str(&Metadata::parse(&meta_file)?, *i)?;
+        if let Some(en) = embedded_english(&tr, &apktext::literal_key(*i), &source) {
+            let (out, moved) = meta::set_literal(&meta_file, *i, en.as_bytes())?;
+            meta_file = out;
+            c.literals += 1;
+            c.relocated += moved as usize;
+        }
+    }
+    if c.literals > 0 {
+        let compress = apk.is_compressed(METADATA_PATH);
+        apk.put(METADATA_PATH, meta_file, compress);
+    }
+    Ok(c)
+}
+
+/// Post-check: scene labels and allow-listed literals of `apk` that are exactly our English.
+pub fn apk_text_english(
+    apk: &mut ApkEdit,
+    build: &known::VerifiedBuild,
+) -> Result<(usize, usize), Error> {
+    use crate::apktext;
+    let tr = jdr_services::l10n::Translations::embedded()?;
+    let mut scenes = 0;
+    for (file, _) in build.apk_text_scenes {
+        let data = apk.read(&format!("{}{file}", apktext::DATA_DIR))?;
+        scenes += apktext::scene_texts(&data)?
+            .iter()
+            .filter(|(pid, t)| tr.english(&apktext::scene_key(file, *pid)) == Some(t.as_str()))
+            .count();
+    }
+    let m_file = apk.read(METADATA_PATH)?;
+    let m = Metadata::parse(&m_file)?;
+    let mut literals = 0;
+    for (i, _) in build.ui_literals {
+        if tr.english(&apktext::literal_key(*i)).map(str::as_bytes) == Some(m.literal(*i)?) {
+            literals += 1;
+        }
+    }
+    Ok((scenes, literals))
+}
+
+impl Patch for TranslateApkText {
+    fn id(&self) -> &'static str {
+        "english-apk-text"
+    }
+    fn description(&self) -> &'static str {
+        "English labels in the APK's own scenes (loading, download, save select) and C# UI literals"
+    }
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        _cfg: &Config,
+        build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
+        let c = translate_apk_text(apk, build)?;
+        Ok(format!(
+            "scenes: {} of {} labels in English ({} files); metadata: {} of {} UI literals ({} relocated)",
+            c.scenes,
+            c.scene_total,
+            build.apk_text_scenes.len(),
+            c.literals,
+            c.literal_total,
+            c.relocated
+        ))
+    }
+}
+
+/// The player's redrawn UI art (`--art`); nothing to do without a pack.
+pub struct UiArt;
+
+impl Patch for UiArt {
+    fn id(&self) -> &'static str {
+        "ui-art"
+    }
+    fn description(&self) -> &'static str {
+        "Redrawn UI art from the player's pack (--art): title screens here, menus on the phone"
+    }
+    fn apply(
+        &self,
+        apk: &mut ApkEdit,
+        cfg: &Config,
+        _build: &known::VerifiedBuild,
+    ) -> Result<String, Error> {
+        let Some(zip) = &cfg.art_zip else {
+            return Ok("no art pack given (--art): skipped".into());
+        };
+        let pack = crate::art::read_pack_zip(zip)?;
+        let total = pack.len();
+        let r = crate::art::apply(apk, pack, cfg.data_dir.as_deref(), cfg.keys_json.as_deref())?;
+        Ok(format!(
+            "{total} images: {} stored for the menus (applied on the phone), {} sprites replaced in {} title/boot screen file(s)",
+            r.stored, r.in_apk, r.apk_files
+        ))
+    }
+}
+
 pub fn all() -> Vec<Box<dyn Patch>> {
     vec![
         Box::new(ServerUrl),
         Box::new(Cleartext),
         Box::new(DropArmv7),
+        Box::new(UnityHeap),
+        Box::new(KeepFiles),
+        Box::new(NoGrowthbeat),
+        Box::new(EmbedServer),
+        Box::new(TranslateClientMes),
+        Box::new(TranslateApkText),
+        Box::new(UiArt),
     ]
 }
 
@@ -230,6 +721,35 @@ mod tests {
         assert!(validate_server_url("https://127.0.0.1:18080", 25).is_err());
         assert!(validate_server_url("http://127.0.0.1:0", 25).is_err());
         assert!(validate_server_url("http://127.0.0.1:x", 25).is_err());
+    }
+
+    #[test]
+    fn unity_heap_code_shape() {
+        let b = unity_heap_bytes();
+        assert_eq!(b.len(), 96);
+        // ends with ret + nops, starts with the stp prologue
+        assert_eq!(UNITY_HEAP_CTOR[0], 0xa9bf7bf3);
+        assert_eq!(UNITY_HEAP_CTOR[19], 0xd65f03c0);
+        assert!(UNITY_HEAP_CTOR[20..].iter().all(|&w| w == 0xd503201f));
+        // both BLs land on the verified targets
+        let bl = |i: usize| {
+            let w = UNITY_HEAP_CTOR[i];
+            let mut imm = (w & 0x03ff_ffff) as i64;
+            if imm & (1 << 25) != 0 {
+                imm -= 1 << 26;
+            }
+            (0x9ff824 + 4 * i as i64 + imm * 4) as u64
+        };
+        assert_eq!(bl(2), 0x50f07c);
+        assert_eq!(bl(12), 0xa234c8);
+    }
+
+    #[test]
+    fn return_true_encoding() {
+        // movz w0, #1 ; ret
+        assert_eq!(RETURN_TRUE[0] & 0xffe0_001f, 0x5280_0000);
+        assert_eq!((RETURN_TRUE[0] >> 5) & 0xffff, 1);
+        assert_eq!(RETURN_TRUE[1], 0xd65f_03c0);
     }
 
     #[test]

@@ -5,12 +5,17 @@
 use jdr_crypto::{keyrec, names, Jjec, Vcs};
 use std::path::{Path, PathBuf};
 
+mod l10n;
+
 type Error = Box<dyn std::error::Error + Send + Sync>;
 
 const USAGE: &str = "usage:
   jdr-tool keys --data <files dir> --apk <apk> [--soundkey <hex>] --out <keys.json>
   jdr-tool names --data <files dir> --keys <keys.json>            decoded name <TAB> file <TAB> size
-  jdr-tool decrypt --keys <keys.json> --in <file> --out <file>     JJEC bundle or vcs.bytes";
+  jdr-tool decrypt --keys <keys.json> --in <file> --out <file>     JJEC bundle or vcs.bytes
+  jdr-tool l10n export --data <files dir> --keys <keys.json> [--apk <apk>] --out <work.tsv>
+  jdr-tool l10n import --in <work.tsv> [--expand-with <export.tsv>] [--repo <checkout>]
+                                         merge English into the repo (expand: same source, same English)";
 
 fn main() {
     let a: Vec<String> = std::env::args().skip(1).collect();
@@ -18,6 +23,7 @@ fn main() {
         Some("keys") => cmd_keys(&a[1..]),
         Some("names") => cmd_names(&a[1..]),
         Some("decrypt") => cmd_decrypt(&a[1..]),
+        Some("l10n") => l10n::cmd(&a[1..]),
         _ => {
             eprintln!("{USAGE}");
             std::process::exit(2)

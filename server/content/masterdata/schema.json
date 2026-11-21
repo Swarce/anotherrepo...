@@ -1,0 +1,3586 @@
+{
+ "_about": "Serialized field layout of the core in_memory_master_data ScriptableObjects (JoJo DR 3.12.0): only the types these tables reach, enum value names only where our content uses them. Derived by our own analysis of the client's type metadata (docs/research/09-master-data.md). Code identifiers only; no game text or values. Battle tables are added together with their content.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/09-master-data.md"
+  }
+ ],
+ "assets": [
+  {
+   "name": "rank_table",
+   "class": "Jjs.PlayerRankTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "yogo_table",
+   "class": "Jjs.YogoTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "statue_setting_table",
+   "class": "Jjs.StatueSettingTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "statue_special_scene_data_table",
+   "class": "Jjs.StatueSpecialSceneDataTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "team_rank_table",
+   "class": "Jjs.TeamRankTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "tutorial_flag_table",
+   "class": "Jjs.TutorialFlagTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "statue_level_table",
+   "class": "Jjs.LevelTableData",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "mind_level_table",
+   "class": "Jjs.MindLevelTableData",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "skill_data_table",
+   "class": "Jjs.SkillDataTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "ability_data_table",
+   "class": "Jjs.AbilityDataTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "assist_ability_condition_table",
+   "class": "Jjs.AssistAbilityConditionTableData",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "map_gimmick_pattern_table",
+   "class": "Jjs.MapGimmickPatternTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "affect_text_rule_table",
+   "class": "Jjs.AffectTextRuleTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "action_branch_data_table",
+   "class": "Jjs.ActionBranchDataTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "area_position_pattern_table",
+   "class": "Jjs.AreaPositionPatternTable",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "Set_el_camera_set_common",
+   "class": "Jjs.ScriptCameraParamSetAsset",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "Node_el_camera_node_common",
+   "class": "Jjs.ScriptCameraParamNodeAsset",
+   "core": true,
+   "confidence": "H"
+  },
+  {
+   "name": "dtbattle_damage_param",
+   "class": "Jjs.dtbattle.DtBattleDamageParam",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "dtbattle_damage_rank_table",
+   "class": "Jjs.dtbattle.DtBattleDamageRankTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "dtbattle_skill_data_table",
+   "class": "Jjs.dtbattle.dtSkillDataTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "dtbattle_reaction_table_normal",
+   "class": "Jjs.ReactionTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "dtbattle_reaction_table_mini",
+   "class": "Jjs.ReactionTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "dtbattle_reaction_table_mini_no_blow",
+   "class": "Jjs.ReactionTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "reaction_table_normal",
+   "class": "Jjs.ReactionTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "reaction_table_mini",
+   "class": "Jjs.ReactionTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "reaction_table_mini_no_blow",
+   "class": "Jjs.ReactionTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "model_table",
+   "class": "Jjs.ModelTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "bullet_parameter",
+   "class": "Jjs.BulletParameter",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "battle_damage_param",
+   "class": "Jjs.BattleDamageParam",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "battle_combo_param",
+   "class": "Jjs.BattlePvpComboParam",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "battle_pvp_statue_status_parameter",
+   "class": "Jjs.BattlePvPStatueStatusParameter",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "characteristic_data",
+   "class": "Jjs.CharacteristicTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "dtbattle_statue_affinity_table",
+   "class": "Jjs.dtbattle.DtStatueAffinityTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "statue_affinity_table",
+   "class": "Jjs.StatueAffinityTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "oraoramode_setting",
+   "class": "Jjs.OraoraModeSetting",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "affect_table",
+   "class": "Jjs.AffectTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "clan_table",
+   "class": "Jjs.ClanTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "clan_object_table",
+   "class": "Jjs.ClanObjectTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "effectReductionParam",
+   "class": "ScSystem.ScGraphics.EffectSettingParam",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "state_abnormality_table",
+   "class": "Jjs.StateAbnormalityTable",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "characterestic_skill_parameter",
+   "class": "Jjs.CharacteristicSkillParameter",
+   "core": false,
+   "confidence": "H"
+  },
+  {
+   "name": "dtbattle_ability_data_table",
+   "class": "Jjs.AbilityDataTable",
+   "core": false,
+   "confidence": "H"
+  }
+ ],
+ "types": {
+  "Jjs.AbilityConditionTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "statueId",
+     "type": "string"
+    },
+    {
+     "name": "conditionTableData",
+     "type": "Jjs.AssistAbilityCondition",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AbilityData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "abilityId",
+     "type": "string"
+    },
+    {
+     "name": "abilityName",
+     "type": "string"
+    },
+    {
+     "name": "abilityParamList",
+     "type": "Jjs.AbilityData/AbilityParam",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AbilityData/AbilityParam": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "affectId",
+     "type": "string"
+    },
+    {
+     "name": "giveLimit",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv1_0",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv1_1",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv1_2",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv1_3",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv1_4",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv1_5",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv1_6",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv1_7",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv10_0",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv10_1",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv10_2",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv10_3",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv10_4",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv10_5",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv10_6",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramLv10_7",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    }
+   ]
+  },
+  "Jjs.AbilityDataTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.AbilityData",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.ActionBranchData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "branchId",
+     "type": "string"
+    },
+    {
+     "name": "actionId_None",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageSmall",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageBig",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageHeavy",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageBlow",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageBind",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageParalysis",
+     "type": "string"
+    },
+    {
+     "name": "actionId_Down",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageBindDown",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageParalysisDown",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamagePull",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageInvidible",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DamageVidible",
+     "type": "string"
+    },
+    {
+     "name": "actionId_Die",
+     "type": "string"
+    },
+    {
+     "name": "actionId_DieDown",
+     "type": "string"
+    }
+   ]
+  },
+  "Jjs.ActionBranchDataTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "dtParamList",
+     "type": "Jjs.ActionBranchData",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AffectCondition": {
+   "kind": "enum",
+   "values": {
+    "PRVS_NONE": 0,
+    "PRVS_ORAORA": 1,
+    "PRVS_DYING": 2,
+    "PRVS_ALONE": 3,
+    "PRVS_DEAD": 4,
+    "PRVS_CHANGE": 5,
+    "PRVS_HALF_HP": 6,
+    "PRVS_FULL_HP": 7,
+    "PRVS_DEFEAT": 8,
+    "PRVS_CHARA": 9,
+    "PRVS_ATRBT": 10,
+    "PRVS_ASSIST_USE": 11,
+    "PRVS_SP_SKILL_USE_COUNT": 12,
+    "PRVS_OVER_HP": 13,
+    "PRVS_UNDER_HP": 14,
+    "PRVS_MEMBER_COUNT": 15,
+    "PRVS_STYPE_COUNT": 16,
+    "PRVS_EVENT": 17,
+    "PRVS_UNDER_ENEMY": 18,
+    "PRVS_OVER_ENEMY": 19,
+    "PRVS_GENDER": 20,
+    "PRVS_UNDER_CHAIN": 21,
+    "PRVS_OVER_CHAIN": 22,
+    "PRVS_UNDER_DEFEAT_DT": 23,
+    "PRVS_DEAD_PARTY": 24,
+    "PRVS_STATE": 25,
+    "PRVS_USE_KINGCRIMSON": 26,
+    "PRVS_KINGCRIMSON": 27,
+    "PRVS_USE_WORLD": 28,
+    "PRVS_WORLD": 29
+   }
+  },
+  "Jjs.AffectTextRuleTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "pvrsRuleList",
+     "type": "Jjs.AffectTextRuleTable/AffectTextRuleParam",
+     "list": true
+    },
+    {
+     "name": "baseAffectRuleList",
+     "type": "Jjs.AffectTextRuleTable/AffectTextRuleParam",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AffectTextRuleTable/AffectTextRuleParam": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "pvrs",
+     "type": "Jjs.AffectCondition"
+    },
+    {
+     "name": "baseAffectType",
+     "type": "Jjs.BaseAffectType"
+    },
+    {
+     "name": "paramRuleTypeList",
+     "type": "Jjs.AffectTextRuleTable/RuleType",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AffectTextRuleTable/RuleType": {
+   "kind": "enum"
+  },
+  "Jjs.AreaPositionPatternTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.AreaPositionPatternTable/PatternData",
+     "list": true
+    },
+    {
+     "name": "positionList",
+     "type": "Jjs.AreaPositionPatternTable/PositionData",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AreaPositionPatternTable/PatternData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "patternName",
+     "type": "string"
+    },
+    {
+     "name": "posSetList",
+     "type": "Jjs.AreaPositionPatternTable/PatternData/PositionSet",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AreaPositionPatternTable/PatternData/Position": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "pos",
+     "type": "Vector3"
+    },
+    {
+     "name": "rotate",
+     "type": "Quaternion"
+    },
+    {
+     "name": "startPos",
+     "type": "Vector3"
+    },
+    {
+     "name": "startRotate",
+     "type": "Quaternion"
+    }
+   ]
+  },
+  "Jjs.AreaPositionPatternTable/PatternData/PositionSet": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "setType",
+     "type": "Jjs.AreaPositionPatternTable/PatternData/SetType"
+    },
+    {
+     "name": "positionList",
+     "type": "Jjs.AreaPositionPatternTable/PatternData/Position",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AreaPositionPatternTable/PatternData/SetType": {
+   "kind": "enum"
+  },
+  "Jjs.AreaPositionPatternTable/PositionData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "name",
+     "type": "string"
+    },
+    {
+     "name": "pos",
+     "type": "Vector3"
+    },
+    {
+     "name": "rotate",
+     "type": "Quaternion"
+    }
+   ]
+  },
+  "Jjs.AssistAbilityCondition": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "assistAbilityId",
+     "type": "string"
+    },
+    {
+     "name": "assistAbilityCondition",
+     "type": "Jjs.CondData",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AssistAbilityConditionTableData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.AbilityConditionTable",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.BaseAffectType": {
+   "kind": "enum",
+   "values": {
+    "BASE_NONE": 0,
+    "BASE_HP_CON": 1,
+    "BASE_HP_RATECON": 2,
+    "BASE_ATK_CON": 3,
+    "BASE_ATK_RATECON": 4,
+    "BASE_DEF_CON": 5,
+    "BASE_DEF_RATECON": 6,
+    "BASE_DMG_CON": 7,
+    "BASE_DMG_RATECON": 8,
+    "BASE_VCT_DAM_CON": 9,
+    "BASE_VCT_DAM_RATECON": 10,
+    "BASE_CURE_CON": 11,
+    "BASE_CURE_RATECON": 12,
+    "BASE_STATUE_COM_RATECON": 13,
+    "BASE_VCT_STATUE_COM_RATECON": 14,
+    "BASE_CRT_DMG_RATECON": 15,
+    "BASE_VCT_CRT_DMG_RATECON": 16,
+    "BASE_CRTRATE_CON": 17,
+    "BASE_ORACHAGE_CON": 18,
+    "BASE_MOVE_CON": 19,
+    "BASE_CT_CON": 20,
+    "BASE_ENCHAT_AFTER": 21,
+    "BASE_RATE_RVVL": 22,
+    "BASE_REGEN_RATE": 23,
+    "BASE_REGEN_FIX": 24,
+    "BASE_SLIP_RATE": 25,
+    "BASE_SLIP_FIX": 26,
+    "BASE_SPSTC_ADD": 27,
+    "BASE_ORASTC_CHAGE": 28,
+    "BASE_DRP_RATECON": 29,
+    "BASE_EXP_CON": 30,
+    "BASE_EXP_RATECON": 31,
+    "BASE_GLD_CON": 32,
+    "BASE_GLD_RATECON": 33,
+    "BASE_NOATK": 34,
+    "BASE_STN_BIRI": 35,
+    "BASE_STN_WO": 36,
+    "BASE_STN_BOND": 37,
+    "BASE_ARMOR": 38,
+    "BASE_SUPER_ARMOR": 39,
+    "BASE_EVENT_ITEMDRP": 40,
+    "BASE_TEXTONLY": 41,
+    "BASE_DELAY_BUFF": 42,
+    "BASE_COUNTER_BUFF": 43,
+    "BASE_GSYOA_ARMOR": 44,
+    "BASE_ATRBT_DMG_CON": 45,
+    "BASE_ATRBT_DMG_RATECON": 46,
+    "BASE_ATRBT_VCT_DAM_CON": 47,
+    "BASE_ATRBT_VCT_DAM_RATECON": 48,
+    "BASE_STYPE_DMG_CON": 49,
+    "BASE_STYPE_DMG_RATECON": 50,
+    "BASE_STYPE_VCT_DAM_CON": 51,
+    "BASE_STYPE_VCT_DAM_RATECON": 52,
+    "BASE_COMBO_GAUGE_RATE": 53,
+    "BASE_BLOW_DMG": 54,
+    "BASE_STEP_RANGE": 55,
+    "BASE_STEP_TIME": 56,
+    "BASE_SLIP_ATK": 57,
+    "BASE_HP1": 58,
+    "BASE_BARRIER": 59,
+    "BASE_NORMAL_SKILL_RATECON": 60,
+    "BASE_SP_SKILL_RATECON": 61,
+    "BASE_EVENT_ITEMDRP_MAG": 62,
+    "BASE_EVENT_ITEMDRP_RATECON": 63,
+    "BASE_SUKA_ARMOR": 64,
+    "BASE_FIX_DAMAGE": 65,
+    "BASE_RATE_DAMAGE": 66,
+    "BASE_ATK_DAMAGE": 67,
+    "BASE_DEF_CONVERT_ATK": 68,
+    "BASE_HP_CONVERT_ATK": 69,
+    "BASE_ATK_CONVERT_DEF": 70,
+    "BASE_HP_CONVERT_DEF": 71,
+    "BASE_DEF_CONVERT_HP": 72,
+    "BASE_ATK_CONVERT_HP": 73,
+    "BASE_DEF_BOOST_ATK": 74,
+    "BASE_HP_BOOST_ATK": 75,
+    "BASE_ATK_BOOST_DEF": 76,
+    "BASE_HP_BOOST_DEF": 77,
+    "BASE_DEF_BOOST_HP": 78,
+    "BASE_ATK_BOOST_HP": 79,
+    "BASE_METAL_ENEMY": 80,
+    "BASE_BOMBER_DMG": 81,
+    "BASE_ADAPT_ME_DODODO": 82,
+    "BASE_ADAPT_ME_DMG": 83,
+    "BASE_ADAPT_ME_KILL": 84,
+    "BASE_ADAPT_ME_HP_COUNT": 85,
+    "BASE_ADAPT_ME_SKILL": 86,
+    "BASE_ADAPT_ENEMY_CUNTR": 87,
+    "BASE_SP_SKILL_STC_ADD": 88,
+    "BASE_ENEMY_DEF_CON": 89,
+    "BASE_VCT_CRTRATE_CON": 90,
+    "BASE_DMG_UPPER": 91,
+    "BASE_EXPERT_MEMORY": 92,
+    "BASE_DT_DMG_CON": 93,
+    "BASE_DT_DMG_RATECON": 94,
+    "BASE_DT_VCT_DAM_CON": 95,
+    "BASE_DT_VCT_DAM_RATECON": 96,
+    "BASE_DT_CURE_CON": 97,
+    "BASE_DT_CURE_RATECON": 98,
+    "BASE_DT_DRAIN_RATECON": 99,
+    "BASE_DT_STATUE_COM_RATECON": 100,
+    "BASE_DT_VCT_STATUE_COM_RATECON": 101,
+    "BASE_DT_CRTRATE_CON": 102,
+    "BASE_DT_ORACHAGE_CON": 103,
+    "BASE_DT_CLTURN_CON": 104,
+    "BASE_DT_RATE_RVVL": 105,
+    "BASE_DT_REGEN_RATE": 106,
+    "BASE_DT_REGEN_FIX": 107,
+    "BASE_DT_SLIP_RATE": 108,
+    "BASE_DT_SLIP_FIX": 109,
+    "BASE_DT_ORASTC_CHAGE": 110,
+    "BASE_DT_STN": 111,
+    "BASE_DT_SEAL_SKILL": 112,
+    "BASE_DT_ATRBT_DMG_CON": 113,
+    "BASE_DT_ATRBT_DMG_RATECON": 114,
+    "BASE_DT_ATRBT_VCT_DAM_CON": 115,
+    "BASE_DT_ATRBT_VCT_DAM_RATECON": 116,
+    "BASE_DT_STYPE_DMG_CON": 117,
+    "BASE_DT_STYPE_DMG_RATECON": 118,
+    "BASE_DT_STYPE_VCT_DAM_CON": 119,
+    "BASE_DT_STYPE_VCT_DAM_RATECON": 120,
+    "BASE_DT_HP1": 121,
+    "BASE_DT_BARRIER": 122,
+    "BASE_DT_ERACE": 123,
+    "BASE_DT_TYPE_DMG_RATECON": 124,
+    "BASE_DT_SLIP_DAM_CON": 125,
+    "BASE_DT_SLIP_ATK_DAM_CON": 126,
+    "BASE_DT_ADDDMG_BUF": 127,
+    "BASE_DT_DMGED_BUF": 128,
+    "BASE_DT_DR_CON": 129,
+    "BASE_DT_COUNTER_BUF": 130,
+    "BASE_DT_COUNTER_SKL": 131,
+    "BASE_DT_HPRATE": 132,
+    "BASE_DT_INVISIBLE": 133,
+    "BASE_DT_HIT_CON": 134,
+    "BASE_DT_HIT_RATECON": 135,
+    "BASE_DT_EVA_CON": 136,
+    "BASE_DT_EVA_RATECON": 137,
+    "BASE_DT_SPEED_RATECON": 138,
+    "BASE_DT_NOATK": 139,
+    "BASE_DT_SYS_OVERKILL": 140,
+    "BASE_DT_RESIST_CON": 141,
+    "BASE_DT_RESIST_RATECON": 142,
+    "BASE_ATK_STACK_CON": 143,
+    "BASE_ATK_STACK_RATECON": 144,
+    "BASE_DEF_STACK_CON": 145,
+    "BASE_DEF_STACK_RATECON": 146,
+    "BASE_DT_SLIP_RATE_CURRENT": 147,
+    "BASE_DT_DMGED_BUF_TEAM_ALL": 148,
+    "BASE_DT_DMGED_BUF_ENEMY_ALL": 149,
+    "BASE_DT_TYPE_DOUBLING": 150,
+    "BASE_DT_SYS_TUTORIAL_FINISHLOCK": 151,
+    "BASE_DT_CHANGE_AI_TABLE": 152,
+    "BASE_DT_MISS_VCT_DMG_RATECON": 153,
+    "BASE_DT_SCLASS_VCT_DMG_RATECON": 154,
+    "BASE_DT_SCLASS_DMG_RATECON": 155,
+    "BASE_DT_TAUNT": 156,
+    "BASE_DT_GER": 157,
+    "BASE_DT_MISS_DMG_RATECON": 158,
+    "BASE_DT_CHANGE_STYPE": 159,
+    "BASE_DT_MISS_VCT_DMG_ZERO": 160,
+    "BASE_DT_MISS_DMG_ZERO": 161,
+    "BASE_DT_VCT_DMG_ZERO": 162,
+    "BASE_DT_DMG_ZERO": 163,
+    "BASE_DT_ACT_UNDERATTACK": 164,
+    "BASE_DT_RAID_FNLDMG_RATECON": 165,
+    "BASE_DT_ERACE_BUFF": 166,
+    "BASE_DT_CHAIN_FIXCON": 167,
+    "BASE_DT_STATE_HIT_RATECON": 168,
+    "BASE_DT_STATE_DMG_RATECON": 169
+   }
+  },
+  "Jjs.CondData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "statueType",
+     "type": "Jjs.StatueType"
+    },
+    {
+     "name": "count",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.FormationTeamRank": {
+   "kind": "enum"
+  },
+  "Jjs.LevelTable": {
+   "kind": "struct",
+   "fields": [
+    {
+     "name": "level",
+     "type": "int"
+    },
+    {
+     "name": "exp",
+     "type": "int"
+    },
+    {
+     "name": "hp",
+     "type": "int"
+    },
+    {
+     "name": "atk",
+     "type": "int"
+    },
+    {
+     "name": "def",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.LevelTableData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.StatueLevelTableList",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.MapGimmickPatternTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.MapGimmickPatternTable/PatternData",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.MapGimmickPatternTable/PatternData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "patternName",
+     "type": "string"
+    },
+    {
+     "name": "bodyPos",
+     "type": "Vector3"
+    },
+    {
+     "name": "positionList",
+     "type": "Vector3",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.MindLevelTable": {
+   "kind": "struct",
+   "fields": [
+    {
+     "name": "level",
+     "type": "int"
+    },
+    {
+     "name": "exp",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.MindLevelTableData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.MindLevelTableList",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.MindLevelTableList": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "rare",
+     "type": "int"
+    },
+    {
+     "name": "levelTableList",
+     "type": "Jjs.MindLevelTable",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.PlayerRankTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.PlayerRankTable/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.PlayerRankTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "rank",
+     "type": "int"
+    },
+    {
+     "name": "exp",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.ScriptCameraParamNode": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "id",
+     "type": "string"
+    },
+    {
+     "name": "baseBoneID",
+     "type": "ScSystem.ScGraphics.CharacterBoneList/Bone"
+    },
+    {
+     "name": "lookatBoneID",
+     "type": "ScSystem.ScGraphics.CharacterBoneList/Bone"
+    },
+    {
+     "name": "rotate",
+     "type": "Vector3"
+    },
+    {
+     "name": "perspective",
+     "type": "float"
+    },
+    {
+     "name": "length",
+     "type": "float"
+    },
+    {
+     "name": "baseOffset",
+     "type": "Vector3"
+    },
+    {
+     "name": "lookatOffset",
+     "type": "Vector3"
+    }
+   ]
+  },
+  "Jjs.ScriptCameraParamNodeAsset": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "listData",
+     "type": "Jjs.ScriptCameraParamNode",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.ScriptCameraParamSet": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "cameraID",
+     "type": "int"
+    },
+    {
+     "name": "beginInter",
+     "type": "float"
+    },
+    {
+     "name": "endInter",
+     "type": "float"
+    },
+    {
+     "name": "flagMaintain",
+     "type": "bool"
+    },
+    {
+     "name": "flagBindBase",
+     "type": "bool"
+    },
+    {
+     "name": "flagBindLookat",
+     "type": "bool"
+    },
+    {
+     "name": "flagNowConnect",
+     "type": "bool"
+    },
+    {
+     "name": "flagWorldSet",
+     "type": "bool"
+    },
+    {
+     "name": "flagForcusAhead",
+     "type": "bool"
+    },
+    {
+     "name": "flagNotUpdateBonePosition",
+     "type": "bool"
+    },
+    {
+     "name": "flagNotInter",
+     "type": "bool"
+    },
+    {
+     "name": "dataList",
+     "type": "Jjs.ScriptCameraParamSetData",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.ScriptCameraParamSetAsset": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "listData",
+     "type": "Jjs.ScriptCameraParamSet",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.ScriptCameraParamSetData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "cameraNode",
+     "type": "string"
+    },
+    {
+     "name": "sec",
+     "type": "float"
+    },
+    {
+     "name": "inter",
+     "type": "float"
+    },
+    {
+     "name": "targetIDBase",
+     "type": "int"
+    },
+    {
+     "name": "targetIDLookat",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.SkillButtonType": {
+   "kind": "enum"
+  },
+  "Jjs.SkillData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "skillId",
+     "type": "string"
+    },
+    {
+     "name": "skillName",
+     "type": "string"
+    },
+    {
+     "name": "skillProfileText",
+     "type": "string"
+    },
+    {
+     "name": "skillType",
+     "type": "Jjs.SkillType"
+    },
+    {
+     "name": "bottunType",
+     "type": "Jjs.SkillButtonType"
+    },
+    {
+     "name": "coolDownTime",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "limitCount",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "skillRateLv01",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "skillRateLv10",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "pvpSkillRateLv01",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "pvpSkillRateLv10",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "skillParamList",
+     "type": "ScSystem.ScSecurity.SecurityIntValue",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.SkillDataTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.SkillData",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.SkillType": {
+   "kind": "enum"
+  },
+  "Jjs.SpecialRetireCondition": {
+   "kind": "enum"
+  },
+  "Jjs.SpecialRetireData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "condition",
+     "type": "Jjs.SpecialRetireCondition"
+    },
+    {
+     "name": "conditionParam1",
+     "type": "string"
+    },
+    {
+     "name": "conditionParam2",
+     "type": "string"
+    },
+    {
+     "name": "longExcelCameraId",
+     "type": "int"
+    },
+    {
+     "name": "shortExcelCameraId",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.SpecialSkillSceneData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "spSkillVariation",
+     "type": "int"
+    },
+    {
+     "name": "spSkillSceneParam1",
+     "type": "string"
+    },
+    {
+     "name": "spSkillSceneParam2",
+     "type": "string"
+    }
+   ]
+  },
+  "Jjs.StatueLevelTableList": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "statueId",
+     "type": "string"
+    },
+    {
+     "name": "levelTableList",
+     "type": "Jjs.LevelTable",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.StatueSettingTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.StatueSettingTable/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.StatueSettingTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "statueId",
+     "type": "string"
+    },
+    {
+     "name": "myPageId",
+     "type": "int"
+    },
+    {
+     "name": "myPageCameraType",
+     "type": "string"
+    },
+    {
+     "name": "myPagePos",
+     "type": "Vector3"
+    },
+    {
+     "name": "myPageRotation",
+     "type": "Vector3"
+    },
+    {
+     "name": "teamPos",
+     "type": "Vector3"
+    },
+    {
+     "name": "teamRotation",
+     "type": "Vector3"
+    },
+    {
+     "name": "teamScaleScalar",
+     "type": "float"
+    },
+    {
+     "name": "detailViewPos",
+     "type": "Vector3"
+    },
+    {
+     "name": "jojoViewPos",
+     "type": "Vector3"
+    },
+    {
+     "name": "gashaTopViewPos",
+     "type": "Vector3"
+    },
+    {
+     "name": "mindFrameID",
+     "type": "int"
+    },
+    {
+     "name": "battleResultComment",
+     "type": "string"
+    },
+    {
+     "name": "dododoGaugeType",
+     "type": "int"
+    },
+    {
+     "name": "gashaScriptCamNo01",
+     "type": "int"
+    },
+    {
+     "name": "pvpAiId",
+     "type": "int"
+    },
+    {
+     "name": "pvpAiAutoBattleAiId",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.StatueSpecialSceneDataTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "dataList",
+     "type": "Jjs.StatueSpecialSceneDataTable/Data",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.StatueSpecialSceneDataTable/Data": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "statueId",
+     "type": "string"
+    },
+    {
+     "name": "specialRetireData",
+     "type": "Jjs.SpecialRetireData"
+    },
+    {
+     "name": "dtSpecialRetireData",
+     "type": "Jjs.SpecialRetireData"
+    },
+    {
+     "name": "spcialSkillSceneData",
+     "type": "Jjs.SpecialSkillSceneData"
+    }
+   ]
+  },
+  "Jjs.StatueType": {
+   "kind": "enum"
+  },
+  "Jjs.TeamRankTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.TeamRankTable/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.TeamRankTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "rank",
+     "type": "Jjs.FormationTeamRank"
+    },
+    {
+     "name": "passingScore",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.TutorialFlagTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.TutorialFlagTable/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.TutorialFlagTable/LaunchType": {
+   "kind": "enum",
+   "values": {
+    "Manual": 0,
+    "Tutorial": 1,
+    "AreaStart": 2,
+    "Home": 3
+   }
+  },
+  "Jjs.TutorialFlagTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "id",
+     "type": "int"
+    },
+    {
+     "name": "flagLabel",
+     "type": "string"
+    },
+    {
+     "name": "autoSave",
+     "type": "bool"
+    },
+    {
+     "name": "launchType",
+     "type": "Jjs.TutorialFlagTable/LaunchType"
+    },
+    {
+     "name": "scriptPackName",
+     "type": "string"
+    },
+    {
+     "name": "continueHome",
+     "type": "bool"
+    },
+    {
+     "name": "resourceDownloadStopForMainTutorial",
+     "type": "bool"
+    }
+   ]
+  },
+  "Jjs.YogoTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.YogoTable/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.YogoTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "yogo_Id",
+     "type": "string"
+    },
+    {
+     "name": "yogo_Title",
+     "type": "string"
+    },
+    {
+     "name": "yogo_Yomi",
+     "type": "string"
+    },
+    {
+     "name": "yogo_Text",
+     "type": "string"
+    },
+    {
+     "name": "yogo_Picture",
+     "type": "string"
+    }
+   ]
+  },
+  "ScSystem.ScGraphics.CharacterBoneList/Bone": {
+   "kind": "enum"
+  },
+  "ScSystem.ScSecurity.SecurityIntValue": {
+   "kind": "struct",
+   "fields": [
+    {
+     "name": "seed",
+     "type": "int"
+    },
+    {
+     "name": "securityValue",
+     "type": "int"
+    }
+   ]
+  },
+  "ScSystem.ScSecurity.SecurityFloatValue": {
+   "kind": "struct",
+   "fields": [
+    {
+     "name": "seed",
+     "type": "int"
+    },
+    {
+     "name": "securityValue",
+     "type": "int"
+    }
+   ]
+  },
+  "ScSystem.ScSecurity.SecurityStringValue": {
+   "kind": "struct",
+   "fields": [
+    {
+     "name": "seed",
+     "type": "int"
+    },
+    {
+     "name": "securityString",
+     "type": "string"
+    }
+   ]
+  },
+  "Jjs.BoolType": {
+   "kind": "enum"
+  },
+  "Jjs.DTSkillTargetType": {
+   "kind": "enum"
+  },
+  "Jjs.DTSkillProcessType": {
+   "kind": "enum"
+  },
+  "Jjs.dtbattle.DtBattleDamageParam": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "param",
+     "type": "Jjs.dtbattle.DtBattleDamageParam/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.dtbattle.DtBattleDamageParam/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "_missDamageRate",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_criticalDamageRate",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_criticalDamageUpperLimit",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_criticalDamageLowerLimit",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_limitRateMin",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_limitRateMax",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_addDamageMin",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_addDamageMax",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_baseDamageCorr",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_baseHealCorr",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_ofRatioCurve",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_offenseCoff",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_defenseCoff",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_ofClampMin",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_ofClampMax",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_minimumGuaranteedMag",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_damageGitterMin",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_damageGitterMax",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_damageCap",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_minHitRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_maximumHitRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_chainMaxNum",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_chainRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_chainMaxLimitRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitedHealRateMax",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_limitedHealRateMin",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_limitedHealAddMax",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitedHealAddMin",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_healFluctuationsMax",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_healFluctuationsMin",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_multiDealDamageMin",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_multiDealDamageMax",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_reversalEnable",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_reversalStartGauge",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_reversalAddGaugeDamage",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_reversalAddGaugeDead",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_reversalAddSkillStock",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_reversalMaxTurn",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_reversalAddSpeedUpRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_reversalAddSkillCoolTimeRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveRangeNon",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveRangeVeryNear",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveRangeNear",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveRangeFar",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveRollNon",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveEscapeRenge",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveEscapeSec",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_moveSkillRangeNon",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveSkillRangeVeryNear",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveSkillRangeNear",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_moveSkillRangeFar",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_chain1Rate",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_chain2Rate",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_chain3Rate",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_chain4Rate",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_chain5Rate",
+     "type": "ScSystem.ScSecurity.SecurityFloatValue"
+    },
+    {
+     "name": "_statueAffinityThreshold",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitRarity3AssistStatueAmplification",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitRarity4AssistStatueAmplification",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitRarity5AssistStatueAmplification",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitRarity6AssistStatueAmplification",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitAddBonusRarity3AssistStatueAmplification",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitAddBonusRarity4AssistStatueAmplification",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitAddBonusRarity5AssistStatueAmplification",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_limitAddBonusRarity6AssistStatueAmplification",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_baseAssistBonusRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_sameTypeAssistBonusRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "_differentTypeAssistBonusRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    }
+   ]
+  },
+  "Jjs.dtbattle.DtBattleDamageRankTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "table",
+     "type": "int",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.dtbattle.dtSkillDataTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "skillDataList",
+     "type": "Jjs.dtbattle.dtSkillData",
+     "list": true
+    },
+    {
+     "name": "categoryList",
+     "type": "Jjs.dtbattle.dtSkillCategory",
+     "list": true
+    },
+    {
+     "name": "buffList",
+     "type": "Jjs.dtbattle.dtBuff",
+     "list": true
+    },
+    {
+     "name": "buffEffList",
+     "type": "Jjs.dtbattle.dtBuffEff",
+     "list": true
+    },
+    {
+     "name": "counterList",
+     "type": "Jjs.dtbattle.dtCounterData",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.dtbattle.dtSkillData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "dtSkillId",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "viewSkillId",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "dtSkillName",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "dtSkillProfileText",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "dtSkillType",
+     "type": "Jjs.SkillType"
+    },
+    {
+     "name": "dtButtonType",
+     "type": "Jjs.SkillButtonType"
+    },
+    {
+     "name": "useSP",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "skillWait",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "damageRank",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "dtLimitCount",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "dtMinCoolTurn",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "dtMaxCoolTurn",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "hitRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "hitFlag",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "criticalRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "dododoRate",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "dtCamera",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "dtPositioning",
+     "type": "Jjs.BoolType"
+    },
+    {
+     "name": "dtRange",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "mainSkillCategory",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "subSkillCategory",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "useWorld",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "useKing",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "forceNormalCamera",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "skillClass",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "dtRangeMin",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "dtRangeMax",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    }
+   ]
+  },
+  "Jjs.dtbattle.dtSkillCategory": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "dtSkillCategoryId",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "TargetType",
+     "type": "Jjs.DTSkillTargetType"
+    },
+    {
+     "name": "ProcessType",
+     "type": "Jjs.DTSkillProcessType"
+    },
+    {
+     "name": "turn",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramList",
+     "type": "ScSystem.ScSecurity.SecurityStringValue",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.dtbattle.dtBuff": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "dtBuffId",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "dtBuffText",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "resist",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "eraceId",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "icon",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "buffEffectId",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "eraceTiming",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "affectID",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "giveLimit",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "maxStackNum",
+     "type": "ScSystem.ScSecurity.SecurityIntValue"
+    },
+    {
+     "name": "paramList",
+     "type": "ScSystem.ScSecurity.SecurityIntValue",
+     "list": true
+    },
+    {
+     "name": "debugParamStrList",
+     "type": "ScSystem.ScSecurity.SecurityStringValue",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.dtbattle.dtBuffEff": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "dtBuffEffectId",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "buffEffectIn",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "buffEffectLoop",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "buffEffectOut",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "action",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    }
+   ]
+  },
+  "Jjs.dtbattle.dtCounterData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "dtCounterId",
+     "type": "ScSystem.ScSecurity.SecurityStringValue"
+    },
+    {
+     "name": "paramList",
+     "type": "ScSystem.ScSecurity.SecurityIntValue",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.ReactionTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "param",
+     "type": "Jjs.ReactionTable/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.ReactionTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "item",
+     "type": "Jjs.ReactionTable/ParamItem",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.ReactionTable/ParamItem": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "actionSetName",
+     "type": "string"
+    },
+    {
+     "name": "actionSetEntryId",
+     "type": "int"
+    },
+    {
+     "name": "standVanish",
+     "type": "bool"
+    }
+   ]
+  },
+  "Jjs.ModelTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.ModelTable/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.ModelTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "modelIdHash",
+     "type": "int"
+    },
+    {
+     "name": "commonAnimeType",
+     "type": "Jjs.CommonAnimationType"
+    },
+    {
+     "name": "characterHitColSize",
+     "type": "float"
+    },
+    {
+     "name": "attackHitColSize",
+     "type": "float"
+    },
+    {
+     "name": "moveSpeed",
+     "type": "float"
+    },
+    {
+     "name": "turnSpeed",
+     "type": "float"
+    },
+    {
+     "name": "damageReactionTableType",
+     "type": "Jjs.DamageRactionTableType"
+    },
+    {
+     "name": "hpbarShowOffsetY",
+     "type": "float"
+    },
+    {
+     "name": "modelAttributeType",
+     "type": "Jjs.ModelAttributeType"
+    },
+    {
+     "name": "autoPosMoveSpeedRate",
+     "type": "float"
+    },
+    {
+     "name": "enigmaScreen",
+     "type": "bool"
+    },
+    {
+     "name": "gender",
+     "type": "Jjs.GenderType"
+    },
+    {
+     "name": "dtBattleHeight",
+     "type": "Jjs.DTBattleHeightType"
+    }
+   ]
+  },
+  "Jjs.DTBattleHeightType": {
+   "kind": "enum",
+   "values": {
+    "Normal": 0,
+    "Small": 1
+   }
+  },
+  "Jjs.GenderType": {
+   "kind": "enum",
+   "values": {
+    "None": 0,
+    "Male": 1,
+    "Female": 2
+   }
+  },
+  "Jjs.ModelAttributeType": {
+   "kind": "enum",
+   "values": {
+    "None": 0,
+    "Human": 1,
+    "Stand": 2
+   }
+  },
+  "Jjs.DamageRactionTableType": {
+   "kind": "enum",
+   "values": {
+    "DMG_REACT_TYPE_NORMAL": 0,
+    "DMG_REACT_TYPE_MINI": 1,
+    "DMG_REACT_TYPE_MINI_NO_BLOW": 2
+   }
+  },
+  "Jjs.CommonAnimationType": {
+   "kind": "enum",
+   "values": {
+    "CB_TYPE_NONE": 0,
+    "CB_TYPE_SMALL": 1,
+    "CB_TYPE_MEDIUM": 2,
+    "CB_TYPE_LARGE": 3,
+    "CB_TYPE_FEMALE": 4
+   }
+  },
+  "Jjs.BulletParameter": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "param",
+     "type": "Jjs.BulletParameter/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.BulletParameter/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "ownerModelIdHash",
+     "type": "int"
+    },
+    {
+     "name": "bulletId",
+     "type": "int"
+    },
+    {
+     "name": "poolSize",
+     "type": "int"
+    },
+    {
+     "name": "onPoolEmptyBehaviour",
+     "type": "int"
+    },
+    {
+     "name": "lifeTime",
+     "type": "float"
+    },
+    {
+     "name": "dieAtCharaHit",
+     "type": "bool"
+    },
+    {
+     "name": "dieAtMapHit",
+     "type": "bool"
+    },
+    {
+     "name": "dieAtBulletErasableAttackHit",
+     "type": "bool"
+    },
+    {
+     "name": "mapCollisionMode",
+     "type": "bool"
+    },
+    {
+     "name": "stopMoveOnDying",
+     "type": "bool"
+    },
+    {
+     "name": "mapHitScale",
+     "type": "float"
+    },
+    {
+     "name": "frameEventIdIn",
+     "type": "int"
+    },
+    {
+     "name": "frameEventIdLoop",
+     "type": "int"
+    },
+    {
+     "name": "frameEventIdOut",
+     "type": "int"
+    },
+    {
+     "name": "waitInFrameEventEnd",
+     "type": "bool"
+    },
+    {
+     "name": "dieAtOwnerDamageReaction",
+     "type": "bool"
+    },
+    {
+     "name": "mapCollisionModeBoxShape",
+     "type": "bool"
+    },
+    {
+     "name": "checkMagnetForcePull",
+     "type": "bool"
+    }
+   ]
+  },
+  "Jjs.BattleDamageParam": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "param",
+     "type": "Jjs.BattleDamageParam/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.BattleDamageParam/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "OffensePowerCoeff",
+     "type": "int"
+    },
+    {
+     "name": "DefensePowerCoeff",
+     "type": "int"
+    },
+    {
+     "name": "MinimumDamageGuarantee",
+     "type": "float"
+    },
+    {
+     "name": "CriticalDamagePercent",
+     "type": "int"
+    },
+    {
+     "name": "RandomDamagePercent",
+     "type": "int"
+    },
+    {
+     "name": "DefensePowerIgnoreCounterCoeff",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.BattlePvpComboParam": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "magnification",
+     "type": "float",
+     "list": true
+    },
+    {
+     "name": "magnificationAIAutoBattle",
+     "type": "float",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.BattlePvPStatueStatusParameter": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "hpRate",
+     "type": "float"
+    },
+    {
+     "name": "offenseRate",
+     "type": "float"
+    },
+    {
+     "name": "defenseRate",
+     "type": "float"
+    },
+    {
+     "name": "hpAIAutoBattleRate",
+     "type": "float"
+    },
+    {
+     "name": "offenseAIAutoBattleRate",
+     "type": "float"
+    },
+    {
+     "name": "defenseAIAutoBattleRate",
+     "type": "float"
+    }
+   ]
+  },
+  "Jjs.CharacteristicTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.CharacteristicTable/Param",
+     "list": true
+    },
+    {
+     "name": "levelList",
+     "type": "Jjs.CharacteristicTable/LevelTableData",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.CharacteristicTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "id",
+     "type": "int"
+    },
+    {
+     "name": "strongId",
+     "type": "int"
+    },
+    {
+     "name": "weakId",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.CharacteristicTable/LevelTableData": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "level",
+     "type": "int"
+    },
+    {
+     "name": "affect",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.dtbattle.DtStatueAffinityTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "affinityMatrix",
+     "type": "Jjs.dtbattle.DtStatueAffinityTable/AffinityMatrixRow",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.dtbattle.DtStatueAffinityTable/AffinityMatrixRow": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.dtbattle.DtStatueAffinityTable/AffinityParam",
+     "list": true
+    },
+    {
+     "name": "buffResistList",
+     "type": "Jjs.dtbattle.DtStatueAffinityTable/BuffResistParam",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.dtbattle.DtStatueAffinityTable/AffinityParam": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "statueTypeAffinity",
+     "type": "Jjs.StatueTypeAffinity"
+    },
+    {
+     "name": "damagePercent",
+     "type": "Jjs.dtbattle.DtStatueAffinityTable/ParamList",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.dtbattle.DtStatueAffinityTable/ParamList": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "list",
+     "type": "int",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.dtbattle.DtStatueAffinityTable/BuffResistParam": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "buffResistValue",
+     "type": "int",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.StatueTypeAffinity": {
+   "kind": "enum",
+   "values": {
+    "Win": 0,
+    "Lose": 1,
+    "Even": 2
+   }
+  },
+  "Jjs.StatueAffinityTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "affinityMatrix",
+     "type": "Jjs.StatueAffinityTable/AffinityMatrixRow",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.StatueAffinityTable/AffinityMatrixRow": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.StatueAffinityTable/AffinityParam",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.StatueAffinityTable/AffinityParam": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "statueTypeAffinity",
+     "type": "Jjs.StatueTypeAffinity"
+    },
+    {
+     "name": "damagePercent",
+     "type": "int",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.OraoraModeSetting": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "statueModeInfoList",
+     "type": "Jjs.OraoraModeSetting/StatueModeInfo",
+     "list": true
+    },
+    {
+     "name": "normalSetting",
+     "type": "Jjs.OraoraModeSetting/BattleModeSetting"
+    },
+    {
+     "name": "pvpSetting",
+     "type": "Jjs.OraoraModeSetting/BattleModeSetting"
+    },
+    {
+     "name": "pvpGaugeSetting",
+     "type": "Jjs.OraoraModeSetting/PvPGaugeSetting"
+    }
+   ]
+  },
+  "Jjs.OraoraModeSetting/StatueModeInfo": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "affect",
+     "type": "Jjs.OraoraAffectType"
+    },
+    {
+     "name": "gaugeChargeRate",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.OraoraModeSetting/SpeedUpRate": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "normalAttack",
+     "type": "int"
+    },
+    {
+     "name": "run",
+     "type": "int"
+    },
+    {
+     "name": "step",
+     "type": "int"
+    },
+    {
+     "name": "skill",
+     "type": "int"
+    },
+    {
+     "name": "others",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.OraoraModeSetting/TeamUniteInfo": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "braveDamageRate",
+     "type": "float"
+    },
+    {
+     "name": "intelliDamageRate",
+     "type": "float"
+    },
+    {
+     "name": "tenacityDamageRate",
+     "type": "float"
+    },
+    {
+     "name": "maverickDamageRate",
+     "type": "float"
+    },
+    {
+     "name": "hpReduceRate",
+     "type": "float"
+    },
+    {
+     "name": "bonusRate",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.OraoraModeSetting/TeamSacrificeInfo": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "braveAddDEFRate",
+     "type": "float"
+    },
+    {
+     "name": "intelliRecoverHpRate",
+     "type": "float"
+    },
+    {
+     "name": "tenacityAddATKRate",
+     "type": "float"
+    },
+    {
+     "name": "uniteAddDEFRate",
+     "type": "float"
+    },
+    {
+     "name": "uniteSpeedUpRate",
+     "type": "int"
+    },
+    {
+     "name": "maverickAddATKRate",
+     "type": "float"
+    },
+    {
+     "name": "maverickSpeedUpRate",
+     "type": "int"
+    },
+    {
+     "name": "hpReduceRate",
+     "type": "float"
+    }
+   ]
+  },
+  "Jjs.OraoraModeSetting/PvPGaugeSetting": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "autoGainPointPerSec",
+     "type": "int"
+    },
+    {
+     "name": "gainGaugeOnPlayerDead",
+     "type": "float"
+    },
+    {
+     "name": "gainGaugeOnPlayerDeadSkillCharacter",
+     "type": "float"
+    },
+    {
+     "name": "gainGaugeOnEnemyDead",
+     "type": "float"
+    },
+    {
+     "name": "gainGaugeOnEnemyDeadSkillCharacter",
+     "type": "float"
+    },
+    {
+     "name": "gainPointOnPlayerDamage",
+     "type": "float"
+    },
+    {
+     "name": "gainPointOnPlayerDamageSkillCharacter",
+     "type": "float"
+    },
+    {
+     "name": "gainPointOnEnemyDamage",
+     "type": "float"
+    },
+    {
+     "name": "gainPointOnEnemyDamageSkillCharacter",
+     "type": "float"
+    },
+    {
+     "name": "gainPointOnDamageMinWarranty",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.OraoraModeSetting/BattleModeSetting": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "speedUpRate",
+     "type": "Jjs.OraoraModeSetting/SpeedUpRate"
+    },
+    {
+     "name": "dealDamageRate",
+     "type": "float"
+    },
+    {
+     "name": "receiveDamageRate",
+     "type": "float"
+    },
+    {
+     "name": "teamUniteInfo",
+     "type": "Jjs.OraoraModeSetting/TeamUniteInfo"
+    },
+    {
+     "name": "teamSacrificeInfo",
+     "type": "Jjs.OraoraModeSetting/TeamSacrificeInfo"
+    }
+   ]
+  },
+  "Jjs.OraoraAffectType": {
+   "kind": "enum",
+   "values": {
+    "NoramlActionAndRunSpeedUp": 1,
+    "SkillActionSpeedUp": 2,
+    "SkillStatusChange": 4,
+    "SpSkillStatusChange": 8,
+    "DealDamageUp": 16,
+    "ReceiveDamageDown": 32,
+    "ArmorPlus": 64,
+    "TeamMemberUnite": 128,
+    "TeamMemberSacrifice": 256
+   }
+  },
+  "Jjs.AffectTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.AffectTable/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AffectTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "affectId",
+     "type": "string"
+    },
+    {
+     "name": "affectTextId",
+     "type": "string"
+    },
+    {
+     "name": "prvs",
+     "type": "Jjs.AffectCondition"
+    },
+    {
+     "name": "baseAffect",
+     "type": "Jjs.BaseAffectType"
+    },
+    {
+     "name": "affectLimitNormal",
+     "type": "ScSystem.ScSecurity.SecurityIntValue",
+     "list": true
+    },
+    {
+     "name": "affectLimitExtra",
+     "type": "ScSystem.ScSecurity.SecurityIntValue",
+     "list": true
+    },
+    {
+     "name": "textSortIndex",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.ClanTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.ClanTable/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.ClanTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "level",
+     "type": "int"
+    },
+    {
+     "name": "exp",
+     "type": "int"
+    },
+    {
+     "name": "function_Id",
+     "type": "string"
+    },
+    {
+     "name": "function_Text",
+     "type": "string"
+    }
+   ]
+  },
+  "Jjs.ClanObjectTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.ClanObjectTable/Param",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.ClanObjectTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "clanObjectId",
+     "type": "int"
+    },
+    {
+     "name": "clanObjectType",
+     "type": "int"
+    },
+    {
+     "name": "clanObjectSize",
+     "type": "int"
+    },
+    {
+     "name": "clanObjectmodel",
+     "type": "string"
+    },
+    {
+     "name": "clanObjectIcon",
+     "type": "int"
+    },
+    {
+     "name": "clanObjectAbility",
+     "type": "int"
+    },
+    {
+     "name": "clanObjectTitle",
+     "type": "string"
+    },
+    {
+     "name": "clanObjectText",
+     "type": "string"
+    }
+   ]
+  },
+  "ScSystem.ScGraphics.EffectSettingParam": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "Param",
+     "type": "ScSystem.ScGraphics.EffectSettings",
+     "list": true
+    }
+   ]
+  },
+  "ScSystem.ScGraphics.EffectSettings": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "effectName",
+     "type": "string"
+    },
+    {
+     "name": "param",
+     "type": "ScSystem.ScGraphics.EffectParam"
+    }
+   ]
+  },
+  "ScSystem.ScGraphics.EffectParam": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "reductionLevel",
+     "type": "int"
+    },
+    {
+     "name": "poolType",
+     "type": "int"
+    },
+    {
+     "name": "poolNum",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.StateAbnormalityTable": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "paramList",
+     "type": "Jjs.StateAbnormalityTable/Param",
+     "list": true
+    },
+    {
+     "name": "buffDeleteSkillNamePairList",
+     "type": "Jjs.StateAbnormalityTable/BuffDeleteSkillNamePair",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.StateAbnormalityTable/Param": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "buffId",
+     "type": "string"
+    },
+    {
+     "name": "buffIdHash",
+     "type": "int"
+    },
+    {
+     "name": "buffTimeLvMin",
+     "type": "int"
+    },
+    {
+     "name": "buffTimeLvMax",
+     "type": "int"
+    },
+    {
+     "name": "change",
+     "type": "int"
+    },
+    {
+     "name": "giveLimit",
+     "type": "int"
+    },
+    {
+     "name": "buffEffectIn",
+     "type": "int"
+    },
+    {
+     "name": "buffEffectLoop",
+     "type": "int"
+    },
+    {
+     "name": "buffEffectOut",
+     "type": "int"
+    },
+    {
+     "name": "buffIcon",
+     "type": "Jjs.AbnormalStatusIconType"
+    },
+    {
+     "name": "affectId_0",
+     "type": "string"
+    },
+    {
+     "name": "a_0_DmCate",
+     "type": "Jjs.DamageCategory"
+    },
+    {
+     "name": "a_0_param_0_Lv_1",
+     "type": "int"
+    },
+    {
+     "name": "a_0_param_0_Lv_10",
+     "type": "int"
+    },
+    {
+     "name": "a_0_param_1_Lv_1",
+     "type": "int"
+    },
+    {
+     "name": "a_0_param_1_Lv_10",
+     "type": "int"
+    },
+    {
+     "name": "a_0_param_2_Lv_1",
+     "type": "int"
+    },
+    {
+     "name": "a_0_param_2_Lv_10",
+     "type": "int"
+    },
+    {
+     "name": "affectId_1",
+     "type": "string"
+    },
+    {
+     "name": "a_1_DmCate",
+     "type": "Jjs.DamageCategory"
+    },
+    {
+     "name": "a_1_param_0_Lv_1",
+     "type": "int"
+    },
+    {
+     "name": "a_1_param_0_Lv_10",
+     "type": "int"
+    },
+    {
+     "name": "a_1_param_1_Lv_1",
+     "type": "int"
+    },
+    {
+     "name": "a_1_param_1_Lv_10",
+     "type": "int"
+    },
+    {
+     "name": "a_1_param_2_Lv_1",
+     "type": "int"
+    },
+    {
+     "name": "a_1_param_2_Lv_10",
+     "type": "int"
+    },
+    {
+     "name": "affectId_2",
+     "type": "string"
+    },
+    {
+     "name": "a_2_DmCate",
+     "type": "Jjs.DamageCategory"
+    },
+    {
+     "name": "a_2_param_0_Lv_1",
+     "type": "int"
+    },
+    {
+     "name": "a_2_param_0_Lv_10",
+     "type": "int"
+    },
+    {
+     "name": "a_2_param_1_Lv_1",
+     "type": "int"
+    },
+    {
+     "name": "a_2_param_1_Lv_10",
+     "type": "int"
+    },
+    {
+     "name": "a_2_param_2_Lv_1",
+     "type": "int"
+    },
+    {
+     "name": "a_2_param_2_Lv_10",
+     "type": "int"
+    },
+    {
+     "name": "buffGroup",
+     "type": "Jjs.BuffGroup"
+    },
+    {
+     "name": "nextBuff",
+     "type": "string"
+    },
+    {
+     "name": "timeStop",
+     "type": "bool"
+    }
+   ]
+  },
+  "Jjs.StateAbnormalityTable/BuffDeleteSkillNamePair": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "buffId",
+     "type": "string"
+    },
+    {
+     "name": "skillNames",
+     "type": "string",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.AbnormalStatusIconType": {
+   "kind": "enum",
+   "values": {
+    "Icon_None": 0,
+    "Icon_Buff": 1,
+    "Icon_Debuff": 2,
+    "Icon_Arise": 3,
+    "Icon_SkillUp": 4
+   }
+  },
+  "Jjs.DamageCategory": {
+   "kind": "enum",
+   "values": {
+    "DM_CATE_NONE": 0,
+    "DM_CATE_PHYSICAL": 1,
+    "DM_CATE_STAND_PHY": 2,
+    "DM_CATE_MIND": 3,
+    "DM_CATE_ATTR_FIRE": 4,
+    "DM_CATE_ATTR_ICE": 5,
+    "DM_CATE_ATTR_ELECTOCAL": 6,
+    "DM_CATE_ATTR": 7,
+    "DM_CATE_HAMON": 8,
+    "DM_CATE_UV": 9,
+    "DM_CATE_HEAL": 10,
+    "DM_CATE_HEAL_HAMON": 11,
+    "DM_CATE_HEAL_VMP": 12,
+    "DM_CATE_HEAL_FUSION": 13,
+    "DM_CATE_STAND_FEEDBACK": 14,
+    "DM_CATE_BREAK": 15,
+    "DM_CATE_FIXED": 16,
+    "DM_CATE_WEAPON": 17
+   }
+  },
+  "Jjs.BuffGroup": {
+   "kind": "enum",
+   "values": {
+    "none": 0,
+    "status_group": 1,
+    "effect_group": 2,
+    "echo_group": 3,
+    "after_group": 4,
+    "absol_group": 5
+   }
+  },
+  "Jjs.CharacteristicSkillParameter": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "bodyBombParameter",
+     "type": "Jjs.CharacteristicSkillParameter/BodyBombParameter"
+    },
+    {
+     "name": "characteristicCounterParameter",
+     "type": "Jjs.CharacteristicSkillParameter/CharacteristicCounterParameter"
+    },
+    {
+     "name": "expertStageParam",
+     "type": "Jjs.CharacteristicSkillParameter/ExpertStageParameter"
+    },
+    {
+     "name": "familiarGaugeParam",
+     "type": "Jjs.CharacteristicSkillParameter/FamiliarGaugeParameter"
+    },
+    {
+     "name": "fearStageParam",
+     "type": "Jjs.CharacteristicSkillParameter/FearStageParameter"
+    },
+    {
+     "name": "grudgeEnergyParams",
+     "type": "Jjs.CharacteristicSkillParameter/GrudgeEnergyParameter",
+     "list": true
+    },
+    {
+     "name": "magneticForceParam",
+     "type": "Jjs.CharacteristicSkillParameter/MagneticForceParam"
+    },
+    {
+     "name": "skillUseConditionParameterList",
+     "type": "Jjs.CharacteristicSkillParameter/SkillUseConditionParameterItem",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.CharacteristicSkillParameter/BodyBombParameter": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "bodyBombBulletIdentifierValue",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.CharacteristicSkillParameter/CharacteristicCounterParameter": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "useStatuePersonalId",
+     "type": "int",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.CharacteristicSkillParameter/ExpertStageParameter": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "useStatuePersonalId",
+     "type": "int",
+     "list": true
+    },
+    {
+     "name": "stageUpTimelineId",
+     "type": "int",
+     "list": true
+    },
+    {
+     "name": "rememberedSkillDamageReducePercent",
+     "type": "int"
+    },
+    {
+     "name": "actionId",
+     "type": "Jjs.CharacteristicSkillParameter/ExpertStageActionId",
+     "list": true
+    },
+    {
+     "name": "stageSteps",
+     "type": "Jjs.CharacteristicSkillParameter/ExpertStageStepParameter",
+     "list": true
+    },
+    {
+     "name": "aura",
+     "type": "Jjs.CharacteristicSkillParameter/ExpertStageAuraParameter",
+     "list": true
+    },
+    {
+     "name": "additionalExpertStageSteps",
+     "type": "Jjs.CharacteristicSkillParameter/AdditionalExpertStageStep",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.CharacteristicSkillParameter/ExpertStageStepParameter": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "stage",
+     "type": "int"
+    },
+    {
+     "name": "memoryCount",
+     "type": "int"
+    },
+    {
+     "name": "attackAreaExtendLevel",
+     "type": "int"
+    },
+    {
+     "name": "swordBulletLaunch",
+     "type": "bool"
+    },
+    {
+     "name": "auraLevel",
+     "type": "int"
+    },
+    {
+     "name": "moveSpeedPermillage",
+     "type": "int"
+    },
+    {
+     "name": "skillActionSpeedPermillage",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.CharacteristicSkillParameter/AdditionalExpertStageStep": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "healthThreshold",
+     "type": "int"
+    },
+    {
+     "name": "addStep",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.CharacteristicSkillParameter/ExpertStageAuraParameter": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "level",
+     "type": "int"
+    },
+    {
+     "name": "timelineIdLoop",
+     "type": "int"
+    },
+    {
+     "name": "timelineIdOut",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.CharacteristicSkillParameter/ExpertStageActionId": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "useStatuePersonalId",
+     "type": "int"
+    },
+    {
+     "name": "expertCounterSkillId",
+     "type": "int"
+    },
+    {
+     "name": "expertCounterActionSetEntryId",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.CharacteristicSkillParameter/FamiliarGaugeParameter": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "highModeSec",
+     "type": "float"
+    },
+    {
+     "name": "useStatuePersonalId",
+     "type": "int",
+     "list": true
+    },
+    {
+     "name": "gaugeSteps",
+     "type": "Jjs.CharacteristicSkillParameter/FamiliarGaugeStepParameter",
+     "list": true
+    },
+    {
+     "name": "gainPriority",
+     "type": "Jjs.CharacteristicSkillParameter/FamiliarGaugeGainParameter",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.CharacteristicSkillParameter/FamiliarGaugeStepParameter": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "highMode",
+     "type": "bool"
+    },
+    {
+     "name": "threshold",
+     "type": "int"
+    },
+    {
+     "name": "timelineId",
+     "type": "int"
+    },
+    {
+     "name": "timeStopSecBonus",
+     "type": "float"
+    },
+    {
+     "name": "coolTimeBonus",
+     "type": "int"
+    },
+    {
+     "name": "offenseBonus",
+     "type": "int"
+    },
+    {
+     "name": "defenseBonus",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.CharacteristicSkillParameter/FamiliarGaugeGainParameter": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "condition",
+     "type": "Jjs.CharacteristicSkillParameter/FamiliarGaugeGainCondition"
+    },
+    {
+     "name": "condParam",
+     "type": "int"
+    },
+    {
+     "name": "gauge",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.CharacteristicSkillParameter/FamiliarGaugeGainCondition": {
+   "kind": "enum",
+   "values": {
+    "None": 0,
+    "StatueAttribute": 1,
+    "PersonalType": 2
+   }
+  },
+  "Jjs.CharacteristicSkillParameter/FearStageParameter": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "useStatuePersonalId",
+     "type": "int",
+     "list": true
+    },
+    {
+     "name": "fearPointMax",
+     "type": "int"
+    },
+    {
+     "name": "fearSignTimelineIdLoop",
+     "type": "int"
+    },
+    {
+     "name": "fearSignTimelineIdOut",
+     "type": "int"
+    },
+    {
+     "name": "fearSignSec",
+     "type": "float"
+    },
+    {
+     "name": "fearPointEnemyStart",
+     "type": "int"
+    },
+    {
+     "name": "fearSteps",
+     "type": "Jjs.CharacteristicSkillParameter/FearStageStepParameter",
+     "list": true
+    },
+    {
+     "name": "fearPointPattern",
+     "type": "Jjs.CharacteristicSkillParameter/FearPointPatternParameter",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.CharacteristicSkillParameter/FearStageStepParameter": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "stage",
+     "type": "int"
+    },
+    {
+     "name": "threshold",
+     "type": "int"
+    },
+    {
+     "name": "auraTimelineIdLoop",
+     "type": "int"
+    },
+    {
+     "name": "auraTimelineIdOut",
+     "type": "int"
+    },
+    {
+     "name": "enemyOneShotTimelineId",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.CharacteristicSkillParameter/FearPointPatternParameter": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "pointPattern",
+     "type": "int",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.CharacteristicSkillParameter/GrudgeEnergyParameter": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "level",
+     "type": "int"
+    },
+    {
+     "name": "hpRateCondition",
+     "type": "int"
+    },
+    {
+     "name": "offensePowerPermillage",
+     "type": "int"
+    },
+    {
+     "name": "moveSpeedPermillage",
+     "type": "int"
+    },
+    {
+     "name": "skillActionSpeedPermillage",
+     "type": "int"
+    },
+    {
+     "name": "timelineIdIn",
+     "type": "int"
+    },
+    {
+     "name": "timelineIdLoop",
+     "type": "int"
+    },
+    {
+     "name": "timelineIdOut",
+     "type": "int"
+    }
+   ]
+  },
+  "Jjs.CharacteristicSkillParameter/MagneticForceParam": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "maxLevel",
+     "type": "int"
+    },
+    {
+     "name": "autoLevelUpDistance",
+     "type": "float"
+    },
+    {
+     "name": "autoLevelUpTime",
+     "type": "float"
+    },
+    {
+     "name": "magneticForceAttackHitLevelUpThreshold",
+     "type": "int"
+    },
+    {
+     "name": "magneticForceEndOnDownActionBegin",
+     "type": "bool"
+    },
+    {
+     "name": "magneticForceBulletPullBeginSec",
+     "type": "float"
+    },
+    {
+     "name": "magneticForceBulletPullBeginDistance",
+     "type": "float"
+    },
+    {
+     "name": "sourceStatuePersonalId",
+     "type": "int",
+     "list": true
+    },
+    {
+     "name": "bulletHomingTurnPower",
+     "type": "int",
+     "list": true
+    },
+    {
+     "name": "bulletMoveSpeedUpRate",
+     "type": "int",
+     "list": true
+    },
+    {
+     "name": "bulletDamageUpRate",
+     "type": "int",
+     "list": true
+    },
+    {
+     "name": "timelineIdIn",
+     "type": "int",
+     "list": true
+    },
+    {
+     "name": "timelineIdLoop",
+     "type": "int",
+     "list": true
+    },
+    {
+     "name": "timelineIdOut",
+     "type": "int",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.CharacteristicSkillParameter/SkillUseConditionParameterItem": {
+   "kind": "class",
+   "fields": [
+    {
+     "name": "skillIdHash",
+     "type": "int"
+    },
+    {
+     "name": "condition",
+     "type": "Jjs.SkillUsableCondition"
+    },
+    {
+     "name": "personalIdList",
+     "type": "int",
+     "list": true
+    }
+   ]
+  },
+  "Jjs.SkillUsableCondition": {
+   "kind": "enum",
+   "values": {
+    "TimeStopReceiverCanUse": 1,
+    "TimeStopDealerCanNotUse": 2,
+    "SkillCharacterCreatedCanNotUse": 4,
+    "SlaveCharacterCanReceiveMasterCommand": 8,
+    "SlaveCharacterExist": 16
+   }
+  }
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "asset": "effectReductionParam",
+ "about": "Empty: no effect is reduced and every effect pool keeps its caller's size/mode, the same as a missing asset.",
+ "sources": [
+  {
+   "source": "jdr-default",
+   "note": "empty list"
+  }
+ ],
+ "data": {
+  "Param": []
+ }
+}
