@@ -235,3 +235,59 @@ Also from the device comparison: a 0.05 s blend step shows its in-between pose f
 - The SP cinematics depend on animator assets in the player's files and on the skill rows; whether
   ours trigger them is not checked yet.
 - The Focus mode's parameters (JjsCameraParameter) and the 0.5 s settle are the client's.
+
+## 10. The action battle's script cameras (Build 42)
+
+**Requests (H).** `scan_camera_requests.py --prefix actionset_statue_ --prefix actionset_common
+--prefix actionset_gmc` over the player's files: 2,402 `DoChangeCamera*` actions, 1,940 of them
+script requests (1,938 in the 128 `actionset_statue_<psid>` sets, 2 in `actionset_common`, none in
+`actionset_gmc`), 88 distinct ids. 62 had no set: 302–304, 306, 307, 310, 312, 313, 315–320 (win
+appeals), 1003–1015, 1026–1028, 2004–2023, 2100–2113, 2200–2223 and 2300–2303. The rest (0, the
+boss intros 201/202/204, 301 and the other result ids, 101001, 111000, 1306xx/1307xx, 150001) are
+shared with the tactical battle. The common sets (damage, down, idle, run) send most of the 462
+`Normal` requests that hand the camera back to the follow camera.
+
+**How the action battle plays them (H, `DoChangeCamera.ChangeCameraActionBattle` 0xCFF9A4).**
+
+- Field offsets: cameraType +0x44, scriptCameraId +0x48, targetMainCharacter +0x4C,
+  permitNonControllerCharacter +0x4D, setBattleCameraDefaultPose +0x4E, ownerCharacter +0x50.
+- Nothing happens when the owner has no `CameraChangePermission` and
+  `permitNonControllerCharacter` is off: script cameras play for the controlled character, and for
+  another unit only on the 174 requests that set the flag.
+- tgt0 is the FSM's owner; with `targetMainCharacter` and an owner of attribute 1 (a Stand) it is
+  the `PairCharacter` (its user). tgt1 is set only for an owner of attribute 0x10 with camera
+  permission: its `MasterSlaveRelationshipCharacter` (attribute 0x40) or the object of its
+  `ParentCharacterHandle`, the parent or master of a child object; otherwise null. tgt2/tgt3 are
+  null.
+- `SetScriptCameraInfo(id, tgt0, tgt1, null, null, rotateInverse = false, holdFinalPose = false)`
+  on the action `Jjs.CameraManager` (0xE974F4) only fills the play info; then the camera type
+  becomes SCRIPTS (4). Unlike the tactical manager (0xFA64D4, which adds 100000 to ids
+  1000–2999 at 0xFA65F8 and mirrors for enemies), the id is looked up as requested
+  (`ScriptCamera.PlayStart` 0xD7020C, an exact `cameraID` match in `<PlayStart>m__0` 0xD71D58), so
+  the action ids 1003–2303 need rows of their own; they never collide with the tactical battle.
+- After the last step the camera keeps the last pose (`ScriptCameraLateUpdate` 0xD6E930 still
+  calls `SetCameraInfo` unless the set is held with `flagMaintain`) until a `Normal` request.
+
+**What we send (ours, `build_camera_sets.py`).** The follow camera stands behind and above the
+character, 40–50° down, and never cuts in combat (F, docs/research/32 §3). Every action id gets a
+two-step shot straight behind the acting unit (rotate.y 180, no sideways offset: the same for
+either side), bound to tgt0's chest, looking 0.6–1.5 m ahead of it, with inter 0.1 (a glide from
+wherever the camera is, about 95 % in 1 s at 30 fps; the aim moves little, since the follow camera
+already looks at the character). No step names tgt1:
+
+| Shot | Used for | Pose (pitch down, distance, fov) |
+|---|---|---|
+| `ACT_WINDUP` | ids whose states are mostly wind-ups (25) | 20°, 3.5 → 3.1 m, 38° |
+| `ACT_COMBO` | ids a combo stage (`ATTACK` set) requests (8) | 38°, 4.8 → 5.0 m, 38° |
+| `ACT_STRIKE` / `ACT_WIDE` | hits and loops, varied by id (8 / 6) | 28°, 4.4 → 4.8 m, 38° / 42°, 6.4 → 6.9 m, 40° |
+| `ACT_RECOVER` | wrap-ups (1) | 40°, 5.0 → 5.4 m, 38° |
+
+302–314 take the win shot (`jdr_result`); 315–320, which only the action battle requests, take
+`jdr_result_front`, the same framing from straight in front. The tactical simulation (allies and
+enemies, unmirrored for these ids) keeps every pose above the floor, on the watched side and within
+11 m; test `action_battle_cameras_cover_the_action_sets`.
+
+**Open (M).** Whether the action manager's script camera starts from the follow camera's live pose
+(the tactical one does: inter 0 left it at the turn view, §2), how it returns to the follow camera
+after a `Normal` request, and what the client's own shots for these ids looked like are not
+checked on a device.

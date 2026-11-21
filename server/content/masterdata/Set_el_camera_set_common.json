@@ -1,6 +1,6 @@
 {
  "asset": "Set_el_camera_set_common",
- "about": "Script camera sets for every camera id the client hard-codes and every id the statues' tactical action sets request (tools/content/build_camera_sets.py, docs/research/31-battle-camera.md): each requested id plays the shot measured for it in the original footage, or one chosen by the kind of action and the role of the states that request it with the measured frequencies; attacks stay on the client's Overview two-shot (forceNormalCamera); every step has inter 1: glides are eased timed blends that enter from the Overview's pose, cuts are 0.001 s steps; win shots (301-314, 101001-101028) a still facing shot; the boss intro (201) a crane up to a tilted full-body shot; stage finishes (100300-100311, 350/351) a ground-level shot. flagMaintain stays false so each shot ends on its own.",
+ "about": "Script camera sets for every camera id the client hard-codes and every id the statues' tactical action sets request (tools/content/build_camera_sets.py, docs/research/31-battle-camera.md): each requested id plays the shot measured for it in the original footage, or one chosen by the kind of action and the role of the states that request it with the measured frequencies; attacks stay on the client's Overview two-shot (forceNormalCamera); every step has inter 1: glides are eased timed blends that enter from the Overview's pose, cuts are 0.001 s steps; win shots (301-314, 101001-101028) a still facing shot; the boss intro (201) a crane up to a tilted full-body shot; stage finishes (100300-100311, 350/351) a ground-level shot. flagMaintain stays false so each shot ends on its own. The action battle's own ids (1003-2303 and 302-320 as its action sets request them) play shots straight behind and above the acting unit near its follow camera, glided into with inter 0.1, and the win shot.",
  "sources": [
   {
    "source": "jdr-research",
@@ -218,7 +218,117 @@
     ]
    },
    {
+    "cameraID": 302,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_result",
+      "sec": 5.0,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 303,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_result",
+      "sec": 5.0,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 304,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_result",
+      "sec": 5.0,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
     "cameraID": 305,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_result",
+      "sec": 5.0,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 306,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_result",
+      "sec": 5.0,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 307,
     "beginInter": 0.0,
     "endInter": 0.3,
     "flagMaintain": false,
@@ -284,7 +394,73 @@
     ]
    },
    {
+    "cameraID": 310,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_result",
+      "sec": 5.0,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
     "cameraID": 311,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_result",
+      "sec": 5.0,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 312,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_result",
+      "sec": 5.0,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 313,
     "beginInter": 0.0,
     "endInter": 0.3,
     "flagMaintain": false,
@@ -320,6 +496,138 @@
     "dataList": [
      {
       "cameraNode": "jdr_result",
+      "sec": 5.0,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 315,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_result_front",
+      "sec": 5.0,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 316,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_result_front",
+      "sec": 5.0,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 317,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_result_front",
+      "sec": 5.0,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 318,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_result_front",
+      "sec": 5.0,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 319,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_result_front",
+      "sec": 5.0,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 320,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": false,
+    "flagBindLookat": false,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_result_front",
       "sec": 5.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -366,6 +674,1398 @@
       "cameraNode": "jdr_finish",
       "sec": 1.5,
       "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 1003,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 1004,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 1005,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 1006,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_COMBO_0",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_COMBO_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 1007,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 1008,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_COMBO_0",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_COMBO_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 1009,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WIDE_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WIDE_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 1010,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WIDE_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WIDE_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 1011,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_COMBO_0",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_COMBO_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 1012,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_COMBO_0",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_COMBO_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 1013,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_COMBO_0",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_COMBO_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 1014,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 1015,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 1026,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 1027,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 1028,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2004,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2006,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2007,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2008,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2010,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_COMBO_0",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_COMBO_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2011,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_STRIKE_0",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_STRIKE_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2012,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_STRIKE_0",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_STRIKE_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2014,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2015,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_RECOVER_0",
+      "sec": 0.8,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_RECOVER_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2020,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_STRIKE_0",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_STRIKE_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2021,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_STRIKE_0",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_STRIKE_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2022,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2023,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2100,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WIDE_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WIDE_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2101,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WIDE_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WIDE_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2102,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WIDE_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WIDE_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2110,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_COMBO_0",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_COMBO_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2111,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_COMBO_0",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_COMBO_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2112,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_STRIKE_0",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_STRIKE_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2113,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_STRIKE_0",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_STRIKE_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2200,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2210,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2211,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2212,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WIDE_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WIDE_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2220,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2221,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2222,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2223,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2300,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2301,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_WINDUP_0",
+      "sec": 1.2,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_WINDUP_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2302,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_STRIKE_0",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_STRIKE_1",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     }
+    ]
+   },
+   {
+    "cameraID": 2303,
+    "beginInter": 0.0,
+    "endInter": 0.3,
+    "flagMaintain": false,
+    "flagBindBase": true,
+    "flagBindLookat": true,
+    "flagNowConnect": false,
+    "flagWorldSet": false,
+    "flagForcusAhead": false,
+    "flagNotUpdateBonePosition": false,
+    "flagNotInter": false,
+    "dataList": [
+     {
+      "cameraNode": "jdr_ACT_STRIKE_0",
+      "sec": 1.0,
+      "inter": 0.1,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ACT_STRIKE_1",
+      "sec": 1.0,
+      "inter": 0.1,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }

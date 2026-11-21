@@ -275,6 +275,16 @@ pub fn tree_squares(d: &StatueDef) -> Vec<TreeSquare> {
     // game's "raises Skill Level" tile), after the DEF line and its fork effect 5 ("raises SP
     // Skill Level"), each +2 levels, for the skills the statue has. Placement and amounts are ours.
     let has = |special: bool| d.dt_skills.iter().any(|s| s.special == special);
+    let push =
+        |out: &mut Vec<TreeSquare>, id: &str, pos: (i64, i64), effect, param, before: &str| {
+            out.push(TreeSquare {
+                id: id.into(),
+                pos,
+                effect,
+                param,
+                before: before.into(),
+            })
+        };
     for (id, x, y, effect, before, special) in [
         ("A6", 6, 1, TREE_SKILL, "A5", false),
         ("Af3", 6, 0, TREE_SKILL, "Af2", false),
@@ -282,59 +292,233 @@ pub fn tree_squares(d: &StatueDef) -> Vec<TreeSquare> {
         ("Df3", 6, 4, TREE_SP_SKILL, "Df2", true),
     ] {
         if has(special) {
-            out.push(TreeSquare {
-                id: id.into(),
-                pos: (x, y),
-                effect,
-                param: TREE_SKILL_LEVELS,
-                before: before.into(),
-            });
+            push(&mut out, id, (x, y), effect, TREE_SKILL_LEVELS, before);
         }
     }
+    // Build 42 (docs/research/13 §3; kinds and labels read in the client, placement and amounts
+    // ours). The finisher (the second SP skill, action battles, rarity 5 and up) gets two effect-9
+    // squares after the SP skill fork.
+    if has(true) && has_finisher(d) {
+        push(
+            &mut out,
+            "P1",
+            (7, 4),
+            TREE_SP2_SKILL,
+            TREE_SKILL_LEVELS,
+            "Df3",
+        );
+        push(
+            &mut out,
+            "P2",
+            (8, 4),
+            TREE_SP2_SKILL,
+            TREE_SKILL_LEVELS,
+            "P1",
+        );
+    }
+    // Past the end of the HP line: a combat statue gets Mind capacity squares (effect 10) in two
+    // arms that end in a Diamond Coin square each (12), with its leader ability squares (11) in
+    // the middle and the awakening square (14) last. An assist-only statue (the client shows no
+    // capacity for it) gets assist skill squares (13) instead, then the same ends.
+    let tail = if d.assist_only {
+        let mut tail = ("H7".to_string(), 7);
+        if !d.dt_skills.is_empty() {
+            for (i, x) in [(1, 8), (2, 9), (3, 10)] {
+                let id = format!("K{i}");
+                push(&mut out, &id, (x, 2), TREE_ASSIST, TREE_LEVEL_STEP, &tail.0);
+                tail = (id, x);
+            }
+        }
+        let x = tail.1 + 1;
+        push(&mut out, "G1", (x, 1), TREE_DIAMONDS, 1, &tail.0);
+        push(&mut out, "G2", (x, 3), TREE_DIAMONDS, 1, &tail.0);
+        tail
+    } else {
+        push(&mut out, "C1", (8, 2), TREE_CP, TREE_CP_STEP, "H7");
+        push(&mut out, "C2", (9, 2), TREE_CP, TREE_CP_STEP, "C1");
+        for (arm, y, gem) in [(["C3", "C4", "C5"], 1, "G1"), (["C6", "C7", "C8"], 3, "G2")] {
+            let mut before = "C2";
+            for (i, id) in arm.iter().enumerate() {
+                push(
+                    &mut out,
+                    id,
+                    (10 + i as i64, y),
+                    TREE_CP,
+                    TREE_CP_STEP,
+                    before,
+                );
+                before = id;
+            }
+            push(&mut out, gem, (13, y), TREE_DIAMONDS, 1, before);
+        }
+        let mut tail = ("C2".to_string(), 9);
+        if has_leader(&d.statue_id) {
+            for (i, x) in [(1, 10), (2, 11), (3, 12)] {
+                let id = format!("L{i}");
+                push(&mut out, &id, (x, 2), TREE_LEADER, TREE_LEVEL_STEP, &tail.0);
+                tail = (id, x);
+            }
+        }
+        tail
+    };
+    push(&mut out, "E", (tail.1 + 1, 2), TREE_EVOLUTION, 0, &tail.0);
     out
 }
 
-/// Tree square effects that raise a skill's level (client tile texts Tree_Message_08 / _09).
+/// Tree square effects as the client reads them (`GrowthTreeBoardUIController`: the tile
+/// `ConvEffectIdToTextureIndex` 0xDECF3C, the tile label `GetTreeEffectName` 0xDECCB8, the
+/// window text `GetTreeEffectExplainName` 0xDECDC0, the status preview `UpdateUI` 0xDED0EC;
+/// docs/research/13 §3). 1 ATK, 2 DEF, 3 HP (`GRID_LABEL_ATTACK` / `_DEFENSE` / `_HP`).
+/// 4: skill level (`Tip_Skill1_000`, `GRID_LABEL_NORMAL_SKILL_1`, `Tree_Message_08`).
 pub const TREE_SKILL: i64 = 4;
+/// 5: SP skill level (`Tip_SPSkill1_000`, `GRID_LABEL_SP_SKILL_NEW`, `Tree_Message_09`).
 pub const TREE_SP_SKILL: i64 = 5;
+/// 7: unlocks the finisher (`Tip_SPSkill2_001`, `GRID_LABEL_SP_NEW`, `Tree_Message_10`). Not
+/// built: our finisher comes with rarity 5, and a gate would take it away until opened.
+pub const TREE_SP2_UNLOCK: i64 = 7;
+/// 6 and 8: a second normal skill (`Tip_Skill2_*`; the preview adds 8 to skill 2). Neither has a
+/// tile label and 3.12 sends no second skill, so neither is built.
+pub const TREE_SKILL2: i64 = 8;
+/// 9: finisher (second SP skill) level (`Tip_SPSkill2_000`, `GRID_LABEL__SP_SKILL_2`,
+/// `Tree_Message_11`).
+pub const TREE_SP2_SKILL: i64 = 9;
+/// 10: Mind capacity, +param (`Tip_Cp_000`/`_001` by `iconLevel`, `GRID_LABEL_MIND_CAPAXITY`,
+/// `Tree_Message_12`); the window shows `mindCapacity` and "+param".
+pub const TREE_CP: i64 = 10;
+/// 11: leader ability level (`Tip_LAbility_000`, `GRID_LABEL_LEADER_ABILITY`, `Tree_Message_13`);
+/// the window shows `leaderAbilityInfo.abilityLevel` + param.
+pub const TREE_LEADER: i64 = 11;
+/// 12: one Diamond Coin (`Tip_Item_000`, `GRID_LABEL_STORN` (ours: "Diamond Coin x1!"),
+/// `Tree_Message_14`). Granted once when the square opens (`services/tree.rs`).
+pub const TREE_DIAMONDS: i64 = 12;
+/// 13: assist skill level (`Tip_AssistSkill_000`, `GRID_LABEL_ASSIST_SKILL`, `Tree_Message_18`).
+pub const TREE_ASSIST: i64 = 13;
+/// 14: awakening gate (`Tip_Evolution_000`, `GRID_LABEL_EVOLUTION`, `Tree_Message_19`). Offline
+/// it is cosmetic: it opens like any square and changes nothing (the evolution screen shows the
+/// statue as it is, docs/research/13 §4).
+pub const TREE_EVOLUTION: i64 = 14;
 /// Levels one skill square adds (ours).
 const TREE_SKILL_LEVELS: i64 = 2;
+/// Levels one leader or assist square adds: three squares take Lv1 to Lv10 (ours).
+const TREE_LEVEL_STEP: i64 = 3;
+/// Mind capacity one CP square adds, and eight squares per combat statue (ours: a full tree
+/// reaches 16 + 32 = 48, four 4-star Minds).
+pub const TREE_CP_STEP: i64 = 4;
 /// Skill level cap (the client interpolates cool turns over levels 0..10).
 pub const SKILL_MAX_LEVEL: i64 = 10;
+/// Leader ability level cap (the client clamps to 1..10 and lerps Lv1 -> Lv10).
+pub const LEADER_MAX_LEVEL: i64 = 10;
+
+/// Whether the statue has a finisher the action battle sends (rarity 5 and up).
+pub fn has_finisher(d: &StatueDef) -> bool {
+    d.rarity() >= 5 && action_skills(&d.statue_id).is_some_and(|a| a.finisher.is_some())
+}
+
+/// Whether the statue has a leader ability we serve (action or tactical).
+pub fn has_leader(statue_id: &str) -> bool {
+    action_leaders().contains_key(statue_id)
+        || dt_lead_ids().contains(&format!("DT_LEAD_{statue_id}"))
+}
+
+/// What a set of opened squares adds up to, per kind (raw sums; levels and capacity below).
+#[derive(Debug, Clone, Copy, PartialEq, Default)]
+pub struct TreeSums {
+    pub atk: i64,
+    pub def: i64,
+    pub hp: i64,
+    pub skill: i64,
+    pub sp: i64,
+    pub sp2: i64,
+    pub cp: i64,
+    pub leader: i64,
+    pub diamonds: i64,
+    pub assist: i64,
+}
+
+/// Sum the opened squares of a board by effect. The start square and kinds we do not build add
+/// nothing.
+pub fn tree_sums(squares: &[TreeSquare], opened: &[String]) -> TreeSums {
+    let mut t = TreeSums::default();
+    for sq in squares.iter().filter(|s| opened.contains(&s.id)) {
+        let slot = match sq.effect {
+            1 => &mut t.atk,
+            2 => &mut t.def,
+            3 => &mut t.hp,
+            TREE_SKILL => &mut t.skill,
+            TREE_SP_SKILL => &mut t.sp,
+            TREE_SP2_SKILL => &mut t.sp2,
+            TREE_CP => &mut t.cp,
+            TREE_LEADER => &mut t.leader,
+            TREE_DIAMONDS => &mut t.diamonds,
+            TREE_ASSIST => &mut t.assist,
+            _ => continue,
+        };
+        *slot += sq.param;
+    }
+    t
+}
+
+/// Levels a statue's tree gives: each is 1 plus its opened squares, capped at 10.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct TreeLevels {
+    pub skill: i64,
+    pub sp: i64,
+    pub sp2: i64,
+    pub leader: i64,
+    pub assist: i64,
+}
+
+impl TreeSums {
+    pub fn levels(&self) -> TreeLevels {
+        let lv = |n: i64, max: i64| (1 + n).clamp(1, max);
+        TreeLevels {
+            skill: lv(self.skill, SKILL_MAX_LEVEL),
+            sp: lv(self.sp, SKILL_MAX_LEVEL),
+            sp2: lv(self.sp2, SKILL_MAX_LEVEL),
+            leader: lv(self.leader, LEADER_MAX_LEVEL),
+            assist: lv(self.assist, SKILL_MAX_LEVEL),
+        }
+    }
+
+    /// `StatueInfo.mindCapacity`: 16 plus the opened CP squares, never under the 40 we sent
+    /// before Build 42 (owner's choice; the base of 16 is design borrowed from the Diamond Records
+    /// PC playtest).
+    pub fn mind_capacity(&self) -> i64 {
+        (MIND_CAPACITY_BASE + self.cp).max(MIND_CAPACITY)
+    }
+}
+
+/// The opened squares of an owned statue, summed.
+pub fn owned_tree_sums(o: &OwnedStatue) -> TreeSums {
+    find(&o.statue_id)
+        .map(|d| tree_sums(&tree_squares(d), &o.tree))
+        .unwrap_or_default()
+}
+
+/// The statue's tree levels.
+pub fn tree_levels(o: &OwnedStatue) -> TreeLevels {
+    owned_tree_sums(o).levels()
+}
 
 /// The statue's (normal, special) skill levels: 1 plus the opened skill squares.
 pub fn skill_levels(o: &OwnedStatue) -> (i64, i64) {
-    let mut lv = (1, 1);
-    if let Some(d) = find(&o.statue_id) {
-        for sq in tree_squares(d).iter().filter(|s| o.tree.contains(&s.id)) {
-            match sq.effect {
-                TREE_SKILL => lv.0 += sq.param,
-                TREE_SP_SKILL => lv.1 += sq.param,
-                _ => {}
-            }
-        }
-    }
-    (lv.0.min(SKILL_MAX_LEVEL), lv.1.min(SKILL_MAX_LEVEL))
+    let l = tree_levels(o);
+    (l.skill, l.sp)
+}
+
+/// The statue's Mind capacity (`StatueInfo.mindCapacity`, checked on every equip).
+pub fn mind_capacity(o: &OwnedStatue) -> i64 {
+    owned_tree_sums(o).mind_capacity()
 }
 
 /// Stat bonus from the opened squares.
 pub fn tree_bonus(o: &OwnedStatue) -> Stats {
-    let mut b = Stats {
-        hp: 0,
-        atk: 0,
-        def: 0,
-    };
-    if let Some(d) = find(&o.statue_id) {
-        for sq in tree_squares(d).iter().filter(|s| o.tree.contains(&s.id)) {
-            match sq.effect {
-                1 => b.atk += sq.param,
-                2 => b.def += sq.param,
-                3 => b.hp += sq.param,
-                _ => {}
-            }
-        }
+    let t = owned_tree_sums(o);
+    Stats {
+        hp: t.hp,
+        atk: t.atk,
+        def: t.def,
     }
-    b
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Default)]
@@ -362,9 +546,13 @@ fn seats_empty(m: &[Vec<(i64, i64)>; 3]) -> bool {
     m.iter().all(Vec::is_empty)
 }
 
-/// A statue's Mind capacity (CP; `StatueInfo.mindCapacity`, ours: three 4-star or four 3-star
-/// Minds at cost 3 x rarity).
+/// The floor of a statue's Mind capacity (CP; `StatueInfo.mindCapacity`): what every statue had
+/// before Build 42 (ours: three 4-star or four 3-star Minds at cost 3 x rarity). The tree's CP
+/// squares raise it ([`mind_capacity`]).
 pub const MIND_CAPACITY: i64 = 40;
+/// Capacity before CP squares (design borrowed from the Diamond Records PC playtest); with the
+/// floor it shows only once the squares pass 24.
+pub const MIND_CAPACITY_BASE: i64 = 16;
 /// Mind slots open per seat: the four golden frames (seq 1-4), the skill frame (5) and the SP
 /// skill frame (6) (client `GameConst.GetMindSeqType`: 1-4 golden, 5 skill, 6 SP skill, 7-8 sub;
 /// docs/research/26-links-and-skills.md §3).
@@ -611,10 +799,11 @@ pub fn statue_info(o: &OwnedStatue) -> Value {
         atk: 1,
         def: 1,
     });
-    let tb = tree_bonus(o);
-    st.hp += tb.hp;
-    st.atk += tb.atk;
-    st.def += tb.def;
+    let sums = owned_tree_sums(o);
+    let lv = sums.levels();
+    st.hp += sums.hp;
+    st.atk += sums.atk;
+    st.def += sums.def;
     let sid = &o.statue_id;
     json!({
         "statueId": sid, "name": format!("STATUE_NAME_{sid}"), "nameSortIndex": 0,
@@ -622,14 +811,14 @@ pub fn statue_info(o: &OwnedStatue) -> Value {
         "description": format!("PROF_TEXT_{sid}"), "specialActionText": "",
         "charaTypeId": d.map(|d| d.psid()).unwrap_or(0),
         "tribeTypeList": tribe_type_list(sid), "statueType": stype, "oraGauge": 0, "standRange": 0,
-        "modelDataList": models, "mindCapacity": MIND_CAPACITY, "useAttr": 1, "attckType": 0,
+        "modelDataList": models, "mindCapacity": sums.mind_capacity(), "useAttr": 1, "attckType": 0,
         "addProfileName": "", "addProfile": "",
         "maxLevel": MAX_LEVEL, "sellVm": 0, "level": o.level, "bounds": 0, "exp": o.exp,
         "hp": st.hp, "eng": 0, "atk": st.atk, "def": st.def,
-        "skillList": [], "abilityList": [], "leaderAbilityInfo": action_leader_ability(sid),
-        "dtSkillList": [], "dtAbilityList": [], "dtLeaderAbilityInfo": leader_ability(sid),
+        "skillList": [], "abilityList": [], "leaderAbilityInfo": action_leader_ability_at(sid, lv.leader),
+        "dtSkillList": [], "dtAbilityList": [], "dtLeaderAbilityInfo": leader_ability_at(sid, lv.leader),
         "characteristicList": [], "assistAttr": d.is_some_and(|d| d.assist_only) as i64, "assistSkillInfo": {},
-        "assistAbilityList": assist_ability_list(sid), "dtAssistSkillInfo": assist_skill(sid),
+        "assistAbilityList": assist_ability_list(sid), "dtAssistSkillInfo": assist_skill_at(sid, lv.assist),
         "dtAssistAbilityList": dt_assist_ability_list(sid),
         "speed": 100, "evasion": 0, "hitrate": 100, "criticalRate": 5,
         "stEffRateInfo": {}, "maxSp": 100, "useStageType": 0, "levelUpTable": [],
@@ -704,7 +893,8 @@ pub fn action_skill_list(o: &OwnedStatue) -> Vec<Value> {
     let Some(a) = action_skills(&o.statue_id) else {
         return Vec::new();
     };
-    let (normal, special) = skill_levels(o);
+    let lv = tree_levels(o);
+    let (normal, special) = (lv.skill, lv.sp);
     let info = |id: &str, level: i64| {
         json!({ "skillId": id, "skillLevel": level.clamp(1, SKILL_MAX_LEVEL), "name": "", "explanation": "",
                 "skillType": 0, "bottunType": 0, "coolDown": 0, "limitCount": 0,
@@ -720,7 +910,7 @@ pub fn action_skill_list(o: &OwnedStatue) -> Vec<Value> {
         a.finisher
             .as_ref()
             .filter(|_| rare >= 5)
-            .map_or(json!({}), |x| info(&x.id, special)),
+            .map_or(json!({}), |x| info(&x.id, lv.sp2)),
     ]
 }
 
@@ -1039,7 +1229,12 @@ fn setting(c: &Collection, t: &Team, seat: usize) -> Value {
             // Only filled slots: the client counts the list against the open slots. A skill Mind
             // left in a seat whose statue cannot use it (the seat's statue changed) is not sent:
             // the battle would add its skill to a model without that action set.
-            let minds = seat_minds(c, &t.minds[seat], &o.statue_id);
+            // Nor are Minds past the statue's capacity (a seat filled on a statue with more CP
+            // squares keeps its Minds when the statue changes): the first ones in slot order stay.
+            let minds = within_capacity(
+                seat_minds(c, &t.minds[seat], &o.statue_id),
+                mind_capacity(o),
+            );
             let equipped: Vec<Value> = minds
                 .iter()
                 .map(|(seq, m)| {
@@ -1090,6 +1285,23 @@ pub fn seat_minds<'a>(
         .filter_map(|(seq, u)| {
             let m = c.minds.iter().find(|m| m.uid == *u)?;
             mind_fits(&m.mind_id, *seq, statue_id).then_some((*seq, m))
+        })
+        .collect()
+}
+
+/// The Minds of a seat (slot order) that fit a capacity: each is kept while the running cost
+/// stays within it.
+pub fn within_capacity(minds: Vec<(i64, &OwnedMind)>, cap: i64) -> Vec<(i64, &OwnedMind)> {
+    let mut used = 0;
+    minds
+        .into_iter()
+        .filter(|(_, m)| {
+            let c = mind_cost(&m.mind_id);
+            let fits = used + c <= cap;
+            if fits {
+                used += c;
+            }
+            fits
         })
         .collect()
 }
@@ -1176,8 +1388,24 @@ impl Collection {
 /// table (`isInit` false) but needs a list here, and a level of 1..10 (values are interpolated from
 /// the wiki's level-1 value to its MAX value at level 10); level 1 is the wiki's base value.
 pub fn leader_ability(statue_id: &str) -> Value {
+    leader_ability_at(statue_id, 1)
+}
+
+/// [`leader_ability`] at a level (the tree's leader squares, effect 11; clamped to 1..10).
+pub fn leader_ability_at(statue_id: &str, level: i64) -> Value {
+    let id = format!("DT_LEAD_{statue_id}");
+    if dt_lead_ids().contains(&id) {
+        json!({ "abilityId": id, "abilityLevel": level.clamp(1, LEADER_MAX_LEVEL),
+                "abilityName": "", "abilityParamList": [], "isInit": false })
+    } else {
+        json!({})
+    }
+}
+
+/// The `DT_LEAD_*` ability ids dtbattle_ability_data_table has.
+fn dt_lead_ids() -> &'static std::collections::HashSet<String> {
     static IDS: std::sync::OnceLock<std::collections::HashSet<String>> = std::sync::OnceLock::new();
-    let ids = IDS.get_or_init(|| {
+    IDS.get_or_init(|| {
         let js = crate::masterdata::TABLES
             .iter()
             .find(|(n, _)| *n == "dtbattle_ability_data_table")
@@ -1189,15 +1417,9 @@ pub fn leader_ability(statue_id: &str) -> Value {
             .unwrap_or_default()
             .iter()
             .filter_map(|r| r["abilityId"].as_str().map(str::to_string))
+            .filter(|id| id.starts_with("DT_LEAD_"))
             .collect()
-    });
-    let id = format!("DT_LEAD_{statue_id}");
-    if ids.contains(&id) {
-        json!({ "abilityId": id, "abilityLevel": 1, "abilityName": "", "abilityParamList": [],
-                "isInit": false })
-    } else {
-        json!({})
-    }
+    })
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -1264,9 +1486,9 @@ pub fn action_param(p: &ActionParam) -> Value {
     Value::Object(o)
 }
 
-/// The level the action leader ability is sent at: the wiki's Lv1 values apply (10 = its MAX; the
-/// client clamps to 1..10 in AddAffect). Nothing raises it yet: an owner decision
-/// (docs/research/30-action-battle.md §7).
+/// The level the action leader ability is sent at without tree squares: the wiki's Lv1 values
+/// apply (10 = its MAX; the client clamps to 1..10 in AddAffect). From Build 42 the tree's leader
+/// squares (effect 11) raise it ([`tree_levels`]; docs/research/30-action-battle.md §7).
 pub const ACTION_LEADER_LEVEL: i64 = 1;
 
 /// `StatueInfo.leaderAbilityInfo`: the action-battle leader ability with its params inline
@@ -1274,9 +1496,15 @@ pub const ACTION_LEADER_LEVEL: i64 = 1;
 /// do not ship). The leader seat's goes to all three members (source 6), a mutual-follow
 /// supporter's too (source 7). `{}` when the statue has no wiki leader ability we can serve.
 pub fn action_leader_ability(statue_id: &str) -> Value {
+    action_leader_ability_at(statue_id, ACTION_LEADER_LEVEL)
+}
+
+/// [`action_leader_ability`] at a level (clamped to 1..10). The tree screen shows this level as
+/// the current one (`UpdateUI` 0xDED0EC reads `leaderAbilityInfo.abilityLevel`).
+pub fn action_leader_ability_at(statue_id: &str, level: i64) -> Value {
     match action_leaders().get(statue_id) {
         Some(l) => json!({
-            "abilityId": l.ability_id, "abilityLevel": ACTION_LEADER_LEVEL,
+            "abilityId": l.ability_id, "abilityLevel": level.clamp(1, LEADER_MAX_LEVEL),
             "abilityName": l.ability_name,
             "abilityParamList": l.params.iter().map(action_param).collect::<Vec<_>>(),
             "isInit": true
@@ -1620,6 +1848,11 @@ pub fn dt_assist_ability_list(statue_id: &str) -> Vec<Value> {
 /// Assist button). It must name a dtbattle_skill_data_table row (the client throws on a missing
 /// one), so it is the statue's own normal skill, else its special, else none (`{}`: no button).
 pub fn assist_skill(statue_id: &str) -> Value {
+    assist_skill_at(statue_id, 1)
+}
+
+/// [`assist_skill`] at a level (an assist-only statue's tree raises it, effect 13).
+pub fn assist_skill_at(statue_id: &str, level: i64) -> Value {
     let skills = find(statue_id)
         .map(|d| d.dt_skills.as_slice())
         .unwrap_or(&[]);
@@ -1627,7 +1860,7 @@ pub fn assist_skill(statue_id: &str) -> Value {
         .iter()
         .find(|s| !s.special)
         .or_else(|| skills.first())
-        .map(|s| dt_skill_info(s, 1))
+        .map(|s| dt_skill_info(s, level))
         .unwrap_or_else(|| json!({}))
 }
 
@@ -1918,6 +2151,45 @@ mod tests {
                 );
             }
         }
+    }
+
+    /// The action assist bonus is computed by the client from each assist's own `convergence`
+    /// and stats (docs/research/19-assists.md §3.1), so every assist record on a seat carries
+    /// them; a 225-boost assist gives its whole HP/ATK/DEF.
+    #[test]
+    fn seat_assists_carry_convergence_for_the_action_bonus() {
+        use crate::services::misc::{assist_magnification, assist_transfer};
+        let mut c = Collection::default();
+        c.ensure("2026-11-14 00:00:00");
+        let mut t = c.teams[0].clone();
+        let free: Vec<i64> = c
+            .statues
+            .iter()
+            .filter(|o| !t.slots.contains(&o.uid))
+            .map(|o| o.uid)
+            .take(2)
+            .collect();
+        let boosts = [225, 7];
+        for (u, b) in free.iter().zip(boosts) {
+            c.statues.iter_mut().find(|o| o.uid == *u).unwrap().boost = b;
+        }
+        t.assists[1] = vec![(1, free[0]), (3, free[1])];
+        let info = team_info(&c, &t);
+        let list = info["teamOrder"]["memberLeftStatue"]["assistStatueList"]
+            .as_array()
+            .unwrap();
+        assert_eq!(list.len(), 2);
+        for (a, b) in list.iter().zip(boosts) {
+            assert_eq!(a["convergence"], b);
+            for k in ["hp", "atk", "def"] {
+                assert!(a[k].as_i64().is_some(), "{k}");
+            }
+        }
+        assert_eq!(list[1]["seq"], 3);
+        assert_eq!(assist_magnification(225), 1.0);
+        let hp = list[0]["hp"].as_i64().unwrap() as i32;
+        assert_eq!(assist_transfer(hp, 225), hp);
+        assert_eq!(assist_magnification(7), 0.12);
     }
 
     /// Every statue: no wiki leader -> `{}`; else an inline, valid action AbilityInfo (IsValid
@@ -3100,8 +3372,205 @@ mod links_and_skills_tests {
         assert!(lv.contains(&(false, 5)) && lv.contains(&(true, 3)));
         // Statues without a skill get no square for it.
         if let Some(none) = statues().iter().find(|d| d.dt_skills.is_empty()) {
-            assert!(tree_squares(none).iter().all(|s| s.effect < TREE_SKILL));
+            let skill_kinds = [TREE_SKILL, TREE_SP_SKILL, TREE_SP2_SKILL, TREE_ASSIST];
+            assert!(tree_squares(none)
+                .iter()
+                .all(|s| !skill_kinds.contains(&s.effect)));
         }
+    }
+
+    /// A synthetic board (fake statue, fake values, after the batch handoff's `tree_kinds_board`)
+    /// with the kinds the client and the handoff agree on.
+    fn kinds_board() -> Vec<TreeSquare> {
+        let sq = |id: &str, pos: (i64, i64), effect: i64, param: i64, before: &str| TreeSquare {
+            id: id.into(),
+            pos,
+            effect,
+            param,
+            before: before.into(),
+        };
+        vec![
+            sq("S", (0, 2), 0, 0, ""),
+            sq("A1", (1, 1), 1, 10, "S"),
+            sq("H1", (1, 2), 3, 30, "S"),
+            sq("D1", (1, 3), 2, 20, "S"),
+            sq("K1", (2, 1), TREE_SKILL, 1, "A1"),
+            sq("P1", (2, 3), TREE_SP_SKILL, 1, "D1"),
+            sq("P2", (3, 3), TREE_SP2_SKILL, 1, "P1"),
+            sq("C1", (2, 2), TREE_CP, 2, "H1"),
+            sq("C2", (3, 2), TREE_CP, 2, "C1"),
+            sq("L1", (4, 2), TREE_LEADER, 1, "C2"),
+        ]
+    }
+
+    #[test]
+    fn tree_sums_by_kind_on_a_synthetic_board() {
+        let board = kinds_board();
+        let opened: Vec<String> = ["S", "A1", "H1", "C1", "C2", "L1"]
+            .map(String::from)
+            .to_vec();
+        let t = tree_sums(&board, &opened);
+        assert_eq!((t.atk, t.hp, t.def), (10, 30, 0));
+        assert_eq!(MIND_CAPACITY_BASE + t.cp, 20);
+        assert_eq!(t.mind_capacity(), MIND_CAPACITY, "the floor of 40 holds");
+        let lv = t.levels();
+        assert_eq!(lv.leader, 2);
+        assert_eq!((lv.skill, lv.sp, lv.sp2, lv.assist), (1, 1, 1, 1));
+        let all: Vec<String> = board.iter().map(|s| s.id.clone()).collect();
+        let lv = tree_sums(&board, &all).levels();
+        assert_eq!((lv.skill, lv.sp, lv.sp2), (2, 2, 2));
+        // Levels stay in 1..10, capacity grows past the floor.
+        let many = TreeSums {
+            leader: 50,
+            sp2: 50,
+            cp: 40,
+            ..TreeSums::default()
+        };
+        assert_eq!((many.levels().leader, many.levels().sp2), (10, 10));
+        assert_eq!(many.mind_capacity(), 56);
+        let none = TreeSums {
+            leader: -5,
+            ..TreeSums::default()
+        };
+        assert_eq!(none.levels().leader, 1);
+    }
+
+    fn fresh(statue_id: &str) -> OwnedStatue {
+        OwnedStatue {
+            uid: 1,
+            statue_id: statue_id.into(),
+            level: 1,
+            exp: 0,
+            get_date: String::new(),
+            tree: Vec::new(),
+            boost: 0,
+        }
+    }
+
+    fn ids_of(d: &StatueDef, effect: i64) -> Vec<String> {
+        tree_squares(d)
+            .into_iter()
+            .filter(|s| s.effect == effect)
+            .map(|s| s.id)
+            .collect()
+    }
+
+    #[test]
+    fn tree_kinds_raise_capacity_leader_finisher_and_assist() {
+        let d = statues()
+            .iter()
+            .find(|d| has_finisher(d) && has_leader(&d.statue_id) && d.dt_skills.len() == 2)
+            .expect("a statue with a finisher and a leader ability");
+        // On every board each square hangs off an existing one; ids and positions are unique.
+        for b in statues() {
+            let squares = tree_squares(b);
+            let ids: std::collections::HashSet<&str> =
+                squares.iter().map(|s| s.id.as_str()).collect();
+            assert_eq!(ids.len(), squares.len(), "{}", b.statue_id);
+            let pos: std::collections::HashSet<(i64, i64)> =
+                squares.iter().map(|s| s.pos).collect();
+            assert_eq!(pos.len(), squares.len(), "{}", b.statue_id);
+            assert!(squares
+                .iter()
+                .skip(1)
+                .all(|s| ids.contains(s.before.as_str())));
+            assert!(squares.iter().all(|s| (0..=4).contains(&s.pos.1)));
+        }
+        let mut o = fresh(&d.statue_id);
+        let stats = tree_bonus(&o);
+        assert_eq!(mind_capacity(&o), MIND_CAPACITY);
+        let cp = ids_of(d, TREE_CP);
+        assert_eq!(cp.len(), 8);
+        for n in 0..=cp.len() {
+            o.tree = cp[..n].to_vec();
+            let want = (MIND_CAPACITY_BASE + TREE_CP_STEP * n as i64).max(MIND_CAPACITY);
+            assert_eq!(mind_capacity(&o), want, "{n} CP squares");
+        }
+        assert_eq!(statue_info(&o)["mindCapacity"], 48);
+        // Leader squares: Lv1 -> Lv10 on both leader infos; finisher squares raise skillList[4].
+        let v = statue_info(&o);
+        assert_eq!(v["leaderAbilityInfo"]["abilityLevel"], 1);
+        o.tree.extend(ids_of(d, TREE_LEADER));
+        o.tree.extend(ids_of(d, TREE_SP2_SKILL));
+        o.tree.extend(ids_of(d, TREE_DIAMONDS));
+        o.tree.extend(ids_of(d, TREE_EVOLUTION));
+        let v = statue_info(&o);
+        assert_eq!(v["leaderAbilityInfo"]["abilityLevel"], LEADER_MAX_LEVEL);
+        if v["dtLeaderAbilityInfo"]["abilityId"].is_string() {
+            assert_eq!(v["dtLeaderAbilityInfo"]["abilityLevel"], LEADER_MAX_LEVEL);
+        }
+        assert_eq!(
+            action_skill_list(&o)[4]["skillLevel"],
+            1 + 2 * TREE_SKILL_LEVELS
+        );
+        assert_eq!(
+            skill_levels(&o),
+            (1, 1),
+            "the finisher squares leave the SP skill"
+        );
+        let b = tree_bonus(&o);
+        assert_eq!(
+            (b.hp, b.atk, b.def),
+            (stats.hp, stats.atk, stats.def),
+            "none of these add stats"
+        );
+        assert_eq!(v["evolutionFlg"], 0, "the awakening square is cosmetic");
+        // No finisher, no effect-9 squares; no leader ability, no effect-11 squares.
+        for d in statues().iter().filter(|d| !has_finisher(d)) {
+            assert!(ids_of(d, TREE_SP2_SKILL).is_empty(), "{}", d.statue_id);
+        }
+        for d in statues().iter().filter(|d| !has_leader(&d.statue_id)) {
+            assert!(ids_of(d, TREE_LEADER).is_empty(), "{}", d.statue_id);
+        }
+        // An assist-only statue: assist skill squares, no capacity squares.
+        let a = statues()
+            .iter()
+            .find(|d| d.assist_only && !d.dt_skills.is_empty())
+            .expect("an assist-only statue");
+        assert!(ids_of(a, TREE_CP).is_empty() && ids_of(a, TREE_LEADER).is_empty());
+        let mut o = fresh(&a.statue_id);
+        assert_eq!(statue_info(&o)["dtAssistSkillInfo"]["skillLevel"], 1);
+        o.tree = ids_of(a, TREE_ASSIST);
+        assert_eq!(o.tree.len(), 3);
+        assert_eq!(
+            statue_info(&o)["dtAssistSkillInfo"]["skillLevel"],
+            SKILL_MAX_LEVEL
+        );
+        assert_eq!(mind_capacity(&o), MIND_CAPACITY);
+    }
+
+    /// Four 4-star Minds fit a statue with its CP squares open; on a statue without them the
+    /// TeamInfo keeps the first three (the fourth would pass 40).
+    #[test]
+    fn seat_minds_past_capacity_are_not_sent() {
+        let mut c = Collection::default();
+        c.ensure("2026-11-18 00:00:00");
+        let mut t = main_team(&c, 1).unwrap().clone();
+        let big: Vec<i64> = c
+            .minds
+            .iter()
+            .filter(|m| mind_cost(&m.mind_id) == 12 && mind_skill(&m.mind_id).is_none())
+            .map(|m| m.uid)
+            .take(4)
+            .collect();
+        assert_eq!(big.len(), 4);
+        t.minds[0] = big
+            .iter()
+            .enumerate()
+            .map(|(i, u)| (i as i64 + 1, *u))
+            .collect();
+        let uid = t.slots[0];
+        let d = find(&c.known_statue(uid).unwrap().statue_id).unwrap();
+        let cp = ids_of(d, TREE_CP);
+        let sent = |c: &Collection| {
+            team_info(c, &t)["teamOrder"]["leaderStatue"]["equipMindList"]
+                .as_array()
+                .unwrap()
+                .len()
+        };
+        assert_eq!(sent(&c), 3);
+        c.statues.iter_mut().find(|o| o.uid == uid).unwrap().tree = cp;
+        assert_eq!(sent(&c), 4);
     }
 
     /// A seat with a skill Mind in the skill frame and three ATK-link Minds: the skill Mind is

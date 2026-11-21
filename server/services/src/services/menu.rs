@@ -14,8 +14,8 @@ pub fn follow_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
 
 /// `NotifyListResponse`: the Notices screen's three tabs (Updates, Maintenance, Other). The client
 /// loads each URL as it is in its web view (`InformationUIController.LoadPage` 0x203E5F0 →
-/// `BaseWebView.Load`, no prefix), so they are absolute URLs of our web module: the local notes
-/// for this build, the offline maintenance note and the about page (web.rs). The Updates tab is
+/// `BaseWebView.Load`, no prefix), so they are absolute URLs of our web module: pages of
+/// collapsible posts from `content/news.json`, one per tab (web.rs `notice_page`). The Updates tab is
 /// marked new until the player has opened this build's notes once (ours).
 pub fn notify_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let (_, unseen) = crate::services::statue::with_profile(ctx, env, |p| {

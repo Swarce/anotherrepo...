@@ -179,7 +179,29 @@ empty star rows, and the loading screen's tip board was blank.
     within 10 + 5 × (areas − 1) turns (10; the limit is ours).
   - `clearFlg` comes from the saved set of cleared types per stage (`Progress.stars`, the union
     of `starClearList` over wins).
-  - Action stages send no rows (their mission types differ).
+  - Action stages (Build 42): see "Action stages" below.
+- **Action stages** (Build 42) (H unless marked).
+  - `StarInfo.starTarget` is typed `QuestMissionClearType` (0 None .. 47 NoContinue), the
+    action enum; tactical stages put DT types in the same field.
+  - The action end request (`BizarreQuestManager.OnBizarreQuestEnd` 0xE05D58) sends
+    `starClearList` from the stage's `starList` through `BattleLogManager.GetClearMissionListStr`
+    0xC069DC → 0xC0681C (comma-joined) → `GetClearMissionList` 0xC05DFC.
+  - `GetClearMissionList` switches on types 1..46 (jump table 0x223CB90); 0 and 47 never clear.
+    Thresholds are built into the type, so `param` is not read: 7 `CheckNobodyDied` 0xC06390
+    (team size = log `ClearMemberNum`), 8 `CheckKillAllEnemy` 0xC06424 (log `KillEnemy` =
+    log `EnemyNum`), 20 log `UseSkill` (11) ≥ 1, 21 ≥ 2, 9–13 clear time, 15–17 combo. All are
+    the client's own counts; the server only stores what it reports.
+  - The result screen (`BattleResultUIController`, shared; `isClear(List<QuestMissionClearType>,
+    …)`) lights rows from the echoed `starClearList` as for tactical stages.
+  - Labels: `QuestMission_JP:QuestMissionText_<type + 2>` (texts 0–2 are counters; 3 is type 1
+    UseSupport, 16 type 14 NoCondition, 49 type 47 NoContinue) (M for the offset rule: every row
+    matches its enum name).
+  - What we send: 7 all team members survive, 8 defeat all enemies, 20 use a Skill (our
+    translations of the labels), `param` empty (the choice: design borrowed from the Diamond
+    Records PC playtest). Wins keep types
+    1..46 in `Progress.stars`.
+  - Open (M): not yet seen on a device (whether every served wave raises `EnemyNum` as it
+    spawns, so 8 can be met).
 - **Loading tips** (H).
   - `BattleSceneController.CreateSceneChangeOption` 0xEC36F0 passes the stage's `questTips` to
     the loading screen; there is no random pick.

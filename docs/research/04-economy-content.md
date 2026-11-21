@@ -16,7 +16,8 @@ uses `ConfigInfo` values; content values themselves are not researched yet.
 - limits (`playerLimitMaxMind`, `characteristicLevelUpperLimit`);
 - recovery timers (`apOneRecoveryTime`, `bpOneRecoveryTime`, `rpOneRecoveryTime`, `bpMaxFatiguDown`).
   These divide time deltas, so they must never be 0;
-- assist-status tuning (`assistStatus*`), `pvpTeamCharaChangeIntervalTime`,
+- assist-status tuning (`assistStatus*`: the action-battle assist share, 19-assists §3.1),
+  `pvpTeamCharaChangeIntervalTime`,
   `evolutionPossibleFlagRare3..6`, `gameStartStamina0Rank`.
 
 Build 01 sends placeholder values (`server/services/src/services/misc.rs`).

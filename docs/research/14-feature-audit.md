@@ -25,8 +25,8 @@ The Build 20 priorities are done except the Action-mode ones:
 2. ~~Missions screen~~: Build 21 (docs/research/17).
 3. **Action-mode roster compatibility** (`party.mode_rosters`): still open. Every statue may enter
    both teams; the Action battle has not been played on a device.
-4. **Action-stage mission rows** (`quest.mission_predicates`): still open; Action stages send no
-   star missions.
+4. ~~Action-stage mission rows~~ (`quest.mission_predicates`): Build 42, QuestMissionClearType
+   7/8/20 with the game's labels (docs/research/11 §4); not yet seen on a device.
 5. ~~Daily boundary at 04:00 JST~~: missions, the daily tile, Mentality, Arena days and the free
    Friend Point draw all turn at 04:00 JST (`missions::game_day`).
 
@@ -75,7 +75,7 @@ source for their amounts), raids (no raid screens in the player's files).
 | quest.story | server ✓ | All chapters open; stage window, missions (Build 19), clears recorded; resumption of a battle left unfinished (Build 25, docs/research/22 §1.8) | Action-stage missions: priority 4 |
 | quest.daily | server | Today's tile by weekday (category 6 + weekday, 04:00 JST), each weekday's two quest lines with Easy–Expert rows, AP and rewards; clears and stars per stage (Build 20; rotation re-checked and tested in Build 25, docs/research/13 Quest Select) | No per-day play limits (no source gives any) |
 | quest.support | partial | AI supporters for quests (Build 25, docs/research/24 §1) | The Action battle's callable support is not served |
-| quest.mission_predicates | partial | Tactical DT_QM 1/2/10 (Build 19) | Action predicates: priority 4 |
+| quest.mission_predicates | server | Tactical DT_QM 1/2/10 (Build 19); action QuestMissionClearType 7/8/20 (Build 42, docs/research/11 §4) | Action rows not yet seen on a device |
 | quest.support_finisher | offline | — | Action battle only; provisional source |
 | quest.rank_ap | server | Rank from EXP (`rank_for_exp`); AP is always full | Refill on rank-up is moot (offline choice) |
 | quest.rank_example | server | Stage rank EXP from the wiki per stage | — |

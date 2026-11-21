@@ -2,6 +2,45 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 42 — growth tree squares, shops, action missions and assists, Town unlocks, notices (branch `wip/b42`)
+
+### What I asked for
+- Build the six features from my PC-playtest handoff (`local/handoff/`, private), with our own
+  English instead of the PC build's, plus the action-mode camera ids missing from our table.
+
+### What changed (each checked against the 3.12.0 client first)
+- **Growth trees:** every square kind the client labels (ids 1-5, 7, 9-14 from
+  `ConvEffectIdToTextureIndex` 0xDECF3C and `GetTreeEffectName` 0xDECCB8): finisher level, Mind
+  capacity (16 + opened capacity squares, never below today's 40), leader ability level (feeds the
+  action leader ability), Diamond Coins, assist skill level, awakening. The board reaches column 13.
+- **Action-battle assists:** `CalcBonusParam` reads its constants from the system config we send,
+  so we now send 100 / 5 / 20 / 45 (10 % base, +2 % per 5 boosts, up to 100 %; Gamerch posts).
+  The tactical formula does not read them.
+- **Action-stage Quest Missions:** types 7 / 8 / 20 (all team members survive, defeat all enemies,
+  use a Skill) with the game's own labels; cleared stars are stored and shown like tactical ones.
+- **Shops:** the client's shops 2-6 with goods: Diamond Coin Exchange, Memory Ring Exchange, AP and
+  BP recovery; paid with Diamond Coins, gold or Memory Rings; statues add a boost when owned, Minds
+  arrive as new Lv1 copies. Prices are ours. Shop 1 (the store) stays empty offline.
+- **Town:** one object per Town Rank from 2 (order borrowed from the PC playtest's trophy list);
+  objects stay free, placement still needs Rank 8 as in the client.
+- **Notices:** one collapsible post per build from `server/content/news.json`, inline CSS and
+  script, nothing external; Maintenance and Other tabs use the same layout.
+- **Action-mode cameras:** the script-camera ids the action-mode action sets request and our table
+  lacked now have shots (329 sets); camsim passes.
+- Build number 42, server marker `JDR_EMBEDDED_SERVER_b042`.
+
+### Open choices
+- Town objects below Rank 8 are owned but can't be placed until Rank 8.
+- With the capacity floor of 40, the first 6 capacity squares change nothing visible.
+- No Friend Point shop exists in the client; Expand Mind Box can never succeed at 999.
+
+### Device checklist
+- [ ] Log: `[boot] jdr embedded build 42`
+- [ ] Tree screen: new tiles with icons; opening capacity squares raises Mind capacity in Formation
+- [ ] Shops list goods and buying works; action stages show three missions that light up
+- [ ] Action formation shows a bigger assist share when boosted; action cameras follow smoothly
+- [ ] Notices: posts open and close with a tap
+
 ## Build 41 — missing and guessed data filled, action-battle abilities and JoJo Links, tables built once per update (branch `wip/b41`)
 
 ### What I asked for

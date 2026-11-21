@@ -998,6 +998,83 @@ mod tests {
         }
     }
 
+    /// Every script camera id the action-mode action sets request (actionset_statue_<psid> and
+    /// actionset_common in the player's files, `scan_camera_requests.py --prefix actionset_statue_`;
+    /// docs/research/31 §10) has a set. The action battle's camera manager looks the id up as
+    /// requested (no +100000, no mirroring; ChangeCameraActionBattle 0xCFF9A4), and a missing id
+    /// leaves the camera frozen in script mode. Its own ids (1000-2999, which the tactical battle
+    /// never looks up raw) stand straight behind the acting unit with no sideways offset, the same
+    /// for the player and an enemy, and glide in (inter under 1: the action battle never cuts).
+    #[test]
+    fn action_battle_cameras_cover_the_action_sets() {
+        const ACTION_IDS: &[i64] = &[
+            0, 201, 202, 204, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314,
+            315, 316, 317, 318, 319, 320, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011,
+            1012, 1013, 1014, 1015, 1026, 1027, 1028, 2004, 2006, 2007, 2008, 2010, 2011, 2012,
+            2014, 2015, 2020, 2021, 2022, 2023, 2100, 2101, 2102, 2110, 2111, 2112, 2113, 2200,
+            2210, 2211, 2212, 2220, 2221, 2222, 2223, 2300, 2301, 2302, 2303, 101001, 111000,
+            130002, 130602, 130603, 130614, 130615, 130618, 130623, 130624, 130628, 130631, 130633,
+            130702, 130705, 150001,
+        ];
+        let doc = |name: &str| -> Value {
+            let js = TABLES.iter().find(|(n, _)| *n == name).unwrap().1;
+            serde_json::from_str::<Value>(js).unwrap()["data"]["listData"].clone()
+        };
+        let sets = doc("Set_el_camera_set_common");
+        let nodes = doc("Node_el_camera_node_common");
+        let set = |id: i64| {
+            sets.as_array()
+                .unwrap()
+                .iter()
+                .find(|s| s["cameraID"] == id)
+                .cloned()
+        };
+        let node = |id: &str| {
+            nodes
+                .as_array()
+                .unwrap()
+                .iter()
+                .find(|n| n["id"] == id)
+                .unwrap()
+                .clone()
+        };
+        for &id in ACTION_IDS {
+            let s = set(id).unwrap_or_else(|| panic!("action camera {id} has no set"));
+            if !(1000..3000).contains(&id) {
+                continue;
+            }
+            assert_eq!(s["flagWorldSet"], false, "camera {id}");
+            let mut yaw = 0.0;
+            for d in s["dataList"].as_array().unwrap() {
+                let inter = d["inter"].as_f64().unwrap();
+                assert!(inter > 0.0 && inter < 1.0, "camera {id} inter {inter}");
+                assert_eq!(
+                    (d["targetIDBase"].as_i64(), d["targetIDLookat"].as_i64()),
+                    (Some(0), Some(0))
+                );
+                let n = node(d["cameraNode"].as_str().unwrap());
+                yaw += n["rotate"]["y"].as_f64().unwrap();
+                assert!((yaw - 180.0).abs() < 1e-6, "camera {id} yaw {yaw}");
+                assert_eq!(n["rotate"]["z"].as_f64(), Some(0.0), "camera {id}");
+                assert_eq!(n["baseOffset"]["x"].as_f64(), Some(0.0), "camera {id}");
+                assert_eq!(n["lookatOffset"]["x"].as_f64(), Some(0.0), "camera {id}");
+            }
+        }
+        // the win appeals only the action sets request (315-320) frame the winner like 301-314,
+        // from straight in front
+        let front = node("jdr_result_front");
+        assert_eq!(
+            (front["baseBoneID"].as_i64(), front["lookatBoneID"].as_i64()),
+            (Some(4), Some(5))
+        );
+        for id in 315..=320 {
+            assert_eq!(
+                set(id).unwrap()["dataList"][0]["cameraNode"],
+                "jdr_result_front"
+            );
+        }
+    }
+
     /// Some loaders throw on a duplicate key at startup (CharacteristicTable.Init @0xF1D188,
     /// LoadSkillUseConditionParameter @0xF1BECC; docs/research/12 §1), and duplicate model hashes,
     /// bullets or camera ids would shadow each other: every keyed table has unique keys.

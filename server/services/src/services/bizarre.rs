@@ -286,9 +286,10 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                 .cloned()
         });
         match (won, found, pending.is_some()) {
-            (true, Some((_, s)), true) => {
+            (true, Some((c, s)), true) => {
                 p.progress.cleared.insert(stage_id.clone());
-                // The client sends the missions it cleared ("1,2,10"); keep them for the stars.
+                // The client sends the missions it cleared ("1,2,10"; action stages "7,8,20");
+                // keep them for the stars.
                 let done = env
                     .param
                     .get("starClearList")
@@ -298,7 +299,7 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                 set.extend(
                     done.split(',')
                         .filter_map(|x| x.trim().parse::<i64>().ok())
-                        .filter(|t| (1..=16).contains(t)),
+                        .filter(|t| quests::mission_types(c.stage_type).contains(t)),
                 );
                 p.gold += s.gold;
                 p.friend_points += FRIEND_POINTS_PER_CLEAR;
@@ -576,6 +577,53 @@ mod tests {
         let p = ctx.accounts.get(&uuid).unwrap().unwrap();
         let done: Vec<i64> = p.progress.stars[&sid].iter().copied().collect();
         assert_eq!(done, [1, 10], "only mission types 1..16 are kept");
+
+        // Action stages report QuestMissionClearType values (7, 8, 20, ...): kept up to 46.
+        let c = crate::quests::chapters()
+            .iter()
+            .find(|c| c.stage_type == 0)
+            .unwrap();
+        let sid = c.stages[0].stage_id.clone();
+        let (r, _) = dispatch(
+            &ctx,
+            "/bizarre/bizarre_start",
+            &env(&uuid, json!({"stageId": sid, "teamNo": 1})),
+        );
+        let targets: Vec<i64> = r.unwrap()["stageInfo"]["starList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|x| x["starTarget"].as_i64().unwrap())
+            .collect();
+        assert_eq!(targets, [7, 8, 20]);
+        let (r, _) = dispatch(
+            &ctx,
+            "/bizarre/bizarre_end",
+            &env(
+                &uuid,
+                json!({"stageId": sid, "result": 0, "starClearList": "7,20,47"}),
+            ),
+        );
+        assert_eq!(r.unwrap()["starClearList"], "7,20,47", "echoed as is");
+        let p = ctx.accounts.get(&uuid).unwrap().unwrap();
+        let done: Vec<i64> = p.progress.stars[&sid].iter().copied().collect();
+        assert_eq!(done, [7, 20], "47 NoContinue is outside the client's check");
+        let (r, _) = dispatch(
+            &ctx,
+            "/bizarre/bizarre_start",
+            &env(&uuid, json!({"stageId": sid, "teamNo": 1})),
+        );
+        let lit: Vec<i64> = r.unwrap()["stageInfo"]["starList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|x| x["clearFlg"].as_i64().unwrap())
+            .collect();
+        assert_eq!(
+            lit,
+            [1, 0, 1],
+            "the next stage window lights the saved missions"
+        );
     }
 
     fn no_nulls(v: &Value) -> bool {

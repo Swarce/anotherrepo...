@@ -17,6 +17,11 @@ Read in the 3.12.0 client (H read in code, M inferred).
 - **Capacity (H).** `StatueInfo.mindCapacity` comes from the server; the client never derives it.
   Used CP is the sum of the equipped `cost`s. We send 40 (ours), where it used to be 99. Cost is
   3 × rarity, so three ★4 or four ★3 Minds fit.
+  - Build 42: the growth tree's CP squares (effect 10, +4 each, eight per combat statue) raise it
+    to max(40, 16 + squares), 48 with all eight (four ★4). The base 16 is design borrowed from
+    the Diamond Records PC playtest; the floor keeps every statue at 40 or more. Equips check the
+    seat statue's own capacity (51705); a seat whose Minds pass the statue's capacity (the statue
+    changed) sends only those that fit, in slot order (`collection::within_capacity`).
 - **Equip: `/team/equip_multiple_minds`** `{teamNum, statueSeq, mindList:[{equipSeq, minduId}]}`
   → `{teamInfo}`.
   - The request is the client's diff of changed slots. `minduId 0` clears a slot, and the clears
