@@ -17,6 +17,11 @@
    "license": "CC BY-SA 3.0",
    "accessed": "2026-11-15",
    "note": "an evaded attack deals 1/4 damage (_missDamageRate 0.25); critical hits x1.5 (_criticalDamageRate 1.5)"
+  },
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/11-battle-and-positions.md §5",
+   "note": "Reversal on (Build 20): field meanings and units read in the client's ReversalManager; the gauge values, 3 actions, 10x speed and no cooldowns during Reversal are ours"
   }
  ],
  "data": {
@@ -54,13 +59,13 @@
     "_healFluctuationsMin": 9500,
     "_multiDealDamageMin": 1,
     "_multiDealDamageMax": 10,
-    "_reversalEnable": 0,
+    "_reversalEnable": 1,
     "_reversalStartGauge": 0,
-    "_reversalAddGaugeDamage": 0,
-    "_reversalAddGaugeDead": 0,
-    "_reversalAddSkillStock": 0,
+    "_reversalAddGaugeDamage": 1000,
+    "_reversalAddGaugeDead": 2500,
+    "_reversalAddSkillStock": 1,
     "_reversalMaxTurn": 3,
-    "_reversalAddSpeedUpRate": 0,
+    "_reversalAddSpeedUpRate": 100000,
     "_reversalAddSkillCoolTimeRate": 0,
     "_moveRangeNon": 30,
     "_moveRangeVeryNear": 150,
