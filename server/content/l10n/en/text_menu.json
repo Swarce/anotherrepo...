@@ -39,7 +39,7 @@
     ],
     "text:AttributeText_JP:ATTR_TEXT_11": [
       "d4fc8b90",
-      "Boss's Elite Guard"
+      "Elite Guard"
     ],
     "text:AttributeText_JP:ATTR_TEXT_12": [
       "84521e1d",
@@ -59,15 +59,15 @@
     ],
     "text:AttributeText_JP:ATTR_TEXT_16": [
       "3c50eb8a",
-      "Gender (M)"
+      "Male"
     ],
     "text:AttributeText_JP:ATTR_TEXT_17": [
       "700358ce",
-      "Gender (F)"
+      "Female"
     ],
     "text:AttributeText_JP:ATTR_TEXT_18": [
       "d1aae934",
-      "Gender (?)"
+      "Unknown"
     ],
     "text:AttributeText_JP:ATTR_TEXT_2": [
       "f543570a",
@@ -107,7 +107,7 @@
     ],
     "text:AttributeText_JP:ATTR_TEXT_7": [
       "440d6fc9",
-      "Egyptian Nine Glory Gods"
+      "Egypt's Nine Glory Gods"
     ],
     "text:AttributeText_JP:ATTR_TEXT_8": [
       "8072feab",
@@ -123,7 +123,7 @@
     ],
     "text:AttributeText_JP:ATTR_TEXT_EGYPT": [
       "440d6fc9",
-      "Egyptian Nine Glory Gods"
+      "Egypt's Nine Glory Gods"
     ],
     "text:AttributeText_JP:ATTR_TEXT_HAMON": [
       "1db967ad",
@@ -223,7 +223,7 @@
     ],
     "text:Battle_JP:Battle_Pause_Area_Effect_Icon": [
       "8d3f4426",
-      "Active Area Effects"
+      "Area Effects"
     ],
     "text:Battle_JP:Battle_Pause_Area_Effect_Title": [
       "0a82a68c",
@@ -231,7 +231,7 @@
     ],
     "text:Battle_JP:Battle_Pause_Clear_Limit_Icon": [
       "501c2b85",
-      "Battle Conditions"
+      "Battle Rules"
     ],
     "text:Battle_JP:Battle_Pause_Clear_Limit_Title": [
       "e761f539",
@@ -395,11 +395,11 @@
     ],
     "text:Evolution_JP:Evolution_Button_03": [
       "b2b3ae26",
-      "To Statue Enhance"
+      "To Enhance"
     ],
     "text:Evolution_JP:Evolution_Button_04": [
       "24b21a51",
-      "To Growth Tree"
+      "To Tree"
     ],
     "text:Evolution_JP:Evolution_Button_05": [
       "0c2c1db8",
@@ -419,7 +419,7 @@
     ],
     "text:Evolution_JP:Evolution_Button_09": [
       "4f3e3906",
-      "On Awakening"
+      "Awakened"
     ],
     "text:Evolution_JP:Evolution_Button_10": [
       "5a4a85ff",
@@ -427,11 +427,11 @@
     ],
     "text:Evolution_JP:Evolution_Button_11": [
       "d1135be3",
-      "Detailed Stats"
+      "Full Stats"
     ],
     "text:Evolution_JP:Evolution_Button_12": [
       "2c8202f8",
-      "Awakening Conditions"
+      "Requirements"
     ],
     "text:Evolution_JP:Evolution_Button_13": [
       "582033ac",
@@ -467,7 +467,7 @@
     ],
     "text:Evolution_JP:Evolution_Image_07": [
       "8587d8a7",
-      "Awakenable Statues Owned"
+      "Can Awaken"
     ],
     "text:Evolution_JP:Evolution_Image_08": [
       "e2581bb5",
@@ -679,7 +679,7 @@
     ],
     "text:FollowFollower_JP:FollowFollower_0006": [
       "577676df",
-      "Following"
+      "Follow"
     ],
     "text:FollowFollower_JP:FollowFollower_0007": [
       "3481a937",
@@ -815,15 +815,15 @@
     ],
     "text:Formation_JP:Formation_Menu_Button_03": [
       "82ca10ff",
-      "Disband Team"
+      "Disband"
     ],
     "text:Formation_JP:Formation_Menu_Button_04": [
       "37b06071",
-      "Remove All Assists"
+      "Clear Assists"
     ],
     "text:Formation_JP:Formation_Menu_Button_05": [
       "d267e98b",
-      "Remove All Minds"
+      "Clear Minds"
     ],
     "text:Formation_JP:Formation_Team_Autoset_1": [
       "ac32ea14",
@@ -955,7 +955,7 @@
     ],
     "text:MindSale_JP:MindSale_Message_05": [
       "902d2c4b",
-      "Rings of Memories Gained:"
+      "Rings Gained:"
     ],
     "text:MindSale_JP:MindSale_Message_06": [
       "882d6a59",
@@ -963,7 +963,7 @@
     ],
     "text:MindSale_JP:MindSale_Message_07": [
       "7ca5608d",
-      "Rings of Memories Owned:"
+      "Rings Owned:"
     ],
     "text:MindSale_JP:MindSale_Message_08": [
       "788c27fa",
@@ -2531,7 +2531,7 @@
     ],
     "text:gasha_JP:gs_300410_na": [
       "c0f53b03",
-      "New Year Holiday Super Advent Summon"
+      "New Year Super Advent Summon"
     ],
     "text:gasha_JP:gs_300412_na": [
       "ceee73e1",
@@ -3103,7 +3103,7 @@
     ],
     "text:optionText_JP:button_dc_rireki_00": [
       "a3dca27f",
-      "Diamond Coin Purchase History"
+      "Diamond Coin History"
     ],
     "text:optionText_JP:button_decision": [
       "df3535a6",
@@ -3275,15 +3275,15 @@
     ],
     "text:optionText_JP:option_category_06": [
       "ca79140e",
-      "Achievements"
+      "Records"
     ],
     "text:optionText_JP:option_category_07": [
       "c90ccd2c",
-      "Issue Transfer Pass"
+      "Transfer Pass"
     ],
     "text:optionText_JP:option_category_08": [
       "f5f1ecc6",
-      "Purchase History / Balance"
+      "History / Balance"
     ],
     "text:optionText_JP:option_category_09": [
       "fe117f6a",
@@ -4135,7 +4135,7 @@
     ],
     "text:shop_JP:SHOP_00005_NAME": [
       "67890ceb",
-      "Ring of Memories Exchange"
+      "Ring Exchange"
     ],
     "text:shop_JP:SHOP_00006_NAME": [
       "092c74ea",
@@ -4171,7 +4171,7 @@
     ],
     "text:shop_JP:SHOP_0009_MESSAGE": [
       "059a306d",
-      "Currently Owned"
+      "Owned"
     ],
     "text:shop_JP:SHOP_0010_MESSAGE": [
       "de6a05ad",
@@ -4239,7 +4239,7 @@
     ],
     "text:shop_JP:SHOP_0030_MESSAGE": [
       "4fe94f2f",
-      "Exchange ends in"
+      "Ends in"
     ],
     "text:shop_JP:SHOP_0031_MESSAGE": [
       "5f3582c1",
