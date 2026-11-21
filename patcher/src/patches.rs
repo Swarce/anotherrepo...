@@ -687,8 +687,13 @@ impl Patch for UiArt {
         let pack = crate::art::read_pack_zip(zip)?;
         let total = pack.len();
         let r = crate::art::apply(apk, pack, cfg.data_dir.as_deref(), cfg.keys_json.as_deref())?;
+        let skipped = if r.skipped.is_empty() {
+            String::new()
+        } else {
+            format!("; left unchanged: {}", r.skipped.join("; "))
+        };
         Ok(format!(
-            "{total} images: {} stored for the menus (applied on the phone), {} sprites replaced in {} title/boot screen file(s)",
+            "{total} images: {} stored for the menus (applied on the phone), {} sprites replaced in {} title/boot screen file(s){skipped}",
             r.stored, r.in_apk, r.apk_files
         ))
     }

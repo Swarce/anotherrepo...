@@ -2,6 +2,9 @@
 //! main team. The formation screen does not say which battle type it edits; the same team number
 //! is changed for both types so action and tactical teams stay alike (My Page reads the tactical
 //! one).
+//!
+//! The edits work on a [`Roster`]: the story teams, or the Arena's own five teams, which the
+//! `/pvp/*_pvp` formation routes change the same way (services/arena.rs, docs/research/23-arena.md).
 
 use crate::accounts::Change;
 use crate::app::{ApiError, ApiResult};
@@ -16,9 +19,34 @@ fn int(env: &RequestEnvelope, k: &str) -> Option<i64> {
     env.param.get(k).and_then(Value::as_i64)
 }
 
+/// Which list of teams an edit changes.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Roster {
+    /// The story teams (one per battle type and number; both types follow an edit).
+    Story,
+    /// The Arena's own five teams (client: a separate roster, docs/research/23-arena.md).
+    Arena,
+}
+
+impl Roster {
+    pub fn teams(self, c: &Collection) -> &[Team] {
+        match self {
+            Roster::Story => &c.teams,
+            Roster::Arena => &c.arena_teams,
+        }
+    }
+
+    fn teams_mut(self, c: &mut Collection) -> &mut Vec<Team> {
+        match self {
+            Roster::Story => &mut c.teams,
+            Roster::Arena => &mut c.arena_teams,
+        }
+    }
+}
+
 /// `teamNum` must name one of the player's teams (1..=TEAMS_PER_TYPE); anything else is refused
 /// before the save is touched (a stray number must never clear the main team).
-fn team_num(env: &RequestEnvelope) -> Result<i64, ApiError> {
+pub fn team_num(env: &RequestEnvelope) -> Result<i64, ApiError> {
     match int(env, "teamNum") {
         Some(n) if (1..=collection::TEAMS_PER_TYPE).contains(&n) => Ok(n),
         other => Err(ApiError::Internal(format!(
@@ -36,8 +64,104 @@ fn shown(c: &Collection, team_num: i64) -> Value {
         .unwrap_or_else(|| json!({}))
 }
 
-fn teams_numbered(c: &mut Collection, team_num: i64) -> impl Iterator<Item = &mut Team> {
-    c.teams.iter_mut().filter(move |t| t.team_num == team_num)
+fn teams_numbered(
+    c: &mut Collection,
+    roster: Roster,
+    team_num: i64,
+) -> impl Iterator<Item = &mut Team> {
+    roster
+        .teams_mut(c)
+        .iter_mut()
+        .filter(move |t| t.team_num == team_num)
+}
+
+/// The statue in seat `seq` (TeamStatueRole 2 left, 3 right) becomes the leader and the old
+/// leader takes its place. Returns whether anything changed.
+pub fn change_leader(c: &mut Collection, roster: Roster, team_num: i64, seq: i64) -> bool {
+    if !(2..=3).contains(&seq) {
+        return false;
+    }
+    let i = (seq - 1) as usize;
+    let mut changed = false;
+    for t in teams_numbered(c, roster, team_num) {
+        if t.slots[i] != 0 {
+            t.slots.swap(0, i);
+            changed = true;
+        }
+    }
+    changed
+}
+
+/// Put statue `uid` in seat `seq` (1 leader, 2 left, 3 right). A statue already in the team swaps
+/// seats with the one it replaces; 0 empties a side seat (never the leader). Unknown statues or
+/// seats change nothing. Returns whether anything changed.
+pub fn select_statue(
+    c: &mut Collection,
+    roster: Roster,
+    team_num: i64,
+    seq: i64,
+    uid: i64,
+) -> bool {
+    let usable = uid == 0 || c.known_statue(uid).is_some();
+    if !(1..=3).contains(&seq) || !usable || (seq == 1 && uid == 0) {
+        return false;
+    }
+    let mut changed = false;
+    for t in teams_numbered(c, roster, team_num) {
+        // A team without a leader takes its first statue as the leader, whatever the seat.
+        let i = if t.slots[0] == 0 && uid != 0 {
+            0
+        } else {
+            (seq - 1) as usize
+        };
+        let old = t.slots[i];
+        if old == uid {
+            continue;
+        }
+        if let Some(j) = t.slots.iter().position(|s| *s == uid && uid != 0) {
+            // Already in the team: swap seats (an empty seat may not become the leader).
+            if j == 0 && old == 0 {
+                continue;
+            }
+            t.slots[j] = old;
+        }
+        t.slots[i] = uid;
+        changed = true;
+    }
+    changed
+}
+
+/// The members a team would get from `wanted` (leader, left, right): statues the player does not
+/// own become empty seats and a statue named twice keeps its first seat. `None` when no leader is
+/// left (such a team is not saved).
+pub fn clean_members(c: &Collection, wanted: [i64; 3]) -> Option<[i64; 3]> {
+    let mut slots = wanted.map(|u| {
+        if u != 0 && c.known_statue(u).is_some() {
+            u
+        } else {
+            0
+        }
+    });
+    for i in 1..3 {
+        if slots[..i].contains(&slots[i]) {
+            slots[i] = 0;
+        }
+    }
+    (slots[0] != 0).then_some(slots)
+}
+
+/// Set a team's members (see [`clean_members`]); `None` (nothing saved) without a leader.
+pub fn set_members(
+    c: &mut Collection,
+    roster: Roster,
+    team_num: i64,
+    wanted: [i64; 3],
+) -> Option<[i64; 3]> {
+    let slots = clean_members(c, wanted)?;
+    for t in teams_numbered(c, roster, team_num) {
+        t.slots = slots;
+    }
+    Some(slots)
 }
 
 /// `LeaderChangeRequest {teamNum, statueSeq}` (TeamStatueRole 1 leader, 2 left, 3 right): the
@@ -51,14 +175,7 @@ pub fn leader_change(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         return ok(json!({ "teamInfo": shown(&p.collection, team_num) }));
     }
     let (p, ()) = with_profile(ctx, env, |p| {
-        let mut changed = false;
-        for t in teams_numbered(&mut p.collection, team_num) {
-            let i = (seq - 1) as usize;
-            if i != 0 && t.slots[i] != 0 {
-                t.slots.swap(0, i);
-                changed = true;
-            }
-        }
+        let changed = change_leader(&mut p.collection, Roster::Story, team_num, seq);
         if changed {
             p.progress
                 .missions
@@ -77,40 +194,14 @@ pub fn leader_change(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
 }
 
 /// `StatueChangeRequest {teamNum, statueSeq, statueuId}` (`/team/statue_select`): put that statue
-/// in the seat (TeamStatueRole 1 leader, 2 left, 3 right). A statue already in the team swaps
-/// seats with the one it replaces; 0 empties a side seat (never the leader). Unknown statues or
-/// seats change nothing and the reply shows the team as it is.
+/// in the seat (see [`select_statue`]). Unknown statues or seats change nothing and the reply
+/// shows the team as it is.
 pub fn statue_select(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let team_num = team_num(env)?;
     let seq = int(env, "statueSeq").unwrap_or(0);
     let uid = int(env, "statueuId").unwrap_or(0);
     let (p, ()) = with_profile(ctx, env, |p| {
-        let usable = uid == 0 || p.collection.known_statue(uid).is_some();
-        if !(1..=3).contains(&seq) || !usable || (seq == 1 && uid == 0) {
-            return ((), Change::None);
-        }
-        let mut changed = false;
-        for t in teams_numbered(&mut p.collection, team_num) {
-            // A team without a leader takes its first statue as the leader, whatever the seat.
-            let i = if t.slots[0] == 0 && uid != 0 {
-                0
-            } else {
-                (seq - 1) as usize
-            };
-            let old = t.slots[i];
-            if old == uid {
-                continue;
-            }
-            if let Some(j) = t.slots.iter().position(|s| *s == uid && uid != 0) {
-                // Already in the team: swap seats (an empty seat may not become the leader).
-                if j == 0 && old == 0 {
-                    continue;
-                }
-                t.slots[j] = old;
-            }
-            t.slots[i] = uid;
-            changed = true;
-        }
+        let changed = select_statue(&mut p.collection, Roster::Story, team_num, seq, uid);
         (
             (),
             if changed {
@@ -129,31 +220,11 @@ pub fn statue_select(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
 pub fn set_team(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let team_num = team_num(env)?;
     let main = int(env, "mainFlg").unwrap_or(0) == 1;
-    let wanted = [
-        int(env, "leaderstatueuId").unwrap_or(0),
-        int(env, "memberLeftStatueuId").unwrap_or(0),
-        int(env, "memberRightStatueuId").unwrap_or(0),
-    ];
+    let wanted = members_of(env);
     let (p, ()) = with_profile(ctx, env, |p| {
-        let mut slots = wanted.map(|u| {
-            if u != 0 && p.collection.known_statue(u).is_some() {
-                u
-            } else {
-                0
-            }
-        });
-        // The same statue twice: keep the first.
-        for i in 1..3 {
-            if slots[..i].contains(&slots[i]) {
-                slots[i] = 0;
-            }
-        }
-        if slots[0] == 0 {
+        let Some(slots) = set_members(&mut p.collection, Roster::Story, team_num, wanted) else {
             return ((), Change::None);
-        }
-        for t in teams_numbered(&mut p.collection, team_num) {
-            t.slots = slots;
-        }
+        };
         if slots.iter().all(|u| *u != 0) {
             p.progress.missions.bump("team3", 1, jdr_core::clock::now());
         }
@@ -165,6 +236,16 @@ pub fn set_team(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         ((), Change::Bookkeeping)
     })?;
     ok(json!({ "teamInfo": shown(&p.collection, team_num) }))
+}
+
+/// `leaderstatueuId`, `memberLeftStatueuId`, `memberRightStatueuId` (SetTeamRequest and
+/// PvpSetTeamRequest).
+pub fn members_of(env: &RequestEnvelope) -> [i64; 3] {
+    [
+        int(env, "leaderstatueuId").unwrap_or(0),
+        int(env, "memberLeftStatueuId").unwrap_or(0),
+        int(env, "memberRightStatueuId").unwrap_or(0),
+    ]
 }
 
 /// `UserInfoMiniResponse` for the profile card: this player (offline there is nobody else), with
@@ -249,6 +330,8 @@ pub fn trophy_claim(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
 
 /// Status codes the client shows (ResponseParameterCode.Status).
 const E_MIND_MISSING: i64 = 51103;
+/// Not enough statues for a team (client ErrorCode).
+const E_TEAM_EMPTY_MEMBER: i64 = 51706;
 const E_NO_STATUE: i64 = 51702;
 const E_CP_OVER: i64 = 51705;
 const E_SLOT_LOCKED: i64 = 51709;
@@ -256,13 +339,14 @@ const E_SLOT_LOCKED: i64 = 51709;
 /// Apply `(seq, uid)` changes to one seat of a team number (both battle types follow), in order:
 /// uid 0 empties the slot; a Mind already on another seat of the team moves here. The result
 /// must fit the statue's capacity.
-fn equip(
+pub fn equip(
     c: &mut Collection,
+    roster: Roster,
     team_num: i64,
     seat: usize,
     changes: &[(i64, i64)],
 ) -> Result<(), i64> {
-    let Some(t) = c.teams.iter().find(|t| t.team_num == team_num) else {
+    let Some(t) = roster.teams(c).iter().find(|t| t.team_num == team_num) else {
         return Err(E_NO_STATUE);
     };
     if c.known_statue(t.slots[seat]).is_none() {
@@ -284,28 +368,43 @@ fn equip(
             seats[seat].push((*seq, *uid));
         }
     }
-    let cost: i64 = seats[seat]
-        .iter()
-        .filter_map(|(_, u)| c.minds.iter().find(|m| m.uid == *u))
-        .map(|m| collection::mind_cost(&m.mind_id))
-        .sum();
-    if cost > collection::MIND_CAPACITY {
+    if seat_cost(c, &seats[seat]) > collection::MIND_CAPACITY {
         return Err(E_CP_OVER);
     }
     for s in seats.iter_mut() {
         s.sort();
     }
-    for t in teams_numbered(c, team_num) {
+    for t in teams_numbered(c, roster, team_num) {
         t.minds = seats.clone();
     }
     Ok(())
 }
 
-fn seat_of(env: &RequestEnvelope) -> Result<usize, ApiError> {
+/// The Mind cost (CP) of one seat's Minds.
+pub fn seat_cost(c: &Collection, seat: &[(i64, i64)]) -> i64 {
+    seat.iter()
+        .filter_map(|(_, u)| c.minds.iter().find(|m| m.uid == *u))
+        .map(|m| collection::mind_cost(&m.mind_id))
+        .sum()
+}
+
+/// `statueSeq` (1..3) as a seat index; anything else is the client's "no statue" error.
+pub fn seat_of(env: &RequestEnvelope) -> Result<usize, ApiError> {
     match int(env, "statueSeq") {
         Some(s @ 1..=3) => Ok(s as usize - 1),
         _ => Err(ApiError::Status(E_NO_STATUE)),
     }
+}
+
+/// `(equipSeq, <uid key>)` pairs of a `mindList` / `statueList` diff.
+pub fn changes_of(list: Option<&Value>, uid_key: &str) -> Vec<(i64, i64)> {
+    list.and_then(Value::as_array)
+        .map(|a| {
+            a.iter()
+                .filter_map(|m| Some((m.get("equipSeq")?.as_i64()?, m.get(uid_key)?.as_i64()?)))
+                .collect()
+        })
+        .unwrap_or_default()
 }
 
 /// `/team/equip_multiple_minds {teamNum, statueSeq, mindList:[{equipSeq, minduId}]}`: the client's
@@ -313,18 +412,9 @@ fn seat_of(env: &RequestEnvelope) -> Result<usize, ApiError> {
 pub fn equip_multiple_minds(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let team_num = team_num(env)?;
     let seat = seat_of(env)?;
-    let changes: Vec<(i64, i64)> = env
-        .param
-        .get("mindList")
-        .and_then(Value::as_array)
-        .map(|a| {
-            a.iter()
-                .filter_map(|m| Some((m.get("equipSeq")?.as_i64()?, m.get("minduId")?.as_i64()?)))
-                .collect()
-        })
-        .unwrap_or_default();
+    let changes = changes_of(env.param.get("mindList"), "minduId");
     let (p, r) = with_profile(ctx, env, |p| {
-        match equip(&mut p.collection, team_num, seat, &changes) {
+        match equip(&mut p.collection, Roster::Story, team_num, seat, &changes) {
             Ok(()) => {
                 if changes.iter().any(|(_, u)| *u != 0) {
                     p.progress
@@ -343,13 +433,14 @@ pub fn equip_multiple_minds(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
 /// Apply an assist diff to a seat (docs/research/19-assists.md): seq 1..3, uid 0 empties the
 /// slot; an assist must be owned and not a main member of the team, and moves off the team's
 /// other seats.
-fn equip_assists(
+pub fn equip_assists(
     c: &mut Collection,
+    roster: Roster,
     team_num: i64,
     seat: usize,
     changes: &[(i64, i64)],
 ) -> Result<(), i64> {
-    let Some(t) = c.teams.iter().find(|t| t.team_num == team_num) else {
+    let Some(t) = roster.teams(c).iter().find(|t| t.team_num == team_num) else {
         return Err(E_NO_STATUE);
     };
     if c.known_statue(t.slots[seat]).is_none() {
@@ -374,7 +465,7 @@ fn equip_assists(
     for s in seats.iter_mut() {
         s.sort();
     }
-    for t in teams_numbered(c, team_num) {
+    for t in teams_numbered(c, roster, team_num) {
         t.assists = seats.clone();
     }
     Ok(())
@@ -385,18 +476,9 @@ fn equip_assists(
 pub fn equip_multiple_assist(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let team_num = team_num(env)?;
     let seat = seat_of(env)?;
-    let changes: Vec<(i64, i64)> = env
-        .param
-        .get("statueList")
-        .and_then(Value::as_array)
-        .map(|a| {
-            a.iter()
-                .filter_map(|m| Some((m.get("equipSeq")?.as_i64()?, m.get("statueuId")?.as_i64()?)))
-                .collect()
-        })
-        .unwrap_or_default();
+    let changes = changes_of(env.param.get("statueList"), "statueuId");
     let (p, r) = with_profile(ctx, env, |p| {
-        match equip_assists(&mut p.collection, team_num, seat, &changes) {
+        match equip_assists(&mut p.collection, Roster::Story, team_num, seat, &changes) {
             Ok(()) => (Ok(()), Change::Bookkeeping),
             Err(code) => (Err(code), Change::None),
         }
@@ -405,22 +487,146 @@ pub fn equip_multiple_assist(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "teamInfo": shown(&p.collection, team_num) }))
 }
 
+/// The auto formation (`changePlan` 1 total of HP/ATK/DEF, 2 ATK, 3 DEF, 4 HP): the three best
+/// owned statues by the plan, one per character, and for each seat the highest-rarity free Minds
+/// that fit slots 1-4 and the Mind capacity (ours). Minds on the roster's other teams are not
+/// taken; on the Arena roster neither are statues of its other teams (the 2019 guide keeps a
+/// statue to one Arena team, research pack `arena.teams`). Assists stay as they were (one that
+/// became a main member is no longer shown).
+pub fn auto_formation(
+    c: &mut Collection,
+    roster: Roster,
+    team_num: i64,
+    plan: i64,
+) -> Result<(), i64> {
+    let others = || {
+        roster
+            .teams(c)
+            .iter()
+            .filter(move |t| t.team_num != team_num)
+    };
+    let busy_statues: std::collections::HashSet<i64> = if roster == Roster::Arena {
+        others().flat_map(|t| t.slots).filter(|u| *u != 0).collect()
+    } else {
+        Default::default()
+    };
+    let busy_minds: std::collections::HashSet<i64> = others()
+        .flat_map(|t| t.minds.iter().flatten().map(|(_, u)| *u))
+        .collect();
+    let score = |o: &collection::OwnedStatue| {
+        let v = collection::statue_info(o);
+        let g = |k: &str| v[k].as_i64().unwrap_or(0);
+        match plan {
+            2 => g("atk"),
+            3 => g("def"),
+            4 => g("hp"),
+            _ => g("hp") + g("atk") + g("def"),
+        }
+    };
+    let mut ranked: Vec<(i64, i64, String)> = c
+        .statues
+        .iter()
+        .filter(|o| c.known_statue(o.uid).is_some() && !busy_statues.contains(&o.uid))
+        .map(|o| {
+            let chara = o.statue_id.split('_').next().unwrap_or("").to_string();
+            (score(o), o.uid, chara)
+        })
+        .collect();
+    ranked.sort_by(|a, b| b.0.cmp(&a.0).then(a.1.cmp(&b.1)));
+    let mut slots = [0i64; 3];
+    let mut charas: Vec<String> = Vec::new();
+    let mut n = 0;
+    for (_, uid, chara) in &ranked {
+        if n == 3 {
+            break;
+        }
+        if charas.contains(chara) {
+            continue;
+        }
+        charas.push(chara.clone());
+        slots[n] = *uid;
+        n += 1;
+    }
+    if n < 3 {
+        return Err(E_TEAM_EMPTY_MEMBER);
+    }
+    // Minds: highest rarity (then level) first, each seat within slots 1-4 and capacity.
+    let mut minds: Vec<(i64, i64, i64, i64)> = c
+        .minds
+        .iter()
+        .filter(|m| !busy_minds.contains(&m.uid))
+        .map(|m| {
+            (
+                collection::mind_rarity(&m.mind_id),
+                m.level,
+                collection::mind_cost(&m.mind_id),
+                m.uid,
+            )
+        })
+        .collect();
+    minds.sort_by(|a, b| (b.0, b.1).cmp(&(a.0, a.1)).then(a.3.cmp(&b.3)));
+    let mut seats: [Vec<(i64, i64)>; 3] = Default::default();
+    let mut taken = std::collections::HashSet::new();
+    for seat in seats.iter_mut() {
+        let mut cost = 0;
+        for (_, _, c_, uid) in &minds {
+            if seat.len() as i64 == collection::MIND_SLOTS_OPEN {
+                break;
+            }
+            if taken.contains(uid) || cost + c_ > collection::MIND_CAPACITY {
+                continue;
+            }
+            cost += c_;
+            taken.insert(*uid);
+            seat.push((seat.len() as i64 + 1, *uid));
+        }
+    }
+    for t in teams_numbered(c, roster, team_num) {
+        t.slots = slots;
+        t.minds = seats.clone();
+    }
+    Ok(())
+}
+
+/// `/team/auto_set_and_equip {teamNum, changePlan}` (the auto formation popup; see
+/// [`auto_formation`]).
+pub fn auto_set_and_equip(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let team_num = team_num(env)?;
+    let plan = int(env, "changePlan").unwrap_or(1);
+    let (p, ok_) = with_profile(ctx, env, |p| {
+        match auto_formation(&mut p.collection, Roster::Story, team_num, plan) {
+            Ok(()) => {
+                p.progress.missions.bump("team3", 1, jdr_core::clock::now());
+                (Ok(()), Change::Bookkeeping)
+            }
+            Err(code) => (Err(code), Change::None),
+        }
+    })?;
+    ok_.map_err(ApiError::Status)?;
+    ok(json!({ "teamInfo": shown(&p.collection, team_num) }))
+}
+
 /// `/team/equip_mind {teamNum, statueSeq, equipSeq, minduId}` (unused by 3.12, kept for safety).
 pub fn equip_mind(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let team_num = team_num(env)?;
     let seat = seat_of(env)?;
-    let change = (
-        int(env, "equipSeq").unwrap_or(0),
-        int(env, "minduId").unwrap_or(0),
-    );
+    let change = one_change(env);
     let (p, r) = with_profile(ctx, env, |p| {
-        match equip(&mut p.collection, team_num, seat, &[change]) {
+        match equip(&mut p.collection, Roster::Story, team_num, seat, &[change]) {
             Ok(()) => (Ok(()), Change::Bookkeeping),
             Err(code) => (Err(code), Change::None),
         }
     })?;
     r.map_err(ApiError::Status)?;
     ok(json!({ "teamInfo": shown(&p.collection, team_num) }))
+}
+
+/// `(equipSeq, minduId)` of an EquipMindRequest / PvpEquipMindRequest.
+pub fn one_change(env: &RequestEnvelope) -> (i64, i64) {
+    (
+        int(env, "equipSeq").unwrap_or(0),
+        int(env, "minduId").unwrap_or(0),
+    )
 }
 
 /// The open Mind slots (`mindSeqInfo`): the four golden frames.
@@ -832,5 +1038,61 @@ mod tests {
             r["teamInfo"]["teamOrder"]["leaderStatue"]["assistStatueList"],
             json!([])
         );
+    }
+
+    #[test]
+    fn auto_formation_picks_three_and_equips_minds() {
+        let dir = std::env::temp_dir().join(format!("jdr-auto-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let ctx = Ctx::new(Settings::new(dir), false);
+        let uuid = ctx.accounts.create(&[]).unwrap().uuid;
+        let call = |path: &str, param: Value| dispatch(&ctx, path, &env(&uuid, param)).0;
+        call("/team/team_info", json!({})).unwrap();
+        for plan in 1..=4 {
+            let r = call(
+                "/team/auto_set_and_equip",
+                json!({"teamNum": 2, "changePlan": plan}),
+            )
+            .unwrap();
+            let order = &r["teamInfo"]["teamOrder"];
+            let seats = ["leaderStatue", "memberLeftStatue", "memberRightStatue"];
+            let ids: Vec<String> = seats
+                .iter()
+                .map(|s| {
+                    order[*s]["statueInfo"]["statueId"]
+                        .as_str()
+                        .unwrap()
+                        .to_string()
+                })
+                .collect();
+            let charas: std::collections::HashSet<&str> =
+                ids.iter().map(|i| i.split('_').next().unwrap()).collect();
+            assert_eq!(charas.len(), 3, "one statue per character: {ids:?}");
+            for s in seats {
+                let minds = order[s]["equipMindList"].as_array().unwrap();
+                assert!(!minds.is_empty() && minds.len() <= 4);
+                let cost: i64 = minds.iter().map(|m| m["cost"].as_i64().unwrap()).sum();
+                assert!(cost <= crate::collection::MIND_CAPACITY);
+                assert!(order[s]["assistStatueList"].is_array());
+            }
+        }
+        // ATK plan: the leader has the highest ATK of any owned statue.
+        let r = call(
+            "/team/auto_set_and_equip",
+            json!({"teamNum": 2, "changePlan": 2}),
+        )
+        .unwrap();
+        let lead_atk = r["teamInfo"]["teamOrder"]["leaderStatue"]["statueInfo"]["atk"]
+            .as_i64()
+            .unwrap();
+        let all = call("/statue/statue_list", json!({})).unwrap();
+        let best = all["statueList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|s| s["atk"].as_i64().unwrap())
+            .max()
+            .unwrap();
+        assert_eq!(lead_atk, best);
     }
 }

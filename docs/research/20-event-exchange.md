@@ -42,4 +42,19 @@ are points.
 - **Goods:** the Ring Exchange goods (materials, turtles, tree materials, keys) at the same
   prices in Fight Coins (ours). The game's own goods labels exist for a few events, but not what
   they gave.
-- Not yet: point rewards, rankings.
+- Not yet: rankings.
+
+## 5. Point events (Build 23)
+
+- **Client (H).** A point event is `eventCollectType 1, eventShopFlg 0`: Event Home shows
+  `eventInfo.userEventPoint` and a "check rewards" button, which opens Shop3 on
+  `/event/point_reward_list {eventCampaignId}` → `{userEventPoint, clanEventPoint,
+  userPointRewardList, clanPointRewardList}`. A reward row shows its title and text labels, the
+  points needed and the item; `getFlg 1` marks it received. **There is no claim route**: the
+  server pays a reward when the points reach it and lists it in `bizarre_end.eventResult`
+  (`eventType 1`, `getUserEventPoint`, `userEventPointAll`, `eventRewardList`).
+- **Server.** Event 50045 is the point event, because it is the one of our four with reward labels
+  (`point_event_reward_500045_147..156_Personal_text`, describing Stone Shards, the attribute
+  stones and brooches). Its quests give 50 points (ours); the ten rewards are those items at every
+  100 points up to 1,000 (thresholds and counts ours) and go to the Message Box once. The other
+  events keep the exchange.
