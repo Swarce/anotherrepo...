@@ -2,6 +2,43 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 21 — Missions, Mind equipment, items and enhancement (branch `wip/b21`)
+
+### What the owner asked
+- Start building the systems the audit found empty or stubbed.
+
+### What changed
+- **Items and enhancement** (docs/research/15).
+  - 327 real items: each has an icon and a name in the player's files.
+  - A one-time starting stock (materials, turtles, tree materials, keys, 3,000 Memory Rings) and
+    1,000,000 gold, for testing.
+  - Statue enhancement with materials uses the client's EXP (×1.2 matching attribute, ×5
+    platinum) and gold arithmetic; turtles add a boost.
+  - Fixed: every material cost 1 gold (gold ratio 0); it now costs as listed.
+  - The Ring Exchange sells materials for Memory Rings.
+- **Mind equipment** (docs/research/16).
+  - Minds are equipped on team seats: slots 1–4, capacity 40.
+  - Moving a Mind to another seat of the team takes it off the first; "remove all" works.
+  - Locked slots, unknown Minds and capacity overruns are refused with the game's own messages.
+  - Fixed: tapping the heart (lock) crashed the client; it now stores the lock.
+  - Equipped Minds do nothing in battle yet: 3.12 uses only Mind ability rows, which come later.
+- **Missions** (docs/research/17).
+  - Daily missions (clear 1/5/10 quests, earn 100/200/300 EXP) and 14 regular missions, with the
+    game's own text and the wiki's rewards.
+  - The server counts progress; daily missions reset at 04:00 JST.
+  - Claim one or all; the Home badge shows claimable missions. Rewards arrive on the account
+    directly (the message box is not built yet).
+- Build number 21, server marker `JDR_EMBEDDED_SERVER_b021`.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] Items list shows materials and rings; enhancing a statue with medals raises its level and
+      costs gold
+- [ ] A turtle of the statue's rarity adds a boost (+1)
+- [ ] Ring Exchange lists goods; buying takes rings and adds the item
+- [ ] Equip, move and remove Minds on the team screen; the heart lock works without a crash
+- [ ] Missions: today's dailies; a quest clear makes "Clear a Quest" claimable; claim and claim
+      all; the Home badge
+
 ## Build 20 — Reversal, daily and event quests, research audit (branch `wip/b20`)
 
 ### What the owner asked and sent
