@@ -1,0 +1,1188 @@
+{
+ "asset": "yogo_table",
+ "about": "Glossary: one row per term with both a YOGO_TITLE and a YOGO_TEXT label; the client resolves title, reading and text through TextManager. Terms without a reading label use the client's own empty-reading marker (ResourceConst.YogoTitleYomiEmptyString), which hides the reading box. No pictures.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/12-master-data-fill.md §1",
+   "note": "term ids and label keys from Bokencho_Yogo* label keys"
+  },
+  {
+   "source": "jdr-default",
+   "note": "yogo_Id format and empty pictures chosen by us"
+  }
+ ],
+ "data": {
+  "paramList": [
+   {
+    "yogo_Id": "YOGO_0001",
+    "yogo_Title": "YOGO_TITLE_0001",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0001",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0002",
+    "yogo_Title": "YOGO_TITLE_0002",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0002",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0003",
+    "yogo_Title": "YOGO_TITLE_0003",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0003",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0004",
+    "yogo_Title": "YOGO_TITLE_0004",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0004",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0005",
+    "yogo_Title": "YOGO_TITLE_0005",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0005",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0006",
+    "yogo_Title": "YOGO_TITLE_0006",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0006",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0007",
+    "yogo_Title": "YOGO_TITLE_0007",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0007",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0008",
+    "yogo_Title": "YOGO_TITLE_0008",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0008",
+    "yogo_Text": "YOGO_TEXT_0008",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0009",
+    "yogo_Title": "YOGO_TITLE_0009",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0009",
+    "yogo_Text": "YOGO_TEXT_0009",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0010",
+    "yogo_Title": "YOGO_TITLE_0010",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0010",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0011",
+    "yogo_Title": "YOGO_TITLE_0011",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0011",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0012",
+    "yogo_Title": "YOGO_TITLE_0012",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0012",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0013",
+    "yogo_Title": "YOGO_TITLE_0013",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0013",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0014",
+    "yogo_Title": "YOGO_TITLE_0014",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0014",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0015",
+    "yogo_Title": "YOGO_TITLE_0015",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0015",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0016",
+    "yogo_Title": "YOGO_TITLE_0016",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0016",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0017",
+    "yogo_Title": "YOGO_TITLE_0017",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0017",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0018",
+    "yogo_Title": "YOGO_TITLE_0018",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0018",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0019",
+    "yogo_Title": "YOGO_TITLE_0019",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0019",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0020",
+    "yogo_Title": "YOGO_TITLE_0020",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0020",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0021",
+    "yogo_Title": "YOGO_TITLE_0021",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0021",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0022",
+    "yogo_Title": "YOGO_TITLE_0022",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0022",
+    "yogo_Text": "YOGO_TEXT_0022",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0023",
+    "yogo_Title": "YOGO_TITLE_0023",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0023",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0024",
+    "yogo_Title": "YOGO_TITLE_0024",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0024",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0025",
+    "yogo_Title": "YOGO_TITLE_0025",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0025",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0026",
+    "yogo_Title": "YOGO_TITLE_0026",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0026",
+    "yogo_Text": "YOGO_TEXT_0026",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0027",
+    "yogo_Title": "YOGO_TITLE_0027",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0027",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0028",
+    "yogo_Title": "YOGO_TITLE_0028",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0028",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0029",
+    "yogo_Title": "YOGO_TITLE_0029",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0029",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0030",
+    "yogo_Title": "YOGO_TITLE_0030",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0030",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0031",
+    "yogo_Title": "YOGO_TITLE_0031",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0031",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0032",
+    "yogo_Title": "YOGO_TITLE_0032",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0032",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0033",
+    "yogo_Title": "YOGO_TITLE_0033",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0033",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0034",
+    "yogo_Title": "YOGO_TITLE_0034",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0034",
+    "yogo_Text": "YOGO_TEXT_0034",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0035",
+    "yogo_Title": "YOGO_TITLE_0035",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0035",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0036",
+    "yogo_Title": "YOGO_TITLE_0036",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0036",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0037",
+    "yogo_Title": "YOGO_TITLE_0037",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0037",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0038",
+    "yogo_Title": "YOGO_TITLE_0038",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0038",
+    "yogo_Text": "YOGO_TEXT_0038",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0039",
+    "yogo_Title": "YOGO_TITLE_0039",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0039",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0040",
+    "yogo_Title": "YOGO_TITLE_0040",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0040",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0041",
+    "yogo_Title": "YOGO_TITLE_0041",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0041",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0042",
+    "yogo_Title": "YOGO_TITLE_0042",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0042",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0043",
+    "yogo_Title": "YOGO_TITLE_0043",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0043",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0044",
+    "yogo_Title": "YOGO_TITLE_0044",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0044",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0045",
+    "yogo_Title": "YOGO_TITLE_0045",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0045",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0046",
+    "yogo_Title": "YOGO_TITLE_0046",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0046",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0047",
+    "yogo_Title": "YOGO_TITLE_0047",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0047",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0048",
+    "yogo_Title": "YOGO_TITLE_0048",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0048",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0049",
+    "yogo_Title": "YOGO_TITLE_0049",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0049",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0050",
+    "yogo_Title": "YOGO_TITLE_0050",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0050",
+    "yogo_Text": "YOGO_TEXT_0050",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0051",
+    "yogo_Title": "YOGO_TITLE_0051",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0051",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0053",
+    "yogo_Title": "YOGO_TITLE_0053",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0053",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0054",
+    "yogo_Title": "YOGO_TITLE_0054",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0054",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0055",
+    "yogo_Title": "YOGO_TITLE_0055",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0055",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0056",
+    "yogo_Title": "YOGO_TITLE_0056",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0056",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0057",
+    "yogo_Title": "YOGO_TITLE_0057",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0057",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0058",
+    "yogo_Title": "YOGO_TITLE_0058",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0058",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0059",
+    "yogo_Title": "YOGO_TITLE_0059",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0059",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0060",
+    "yogo_Title": "YOGO_TITLE_0060",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0060",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0061",
+    "yogo_Title": "YOGO_TITLE_0061",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0061",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0062",
+    "yogo_Title": "YOGO_TITLE_0062",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0062",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0063",
+    "yogo_Title": "YOGO_TITLE_0063",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0063",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0064",
+    "yogo_Title": "YOGO_TITLE_0064",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0064",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0065",
+    "yogo_Title": "YOGO_TITLE_0065",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0065",
+    "yogo_Text": "YOGO_TEXT_0065",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0066",
+    "yogo_Title": "YOGO_TITLE_0066",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0066",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0067",
+    "yogo_Title": "YOGO_TITLE_0067",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0067",
+    "yogo_Text": "YOGO_TEXT_0067",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0068",
+    "yogo_Title": "YOGO_TITLE_0068",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0068",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0069",
+    "yogo_Title": "YOGO_TITLE_0069",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0069",
+    "yogo_Text": "YOGO_TEXT_0069",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0070",
+    "yogo_Title": "YOGO_TITLE_0070",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0070",
+    "yogo_Text": "YOGO_TEXT_0070",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0071",
+    "yogo_Title": "YOGO_TITLE_0071",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0071",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0072",
+    "yogo_Title": "YOGO_TITLE_0072",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0072",
+    "yogo_Text": "YOGO_TEXT_0072",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0073",
+    "yogo_Title": "YOGO_TITLE_0073",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0073",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0074",
+    "yogo_Title": "YOGO_TITLE_0074",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0074",
+    "yogo_Text": "YOGO_TEXT_0074",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0075",
+    "yogo_Title": "YOGO_TITLE_0075",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0075",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0076",
+    "yogo_Title": "YOGO_TITLE_0076",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0076",
+    "yogo_Text": "YOGO_TEXT_0076",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0077",
+    "yogo_Title": "YOGO_TITLE_0077",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0077",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0078",
+    "yogo_Title": "YOGO_TITLE_0078",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0078",
+    "yogo_Text": "YOGO_TEXT_0078",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0079",
+    "yogo_Title": "YOGO_TITLE_0079",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0079",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0080",
+    "yogo_Title": "YOGO_TITLE_0080",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0080",
+    "yogo_Text": "YOGO_TEXT_0080",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0081",
+    "yogo_Title": "YOGO_TITLE_0081",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0081",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0082",
+    "yogo_Title": "YOGO_TITLE_0082",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0082",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0083",
+    "yogo_Title": "YOGO_TITLE_0083",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0083",
+    "yogo_Text": "YOGO_TEXT_0083",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0084",
+    "yogo_Title": "YOGO_TITLE_0084",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0084",
+    "yogo_Text": "YOGO_TEXT_0084",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0085",
+    "yogo_Title": "YOGO_TITLE_0085",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0085",
+    "yogo_Text": "YOGO_TEXT_0085",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0086",
+    "yogo_Title": "YOGO_TITLE_0086",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0086",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0087",
+    "yogo_Title": "YOGO_TITLE_0087",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0087",
+    "yogo_Text": "YOGO_TEXT_0087",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0088",
+    "yogo_Title": "YOGO_TITLE_0088",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0088",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0089",
+    "yogo_Title": "YOGO_TITLE_0089",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0089",
+    "yogo_Text": "YOGO_TEXT_0089",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0090",
+    "yogo_Title": "YOGO_TITLE_0090",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0090",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0091",
+    "yogo_Title": "YOGO_TITLE_0091",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0091",
+    "yogo_Text": "YOGO_TEXT_0091",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0092",
+    "yogo_Title": "YOGO_TITLE_0092",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0092",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0093",
+    "yogo_Title": "YOGO_TITLE_0093",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0093",
+    "yogo_Text": "YOGO_TEXT_0093",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0094",
+    "yogo_Title": "YOGO_TITLE_0094",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0094",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0095",
+    "yogo_Title": "YOGO_TITLE_0095",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0095",
+    "yogo_Text": "YOGO_TEXT_0095",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0096",
+    "yogo_Title": "YOGO_TITLE_0096",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0096",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0097",
+    "yogo_Title": "YOGO_TITLE_0097",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0097",
+    "yogo_Text": "YOGO_TEXT_0097",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0098",
+    "yogo_Title": "YOGO_TITLE_0098",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0098",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0099",
+    "yogo_Title": "YOGO_TITLE_0099",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0099",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0100",
+    "yogo_Title": "YOGO_TITLE_0100",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0100",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0101",
+    "yogo_Title": "YOGO_TITLE_0101",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0101",
+    "yogo_Text": "YOGO_TEXT_0101",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0102",
+    "yogo_Title": "YOGO_TITLE_0102",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0102",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0103",
+    "yogo_Title": "YOGO_TITLE_0103",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0103",
+    "yogo_Text": "YOGO_TEXT_0103",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0104",
+    "yogo_Title": "YOGO_TITLE_0104",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0104",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0105",
+    "yogo_Title": "YOGO_TITLE_0105",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0105",
+    "yogo_Text": "YOGO_TEXT_0105",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0106",
+    "yogo_Title": "YOGO_TITLE_0106",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0106",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0107",
+    "yogo_Title": "YOGO_TITLE_0107",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0107",
+    "yogo_Text": "YOGO_TEXT_0107",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0108",
+    "yogo_Title": "YOGO_TITLE_0108",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0108",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0109",
+    "yogo_Title": "YOGO_TITLE_0109",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0109",
+    "yogo_Text": "YOGO_TEXT_0109",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0110",
+    "yogo_Title": "YOGO_TITLE_0110",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0110",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0111",
+    "yogo_Title": "YOGO_TITLE_0111",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0111",
+    "yogo_Text": "YOGO_TEXT_0111",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0112",
+    "yogo_Title": "YOGO_TITLE_0112",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0112",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0113",
+    "yogo_Title": "YOGO_TITLE_0113",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0113",
+    "yogo_Text": "YOGO_TEXT_0113",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0114",
+    "yogo_Title": "YOGO_TITLE_0114",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0114",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0115",
+    "yogo_Title": "YOGO_TITLE_0115",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0115",
+    "yogo_Text": "YOGO_TEXT_0115",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0116",
+    "yogo_Title": "YOGO_TITLE_0116",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0116",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0117",
+    "yogo_Title": "YOGO_TITLE_0117",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0117",
+    "yogo_Text": "YOGO_TEXT_0117",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0118",
+    "yogo_Title": "YOGO_TITLE_0118",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0118",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0119",
+    "yogo_Title": "YOGO_TITLE_0119",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0119",
+    "yogo_Text": "YOGO_TEXT_0119",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0120",
+    "yogo_Title": "YOGO_TITLE_0120",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0120",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0121",
+    "yogo_Title": "YOGO_TITLE_0121",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0121",
+    "yogo_Text": "YOGO_TEXT_0121",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0122",
+    "yogo_Title": "YOGO_TITLE_0122",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0122",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0123",
+    "yogo_Title": "YOGO_TITLE_0123",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0123",
+    "yogo_Text": "YOGO_TEXT_0123",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0124",
+    "yogo_Title": "YOGO_TITLE_0124",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0124",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0125",
+    "yogo_Title": "YOGO_TITLE_0125",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0125",
+    "yogo_Text": "YOGO_TEXT_0125",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0126",
+    "yogo_Title": "YOGO_TITLE_0126",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0126",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0127",
+    "yogo_Title": "YOGO_TITLE_0127",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0127",
+    "yogo_Text": "YOGO_TEXT_0127",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0128",
+    "yogo_Title": "YOGO_TITLE_0128",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0128",
+    "yogo_Text": "YOGO_TEXT_0128",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0129",
+    "yogo_Title": "YOGO_TITLE_0129",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0129",
+    "yogo_Text": "YOGO_TEXT_0129",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0130",
+    "yogo_Title": "YOGO_TITLE_0130",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0130",
+    "yogo_Text": "YOGO_TEXT_0130",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0131",
+    "yogo_Title": "YOGO_TITLE_0131",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0131",
+    "yogo_Text": "YOGO_TEXT_0131",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0132",
+    "yogo_Title": "YOGO_TITLE_0132",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0132",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0133",
+    "yogo_Title": "YOGO_TITLE_0133",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0133",
+    "yogo_Text": "YOGO_TEXT_0133",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0134",
+    "yogo_Title": "YOGO_TITLE_0134",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0134",
+    "yogo_Text": "YOGO_TEXT_0134",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0135",
+    "yogo_Title": "YOGO_TITLE_0135",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0135",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0136",
+    "yogo_Title": "YOGO_TITLE_0136",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0136",
+    "yogo_Text": "YOGO_TEXT_0136",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0137",
+    "yogo_Title": "YOGO_TITLE_0137",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0137",
+    "yogo_Text": "YOGO_TEXT_0137",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0138",
+    "yogo_Title": "YOGO_TITLE_0138",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0138",
+    "yogo_Text": "YOGO_TEXT_0138",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0139",
+    "yogo_Title": "YOGO_TITLE_0139",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0139",
+    "yogo_Text": "YOGO_TEXT_0139",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0140",
+    "yogo_Title": "YOGO_TITLE_0140",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0140",
+    "yogo_Text": "YOGO_TEXT_0140",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0141",
+    "yogo_Title": "YOGO_TITLE_0141",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0141",
+    "yogo_Text": "YOGO_TEXT_0141",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0142",
+    "yogo_Title": "YOGO_TITLE_0142",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0142",
+    "yogo_Text": "YOGO_TEXT_0142",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0143",
+    "yogo_Title": "YOGO_TITLE_0143",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0143",
+    "yogo_Text": "YOGO_TEXT_0143",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0144",
+    "yogo_Title": "YOGO_TITLE_0144",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0144",
+    "yogo_Text": "YOGO_TEXT_0144",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0145",
+    "yogo_Title": "YOGO_TITLE_0145",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0145",
+    "yogo_Text": "YOGO_TEXT_0145",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0146",
+    "yogo_Title": "YOGO_TITLE_0146",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0146",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0147",
+    "yogo_Title": "YOGO_TITLE_0147",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0147",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0148",
+    "yogo_Title": "YOGO_TITLE_0148",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0148",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0149",
+    "yogo_Title": "YOGO_TITLE_0149",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0149",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0150",
+    "yogo_Title": "YOGO_TITLE_0150",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0150",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0151",
+    "yogo_Title": "YOGO_TITLE_0151",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0151",
+    "yogo_Text": "YOGO_TEXT_0151",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0152",
+    "yogo_Title": "YOGO_TITLE_0152",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0152",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0153",
+    "yogo_Title": "YOGO_TITLE_0153",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0153",
+    "yogo_Text": "YOGO_TEXT_0153",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0154",
+    "yogo_Title": "YOGO_TITLE_0154",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0154",
+    "yogo_Text": "YOGO_TEXT_0154",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0155",
+    "yogo_Title": "YOGO_TITLE_0155",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0155",
+    "yogo_Text": "YOGO_TEXT_0155",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0156",
+    "yogo_Title": "YOGO_TITLE_0156",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0156",
+    "yogo_Text": "YOGO_TEXT_0156",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0157",
+    "yogo_Title": "YOGO_TITLE_0157",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0157",
+    "yogo_Text": "YOGO_TEXT_0157",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0158",
+    "yogo_Title": "YOGO_TITLE_0158",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0158",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0159",
+    "yogo_Title": "YOGO_TITLE_0159",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0159",
+    "yogo_Text": "YOGO_TEXT_0159",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0160",
+    "yogo_Title": "YOGO_TITLE_0160",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0160",
+    "yogo_Text": "YOGO_TEXT_0160",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0161",
+    "yogo_Title": "YOGO_TITLE_0161",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0161",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0162",
+    "yogo_Title": "YOGO_TITLE_0162",
+    "yogo_Yomi": "YOGO_TITLE_YOMI_0162",
+    "yogo_Text": "YOGO_TEXT_0162",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0163",
+    "yogo_Title": "YOGO_TITLE_0163",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0163",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0164",
+    "yogo_Title": "YOGO_TITLE_0164",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0164",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0165",
+    "yogo_Title": "YOGO_TITLE_0165",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0165",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0166",
+    "yogo_Title": "YOGO_TITLE_0166",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0166",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0167",
+    "yogo_Title": "YOGO_TITLE_0167",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0167",
+    "yogo_Picture": ""
+   },
+   {
+    "yogo_Id": "YOGO_0168",
+    "yogo_Title": "YOGO_TITLE_0168",
+    "yogo_Yomi": "―――",
+    "yogo_Text": "YOGO_TEXT_0168",
+    "yogo_Picture": ""
+   }
+  ]
+ }
+}

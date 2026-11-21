@@ -9,6 +9,15 @@ use serde_json::{json, Value};
 /// `{assetkey, assetvector, soundkey}`: the keys recovered from the player's own copy.
 /// `soundkey` is a decimal string of the 64-bit CRI key.
 pub fn getkey(ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
+    // While staged files are being imported, hold the reply (the client times out after 15 s and
+    // retries), so the game waits on the title instead of failing on a missing vcs.bytes and
+    // looping back to login.
+    let t0 = std::time::Instant::now();
+    while ctx.importing.load(std::sync::atomic::Ordering::Relaxed)
+        && t0.elapsed() < std::time::Duration::from_secs(12)
+    {
+        std::thread::sleep(std::time::Duration::from_millis(200));
+    }
     let k = ctx
         .settings
         .keys

@@ -121,6 +121,43 @@ fn route(ctx: &Arc<Ctx>, req: &Request) -> (Response, &'static str, String) {
     let path = req.path.as_str();
     if let Some(rel) = path.strip_prefix(CDN_PREFIX) {
         ctx.counters.cdn.fetch_add(1, Ordering::Relaxed);
+        let name = rel.trim_start_matches('/');
+        let which = if ctx.versionfile_obf_name().as_deref() == Some(name) {
+            Some("versionfile")
+        } else if ctx.masterdata_obf_name().as_deref() == Some(name) {
+            Some("in_memory_master_data")
+        } else {
+            None
+        };
+        if let Some(which) = which {
+            let body = ctx.generated().and_then(|g| {
+                if which == "versionfile" {
+                    Ok(g.versionfile.clone())
+                } else {
+                    g.masterdata.clone()
+                }
+            });
+            return match body {
+                Ok(b) => (
+                    Response::ok("application/octet-stream", b),
+                    "cdn",
+                    format!(" (generated {which})"),
+                ),
+                Err(e) => (
+                    Response::text(404, "generated bundle unavailable"),
+                    "cdn",
+                    format!(" {which} ERROR: {e}"),
+                ),
+            };
+        }
+        // English text bundles replace the game's own copies.
+        if let Some(g) = ctx.last_generated() {
+            if let Some(f) = g.localized.get(name) {
+                let dir = f.parent().unwrap_or(std::path::Path::new("."));
+                let file = f.file_name().and_then(|x| x.to_str()).unwrap_or("");
+                return (cdn::serve_file(dir, file, req), "cdn", " (English)".into());
+            }
+        }
         return match &ctx.settings.files_dir {
             Some(dir) => (cdn::serve_file(dir, rel, req), "cdn", String::new()),
             None => (

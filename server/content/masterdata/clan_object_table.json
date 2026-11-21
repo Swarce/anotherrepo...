@@ -1,0 +1,1039 @@
+{
+ "asset": "clan_object_table",
+ "about": "Clan objects named by the ClanObjectTitle/ClanObjectText label keys; the model and icon mapping is unknown, so models are empty. The clan room is hidden offline.",
+ "sources": [
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/12-master-data-fill.md §1",
+   "note": "ids and text keys from ClanObjectTitle/ClanObjectText label keys"
+  },
+  {
+   "source": "jdr-default",
+   "note": "type/size/icon/ability 0, model empty"
+  }
+ ],
+ "data": {
+  "paramList": [
+   {
+    "clanObjectId": 1,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0001",
+    "clanObjectText": "ClanObjectText_0001"
+   },
+   {
+    "clanObjectId": 2,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0002",
+    "clanObjectText": "ClanObjectText_0002"
+   },
+   {
+    "clanObjectId": 3,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0003",
+    "clanObjectText": "ClanObjectText_0003"
+   },
+   {
+    "clanObjectId": 4,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0004",
+    "clanObjectText": "ClanObjectText_0004"
+   },
+   {
+    "clanObjectId": 5,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0005",
+    "clanObjectText": "ClanObjectText_0005"
+   },
+   {
+    "clanObjectId": 6,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0006",
+    "clanObjectText": "ClanObjectText_0006"
+   },
+   {
+    "clanObjectId": 7,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0007",
+    "clanObjectText": "ClanObjectText_0007"
+   },
+   {
+    "clanObjectId": 8,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0008",
+    "clanObjectText": "ClanObjectText_0008"
+   },
+   {
+    "clanObjectId": 9,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0009",
+    "clanObjectText": "ClanObjectText_0009"
+   },
+   {
+    "clanObjectId": 10,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0010",
+    "clanObjectText": "ClanObjectText_0010"
+   },
+   {
+    "clanObjectId": 11,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0011",
+    "clanObjectText": "ClanObjectText_0011"
+   },
+   {
+    "clanObjectId": 12,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0012",
+    "clanObjectText": "ClanObjectText_0012"
+   },
+   {
+    "clanObjectId": 13,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0013",
+    "clanObjectText": "ClanObjectText_0013"
+   },
+   {
+    "clanObjectId": 14,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0014",
+    "clanObjectText": "ClanObjectText_0014"
+   },
+   {
+    "clanObjectId": 15,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0015",
+    "clanObjectText": "ClanObjectText_0015"
+   },
+   {
+    "clanObjectId": 16,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0016",
+    "clanObjectText": "ClanObjectText_0016"
+   },
+   {
+    "clanObjectId": 17,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0017",
+    "clanObjectText": "ClanObjectText_0017"
+   },
+   {
+    "clanObjectId": 18,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0018",
+    "clanObjectText": "ClanObjectText_0018"
+   },
+   {
+    "clanObjectId": 19,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0019",
+    "clanObjectText": "ClanObjectText_0019"
+   },
+   {
+    "clanObjectId": 20,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0020",
+    "clanObjectText": "ClanObjectText_0020"
+   },
+   {
+    "clanObjectId": 21,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0021",
+    "clanObjectText": "ClanObjectText_0021"
+   },
+   {
+    "clanObjectId": 22,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0022",
+    "clanObjectText": "ClanObjectText_0022"
+   },
+   {
+    "clanObjectId": 23,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0023",
+    "clanObjectText": "ClanObjectText_0023"
+   },
+   {
+    "clanObjectId": 24,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0024",
+    "clanObjectText": "ClanObjectText_0024"
+   },
+   {
+    "clanObjectId": 25,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0025",
+    "clanObjectText": "ClanObjectText_0025"
+   },
+   {
+    "clanObjectId": 26,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0026",
+    "clanObjectText": "ClanObjectText_0026"
+   },
+   {
+    "clanObjectId": 27,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0027",
+    "clanObjectText": "ClanObjectText_0027"
+   },
+   {
+    "clanObjectId": 28,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0028",
+    "clanObjectText": "ClanObjectText_0028"
+   },
+   {
+    "clanObjectId": 29,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0029",
+    "clanObjectText": "ClanObjectText_0029"
+   },
+   {
+    "clanObjectId": 30,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0030",
+    "clanObjectText": "ClanObjectText_0030"
+   },
+   {
+    "clanObjectId": 31,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0031",
+    "clanObjectText": "ClanObjectText_0031"
+   },
+   {
+    "clanObjectId": 32,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0032",
+    "clanObjectText": "ClanObjectText_0032"
+   },
+   {
+    "clanObjectId": 33,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0033",
+    "clanObjectText": "ClanObjectText_0033"
+   },
+   {
+    "clanObjectId": 34,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0034",
+    "clanObjectText": "ClanObjectText_0034"
+   },
+   {
+    "clanObjectId": 35,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0035",
+    "clanObjectText": "ClanObjectText_0035"
+   },
+   {
+    "clanObjectId": 36,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0036",
+    "clanObjectText": "ClanObjectText_0036"
+   },
+   {
+    "clanObjectId": 37,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0037",
+    "clanObjectText": "ClanObjectText_0037"
+   },
+   {
+    "clanObjectId": 38,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0038",
+    "clanObjectText": "ClanObjectText_0038"
+   },
+   {
+    "clanObjectId": 39,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0039",
+    "clanObjectText": "ClanObjectText_0039"
+   },
+   {
+    "clanObjectId": 40,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0040",
+    "clanObjectText": "ClanObjectText_0040"
+   },
+   {
+    "clanObjectId": 41,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0041",
+    "clanObjectText": "ClanObjectText_0041"
+   },
+   {
+    "clanObjectId": 42,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0042",
+    "clanObjectText": "ClanObjectText_0042"
+   },
+   {
+    "clanObjectId": 43,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0043",
+    "clanObjectText": "ClanObjectText_0043"
+   },
+   {
+    "clanObjectId": 44,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0044",
+    "clanObjectText": "ClanObjectText_0044"
+   },
+   {
+    "clanObjectId": 45,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0045",
+    "clanObjectText": "ClanObjectText_0045"
+   },
+   {
+    "clanObjectId": 46,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0046",
+    "clanObjectText": "ClanObjectText_0046"
+   },
+   {
+    "clanObjectId": 47,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0047",
+    "clanObjectText": "ClanObjectText_0047"
+   },
+   {
+    "clanObjectId": 48,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0048",
+    "clanObjectText": "ClanObjectText_0048"
+   },
+   {
+    "clanObjectId": 49,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0049",
+    "clanObjectText": "ClanObjectText_0049"
+   },
+   {
+    "clanObjectId": 50,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0050",
+    "clanObjectText": "ClanObjectText_0050"
+   },
+   {
+    "clanObjectId": 51,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0051",
+    "clanObjectText": "ClanObjectText_0051"
+   },
+   {
+    "clanObjectId": 52,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0052",
+    "clanObjectText": "ClanObjectText_0052"
+   },
+   {
+    "clanObjectId": 53,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0053",
+    "clanObjectText": "ClanObjectText_0053"
+   },
+   {
+    "clanObjectId": 54,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0054",
+    "clanObjectText": "ClanObjectText_0054"
+   },
+   {
+    "clanObjectId": 55,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0055",
+    "clanObjectText": "ClanObjectText_0055"
+   },
+   {
+    "clanObjectId": 56,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0056",
+    "clanObjectText": "ClanObjectText_0056"
+   },
+   {
+    "clanObjectId": 57,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0057",
+    "clanObjectText": "ClanObjectText_0057"
+   },
+   {
+    "clanObjectId": 58,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0058",
+    "clanObjectText": "ClanObjectText_0058"
+   },
+   {
+    "clanObjectId": 59,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0059",
+    "clanObjectText": "ClanObjectText_0059"
+   },
+   {
+    "clanObjectId": 60,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0060",
+    "clanObjectText": "ClanObjectText_0060"
+   },
+   {
+    "clanObjectId": 61,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0061",
+    "clanObjectText": "ClanObjectText_0061"
+   },
+   {
+    "clanObjectId": 62,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0062",
+    "clanObjectText": "ClanObjectText_0062"
+   },
+   {
+    "clanObjectId": 63,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0063",
+    "clanObjectText": "ClanObjectText_0063"
+   },
+   {
+    "clanObjectId": 64,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0064",
+    "clanObjectText": "ClanObjectText_0064"
+   },
+   {
+    "clanObjectId": 65,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0065",
+    "clanObjectText": "ClanObjectText_0065"
+   },
+   {
+    "clanObjectId": 66,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0066",
+    "clanObjectText": "ClanObjectText_0066"
+   },
+   {
+    "clanObjectId": 67,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0067",
+    "clanObjectText": "ClanObjectText_0067"
+   },
+   {
+    "clanObjectId": 68,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0068",
+    "clanObjectText": "ClanObjectText_0068"
+   },
+   {
+    "clanObjectId": 69,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0069",
+    "clanObjectText": "ClanObjectText_0069"
+   },
+   {
+    "clanObjectId": 70,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0070",
+    "clanObjectText": "ClanObjectText_0070"
+   },
+   {
+    "clanObjectId": 71,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0071",
+    "clanObjectText": "ClanObjectText_0071"
+   },
+   {
+    "clanObjectId": 72,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0072",
+    "clanObjectText": "ClanObjectText_0072"
+   },
+   {
+    "clanObjectId": 73,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0073",
+    "clanObjectText": "ClanObjectText_0073"
+   },
+   {
+    "clanObjectId": 74,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0074",
+    "clanObjectText": "ClanObjectText_0074"
+   },
+   {
+    "clanObjectId": 75,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0075",
+    "clanObjectText": "ClanObjectText_0075"
+   },
+   {
+    "clanObjectId": 76,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0076",
+    "clanObjectText": "ClanObjectText_0076"
+   },
+   {
+    "clanObjectId": 77,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0077",
+    "clanObjectText": "ClanObjectText_0077"
+   },
+   {
+    "clanObjectId": 78,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0078",
+    "clanObjectText": "ClanObjectText_0078"
+   },
+   {
+    "clanObjectId": 79,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0079",
+    "clanObjectText": "ClanObjectText_0079"
+   },
+   {
+    "clanObjectId": 80,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0080",
+    "clanObjectText": "ClanObjectText_0080"
+   },
+   {
+    "clanObjectId": 81,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0081",
+    "clanObjectText": "ClanObjectText_0081"
+   },
+   {
+    "clanObjectId": 82,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0082",
+    "clanObjectText": "ClanObjectText_0082"
+   },
+   {
+    "clanObjectId": 83,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0083",
+    "clanObjectText": "ClanObjectText_0083"
+   },
+   {
+    "clanObjectId": 84,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0084",
+    "clanObjectText": "ClanObjectText_0084"
+   },
+   {
+    "clanObjectId": 85,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0085",
+    "clanObjectText": "ClanObjectText_0085"
+   },
+   {
+    "clanObjectId": 86,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0086",
+    "clanObjectText": "ClanObjectText_0086"
+   },
+   {
+    "clanObjectId": 87,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0087",
+    "clanObjectText": "ClanObjectText_0087"
+   },
+   {
+    "clanObjectId": 88,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0088",
+    "clanObjectText": "ClanObjectText_0088"
+   },
+   {
+    "clanObjectId": 89,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0089",
+    "clanObjectText": "ClanObjectText_0089"
+   },
+   {
+    "clanObjectId": 90,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0090",
+    "clanObjectText": "ClanObjectText_0090"
+   },
+   {
+    "clanObjectId": 91,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0091",
+    "clanObjectText": "ClanObjectText_0091"
+   },
+   {
+    "clanObjectId": 92,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0092",
+    "clanObjectText": "ClanObjectText_0092"
+   },
+   {
+    "clanObjectId": 93,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0093",
+    "clanObjectText": "ClanObjectText_0093"
+   },
+   {
+    "clanObjectId": 94,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0094",
+    "clanObjectText": "ClanObjectText_0094"
+   },
+   {
+    "clanObjectId": 95,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0095",
+    "clanObjectText": "ClanObjectText_0095"
+   },
+   {
+    "clanObjectId": 96,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0096",
+    "clanObjectText": "ClanObjectText_0096"
+   },
+   {
+    "clanObjectId": 97,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0097",
+    "clanObjectText": "ClanObjectText_0097"
+   },
+   {
+    "clanObjectId": 98,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0098",
+    "clanObjectText": "ClanObjectText_0098"
+   },
+   {
+    "clanObjectId": 99,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_0099",
+    "clanObjectText": "ClanObjectText_0099"
+   },
+   {
+    "clanObjectId": 8017,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_8017",
+    "clanObjectText": "ClanObjectText_8017"
+   },
+   {
+    "clanObjectId": 8018,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_8018",
+    "clanObjectText": "ClanObjectText_8018"
+   },
+   {
+    "clanObjectId": 8019,
+    "clanObjectType": 0,
+    "clanObjectSize": 0,
+    "clanObjectmodel": "",
+    "clanObjectIcon": 0,
+    "clanObjectAbility": 0,
+    "clanObjectTitle": "ClanObjectTitle_8019",
+    "clanObjectText": "ClanObjectText_8019"
+   }
+  ]
+ }
+}

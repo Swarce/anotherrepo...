@@ -1,0 +1,955 @@
+{
+  "about": "English for the game's clientmes strings: key -> [hash of the Japanese source, English]. See docs/LOCALIZATION.md.",
+  "entries": {
+    "clientmes:Client_Mes_0002": [
+      "bca84ea5",
+      "Cancel"
+    ],
+    "clientmes:Client_Mes_0009": [
+      "950b4da3",
+      "Suspended game data was found.\nResume the game using the suspended data?\n*Please note that this data may be lost when an update is applied."
+    ],
+    "clientmes:Client_Mes_0010": [
+      "27c15539",
+      "Suspended data for \"Labyrinth of the Mind\" was found.\nResume the game using the suspended data?\n*If you quit during Tarot Card selection, you will return to Tarot Card selection.\n*Please note that this data may be lost when an update is applied."
+    ],
+    "clientmes:Client_Mes_0029": [
+      "aac88e8f",
+      "Please Reinstall"
+    ],
+    "clientmes:Client_Mes_0030": [
+      "cca213a2",
+      "Maintenance Notice"
+    ],
+    "clientmes:Client_Mes_0031": [
+      "c19451c6",
+      "Connection Error"
+    ],
+    "clientmes:Client_Mes_0032": [
+      "9a75da06",
+      "App Update"
+    ],
+    "clientmes:Client_Mes_0033": [
+      "fc069c19",
+      "Error Code"
+    ],
+    "clientmes:Client_Mes_0034": [
+      "a378f822",
+      "The app may not have been installed correctly.\nPlease delete the app and install it again."
+    ],
+    "clientmes:Client_Mes_0035": [
+      "418a39a8",
+      "A connection error occurred.\nPlease try again somewhere with a better signal."
+    ],
+    "clientmes:Client_Mes_0036": [
+      "d476ef0c",
+      "Emergency maintenance in progress."
+    ],
+    "clientmes:Client_Mes_0037": [
+      "1195d47b",
+      "Received"
+    ],
+    "clientmes:Client_Mes_0039": [
+      "3673b28e",
+      "Agree"
+    ],
+    "clientmes:Client_Mes_0040": [
+      "2b313a14",
+      "Disagree"
+    ],
+    "clientmes:Client_Mes_0041": [
+      "329cb9cc",
+      "AP has recovered."
+    ],
+    "clientmes:Client_Mes_0042": [
+      "20530747",
+      "Play Now"
+    ],
+    "clientmes:Client_Mes_Cancel": [
+      "bca84ea5",
+      "Cancel"
+    ],
+    "clientmes:Client_Mes_Rutry": [
+      "7fb53c2b",
+      "Retry"
+    ],
+    "clientmes:Client_Mes_TitleBack": [
+      "1cf05e09",
+      "Back to Title"
+    ],
+    "clientmes:Client_Mes_no": [
+      "48ef2b67",
+      "No"
+    ],
+    "clientmes:Client_Mes_yes": [
+      "8f90d85e",
+      "Yes"
+    ],
+    "clientmes:Data_Inheriting_Ok": [
+      "df5baca3",
+      "Data transfer completed successfully."
+    ],
+    "clientmes:ERRORCODE_ERROR": [
+      "db6a0f81",
+      "Could not retrieve the error code."
+    ],
+    "clientmes:ERROR_TEXT_00000001": [
+      "ad4d3a7f",
+      "Timeout error\nThe connection was lost.\nRetry?"
+    ],
+    "clientmes:ERROR_TEXT_00000002": [
+      "4b4e549e",
+      "Your session has expired. Returning to the title screen."
+    ],
+    "clientmes:ERROR_TEXT_00000003": [
+      "14c57442",
+      "Maintenance is currently in progress."
+    ],
+    "clientmes:ERROR_TEXT_00000004": [
+      "5ae2190d",
+      "The date has changed."
+    ],
+    "clientmes:ERROR_TEXT_00000005": [
+      "eee49b05",
+      "The data is corrupted.\nPlease clear the cache from the title screen and try again."
+    ],
+    "clientmes:ERROR_TEXT_00000006": [
+      "92554c7d",
+      "The data may be corrupted.\nDownload the data again?"
+    ],
+    "clientmes:ERROR_TEXT_00000007": [
+      "b2124a86",
+      "Resource version mismatch."
+    ],
+    "clientmes:ERROR_TEXT_00000008": [
+      "ad41cefc",
+      "Resource data not found."
+    ],
+    "clientmes:ERROR_TEXT_00000009": [
+      "41d29462",
+      "Request error"
+    ],
+    "clientmes:ERROR_TEXT_00000010_a": [
+      "10f1f093",
+      "This account is currently unavailable.\n\nIf you have any questions,\nplease contact support.\n\nhttp://bnfaq.channel.or.jp/contact/faq_list/1811"
+    ],
+    "clientmes:ERROR_TEXT_00000010_i": [
+      "4b6dd431",
+      "This account is currently unavailable.\n\nIf you have any questions,\nplease contact support.\n\nhttp://bnfaq.channel.or.jp/contact/faq_list/1810"
+    ],
+    "clientmes:ERROR_TEXT_00000011": [
+      "15fda73c",
+      "An error occurred."
+    ],
+    "clientmes:ERROR_TEXT_00000012": [
+      "5e44c4ba",
+      "Failed to download data."
+    ],
+    "clientmes:ERROR_TEXT_00000015": [
+      "8b50d736",
+      "This feature is currently under maintenance.\nReturning to the title screen."
+    ],
+    "clientmes:ERROR_TEXT_00000016": [
+      "81c02250",
+      "This feature is currently under maintenance.\nReturning to the home screen."
+    ],
+    "clientmes:ERROR_TEXT_00000017": [
+      "0378702b",
+      "Failed to load data.\nDownloading again."
+    ],
+    "clientmes:ERROR_TEXT_00000018": [
+      "d863d227",
+      "Failed to load data."
+    ],
+    "clientmes:ERROR_TEXT_00000019": [
+      "bd02e858",
+      "Failed to download the file."
+    ],
+    "clientmes:ERROR_TEXT_00000020": [
+      "bd02e858",
+      "Failed to download the file."
+    ],
+    "clientmes:ERROR_TEXT_00000021": [
+      "7c58d016",
+      "Failed to download data.\nPlease try again somewhere with a better connection."
+    ],
+    "clientmes:ERROR_TEXT_00000022": [
+      "622cfbfd",
+      "Resource data not found.\nPlease clear the cache from the title screen and try again."
+    ],
+    "clientmes:ERROR_TEXT_00000023": [
+      "f1554b6e",
+      "A timeout occurred. Please log in again."
+    ],
+    "clientmes:ERROR_TEXT_00100001": [
+      "7dce15e9",
+      "The user name is too long.\nPlease enter 10 characters or fewer."
+    ],
+    "clientmes:ERROR_TEXT_00100002": [
+      "ecdf5840",
+      "The user name is too short.\nPlease enter at least 1 character."
+    ],
+    "clientmes:ERROR_TEXT_00100003": [
+      "841ec9e6",
+      "The user name contains characters that cannot be used."
+    ],
+    "clientmes:ERROR_TEXT_00100004": [
+      "841ec9e6",
+      "The user name contains characters that cannot be used."
+    ],
+    "clientmes:ERROR_TEXT_00100005": [
+      "ed0e856e",
+      "The profile message is too long.\nPlease enter 30 characters or fewer."
+    ],
+    "clientmes:ERROR_TEXT_00100006": [
+      "edf43618",
+      "The profile message contains characters that cannot be used."
+    ],
+    "clientmes:ERROR_TEXT_00100007": [
+      "edf43618",
+      "The profile message contains characters that cannot be used."
+    ],
+    "clientmes:ERROR_TEXT_00100008": [
+      "44c9f0a3",
+      "The user name can only be changed once per day."
+    ],
+    "clientmes:ERROR_TEXT_00100009": [
+      "7bd32ae4",
+      "The profile message can only be edited once per day."
+    ],
+    "clientmes:ERROR_TEXT_00100010": [
+      "1b25ddfe",
+      "The transfer password has expired."
+    ],
+    "clientmes:ERROR_TEXT_00100011": [
+      "5c5b210d",
+      "The User ID and password do not match."
+    ],
+    "clientmes:ERROR_TEXT_00100012": [
+      "5c5b210d",
+      "The User ID and password do not match."
+    ],
+    "clientmes:ERROR_TEXT_00100013": [
+      "3fd61fef",
+      "This transfer password belongs to the User ID currently in use,\nso the transfer was canceled."
+    ],
+    "clientmes:ERROR_TEXT_00100014": [
+      "36ade437",
+      "Battle Points are already full."
+    ],
+    "clientmes:ERROR_TEXT_00100015": [
+      "7f008d25",
+      "Not enough Battle Points."
+    ],
+    "clientmes:ERROR_TEXT_00200001": [
+      "acff2ab7",
+      "Could not delete the cache data.\nPlease delete the app and install it again."
+    ],
+    "clientmes:ERROR_TEXT_00300001": [
+      "65b046de",
+      "A new version is available.\nPlease update from the App Store."
+    ],
+    "clientmes:ERROR_TEXT_00300002": [
+      "4bb4cbb5",
+      "A new version is available.\nPlease update from the Play Store."
+    ],
+    "clientmes:ERROR_TEXT_00300003": [
+      "ac6b51fb",
+      "The data may be corrupted. \n Please contact customer support."
+    ],
+    "clientmes:ERROR_TEXT_00300004": [
+      "ac6b51fb",
+      "The data may be corrupted. \n Please contact customer support."
+    ],
+    "clientmes:ERROR_TEXT_00300005": [
+      "5be4c5a0",
+      "The app may not have been installed correctly.\nPlease delete the app and install it again."
+    ],
+    "clientmes:ERROR_TEXT_00300006": [
+      "54122ad3",
+      "An error occurred.\nReturning to the title screen."
+    ],
+    "clientmes:ERROR_TEXT_00300007": [
+      "54122ad3",
+      "An error occurred.\nReturning to the title screen."
+    ],
+    "clientmes:ERROR_TEXT_00300008": [
+      "03414766",
+      "Device Transfer Password"
+    ],
+    "clientmes:ERROR_TEXT_00300009": [
+      "beea55f6",
+      "User ID: {mail_UserId}\nPassword: {mail_Pass}\n\n*Do not share the issued password with or disclose it to anyone.\n*Be sure to save your password with a screenshot, note, email, etc.\n*The password is valid for 3 months.\n*The password in this email becomes invalid if a new password is issued."
+    ],
+    "clientmes:ERROR_TEXT_00300010": [
+      "ca65e2d4",
+      "User ID: {mail_UserId}\nPassword: {mail_Pass}"
+    ],
+    "clientmes:ERROR_TEXT_00300011": [
+      "c843701a",
+      "Your user data has been transferred to another device.\nReturning to the title screen."
+    ],
+    "clientmes:ERROR_TEXT_00300012": [
+      "8e2ad24b",
+      "This User ID has already been transferred to another device,\nso it cannot be played.\nTo start a new game, please delete the app\nand install it again."
+    ],
+    "clientmes:ERROR_TEXT_00400001": [
+      "b73b7960",
+      "Could not receive the gift because your Diamond Coins would exceed the limit."
+    ],
+    "clientmes:ERROR_TEXT_00400002": [
+      "ce39cc30",
+      "Could not receive the gift because your Gold would exceed the limit."
+    ],
+    "clientmes:ERROR_TEXT_00400003": [
+      "0a94ac0f",
+      "Could not receive the gift because your {itemSet} would exceed the limit."
+    ],
+    "clientmes:ERROR_TEXT_00400004": [
+      "cfd2bb85",
+      "Could not receive the gift because your Minds would exceed the limit."
+    ],
+    "clientmes:ERROR_TEXT_00400005": [
+      "e7cb014b",
+      "Gift not found."
+    ],
+    "clientmes:ERROR_TEXT_00400006": [
+      "aa221e12",
+      "There are no gifts to receive."
+    ],
+    "clientmes:ERROR_TEXT_00400008": [
+      "9a27fc68",
+      "Could not receive the gift because your Friend Points would exceed the limit."
+    ],
+    "clientmes:ERROR_TEXT_00500001": [
+      "8d96b80e",
+      "Not enough Gold to Enhance."
+    ],
+    "clientmes:ERROR_TEXT_00500002": [
+      "8d96b80e",
+      "Not enough Gold to Enhance."
+    ],
+    "clientmes:ERROR_TEXT_00500003": [
+      "cd083402",
+      "Not enough CP."
+    ],
+    "clientmes:ERROR_TEXT_00500004": [
+      "87d7677b",
+      "The Mind could not be equipped because the equip conditions are not met."
+    ],
+    "clientmes:ERROR_TEXT_00500005": [
+      "3aaeff8b",
+      "Not enough items to unlock the tree."
+    ],
+    "clientmes:ERROR_TEXT_00500006": [
+      "786c97e6",
+      "The target Statue was not found."
+    ],
+    "clientmes:ERROR_TEXT_00500007": [
+      "786c97e6",
+      "The target Statue was not found."
+    ],
+    "clientmes:ERROR_TEXT_00500008": [
+      "ac82af4f",
+      "The target Mind was not found."
+    ],
+    "clientmes:ERROR_TEXT_00500009": [
+      "ac82af4f",
+      "The target Mind was not found."
+    ],
+    "clientmes:ERROR_TEXT_00500010": [
+      "cc630d8d",
+      "A locked Mind is included."
+    ],
+    "clientmes:ERROR_TEXT_00500011": [
+      "2c9a6b9c",
+      "An equipped Mind is included."
+    ],
+    "clientmes:ERROR_TEXT_00500012": [
+      "ac82af4f",
+      "The target Mind was not found."
+    ],
+    "clientmes:ERROR_TEXT_00500013": [
+      "2fe68a1b",
+      "The target Mind cannot be sold."
+    ],
+    "clientmes:ERROR_TEXT_00500014": [
+      "bc4c7e7f",
+      "Already equipped by another Statue."
+    ],
+    "clientmes:ERROR_TEXT_00500015": [
+      "e006cea9",
+      "The Statue to equip was not found."
+    ],
+    "clientmes:ERROR_TEXT_00500016": [
+      "1edebff8",
+      "Team not found."
+    ],
+    "clientmes:ERROR_TEXT_00500017": [
+      "2f05a08f",
+      "The same character cannot be set in the same slot."
+    ],
+    "clientmes:ERROR_TEXT_00500018": [
+      "aafb39a3",
+      "The same character is already in the team.\nThe same character cannot be in one team twice."
+    ],
+    "clientmes:ERROR_TEXT_00500019": [
+      "fc3a9c33",
+      "This Mind cannot be added to Favorites."
+    ],
+    "clientmes:ERROR_TEXT_00500020": [
+      "f03239bd",
+      "Not enough Gold."
+    ],
+    "clientmes:ERROR_TEXT_00500021": [
+      "8450d363",
+      "The level has reached its maximum.\nNo further Enhancement is possible."
+    ],
+    "clientmes:ERROR_TEXT_00500022": [
+      "bfc48c7c",
+      "The Enhancement cost does not match."
+    ],
+    "clientmes:ERROR_TEXT_00600001": [
+      "fa6ad4c5",
+      "This Quest's event period has ended."
+    ],
+    "clientmes:ERROR_TEXT_00600002": [
+      "fa6ad4c5",
+      "This Quest's event period has ended."
+    ],
+    "clientmes:ERROR_TEXT_00600003": [
+      "fa6ad4c5",
+      "This Quest's event period has ended."
+    ],
+    "clientmes:ERROR_TEXT_00600004": [
+      "2d62f1bb",
+      "Not enough Diamond Coins."
+    ],
+    "clientmes:ERROR_TEXT_00600005": [
+      "db2297af",
+      "Suspended data not found."
+    ],
+    "clientmes:ERROR_TEXT_00600006": [
+      "3f544b3a",
+      "No Statues are set in the team."
+    ],
+    "clientmes:ERROR_TEXT_00600007": [
+      "de91bcf6",
+      "Not enough AP."
+    ],
+    "clientmes:ERROR_TEXT_00600008": [
+      "78532e41",
+      "AP could not be restored because it would exceed the maximum."
+    ],
+    "clientmes:ERROR_TEXT_00600009": [
+      "cfecd397",
+      "Not enough items."
+    ],
+    "clientmes:ERROR_TEXT_00600010": [
+      "5a786db0",
+      "You have reached the Mind limit,\nso you cannot play the Quest.\nPlease free up Mind slots."
+    ],
+    "clientmes:ERROR_TEXT_00600011": [
+      "df2cdc2b",
+      "You have reached the Gold limit,\nso you cannot play the Quest.\nPlease reduce the amount of Gold you hold."
+    ],
+    "clientmes:ERROR_TEXT_00600012": [
+      "dd16c380",
+      "You have reached the Friend Point limit,\nso you cannot play the Quest.\nPlease reduce the number of Friend Points you hold."
+    ],
+    "clientmes:ERROR_TEXT_00600013": [
+      "47ab7410",
+      "You have reached the Diamond Coin limit,\nso you cannot play the Quest.\nPlease reduce the number of Diamond Coins you hold."
+    ],
+    "clientmes:ERROR_TEXT_00600014": [
+      "0a94ac0f",
+      "Could not receive the gift because your {itemSet} would exceed the limit."
+    ],
+    "clientmes:ERROR_TEXT_00600015": [
+      "735c3ca3",
+      "The campaign has ended.\nPlease select a Quest again."
+    ],
+    "clientmes:ERROR_TEXT_00600016": [
+      "7ce5b989",
+      "No data exists for the Quest in progress.\nThe suspended data will be discarded."
+    ],
+    "clientmes:ERROR_TEXT_00600017": [
+      "8b2f8a8f",
+      "Not enough AP.\nAP is already full and cannot be restored."
+    ],
+    "clientmes:ERROR_TEXT_00600018": [
+      "3cc91332",
+      "Not enough AP.\nEven if AP is restored, you cannot sortie on this Quest."
+    ],
+    "clientmes:ERROR_TEXT_00600020": [
+      "de831117",
+      "PERROR_TEXT_00600019 is not used. All PvP terms go to PVPHome."
+    ],
+    "clientmes:ERROR_TEXT_00700001": [
+      "a1d5799d",
+      "Display error"
+    ],
+    "clientmes:ERROR_TEXT_00800001": [
+      "7cf78ae6",
+      "The Summon period has ended,\nso you cannot summon from it."
+    ],
+    "clientmes:ERROR_TEXT_00800002": [
+      "19ef0bcc",
+      "Your Mind Box is full,\nso you cannot summon."
+    ],
+    "clientmes:ERROR_TEXT_00800003": [
+      "f26576bf",
+      "Not enough Diamond Coins,\nso you cannot summon."
+    ],
+    "clientmes:ERROR_TEXT_00800004": [
+      "faa0d7e0",
+      "Not enough paid Diamond Coins,\nso you cannot summon."
+    ],
+    "clientmes:ERROR_TEXT_00800005": [
+      "4ad7eabc",
+      "You have reached the pull limit,\nso you cannot summon."
+    ],
+    "clientmes:ERROR_TEXT_00800006": [
+      "4ad7eabc",
+      "You have reached the pull limit,\nso you cannot summon."
+    ],
+    "clientmes:ERROR_TEXT_00800007": [
+      "758e96a7",
+      "Not enough {GashaItem},\nso you cannot summon."
+    ],
+    "clientmes:ERROR_TEXT_00800008": [
+      "600bd44a",
+      "Your Mind Box is full,\nso you cannot summon.\nPlease free up Mind slots by enhancing Statues or Minds,\nselling Minds, etc."
+    ],
+    "clientmes:ERROR_TEXT_00900001": [
+      "b46f125e",
+      "The Town name is too long.\nPlease enter 15 characters or fewer."
+    ],
+    "clientmes:ERROR_TEXT_00900002": [
+      "32615f3b",
+      "The Town name is too short.\nPlease enter at least 1 character."
+    ],
+    "clientmes:ERROR_TEXT_00900003": [
+      "81228253",
+      "The Town name contains characters that cannot be used."
+    ],
+    "clientmes:ERROR_TEXT_00900004": [
+      "81228253",
+      "The Town name contains characters that cannot be used."
+    ],
+    "clientmes:ERROR_TEXT_00900005": [
+      "2a755e28",
+      "No Towns match the conditions."
+    ],
+    "clientmes:ERROR_TEXT_00900006": [
+      "70e42ee9",
+      "That Town was not found."
+    ],
+    "clientmes:ERROR_TEXT_00900007": [
+      "c88f4c42",
+      "The Town description is too long.\nPlease enter 32 characters or fewer."
+    ],
+    "clientmes:ERROR_TEXT_00900008": [
+      "8a1a1241",
+      "The Town description contains characters that cannot be used."
+    ],
+    "clientmes:ERROR_TEXT_00900009": [
+      "8a1a1241",
+      "The Town description contains characters that cannot be used."
+    ],
+    "clientmes:ERROR_TEXT_00900010": [
+      "740bc99b",
+      "Please enter a search keyword."
+    ],
+    "clientmes:ERROR_TEXT_00900011": [
+      "9eb81836",
+      "The search keyword is too long."
+    ],
+    "clientmes:ERROR_TEXT_00900012": [
+      "b1cda399",
+      "The Town you applied to join was not found."
+    ],
+    "clientmes:ERROR_TEXT_00900013": [
+      "de1cf8ab",
+      "You already belong to a Town."
+    ],
+    "clientmes:ERROR_TEXT_00900014": [
+      "9048bd1e",
+      "The Town member limit has been exceeded."
+    ],
+    "clientmes:ERROR_TEXT_00900015": [
+      "0d569fa8",
+      "That user has not applied to join."
+    ],
+    "clientmes:ERROR_TEXT_00900016": [
+      "de24ca15",
+      "The target user does not belong to the Town."
+    ],
+    "clientmes:ERROR_TEXT_00900017": [
+      "05a365f1",
+      "You do not belong to a Town."
+    ],
+    "clientmes:ERROR_TEXT_00900018": [
+      "e1a94271",
+      "You do not have permission to do that."
+    ],
+    "clientmes:ERROR_TEXT_00900019": [
+      "20357f0d",
+      "No Town name entered."
+    ],
+    "clientmes:ERROR_TEXT_00900020": [
+      "469a82c6",
+      "Contains characters that cannot be used."
+    ],
+    "clientmes:ERROR_TEXT_00900021": [
+      "83ac1027",
+      "Too many characters."
+    ],
+    "clientmes:ERROR_TEXT_00900022": [
+      "119ad98e",
+      "Nothing has been entered."
+    ],
+    "clientmes:ERROR_TEXT_00900023": [
+      "5e44c4ba",
+      "Failed to download data."
+    ],
+    "clientmes:ERROR_TEXT_00900024": [
+      "72b11946",
+      "Connection version mismatch."
+    ],
+    "clientmes:ERROR_TEXT_00900025": [
+      "502e7923",
+      "Invalid connection parameters."
+    ],
+    "clientmes:ERROR_TEXT_00900026": [
+      "14b28e89",
+      "Access to this connection is forbidden."
+    ],
+    "clientmes:ERROR_TEXT_00900027": [
+      "889c4317",
+      "Invalid member information."
+    ],
+    "clientmes:ERROR_TEXT_00900028": [
+      "bdcbc988",
+      "Server error"
+    ],
+    "clientmes:ERROR_TEXT_00900029": [
+      "bdcbc988",
+      "Server error"
+    ],
+    "clientmes:ERROR_TEXT_00900030": [
+      "b1862059",
+      "Connection error"
+    ],
+    "clientmes:ERROR_TEXT_00900031": [
+      "af5d10bb",
+      "Send error"
+    ],
+    "clientmes:ERROR_TEXT_00900032": [
+      "882bd775",
+      "Error on parse completion"
+    ],
+    "clientmes:ERROR_TEXT_00900033": [
+      "3d5745e5",
+      "Parse error"
+    ],
+    "clientmes:ERROR_TEXT_00900034": [
+      "95fad745",
+      "Timeout"
+    ],
+    "clientmes:ERROR_TEXT_00900035": [
+      "9fc158c5",
+      "Socket closed"
+    ],
+    "clientmes:ERROR_TEXT_00900036": [
+      "7168d2da",
+      "You are the Town Master."
+    ],
+    "clientmes:ERROR_TEXT_00900037": [
+      "dee1b502",
+      "You have been blocked by the Town Master.\nYou cannot join this Town."
+    ],
+    "clientmes:ERROR_TEXT_00900038": [
+      "1cf53a72",
+      "You have blocked this user.\nYou cannot approve their request to join the Town."
+    ],
+    "clientmes:ERROR_TEXT_00900039": [
+      "78113431",
+      "Characters that cannot be used were entered."
+    ],
+    "clientmes:ERROR_TEXT_00900040": [
+      "4746b9c7",
+      "Rankings are currently being tallied,\nso you cannot join or leave a Town."
+    ],
+    "clientmes:ERROR_TEXT_01000001": [
+      "0b4a701f",
+      "Failed to update data."
+    ],
+    "clientmes:ERROR_TEXT_01000002": [
+      "2cbf25f8",
+      "The purchase item does not exist."
+    ],
+    "clientmes:ERROR_TEXT_01000003": [
+      "1ad04452",
+      "Purchase period error"
+    ],
+    "clientmes:ERROR_TEXT_01000004": [
+      "85ed2231",
+      "The purchase has already been processed."
+    ],
+    "clientmes:ERROR_TEXT_01000005": [
+      "83edcc11",
+      "The payment process has not been started."
+    ],
+    "clientmes:ERROR_TEXT_01000006": [
+      "b33c4414",
+      "No logs found for this search."
+    ],
+    "clientmes:ERROR_TEXT_01000007": [
+      "4c4affd6",
+      "Purchase failed."
+    ],
+    "clientmes:ERROR_TEXT_01100001": [
+      "11882c96",
+      "It is not the exchange period,\nso you cannot exchange."
+    ],
+    "clientmes:ERROR_TEXT_01100002": [
+      "088009c5",
+      "Not enough items to exchange."
+    ],
+    "clientmes:ERROR_TEXT_01100003": [
+      "fe79e426",
+      "Mind Box expansion has reached its limit.\nIt cannot be expanded further."
+    ],
+    "clientmes:ERROR_TEXT_01100004": [
+      "a1cc2c1b",
+      "Please enter a valid date of birth."
+    ],
+    "clientmes:ERROR_TEXT_01100005": [
+      "e1c6b575",
+      "Your date of birth has already been entered."
+    ],
+    "clientmes:ERROR_TEXT_01100006": [
+      "378aa2ca",
+      "The spending limit has been exceeded."
+    ],
+    "clientmes:ERROR_TEXT_01100007": [
+      "378aa2ca",
+      "The spending limit has been exceeded."
+    ],
+    "clientmes:ERROR_TEXT_01100008": [
+      "e8f53dea",
+      "The purchase limit has been exceeded."
+    ],
+    "clientmes:ERROR_TEXT_01100009": [
+      "f8bc8d8c",
+      "Your Mind Box is full,\nso you cannot purchase Minds."
+    ],
+    "clientmes:ERROR_TEXT_01100010": [
+      "7450c505",
+      "You have reached the Diamond Coin limit,\nso you cannot purchase Diamond Coins.\nPlease reduce the number of Diamond Coins you hold."
+    ],
+    "clientmes:ERROR_TEXT_01200001": [
+      "40715e94",
+      "The user was not found."
+    ],
+    "clientmes:ERROR_TEXT_01200002": [
+      "2dd71ed0",
+      "This user has reached the follower limit."
+    ],
+    "clientmes:ERROR_TEXT_01200003": [
+      "f9b5f5da",
+      "Could not Follow because you have blocked this user."
+    ],
+    "clientmes:ERROR_TEXT_01200004": [
+      "63ca7dea",
+      "Could not Follow because this user has blocked you."
+    ],
+    "clientmes:ERROR_TEXT_01200005": [
+      "301cf30d",
+      "User not found."
+    ],
+    "clientmes:ERROR_TEXT_01200006": [
+      "301cf30d",
+      "User not found."
+    ],
+    "clientmes:ERROR_TEXT_01200007": [
+      "301cf30d",
+      "User not found."
+    ],
+    "clientmes:ERROR_TEXT_01200008": [
+      "67dfbbe7",
+      "Already removed."
+    ],
+    "clientmes:ERROR_TEXT_01200009": [
+      "67dfbbe7",
+      "Already removed."
+    ],
+    "clientmes:ERROR_TEXT_01200010": [
+      "878c8280",
+      "You have reached the Follow limit.\nYou cannot Follow any more users."
+    ],
+    "clientmes:ERROR_TEXT_01200011": [
+      "d87d1de5",
+      "You have reached the block limit.\nYou cannot block any more users."
+    ],
+    "clientmes:ERROR_TEXT_01200012": [
+      "a3e11e79",
+      "This user has already been unblocked."
+    ],
+    "clientmes:ERROR_TEXT_01200013": [
+      "0ffb1226",
+      "This user has already been blocked."
+    ],
+    "clientmes:ERROR_TEXT_01300007": [
+      "f900f398",
+      "ERROR_TEXT_01300001 - ERROR_TEXT_01300006 are not used.\nERROR_TEXT_01352007 is also not used.\n\nERROR_TEXT_01200014 and ERROR_TEXT_01200015 are not used."
+    ],
+    "clientmes:Maintenance_Info": [
+      "5ef688e9",
+      "Maintenance is currently in progress.\nReturning to the title screen."
+    ],
+    "clientmes:POLICY_TEXT_IOS": [
+      "23e89b4a",
+      "This is an unofficial, offline preservation build of the game, made from your own copy.\nThe original online service has ended. Nothing you do here is sent anywhere: there are no accounts on a server, no purchases and no tracking.\nThis notice replaces the original terms of use, which no longer apply."
+    ],
+    "clientmes:POLICY_TITLE": [
+      "873100c1",
+      "About this offline build"
+    ],
+    "clientmes:Terminal_Identification_Change": [
+      "1bfb0adc",
+      "Changing device identification info."
+    ],
+    "clientmes:TitleText_0000": [
+      "3a62a2a9",
+      "When transferring data between different OSes,\n\"Diamond Coins\" cannot be carried over. Please be aware.\n\nEnter your registered User ID and password to\ncontinue playing with game data from another device."
+    ],
+    "clientmes:TitleText_0001": [
+      "bca84ea5",
+      "Cancel"
+    ],
+    "clientmes:TitleText_0002": [
+      "d9c95a97",
+      "Transfer"
+    ],
+    "clientmes:TitleText_0003": [
+      "47bc9bbe",
+      "Transfer ID"
+    ],
+    "clientmes:TitleText_0004": [
+      "f79a1ee0",
+      "Transfer the data from your old device to this device?"
+    ],
+    "clientmes:TitleText_0005": [
+      "ec2b7250",
+      "*\"Diamond Coins\" cannot be transferred between different OSes.\n We recommend using up your \"Diamond Coins\" before transferring data."
+    ],
+    "clientmes:TitleText_0006": [
+      "b7f6de2a",
+      "*Once a password has been used, it cannot be used again."
+    ],
+    "clientmes:TitleText_0007": [
+      "ff6e89d7",
+      "Data Transfer"
+    ],
+    "clientmes:TitleText_0008": [
+      "d5f886f2",
+      "Enter your 9-digit Transfer ID."
+    ],
+    "clientmes:TitleText_0009": [
+      "a2f54067",
+      "Enter your password."
+    ],
+    "clientmes:Title_back": [
+      "9da3da58",
+      "Quit the game?"
+    ],
+    "clientmes:capacity_over_01": [
+      "83915e96",
+      "Not enough free storage space.\nPlease free up space and try again."
+    ],
+    "clientmes:capacity_over_02": [
+      "ad9096a0",
+      "Not enough free storage space.\nThe data could not be downloaded.\n\nReturning to the title screen."
+    ],
+    "clientmes:date_download_00": [
+      "82a81887",
+      "Data Download"
+    ],
+    "clientmes:date_download_01": [
+      "1f2a4cb0",
+      "Download all game data at once."
+    ],
+    "clientmes:date_download_02": [
+      "b506ec1a",
+      "Download Size"
+    ],
+    "clientmes:date_download_03": [
+      "0fe9de46",
+      "Est. Download Time"
+    ],
+    "clientmes:date_download_04": [
+      "68e09772",
+      "New data is available."
+    ],
+    "clientmes:date_download_05": [
+      "b195f6a9",
+      " of game data will be downloaded."
+    ],
+    "clientmes:date_download_06": [
+      "f6d4f2c2",
+      "First Download"
+    ],
+    "clientmes:date_download_07": [
+      "b7d38994",
+      "Downloading game data."
+    ],
+    "clientmes:date_download_08": [
+      "ff91090f",
+      "Download minimum data:"
+    ],
+    "clientmes:date_download_09": [
+      "37403890",
+      "Download all:"
+    ],
+    "clientmes:date_download_11": [
+      "a517ec39",
+      "Downloading all data at once shortens the download times on each screen. You can also download all data later from \"Options\" -> \"Data Download\"."
+    ],
+    "clientmes:date_download_12": [
+      "4cea973f",
+      "Download Minimum Data"
+    ],
+    "clientmes:date_download_13": [
+      "f7a27833",
+      "Download All"
+    ],
+    "clientmes:date_download_14": [
+      "e9024d60",
+      "Download All"
+    ],
+    "clientmes:download_check_01": [
+      "174bde19",
+      "The latest data has already been downloaded."
+    ],
+    "clientmes:download_check_02": [
+      "9c6c566c",
+      "The download may take some time.\nWe recommend downloading over Wi-Fi.\n*Any data charges for the download are your responsibility.\n\nDownload now?"
+    ],
+    "clientmes:download_check_03": [
+      "7519019c",
+      "Starting the download of all game data.\nAre you sure?"
+    ],
+    "clientmes:download_finish": [
+      "9023b743",
+      "Download complete."
+    ]
+  },
+  "sources": [
+    {
+      "note": "translated by the project",
+      "source": "jdr-default"
+    }
+  ]
+}
