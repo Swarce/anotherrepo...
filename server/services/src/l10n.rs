@@ -415,6 +415,7 @@ pub fn rewrite_bundle(
     bundle_name: &str,
     edit: &mut dyn FnMut(&str, &str) -> Option<String>,
     art: Option<&HashMap<String, &[u8]>>,
+    keys: crate::art::Keys,
 ) -> Result<(Option<Vec<u8>>, Stats), Error> {
     let mut nodes = bundle::read(data)?;
     let mut stats = Stats::default();
@@ -450,12 +451,12 @@ pub fn rewrite_bundle(
     }
     if let Some(images) = art {
         // Art problems never cost the bundle its English: bad images are skipped and reported.
-        match crate::art::apply(&mut nodes, images) {
+        match crate::art::apply(&mut nodes, images, keys) {
             Ok(r) => {
-                stats.art += r.replaced;
+                stats.art += r.replaced + r.added;
                 stats.art_unmatched += r.unmatched.len();
                 stats.art_errors.extend(r.errors);
-                any |= r.replaced > 0;
+                any |= r.replaced > 0 || r.added > 0;
             }
             Err(e) => stats.art_errors.push(format!("art: {e}")),
         }
@@ -479,6 +480,7 @@ pub fn collect(data: &[u8], bundle_name: &str) -> Result<Vec<Found>, Error> {
             });
             None
         },
+        None,
         None,
     )?;
     Ok(out)
@@ -527,6 +529,7 @@ pub fn translate_bundle(
     bundle_name: &str,
     tr: &Translations,
     art: Option<&HashMap<String, &[u8]>>,
+    keys: crate::art::Keys,
 ) -> Result<(Option<Vec<u8>>, Stats), Error> {
     let mut stale = 0;
     let (out, mut st) = rewrite_bundle(
@@ -541,6 +544,7 @@ pub fn translate_bundle(
             Lookup::Missing => None,
         },
         art,
+        keys,
     )?;
     st.stale = stale;
     Ok((out, st))
@@ -830,7 +834,7 @@ fn prepare_one(
     } else {
         source.clone()
     };
-    let (rewritten, stats) = translate_bundle(&plain, name, tr, job.art)?;
+    let (rewritten, stats) = translate_bundle(&plain, name, tr, job.art, Some((key, iv)))?;
     // Nothing to change: serve the original as is (also reverts a copy we replaced earlier).
     let (bytes, encrypted) = match rewritten {
         Some(b) => (b, false),
@@ -1074,13 +1078,13 @@ mod tests {
             ("text:MyPage_JP:A", "決定", "OK"),
             ("text:MyPage_JP:B", "変わった", "Back"), // source changed: stale
         ]);
-        let (out, st) = translate_bundle(&b, "text.jp", &t, None).unwrap();
+        let (out, st) = translate_bundle(&b, "text.jp", &t, None, None).unwrap();
         assert_eq!((st.strings, st.replaced, st.stale), (2, 1, 1));
         let out = out.unwrap();
         let again = collect(&out, "text.jp").unwrap();
         assert_eq!(again.len(), 1, "only the stale row is still Japanese");
         // Nothing to translate: no rewrite.
-        assert!(translate_bundle(&b, "text.jp", &tr(&[]), None)
+        assert!(translate_bundle(&b, "text.jp", &tr(&[]), None, None)
             .unwrap()
             .0
             .is_none());
