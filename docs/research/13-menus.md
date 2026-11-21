@@ -39,8 +39,19 @@ other notes. No game text is reproduced.
 - **No original layout survives, so ours is:**
   - a start square, then 14 squares in a line cycling ATK, DEF, HP;
   - together they add the wiki's tree-max minus Lv99 stats (20% of Lv99 when unknown);
-  - squares open free (`/tree/acquisition`, in order: a square needs the one before it);
+  - squares open in order (`/tree/acquisition`: a square needs the one before it);
   - opened squares are saved per statue and added to its stats.
+- **Costs (Build 23).**
+  - **Client (H):** it checks costs only against the tree screen's own `itemList`; gold is an
+    ordinary material, item 20. A locked square (`unlockFlg 0`) needs `openMaterialList` and
+    `lockList` both; there is no separate unlock route. A far tap sends the whole path
+    (`multiOpen 1`), trimmed to what the player can pay.
+  - **Ours:** each square costs a tree material of the statue's colour (the item details give
+    Courage blue, Wisdom green, Spirit red; Unity and Solitude use white and black) at a tier set
+    by depth (Shard, Stone, Brooch, Gem, Tablet, Slab), 2 + depth of them, and 1,000 x depth x
+    rarity gold. The first fork square of a branch is locked behind that colour's Expansion Key.
+  - The server pays square by square along the path and stops at the first it cannot pay
+    (10102 gold, 10108 items).
 
 ## 4. Other screens
 
@@ -66,7 +77,7 @@ The owner asked for these tiles so more content can be tested. H unless marked, 
   - `questHomeId`, `day`, `Priority` and the dates are not read.
   - Tutorial flags gate the tiles: daily needs OPEN_00, event needs OPEN_01. The embedded server
     skips the tutorial, so both are set.
-  - `dungeonLockFlg: 1` keeps the labyrinth locked.
+  - `dungeonLockFlg: 1` keeps the labyrinth locked; we now send 0 (docs/research/22-labyrinth.md).
   - A null `bannerFileName`, or a null `eventMasterId` while campaigns are shown, crashes the
     screen; an empty or missing banner just leaves the tile blank.
 - **Daily.** The client uses the first bannerType-2 entry for both its category and its art.

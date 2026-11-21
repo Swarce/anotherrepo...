@@ -11,7 +11,7 @@
     ],
     "clientmes:Client_Mes_0010": [
       "27c15539",
-      "Suspended data for \"Labyrinth of the Mind\" was found.\nResume the game using the suspended data?\n*If you quit during Tarot Card selection, you will return to Tarot Card selection.\n*Please note that this data may be lost when an update is applied."
+      "Suspended data for \"Mind Labyrinth\" was found.\nResume the game using the suspended data?\n*If you quit during Tarot Card selection, you will return to Tarot Card selection.\n*Please note that this data may be lost when an update is applied."
     ],
     "clientmes:Client_Mes_0029": [
       "aac88e8f",
@@ -43,11 +43,11 @@
     ],
     "clientmes:Client_Mes_0036": [
       "d476ef0c",
-      "Emergency maintenance in progress."
+      "Under emergency maintenance."
     ],
     "clientmes:Client_Mes_0037": [
       "1195d47b",
-      "Received"
+      "Claimed"
     ],
     "clientmes:Client_Mes_0039": [
       "3673b28e",
@@ -59,7 +59,7 @@
     ],
     "clientmes:Client_Mes_0041": [
       "329cb9cc",
-      "AP has recovered."
+      "AP restored."
     ],
     "clientmes:Client_Mes_0042": [
       "20530747",
@@ -103,7 +103,7 @@
     ],
     "clientmes:ERROR_TEXT_00000003": [
       "14c57442",
-      "Maintenance is currently in progress."
+      "Under maintenance."
     ],
     "clientmes:ERROR_TEXT_00000004": [
       "5ae2190d",
@@ -183,19 +183,19 @@
     ],
     "clientmes:ERROR_TEXT_00100001": [
       "7dce15e9",
-      "The user name is too long.\nPlease enter 10 characters or fewer."
+      "The username is too long.\nPlease enter 10 characters or fewer."
     ],
     "clientmes:ERROR_TEXT_00100002": [
       "ecdf5840",
-      "The user name is too short.\nPlease enter at least 1 character."
+      "The username is too short.\nPlease enter at least 1 character."
     ],
     "clientmes:ERROR_TEXT_00100003": [
       "841ec9e6",
-      "The user name contains characters that cannot be used."
+      "The username contains characters that cannot be used."
     ],
     "clientmes:ERROR_TEXT_00100004": [
       "841ec9e6",
-      "The user name contains characters that cannot be used."
+      "The username contains characters that cannot be used."
     ],
     "clientmes:ERROR_TEXT_00100005": [
       "ed0e856e",
@@ -211,7 +211,7 @@
     ],
     "clientmes:ERROR_TEXT_00100008": [
       "44c9f0a3",
-      "The user name can only be changed once per day."
+      "The username can only be changed once per day."
     ],
     "clientmes:ERROR_TEXT_00100009": [
       "7bd32ae4",
@@ -235,11 +235,11 @@
     ],
     "clientmes:ERROR_TEXT_00100014": [
       "36ade437",
-      "Battle Points are already full."
+      "BP is already full."
     ],
     "clientmes:ERROR_TEXT_00100015": [
       "7f008d25",
-      "Not enough Battle Points."
+      "Not enough BP."
     ],
     "clientmes:ERROR_TEXT_00200001": [
       "acff2ab7",
@@ -255,11 +255,11 @@
     ],
     "clientmes:ERROR_TEXT_00300003": [
       "ac6b51fb",
-      "The data may be corrupted. \n Please contact customer support."
+      "The data may be corrupted.\nPlease contact customer support."
     ],
     "clientmes:ERROR_TEXT_00300004": [
       "ac6b51fb",
-      "The data may be corrupted. \n Please contact customer support."
+      "The data may be corrupted.\nPlease contact customer support."
     ],
     "clientmes:ERROR_TEXT_00300005": [
       "5be4c5a0",
@@ -295,19 +295,19 @@
     ],
     "clientmes:ERROR_TEXT_00400001": [
       "b73b7960",
-      "Could not receive the gift because your Diamond Coins would exceed the limit."
+      "Could not claim the Gift because you would exceed the Diamond Coin limit."
     ],
     "clientmes:ERROR_TEXT_00400002": [
       "ce39cc30",
-      "Could not receive the gift because your Gold would exceed the limit."
+      "Could not claim the Gift because you would exceed the Gold limit."
     ],
     "clientmes:ERROR_TEXT_00400003": [
       "0a94ac0f",
-      "Could not receive the gift because your {itemSet} would exceed the limit."
+      "Could not claim the Gift because you would exceed the {itemSet} limit."
     ],
     "clientmes:ERROR_TEXT_00400004": [
       "cfd2bb85",
-      "Could not receive the gift because your Minds would exceed the limit."
+      "Could not claim the Gift because you would exceed the Mind limit."
     ],
     "clientmes:ERROR_TEXT_00400005": [
       "e7cb014b",
@@ -315,19 +315,19 @@
     ],
     "clientmes:ERROR_TEXT_00400006": [
       "aa221e12",
-      "There are no gifts to receive."
+      "There are no Gifts to claim."
     ],
     "clientmes:ERROR_TEXT_00400008": [
       "9a27fc68",
-      "Could not receive the gift because your Friend Points would exceed the limit."
+      "Could not claim the Gift because you would exceed the Friend Point limit."
     ],
     "clientmes:ERROR_TEXT_00500001": [
       "8d96b80e",
-      "Not enough Gold to Enhance."
+      "Not enough Gold to enhance."
     ],
     "clientmes:ERROR_TEXT_00500002": [
       "8d96b80e",
-      "Not enough Gold to Enhance."
+      "Not enough Gold to enhance."
     ],
     "clientmes:ERROR_TEXT_00500003": [
       "cd083402",
@@ -339,7 +339,7 @@
     ],
     "clientmes:ERROR_TEXT_00500005": [
       "3aaeff8b",
-      "Not enough items to unlock the tree."
+      "Not enough items to unlock the Growth Tree."
     ],
     "clientmes:ERROR_TEXT_00500006": [
       "786c97e6",
@@ -403,23 +403,23 @@
     ],
     "clientmes:ERROR_TEXT_00500021": [
       "8450d363",
-      "The level has reached its maximum.\nNo further Enhancement is possible."
+      "The level is already at its maximum.\nIt cannot be enhanced any further."
     ],
     "clientmes:ERROR_TEXT_00500022": [
       "bfc48c7c",
-      "The Enhancement cost does not match."
+      "The enhancement cost does not match."
     ],
     "clientmes:ERROR_TEXT_00600001": [
       "fa6ad4c5",
-      "This Quest's event period has ended."
+      "This Quest has ended."
     ],
     "clientmes:ERROR_TEXT_00600002": [
       "fa6ad4c5",
-      "This Quest's event period has ended."
+      "This Quest has ended."
     ],
     "clientmes:ERROR_TEXT_00600003": [
       "fa6ad4c5",
-      "This Quest's event period has ended."
+      "This Quest has ended."
     ],
     "clientmes:ERROR_TEXT_00600004": [
       "2d62f1bb",
@@ -439,7 +439,7 @@
     ],
     "clientmes:ERROR_TEXT_00600008": [
       "78532e41",
-      "AP could not be restored because it would exceed the maximum."
+      "AP could not be restored because it is over the limit."
     ],
     "clientmes:ERROR_TEXT_00600009": [
       "cfecd397",
@@ -451,19 +451,19 @@
     ],
     "clientmes:ERROR_TEXT_00600011": [
       "df2cdc2b",
-      "You have reached the Gold limit,\nso you cannot play the Quest.\nPlease reduce the amount of Gold you hold."
+      "You have reached the Gold limit,\nso you cannot play the Quest.\nPlease reduce the amount of Gold you own."
     ],
     "clientmes:ERROR_TEXT_00600012": [
       "dd16c380",
-      "You have reached the Friend Point limit,\nso you cannot play the Quest.\nPlease reduce the number of Friend Points you hold."
+      "You have reached the Friend Point limit,\nso you cannot play the Quest.\nPlease reduce the number of Friend Points you own."
     ],
     "clientmes:ERROR_TEXT_00600013": [
       "47ab7410",
-      "You have reached the Diamond Coin limit,\nso you cannot play the Quest.\nPlease reduce the number of Diamond Coins you hold."
+      "You have reached the Diamond Coin limit,\nso you cannot play the Quest.\nPlease reduce the number of Diamond Coins you own."
     ],
     "clientmes:ERROR_TEXT_00600014": [
       "0a94ac0f",
-      "Could not receive the gift because your {itemSet} would exceed the limit."
+      "Could not claim the Gift because you would exceed the {itemSet} limit."
     ],
     "clientmes:ERROR_TEXT_00600015": [
       "735c3ca3",
@@ -479,7 +479,7 @@
     ],
     "clientmes:ERROR_TEXT_00600018": [
       "3cc91332",
-      "Not enough AP.\nEven if AP is restored, you cannot sortie on this Quest."
+      "Not enough AP.\nEven if you restore AP, you cannot start this Quest."
     ],
     "clientmes:ERROR_TEXT_00600020": [
       "de831117",
@@ -507,11 +507,11 @@
     ],
     "clientmes:ERROR_TEXT_00800005": [
       "4ad7eabc",
-      "You have reached the pull limit,\nso you cannot summon."
+      "You have reached the summon limit,\nso you cannot summon."
     ],
     "clientmes:ERROR_TEXT_00800006": [
       "4ad7eabc",
-      "You have reached the pull limit,\nso you cannot summon."
+      "You have reached the summon limit,\nso you cannot summon."
     ],
     "clientmes:ERROR_TEXT_00800007": [
       "758e96a7",
@@ -747,7 +747,7 @@
     ],
     "clientmes:ERROR_TEXT_01100010": [
       "7450c505",
-      "You have reached the Diamond Coin limit,\nso you cannot purchase Diamond Coins.\nPlease reduce the number of Diamond Coins you hold."
+      "You have reached the Diamond Coin limit,\nso you cannot buy Diamond Coins.\nPlease reduce the number of Diamond Coins you own."
     ],
     "clientmes:ERROR_TEXT_01200001": [
       "40715e94",
@@ -759,11 +759,11 @@
     ],
     "clientmes:ERROR_TEXT_01200003": [
       "f9b5f5da",
-      "Could not Follow because you have blocked this user."
+      "Could not follow because you have blocked this user."
     ],
     "clientmes:ERROR_TEXT_01200004": [
       "63ca7dea",
-      "Could not Follow because this user has blocked you."
+      "Could not follow because this user has blocked you."
     ],
     "clientmes:ERROR_TEXT_01200005": [
       "301cf30d",
@@ -787,7 +787,7 @@
     ],
     "clientmes:ERROR_TEXT_01200010": [
       "878c8280",
-      "You have reached the Follow limit.\nYou cannot Follow any more users."
+      "You have reached the follow limit.\nYou cannot follow any more users."
     ],
     "clientmes:ERROR_TEXT_01200011": [
       "d87d1de5",
@@ -807,7 +807,7 @@
     ],
     "clientmes:Maintenance_Info": [
       "5ef688e9",
-      "Maintenance is currently in progress.\nReturning to the title screen."
+      "Under maintenance.\nReturning to the title screen."
     ],
     "clientmes:POLICY_TEXT_IOS": [
       "23e89b4a",
@@ -819,7 +819,7 @@
     ],
     "clientmes:Terminal_Identification_Change": [
       "1bfb0adc",
-      "Changing device identification info."
+      "Device identification info will be changed."
     ],
     "clientmes:TitleText_0000": [
       "3a62a2a9",
@@ -879,7 +879,7 @@
     ],
     "clientmes:date_download_01": [
       "1f2a4cb0",
-      "Download all game data at once."
+      "All game data will be downloaded."
     ],
     "clientmes:date_download_02": [
       "b506ec1a",
@@ -899,11 +899,11 @@
     ],
     "clientmes:date_download_06": [
       "f6d4f2c2",
-      "First Download"
+      "Confirm First Download"
     ],
     "clientmes:date_download_07": [
       "b7d38994",
-      "Downloading game data."
+      "Game data will now be downloaded."
     ],
     "clientmes:date_download_08": [
       "ff91090f",
@@ -939,7 +939,7 @@
     ],
     "clientmes:download_check_03": [
       "7519019c",
-      "Starting the download of all game data.\nAre you sure?"
+      "All game data will now be downloaded.\nAre you sure?"
     ],
     "clientmes:download_finish": [
       "9023b743",

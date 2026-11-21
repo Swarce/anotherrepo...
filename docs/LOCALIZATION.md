@@ -13,7 +13,7 @@ UI images with Japanese lettering can be replaced with redrawn art (see "Redrawn
 | `Text/ClientMes_JP` in the APK (boot, download, error dialogs) | 236 strings | the patcher (`english-clientmes`) |
 | `UI.Text` labels of the scenes built into the APK (`assets/bin/Data/level*`: loading overlay, first download, save select, contact, cache, error screens) | 72 strings in 11 scenes | the patcher (`english-apk-text`) |
 | C# string literals in `global-metadata.dat` that the player sees (Follow buttons, arena rank and days left, end dates, "approx.", "Saving...", yen, purchase errors) | 22 of the 139 Japanese literals | the patcher (`english-apk-text`) |
-| Story scripts (`*_script_text_jp`, 1,624 bundles) | ~298k characters | later build: export/translate tools for the player's own translator |
+| Story scripts (`*_script_text_jp`, 1,609 bundles: one MonoBehaviour `{m_Name, text: [line, …]}` each) | 14,259 lines (7,568 unique, ~200k characters) | the server rebuilds the bundles (keys `script:<bundle>:<path id>:<line>`, `en/story.json`; Build 23) |
 
 ## How the English reaches the game
 
@@ -76,6 +76,26 @@ files (your backup), not from a phone folder that already holds English files.
 
 The in-game terms-of-use text is replaced by a short notice that this is an unofficial offline
 build (the original terms no longer apply); it is not a translation of the publisher's terms.
+
+## The Build 23 retranslation
+
+Every string was retranslated in one pass, to read like an official localization.
+
+- **Style and terms.** A private style guide and glossary (1,193 terms, with sources) drawn from
+  Bandai Namco's own English JoJo games (All-Star Battle R, Eyes of Heaven) for UI wording, system
+  terms and battle cries, and from their English mobile games for the gacha UI register. By the
+  owner's decision, Stands and characters keep their **original names** (Crazy Diamond, Sticky
+  Fingers, King Crimson, Vanilla Ice...), not the Western renames, and ドドド/ゴゴゴ is
+  "Menacing".
+- **Batches.** `tools/l10n/make_batches.py` splits an export into batches of unique source strings,
+  grouped by table, screen or story scene (a scene is never split). Each batch was translated from
+  the Japanese and checked with `tools/l10n/check_batch.py` (the importer's rules) before import.
+- **Consistency.** `tools/l10n/term_check.py` reports a term rendered more than one way across
+  batches and fixes the listed variants (`--fix`).
+- **Import.** `jdr-tool l10n import --in <all batches> --expand-with <export> --replace` gives every
+  row with the same source the same English and overwrites the old translations.
+- **Fit.** `tools/l10n/ui_fit.py` was run on the result; the 55 labels that grew past their room
+  were shortened.
 
 ## Text built into the APK (`english-apk-text`, Build 17)
 

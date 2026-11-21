@@ -27,7 +27,7 @@
     ],
     "apk:level12:396:m_Text": [
       "b13b9571",
-      "The download may take some time.\nWe recommend downloading over Wi-Fi.\n*Any data charges for the download are your responsibility.\n\nDownload now?"
+      "Downloading may take some time.\r\nWe recommend downloading over Wi-Fi.\r\n*Any data charges for the download are your responsibility.\r\n\r\nDownload now?"
     ],
     "apk:level12:402:m_Text": [
       "ce192741",
@@ -35,7 +35,7 @@
     ],
     "apk:level12:404:m_Text": [
       "ccf6e1ef",
-      "Download all game data at once"
+      "Download all game data at once."
     ],
     "apk:level12:408:m_Text": [
       "ff91090f",
@@ -43,7 +43,7 @@
     ],
     "apk:level12:409:m_Text": [
       "ccf6e1ef",
-      "Download all game data at once"
+      "Download all game data at once."
     ],
     "apk:level12:412:m_Text": [
       "0277d13b",
@@ -59,7 +59,7 @@
     ],
     "apk:level12:420:m_Text": [
       "b13b9571",
-      "The download may take some time.\nWe recommend downloading over Wi-Fi.\n*Any data charges for the download are your responsibility.\n\nDownload now?"
+      "Downloading may take some time.\r\nWe recommend downloading over Wi-Fi.\r\n*Any data charges for the download are your responsibility.\r\n\r\nDownload now?"
     ],
     "apk:level12:424:m_Text": [
       "bca84ea5",
@@ -71,19 +71,19 @@
     ],
     "apk:level12:426:m_Text": [
       "b13b9571",
-      "The download may take some time.\nWe recommend downloading over Wi-Fi.\n*Any data charges for the download are your responsibility.\n\nDownload now?"
+      "Downloading may take some time.\r\nWe recommend downloading over Wi-Fi.\r\n*Any data charges for the download are your responsibility.\r\n\r\nDownload now?"
     ],
     "apk:level12:427:m_Text": [
       "7519019c",
-      "Starting the download of all game data.\nAre you sure?"
+      "All game data will now be downloaded.\nAre you sure?"
     ],
     "apk:level12:428:m_Text": [
       "fccc259f",
-      "First Download"
+      "Confirm First Download"
     ],
     "apk:level12:431:m_Text": [
       "2172de6b",
-      "Run"
+      "Start"
     ],
     "apk:level12:432:m_Text": [
       "37403890",
@@ -147,11 +147,11 @@
     ],
     "apk:level16:119:m_Text": [
       "07905861",
-      "Message text"
+      "Sample text"
     ],
     "apk:level16:92:m_Text": [
       "07905861",
-      "Message text"
+      "Sample text"
     ],
     "apk:level16:96:m_Text": [
       "90dc59bd",
@@ -171,7 +171,7 @@
     ],
     "apk:level2:170:m_Text": [
       "251fea8d",
-      "---- Wi-Fi recommended for downloading ----"
+      "---- Downloading over Wi-Fi is recommended ----"
     ],
     "apk:level2:198:m_Text": [
       "5ba35da3",
@@ -207,7 +207,7 @@
     ],
     "apk:level7:86:m_Text": [
       "f3b7bc3c",
-      "Your User ID is required when contacting support.\nPress the Copy button to copy your User ID to your device."
+      "Your User ID is required when you contact us.\nPress the Copy button to copy your User ID to your device."
     ],
     "apk:level7:88:m_Text": [
       "f0ba774d",
@@ -219,7 +219,7 @@
     ],
     "apk:level7:99:m_Text": [
       "a6c63435",
-      "Contact"
+      "Contact Us"
     ],
     "apk:level9:180:m_Text": [
       "bca84ea5",
@@ -235,7 +235,7 @@
     ],
     "apk:level9:183:m_Text": [
       "67481c51",
-      "User Name:"
+      "Username:"
     ],
     "apk:level9:184:m_Text": [
       "a982273c",
@@ -267,7 +267,7 @@
     ],
     "apk:level9:206:m_Text": [
       "a7ba12bc",
-      "User Name"
+      "Username"
     ],
     "apk:level9:207:m_Text": [
       "2452b111",
@@ -283,11 +283,11 @@
     ],
     "apk:level9:218:m_Text": [
       "67481c51",
-      "User Name:"
+      "Username:"
     ],
     "apk:level9:220:m_Text": [
       "a7ba12bc",
-      "User Name"
+      "Username"
     ],
     "literal:1052": [
       "08002c66",
@@ -299,11 +299,11 @@
     ],
     "literal:2625": [
       "f9dba60f",
-      "Statues"
+      "Statue"
     ],
     "literal:2851": [
       "6555e54b",
-      " (end)"
+      "Until"
     ],
     "literal:3194": [
       "09af1c11",
@@ -319,7 +319,7 @@
     ],
     "literal:3197": [
       "577676df",
-      "Follow"
+      "Following"
     ],
     "literal:326": [
       "360361d5",
@@ -327,7 +327,7 @@
     ],
     "literal:4388": [
       "ad8a9437",
-      "Could not complete purchase: "
+      "Consumption failed: "
     ],
     "literal:4389": [
       "a1b41878",
@@ -355,7 +355,7 @@
     ],
     "literal:6813": [
       "1aa9c417",
-      " "
+      "th"
     ],
     "literal:7352": [
       "6de6cfd7",
@@ -375,7 +375,7 @@
     ],
     "literal:8455": [
       "481070b8",
-      "N/A"
+      "Not implemented"
     ]
   },
   "sources": [

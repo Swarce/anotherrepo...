@@ -120,7 +120,7 @@ We send its tables (reaction tables, `battle_damage_param`, `battle_combo_param`
 | Feature | Status | Our implementation | Gap / next |
 |---|---|---|---|
 | progress.levels | partial | Level and EXP per statue; growth tree progress saved (`OwnedStatue.tree`) | Duplicate boosts and Minds are not modelled |
-| progress.tree | partial | Server-built branching tree (`tree_squares`) | Original node graphs unknown (gap noted by the pack too) |
+| progress.tree | partial | Server-built branching tree (`tree_squares`) with material, gold and key costs (Build 23) | Original node graphs and costs unknown (ours) |
 | progress.mind_capacity / mind_links / mind_lock / mind_levels | missing | Mind list and Mind summon exist; no equip, links or locks | Needs the Mind equip/lock routes |
 | progress.material_bonuses / turtles / material_migration | missing | `statue/strengthening` accepted; no item inventory | Later (item system) |
 | progress.awakening / awakening_boost / awakening_requirements | offline | Every rarity variant is already owned; `statue/evolution_info` answers | Awakening transaction moot offline |
@@ -133,7 +133,7 @@ We send its tables (reaction tables, `battle_damage_param`, `battle_combo_param`
 | economy.wallets | partial | Gold and rank EXP are real; coins 0; AP always full | Offline choice |
 | economy.summon_prices | offline | Banners free (`payType 2`, price 0) | Choice: no payments |
 | economy.guaranteed_slot | server | Normal draws 86/12.5/1.5 (3/4/5-star); the tenth draw of a 10x summon is the guaranteed slot, 98.5/1.5 (4/5-star; launch guide), since Build 20 | — |
-| economy.friend_gacha | missing | — | Friend points have no use offline |
+| economy.friend_gacha | server | Friend Points from quest clears and missions; the Friend Point Mind Summon (Build 23) | Price and rates ours |
 | economy.inventory_expand / refill_revive | offline | Continue is free; no inventory cap | — |
 | economy.box / count_up | server | Statue Box Summon (50 per box, Reset, Box Status) and the Count Up rounds with tickets in the Message Box (Build 22, docs/research/21) | Contents and ticket ours |
 | economy.exchange | server | Ring Exchange (Build 21); event exchange for Fight Coins from event quests (Build 22, docs/research/20) | Currency and goods ours |
@@ -146,11 +146,20 @@ Out of scope offline, or later systems:
 
 - **No backend yet (offline):** `social.friends`, `social.town`, `social.town_points`,
   `social.town_growth`, `social.town_payout`. Follow lists, blocks and Town search return empty.
-- **Missing:** `arena.*` (12 rows, two rule sets: 2017 and 2019). The client's Arena needs its
-  own routes, none of which appear in our logs. Keep the rule sets apart if it is ever built.
-- **Missing:** `labyrinth.*` (5 rows). The labyrinth chapters exist in `quests.json`. Mentality,
-  souls, tarot and route choice need the dungeon routes, and `bizarre_end`'s `dungeonClearFlag`
-  is 0.
+- **Server (2019 rule set):** `arena.*` (12 rows). Client 3.12.0 only reaches the 2019 home, so
+  that is the one built: an always-open campaign, a separate five-team roster, AI opponents from
+  our roster, durability with a 30-minute rest (`arena.durability_2019`), Fever after four
+  battles at triple points (`arena.fever`), streak and team-power scoring, point and season
+  rewards in the Message Box (docs/research/23-arena.md). Scoring values, opponent strength,
+  seasons and rewards are ours; the 2017 rules (one-hour rest, revive-all threshold, cost decay)
+  stay out. Defense, Crazy Diamond and the BP economy are not modelled (BP stays full).
+- **Server (unverified):** `labyrinth.*` (5 rows), see docs/research/22-labyrinth.md.
+  - The tile is open, and the six `dungeon/*` routes are served.
+  - Mentality: cap 300, full again at 04:00 JST. That refill is ours; the pack says +100 a day.
+  - 3 Souls and Tarot select/flip. `bizarre_end` advances floors and sets `dungeonClearFlag`
+    and `dungeonGameoverFlag`.
+  - Correction: `quests.json` has **no** labyrinth chapters. Rooms reuse tactical story stages
+    by floor (ours).
 - **Offline (open calendar):** `event.quiz`, `event.high_score`, `event.town_ranking`,
   `event.bonuses`, `event.reruns`, `event.end_service`. Event chapters are open; scoring and
   rewards are not implemented.
@@ -183,8 +192,8 @@ examples and 8 event Minds. The numeric data is unchanged.
 | v2.growth.material_rarity / crossfeed | missing | No EXP-material inventory | Item system (later) |
 | v2.growth.assist_display / assist_conditions / assist_scaling | partial | Assists equip per seat; the stat bonus formula is the client's, constants ours (Build 22, docs/research/19) | Assist abilities and skills |
 | v2.action.armor_weak / armor_strong / crit_legacy / unity_phases / unity_stack / zeppeli_sacrifice | client | Action battle behaviour; the client's tables decide | Action battle is unverified offline |
-| v2.arena.* (8 rows) | missing | — | Keep the early (no switching, BP 5, cost lock) and later rule sets apart. Opponents were AI-controlled teams (2018 guide), which fits an offline build |
-| v2.labyrinth.* (10 rows) | missing | — | Pending rewards paid only on full clear or escape; Soul loss on defeat or retire; zero Souls forfeits. 22 Tarot identities, each used once until the deck resets; flipping all three costs 20 Mentality. Upright values only |
+| v2.arena.* (8 rows) | server | AI-controlled opponents (as the 2018 guide describes) built from our roster; the 2019 rule set only; Fever 10 minutes (`early_fever`); a missing result counts as a loss (`early_failure`) (docs/research/23-arena.md) | The early rules (no switching, BP regeneration, rising costs and the cost lock) are not modelled: BP stays 5 and every team costs 1 offline |
+| v2.labyrinth.* (10 rows) | server (unverified) | 20 floors. Floor rewards (ours) wait in the run and go to the Message Box on a full clear or an escape. A defeat or retire costs a Soul; the last Soul forfeits the run. Escape restores the Souls. 22 Tarot identities, three offered, each used once until the deck resets. Flipping all three costs 20 Mentality. Room costs are 22–35 (docs/research/22) | Card effects follow the client's 3.12.0 texts where an existing affect fits (else none). Rooms have one area. Not yet seen on a device |
 | v2.countup.old_ticket / ticket_pool / ticket_delivery | server | Tiers 20/30/50/50/50; the ticket goes to the Message Box (Build 22) | Which ticket each round gave is unknown (ours) |
 | v2.events.* (9 rows) | offline / missing | Four event chapters playable (Build 20); no points, ranking or exchange | One-event examples, not general rules; never sum anniversary tiers |
 
