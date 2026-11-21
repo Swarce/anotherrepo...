@@ -35,16 +35,19 @@ use std::path::{Path, PathBuf};
 type Error = String;
 
 /// Bump when the rewrite logic changes, so cached English files are rebuilt.
-pub const GEN_VERSION: u32 = 3;
+pub const GEN_VERSION: u32 = 4;
 
 /// UI.Text layout hints (`tools/l10n/ui_fit.py`): label ids `bundle:file:pathId`, no game text.
 pub const LAYOUT: &str = include_str!("../../content/l10n/ui_layout.json");
 
-/// Labels that get best fit (they wrap and truncate) and labels that get wrap, truncate and best
-/// fit (they spilled sideways with our English).
+/// Labels that get best fit (they wrap and truncate), labels that get wrap, truncate and best
+/// fit (they spilled sideways with our English), statue name labels that get a fixed two-line box
+/// and one-line labels that get a fixed one-line box (`fit_box`).
 struct Layout {
     best_fit: std::collections::HashSet<String>,
     wrap: std::collections::HashSet<String>,
+    name_box: std::collections::HashSet<String>,
+    line_box: std::collections::HashSet<String>,
 }
 
 fn layout() -> &'static Layout {
@@ -63,9 +66,126 @@ fn layout() -> &'static Layout {
         Layout {
             best_fit: set("bestFit"),
             wrap: set("wrap"),
+            name_box: set("nameBox"),
+            line_box: set("lineBox"),
         }
     })
 }
+
+/// Scene edits by object id (`hide`, `moveTo`): the Options menu without Google Play Games.
+pub const EDITS: &str = include_str!("../../content/l10n/ui_edits.json");
+
+struct Edits {
+    hide: Vec<String>,
+    move_to: Vec<(String, String)>,
+}
+
+fn edits() -> &'static Edits {
+    static CELL: std::sync::OnceLock<Edits> = std::sync::OnceLock::new();
+    CELL.get_or_init(|| {
+        let v: Value = serde_json::from_str(EDITS).expect("ui_edits.json");
+        let strs = |x: &Value| x.as_str().map(str::to_owned);
+        Edits {
+            hide: v["hide"]
+                .as_array()
+                .map(|a| a.iter().filter_map(strs).collect())
+                .unwrap_or_default(),
+            move_to: v["moveTo"]
+                .as_array()
+                .map(|a| {
+                    a.iter()
+                        .filter_map(|p| Some((strs(&p[0])?, strs(&p[1])?)))
+                        .collect()
+                })
+                .unwrap_or_default(),
+        }
+    })
+}
+
+/// Apply the scene edits that fall in one serialized file (`prefix` is `bundle:file:`): hide
+/// GameObjects, and give RectTransforms the anchors and position their slot had in the original
+/// file (all slots are read before any is written, so moves can chain).
+fn apply_edits(f: &mut sfile::SFile, prefix: &str, stats: &mut Stats) -> bool {
+    let e = edits();
+    let local = |id: &str| id.strip_prefix(prefix)?.parse::<i64>().ok();
+    let find = |f: &sfile::SFile, pid: i64| f.objects.iter().position(|o| o.path_id == pid);
+    let nodes =
+        |f: &sfile::SFile, i: usize| f.types[f.objects[i].type_index as usize].nodes.clone();
+    let mut changed = false;
+    for pid in e.hide.iter().filter_map(|id| local(id)) {
+        let r = (|| -> Result<(), Error> {
+            let i = find(f, pid).ok_or("no object")?;
+            if f.types[f.objects[i].type_index as usize].entry.class_id != CLASS_GAMEOBJECT {
+                return Err("not a GameObject".into());
+            }
+            let n = nodes(f, i);
+            let mut v = sfile::read_object(&n, &f.objects[i].data)?;
+            set_int(v.get_mut("m_IsActive").ok_or("no m_IsActive")?, 0);
+            f.objects[i].data = sfile::write_object(&n, &v)?;
+            Ok(())
+        })();
+        match r {
+            Ok(()) => {
+                stats.edits += 1;
+                changed = true;
+            }
+            Err(err) => stats
+                .layout_errors
+                .push(format!("{prefix}{pid}: hide: {err}")),
+        }
+    }
+    const SLOT: [&str; 3] = ["m_AnchorMin", "m_AnchorMax", "m_AnchoredPosition"];
+    let read_rt = |f: &sfile::SFile, pid: i64| -> Result<(usize, V), Error> {
+        let i = find(f, pid).ok_or("no object")?;
+        if f.types[f.objects[i].type_index as usize].entry.class_id != CLASS_RECTTRANSFORM {
+            return Err("not a RectTransform".into());
+        }
+        Ok((i, sfile::read_object(&nodes(f, i), &f.objects[i].data)?))
+    };
+    let moves: Vec<(i64, i64)> = e
+        .move_to
+        .iter()
+        .filter_map(|(a, b)| Some((local(a)?, local(b)?)))
+        .collect();
+    let mut slots = Vec::new();
+    for &(pid, slot) in &moves {
+        match read_rt(f, slot) {
+            Ok((_, v)) => slots.push(Some(SLOT.map(|k| v.get(k).cloned()))),
+            Err(err) => {
+                stats
+                    .layout_errors
+                    .push(format!("{prefix}{slot}: slot of {pid}: {err}"));
+                slots.push(None);
+            }
+        }
+    }
+    for (&(pid, _), slot) in moves.iter().zip(slots) {
+        let Some(slot) = slot else { continue };
+        let r = (|| -> Result<(), Error> {
+            let (i, mut v) = read_rt(f, pid)?;
+            for (k, val) in SLOT.iter().zip(slot) {
+                *v.get_mut(k).ok_or("missing field")? = val.ok_or("slot without field")?;
+            }
+            f.objects[i].data = sfile::write_object(&nodes(f, i), &v)?;
+            Ok(())
+        })();
+        match r {
+            Ok(()) => {
+                stats.edits += 1;
+                changed = true;
+            }
+            Err(err) => stats
+                .layout_errors
+                .push(format!("{prefix}{pid}: move: {err}")),
+        }
+    }
+    changed
+}
+
+/// Smallest font size a statue name may shrink to in its box (every English name fits at 16).
+const NAME_MIN_SIZE: i64 = 12;
+const CLASS_GAMEOBJECT: i32 = 1;
+const CLASS_RECTTRANSFORM: i32 = 224;
 
 /// Set an integer field, keeping its stored kind (signed or unsigned).
 fn set_int(v: &mut V, n: i64) {
@@ -145,7 +265,8 @@ pub fn has_japanese(s: &str) -> bool {
 pub struct Translations {
     /// key -> (source hash, English)
     map: HashMap<String, (String, String)>,
-    /// Identifies this set of translations (plus the generator version), for cache keys.
+    /// Identifies this set of translations (plus the generator version, layout hints and scene
+    /// edits), for cache keys.
     pub digest: String,
 }
 
@@ -155,6 +276,9 @@ impl Translations {
         let mut map = HashMap::new();
         let mut h = Sha256::new();
         h.update(GEN_VERSION.to_le_bytes());
+        // the layout hints and scene edits change the rebuilt files too
+        h.update(LAYOUT.as_bytes());
+        h.update(EDITS.as_bytes());
         for (name, js) in files {
             h.update(js.as_bytes());
             let v: Value = serde_json::from_str(js).map_err(|e| format!("{name}.json: {e}"))?;
@@ -287,6 +411,12 @@ pub struct Stats {
     pub art_unmatched: usize,
     /// Sprites or textures of the art pack that could not be applied (skipped).
     pub art_errors: Vec<String>,
+    /// Labels given a fixed box (`fit_box`): statue names (two lines) and one-line labels.
+    pub name_boxes: usize,
+    /// Scene edits applied (`ui_edits.json`: objects hidden or moved).
+    pub edits: usize,
+    /// Hinted labels or edits whose objects did not have the expected shape (left alone).
+    pub layout_errors: Vec<String>,
 }
 
 /// Visit every translatable string in a decoded MonoBehaviour. `edit` returns the replacement.
@@ -406,7 +536,166 @@ fn visit_object(
             }
         }
     }
+    if hints.name_box.contains(&id) {
+        if let Some(fd) = v.get_mut("m_FontData") {
+            changed |= name_box_font(fd);
+        }
+    } else if hints.line_box.contains(&id) {
+        if let Some(fd) = v.get_mut("m_FontData") {
+            changed |= line_box_font(fd);
+        }
+    }
     changed
+}
+
+/// The font side of a name box: best fit from the design size down to `NAME_MIN_SIZE`, wrap and
+/// truncate, and text anchored to the top of the box (a one-line name stays where it was).
+fn name_box_font(fd: &mut V) -> bool {
+    let Some(size @ 1..) = fd.get("m_FontSize").and_then(V::as_i64) else {
+        return false;
+    };
+    let mut changed = false;
+    let mut put = |fd: &mut V, k: &str, n: i64| {
+        if let Some(x) = fd.get_mut(k) {
+            if x.as_i64() != Some(n) {
+                set_int(x, n);
+                changed = true;
+            }
+        }
+    };
+    put(fd, "m_BestFit", 1);
+    put(fd, "m_MinSize", NAME_MIN_SIZE.min(size));
+    put(fd, "m_MaxSize", size);
+    put(fd, "m_HorizontalOverflow", 0);
+    put(fd, "m_VerticalOverflow", 0);
+    // TextAnchor: 3/4/5 are MiddleLeft/Center/Right, 0/1/2 the Upper ones.
+    if let Some(a @ 3..=5) = fd.get("m_Alignment").and_then(V::as_i64) {
+        put(fd, "m_Alignment", a - 3);
+    }
+    changed
+}
+
+/// The font side of a one-line box: best fit from the design size down to half of it, wrap and
+/// truncate; the alignment stays (the box is the one-line box the label had).
+fn line_box_font(fd: &mut V) -> bool {
+    let Some(size @ 1..) = fd.get("m_FontSize").and_then(V::as_i64) else {
+        return false;
+    };
+    let mut changed = false;
+    for (k, n) in [
+        ("m_BestFit", 1),
+        ("m_MinSize", (size / 2).max(8).min(size)),
+        ("m_MaxSize", size),
+        ("m_HorizontalOverflow", 0),
+        ("m_VerticalOverflow", 0),
+    ] {
+        if let Some(x) = fd.get_mut(k) {
+            if x.as_i64() != Some(n) {
+                set_int(x, n);
+                changed = true;
+            }
+        }
+    }
+    changed
+}
+
+fn f32_of(v: &V) -> Option<f32> {
+    match v {
+        V::F32(x) => Some(*x),
+        _ => None,
+    }
+}
+
+/// A label sized by a ContentSizeFitter (vertical: preferred size) grows by a line when the
+/// English wraps, so best fit never runs and the text spills onto what lies above and below
+/// (statue names onto the tabs, Town values out of their bars). Its box becomes fixed instead:
+/// the fitter stops sizing it vertically, and the RectTransform keeps the top of the one-line
+/// box the label had (7/6 of the font size, the game's own one-line box). `lines` 1 (`lineBox`)
+/// keeps that box; 2 (`nameBox`, statue names) makes it 1.5x the font size tall. Best fit
+/// (`line_box_font`, `name_box_font`) then shrinks the full text into it.
+fn fit_box(f: &mut sfile::SFile, text_pid: i64, lines: u8) -> Result<(), Error> {
+    let find = |f: &sfile::SFile, pid: i64| {
+        f.objects
+            .iter()
+            .position(|o| o.path_id == pid)
+            .ok_or_else(|| format!("no object {pid}"))
+    };
+    let class_of =
+        |f: &sfile::SFile, i: usize| f.types[f.objects[i].type_index as usize].entry.class_id;
+    let read = |f: &sfile::SFile, i: usize| {
+        sfile::read_object(
+            &f.types[f.objects[i].type_index as usize].nodes,
+            &f.objects[i].data,
+        )
+    };
+    let pid_of = |v: Option<&V>| v.and_then(|p| p.get("m_PathID")).and_then(V::as_i64);
+    let ti = find(f, text_pid)?;
+    let text = read(f, ti)?;
+    let size = text
+        .get("m_FontData")
+        .and_then(|fd| fd.get("m_FontSize"))
+        .and_then(V::as_i64)
+        .filter(|&s| s > 0)
+        .ok_or("no font size")? as f32;
+    let gi = find(f, pid_of(text.get("m_GameObject")).ok_or("no GameObject")?)?;
+    if class_of(f, gi) != CLASS_GAMEOBJECT {
+        return Err("m_GameObject is not a GameObject".into());
+    }
+    let comps: Vec<i64> = match read(f, gi)?.get("m_Component") {
+        Some(V::Arr(items)) => items
+            .iter()
+            .filter_map(|c| pid_of(c.get("component")))
+            .collect(),
+        _ => return Err("GameObject without components".into()),
+    };
+    let (mut rect, mut fitter) = (None, None);
+    for c in comps {
+        let ci = find(f, c)?;
+        match class_of(f, ci) {
+            CLASS_RECTTRANSFORM => rect = Some((ci, read(f, ci)?)),
+            jdr_unity::CLASS_MONOBEHAVIOUR => {
+                if let Ok(v) = read(f, ci) {
+                    if v.get("m_VerticalFit").is_some() {
+                        fitter = Some((ci, v));
+                    }
+                }
+            }
+            _ => {}
+        }
+    }
+    let (ri, mut rv) = rect.ok_or("no RectTransform")?;
+    let (fi, mut fv) = fitter.ok_or("no ContentSizeFitter")?;
+    if fv.get("m_VerticalFit").and_then(V::as_i64) != Some(2) {
+        return Err("not sized by a vertical fitter".into());
+    }
+    set_int(fv.get_mut("m_VerticalFit").expect("checked"), 0);
+    let y = |v: &V, k: &str| v.get(k).and_then(|p| p.get("y")).and_then(f32_of);
+    let (Some(amin), Some(amax), Some(pivot), Some(pos)) = (
+        y(&rv, "m_AnchorMin"),
+        y(&rv, "m_AnchorMax"),
+        y(&rv, "m_Pivot"),
+        y(&rv, "m_AnchoredPosition"),
+    ) else {
+        return Err("RectTransform without anchors".into());
+    };
+    if amin != amax {
+        return Err("stretched vertically".into());
+    }
+    let one = size * 7.0 / 6.0;
+    let two = if lines >= 2 { size * 1.5 } else { one };
+    let top = pos + (1.0 - pivot) * one;
+    let set_y = |v: &mut V, k: &str, n: f32| {
+        if let Some(V::F32(x)) = v.get_mut(k).and_then(|p| p.get_mut("y")) {
+            *x = n;
+        }
+    };
+    set_y(&mut rv, "m_AnchoredPosition", top - (1.0 - pivot) * two);
+    set_y(&mut rv, "m_SizeDelta", two);
+    let fdata = sfile::write_object(&f.types[f.objects[fi].type_index as usize].nodes, &fv)?;
+    let rdata = sfile::write_object(&f.types[f.objects[ri].type_index as usize].nodes, &rv)?;
+    f.objects[fi].data = fdata;
+    f.objects[ri].data = rdata;
+    Ok(())
 }
 
 /// Walk a (decrypted) bundle; returns the rewritten bundle if anything changed.
@@ -444,6 +733,26 @@ pub fn rewrite_bundle(
                 file_changed = true;
             }
         }
+        let id_prefix = format!("{bundle_name}:{file_index}:");
+        let hints = layout();
+        let boxes: Vec<(i64, u8)> = [(&hints.name_box, 2), (&hints.line_box, 1)]
+            .into_iter()
+            .flat_map(|(set, lines)| {
+                set.iter()
+                    .filter_map(|id| id.strip_prefix(&id_prefix)?.parse().ok())
+                    .map(move |pid| (pid, lines))
+            })
+            .collect();
+        for (pid, lines) in boxes {
+            match fit_box(&mut f, pid, lines) {
+                Ok(()) => {
+                    stats.name_boxes += 1;
+                    file_changed = true;
+                }
+                Err(e) => stats.layout_errors.push(format!("{id_prefix}{pid}: {e}")),
+            }
+        }
+        file_changed |= apply_edits(&mut f, &id_prefix, &mut stats);
         if file_changed {
             node.data = f.write();
             any = true;
@@ -995,12 +1304,33 @@ mod tests {
         assert_eq!(fd(&v, "m_BestFit"), 0);
         // Every hinted label is in a bundle the server rebuilds.
         let targets = targets(&Translations::embedded().unwrap());
-        for k in ["bestFit", "wrap"] {
+        for k in ["bestFit", "wrap", "nameBox", "lineBox"] {
             for id in doc[k].as_array().unwrap() {
                 let (b, _, _) = parse(id.as_str().unwrap());
                 assert!(targets.contains(&b), "{b} is rebuilt");
             }
         }
+    }
+
+    #[test]
+    fn name_box_font_fits_down_from_the_design_size() {
+        let mut v = label(0, 0);
+        let fd = v.get_mut("m_FontData").unwrap();
+        if let V::Obj(f) = fd {
+            f.push(("m_Alignment".into(), V::I(3)));
+        }
+        assert!(name_box_font(fd));
+        let g = |k: &str| fd.get(k).unwrap().as_i64().unwrap();
+        assert_eq!(
+            (
+                g("m_BestFit"),
+                g("m_MinSize"),
+                g("m_MaxSize"),
+                g("m_Alignment")
+            ),
+            (1, 12, 20, 0)
+        );
+        assert!(!name_box_font(fd), "applied once");
     }
 
     #[test]
