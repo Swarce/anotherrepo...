@@ -79,38 +79,36 @@ def delta(nid, a, b):
 #     back, a 90-degree side shot, a high wide view 45-60 degrees down (ZCUC 930-952, 1009-1019,
 #     1072-1080; x0kb 166-233, 515-536; X9xSMXBpsQw 3:00-3:13).
 # All of them watch from the turn camera's side of the line between the teams.
+# Measured on the original frames (X9xSMXBpsQw 113-133, ZCUC-PwLXxA 460-920, X9xS 628) and
+# checked by rendering posed models (attacker and target 1.8 m apart): the main shot stands on the
+# turn camera's side 45-60 degrees off the attacker's facing, low (about 1.1 m) and level, about
+# 5 m from the attacker, so the attacker is at the left third head to feet and the target nearer
+# the camera at the right; the second is over the attacker's shoulder about 3.8 m back. The
+# Build 33 shots (perpendicular or behind, 2.6-4.6 m, 1.6-2.0 m up, 30 degrees) were too close,
+# too high and too square to the action (the owner's Build 34 recording, 0:37-0:42).
 SHOTS = {
-    # attacks and blue skills: near the default view, pushed in, looking between the fighters
-    "near": (node("jdr_near_a", SPINE2, SPINE2, (-6, 95, 0), 6.4, 30, (0, 0, 0), (0, -0.1, 1.4)),
-             node("jdr_near_b", SPINE2, SPINE2, (-6, 94, 0), 5.7, 30, (0, 0, 0), (0, -0.1, 1.4))),
-    # side-on two-shot of attacker and target, chest height
-    "side": (node("jdr_side_a", SPINE2, SPINE2, (-4, 100, 0), 4.6, 30, (0, 0, 0), (0, 0, 1.0)),
-             node("jdr_side_b", SPINE2, SPINE2, (-4, 98, 0), 4.2, 30, (0, 0, 0), (0, 0, 1.0))),
-    # low behind the attacker's shoulder, looking past it at the target
-    "behind_low": (node("jdr_blow_a", SPINE2, SPINE2, (5, 155, 0), 2.6, 32, (0.3, 0, 0), (0, 0.1, 2.4)),
-                   node("jdr_blow_b", SPINE2, SPINE2, (5, 153, 0), 2.35, 32, (0.3, 0, 0), (0, 0.1, 2.4))),
-    # three-quarters behind the attacker, looking past it at the target
-    "back": (node("jdr_back_a", SPINE2, SPINE2, (-7, 130, 0), 4.2, 30, (0, 0, 0), (0, -0.15, 1.8)),
-             node("jdr_back_b", SPINE2, SPINE2, (-7, 127, 0), 3.8, 30, (0, 0, 0), (0, -0.15, 1.8))),
-    # SP: over the shoulder, close behind-right of the attacker
-    "ots": (node("jdr_ots_a", NECK, NECK, (-6, 155, 0), 2.0, 32, (0.35, 0.05, 0), (0, -0.25, 2.6)),
-            node("jdr_ots_b", NECK, NECK, (-6, 157, 0), 1.8, 32, (0.35, 0.05, 0), (0, -0.25, 2.6))),
+    # attacker at the left third, the target nearer at the right (the most common original shot)
+    "two": (node("jdr_two_a", SPINE2, SPINE2, (2, 45, 0), 5.0, 36, (0, 0, 0), (0, -0.1, 1.1)),
+            node("jdr_two_b", SPINE2, SPINE2, (2, 44, 0), 4.6, 36, (0, 0, 0), (0, -0.1, 1.1))),
+    # the same, wider and squarer (both fighters full body)
+    "two_wide": (node("jdr_twow_a", SPINE2, SPINE2, (0, 60, 0), 6.2, 36, (0, 0, 0), (0, -0.1, 1.0)),
+                 node("jdr_twow_b", SPINE2, SPINE2, (0, 59, 0), 5.7, 36, (0, 0, 0), (0, -0.1, 1.0))),
+    # over the attacker's right shoulder, its back at mid-left, the target beyond
+    "ots": (node("jdr_ots_a", SPINE2, SPINE2, (-2, 150, 0), 3.8, 36, (0.3, 0, 0), (0, -0.2, 2.0)),
+            node("jdr_ots_b", SPINE2, SPINE2, (-2, 152, 0), 3.5, 36, (0.3, 0, 0), (0, -0.2, 2.0))),
     # SP: low front three-quarter close-up of the attacker
-    "front_low": (node("jdr_flow_a", SPINE2, NECK, (12, 40, 0), 2.4, 34),
-                  node("jdr_flow_b", SPINE2, NECK, (12, 44, 0), 2.15, 34)),
+    "front_low": (node("jdr_flow_a", SPINE2, NECK, (12, 40, 0), 2.4, 36),
+                  node("jdr_flow_b", SPINE2, NECK, (12, 44, 0), 2.15, 36)),
     # SP: the reverse, from beyond the target looking back at the attacker
-    "reverse": (node("jdr_rev_a", SPINE2, SPINE2, (3, 20, 0), 4.6, 30, (0, 0, 0), (0, 0, 0.6)),
-                node("jdr_rev_b", SPINE2, SPINE2, (3, 22, 0), 4.2, 30, (0, 0, 0), (0, 0, 0.6))),
-    # SP: a 90-degree side shot, closer
-    "side90": (node("jdr_s90_a", SPINE2, NECK, (0, 90, 0), 3.2, 30, (0, 0, 0), (0, -0.1, 0.8)),
-               node("jdr_s90_b", SPINE2, NECK, (0, 88, 0), 2.9, 30, (0, 0, 0), (0, -0.1, 0.8))),
+    "reverse": (node("jdr_rev_a", SPINE2, SPINE2, (3, 20, 0), 4.6, 36, (0, 0, 0), (0, 0, 0.6)),
+                node("jdr_rev_b", SPINE2, SPINE2, (3, 22, 0), 4.2, 36, (0, 0, 0), (0, 0, 0.6))),
     # SP and big area moves: high and wide, about 50 degrees down
-    "wide": (node("jdr_wide_a", WAIST, WAIST, (-50, 115, 0), 7.2, 34, (0, 0, 0), (0, -0.3, 1.5)),
-             node("jdr_wide_b", WAIST, WAIST, (-50, 113, 0), 6.6, 34, (0, 0, 0), (0, -0.3, 1.5))),
+    "wide": (node("jdr_wide_a", WAIST, WAIST, (-50, 115, 0), 7.2, 36, (0, 0, 0), (0, -0.3, 1.5)),
+             node("jdr_wide_b", WAIST, WAIST, (-50, 113, 0), 6.6, 36, (0, 0, 0), (0, -0.3, 1.5))),
     # straight behind the attacker: for the few action ids the client does not mirror (102xxx),
     # which must look right for either team
-    "behind": (node("jdr_behind_a", SPINE2, SPINE2, (-10, 180, 0), 4.0, 30, (0, 0, 0), (0, -0.2, 1.6)),
-               node("jdr_behind_b", SPINE2, SPINE2, (-10, 180, 0), 3.6, 30, (0, 0, 0), (0, -0.2, 1.6))),
+    "behind": (node("jdr_behind_a", SPINE2, SPINE2, (-6, 180, 0), 4.0, 36, (0, 0, 0), (0, -0.2, 1.6)),
+               node("jdr_behind_b", SPINE2, SPINE2, (-6, 180, 0), 3.6, 36, (0, 0, 0), (0, -0.2, 1.6))),
 }
 EXTRA_NODES = [
     # the client's own test node and the old side view (kept for ids nothing else claims)
@@ -120,8 +118,12 @@ EXTRA_NODES = [
     # chest shot from well below (about 25-30 degrees up at the face), the winner right of centre
     # and turned towards screen left where WIN! sits; it starts closer and more turned and settles
     # over about 1 s, then holds
-    node("jdr_result", SPINE2, NECK, (30, 34, 0), 1.0, 34, (0, 0, 0), (0.2, 0.12, 0)),
-    node("jdr_result_b", SPINE2, NECK, (26, 27, 0), 1.15, 34, (0, 0, 0), (0.26, 0.1, 0)),
+    # The winner stands on the result pivot facing away from the frame the battle shots use: the
+    # owner's recording of Build 34 (0:48-0:52) showed this shot from behind. So the result nodes
+    # are those numbers turned 180 degrees about the winner (rotate.y + 180, offsets' x and z
+    # negated).
+    node("jdr_result", SPINE2, NECK, (30, 214, 0), 1.0, 34, (0, 0, 0), (-0.2, 0.12, 0)),
+    node("jdr_result_b", SPINE2, NECK, (26, 207, 0), 1.15, 34, (0, 0, 0), (-0.26, 0.1, 0)),
     # boss intro (id 201, not mirrored, always an enemy facing -X: a negative rotate.y is the
     # watched side): low on the legs, then a tilted low full-body shot (crane up)
     node("jdr_boss_a", WAIST, WAIST, (22, -24, 0), 2.0, 34, (0, 0, 0), (0, -0.4, 0)),
@@ -132,13 +134,13 @@ EXTRA_NODES = [
 
 # shots by the kind of action requesting the id (attack, skill, sp) and the role of its states
 KIND_SHOTS = {
-    "attack": {"in": ["near", "side"], "hit": ["behind_low", "side"], "loop": ["side", "near"],
-               "out": ["near"], "any": ["near", "side"]},
-    "skill": {"in": ["side", "near"], "hit": ["behind_low", "side", "back"], "loop": ["side", "back"],
-              "out": ["near", "side"], "any": ["side", "near", "back"]},
-    "sp": {"in": ["ots", "front_low", "back"], "hit": ["reverse", "side90", "wide", "front_low"],
-           "loop": ["side90", "reverse", "ots"], "out": ["wide", "front_low"],
-           "any": ["ots", "reverse", "front_low", "side90"]},
+    "attack": {"in": ["two", "two_wide"], "hit": ["two", "ots"], "loop": ["two"],
+               "out": ["two_wide"], "any": ["two", "ots"]},
+    "skill": {"in": ["two", "ots"], "hit": ["two", "ots", "two_wide"], "loop": ["two", "ots"],
+              "out": ["two_wide", "two"], "any": ["two", "ots", "two_wide"]},
+    "sp": {"in": ["ots", "front_low", "two"], "hit": ["reverse", "two", "wide", "front_low"],
+           "loop": ["two", "reverse", "ots"], "out": ["wide", "front_low"],
+           "any": ["ots", "reverse", "front_low", "two"]},
 }
 
 
