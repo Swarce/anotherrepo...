@@ -2,6 +2,36 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 36 — camera calibration test (branch `wip/b36`)
+
+### What the owner showed
+- Build 35: "no changes, still the same angles", after six packages with very different camera
+  values. The Build 34 recording does match Build 34's data once the target is read right (Jotaro's
+  attack camera 131000 is requested by his Stand's action set with `targetMain` 0, so it anchors on
+  the hovering Star Platinum: high and close behind Jotaro, as recorded). So either the later
+  packages' data never reached the phone, or the game reads the values in a way our model does not
+  capture. This build settles both with one unmistakable shot.
+
+### What changed
+- `build_camera_sets.py --calibrate`: every action camera id (207 of 267) plays one shot: 4.5 m
+  from the acting unit's chest, 50° above, 40° to the right of its front, looking at its chest,
+  45° field, held 2.5 s. The win, finish and boss shots stay Build 35's.
+- What the device should show, and what each outcome means (docs/research/31 §4):
+  - the camera high above and in front of every attacker, the attacker seen from above at the
+    bottom of the screen, the target small beyond it: the data arrives and our conventions hold;
+  - the same shot but behind the attacker, or on the far side, or below the floor: the data
+    arrives; the named convention is inverted and the real shots are fixed from that;
+  - the same angles as before: the phone is not using the new tables; then the log line
+    `Node_el_camera_node_common N rows` (22 here) and `GET … (generated in_memory_master_data)`
+    say whether the download happened.
+- Build number 36, server marker `JDR_EMBEDDED_SERVER_b036`.
+
+### Device checklist
+- [ ] Log: `[boot] jdr embedded build 36`, `Node_el_camera_node_common 22 rows`, the
+      `in_memory_master_data` GET
+- [ ] One attack and one skill: where the camera is (above / below, in front / behind, near side /
+      far side), in words or a short recording
+
 ## Build 35 — battle shots measured on the original, the win shot faces the winner (branch `wip/b35`)
 
 ### What the owner showed

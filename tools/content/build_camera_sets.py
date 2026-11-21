@@ -44,6 +44,9 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--requests", required=True)
 ap.add_argument("--masterdata", required=True)
 ap.add_argument("--statues", default="server/content/statues.json")
+ap.add_argument("--calibrate", action="store_true",
+                help="every action id plays one unmistakable shot (high, in front, to the right, 45-degree field), for a "
+                     "device test of the camera conventions; result, finish and boss shots stay")
 a = ap.parse_args()
 
 # CharacterBoneList.Bone (docs/research/12 §5)
@@ -234,6 +237,11 @@ for cid in sorted(set(old_ids) | set(roles)):
         data = [step("jdr_finish", 1.5)]
         used["finish"] += 1
         sets.append(cam_set(cid, data))
+    elif cid in roles and a.calibrate:
+        # one shot for every action: 4.5 m from the unit's chest, 50 degrees above, 40 degrees to
+        # the right of its front (rotate.y 40), looking at its chest, 45-degree field; held 2.5 s
+        used["calibrate"] += 1
+        sets.append(cam_set(cid, [step("jdr_calib", 2.5)]))
     elif cid in roles:
         rc = roles[cid]
         if not mirrored(cid):
@@ -261,6 +269,8 @@ for cid in sorted(set(old_ids) | set(roles)):
 by_id = {n["id"]: n for n in EXTRA_NODES}
 nodes = [n for a0, b0 in SHOTS.values() for n in (a0, delta(a0["id"] + "_to_b", a0, b0))]
 nodes += [n for n in EXTRA_NODES if n["id"] not in ("jdr_result_b", "jdr_boss_b")]
+if a.calibrate:
+    nodes.append(node("jdr_calib", SPINE2, SPINE2, (-50, 40, 0), 4.5, 45))
 nodes += [delta("jdr_result_to_b", by_id["jdr_result"], by_id["jdr_result_b"]),
           delta("jdr_boss_a_to_b", by_id["jdr_boss_a"], by_id["jdr_boss_b"])]
 old_nodes = json.load(open(node_path))
