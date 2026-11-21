@@ -1034,11 +1034,34 @@ mod tests {
             .iter()
             .filter(|r| r["abilityId"].as_str().unwrap().starts_with("DT_AST_"))
             .count();
-        assert_eq!(assist, 16, "4 kinds x 4 tiers");
+        // 4 kinds x 4 tiers, and one own row per assist-only statue (its ABI_AST_<id>_N label).
+        let own = crate::collection::statues()
+            .iter()
+            .filter(|d| d.assist_only)
+            .count();
+        assert_eq!(assist, 16 + own, "4 kinds x 4 tiers + assist-only rows");
+        for d in crate::collection::statues()
+            .iter()
+            .filter(|d| d.assist_only)
+        {
+            let id = format!("DT_AST_{}", d.statue_id);
+            let row = rows.iter().find(|r| r["abilityId"] == id.as_str()).unwrap();
+            assert_eq!(row["abilityName"], format!("ABI_AST_{}_N", d.statue_id));
+        }
+        let links = rows
+            .iter()
+            .filter(|r| r["abilityId"].as_str().unwrap().starts_with("DT_MLINK_"))
+            .count();
+        assert_eq!(links, 9, "3 Mind links x 2..4 Minds (docs/research/26 §2)");
+        for l in crate::collection::mind_link_defs() {
+            for a in l.abilities.values() {
+                assert!(ids.contains(a.as_str()), "{a}");
+            }
+        }
         assert_eq!(
             rows.len(),
-            lead + 12 + assist,
-            "only leader, Mind and assist rows"
+            lead + 12 + assist + links,
+            "only leader, Mind, assist and Mind link rows"
         );
     }
 

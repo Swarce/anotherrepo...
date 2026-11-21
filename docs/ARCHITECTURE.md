@@ -10,7 +10,7 @@
 | `versionfile` bundle (server's asset manifest, fetched into memory each boot) | **dead, never stored** → we build it |
 | `in_memory_master_data` bundle (master tables, fetched into memory each boot) | **dead, never stored** → we build it from our own schema + content (Build 06; research 09) |
 | Asset/sound keys (`/client/getkey`) | **dead, never stored** → recovered from the player's files / public sound-key list |
-| Clan room (realtime socket) | dead → hidden |
+| Clan room (realtime socket) | **dead** → our server, on the HTTP port (frames start with `GLPH`; docs/research/24-town.md), with AI members |
 | Firebase, Play Games, AdMob, Adjust, GrowthPush, SmartBeat, Prime31 IAP | IAP stays uninitialised (empty product key); the others are expected to fail harmlessly (to be confirmed on a device); removal in M6 (debloat) |
 
 ## Components

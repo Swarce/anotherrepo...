@@ -41,25 +41,312 @@
    "eventId": "50035",
    "category": 13,
    "banner": "eq_500035_bz12d4yy_start",
-   "name": "CHAPTER_NAME_EV_50035_01"
+   "name": "CHAPTER_NAME_EV_50035_01",
+   "kind": "exchange",
+   "currency": 3017,
+   "bonusStatues": [
+    "1130_04",
+    "4170_16",
+    "5220_14"
+   ],
+   "bonusMinds": [
+    "4028",
+    "7007"
+   ]
   },
   {
    "eventId": "50045",
    "category": 14,
    "banner": "eq_500045_4qajrsw8_start",
-   "name": "CHAPTER_NAME_EV_50045_01"
+   "name": "CHAPTER_NAME_EV_50045_01",
+   "kind": "point",
+   "currency": 0,
+   "bonusStatues": [
+    "4011_15",
+    "4080_03",
+    "4190_14"
+   ],
+   "bonusMinds": [
+    "7431",
+    "8081"
+   ]
   },
   {
    "eventId": "50032",
    "category": 15,
    "banner": "eq_500032_h9r84tj2_start",
-   "name": "CHAPTER_NAME_EV_50032_01"
+   "name": "CHAPTER_NAME_EV_50032_01",
+   "kind": "exchange",
+   "currency": 3017,
+   "bonusStatues": [
+    "2110_03",
+    "4043_08",
+    "5120_14"
+   ],
+   "bonusMinds": [
+    "4058",
+    "4075"
+   ]
   },
   {
    "eventId": "50077",
    "category": 16,
    "banner": "eq_500077_l7f5iwmu_start",
-   "name": "CHAPTER_NAME_EV_50077_01"
+   "name": "CHAPTER_NAME_EV_50077_01",
+   "kind": "exchange",
+   "currency": 3017,
+   "bonusStatues": [
+    "1010_03",
+    "1130_02",
+    "3002_03"
+   ],
+   "bonusMinds": [
+    "0006",
+    "7189"
+   ]
+  },
+  {
+   "eventId": "560001",
+   "category": 17,
+   "banner": "eq_560001_r57pwy4q_start",
+   "name": "CHAPTER_NAME_EV_560001_01",
+   "kind": "high_score_shop",
+   "currency": 3032,
+   "bonusStatues": [
+    "2111_02",
+    "3000_03",
+    "4020_04"
+   ],
+   "bonusMinds": [
+    "0006",
+    "7448"
+   ],
+   "scoring": {
+    "STAGE_EV_560001_02_01": [
+     3
+    ]
+   }
+  },
+  {
+   "eventId": "560005",
+   "category": 18,
+   "banner": "eq_560005_52mtpamw_start",
+   "name": "CHAPTER_NAME_EV_560005_01",
+   "kind": "high_score",
+   "currency": 0,
+   "bonusStatues": [
+    "1000_03",
+    "2070_02",
+    "4020_02"
+   ],
+   "bonusMinds": [
+    "7439",
+    "7491"
+   ],
+   "scoring": {
+    "STAGE_EV_560005_01_01": [
+     3
+    ],
+    "STAGE_EV_560005_01_02": [
+     4
+    ],
+    "STAGE_EV_560005_01_04": [
+     4,
+     2
+    ],
+    "STAGE_EV_560005_01_05": [
+     3,
+     2
+    ],
+    "STAGE_EV_560005_01_06": [
+     3,
+     4,
+     2
+    ],
+    "STAGE_EV_560005_01_07": [
+     2
+    ],
+    "STAGE_EV_560005_02_01": [
+     3,
+     4,
+     2
+    ]
+   }
+  },
+  {
+   "eventId": "50090",
+   "category": 19,
+   "banner": "eq_500090_turz8c7e_start",
+   "name": "CHAPTER_NAME_EV_50090_01",
+   "kind": "quiz",
+   "currency": 3106,
+   "bonusStatues": [
+    "3010_13",
+    "3030_02",
+    "4130_13"
+   ],
+   "bonusMinds": [
+    "4024",
+    "7203"
+   ],
+   "quiz": [
+    {
+     "chapterId": "CHAPTER_EV_50090_12",
+     "question": "STAGE_EV_50090_12_01",
+     "answers": [
+      "STAGE_EV_50090_12_02",
+      "STAGE_EV_50090_12_03",
+      "STAGE_EV_50090_12_04"
+     ],
+     "correct": "STAGE_EV_50090_12_03"
+    },
+    {
+     "chapterId": "CHAPTER_EV_50090_13",
+     "question": "STAGE_EV_50090_13_01",
+     "answers": [
+      "STAGE_EV_50090_13_02",
+      "STAGE_EV_50090_13_03",
+      "STAGE_EV_50090_13_04"
+     ],
+     "correct": "STAGE_EV_50090_13_02"
+    },
+    {
+     "chapterId": "CHAPTER_EV_50090_14",
+     "question": "STAGE_EV_50090_14_01",
+     "answers": [
+      "STAGE_EV_50090_14_02",
+      "STAGE_EV_50090_14_03",
+      "STAGE_EV_50090_14_04"
+     ],
+     "correct": "STAGE_EV_50090_14_04"
+    },
+    {
+     "chapterId": "CHAPTER_EV_50090_15",
+     "question": "STAGE_EV_50090_15_01",
+     "answers": [
+      "STAGE_EV_50090_15_02",
+      "STAGE_EV_50090_15_03",
+      "STAGE_EV_50090_15_04"
+     ],
+     "correct": "STAGE_EV_50090_15_02"
+    },
+    {
+     "chapterId": "CHAPTER_EV_50090_16",
+     "question": "STAGE_EV_50090_16_01",
+     "answers": [
+      "STAGE_EV_50090_16_02",
+      "STAGE_EV_50090_16_03",
+      "STAGE_EV_50090_16_04"
+     ],
+     "correct": "STAGE_EV_50090_16_02"
+    },
+    {
+     "chapterId": "CHAPTER_EV_50090_17",
+     "question": "STAGE_EV_50090_17_01",
+     "answers": [
+      "STAGE_EV_50090_17_02",
+      "STAGE_EV_50090_17_03",
+      "STAGE_EV_50090_17_04"
+     ],
+     "correct": "STAGE_EV_50090_17_04"
+    },
+    {
+     "chapterId": "CHAPTER_EV_50090_18",
+     "question": "STAGE_EV_50090_18_01",
+     "answers": [
+      "STAGE_EV_50090_18_02",
+      "STAGE_EV_50090_18_03",
+      "STAGE_EV_50090_18_04"
+     ],
+     "correct": "STAGE_EV_50090_18_04"
+    },
+    {
+     "chapterId": "CHAPTER_EV_50090_19",
+     "question": "STAGE_EV_50090_19_01",
+     "answers": [
+      "STAGE_EV_50090_19_02",
+      "STAGE_EV_50090_19_03",
+      "STAGE_EV_50090_19_04"
+     ],
+     "correct": "STAGE_EV_50090_19_04"
+    },
+    {
+     "chapterId": "CHAPTER_EV_50090_20",
+     "question": "STAGE_EV_50090_20_01",
+     "answers": [
+      "STAGE_EV_50090_20_02",
+      "STAGE_EV_50090_20_03",
+      "STAGE_EV_50090_20_04"
+     ],
+     "correct": "STAGE_EV_50090_20_04"
+    },
+    {
+     "chapterId": "CHAPTER_EV_50090_21",
+     "question": "STAGE_EV_50090_21_01",
+     "answers": [
+      "STAGE_EV_50090_21_02",
+      "STAGE_EV_50090_21_03",
+      "STAGE_EV_50090_21_04"
+     ],
+     "correct": "STAGE_EV_50090_21_02"
+    }
+   ]
+  },
+  {
+   "eventId": "50033",
+   "category": 20,
+   "banner": "eq_500033_elmeia2a_start",
+   "name": "CHAPTER_NAME_EV_50033_01",
+   "kind": "exchange",
+   "currency": 3017,
+   "bonusStatues": [
+    "3030_13",
+    "4011_16",
+    "4191_02"
+   ],
+   "bonusMinds": [
+    "4110",
+    "7536"
+   ]
+  },
+  {
+   "eventId": "50061",
+   "category": 21,
+   "banner": "eq_500061_i0oddqug_start",
+   "name": "CHAPTER_NAME_EV_50061_01",
+   "kind": "exchange",
+   "currency": 3017,
+   "bonusStatues": [
+    "2040_02",
+    "3323_08",
+    "4130_25"
+   ],
+   "bonusMinds": [
+    "0019",
+    "7422"
+   ]
+  }
+ ],
+ "campaigns": [
+  {
+   "campaignId": "600000",
+   "banner": "ec_600000_cg2h91dh_start",
+   "name": "EC_600000_Name"
+  },
+  {
+   "campaignId": "600002",
+   "banner": "ec_600002_z65ax8t7_start",
+   "name": "EC_600002_Name"
+  },
+  {
+   "campaignId": "600003",
+   "banner": "ec_600003_toi21bop_start",
+   "name": "EC_600003_Name"
+  },
+  {
+   "campaignId": "600016",
+   "banner": "ec_600016_voudrslx_start",
+   "name": "EC_600016_Name"
   }
  ],
  "chapters": [
@@ -4717,6 +5004,3687 @@
      "source": {
       "source": "jdr-default",
       "note": "map and areas of DT_STAGE_ST_410_04; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_560001_01",
+   "num": 1,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 17,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_560001_01_01",
+     "areas": [],
+     "mapId": "map03_desert01",
+     "useStamina": 10,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 10,
+     "enemies": [
+      "3300_04",
+      "3060_03",
+      "3010_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_412_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_560001_01_02",
+     "areas": [],
+     "mapId": "map03_egypt03",
+     "useStamina": 10,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 10,
+     "enemies": [
+      "3150_03",
+      "2111_01",
+      "4040_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_429_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_560001_01_03",
+     "areas": [],
+     "mapId": "map04_owson00",
+     "useStamina": 10,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 10,
+     "enemies": [
+      "5290_04",
+      "3100_01",
+      "4160_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_409_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_560001_01_04",
+     "areas": [],
+     "mapId": "map02_snowfield01",
+     "useStamina": 10,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 10,
+     "enemies": [
+      "4170_15",
+      "2080_02",
+      "1100_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_422_05; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_560001_02",
+   "num": 2,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 17,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_560001_02_01",
+     "areas": [],
+     "mapId": "map05_school",
+     "useStamina": 10,
+     "gainRankExp": 35,
+     "gold": 700,
+     "enemyLevel": 15,
+     "enemies": [
+      "2080_03",
+      "3020_12",
+      "3010_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_405_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_560001_03",
+   "num": 3,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 17,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_560001_03_01",
+     "areas": [],
+     "mapId": "map05_roof",
+     "useStamina": 10,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 20,
+     "enemies": [
+      "4190_14",
+      "4012_03",
+      "2010_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_454_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_560001_03_02",
+     "areas": [],
+     "mapId": "map04_mystery01",
+     "useStamina": 10,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 20,
+     "enemies": [
+      "4030_04",
+      "2010_28",
+      "2050_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_409_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_560001_03_03",
+     "areas": [],
+     "mapId": "map03_enya02",
+     "useStamina": 10,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 20,
+     "enemies": [
+      "3110_03",
+      "4170_01",
+      "5320_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_429_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_560001_03_04",
+     "areas": [],
+     "mapId": "map03_egypt01",
+     "useStamina": 10,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 20,
+     "enemies": [
+      "4190_13",
+      "4000_12",
+      "4170_17"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_460_05; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_560001_03_05",
+     "areas": [],
+     "mapId": "map04_mystery01",
+     "useStamina": 10,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 20,
+     "enemies": [
+      "2010_04",
+      "3020_13",
+      "5050_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_480_03; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_560005_01",
+   "num": 1,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 18,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_560005_01_01",
+     "areas": [],
+     "mapId": "map05_school",
+     "useStamina": 10,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 10,
+     "enemies": [
+      "4191_01",
+      "2050_12",
+      "3060_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_454_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_560005_01_02",
+     "areas": [],
+     "mapId": "map03_enya02",
+     "useStamina": 10,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 10,
+     "enemies": [
+      "2020_04",
+      "3020_12",
+      "2050_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_402_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_560005_01_04",
+     "areas": [],
+     "mapId": "map02_italia02",
+     "useStamina": 10,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 10,
+     "enemies": [
+      "1000_04",
+      "1090_02",
+      "3210_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_411_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_560005_01_05",
+     "areas": [],
+     "mapId": "map01_around01",
+     "useStamina": 10,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 10,
+     "enemies": [
+      "3100_03",
+      "3330_01",
+      "3100_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_00_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_560005_01_06",
+     "areas": [],
+     "mapId": "map03_india01",
+     "useStamina": 10,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 10,
+     "enemies": [
+      "4020_13",
+      "2010_02",
+      "3300_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_413_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_560005_01_07",
+     "areas": [],
+     "mapId": "map03_beach00",
+     "useStamina": 10,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 10,
+     "enemies": [
+      "1080_02",
+      "2010_13",
+      "4020_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_401_02; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_560005_02",
+   "num": 2,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 18,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_560005_02_01",
+     "areas": [],
+     "mapId": "map02_italia01",
+     "useStamina": 10,
+     "gainRankExp": 35,
+     "gold": 700,
+     "enemyLevel": 15,
+     "enemies": [
+      "1010_03",
+      "3030_03",
+      "3150_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_411_02; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_560005_03",
+   "num": 3,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 18,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_560005_03_01",
+     "areas": [],
+     "mapId": "map05_schoolgate",
+     "useStamina": 10,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 20,
+     "enemies": [
+      "4010_13",
+      "4080_01",
+      "3040_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_405_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_560005_03_02",
+     "areas": [],
+     "mapId": "map04_tunnel03",
+     "useStamina": 10,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 20,
+     "enemies": [
+      "2080_02",
+      "3070_01",
+      "1000_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_404_05; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_560005_03_03",
+     "areas": [],
+     "mapId": "map03_jotatown01",
+     "useStamina": 10,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 20,
+     "enemies": [
+      "1100_03",
+      "5100_14",
+      "1000_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_424_04; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_560005_03_04",
+     "areas": [],
+     "mapId": "map04_mystery01",
+     "useStamina": 10,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 20,
+     "enemies": [
+      "4020_13",
+      "4000_03",
+      "4030_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_425_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_560005_03_05",
+     "areas": [],
+     "mapId": "map02_snowfield01",
+     "useStamina": 10,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 20,
+     "enemies": [
+      "1020_02",
+      "3030_02",
+      "3010_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_433_03; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_01",
+   "num": 1,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_01_01",
+     "areas": [],
+     "mapId": "map04_town03",
+     "useStamina": 10,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 10,
+     "enemies": [
+      "5030_04",
+      "4130_28",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_404_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_01_02",
+     "areas": [],
+     "mapId": "map05_roof",
+     "useStamina": 10,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 10,
+     "enemies": [
+      "2100_03",
+      "2010_01",
+      "1090_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_437_03; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_02",
+   "num": 2,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_02_01",
+     "areas": [],
+     "mapId": "map04_town03",
+     "useStamina": 10,
+     "gainRankExp": 35,
+     "gold": 700,
+     "enemyLevel": 15,
+     "enemies": [
+      "5080_04",
+      "1110_03",
+      "4190_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_431_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_02_02",
+     "areas": [],
+     "mapId": "map03_egypt01",
+     "useStamina": 10,
+     "gainRankExp": 35,
+     "gold": 700,
+     "enemyLevel": 15,
+     "enemies": [
+      "3020_28",
+      "4000_01",
+      "1110_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_434_03; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_03",
+   "num": 3,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_03_01",
+     "areas": [],
+     "mapId": "map03_desert02",
+     "useStamina": 10,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 20,
+     "enemies": [
+      "2000_02",
+      "3210_12",
+      "4030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_439_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_03_02",
+     "areas": [],
+     "mapId": "map03_diohouse06",
+     "useStamina": 10,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 20,
+     "enemies": [
+      "3240_11",
+      "5000_04",
+      "3090_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_412_05; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_04",
+   "num": 4,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_04_01",
+     "areas": [],
+     "mapId": "map04_tunnel03",
+     "useStamina": 10,
+     "gainRankExp": 45,
+     "gold": 900,
+     "enemyLevel": 25,
+     "enemies": [
+      "4080_03",
+      "1000_02",
+      "2000_28"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_415_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_04_02",
+     "areas": [],
+     "mapId": "map04_town05",
+     "useStamina": 10,
+     "gainRankExp": 45,
+     "gold": 900,
+     "enemyLevel": 25,
+     "enemies": [
+      "4160_02",
+      "4170_01",
+      "2070_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_442_02; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_05",
+   "num": 5,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_05_01",
+     "areas": [],
+     "mapId": "map03_desert01",
+     "useStamina": 10,
+     "gainRankExp": 50,
+     "gold": 1000,
+     "enemyLevel": 30,
+     "enemies": [
+      "4011_03",
+      "4011_15",
+      "4110_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_412_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_05_02",
+     "areas": [],
+     "mapId": "map03_india01",
+     "useStamina": 10,
+     "gainRankExp": 50,
+     "gold": 1000,
+     "enemyLevel": 30,
+     "enemies": [
+      "4080_02",
+      "4150_03",
+      "2081_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_424_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_06",
+   "num": 6,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_06_01",
+     "areas": [],
+     "mapId": "map02_italia01",
+     "useStamina": 10,
+     "gainRankExp": 55,
+     "gold": 1100,
+     "enemyLevel": 35,
+     "enemies": [
+      "1100_13",
+      "2040_02",
+      "3030_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_438_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_06_02",
+     "areas": [],
+     "mapId": "map05_train00",
+     "useStamina": 10,
+     "gainRankExp": 55,
+     "gold": 1100,
+     "enemyLevel": 35,
+     "enemies": [
+      "1090_01",
+      "4130_28",
+      "4110_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_405_04; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_07",
+   "num": 7,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_07_01",
+     "areas": [],
+     "mapId": "map05_colosseum",
+     "useStamina": 10,
+     "gainRankExp": 60,
+     "gold": 1200,
+     "enemyLevel": 40,
+     "enemies": [
+      "4170_03",
+      "5080_04",
+      "3020_12"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_442_04; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_07_02",
+     "areas": [],
+     "mapId": "map02_snowfield01",
+     "useStamina": 10,
+     "gainRankExp": 60,
+     "gold": 1200,
+     "enemyLevel": 40,
+     "enemies": [
+      "1120_01",
+      "3100_12",
+      "3270_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_422_05; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_08",
+   "num": 8,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_08_01",
+     "areas": [],
+     "mapId": "map03_desert03",
+     "useStamina": 10,
+     "gainRankExp": 65,
+     "gold": 1300,
+     "enemyLevel": 45,
+     "enemies": [
+      "1080_03",
+      "5100_14",
+      "4040_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_439_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_08_02",
+     "areas": [],
+     "mapId": "map02_italia02",
+     "useStamina": 10,
+     "gainRankExp": 65,
+     "gold": 1300,
+     "enemyLevel": 45,
+     "enemies": [
+      "3240_13",
+      "3040_13",
+      "4012_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_411_03; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_09",
+   "num": 9,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_09_01",
+     "areas": [],
+     "mapId": "map04_owson01",
+     "useStamina": 10,
+     "gainRankExp": 70,
+     "gold": 1400,
+     "enemyLevel": 50,
+     "enemies": [
+      "4191_01",
+      "5000_03",
+      "5010_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_409_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_09_02",
+     "areas": [],
+     "mapId": "map04_owson01",
+     "useStamina": 10,
+     "gainRankExp": 70,
+     "gold": 1400,
+     "enemyLevel": 50,
+     "enemies": [
+      "4170_02",
+      "5210_04",
+      "4160_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_453_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_09_03",
+     "areas": [],
+     "mapId": "map05_colosseum",
+     "useStamina": 10,
+     "gainRankExp": 70,
+     "gold": 1400,
+     "enemyLevel": 50,
+     "enemies": [
+      "1120_03",
+      "1010_03",
+      "3110_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_426_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_09_04",
+     "areas": [],
+     "mapId": "map05_school",
+     "useStamina": 10,
+     "gainRankExp": 70,
+     "gold": 1400,
+     "enemyLevel": 50,
+     "enemies": [
+      "5000_03",
+      "3240_12",
+      "3330_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_421_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_09_05",
+     "areas": [],
+     "mapId": "map03_desert02",
+     "useStamina": 10,
+     "gainRankExp": 70,
+     "gold": 1400,
+     "enemyLevel": 50,
+     "enemies": [
+      "4130_28",
+      "3030_13",
+      "1110_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_401_04; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_09_06",
+     "areas": [],
+     "mapId": "map03_india03",
+     "useStamina": 10,
+     "gainRankExp": 70,
+     "gold": 1400,
+     "enemyLevel": 50,
+     "enemies": [
+      "2081_12",
+      "1130_04",
+      "3020_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_424_03; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_10",
+   "num": 10,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_10_01",
+     "areas": [],
+     "mapId": "map02_italia02",
+     "useStamina": 10,
+     "gainRankExp": 75,
+     "gold": 1500,
+     "enemyLevel": 55,
+     "enemies": [
+      "4191_03",
+      "4020_03",
+      "3090_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_422_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_10_02",
+     "areas": [],
+     "mapId": "map02_italia01",
+     "useStamina": 10,
+     "gainRankExp": 75,
+     "gold": 1500,
+     "enemyLevel": 55,
+     "enemies": [
+      "4042_03",
+      "1090_13",
+      "1080_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_411_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_10_03",
+     "areas": [],
+     "mapId": "map04_mystery01",
+     "useStamina": 10,
+     "gainRankExp": 75,
+     "gold": 1500,
+     "enemyLevel": 55,
+     "enemies": [
+      "3000_03",
+      "1110_01",
+      "3031_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_414_05; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_10_04",
+     "areas": [],
+     "mapId": "map04_tunnel03",
+     "useStamina": 10,
+     "gainRankExp": 75,
+     "gold": 1500,
+     "enemyLevel": 55,
+     "enemies": [
+      "1010_03",
+      "3330_04",
+      "4130_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_426_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_10_05",
+     "areas": [],
+     "mapId": "map04_country04",
+     "useStamina": 10,
+     "gainRankExp": 75,
+     "gold": 1500,
+     "enemyLevel": 55,
+     "enemies": [
+      "4000_01",
+      "5050_03",
+      "4194_08"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_414_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_10_06",
+     "areas": [],
+     "mapId": "map04_country04",
+     "useStamina": 10,
+     "gainRankExp": 75,
+     "gold": 1500,
+     "enemyLevel": 55,
+     "enemies": [
+      "5290_04",
+      "4150_02",
+      "4012_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_480_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_11",
+   "num": 11,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_11_01",
+     "areas": [],
+     "mapId": "map02_snowfield02",
+     "useStamina": 10,
+     "gainRankExp": 80,
+     "gold": 1600,
+     "enemyLevel": 60,
+     "enemies": [
+      "3001_03",
+      "4110_13",
+      "5010_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_444_02; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_12",
+   "num": 12,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_12_01",
+     "areas": [],
+     "mapId": "map03_jotatown02",
+     "useStamina": 10,
+     "gainRankExp": 85,
+     "gold": 1700,
+     "enemyLevel": 65,
+     "enemies": [
+      "4130_25",
+      "4020_04",
+      "4000_12"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_435_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_12_02",
+     "areas": [],
+     "mapId": "map03_diohouse06",
+     "useStamina": 10,
+     "gainRankExp": 85,
+     "gold": 1700,
+     "enemyLevel": 65,
+     "enemies": [
+      "4194_08",
+      "3240_13",
+      "3300_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_423_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_12_03",
+     "areas": [],
+     "mapId": "map03_jotatown01",
+     "useStamina": 10,
+     "gainRankExp": 85,
+     "gold": 1700,
+     "enemyLevel": 65,
+     "enemies": [
+      "3110_01",
+      "5120_14",
+      "1010_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_408_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_12_04",
+     "areas": [],
+     "mapId": "map04_country04",
+     "useStamina": 10,
+     "gainRankExp": 85,
+     "gold": 1700,
+     "enemyLevel": 65,
+     "enemies": [
+      "3322_08",
+      "1010_01",
+      "4011_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_441_03; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_13",
+   "num": 13,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_13_01",
+     "areas": [],
+     "mapId": "map03_diohouse01",
+     "useStamina": 10,
+     "gainRankExp": 90,
+     "gold": 1800,
+     "enemyLevel": 70,
+     "enemies": [
+      "3041_03",
+      "3001_13",
+      "4170_18"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_460_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_13_02",
+     "areas": [],
+     "mapId": "map04_country04",
+     "useStamina": 10,
+     "gainRankExp": 90,
+     "gold": 1800,
+     "enemyLevel": 70,
+     "enemies": [
+      "1080_02",
+      "2040_03",
+      "5000_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_430_05; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_13_03",
+     "areas": [],
+     "mapId": "map02_mexico01",
+     "useStamina": 10,
+     "gainRankExp": 90,
+     "gold": 1800,
+     "enemyLevel": 70,
+     "enemies": [
+      "1090_13",
+      "4011_18",
+      "2081_11"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_459_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_13_04",
+     "areas": [],
+     "mapId": "map04_town03",
+     "useStamina": 10,
+     "gainRankExp": 90,
+     "gold": 1800,
+     "enemyLevel": 70,
+     "enemies": [
+      "3060_03",
+      "3031_04",
+      "4110_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_404_02; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_14",
+   "num": 14,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_14_01",
+     "areas": [],
+     "mapId": "map03_india03",
+     "useStamina": 10,
+     "gainRankExp": 95,
+     "gold": 1900,
+     "enemyLevel": 75,
+     "enemies": [
+      "3000_04",
+      "3020_28",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_408_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_14_02",
+     "areas": [],
+     "mapId": "map04_rohanhouse01",
+     "useStamina": 10,
+     "gainRankExp": 95,
+     "gold": 1900,
+     "enemyLevel": 75,
+     "enemies": [
+      "3000_13",
+      "4000_12",
+      "4042_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_436_04; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_14_03",
+     "areas": [],
+     "mapId": "map03_enya01",
+     "useStamina": 10,
+     "gainRankExp": 95,
+     "gold": 1900,
+     "enemyLevel": 75,
+     "enemies": [
+      "3041_03",
+      "4130_13",
+      "1130_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_429_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_14_04",
+     "areas": [],
+     "mapId": "map05_town01",
+     "useStamina": 10,
+     "gainRankExp": 95,
+     "gold": 1900,
+     "enemyLevel": 75,
+     "enemies": [
+      "4000_01",
+      "1100_28",
+      "4010_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_443_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_15",
+   "num": 15,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_15_01",
+     "areas": [],
+     "mapId": "map03_desert02",
+     "useStamina": 10,
+     "gainRankExp": 100,
+     "gold": 2000,
+     "enemyLevel": 80,
+     "enemies": [
+      "1020_03",
+      "3270_01",
+      "2080_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_401_04; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_15_02",
+     "areas": [],
+     "mapId": "map04_town03",
+     "useStamina": 10,
+     "gainRankExp": 100,
+     "gold": 2000,
+     "enemyLevel": 80,
+     "enemies": [
+      "4170_03",
+      "1120_03",
+      "1000_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_420_04; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_15_03",
+     "areas": [],
+     "mapId": "map03_india02",
+     "useStamina": 10,
+     "gainRankExp": 100,
+     "gold": 2000,
+     "enemyLevel": 80,
+     "enemies": [
+      "4011_15",
+      "3100_12",
+      "1020_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_424_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_15_04",
+     "areas": [],
+     "mapId": "map04_town04",
+     "useStamina": 10,
+     "gainRankExp": 100,
+     "gold": 2000,
+     "enemyLevel": 80,
+     "enemies": [
+      "2060_01",
+      "4010_13",
+      "2060_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_415_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_16",
+   "num": 16,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_16_01",
+     "areas": [],
+     "mapId": "map02_italia03",
+     "useStamina": 10,
+     "gainRankExp": 105,
+     "gold": 2100,
+     "enemyLevel": 80,
+     "enemies": [
+      "4130_28",
+      "3322_08",
+      "5150_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_459_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_16_02",
+     "areas": [],
+     "mapId": "map05_schoolgate",
+     "useStamina": 10,
+     "gainRankExp": 105,
+     "gold": 2100,
+     "enemyLevel": 80,
+     "enemies": [
+      "1100_11",
+      "3040_01",
+      "4030_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_405_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_16_03",
+     "areas": [],
+     "mapId": "map03_desert03",
+     "useStamina": 10,
+     "gainRankExp": 105,
+     "gold": 2100,
+     "enemyLevel": 80,
+     "enemies": [
+      "5000_03",
+      "5000_22",
+      "3000_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_428_05; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_16_04",
+     "areas": [],
+     "mapId": "map02_snowfield01",
+     "useStamina": 10,
+     "gainRankExp": 105,
+     "gold": 2100,
+     "enemyLevel": 80,
+     "enemies": [
+      "4080_03",
+      "5010_14",
+      "2111_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_417_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_17",
+   "num": 17,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_17_01",
+     "areas": [],
+     "mapId": "map02_italia01",
+     "useStamina": 10,
+     "gainRankExp": 110,
+     "gold": 2200,
+     "enemyLevel": 80,
+     "enemies": [
+      "1130_02",
+      "1090_02",
+      "3322_08"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_411_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_17_02",
+     "areas": [],
+     "mapId": "map05_school",
+     "useStamina": 10,
+     "gainRankExp": 110,
+     "gold": 2200,
+     "enemyLevel": 80,
+     "enemies": [
+      "2000_28",
+      "2081_12",
+      "3031_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_437_05; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_17_03",
+     "areas": [],
+     "mapId": "map03_diohouse07",
+     "useStamina": 10,
+     "gainRankExp": 110,
+     "gold": 2200,
+     "enemyLevel": 80,
+     "enemies": [
+      "4190_13",
+      "5010_14",
+      "3020_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_460_04; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_17_04",
+     "areas": [],
+     "mapId": "map04_country01",
+     "useStamina": 10,
+     "gainRankExp": 110,
+     "gold": 2200,
+     "enemyLevel": 80,
+     "enemies": [
+      "4040_12",
+      "3210_02",
+      "2081_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_419_05; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_18",
+   "num": 18,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_18_01",
+     "areas": [],
+     "mapId": "map04_country04",
+     "useStamina": 10,
+     "gainRankExp": 115,
+     "gold": 2300,
+     "enemyLevel": 80,
+     "enemies": [
+      "3050_03",
+      "1120_01",
+      "4190_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_430_05; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_18_02",
+     "areas": [],
+     "mapId": "map04_mystery01",
+     "useStamina": 10,
+     "gainRankExp": 115,
+     "gold": 2300,
+     "enemyLevel": 80,
+     "enemies": [
+      "3240_11",
+      "2050_12",
+      "3240_11"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_436_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_18_03",
+     "areas": [],
+     "mapId": "map05_town01",
+     "useStamina": 10,
+     "gainRankExp": 115,
+     "gold": 2300,
+     "enemyLevel": 80,
+     "enemies": [
+      "1100_11",
+      "1000_01",
+      "3240_12"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_443_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_18_04",
+     "areas": [],
+     "mapId": "map03_jotatown02",
+     "useStamina": 10,
+     "gainRankExp": 115,
+     "gold": 2300,
+     "enemyLevel": 80,
+     "enemies": [
+      "4042_03",
+      "3020_12",
+      "1110_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_408_03; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_19",
+   "num": 19,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_19_01",
+     "areas": [],
+     "mapId": "map02_italia02",
+     "useStamina": 10,
+     "gainRankExp": 120,
+     "gold": 2400,
+     "enemyLevel": 80,
+     "enemies": [
+      "1080_02",
+      "3210_12",
+      "2110_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_422_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_19_02",
+     "areas": [],
+     "mapId": "map03_jotatown03",
+     "useStamina": 10,
+     "gainRankExp": 120,
+     "gold": 2400,
+     "enemyLevel": 80,
+     "enemies": [
+      "2050_04",
+      "4130_13",
+      "3010_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_435_04; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_19_03",
+     "areas": [],
+     "mapId": "map03_egypt01",
+     "useStamina": 10,
+     "gainRankExp": 120,
+     "gold": 2400,
+     "enemyLevel": 80,
+     "enemies": [
+      "4040_12",
+      "4192_04",
+      "2020_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_423_05; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_19_04",
+     "areas": [],
+     "mapId": "map01_around01",
+     "useStamina": 10,
+     "gainRankExp": 120,
+     "gold": 2400,
+     "enemyLevel": 80,
+     "enemies": [
+      "1020_02",
+      "3300_03",
+      "4160_12"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_416_03; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_20",
+   "num": 20,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_20_01",
+     "areas": [],
+     "mapId": "map03_jotatown01",
+     "useStamina": 10,
+     "gainRankExp": 125,
+     "gold": 2500,
+     "enemyLevel": 80,
+     "enemies": [
+      "3040_01",
+      "2050_02",
+      "3240_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_408_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_20_02",
+     "areas": [],
+     "mapId": "map03_beach00",
+     "useStamina": 10,
+     "gainRankExp": 125,
+     "gold": 2500,
+     "enemyLevel": 80,
+     "enemies": [
+      "4030_02",
+      "2050_02",
+      "3041_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_428_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_20_03",
+     "areas": [],
+     "mapId": "map03_egypt03",
+     "useStamina": 10,
+     "gainRankExp": 125,
+     "gold": 2500,
+     "enemyLevel": 80,
+     "enemies": [
+      "3010_03",
+      "2050_04",
+      "1100_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_418_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_20_04",
+     "areas": [],
+     "mapId": "map05_schoolgate",
+     "useStamina": 10,
+     "gainRankExp": 125,
+     "gold": 2500,
+     "enemyLevel": 80,
+     "enemies": [
+      "1020_03",
+      "1100_14",
+      "3100_12"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_432_02; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50090_21",
+   "num": 21,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 19,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50090_21_01",
+     "areas": [],
+     "mapId": "map04_owson00",
+     "useStamina": 10,
+     "gainRankExp": 130,
+     "gold": 2600,
+     "enemyLevel": 80,
+     "enemies": [
+      "1000_12",
+      "2000_03",
+      "4150_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_480_04; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_21_02",
+     "areas": [],
+     "mapId": "map04_country03",
+     "useStamina": 10,
+     "gainRankExp": 130,
+     "gold": 2600,
+     "enemyLevel": 80,
+     "enemies": [
+      "3322_08",
+      "4150_01",
+      "4011_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_403_04; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_21_03",
+     "areas": [],
+     "mapId": "map04_mystery01",
+     "useStamina": 10,
+     "gainRankExp": 130,
+     "gold": 2600,
+     "enemyLevel": 80,
+     "enemies": [
+      "4080_03",
+      "3020_02",
+      "2110_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_436_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50090_21_04",
+     "areas": [],
+     "mapId": "map03_tiger01",
+     "useStamina": 10,
+     "gainRankExp": 130,
+     "gold": 2600,
+     "enemyLevel": 80,
+     "enemies": [
+      "5050_03",
+      "4010_01",
+      "4190_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_403_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_01",
+   "num": 1,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_01",
+     "areas": [],
+     "mapId": "map03_enya02",
+     "useStamina": 10,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 10,
+     "enemies": [
+      "4110_02",
+      "3010_03",
+      "1100_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_429_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_02",
+     "areas": [],
+     "mapId": "map04_town03",
+     "useStamina": 10,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 10,
+     "enemies": [
+      "4043_08",
+      "4042_03",
+      "4191_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_420_04; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_02",
+   "num": 2,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_03",
+     "areas": [],
+     "mapId": "map03_desert03",
+     "useStamina": 10,
+     "gainRankExp": 35,
+     "gold": 700,
+     "enemyLevel": 15,
+     "enemies": [
+      "4191_04",
+      "5001_14",
+      "3070_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_428_05; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_04",
+     "areas": [],
+     "mapId": "map02_snowfield02",
+     "useStamina": 10,
+     "gainRankExp": 35,
+     "gold": 700,
+     "enemyLevel": 15,
+     "enemies": [
+      "4130_26",
+      "1100_03",
+      "3240_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_444_02; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_03",
+   "num": 3,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_05",
+     "areas": [],
+     "mapId": "map03_egypt03",
+     "useStamina": 10,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 20,
+     "enemies": [
+      "1000_13",
+      "4240_12",
+      "3150_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_429_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_06",
+     "areas": [],
+     "mapId": "map05_maggiore",
+     "useStamina": 10,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 20,
+     "enemies": [
+      "3070_01",
+      "4010_13",
+      "3150_12"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_437_02; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_04",
+   "num": 4,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_07",
+     "areas": [],
+     "mapId": "map03_jotatown01",
+     "useStamina": 10,
+     "gainRankExp": 45,
+     "gold": 900,
+     "enemyLevel": 25,
+     "enemies": [
+      "3020_01",
+      "3300_02",
+      "4130_28"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_479_04; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_08",
+     "areas": [],
+     "mapId": "map03_egypt01",
+     "useStamina": 10,
+     "gainRankExp": 45,
+     "gold": 900,
+     "enemyLevel": 25,
+     "enemies": [
+      "3050_01",
+      "3300_02",
+      "4240_11"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_418_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_05",
+   "num": 5,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_09",
+     "areas": [],
+     "mapId": "map03_diohouse01",
+     "useStamina": 10,
+     "gainRankExp": 50,
+     "gold": 1000,
+     "enemyLevel": 30,
+     "enemies": [
+      "4170_17",
+      "4170_03",
+      "2050_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_460_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_10",
+     "areas": [],
+     "mapId": "map04_country04",
+     "useStamina": 10,
+     "gainRankExp": 50,
+     "gold": 1000,
+     "enemyLevel": 30,
+     "enemies": [
+      "1000_04",
+      "3020_13",
+      "2000_12"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_414_03; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_06",
+   "num": 6,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_11",
+     "areas": [],
+     "mapId": "map01_around03",
+     "useStamina": 10,
+     "gainRankExp": 55,
+     "gold": 1100,
+     "enemyLevel": 35,
+     "enemies": [
+      "1010_03",
+      "4020_01",
+      "3330_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_438_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_12",
+     "areas": [],
+     "mapId": "map03_diohouse07",
+     "useStamina": 10,
+     "gainRankExp": 55,
+     "gold": 1100,
+     "enemyLevel": 35,
+     "enemies": [
+      "2060_01",
+      "3150_12",
+      "2080_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_434_02; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_07",
+   "num": 7,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_13",
+     "areas": [],
+     "mapId": "map03_egypt01",
+     "useStamina": 10,
+     "gainRankExp": 60,
+     "gold": 1200,
+     "enemyLevel": 40,
+     "enemies": [
+      "3300_01",
+      "5320_04",
+      "4192_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_445_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_14",
+     "areas": [],
+     "mapId": "map04_town04",
+     "useStamina": 10,
+     "gainRankExp": 60,
+     "gold": 1200,
+     "enemyLevel": 40,
+     "enemies": [
+      "5290_04",
+      "4000_23",
+      "2081_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_453_05; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_08",
+   "num": 8,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_15",
+     "areas": [],
+     "mapId": "map02_snowfield03",
+     "useStamina": 10,
+     "gainRankExp": 65,
+     "gold": 1300,
+     "enemyLevel": 45,
+     "enemies": [
+      "4010_13",
+      "4040_13",
+      "2040_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_401_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_16",
+     "areas": [],
+     "mapId": "map03_desert01",
+     "useStamina": 10,
+     "gainRankExp": 65,
+     "gold": 1300,
+     "enemyLevel": 45,
+     "enemies": [
+      "4020_03",
+      "4130_28",
+      "1120_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_412_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_09",
+   "num": 9,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_17",
+     "areas": [],
+     "mapId": "map03_beach00",
+     "useStamina": 10,
+     "gainRankExp": 70,
+     "gold": 1400,
+     "enemyLevel": 50,
+     "enemies": [
+      "4190_14",
+      "4042_03",
+      "4170_18"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_401_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_18",
+     "areas": [],
+     "mapId": "map04_mystery01",
+     "useStamina": 10,
+     "gainRankExp": 70,
+     "gold": 1400,
+     "enemyLevel": 50,
+     "enemies": [
+      "2080_01",
+      "1090_03",
+      "4130_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_436_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_10",
+   "num": 10,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_19",
+     "areas": [],
+     "mapId": "map04_town01",
+     "useStamina": 10,
+     "gainRankExp": 75,
+     "gold": 1500,
+     "enemyLevel": 55,
+     "enemies": [
+      "4190_13",
+      "2080_01",
+      "3031_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_404_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_20",
+     "areas": [],
+     "mapId": "map02_snowfield01",
+     "useStamina": 10,
+     "gainRankExp": 75,
+     "gold": 1500,
+     "enemyLevel": 55,
+     "enemies": [
+      "1020_03",
+      "5000_24",
+      "2110_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_406_03; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_11",
+   "num": 11,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_21",
+     "areas": [],
+     "mapId": "map03_enya02",
+     "useStamina": 10,
+     "gainRankExp": 80,
+     "gold": 1600,
+     "enemyLevel": 60,
+     "enemies": [
+      "4130_28",
+      "3090_02",
+      "3110_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_429_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_22",
+     "areas": [],
+     "mapId": "map01_around01",
+     "useStamina": 10,
+     "gainRankExp": 80,
+     "gold": 1600,
+     "enemyLevel": 60,
+     "enemies": [
+      "3270_03",
+      "3150_12",
+      "4130_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_405_05; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_12",
+   "num": 12,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_23",
+     "areas": [],
+     "mapId": "map04_mystery01",
+     "useStamina": 10,
+     "gainRankExp": 85,
+     "gold": 1700,
+     "enemyLevel": 65,
+     "enemies": [
+      "4110_13",
+      "4130_28",
+      "1120_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_409_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_24",
+     "areas": [],
+     "mapId": "map02_italia02",
+     "useStamina": 10,
+     "gainRankExp": 85,
+     "gold": 1700,
+     "enemyLevel": 65,
+     "enemies": [
+      "2010_28",
+      "2070_02",
+      "3000_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_411_03; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_13",
+   "num": 13,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_25",
+     "areas": [],
+     "mapId": "map04_tunnel03",
+     "useStamina": 10,
+     "gainRankExp": 90,
+     "gold": 1800,
+     "enemyLevel": 70,
+     "enemies": [
+      "4191_04",
+      "4170_01",
+      "1000_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_415_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_26",
+     "areas": [],
+     "mapId": "map05_town01",
+     "useStamina": 10,
+     "gainRankExp": 90,
+     "gold": 1800,
+     "enemyLevel": 70,
+     "enemies": [
+      "2111_03",
+      "2080_01",
+      "4150_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_432_03; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_14",
+   "num": 14,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_27",
+     "areas": [],
+     "mapId": "map01_around01",
+     "useStamina": 10,
+     "gainRankExp": 95,
+     "gold": 1900,
+     "enemyLevel": 75,
+     "enemies": [
+      "2110_02",
+      "3150_04",
+      "2070_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_432_05; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_28",
+     "areas": [],
+     "mapId": "map02_mexico01",
+     "useStamina": 10,
+     "gainRankExp": 95,
+     "gold": 1900,
+     "enemyLevel": 75,
+     "enemies": [
+      "2081_13",
+      "4011_18",
+      "3020_12"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_406_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_15",
+   "num": 15,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_29",
+     "areas": [],
+     "mapId": "map02_italia01",
+     "useStamina": 10,
+     "gainRankExp": 100,
+     "gold": 2000,
+     "enemyLevel": 80,
+     "enemies": [
+      "5100_14",
+      "4012_03",
+      "4080_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_00_04; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_30",
+     "areas": [],
+     "mapId": "map03_tiger02",
+     "useStamina": 10,
+     "gainRankExp": 100,
+     "gold": 2000,
+     "enemyLevel": 80,
+     "enemies": [
+      "4240_12",
+      "1090_01",
+      "5100_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_446_04; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_16",
+   "num": 16,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_31",
+     "areas": [],
+     "mapId": "map04_town03",
+     "useStamina": 10,
+     "gainRankExp": 105,
+     "gold": 2100,
+     "enemyLevel": 80,
+     "enemies": [
+      "4150_01",
+      "1130_03",
+      "3040_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_431_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_32",
+     "areas": [],
+     "mapId": "map04_town01",
+     "useStamina": 10,
+     "gainRankExp": 105,
+     "gold": 2100,
+     "enemyLevel": 80,
+     "enemies": [
+      "4040_13",
+      "3040_01",
+      "5050_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_431_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_17",
+   "num": 17,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_33",
+     "areas": [],
+     "mapId": "map03_india01",
+     "useStamina": 10,
+     "gainRankExp": 110,
+     "gold": 2200,
+     "enemyLevel": 80,
+     "enemies": [
+      "4011_17",
+      "4030_04",
+      "4000_18"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_440_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_34",
+     "areas": [],
+     "mapId": "map03_egypt01",
+     "useStamina": 10,
+     "gainRankExp": 110,
+     "gold": 2200,
+     "enemyLevel": 80,
+     "enemies": [
+      "2000_28",
+      "1000_28",
+      "3070_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_423_05; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_18",
+   "num": 18,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_40",
+     "areas": [],
+     "mapId": "map05_train00",
+     "useStamina": 10,
+     "gainRankExp": 115,
+     "gold": 2300,
+     "enemyLevel": 80,
+     "enemies": [
+      "3040_04",
+      "1000_12",
+      "3070_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_443_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_41",
+     "areas": [],
+     "mapId": "map05_town01",
+     "useStamina": 10,
+     "gainRankExp": 115,
+     "gold": 2300,
+     "enemyLevel": 80,
+     "enemies": [
+      "4130_28",
+      "3020_28",
+      "1100_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_443_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_19",
+   "num": 19,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_42",
+     "areas": [],
+     "mapId": "map02_snowfield03",
+     "useStamina": 10,
+     "gainRankExp": 120,
+     "gold": 2400,
+     "enemyLevel": 80,
+     "enemies": [
+      "4020_04",
+      "4030_04",
+      "4110_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_428_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_43",
+     "areas": [],
+     "mapId": "map03_india03",
+     "useStamina": 10,
+     "gainRankExp": 120,
+     "gold": 2400,
+     "enemyLevel": 80,
+     "enemies": [
+      "4110_14",
+      "3041_03",
+      "4160_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_440_05; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_20",
+   "num": 20,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_44",
+     "areas": [],
+     "mapId": "map04_town01",
+     "useStamina": 10,
+     "gainRankExp": 125,
+     "gold": 2500,
+     "enemyLevel": 80,
+     "enemies": [
+      "2050_01",
+      "5140_04",
+      "3210_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_436_05; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_45",
+     "areas": [],
+     "mapId": "map05_town01",
+     "useStamina": 10,
+     "gainRankExp": 125,
+     "gold": 2500,
+     "enemyLevel": 80,
+     "enemies": [
+      "4010_01",
+      "2060_01",
+      "4191_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_432_03; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50033_21",
+   "num": 21,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 20,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50033_46",
+     "areas": [],
+     "mapId": "map04_owson01",
+     "useStamina": 10,
+     "gainRankExp": 130,
+     "gold": 2600,
+     "enemyLevel": 80,
+     "enemies": [
+      "3330_04",
+      "2081_13",
+      "4000_12"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_436_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50033_47",
+     "areas": [],
+     "mapId": "map02_snowfield03",
+     "useStamina": 10,
+     "gainRankExp": 130,
+     "gold": 2600,
+     "enemyLevel": 80,
+     "enemies": [
+      "2081_14",
+      "1000_12",
+      "3020_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_428_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_01",
+   "num": 1,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_01",
+     "areas": [],
+     "mapId": "map04_mystery01",
+     "useStamina": 10,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 10,
+     "enemies": [
+      "4012_03",
+      "4012_03",
+      "1110_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_436_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_02",
+     "areas": [],
+     "mapId": "map03_diohouse01",
+     "useStamina": 10,
+     "gainRankExp": 30,
+     "gold": 600,
+     "enemyLevel": 10,
+     "enemies": [
+      "3070_01",
+      "4191_01",
+      "3330_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_412_04; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_02",
+   "num": 2,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_03",
+     "areas": [],
+     "mapId": "map03_diohouse01",
+     "useStamina": 10,
+     "gainRankExp": 35,
+     "gold": 700,
+     "enemyLevel": 15,
+     "enemies": [
+      "4040_12",
+      "1080_03",
+      "3300_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_460_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_04",
+     "areas": [],
+     "mapId": "map03_jotatown03",
+     "useStamina": 10,
+     "gainRankExp": 35,
+     "gold": 700,
+     "enemyLevel": 15,
+     "enemies": [
+      "3270_04",
+      "2100_03",
+      "4150_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_435_04; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_03",
+   "num": 3,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_05",
+     "areas": [],
+     "mapId": "map03_desert02",
+     "useStamina": 10,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 20,
+     "enemies": [
+      "3030_01",
+      "1100_01",
+      "1120_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_439_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_06",
+     "areas": [],
+     "mapId": "map03_enya01",
+     "useStamina": 10,
+     "gainRankExp": 40,
+     "gold": 800,
+     "enemyLevel": 20,
+     "enemies": [
+      "4130_13",
+      "4194_08",
+      "3031_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_418_04; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_04",
+   "num": 4,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_07",
+     "areas": [],
+     "mapId": "map03_tiger02",
+     "useStamina": 10,
+     "gainRankExp": 45,
+     "gold": 900,
+     "enemyLevel": 25,
+     "enemies": [
+      "4020_02",
+      "5001_14",
+      "2100_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_403_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_08",
+     "areas": [],
+     "mapId": "map03_enya02",
+     "useStamina": 10,
+     "gainRankExp": 45,
+     "gold": 900,
+     "enemyLevel": 25,
+     "enemies": [
+      "3060_03",
+      "4170_18",
+      "3100_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_402_03; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_05",
+   "num": 5,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_09",
+     "areas": [],
+     "mapId": "map02_snowfield03",
+     "useStamina": 10,
+     "gainRankExp": 50,
+     "gold": 1000,
+     "enemyLevel": 30,
+     "enemies": [
+      "5170_14",
+      "3110_03",
+      "1010_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_428_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_10",
+     "areas": [],
+     "mapId": "map01_around01",
+     "useStamina": 10,
+     "gainRankExp": 50,
+     "gold": 1000,
+     "enemyLevel": 30,
+     "enemies": [
+      "3110_02",
+      "3050_02",
+      "5000_22"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_427_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_06",
+   "num": 6,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_11",
+     "areas": [],
+     "mapId": "map02_snowfield03",
+     "useStamina": 10,
+     "gainRankExp": 55,
+     "gold": 1100,
+     "enemyLevel": 35,
+     "enemies": [
+      "5320_04",
+      "4043_08",
+      "4000_23"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_433_05; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_12",
+     "areas": [],
+     "mapId": "map04_mystery01",
+     "useStamina": 10,
+     "gainRankExp": 55,
+     "gold": 1100,
+     "enemyLevel": 35,
+     "enemies": [
+      "1090_13",
+      "3000_13",
+      "3090_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_436_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_07",
+   "num": 7,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_13",
+     "areas": [],
+     "mapId": "map03_enya02",
+     "useStamina": 10,
+     "gainRankExp": 60,
+     "gold": 1200,
+     "enemyLevel": 40,
+     "enemies": [
+      "2040_02",
+      "3100_12",
+      "1000_28"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_418_05; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_14",
+     "areas": [],
+     "mapId": "map03_beach00",
+     "useStamina": 10,
+     "gainRankExp": 60,
+     "gold": 1200,
+     "enemyLevel": 40,
+     "enemies": [
+      "4080_01",
+      "5150_04",
+      "2081_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_401_02; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_08",
+   "num": 8,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_15",
+     "areas": [],
+     "mapId": "map02_italia01",
+     "useStamina": 10,
+     "gainRankExp": 65,
+     "gold": 1300,
+     "enemyLevel": 45,
+     "enemies": [
+      "3070_03",
+      "5050_04",
+      "2040_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_438_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_16",
+     "areas": [],
+     "mapId": "map04_mego02",
+     "useStamina": 10,
+     "gainRankExp": 65,
+     "gold": 1300,
+     "enemyLevel": 45,
+     "enemies": [
+      "4020_04",
+      "3050_03",
+      "4030_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_480_02; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_09",
+   "num": 9,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_17",
+     "areas": [],
+     "mapId": "map02_mexico01",
+     "useStamina": 10,
+     "gainRankExp": 70,
+     "gold": 1400,
+     "enemyLevel": 50,
+     "enemies": [
+      "4170_17",
+      "4000_02",
+      "3060_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_433_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_18",
+     "areas": [],
+     "mapId": "map02_snowfield03",
+     "useStamina": 10,
+     "gainRankExp": 70,
+     "gold": 1400,
+     "enemyLevel": 50,
+     "enemies": [
+      "2000_04",
+      "5210_04",
+      "3270_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_406_05; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_10",
+   "num": 10,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_19",
+     "areas": [],
+     "mapId": "map03_egypt02",
+     "useStamina": 10,
+     "gainRankExp": 75,
+     "gold": 1500,
+     "enemyLevel": 55,
+     "enemies": [
+      "2060_03",
+      "1130_13",
+      "5010_14"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_418_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_21",
+     "areas": [],
+     "mapId": "map02_snowfield03",
+     "useStamina": 10,
+     "gainRankExp": 75,
+     "gold": 1500,
+     "enemyLevel": 55,
+     "enemies": [
+      "4042_03",
+      "3002_03",
+      "3330_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_406_05; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_11",
+   "num": 11,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_22",
+     "areas": [],
+     "mapId": "map02_mexico01",
+     "useStamina": 10,
+     "gainRankExp": 80,
+     "gold": 1600,
+     "enemyLevel": 60,
+     "enemies": [
+      "4193_08",
+      "5290_04",
+      "1100_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_438_05; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_23",
+     "areas": [],
+     "mapId": "map03_tiger02",
+     "useStamina": 10,
+     "gainRankExp": 80,
+     "gold": 1600,
+     "enemyLevel": 60,
+     "enemies": [
+      "4040_13",
+      "3030_14",
+      "4020_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_430_02; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_12",
+   "num": 12,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_25",
+     "areas": [],
+     "mapId": "map04_country01",
+     "useStamina": 10,
+     "gainRankExp": 85,
+     "gold": 1700,
+     "enemyLevel": 65,
+     "enemies": [
+      "2110_01",
+      "3090_01",
+      "3210_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_430_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_26",
+     "areas": [],
+     "mapId": "map03_tiger01",
+     "useStamina": 10,
+     "gainRankExp": 85,
+     "gold": 1700,
+     "enemyLevel": 65,
+     "enemies": [
+      "1020_02",
+      "1020_04",
+      "3030_13"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_408_05; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_13",
+   "num": 13,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_27",
+     "areas": [],
+     "mapId": "map03_india02",
+     "useStamina": 10,
+     "gainRankExp": 90,
+     "gold": 1800,
+     "enemyLevel": 70,
+     "enemies": [
+      "1110_03",
+      "2100_03",
+      "4011_15"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_440_04; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_28",
+     "areas": [],
+     "mapId": "map05_roof",
+     "useStamina": 10,
+     "gainRankExp": 90,
+     "gold": 1800,
+     "enemyLevel": 70,
+     "enemies": [
+      "3000_13",
+      "2020_02",
+      "3050_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_454_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_14",
+   "num": 14,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_29",
+     "areas": [],
+     "mapId": "map04_country01",
+     "useStamina": 10,
+     "gainRankExp": 95,
+     "gold": 1900,
+     "enemyLevel": 75,
+     "enemies": [
+      "4240_13",
+      "3010_02",
+      "4170_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_430_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_31",
+     "areas": [],
+     "mapId": "map03_tiger01",
+     "useStamina": 10,
+     "gainRankExp": 95,
+     "gold": 1900,
+     "enemyLevel": 75,
+     "enemies": [
+      "4010_13",
+      "1100_12",
+      "3040_04"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_408_05; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_15",
+   "num": 15,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_32",
+     "areas": [],
+     "mapId": "map01_around03",
+     "useStamina": 10,
+     "gainRankExp": 100,
+     "gold": 2000,
+     "enemyLevel": 80,
+     "enemies": [
+      "4240_13",
+      "1090_13",
+      "4150_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_438_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_33",
+     "areas": [],
+     "mapId": "map05_train00",
+     "useStamina": 10,
+     "gainRankExp": 100,
+     "gold": 2000,
+     "enemyLevel": 80,
+     "enemies": [
+      "2010_04",
+      "5080_04",
+      "4080_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_416_02; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_16",
+   "num": 16,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_34",
+     "areas": [],
+     "mapId": "map03_diohouse07",
+     "useStamina": 10,
+     "gainRankExp": 105,
+     "gold": 2100,
+     "enemyLevel": 80,
+     "enemies": [
+      "3000_04",
+      "1000_04",
+      "2111_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_407_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_35",
+     "areas": [],
+     "mapId": "map04_town04",
+     "useStamina": 10,
+     "gainRankExp": 105,
+     "gold": 2100,
+     "enemyLevel": 80,
+     "enemies": [
+      "5320_04",
+      "5120_14",
+      "1130_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_442_01; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_17",
+   "num": 17,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_37",
+     "areas": [],
+     "mapId": "map04_town04",
+     "useStamina": 10,
+     "gainRankExp": 110,
+     "gold": 2200,
+     "enemyLevel": 80,
+     "enemies": [
+      "2111_03",
+      "2050_03",
+      "3031_03"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_431_03; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_38",
+     "areas": [],
+     "mapId": "map05_roof",
+     "useStamina": 10,
+     "gainRankExp": 110,
+     "gold": 2200,
+     "enemyLevel": 80,
+     "enemies": [
+      "2000_03",
+      "3100_02",
+      "4010_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_426_05; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_18",
+   "num": 18,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_39",
+     "areas": [],
+     "mapId": "map03_egypt03",
+     "useStamina": 10,
+     "gainRankExp": 115,
+     "gold": 2300,
+     "enemyLevel": 80,
+     "enemies": [
+      "4240_13",
+      "4170_17",
+      "2050_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_429_01; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_40",
+     "areas": [],
+     "mapId": "map03_diohouse06",
+     "useStamina": 10,
+     "gainRankExp": 115,
+     "gold": 2300,
+     "enemyLevel": 80,
+     "enemies": [
+      "4040_01",
+      "2070_02",
+      "1130_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_460_03; enemies, level and rewards ours"
+     }
+    }
+   ]
+  },
+  {
+   "chapterId": "CHAPTER_EV_50061_19",
+   "num": 19,
+   "stageType": 1,
+   "chapterMap": 0,
+   "category": 21,
+   "stages": [
+    {
+     "stageId": "STAGE_EV_50061_41",
+     "areas": [],
+     "mapId": "map03_diohouse07",
+     "useStamina": 10,
+     "gainRankExp": 120,
+     "gold": 2400,
+     "enemyLevel": 80,
+     "enemies": [
+      "1000_02",
+      "2050_02",
+      "4160_02"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_434_02; enemies, level and rewards ours"
+     }
+    },
+    {
+     "stageId": "STAGE_EV_50061_42",
+     "areas": [],
+     "mapId": "map03_egypt01",
+     "useStamina": 10,
+     "gainRankExp": 120,
+     "gold": 2400,
+     "enemyLevel": 80,
+     "enemies": [
+      "4020_03",
+      "2070_03",
+      "4130_01"
+     ],
+     "source": {
+      "source": "jdr-default",
+      "note": "map and areas of DT_STAGE_ST_418_01; enemies, level and rewards ours"
      }
     }
    ]

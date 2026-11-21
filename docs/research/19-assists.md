@@ -1,4 +1,4 @@
-# 19 — Assists (Builds 22, 24)
+# 19 — Assists (Builds 22, 24, 25)
 
 Assist statues back up a team seat. Read in the 3.12.0 client: H = read in the disassembly,
 M = inferred.
@@ -160,5 +160,46 @@ M = inferred.
   - how folded abilities look on the seat statue's ability list.
 - The action battle's use of `assistAbilityList` (DTAF_* affect ids) is untested. The action
   battle is not served.
-- The 32 assist-only statues (with their own ability names) are not in the roster, and neither
-  are their assist skills.
+- The assist-only statues: see §6.
+
+## 6. Assist-only statues (Build 25)
+
+### 6.1 In the client and the player's files
+
+- **The flag (H).** `BaseStatueInfo.assistAttr` is a `Jjs.AssistAttribute`: Common 0,
+  OnlyAssist 1. The thumbnail lists have their own messages for it (`ThumbnailGroupController`
+  MessageType AssistOnly 22, AssistOnlyMember 30; `isAssistOnlyText`), so the member selection
+  shows such a statue as assist-only (M for the exact screen behaviour).
+- **Which (H, files).** 32 statueIds have their own `ABI_AST_<id>_N` label and no leader-ability
+  label (a 33rd, 2100_03, has both and is a roster statue). 26 of the 32 have a model, its
+  animations and an action set in the player's files (the roster rule); the other 6 (3140_62,
+  3310_61, 4010_62, 5070_61, 5090_61, 5110_71) have none and stay out. All 26 are `_6x`/`_7x`
+  ids; 20 of them have a thumbnail (as 217 of the 266 roster statues do).
+- **Their actions (H, files).** 18 have a single tactical action, SKILL_09 (SKILL_01 for
+  3230/4090/4220); the rest have more (4000_62, 5000_62 and 4181_72 a full set).
+
+### 6.2 What the server sends
+
+- **Roster.** `tools/content/build_statues.py` appends them to statues.json with `assistOnly`
+  true (after the 266, so nothing else changes). Stats: Gamerch by assist-ability name where it
+  matches exactly (1: 4260_72), else the defaults. Rarity from their pose clips where the wiki has
+  none.
+- **One skill (M for the choice).** `dtSkills` holds one normal skill: `SKILL_<p>_09` when the
+  model has it, else its lowest skill with a skill text. It is their assist skill
+  (`dtAssistSkillInfo`, §5.3). No `dtAttack` (an assist never acts as a unit; an attack id could
+  also collide with a roster skill id of the same prefix).
+- **Own ability.** `tools/content/build_assist_abilities.py` gives each one its own row
+  `DT_AST_<id>` named by its own `ABI_AST_<id>_N` label, with the kind and tier the defaults (or
+  the wiki) give (ours: the label names the ability, the effect is a guess). 142 ability rows in
+  all.
+- **assistAttr 1** on every StatueInfo of theirs.
+- **Never a member (ours, server side too):** not on the starting teams, refused in a seat
+  (`select_statue`, `clean_members`: the client's own check comes first), skipped by the auto
+  formation, cleared from seats by the save repair, never an Arena opponent or a ranking rival's
+  leader (`collection::members`). They can be equipped as assists on any seat, and summons can
+  draw them.
+
+### 6.3 Not verified
+
+- Not run on a device: the assist-only marking on the team screens, their assist skill animation
+  (an action set exists for each skill sent) and their ability cards.
