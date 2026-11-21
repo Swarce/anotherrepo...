@@ -13,10 +13,11 @@ use jdr_services::l10n::{self, Found};
 use serde_json::{Map, Value};
 use std::path::{Path, PathBuf};
 
-/// Bundles whose strings we offer (UI prefabs, the minigame screens and the text tables; story
-/// scripts come later).
+/// Bundles whose strings we offer (UI prefabs, the minigame screens, the text tables and the
+/// story scripts' dialogue).
 pub fn wanted(name: &str) -> bool {
     name == "text.jp"
+        || name.ends_with("_script_text_jp")
         || (name.starts_with("ui_") && !name.starts_with("ui_tips"))
         || name.starts_with("scene_")
         || name.starts_with("minigame_")
@@ -215,6 +216,8 @@ pub fn file_for(key: &str) -> &'static str {
         "apk_text"
     } else if key.starts_with("ui:") {
         "ui_prefabs"
+    } else if key.starts_with("script:") {
+        "story"
     } else if MENU_TABLES.contains(&key.split(':').nth(1).unwrap_or("")) {
         "text_menu"
     } else {
@@ -224,11 +227,13 @@ pub fn file_for(key: &str) -> &'static str {
 
 /// With `--expand-with <export.tsv>`: every row of the export whose Japanese source equals a
 /// translated row's source gets the same English (translate unique strings once). Rows the
-/// input translates itself, and rows already translated in the repo, are left as they are.
+/// input translates itself, and rows already translated in the repo, are left as they are; with
+/// `replace` (`--replace`, a retranslation) the rows already translated get the new English too.
 fn expand(
     input: &str,
     export: &str,
     existing: &std::collections::HashSet<String>,
+    replace: bool,
 ) -> Result<String, Error> {
     let mut by_source: std::collections::HashMap<String, String> = Default::default();
     let mut keys: std::collections::HashSet<String> = Default::default();
@@ -249,7 +254,10 @@ fn expand(
     }
     for line in export.lines().skip(1) {
         let c: Vec<&str> = line.split('\t').collect();
-        if c.len() < 4 || keys.contains(c[0]) || !c[2].is_empty() || existing.contains(c[0]) {
+        if c.len() < 4
+            || keys.contains(c[0])
+            || (!replace && (!c[2].is_empty() || existing.contains(c[0])))
+        {
             continue;
         }
         if let Some(en) = by_source.get(c[3]) {
@@ -273,7 +281,8 @@ fn import(a: &[String]) -> Result<(), Error> {
                 }
             }
         }
-        input = expand(&input, &std::fs::read_to_string(e)?, &existing)?;
+        let replace = a.iter().any(|x| x == "--replace");
+        input = expand(&input, &std::fs::read_to_string(e)?, &existing, replace)?;
     }
     let repo = PathBuf::from(opt(a, "--repo").unwrap_or_else(|| ".".into()));
     let dir = repo.join("server/content/l10n/en");
@@ -359,10 +368,18 @@ mod tests {
     fn expand_fills_same_source() {
         let input = "key\thash\tenglish\tjapanese\nk1\taaaaaaaa\tSword\t剣\n";
         let export = "key\thash\tenglish\tjapanese\tprevious_english\nk1\taaaaaaaa\t\t剣\t\nk2\taaaaaaaa\t\t剣\t\nk3\tbbbbbbbb\t\t盾\t\n";
-        let out = expand(input, export, &Default::default()).unwrap();
+        let out = expand(input, export, &Default::default(), false).unwrap();
         assert!(out.contains("k2\taaaaaaaa\tSword\t剣"));
         assert!(!out.contains("k3"));
         assert_eq!(out.matches("k1\t").count(), 1);
+        // A row already translated keeps its English unless --replace.
+        let export = "key\thash\tenglish\tjapanese\nk2\taaaaaaaa\tBlade\t剣\n";
+        assert!(!expand(input, export, &Default::default(), false)
+            .unwrap()
+            .contains("k2"));
+        assert!(expand(input, export, &Default::default(), true)
+            .unwrap()
+            .contains("k2\taaaaaaaa\tSword\t剣"));
     }
 
     #[test]
@@ -372,6 +389,7 @@ mod tests {
         }
         assert_eq!(file_for("clientmes:X"), "clientmes");
         assert_eq!(file_for("ui:ui_mypage:0:1:m_Text"), "ui_prefabs");
+        assert_eq!(file_for("script:r_ev_tuto_s01_script_text_jp:7:3"), "story");
         assert_eq!(file_for("text:MyPage_JP:A"), "text_menu");
         assert_eq!(file_for("text:SkillName_JP:A"), "text_content");
         assert_eq!(file_for("apk:level2:158:m_Text"), "apk_text");
@@ -381,6 +399,8 @@ mod tests {
                 && wanted("scene_vs")
                 && wanted("text.jp")
                 && wanted("minigame_01")
+                && wanted("r_ev_tuto_s01_script_text_jp")
+                && !wanted("r_ev_tuto_s01")
                 && !wanted("ui_tips_00")
         );
     }

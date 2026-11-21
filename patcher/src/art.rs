@@ -21,7 +21,8 @@ pub const ART_ASSET: &str = "assets/jdr/art.bin";
 const CLASS_TEXTURE2D: i32 = 28;
 const CLASS_SPRITE: i32 = 213;
 
-/// `<bundle>/sprites/<name>.png` -> PNG bytes from a pack zip (a leading `.../replacements/` is
+/// `<bundle>/sprites/<name>.png` (and whole textures, `<bundle>/<name>.png` stored as
+/// `<bundle>/textures/<name>.png`) -> PNG bytes from a pack zip (a leading `.../replacements/` is
 /// stripped; anything else in the zip is ignored).
 pub fn read_pack_zip(path: &Path) -> Result<BTreeMap<String, Vec<u8>>, Error> {
     let mut z = zip::ZipArchive::new(std::fs::File::open(path)?).map_err(|e| e.to_string())?;
@@ -35,10 +36,16 @@ pub fn read_pack_zip(path: &Path) -> Result<BTreeMap<String, Vec<u8>>, Error> {
         {
             continue;
         }
-        let rel = match name.find("replacements/") {
+        let mut rel = match name.find("replacements/") {
             Some(p) => name[p + "replacements/".len()..].to_string(),
             None => continue,
         };
+        // A whole texture sits directly in its bundle folder (`<bundle>/<texture>.png`).
+        if let [bundle, file] = rel.split('/').collect::<Vec<_>>()[..] {
+            if file.ends_with(".png") {
+                rel = format!("{bundle}/textures/{file}");
+            }
+        }
         if !art::valid_path(&rel) {
             continue;
         }
@@ -122,6 +129,8 @@ pub struct Applied {
     pub stored: usize,
     pub in_apk: usize,
     pub apk_files: usize,
+    /// In-APK files left unchanged, with the reason (no matching type layout to write with).
+    pub skipped: Vec<String>,
 }
 
 /// Store the bundle images as `art.bin` and apply the in-APK ones.
@@ -138,6 +147,7 @@ pub fn apply(
         stored: stored_pack.len(),
         in_apk: 0,
         apk_files: 0,
+        skipped: Vec::new(),
     };
     let data_dir = data_dir.ok_or(
         "--art needs --data <your game files folder> (to check the pack against your bundles and read the title-screen layouts)",
@@ -196,8 +206,17 @@ pub fn apply(
         };
         let want = (hash_of(CLASS_TEXTURE2D), hash_of(CLASS_SPRITE));
         if !templates.contains_key(&want) {
-            let t = template_nodes(data_dir, key.as_bytes(), iv.as_bytes(), &want.0, &want.1)?;
-            templates.insert(want.clone(), t);
+            // Without the type layout of this file's Texture2D/Sprite (no downloaded bundle of the
+            // same build has it) the file cannot be rewritten safely: leave it as it is.
+            match template_nodes(data_dir, key.as_bytes(), iv.as_bytes(), &want.0, &want.1) {
+                Ok(t) => {
+                    templates.insert(want.clone(), t);
+                }
+                Err(e) => {
+                    out.skipped.push(format!("{b}: {e}"));
+                    continue;
+                }
+            }
         }
         let (tex_nodes, sprite_nodes) = &templates[&want];
         for t in f.types.iter_mut() {

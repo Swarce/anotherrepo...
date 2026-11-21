@@ -1,4 +1,4 @@
-//! Real-data test: rebuild every UI bundle and text.jp with a placeholder translation for every
+//! Real-data test: rebuild every UI bundle, text.jp and the story script bundles with a placeholder translation for every
 //! string, as the phone would, and check the result. Needs JDR_DATA and JDR_KEYS.
 //! JDR_L10N_OUT=<dir> keeps the rebuilt files (for the UnityPy check).
 
@@ -27,7 +27,7 @@ fn rebuilds_every_text_bundle() {
         let ui = (name.starts_with("ui_") && !name.starts_with("ui_tips"))
             || name.starts_with("scene_")
             || name.starts_with("minigame_");
-        if !(ui || name == "text.jp") {
+        if !(ui || name == "text.jp" || name.ends_with("_script_text_jp")) {
             continue;
         }
         let mut b = std::fs::read(e.path()).unwrap();

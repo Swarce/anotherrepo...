@@ -6,13 +6,17 @@ use crate::Ctx;
 use jdr_core::envelope::RequestEnvelope;
 use serde_json::{json, Map, Value};
 
+pub mod arena;
 pub mod bizarre;
 pub mod book;
 pub mod client;
 pub mod common;
+pub mod dungeon;
+pub mod event;
 pub mod gasha;
 pub mod item;
 pub mod menu;
+pub mod mind;
 pub mod misc;
 pub mod present;
 pub mod statue;
@@ -50,6 +54,7 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/info/get_menu_notify" => misc::get_menu_notify(ctx, env),
         "/mind/mind_list" => statue::mind_list(ctx, env),
         "/mind/mind_info" => statue::mind_info(ctx, env),
+        "/mind/strengthening" | "/mind/strengthening_item" => mind::strengthening(ctx, env),
         "/statue/statue_list" => statue::statue_list(ctx, env),
         "/statue/statue_info" => statue::statue_info(ctx, env),
         "/team/team_info" => misc::team_info(ctx, env),
@@ -57,6 +62,7 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/team/set_team" => team::set_team(ctx, env),
         "/team/equip_multiple_minds" => team::equip_multiple_minds(ctx, env),
         "/team/equip_multiple_assist" => team::equip_multiple_assist(ctx, env),
+        "/team/auto_set_and_equip" => team::auto_set_and_equip(ctx, env),
         "/team/equip_mind" => team::equip_mind(ctx, env),
         "/team/unlock_mind_seq" => team::unlock_mind_seq(ctx, env),
         "/mind/protect" => statue::mind_protect(ctx, env),
@@ -76,6 +82,12 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/bizarre/check_timed_chapter" => bizarre::check_timed_chapter(ctx, env),
         "/support/support_user_s" => bizarre::support_user_s(ctx, env),
         "/bizarre/get_bizarre_select" => bizarre::get_bizarre_select(ctx, env),
+        "/dungeon/dungeon_list" => dungeon::dungeon_list(ctx, env),
+        "/dungeon/stage_list" => dungeon::stage_list(ctx, env),
+        "/dungeon/tarot_select" => dungeon::tarot_select(ctx, env),
+        "/dungeon/tarot_flip" => dungeon::tarot_flip(ctx, env),
+        "/dungeon/earn_reward" => dungeon::earn_reward(ctx, env),
+        "/dungeon/reward_check" => dungeon::reward_check(ctx, env),
         "/clan/recommend" => menu::clan_recommend(ctx, env),
         "/present/present_list" => present::present_list(ctx, env),
         "/follow/follow_list" => menu::follow_list(ctx, env),
@@ -110,6 +122,25 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/gasha/reset_box_gasha" => gasha::reset_box_gasha(ctx, env),
         "/tree/skill_list" => tree::skill_list(ctx, env),
         "/tree/acquisition" => tree::acquisition(ctx, env),
+        "/pvp/get_pvp_config" => arena::get_pvp_config(ctx, env),
+        "/event/point_reward_list" => arena::point_reward_list(ctx, env),
+        "/item/heal_item_list" => arena::heal_item_list(ctx, env),
+        "/pvp/home_acqusition_check" => arena::home_acqusition_check(ctx, env),
+        "/pvp/home" => arena::home(ctx, env),
+        "/pvp/enemy_player_list" => arena::enemy_player_list(ctx, env),
+        "/pvp/pvp_start" => arena::pvp_start(ctx, env),
+        "/pvp/pvp_end" => arena::pvp_end(ctx, env),
+        "/pvp/recover_hp_pvp" => arena::recover_hp_pvp(ctx, env),
+        "/pvp/fever_mode" => arena::fever_mode(ctx, env),
+        "/pvp/team_info_pvp" => arena::team_info_pvp(ctx, env),
+        "/pvp/set_team_all_pvp" => arena::set_team_all_pvp(ctx, env),
+        "/pvp/set_team_pvp" => arena::set_team_pvp(ctx, env),
+        "/pvp/statue_select_pvp" => arena::statue_select_pvp(ctx, env),
+        "/pvp/leader_change_pvp" => arena::leader_change_pvp(ctx, env),
+        "/pvp/equip_mind_pvp" => arena::equip_mind_pvp(ctx, env),
+        "/pvp/equip_multiple_minds_pvp" => arena::equip_multiple_minds_pvp(ctx, env),
+        "/pvp/equip_multiple_assist_pvp" => arena::equip_multiple_assist_pvp(ctx, env),
+        "/pvp/auto_set_and_equip" => arena::auto_set_and_equip_pvp(ctx, env),
         _ => return (Ok(Map::new()), false),
     };
     (r, true)
