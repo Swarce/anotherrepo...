@@ -2,6 +2,53 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 24 — Arena fix, ability effect lines, assist abilities, the loading atlas (branch `wip/b24`)
+
+### What the Build 23 device test and owner showed
+- Everything worked except the Arena, which loaded forever (device log: a NullReferenceException
+  in `PvPHomeData.SetRewardInformation`).
+- Build the rest of what was pending.
+
+### What changed
+- **Fixed: the Arena home hang.** The reward panel builds each reward's thumbnail from
+  `ItemInfo.icon`, which our reward items did not send. Every reward and goods item set
+  (missions, Labyrinth, Arena, events, shops) now sends a complete ItemInfo.
+- **Ability effect lines** (docs/research/16 §8): Mind detail, leader ability, formation, pause
+  and support screens show effect lines such as "ATK+5.0％". Our `affect_text_rule_table` fills
+  the table the game ships empty, and every ability affect names an existing game label.
+- **Assists** (docs/research/19 §5): assist abilities (16 shared rows; 35 statues from ShoutWiki,
+  the rest a default; ours) and the assist character's skill (button 6, the statue's own normal
+  skill; ours). The 3.12 tactical battle never applies assist abilities, so the server copies a
+  seat's active ones onto the seat statue's own abilities (ours).
+- **The redrawn loading-screen atlas** is applied in the APK: the patcher asked for a Sprite type
+  the file does not have. It now asks only for the types each file has and proves every object
+  round-trips before editing.
+- **Arena, finished** (docs/research/23):
+  - `/pvp/home` sent `pollingTimes 0`: the client re-polls every frame with the buttons locked.
+    It now sends 30 s (ours); likely a second cause of the hang.
+  - Rankings: the Arena board ranks the player among 999 AI rivals per season, and event 50045
+    has its own board (the three `event/get_event_ranking_*` routes).
+  - Defence: after 15 minutes away, up to 3 simulated attacks on the Arena teams, shown as the
+    client's defence messages.
+  - Crazy Diamond: a gauge filled by durability lost; when full, the Full Revive button revives
+    every resting team.
+  - A battle that was started and never ended counts as a loss, with the client's
+    "connection lost" notice. Win streaks raise ATK/DEF (+2% per win, up to +10%).
+  - Every Arena and ranking reply is checked in tests against the client's own class fields: no
+    string, list or object it reads is missing or null.
+  - The values are ours.
+- Build number 24, server marker `JDR_EMBEDDED_SERVER_b024`.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] The Arena home loads; opponents, a battle and its result
+- [ ] Mind detail shows its effect line ("ATK+5.0％" etc.); leader abilities show theirs
+- [ ] A team with a leader assist: the Assist button in tactical battle and its skill; battles
+      without assists unchanged
+- [ ] The loading screen shows the redrawn English atlas
+- [ ] Arena rankings (top 100 and around me); event 50045 ranking button
+- [ ] After 15+ minutes away: defence messages on the Arena home; Full Revive when the gauge is
+      full
+
 ## Build 23 — full retranslation with the story, Labyrinth, Arena and the remaining systems (branch `wip/b23`)
 
 ### What the owner asked and sent

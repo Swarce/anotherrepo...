@@ -58,7 +58,9 @@ pub fn bizarre_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .collect();
     // Event Home backs out with an "expired" dialog unless eventCampaignId is set. The exchange
     // is on (collect type 2 = items, Build 22): its button needs eventShopFlg 1, and Shop3 copies
-    // eventItemList (never null). Ranking, points, BGM and the event summon stay off.
+    // eventItemList (never null). A point event has a ranking (eventRankingFlg 1: the home asks
+    // for /event/get_event_ranking_list and shows its ranking button, services/ranking.rs). BGM
+    // and the event summon stay off.
     let event_info = quests::events()
         .iter()
         .find(|e| e.category == category)
@@ -69,7 +71,7 @@ pub fn bizarre_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
             let point = crate::services::event::is_point_event(&e.event_id);
             json!({ "eventCampaignId": e.event_id, "eventShopFlg": if point { 0 } else { 1 },
                 "eventCollectType": if point { 1 } else { 2 },
-                "eventRankingFlg": 0, "eventMissiongFlg": 0, "eventBg": "",
+                "eventRankingFlg": i64::from(point), "eventMissiongFlg": 0, "eventBg": "",
                 "htmlLink": format!("/information/event_{}.html", e.event_id), "eventBgm": "",
                 "eventTutorialImage": "",
                 "eventItemList": crate::services::item::event_coin_list(&p.collection), "eventPointImage": "",
