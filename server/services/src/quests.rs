@@ -249,6 +249,10 @@ fn enemy_info(statue_id: &str, level: i64) -> Value {
         boost: 0,
     });
     v["useAttr"] = json!(3); // EnemyOnly
+                             // Enemy teams have no assists, so no assist skill or abilities either.
+    v["dtAssistSkillInfo"] = json!({});
+    v["assistAbilityList"] = json!([]);
+    v["dtAssistAbilityList"] = json!([]);
     v
 }
 

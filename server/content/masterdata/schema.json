@@ -528,7 +528,12 @@
    ]
   },
   "Jjs.AffectTextRuleTable/RuleType": {
-   "kind": "enum"
+   "kind": "enum",
+   "values": {
+    "Invalid": 0,
+    "Combine": 1,
+    "Solo": 2
+   }
   },
   "Jjs.AreaPositionPatternTable": {
    "kind": "class",

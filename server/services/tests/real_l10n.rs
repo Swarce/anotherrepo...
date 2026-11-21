@@ -79,3 +79,63 @@ fn rebuilds_every_text_bundle() {
         t1.elapsed().as_millis()
     );
 }
+
+/// Every effect-line label of our affect_table (docs/research/16-minds.md §8) is an affectText_JP
+/// row of the player's text.jp, in no other table (the client keeps one row per label), shows the
+/// amount, and reads in English: its text has no Japanese, or we translate it for exactly this
+/// source.
+#[test]
+fn effect_line_labels_are_in_text_jp() {
+    let (Ok(dir), Ok(keys)) = (std::env::var("JDR_DATA"), std::env::var("JDR_KEYS")) else {
+        eprintln!("skipped: set JDR_DATA and JDR_KEYS");
+        return;
+    };
+    let k = jdr_core::settings::Settings::load_keys(std::path::Path::new(&keys)).unwrap();
+    let (key, iv) = (k.asset_key.as_bytes(), k.asset_iv.as_bytes());
+    let path =
+        std::path::Path::new(&dir).join(format!("{}.bytes", names::obfuscate("text.jp", key)));
+    let mut b = std::fs::read(&path).unwrap();
+    if Jjec::is_jjec(&b) {
+        b = Jjec::decrypt(&b, key, iv).unwrap();
+    }
+    let labels = l10n::text_labels(&b).unwrap();
+    let tr = l10n::Translations::embedded().unwrap();
+    let affects: serde_json::Value = serde_json::from_str(
+        jdr_services::masterdata::TABLES
+            .iter()
+            .find(|(n, _)| *n == "affect_table")
+            .unwrap()
+            .1,
+    )
+    .unwrap();
+    let mut n = 0;
+    for a in affects["data"]["paramList"].as_array().unwrap() {
+        let id = a["affectTextId"].as_str().unwrap();
+        if id.is_empty() {
+            continue;
+        }
+        let key = format!("text:affectText_JP:{id}");
+        let src = labels.get(&key).unwrap_or_else(|| panic!("{key} is a row"));
+        let elsewhere: Vec<&String> = labels
+            .keys()
+            .filter(|k| k.ends_with(&format!(":{id}")) && **k != key)
+            .collect();
+        assert!(elsewhere.is_empty(), "{id} also in {elsewhere:?}");
+        if id.starts_with("AFFECT_") {
+            let p = l10n::placeholders(src);
+            assert!(
+                p.iter()
+                    .any(|x| x == "{decimal_Param0}" || x == "{mag_Param0}"),
+                "{id}: shows the amount ({p:?})"
+            );
+        }
+        if l10n::has_japanese(src) {
+            assert!(
+                matches!(tr.lookup(&key, src), l10n::Lookup::Found(_)),
+                "{id}: English for this source"
+            );
+        }
+        n += 1;
+    }
+    assert!(n >= 20, "{n}");
+}

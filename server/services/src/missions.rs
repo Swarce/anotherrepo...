@@ -165,6 +165,5 @@ impl MissionState {
 /// The reward as an ItemSetInfo (the row shows `itemList[0]`).
 pub fn reward_set(r: &Reward) -> Value {
     json!({ "itemSetIcon": "", "itemSetNum": 1, "statueList": [], "mindList": [], "clanObjectList": [],
-            "itemList": [{ "itemId": r.item_id, "name": format!("ITEM_{:04}_NAME", r.item_id),
-                           "count": r.count, "type": 0 }] })
+            "itemList": [crate::items::reward_item(r.item_id, r.count)] })
 }
