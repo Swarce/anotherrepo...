@@ -67,52 +67,130 @@ def delta(nid, a, b):
             "baseOffset": d("baseOffset"), "lookatOffset": d("lookatOffset")}
 
 
-# Shots: (start node, end node), both absolute here; the end node is sent as a delta.
-# The unit faces local +Z, its target 1-3 m ahead. rotate.y 90 puts the camera on the unit's right:
-# for an ally (facing +X) that is world -Z, the side the turn camera watches from; the client mirrors
-# ids 100400-100999 and 110000-149999 for enemies (GameConst DTBattleCameraIdMirroring*, H), so
-# their shots land on the same side.
-# The original's shots, read in every frame of the owner's footage (eight reviews, private, under
-# local/wiki-raw/research-b33/camera-pack/review/), depend on the kind of action:
-#   - normal attacks and blue skills stay close to the default view: pushed in by 15-25 % or a
-#     side-on two-shot, sometimes one low cut behind the attacker (ZCUC-PwLXxA 460-463, 898-904;
-#     x0kbxom31cs: no cut at all for many of them);
-#   - red (Stand) SP skills and time stops cut between angles on the battlefield: over the shoulder
-#     behind the attacker, a low front three-quarter, the reverse from beyond the target looking
-#     back, a 90-degree side shot, a high wide view 45-60 degrees down (ZCUC 930-952, 1009-1019,
-#     1072-1080; x0kb 166-233, 515-536; X9xSMXBpsQw 3:00-3:13).
-# All of them watch from the turn camera's side of the line between the teams.
-# Measured on the original frames (X9xSMXBpsQw 113-133, ZCUC-PwLXxA 460-920, X9xS 628) and
-# checked by rendering posed models (attacker and target 1.8 m apart): the main shot stands on the
-# turn camera's side 45-60 degrees off the attacker's facing, low (about 1.1 m) and level, about
-# 5 m from the attacker, so the attacker is at the left third head to feet and the target nearer
-# the camera at the right; the second is over the attacker's shoulder about 3.8 m back. The
-# Build 33 shots (perpendicular or behind, 2.6-4.6 m, 1.6-2.0 m up, 30 degrees) were too close,
-# too high and too square to the action (the owner's Build 34 recording, 0:37-0:42).
+def P(base, look, rot, length, fov=30.0, boff=(0, 0, 0), loff=(0, 0, 0)):
+    """An absolute camera pose (node fields without the id)."""
+    n = node("", base, look, rot, length, fov, boff, loff)
+    del n["id"]
+    return n
+
+
+# Shots measured on every tactical action of the owner's footage (6 videos, 223 actions, read frame
+# by frame with background alignment; private, local/wiki-raw/research-b33/camera-pack/, workflow
+# notes in docs/research/31 §3). Each shot is a list of steps (absolute pose, sec, inter):
+#   - `inter` is the per-frame share of the way to the pose (SetCameraInfo 0xD6FE60): 0.09 is the
+#     original's glide (about 93 % of the way in 0.5 s, the measured push-in), 1.0 a hard cut;
+#   - during step i the pose blends to step i+1's over step i's sec, so (A, h), (A, m), (B, ...)
+#     holds A for h and then moves to B over m;
+#   - later poses are sent as deltas (CreateNodeParam adds every later node to the first).
+# rotate.x positive is below the bone; rotate.y 0 in front of the unit, 90 its right side (the
+# turn camera's side for allies; enemies are mirrored by the client for 1104xx-1499xx ids);
+# offsets in the unit's frame, z towards the target.
+# The screen centre is always bone(look) + R * lookatOffset (the rotation has no lag), so a
+# single-unit shot frames the unit and its target only when the look point sits about half way
+# between them: z ~ half the strike distance (melee 1.05-1.5 m, Stand users 2-2.5 m). Attacks
+# themselves no longer play these (forceNormalCamera 1: the client's Overview two-shot, research
+# 31 §9); the blue skills that request 111000 / 131000 / 131101 still do.
+NA_A = P(SPINE2, SPINE2, (3, 82, 0), 5.0, 32, (0, 0, 1.1), (0, -0.1, 1.1))
+NA_B = P(SPINE2, SPINE2, (3, 82, 0), 5.3, 32, (0, 0, 1.1), (0, -0.1, 1.1))
+DEFAULT_REF = P(SPINE2, SPINE2, (-5, 75, 0), 6.5, 30, (0, 0, 1.8), (0, -0.2, 1.8))
+RUSH = [P(SPINE2, SPINE2, (15, 90, 0), 1.5, 38, (0, 0, 0), (0, 0, 0.8)),
+        P(SPINE2, SPINE2, (20, 60, 0), 1.4, 38, (0, 0, 0), (0, 0, 0.8)),
+        P(SPINE2, SPINE2, (10, 120, 10), 1.6, 38, (0, 0, 0), (0, 0, 0.8)),
+        P(SPINE2, SPINE2, (25, 90, 0), 1.2, 38, (0, 0, 0), (0, 0, 0.8)),
+        P(SPINE2, SPINE2, (5, 75, 0), 3.0, 38, (0, 0, 0), (0, 0, 0.8))]
+CFL = P(NECK, NECK, (20, 30, 0), 1.3, 35, (0, 0, 0), (0, -0.1, 0))
+LFW = P(SPINE2, SPINE2, (18, 35, 0), 2.0, 45, (0, 0, 0), (0, 0.2, 0))
+BAL = P(SPINE2, SPINE2, (5, 160, 0), 2.5, 32, (0, 0, 0), (0, 0, 3.0))
+BAL2 = P(SPINE2, SPINE2, (5, 160, 0), 2.33, 32, (0, 0, 0), (0, 0, 3.0))
+REV = P(SPINE2, SPINE2, (0, 15, 0), 6.0, 30, (0, 0, 0), (0, -0.1, 0.5))
+KNEE = P(SPINE2, SPINE2, (6, 88, 0), 2.6, 30, (0, 0, 1.0), (0, -0.1, 1.0))
 SHOTS = {
-    # attacker at the left third, the target nearer at the right (the most common original shot)
-    "two": (node("jdr_two_a", SPINE2, SPINE2, (2, 45, 0), 5.0, 36, (0, 0, 0), (0, -0.1, 1.1)),
-            node("jdr_two_b", SPINE2, SPINE2, (2, 44, 0), 4.6, 36, (0, 0, 0), (0, -0.1, 1.1))),
-    # the same, wider and squarer (both fighters full body)
-    "two_wide": (node("jdr_twow_a", SPINE2, SPINE2, (0, 60, 0), 6.2, 36, (0, 0, 0), (0, -0.1, 1.0)),
-                 node("jdr_twow_b", SPINE2, SPINE2, (0, 59, 0), 5.7, 36, (0, 0, 0), (0, -0.1, 1.0))),
-    # over the attacker's right shoulder, its back at mid-left, the target beyond
-    "ots": (node("jdr_ots_a", SPINE2, SPINE2, (-2, 150, 0), 3.8, 36, (0.3, 0, 0), (0, -0.2, 2.0)),
-            node("jdr_ots_b", SPINE2, SPINE2, (-2, 152, 0), 3.5, 36, (0.3, 0, 0), (0, -0.2, 2.0))),
-    # SP: low front three-quarter close-up of the attacker
-    "front_low": (node("jdr_flow_a", SPINE2, NECK, (12, 40, 0), 2.4, 36),
-                  node("jdr_flow_b", SPINE2, NECK, (12, 44, 0), 2.15, 36)),
-    # SP: the reverse, from beyond the target looking back at the attacker
-    "reverse": (node("jdr_rev_a", SPINE2, SPINE2, (3, 20, 0), 4.6, 36, (0, 0, 0), (0, 0, 0.6)),
-                node("jdr_rev_b", SPINE2, SPINE2, (3, 22, 0), 4.2, 36, (0, 0, 0), (0, 0, 0.6))),
-    # SP and big area moves: high and wide, about 50 degrees down
-    "wide": (node("jdr_wide_a", WAIST, WAIST, (-50, 115, 0), 7.2, 36, (0, 0, 0), (0, -0.3, 1.5)),
-             node("jdr_wide_b", WAIST, WAIST, (-50, 113, 0), 6.6, 36, (0, 0, 0), (0, -0.3, 1.5))),
+    # 111000: glide in on the pair, hold, then a slight pull-out (no truck: the look point stays
+    # half way to the target)
+    "NA_PUSH": [(NA_A, 0.6, 0.09), (NA_A, 1.5, 0.09), (NA_B, 2.0, 0.09)],
+    # a later request inside the same attack: stay (no visible change)
+    "NA_HOLD": [(NA_B, 2.0, 0.05)],
+    # 131000 (Stand pair): the same, a little lower and closer; centred whether the shot binds to
+    # the Stand (about 1 m from the target) or its user (2-2.5 m)
+    "ST3_PUSH": [(P(SPINE2, SPINE2, (5, 82, 0), 4.6, 32, (0, 0, 1.0), (0, -0.1, 1.0)), 0.5, 0.09),
+                 (P(SPINE2, SPINE2, (5, 82, 0), 4.6, 32, (0, 0, 1.0), (0, -0.1, 1.0)), 1.2, 0.09),
+                 (P(SPINE2, SPINE2, (5, 82, 0), 4.9, 32, (0, 0, 1.1), (0, -0.1, 1.1)), 1.5, 0.09)],
+    # 131101: a lower, waist-to-knee-up follow
+    "FOLLOW": [(P(SPINE2, SPINE2, (8, 85, 0), 4.4, 32, (0, 0, 0.9), (0, -0.1, 0.9)), 0.3, 0.09),
+               (P(SPINE2, SPINE2, (8, 85, 0), 4.4, 32, (0, 0, 0.9), (0, -0.1, 0.9)), 1.2, 0.09),
+               (P(SPINE2, SPINE2, (8, 85, 0), 4.7, 32, (0, 0, 0.95), (0, -0.1, 0.95)), 1.0, 0.09)],
+    # 101008 wrap-up: glide out towards the turn view
+    "PULL_OUT": [(P(SPINE2, SPINE2, (-2, 78, 0), 5.6, 30, (0, 0, 1.8), (0, -0.2, 1.8)), 0.5, 0.1)],
+    # a request that should change nothing visible: the turn view, glided very slowly
+    "DEFAULT_HOLD": [(DEFAULT_REF, 1.0, 0.05)],
+    # skills and SPs (cuts). The original holds an angle 0.5-1 s inside a skill (measured mean 3.5
+    # cuts per blue skill, 5.7 per SP with its cinematic), so a cut shot holds its first angle and
+    # then cuts once more (a 0.05 s blend reads as a cut).
+    "CLOSE_FRONT_LOW": [(CFL, 0.6, 1.0), (CFL, 0.05, 1.0), (LFW, 0.8, 1.0)],
+    "LOW_FRONT_WIDE": [(LFW, 0.6, 1.0), (LFW, 0.05, 1.0), (REV, 1.0, 1.0)],
+    "BEHIND_ACTOR_LOW": [(BAL, 0.5, 1.0), (BAL2, 0.5, 1.0), (BAL2, 0.05, 1.0), (REV, 1.0, 1.0)],
+    "REVERSE": [(REV, 0.8, 1.0), (REV, 0.05, 1.0), (KNEE, 1.0, 1.0)],
+    "SIDE_CLOSE": [(P(SPINE2, SPINE2, (6, 88, 0), 2.6, 30, (0, 0, 1.0), (0, -0.1, 1.0)), 3.2, 1.0)],
+    "NEAR_DEFAULT_WIDE": [(P(SPINE2, SPINE2, (-6, 88, 0), 7.0, 30, (0, 0, 2.2), (0, -0.2, 2.2)), 1.0, 1.0),
+                          (P(SPINE2, SPINE2, (-6, 88, 0), 7.35, 30, (0, 0, 2.2), (0, -0.2, 2.2)), 1.0, 1.0)],
+    "HIGH_3Q": [(P(SPINE2, SPINE2, (-40, 30, 0), 5.5, 35, (0, 0, 0), (0, 0, 2.5)), 1.5, 1.0)],
+    "TOPDOWN": [(P(WAIST, WAIST, (-65, 90, 0), 8.0, 35, (0, 0, 2.5), (0, 0, 2.5)), 1.0, 1.0),
+                (P(WAIST, WAIST, (-60, 90, 0), 10.0, 35, (0, 0, 2.5), (0, 0, 2.5)), 1.5, 1.0)],
+    "HIGH_BEHIND_PARTY": [(P(SPINE2, SPINE2, (-45, 150, 0), 8.0, 35, (0, 0, 0), (0, 0, 3.0)), 2.5, 1.0),
+                          (P(SPINE2, SPINE2, (-45, 150, 0), 10.0, 35, (0, 0, 0), (0, 0, 3.0)), 1.0, 1.0)],
+    "HIGH_BEHIND_DRIFT": [(P(SPINE2, SPINE2, (-40, 160, 0), 6.0, 35, (0, 0, 0), (0, 0, 3.0)), 1.5, 1.0),
+                          (P(SPINE2, SPINE2, (-40, 160, 0), 6.8, 35, (0, 0, 0), (0, 0, 3.0)), 1.0, 1.0)],
+    "STAND_PUSH": [(P(SPINE2, SPINE2, (0, 85, 0), 4.0, 30, (0, 0, 0.8), (0, -0.1, 0.8)), 1.0, 0.09)],
+    "STAND_PUSH_CLOSE": [(P(SPINE2, SPINE2, (1, 90, 0), 3.5, 30, (0, 0, 0.8), (0, -0.1, 0.8)), 1.0, 0.09)],
+    "SIDE_GLIDE": [(P(SPINE2, SPINE2, (4, 88, 0), 3.6, 30, (0, 0, 1.5), (0, -0.1, 1.5)), 1.0, 0.09)],
+    "TWO_SHOT_FRONT_LOW": [(P(SPINE2, SPINE2, (17, 30, 0), 2.2, 34, (0, 0, 0), (0, 0, 0.3)), 0.7, 1.0)],
+    "STAND_LOOM": [(P(NECK, NECK, (20, 35, 0), 2.3, 35, (0, 0, 0), (0, -0.2, 0)), 1.0, 1.0)],
+    "CHEST_UP": [(P(NECK, NECK, (10, 20, 0), 1.8, 35, (0, 0, 0), (0, -0.1, 0)), 0.6, 1.0)],
+    "LOW_FRONT_STAND": [(P(SPINE2, SPINE2, (15, 40, 0), 1.4, 45, (0, 0, 0), (0, 0.2, 0)), 0.5, 1.0)],
+    "GANG_PARTYSIDE": [(P(SPINE2, SPINE2, (6, 45, 0), 4.3, 30, (0, 0, 0), (0, -0.1, 1.6)), 1.2, 1.0)],
+    # rush: a cut every 0.5 s through five close angles (hold, then a 0.05 s blend that reads as a cut)
+    "RUSH_CUTS": [x for pz in RUSH for x in ((pz, 0.45, 1.0), (pz, 0.05, 1.0))],
     # straight behind the attacker: for the few action ids the client does not mirror (102xxx),
     # which must look right for either team
-    "behind": (node("jdr_behind_a", SPINE2, SPINE2, (-6, 180, 0), 4.0, 36, (0, 0, 0), (0, -0.2, 1.6)),
-               node("jdr_behind_b", SPINE2, SPINE2, (-6, 180, 0), 3.6, 36, (0, 0, 0), (0, -0.2, 1.6))),
+    "behind": [(P(SPINE2, SPINE2, (-6, 180, 0), 4.0, 36, (0, 0, 0), (0, -0.2, 1.6)), 1.2, 1.0),
+               (P(SPINE2, SPINE2, (-6, 180, 0), 3.6, 36, (0, 0, 0), (0, -0.2, 1.6)), 0.5, 1.0)],
 }
+
+# ids whose shot was observed in the footage (the measurement's id mapping)
+OVERRIDE = {
+    111000: "NA_PUSH", 131000: "ST3_PUSH", 131101: "FOLLOW",
+    130000: "CLOSE_FRONT_LOW", 130001: "HIGH_3Q", 130002: "NEAR_DEFAULT_WIDE",
+    130003: "SIDE_GLIDE", 130004: "STAND_PUSH", 130005: "REVERSE", 130007: "LOW_FRONT_STAND",
+    130009: "STAND_PUSH_CLOSE", 130010: "TOPDOWN", 130603: "BEHIND_ACTOR_LOW", 130606: "HIGH_BEHIND_DRIFT",
+    130616: "HIGH_BEHIND_PARTY", 130624: "TWO_SHOT_FRONT_LOW", 130639: "CHEST_UP", 140002: "BEHIND_ACTOR_LOW",
+    120900: "NEAR_DEFAULT_WIDE", 143800: "NEAR_DEFAULT_WIDE", 113800: "NEAR_DEFAULT_WIDE",
+}
+for _rush in (130801, 130811, 130900, 130901):
+    OVERRIDE[_rush] = "RUSH_CUTS"
+
+# Unobserved ids: weighted by the measured frequencies (blue skills: 10 % no change, 15 % glide,
+# 75 % cut at the wind-up; 5/15/80 at the hit; rush loops; a cut near the turn view at the
+# wrap-up; red SPs: a glide or close cuts at the wind-up, 2-4 field cuts, a cut near the turn view).
+KIND_SHOTS = {
+    "attack": {"in": ["NA_PUSH"], "hit": ["NA_HOLD"], "loop": ["NA_HOLD"], "out": ["PULL_OUT"],
+               "any": ["NA_PUSH"]},
+    "skill": {"in": ["CLOSE_FRONT_LOW"] * 4 + ["BEHIND_ACTOR_LOW"] * 3 + ["SIDE_GLIDE"] * 2 + ["DEFAULT_HOLD"],
+              "hit": ["REVERSE"] * 7 + ["LOW_FRONT_WIDE"] * 5 + ["SIDE_CLOSE"] * 4 + ["SIDE_GLIDE"] * 3 + ["DEFAULT_HOLD"],
+              "loop": ["RUSH_CUTS"] * 2 + ["REVERSE", "SIDE_CLOSE"],
+              "out": ["NEAR_DEFAULT_WIDE"],
+              "any": ["CLOSE_FRONT_LOW", "REVERSE", "LOW_FRONT_WIDE", "SIDE_GLIDE"]},
+    "sp": {"in": ["STAND_PUSH"] * 2 + ["CLOSE_FRONT_LOW"] * 2 + ["LOW_FRONT_WIDE"],
+           "hit": ["BEHIND_ACTOR_LOW", "HIGH_3Q", "TOPDOWN", "HIGH_BEHIND_PARTY", "REVERSE"],
+           "loop": ["HIGH_BEHIND_DRIFT", "REVERSE", "BEHIND_ACTOR_LOW"],
+           "out": ["NEAR_DEFAULT_WIDE"],
+           "any": ["BEHIND_ACTOR_LOW", "REVERSE", "CLOSE_FRONT_LOW", "HIGH_3Q"]},
+}
+
+
+def pick(choices, cid):
+    return choices[(cid * 2654435761 % 2 ** 32) % len(choices)]
+
+
 EXTRA_NODES = [
     # the client's own test node and the old side view (kept for ids nothing else claims)
     node("ski_cam_00", 0, 0, (-20, 0, 0), 13.0, 25.0, (0, 0, 0), (0, 0.6, 0)),
@@ -129,18 +207,6 @@ EXTRA_NODES = [
     # stage finish (not mirrored, the downed enemy): on the ground beside it, watched side
     node("jdr_finish", WAIST, WAIST, (-6, -62, 0), 2.3, 36),
 ]
-
-# shots by the kind of action requesting the id (attack, skill, sp) and the role of its states
-KIND_SHOTS = {
-    "attack": {"in": ["two", "two_wide"], "hit": ["two", "ots"], "loop": ["two"],
-               "out": ["two_wide"], "any": ["two", "ots"]},
-    "skill": {"in": ["two", "ots"], "hit": ["two", "ots", "two_wide"], "loop": ["two", "ots"],
-              "out": ["two_wide", "two"], "any": ["two", "ots", "two_wide"]},
-    "sp": {"in": ["ots", "front_low", "two"], "hit": ["reverse", "two", "wide", "front_low"],
-           "loop": ["two", "reverse", "ots"], "out": ["wide", "front_low"],
-           "any": ["ots", "reverse", "front_low", "two"]},
-}
-
 
 def mirrored(i):
     return 100400 <= i <= 100999 or 110000 <= i <= 149999
@@ -212,10 +278,8 @@ def step(nid, sec, inter=1.0):
     return {"cameraNode": nid, "sec": sec, "inter": inter, "targetIDBase": 0, "targetIDLookat": 0}
 
 
-def steps(shot, push=1.2):
-    # a slow push-in from the start pose to the end pose over `push` seconds, then held
-    s0, _ = SHOTS[shot]
-    return [step(s0["id"], push), step(s0["id"] + "_to_b", 0.5)]
+def steps(shot):
+    return [step("jdr_%s_%d" % (shot, k), sec, inter) for k, (_, sec, inter) in enumerate(SHOTS[shot])]
 
 
 def cam_set(cid, data, begin=0.0, end=0.3):
@@ -227,6 +291,9 @@ def cam_set(cid, data, begin=0.0, end=0.3):
 sets, used = [], collections.Counter()
 for cid in sorted(set(old_ids) | set(roles)):
     if cid in RESULT:
+        # every id a win appeal requests (101007/101008 too: Polnareff 3040 wins on 101008, and
+        # Build 38 gave it an action shot) gets the still win shot; the skills that share those ids
+        # use it as well
         data = [step("jdr_result", 5.0)]
         used["result"] += 1
         sets.append(cam_set(cid, data))
@@ -248,7 +315,9 @@ for cid in sorted(set(old_ids) | set(roles)):
         sets.append(cam_set(cid, [step("jdr_calib", 2.5)]))
     elif cid in roles:
         rc = roles[cid]
-        if not mirrored(cid):
+        if cid in OVERRIDE:
+            shot = OVERRIDE[cid]
+        elif not mirrored(cid):
             shot = "behind"  # the same for either team
         else:
             top = rc.most_common(1)[0][0]
@@ -256,10 +325,9 @@ for cid in sorted(set(old_ids) | set(roles)):
             # an id any SP requests gets the SP grammar when SPs are at least a third of its users
             k = "sp" if kc["sp"] * 3 >= sum(kc.values()) > 0 else (kc.most_common(1)[0][0] if kc else "skill")
             if 140000 <= cid < 150000 and k == "sp" and top in ("hit", "out"):
-                shot = "wide"  # the 14xxxx family: big moves (e.g. the road roller)
+                shot = pick(["TOPDOWN", "HIGH_3Q", "HIGH_BEHIND_PARTY"], cid)  # big area moves
             else:
-                choices = KIND_SHOTS[k][top]
-                shot = choices[cid % len(choices)]
+                shot = pick(KIND_SHOTS[k][top], cid)
         used[shot] += 1
         sets.append(cam_set(cid, steps(shot)))
     else:
@@ -271,7 +339,15 @@ for cid in sorted(set(old_ids) | set(roles)):
         used["side"] += 1
 
 by_id = {n["id"]: n for n in EXTRA_NODES}
-nodes = [n for a0, b0 in SHOTS.values() for n in (a0, delta(a0["id"] + "_to_b", a0, b0))]
+nodes = []
+for name, st in SHOTS.items():
+    if not used[name]:
+        continue
+    prev = None
+    for k, (pose, _, _) in enumerate(st):
+        cur = dict(pose, id="jdr_%s_%d" % (name, k))
+        nodes.append(cur if prev is None else delta(cur["id"], prev, cur))
+        prev = cur
 nodes += [n for n in EXTRA_NODES if n["id"] not in ("jdr_boss_b",)]
 if a.calibrate:
     nodes.append(node("jdr_calib", SPINE2, SPINE2, (-50, 40, 0), 4.5, 45))
@@ -279,16 +355,17 @@ nodes += [delta("jdr_boss_a_to_b", by_id["jdr_boss_a"], by_id["jdr_boss_b"])]
 old_nodes = json.load(open(node_path))
 old_nodes["about"] = ("Camera nodes (tools/content/build_camera_sets.py, docs/research/31-battle-camera.md): the shots of the "
                       "original battle footage, framed on the acting unit's bones (CharacterBoneList.Bone WAIST 1, SPINE2 4, "
-                      "NECK 5, HEAD 6), all on the side the turn camera watches: side-on two-shot, three-quarters behind, closer "
-                      "side, slightly low, high wide, straight behind (each a start node and a <id>_to_b node: the client adds every "
-                      "later step's node to the first, so later nodes are deltas); the win, boss-intro "
+                      "NECK 5, HEAD 6), measured on every tactical action of the original footage: glides for normal attacks, cuts "
+                      "for skills and SPs (jdr_<shot>_0 is a pose, jdr_<shot>_<k> the delta to its next step: the client adds every "
+                      "later step's node to the first); the win, boss-intro "
                       "and finish shots; ski_cam_00 (the client's test node) and jdr_side (the old world-fixed side view). "
                       "Values are ours.")
 old_nodes["data"]["listData"] = nodes
 old_sets["about"] = ("Script camera sets for every camera id the client hard-codes and every id the statues' tactical action "
                      "sets request (tools/content/build_camera_sets.py, docs/research/31-battle-camera.md): each requested id "
-                     "plays one of the footage's shots on the acting unit, chosen by the role of the states that request it, "
-                     "with a slow push-in; win shots (301-314, 101001-101028) a low chest-up push-in; the boss intro (201) a "
+                     "plays the shot measured for it in the original footage, or one chosen by the kind of action and the role of "
+                     "the states that request it with the measured frequencies; normal attacks glide (inter 0.09), skills and SPs "
+                     "cut (inter 1.0); win shots (301-314, 101001-101028) a still facing shot; the boss intro (201) a "
                      "crane up to a tilted full-body shot; stage finishes (100300-100311, 350/351) a ground-level shot. "
                      "flagMaintain stays false so each shot ends on its own.")
 old_sets["data"]["listData"] = sets
