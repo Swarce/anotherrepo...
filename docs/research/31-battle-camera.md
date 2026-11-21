@@ -73,6 +73,9 @@ H = read in the 3.12.0 disassembly or the player's files, F = seen in frames of 
   that side.
 - The first Build 33 shots (over the shoulder, a front close-up, a reverse from beyond the target, a
   near-ground angle) put 74 poses on the far side of the arena even after the delta fix.
+- The win shots are turned 180° about the winner (Build 35): on the result pivot the winner faces
+  away from the battle frame, and the owner's Build 34 recording showed the shot from behind. The
+  values below are as framed in the battle frame.
 - The win shots (third package): 1.15 m from the chest, 26° below, 27° to the side, the look
   point offset so the winner sits right of centre; opening at 1.0 m, 30° and 34° and settling over
   1 s, then held (rendered with the statues' own win-appeal clip, `pose_models.py --clip
