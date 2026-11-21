@@ -8,8 +8,14 @@
    "note": "which side beats which: the client tips TipsText_003/004/005/072/073"
   },
   {
+   "source": "atwiki ジョジョDR２ @ ウィキ (Wayback Machine)",
+   "page": "https://www65.atwiki.jp/jojodrr/pages/24.html",
+   "accessed": "2026-11-20",
+   "note": "an advantaged hit deals x1.5 and a disadvantaged one x0.7 (150/70); Unity and Solitary x1.5 against each other"
+  },
+  {
    "source": "jdr-default",
-   "note": "percentages 150/75/100 and resist 0 chosen by us"
+   "note": "buff resist 0 chosen by us"
   }
  ],
  "data": {
@@ -221,16 +227,16 @@
       "damagePercent": [
        {
         "list": [
-         75,
-         75,
-         75
+         70,
+         70,
+         70
         ]
        },
        {
         "list": [
-         75,
-         75,
-         75
+         70,
+         70,
+         70
         ]
        }
       ]
@@ -402,16 +408,16 @@
       "damagePercent": [
        {
         "list": [
-         75,
-         75,
-         75
+         70,
+         70,
+         70
         ]
        },
        {
         "list": [
-         75,
-         75,
-         75
+         70,
+         70,
+         70
         ]
        }
       ]
@@ -526,16 +532,16 @@
       "damagePercent": [
        {
         "list": [
-         75,
-         75,
-         75
+         70,
+         70,
+         70
         ]
        },
        {
         "list": [
-         75,
-         75,
-         75
+         70,
+         70,
+         70
         ]
        }
       ]

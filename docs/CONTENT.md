@@ -61,7 +61,7 @@ community wikis (each record cites its page) or are marked `jdr-default`.
 | Data | Source | State |
 |---|---|---|
 | Statue ids, models, bundles | player's files | 266 obtainable |
-| Statue rarity, type, Lv99 | Gamerch (leader- or assist-ability name) and ShoutWiki (CC BY-SA 3.0, by elimination) | 140 of 266 (129 Gamerch, 11 ShoutWiki); the rest (mostly released after the 2018 snapshot) default |
+| Statue rarity, type, Lv99 | Gamerch (leader- or assist-ability name), ShoutWiki (CC BY-SA 3.0, by elimination) and the Build 33 research pass (JoJoWiki CC BY-SA 4.0 and ShoutWiki pages matched by ability names, `tools/content/research_statues.py`) | 206 of 292 (129 Gamerch, 11 ShoutWiki, 65 research collections, 1 assist-only); the 86 others are mostly ★3/★4 villains and alternate-attribute versions no wiki lists |
 | Statue Lv1, max tree | the same pages where they show them | Lv1 from the wiki for 35 statues, Lv99 / 10 for the other 105 (in those 35, Lv99 / Lv1 is 9.5–10.0); max tree missing for 47 |
 | Stats per level | linear Lv1→Lv99 | all |
 | Tactical basic attack (`dtAttack`) | the statue's own action sets in the player's files (`SKILL_<psid3>_99` = ATTACK, else its lowest SKILL_NN) | all 266 (64 distinct ids) |
@@ -69,7 +69,10 @@ community wikis (each record cites its page) or are marked `jdr-default`.
 | Story chapters/stages/areas | player's files | 82 chapters (29 action, 53 tactical), 370 stages |
 | Stage AP, rank EXP, gold, recommended level | Gamerch (Wayback snapshot, chapters 1–23 matched by title) | 86 of 370 stages (gold blank on the wiki for 39 of them, so default); enemies and rewards default (the wiki shows them as images); the recommended level is used as the enemy level |
 | Player rank: EXP per rank, AP max | Gamerch user-rank page | ranks 1–99 |
-| Minds: rarity, cost, flat stats | Gamerch (name) | 417 owned; cost is a default (3 × rarity) for 381 |
+| Minds: rarity, cost, flat stats | Gamerch (name) | 417 owned; 381 have no cost on the wiki and take the cost every Mind of their rarity has there (★1 3, ★2 5, ★3 8, ★4 12; Build 33) |
+| Assist-ability conditions | the Build 33 research pass (ShoutWiki/JoJoWiki statue pages) | 116 statues; the others always active (`build_assist_abilities.py --research`) |
+| Daily quest numbers | Gamerch day pages via the Build 33 pass | Normal tier of every weekday (AP 8, level 20) and Tuesday's EXP/gold (15 stages); the other tiers ours |
+| Tactical tuning | atwiki ジョジョDR２ (tactical era, Wayback) and the Bahamut forum | Reversal 4 turns, speed +200%, cool turns halved; chain ×1.1/×1.35/×1.5/×2.0; type chart ×1.5/×0.7; same-type assist ×2 (Build 33) |
 | Items, events, gacha | Gamerch (fetched: 48 gacha, 22 events) | not served yet |
 
 ## Research collections (Build 18)

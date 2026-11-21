@@ -16,6 +16,8 @@ import argparse, glob, hashlib, json, re
 ap = argparse.ArgumentParser()
 ap.add_argument("--names", required=True, help="jdr-tool names output (logical bundle names)")
 ap.add_argument("--gamerch", help="local/wiki-raw/gamerch/stages.json (daily quest numbers)")
+ap.add_argument("--research", help="a research pass's stage facts (results.jsonl): useStamina, gainRankExp, "
+                "gold, recommendedLevel per stageId, with page and confidence (medium/high used)")
 ap.add_argument("--out", required=True)
 a = ap.parse_args()
 
@@ -90,6 +92,15 @@ if a.gamerch:
         if x.get("index_on_page") == 1 and x.get("ap"):
             wiki = {"ap": x["ap"], "exp": x["exp"], "gold": x["gold"], "page": x["source"]["page_url"]}
             break
+# Research facts per stage (Build 33): medium/high only; the recommended level is the enemy level,
+# as for the story stages.
+facts = {}
+if a.research:
+    for line in open(a.research, encoding="utf-8"):
+        r = json.loads(line)
+        if r.get("confidence") in ("high", "medium") and r.get("field") in (
+                "useStamina", "gainRankExp", "gold", "recommendedLevel") and isinstance(r.get("value"), int):
+            facts.setdefault(r["stageId"], {})[r["field"]] = r
 chapters, daily = [], {}
 for i, (dy, dy2, ban) in enumerate(DAYS):
     category = 6 + i
@@ -110,6 +121,19 @@ for i, (dy, dy2, ban) in enumerate(DAYS):
                 apc, exp, gold = wiki["ap"], wiki["exp"], wiki["gold"]
                 src = {"source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)", "page": wiki["page"],
                        "note": "Easy-tier daily AP/EXP/gold; map, areas, enemies and level ours"}
+            f = facts.get(sid, {})
+            if f:
+                apc = f["useStamina"]["value"] if "useStamina" in f else apc
+                exp = f["gainRankExp"]["value"] if "gainRankExp" in f else exp
+                gold = f["gold"]["value"] if "gold" in f else gold
+                lv = f["recommendedLevel"]["value"] if "recommendedLevel" in f else lv
+                first_fact = next(iter(f.values()))
+                page = first_fact["url"]
+                src = {"source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)" if "gamerch" in page else page.split("/")[2],
+                       "page": page, **({"capture": first_fact["capture"]} if first_fact.get("capture") else {}),
+                       "accessed": first_fact.get("accessed") or "2026-11-20",
+                       "note": "wiki: " + ", ".join(sorted(k.replace("recommendedLevel", "recommended level as enemy level")
+                                                         for k in f)) + "; map, areas, enemies and the rest ours"}
             stages.append(stage(sid, sid, lv, apc, exp, gold, stype, src))
         if stages:
             chapters.append({"chapterId": cid, "num": line + 1, "stageType": 1, "chapterMap": 0,

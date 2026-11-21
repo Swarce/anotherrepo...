@@ -1,0 +1,3314 @@
+{
+ "about": "Spawn points of the action-battle area scenes (tools/content/scan_action_areas.py): per area scene, its WAVE_<X> pivot groups with their number of spawn points, and its TRIGGER_<X> zones; and the model ids (psid) that have an action-mode action set. Object names, ids and counts from the player's files; docs/research/30-action-battle.md.",
+ "actionSets": [
+  "0000",
+  "0010",
+  "0020",
+  "0021",
+  "1000",
+  "1010",
+  "1020",
+  "1030",
+  "1080",
+  "1090",
+  "1100",
+  "1110",
+  "1120",
+  "1130",
+  "1210",
+  "1220",
+  "1230",
+  "1240",
+  "1250",
+  "1251",
+  "1260",
+  "1261",
+  "1270",
+  "2000",
+  "2010",
+  "2011",
+  "2020",
+  "2040",
+  "2050",
+  "2060",
+  "2070",
+  "2080",
+  "2081",
+  "2100",
+  "2110",
+  "2111",
+  "2120",
+  "2150",
+  "2200",
+  "3000",
+  "3001",
+  "3002",
+  "3010",
+  "3020",
+  "3030",
+  "3031",
+  "3040",
+  "3041",
+  "3050",
+  "3060",
+  "3070",
+  "3090",
+  "3100",
+  "3110",
+  "3140",
+  "3150",
+  "3160",
+  "3180",
+  "3210",
+  "3230",
+  "3240",
+  "3270",
+  "3290",
+  "3300",
+  "3320",
+  "3321",
+  "3322",
+  "3330",
+  "3410",
+  "3411",
+  "3420",
+  "3421",
+  "3430",
+  "3450",
+  "3460",
+  "3470",
+  "4000",
+  "4010",
+  "4011",
+  "4012",
+  "4020",
+  "4030",
+  "4040",
+  "4042",
+  "4043",
+  "4080",
+  "4090",
+  "4110",
+  "4120",
+  "4130",
+  "4150",
+  "4160",
+  "4170",
+  "4180",
+  "4181",
+  "4190",
+  "4191",
+  "4192",
+  "4193",
+  "4194",
+  "4220",
+  "4240",
+  "4260",
+  "4280",
+  "4350",
+  "4351",
+  "4360",
+  "4370",
+  "4380",
+  "4390",
+  "4400",
+  "4410",
+  "4420",
+  "4430",
+  "4440",
+  "4441",
+  "4470",
+  "4480",
+  "4510",
+  "4520",
+  "5000",
+  "5010",
+  "5050",
+  "5120",
+  "5140",
+  "5210",
+  "5290",
+  "5330"
+ ],
+ "areas": {
+  "area_st_00_01_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13
+   },
+   "triggers": []
+  },
+  "area_st_00_01_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_00_01_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_01_01_01": {
+   "waves": {
+    "WAVE_A": 5
+   },
+   "triggers": []
+  },
+  "area_st_01_01_02": {
+   "waves": {
+    "WAVE_A": 5
+   },
+   "triggers": [
+    "TRIGGER_A"
+   ]
+  },
+  "area_st_01_01_03": {
+   "waves": {
+    "WAVE_A": 5
+   },
+   "triggers": []
+  },
+  "area_st_01_01_10": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 2,
+    "WAVE_C": 3
+   },
+   "triggers": [
+    "TRIGGER_B",
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_01_02_01": {
+   "waves": {
+    "WAVE_A": 2,
+    "WAVE_B": 3
+   },
+   "triggers": []
+  },
+  "area_st_01_02_02": {
+   "waves": {
+    "WAVE_A": 5
+   },
+   "triggers": []
+  },
+  "area_st_01_02_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_02_01_01": {
+   "waves": {
+    "WAVE_A": 15
+   },
+   "triggers": [
+    "TRIGGER_A"
+   ]
+  },
+  "area_st_02_01_02": {
+   "waves": {
+    "WAVE_A": 2,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_02_01_03": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_02_02_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 4
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_02_02_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_02_02_03": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_02_03_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_02_03_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 5
+   },
+   "triggers": []
+  },
+  "area_st_02_03_03": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_03_01_01": {
+   "waves": {
+    "WAVE_A": 5
+   },
+   "triggers": [
+    "TRIGGER_A"
+   ]
+  },
+  "area_st_03_01_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_03_01_03": {
+   "waves": {
+    "WAVE_A": 5
+   },
+   "triggers": []
+  },
+  "area_st_03_02_01": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 1,
+    "WAVE_C": 1,
+    "WAVE_D": 2
+   },
+   "triggers": []
+  },
+  "area_st_03_02_02": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": [
+    "TRIGGER_A"
+   ]
+  },
+  "area_st_03_02_03": {
+   "waves": {
+    "WAVE_A": 9,
+    "WAVE_B": 9,
+    "WAVE_C": 9
+   },
+   "triggers": []
+  },
+  "area_st_03_03_01": {
+   "waves": {
+    "WAVE_A": 3
+   },
+   "triggers": []
+  },
+  "area_st_03_03_02": {
+   "waves": {
+    "WAVE_A": 4
+   },
+   "triggers": []
+  },
+  "area_st_03_03_03": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 1
+   },
+   "triggers": []
+  },
+  "area_st_04_01_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 2
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_04_01_02": {
+   "waves": {
+    "WAVE_A": 2,
+    "WAVE_B": 2
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_04_01_03": {
+   "waves": {
+    "WAVE_A": 9,
+    "WAVE_B": 9
+   },
+   "triggers": []
+  },
+  "area_st_04_02_01": {
+   "waves": {
+    "WAVE_A": 10,
+    "WAVE_B": 3
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_04_02_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 2
+   },
+   "triggers": []
+  },
+  "area_st_04_02_03": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 3,
+    "WAVE_C": 5
+   },
+   "triggers": []
+  },
+  "area_st_04_03_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 2
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_04_03_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 2
+   },
+   "triggers": []
+  },
+  "area_st_04_03_03": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 4
+   },
+   "triggers": []
+  },
+  "area_st_05_01_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3
+   },
+   "triggers": [
+    "TRIGGER_A",
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_05_01_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 4
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_05_01_03": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 6
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_05_02_01": {
+   "waves": {
+    "WAVE_A": 4
+   },
+   "triggers": []
+  },
+  "area_st_05_02_02": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 3
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_05_02_03": {
+   "waves": {
+    "WAVE_A": 6
+   },
+   "triggers": []
+  },
+  "area_st_05_03_01": {
+   "waves": {
+    "WAVE_A": 6
+   },
+   "triggers": []
+  },
+  "area_st_05_03_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 2,
+    "WAVE_C": 3
+   },
+   "triggers": []
+  },
+  "area_st_05_03_03": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_06_01_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 2
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_06_01_02": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 4
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_06_01_03": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 2,
+    "WAVE_C": 2
+   },
+   "triggers": [
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_06_02_01": {
+   "waves": {
+    "WAVE_A": 2,
+    "WAVE_B": 4
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_06_02_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 2,
+    "WAVE_C": 3
+   },
+   "triggers": [
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_06_02_03": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 8
+   },
+   "triggers": []
+  },
+  "area_st_06_03_01": {
+   "waves": {
+    "WAVE_A": 6,
+    "WAVE_B": 3
+   },
+   "triggers": []
+  },
+  "area_st_06_03_02": {
+   "waves": {
+    "WAVE_A": 7,
+    "WAVE_B": 2
+   },
+   "triggers": []
+  },
+  "area_st_06_03_03": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 1
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_06_04_01": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_07_01_01": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 2
+   },
+   "triggers": []
+  },
+  "area_st_07_01_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 4
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_07_01_03": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_07_02_01": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 1,
+    "WAVE_C": 3
+   },
+   "triggers": [
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_07_02_02": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_07_02_03": {
+   "waves": {
+    "WAVE_A": 6
+   },
+   "triggers": []
+  },
+  "area_st_07_03_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 4
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_07_03_02": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_07_03_03": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 4,
+    "WAVE_C": 4
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_07_04_01": {
+   "waves": {
+    "WAVE_A": 2,
+    "WAVE_B": 2,
+    "WAVE_C": 2,
+    "WAVE_D": 2
+   },
+   "triggers": []
+  },
+  "area_st_07_04_02": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5
+   },
+   "triggers": []
+  },
+  "area_st_07_04_03": {
+   "waves": {
+    "WAVE_A": 12
+   },
+   "triggers": []
+  },
+  "area_st_08_01_01": {
+   "waves": {
+    "WAVE_A": 2,
+    "WAVE_B": 3
+   },
+   "triggers": []
+  },
+  "area_st_08_01_02": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 13
+   },
+   "triggers": []
+  },
+  "area_st_08_01_03": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 6
+   },
+   "triggers": []
+  },
+  "area_st_08_02_01": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 3
+   },
+   "triggers": []
+  },
+  "area_st_08_02_02": {
+   "waves": {
+    "WAVE_A": 2,
+    "WAVE_B": 5
+   },
+   "triggers": []
+  },
+  "area_st_08_02_03": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 2,
+    "WAVE_C": 2
+   },
+   "triggers": [
+    "TRIGGER_A"
+   ]
+  },
+  "area_st_08_03_01": {
+   "waves": {
+    "WAVE_A": 6,
+    "WAVE_B": 4
+   },
+   "triggers": []
+  },
+  "area_st_08_03_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 4,
+    "WAVE_C": 3
+   },
+   "triggers": []
+  },
+  "area_st_08_03_03": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 6
+   },
+   "triggers": [
+    "TRIGGER_A"
+   ]
+  },
+  "area_st_08_04_01": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 6
+   },
+   "triggers": [
+    "TRIGGER_A"
+   ]
+  },
+  "area_st_08_04_02": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 6
+   },
+   "triggers": [
+    "TRIGGER_A"
+   ]
+  },
+  "area_st_08_04_03": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 2,
+    "WAVE_C": 4
+   },
+   "triggers": [
+    "TRIGGER_A"
+   ]
+  },
+  "area_st_08_05_01": {
+   "waves": {
+    "WAVE_A": 6
+   },
+   "triggers": []
+  },
+  "area_st_08_05_02": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_A"
+   ]
+  },
+  "area_st_08_05_03": {
+   "waves": {
+    "WAVE_A": 2
+   },
+   "triggers": []
+  },
+  "area_st_09_01_01": {
+   "waves": {
+    "WAVE_A": 5
+   },
+   "triggers": []
+  },
+  "area_st_09_01_02": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_09_01_03": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 9
+   },
+   "triggers": [
+    "TRIGGER_A"
+   ]
+  },
+  "area_st_09_02_01": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 6
+   },
+   "triggers": []
+  },
+  "area_st_09_02_02": {
+   "waves": {
+    "WAVE_A": 6,
+    "WAVE_B": 7
+   },
+   "triggers": []
+  },
+  "area_st_09_02_03": {
+   "waves": {
+    "WAVE_A": 6,
+    "WAVE_B": 1
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_09_03_01": {
+   "waves": {
+    "WAVE_A": 6
+   },
+   "triggers": []
+  },
+  "area_st_09_03_02": {
+   "waves": {
+    "WAVE_A": 8,
+    "WAVE_B": 2
+   },
+   "triggers": []
+  },
+  "area_st_09_03_03": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 2
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_09_04_01": {
+   "waves": {
+    "WAVE_A": 2,
+    "WAVE_B": 4
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_09_04_02": {
+   "waves": {
+    "WAVE_A": 6
+   },
+   "triggers": []
+  },
+  "area_st_09_04_03": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_A"
+   ]
+  },
+  "area_st_09_05_01": {
+   "waves": {
+    "WAVE_A": 2,
+    "WAVE_B": 6
+   },
+   "triggers": []
+  },
+  "area_st_09_05_02": {
+   "waves": {
+    "WAVE_A": 8,
+    "WAVE_B": 2,
+    "WAVE_C": 2
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_09_05_03": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_10_01_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 4
+   },
+   "triggers": [
+    "TRIGGER_B",
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_10_01_02": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5,
+    "WAVE_C": 5
+   },
+   "triggers": [
+    "TRIGGER_B",
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_10_01_03": {
+   "waves": {
+    "WAVE_A": 7,
+    "WAVE_B": 7
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_10_02_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 4
+   },
+   "triggers": [
+    "TRIGGER_B",
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_10_02_02": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 10
+   },
+   "triggers": []
+  },
+  "area_st_10_02_03": {
+   "waves": {
+    "WAVE_A": 7,
+    "WAVE_B": 7
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_10_03_01": {
+   "waves": {
+    "WAVE_A": 7,
+    "WAVE_B": 7
+   },
+   "triggers": []
+  },
+  "area_st_10_03_02": {
+   "waves": {
+    "WAVE_A": 6,
+    "WAVE_B": 8
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_10_03_03": {
+   "waves": {
+    "WAVE_A": 7,
+    "WAVE_B": 7
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_10_04_01": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5,
+    "WAVE_C": 5
+   },
+   "triggers": []
+  },
+  "area_st_10_04_02": {
+   "waves": {
+    "WAVE_A": 7,
+    "WAVE_B": 7,
+    "WAVE_C": 7
+   },
+   "triggers": [
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_10_04_03": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 10,
+    "WAVE_C": 10
+   },
+   "triggers": [
+    "TRIGGER_A"
+   ]
+  },
+  "area_st_10_05_01": {
+   "waves": {
+    "WAVE_A": 9,
+    "WAVE_B": 1
+   },
+   "triggers": []
+  },
+  "area_st_10_05_02": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_10_05_03": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_11_01_01": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 3
+   },
+   "triggers": []
+  },
+  "area_st_11_01_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 5
+   },
+   "triggers": []
+  },
+  "area_st_11_01_03": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5
+   },
+   "triggers": []
+  },
+  "area_st_11_02_01": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5
+   },
+   "triggers": []
+  },
+  "area_st_11_02_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 2,
+    "WAVE_C": 3
+   },
+   "triggers": []
+  },
+  "area_st_11_02_03": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 3,
+    "WAVE_C": 4
+   },
+   "triggers": []
+  },
+  "area_st_11_03_01": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 4
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_11_03_02": {
+   "waves": {
+    "WAVE_A": 13
+   },
+   "triggers": []
+  },
+  "area_st_11_03_03": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_11_04_01": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5
+   },
+   "triggers": []
+  },
+  "area_st_11_04_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 3,
+    "WAVE_D": 3,
+    "WAVE_E": 3,
+    "WAVE_F": 3
+   },
+   "triggers": [
+    "TRIGGER_C",
+    "TRIGGER_E"
+   ]
+  },
+  "area_st_11_04_03": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5,
+    "WAVE_C": 1
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_11_05_01": {
+   "waves": {
+    "WAVE_A": 5
+   },
+   "triggers": []
+  },
+  "area_st_11_05_02": {
+   "waves": {},
+   "triggers": []
+  },
+  "area_st_11_05_03": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 9
+   },
+   "triggers": []
+  },
+  "area_st_12_01_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_12_01_02": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 4
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_12_01_03": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 6
+   },
+   "triggers": []
+  },
+  "area_st_12_02_01": {
+   "waves": {
+    "WAVE_A": 2,
+    "WAVE_B": 5
+   },
+   "triggers": []
+  },
+  "area_st_12_02_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 5
+   },
+   "triggers": []
+  },
+  "area_st_12_02_03": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5
+   },
+   "triggers": []
+  },
+  "area_st_12_03_01": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 4
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_12_03_02": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 1,
+    "WAVE_C": 4
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_12_03_03": {
+   "waves": {
+    "WAVE_B": 8
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_12_04_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 3
+   },
+   "triggers": []
+  },
+  "area_st_12_04_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 3
+   },
+   "triggers": []
+  },
+  "area_st_12_04_03": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 4
+   },
+   "triggers": []
+  },
+  "area_st_12_05_01": {
+   "waves": {
+    "WAVE_A": 6,
+    "WAVE_B": 3
+   },
+   "triggers": []
+  },
+  "area_st_12_05_02": {
+   "waves": {
+    "WAVE_A": 11
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_12_05_03": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_13_01_01": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 3,
+    "WAVE_C": 3
+   },
+   "triggers": [
+    "TRIGGER_B",
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_13_01_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 1,
+    "WAVE_C": 3
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_13_01_03": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 3
+   },
+   "triggers": [
+    "TRIGGER_B",
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_13_02_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 3
+   },
+   "triggers": [
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_13_02_02": {
+   "waves": {
+    "WAVE_A": 9,
+    "WAVE_B": 9,
+    "WAVE_C": 9
+   },
+   "triggers": [
+    "TRIGGER_B",
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_13_02_03": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_13_03_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 3
+   },
+   "triggers": []
+  },
+  "area_st_13_03_02": {
+   "waves": {
+    "WAVE_A": 8,
+    "WAVE_B": 4
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_13_03_03": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 4
+   },
+   "triggers": []
+  },
+  "area_st_13_04_01": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_13_04_02": {
+   "waves": {
+    "WAVE_A": 6,
+    "WAVE_B": 4
+   },
+   "triggers": []
+  },
+  "area_st_13_04_03": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 1
+   },
+   "triggers": []
+  },
+  "area_st_13_05_01": {
+   "waves": {
+    "WAVE_A": 6
+   },
+   "triggers": []
+  },
+  "area_st_13_05_02": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_13_05_03": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_14_01_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 1,
+    "WAVE_C": 4
+   },
+   "triggers": []
+  },
+  "area_st_14_01_02": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 6
+   },
+   "triggers": []
+  },
+  "area_st_14_01_03": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 6
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_14_02_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 2,
+    "WAVE_C": 2
+   },
+   "triggers": []
+  },
+  "area_st_14_02_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 5
+   },
+   "triggers": []
+  },
+  "area_st_14_02_03": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 3
+   },
+   "triggers": [
+    "TRIGGER_B",
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_14_03_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 4
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_14_03_02": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 3,
+    "WAVE_C": 3
+   },
+   "triggers": [
+    "TRIGGER_B",
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_14_03_03": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_14_04_01": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_14_04_02": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_14_04_03": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 3
+   },
+   "triggers": [
+    "TRIGGER_A"
+   ]
+  },
+  "area_st_14_05_01": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_14_05_02": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_14_05_03": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_15_01_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 7
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_15_01_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 3
+   },
+   "triggers": [
+    "TRIGGER_B",
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_15_01_03": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5
+   },
+   "triggers": []
+  },
+  "area_st_15_02_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_15_02_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 1,
+    "WAVE_C": 4
+   },
+   "triggers": []
+  },
+  "area_st_15_02_03": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 5
+   },
+   "triggers": []
+  },
+  "area_st_15_03_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 5
+   },
+   "triggers": [
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_15_03_02": {
+   "waves": {
+    "WAVE_A": 2,
+    "WAVE_B": 2,
+    "WAVE_C": 4
+   },
+   "triggers": []
+  },
+  "area_st_15_03_03": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 3
+   },
+   "triggers": []
+  },
+  "area_st_15_04_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_C": 4
+   },
+   "triggers": []
+  },
+  "area_st_15_04_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 7
+   },
+   "triggers": []
+  },
+  "area_st_15_04_03": {
+   "waves": {
+    "WAVE_A": 6,
+    "WAVE_B": 4
+   },
+   "triggers": []
+  },
+  "area_st_15_05_01": {
+   "waves": {
+    "WAVE_A": 5
+   },
+   "triggers": []
+  },
+  "area_st_15_05_02": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 4,
+    "WAVE_C": 4
+   },
+   "triggers": []
+  },
+  "area_st_15_05_03": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 1,
+    "WAVE_C": 2
+   },
+   "triggers": []
+  },
+  "area_st_16_01_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 3
+   },
+   "triggers": []
+  },
+  "area_st_16_01_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 3
+   },
+   "triggers": []
+  },
+  "area_st_16_01_03": {
+   "waves": {
+    "WAVE_A": 10
+   },
+   "triggers": []
+  },
+  "area_st_16_02_01": {
+   "waves": {
+    "WAVE_A": 6,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_16_02_02": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 8
+   },
+   "triggers": []
+  },
+  "area_st_16_02_03": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 7
+   },
+   "triggers": []
+  },
+  "area_st_16_03_01": {
+   "waves": {
+    "WAVE_A": 6,
+    "WAVE_B": 8
+   },
+   "triggers": []
+  },
+  "area_st_16_03_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 3,
+    "WAVE_D": 3
+   },
+   "triggers": []
+  },
+  "area_st_16_03_03": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 1,
+    "WAVE_C": 3
+   },
+   "triggers": [
+    "TRIGGER_A"
+   ]
+  },
+  "area_st_16_04_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 6,
+    "WAVE_C": 6
+   },
+   "triggers": []
+  },
+  "area_st_16_04_02": {
+   "waves": {
+    "WAVE_A": 6,
+    "WAVE_B": 6
+   },
+   "triggers": []
+  },
+  "area_st_16_04_03": {
+   "waves": {
+    "WAVE_A": 8,
+    "WAVE_B": 1
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_16_05_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 5
+   },
+   "triggers": [
+    "TRIGGER_B",
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_16_05_02": {
+   "waves": {
+    "WAVE_A": 6,
+    "WAVE_B": 8
+   },
+   "triggers": []
+  },
+  "area_st_16_05_03": {
+   "waves": {
+    "WAVE_A": 6,
+    "WAVE_B": 1
+   },
+   "triggers": []
+  },
+  "area_st_17_01_01": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5,
+    "WAVE_C": 5
+   },
+   "triggers": []
+  },
+  "area_st_17_01_02": {
+   "waves": {
+    "WAVE_A": 10,
+    "WAVE_B": 10
+   },
+   "triggers": []
+  },
+  "area_st_17_01_03": {
+   "waves": {
+    "WAVE_A": 20
+   },
+   "triggers": []
+  },
+  "area_st_17_02_01": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5,
+    "WAVE_C": 10
+   },
+   "triggers": [
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_17_02_02": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 10,
+    "WAVE_C": 5
+   },
+   "triggers": [
+    "TRIGGER_B",
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_17_02_03": {
+   "waves": {
+    "WAVE_A": 9,
+    "WAVE_B": 9
+   },
+   "triggers": []
+  },
+  "area_st_17_03_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 7,
+    "WAVE_C": 10
+   },
+   "triggers": [
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_17_03_02": {
+   "waves": {
+    "WAVE_A": 10,
+    "WAVE_B": 10
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_17_03_03": {
+   "waves": {
+    "WAVE_A": 7,
+    "WAVE_B": 5,
+    "WAVE_C": 7
+   },
+   "triggers": []
+  },
+  "area_st_17_04_01": {
+   "waves": {
+    "WAVE_A": 10,
+    "WAVE_B": 10
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_17_04_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 3,
+    "WAVE_D": 3,
+    "WAVE_E": 3
+   },
+   "triggers": []
+  },
+  "area_st_17_04_03": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 5,
+    "WAVE_C": 3,
+    "WAVE_D": 3,
+    "WAVE_E": 3,
+    "WAVE_F": 3
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_17_05_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 5,
+    "WAVE_D": 8
+   },
+   "triggers": []
+  },
+  "area_st_17_05_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 3,
+    "WAVE_D": 3,
+    "WAVE_E": 3
+   },
+   "triggers": []
+  },
+  "area_st_17_05_03": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 2,
+    "WAVE_C": 3,
+    "WAVE_D": 2,
+    "WAVE_E": 3,
+    "WAVE_F": 2,
+    "WAVE_G": 3
+   },
+   "triggers": []
+  },
+  "area_st_17_06_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 10
+   },
+   "triggers": []
+  },
+  "area_st_17_06_02": {
+   "waves": {
+    "WAVE_A": 6,
+    "WAVE_B": 6,
+    "WAVE_C": 6
+   },
+   "triggers": [
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_17_06_03": {
+   "waves": {
+    "WAVE_A": 1,
+    "WAVE_B": 3,
+    "WAVE_C": 3,
+    "WAVE_D": 3
+   },
+   "triggers": []
+  },
+  "area_st_18_01_01": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_18_01_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 2,
+    "WAVE_D": 4
+   },
+   "triggers": []
+  },
+  "area_st_18_01_03": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 3,
+    "WAVE_D": 3
+   },
+   "triggers": []
+  },
+  "area_st_18_02_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 4
+   },
+   "triggers": [
+    "TRIGGER_B",
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_18_02_02": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 3,
+    "WAVE_C": 3
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_18_02_03": {
+   "waves": {
+    "WAVE_A": 5,
+    "WAVE_B": 5
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_18_03_01": {
+   "waves": {
+    "WAVE_A": 6,
+    "WAVE_B": 8
+   },
+   "triggers": []
+  },
+  "area_st_18_03_02": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 4,
+    "WAVE_C": 4
+   },
+   "triggers": []
+  },
+  "area_st_18_03_03": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 3,
+    "WAVE_D": 3
+   },
+   "triggers": []
+  },
+  "area_st_18_04_01": {
+   "waves": {
+    "WAVE_A": 4,
+    "WAVE_B": 4
+   },
+   "triggers": []
+  },
+  "area_st_18_04_02": {
+   "waves": {
+    "WAVE_A": 4
+   },
+   "triggers": []
+  },
+  "area_st_18_04_03": {
+   "waves": {
+    "WAVE_A": 7,
+    "WAVE_B": 6
+   },
+   "triggers": [
+    "TRIGGER_B"
+   ]
+  },
+  "area_st_18_05_01": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 3
+   },
+   "triggers": []
+  },
+  "area_st_18_05_02": {
+   "waves": {
+    "WAVE_A": 3,
+    "WAVE_B": 3,
+    "WAVE_C": 3,
+    "WAVE_D": 3
+   },
+   "triggers": [
+    "TRIGGER_B",
+    "TRIGGER_C"
+   ]
+  },
+  "area_st_18_05_03": {
+   "waves": {
+    "WAVE_A": 10
+   },
+   "triggers": []
+  },
+  "area_st_18_06_01": {
+   "waves": {
+    "WAVE_A": 9
+   },
+   "triggers": []
+  },
+  "area_st_18_06_02": {
+   "waves": {
+    "WAVE_A": 6,
+    "WAVE_B": 6
+   },
+   "triggers": []
+  },
+  "area_st_18_06_03": {
+   "waves": {
+    "WAVE_A": 2
+   },
+   "triggers": []
+  },
+  "area_st_19_01_01": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_19_01_02": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_19_01_03": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_19_02_01": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_19_02_02": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_19_02_03": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_19_03_01": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_19_03_02": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_19_03_03": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_19_04_01": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_19_04_02": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_19_04_03": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_19_05_01": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_19_05_02": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_19_05_03": {
+   "waves": {
+    "WAVE_A": 1
+   },
+   "triggers": []
+  },
+  "area_st_20_01_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13
+   },
+   "triggers": []
+  },
+  "area_st_20_01_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13
+   },
+   "triggers": []
+  },
+  "area_st_20_01_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_20_02_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_20_02_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_20_02_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_20_03_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_20_03_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_20_03_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13
+   },
+   "triggers": []
+  },
+  "area_st_20_04_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13
+   },
+   "triggers": []
+  },
+  "area_st_20_04_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_20_04_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_20_05_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_20_05_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13
+   },
+   "triggers": []
+  },
+  "area_st_20_05_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13
+   },
+   "triggers": []
+  },
+  "area_st_21_01_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13
+   },
+   "triggers": []
+  },
+  "area_st_21_01_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13
+   },
+   "triggers": []
+  },
+  "area_st_21_01_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13
+   },
+   "triggers": []
+  },
+  "area_st_21_02_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_21_02_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_21_02_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_21_03_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_21_03_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_21_03_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_21_04_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13
+   },
+   "triggers": []
+  },
+  "area_st_21_04_02": {
+   "waves": {
+    "WAVE_B": 13,
+    "WAVE_E": 13,
+    "WAVE_F": 13
+   },
+   "triggers": []
+  },
+  "area_st_21_04_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_C": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_21_05_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_E": 13,
+    "WAVE_F": 13
+   },
+   "triggers": []
+  },
+  "area_st_21_05_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13
+   },
+   "triggers": []
+  },
+  "area_st_21_05_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13
+   },
+   "triggers": []
+  },
+  "area_st_22_01_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_22_01_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_22_01_03": {
+   "waves": {
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_22_02_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_22_02_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_C": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_22_02_03": {
+   "waves": {
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_22_03_01": {
+   "waves": {
+    "WAVE_B": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_22_03_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_22_03_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_22_04_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_22_04_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_22_04_03": {
+   "waves": {
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_22_05_01": {
+   "waves": {
+    "WAVE_B": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_22_05_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_22_05_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_C": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_23_01_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_D": 13,
+    "WAVE_F": 13
+   },
+   "triggers": []
+  },
+  "area_st_23_01_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_23_01_03": {
+   "waves": {
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_23_02_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_23_02_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_C": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_23_02_03": {
+   "waves": {
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_23_03_01": {
+   "waves": {
+    "WAVE_B": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_23_03_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_23_03_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_23_04_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_23_04_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_23_04_03": {
+   "waves": {
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_23_05_01": {
+   "waves": {
+    "WAVE_B": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_23_05_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_23_05_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_C": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_24_01_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_24_01_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13,
+    "WAVE_F": 13
+   },
+   "triggers": []
+  },
+  "area_st_24_01_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_24_02_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_24_02_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13,
+    "WAVE_F": 13
+   },
+   "triggers": []
+  },
+  "area_st_24_02_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13,
+    "WAVE_F": 13,
+    "WAVE_G": 13
+   },
+   "triggers": []
+  },
+  "area_st_24_03_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_24_03_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_24_03_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_24_04_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_24_04_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_24_04_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13,
+    "WAVE_E": 13
+   },
+   "triggers": []
+  },
+  "area_st_24_05_01": {
+   "waves": {
+    "WAVE_A": 13
+   },
+   "triggers": []
+  },
+  "area_st_24_05_02": {
+   "waves": {
+    "WAVE_A": 13
+   },
+   "triggers": []
+  },
+  "area_st_24_05_03": {
+   "waves": {
+    "WAVE_A": 13
+   },
+   "triggers": []
+  },
+  "area_st_25_01_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_25_01_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_25_01_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_25_02_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_25_02_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_25_02_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_25_03_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_25_03_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_25_03_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_25_04_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_25_04_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_25_04_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_25_05_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_25_05_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_25_05_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_26_01_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_26_01_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_26_01_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_26_02_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_26_02_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_26_02_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_26_03_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_26_03_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_26_03_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_26_04_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_26_04_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_26_04_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_26_05_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_26_05_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_26_05_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_27_01_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_27_01_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_27_01_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_27_02_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_27_02_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_27_02_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_27_03_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_27_03_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_27_03_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_27_04_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_27_04_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_27_04_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_27_05_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_27_05_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_27_05_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13
+   },
+   "triggers": []
+  },
+  "area_st_28_01_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_28_01_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_28_01_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_28_02_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_28_02_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_28_02_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_28_03_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13
+   },
+   "triggers": []
+  },
+  "area_st_28_03_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_28_03_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_28_04_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_28_04_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_28_04_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_28_05_01": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_28_05_02": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13,
+    "WAVE_C": 13,
+    "WAVE_D": 13
+   },
+   "triggers": []
+  },
+  "area_st_28_05_03": {
+   "waves": {
+    "WAVE_A": 13,
+    "WAVE_B": 13
+   },
+   "triggers": []
+  }
+ }
+}

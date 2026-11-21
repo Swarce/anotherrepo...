@@ -1,0 +1,140 @@
+{
+ "about": "Documented tactical cool turns at the highest skill level, and uses, per skill id (tools/content/build_dt_cool_turns.py): the tactical-era atwiki ジョジョDR２ and the Bahamut forum (2019), matched by skill name to the game's labels. The server sends them as dtMaxCoolTurn (level 10); see docs/research/26 §4.",
+ "skills": {
+  "SKILL_110_08": {
+   "coolTurn": 4,
+   "uses": 4,
+   "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=991",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_332_11": {
+   "coolTurn": 9,
+   "page": "https://web.archive.org/web/20190820005757/https://www65.atwiki.jp/jojodrr/pages/87.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_332_13": {
+   "coolTurn": 5,
+   "uses": 4,
+   "page": "https://web.archive.org/web/20190820005757/https://www65.atwiki.jp/jojodrr/pages/87.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_332_14": {
+   "coolTurn": 3,
+   "page": "https://web.archive.org/web/20190820005757/https://www65.atwiki.jp/jojodrr/pages/87.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_332_15": {
+   "coolTurn": 4,
+   "uses": 3,
+   "page": "https://web.archive.org/web/20190820005757/https://www65.atwiki.jp/jojodrr/pages/87.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_332_18": {
+   "coolTurn": 7,
+   "uses": 2,
+   "page": "https://web.archive.org/web/20190820005757/https://www65.atwiki.jp/jojodrr/pages/87.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_332_21": {
+   "coolTurn": 3,
+   "page": "https://web.archive.org/web/20190819143611/https://www65.atwiki.jp/jojodrr/pages/131.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_332_25": {
+   "coolTurn": 3,
+   "uses": 4,
+   "page": "https://web.archive.org/web/20190819143611/https://www65.atwiki.jp/jojodrr/pages/131.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_332_26": {
+   "coolTurn": 4,
+   "uses": 3,
+   "page": "https://web.archive.org/web/20190819143611/https://www65.atwiki.jp/jojodrr/pages/131.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_332_63": {
+   "coolTurn": 4,
+   "uses": 5,
+   "page": "https://web.archive.org/web/20190819143611/https://www65.atwiki.jp/jojodrr/pages/131.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_508_01": {
+   "coolTurn": 3,
+   "page": "https://web.archive.org/web/20190819034033/https://www65.atwiki.jp/jojodrr/pages/194.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_508_03": {
+   "coolTurn": 5,
+   "uses": 3,
+   "page": "https://web.archive.org/web/20190819034033/https://www65.atwiki.jp/jojodrr/pages/194.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_508_04": {
+   "coolTurn": 10,
+   "page": "https://web.archive.org/web/20190819034033/https://www65.atwiki.jp/jojodrr/pages/194.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_508_05": {
+   "coolTurn": 3,
+   "uses": 2,
+   "page": "https://web.archive.org/web/20190819034033/https://www65.atwiki.jp/jojodrr/pages/194.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_508_06": {
+   "coolTurn": 10,
+   "uses": 2,
+   "page": "https://web.archive.org/web/20190819034033/https://www65.atwiki.jp/jojodrr/pages/194.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_510_01": {
+   "coolTurn": 4,
+   "page": "https://web.archive.org/web/20190819033910/https://www65.atwiki.jp/jojodrr/pages/164.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_510_03": {
+   "coolTurn": 5,
+   "uses": 2,
+   "page": "https://web.archive.org/web/20190819033910/https://www65.atwiki.jp/jojodrr/pages/164.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_510_04": {
+   "coolTurn": 5,
+   "page": "https://web.archive.org/web/20190819033910/https://www65.atwiki.jp/jojodrr/pages/164.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_510_05": {
+   "coolTurn": 4,
+   "uses": 2,
+   "page": "https://web.archive.org/web/20190819033910/https://www65.atwiki.jp/jojodrr/pages/164.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_532_01": {
+   "coolTurn": 6,
+   "page": "https://web.archive.org/web/20190723182126/https://www65.atwiki.jp/jojodrr/pages/193.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_532_03": {
+   "coolTurn": 4,
+   "uses": 3,
+   "page": "https://web.archive.org/web/20190723182126/https://www65.atwiki.jp/jojodrr/pages/193.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_532_04": {
+   "coolTurn": 5,
+   "page": "https://web.archive.org/web/20190723182126/https://www65.atwiki.jp/jojodrr/pages/193.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_532_05": {
+   "coolTurn": 5,
+   "uses": 5,
+   "page": "https://web.archive.org/web/20190723182126/https://www65.atwiki.jp/jojodrr/pages/193.html",
+   "accessed": "2026-11-20"
+  },
+  "SKILL_532_06": {
+   "coolTurn": 10,
+   "uses": 4,
+   "page": "https://web.archive.org/web/20190723182126/https://www65.atwiki.jp/jojodrr/pages/193.html",
+   "accessed": "2026-11-20"
+  }
+ }
+}

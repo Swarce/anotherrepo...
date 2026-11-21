@@ -56,6 +56,10 @@ pub struct StatueDef {
     /// (tools/content/build_statues.py, docs/research/12 §7).
     #[serde(rename = "teamPos", default)]
     pub team_pos: [i64; 3],
+    /// My Page offset in cm from the `CameraIdSet0` camera: right of centre, 1.8 m ahead, the head
+    /// bone a quarter metre above the camera (tools/content/build_statues.py, docs/research/31 §5).
+    #[serde(rename = "myPagePos", default = "my_page_pos")]
+    pub my_page_pos: [i64; 3],
     /// An assist-only statue (`_6x`/`_7x` with their own `ABI_AST_<id>_N` label and no leader
     /// ability; docs/research/19-assists.md §6): the client's `assistAttr` OnlyAssist (1). It may
     /// be an assist but never a team member.
@@ -65,6 +69,10 @@ pub struct StatueDef {
 
 fn full_scale() -> i64 {
     100
+}
+
+fn my_page_pos() -> [i64; 3] {
+    [35, -140, 180]
 }
 
 /// One tactical skill of a statue: label keys from the player's files, our numbers.
@@ -640,6 +648,7 @@ pub const BASIC_ATTACK: &str = "JDR_ATK_00";
 /// `statue_info` for a battle unit: with the basic attack.
 pub fn battle_statue_info(o: &OwnedStatue) -> Value {
     let mut v = statue_info(o);
+    v["skillList"] = json!(action_skill_list(o));
     let mut list = vec![basic_attack(&attack_skill(&o.statue_id))];
     let (normal, special) = skill_levels(o);
     for s in find(&o.statue_id)
@@ -650,6 +659,67 @@ pub fn battle_statue_info(o: &OwnedStatue) -> Value {
     }
     v["dtSkillList"] = json!(list);
     v
+}
+
+/// Action-battle skills per statue (server/content/action_skills.json, docs/research/30).
+pub const ACTION_SKILLS_JSON: &str = include_str!("../../content/action_skills.json");
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct ActionSkillRef {
+    pub id: String,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct ActionSkills {
+    pub attack: String,
+    pub skill: Option<ActionSkillRef>,
+    pub sp: Option<ActionSkillRef>,
+    pub finisher: Option<ActionSkillRef>,
+}
+
+pub fn action_skills(statue_id: &str) -> Option<&'static ActionSkills> {
+    static CELL: std::sync::OnceLock<std::collections::HashMap<String, ActionSkills>> =
+        std::sync::OnceLock::new();
+    CELL.get_or_init(|| {
+        #[derive(Deserialize)]
+        struct Doc {
+            statues: std::collections::HashMap<String, ActionSkills>,
+        }
+        serde_json::from_str::<Doc>(ACTION_SKILLS_JSON)
+            .map(|d| d.statues)
+            .unwrap_or_default()
+    })
+    .get(statue_id)
+}
+
+/// The action battle's `skillList`, read by index (`CharacterStatus.SetStatueInfo` 0xF17DC4 with
+/// `GameConst.GetSkillTypeFromSkillArray` 0xDB5254): 0 attack, 1 skill 1, 2 skill 2, 3 SP 1, 4 SP 2.
+/// Ids only (`isInit` false): the client fills name, type, cool-down and uses from
+/// skill_data_table. An entry without a skill id is skipped by the client (an empty name or a level
+/// under 1 is, `SetSkillInfo` 0xF18838), so unused slots are `{}`. The finisher is the second SP
+/// skill, unlocked at rarity 5 and above (docs/research/30).
+pub fn action_skill_list(o: &OwnedStatue) -> Vec<Value> {
+    let Some(a) = action_skills(&o.statue_id) else {
+        return Vec::new();
+    };
+    let (normal, special) = skill_levels(o);
+    let info = |id: &str, level: i64| {
+        json!({ "skillId": id, "skillLevel": level.clamp(1, SKILL_MAX_LEVEL), "name": "", "explanation": "",
+                "skillType": 0, "bottunType": 0, "coolDown": 0, "limitCount": 0,
+                "magnificationLv01": 0, "magnificationLv10": 0, "pvpMagnificationLv01": 0,
+                "pvpMagnificationLv10": 0, "skillParamList": [], "isInit": false })
+    };
+    let rare = find(&o.statue_id).map(|d| d.rarity()).unwrap_or(4);
+    vec![
+        info(&a.attack, 1),
+        a.skill.as_ref().map_or(json!({}), |x| info(&x.id, normal)),
+        json!({}),
+        a.sp.as_ref().map_or(json!({}), |x| info(&x.id, special)),
+        a.finisher
+            .as_ref()
+            .filter(|_| rare >= 5)
+            .map_or(json!({}), |x| info(&x.id, special)),
+    ]
 }
 
 /// A tactical skill as a `SkillInfo`. The client takes type, button and name from the table row;
@@ -673,6 +743,13 @@ pub fn attack_skill(statue_id: &str) -> String {
 /// Characters whose attacks fire bullets (their models' bullet FSMs; docs/research/12 §2): the
 /// 3-digit skill prefixes of statues 3110, 4160, 4180/4181, 4240, 5220 and 5300.
 const RANGED_PREFIXES: &[&str] = &["311", "416", "418", "424", "522", "530"];
+
+/// Whether a statue fights at range (its skill prefix is one of the bullet users').
+pub fn is_ranged(statue_id: &str) -> bool {
+    statue_id
+        .get(..3)
+        .is_some_and(|p| RANGED_PREFIXES.contains(&p))
+}
 
 /// Where a skill's user stops, as the client's (dtRangeMin, dtRangeMax) in centimetres
 /// (`CharacterProxy.SetSkillTargetPos` 0xEE9304: farther than max walks to max, nearer than min
@@ -761,7 +838,7 @@ pub fn dt_skill_table() -> Value {
     if let Some(list) = doc["data"]["skillDataList"].as_array_mut() {
         for s in skills.values() {
             let mut row = template.clone();
-            let cool = if s.special { 3 } else { 2 };
+            let (cool, uses) = dt_cool_turn(s);
             let view = s.view_id();
             let sub = time_stop(&s.id).unwrap_or("");
             if !sub.is_empty() {
@@ -775,13 +852,13 @@ pub fn dt_skill_table() -> Value {
                 ("dtSkillType", json!(if s.special { 3 } else { 2 })),
                 ("dtButtonType", json!(s.button)),
                 ("damageRank", json!(s.damage_rank)),
-                ("dtLimitCount", json!(if s.special { 3 } else { 0 })),
+                ("dtLimitCount", json!(uses)),
                 // Reversal gauge, in percent, added when a player unit picks the skill (ours).
                 ("dododoRate", json!(if s.special { 20 } else { 15 })),
-                // Cool turn = min + CeilToInt((max - min) / 10 x level): the old 2 (special 3)
-                // up to level 4, one turn less from level 5, two at level 10.
-                ("dtMinCoolTurn", json!(cool)),
-                ("dtMaxCoolTurn", json!(cool - COOL_TURN_LEVEL_GAIN)),
+                // Cool turn = min + CeilToInt((max - min) / 10 x level): the documented value at
+                // level 10 (dt_cool_turn), COOL_TURN_LEVEL_GAIN more at level 0.
+                ("dtMinCoolTurn", json!(cool + COOL_TURN_LEVEL_GAIN)),
+                ("dtMaxCoolTurn", json!(cool)),
                 ("mainSkillCategory", json!(s.category)),
                 ("subSkillCategory", json!(sub)),
                 ("dtRangeMin", json!(skill_range(&view, s.target_type).0)),
@@ -819,6 +896,39 @@ pub fn dt_skill_table() -> Value {
 
 /// Cool turns a skill loses from level 0 to level 10 (ours; docs/research/26 §4).
 pub const COOL_TURN_LEVEL_GAIN: i64 = 2;
+
+/// Documented tactical cool turns per skill id (server/content/dt_cool_turns.json).
+pub const DT_COOL_TURNS_JSON: &str = include_str!("../../content/dt_cool_turns.json");
+
+/// A tactical skill's cool turn at the highest skill level and its uses (0 = unlimited).
+/// Players listed the cool turn at the highest level (the tactical-era atwiki and the Bahamut forum,
+/// docs/research/26 §4): the skill's own value where its name matched, else its family's usual one
+/// there: attack skills 3, time stops 6/9/10 for 1/2/3 stopped turns, heals 8, special (SP) skills 5
+/// with 3 uses. How much the levels below take off is not documented (COOL_TURN_LEVEL_GAIN, ours).
+pub fn dt_cool_turn(s: &DtSkill) -> (i64, i64) {
+    static CELL: std::sync::OnceLock<Value> = std::sync::OnceLock::new();
+    let doc = CELL.get_or_init(|| serde_json::from_str(DT_COOL_TURNS_JSON).unwrap_or(Value::Null));
+    let known = &doc["skills"][&s.id];
+    let default_uses = if s.special { 3 } else { 0 };
+    let uses = known["uses"].as_i64().unwrap_or(default_uses);
+    if let Some(ct) = known["coolTurn"].as_i64() {
+        return (ct, uses);
+    }
+    let ct = if s.special {
+        5
+    } else if let Some(sub) = time_stop(&s.id) {
+        match sub {
+            "DTSC_WORLD_LIGHT" => 6,
+            "DTSC_WORLD_MIDDLE" => 9,
+            _ => 10,
+        }
+    } else if s.category.contains("HEAL") {
+        8
+    } else {
+        3
+    };
+    (ct, uses)
+}
 
 /// The cool turn the client computes for a skill row at a level (`SkillParameter` ctor 0xD8C894).
 pub fn cool_turn(min: i64, max: i64, level: i64) -> i64 {
@@ -1317,13 +1427,16 @@ pub fn statue_setting_rows() -> Vec<Value> {
             });
             // Positions are centimetres and teamScaleScalar a percentage (the client multiplies all of
             // them by 0.01). My Page: the camera at the `CameraIdSet0` scene object (the origin,
-            // facing +Z) and the leader 3.22 m ahead, right of centre (Build 12: 12% closer at the owner's request), turned towards the camera,
-            // which frames models 1.0-2.3 m tall. Team view: the slot anchors already face the
-            // camera; each statue's scale and offset frame its posed head (docs/research/11 §1, 12 §7).
+            // facing +Z, 40 degrees) and the leader 1.8 m ahead, right of centre, turned towards the
+            // camera: thighs up with the head in the upper quarter, as in the original's footage.
+            // Team view: the slot anchors already face the camera; each statue's scale and offset put
+            // its posed head at the same height in every slot (docs/research/11 §1, 12 §7, 31 §5).
             json!({
                 "statueId": d.statue_id, "myPageId": ids[h as usize % ids.len()],
                 "myPageCameraType": "CameraIdSet0",
-                "myPagePos": { "x": 72.0, "y": -113.0, "z": 322.0 },
+                "myPagePos": {
+                    "x": d.my_page_pos[0] as f64, "y": d.my_page_pos[1] as f64, "z": d.my_page_pos[2] as f64
+                },
                 "myPageRotation": { "x": 0.0, "y": 192.5, "z": 0.0 },
                 "teamScaleScalar": d.team_scale as f64,
                 "teamPos": { "x": d.team_pos[0] as f64, "y": d.team_pos[1] as f64, "z": d.team_pos[2] as f64 },
@@ -1417,11 +1530,16 @@ mod tests {
         }
         // A team with two assists on the leader seat.
         let mut t = c.teams[0].clone();
+        // (assists whose abilities have no activation condition, so they apply in any team)
         let free: Vec<i64> = c
             .statues
             .iter()
+            .filter(|o| !t.slots.contains(&o.uid))
+            .filter(|o| {
+                let abs = assist_abilities(&o.statue_id);
+                !abs.is_empty() && abs.iter().all(|a| a.conditions.is_empty())
+            })
             .map(|o| o.uid)
-            .filter(|u| !t.slots.contains(u))
             .take(2)
             .collect();
         t.assists[0] = vec![(1, free[0]), (2, free[1])];
@@ -1443,6 +1561,84 @@ mod tests {
         // The other seats have no assists, so no assist abilities.
         let left = &info["teamOrder"]["memberLeftStatue"]["statueInfo"]["dtAbilityList"];
         assert_eq!(*left, json!([]));
+        // An assist whose condition asks for two or more statues adds nothing when it is the
+        // seat's only assist.
+        let picky = c.statues.iter().find(|o| {
+            !t.slots.contains(&o.uid)
+                && assist_abilities(&o.statue_id)
+                    .iter()
+                    .any(|a| a.conditions.iter().map(|x| x.count).sum::<i64>() > 1)
+        });
+        if let Some(o) = picky {
+            let mut t2 = c.teams[0].clone();
+            t2.assists[0] = vec![(1, o.uid)];
+            let info = team_info(&c, &t2);
+            let list = &info["teamOrder"]["leaderStatue"]["statueInfo"]["dtAbilityList"];
+            let ids: Vec<String> = assist_abilities(&o.statue_id)
+                .iter()
+                .filter(|a| a.conditions.iter().map(|x| x.count).sum::<i64>() > 1)
+                .map(|a| a.ability_id.clone())
+                .collect();
+            for id in ids {
+                assert!(
+                    !list
+                        .as_array()
+                        .unwrap()
+                        .iter()
+                        .any(|a| a["abilityId"] == json!(id)),
+                    "{id} needs more assists than one"
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn action_skill_lists_follow_the_client_slots() {
+        // skillList by index: 0 attack, 1 skill 1, 2 skill 2, 3 SP 1, 4 SP 2 (docs/research/30);
+        // every id is a skill_data_table row, whose type matches the slot.
+        let table: Value = serde_json::from_str(include_str!(
+            "../../content/masterdata/skill_data_table.json"
+        ))
+        .unwrap();
+        let ty: std::collections::HashMap<String, i64> = table["data"]["paramList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|r| {
+                (
+                    r["skillId"].as_str().unwrap().to_owned(),
+                    r["skillType"].as_i64().unwrap(),
+                )
+            })
+            .collect();
+        let mut with_sp = 0;
+        for d in statues() {
+            let o = OwnedStatue {
+                uid: 1,
+                statue_id: d.statue_id.clone(),
+                level: 1,
+                exp: 0,
+                get_date: String::new(),
+                tree: Vec::new(),
+                boost: 0,
+            };
+            let list = action_skill_list(&o);
+            assert_eq!(list.len(), 5, "{}", d.statue_id);
+            let id = |i: usize| list[i]["skillId"].as_str().map(str::to_owned);
+            assert!(id(0).unwrap().ends_with("_99"));
+            assert_eq!(ty[&id(0).unwrap()], 1, "attack is a combo");
+            assert_eq!(list[2], json!({}), "no second skill");
+            for i in [1, 3, 4] {
+                if let Some(x) = id(i) {
+                    assert!(ty.contains_key(&x), "{x} is a table row");
+                    assert!(list[i]["skillLevel"].as_i64().unwrap() >= 1);
+                }
+            }
+            if id(3).is_some() {
+                with_sp += 1;
+            }
+        }
+        assert!(with_sp > 200, "{with_sp}");
     }
 
     #[test]
@@ -1483,6 +1679,7 @@ mod tests {
             result_comment: None,
             team_scale: 100,
             team_pos: [0, 0, 0],
+            my_page_pos: my_page_pos(),
             assist_only: false,
             max_tree: None,
         };
@@ -1531,13 +1728,14 @@ pub fn rank_for_exp(exp: i64) -> i64 {
         .unwrap_or(1)
 }
 
-/// AP (stamina) maximum at a rank (20 if unknown, the wiki's rank-1 value).
+/// AP (stamina) maximum at a rank: the table's, else rank + 19, which every value seen in the
+/// original's footage follows (rank 37: 56, rank 100: 119, rank 109: 128; docs/research/32).
 pub fn ap_max(rank: i64) -> i64 {
     ranks()
         .iter()
         .find(|r| r.rank == rank)
         .map(|r| r.ap_max)
-        .unwrap_or(20)
+        .unwrap_or(rank.max(1) + 19)
 }
 
 /// Total EXP needed for the next rank. At the top rank there is none: one past the top threshold,
@@ -1567,6 +1765,9 @@ mod rank_tests {
         assert_eq!(rank_for_exp(39), 1);
         assert_eq!(rank_for_exp(40), 2);
         assert_eq!(ap_max(1), 20);
+        // past the table: rank + 19, as in the original (rank 100: 119, rank 109: 128)
+        assert_eq!(ap_max(109), 128);
+        assert!(ranks().iter().all(|r| r.ap_max == r.rank + 19));
         assert_eq!(next_rank_exp(1), 40);
         let top = ranks().last().unwrap();
         assert!(
@@ -1921,11 +2122,29 @@ mod links_and_skills_tests {
                 r["dtMinCoolTurn"].as_i64().unwrap(),
                 r["dtMaxCoolTurn"].as_i64().unwrap(),
             );
-            let old = if r["dtSkillType"] == 3 { 3 } else { 2 };
-            assert_eq!(cool_turn(min, max, 1), old, "{}", r["dtSkillId"]);
-            assert_eq!(cool_turn(min, max, 4), old);
-            assert_eq!(cool_turn(min, max, 5), old - 1);
-            assert_eq!(cool_turn(min, max, 10), old - 2);
+            // The documented value at the highest level, two more at level 1 to 4, one more
+            // from 5 (docs/research/26 §4).
+            let id = r["dtSkillId"].as_str().unwrap();
+            let top = max;
+            assert!((2..=11).contains(&top), "{id}: {top} turns at level 10");
+            assert_eq!(cool_turn(min, max, 1), top + 2, "{id}");
+            assert_eq!(cool_turn(min, max, 4), top + 2);
+            assert_eq!(cool_turn(min, max, 5), top + 1);
+            assert_eq!(cool_turn(min, max, 10), top);
+        }
+        // Documented skills keep their own value; the families take theirs.
+        let row = |id: &str| skills.iter().find(|r| r["dtSkillId"] == id).cloned();
+        if let Some(r) = row("SKILL_332_11") {
+            assert_eq!(
+                r["dtMaxCoolTurn"], 9,
+                "DIO's time stop: 9 turns at the highest level"
+            );
+        }
+        if let Some(r) = row("SKILL_532_03") {
+            assert_eq!(
+                (r["dtMaxCoolTurn"].clone(), r["dtLimitCount"].clone()),
+                (json!(4), json!(3))
+            );
         }
     }
 
