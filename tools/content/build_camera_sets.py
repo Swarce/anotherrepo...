@@ -152,7 +152,7 @@ SHOTS = {
 
 # ids whose shot was observed in the footage (the measurement's id mapping)
 OVERRIDE = {
-    111000: "NA_PUSH", 131000: "ST3_PUSH", 131101: "FOLLOW", 101008: "PULL_OUT", 101007: "SIDE_CLOSE",
+    111000: "NA_PUSH", 131000: "ST3_PUSH", 131101: "FOLLOW",
     130000: "CLOSE_FRONT_LOW", 130001: "HIGH_3Q", 130002: "NEAR_DEFAULT_WIDE",
     130003: "SIDE_GLIDE", 130004: "STAND_PUSH", 130005: "REVERSE", 130007: "LOW_FRONT_STAND",
     130009: "STAND_PUSH_CLOSE", 130010: "TOPDOWN", 130603: "BEHIND_ACTOR_LOW", 130606: "HIGH_BEHIND_DRIFT",
@@ -284,13 +284,10 @@ def cam_set(cid, data, begin=0.0, end=0.3):
 
 sets, used = [], collections.Counter()
 for cid in sorted(set(old_ids) | set(roles)):
-    if cid in (101007, 101008):
-        # mostly requested by skills and an attack wrap-up (15 and 5 requests against 4 and 2 from win
-        # appeals): their measured action shots
-        shot = OVERRIDE[cid]
-        used[shot] += 1
-        sets.append(cam_set(cid, steps(shot)))
-    elif cid in RESULT:
+    if cid in RESULT:
+        # every id a win appeal requests (101007/101008 too: Polnareff 3040 wins on 101008, and
+        # Build 38 gave it an action shot) gets the still win shot; the skills that share those ids
+        # use it as well
         data = [step("jdr_result", 5.0)]
         used["result"] += 1
         sets.append(cam_set(cid, data))

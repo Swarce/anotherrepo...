@@ -912,8 +912,8 @@
     "beginInter": 0.0,
     "endInter": 0.3,
     "flagMaintain": false,
-    "flagBindBase": true,
-    "flagBindLookat": true,
+    "flagBindBase": false,
+    "flagBindLookat": false,
     "flagNowConnect": false,
     "flagWorldSet": false,
     "flagForcusAhead": false,
@@ -921,8 +921,8 @@
     "flagNotInter": false,
     "dataList": [
      {
-      "cameraNode": "jdr_SIDE_CLOSE_0",
-      "sec": 3.2,
+      "cameraNode": "jdr_result",
+      "sec": 5.0,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
@@ -934,8 +934,8 @@
     "beginInter": 0.0,
     "endInter": 0.3,
     "flagMaintain": false,
-    "flagBindBase": true,
-    "flagBindLookat": true,
+    "flagBindBase": false,
+    "flagBindLookat": false,
     "flagNowConnect": false,
     "flagWorldSet": false,
     "flagForcusAhead": false,
@@ -943,9 +943,9 @@
     "flagNotInter": false,
     "dataList": [
      {
-      "cameraNode": "jdr_PULL_OUT_0",
-      "sec": 0.5,
-      "inter": 0.1,
+      "cameraNode": "jdr_result",
+      "sec": 5.0,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }

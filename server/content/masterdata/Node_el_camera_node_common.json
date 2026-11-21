@@ -221,28 +221,6 @@
     "baseBoneID": 4,
     "lookatBoneID": 4,
     "rotate": {
-     "x": -2.0,
-     "y": 78.0,
-     "z": 0.0
-    },
-    "perspective": 30.0,
-    "length": 5.6,
-    "baseOffset": {
-     "x": 0.0,
-     "y": 0.0,
-     "z": 1.8
-    },
-    "lookatOffset": {
-     "x": 0.0,
-     "y": -0.2,
-     "z": 1.8
-    },
-    "id": "jdr_PULL_OUT_0"
-   },
-   {
-    "baseBoneID": 4,
-    "lookatBoneID": 4,
-    "rotate": {
      "x": -5.0,
      "y": 75.0,
      "z": 0.0
