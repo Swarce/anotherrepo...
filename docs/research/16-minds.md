@@ -12,7 +12,8 @@ Read in the 3.12.0 client (H read in code, M inferred).
 - **Slots (H).** There are 8. Seq 1–4 are golden frames (`mindType 1`), 5 the skill frame
   (`skillType 2`), 6 the special-skill frame (`skillType 3`), and 7–8 sub frames.
   - A slot is open when `mindSeqInfo.seqInfoList` (from `team/team_info`) lists it with `openFlg 1`.
-  - We open 1–4, as at launch. `/team/unlock_mind_seq` answers with the same info.
+  - We opened 1–4 until Build 25; since then 5 and 6 are open too, for skill Minds
+    (docs/research/26-links-and-skills.md §3). `/team/unlock_mind_seq` answers with the same info.
 - **Capacity (H).** `StatueInfo.mindCapacity` comes from the server; the client never derives it.
   Used CP is the sum of the equipped `cost`s. We send 40 (ours), where it used to be 99. Cost is
   3 × rarity, so three ★4 or four ★3 Minds fit.

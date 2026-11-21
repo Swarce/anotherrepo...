@@ -24,12 +24,39 @@ pub fn user_info_mini(p: &Profile) -> Value {
         .and_then(|t| p.collection.known_statue(t.slots[0]))
         .map(crate::collection::statue_info)
         .unwrap_or_else(|| json!({ "statueId": "" }));
+    let (clan_id, clan_name, position, _) = p.progress.town.user_fields(&p.user_id);
     json!({
-        "id": p.user_id, "username": p.username, "userRank": p.rank, "clanId": 0, "clanName": "",
-        "position": 0, "comment": p.comment, "lastLoginAt": date(p.last_login_at), "followNum": 0,
+        "id": p.user_id, "username": p.username, "userRank": p.rank, "clanId": clan_id, "clanName": clan_name,
+        "position": position, "comment": p.comment, "lastLoginAt": date(p.last_login_at), "followNum": 0,
         "followerNum": 0, "followStatus": 0, "statueInfo": leader, "equipMindList": [], "supportSkillId": "",
         "leaderAblityId": "", "availableAt": "", "friendPoint": 0
     })
+}
+
+/// `UserInfoMini` of an AI member of the player's Town (the member card), if `id` is one.
+pub fn ai_user_info_mini(p: &Profile, id: &str) -> Option<Value> {
+    let t = p.progress.town.town.as_ref()?;
+    let m = t
+        .member(id)
+        .or_else(|| t.applicants.iter().find(|m| m.id == id))?;
+    let mut v = crate::town::ai_user_info(t, m, clock::now());
+    let o = v.as_object_mut()?;
+    for k in ["clanLevel", "clanDonationAmount"] {
+        o.remove(k);
+    }
+    for (k, x) in [
+        ("followNum", json!(0)),
+        ("followerNum", json!(0)),
+        ("followStatus", json!(0)),
+        ("equipMindList", json!([])),
+        ("supportSkillId", json!("")),
+        ("leaderAblityId", json!("")),
+        ("availableAt", json!("")),
+        ("friendPoint", json!(0)),
+    ] {
+        o.insert(k.into(), x);
+    }
+    Some(v)
 }
 
 /// Placeholder economy values until M4 (content-driven).
@@ -38,12 +65,17 @@ pub fn user_info(p: &Profile) -> Value {
     let now = date(t);
     // Souls and Mentality: the Labyrinth reads them from here (docs/research/22-labyrinth.md).
     let lab = &p.progress.dungeon;
+    let clan = p.progress.town.user_fields(&p.user_id);
+    // Arena BP (services/arena.rs): spent on battles, one back every BP_SECS.
+    let arena = &p.progress.arena;
+    let bp_use = if arena.bp_spent > 0 { arena.bp_at } else { t };
     json!({
         "username": p.username, "userRank": p.rank.max(1), "birthday": "", "exp": p.exp,
         "nextExp": crate::collection::next_rank_exp(p.rank.max(1)),
-        "clanId": 0, "clanName": "", "position": 0, "addStatus": 0,
+        "clanId": clan.0, "clanName": clan.1, "position": clan.2, "addStatus": clan.3,
         "staminaPt": crate::collection::ap_max(p.rank.max(1)), "staminaMax": crate::collection::ap_max(p.rank.max(1)), "staminaUseTime": now, "staminaMaxTime": now,
-        "battlePoint": 5, "battlePointMax": 5, "battlePointUseTime": now, "battlePointMaxTime": now,
+        "battlePoint": arena.bp(t), "battlePointMax": crate::services::arena::BP_MAX,
+        "battlePointUseTime": date(bp_use), "battlePointMaxTime": date(arena.bp_full_at(t)),
         "raidPoint": 3, "raidPointMax": 3, "raidPointUseTime": now, "raidPointMaxTime": now,
         "statueNum": p.collection.statues.len(), "mindNum": p.collection.minds.len(), "mindMax": crate::collection::MIND_MAX, "followNum": 0, "followMax": 50,
         "followerNum": 0, "followerMax": 50, "blockMax": 50, "comment": p.comment,
@@ -155,9 +187,26 @@ pub fn tutorial(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     ok(json!({}))
 }
 
+/// `UserInfoResponse`. The Town entry reads `userInfo.clanId/position/addStatus` and
+/// `backgroundId` from here (docs/research/24-town.md §1.1), so the Town's clock turns first (an
+/// AI Town may have approved the player's request).
 pub fn user_info_api(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
-    let p = current(ctx, env)?;
-    ok(json!({ "userInfo": user_info(&p), "halt": 0, "backgroundId": 0 }))
+    current(ctx, env)?;
+    let now = clock::now();
+    let (p, ()) = with_profile(ctx, env, |p| {
+        let me = p.user_id.clone();
+        let changed = p.progress.town.tick(&me, &mut p.progress.presents, now);
+        (
+            (),
+            if changed {
+                Change::Progress
+            } else {
+                Change::None
+            },
+        )
+    })?;
+    ok(json!({ "userInfo": user_info(&p), "halt": 0,
+               "backgroundId": p.progress.town.background() }))
 }
 
 pub fn update_username(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {

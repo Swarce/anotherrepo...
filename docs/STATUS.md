@@ -2,6 +2,47 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 25 — Town, more events, skill Minds and links, Labyrinth grades, Arena BP, supporters (branch `wip/b25`)
+
+### What the owner asked
+- Build 24 worked. Build the remaining systems.
+
+### What changed
+- **The Town** (docs/research/24): a solo Town with AI members, all 27 `clan/*` routes and the
+  Town home, which runs over the client's realtime socket (reversed; served on the HTTP port).
+  Create or join one of 12 AI Towns, applicants and Sub-Masters, donations of Town Medals, levels
+  that unlock objects, rewards in the Message Box. Fixed: the recommended-Town reply `{}` would
+  have crashed.
+- **Events** (docs/research/25): high-score events 560001/560005 (per-stage rules, bests, a
+  ranking, a shop), a quiz event 50090 (answers from its scripts, certificates), bonus statues and
+  Minds per event, campaign banners, nine events in all. Raids cannot appear: the raid screens are
+  not in the player's files; the raid routes answer safely.
+- **Skills and links** (docs/research/26): skill Minds in Mind frames 5 and 6 (87 Minds), skill
+  levels from growth-tree squares (shorter cool turns), Mind Links (ATK/DEF/HP), time-stop skills
+  for DIO and Jotaro. JoJo Links are action-battle only in 3.12 and stay off.
+- **Labyrinth** (docs/research/22): Beginner, Intermediate and Advanced dungeons; an unfinished
+  battle or Tarot pick can be resumed (story battles too).
+- **Arena BP** (docs/research/23): battles cost BP, team costs rise and fall, BP regenerates;
+  Colas and Diamond Coin refills.
+- **Assist-only statues** (docs/research/19 §6): 26 join the collection, usable only as assists.
+- **AI supporters** (docs/research/27): five a day; their leader ability helps in tactical battle.
+- **Daily**: the Friend Point summon has a free draw a day.
+- **Notices** (docs/research/27): the News screen shows this build's notes and offline pages.
+- Every new reply is walked in tests against the client's own class fields.
+- The feature audit (docs/research/14) is refreshed.
+- Build number 25, server marker `JDR_EMBEDDED_SERVER_b025`.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] Town: create one, and join an AI Town; the Town home loads with members (where do they
+      spawn?); chat; donate Town Medals; level rewards in the Message Box
+- [ ] High-score event: the scoring rule before battle, the score and best on the result screen;
+      the quiz event; event bonus units
+- [ ] A skill Mind in frame 5/6 adds its skill in battle; DIO's time stop
+- [ ] Labyrinth grades; leave a battle and resume it from My Page
+- [ ] Arena BP: costs, the BP dialog, recovering with a Cola
+- [ ] Assist-only statues as assists; AI supporters in the quest support list
+- [ ] News: the Updates tab shows this build's notes
+
 ## Build 24 — Arena fix, ability effect lines, assist abilities, the loading atlas (branch `wip/b24`)
 
 ### What the Build 23 device test and owner showed

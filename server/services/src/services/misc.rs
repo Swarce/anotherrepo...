@@ -1,7 +1,7 @@
-//! Small boot-path answers: system config, shop product list, info/notify, team, resumption.
+//! Small boot-path answers: system config, shop product list, info/notify, team.
 //! Values here are Build 01 placeholders; M4/M5 move them to server/content.
 
-use crate::app::{ApiError, ApiResult};
+use crate::app::ApiResult;
 use crate::services::ok;
 use crate::Ctx;
 use jdr_core::envelope::RequestEnvelope;
@@ -42,7 +42,7 @@ pub fn event_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .unwrap_or_else(|_| super::arena::fever_end_time(&Default::default(), now));
     ok(json!({ "eventList": [super::arena::campaign_entry()],
                "userBattleInfo": { "fieverEndTime": fever },
-               "raidInfo": { "totalRescueCount": 0 } }))
+               "raidInfo": super::raid::raid_info() }))
 }
 
 pub fn banner_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
@@ -54,10 +54,20 @@ pub fn get_menu_notify(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let p = super::statue::profile(ctx, env)?;
     let mut m = p.progress.missions.clone();
     m.roll(jdr_core::clock::now());
+    // Town badges: members (the AI members are always around), unread chat, applicants waiting
+    // for the Master or a Sub-Master (docs/research/24-town.md §1.1).
+    let town = p.progress.town.town.as_ref();
+    let members = town.map(|t| t.member_count()).unwrap_or(0);
+    let unread = town.is_some_and(|t| t.unread_chat());
+    let waiting = town.is_some_and(|t| t.can_manage(&p.user_id) && !t.applicants.is_empty());
     ok(json!({
-        "notAllowedFunction": [], "unopenedNotify": 0, "unopenedPresent": p.progress.presents.waiting(),
+        // Notices: this build's notes not opened yet (services/menu.rs notify_list).
+        "notAllowedFunction": [],
+        "unopenedNotify": i64::from(p.progress.notes_seen_build != jdr_core::BUILD),
+        "unopenedPresent": p.progress.presents.waiting(),
         "unopenedAchievement": m.claimable(p.rank),
-        "unopenedFollower": 0, "gashaPlayNum": 0, "myTownMember": 0, "unreadChatFlg": 0, "unapprovedMemberFlg": 0
+        "unopenedFollower": 0, "gashaPlayNum": 0, "myTownMember": members,
+        "unreadChatFlg": i64::from(unread), "unapprovedMemberFlg": i64::from(waiting)
     }))
 }
 
@@ -71,9 +81,4 @@ pub fn team_info(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .map(|t| crate::collection::team_info(&p.collection, t))
         .collect();
     ok(json!({ "teamList": teams, "mindSeqInfo": super::team::mind_seq_info() }))
-}
-
-/// 50301 = E_BIZALLE_NOT_START: no interrupted battle (10000 would offer to resume one).
-pub fn bizarre_resumption(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    Err(ApiError::Status(50301))
 }

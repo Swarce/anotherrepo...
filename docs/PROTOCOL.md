@@ -68,7 +68,7 @@ Notes:
 | `/user/get_nonce` | `GetNonceRequest` | `GetNonceResponse` | implemented |
 | `/user/get_tutorial_step` | `TutorialStepRequest` | `TutorialStepResponse` | implemented |
 | `/user/login` | `LoginRequest` | `LoginResponse` | implemented |
-| `/user/recover_battle_point` | `RecoveryBattlePointRequest` | `RecoveryBattlePointResponse` | logged as unknown |
+| `/user/recover_battle_point` | `RecoveryBattlePointRequest` | `RecoveryBattlePointResponse` | implemented (Arena BP, Build 25, research/23) |
 | `/user/recover_stamina` | `RecoverStaminaRequest` | `RecoverStaminaResponse` | logged as unknown |
 | `/user/select` | `UserSelectRequest` | `UserSelectResponse` | logged as unknown |
 | `/user/tutorial` | `UpdateTutorialStepRequest` | `UpdateTutorialStepResponse` | implemented |
@@ -85,7 +85,7 @@ Notes:
 | `/info/check_forced_notify` | `CheckForcedNotifyRequest` | `CheckForcedNotifyResponse` | implemented |
 | `/info/event_list` | `EventListRequest` | `EventListResponse` | implemented |
 | `/info/get_menu_notify` | `GetMenuNotifyRequest` | `GetMenuNotifyResponse` | implemented |
-| `/info/notify_list` | `NotifyListRequest` | `NotifyListResponse` | logged as unknown |
+| `/info/notify_list` | `NotifyListRequest` | `NotifyListResponse` | implemented (Build 25, research/24) |
 
 ### shop — IAP (disabled offline) and in-game shops (9, 2 implemented)
 
@@ -95,8 +95,8 @@ Notes:
 | `/shop/buy_complete` | `BuyCompleteRequest` | `BuyCompleteResponse` | logged as unknown |
 | `/shop/buy_list` | `BuyListRequest` | `BuyListResponse` | logged as unknown |
 | `/shop/buy_trans` | `BuyTransRequest` | `BuyTransResponse` (M) | logged as unknown |
-| `/shop/event_shop_buy` | `EventShopBuyRequest` | `EventShopBuyResponse` | logged as unknown |
-| `/shop/event_shop_list` | `EventShopListRequest` | `EventShopListResponse` | logged as unknown |
+| `/shop/event_shop_buy` | `EventShopBuyRequest` | `EventShopBuyResponse` | implemented (Build 22; the event's currency, Build 25) |
+| `/shop/event_shop_list` | `EventShopListRequest` | `EventShopListResponse` | implemented (Build 22) |
 | `/shop/product_list` | `ProductListRequest` | `ProductListResponse` | implemented |
 | `/shop/shop_buy` | `ShopBuyRequest` | `ShopBuyResponse` | logged as unknown |
 | `/shop/shop_list` | `ShopListRequest` | `ShopListResponse` | implemented |
@@ -171,7 +171,7 @@ Notes:
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
 | `/item/exp_item_list` | `ExpItemListRequest` | `ExpItemListResponse` | logged as unknown |
-| `/item/heal_item_list` | `HealItemListRequest` | `HealItemListResponse` | logged as unknown |
+| `/item/heal_item_list` | `HealItemListRequest` | `HealItemListResponse` | implemented (BP Colas, Build 25, research/23) |
 | `/item/item_list` | `ItemListRequest` | `ItemListResponse` | implemented |
 
 ### sell — selling (1, 0 implemented)
@@ -211,10 +211,10 @@ Notes:
 | `/bizarre/bizarre_continue` | `BizarreContinueRequest` | `BizarreContinueResponse` | implemented |
 | `/bizarre/bizarre_end` | `BizarreEndRequest` | `BizarreEndResponse` | implemented |
 | `/bizarre/bizarre_list` | `BizarreListRequest` | `BizarreListResponse` | implemented |
-| `/bizarre/bizarre_resumption` | `BizarreResumptionRequest` | `BizarreResumptionResponse` | implemented |
+| `/bizarre/bizarre_resumption` | `BizarreResumptionRequest` | `BizarreResumptionResponse` | implemented (resumes suspended battles and Tarot picks, Build 25, research/22 §1.8) |
 | `/bizarre/bizarre_start` | `BizarreStartRequest` | `BizarreStartResponse` | implemented |
 | `/bizarre/check_timed_chapter` | `CheckTimedChapterRequest` | `CheckTimedChapterResponse` (M) | implemented |
-| `/bizarre/destruction` | `BizarreDestructionRequest` | `BizarreDestructionResponse` | implemented |
+| `/bizarre/destruction` | `BizarreDestructionRequest` | `BizarreDestructionResponse` | implemented (declines a resumption, Build 25) |
 | `/bizarre/get_bizarre_select` | `BizarreSelectRequest` | `BizarreSelectResponse` | implemented |
 | `/bizarre/stage_list` | `StageListRequest` | `StageListResponse` | implemented |
 | `/bizarre/unlock` | `BizarreUnlockRequest` | `BizarreUnlockResponse` | logged as unknown |
@@ -230,16 +230,16 @@ Notes:
 | `/dungeon/tarot_flip` | `DungeonTarotFlipRequest` | `DungeonTarotFlipResponse` | logged as unknown |
 | `/dungeon/tarot_select` | `DungeonTarotSelectRequest` | `DungeonTarotSelectResponse` | logged as unknown |
 
-### raid — raid battles (6, 0 implemented)
+### raid — raid battles (6, 6 implemented: an inactive raid, docs/research/25-events-raids.md §1)
 
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
-| `/raid/get_raid_reward` | `GetRaidRewardRequest` | `GetRaidRewardResponse` (M) | logged as unknown |
-| `/raid/raid_end` | `RaidEndRequest` | `RaidEndResponse` | logged as unknown |
-| `/raid/raid_history_list` | `RaidHistoryListRequest` | `RaidHistoryListResponse` (M) | logged as unknown |
-| `/raid/raid_list` | `RaidListRequest` | `RaidListResponse` (M) | logged as unknown |
-| `/raid/raid_offer_rescue` | `RaidOfferRescueRequest` | `RaidOfferRescueResponse` | logged as unknown |
-| `/raid/raid_start` | `RaidStartRequest` | `RaidStartResponse` | logged as unknown |
+| `/raid/get_raid_reward` | `GetRaidRewardRequest` | `GetRaidRewardResponse` | implemented (Build 25; no caller in 3.12) |
+| `/raid/raid_end` | `RaidEndRequest` | `RaidEndResponse` | implemented (Build 25; a withdrawal) |
+| `/raid/raid_history_list` | `RaidHistoryListRequest` | `RaidHistoryListResponse` | implemented (Build 25; no caller in 3.12) |
+| `/raid/raid_list` | `RaidListRequest` | `RaidListResponse` | implemented (Build 25; no caller in 3.12) |
+| `/raid/raid_offer_rescue` | `RaidOfferRescueRequest` | `RaidOfferRescueResponse` | implemented (Build 25; fails) |
+| `/raid/raid_start` | `RaidStartRequest` | `RaidStartResponse` | implemented (Build 25; refused, timed out) |
 
 ### pvp — PvP (17, 17 implemented)
 
@@ -263,11 +263,11 @@ Notes:
 | `/pvp/statue_select_pvp` | `PvpStatueChangeRequest` | `PvpStatueChangeResponse` | implemented (Build 23, research/23) |
 | `/pvp/team_info_pvp` | `PvpTeamInfoPvpRequest` | `PvpTeamInfoPvpResponse` | implemented (Build 23, research/23) |
 
-### event — event points and rankings (5, 4 implemented)
+### event — event points and rankings (5, 5 implemented)
 
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
-| `/event/clan_member_event_point_list` | `EventClanMemberPointListRequest` | `EventClanMemberPointListResponse` | logged as unknown |
+| `/event/clan_member_event_point_list` | `EventClanMemberPointListRequest` | `EventClanMemberPointListResponse` | implemented (Build 25, research/24) |
 | `/event/get_event_ranking_detail` | `RankingDetailRequest` | `RankingDetailResponse` | implemented (Build 24, research/23 §3) |
 | `/event/get_event_ranking_list` | `RankingListRequest` | `RankingListResponse` | implemented (Build 24) |
 | `/event/get_event_ranking_reward` | `RankingRewardRequest` | `RankingRewardResponse` | implemented (Build 24) |
@@ -277,7 +277,7 @@ Notes:
 
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
-| `/support/support_user_s` | `SupportUserRequest` | `SupportUserResponse` | implemented |
+| `/support/support_user_s` | `SupportUserRequest` | `SupportUserResponse` | implemented (AI supporters, Build 25, research/24) |
 
 ### follow — follow list (social) (10, 1 implemented)
 
@@ -294,34 +294,34 @@ Notes:
 | `/follow/set_follow` | `SetFollowRequest` | `SetFollowResponse` | logged as unknown |
 | `/follow/unblock` | `UnblockUserRequest` | `UnblockUserResponse` | logged as unknown |
 
-### clan — clan and clan room (hidden offline) (27, 0 implemented)
+### clan — the Town, offline with AI members (27, 27 implemented)
 
 | Path | Request class | Response class | Build 01 |
 |---|---|---|---|
-| `/clan/add` | `AddClanRequest` | `AddClanResponse` | logged as unknown |
-| `/clan/add_approval` | `AddApprovalClanRequest` | `AddApprovalClanResponse` | logged as unknown |
-| `/clan/add_request_list` | `AddListClanRequest` | `AddListClanResponse` | logged as unknown |
-| `/clan/all_del_object` | `AllRemoveHasObjectRequest` | `AllRemoveHasObjectResponse` (M) | logged as unknown |
-| `/clan/cancel_approval` | `CancelAddClanRequest` | `CancelAddClanResponse` | logged as unknown |
-| `/clan/change_info` | `ChangeClanInfoRequest` | `ChangeClanInfoResponse` | logged as unknown |
-| `/clan/check_add_request` | `CheckAddRequest` | `CheckAddResponse` | logged as unknown |
-| `/clan/clan_bg_list` | `ClanBgListRequest` | `ClanBgListResponse` | logged as unknown |
-| `/clan/clan_donation` | `DonationRequest` | `DonationResponse` | logged as unknown |
-| `/clan/clan_object_list` | `ClanObjectListRequest` | `ClanObjectListResponse` | logged as unknown |
-| `/clan/create` | `CreateClanRequest` | `CreateClanResponse` | logged as unknown |
-| `/clan/del_object` | `RemoveClanObjectRequest` | `RemoveClanObjectResponse` (M) | logged as unknown |
-| `/clan/denial_approval` | `DenialApprovalClanRequest` | `DenialApprovalClanResponse` | logged as unknown |
-| `/clan/donation_item_list` | `DonationItemListRequest` | `DonationItemListResponse` | logged as unknown |
-| `/clan/expulsion` | `ExplusionClanRequest` | `ExplusionClanResponse` | logged as unknown |
-| `/clan/info` | `GetClanInfoRequest` | `GetClanInfoResponse` | logged as unknown |
-| `/clan/invitation` | `InviteClanRequest` | `InviteClanResponse` | logged as unknown |
-| `/clan/recommend` | `GetRecommendClanRequest` | `GetRecommendClanResponse` | implemented |
-| `/clan/room_info` | `GetClanRoomInfoRequest` | `GetClanRoomInfoResponse` (M) | logged as unknown |
-| `/clan/search` | `SearchIDClanRequest` | `SearchClanResponse` | logged as unknown |
-| `/clan/search` | `SearchNameClanRequest` | `SearchClanResponse` | logged as unknown |
-| `/clan/search` | `SearchPolicyClanRequest` | `SearchClanResponse` | logged as unknown |
-| `/clan/secession` | `LeaveClanRequest` | `LeaveClanResponse` | logged as unknown |
-| `/clan/set_object` | `SetClanObjectRequest` | `SetClanObjectResponse` (M) | logged as unknown |
-| `/clan/set_object_comment` | `SetCommentClanObjectRequest` | `SetCommentClanObjectResponse` (M) | logged as unknown |
-| `/clan/set_sub_leader` | `SetSubMasterRequest` | `SetSubMasterResponse` | logged as unknown |
-| `/clan/sync_server_info` | `GetConnectServerInfoRequest` | `GetConnectServerInfoResponse` | logged as unknown |
+| `/clan/add` | `AddClanRequest` | `AddClanResponse` | implemented (Build 25, research/24) |
+| `/clan/add_approval` | `AddApprovalClanRequest` | `AddApprovalClanResponse` | implemented (Build 25, research/24) |
+| `/clan/add_request_list` | `AddListClanRequest` | `AddListClanResponse` | implemented (Build 25, research/24) |
+| `/clan/all_del_object` | `AllRemoveHasObjectRequest` | `AllRemoveHasObjectResponse` (M) | implemented (Build 25: no caller in 3.12.0, empty `objList`) |
+| `/clan/cancel_approval` | `CancelAddClanRequest` | `CancelAddClanResponse` | implemented (Build 25, research/24) |
+| `/clan/change_info` | `ChangeClanInfoRequest` | `ChangeClanInfoResponse` | implemented (Build 25, research/24) |
+| `/clan/check_add_request` | `CheckAddRequest` | `CheckAddResponse` | implemented (Build 25, research/24) |
+| `/clan/clan_bg_list` | `ClanBgListRequest` | `ClanBgListResponse` | implemented (Build 25, research/24) |
+| `/clan/clan_donation` | `DonationRequest` | `DonationResponse` | implemented (Build 25, research/24) |
+| `/clan/clan_object_list` | `ClanObjectListRequest` | `ClanObjectListResponse` | implemented (Build 25, research/24) |
+| `/clan/create` | `CreateClanRequest` | `CreateClanResponse` | implemented (Build 25, research/24) |
+| `/clan/del_object` | `RemoveClanObjectRequest` | `RemoveClanObjectResponse` (M) | implemented (Build 25: no caller in 3.12.0, empty `objList`) |
+| `/clan/denial_approval` | `DenialApprovalClanRequest` | `DenialApprovalClanResponse` | implemented (Build 25, research/24) |
+| `/clan/donation_item_list` | `DonationItemListRequest` | `DonationItemListResponse` | implemented (Build 25, research/24) |
+| `/clan/expulsion` | `ExplusionClanRequest` | `ExplusionClanResponse` | implemented (Build 25, research/24) |
+| `/clan/info` | `GetClanInfoRequest` | `GetClanInfoResponse` | implemented (Build 25, research/24) |
+| `/clan/invitation` | `InviteClanRequest` | `InviteClanResponse` | implemented (Build 25, research/24) |
+| `/clan/recommend` | `GetRecommendClanRequest` | `GetRecommendClanResponse` | implemented (Build 25, research/24) |
+| `/clan/room_info` | `GetClanRoomInfoRequest` | `GetClanRoomInfoResponse` (M) | implemented (Build 25: no caller in 3.12.0, empty `objList`) |
+| `/clan/search` | `SearchIDClanRequest` | `SearchClanResponse` | implemented (Build 25, research/24) |
+| `/clan/search` | `SearchNameClanRequest` | `SearchClanResponse` | implemented (Build 25, research/24) |
+| `/clan/search` | `SearchPolicyClanRequest` | `SearchClanResponse` | implemented (Build 25, research/24) |
+| `/clan/secession` | `LeaveClanRequest` | `LeaveClanResponse` | implemented (Build 25, research/24) |
+| `/clan/set_object` | `SetClanObjectRequest` | `SetClanObjectResponse` (M) | implemented (Build 25: no caller in 3.12.0, empty `objList`) |
+| `/clan/set_object_comment` | `SetCommentClanObjectRequest` | `SetCommentClanObjectResponse` (M) | implemented (Build 25: no caller in 3.12.0, empty `objList`) |
+| `/clan/set_sub_leader` | `SetSubMasterRequest` | `SetSubMasterResponse` | implemented (Build 25, research/24) |
+| `/clan/sync_server_info` | `GetConnectServerInfoRequest` | `GetConnectServerInfoResponse` | implemented (Build 25, research/24) |
