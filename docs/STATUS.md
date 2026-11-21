@@ -19,13 +19,11 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 - Cuts stay cuts, attacks stay on the two-shot, the win shot is unchanged.
 - Build number 40, server marker `JDR_EMBEDDED_SERVER_b040`; `Node_el_camera_node_common 110 rows`.
 
-### Device checklist
-- [ ] Log: `[boot] jdr embedded build 40`, `Node_el_camera_node_common 110 rows`
-- [ ] Skills that push in (Speedwagon's Hammer, Stand push-ins): no jump at the start, an eased
-      move in
-- [ ] Skill cuts still clean; attacks still on the two-shot; win shots still
-- [ ] The cut back to the battle view at the end of a skill (the game's own; tell me if it should
-      glide)
+### Device result (owner, no log sent)
+- [x] "Everything looking mighty fine now": the camera angles match the original; more polish can
+      come later.
+- [x] The cut back to the battle view at the end of a skill stays as it is (the owner declined the
+      glide patch).
 
 ## Build 39 — attacks on the client's two-shot; every win camera still (branch `wip/b39`)
 
