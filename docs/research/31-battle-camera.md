@@ -125,7 +125,37 @@ framing comes from the statue rows we send (`statue_setting_table`, docs/researc
   but at least 80% of the model's standing height (a crouching team pose would sink it).
 - The original hid a statue's Stand on My Page (2019, Jotaro); that is the client's choice of model.
 
-## 6. Open (M)
+## 7. Every tactical action measured (Build 38)
+
+Six readers went through every tactical action of six original videos (ZCUC, p1zD, X9xS, x0kb, WAwk,
+h6Hs: 223 actions) frame by frame, aligning the background between frames (ORB + RANSAC) to tell a
+cut from a glide; a mapping stage aligned each action with the camera ids its action set requests
+(F; the measurements are private, under `local/wiki-raw/research-b33/camera-pack/`).
+
+- **Normal attacks** (59 with a known ATTACK template): no cut in 54 (92 %). One shot: a glide
+  along the turn view's line towards the target (85–96 % done within 0.5 s, the tilt levelled),
+  a hold, then a 1 m truck with a 10–15 % pull-out over 1–2.5 s. The "behind the attacker" frames
+  of the earlier notes (ZCUC 463, 900) are the attack animation turning its back; the background
+  does not move. Return: an ease of 1–1.5 s; none when the kill ends the area.
+- **Enemy attacks** (58): named units with an ATTACK template glide like ally attacks (0 cuts in
+  33 of 35); generic gang thugs' attacks are skill sets that cut once to a low party-side shot and
+  back (2 cuts).
+- **Blue skills** (52): 3.5 cuts on average (median 3), an angle held 0.5–1 s, rushes cutting every
+  0.5 s.
+- **Red SPs** (25): 5.7 cuts (median 5): 1–3 close lead-in shots, black, the cinematic, a wipe, 2–4
+  field shots, a cut near the turn view.
+- **Time stop** (2019): a glide push-in; the cuts fall inside the flash frames. **Reversal and
+  reserve swaps**: no camera change.
+- **Win**: static in world space while the character animates (all 7 instances).
+- The engine reproduces a glide with `inter` 0.09 (about 93 % of the way in 0.5 s) and a cut with
+  1.0. `build_camera_sets.py` gives the 30 ids observed their measured shot (111000 the attack
+  glide, 131000 the Stand attack glide, 130002 the cut near the turn view, 130005 the reverse,
+  130010 the near-top-down view, the 1308xx/1309xx rushes, …) and every other id a shot by the kind
+  of action and the role of its states with the measured frequencies. Simulated over all action
+  sets: normal attacks 0.02 cuts (85 of 86 none), blue skills 3.2 (median 3), SPs 3.1 field cuts
+  plus the client's cinematic wipes.
+
+## 8. Open (M)
 
 - The SP cinematics depend on animator assets in the player's files and on the skill rows; whether
   ours trigger them is not checked yet.
