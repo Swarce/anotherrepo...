@@ -13,6 +13,12 @@
    "accessed": "2026-11-15"
   },
   {
+   "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+   "page": "https://jojowiki.com/Diamond_Records",
+   "license": "CC BY-SA 4.0",
+   "accessed": "2026-11-15"
+  },
+  {
    "source": "jdr-default",
    "note": "identifiers and model names from the player's files; defaults where no wiki match"
   }
@@ -54,8 +60,13 @@
    "teamScale": 100,
    "teamPos": [
     2,
-    0,
+    15,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1000_01",
    "rarity": 3,
@@ -119,8 +130,13 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    19,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1000_02",
    "rarity": 4,
@@ -181,11 +197,16 @@
      "attr": "HAMON"
     }
    ],
-   "teamScale": 106,
+   "teamScale": 100,
    "teamPos": [
     1,
-    0,
+    31,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1000_03",
    "rarity": 5,
@@ -242,23 +263,41 @@
      "attr": "HAMON"
     }
    ],
-   "teamScale": 106,
+   "teamScale": 100,
    "teamPos": [
     1,
-    0,
+    31,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1000_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 2640,
+    "atk": 1020,
+    "def": 1260
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 26400,
+    "atk": 10200,
+    "def": 12600
+   },
+   "maxTree": {
+    "hp": 39900,
+    "atk": 20100,
+    "def": 25200
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Jonathan_Joestar?oldid=1235277",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "1000_12",
@@ -296,8 +335,13 @@
    "teamScale": 100,
    "teamPos": [
     -11,
-    0,
+    22,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1000_12",
    "rarity": 4,
@@ -348,8 +392,13 @@
    "teamScale": 100,
    "teamPos": [
     -21,
-    0,
+    7,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1000_13",
    "rarity": 5,
@@ -397,8 +446,13 @@
    "teamScale": 100,
    "teamPos": [
     -4,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1000_28",
    "rarity": 6,
@@ -458,8 +512,13 @@
    "teamScale": 100,
    "teamPos": [
     -10,
-    0,
+    3,
     0
+   ],
+   "myPagePos": [
+    35,
+    -140,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1010_01",
    "rarity": 3,
@@ -520,11 +579,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 101,
+   "teamScale": 100,
    "teamPos": [
     6,
-    0,
+    24,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1010_02",
    "rarity": 4,
@@ -585,11 +649,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 108,
+   "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    34,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1010_03",
    "rarity": 5,
@@ -649,8 +718,13 @@
    "teamScale": 100,
    "teamPos": [
     6,
-    0,
+    21,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1020_01",
    "rarity": 3,
@@ -714,8 +788,13 @@
    "teamScale": 100,
    "teamPos": [
     3,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1020_02",
    "rarity": 4,
@@ -764,23 +843,41 @@
      "attr": "HAMON"
     }
    ],
-   "teamScale": 121,
+   "teamScale": 109,
    "teamPos": [
     5,
-    0,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1020_03",
    "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 3,
+   "lv1": {
+    "hp": 1020,
+    "atk": 660,
+    "def": 630
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 10200,
+    "atk": 6600,
+    "def": 6300
+   },
+   "maxTree": {
+    "hp": 14100,
+    "atk": 14850,
+    "def": 14100
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_William_Anthonio_Zeppeli_(Fighting_Spirit)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "1020_04",
@@ -815,23 +912,41 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 121,
+   "teamScale": 109,
    "teamPos": [
     5,
-    0,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1020_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 3,
+   "lv1": {
+    "hp": 1530,
+    "atk": 990,
+    "def": 945
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 15300,
+    "atk": 9900,
+    "def": 9450
+   },
+   "maxTree": {
+    "hp": 25200,
+    "atk": 23400,
+    "def": 22050
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Will_Anthonio_Zeppeli?oldid=1235278",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "1080_01",
@@ -866,11 +981,16 @@
      "attr": "HAMON"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     5,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -149,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1080_01",
    "rarity": 3,
@@ -920,20 +1040,38 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1080_02",
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 718,
+    "atk": 416,
+    "def": 359
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 7182,
+    "atk": 4158,
+    "def": 3591
+   },
+   "maxTree": {
+    "hp": 13482,
+    "atk": 9108,
+    "def": 6741
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Dire?oldid=1235281",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "1080_03",
@@ -971,20 +1109,38 @@
    "teamScale": 100,
    "teamPos": [
     8,
-    0,
+    13,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1080_03",
    "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 1094,
+    "atk": 634,
+    "def": 547
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 10944,
+    "atk": 6336,
+    "def": 5472
+   },
+   "maxTree": {
+    "hp": 20544,
+    "atk": 14736,
+    "def": 10272
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Dire_(Courage)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "1090_01",
@@ -1019,11 +1175,16 @@
      "attr": "HAMON"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     3,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -146,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1090_01",
    "rarity": 3,
@@ -1070,11 +1231,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     -2,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -147,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1090_02",
    "rarity": 4,
@@ -1121,11 +1287,16 @@
      "attr": "HAMON"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
-    3,
+    4,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1090_03",
    "rarity": 5,
@@ -1172,23 +1343,37 @@
      "attr": "HAMON"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
-    3,
+    4,
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -148,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_1090_13",
    "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "statueType": 5,
+   "lv1": {
+    "hp": 1440,
+    "atk": 547,
+    "def": 461
+   },
+   "lv99": {
+    "hp": 14400,
+    "atk": 5472,
+    "def": 4608
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
-   },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Straizo_(Solitary)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "1100_01",
@@ -1223,11 +1408,16 @@
      "attr": "VMP"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -3,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1100_01",
    "rarity": 3,
@@ -1280,6 +1470,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -146,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_1100_02",
    "rarity": 4,
    "statueType": null,
@@ -1325,11 +1520,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -1,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1100_03",
    "rarity": 5,
@@ -1364,11 +1564,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -3,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1100_11",
    "rarity": 3,
@@ -1409,6 +1614,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -146,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_1100_12",
    "rarity": 4,
    "statueType": null,
@@ -1442,23 +1652,37 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -1,
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -148,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_1100_13",
    "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
+   "statueType": 5,
+   "lv1": {
+    "hp": 1512,
+    "atk": 567,
+    "def": 567
+   },
+   "lv99": {
+    "hp": 15120,
+    "atk": 5670,
+    "def": 5670
+   },
    "maxTree": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
-   },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Dio_Brando_(Solitary)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "1100_14",
@@ -1481,23 +1705,41 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -1,
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -148,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_1100_14",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 5,
+   "lv1": {
+    "hp": 2860,
+    "atk": 1540,
+    "def": 1760
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 28600,
+    "atk": 15400,
+    "def": 17600
+   },
+   "maxTree": {
+    "hp": 39400,
+    "atk": 28900,
+    "def": 29300
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Dio_Brando?oldid=1189661",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "1100_28",
@@ -1520,11 +1762,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -5,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1100_28",
    "rarity": 6,
@@ -1581,11 +1828,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 116,
+   "teamScale": 104,
    "teamPos": [
     0,
-    0,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -102,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1110_01",
    "rarity": 3,
@@ -1635,8 +1887,13 @@
    "teamScale": 138,
    "teamPos": [
     2,
-    26,
+    49,
     0
+   ],
+   "myPagePos": [
+    35,
+    -102,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1110_02",
    "rarity": 4,
@@ -1683,11 +1940,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 125,
+   "teamScale": 112,
    "teamPos": [
     4,
-    0,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -102,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1110_03",
    "rarity": 5,
@@ -1737,8 +1999,13 @@
    "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    6,
     0
+   ],
+   "myPagePos": [
+    35,
+    -137,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1120_01",
    "rarity": 3,
@@ -1785,11 +2052,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 113,
+   "teamScale": 101,
    "teamPos": [
-    -9,
-    0,
+    -8,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -129,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1120_02",
    "rarity": 4,
@@ -1841,6 +2113,11 @@
     -2,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -144,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1120_03",
    "rarity": 5,
@@ -1901,11 +2178,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 88,
+   "teamScale": 94,
    "teamPos": [
     -1,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -176,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1130_01",
    "rarity": 3,
@@ -1952,23 +2234,41 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 88,
+   "teamScale": 94,
    "teamPos": [
     3,
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -176,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_1130_02",
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 3,
+   "lv1": {
+    "hp": 1005,
+    "atk": 342,
+    "def": 362
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 10050,
+    "atk": 3417,
+    "def": 3618
+   },
+   "maxTree": {
+    "hp": 19950,
+    "atk": 6567,
+    "def": 6768
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Tarkus_(Fighting_Spirit)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "1130_03",
@@ -2006,8 +2306,13 @@
    "teamScale": 100,
    "teamPos": [
     -23,
-    0,
+    18,
     0
+   ],
+   "myPagePos": [
+    35,
+    -176,
+    180
    ],
    "resultComment": null,
    "rarity": 5,
@@ -2071,20 +2376,38 @@
    "teamScale": 100,
    "teamPos": [
     -23,
-    0,
+    18,
     0
+   ],
+   "myPagePos": [
+    35,
+    -176,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1130_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 3,
+   "lv1": {
+    "hp": 1676,
+    "atk": 970,
+    "def": 838
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 16758,
+    "atk": 9702,
+    "def": 8379
+   },
+   "maxTree": {
+    "hp": 28458,
+    "atk": 22302,
+    "def": 20079
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Tarkus?oldid=1235434",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "1130_13",
@@ -2122,8 +2445,13 @@
    "teamScale": 100,
    "teamPos": [
     -22,
-    0,
+    15,
     0
+   ],
+   "myPagePos": [
+    35,
+    -176,
+    180
    ],
    "resultComment": "Result_Chara_Comment_1130_13",
    "rarity": 5,
@@ -2183,8 +2511,13 @@
    "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    6,
     0
+   ],
+   "myPagePos": [
+    35,
+    -137,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2000_01",
    "rarity": 3,
@@ -2248,8 +2581,13 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    15,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2000_02",
    "rarity": 4,
@@ -2313,8 +2651,13 @@
    "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    22,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2000_03",
    "rarity": 5,
@@ -2377,20 +2720,38 @@
    "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    22,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2000_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 2280,
+    "atk": 1140,
+    "def": 1320
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 22800,
+    "atk": 11400,
+    "def": 13200
+   },
+   "maxTree": {
+    "hp": 34500,
+    "atk": 23100,
+    "def": 25800
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Joseph_Joestar?oldid=1305115",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "2000_12",
@@ -2425,11 +2786,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     9,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -149,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2000_12",
    "rarity": 4,
@@ -2467,8 +2833,13 @@
    "teamScale": 100,
    "teamPos": [
     23,
-    0,
+    20,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2000_28",
    "rarity": 6,
@@ -2528,8 +2899,13 @@
    "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2010_01",
    "rarity": 3,
@@ -2593,8 +2969,13 @@
    "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    21,
     0
+   ],
+   "myPagePos": [
+    35,
+    -127,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2010_02",
    "rarity": 4,
@@ -2654,8 +3035,13 @@
    "teamScale": 100,
    "teamPos": [
     -4,
-    0,
+    3,
     0
+   ],
+   "myPagePos": [
+    35,
+    -140,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2010_03",
    "rarity": 5,
@@ -2719,20 +3105,38 @@
    "teamScale": 100,
    "teamPos": [
     -4,
-    0,
+    3,
     0
+   ],
+   "myPagePos": [
+    35,
+    -140,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2010_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 2,
+   "lv1": {
+    "hp": 1721,
+    "atk": 997,
+    "def": 861
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 17214,
+    "atk": 9966,
+    "def": 8607
+   },
+   "maxTree": {
+    "hp": 28914,
+    "atk": 22566,
+    "def": 20307
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Caesar_Anthonio_Zeppeli?oldid=1189730",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "2010_13",
@@ -2770,20 +3174,38 @@
    "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    4,
     0
+   ],
+   "myPagePos": [
+    35,
+    -139,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2010_13",
    "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 4,
+   "lv1": {
+    "hp": 1091,
+    "atk": 727,
+    "def": 545
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 10908,
+    "atk": 7272,
+    "def": 5454
+   },
+   "maxTree": {
+    "hp": 22908,
+    "atk": 13272,
+    "def": 11454
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Caesar_Anthonio_Zeppeli_(Unity)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "2010_28",
@@ -2811,6 +3233,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -154,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2010_28",
    "rarity": 6,
@@ -2870,8 +3297,13 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -131,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2020_01",
    "rarity": 3,
@@ -2931,8 +3363,13 @@
    "teamScale": 100,
    "teamPos": [
     8,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2020_02",
    "rarity": 4,
@@ -2996,8 +3433,13 @@
    "teamScale": 100,
    "teamPos": [
     -13,
-    0,
+    15,
     0
+   ],
+   "myPagePos": [
+    35,
+    -128,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2020_03",
    "rarity": 5,
@@ -3061,20 +3503,38 @@
    "teamScale": 100,
    "teamPos": [
     -13,
-    0,
+    15,
     0
+   ],
+   "myPagePos": [
+    35,
+    -128,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2020_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 3,
+   "lv1": {
+    "hp": 2090,
+    "atk": 1350,
+    "def": 1290
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 20900,
+    "atk": 13500,
+    "def": 12900
+   },
+   "maxTree": {
+    "hp": 30800,
+    "atk": 27000,
+    "def": 25500
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Lisa_Lisa?oldid=1235411",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "2040_01",
@@ -3100,8 +3560,13 @@
    "teamScale": 100,
    "teamPos": [
     -4,
-    0,
+    5,
     0
+   ],
+   "myPagePos": [
+    35,
+    -138,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2040_01",
    "rarity": 3,
@@ -3136,11 +3601,16 @@
      "attr": "HAMON"
     }
    ],
-   "teamScale": 103,
+   "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    28,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2040_02",
    "rarity": 4,
@@ -3178,8 +3648,13 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2040_03",
    "rarity": 5,
@@ -3231,6 +3706,11 @@
     -5,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -146,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2050_01",
    "rarity": 3,
@@ -3291,11 +3771,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 111,
+   "teamScale": 100,
    "teamPos": [
-    11,
-    0,
+    10,
+    37,
     0
+   ],
+   "myPagePos": [
+    35,
+    -139,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2050_02",
    "rarity": 4,
@@ -3355,8 +3840,13 @@
    "teamScale": 100,
    "teamPos": [
     -8,
-    0,
+    20,
     0
+   ],
+   "myPagePos": [
+    35,
+    -139,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2050_03",
    "rarity": 5,
@@ -3420,20 +3910,38 @@
    "teamScale": 100,
    "teamPos": [
     -8,
-    0,
+    20,
     0
+   ],
+   "myPagePos": [
+    35,
+    -139,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2050_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 1877,
+    "atk": 983,
+    "def": 760
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 18774,
+    "atk": 9834,
+    "def": 7599
+   },
+   "maxTree": {
+    "hp": 31374,
+    "atk": 23334,
+    "def": 17499
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Santana?oldid=1235429",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "2050_12",
@@ -3473,6 +3981,11 @@
     -3,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -145,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2050_12",
    "rarity": 4,
@@ -3529,11 +4042,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 119,
+   "teamScale": 106,
    "teamPos": [
     -4,
-    0,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -134,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2060_01",
    "rarity": 3,
@@ -3600,6 +4118,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -146,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_2060_02",
    "rarity": 4,
    "statueType": 1,
@@ -3655,11 +4178,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 107,
+   "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    32,
     0
+   ],
+   "myPagePos": [
+    35,
+    -134,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2060_03",
    "rarity": 5,
@@ -3725,6 +4253,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -143,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_2070_01",
    "rarity": 3,
    "statueType": null,
@@ -3773,8 +4306,13 @@
    "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    8,
     0
+   ],
+   "myPagePos": [
+    35,
+    -138,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2070_02",
    "rarity": 4,
@@ -3821,11 +4359,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 104,
+   "teamScale": 100,
    "teamPos": [
     -10,
-    0,
+    28,
     0
+   ],
+   "myPagePos": [
+    35,
+    -138,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2070_03",
    "rarity": 5,
@@ -3885,8 +4428,13 @@
    "teamScale": 100,
    "teamPos": [
     9,
-    0,
+    9,
     0
+   ],
+   "myPagePos": [
+    35,
+    -134,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2080_01",
    "rarity": 3,
@@ -3936,8 +4484,13 @@
    "teamScale": 100,
    "teamPos": [
     10,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -132,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2080_02",
    "rarity": 4,
@@ -3984,11 +4537,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 108,
+   "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    34,
     0
+   ],
+   "myPagePos": [
+    35,
+    -128,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2080_03",
    "rarity": 5,
@@ -4052,8 +4610,13 @@
    "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    3,
     0
+   ],
+   "myPagePos": [
+    35,
+    -140,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2081_11",
    "rarity": 3,
@@ -4101,11 +4664,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 108,
+   "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    33,
     0
+   ],
+   "myPagePos": [
+    35,
+    -128,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2081_12",
    "rarity": 4,
@@ -4156,8 +4724,13 @@
    "teamScale": 50,
    "teamPos": [
     -1,
-    62,
+    85,
     0
+   ],
+   "myPagePos": [
+    35,
+    -142,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2081_13",
    "rarity": 5,
@@ -4221,20 +4794,38 @@
    "teamScale": 50,
    "teamPos": [
     -1,
-    62,
+    85,
     0
+   ],
+   "myPagePos": [
+    35,
+    -142,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2081_14",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 5,
+   "lv1": {
+    "hp": 1892,
+    "atk": 1096,
+    "def": 946
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 18924,
+    "atk": 10956,
+    "def": 9462
+   },
+   "maxTree": {
+    "hp": 30624,
+    "atk": 23556,
+    "def": 21162
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Kars?oldid=1189678",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "2100_03",
@@ -4269,11 +4860,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 103,
+   "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    27,
     0
+   ],
+   "myPagePos": [
+    35,
+    -143,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2100_03",
    "rarity": 5,
@@ -4323,6 +4919,11 @@
     -5,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -144,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2110_01",
    "rarity": 3,
@@ -4383,11 +4984,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 105,
+   "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    30,
     0
+   ],
+   "myPagePos": [
+    35,
+    -132,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2110_02",
    "rarity": 4,
@@ -4447,8 +5053,13 @@
    "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    1,
     0
+   ],
+   "myPagePos": [
+    35,
+    -142,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2110_03",
    "rarity": 5,
@@ -4514,6 +5125,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -143,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_2111_01",
    "rarity": 3,
    "statueType": null,
@@ -4562,8 +5178,13 @@
    "teamScale": 100,
    "teamPos": [
     -1,
-    0,
+    21,
     0
+   ],
+   "myPagePos": [
+    35,
+    -132,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2111_02",
    "rarity": 4,
@@ -4613,8 +5234,13 @@
    "teamScale": 100,
    "teamPos": [
     -11,
-    0,
+    14,
     0
+   ],
+   "myPagePos": [
+    35,
+    -132,
+    180
    ],
    "resultComment": "Result_Chara_Comment_2111_03",
    "rarity": 5,
@@ -4676,11 +5302,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     14,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -147,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3000_01",
    "rarity": 3,
@@ -4742,11 +5373,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 90,
+   "teamScale": 95,
    "teamPos": [
-    -19,
+    -20,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -164,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3000_02",
    "rarity": 4,
@@ -4808,11 +5444,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -1,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3000_03",
    "rarity": 5,
@@ -4874,23 +5515,41 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -1,
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -148,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_3000_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 1550,
+    "atk": 1140,
+    "def": 821
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 15504,
+    "atk": 11400,
+    "def": 8208
+   },
+   "maxTree": {
+    "hp": 24504,
+    "atk": 25800,
+    "def": 20808
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Jotaro_Kujo_(Courage)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "3000_13",
@@ -4931,6 +5590,11 @@
     -10,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -143,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3000_13",
    "rarity": 5,
@@ -4988,11 +5652,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -146,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3001_03",
    "rarity": 5,
@@ -5040,23 +5709,41 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     0,
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -146,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_3001_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 2210,
+    "atk": 1630,
+    "def": 1170
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 22100,
+    "atk": 16300,
+    "def": 11700
+   },
+   "maxTree": {
+    "hp": 31100,
+    "atk": 30700,
+    "def": 24300
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Jotaro_Kujo?oldid=1312507",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "3001_13",
@@ -5095,8 +5782,13 @@
    "teamScale": 72,
    "teamPos": [
     0,
-    16,
+    39,
     0
+   ],
+   "myPagePos": [
+    35,
+    -153,
+    180
    ],
    "resultComment": null,
    "rarity": null,
@@ -5143,11 +5835,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     4,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -147,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3002_03",
    "rarity": 5,
@@ -5208,11 +5905,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     -3,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -147,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3010_01",
    "rarity": 3,
@@ -5276,8 +5978,13 @@
    "teamScale": 142,
    "teamPos": [
     -20,
-    22,
+    45,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3010_02",
    "rarity": 4,
@@ -5338,11 +6045,16 @@
      "attr": "NONE"
     }
    ],
-   "teamScale": 106,
+   "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    31,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3010_03",
    "rarity": 5,
@@ -5405,8 +6117,13 @@
    "teamScale": 96,
    "teamPos": [
     -17,
-    0,
+    3,
     0
+   ],
+   "myPagePos": [
+    35,
+    -147,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3010_13",
    "rarity": 5,
@@ -5471,8 +6188,13 @@
    "teamScale": 100,
    "teamPos": [
     -28,
-    0,
+    1,
     0
+   ],
+   "myPagePos": [
+    35,
+    -142,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3020_01",
    "rarity": 3,
@@ -5533,8 +6255,13 @@
    "teamScale": 100,
    "teamPos": [
     12,
-    0,
+    21,
     0
+   ],
+   "myPagePos": [
+    35,
+    -129,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3020_02",
    "rarity": 4,
@@ -5599,8 +6326,13 @@
    "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    3,
     0
+   ],
+   "myPagePos": [
+    35,
+    -140,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3020_03",
    "rarity": 5,
@@ -5650,11 +6382,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 102,
+   "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    25,
     0
+   ],
+   "myPagePos": [
+    35,
+    -129,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3020_12",
    "rarity": 4,
@@ -5705,8 +6442,13 @@
    "teamScale": 100,
    "teamPos": [
     -4,
-    0,
+    3,
     0
+   ],
+   "myPagePos": [
+    35,
+    -140,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3020_13",
    "rarity": 5,
@@ -5755,8 +6497,13 @@
    "teamScale": 100,
    "teamPos": [
     -5,
-    0,
+    6,
     0
+   ],
+   "myPagePos": [
+    35,
+    -137,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3020_28",
    "rarity": 6,
@@ -5817,8 +6564,13 @@
    "teamScale": 100,
    "teamPos": [
     -21,
-    0,
+    8,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3030_01",
    "rarity": 3,
@@ -5883,8 +6635,13 @@
    "teamScale": 100,
    "teamPos": [
     -15,
-    0,
+    9,
     0
+   ],
+   "myPagePos": [
+    35,
+    -134,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3030_02",
    "rarity": 4,
@@ -5949,8 +6706,13 @@
    "teamScale": 100,
    "teamPos": [
     4,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3030_03",
    "rarity": 5,
@@ -6014,8 +6776,13 @@
    "teamScale": 100,
    "teamPos": [
     -11,
-    0,
+    7,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3030_13",
    "rarity": 5,
@@ -6080,20 +6847,38 @@
    "teamScale": 100,
    "teamPos": [
     -11,
-    0,
+    7,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3030_14",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 4,
+   "lv1": {
+    "hp": 1767,
+    "atk": 1023,
+    "def": 884
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 17670,
+    "atk": 10230,
+    "def": 8835
+   },
+   "maxTree": {
+    "hp": 29670,
+    "atk": 22230,
+    "def": 20835
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Noriaki_Kakyoin?oldid=1235418",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "3031_03",
@@ -6132,20 +6917,38 @@
    "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3031_03",
    "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 1123,
+    "atk": 780,
+    "def": 530
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 11232,
+    "atk": 7800,
+    "def": 5304
+   },
+   "maxTree": {
+    "hp": 28032,
+    "atk": 16800,
+    "def": 5904
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Noriaki_Kakyoin_~_Fear_Overcame_(Courage)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "3031_04",
@@ -6184,20 +6987,38 @@
    "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3031_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 2580,
+    "atk": 1350,
+    "def": 1050
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 25800,
+    "atk": 13500,
+    "def": 10500
+   },
+   "maxTree": {
+    "hp": 38400,
+    "atk": 27000,
+    "def": 20400
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Noriaki_Kakyoin_~_Fear_Overcame_(Courage)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "3040_01",
@@ -6226,6 +7047,11 @@
     24,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -145,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3040_01",
    "rarity": 3,
@@ -6280,6 +7106,11 @@
     -17,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -145,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3040_02",
    "rarity": 4,
@@ -6341,11 +7172,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     23,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -146,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3040_03",
    "rarity": 5,
@@ -6406,23 +7242,41 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     23,
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -146,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_3040_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 1631,
+    "atk": 1133,
+    "def": 770
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 16308,
+    "atk": 11325,
+    "def": 7701
+   },
+   "maxTree": {
+    "hp": 28908,
+    "atk": 25725,
+    "def": 16701
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Jean_Pierre_Polnareff_(Courage)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "3040_13",
@@ -6458,23 +7312,41 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 110,
+   "teamScale": 100,
    "teamPos": [
     -4,
-    0,
+    36,
     0
+   ],
+   "myPagePos": [
+    35,
+    -131,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3040_13",
    "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 4,
+   "lv1": {
+    "hp": 1151,
+    "atk": 606,
+    "def": 636
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 11514,
+    "atk": 6060,
+    "def": 6363
+   },
+   "maxTree": {
+    "hp": 23514,
+    "atk": 12060,
+    "def": 12363
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Jean_Pierre_Polnareff?oldid=1189686",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "3041_03",
@@ -6510,11 +7382,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     9,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -146,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3041_03",
    "rarity": 5,
@@ -6562,11 +7439,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     9,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -146,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3041_04",
    "rarity": 6,
@@ -6617,8 +7499,13 @@
    "teamScale": 150,
    "teamPos": [
     27,
-    106,
+    120,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3050_01",
    "rarity": 3,
@@ -6683,8 +7570,13 @@
    "teamScale": 150,
    "teamPos": [
     4,
-    110,
+    120,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3050_02",
    "rarity": 4,
@@ -6749,8 +7641,13 @@
    "teamScale": 150,
    "teamPos": [
     38,
-    79,
+    102,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3050_03",
    "rarity": 5,
@@ -6802,8 +7699,13 @@
    "teamScale": 150,
    "teamPos": [
     38,
-    79,
+    102,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3050_04",
    "rarity": 6,
@@ -6861,11 +7763,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 129,
+   "teamScale": 115,
    "teamPos": [
-    9,
-    0,
+    8,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -94,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3060_01",
    "rarity": 3,
@@ -6913,11 +7820,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 141,
+   "teamScale": 126,
    "teamPos": [
-    -11,
-    0,
+    -10,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -94,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3060_02",
    "rarity": 4,
@@ -6968,8 +7880,13 @@
    "teamScale": 150,
    "teamPos": [
     5,
-    119,
+    120,
     0
+   ],
+   "myPagePos": [
+    35,
+    -94,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3060_03",
    "rarity": 5,
@@ -7030,11 +7947,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 97,
+   "teamScale": 100,
    "teamPos": [
-    -21,
+    -22,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -149,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3070_01",
    "rarity": 3,
@@ -7082,11 +8004,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -5,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3070_02",
    "rarity": 4,
@@ -7139,6 +8066,11 @@
     12,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -145,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3070_03",
    "rarity": 5,
@@ -7198,8 +8130,13 @@
    "teamScale": 100,
    "teamPos": [
     3,
-    0,
+    3,
     0
+   ],
+   "myPagePos": [
+    35,
+    -140,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3090_01",
    "rarity": 3,
@@ -7249,8 +8186,13 @@
    "teamScale": 150,
    "teamPos": [
     -28,
-    26,
+    49,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3090_02",
    "rarity": 4,
@@ -7300,20 +8242,38 @@
    "teamScale": 100,
    "teamPos": [
     -5,
-    0,
+    19,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3090_03",
    "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 1260,
+    "atk": 660,
+    "def": 510
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 12600,
+    "atk": 6600,
+    "def": 5100
+   },
+   "maxTree": {
+    "hp": 29400,
+    "atk": 11400,
+    "def": 9900
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Devo_the_Cursed_(Courage)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "3100_01",
@@ -7352,8 +8312,13 @@
    "teamScale": 100,
    "teamPos": [
     -1,
-    0,
+    9,
     0
+   ],
+   "myPagePos": [
+    35,
+    -152,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3100_01",
    "rarity": 3,
@@ -7414,8 +8379,13 @@
    "teamScale": 100,
    "teamPos": [
     -1,
-    0,
+    5,
     0
+   ],
+   "myPagePos": [
+    35,
+    -152,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3100_02",
    "rarity": 4,
@@ -7473,11 +8443,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 101,
+   "teamScale": 100,
    "teamPos": [
     -11,
-    0,
+    25,
     0
+   ],
+   "myPagePos": [
+    35,
+    -152,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3100_03",
    "rarity": 5,
@@ -7542,20 +8517,38 @@
    "teamScale": 100,
    "teamPos": [
     -8,
-    0,
+    5,
     0
+   ],
+   "myPagePos": [
+    35,
+    -152,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3100_12",
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 5,
+   "lv1": {
+    "hp": 624,
+    "atk": 370,
+    "def": 488
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 6240,
+    "atk": 3705,
+    "def": 4875
+   },
+   "maxTree": {
+    "hp": 16590,
+    "atk": 6705,
+    "def": 7875
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Rubber_Soul?oldid=1235428",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "3110_01",
@@ -7581,8 +8574,13 @@
    "teamScale": 100,
    "teamPos": [
     -18,
-    0,
+    11,
     0
+   ],
+   "myPagePos": [
+    35,
+    -132,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3110_01",
    "rarity": 3,
@@ -7632,8 +8630,13 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    5,
     0
+   ],
+   "myPagePos": [
+    35,
+    -138,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3110_02",
    "rarity": 4,
@@ -7693,8 +8696,13 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    14,
     0
+   ],
+   "myPagePos": [
+    35,
+    -129,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3110_03",
    "rarity": 5,
@@ -7744,8 +8752,13 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    14,
     0
+   ],
+   "myPagePos": [
+    35,
+    -129,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3110_13",
    "rarity": 5,
@@ -7808,20 +8821,38 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    14,
     0
+   ],
+   "myPagePos": [
+    35,
+    -129,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3110_14",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 4,
+   "lv1": {
+    "hp": 1440,
+    "atk": 1125,
+    "def": 855
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 14400,
+    "atk": 11250,
+    "def": 8550
+   },
+   "maxTree": {
+    "hp": 26400,
+    "atk": 23250,
+    "def": 20550
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Hol_Horse_(Unity)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "3150_01",
@@ -7860,8 +8891,13 @@
    "teamScale": 150,
    "teamPos": [
     0,
-    50,
+    73,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3150_01",
    "rarity": 3,
@@ -7912,8 +8948,13 @@
    "teamScale": 150,
    "teamPos": [
     1,
-    29,
+    52,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3150_02",
    "rarity": 4,
@@ -7974,8 +9015,13 @@
    "teamScale": 150,
    "teamPos": [
     -12,
-    56,
+    80,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3150_03",
    "rarity": 5,
@@ -8040,20 +9086,38 @@
    "teamScale": 150,
    "teamPos": [
     -12,
-    56,
+    80,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3150_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 2,
+   "lv1": {
+    "hp": 2030,
+    "atk": 1310,
+    "def": 1250
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 20300,
+    "atk": 13100,
+    "def": 12500
+   },
+   "maxTree": {
+    "hp": 30200,
+    "atk": 26600,
+    "def": 25100
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Enya_the_Hag?oldid=1235397",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "3150_12",
@@ -8089,23 +9153,41 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 149,
    "teamPos": [
     -6,
-    14,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -62,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3150_12",
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 4,
+   "lv1": {
+    "hp": 752,
+    "atk": 495,
+    "def": 317
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 7524,
+    "atk": 4950,
+    "def": 3168
+   },
+   "maxTree": {
+    "hp": 15024,
+    "atk": 8700,
+    "def": 6918
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Enya_the_Hag_(Unity)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "3210_01",
@@ -8144,8 +9226,13 @@
    "teamScale": 150,
    "teamPos": [
     -7,
-    51,
+    74,
     0
+   ],
+   "myPagePos": [
+    35,
+    -122,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3210_01",
    "rarity": 3,
@@ -8207,11 +9294,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 141,
+   "teamScale": 126,
    "teamPos": [
     0,
-    0,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -122,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3210_02",
    "rarity": 4,
@@ -8269,11 +9361,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 148,
    "teamPos": [
     1,
-    13,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -122,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3210_03",
    "rarity": 5,
@@ -8324,8 +9421,13 @@
    "teamScale": 100,
    "teamPos": [
     -1,
-    0,
+    6,
     0
+   ],
+   "myPagePos": [
+    35,
+    -137,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3210_12",
    "rarity": 4,
@@ -8387,11 +9489,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 148,
    "teamPos": [
     2,
-    13,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -122,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3210_13",
    "rarity": 5,
@@ -8452,8 +9559,13 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    15,
     0
+   ],
+   "myPagePos": [
+    35,
+    -128,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3240_11",
    "rarity": 3,
@@ -8501,11 +9613,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 106,
+   "teamScale": 100,
    "teamPos": [
-    -5,
-    0,
+    -4,
+    31,
     0
+   ],
+   "myPagePos": [
+    35,
+    -120,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3240_12",
    "rarity": 4,
@@ -8556,8 +9673,13 @@
    "teamScale": 84,
    "teamPos": [
     -6,
-    15,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -129,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3240_13",
    "rarity": 5,
@@ -8613,11 +9735,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 103,
+   "teamScale": 100,
    "teamPos": [
     2,
-    0,
+    27,
     0
+   ],
+   "myPagePos": [
+    35,
+    -116,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3270_01",
    "rarity": 3,
@@ -8664,11 +9791,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 113,
+   "teamScale": 101,
    "teamPos": [
-    -7,
-    0,
+    -6,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -107,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3270_02",
    "rarity": 4,
@@ -8715,11 +9847,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 124,
+   "teamScale": 111,
    "teamPos": [
-    -6,
-    0,
+    -5,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -107,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3270_03",
    "rarity": 5,
@@ -8780,23 +9917,41 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 124,
+   "teamScale": 111,
    "teamPos": [
-    -6,
-    0,
+    -5,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -107,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3270_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 2,
+   "lv1": {
+    "hp": 2020,
+    "atk": 1070,
+    "def": 1490
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 20200,
+    "atk": 10700,
+    "def": 14900
+   },
+   "maxTree": {
+    "hp": 29200,
+    "atk": 23300,
+    "def": 29300
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Mariah?oldid=1235413",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "3300_01",
@@ -8825,6 +9980,11 @@
     17,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -143,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3300_01",
    "rarity": 3,
@@ -8889,8 +10049,13 @@
    "teamScale": 65,
    "teamPos": [
     -4,
-    77,
+    100,
     0
+   ],
+   "myPagePos": [
+    35,
+    -79,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3300_02",
    "rarity": 4,
@@ -8955,8 +10120,13 @@
    "teamScale": 150,
    "teamPos": [
     15,
-    52,
+    75,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3300_03",
    "rarity": 5,
@@ -9021,8 +10191,13 @@
    "teamScale": 150,
    "teamPos": [
     15,
-    52,
+    75,
     0
+   ],
+   "myPagePos": [
+    35,
+    -55,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3300_04",
    "rarity": 6,
@@ -9084,11 +10259,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 102,
+   "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    25,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3321_03",
    "rarity": 5,
@@ -9153,8 +10333,13 @@
    "teamScale": 100,
    "teamPos": [
     -7,
-    0,
+    1,
     0
+   ],
+   "myPagePos": [
+    35,
+    -142,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3321_18",
    "rarity": 6,
@@ -9203,8 +10388,13 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    6,
     0
+   ],
+   "myPagePos": [
+    35,
+    -137,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3322_08",
    "rarity": 6,
@@ -9250,11 +10440,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 113,
+   "teamScale": 101,
    "teamPos": [
-    -27,
-    0,
+    -25,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3323_08",
    "rarity": 6,
@@ -9318,20 +10513,38 @@
    "teamScale": 100,
    "teamPos": [
     -4,
-    0,
+    4,
     0
+   ],
+   "myPagePos": [
+    35,
+    -139,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3330_01",
    "rarity": 3,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 529,
+    "atk": 277,
+    "def": 214
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 5292,
+    "atk": 2772,
+    "def": 2142
+   },
+   "maxTree": {
+    "hp": 10992,
+    "atk": 5772,
+    "def": 3042
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Vanilla_Ice_(Courage)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "3330_02",
@@ -9372,6 +10585,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3330_02",
    "rarity": 4,
@@ -9422,8 +10640,13 @@
    "teamScale": 100,
    "teamPos": [
     -13,
-    0,
+    9,
     0
+   ],
+   "myPagePos": [
+    35,
+    -134,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3330_03",
    "rarity": 5,
@@ -9487,20 +10710,38 @@
    "teamScale": 100,
    "teamPos": [
     -13,
-    0,
+    9,
     0
+   ],
+   "myPagePos": [
+    35,
+    -134,
+    180
    ],
    "resultComment": "Result_Chara_Comment_3330_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 2520,
+    "atk": 1320,
+    "def": 1020
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 25200,
+    "atk": 13200,
+    "def": 10200
+   },
+   "maxTree": {
+    "hp": 37800,
+    "atk": 26700,
+    "def": 20100
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Vanilla_Ice?oldid=1235439",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4000_01",
@@ -9539,20 +10780,38 @@
    "teamScale": 100,
    "teamPos": [
     -10,
-    0,
+    11,
     0
+   ],
+   "myPagePos": [
+    35,
+    -132,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4000_01",
    "rarity": 3,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 449,
+    "atk": 290,
+    "def": 277
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 4488,
+    "atk": 2904,
+    "def": 2772
+   },
+   "maxTree": {
+    "hp": 6288,
+    "atk": 5904,
+    "def": 5622
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Josuke_Higashikata_(Courage)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4000_02",
@@ -9591,8 +10850,13 @@
    "teamScale": 100,
    "teamPos": [
     -19,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4000_02",
    "rarity": 4,
@@ -9650,11 +10914,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 109,
+   "teamScale": 100,
    "teamPos": [
-    19,
-    0,
+    17,
+    35,
     0
+   ],
+   "myPagePos": [
+    35,
+    -123,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4000_03",
    "rarity": 5,
@@ -9715,23 +10984,41 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 109,
+   "teamScale": 100,
    "teamPos": [
-    19,
-    0,
+    17,
+    35,
     0
+   ],
+   "myPagePos": [
+    35,
+    -123,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4000_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 2040,
+    "atk": 1320,
+    "def": 1260
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 20400,
+    "atk": 13200,
+    "def": 12600
+   },
+   "maxTree": {
+    "hp": 30300,
+    "atk": 26700,
+    "def": 25200
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Josuke_Higashikata?oldid=1189671",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4000_12",
@@ -9770,8 +11057,13 @@
    "teamScale": 100,
    "teamPos": [
     16,
-    0,
+    2,
     0
+   ],
+   "myPagePos": [
+    35,
+    -141,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4000_12",
    "rarity": 4,
@@ -9820,8 +11112,13 @@
    "teamScale": 100,
    "teamPos": [
     8,
-    0,
+    4,
     0
+   ],
+   "myPagePos": [
+    35,
+    -139,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4000_18",
    "rarity": 6,
@@ -9869,8 +11166,13 @@
    "teamScale": 100,
    "teamPos": [
     15,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4000_23",
    "rarity": 5,
@@ -9919,11 +11221,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 128,
+   "teamScale": 115,
    "teamPos": [
-    8,
-    0,
+    7,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -88,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4010_01",
    "rarity": 3,
@@ -9985,11 +11292,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 130,
+   "teamScale": 116,
    "teamPos": [
     -6,
-    0,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -87,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4010_13",
    "rarity": 5,
@@ -10051,11 +11363,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 147,
+   "teamScale": 131,
    "teamPos": [
     4,
-    0,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -84,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4011_02",
    "rarity": 4,
@@ -10113,11 +11430,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 125,
+   "teamScale": 112,
    "teamPos": [
-    11,
-    0,
+    10,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -91,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4011_03",
    "rarity": 5,
@@ -10179,23 +11501,41 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 134,
    "teamPos": [
-    12,
-    0,
+    11,
+    38,
     0
    ],
+   "myPagePos": [
+    35,
+    -84,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_4011_15",
-   "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "rarity": 3,
+   "statueType": 5,
+   "lv1": {
+    "hp": 365,
+    "atk": 217,
+    "def": 285
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 3648,
+    "atk": 2166,
+    "def": 2850
+   },
+   "maxTree": {
+    "hp": 6798,
+    "atk": 4716,
+    "def": 5475
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Koichi_Hirose?oldid=1305157",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4011_16",
@@ -10231,23 +11571,41 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 134,
    "teamPos": [
-    12,
-    0,
+    11,
+    38,
     0
    ],
+   "myPagePos": [
+    35,
+    -84,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_4011_16",
-   "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "rarity": 4,
+   "statueType": 5,
+   "lv1": {
+    "hp": 605,
+    "atk": 359,
+    "def": 473
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 6048,
+    "atk": 3591,
+    "def": 4725
+   },
+   "maxTree": {
+    "hp": 10848,
+    "atk": 7941,
+    "def": 9225
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Koichi_Hirose?oldid=1305157",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4011_17",
@@ -10283,23 +11641,41 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 134,
    "teamPos": [
-    12,
-    0,
+    11,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -84,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4011_17",
    "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 5,
+   "lv1": {
+    "hp": 922,
+    "atk": 547,
+    "def": 720
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 9216,
+    "atk": 5472,
+    "def": 7200
+   },
+   "maxTree": {
+    "hp": 15816,
+    "atk": 12672,
+    "def": 14700
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Koichi_Hirose?oldid=1305157",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4011_18",
@@ -10335,23 +11711,41 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 134,
    "teamPos": [
-    12,
-    0,
+    11,
+    38,
     0
    ],
+   "myPagePos": [
+    35,
+    -84,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_4011_18",
-   "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "rarity": 6,
+   "statueType": 5,
+   "lv1": {
+    "hp": 1200,
+    "atk": 630,
+    "def": 570
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 12000,
+    "atk": 6300,
+    "def": 5700
+   },
+   "maxTree": {
+    "hp": 24000,
+    "atk": 12600,
+    "def": 11400
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Koichi_Hirose?oldid=1305157",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4012_03",
@@ -10387,11 +11781,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 136,
    "teamPos": [
-    16,
-    2,
+    14,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -91,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4012_03",
    "rarity": 5,
@@ -10453,11 +11852,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 150,
+   "teamScale": 141,
    "teamPos": [
-    -19,
-    7,
+    -18,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -91,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4012_11",
    "rarity": 3,
@@ -10522,8 +11926,13 @@
    "teamScale": 100,
    "teamPos": [
     11,
-    0,
+    9,
     0
+   ],
+   "myPagePos": [
+    35,
+    -134,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4020_01",
    "rarity": 3,
@@ -10588,8 +11997,13 @@
    "teamScale": 100,
    "teamPos": [
     -23,
-    0,
+    16,
     0
+   ],
+   "myPagePos": [
+    35,
+    -127,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4020_02",
    "rarity": 4,
@@ -10651,11 +12065,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 141,
+   "teamScale": 127,
    "teamPos": [
-    5,
-    0,
+    4,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -118,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4020_03",
    "rarity": 5,
@@ -10716,11 +12135,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 141,
+   "teamScale": 127,
    "teamPos": [
-    5,
-    0,
+    4,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -118,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4020_04",
    "rarity": 6,
@@ -10781,8 +12205,13 @@
    "teamScale": 100,
    "teamPos": [
     -16,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -131,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4020_13",
    "rarity": 5,
@@ -10835,8 +12264,13 @@
    "teamScale": 100,
    "teamPos": [
     1,
-    0,
+    16,
     0
+   ],
+   "myPagePos": [
+    35,
+    -127,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4030_01",
    "rarity": 3,
@@ -10898,11 +12332,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 130,
+   "teamScale": 116,
    "teamPos": [
-    -4,
-    0,
+    -3,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -115,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4030_02",
    "rarity": 4,
@@ -10963,8 +12402,13 @@
    "teamScale": 100,
    "teamPos": [
     9,
-    0,
+    17,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4030_03",
    "rarity": 5,
@@ -11029,8 +12473,13 @@
    "teamScale": 100,
    "teamPos": [
     9,
-    0,
+    17,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4030_04",
    "rarity": 6,
@@ -11095,8 +12544,13 @@
    "teamScale": 100,
    "teamPos": [
     1,
-    0,
+    16,
     0
+   ],
+   "myPagePos": [
+    35,
+    -127,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4031_18",
    "rarity": 6,
@@ -11163,6 +12617,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -145,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_4040_01",
    "rarity": 3,
    "statueType": 2,
@@ -11223,11 +12682,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
     -21,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4040_12",
    "rarity": 4,
@@ -11291,8 +12755,13 @@
    "teamScale": 100,
    "teamPos": [
     16,
-    0,
+    7,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4040_13",
    "rarity": 5,
@@ -11352,20 +12821,38 @@
    "teamScale": 100,
    "teamPos": [
     16,
-    0,
+    7,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4040_14",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 4,
+   "lv1": {
+    "hp": 1767,
+    "atk": 1162,
+    "def": 744
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 17670,
+    "atk": 11625,
+    "def": 7440
+   },
+   "maxTree": {
+    "hp": 29670,
+    "atk": 23625,
+    "def": 19440
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Jotaro_Kujo?oldid=1312507",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4042_03",
@@ -11401,23 +12888,41 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 99,
+   "teamScale": 100,
    "teamPos": [
     -2,
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -146,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_4042_03",
    "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 3,
+   "lv1": {
+    "hp": 1470,
+    "atk": 500,
+    "def": 529
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 14700,
+    "atk": 4998,
+    "def": 5292
+   },
+   "maxTree": {
+    "hp": 42300,
+    "atk": 6798,
+    "def": 7692
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Jotaro_Kujo_(Fighting_Spirit)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4043_08",
@@ -11441,11 +12946,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 98,
+   "teamScale": 100,
    "teamPos": [
-    14,
+    15,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -148,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4043_08",
    "rarity": 6,
@@ -11493,8 +13003,13 @@
    "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    21,
     0
+   ],
+   "myPagePos": [
+    35,
+    -122,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4080_01",
    "rarity": 3,
@@ -11543,11 +13058,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 106,
+   "teamScale": 100,
    "teamPos": [
-    8,
-    0,
+    7,
+    31,
     0
+   ],
+   "myPagePos": [
+    35,
+    -112,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4080_02",
    "rarity": 4,
@@ -11611,8 +13131,13 @@
    "teamScale": 100,
    "teamPos": [
     -13,
-    0,
+    19,
     0
+   ],
+   "myPagePos": [
+    35,
+    -124,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4080_03",
    "rarity": 5,
@@ -11659,8 +13184,13 @@
    "teamScale": 100,
    "teamPos": [
     -13,
-    0,
+    19,
     0
+   ],
+   "myPagePos": [
+    35,
+    -124,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4080_04",
    "rarity": 6,
@@ -11721,11 +13251,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 108,
+   "teamScale": 100,
    "teamPos": [
-    8,
-    0,
+    7,
+    34,
     0
+   ],
+   "myPagePos": [
+    35,
+    -109,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4080_13",
    "rarity": 5,
@@ -11790,8 +13325,13 @@
    "teamScale": 150,
    "teamPos": [
     0,
-    20,
+    43,
     0
+   ],
+   "myPagePos": [
+    35,
+    -60,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4110_01",
    "rarity": 3,
@@ -11855,8 +13395,13 @@
    "teamScale": 150,
    "teamPos": [
     -1,
-    21,
+    44,
     0
+   ],
+   "myPagePos": [
+    35,
+    -60,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4110_02",
    "rarity": 4,
@@ -11905,8 +13450,13 @@
    "teamScale": 150,
    "teamPos": [
     4,
-    19,
+    42,
     0
+   ],
+   "myPagePos": [
+    35,
+    -60,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4110_13",
    "rarity": 5,
@@ -11958,20 +13508,38 @@
    "teamScale": 150,
    "teamPos": [
     4,
-    19,
+    42,
     0
+   ],
+   "myPagePos": [
+    35,
+    -60,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4110_14",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 4,
+   "lv1": {
+    "hp": 2131,
+    "atk": 799,
+    "def": 799
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 21312,
+    "atk": 7992,
+    "def": 7992
+   },
+   "maxTree": {
+    "hp": 33312,
+    "atk": 19992,
+    "def": 19992
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Shigekiyo_Yangu?oldid=1235430",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4130_01",
@@ -12010,8 +13578,13 @@
    "teamScale": 100,
    "teamPos": [
     17,
-    0,
+    13,
     0
+   ],
+   "myPagePos": [
+    35,
+    -130,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4130_01",
    "rarity": 3,
@@ -12062,8 +13635,13 @@
    "teamScale": 100,
    "teamPos": [
     22,
-    0,
+    16,
     0
+   ],
+   "myPagePos": [
+    35,
+    -127,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4130_02",
    "rarity": 4,
@@ -12114,8 +13692,13 @@
    "teamScale": 100,
    "teamPos": [
     22,
-    0,
+    16,
     0
+   ],
+   "myPagePos": [
+    35,
+    -127,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4130_03",
    "rarity": 5,
@@ -12173,11 +13756,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 108,
+   "teamScale": 100,
    "teamPos": [
     2,
-    0,
+    34,
     0
+   ],
+   "myPagePos": [
+    35,
+    -115,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4130_13",
    "rarity": 5,
@@ -12237,20 +13825,38 @@
    "teamScale": 100,
    "teamPos": [
     17,
-    0,
+    13,
     0
    ],
+   "myPagePos": [
+    35,
+    -130,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_4130_25",
-   "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "rarity": 3,
+   "statueType": 2,
+   "lv1": {
+    "hp": 490,
+    "atk": 260,
+    "def": 200
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 4900,
+    "atk": 2600,
+    "def": 2000
+   },
+   "maxTree": {
+    "hp": 10600,
+    "atk": 5600,
+    "def": 2900
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Yuya_Fungami?oldid=1235444",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4130_26",
@@ -12289,20 +13895,38 @@
    "teamScale": 100,
    "teamPos": [
     17,
-    0,
+    13,
     0
    ],
+   "myPagePos": [
+    35,
+    -130,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_4130_26",
-   "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "rarity": 4,
+   "statueType": 2,
+   "lv1": {
+    "hp": 810,
+    "atk": 420,
+    "def": 330
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 8100,
+    "atk": 4200,
+    "def": 3300
+   },
+   "maxTree": {
+    "hp": 18000,
+    "atk": 9450,
+    "def": 4350
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Yuya_Fungami?oldid=1235444",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4130_27",
@@ -12341,20 +13965,38 @@
    "teamScale": 100,
    "teamPos": [
     17,
-    0,
+    13,
     0
+   ],
+   "myPagePos": [
+    35,
+    -130,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4130_27",
    "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 2,
+   "lv1": {
+    "hp": 1220,
+    "atk": 640,
+    "def": 490
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 12200,
+    "atk": 6400,
+    "def": 4900
+   },
+   "maxTree": {
+    "hp": 29000,
+    "atk": 15400,
+    "def": 5500
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Yuya_Fungami?oldid=1235444",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4130_28",
@@ -12393,20 +14035,38 @@
    "teamScale": 100,
    "teamPos": [
     17,
-    0,
+    13,
     0
    ],
+   "myPagePos": [
+    35,
+    -130,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_4130_28",
-   "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "rarity": 6,
+   "statueType": 2,
+   "lv1": {
+    "hp": 1450,
+    "atk": 760,
+    "def": 590
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 14500,
+    "atk": 7600,
+    "def": 5900
+   },
+   "maxTree": {
+    "hp": 31300,
+    "atk": 16600,
+    "def": 6500
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Yuya_Fungami?oldid=1235444",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4150_01",
@@ -12442,11 +14102,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 97,
+   "teamScale": 100,
    "teamPos": [
     4,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -149,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4150_01",
    "rarity": 3,
@@ -12514,6 +14179,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -144,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_4150_02",
    "rarity": 4,
    "statueType": 3,
@@ -12573,8 +14243,13 @@
    "teamScale": 150,
    "teamPos": [
     -10,
-    91,
+    114,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4150_03",
    "rarity": 5,
@@ -12642,6 +14317,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -144,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_4160_01",
    "rarity": 3,
    "statueType": 2,
@@ -12705,8 +14385,13 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    2,
     0
+   ],
+   "myPagePos": [
+    35,
+    -141,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4160_02",
    "rarity": 4,
@@ -12767,8 +14452,13 @@
    "teamScale": 97,
    "teamPos": [
     -9,
-    0,
+    6,
     0
+   ],
+   "myPagePos": [
+    35,
+    -142,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4160_03",
    "rarity": 5,
@@ -12833,8 +14523,13 @@
    "teamScale": 100,
    "teamPos": [
     -11,
-    0,
+    4,
     0
+   ],
+   "myPagePos": [
+    35,
+    -139,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4160_12",
    "rarity": 4,
@@ -12885,8 +14580,13 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    21,
     0
+   ],
+   "myPagePos": [
+    35,
+    -122,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4170_01",
    "rarity": 3,
@@ -12937,8 +14637,13 @@
    "teamScale": 100,
    "teamPos": [
     16,
-    0,
+    16,
     0
+   ],
+   "myPagePos": [
+    35,
+    -127,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4170_02",
    "rarity": 4,
@@ -12996,11 +14701,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 131,
+   "teamScale": 117,
    "teamPos": [
-    18,
-    0,
+    16,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -116,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4170_03",
    "rarity": 5,
@@ -13064,20 +14774,38 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    21,
     0
    ],
+   "myPagePos": [
+    35,
+    -122,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_4170_15",
-   "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "rarity": 3,
+   "statueType": 5,
+   "lv1": {
+    "hp": 445,
+    "atk": 246,
+    "def": 234
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 4446,
+    "atk": 2457,
+    "def": 2340
+   },
+   "maxTree": {
+    "hp": 8046,
+    "atk": 4932,
+    "def": 4815
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Akira_Otoishi?oldid=1235385",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4170_16",
@@ -13116,20 +14844,38 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    21,
     0
    ],
+   "myPagePos": [
+    35,
+    -122,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_4170_16",
-   "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "rarity": 4,
+   "statueType": 5,
+   "lv1": {
+    "hp": 730,
+    "atk": 403,
+    "def": 384
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 7296,
+    "atk": 4032,
+    "def": 3840
+   },
+   "maxTree": {
+    "hp": 12996,
+    "atk": 8232,
+    "def": 8040
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Akira_Otoishi?oldid=1235385",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4170_17",
@@ -13168,20 +14914,38 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    21,
     0
+   ],
+   "myPagePos": [
+    35,
+    -122,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4170_17",
    "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 5,
+   "lv1": {
+    "hp": 1106,
+    "atk": 611,
+    "def": 582
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 11058,
+    "atk": 6111,
+    "def": 5820
+   },
+   "maxTree": {
+    "hp": 19458,
+    "atk": 13011,
+    "def": 12720
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Akira_Otoishi?oldid=1235385",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4170_18",
@@ -13220,20 +14984,38 @@
    "teamScale": 100,
    "teamPos": [
     5,
-    0,
+    21,
     0
    ],
+   "myPagePos": [
+    35,
+    -122,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_4170_18",
-   "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "rarity": 6,
+   "statueType": 5,
+   "lv1": {
+    "hp": 1104,
+    "atk": 863,
+    "def": 656
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 11040,
+    "atk": 8625,
+    "def": 6555
+   },
+   "maxTree": {
+    "hp": 17640,
+    "atk": 16125,
+    "def": 13755
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Akira_Otoishi?oldid=1235385",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4190_13",
@@ -13272,8 +15054,13 @@
    "teamScale": 100,
    "teamPos": [
     -25,
-    0,
+    8,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4190_13",
    "rarity": 5,
@@ -13325,20 +15112,38 @@
    "teamScale": 100,
    "teamPos": [
     -25,
-    0,
+    8,
     0
+   ],
+   "myPagePos": [
+    35,
+    -135,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4190_14",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 5,
+   "lv1": {
+    "hp": 1756,
+    "atk": 924,
+    "def": 970
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 17556,
+    "atk": 9240,
+    "def": 9702
+   },
+   "maxTree": {
+    "hp": 28356,
+    "atk": 21840,
+    "def": 22302
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Yoshikage_Kira?oldid=1189721",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4191_01",
@@ -13377,8 +15182,13 @@
    "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4191_01",
    "rarity": 3,
@@ -13429,8 +15239,13 @@
    "teamScale": 100,
    "teamPos": [
     -8,
-    0,
+    14,
     0
+   ],
+   "myPagePos": [
+    35,
+    -129,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4191_02",
    "rarity": 4,
@@ -13481,8 +15296,13 @@
    "teamScale": 100,
    "teamPos": [
     -14,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -130,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4191_03",
    "rarity": 5,
@@ -13547,20 +15367,38 @@
    "teamScale": 100,
    "teamPos": [
     -14,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -130,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4191_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 1860,
+    "atk": 930,
+    "def": 930
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 18600,
+    "atk": 9300,
+    "def": 9300
+   },
+   "maxTree": {
+    "hp": 30600,
+    "atk": 21300,
+    "def": 21300
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Yoshikage_Kira?oldid=1189721",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4192_03",
@@ -13599,8 +15437,13 @@
    "teamScale": 100,
    "teamPos": [
     -29,
-    0,
+    17,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4192_03",
    "rarity": 5,
@@ -13665,20 +15508,38 @@
    "teamScale": 100,
    "teamPos": [
     -29,
-    0,
+    17,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4192_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 3,
+   "lv1": {
+    "hp": 1782,
+    "atk": 1238,
+    "def": 842
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 17820,
+    "atk": 12375,
+    "def": 8415
+   },
+   "maxTree": {
+    "hp": 30420,
+    "atk": 26775,
+    "def": 17415
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Yoshikage_Kira_(Kosaku_Kawajiri)_(Fighting_Spirit)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "4193_08",
@@ -13705,8 +15566,13 @@
    "teamScale": 100,
    "teamPos": [
     12,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -131,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4193_08",
    "rarity": 6,
@@ -13755,8 +15621,13 @@
    "teamScale": 150,
    "teamPos": [
     -5,
-    37,
+    60,
     0
+   ],
+   "myPagePos": [
+    35,
+    -117,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4194_08",
    "rarity": 6,
@@ -13821,8 +15692,13 @@
    "teamScale": 100,
    "teamPos": [
     -6,
-    0,
+    22,
     0
+   ],
+   "myPagePos": [
+    35,
+    -120,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4240_11",
    "rarity": 3,
@@ -13873,8 +15749,13 @@
    "teamScale": 100,
    "teamPos": [
     -1,
-    0,
+    22,
     0
+   ],
+   "myPagePos": [
+    35,
+    -121,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4240_12",
    "rarity": 4,
@@ -13922,11 +15803,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 126,
+   "teamScale": 113,
    "teamPos": [
-    -5,
-    0,
+    -4,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -112,
+    180
    ],
    "resultComment": "Result_Chara_Comment_4240_13",
    "rarity": 5,
@@ -13988,11 +15874,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 111,
+   "teamScale": 100,
    "teamPos": [
     1,
-    0,
+    37,
     0
+   ],
+   "myPagePos": [
+    35,
+    -116,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5000_03",
    "rarity": 5,
@@ -14040,11 +15931,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 111,
+   "teamScale": 100,
    "teamPos": [
     1,
-    0,
+    37,
     0
+   ],
+   "myPagePos": [
+    35,
+    -116,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5000_04",
    "rarity": 6,
@@ -14095,20 +15991,38 @@
    "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    16,
     0
+   ],
+   "myPagePos": [
+    35,
+    -127,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5000_22",
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 1220,
+    "atk": 610,
+    "def": 706
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 12198,
+    "atk": 6099,
+    "def": 7062
+   },
+   "maxTree": {
+    "hp": 18498,
+    "atk": 9249,
+    "def": 12012
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Giorno_Giovanna?oldid=1189722",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "5000_23",
@@ -14144,11 +16058,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 102,
+   "teamScale": 100,
    "teamPos": [
     8,
-    0,
+    26,
     0
+   ],
+   "myPagePos": [
+    35,
+    -117,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5000_23",
    "rarity": 5,
@@ -14196,11 +16115,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 102,
+   "teamScale": 100,
    "teamPos": [
     8,
-    0,
+    26,
     0
+   ],
+   "myPagePos": [
+    35,
+    -117,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5000_24",
    "rarity": 6,
@@ -14239,20 +16163,38 @@
    "teamScale": 100,
    "teamPos": [
     11,
-    0,
+    17,
     0
+   ],
+   "myPagePos": [
+    35,
+    -126,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5001_14",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 4,
+   "lv1": {
+    "hp": 6440,
+    "atk": 2650,
+    "def": 4070
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 64400,
+    "atk": 26500,
+    "def": 40700
+   },
+   "maxTree": {
+    "hp": 76100,
+    "atk": 40000,
+    "def": 51500
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Giorno_Giovanna?oldid=1189722",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "5010_04",
@@ -14291,20 +16233,38 @@
    "teamScale": 100,
    "teamPos": [
     4,
-    0,
+    13,
     0
+   ],
+   "myPagePos": [
+    35,
+    -130,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5010_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 2910,
+    "atk": 2020,
+    "def": 1370
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 29100,
+    "atk": 20200,
+    "def": 13700
+   },
+   "maxTree": {
+    "hp": 41700,
+    "atk": 34600,
+    "def": 22700
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Bruno_Bucciarati?oldid=1235392",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "5010_14",
@@ -14343,8 +16303,13 @@
    "teamScale": 100,
    "teamPos": [
     -2,
-    0,
+    12,
     0
+   ],
+   "myPagePos": [
+    35,
+    -131,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5010_14",
    "rarity": 6,
@@ -14395,8 +16360,13 @@
    "teamScale": 100,
    "teamPos": [
     7,
-    0,
+    5,
     0
+   ],
+   "myPagePos": [
+    35,
+    -138,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5030_04",
    "rarity": 6,
@@ -14458,23 +16428,41 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 107,
+   "teamScale": 100,
    "teamPos": [
     2,
-    0,
+    33,
     0
+   ],
+   "myPagePos": [
+    35,
+    -119,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5050_03",
    "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 1720,
+    "atk": 990,
+    "def": 850
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 17200,
+    "atk": 9900,
+    "def": 8500
+   },
+   "maxTree": {
+    "hp": 26800,
+    "atk": 18300,
+    "def": 13300
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Guido_Mista?oldid=1235403",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "5050_04",
@@ -14510,23 +16498,41 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 107,
+   "teamScale": 100,
    "teamPos": [
     2,
-    0,
+    33,
     0
+   ],
+   "myPagePos": [
+    35,
+    -119,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5050_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 2580,
+    "atk": 1520,
+    "def": 1330
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 25800,
+    "atk": 15200,
+    "def": 13300
+   },
+   "maxTree": {
+    "hp": 37500,
+    "atk": 27800,
+    "def": 25000
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Guido_Mista?oldid=1235403",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "5080_04",
@@ -14562,11 +16568,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 131,
+   "teamScale": 117,
    "teamPos": [
-    21,
-    0,
+    19,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -112,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5080_04",
    "rarity": 6,
@@ -14631,8 +16642,13 @@
    "teamScale": 100,
    "teamPos": [
     10,
-    0,
+    19,
     0
+   ],
+   "myPagePos": [
+    35,
+    -124,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5100_14",
    "rarity": 6,
@@ -14696,8 +16712,13 @@
    "teamScale": 100,
    "teamPos": [
     -26,
-    0,
+    11,
     0
+   ],
+   "myPagePos": [
+    35,
+    -132,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5120_14",
    "rarity": 6,
@@ -14745,23 +16766,41 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 124,
+   "teamScale": 111,
    "teamPos": [
-    -22,
-    0,
+    -20,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -93,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5140_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 2,
+   "lv1": {
+    "hp": 4290,
+    "atk": 1790,
+    "def": 2080
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 42900,
+    "atk": 17900,
+    "def": 20800
+   },
+   "maxTree": {
+    "hp": 55500,
+    "atk": 31400,
+    "def": 30700
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Baby_Face?oldid=1235388",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "5150_04",
@@ -14797,11 +16836,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 147,
+   "teamScale": 132,
    "teamPos": [
-    -15,
-    0,
+    -14,
+    38,
     0
+   ],
+   "myPagePos": [
+    35,
+    -125,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5150_04",
    "rarity": 6,
@@ -14866,20 +16910,38 @@
    "teamScale": 100,
    "teamPos": [
     -9,
-    0,
+    10,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5170_14",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 5,
+   "lv1": {
+    "hp": 5380,
+    "atk": 2630,
+    "def": 4790
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 53800,
+    "atk": 26300,
+    "def": 47900
+   },
+   "maxTree": {
+    "hp": 64600,
+    "atk": 39800,
+    "def": 59600
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Diavolo?oldid=1235396",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "5210_04",
@@ -14915,11 +16977,16 @@
      "attr": "STAND_PHY"
     }
    ],
-   "teamScale": 102,
+   "teamScale": 100,
    "teamPos": [
-    -19,
-    0,
+    -18,
+    26,
     0
+   ],
+   "myPagePos": [
+    35,
+    -116,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5210_04",
    "rarity": 6,
@@ -14983,20 +17050,38 @@
    "teamScale": 100,
    "teamPos": [
     0,
-    0,
+    7,
     0
+   ],
+   "myPagePos": [
+    35,
+    -136,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5220_14",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 5,
+   "lv1": {
+    "hp": 3690,
+    "atk": 1960,
+    "def": 2200
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 36900,
+    "atk": 19600,
+    "def": 22000
+   },
+   "maxTree": {
+    "hp": 47700,
+    "atk": 34000,
+    "def": 32800
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Risotto_Nero?oldid=1235426",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "5290_04",
@@ -15031,11 +17116,16 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 110,
+   "teamScale": 100,
    "teamPos": [
-    13,
-    0,
+    12,
+    36,
     0
+   ],
+   "myPagePos": [
+    35,
+    -114,
+    180
    ],
    "resultComment": "Result_Chara_Comment_5290_04",
    "rarity": 6,
@@ -15097,23 +17187,41 @@
      "attr": "PHYSICAL"
     }
    ],
-   "teamScale": 97,
+   "teamScale": 100,
    "teamPos": [
     -2,
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -151,
+    180
+   ],
    "resultComment": "Result_Chara_Comment_5320_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 2,
+   "lv1": {
+    "hp": 2750,
+    "atk": 1780,
+    "def": 1700
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 27500,
+    "atk": 17800,
+    "def": 17000
+   },
+   "maxTree": {
+    "hp": 37400,
+    "atk": 31300,
+    "def": 29600
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Jotaro_Kujo_(Tactical)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14"
+   }
   },
   {
    "statueId": "1030_62",
@@ -15142,6 +17250,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -112,
+    180
    ],
    "resultComment": null,
    "rarity": 4,
@@ -15183,6 +17296,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -126,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -15222,6 +17340,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -133,
+    180
    ],
    "resultComment": null,
    "rarity": 4,
@@ -15263,6 +17386,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -109,
+    180
+   ],
    "resultComment": null,
    "rarity": 3,
    "statueType": null,
@@ -15302,6 +17430,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -109,
+    180
    ],
    "resultComment": null,
    "rarity": 4,
@@ -15344,6 +17477,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -127,
+    180
+   ],
    "resultComment": null,
    "rarity": 3,
    "statueType": null,
@@ -15385,6 +17523,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -55,
+    180
+   ],
    "resultComment": null,
    "rarity": null,
    "statueType": null,
@@ -15423,6 +17566,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -62,
+    180
    ],
    "resultComment": null,
    "rarity": 4,
@@ -15464,6 +17612,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -62,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -15503,6 +17656,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -62,
+    180
    ],
    "resultComment": null,
    "rarity": 5,
@@ -15545,6 +17703,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -125,
+    180
+   ],
    "resultComment": null,
    "rarity": 3,
    "statueType": null,
@@ -15585,6 +17748,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -125,
+    180
    ],
    "resultComment": null,
    "rarity": 4,
@@ -15627,6 +17795,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -123,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -15666,6 +17839,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -130,
+    180
    ],
    "resultComment": null,
    "rarity": 4,
@@ -15707,6 +17885,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -130,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -15746,6 +17929,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -130,
+    180
    ],
    "resultComment": null,
    "rarity": 5,
@@ -15788,6 +17976,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -109,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -15829,6 +18022,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -55,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -15868,6 +18066,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -65,
+    180
    ],
    "resultComment": null,
    "rarity": 3,
@@ -15909,6 +18112,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -65,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -15948,6 +18156,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -65,
+    180
    ],
    "resultComment": null,
    "rarity": 4,
@@ -15989,6 +18202,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -108,
+    180
    ],
    "resultComment": null,
    "rarity": 4,
@@ -16040,6 +18258,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -65,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -16081,6 +18304,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -116,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -16121,6 +18349,11 @@
     0,
     0
    ],
+   "myPagePos": [
+    35,
+    -114,
+    180
+   ],
    "resultComment": null,
    "rarity": 4,
    "statueType": null,
@@ -16160,6 +18393,11 @@
     0,
     0,
     0
+   ],
+   "myPagePos": [
+    35,
+    -109,
+    180
    ],
    "resultComment": null,
    "rarity": 4,

@@ -30,12 +30,12 @@ logged CharacterController "Step Offset" warnings.
   | Field | Value |
   |---|---|
   | `myPageCameraType` | `CameraIdSet0` |
-  | `myPagePos` | (72, -113, 322) (Build 12; was (82, -115, 366)) |
+  | `myPagePos` | per statue (35, 25 − head height, 180) (Build 33, docs/research/31 §5; was (72, -113, 322)) |
   | `myPageRotation` | (0, 192.5, 0) |
-  | `teamScaleScalar` | 100 |
+  | `teamScaleScalar`, `teamPos` | per statue (docs/research/12 §7) |
 
-  These put models 1.0–2.3 m tall where the My Page leader touch area is. Six very tall models
-  may need a per-height position later.
+  Since Build 33 the My Page leader stands 1.8 m from the camera, framed thighs-up as in the
+  original's footage, with its head at the same place whatever its height.
 - Other fields:
 
   | Field | Effect | Value we send |
@@ -225,7 +225,8 @@ is H unless marked, read in `Jjs.dtbattle.ReversalManager` and its callers.
   - Overkill: during Reversal in the last area, killing a boss turns the remaining actions into
     overkill hits (0xBBC3F0, 0xEE4504).
   - No other table or stage, area or statue field is read; the effects and BGM are the client's.
-- **What we send** (values ours; the meaning of each is H):
+- **What we send** (the meaning of each field is H; the last three values are documented by the
+  tactical-era atwiki and the Bahamut forum since Build 33, the gauge values are ours):
 
   | Field | Value | Effect |
   |---|---|---|
@@ -234,10 +235,17 @@ is H unless marked, read in `Jjs.dtbattle.ReversalManager` and its callers.
   | `_reversalAddGaugeDamage` | 1000 | +10% per hit taken |
   | `_reversalAddGaugeDead` | 2500 | +25% per statue lost |
   | `_reversalAddSkillStock` | 1 | +1 use for spent limited skills |
-  | `_reversalMaxTurn` | 3 | 3 actions, so up to 2 overkill hits |
-  | `_reversalAddSpeedUpRate` | 100000 | Speed ×10 during Reversal |
-  | `_reversalAddSkillCoolTimeRate` | 0 | No cool-downs during Reversal |
+  | `_reversalMaxTurn` | 4 | 4 turns, so up to 3 overkill hits |
+  | `_reversalAddSpeedUpRate` | 30000 | Speed +200% (×3) during Reversal |
+  | `_reversalAddSkillCoolTimeRate` | 5000 | Cool turns halved during Reversal |
 
   Skills now carry `dododoRate`: attack 10, normal skill 15, special 20. With three statues the
-  gauge fills in about two rounds. The tests reject a speed rate under 10000, fewer than 2
+  gauge fills in about two rounds.
+- **Chain (Build 33).** `ChainManager.GetChainRate` 0xFAABF0 multiplies an action by
+  1 + `_chainNRate` / 100, N being the number of consecutive player actions before it (0: ×1,
+  1..4: `_chain1Rate`..`_chain4Rate`, 5 and more: `_chain5Rate`). The tactical-era atwiki gives
+  ×1.1, ×1.35, ×1.5 and ×2.0, so we send 10, 35, 50, 100, 100 (we sent 1.0..1.4, i.e. ×1.01).
+- **Type chart (Build 33).** ×1.5 for an advantaged hit, ×0.7 for a disadvantaged one (atwiki).
+
+  The tests reject a speed rate under 10000, fewer than 2
   actions, a start gauge outside 0..100, and attacks without gauge.
