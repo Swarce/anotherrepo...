@@ -11,7 +11,7 @@ No download: you turn your own copy of the game into the offline version on your
 
 ![Platform: Android](https://img.shields.io/badge/platform-Android-3DDC84?logo=android&logoColor=white)
 ![Game: 3.12.0](https://img.shields.io/badge/game-3.12.0-555555)
-![Build: 39](https://img.shields.io/badge/build-39-orange)
+![Build: 40](https://img.shields.io/badge/build-40-orange)
 [![License: MPL 2.0](https://img.shields.io/badge/license-MPL--2.0-brightgreen)](LICENSE)
 
 [Quick start](#getting-started) · [Player setup](docs/PLAYER-SETUP.md) · [Status](#status) · [Architecture](docs/ARCHITECTURE.md) · [Roadmap](docs/ROADMAP.md)
@@ -80,7 +80,7 @@ patcher. Multiplayer is not part of it: the clan room is hidden, and PvP and rai
 
 ## Status
 
-Current build: **39**. The game boots offline on a Samsung Galaxy S22 (Android 16), reaches My Page, plays tactical
+Current build: **40**. The game boots offline on a Samsung Galaxy S22 (Android 16), reaches My Page, plays tactical
 battles and shows the English text and art. Every build lists what changed and what to check on a phone in
 [docs/STATUS.md](docs/STATUS.md). Nothing counts as fixed until a device log or recording shows it.
 
@@ -93,7 +93,7 @@ battles and shows the English text and art. Every build lists what changed and w
 | Portraits for statues without one | Works (Build 31, tested on a phone) |
 | Tactical battles: turns, damage, skills, win screen | Works (tested on a phone) |
 | Battle camera: attacks and the win shot | Works (Build 39, tested on a phone) |
-| Battle camera: skill and SP shots, smoothing | In progress |
+| Battle camera: smoother skill shots | Built (Build 40), waiting for a phone test |
 | Action battles | Built, waiting for a phone test |
 | Town home over the realtime socket | Works (Build 26, tested on a phone) |
 | Missions, Message Box, summons, Labyrinth, Arena, events | Built; partly tested on a phone |
@@ -211,10 +211,10 @@ docs/                architecture, protocol, research, status
 
 ## Roadmap
 
-Build 39 puts attacks on the game's own two-shot camera and holds every win shot still.
+Build 39 put attacks on the game's own two-shot camera and held every win shot still; Build 40 smooths the skill
+shots.
 
-- **Next:** a smoother battle camera (glides at the original's speed, no aim jumps), the SP cinematics, the remaining
-  redrawn art, and the deep-menu text that overflows.
+- **Next:** the SP cinematics, the remaining redrawn art, and the deep-menu text that overflows.
 - **Later:** action-stage missions, support and links, and the 1.0 release checklist in
   [docs/ROADMAP.md](docs/ROADMAP.md).
 
