@@ -299,6 +299,10 @@ pub struct Collection {
     pub statues: Vec<OwnedStatue>,
     #[serde(default)]
     pub teams: Vec<Team>,
+    /// The Arena's own five teams (docs/research/23-arena.md; stage type 1, the Arena battle is
+    /// tactical). Older saves get them on their next login.
+    #[serde(default)]
+    pub arena_teams: Vec<Team>,
     #[serde(default)]
     pub minds: Vec<OwnedMind>,
     /// Item counts by item id (Build 21; `server/content/items.json`).
@@ -355,6 +359,8 @@ impl Collection {
                     mind_id: d.mind_id.clone(),
                     get_date: now.to_string(),
                     protected: false,
+                    level: 1,
+                    exp: 0,
                 });
                 next_mind += 1;
                 changed = true;
@@ -384,6 +390,25 @@ impl Collection {
                 });
                 changed = true;
             }
+        }
+        // The Arena roster: team 1 starts as a copy of the tactical main team's members (ours).
+        for team_num in 1..=TEAMS_PER_TYPE {
+            if self.arena_teams.iter().any(|t| t.team_num == team_num) {
+                continue;
+            }
+            let slots = match team_num {
+                1 => main_team(self, 1).map(|t| t.slots).unwrap_or([0; 3]),
+                _ => [0; 3],
+            };
+            self.arena_teams.push(Team {
+                stage_type: 1,
+                team_num,
+                main: team_num == 1,
+                slots,
+                minds: Default::default(),
+                assists: Default::default(),
+            });
+            changed = true;
         }
         changed |= self.repair_teams();
         changed
@@ -435,6 +460,14 @@ impl Collection {
             .map(|o| o.uid)
             .collect();
         let starter = self.starter_slots();
+        for t in &mut self.arena_teams {
+            for s in &mut t.slots {
+                if *s != 0 && !usable.contains(s) {
+                    *s = 0;
+                    changed = true;
+                }
+            }
+        }
         for t in &mut self.teams {
             for s in &mut t.slots {
                 if *s != 0 && !usable.contains(s) {
@@ -711,10 +744,11 @@ fn setting(c: &Collection, t: &Team, seat: usize) -> Value {
 }
 
 impl Collection {
-    /// Mind uids equipped anywhere.
+    /// Mind uids equipped anywhere (story and Arena teams).
     pub fn equipped_minds(&self) -> std::collections::HashSet<i64> {
         self.teams
             .iter()
+            .chain(&self.arena_teams)
             .flat_map(|t| t.minds.iter().flatten().map(|(_, u)| *u))
             .collect()
     }
@@ -1038,6 +1072,10 @@ pub fn minds() -> &'static [MindDef] {
     })
 }
 
+fn one() -> i64 {
+    1
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Default)]
 pub struct OwnedMind {
     pub uid: i64,
@@ -1047,6 +1085,11 @@ pub struct OwnedMind {
     /// The heart lock (protects from sale and use as fodder).
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub protected: bool,
+    /// Mind level (1..=10) and cumulative EXP (Build 23: Mind levelling).
+    #[serde(default = "one")]
+    pub level: i64,
+    #[serde(default)]
+    pub exp: i64,
 }
 
 /// A Mind's CP cost (minds.json; 9 when unknown, as mind_info shows).
@@ -1090,21 +1133,82 @@ pub fn mind_ability(mind_id: &str, level: i64) -> Value {
             "isInit": false })
 }
 
+/// Mind level cap (MindInfo.maxLevel).
+pub const MIND_MAX_LEVEL: i64 = 10;
+
+/// The cumulative EXP to reach each Mind level 1..=10 for a rarity, from `mind_level_table`
+/// (the client reads it by position: level L is entry L-1).
+pub fn mind_curve(rarity: i64) -> &'static [i64] {
+    static CELL: std::sync::OnceLock<Vec<(i64, Vec<i64>)>> = std::sync::OnceLock::new();
+    let rows = CELL.get_or_init(|| {
+        let js = crate::masterdata::TABLES
+            .iter()
+            .find(|(n, _)| *n == "mind_level_table")
+            .map(|(_, j)| *j)
+            .unwrap_or("{}");
+        serde_json::from_str::<Value>(js)
+            .ok()
+            .and_then(|v| v["data"]["paramList"].as_array().cloned())
+            .unwrap_or_default()
+            .iter()
+            .map(|r| {
+                let exp = r["levelTableList"]
+                    .as_array()
+                    .map(|l| l.iter().filter_map(|e| e["exp"].as_i64()).collect())
+                    .unwrap_or_default();
+                (r["rare"].as_i64().unwrap_or(0), exp)
+            })
+            .collect()
+    });
+    rows.iter()
+        .find(|(r, _)| *r == rarity.clamp(1, 6))
+        .map(|(_, e)| e.as_slice())
+        .unwrap_or(&[])
+}
+
+/// The level a cumulative EXP total reaches (capped at MIND_MAX_LEVEL).
+pub fn mind_level_for(rarity: i64, exp: i64) -> i64 {
+    let curve = mind_curve(rarity);
+    (1..=MIND_MAX_LEVEL.min(curve.len() as i64))
+        .rev()
+        .find(|l| curve[*l as usize - 1] <= exp)
+        .unwrap_or(1)
+}
+
+/// EXP a Mind gives as fodder (ours: 100 x rarity x level).
+pub fn mind_material_exp(rarity: i64, level: i64) -> i64 {
+    100 * rarity.max(1) * level.max(1)
+}
+
+pub fn mind_rarity(mind_id: &str) -> i64 {
+    minds()
+        .iter()
+        .find(|m| m.mind_id == mind_id)
+        .map(|m| m.rarity)
+        .unwrap_or(3)
+}
+
 pub fn mind_info(o: &OwnedMind) -> Value {
     let d = minds().iter().find(|m| m.mind_id == o.mind_id);
     let (rare, cost, hp, atk, def) = d
         .map(|d| (d.rarity, d.cost, d.hp, d.atk, d.def))
         .unwrap_or((3, 9, 0, 0, 0));
     let id = &o.mind_id;
+    let level_table: Vec<Value> = mind_curve(rare)
+        .iter()
+        .enumerate()
+        .map(|(i, e)| json!({ "level": i + 1, "exp": e }))
+        .collect();
     json!({
         "mindId": id, "name": format!("MIND_NAME_{id}"), "nameSortIndex": 0, "rare": rare, "cost": cost,
         "description": format!("MIND_TEXT_{id}"), "mindType": 1,
-        "abilityInfo": {}, "skillInfo": {}, "dtAbilityInfo": mind_ability(id, 1), "dtSkillInfo": {},
+        "abilityInfo": {}, "skillInfo": {}, "dtAbilityInfo": mind_ability(id, o.level), "dtSkillInfo": {},
         "tokkouInfo": {}, "dtTokkouInfo": {}, "pvpAbilityInfo": {}, "dtPvpAbilityInfo": {},
-        "maxLevel": 10, "sellVm": 0, "linkParam": "", "tipsText": "", "level": 1, "exp": 0,
+        "maxLevel": MIND_MAX_LEVEL, "sellVm": 0, "linkParam": "", "tipsText": "", "level": o.level.max(1), "exp": o.exp,
         "limitCharaList": [], "limitTribeList": [], "limitStatueType": 0, "limitCount": 0,
-        "limitCharacteristicList": [], "characteristicList": [], "levelUpTable": [],
-        "minduId": o.uid, "sellRing": 0, "sellGet": 0, "stack": 1, "materialExp": 0,
+        "limitCharacteristicList": [], "characteristicList": [], "levelUpTable": level_table,
+        "minduId": o.uid, "sellRing": 0, "sellGet": 0, "stack": 1,
+        "materialExp": mind_material_exp(rare, o.level),
         "bonusCondition": 0, "bonusRate": 0, "hp": hp, "eng": 0, "atk": atk, "def": def,
         "newFlg": 0, "useFlg": 0, "protectedFlg": o.protected as i64, "getDate": o.get_date
     })

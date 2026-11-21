@@ -1,4 +1,4 @@
-# 16 — Mind equipment (Build 21) and abilities (Build 22)
+# 16 — Mind equipment (Build 21), abilities (Build 22) and levelling (Build 23)
 
 Read in the 3.12.0 client (H read in code, M inferred).
 
@@ -34,7 +34,6 @@ Read in the 3.12.0 client (H read in code, M inferred).
   `dtTokkouInfo`, `dtSkillInfo`, link abilities).
   - Build 21 sent empty `{}` (skipped safely), so equipped Minds did nothing in battle.
 
-- **Not yet:** Mind levelling (`/mind/strengthening*`, in the Build scene).
 
 ## 6. Mind abilities (Build 22)
 
@@ -58,3 +57,29 @@ Read in the 3.12.0 client (H read in code, M inferred).
   row's `affectTextId` with `MindInfo.level`. Our affect rows have `affectTextId ""` (no label
   says just "ATK +x%"), so that line is blank for now.
 - Abilities apply in slots 1–4 (7–8 too, which stay locked offline).
+
+- **Effect line (H).** The line comes from the affect row's `affectTextId` label, grouped by the
+  client's `affect_text_rule_table`. The shipped table is **empty**, so no ability effect line shows
+  in 3.12 (leader abilities too). Showing one needs rules in that table and label rows; not yet.
+
+## 7. Mind levelling (Build 23)
+
+- **Routes (H).** `/mind/strengthening {minduIdBase, mindList:[{minduId}], goldRatioInteger,
+  goldAddition}` (fodder Minds) and `/mind/strengthening_item {minduIdBase, useItemList:[{itemId,
+  count}], …}` (items); both reply `{mindInfo, userInfo, mindList, composeType, itemList}`.
+  Build 22 answered them with `{}`, and the result screen crashed reading `mindInfo.maxLevel`.
+- **Curve (H).** `mind_level_table` has one row per rarity with the cumulative EXP of levels 1–10;
+  the client reads it by position (level L = entry L-1), or the Mind's own `levelUpTable` when
+  that is not empty. The cap is `MindInfo.maxLevel` (10).
+- **EXP (H).** Items: `exp × count`, ×bonusRate/100 when bonusCondition is 3 (Minds) or 7/8/9 for
+  rarity 3/4/5 — the Mind medals give ×1.2. Fodder: `materialExp` (a bonus only for EXP Minds,
+  type 3; ours are type 1). Boost items cannot be used on Minds. At most 20 fodder or item kinds;
+  protected or equipped Minds cannot be fodder. The client allows one item past the cap, so the
+  server clamps.
+- **Gold (H).** Fodder: `mindGrowthRare{r}Gold` (100/200/300/400) × target level, with the gold
+  ratio; items: `useGold` per item.
+- **Server.** Repeats that arithmetic, refuses with the client's codes (51201 protected, 51202
+  equipped, 51203 missing, 51205 at the cap, 10102 gold, 10108 items), saves level and EXP on the
+  Mind and sends `levelUpTable` and `dtAbilityInfo.abilityLevel` = level. `materialExp` is ours:
+  100 × rarity × level. Every Mind stays owned offline, so a Mind used as fodder comes back as a
+  fresh level-1 copy.

@@ -8,6 +8,7 @@ pub mod cdn;
 pub mod collection;
 pub mod items;
 pub mod l10n;
+pub mod labyrinth;
 pub mod masterdata;
 pub mod missions;
 pub mod presents;

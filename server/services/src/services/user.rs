@@ -34,7 +34,10 @@ pub fn user_info_mini(p: &Profile) -> Value {
 
 /// Placeholder economy values until M4 (content-driven).
 pub fn user_info(p: &Profile) -> Value {
-    let now = date(clock::now());
+    let t = clock::now();
+    let now = date(t);
+    // Souls and Mentality: the Labyrinth reads them from here (docs/research/22-labyrinth.md).
+    let lab = &p.progress.dungeon;
     json!({
         "username": p.username, "userRank": p.rank.max(1), "birthday": "", "exp": p.exp,
         "nextExp": crate::collection::next_rank_exp(p.rank.max(1)),
@@ -44,8 +47,8 @@ pub fn user_info(p: &Profile) -> Value {
         "raidPoint": 3, "raidPointMax": 3, "raidPointUseTime": now, "raidPointMaxTime": now,
         "statueNum": p.collection.statues.len(), "mindNum": p.collection.minds.len(), "mindMax": crate::collection::MIND_MAX, "followNum": 0, "followMax": 50,
         "followerNum": 0, "followerMax": 50, "blockMax": 50, "comment": p.comment,
-        "stoneNum": 0, "stoneNumFree": p.stone_free, "vm": p.gold, "mindGashaPoint": 0,
-        "lastLoginAt": date(p.last_login_at), "soul": 0, "mentality": 0, "mentalityUseTime": now,
+        "stoneNum": 0, "stoneNumFree": p.stone_free, "vm": p.gold, "mindGashaPoint": p.friend_points,
+        "lastLoginAt": date(p.last_login_at), "soul": lab.souls(), "mentality": lab.mentality(t), "mentalityUseTime": now,
         "apUnlimitedFlg": 0
     })
 }

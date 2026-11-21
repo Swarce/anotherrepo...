@@ -49,11 +49,12 @@ fn digest_of(files: &BTreeMap<String, Vec<u8>>) -> String {
         .collect()
 }
 
-/// A pack path is `<bundle>/sprites/<name>.png` with plain components only.
+/// A pack path is `<bundle>/sprites/<name>.png` (a sprite) or `<bundle>/textures/<name>.png` (a
+/// whole texture, as the exporter wrote it at `<bundle>/<name>.png`), with plain components only.
 pub fn valid_path(p: &str) -> bool {
     let parts: Vec<&str> = p.split('/').collect();
     parts.len() == 3
-        && parts[1] == "sprites"
+        && (parts[1] == "sprites" || parts[1] == "textures")
         && parts[2].ends_with(".png")
         && parts
             .iter()
@@ -64,7 +65,7 @@ impl ArtPack {
     pub fn from_files(files: BTreeMap<String, Vec<u8>>) -> Result<Self, Error> {
         if let Some(bad) = files.keys().find(|k| !valid_path(k)) {
             return Err(format!(
-                "art pack: unexpected path {bad:?} (want <bundle>/sprites/<name>.png)"
+                "art pack: unexpected path {bad:?} (want <bundle>/sprites/<name>.png or <bundle>/textures/<name>.png)"
             ));
         }
         let digest = digest_of(&files);
@@ -85,6 +86,16 @@ impl ArtPack {
         let rd =
             |p: &std::path::Path| std::fs::read_dir(p).map_err(|e| format!("{}: {e}", p.display()));
         for b in rd(dir)?.flatten() {
+            // Whole textures sit directly in the bundle folder, as the exporter wrote them.
+            if b.path().is_dir() {
+                for f in rd(&b.path())?.flatten() {
+                    let name = f.file_name().to_string_lossy().into_owned();
+                    if name.ends_with(".png") && f.path().is_file() {
+                        let key = format!("{}/textures/{name}", b.file_name().to_string_lossy());
+                        files.insert(key, std::fs::read(f.path()).map_err(|e| e.to_string())?);
+                    }
+                }
+            }
             let sprites = b.path().join("sprites");
             if !sprites.is_dir() {
                 continue;
@@ -152,12 +163,20 @@ impl ArtPack {
         v
     }
 
-    /// `<file>.png` -> PNG bytes for one bundle.
+    /// `<file>.png` (sprites) and `textures/<file>.png` (whole textures) -> PNG bytes for one
+    /// bundle.
     pub fn for_bundle(&self, bundle: &str) -> HashMap<String, &[u8]> {
-        let prefix = format!("{bundle}/sprites/");
+        let sprites = format!("{bundle}/sprites/");
+        let textures = format!("{bundle}/textures/");
         self.files
             .iter()
-            .filter_map(|(k, v)| Some((k.strip_prefix(&prefix)?.to_string(), v.as_slice())))
+            .filter_map(|(k, v)| {
+                let key = match k.strip_prefix(&sprites) {
+                    Some(f) => f.to_string(),
+                    None => format!("textures/{}", k.strip_prefix(&textures)?),
+                };
+                Some((key, v.as_slice()))
+            })
             .collect()
     }
 }
@@ -392,7 +411,9 @@ pub fn apply_files(
     // Textures the exporter wrote (non-empty, not the font texture): path id -> height. Only
     // sprites cut from those were exported, and only they take part in its naming.
     let mut exported: HashMap<i64, usize> = HashMap::new();
-    for f in files.iter().flatten() {
+    let mut tex_seen: HashMap<String, usize> = HashMap::new();
+    for (fi, f) in files.iter().enumerate() {
+        let Some(f) = f else { continue };
         for o in &f.objects {
             let t = &f.types[o.type_index as usize];
             if t.entry.class_id != CLASS_TEXTURE2D {
@@ -403,8 +424,30 @@ pub fn apply_files(
             };
             let w = v.get("m_Width").and_then(V::as_i64).unwrap_or(0);
             let h = v.get("m_Height").and_then(V::as_i64).unwrap_or(0);
-            if w > 0 && h > 0 && v.get("m_Name").and_then(V::as_str) != Some("Font Texture") {
+            let name = v.get("m_Name").and_then(V::as_str).unwrap_or("");
+            if w > 0 && h > 0 && name != "Font Texture" {
                 exported.insert(o.path_id, h as usize);
+                // A whole-texture image: named as the exporter named the texture's PNG.
+                let base = safe_name(name);
+                let first = *tex_seen
+                    .entry(base.clone())
+                    .and_modify(|n| *n += 1)
+                    .or_insert(1)
+                    == 1;
+                let mut candidates = vec![format!("textures/{base}__{}.png", o.path_id)];
+                if first {
+                    candidates.insert(0, format!("textures/{base}.png"));
+                }
+                if let Some(file) = candidates.into_iter().find(|c| images.contains_key(c)) {
+                    used.insert(file.clone());
+                    found.push(SpriteRef {
+                        file_index: fi,
+                        texture: o.path_id,
+                        rect: (0.0, 0.0, w as f64, h as f64),
+                        file: file.clone(),
+                        png: images[&file].to_vec(),
+                    });
+                }
             }
         }
     }
@@ -490,6 +533,23 @@ pub fn apply_files(
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn whole_textures_have_their_own_keys() {
+        assert!(valid_path("effect_awk/textures/a_tex_004.png"));
+        assert!(!valid_path("effect_awk/other/a_tex_004.png"));
+        let mut m = BTreeMap::new();
+        m.insert("effect_awk/textures/a_tex_004.png".to_string(), vec![1]);
+        m.insert("effect_awk/sprites/S.png".to_string(), vec![2]);
+        let p = ArtPack::from_files(m).unwrap();
+        let f = p.for_bundle("effect_awk");
+        assert_eq!(
+            f.get("textures/a_tex_004.png").map(|b| b.to_vec()),
+            Some(vec![1])
+        );
+        assert_eq!(f.get("S.png").map(|b| b.to_vec()), Some(vec![2]));
+        assert_eq!(p.bundles(), ["effect_awk"]);
+    }
 
     #[test]
     fn crop_box_matches_the_exporter() {
