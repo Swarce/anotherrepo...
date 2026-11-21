@@ -2,6 +2,68 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 33 — the original's camera, action battles, the research pass (branch `wip/b33`)
+
+### What the owner asked and showed
+- Build 32 worked. An action chapter loaded with no enemies, and nothing could attack.
+- Match the original's cool turns; fill missing data with a wide research pass; the battle camera
+  looks locked compared with the original (the owner's video research package: 77 observations
+  from 17 original videos, frame by frame); then: what about the team screen and My Page cameras?
+- First Build 33 package: most battle cameras stood very far away, under the ground or away from
+  the character. Second package: still not right; the owner sent the full 2 fps frames.
+
+### What changed
+- **Battle camera** (docs/research/31): every attack and skill now cuts to shots on the acting unit,
+  all from the side the turn camera watches (side-on two-shot, three-quarters behind, closer side,
+  slightly low, high wide for big moves), as in the original footage; we had one fixed side view for all 245 camera ids the animations request. Win
+  shot: a low chest-up push-in. Boss intro back on (chapter-final boss), with a crane-up camera.
+- **Action battles** (docs/research/30): enemies spawn at the area scene's spawn points (we sent the
+  wrong wave type and pivot), and statues get their attack, skill, SP and finisher (`skillList` was
+  empty); skill roles, cool-downs and uses from the Gamerch pages for 109 statues.
+- **Cool turns** as documented for the original (at the highest skill level): attack skills 3,
+  time stops 6/9/10, heals 8, SP 5 with 3 uses; 24 skills with their own documented values.
+- **Research pass** (5 agents, `local/wiki-raw/research-b33/`, private): stats for 60 more statues
+  (206 of 292), assist conditions for 116, Mind costs per rarity, Reversal/chain/type-chart/assist
+  tuning from the tactical-era atwiki (the chain bonus was ×1.01 by a unit slip), daily-quest
+  numbers for 15 stages.
+- **Camera fix after the first package** (docs/research/31 §2–3): the client builds each camera
+  step by adding every later node to the first one, so later nodes are deltas. We sent absolute end
+  poses, which doubled distance, angles and field of view on the second step. Sets now send a start
+  node and a delta; simulated on the client's formula, every shot stays above the floor and close.
+- **Shots from the full frames** (third package): the original's action shots all stay on the side
+  the turn camera watches. Ours also looked from in front of the attacker and from beyond the
+  target, and the client does not mirror every id for enemies, so 74 shots landed on the far side
+  of the arena. The shot set is now only the footage's: side-on, three-quarters behind, closer,
+  slightly low, high wide; straight behind for the ids the client does not mirror; the boss intro
+  and finish framed for the enemy side.
+- **Every frame read** (eight reviewers, 13,692 frames, docs/research/32): the original's shots
+  depend on the action: attacks and blue skills stay near the default view, red SP skills cut
+  between over-the-shoulder, low front, reverse, side and high wide angles. Each camera id now
+  gets its shots from the skills that request it. AP past the rank table is rank + 19.
+- **Win shot from the full frames:** tight head and chest from well below, the winner right of
+  centre and turned towards WIN!, settling over 1 s (ours was head to waist, centred, barely low).
+- **Team screen and My Page framing** (docs/research/31 §5): in the original the team screen shows
+  every statue's head at about the same height, the leader's too; ours left short leaders low. My
+  Page framed the leader from mid-thigh up, right of centre; ours stood 3.2 m away, feet in view.
+  Heads are now lifted to the same height in every slot, and the My Page leader stands 1.8 m away
+  with its head at the same place whatever its height (`myPagePos` per statue).
+- Build number 33, server marker `JDR_EMBEDDED_SERVER_b033`.
+
+### Device checklist
+- [ ] My Page: the leader right of centre, thighs up, head in the upper part of the screen (not
+      cut off, not under the menus); tapping the leader still reacts
+- [ ] Team screen: the three heads at about the same height, the leader not lower than the others
+- [ ] Normal attacks and blue skills: close to the default view, pushed in; red SP skills: several
+      angles (over the shoulder, low front, reverse, high wide)
+- [ ] Tactical battle: attacks and skills cut to close shots and back; enemies' turns too; no
+      camera stuck after an action
+- [ ] Chapter-final boss: the intro plays and the battle starts (no hang)
+- [ ] Win pose: tight head-and-chest shot from well below, winner right of centre, settling in
+      about 1 s
+- [ ] Action chapter: enemies appear; attack, skill and SP buttons work; the area clears
+- [ ] Skills come round more slowly (attack skills about every 4–5 turns at level 1)
+- [ ] Log: no errors around battle start
+
 ## Build 32 — names that fit, a lighter APK, no Play Games (branch `wip/b32`)
 
 ### What the owner asked

@@ -45,9 +45,9 @@
    "kind": "exchange",
    "currency": 3017,
    "bonusStatues": [
-    "1130_04",
-    "4170_16",
-    "5220_14"
+    "1090_13",
+    "4160_03",
+    "4193_08"
    ],
    "bonusMinds": [
     "4028",
@@ -62,9 +62,9 @@
    "kind": "point",
    "currency": 0,
    "bonusStatues": [
-    "4011_15",
-    "4080_03",
-    "4190_14"
+    "1100_14",
+    "3230_63",
+    "4130_03"
    ],
    "bonusMinds": [
     "7431",
@@ -79,9 +79,9 @@
    "kind": "exchange",
    "currency": 3017,
    "bonusStatues": [
-    "2110_03",
-    "4043_08",
-    "5120_14"
+    "1000_13",
+    "4011_16",
+    "4194_08"
    ],
    "bonusMinds": [
     "4058",
@@ -96,9 +96,9 @@
    "kind": "exchange",
    "currency": 3017,
    "bonusStatues": [
-    "1010_03",
-    "1130_02",
-    "3002_03"
+    "3270_03",
+    "4020_02",
+    "5000_24"
    ],
    "bonusMinds": [
     "0006",
@@ -113,9 +113,9 @@
    "kind": "high_score_shop",
    "currency": 3032,
    "bonusStatues": [
-    "2111_02",
-    "3000_03",
-    "4020_04"
+    "3230_63",
+    "4040_13",
+    "4194_08"
    ],
    "bonusMinds": [
     "0006",
@@ -135,9 +135,9 @@
    "kind": "high_score",
    "currency": 0,
    "bonusStatues": [
-    "1000_03",
-    "2070_02",
-    "4020_02"
+    "2100_03",
+    "3210_13",
+    "4220_72"
    ],
    "bonusMinds": [
     "7439",
@@ -181,9 +181,9 @@
    "kind": "quiz",
    "currency": 3106,
    "bonusStatues": [
-    "3010_13",
-    "3030_02",
-    "4130_13"
+    "1080_03",
+    "3000_02",
+    "3150_04"
    ],
    "bonusMinds": [
     "4024",
@@ -300,9 +300,9 @@
    "kind": "exchange",
    "currency": 3017,
    "bonusStatues": [
-    "3030_13",
-    "4011_16",
-    "4191_02"
+    "1100_13",
+    "4000_04",
+    "4193_08"
    ],
    "bonusMinds": [
     "4110",
@@ -317,9 +317,9 @@
    "kind": "exchange",
    "currency": 3017,
    "bonusStatues": [
-    "2040_02",
-    "3323_08",
-    "4130_25"
+    "4010_13",
+    "4020_04",
+    "5120_14"
    ],
    "bonusMinds": [
     "0019",
@@ -366,9 +366,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "3322_08",
-      "3040_02",
-      "2110_01"
+      "3010_03",
+      "2010_01",
+      "3000_04"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -383,15 +383,18 @@
      "useStamina": 8,
      "gainRankExp": 70,
      "gold": 800,
-     "enemyLevel": 25,
+     "enemyLevel": 20,
      "enemies": [
-      "4080_04",
-      "1010_01",
-      "3020_01"
+      "3001_04",
+      "5140_04",
+      "5000_22"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "map and areas of DT_STAGE_ST_424_05; enemies, level and rewards ours"
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110193447/https://jojodr.gamerch.com/%E6%9B%9C%E6%97%A5%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%EF%BC%88%E6%97%A5%E6%9B%9C%EF%BC%89",
+      "capture": "20241110193447",
+      "accessed": "2026-11-20",
+      "note": "wiki: recommended level as enemy level, useStamina; map, areas, enemies and the rest ours"
      }
     },
     {
@@ -403,9 +406,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "3020_28",
-      "3321_03",
-      "3300_02"
+      "2000_01",
+      "4020_03",
+      "3001_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -421,9 +424,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "2010_03",
-      "4080_04",
-      "3020_01"
+      "1130_04",
+      "1010_02",
+      "2110_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -448,9 +451,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "1000_01",
-      "4030_01",
-      "5290_04"
+      "3300_04",
+      "4130_03",
+      "2110_02"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -465,15 +468,18 @@
      "useStamina": 8,
      "gainRankExp": 70,
      "gold": 800,
-     "enemyLevel": 25,
+     "enemyLevel": 20,
      "enemies": [
-      "4011_02",
-      "3150_02",
-      "4130_03"
+      "4043_08",
+      "4020_03",
+      "4130_27"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "map and areas of DT_STAGE_ST_414_03; enemies, level and rewards ours"
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110193447/https://jojodr.gamerch.com/%E6%9B%9C%E6%97%A5%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%EF%BC%88%E6%97%A5%E6%9B%9C%EF%BC%89",
+      "capture": "20241110193447",
+      "accessed": "2026-11-20",
+      "note": "wiki: recommended level as enemy level, useStamina; map, areas, enemies and the rest ours"
      }
     },
     {
@@ -485,9 +491,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "3110_02",
-      "3030_03",
-      "2020_01"
+      "3010_01",
+      "4150_03",
+      "4191_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -503,9 +509,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "4192_03",
-      "5080_04",
-      "3050_01"
+      "3010_03",
+      "3270_04",
+      "4020_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -530,9 +536,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "3210_01",
-      "3070_03",
-      "3300_04"
+      "4130_25",
+      "4130_26",
+      "3010_02"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -547,15 +553,18 @@
      "useStamina": 8,
      "gainRankExp": 70,
      "gold": 800,
-     "enemyLevel": 25,
+     "enemyLevel": 20,
      "enemies": [
-      "4160_03",
-      "4030_04",
-      "2010_01"
+      "2010_04",
+      "3030_02",
+      "3030_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "map and areas of DT_STAGE_ST_419_03; enemies, level and rewards ours"
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110192025/https://jojodr.gamerch.com/%E6%9B%9C%E6%97%A5%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%EF%BC%88%E6%9C%88%E6%9B%9C%EF%BC%89",
+      "capture": "20241110192025",
+      "accessed": "2026-11-20",
+      "note": "wiki: recommended level as enemy level, useStamina; map, areas, enemies and the rest ours"
      }
     },
     {
@@ -567,9 +576,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "4160_01",
-      "2010_03",
-      "3070_03"
+      "4160_03",
+      "4193_08",
+      "4160_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -585,9 +594,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "2010_02",
-      "3020_02",
-      "3030_03"
+      "3300_01",
+      "3010_01",
+      "4030_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -612,9 +621,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "2080_03",
-      "2010_02",
-      "2080_03"
+      "3300_03",
+      "2010_04",
+      "4130_28"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -629,15 +638,18 @@
      "useStamina": 8,
      "gainRankExp": 70,
      "gold": 800,
-     "enemyLevel": 25,
+     "enemyLevel": 20,
      "enemies": [
-      "3030_01",
-      "4030_04",
-      "3300_04"
+      "3150_04",
+      "4040_01",
+      "4160_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "map and areas of DT_STAGE_ST_444_02; enemies, level and rewards ours"
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110192025/https://jojodr.gamerch.com/%E6%9B%9C%E6%97%A5%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%EF%BC%88%E6%9C%88%E6%9B%9C%EF%BC%89",
+      "capture": "20241110192025",
+      "accessed": "2026-11-20",
+      "note": "wiki: recommended level as enemy level, useStamina; map, areas, enemies and the rest ours"
      }
     },
     {
@@ -649,9 +661,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "4030_01",
-      "3150_02",
-      "3010_01"
+      "2010_01",
+      "4030_03",
+      "3070_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -667,9 +679,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "4160_02",
-      "3300_04",
-      "4160_02"
+      "3020_01",
+      "3270_03",
+      "4160_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -694,9 +706,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "5080_04",
-      "4000_23",
-      "5290_04"
+      "2000_28",
+      "5150_04",
+      "4192_04"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -709,17 +721,20 @@
      "areas": [],
      "mapId": "map03_jotatown02",
      "useStamina": 8,
-     "gainRankExp": 70,
+     "gainRankExp": 140,
      "gold": 800,
-     "enemyLevel": 25,
+     "enemyLevel": 20,
      "enemies": [
       "3020_03",
-      "4150_03",
-      "4000_23"
+      "4150_02",
+      "1020_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "map and areas of DT_STAGE_ST_479_05; enemies, level and rewards ours"
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110194237/https://jojodr.gamerch.com/%E6%9B%9C%E6%97%A5%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%EF%BC%88%E7%81%AB%E6%9B%9C%EF%BC%89",
+      "capture": "20241110194237",
+      "accessed": "2026-11-20",
+      "note": "wiki: gainRankExp, recommended level as enemy level, useStamina; map, areas, enemies and the rest ours"
      }
     },
     {
@@ -731,9 +746,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
+      "2020_04",
       "2070_03",
-      "3020_03",
-      "2070_03"
+      "3323_08"
      ],
      "source": {
       "source": "jdr-default",
@@ -749,9 +764,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "3050_04",
-      "5290_04",
-      "3050_01"
+      "3020_03",
+      "2000_28",
+      "4192_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -776,9 +791,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "3050_02",
-      "2110_02",
-      "4020_03"
+      "2100_03",
+      "3100_02",
+      "3050_02"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -791,17 +806,20 @@
      "areas": [],
      "mapId": "map01_around02",
      "useStamina": 8,
-     "gainRankExp": 70,
-     "gold": 800,
-     "enemyLevel": 25,
+     "gainRankExp": 140,
+     "gold": 6693,
+     "enemyLevel": 20,
      "enemies": [
-      "4150_03",
-      "3020_03",
-      "2110_03"
+      "4020_02",
+      "1130_03",
+      "4110_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "map and areas of DT_STAGE_ST_427_02; enemies, level and rewards ours"
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110194237/https://jojodr.gamerch.com/%E6%9B%9C%E6%97%A5%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%EF%BC%88%E7%81%AB%E6%9B%9C%EF%BC%89",
+      "capture": "20241110194237",
+      "accessed": "2026-11-20",
+      "note": "wiki: gainRankExp, gold, recommended level as enemy level, useStamina; map, areas, enemies and the rest ours"
      }
     },
     {
@@ -809,17 +827,20 @@
      "areas": [],
      "mapId": "map02_snowfield02",
      "useStamina": 10,
-     "gainRankExp": 100,
-     "gold": 1200,
-     "enemyLevel": 40,
+     "gainRankExp": 180,
+     "gold": 17155,
+     "enemyLevel": 30,
      "enemies": [
-      "2110_01",
-      "3050_02",
-      "3100_02"
+      "3100_02",
+      "4110_01",
+      "3020_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "map and areas of DT_STAGE_ST_406_04; enemies, level and rewards ours"
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110194237/https://jojodr.gamerch.com/%E6%9B%9C%E6%97%A5%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%EF%BC%88%E7%81%AB%E6%9B%9C%EF%BC%89",
+      "capture": "20241110194237",
+      "accessed": "2026-11-20",
+      "note": "wiki: gainRankExp, gold, recommended level as enemy level, useStamina; map, areas, enemies and the rest ours"
      }
     },
     {
@@ -831,8 +852,8 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "2070_03",
-      "2070_03",
+      "4000_23",
+      "2110_01",
       "4170_03"
      ],
      "source": {
@@ -858,9 +879,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "3330_03",
-      "4000_03",
-      "1120_03"
+      "2060_03",
+      "5010_04",
+      "5210_04"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -875,15 +896,18 @@
      "useStamina": 8,
      "gainRankExp": 70,
      "gold": 800,
-     "enemyLevel": 25,
+     "enemyLevel": 20,
      "enemies": [
-      "2060_03",
-      "4000_03",
-      "2060_01"
+      "4000_01",
+      "1080_02",
+      "3330_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "map and areas of DT_STAGE_ST_416_04; enemies, level and rewards ours"
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110192644/https://jojodr.gamerch.com/%E6%9B%9C%E6%97%A5%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%EF%BC%88%E6%B0%B4%E6%9B%9C%EF%BC%89",
+      "capture": "20241110192644",
+      "accessed": "2026-11-20",
+      "note": "wiki: recommended level as enemy level, useStamina; map, areas, enemies and the rest ours"
      }
     },
     {
@@ -895,9 +919,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
+      "2050_04",
       "4011_03",
-      "4011_02",
-      "4011_03"
+      "1000_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -913,9 +937,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "3000_03",
-      "3000_03",
-      "3330_03"
+      "3330_01",
+      "3000_01",
+      "3330_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -940,9 +964,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "2060_01",
-      "2000_02",
-      "2050_03"
+      "1000_01",
+      "3031_03",
+      "4000_02"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -957,15 +981,18 @@
      "useStamina": 8,
      "gainRankExp": 70,
      "gold": 800,
-     "enemyLevel": 25,
+     "enemyLevel": 20,
      "enemies": [
-      "2000_03",
-      "1000_01",
-      "2060_03"
+      "1010_01",
+      "4000_01",
+      "1010_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "map and areas of DT_STAGE_ST_415_01; enemies, level and rewards ours"
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110192644/https://jojodr.gamerch.com/%E6%9B%9C%E6%97%A5%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%EF%BC%88%E6%B0%B4%E6%9B%9C%EF%BC%89",
+      "capture": "20241110192644",
+      "accessed": "2026-11-20",
+      "note": "wiki: recommended level as enemy level, useStamina; map, areas, enemies and the rest ours"
      }
     },
     {
@@ -977,9 +1004,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "4080_02",
-      "3000_03",
-      "1000_01"
+      "4000_03",
+      "2050_02",
+      "1120_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -995,9 +1022,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "4000_03",
-      "2000_01",
-      "3040_01"
+      "1080_03",
+      "2010_28",
+      "2000_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -1022,9 +1049,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "3300_03",
+      "2020_01",
       "2010_02",
-      "3060_03"
+      "5030_04"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1039,15 +1066,18 @@
      "useStamina": 8,
      "gainRankExp": 70,
      "gold": 800,
-     "enemyLevel": 25,
+     "enemyLevel": 20,
      "enemies": [
-      "2080_03",
-      "4160_03",
-      "3020_02"
+      "3060_03",
+      "4030_04",
+      "3030_01"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "map and areas of DT_STAGE_ST_00_04; enemies, level and rewards ours"
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110192102/https://jojodr.gamerch.com/%E6%9B%9C%E6%97%A5%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%EF%BC%88%E6%9C%A8%E6%9B%9C%EF%BC%89",
+      "capture": "20241110192102",
+      "accessed": "2026-11-20",
+      "note": "wiki: recommended level as enemy level, useStamina; map, areas, enemies and the rest ours"
      }
     },
     {
@@ -1060,8 +1090,8 @@
      "enemyLevel": 40,
      "enemies": [
       "3020_01",
-      "3150_02",
-      "4010_01"
+      "3210_01",
+      "4130_26"
      ],
      "source": {
       "source": "jdr-default",
@@ -1077,9 +1107,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "4012_03",
-      "3002_03",
-      "4030_03"
+      "2010_04",
+      "4030_04",
+      "2020_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -1104,9 +1134,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "4160_02",
-      "3030_03",
-      "3210_02"
+      "2010_04",
+      "2010_04",
+      "4040_01"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1121,15 +1151,18 @@
      "useStamina": 8,
      "gainRankExp": 70,
      "gold": 800,
-     "enemyLevel": 25,
+     "enemyLevel": 20,
      "enemies": [
-      "4160_03",
-      "4160_03",
-      "4030_01"
+      "3270_03",
+      "4030_01",
+      "5030_04"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "map and areas of DT_STAGE_ST_427_03; enemies, level and rewards ours"
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110192102/https://jojodr.gamerch.com/%E6%9B%9C%E6%97%A5%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%EF%BC%88%E6%9C%A8%E6%9B%9C%EF%BC%89",
+      "capture": "20241110192102",
+      "accessed": "2026-11-20",
+      "note": "wiki: recommended level as enemy level, useStamina; map, areas, enemies and the rest ours"
      }
     },
     {
@@ -1141,9 +1174,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "2010_03",
-      "3300_02",
-      "4160_03"
+      "2020_01",
+      "4160_03",
+      "4010_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -1159,9 +1192,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
+      "3300_02",
       "3210_02",
-      "2010_01",
-      "3300_01"
+      "3010_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -1186,9 +1219,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "2110_01",
-      "3020_03",
-      "3020_03"
+      "1000_28",
+      "5290_04",
+      "1000_28"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1203,15 +1236,18 @@
      "useStamina": 8,
      "gainRankExp": 70,
      "gold": 800,
-     "enemyLevel": 25,
+     "enemyLevel": 20,
      "enemies": [
-      "4170_02",
-      "3323_08",
-      "4170_03"
+      "4192_04",
+      "4170_03",
+      "4110_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "map and areas of DT_STAGE_ST_416_05; enemies, level and rewards ours"
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110191310/https://jojodr.gamerch.com/%E6%9B%9C%E6%97%A5%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%EF%BC%88%E9%87%91%E6%9B%9C%EF%BC%89",
+      "capture": "20241110191310",
+      "accessed": "2026-11-20",
+      "note": "wiki: recommended level as enemy level, useStamina; map, areas, enemies and the rest ours"
      }
     },
     {
@@ -1223,9 +1259,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "3100_02",
-      "4150_02",
-      "4000_23"
+      "1020_03",
+      "4192_03",
+      "2020_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -1241,9 +1277,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "1020_01",
-      "3020_03",
-      "4020_02"
+      "2110_03",
+      "2070_03",
+      "5290_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -1268,9 +1304,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "1000_28",
-      "1000_28",
-      "4150_03"
+      "2000_28",
+      "3050_03",
+      "3050_02"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1285,15 +1321,18 @@
      "useStamina": 8,
      "gainRankExp": 70,
      "gold": 800,
-     "enemyLevel": 25,
+     "enemyLevel": 20,
      "enemies": [
-      "4170_02",
-      "3100_01",
-      "4150_03"
+      "5080_04",
+      "2020_04",
+      "2070_03"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "map and areas of DT_STAGE_ST_453_02; enemies, level and rewards ours"
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110191310/https://jojodr.gamerch.com/%E6%9B%9C%E6%97%A5%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%EF%BC%88%E9%87%91%E6%9B%9C%EF%BC%89",
+      "capture": "20241110191310",
+      "accessed": "2026-11-20",
+      "note": "wiki: recommended level as enemy level, useStamina; map, areas, enemies and the rest ours"
      }
     },
     {
@@ -1305,9 +1344,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "3050_01",
-      "4020_01",
-      "4020_01"
+      "4170_02",
+      "4192_04",
+      "4170_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -1323,9 +1362,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "4192_03",
-      "4110_02",
-      "5290_04"
+      "1020_03",
+      "4042_03",
+      "3020_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -1350,9 +1389,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "4000_02",
-      "2000_02",
-      "2060_02"
+      "4130_03",
+      "3040_02",
+      "5010_04"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1367,15 +1406,18 @@
      "useStamina": 8,
      "gainRankExp": 70,
      "gold": 800,
-     "enemyLevel": 25,
+     "enemyLevel": 20,
      "enemies": [
-      "4080_04",
-      "2050_01",
-      "3020_28"
+      "3040_04",
+      "4000_02",
+      "5210_04"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "map and areas of DT_STAGE_ST_421_03; enemies, level and rewards ours"
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110181102/https://jojodr.gamerch.com/%E6%9B%9C%E6%97%A5%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%EF%BC%88%E5%9C%9F%E6%9B%9C%EF%BC%89",
+      "capture": "20241110181102",
+      "accessed": "2026-11-20",
+      "note": "wiki: recommended level as enemy level, useStamina; map, areas, enemies and the rest ours"
      }
     },
     {
@@ -1387,9 +1429,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "4194_08",
-      "1010_03",
-      "4000_03"
+      "2010_28",
+      "2050_01",
+      "4011_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -1405,9 +1447,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "3040_01",
-      "4000_02",
-      "3000_01"
+      "3040_03",
+      "4000_04",
+      "1010_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -1432,9 +1474,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "3330_03",
-      "3330_03",
-      "4011_03"
+      "1120_03",
+      "2010_28",
+      "1120_03"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1449,15 +1491,18 @@
      "useStamina": 8,
      "gainRankExp": 70,
      "gold": 800,
-     "enemyLevel": 25,
+     "enemyLevel": 20,
      "enemies": [
-      "2111_03",
-      "1000_01",
-      "2060_01"
+      "2000_01",
+      "1010_02",
+      "4080_02"
      ],
      "source": {
-      "source": "jdr-default",
-      "note": "map and areas of DT_STAGE_ST_433_04; enemies, level and rewards ours"
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://web.archive.org/web/20241110181102/https://jojodr.gamerch.com/%E6%9B%9C%E6%97%A5%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%EF%BC%88%E5%9C%9F%E6%9B%9C%EF%BC%89",
+      "capture": "20241110181102",
+      "accessed": "2026-11-20",
+      "note": "wiki: recommended level as enemy level, useStamina; map, areas, enemies and the rest ours"
      }
     },
     {
@@ -1469,9 +1514,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "2000_02",
-      "3040_03",
-      "3000_01"
+      "4000_03",
+      "3000_02",
+      "1000_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -1487,9 +1532,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "2050_02",
-      "2060_03",
-      "1120_03"
+      "1000_04",
+      "4011_03",
+      "2010_28"
      ],
      "source": {
       "source": "jdr-default",
@@ -1514,9 +1559,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "3070_03",
-      "3040_01",
-      "2111_03"
+      "3040_04",
+      "4030_02",
+      "3100_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -1532,9 +1577,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "4130_28",
-      "5120_14",
-      "1000_12"
+      "1090_13",
+      "4020_13",
+      "4130_28"
      ],
      "source": {
       "source": "jdr-default",
@@ -1550,9 +1595,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "2060_01",
-      "1020_03",
-      "3100_03"
+      "4260_72",
+      "3030_14",
+      "5290_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -1577,9 +1622,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "3050_02",
-      "4170_02",
-      "1100_01"
+      "5000_22",
+      "5001_14",
+      "3210_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -1595,9 +1640,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "5290_04",
-      "4011_15",
-      "4150_03"
+      "5120_14",
+      "4194_08",
+      "4010_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -1613,9 +1658,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "5000_24",
-      "2020_01",
-      "3040_13"
+      "5030_04",
+      "4110_01",
+      "2050_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -1640,9 +1685,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "4192_04",
-      "1110_02",
-      "2010_28"
+      "2150_71",
+      "2010_02",
+      "4040_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -1658,9 +1703,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "1130_04",
-      "2081_11",
-      "1020_02"
+      "4030_04",
+      "5100_14",
+      "2080_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -1676,9 +1721,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "3040_03",
-      "5150_04",
-      "4031_18"
+      "2070_03",
+      "2150_72",
+      "2100_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -1703,9 +1748,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "3060_03",
-      "4170_01",
-      "1080_02"
+      "4031_18",
+      "3210_03",
+      "3041_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -1721,9 +1766,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "3210_12",
-      "3000_03",
-      "3070_03"
+      "3000_13",
+      "1080_02",
+      "3150_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -1739,9 +1784,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "2020_01",
-      "4000_04",
-      "3041_03"
+      "3300_03",
+      "3030_02",
+      "2110_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -1766,9 +1811,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "3070_02",
-      "3000_02",
-      "2010_28"
+      "2080_03",
+      "3270_04",
+      "4000_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -1784,9 +1829,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "1100_02",
-      "2050_02",
-      "3020_02"
+      "4090_72",
+      "2000_04",
+      "3150_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -1802,9 +1847,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "5000_03",
-      "4130_01",
-      "3330_01"
+      "4040_12",
+      "3070_02",
+      "2070_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -1829,9 +1874,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "1090_03",
-      "4240_13",
-      "4240_11"
+      "3160_71",
+      "4193_08",
+      "4150_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -1847,9 +1892,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "3100_01",
-      "1110_03",
-      "2080_01"
+      "4240_12",
+      "4080_02",
+      "3090_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -1865,9 +1910,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "3270_04",
-      "4000_04",
-      "1110_01"
+      "5000_23",
+      "3070_01",
+      "1100_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -1892,9 +1937,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "4000_12",
-      "4130_25",
-      "5010_04"
+      "5001_14",
+      "2010_04",
+      "5050_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -1910,9 +1955,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "3240_12",
-      "3110_14",
-      "3300_04"
+      "3060_01",
+      "1100_14",
+      "3270_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -1928,9 +1973,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "2110_02",
-      "2040_01",
-      "3270_02"
+      "2060_01",
+      "4080_03",
+      "3000_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -1955,9 +2000,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "1000_13",
-      "2000_04",
-      "5000_23"
+      "4240_13",
+      "4240_13",
+      "3031_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -1973,9 +2018,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "4040_01",
-      "4080_01",
-      "2070_01"
+      "2081_12",
+      "4031_18",
+      "3070_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -1991,9 +2036,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "4030_04",
-      "1110_02",
-      "3040_04"
+      "3020_12",
+      "1130_13",
+      "2040_72"
      ],
      "source": {
       "source": "jdr-default",
@@ -2018,9 +2063,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "4160_01",
-      "3041_03",
-      "2050_02"
+      "3001_04",
+      "4020_04",
+      "5290_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -2036,9 +2081,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "3210_03",
-      "4000_02",
-      "5000_24"
+      "3110_02",
+      "1100_28",
+      "3270_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -2054,9 +2099,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "4011_18",
-      "4190_14",
-      "3000_02"
+      "2050_12",
+      "1120_03",
+      "5000_23"
      ],
      "source": {
       "source": "jdr-default",
@@ -2081,9 +2126,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "3100_02",
-      "4040_13",
-      "4000_23"
+      "2081_12",
+      "3000_03",
+      "3240_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -2099,9 +2144,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "2000_12",
-      "3020_02",
-      "3210_12"
+      "3030_14",
+      "4160_01",
+      "4181_72"
      ],
      "source": {
       "source": "jdr-default",
@@ -2117,9 +2162,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "3321_18",
-      "2081_13",
-      "1090_13"
+      "5170_14",
+      "2110_01",
+      "3300_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -2144,9 +2189,9 @@
      "gold": 1100,
      "enemyLevel": 35,
      "enemies": [
-      "2040_02",
-      "5290_04",
-      "3060_01"
+      "5140_04",
+      "3010_01",
+      "2081_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -2162,9 +2207,9 @@
      "gold": 1100,
      "enemyLevel": 35,
      "enemies": [
-      "4000_03",
-      "1020_04",
-      "3110_03"
+      "4191_03",
+      "4090_71",
+      "1100_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -2180,9 +2225,9 @@
      "gold": 1100,
      "enemyLevel": 35,
      "enemies": [
-      "4160_12",
-      "2080_03",
-      "1130_02"
+      "4080_01",
+      "2150_72",
+      "1010_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -2207,9 +2252,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "2060_02",
-      "3240_13",
-      "4020_01"
+      "5010_04",
+      "3100_01",
+      "4160_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -2225,9 +2270,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "4080_02",
-      "1090_13",
-      "4020_04"
+      "3060_01",
+      "2110_02",
+      "3150_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -2243,9 +2288,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "4191_03",
-      "3100_01",
-      "2100_03"
+      "2081_11",
+      "5290_04",
+      "4130_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -2270,9 +2315,9 @@
      "gold": 1300,
      "enemyLevel": 45,
      "enemies": [
-      "3300_02",
-      "3001_13",
-      "3002_03"
+      "4194_08",
+      "3321_18",
+      "4110_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -2288,9 +2333,9 @@
      "gold": 1300,
      "enemyLevel": 45,
      "enemies": [
-      "2000_01",
-      "4190_13",
-      "3270_01"
+      "2070_03",
+      "2111_03",
+      "1090_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -2306,9 +2351,9 @@
      "gold": 1300,
      "enemyLevel": 45,
      "enemies": [
-      "1010_01",
-      "3030_03",
-      "3300_01"
+      "4191_02",
+      "3000_01",
+      "4040_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -2333,9 +2378,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "5000_04",
-      "2110_01",
-      "2010_28"
+      "4080_01",
+      "5050_03",
+      "2070_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -2351,9 +2396,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "1000_13",
-      "5100_14",
-      "3041_04"
+      "5010_04",
+      "3150_04",
+      "4012_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -2369,9 +2414,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "4190_13",
-      "2000_03",
-      "5150_04"
+      "2010_28",
+      "3060_03",
+      "4012_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -2396,9 +2441,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "3300_03",
-      "4030_01",
-      "3300_01"
+      "5050_03",
+      "1000_01",
+      "1010_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -2414,9 +2459,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "3240_13",
-      "3210_01",
-      "4000_12"
+      "3040_13",
+      "2010_04",
+      "3322_08"
      ],
      "source": {
       "source": "jdr-default",
@@ -2432,9 +2477,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "4191_01",
-      "3270_03",
-      "3060_02"
+      "3040_02",
+      "3240_12",
+      "4040_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -2459,9 +2504,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "3090_02",
-      "3060_03",
-      "1090_01"
+      "1080_02",
+      "2080_01",
+      "4130_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -2477,9 +2522,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "1130_01",
-      "3330_04",
-      "4080_04"
+      "3210_01",
+      "2110_01",
+      "3001_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -2495,9 +2540,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "1100_28",
-      "1000_03",
-      "4160_12"
+      "4000_01",
+      "4020_01",
+      "1030_62"
      ],
      "source": {
       "source": "jdr-default",
@@ -2522,9 +2567,9 @@
      "gold": 1700,
      "enemyLevel": 65,
      "enemies": [
-      "1000_01",
-      "3000_02",
-      "4000_18"
+      "5050_03",
+      "4150_01",
+      "1100_28"
      ],
      "source": {
       "source": "jdr-default",
@@ -2540,9 +2585,9 @@
      "gold": 1700,
      "enemyLevel": 65,
      "enemies": [
-      "4080_04",
-      "4192_03",
-      "4110_01"
+      "4030_04",
+      "4090_72",
+      "1130_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -2558,9 +2603,9 @@
      "gold": 1700,
      "enemyLevel": 65,
      "enemies": [
-      "3001_04",
-      "3060_02",
-      "2100_03"
+      "3322_08",
+      "3150_03",
+      "3000_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -2585,9 +2630,9 @@
      "gold": 1800,
      "enemyLevel": 70,
      "enemies": [
-      "4000_23",
-      "3321_18",
-      "3000_02"
+      "4110_13",
+      "1020_02",
+      "4181_72"
      ],
      "source": {
       "source": "jdr-default",
@@ -2603,9 +2648,9 @@
      "gold": 1800,
      "enemyLevel": 70,
      "enemies": [
-      "5140_04",
-      "1130_02",
-      "4191_02"
+      "2011_72",
+      "5150_04",
+      "3210_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -2621,9 +2666,9 @@
      "gold": 1800,
      "enemyLevel": 70,
      "enemies": [
-      "3050_04",
-      "3001_03",
-      "2010_01"
+      "3330_03",
+      "4192_04",
+      "1030_62"
      ],
      "source": {
       "source": "jdr-default",
@@ -2648,9 +2693,9 @@
      "gold": 1900,
      "enemyLevel": 75,
      "enemies": [
-      "3010_01",
-      "3150_04",
-      "4012_03"
+      "3100_01",
+      "2110_02",
+      "2010_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -2666,9 +2711,9 @@
      "gold": 1900,
      "enemyLevel": 75,
      "enemies": [
-      "2111_01",
-      "5000_23",
-      "2020_01"
+      "2081_14",
+      "4191_03",
+      "2050_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -2684,9 +2729,9 @@
      "gold": 1900,
      "enemyLevel": 75,
      "enemies": [
-      "4030_03",
-      "1120_03",
-      "4000_18"
+      "2070_03",
+      "4040_13",
+      "2081_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -2711,9 +2756,9 @@
      "gold": 2000,
      "enemyLevel": 80,
      "enemies": [
-      "4020_02",
-      "3240_12",
-      "1120_03"
+      "3210_02",
+      "3230_61",
+      "2020_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -2729,9 +2774,9 @@
      "gold": 2000,
      "enemyLevel": 80,
      "enemies": [
-      "2040_02",
-      "4040_01",
-      "2111_03"
+      "4240_11",
+      "4194_08",
+      "4110_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -2747,9 +2792,9 @@
      "gold": 2000,
      "enemyLevel": 80,
      "enemies": [
-      "3001_04",
-      "4170_18",
-      "5320_04"
+      "4193_08",
+      "4000_04",
+      "2000_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -2774,9 +2819,9 @@
      "gold": 2100,
      "enemyLevel": 80,
      "enemies": [
-      "5010_14",
-      "2010_13",
-      "4150_02"
+      "3180_62",
+      "2111_03",
+      "3000_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -2792,9 +2837,9 @@
      "gold": 2100,
      "enemyLevel": 80,
      "enemies": [
-      "3020_01",
-      "2010_28",
-      "5050_04"
+      "1000_02",
+      "5030_04",
+      "1020_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -2810,9 +2855,9 @@
      "gold": 2100,
      "enemyLevel": 80,
      "enemies": [
-      "3050_02",
-      "3050_02",
-      "5080_04"
+      "3040_04",
+      "3322_08",
+      "3000_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -2837,9 +2882,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "4000_02",
-      "3031_04",
-      "4191_03"
+      "2080_03",
+      "1010_01",
+      "3300_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -2855,9 +2900,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "4130_01",
-      "1120_01",
-      "1000_12"
+      "2020_03",
+      "1010_02",
+      "5210_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -2882,9 +2927,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "4011_16",
-      "1000_01",
-      "3150_03"
+      "5050_03",
+      "4110_01",
+      "1020_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -2900,9 +2945,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "2060_01",
-      "4240_12",
-      "4000_18"
+      "2040_01",
+      "3240_13",
+      "2011_72"
      ],
      "source": {
       "source": "jdr-default",
@@ -2927,9 +2972,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "2010_03",
-      "2020_03",
-      "2010_28"
+      "4042_03",
+      "1130_03",
+      "3210_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -2945,9 +2990,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "4000_18",
-      "1100_01",
-      "4000_12"
+      "3100_01",
+      "4040_14",
+      "4130_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -2972,9 +3017,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "3270_02",
-      "2040_01",
-      "3210_01"
+      "3020_28",
+      "3020_01",
+      "3060_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -2990,9 +3035,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "3300_01",
-      "3300_02",
-      "2060_03"
+      "4220_71",
+      "4000_04",
+      "4030_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -3017,9 +3062,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "1090_01",
-      "4150_03",
-      "5050_04"
+      "4191_04",
+      "2100_03",
+      "4080_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -3035,9 +3080,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "3300_03",
-      "3323_08",
-      "5320_04"
+      "4110_13",
+      "2000_03",
+      "1010_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -3062,9 +3107,9 @@
      "gold": 1100,
      "enemyLevel": 35,
      "enemies": [
-      "2060_01",
-      "1130_03",
-      "4130_28"
+      "2020_01",
+      "3070_03",
+      "1000_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -3080,9 +3125,9 @@
      "gold": 1100,
      "enemyLevel": 35,
      "enemies": [
-      "4190_13",
-      "4000_03",
-      "4192_04"
+      "3070_02",
+      "2000_04",
+      "2070_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -3107,9 +3152,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "3040_01",
-      "3100_12",
-      "3150_04"
+      "4130_13",
+      "2000_12",
+      "5000_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -3125,9 +3170,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "3090_03",
-      "3150_04",
-      "2070_03"
+      "4043_08",
+      "4042_03",
+      "5100_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -3152,9 +3197,9 @@
      "gold": 1300,
      "enemyLevel": 45,
      "enemies": [
-      "5210_04",
-      "4000_02",
-      "3050_01"
+      "4020_01",
+      "1130_04",
+      "3330_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -3170,9 +3215,9 @@
      "gold": 1300,
      "enemyLevel": 45,
      "enemies": [
-      "3010_02",
-      "1080_02",
-      "3020_02"
+      "3030_14",
+      "3041_04",
+      "3090_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -3197,9 +3242,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "4130_26",
-      "3040_04",
-      "1000_12"
+      "4181_72",
+      "4110_14",
+      "1100_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -3215,9 +3260,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "3300_03",
-      "2020_02",
-      "4080_03"
+      "4110_01",
+      "2070_02",
+      "2010_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -3242,9 +3287,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "5001_14",
-      "1000_03",
-      "4030_01"
+      "2070_03",
+      "4190_13",
+      "1130_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -3260,9 +3305,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "4190_14",
-      "1130_03",
-      "3270_02"
+      "3000_03",
+      "4192_04",
+      "2070_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -3287,9 +3332,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "1000_01",
-      "3330_04",
-      "2020_01"
+      "4000_01",
+      "2110_03",
+      "3030_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -3305,9 +3350,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "2000_12",
-      "2050_04",
-      "2080_03"
+      "3110_02",
+      "1010_02",
+      "1090_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -3332,9 +3377,9 @@
      "gold": 1700,
      "enemyLevel": 65,
      "enemies": [
-      "4192_03",
-      "4191_04",
-      "4191_02"
+      "4130_13",
+      "4240_11",
+      "2080_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -3350,9 +3395,9 @@
      "gold": 1700,
      "enemyLevel": 65,
      "enemies": [
+      "1080_01",
       "4012_03",
-      "2050_02",
-      "1110_03"
+      "5220_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -3377,9 +3422,9 @@
      "gold": 1800,
      "enemyLevel": 70,
      "enemies": [
-      "2050_12",
-      "1080_02",
-      "4020_03"
+      "1100_11",
+      "4240_11",
+      "4000_18"
      ],
      "source": {
       "source": "jdr-default",
@@ -3395,9 +3440,9 @@
      "gold": 1800,
      "enemyLevel": 70,
      "enemies": [
-      "4110_01",
-      "3002_03",
-      "3001_04"
+      "3040_04",
+      "5290_04",
+      "3100_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -3422,9 +3467,9 @@
      "gold": 1900,
      "enemyLevel": 75,
      "enemies": [
-      "5000_23",
-      "4190_13",
-      "2070_01"
+      "2010_04",
+      "3210_12",
+      "5330_72"
      ],
      "source": {
       "source": "jdr-default",
@@ -3440,9 +3485,9 @@
      "gold": 1900,
      "enemyLevel": 75,
      "enemies": [
-      "4170_15",
-      "3150_03",
-      "3240_11"
+      "1130_03",
+      "4110_02",
+      "2060_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -3467,9 +3512,9 @@
      "gold": 2000,
      "enemyLevel": 80,
      "enemies": [
-      "1090_01",
-      "2010_28",
-      "4170_18"
+      "1100_13",
+      "3040_03",
+      "4020_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -3485,9 +3530,9 @@
      "gold": 2000,
      "enemyLevel": 80,
      "enemies": [
-      "3240_12",
-      "1110_02",
-      "1090_13"
+      "2000_28",
+      "1010_02",
+      "4110_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -3512,9 +3557,9 @@
      "gold": 2100,
      "enemyLevel": 80,
      "enemies": [
-      "3010_02",
-      "4170_18",
-      "2010_02"
+      "3270_01",
+      "3031_03",
+      "2110_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -3530,9 +3575,9 @@
      "gold": 2100,
      "enemyLevel": 80,
      "enemies": [
-      "3010_13",
-      "3210_03",
-      "4030_02"
+      "2060_02",
+      "4260_72",
+      "3040_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -3557,9 +3602,9 @@
      "gold": 2200,
      "enemyLevel": 80,
      "enemies": [
-      "3110_01",
-      "2010_04",
-      "3040_01"
+      "3230_61",
+      "3230_62",
+      "4220_71"
      ],
      "source": {
       "source": "jdr-default",
@@ -3575,9 +3620,9 @@
      "gold": 2200,
      "enemyLevel": 80,
      "enemies": [
-      "1120_02",
-      "1110_01",
-      "3210_13"
+      "4190_14",
+      "2010_13",
+      "4011_15"
      ],
      "source": {
       "source": "jdr-default",
@@ -3602,9 +3647,9 @@
      "gold": 2300,
      "enemyLevel": 80,
      "enemies": [
-      "5170_14",
-      "5050_04",
-      "2010_28"
+      "1100_11",
+      "5220_14",
+      "1000_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -3620,9 +3665,9 @@
      "gold": 2300,
      "enemyLevel": 80,
      "enemies": [
-      "2080_03",
-      "4031_18",
-      "2000_12"
+      "5150_04",
+      "1100_12",
+      "4190_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -3647,9 +3692,9 @@
      "gold": 2400,
      "enemyLevel": 80,
      "enemies": [
-      "4011_17",
-      "1120_03",
-      "5150_04"
+      "1120_01",
+      "3060_03",
+      "4130_26"
      ],
      "source": {
       "source": "jdr-default",
@@ -3665,9 +3710,9 @@
      "gold": 2400,
      "enemyLevel": 80,
      "enemies": [
-      "3100_01",
-      "3030_01",
-      "4110_13"
+      "5000_22",
+      "3010_02",
+      "4150_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -3692,9 +3737,9 @@
      "gold": 2500,
      "enemyLevel": 80,
      "enemies": [
-      "5000_04",
-      "4192_04",
-      "3150_02"
+      "4000_12",
+      "2010_13",
+      "4012_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -3710,9 +3755,9 @@
      "gold": 2500,
      "enemyLevel": 80,
      "enemies": [
-      "2110_01",
-      "3030_02",
-      "4130_25"
+      "3110_13",
+      "2050_01",
+      "4240_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -3737,9 +3782,9 @@
      "gold": 2600,
      "enemyLevel": 80,
      "enemies": [
-      "3270_01",
-      "3300_02",
-      "2060_01"
+      "4000_23",
+      "4020_02",
+      "5010_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -3755,9 +3800,9 @@
      "gold": 2600,
      "enemyLevel": 80,
      "enemies": [
-      "3000_01",
-      "3040_02",
-      "3150_03"
+      "2100_03",
+      "3020_28",
+      "1090_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -3782,9 +3827,9 @@
      "gold": 2700,
      "enemyLevel": 80,
      "enemies": [
-      "3300_04",
-      "2020_03",
-      "2010_04"
+      "4280_72",
+      "3060_01",
+      "3090_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -3800,9 +3845,9 @@
      "gold": 2700,
      "enemyLevel": 80,
      "enemies": [
-      "3020_12",
-      "4170_01",
-      "3030_14"
+      "4190_13",
+      "4040_12",
+      "3210_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -3827,9 +3872,9 @@
      "gold": 2800,
      "enemyLevel": 80,
      "enemies": [
-      "4160_02",
-      "1100_13",
-      "1000_12"
+      "5000_24",
+      "1120_02",
+      "3330_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -3845,9 +3890,9 @@
      "gold": 2800,
      "enemyLevel": 80,
      "enemies": [
-      "4030_02",
-      "3060_01",
-      "1100_02"
+      "4194_08",
+      "1120_03",
+      "3060_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -3872,9 +3917,9 @@
      "gold": 2900,
      "enemyLevel": 80,
      "enemies": [
-      "1130_03",
-      "3041_04",
-      "3240_13"
+      "4020_02",
+      "2080_02",
+      "5170_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -3890,9 +3935,9 @@
      "gold": 2900,
      "enemyLevel": 80,
      "enemies": [
-      "3210_13",
-      "1080_02",
-      "1020_02"
+      "3150_01",
+      "4280_72",
+      "1100_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -3917,9 +3962,9 @@
      "gold": 3000,
      "enemyLevel": 80,
      "enemies": [
-      "2110_03",
-      "2060_01",
-      "4011_15"
+      "3150_03",
+      "2100_03",
+      "4010_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -3935,9 +3980,9 @@
      "gold": 3000,
      "enemyLevel": 80,
      "enemies": [
-      "4011_17",
-      "2020_01",
-      "2010_13"
+      "1090_13",
+      "5210_04",
+      "2080_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -3962,9 +4007,9 @@
      "gold": 3100,
      "enemyLevel": 80,
      "enemies": [
-      "5290_04",
-      "4160_02",
-      "3322_08"
+      "2000_28",
+      "3300_03",
+      "1100_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -3980,9 +4025,9 @@
      "gold": 3100,
      "enemyLevel": 80,
      "enemies": [
-      "3020_12",
-      "1110_03",
-      "1120_01"
+      "1010_02",
+      "5000_62",
+      "5080_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -4007,9 +4052,9 @@
      "gold": 3200,
      "enemyLevel": 80,
      "enemies": [
-      "4020_13",
-      "4110_02",
-      "3010_03"
+      "1010_03",
+      "3100_03",
+      "5000_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -4025,9 +4070,9 @@
      "gold": 3200,
      "enemyLevel": 80,
      "enemies": [
-      "2010_04",
-      "5030_04",
-      "3000_03"
+      "4192_04",
+      "4280_72",
+      "1000_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4052,9 +4097,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "5320_04",
-      "5050_04",
-      "4000_03"
+      "1020_02",
+      "2000_01",
+      "3040_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -4070,9 +4115,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "4012_11",
-      "1000_04",
-      "4040_01"
+      "3060_01",
+      "4000_02",
+      "4000_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -4088,9 +4133,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "4010_13",
-      "4110_01",
-      "4130_28"
+      "3060_03",
+      "4130_26",
+      "4190_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -4106,9 +4151,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "3100_03",
+      "5320_04",
       "2020_03",
-      "1010_01"
+      "2060_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4124,9 +4169,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "4130_01",
-      "4240_12",
-      "1020_03"
+      "1100_12",
+      "2040_02",
+      "3150_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4142,9 +4187,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "4194_08",
-      "2081_12",
-      "5050_04"
+      "3020_12",
+      "1110_01",
+      "1100_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4169,9 +4214,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "4080_01",
-      "4160_12",
-      "1080_02"
+      "3290_62",
+      "1010_02",
+      "2040_72"
      ],
      "source": {
       "source": "jdr-default",
@@ -4187,9 +4232,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "4020_03",
-      "1020_04",
-      "4170_01"
+      "1000_13",
+      "2020_04",
+      "2111_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4205,9 +4250,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "4040_01",
-      "3150_01",
-      "3110_01"
+      "2050_02",
+      "1080_03",
+      "2020_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4223,9 +4268,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "3070_02",
-      "4130_28",
-      "3020_28"
+      "1020_04",
+      "1120_03",
+      "2100_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4241,9 +4286,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "2080_02",
-      "4160_01",
-      "3050_03"
+      "3300_02",
+      "3300_02",
+      "2040_72"
      ],
      "source": {
       "source": "jdr-default",
@@ -4259,9 +4304,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "3330_03",
-      "4110_01",
-      "1100_02"
+      "2020_01",
+      "3290_61",
+      "3180_62"
      ],
      "source": {
       "source": "jdr-default",
@@ -4286,9 +4331,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "4000_01",
-      "2020_04",
-      "2020_01"
+      "3010_03",
+      "4191_04",
+      "3270_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4304,9 +4349,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "3323_08",
-      "2070_01",
-      "3040_01"
+      "4090_73",
+      "1130_04",
+      "3050_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4322,9 +4367,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "4040_13",
-      "4110_13",
-      "4020_02"
+      "2020_02",
+      "4040_01",
+      "2080_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4340,9 +4385,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "5010_04",
-      "4080_13",
-      "3020_12"
+      "2000_03",
+      "2150_71",
+      "4110_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -4358,9 +4403,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "3050_03",
-      "1130_03",
-      "3010_03"
+      "3150_04",
+      "1000_04",
+      "3230_62"
      ],
      "source": {
       "source": "jdr-default",
@@ -4376,9 +4421,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "2040_01",
-      "2070_02",
-      "1100_12"
+      "1090_03",
+      "4030_02",
+      "2081_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -4403,9 +4448,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "5210_04",
-      "1010_01",
-      "3090_03"
+      "4130_26",
+      "3000_13",
+      "5290_62"
      ],
      "source": {
       "source": "jdr-default",
@@ -4421,9 +4466,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "4130_26",
-      "3030_03",
-      "3330_04"
+      "3010_13",
+      "2081_14",
+      "3230_62"
      ],
      "source": {
       "source": "jdr-default",
@@ -4439,9 +4484,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "4130_02",
-      "1020_01",
-      "1130_02"
+      "4011_03",
+      "1000_28",
+      "4000_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -4457,9 +4502,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "4191_01",
-      "4110_01",
-      "4040_12"
+      "4170_16",
+      "1130_01",
+      "3001_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -4475,9 +4520,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
+      "1130_03",
       "1090_02",
-      "2070_01",
-      "4020_13"
+      "3150_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -4493,9 +4538,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "3002_03",
-      "2111_02",
-      "2080_02"
+      "2020_01",
+      "2100_03",
+      "3210_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -4520,9 +4565,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "3041_04",
-      "5320_04",
-      "4110_02"
+      "1020_03",
+      "3100_03",
+      "2000_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4538,9 +4583,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "5220_14",
-      "3020_28",
-      "2050_04"
+      "5030_04",
+      "4170_01",
+      "5290_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -4556,9 +4601,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "2000_12",
-      "4010_01",
-      "1090_02"
+      "3180_62",
+      "1110_02",
+      "3110_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4574,9 +4619,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "4191_03",
-      "3020_01",
-      "4020_13"
+      "1100_14",
+      "3100_03",
+      "3070_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4592,9 +4637,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "1120_01",
-      "3100_01",
-      "1020_02"
+      "3010_01",
+      "4120_62",
+      "3010_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -4610,9 +4655,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "4030_01",
-      "3020_03",
-      "4000_18"
+      "4191_03",
+      "5000_23",
+      "2010_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4637,9 +4682,9 @@
      "gold": 1100,
      "enemyLevel": 35,
      "enemies": [
-      "3240_11",
-      "1090_03",
-      "3031_03"
+      "3230_62",
+      "1010_03",
+      "3041_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4655,9 +4700,9 @@
      "gold": 1100,
      "enemyLevel": 35,
      "enemies": [
-      "2081_12",
-      "5001_14",
-      "2100_03"
+      "4170_01",
+      "3000_04",
+      "2000_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4673,9 +4718,9 @@
      "gold": 1100,
      "enemyLevel": 35,
      "enemies": [
-      "4193_08",
-      "1000_28",
-      "2070_03"
+      "1110_01",
+      "4000_01",
+      "1080_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4691,9 +4736,9 @@
      "gold": 1100,
      "enemyLevel": 35,
      "enemies": [
-      "1000_01",
-      "1000_12",
-      "3020_03"
+      "3041_03",
+      "4020_03",
+      "3050_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -4709,9 +4754,9 @@
      "gold": 1100,
      "enemyLevel": 35,
      "enemies": [
-      "1090_13",
-      "4170_15",
-      "4080_03"
+      "2081_13",
+      "4191_03",
+      "3040_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4727,9 +4772,9 @@
      "gold": 1100,
      "enemyLevel": 35,
      "enemies": [
-      "4000_23",
-      "3040_02",
-      "3020_01"
+      "4170_16",
+      "4080_04",
+      "5000_62"
      ],
      "source": {
       "source": "jdr-default",
@@ -4754,9 +4799,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "1110_03",
-      "3010_02",
-      "4043_08"
+      "2070_02",
+      "3330_01",
+      "3300_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4781,9 +4826,9 @@
      "gold": 1300,
      "enemyLevel": 45,
      "enemies": [
-      "2060_01",
-      "1000_02",
-      "4040_14"
+      "2081_11",
+      "4190_14",
+      "3300_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4799,9 +4844,9 @@
      "gold": 1300,
      "enemyLevel": 45,
      "enemies": [
-      "1100_02",
-      "4040_12",
-      "2050_04"
+      "2000_02",
+      "4080_01",
+      "3150_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -4817,9 +4862,9 @@
      "gold": 1300,
      "enemyLevel": 45,
      "enemies": [
-      "3210_12",
-      "2080_01",
-      "2110_02"
+      "1110_02",
+      "1100_12",
+      "4220_72"
      ],
      "source": {
       "source": "jdr-default",
@@ -4844,9 +4889,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "4190_14",
-      "4011_03",
-      "1000_04"
+      "4280_72",
+      "3040_02",
+      "2080_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -4862,9 +4907,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "4042_03",
-      "2111_02",
-      "4190_14"
+      "5030_04",
+      "3330_01",
+      "3000_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -4880,9 +4925,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "4042_03",
-      "3240_12",
-      "5001_14"
+      "3321_18",
+      "3150_12",
+      "4170_16"
      ],
      "source": {
       "source": "jdr-default",
@@ -4907,9 +4952,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "3010_13",
-      "5000_22",
-      "4130_28"
+      "1030_62",
+      "1110_02",
+      "4170_15"
      ],
      "source": {
       "source": "jdr-default",
@@ -4925,9 +4970,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "5010_14",
-      "3150_04",
-      "3010_02"
+      "4110_01",
+      "4110_13",
+      "4020_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -4943,9 +4988,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "1100_11",
-      "4191_01",
-      "3020_13"
+      "1090_03",
+      "1130_01",
+      "3300_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -4961,9 +5006,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "2040_03",
-      "2020_01",
-      "2000_28"
+      "3290_61",
+      "3040_02",
+      "4080_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -4979,9 +5024,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "3150_03",
-      "1100_01",
-      "2100_03"
+      "4080_04",
+      "4194_08",
+      "3240_11"
      ],
      "source": {
       "source": "jdr-default",
@@ -4997,9 +5042,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "2080_01",
-      "3040_03",
-      "2110_01"
+      "5320_04",
+      "2050_12",
+      "2050_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5024,9 +5069,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "3300_04",
-      "3060_03",
-      "3010_03"
+      "1100_13",
+      "3270_04",
+      "3010_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -5042,9 +5087,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "3150_03",
-      "2111_01",
-      "4040_01"
+      "4190_14",
+      "3000_01",
+      "1120_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5060,9 +5105,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "5290_04",
-      "3100_01",
-      "4160_03"
+      "4000_01",
+      "2070_01",
+      "1000_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -5078,9 +5123,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "4170_15",
-      "2080_02",
-      "1100_03"
+      "1100_01",
+      "3150_04",
+      "2080_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5105,9 +5150,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "2080_03",
-      "3020_12",
-      "3010_02"
+      "4160_01",
+      "5001_14",
+      "3270_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5132,9 +5177,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "4190_14",
-      "4012_03",
-      "2010_13"
+      "3030_13",
+      "1010_03",
+      "1110_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5150,9 +5195,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "4030_04",
-      "2010_28",
-      "2050_04"
+      "1120_03",
+      "2020_02",
+      "3322_08"
      ],
      "source": {
       "source": "jdr-default",
@@ -5168,9 +5213,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "3110_03",
-      "4170_01",
-      "5320_04"
+      "1000_01",
+      "4020_04",
+      "3040_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5186,9 +5231,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "4190_13",
-      "4000_12",
-      "4170_17"
+      "2050_01",
+      "1110_01",
+      "3020_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -5204,9 +5249,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "2010_04",
-      "3020_13",
-      "5050_04"
+      "4040_12",
+      "4000_04",
+      "4020_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -5231,9 +5276,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "4191_01",
-      "2050_12",
-      "3060_03"
+      "2111_01",
+      "4040_14",
+      "4130_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5249,9 +5294,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "2020_04",
-      "3020_12",
-      "2050_01"
+      "2080_01",
+      "3030_03",
+      "3110_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5267,9 +5312,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "1000_04",
-      "1090_02",
-      "3210_13"
+      "4020_04",
+      "3030_14",
+      "2060_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -5285,9 +5330,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "3100_03",
-      "3330_01",
-      "3100_01"
+      "4170_03",
+      "1000_28",
+      "1030_62"
      ],
      "source": {
       "source": "jdr-default",
@@ -5303,9 +5348,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "4020_13",
-      "2010_02",
-      "3300_04"
+      "3270_02",
+      "3110_14",
+      "3270_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -5321,9 +5366,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "1080_02",
-      "2010_13",
-      "4020_04"
+      "2111_02",
+      "4191_03",
+      "1020_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5348,9 +5393,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "1010_03",
-      "3030_03",
-      "3150_03"
+      "4030_03",
+      "5000_23",
+      "4130_27"
      ],
      "source": {
       "source": "jdr-default",
@@ -5375,9 +5420,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "4010_13",
-      "4080_01",
-      "3040_01"
+      "3230_61",
+      "4240_11",
+      "1000_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5393,9 +5438,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "2080_02",
-      "3070_01",
-      "1000_03"
+      "1010_03",
+      "3030_03",
+      "1010_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -5411,9 +5456,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "1100_03",
-      "5100_14",
-      "1000_13"
+      "5050_04",
+      "3070_01",
+      "4011_18"
      ],
      "source": {
       "source": "jdr-default",
@@ -5429,9 +5474,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "4020_13",
-      "4000_03",
-      "4030_01"
+      "1010_03",
+      "1100_01",
+      "4191_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5447,9 +5492,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "1020_02",
-      "3030_02",
-      "3010_03"
+      "1080_03",
+      "2010_04",
+      "1080_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5474,9 +5519,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "5030_04",
-      "4130_28",
-      "5000_22"
+      "2040_72",
+      "3002_03",
+      "4000_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -5492,9 +5537,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "2100_03",
-      "2010_01",
-      "1090_01"
+      "4194_08",
+      "2040_01",
+      "4000_62"
      ],
      "source": {
       "source": "jdr-default",
@@ -5519,9 +5564,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "5080_04",
-      "1110_03",
-      "4190_14"
+      "4160_03",
+      "3210_13",
+      "3070_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5537,9 +5582,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "3020_28",
-      "4000_01",
-      "1110_01"
+      "4191_01",
+      "4080_01",
+      "5100_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -5564,9 +5609,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "2000_02",
-      "3210_12",
-      "4030_04"
+      "3090_02",
+      "4000_18",
+      "3030_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -5582,9 +5627,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "3240_11",
-      "5000_04",
-      "3090_02"
+      "3210_01",
+      "3040_04",
+      "3060_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -5609,9 +5654,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "4080_03",
-      "1000_02",
-      "2000_28"
+      "4191_02",
+      "3000_13",
+      "5330_72"
      ],
      "source": {
       "source": "jdr-default",
@@ -5627,9 +5672,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "4160_02",
-      "4170_01",
-      "2070_03"
+      "2000_04",
+      "4220_72",
+      "3230_62"
      ],
      "source": {
       "source": "jdr-default",
@@ -5654,9 +5699,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "4011_03",
-      "4011_15",
-      "4110_01"
+      "1000_12",
+      "4280_72",
+      "1100_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5672,9 +5717,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "4080_02",
-      "4150_03",
-      "2081_13"
+      "3180_62",
+      "3322_08",
+      "5000_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -5699,9 +5744,9 @@
      "gold": 1100,
      "enemyLevel": 35,
      "enemies": [
-      "1100_13",
-      "2040_02",
-      "3030_01"
+      "3020_13",
+      "5100_14",
+      "4040_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -5717,9 +5762,9 @@
      "gold": 1100,
      "enemyLevel": 35,
      "enemies": [
-      "1090_01",
-      "4130_28",
-      "4110_13"
+      "2000_01",
+      "3000_03",
+      "4192_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5744,9 +5789,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "4170_03",
-      "5080_04",
-      "3020_12"
+      "2040_02",
+      "4190_13",
+      "1100_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -5762,9 +5807,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "1120_01",
-      "3100_12",
-      "3270_02"
+      "3230_63",
+      "1100_28",
+      "5000_23"
      ],
      "source": {
       "source": "jdr-default",
@@ -5789,9 +5834,9 @@
      "gold": 1300,
      "enemyLevel": 45,
      "enemies": [
-      "1080_03",
-      "5100_14",
-      "4040_01"
+      "2020_03",
+      "4240_11",
+      "4110_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -5807,9 +5852,9 @@
      "gold": 1300,
      "enemyLevel": 45,
      "enemies": [
-      "3240_13",
-      "3040_13",
-      "4012_03"
+      "4012_11",
+      "2070_01",
+      "3330_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -5834,9 +5879,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "4191_01",
-      "5000_03",
-      "5010_04"
+      "1100_14",
+      "3070_01",
+      "4240_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -5852,9 +5897,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "4170_02",
-      "5210_04",
-      "4160_02"
+      "3070_02",
+      "3020_01",
+      "5210_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -5870,9 +5915,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "1120_03",
-      "1010_03",
-      "3110_13"
+      "4011_17",
+      "3030_13",
+      "4130_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -5888,9 +5933,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "5000_03",
-      "3240_12",
-      "3330_03"
+      "4130_01",
+      "4240_12",
+      "4000_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -5906,9 +5951,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "4130_28",
-      "3030_13",
-      "1110_03"
+      "4000_18",
+      "4130_02",
+      "4080_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -5924,9 +5969,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "2081_12",
-      "1130_04",
-      "3020_02"
+      "1130_13",
+      "2070_03",
+      "5000_22"
      ],
      "source": {
       "source": "jdr-default",
@@ -5951,9 +5996,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "4191_03",
-      "4020_03",
-      "3090_02"
+      "2100_03",
+      "3040_13",
+      "3230_63"
      ],
      "source": {
       "source": "jdr-default",
@@ -5969,9 +6014,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "4042_03",
-      "1090_13",
-      "1080_03"
+      "4030_01",
+      "3330_01",
+      "4011_15"
      ],
      "source": {
       "source": "jdr-default",
@@ -5987,9 +6032,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "3000_03",
-      "1110_01",
-      "3031_03"
+      "5320_04",
+      "3110_01",
+      "3001_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6005,9 +6050,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "1010_03",
-      "3330_04",
-      "4130_13"
+      "2010_13",
+      "3020_28",
+      "1080_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6023,9 +6068,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "4000_01",
-      "5050_03",
-      "4194_08"
+      "1120_02",
+      "3041_03",
+      "5050_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -6041,9 +6086,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "5290_04",
-      "4150_02",
-      "4012_03"
+      "4000_01",
+      "3030_13",
+      "3040_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6068,9 +6113,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "3001_03",
-      "4110_13",
-      "5010_14"
+      "4191_02",
+      "3030_01",
+      "3030_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6095,9 +6140,9 @@
      "gold": 1700,
      "enemyLevel": 65,
      "enemies": [
-      "4130_25",
-      "4020_04",
-      "4000_12"
+      "5210_04",
+      "1000_01",
+      "4110_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6113,9 +6158,9 @@
      "gold": 1700,
      "enemyLevel": 65,
      "enemies": [
-      "4194_08",
-      "3240_13",
-      "3300_02"
+      "3031_03",
+      "4240_11",
+      "3001_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -6131,9 +6176,9 @@
      "gold": 1700,
      "enemyLevel": 65,
      "enemies": [
-      "3110_01",
-      "5120_14",
-      "1010_01"
+      "1130_03",
+      "4150_02",
+      "3323_08"
      ],
      "source": {
       "source": "jdr-default",
@@ -6149,9 +6194,9 @@
      "gold": 1700,
      "enemyLevel": 65,
      "enemies": [
-      "3322_08",
-      "1010_01",
-      "4011_03"
+      "1020_01",
+      "3230_62",
+      "3030_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6176,9 +6221,9 @@
      "gold": 1800,
      "enemyLevel": 70,
      "enemies": [
-      "3041_03",
-      "3001_13",
-      "4170_18"
+      "3300_04",
+      "1020_04",
+      "4170_15"
      ],
      "source": {
       "source": "jdr-default",
@@ -6194,9 +6239,9 @@
      "gold": 1800,
      "enemyLevel": 70,
      "enemies": [
-      "1080_02",
-      "2040_03",
-      "5000_04"
+      "2081_12",
+      "3020_03",
+      "2050_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6212,9 +6257,9 @@
      "gold": 1800,
      "enemyLevel": 70,
      "enemies": [
-      "1090_13",
-      "4011_18",
-      "2081_11"
+      "4090_72",
+      "3010_01",
+      "3000_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6230,9 +6275,9 @@
      "gold": 1800,
      "enemyLevel": 70,
      "enemies": [
-      "3060_03",
-      "3031_04",
-      "4110_14"
+      "2010_13",
+      "4240_13",
+      "4130_25"
      ],
      "source": {
       "source": "jdr-default",
@@ -6257,9 +6302,9 @@
      "gold": 1900,
      "enemyLevel": 75,
      "enemies": [
-      "3000_04",
-      "3020_28",
-      "5000_22"
+      "4191_02",
+      "3100_12",
+      "3000_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6275,9 +6320,9 @@
      "gold": 1900,
      "enemyLevel": 75,
      "enemies": [
-      "3000_13",
-      "4000_12",
-      "4042_03"
+      "1110_03",
+      "4170_01",
+      "4280_72"
      ],
      "source": {
       "source": "jdr-default",
@@ -6293,9 +6338,9 @@
      "gold": 1900,
      "enemyLevel": 75,
      "enemies": [
-      "3041_03",
-      "4130_13",
-      "1130_02"
+      "2000_03",
+      "1020_04",
+      "3000_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -6311,9 +6356,9 @@
      "gold": 1900,
      "enemyLevel": 75,
      "enemies": [
-      "4000_01",
-      "1100_28",
-      "4010_13"
+      "2070_01",
+      "4010_01",
+      "4012_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6338,9 +6383,9 @@
      "gold": 2000,
      "enemyLevel": 80,
      "enemies": [
-      "1020_03",
-      "3270_01",
-      "2080_03"
+      "5290_04",
+      "2150_72",
+      "1100_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -6356,9 +6401,9 @@
      "gold": 2000,
      "enemyLevel": 80,
      "enemies": [
-      "4170_03",
-      "1120_03",
-      "1000_03"
+      "4000_62",
+      "1010_02",
+      "1020_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6374,9 +6419,9 @@
      "gold": 2000,
      "enemyLevel": 80,
      "enemies": [
-      "4011_15",
-      "3100_12",
-      "1020_01"
+      "4043_08",
+      "2070_02",
+      "4000_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6392,9 +6437,9 @@
      "gold": 2000,
      "enemyLevel": 80,
      "enemies": [
-      "2060_01",
-      "4010_13",
-      "2060_03"
+      "2150_72",
+      "2060_02",
+      "3000_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6419,9 +6464,9 @@
      "gold": 2100,
      "enemyLevel": 80,
      "enemies": [
-      "4130_28",
-      "3322_08",
-      "5150_04"
+      "3040_01",
+      "4192_03",
+      "1100_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -6437,9 +6482,9 @@
      "gold": 2100,
      "enemyLevel": 80,
      "enemies": [
-      "1100_11",
-      "3040_01",
-      "4030_03"
+      "4020_01",
+      "2010_02",
+      "3150_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6455,9 +6500,9 @@
      "gold": 2100,
      "enemyLevel": 80,
      "enemies": [
-      "5000_03",
-      "5000_22",
-      "3000_04"
+      "4080_02",
+      "2111_02",
+      "3050_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -6473,9 +6518,9 @@
      "gold": 2100,
      "enemyLevel": 80,
      "enemies": [
-      "4080_03",
-      "5010_14",
-      "2111_01"
+      "3330_04",
+      "5080_04",
+      "1000_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -6500,9 +6545,9 @@
      "gold": 2200,
      "enemyLevel": 80,
      "enemies": [
-      "1130_02",
-      "1090_02",
-      "3322_08"
+      "2010_28",
+      "1120_02",
+      "3230_61"
      ],
      "source": {
       "source": "jdr-default",
@@ -6518,9 +6563,9 @@
      "gold": 2200,
      "enemyLevel": 80,
      "enemies": [
-      "2000_28",
-      "2081_12",
-      "3031_03"
+      "3150_02",
+      "4020_01",
+      "2050_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6536,9 +6581,9 @@
      "gold": 2200,
      "enemyLevel": 80,
      "enemies": [
-      "4190_13",
-      "5010_14",
-      "3020_01"
+      "4030_02",
+      "1020_03",
+      "4160_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6554,9 +6599,9 @@
      "gold": 2200,
      "enemyLevel": 80,
      "enemies": [
-      "4040_12",
-      "3210_02",
-      "2081_13"
+      "2000_02",
+      "2000_03",
+      "3060_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6581,9 +6626,9 @@
      "gold": 2300,
      "enemyLevel": 80,
      "enemies": [
-      "3050_03",
-      "1120_01",
-      "4190_14"
+      "5000_04",
+      "1130_13",
+      "3290_62"
      ],
      "source": {
       "source": "jdr-default",
@@ -6599,9 +6644,9 @@
      "gold": 2300,
      "enemyLevel": 80,
      "enemies": [
-      "3240_11",
-      "2050_12",
-      "3240_11"
+      "3000_03",
+      "1080_01",
+      "4020_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6617,9 +6662,9 @@
      "gold": 2300,
      "enemyLevel": 80,
      "enemies": [
-      "1100_11",
-      "1000_01",
-      "3240_12"
+      "2081_11",
+      "4260_72",
+      "2050_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -6635,9 +6680,9 @@
      "gold": 2300,
      "enemyLevel": 80,
      "enemies": [
-      "4042_03",
-      "3020_12",
-      "1110_02"
+      "1100_28",
+      "2040_01",
+      "2070_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6662,9 +6707,9 @@
      "gold": 2400,
      "enemyLevel": 80,
      "enemies": [
-      "1080_02",
-      "3210_12",
-      "2110_02"
+      "1000_02",
+      "1020_04",
+      "4240_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -6680,9 +6725,9 @@
      "gold": 2400,
      "enemyLevel": 80,
      "enemies": [
-      "2050_04",
-      "4130_13",
-      "3010_01"
+      "4000_12",
+      "3030_02",
+      "2111_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6698,9 +6743,9 @@
      "gold": 2400,
      "enemyLevel": 80,
      "enemies": [
-      "4040_12",
-      "4192_04",
-      "2020_01"
+      "1100_01",
+      "1110_02",
+      "1020_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6716,9 +6761,9 @@
      "gold": 2400,
      "enemyLevel": 80,
      "enemies": [
-      "1020_02",
-      "3300_03",
-      "4160_12"
+      "3100_01",
+      "1130_13",
+      "3001_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -6743,9 +6788,9 @@
      "gold": 2500,
      "enemyLevel": 80,
      "enemies": [
-      "3040_01",
-      "2050_02",
-      "3240_13"
+      "4000_01",
+      "1000_28",
+      "3030_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6761,9 +6806,9 @@
      "gold": 2500,
      "enemyLevel": 80,
      "enemies": [
-      "4030_02",
-      "2050_02",
-      "3041_04"
+      "3210_01",
+      "2100_03",
+      "3050_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6779,9 +6824,9 @@
      "gold": 2500,
      "enemyLevel": 80,
      "enemies": [
-      "3010_03",
-      "2050_04",
-      "1100_02"
+      "3110_03",
+      "1100_03",
+      "4170_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -6797,9 +6842,9 @@
      "gold": 2500,
      "enemyLevel": 80,
      "enemies": [
-      "1020_03",
-      "1100_14",
-      "3100_12"
+      "4020_03",
+      "3100_01",
+      "5030_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -6824,9 +6869,9 @@
      "gold": 2600,
      "enemyLevel": 80,
      "enemies": [
-      "1000_12",
-      "2000_03",
-      "4150_01"
+      "4030_02",
+      "4160_03",
+      "3210_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6842,9 +6887,9 @@
      "gold": 2600,
      "enemyLevel": 80,
      "enemies": [
-      "3322_08",
-      "4150_01",
-      "4011_02"
+      "4042_03",
+      "3050_03",
+      "3210_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6860,9 +6905,9 @@
      "gold": 2600,
      "enemyLevel": 80,
      "enemies": [
-      "4080_03",
-      "3020_02",
-      "2110_03"
+      "2080_01",
+      "2050_03",
+      "4000_23"
      ],
      "source": {
       "source": "jdr-default",
@@ -6878,9 +6923,9 @@
      "gold": 2600,
      "enemyLevel": 80,
      "enemies": [
-      "5050_03",
-      "4010_01",
-      "4190_13"
+      "3031_04",
+      "4130_03",
+      "2050_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -6905,9 +6950,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "4110_02",
-      "3010_03",
-      "1100_13"
+      "4011_03",
+      "3041_04",
+      "4110_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -6923,9 +6968,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "4043_08",
-      "4042_03",
-      "4191_01"
+      "4020_03",
+      "3110_14",
+      "4130_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6950,9 +6995,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "4191_04",
-      "5001_14",
-      "3070_03"
+      "5220_14",
+      "2111_01",
+      "2080_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6968,9 +7013,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "4130_26",
-      "1100_03",
-      "3240_13"
+      "3240_13",
+      "4000_02",
+      "2040_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -6995,9 +7040,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "1000_13",
-      "4240_12",
-      "3150_03"
+      "3020_28",
+      "3020_28",
+      "2080_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -7013,9 +7058,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "3070_01",
-      "4010_13",
-      "3150_12"
+      "3330_01",
+      "3110_13",
+      "2050_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -7040,9 +7085,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "3020_01",
-      "3300_02",
-      "4130_28"
+      "3270_02",
+      "3030_02",
+      "3240_11"
      ],
      "source": {
       "source": "jdr-default",
@@ -7058,9 +7103,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "3050_01",
-      "3300_02",
-      "4240_11"
+      "4043_08",
+      "2020_02",
+      "4030_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7085,9 +7130,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "4170_17",
-      "4170_03",
-      "2050_04"
+      "4190_13",
+      "3210_13",
+      "4030_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7103,9 +7148,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "1000_04",
-      "3020_13",
-      "2000_12"
+      "2000_03",
+      "3100_01",
+      "5000_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -7130,9 +7175,9 @@
      "gold": 1100,
      "enemyLevel": 35,
      "enemies": [
-      "1010_03",
-      "4020_01",
-      "3330_01"
+      "3230_62",
+      "3321_18",
+      "2081_11"
      ],
      "source": {
       "source": "jdr-default",
@@ -7148,9 +7193,9 @@
      "gold": 1100,
      "enemyLevel": 35,
      "enemies": [
-      "2060_01",
-      "3150_12",
-      "2080_02"
+      "5010_14",
+      "5140_04",
+      "4000_18"
      ],
      "source": {
       "source": "jdr-default",
@@ -7175,9 +7220,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "3300_01",
-      "5320_04",
-      "4192_03"
+      "5000_22",
+      "1120_01",
+      "2111_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -7193,9 +7238,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "5290_04",
-      "4000_23",
-      "2081_14"
+      "2110_02",
+      "4120_62",
+      "4192_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -7220,9 +7265,9 @@
      "gold": 1300,
      "enemyLevel": 45,
      "enemies": [
-      "4010_13",
-      "4040_13",
-      "2040_03"
+      "3001_03",
+      "3210_03",
+      "3330_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -7238,9 +7283,9 @@
      "gold": 1300,
      "enemyLevel": 45,
      "enemies": [
-      "4020_03",
-      "4130_28",
-      "1120_01"
+      "1120_01",
+      "1130_02",
+      "1100_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -7265,9 +7310,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "4190_14",
-      "4042_03",
-      "4170_18"
+      "4150_01",
+      "4192_04",
+      "4194_08"
      ],
      "source": {
       "source": "jdr-default",
@@ -7283,9 +7328,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "2080_01",
-      "1090_03",
-      "4130_02"
+      "5290_04",
+      "1080_01",
+      "3300_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7310,9 +7355,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "4190_13",
-      "2080_01",
-      "3031_04"
+      "2000_02",
+      "5001_14",
+      "1100_28"
      ],
      "source": {
       "source": "jdr-default",
@@ -7328,9 +7373,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "1020_03",
-      "5000_24",
-      "2110_03"
+      "3110_13",
+      "4160_02",
+      "3050_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -7355,9 +7400,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "4130_28",
-      "3090_02",
-      "3110_03"
+      "4011_16",
+      "3000_02",
+      "4110_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -7373,9 +7418,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "3270_03",
-      "3150_12",
-      "4130_13"
+      "4020_01",
+      "2040_02",
+      "1000_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7400,9 +7445,9 @@
      "gold": 1700,
      "enemyLevel": 65,
      "enemies": [
-      "4110_13",
-      "4130_28",
-      "1120_02"
+      "1090_01",
+      "1100_28",
+      "5010_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7418,9 +7463,9 @@
      "gold": 1700,
      "enemyLevel": 65,
      "enemies": [
-      "2010_28",
-      "2070_02",
-      "3000_03"
+      "5000_04",
+      "1030_62",
+      "5010_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -7445,9 +7490,9 @@
      "gold": 1800,
      "enemyLevel": 70,
      "enemies": [
-      "4191_04",
-      "4170_01",
-      "1000_03"
+      "3002_03",
+      "4020_02",
+      "2020_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -7463,9 +7508,9 @@
      "gold": 1800,
      "enemyLevel": 70,
      "enemies": [
-      "2111_03",
-      "2080_01",
-      "4150_03"
+      "4240_13",
+      "3300_01",
+      "1130_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -7490,9 +7535,9 @@
      "gold": 1900,
      "enemyLevel": 75,
      "enemies": [
-      "2110_02",
-      "3150_04",
-      "2070_03"
+      "1020_02",
+      "4080_03",
+      "2000_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -7508,9 +7553,9 @@
      "gold": 1900,
      "enemyLevel": 75,
      "enemies": [
-      "2081_13",
-      "4011_18",
-      "3020_12"
+      "1000_02",
+      "5000_24",
+      "4170_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -7535,9 +7580,9 @@
      "gold": 2000,
      "enemyLevel": 80,
      "enemies": [
-      "5100_14",
-      "4012_03",
-      "4080_03"
+      "3230_62",
+      "4110_14",
+      "3040_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -7553,9 +7598,9 @@
      "gold": 2000,
      "enemyLevel": 80,
      "enemies": [
-      "4240_12",
-      "1090_01",
-      "5100_14"
+      "4130_03",
+      "5140_04",
+      "3040_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -7580,9 +7625,9 @@
      "gold": 2100,
      "enemyLevel": 80,
      "enemies": [
-      "4150_01",
-      "1130_03",
-      "3040_02"
+      "3150_12",
+      "5330_72",
+      "1100_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -7598,9 +7643,9 @@
      "gold": 2100,
      "enemyLevel": 80,
      "enemies": [
-      "4040_13",
-      "3040_01",
-      "5050_03"
+      "2150_71",
+      "3070_02",
+      "3060_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -7625,9 +7670,9 @@
      "gold": 2200,
      "enemyLevel": 80,
      "enemies": [
-      "4011_17",
-      "4030_04",
-      "4000_18"
+      "2111_02",
+      "4130_01",
+      "3330_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7643,9 +7688,9 @@
      "gold": 2200,
      "enemyLevel": 80,
      "enemies": [
-      "2000_28",
-      "1000_28",
-      "3070_02"
+      "3290_62",
+      "3010_03",
+      "4160_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -7670,9 +7715,9 @@
      "gold": 2300,
      "enemyLevel": 80,
      "enemies": [
-      "3040_04",
-      "1000_12",
-      "3070_02"
+      "5220_14",
+      "4012_03",
+      "3020_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -7688,9 +7733,9 @@
      "gold": 2300,
      "enemyLevel": 80,
      "enemies": [
-      "4130_28",
-      "3020_28",
-      "1100_03"
+      "4170_02",
+      "4110_13",
+      "3000_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -7715,9 +7760,9 @@
      "gold": 2400,
      "enemyLevel": 80,
      "enemies": [
-      "4020_04",
-      "4030_04",
-      "4110_02"
+      "5080_04",
+      "4011_16",
+      "1130_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7733,9 +7778,9 @@
      "gold": 2400,
      "enemyLevel": 80,
      "enemies": [
-      "4110_14",
-      "3041_03",
-      "4160_02"
+      "3060_02",
+      "4040_12",
+      "4012_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -7760,9 +7805,9 @@
      "gold": 2500,
      "enemyLevel": 80,
      "enemies": [
-      "2050_01",
-      "5140_04",
-      "3210_01"
+      "4080_02",
+      "2111_02",
+      "1100_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -7778,9 +7823,9 @@
      "gold": 2500,
      "enemyLevel": 80,
      "enemies": [
-      "4010_01",
-      "2060_01",
-      "4191_04"
+      "2111_02",
+      "5000_24",
+      "2080_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -7805,9 +7850,9 @@
      "gold": 2600,
      "enemyLevel": 80,
      "enemies": [
-      "3330_04",
-      "2081_13",
-      "4000_12"
+      "2110_03",
+      "2060_03",
+      "3031_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7823,9 +7868,9 @@
      "gold": 2600,
      "enemyLevel": 80,
      "enemies": [
-      "2081_14",
-      "1000_12",
-      "3020_13"
+      "2010_04",
+      "2020_01",
+      "3110_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -7850,9 +7895,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "4012_03",
-      "4012_03",
-      "1110_02"
+      "3060_02",
+      "2010_03",
+      "4130_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -7868,9 +7913,9 @@
      "gold": 600,
      "enemyLevel": 10,
      "enemies": [
-      "3070_01",
-      "4191_01",
-      "3330_03"
+      "5320_04",
+      "3020_01",
+      "2040_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -7895,9 +7940,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "4040_12",
-      "1080_03",
-      "3300_02"
+      "1000_03",
+      "3300_03",
+      "3041_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -7913,9 +7958,9 @@
      "gold": 700,
      "enemyLevel": 15,
      "enemies": [
-      "3270_04",
-      "2100_03",
-      "4150_01"
+      "4160_12",
+      "2020_04",
+      "4130_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -7940,9 +7985,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "3030_01",
-      "1100_01",
-      "1120_01"
+      "1000_13",
+      "3290_62",
+      "2110_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -7958,9 +8003,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "4130_13",
-      "4194_08",
-      "3031_04"
+      "4150_03",
+      "2010_03",
+      "3110_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -7985,9 +8030,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "4020_02",
-      "5001_14",
-      "2100_03"
+      "1000_28",
+      "4170_03",
+      "3240_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -8003,9 +8048,9 @@
      "gold": 900,
      "enemyLevel": 25,
      "enemies": [
-      "3060_03",
-      "4170_18",
-      "3100_01"
+      "2060_01",
+      "4191_04",
+      "2050_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -8030,9 +8075,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "5170_14",
-      "3110_03",
-      "1010_03"
+      "5010_04",
+      "2111_03",
+      "4040_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -8048,9 +8093,9 @@
      "gold": 1000,
      "enemyLevel": 30,
      "enemies": [
-      "3110_02",
-      "3050_02",
-      "5000_22"
+      "4000_62",
+      "1000_28",
+      "3210_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -8075,9 +8120,9 @@
      "gold": 1100,
      "enemyLevel": 35,
      "enemies": [
-      "5320_04",
-      "4043_08",
-      "4000_23"
+      "4010_13",
+      "3020_13",
+      "4170_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -8093,9 +8138,9 @@
      "gold": 1100,
      "enemyLevel": 35,
      "enemies": [
-      "1090_13",
-      "3000_13",
-      "3090_01"
+      "1090_01",
+      "4191_01",
+      "4040_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -8120,9 +8165,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "2040_02",
-      "3100_12",
-      "1000_28"
+      "2010_13",
+      "5290_62",
+      "4260_72"
      ],
      "source": {
       "source": "jdr-default",
@@ -8138,9 +8183,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "4080_01",
-      "5150_04",
-      "2081_14"
+      "4000_18",
+      "1110_01",
+      "3060_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -8165,8 +8210,8 @@
      "gold": 1300,
      "enemyLevel": 45,
      "enemies": [
-      "3070_03",
-      "5050_04",
+      "2000_02",
+      "4170_02",
       "2040_03"
      ],
      "source": {
@@ -8183,9 +8228,9 @@
      "gold": 1300,
      "enemyLevel": 45,
      "enemies": [
-      "4020_04",
-      "3050_03",
-      "4030_04"
+      "2050_03",
+      "2010_01",
+      "3110_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -8210,9 +8255,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "4170_17",
-      "4000_02",
-      "3060_01"
+      "1090_01",
+      "4090_73",
+      "4000_18"
      ],
      "source": {
       "source": "jdr-default",
@@ -8228,9 +8273,9 @@
      "gold": 1400,
      "enemyLevel": 50,
      "enemies": [
-      "2000_04",
-      "5210_04",
-      "3270_04"
+      "4170_17",
+      "5320_04",
+      "4110_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -8255,9 +8300,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "2060_03",
-      "1130_13",
-      "5010_14"
+      "1000_03",
+      "4194_08",
+      "1000_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -8273,9 +8318,9 @@
      "gold": 1500,
      "enemyLevel": 55,
      "enemies": [
-      "4042_03",
-      "3002_03",
-      "3330_01"
+      "2111_02",
+      "4000_12",
+      "4190_13"
      ],
      "source": {
       "source": "jdr-default",
@@ -8300,9 +8345,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "4193_08",
-      "5290_04",
-      "1100_02"
+      "3150_12",
+      "2020_01",
+      "2060_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -8318,9 +8363,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "4040_13",
-      "3030_14",
-      "4020_13"
+      "4240_11",
+      "3040_03",
+      "1080_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -8345,9 +8390,9 @@
      "gold": 1700,
      "enemyLevel": 65,
      "enemies": [
-      "2110_01",
-      "3090_01",
-      "3210_03"
+      "4000_12",
+      "3150_02",
+      "4120_62"
      ],
      "source": {
       "source": "jdr-default",
@@ -8363,9 +8408,9 @@
      "gold": 1700,
      "enemyLevel": 65,
      "enemies": [
-      "1020_02",
-      "1020_04",
-      "3030_13"
+      "5000_62",
+      "4030_01",
+      "4170_16"
      ],
      "source": {
       "source": "jdr-default",
@@ -8390,9 +8435,9 @@
      "gold": 1800,
      "enemyLevel": 70,
      "enemies": [
-      "1110_03",
-      "2100_03",
-      "4011_15"
+      "2010_03",
+      "4191_04",
+      "3110_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -8408,9 +8453,9 @@
      "gold": 1800,
      "enemyLevel": 70,
      "enemies": [
-      "3000_13",
-      "2020_02",
-      "3050_03"
+      "3330_01",
+      "3330_02",
+      "4040_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -8435,9 +8480,9 @@
      "gold": 1900,
      "enemyLevel": 75,
      "enemies": [
-      "4240_13",
-      "3010_02",
-      "4170_01"
+      "2050_03",
+      "1000_01",
+      "2000_12"
      ],
      "source": {
       "source": "jdr-default",
@@ -8453,9 +8498,9 @@
      "gold": 1900,
      "enemyLevel": 75,
      "enemies": [
-      "4010_13",
-      "1100_12",
-      "3040_04"
+      "2000_28",
+      "1090_02",
+      "2080_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -8480,9 +8525,9 @@
      "gold": 2000,
      "enemyLevel": 80,
      "enemies": [
-      "4240_13",
-      "1090_13",
-      "4150_03"
+      "4130_02",
+      "3030_14",
+      "4011_15"
      ],
      "source": {
       "source": "jdr-default",
@@ -8498,9 +8543,9 @@
      "gold": 2000,
      "enemyLevel": 80,
      "enemies": [
-      "2010_04",
-      "5080_04",
-      "4080_03"
+      "1100_13",
+      "4000_01",
+      "5000_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -8525,9 +8570,9 @@
      "gold": 2100,
      "enemyLevel": 80,
      "enemies": [
-      "3000_04",
-      "1000_04",
-      "2111_03"
+      "4191_04",
+      "4220_72",
+      "3020_28"
      ],
      "source": {
       "source": "jdr-default",
@@ -8543,9 +8588,9 @@
      "gold": 2100,
      "enemyLevel": 80,
      "enemies": [
-      "5320_04",
-      "5120_14",
-      "1130_03"
+      "1000_04",
+      "3040_02",
+      "5100_14"
      ],
      "source": {
       "source": "jdr-default",
@@ -8570,9 +8615,9 @@
      "gold": 2200,
      "enemyLevel": 80,
      "enemies": [
-      "2111_03",
-      "2050_03",
-      "3031_03"
+      "3070_03",
+      "1130_04",
+      "4020_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -8588,9 +8633,9 @@
      "gold": 2200,
      "enemyLevel": 80,
      "enemies": [
-      "2000_03",
-      "3100_02",
-      "4010_01"
+      "3321_03",
+      "3110_14",
+      "1100_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -8615,9 +8660,9 @@
      "gold": 2300,
      "enemyLevel": 80,
      "enemies": [
-      "4240_13",
-      "4170_17",
-      "2050_02"
+      "4110_01",
+      "4040_13",
+      "4012_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -8633,9 +8678,9 @@
      "gold": 2300,
      "enemyLevel": 80,
      "enemies": [
-      "4040_01",
-      "2070_02",
-      "1130_02"
+      "3040_13",
+      "3070_02",
+      "2070_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -8660,9 +8705,9 @@
      "gold": 2400,
      "enemyLevel": 80,
      "enemies": [
-      "1000_02",
-      "2050_02",
-      "4160_02"
+      "5170_14",
+      "3020_13",
+      "2111_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -8678,9 +8723,9 @@
      "gold": 2400,
      "enemyLevel": 80,
      "enemies": [
-      "4020_03",
-      "2070_03",
-      "4130_01"
+      "4190_14",
+      "3160_71",
+      "2020_01"
      ],
      "source": {
       "source": "jdr-default",

@@ -850,10 +850,12 @@ mod tests {
             (50.0..=300.0).contains(&scale)
                 && r["myPageCameraType"] == "CameraIdSet0"
                 && r["mindFrameID"] == 1
-                && r["myPagePos"]["z"].as_f64().unwrap() > 100.0
+                && r["myPagePos"]["x"] == 35.0
+                && r["myPagePos"]["z"] == 180.0
+                && (-180.0..=-50.0).contains(&r["myPagePos"]["y"].as_f64().unwrap())
         }));
-        // Most models already fit the team view's bust shot at full size; offsets stay small
-        // (centring a head over its slot) and only ever lift.
+        // Most models keep their size in the team view; offsets centre a head over its slot and only
+        // ever lift it (to the same height in every slot, as in the original's footage).
         let full = rows
             .iter()
             .filter(|r| r["teamScaleScalar"] == 100.0)
@@ -880,7 +882,10 @@ mod tests {
             };
             assert_eq!(a["formation"], want);
             for e in a["areaSettingList"].as_array().unwrap() {
-                assert_eq!(e["bossFlag"], 0);
+                // only the last area of a chapter's last stage has a boss (with its intro)
+                if c.stages.len() > 1 {
+                    assert_eq!(e["bossFlag"], 0);
+                }
                 let sid = e["enemyStatueInfo"]["statueId"].as_str().unwrap();
                 assert_eq!(
                     e["enemyStatueInfo"]["dtSkillList"][0]["skillId"],
@@ -933,11 +938,38 @@ mod tests {
         {
             assert!(ids.contains(&id), "camera {id}");
         }
+        let node = |id: &str| {
+            nodes["listData"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .find(|n| n["id"] == id)
+                .unwrap()
+                .clone()
+        };
         for s in list {
             assert_eq!(s["flagMaintain"], false);
+            // The client adds every later step's node to the first one (CreateNodeParam 0xD70D44,
+            // docs/research/31 §2): the summed distance, field of view and pitch of each step stay
+            // those of a close shot (Build 33 first sent absolute nodes: doubled values).
+            let (mut length, mut fov, mut pitch) = (0.0, 0.0, 0.0);
+            let id = s["cameraID"].as_i64().unwrap();
             for d in s["dataList"].as_array().unwrap() {
-                assert!(node_ids.contains(&d["cameraNode"].as_str().unwrap()));
+                let name = d["cameraNode"].as_str().unwrap();
+                assert!(node_ids.contains(&name));
                 assert!(d["sec"].as_f64().unwrap() > 0.0);
+                let n = node(name);
+                length += n["length"].as_f64().unwrap();
+                fov += n["perspective"].as_f64().unwrap();
+                pitch += n["rotate"]["x"].as_f64().unwrap();
+                assert!(
+                    (1.0..=10.0).contains(&length),
+                    "camera {id} length {length}"
+                );
+                assert!((20.0..=45.0).contains(&fov), "camera {id} fov {fov}");
+                // (the win shot looks up at the winner's face from about 30 degrees below; the high
+                // wide view of big moves looks 45-60 degrees down, docs/research/32 §1)
+                assert!((-60.0..=32.0).contains(&pitch), "camera {id} pitch {pitch}");
             }
         }
     }

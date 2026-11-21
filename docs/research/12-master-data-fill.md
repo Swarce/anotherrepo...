@@ -244,5 +244,11 @@ What the Build 17 device test showed: some team-screen statues were out of frame
   - Result: 266 rows; 173 shifted sideways by 5 cm or more (at most 38 cm), 31 lifted, 128 not at 100%.
   - `tools/content/render_team_view.py` draws the posed statues from the formation camera and
     anchors, for checking locally. Images stay private.
+- **Same head height in every slot (Build 33).** In the original's team screen (video frames,
+  docs/research/31 §5) the three statues stand thighs-up with their heads at about the same height,
+  the leader's included. Ours left short heads (1.45 m) low, which showed most in the leader slot,
+  the nearest to the camera. Models now keep their size while the head bone is 1.30-1.80 m (others
+  are scaled into that band, 50-150%, upper body at most 1.4 m wide) and every head is lifted to
+  1.68 m: 292 rows, 214 lifted, 75 not at 100%.
 - Rebuild: `tools/content/scan_figure_clips.py`, `scan_model_heights.py` and `pose_models.py`,
   then `build_statues.py --clips --heights --pose`.
