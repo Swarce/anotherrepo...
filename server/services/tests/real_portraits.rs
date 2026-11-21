@@ -114,6 +114,13 @@ fn adds_thumbnails_the_client_can_reach() {
     let nodes2 = bundle::read(&rebuilt).unwrap();
     let si2 = nodes2.iter().position(|n| n.flags & 4 != 0).unwrap();
     let f2 = sfile::parse(&nodes2[si2].data).unwrap();
+    let ids: Vec<i64> = f2.objects.iter().map(|o| o.path_id).collect();
+    let mut sorted_ids = ids.clone();
+    sorted_ids.sort();
+    assert_eq!(
+        ids, sorted_ids,
+        "the object table stays sorted by path id (binary search)"
+    );
     for o in &f2.objects {
         if let Some(d) = original.get(&o.path_id) {
             if f2.types[o.type_index as usize].entry.class_id != 142 {
