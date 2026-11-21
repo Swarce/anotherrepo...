@@ -13,7 +13,7 @@ community wikis (each record cites its page) or are marked `jdr-default`.
    ShoutWiki (MediaWiki API), JoJoWiki (MediaWiki API via a fetch service), Gamerch (Wayback
    Machine snapshot via a fetch service). No images.
 3. Parsers extract numbers only (`tools/content/shoutwiki_statues.py`, …).
-4. Builders merge them (`tools/content/build_statues.py`, `build_quests.py`, `build_minds.py`) →
+4. Builders merge them (`tools/content/build_statues.py`, `build_quests.py`, `build_extra_quests.py` (daily and event chapters), `build_minds.py`) →
    `server/content/statues.json`, `quests.json`, `minds.json`. A wiki value attaches to a game id
    only on an unambiguous match against the game's own Japanese labels (from the player's l10n
    export, compared after NFKC normalisation, so full-width and half-width forms agree); ids a wiki

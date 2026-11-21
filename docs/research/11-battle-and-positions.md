@@ -192,3 +192,52 @@ empty star rows, and the loading screen's tip board was blank.
   - We send `TipsTitle_<nnn>`, `TipsText_<nnn>` and `ui_tips_<nnn>`, picked by a hash of the stage
     id from the 66 numbers that have a real title, text and picture (M for the numbering: every
     `ui_tips_*` bundle matches such a title).
+
+## 5. Reversal (Build 20)
+
+Reversal is a core tactical mechanic (research pack `tactical.reversal`, documented), and two of
+the game's missions use it. Since Build 11 we had sent `_reversalEnable 0`. All of the following
+is H unless marked, read in `Jjs.dtbattle.ReversalManager` and its callers.
+
+- **Gauge.** Internally 0..10000 (`.cctor` 0xD8B8B0); the UI shows gauge/100 as a percent. Only
+  the player team has a gauge (`CheckReversalTeam`). It fills from three sources
+  (`AddGaugePower` 0xD8AA20, capped at 10000):
+  - a player unit picks a skill: the skill's `dododoRate`, as a percent (0xFAC6C0);
+  - a player unit takes a hit of at least 1 HP: `_reversalAddGaugeDamage`, raw 1/10000 (0xFB01B0);
+  - a player unit dies: `_reversalAddGaugeDead`, raw (`OnDied` 0xFABB4C).
+
+  A continue fills it completely. Gauge gained during Reversal is lost: the gauge is reset when
+  Reversal ends.
+- **Fields.**
+  - `_reversalEnable` is on only at exactly 1.
+  - `_reversalStartGauge` is a percent with no clamp.
+  - `_reversalAddSkillStock` gives skills with no uses left that many more when Reversal starts.
+  - `_reversalMaxTurn` is the number of actions the team gets; enemy actions do not count.
+  - `_reversalAddSpeedUpRate` **multiplies** speed by rate/10000 (`AddSpeed` 0xD8A4E4). Units
+    under speed 1 never act (0xBA38D4), so a rate of 0 freezes the team, and the Reversal would
+    never end.
+  - `_reversalAddSkillCoolTimeRate` multiplies cool turns by rate/10000 (0 = none).
+- **Activation and end.**
+  - The button works with a full gauge while the battle waits for input; auto play uses it by
+    itself.
+  - Reversal ends when the actions run out. When the area changes first, the unused share returns
+    as gauge.
+  - Overkill: during Reversal in the last area, killing a boss turns the remaining actions into
+    overkill hits (0xBBC3F0, 0xEE4504).
+  - No other table or stage, area or statue field is read; the effects and BGM are the client's.
+- **What we send** (values ours; the meaning of each is H):
+
+  | Field | Value | Effect |
+  |---|---|---|
+  | `_reversalEnable` | 1 | Reversal on |
+  | `_reversalStartGauge` | 0 | The gauge starts empty |
+  | `_reversalAddGaugeDamage` | 1000 | +10% per hit taken |
+  | `_reversalAddGaugeDead` | 2500 | +25% per statue lost |
+  | `_reversalAddSkillStock` | 1 | +1 use for spent limited skills |
+  | `_reversalMaxTurn` | 3 | 3 actions, so up to 2 overkill hits |
+  | `_reversalAddSpeedUpRate` | 100000 | Speed ×10 during Reversal |
+  | `_reversalAddSkillCoolTimeRate` | 0 | No cool-downs during Reversal |
+
+  Skills now carry `dododoRate`: attack 10, normal skill 15, special 20. With three statues the
+  gauge fills in about two rounds. The tests reject a speed rate under 10000, fewer than 2
+  actions, a start gauge outside 0..100, and attacks without gauge.

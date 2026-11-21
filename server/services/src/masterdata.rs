@@ -781,6 +781,30 @@ mod tests {
         assert!(f("_multiDealDamageMin") <= 1.0 && 1.0 <= f("_multiDealDamageMax"));
         assert!(f("_addDamageMin") <= 0.0 && 0.0 <= f("_addDamageMax"));
         assert!(f("_damageCap") > 0.0);
+        // Reversal (docs/research/11 §5): the speed rate multiplies speed (in 1/10000), so below
+        // 10000 the team slows down and at 0 it never acts and Reversal never ends; the action
+        // count is a divisor; the start gauge is a percent with no clamp; the gauge must be able
+        // to fill.
+        if f("_reversalEnable") == 1.0 {
+            assert!(f("_reversalAddSpeedUpRate") >= 10000.0);
+            assert!(
+                f("_reversalMaxTurn") >= 2.0,
+                "at least one overkill hit after the kill"
+            );
+            assert!((0.0..=100.0).contains(&f("_reversalStartGauge")));
+            assert!(f("_reversalAddGaugeDamage") > 0.0 && f("_reversalAddGaugeDead") > 0.0);
+            let skills = crate::collection::dt_skill_table();
+            let attacks: Vec<&Value> = skills["data"]["skillDataList"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .filter(|r| r["dtSkillId"].as_str().unwrap().ends_with("_99"))
+                .collect();
+            assert!(!attacks.is_empty());
+            assert!(attacks
+                .iter()
+                .all(|r| r["dododoRate"].as_i64().unwrap_or(0) > 0));
+        }
         // Move ranges are centimetres: an approach of a few metres must not count as "far".
         assert!(f("_moveRangeFar") >= 300.0 && f("_moveEscapeRenge") >= 50.0);
         // The random spread is in 1/10000 (docs/research/11 §3): it must bracket 10000.
