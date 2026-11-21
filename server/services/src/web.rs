@@ -121,6 +121,7 @@ pub const ABOUT_PAGE: &str = "/information/about.html";
 
 /// What this build adds, for the Notices screen's Updates tab (our words; no game text).
 const NOTES: &[&str] = &[
+    "Build 35: the win shot faces the winner (it showed their back).",
     "Build 34: the same game data as the last Build 33 package, numbered 34 so you can see at a glance that the new app is running. Battle cameras follow the kind of action (attacks stay near the turn view, SP skills cut between several angles), the win shot is the original's close low shot, and the My Page and team screens frame statues as the original did.",
     "Build 33: the battle camera cuts to its own shots on every attack and skill, as the original did, and bosses get their intro again. Action chapters: enemies appear and your statues can attack, use their skill and SP. Skill cool turns follow the original's; more statues have their real stats; assist abilities need their real conditions.",
     "Build 32: long statue names shrink to fit their plate (two lines at most) instead of spilling onto the tabs, and the Town list's policy and hours fit their bars. The analytics, crash-reporting, ads, push and Play Games libraries are gone from the app (about 8 MB), with the Play Games buttons.",
