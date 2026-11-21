@@ -53,16 +53,23 @@ the repository: the tool reads the player's files and writes a private art pack.
 - **Render.** three.js in headless Chromium: unlit textures (the toon shading is in the textures),
   an inverted-hull outline of 1.5 mm, a 20-degree camera 0.95 m in front of the HEAD bone, aimed
   2.4 cm above it, 512 px, scaled to 128 px.
-- **Layers.** Each layer is the per-pixel mode of the thumbnails that share it: the mean of the
-  ones in the winning colour bin, which averages out their texture compression.
-  - frame, bottom bar and gold stars: the regular thumbnails of that rarity with no empty slots.
-    The server sends `rareMax` = `rare`, so the statue has no upgrade to show;
-  - face opening: what those thumbnails do not share, connected to the middle;
-  - badge corner: kept as frame only where an even mix of attributes agrees;
-  - badge: the attribute's thumbnails, inside a circle fitted to its firm core;
-  - "A" mark: the assist-only thumbnails;
-  - background: per attribute, a colour field fitted to pixels three or more thumbnails agree
-    on, with the lattice drawn over it.
+- **Frame (Build 28).** Each portrait starts from one real roster thumbnail, the donor. The
+  donor has the same frame rarity, the same badge attribute, the same assist mark and no empty
+  star slots, in that order of preference; a regular portrait never takes an assist-only donor.
+  - Attribute from the badge: the nearest mean badge centre of the statues whose attribute is
+    known (146 of 146 right, leave-one-out), so all thumbnails count.
+  - Shared art: per group (frame rarity; rarity without empty slots; attribute; assist-only), the
+    pixels where at least 60% of the group equal the median within 24 per channel. A donor pixel
+    is kept when it is shared art and equals that median.
+  - The opening: what is not kept, connected to the middle (gaps in the frame sealed for the fill,
+    then grown back to its edge), plus specks of 20 px or less inside it. Everything else is the
+    donor's own pixel, unchanged.
+  - A badge of another attribute (no donor has both) comes from a thumbnail that has it, the
+    assist mark likewise.
+- **Background.** Per attribute, a colour field fitted to pixels three or more thumbnails agree
+  on, with the lattice drawn over it. The owner says it is a game texture (the statue manage
+  menu's background); not found yet in the UI bundles, scene bundles, converted bundles
+  (`ui_mypage_bg_00` and the like) or `daiza`, by name or by a pixel search of every texture.
 - **Rarity and attribute.** As the server sends them: the wiki values, else rarity 4 and
   attribute 1 + psid mod 5.
 
@@ -86,8 +93,15 @@ the repository: the tool reads the player's files and writes a private art pack.
 
 ## 5. Open (M)
 
-- That the lists show the new entries is inferred from the lookup by container key; it needs a
-  device.
+- **Build 27 on the device: the portraits did not show** (owner's report, no log). The client
+  side read so far is consistent with the added entries:
+  - `ImagePoolManager` (the thumbnail pool lists `ui_statue_00.bytes`, `ui_statue_01.bytes`) →
+    `ResourceManager.LoadAsset` 0x10C73A4 → `IsAssetInBundle` 0x10D35FC (`AssetBundle.Contains`);
+  - `LoadRequestTask.loadAsset` 0x10CE8D0 (`LoadAssetAsync` by name for `.bytes`) and `Update`
+    0x10CF0F8 (`LoadFromMemory`, then the inner bundle's first asset name).
+  - Rebuilding with the patched APK's own `art.bin` on the player's files gives a `ui_statue_01`
+    with 220 entries (UnityPy). Build 28 logs, per thumbnail bundle, the images added and the
+    file served, to tell what the phone did.
 - Statues with no wiki attribute show the server's placeholder attribute, in the portrait as in
   the game. The real thumbnails would give the right one for the 145 statues that have one (not
   done).
