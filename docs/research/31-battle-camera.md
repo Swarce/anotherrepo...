@@ -57,10 +57,14 @@ H = read in the 3.12.0 disassembly or the player's files, F = seen in frames of 
 - Now (`build_camera_sets.py`): each requested id gets its shots from the kind of action that
   requests it, read from the action set's template name (`…_ATTACK`, `…_SKILL_NN`, the skill
   red when the statue's tactical skill is special; `scan_camera_requests.py` records the template):
-  - attacks and blue skills: near the default view (pushed in), a side-on two-shot, low behind the
-    attacker's shoulder, three-quarters behind;
+  - attacks and blue skills (Build 35, measured on X9xSMXBpsQw 113-133, ZCUC-PwLXxA 460-920, X9xS
+    628 and checked by rendering posed models): the main shot on the turn camera's side 45° off the
+    attacker's facing, about 1.1 m up and level, 5 m away (the attacker at the left third head to
+    feet, the target nearer at the right), a wider 60° variant, and over the attacker's shoulder
+    3.8 m back; 36° field of view. The Build 33 shots were perpendicular or behind, 2.6–4.6 m away
+    and 1.6–2.0 m up;
   - red SP skills (an id gets these when SPs are at least a third of its users): over the shoulder,
-    a low front three-quarter, the reverse from beyond the target, a 90° side shot, a high wide
+    a low front three-quarter, the reverse from beyond the target, the main two-shot, a high wide
     view 50° down (the 14xxxx family's hits);
   - picked by the role of the requesting states (wind-up, hit, loop, wrap-up) and varied by id.
   - Camera id families do not separate the kinds: 130xxx alone is requested by 554 SP, 502 skill
@@ -73,6 +77,9 @@ H = read in the 3.12.0 disassembly or the player's files, F = seen in frames of 
   that side.
 - The first Build 33 shots (over the shoulder, a front close-up, a reverse from beyond the target, a
   near-ground angle) put 74 poses on the far side of the arena even after the delta fix.
+- The win shots are turned 180° about the winner (Build 35): on the result pivot the winner faces
+  away from the battle frame, and the owner's Build 34 recording showed the shot from behind. The
+  values below are as framed in the battle frame.
 - The win shots (third package): 1.15 m from the chest, 26° below, 27° to the side, the look
   point offset so the winner sits right of centre; opening at 1.0 m, 30° and 34° and settling over
   1 s, then held (rendered with the statues' own win-appeal clip, `pose_models.py --clip
