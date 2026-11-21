@@ -89,7 +89,7 @@ def P(base, look, rot, length, fov=30.0, boff=(0, 0, 0), loff=(0, 0, 0)):
 # single-unit shot frames the unit and its target only when the look point sits about half way
 # between them: z ~ half the strike distance (melee 1.05-1.5 m, Stand users 2-2.5 m). Attacks
 # themselves no longer play these (forceNormalCamera 1: the client's Overview two-shot, research
-# 31 §9); the blue skills that request 111000 / 131000 / 131101 still do.
+# 31 §8); the blue skills that request 111000 / 131000 / 131101 still do.
 NA_A = P(SPINE2, SPINE2, (3, 82, 0), 5.0, 32, (0, 0, 1.1), (0, -0.1, 1.1))
 NA_B = P(SPINE2, SPINE2, (3, 82, 0), 5.3, 32, (0, 0, 1.1), (0, -0.1, 1.1))
 DEFAULT_REF = P(SPINE2, SPINE2, (-5, 75, 0), 6.5, 30, (0, 0, 1.8), (0, -0.2, 1.8))
@@ -100,8 +100,9 @@ RUSH = [P(SPINE2, SPINE2, (15, 90, 0), 1.5, 38, (0, 0, 0), (0, 0, 0.8)),
         P(SPINE2, SPINE2, (5, 75, 0), 3.0, 38, (0, 0, 0), (0, 0, 0.8))]
 CFL = P(NECK, NECK, (20, 30, 0), 1.3, 35, (0, 0, 0), (0, -0.1, 0))
 LFW = P(SPINE2, SPINE2, (18, 35, 0), 2.0, 45, (0, 0, 0), (0, 0.2, 0))
-BAL = P(SPINE2, SPINE2, (5, 160, 0), 2.5, 32, (0, 0, 0), (0, 0, 3.0))
-BAL2 = P(SPINE2, SPINE2, (5, 160, 0), 2.33, 32, (0, 0, 0), (0, 0, 3.0))
+# behind and to the near side, far enough out to clear the user standing behind its Stand (2.5 m
+# straight behind a Stand put the camera inside the user's back: the time stop on the device)
+BAL = P(SPINE2, SPINE2, (5, 145, 0), 3.6, 32, (0, 0, 0), (0, 0, 2.0))
 REV = P(SPINE2, SPINE2, (0, 15, 0), 6.0, 30, (0, 0, 0), (0, -0.1, 0.5))
 KNEE = P(SPINE2, SPINE2, (6, 88, 0), 2.6, 30, (0, 0, 1.0), (0, -0.1, 1.0))
 SHOTS = {
@@ -112,9 +113,11 @@ SHOTS = {
     "NA_HOLD": [(NA_B, 2.0, 0.05)],
     # 131000 (Stand pair): the same, a little lower and closer; centred whether the shot binds to
     # the Stand (about 1 m from the target) or its user (2-2.5 m)
-    "ST3_PUSH": [(P(SPINE2, SPINE2, (5, 82, 0), 4.6, 32, (0, 0, 1.0), (0, -0.1, 1.0)), 0.5, 0.09),
-                 (P(SPINE2, SPINE2, (5, 82, 0), 4.6, 32, (0, 0, 1.0), (0, -0.1, 1.0)), 1.2, 0.09),
-                 (P(SPINE2, SPINE2, (5, 82, 0), 4.9, 32, (0, 0, 1.1), (0, -0.1, 1.1)), 1.5, 0.09)],
+    # (Stand sets make 26 of its 29 requests, and a floating Stand's SPINE2 is about 2.3 m up, so
+    # both points sit 0.6 m lower to keep the camera at chest height)
+    "ST3_PUSH": [(P(SPINE2, SPINE2, (5, 82, 0), 4.6, 32, (0, -0.6, 1.0), (0, -0.7, 1.0)), 0.5, 0.09),
+                 (P(SPINE2, SPINE2, (5, 82, 0), 4.6, 32, (0, -0.6, 1.0), (0, -0.7, 1.0)), 1.2, 0.09),
+                 (P(SPINE2, SPINE2, (5, 82, 0), 4.9, 32, (0, -0.6, 1.1), (0, -0.7, 1.1)), 1.5, 0.09)],
     # 131101: a lower, waist-to-knee-up follow
     "FOLLOW": [(P(SPINE2, SPINE2, (8, 85, 0), 4.4, 32, (0, 0, 0.9), (0, -0.1, 0.9)), 0.3, 0.09),
                (P(SPINE2, SPINE2, (8, 85, 0), 4.4, 32, (0, 0, 0.9), (0, -0.1, 0.9)), 1.2, 0.09),
@@ -125,11 +128,12 @@ SHOTS = {
     "DEFAULT_HOLD": [(DEFAULT_REF, 1.0, 0.05)],
     # skills and SPs (cuts). The original holds an angle 0.5-1 s inside a skill (measured mean 3.5
     # cuts per blue skill, 5.7 per SP with its cinematic), so a cut shot holds its first angle and
-    # then cuts once more (a 0.05 s blend reads as a cut).
-    "CLOSE_FRONT_LOW": [(CFL, 0.6, 1.0), (CFL, 0.05, 1.0), (LFW, 0.8, 1.0)],
-    "LOW_FRONT_WIDE": [(LFW, 0.6, 1.0), (LFW, 0.05, 1.0), (REV, 1.0, 1.0)],
-    "BEHIND_ACTOR_LOW": [(BAL, 0.5, 1.0), (BAL2, 0.5, 1.0), (BAL2, 0.05, 1.0), (REV, 1.0, 1.0)],
-    "REVERSE": [(REV, 0.8, 1.0), (REV, 0.05, 1.0), (KNEE, 1.0, 1.0)],
+    # then cuts once more: a 0.001 s blend step (0.05 s showed its in-between pose for a few frames;
+    # 0 would divide by zero in the step blend).
+    "CLOSE_FRONT_LOW": [(CFL, 0.65, 1.0), (CFL, 0.001, 1.0), (LFW, 0.8, 1.0)],
+    "LOW_FRONT_WIDE": [(LFW, 0.65, 1.0), (LFW, 0.001, 1.0), (REV, 1.0, 1.0)],
+    "BEHIND_ACTOR_LOW": [(BAL, 1.0, 1.0)],
+    "REVERSE": [(REV, 0.85, 1.0), (REV, 0.001, 1.0), (KNEE, 1.0, 1.0)],
     "SIDE_CLOSE": [(P(SPINE2, SPINE2, (6, 88, 0), 2.6, 30, (0, 0, 1.0), (0, -0.1, 1.0)), 3.2, 1.0)],
     "NEAR_DEFAULT_WIDE": [(P(SPINE2, SPINE2, (-6, 88, 0), 7.0, 30, (0, 0, 2.2), (0, -0.2, 2.2)), 1.0, 1.0),
                           (P(SPINE2, SPINE2, (-6, 88, 0), 7.35, 30, (0, 0, 2.2), (0, -0.2, 2.2)), 1.0, 1.0)],
@@ -148,8 +152,8 @@ SHOTS = {
     "CHEST_UP": [(P(NECK, NECK, (10, 20, 0), 1.8, 35, (0, 0, 0), (0, -0.1, 0)), 0.6, 1.0)],
     "LOW_FRONT_STAND": [(P(SPINE2, SPINE2, (15, 40, 0), 1.4, 45, (0, 0, 0), (0, 0.2, 0)), 0.5, 1.0)],
     "GANG_PARTYSIDE": [(P(SPINE2, SPINE2, (6, 45, 0), 4.3, 30, (0, 0, 0), (0, -0.1, 1.6)), 1.2, 1.0)],
-    # rush: a cut every 0.5 s through five close angles (hold, then a 0.05 s blend that reads as a cut)
-    "RUSH_CUTS": [x for pz in RUSH for x in ((pz, 0.45, 1.0), (pz, 0.05, 1.0))],
+    # rush: a cut every 0.5 s through five close angles (hold, then a 0.001 s blend: a clean cut)
+    "RUSH_CUTS": [x for pz in RUSH for x in ((pz, 0.5, 1.0), (pz, 0.001, 1.0))],
     # straight behind the attacker: for the few action ids the client does not mirror (102xxx),
     # which must look right for either team
     "behind": [(P(SPINE2, SPINE2, (-6, 180, 0), 4.0, 36, (0, 0, 0), (0, -0.2, 1.6)), 1.2, 1.0),
