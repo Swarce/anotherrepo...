@@ -1,0 +1,236 @@
+{
+ "about": "Missions (trophy/*): the game's own mission text labels; rewards from the wiki's mission page. Only missions the offline server can count are listed (docs/research/17-missions.md).",
+ "sources": [
+  {
+   "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+   "page": "https://web.archive.org/web/20241110190505/https://jojodr.gamerch.com/%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3",
+   "note": "mission rewards; text matched to label keys by source hash"
+  },
+  {
+   "source": "jdr-default",
+   "note": "which counter each mission uses; Diamond Coins rewards as free coins (item 10)"
+  }
+ ],
+ "missions": [
+  {
+   "id": "daily_0001",
+   "kind": "daily",
+   "text": "Daily_ACHIEVEMENT_Text_0001",
+   "counter": "clear",
+   "param": 1,
+   "reward": {
+    "itemId": 40,
+    "count": 15
+   }
+  },
+  {
+   "id": "daily_0002",
+   "kind": "daily",
+   "text": "Daily_ACHIEVEMENT_Text_0002",
+   "counter": "clear",
+   "param": 5,
+   "reward": {
+    "itemId": 40,
+    "count": 30
+   }
+  },
+  {
+   "id": "daily_0003",
+   "kind": "daily",
+   "text": "Daily_ACHIEVEMENT_Text_0003",
+   "counter": "clear",
+   "param": 10,
+   "reward": {
+    "itemId": 40,
+    "count": 45
+   }
+  },
+  {
+   "id": "daily_0040",
+   "kind": "daily",
+   "text": "Daily_ACHIEVEMENT_Text_0040",
+   "counter": "exp",
+   "param": 100,
+   "reward": {
+    "itemId": 1004,
+    "count": 5
+   }
+  },
+  {
+   "id": "daily_0041",
+   "kind": "daily",
+   "text": "Daily_ACHIEVEMENT_Text_0041",
+   "counter": "exp",
+   "param": 200,
+   "reward": {
+    "itemId": 1004,
+    "count": 10
+   }
+  },
+  {
+   "id": "daily_0042",
+   "kind": "daily",
+   "text": "Daily_ACHIEVEMENT_Text_0042",
+   "counter": "exp",
+   "param": 300,
+   "reward": {
+    "itemId": 1004,
+    "count": 15
+   }
+  },
+  {
+   "id": "teijo_2000",
+   "kind": "normal",
+   "text": "ACHIEVEMENT_Text_2000",
+   "counter": "daily_quest",
+   "param": 1,
+   "reward": {
+    "itemId": 10,
+    "count": 1
+   }
+  },
+  {
+   "id": "teijo_2001",
+   "kind": "normal",
+   "text": "ACHIEVEMENT_Text_2001",
+   "counter": "team3",
+   "param": 1,
+   "reward": {
+    "itemId": 10,
+    "count": 1
+   }
+  },
+  {
+   "id": "teijo_2003",
+   "kind": "normal",
+   "text": "ACHIEVEMENT_Text_2003",
+   "counter": "leader",
+   "param": 1,
+   "reward": {
+    "itemId": 10,
+    "count": 1
+   }
+  },
+  {
+   "id": "teijo_2006",
+   "kind": "normal",
+   "text": "ACHIEVEMENT_Text_2006",
+   "counter": "equip_mind",
+   "param": 1,
+   "reward": {
+    "itemId": 10,
+    "count": 1
+   }
+  },
+  {
+   "id": "teijo_2007",
+   "kind": "normal",
+   "text": "ACHIEVEMENT_Text_2007",
+   "counter": "enhance",
+   "param": 1,
+   "reward": {
+    "itemId": 10,
+    "count": 1
+   }
+  },
+  {
+   "id": "teijo_2010",
+   "kind": "normal",
+   "text": "ACHIEVEMENT_Text_2010",
+   "counter": "boost",
+   "param": 1,
+   "reward": {
+    "itemId": 10,
+    "count": 1
+   }
+  },
+  {
+   "id": "teijo_2005",
+   "kind": "normal",
+   "text": "ACHIEVEMENT_Text_2005",
+   "counter": "summon",
+   "param": 1,
+   "reward": {
+    "itemId": 10,
+    "count": 1
+   }
+  },
+  {
+   "id": "teijo_2014",
+   "kind": "normal",
+   "text": "ACHIEVEMENT_Text_2014",
+   "counter": "book_statue",
+   "param": 1,
+   "reward": {
+    "itemId": 10,
+    "count": 1
+   }
+  },
+  {
+   "id": "teijo_2013",
+   "kind": "normal",
+   "text": "ACHIEVEMENT_Text_2013",
+   "counter": "book_mind",
+   "param": 1,
+   "reward": {
+    "itemId": 10,
+    "count": 1
+   }
+  },
+  {
+   "id": "teijo_2018",
+   "kind": "normal",
+   "text": "ACHIEVEMENT_Text_2018",
+   "counter": "profile",
+   "param": 1,
+   "reward": {
+    "itemId": 10,
+    "count": 1
+   }
+  },
+  {
+   "id": "teijo_0900",
+   "kind": "normal",
+   "text": "ACHIEVEMENT_Text_0900",
+   "counter": "rank",
+   "param": 5,
+   "reward": {
+    "itemId": 10,
+    "count": 1
+   }
+  },
+  {
+   "id": "teijo_0100",
+   "kind": "normal",
+   "text": "ACHIEVEMENT_Text_0100",
+   "counter": "clear",
+   "param": 3,
+   "reward": {
+    "itemId": 20,
+    "count": 1000
+   }
+  },
+  {
+   "id": "teijo_0600",
+   "kind": "normal",
+   "text": "ACHIEVEMENT_Text_0600",
+   "counter": "exp",
+   "param": 150,
+   "reward": {
+    "itemId": 40,
+    "count": 30
+   }
+  },
+  {
+   "id": "teijo_0700",
+   "kind": "normal",
+   "text": "ACHIEVEMENT_Text_0700",
+   "counter": "gold",
+   "param": 1000,
+   "reward": {
+    "itemId": 40,
+    "count": 200
+   }
+  }
+ ]
+}
