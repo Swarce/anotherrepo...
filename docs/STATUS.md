@@ -2,6 +2,31 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 40 — a smoother battle camera (branch `wip/b40`)
+
+### What the owner said
+- Build 39: "much better this time"; the camera only needs smoothing a little more.
+
+### What changed
+- **Why the skill shots jerked** (docs/research/31 §8, Smoothing): the script camera moves its
+  position and fov by `inter` once per frame but always aims straight at the shot's look point. A
+  shot that changed pose under inter < 1 jumped its aim in one frame, then dragged the position
+  behind; at the game's 30 fps the 0.09 glides also took twice as long as designed.
+- **Every step has inter 1**, and every move is a timed, eased blend of sub-steps (the same at 30
+  and 60 fps). The glide shots (111000, 131000, 131101 and the Stand push-ins, side glide and
+  hold) start on the attack two-shot's own pose and ease into the shot in 0.6–1.0 s; the moving
+  wide shots slow down into their hold instead of stopping dead.
+- Cuts stay cuts, attacks stay on the two-shot, the win shot is unchanged.
+- Build number 40, server marker `JDR_EMBEDDED_SERVER_b040`; `Node_el_camera_node_common 110 rows`.
+
+### Device checklist
+- [ ] Log: `[boot] jdr embedded build 40`, `Node_el_camera_node_common 110 rows`
+- [ ] Skills that push in (Speedwagon's Hammer, Stand push-ins): no jump at the start, an eased
+      move in
+- [ ] Skill cuts still clean; attacks still on the two-shot; win shots still
+- [ ] The cut back to the battle view at the end of a skill (the game's own; tell me if it should
+      glide)
+
 ## Build 39 — attacks on the client's two-shot; every win camera still (branch `wip/b39`)
 
 ### What the owner said
