@@ -46,6 +46,23 @@ record from another site does not replace that source.
 Conditions otherwise: none (always active). The client's condition rows ([{statueType, count}])
 are the server's assist_ability_condition_table, generated from the content file.
 
+Action params (Build 41, docs/research/30-action-battle.md §7): an ability may carry "action",
+{abilityName?, params [{affectId, giveLimit -1, lv1 [8], lv10 [8]}], left [hold categories],
+source {page, revid?, accessed}}. It is filled only from the records this builder already accepts
+for the statue (the same matching, HELD and agreement rules), the cited record first, else the
+other one; statues whose source is jdr-default get none. Research effect lines in JP go through
+tools/content/action_vocab.py parse(); a research record's English line (a ShoutWiki page) and the
+matched ShoutWiki entry's assist_ability [{stat, value, percent}] go through its English table
+(parse_en; ShoutWiki's own sign kept, Lv10 = Lv1). Held lines (KO timer, collision / explosion
+damage, invulnerability, always-crit, status procs, two conditions, extra text, missing labels)
+are listed by category in "left", never as text. abilityName is the game's ABI_AST_<KIND><tier>_N
+label when the first line's kind (its condition dropped) is one the game labels, the statue is not
+assist-only and the label exists; tier = the digit of the statue's DT_AST_<KIND><tier> row. "action"
+replaces only the inline params (and name) of assistAbilityList; the tactical kind and tier, the
+condition, dtAssistAbilityList and the dtAbilityList folding are unchanged. The AF_* ids used here
+and the ACTION_AFFECT targets get affect_table / affect_text_rule_table rows through
+action_vocab.append_affects (--affect-table, --rule-table; existing rows kept).
+
 Idempotent: replaces any DT_AST_* rows and keeps every other row as it is.
 
 usage: python3 -I tools/content/build_assist_abilities.py \
@@ -55,9 +72,17 @@ usage: python3 -I tools/content/build_assist_abilities.py \
           --research local/wiki-raw/research-b33/action/results.jsonl] \
          [--statues server/content/statues.json] \
          [--table server/content/masterdata/dtbattle_ability_data_table.json] \
-         [--out server/content/assist_abilities.json]
+         [--out server/content/assist_abilities.json] \
+         [--affect-table server/content/masterdata/affect_table.json] \
+         [--rule-table server/content/masterdata/affect_text_rule_table.json] \
+         [--schema server/content/masterdata/schema.json]
 """
-import argparse, collections, json, re, unicodedata
+import argparse, collections, importlib.util, json, os, re, unicodedata
+
+_spec = importlib.util.spec_from_file_location(
+    "action_vocab", os.path.join(os.path.dirname(os.path.abspath(__file__)), "action_vocab.py"))
+V = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(V)
 
 # kind -> (affect id, per-mille value of tiers 1..4). Tier values follow the ShoutWiki numbers
 # (HP 5/6/10%, ATK 4/6/8/20%, DEF 6/8%, damage dealt 3/5/7/18%); the others are ours.
@@ -93,7 +118,11 @@ ap.add_argument("--out", default="server/content/assist_abilities.json")
 ap.add_argument("--research", action="append", default=[],
                 help="a research pass's statue facts (results.jsonl): assist_ability records "
                 "with statueId, effects, condition, page and confidence; may be given more than once")
+ap.add_argument("--affect-table", default="server/content/masterdata/affect_table.json")
+ap.add_argument("--rule-table", default="server/content/masterdata/affect_text_rule_table.json")
+ap.add_argument("--schema", default="server/content/masterdata/schema.json")
 a = ap.parse_args()
+V.load_schema(a.schema)
 
 labels = {}
 for line in open(a.labels, encoding="utf-8"):
@@ -276,6 +305,77 @@ def research_page(r):
     return url, (int(rev.group(1)) if rev else None)
 
 
+# 4) Action params ("action", docs/research/30-action-battle.md §7): the effect lines of the record
+# cited for the statue (else the other accepted record), through tools/content/action_vocab.py.
+ALABELS = V.affect_labels(labels)
+V.check_labels(labels)
+JA = re.compile("[\u3040-\u30ff\u4e00-\u9fff]")
+# The game labels these assist kinds (ABI_AST_<KIND><tier>_N); COMBO_GAUGE_RATE has tier 1 only,
+# which the label check covers.
+CARD_KINDS = {"HP_RATEADD", "ATK_RATEADD", "DEF_RATEADD", "DMG_RATEADD", "VCT_DAM_RATESUB", "MOVE_FAST",
+              "CT_FAST", "ORACHAGE_FAST", "CRTRATE_ADD", "CRT_DMG_RATEADD", "CURE_RATEADD", "HP_BOOST_ATK",
+              "DEF_BOOST_ATK", "ATK_BOOST_HP", "ATK_BOOST_DEF", "HP_BOOST_DEF", "DEF_BOOST_HP",
+              "COMBO_GAUGE_RATE"}
+action_lines = collections.Counter()
+action_used = []
+
+
+def research_lines(r):
+    """A research record's effect lines; a Gamerch record that gives none may carry the effect after
+    the condition icons ('[知略][知略]　ATKの12.0%分、HPを上昇')."""
+    v = r["value"]
+    if v.get("effects"):
+        return v["effects"]
+    rest = re.sub(r"^\s*(\[[^\]]*\]\s*)+", "", unicodedata.normalize("NFKC", v.get("condition") or ""))
+    return [rest] if rest and "発動条件" not in rest and rest != unicodedata.normalize("NFKC", v.get("condition") or "") else []
+
+
+def parse_line(line):
+    return V.parse(line, ALABELS) if JA.search(line) else V.parse_en_line(line, ALABELS)
+
+
+def action_from_research(r):
+    out = [parse_line(e) for e in research_lines(r)]
+    page, revid = research_page(r)
+    return out, {"page": page, **({"revid": revid} if revid else {}), "accessed": r.get("accessed") or "2026-11-14"}
+
+
+def action_from_shoutwiki(w):
+    out = [V.parse_en(x.get("stat", ""), x.get("value"), x.get("percent"), ALABELS)
+           for x in w.get("assist_ability") or []]
+    accessed = "2026-11-21" if "Old_Mode" in w["source"]["page"] else "2026-11-15"
+    return out, {"page": w["source"]["page"], **({"revid": w["source"]["revid"]} if w["source"].get("revid") else {}),
+                 "accessed": accessed}
+
+
+def action_for(s, src, w, rr, ids):
+    """(the "action" object of the statue's ability, the record kind), or (None, None): the inline
+    DT row is sent."""
+    if src["source"] == "jdr-default":
+        return None, None
+    cands = ([("research", rr["record"])] if rr else []) + ([("shoutwiki", w)] if w else [])
+    if rr and research_page(rr["record"])[0] != src.get("page"):
+        cands.reverse()  # the ShoutWiki entry is the cited record
+    for kind, rec in cands:
+        lines, source = action_from_research(rec) if kind == "research" else action_from_shoutwiki(rec)
+        params = [p for c, p in lines if p]
+        if not params:
+            continue
+        for c, _p in lines:
+            action_lines[c] += 1
+        params = V.merge(params)
+        act = {"params": [V.content_param(p) for p in params],
+               "left": sorted(c for c, p in lines if not p), "source": source}
+        op = V.split_id(params[0]["affectId"])[1]
+        m = re.fullmatch(r"DT_AST_[A-Z_]+([1-4])", ids[0])
+        name = f"ABI_AST_{op}{m.group(1)}_N" if m else None
+        if op in CARD_KINDS and not s.get("assistOnly") and name \
+                and f"text:Ability_Assist_Name_JP:{name}" in labels:
+            act = {"abilityName": name, **act}
+        return act, kind
+    return None, None
+
+
 out, by_src = [], collections.Counter()
 for s in statues:
     sid = s["statueId"]
@@ -345,7 +445,15 @@ for s in statues:
         by_src["assist_only"] += 1
     else:
         ids = [row_id(k, t) for k, t in kinds]
-    out.append({"statueId": sid, "abilities": [{"abilityId": i, "conditions": conditions} for i in ids],
+    abilities = [{"abilityId": i, "conditions": conditions} for i in ids]
+    act, act_kind = action_for(s, src, w, rr, ids)
+    if act:
+        abilities[0]["action"] = act
+        by_src["action_" + act_kind] += 1
+        for p in act["params"]:
+            if p["affectId"] not in action_used:
+                action_used.append(p["affectId"])
+    out.append({"statueId": sid, "abilities": abilities,
                 "source": src})
 
 rows += own_rows
@@ -353,12 +461,15 @@ doc["data"]["paramList"] = rows
 json.dump(doc, open(a.table, "w"), ensure_ascii=False, indent=1)
 open(a.table, "a").write("\n")
 
-json.dump({
+content = {
     "about": "Assist abilities per statue (docs/research/19-assists.md §5, §6): ids of the shared "
              "dtbattle_ability_data_table rows DT_AST_<kind><tier> (an assist-only statue has its own "
              "row DT_AST_<statueId>), with the client's activation "
-             "conditions ([{statueType, count}] over the seat's assists; empty = always). Built by "
-             "tools/content/build_assist_abilities.py.",
+             "conditions ([{statueType, count}] over the seat's assists; empty = always). An optional "
+             "\"action\" holds the action-battle params of the ability (AF_* affects, lv1/lv10 slots in the "
+             "units of docs/research/30-action-battle.md §7; \"left\" = hold categories of the lines not "
+             "served) and the card name; it replaces only the inline params (and name) of assistAbilityList, "
+             "never the tactical row. Built by tools/content/build_assist_abilities.py.",
     "sources": [
         {"source": "Diamond Records Wiki (ShoutWiki)", "page": "https://jojodiamondrecords.shoutwiki.com/",
          "license": "CC BY-SA 3.0", "accessed": "2026-11-15"},
@@ -372,10 +483,24 @@ json.dump({
         {"source": "jdr-research", "doc": "docs/research/19-assists.md"},
         {"source": "jdr-default", "note": "statues without wiki assist numbers: the leaning stat at tier rarity - 2; conditions empty"},
         {"source": "jdr-default", "note": "assist-only statues: their own row under their own ABI_AST_<statueId>_N label, values of the kind and tier above"},
+        {"source": "jdr-research", "doc": "docs/research/30-action-battle.md §7",
+         "note": "\"action\": the effect lines of the record each statue cites (else its other accepted record) "
+                 "parsed by tools/content/action_vocab.py (JP lines; ShoutWiki {stat, value} lines through an "
+                 "English table); Lv10 = Lv1 unless a line has a plausible MAX"},
+        {"source": "jdr-default", "note": "\"action\".abilityName: the game's ABI_AST_<KIND><tier>_N label of the "
+                 "first served line's kind at the tactical row's tier (not for assist-only statues), so the card "
+                 "name matches its lines; affect ids AF_* are ours"},
     ],
     "statues": out,
-}, open(a.out, "w"), ensure_ascii=False, indent=1)
-open(a.out, "a").write("\n")
+}
+with open(a.out, "w", encoding="utf-8") as f:
+    f.write(V.dumps(content))
+added, radded = V.append_affects(action_used + [t for _d, t in V.ACTION_AFFECT], a.affect_table, a.rule_table)
+full = sum(1 for sid, rr in research.items() if sid not in HELD and any(d["statueId"] == sid for d in out)
+           for lines in [[parse_line(e) for e in research_lines(rr["record"])]] if lines and all(p for _c, p in lines))
+print("action:", dict(sorted(action_lines.items())), "| affect ids", len(action_used),
+      "| research records of roster statues whose lines all parse", full, "of", len(research),
+      "| affect rows added", added, "rule rows added", radded)
 print(len(rows), "ability rows;", len(out), "statues", dict(by_src))
 if research_overruled:
     print("lower-confidence records overruled:", " ".join(sorted(set(research_overruled))))

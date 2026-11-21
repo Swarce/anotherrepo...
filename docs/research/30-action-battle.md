@@ -122,5 +122,87 @@ files, M = inferred. Code: `server/services/src/quests.rs` (`area_list`, `has_ac
 
 ## 6. Open (M)
 
-- Action-stage star missions, the callable support, JoJo Links and Mind Links in action battles.
+- Action-stage star missions, the callable support and Mind Links in action battles (JoJo Links:
+  §7, Build 41).
 - Waves beyond the first group of each area; respawning and trigger groups.
+
+## 7. Leader and assist abilities, statue traits, JoJo Links (Build 41)
+
+Read in the 3.12.0 client (H unless marked). Code: `collection.rs` (`action_leader_ability`,
+`tribe_type_list`, `assist_ability_list`, `ACTION_AFFECT`, `jojo_link_list`), tools
+`tools/content/action_vocab.py` (the shared parser), `build_action_abilities.py`,
+`build_assist_abilities.py`, `build_statue_traits.py`, `build_jojo_links.py`.
+
+- **AbilityInfo.** The action battle needs `isInit` true and the params inline:
+  `{abilityId, abilityLevel, abilityName, abilityParamList [{affectId, giveLimit,
+  paramListLv1_0..7, paramListLv10_0..7}], isInit}`. With `isInit` false it looks in the action
+  AbilityDataTable, which we do not ship. `IsValid` 0x205EBFC needs an id, a param list and one
+  affectId. AddAffect 0x2062884 clamps the level to 1..10; every slot is
+  `RoundToInt(Lerp(Lv1, Lv10, (L-1)/9))` (GetAffectParamValue 0x205F328). From an affect_table
+  row only `affectId`, `prvs` and `baseAffect` are read; an unknown id is dropped silently.
+  `giveLimit` 0 is never active, -1 never runs out.
+- **Units** (UpdateActiveAffectParameter 0x2066F84, jump table 0x236a85c). Every `*_CON` /
+  `*_RATECON` is `fixed + RoundToInt(permil × 0.001 × base)`. p1 = target tribe (`ATRBT`) or
+  StatueType (`STYPE`); p2 = seconds × 10 (DEFEAT, ASSIST_USE), the HP threshold per mille
+  (OVER/UNDER_HP) or the holder tribe (ATRBT). The bases with a consumer: 1–20, 23–26, 27,
+  45–57, 60, 61, 74–79, 81, 88–91. CONVERT 68–73, BARRIER 59 and gold / EXP 29–33 take the
+  default case (no effect).
+
+  | Wiki | p0 |
+  |---|---|
+  | `N%` | N × 10 (taken damage and "-" lines negative) |
+  | `xX` | round((X − 1) × 1000) |
+  | flat `+N` | the `*_CON` base, N |
+  | SP uses +N | `BASE_SPSTC_ADD` (27, CalcAdditionalSpSkillUsableCount 0xF18E3C), N |
+  | `X% of HP/DEF → ATK` etc. | `*_BOOST_*` (74–79, CalcParamBoostValue 0x206A22C), N × 10 |
+
+- **Conditions** (UpdateAffectCondition, jump table 0x236a808): ORAORA = DoDoDo mode, DYING
+  = HP ≤ 30%, ALONE, HALF ≤ 50%, FULL ≥ 100%, DEFEAT and ASSIST_USE stack, ATRBT = the holder's
+  tribe flag has bit p2, OVER/UNDER_HP = rate ≥ / ≤ p2/1000.
+- **Stacking.** AmplifyAffect 0x2066150 adds a timer of p2 × 0.1 s up to 15 stacks; the effect
+  applies once per stack. Kills feed DEFEAT on the killer. ASSIST_USE is fed only by event 18
+  (ChangeAssistTeamUnit) of the action assist character, which we do not send (assistSkillInfo
+  `{}`): those lines show on the cards but do nothing yet (M on who raises the event).
+- **Order** (CharacterStatus.SetStatueInfo 0xF17DC4): tribe flag and base stats, statue
+  abilities, Minds, JoJo links (4), leader (6), support (7), Mind links, assist abilities (11),
+  tarot, then max HP. So HP lines count at battle start only, and an HP-type base may only use
+  PRVS_NONE or PRVS_ATRBT; ATK and DEF are live.
+- **JoJo Links.** `teamInfo.jojoLinkList` (+0x28) goes to all three members:
+  ApplyJojoLinkAbilityAffect 0xF17A30 applies each entry whose abilityInfo is valid (source 4,
+  key charaLinkId, so the ids must be unique). type, dataList, name and matchType are never read,
+  and the client checks no members: the server decides (doc 26 §1).
+- **Sources.** BattleSceneUtil.CreateTeam 0xC11564 applies the leader seat statue's
+  `leaderAbilityInfo` to all three members; a supporter's when `followStatus` is 3 (we send 3).
+  Assist abilities: per seat statue, found by id in that assist's `assistAbilityList`
+  (GetAssistAbilityIndex 0xD316C8), so the ids stay those of `dtAssistAbilityList`.
+- **Crit.** probability = max(5 + dealer delta + receiver delta, 0), banker's rounding: x1.10
+  adds nothing alone, x1.20 adds 1%.
+- **tribeTypeList.** `[{tribeTypeId}]` is OR'd into the attribute flag (AffectStatus.SetStatueInfo
+  0x2062124): the ATRBT conditions and targets, the detail screens' trait list and the tactical
+  Vampire death effect read it. The tactical battle ignores `leaderAbilityInfo` and
+  `assistAbilityList`.
+
+What we send:
+- **Leader** (`server/content/action_abilities.json`): 142 statues from the wiki leader numbers
+  (136 Wayback dump, 6 live Gamerch pages), 328 lines, 131 statues with every line served. Lv10 =
+  the wiki MAX when plausible (220 lines), else Lv1; a bare `(v)` after the value is read as the
+  MAX (3 lines, M). `ACTION_LEADER_LEVEL` = 1 (the wiki's Lv1 values; raising it is an owner
+  decision). Held: gold/EXP (1010_01/02/03, 4110_01/02/13), BARRIER (4190_13, 3321_03, 3100_12),
+  DoDoDo-mode DoDoDo charge (2111_03, no label), PER_STYPE (3000_13, not traced), 4150_03
+  "ATK+37.8" (not an integer). 4110_01 sends `{}`.
+- **Assist** (`assist_abilities.json` "action", 104 statues): the cited record's lines (JP via
+  the parser, ShoutWiki `{stat, value}` through an English table), else the inline tactical row;
+  `DTAF_DMG_RATEADD` and the other tactical-only affects become their `AF_*` twins. The card name
+  follows the first line's kind (`ABI_AST_<KIND><tier>_N`), so a move-speed card no longer says
+  "ATK Assist". Held lines: KO timer, collision and explosion damage, invulnerability,
+  always-crit, status procs, two conditions, extra text.
+- **Traits** (`statue_traits.json`): 261 of 292 statues (134 live Gamerch pages, 61 ShoutWiki
+  categories, 66 family fill); 31 statues in 17 families have none. Gamerch wins the 6
+  disagreements (ShoutWiki misses a category). Assist-only Gamerch records have no leader record
+  to match by, so they are not used.
+- **JoJo Links** (`jojo_links.json`, doc 26 §1): 53 links served (48 by members, 5 by trait:
+  11, 12, 13, 14, 33), 25 held; Lv1 = Lv10, sent at level 1.
+  New rows `AF_SPSTC_ADD` (SP uses +1) and `AF_FNT_VCT_CRT_DMG_RATESUB` (near-death crit damage
+  taken).
+- Not verified on a device: inline `isInit` cards, the leader window, the trait screens, the link
+  window.

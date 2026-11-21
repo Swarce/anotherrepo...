@@ -31,10 +31,36 @@ M = inferred. No game text is reproduced; labels are cited by key.
   - Each link names 2–6 characters.
   - The effects are action-era: SP skill uses, DoDoDo damage and charge, crit rate, cool time,
     move speed, gold and EXP; only a few are plain HP/ATK/DEF.
-- **What we send:** `jojoLinkList: []`, as before. We serve no action battle, and the action
-  formation is the only screen that would show the links. Building them would mean mapping the
-  member names to statues and inventing tactical stand-ins for action-only effects, with no
-  screen to show them.
+- **Traits (Build 41).** Trait links need the statues' traits: `StatueInfo.tribeTypeList` is now
+  sent from `server/content/statue_traits.json` (docs/research/30-action-battle.md §7), so the
+  formation and detail screens know them.
+- **What we send (Build 41).** `server/content/jojo_links.json` (`tools/content/build_jojo_links.py`)
+  holds 53 links; `collection.rs jojo_link_list` computes the active ones for every team (so
+  `TeamInfo` and the arena's `PvpTeamInfo`):
+  - **Rule format.** A link has member `groups` (each a set of families, statueId[..4]) and
+    `rules` `{groups, min}`: active when at least `min` of the named groups each have a seat
+    statue in them; rules are OR'd. A trait link is `{tribe, min}`: at least `min` seat statues
+    carry the tribe. Each link counts once. Only the three seat statues count; assists do not
+    (M: the client checks no members, so this is our reading of the wiki's "in the team").
+  - **Entry.** `{charaLinkId, type 1|2, dataList [{dataId: family}], name "", matchType 0,
+    abilityId JOLINK_<nnn>, abilityInfo {abilityName ABI_JOLINK_NAME_<nnn>, inline params,
+    isInit true}}`. type, dataList, name and matchType are never read (ours).
+  - **Members.** Wiki names map to families through the `STATUE_NAME_<sid>` JP labels and
+    statues.json part, plus three variant families (2011 Caesar, 2111 Stroheim, 3041
+    Polnareff); 4192 (Kira as Kosaku) is not mapped. '?' members are dropped.
+  - **Sources.** The research pass's Gamerch link page and comments and the Bahamut thread, per
+    link; links 12 and 34 from the saved Gamerch table. Effects use the action parser
+    (doc 30 §7); a part after "/" without a condition takes the previous part's condition, so
+    "near-death ATK / DEF" is near-death for both.
+  - **Hand tables (with reasons in the builder).** RULE_OVERRIDES for the free-text rules of
+    links 19, 30 (the stricter Kakyoin + one), 32, 42 and 57 (Kars + Wamuu); RESOLVED for link 46
+    (cool time +2.0%, where the Gamerch table and Bahamut agree).
+  - **Held (25, never sent):** gold/EXP 8, 21, 26, 43 (no consumer); conflict 20; name only 25,
+    51, 59, 69, 70, 71, 75, 77; effect unknown 53, 64, 76; members unknown 54; two rows under one
+    name 35; 60 (crit-taken 0.07, Straizo uncertain); low confidence 36, 52, 62, 67, 74; no
+    record 73.
+  - Not verified on a device: the formation's link window (the prefab sets how many groups show;
+    the wiki says 4) and the links in battle.
 
 ## 2. Mind links
 

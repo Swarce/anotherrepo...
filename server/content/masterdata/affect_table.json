@@ -1,6 +1,6 @@
 {
  "asset": "affect_table",
- "about": "The three affect ids the client names in code, plus one row per affect id used by the leader abilities and Mind abilities in dtbattle_ability_data_table. Each id names one BaseAffectType and one AffectCondition; the amount comes from the ability row (per-mille, negative for the *_SUB ids). Empty limit lists mean no cap. affectTextId is the game's own affectText_JP label with the same meaning (AFFECT_[COND_]STAT_OP_TEXT; DYING takes the near-death FNT labels, FULL_HP the FULL ones): the detail screens build the effect line from it, with the amounts merged by affect_text_rule_table.",
+ "about": "The three affect ids the client names in code, plus one row per affect id used by the leader abilities and Mind abilities in dtbattle_ability_data_table. Each id names one BaseAffectType and one AffectCondition; the amount comes from the ability row (per-mille, negative for the *_SUB ids). Empty limit lists mean no cap. affectTextId is the game's own affectText_JP label with the same meaning (AFFECT_[COND_]STAT_OP_TEXT; DYING takes the near-death FNT labels, FULL_HP the FULL ones): the detail screens build the effect line from it, with the amounts merged by affect_text_rule_table. Rows AF_* are the action-battle affects of the leader and assist abilities and the JoJo Links (server/content/action_abilities.json, assist_abilities.json \"action\", jojo_links.json; docs/research/30-action-battle.md §7).",
  "sources": [
   {
    "source": "jdr-research",
@@ -24,6 +24,10 @@
    "source": "jdr-research",
    "doc": "docs/research/16-minds.md §8",
    "note": "affectTextId: label keys and their placeholders ({decimal_Param0}, {mag_Param0}) read in the player's text.jp; the AFFECT_* label is chosen by meaning (M for DYING = near death)"
+  },
+  {
+   "source": "jdr-default",
+   "note": "AF_* action-battle affects (ours ids; units docs/research/30-action-battle.md §7): AF_[COND_]STAT_OP, prvs from the condition and baseAffect from the stat of the shared vocabulary tools/content/action_vocab.py"
   }
  ],
  "data": {
@@ -240,6 +244,1059 @@
     "affectTextId": "AFFECT_VCT_DAM_RATESUB_TEXT",
     "prvs": "PRVS_NONE",
     "baseAffect": "BASE_DT_VCT_DAM_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_HP_RATEADD",
+    "affectTextId": "AFFECT_HP_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_HP_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ATK_RATEADD",
+    "affectTextId": "AFFECT_ATK_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_ATK_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_FNT_ORACHAGE_FAST",
+    "affectTextId": "AFFECT_FNT_ORACHAGE_FAST_TEXT",
+    "prvs": "PRVS_DYING",
+    "baseAffect": "BASE_ORACHAGE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ORAORA_SP_SKILL_RATEADD",
+    "affectTextId": "AFFECT_ORAORA_SP_SKILL_RATEADD_TEXT",
+    "prvs": "PRVS_ORAORA",
+    "baseAffect": "BASE_SP_SKILL_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ORAORA_ATK_RATEADD",
+    "affectTextId": "AFFECT_ORAORA_ATK_RATEADD_TEXT",
+    "prvs": "PRVS_ORAORA",
+    "baseAffect": "BASE_ATK_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ORACHAGE_FAST",
+    "affectTextId": "AFFECT_ORACHAGE_FAST_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_ORACHAGE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_DEF_RATEADD",
+    "affectTextId": "AFFECT_DEF_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_DEF_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_JOESTAR_ATK_RATEADD",
+    "affectTextId": "AFFECT_ONLY_JOESTAR_ATK_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_ATK_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_JOESTAR_DEF_RATEADD",
+    "affectTextId": "AFFECT_ONLY_JOESTAR_DEF_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_DEF_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_VCT_DAM_SUB",
+    "affectTextId": "AFFECT_VCT_DAM_SUB_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_VCT_DAM_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_HALF_MOVE_FAST",
+    "affectTextId": "AFFECT_HALF_MOVE_FAST_TEXT",
+    "prvs": "PRVS_HALF_HP",
+    "baseAffect": "BASE_MOVE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_FNT_SP_SKILL_RATEADD",
+    "affectTextId": "AFFECT_FNT_SP_SKILL_RATEADD_TEXT",
+    "prvs": "PRVS_DYING",
+    "baseAffect": "BASE_SP_SKILL_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_SP_SKILL_RATEADD",
+    "affectTextId": "AFFECT_SP_SKILL_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_SP_SKILL_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ALONE_ATK_RATEADD",
+    "affectTextId": "AFFECT_ALONE_ATK_RATEADD_TEXT",
+    "prvs": "PRVS_ALONE",
+    "baseAffect": "BASE_ATK_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ALONE_ORACHAGE_FAST",
+    "affectTextId": "AFFECT_ALONE_ORACHAGE_FAST_TEXT",
+    "prvs": "PRVS_ALONE",
+    "baseAffect": "BASE_ORACHAGE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_DEFEAT_DMG_RATEADD",
+    "affectTextId": "AFFECT_DEFEAT_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_DEFEAT",
+    "baseAffect": "BASE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_DEFEAT_MOVE_FAST",
+    "affectTextId": "AFFECT_DEFEAT_MOVE_FAST_TEXT",
+    "prvs": "PRVS_DEFEAT",
+    "baseAffect": "BASE_MOVE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_STEP_RANGE",
+    "affectTextId": "AFFECT_STEP_RANGE_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_STEP_RANGE",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_FULL_ATK_RATEADD",
+    "affectTextId": "AFFECT_FULL_ATK_RATEADD_TEXT",
+    "prvs": "PRVS_FULL_HP",
+    "baseAffect": "BASE_ATK_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ATRBT_JOESTAR_DMG_RATEADD",
+    "affectTextId": "AFFECT_ATRBT_JOESTAR_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_ATRBT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ATRBT_JOESTAR_VCT_DAM_RATESUB",
+    "affectTextId": "AFFECT_ATRBT_JOESTAR_VCT_DAM_RATESUB_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_ATRBT_VCT_DAM_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ATRBT_HAMON_DMG_RATEADD",
+    "affectTextId": "AFFECT_ATRBT_HAMON_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_ATRBT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_CURE_RATEADD",
+    "affectTextId": "AFFECT_CURE_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_CURE_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_HALF_STEP_RANGE",
+    "affectTextId": "AFFECT_HALF_STEP_RANGE_TEXT",
+    "prvs": "PRVS_HALF_HP",
+    "baseAffect": "BASE_STEP_RANGE",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_HALF_STEP_TIME",
+    "affectTextId": "AFFECT_HALF_STEP_TIME_TEXT",
+    "prvs": "PRVS_HALF_HP",
+    "baseAffect": "BASE_STEP_TIME",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_DEFEAT_ORACHAGE_FAST",
+    "affectTextId": "AFFECT_DEFEAT_ORACHAGE_FAST_TEXT",
+    "prvs": "PRVS_DEFEAT",
+    "baseAffect": "BASE_ORACHAGE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_VAMPIRE_TENACITY_STYPE_DMG_RATEADD",
+    "affectTextId": "AFFECT_ONLY_VAMPIRE_TENACITY_STYPE_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_DEFEAT_ATK_RATEADD",
+    "affectTextId": "AFFECT_DEFEAT_ATK_RATEADD_TEXT",
+    "prvs": "PRVS_DEFEAT",
+    "baseAffect": "BASE_ATK_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_VAMPIRE_INTELLI_STYPE_DMG_RATEADD",
+    "affectTextId": "AFFECT_ONLY_VAMPIRE_INTELLI_STYPE_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_UNITY_STYPE_DMG_RATEADD",
+    "affectTextId": "AFFECT_UNITY_STYPE_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_TENACITY_STYPE_DMG_RATEADD",
+    "affectTextId": "AFFECT_TENACITY_STYPE_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_BRAVE_STYPE_DMG_RATEADD",
+    "affectTextId": "AFFECT_BRAVE_STYPE_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_FNT_CRTRATE_ADD",
+    "affectTextId": "AFFECT_FNT_CRTRATE_ADD_TEXT",
+    "prvs": "PRVS_DYING",
+    "baseAffect": "BASE_CRTRATE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_FNT_CRT_DMG_RATEADD",
+    "affectTextId": "AFFECT_FNT_CRT_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_DYING",
+    "baseAffect": "BASE_CRT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_HAMON_ATK_RATEADD",
+    "affectTextId": "AFFECT_ONLY_HAMON_ATK_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_ATK_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ATRBT_HASHIRA_DMG_RATEADD",
+    "affectTextId": "AFFECT_ATRBT_HASHIRA_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_ATRBT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ATRBT_ULTIMATE_DMG_RATEADD",
+    "affectTextId": "AFFECT_ATRBT_ULTIMATE_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_ATRBT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_DEFEAT_DEF_RATEADD",
+    "affectTextId": "AFFECT_DEFEAT_DEF_RATEADD_TEXT",
+    "prvs": "PRVS_DEFEAT",
+    "baseAffect": "BASE_DEF_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_HAMON_HP_RATEADD",
+    "affectTextId": "AFFECT_ONLY_HAMON_HP_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_HP_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_HAMON_DEF_RATEADD",
+    "affectTextId": "AFFECT_ONLY_HAMON_DEF_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_DEF_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_CRTRATE_ADD",
+    "affectTextId": "AFFECT_CRTRATE_ADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_CRTRATE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_HASHIRA_ORACHAGE_FAST",
+    "affectTextId": "AFFECT_ONLY_HASHIRA_ORACHAGE_FAST_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_ORACHAGE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_HASHIRA_ATK_RATEADD",
+    "affectTextId": "AFFECT_ONLY_HASHIRA_ATK_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_ATK_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_CT_FAST",
+    "affectTextId": "AFFECT_CT_FAST_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_CT_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ORAORA_DMG_RATEADD",
+    "affectTextId": "AFFECT_ORAORA_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_ORAORA",
+    "baseAffect": "BASE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_ULTIMATE_BRAVE_STYPE_DMG_RATEADD",
+    "affectTextId": "AFFECT_ONLY_ULTIMATE_BRAVE_STYPE_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_ULTIMATE_INTELLI_STYPE_DMG_RATEADD",
+    "affectTextId": "AFFECT_ONLY_ULTIMATE_INTELLI_STYPE_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_ULTIMATE_TENACITY_STYPE_DMG_RATEADD",
+    "affectTextId": "AFFECT_ONLY_ULTIMATE_TENACITY_STYPE_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ATRBT_STAND_DMG_RATEADD",
+    "affectTextId": "AFFECT_ATRBT_STAND_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_ATRBT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_VAMPIRE_DEF_RATEADD",
+    "affectTextId": "AFFECT_ONLY_VAMPIRE_DEF_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_DEF_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ORAORA_VCT_DAM_RATESUB",
+    "affectTextId": "AFFECT_ORAORA_VCT_DAM_RATESUB_TEXT",
+    "prvs": "PRVS_ORAORA",
+    "baseAffect": "BASE_VCT_DAM_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ATRBT_VAMPIRE_DMG_RATEADD",
+    "affectTextId": "AFFECT_ATRBT_VAMPIRE_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_ATRBT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ATRBT_M_ARCANA_DMG_RATEADD",
+    "affectTextId": "AFFECT_ATRBT_M_ARCANA_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_ATRBT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_DMG_RATEADD",
+    "affectTextId": "AFFECT_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_BRAVE_STYPE_VCT_DAM_RATESUB",
+    "affectTextId": "AFFECT_BRAVE_STYPE_VCT_DAM_RATESUB_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_STYPE_VCT_DAM_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_NORMAL_SKILL_RATEADD",
+    "affectTextId": "AFFECT_NORMAL_SKILL_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_NORMAL_SKILL_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ATRBT_M_ARCANA_VCT_DAM_RATESUB",
+    "affectTextId": "AFFECT_ATRBT_M_ARCANA_VCT_DAM_RATESUB_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_ATRBT_VCT_DAM_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ATRBT_EGYPT_VCT_DAM_RATESUB",
+    "affectTextId": "AFFECT_ATRBT_EGYPT_VCT_DAM_RATESUB_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_ATRBT_VCT_DAM_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ATRBT_VAMPIRE_VCT_DAM_RATESUB",
+    "affectTextId": "AFFECT_ATRBT_VAMPIRE_VCT_DAM_RATESUB_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_ATRBT_VCT_DAM_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_FNT_ATK_RATEADD",
+    "affectTextId": "AFFECT_FNT_ATK_RATEADD_TEXT",
+    "prvs": "PRVS_DYING",
+    "baseAffect": "BASE_ATK_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_INTELLI_STYPE_DMG_RATEADD",
+    "affectTextId": "AFFECT_INTELLI_STYPE_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_STAND_ATRBT_STAND_DMG_RATEADD",
+    "affectTextId": "AFFECT_ONLY_STAND_ATRBT_STAND_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_ATRBT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_M_ARCANA_ATK_RATEADD",
+    "affectTextId": "AFFECT_ONLY_M_ARCANA_ATK_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_ATK_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_FNT_CT_FAST",
+    "affectTextId": "AFFECT_FNT_CT_FAST_TEXT",
+    "prvs": "PRVS_DYING",
+    "baseAffect": "BASE_CT_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_HALF_CT_FAST",
+    "affectTextId": "AFFECT_HALF_CT_FAST_TEXT",
+    "prvs": "PRVS_HALF_HP",
+    "baseAffect": "BASE_CT_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ORAORA_CRT_DMG_RATEADD",
+    "affectTextId": "AFFECT_ORAORA_CRT_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_ORAORA",
+    "baseAffect": "BASE_CRT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_CRT_DMG_RATEADD",
+    "affectTextId": "AFFECT_CRT_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_CRT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ALONE_CRTRATE_ADD",
+    "affectTextId": "AFFECT_ALONE_CRTRATE_ADD_TEXT",
+    "prvs": "PRVS_ALONE",
+    "baseAffect": "BASE_CRTRATE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ATRBT_EGYPT_DMG_RATEADD",
+    "affectTextId": "AFFECT_ATRBT_EGYPT_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_ATRBT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_VCT_DAM_RATESUB",
+    "affectTextId": "AFFECT_VCT_DAM_RATESUB_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_VCT_DAM_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_HP_BOOST_ATK",
+    "affectTextId": "AFFECT_HP_BOOST_ATK_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_HP_BOOST_ATK",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_DEF_BOOST_ATK",
+    "affectTextId": "AFFECT_DEF_BOOST_ATK_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_DEF_BOOST_ATK",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_MOVE_FAST",
+    "affectTextId": "AFFECT_MOVE_FAST_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_MOVE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ORAORA_DEF_RATEADD",
+    "affectTextId": "AFFECT_ORAORA_DEF_RATEADD_TEXT",
+    "prvs": "PRVS_ORAORA",
+    "baseAffect": "BASE_DEF_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ALONE_DEF_RATEADD",
+    "affectTextId": "AFFECT_ALONE_DEF_RATEADD_TEXT",
+    "prvs": "PRVS_ALONE",
+    "baseAffect": "BASE_DEF_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ALONE_DEF_RATESUB",
+    "affectTextId": "AFFECT_ALONE_DEF_RATESUB_TEXT",
+    "prvs": "PRVS_ALONE",
+    "baseAffect": "BASE_DEF_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ORAORA_NORMAL_SKILL_RATEADD",
+    "affectTextId": "AFFECT_ORAORA_NORMAL_SKILL_RATEADD_TEXT",
+    "prvs": "PRVS_ORAORA",
+    "baseAffect": "BASE_NORMAL_SKILL_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ORAORA_ATRBT_STAND_DMG_RATEADD",
+    "affectTextId": "AFFECT_ORAORA_ATRBT_STAND_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_ORAORA",
+    "baseAffect": "BASE_ATRBT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_STAND_ATRBT_STAND_VCT_DAM_RATESUB",
+    "affectTextId": "AFFECT_ONLY_STAND_ATRBT_STAND_VCT_DAM_RATESUB_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_ATRBT_VCT_DAM_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_DEFEAT_ATRBT_STAND_VCT_DAM_RATESUB",
+    "affectTextId": "AFFECT_DEFEAT_ATRBT_STAND_VCT_DAM_RATESUB_TEXT",
+    "prvs": "PRVS_DEFEAT",
+    "baseAffect": "BASE_ATRBT_VCT_DAM_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ORAORA_ATRBT_M_ARCANA_DMG_RATEADD",
+    "affectTextId": "AFFECT_ORAORA_ATRBT_M_ARCANA_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_ORAORA",
+    "baseAffect": "BASE_ATRBT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_COMBO_GAUGE_RATE",
+    "affectTextId": "AFFECT_COMBO_GAUGE_RATE_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_COMBO_GAUGE_RATE",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_VCT_CRT_DMG_RATESUB",
+    "affectTextId": "AFFECT_VCT_CRT_DMG_RATESUB_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_VCT_CRT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_DEFEAT_CRTRATE_ADD",
+    "affectTextId": "AFFECT_DEFEAT_CRTRATE_ADD_TEXT",
+    "prvs": "PRVS_DEFEAT",
+    "baseAffect": "BASE_CRTRATE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ORAORA_CRTRATE_ADD",
+    "affectTextId": "AFFECT_ORAORA_CRTRATE_ADD_TEXT",
+    "prvs": "PRVS_ORAORA",
+    "baseAffect": "BASE_CRTRATE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_STEP_TIME",
+    "affectTextId": "AFFECT_STEP_TIME_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_STEP_TIME",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_MAVERICK_STYPE_DMG_RATEADD",
+    "affectTextId": "AFFECT_MAVERICK_STYPE_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_VAMPIRE_ATK_RATEADD",
+    "affectTextId": "AFFECT_ONLY_VAMPIRE_ATK_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_ATK_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ORAORA_CT_FAST",
+    "affectTextId": "AFFECT_ORAORA_CT_FAST_TEXT",
+    "prvs": "PRVS_ORAORA",
+    "baseAffect": "BASE_CT_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ORAORA_DMG_ADD",
+    "affectTextId": "AFFECT_ORAORA_DMG_ADD_TEXT",
+    "prvs": "PRVS_ORAORA",
+    "baseAffect": "BASE_DMG_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_STAND_ATK_RATEADD",
+    "affectTextId": "AFFECT_ONLY_STAND_ATK_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_ATK_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_STAND_HP_RATEADD",
+    "affectTextId": "AFFECT_ONLY_STAND_HP_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_HP_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_DEFEAT_BRAVE_STYPE_DMG_RATEADD",
+    "affectTextId": "AFFECT_DEFEAT_BRAVE_STYPE_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_DEFEAT",
+    "baseAffect": "BASE_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_DEFEAT_INTELLI_STYPE_DMG_RATEADD",
+    "affectTextId": "AFFECT_DEFEAT_INTELLI_STYPE_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_DEFEAT",
+    "baseAffect": "BASE_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_DEFEAT_TENACITY_STYPE_DMG_RATEADD",
+    "affectTextId": "AFFECT_DEFEAT_TENACITY_STYPE_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_DEFEAT",
+    "baseAffect": "BASE_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_FULL_CRTRATE_ADD",
+    "affectTextId": "AFFECT_FULL_CRTRATE_ADD_TEXT",
+    "prvs": "PRVS_FULL_HP",
+    "baseAffect": "BASE_CRTRATE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ORAORA_MAVERICK_STYPE_DMG_RATEADD",
+    "affectTextId": "AFFECT_ORAORA_MAVERICK_STYPE_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_ORAORA",
+    "baseAffect": "BASE_STYPE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_DEFEAT_VCT_DAM_RATESUB",
+    "affectTextId": "AFFECT_DEFEAT_VCT_DAM_RATESUB_TEXT",
+    "prvs": "PRVS_DEFEAT",
+    "baseAffect": "BASE_VCT_DAM_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_MAVERICK_STYPE_VCT_DAM_RATESUB",
+    "affectTextId": "AFFECT_MAVERICK_STYPE_VCT_DAM_RATESUB_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_STYPE_VCT_DAM_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ALONE_CT_FAST",
+    "affectTextId": "AFFECT_ALONE_CT_FAST_TEXT",
+    "prvs": "PRVS_ALONE",
+    "baseAffect": "BASE_CT_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_FNT_DEF_RATEADD",
+    "affectTextId": "AFFECT_FNT_DEF_RATEADD_TEXT",
+    "prvs": "PRVS_DYING",
+    "baseAffect": "BASE_DEF_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_FULL_DMG_RATEADD",
+    "affectTextId": "AFFECT_FULL_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_FULL_HP",
+    "baseAffect": "BASE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_OVER_HP_ORACHAGE_FAST",
+    "affectTextId": "AFFECT_OVER_HP_ORACHAGE_FAST_TEXT",
+    "prvs": "PRVS_OVER_HP",
+    "baseAffect": "BASE_ORACHAGE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_UNDER_HP_ATK_RATEADD",
+    "affectTextId": "AFFECT_UNDER_HP_ATK_RATEADD_TEXT",
+    "prvs": "PRVS_UNDER_HP",
+    "baseAffect": "BASE_ATK_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_UNDER_HP_DEF_RATEADD",
+    "affectTextId": "AFFECT_UNDER_HP_DEF_RATEADD_TEXT",
+    "prvs": "PRVS_UNDER_HP",
+    "baseAffect": "BASE_DEF_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ATRBT_STAND_VCT_DAM_RATESUB",
+    "affectTextId": "AFFECT_ATRBT_STAND_VCT_DAM_RATESUB_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_ATRBT_VCT_DAM_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_VAMPIRE_CURE_RATEADD",
+    "affectTextId": "AFFECT_ONLY_VAMPIRE_CURE_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_CURE_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ATK_BOOST_DEF",
+    "affectTextId": "AFFECT_ATK_BOOST_DEF_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_ATK_BOOST_DEF",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_HP_BOOST_DEF",
+    "affectTextId": "AFFECT_HP_BOOST_DEF_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_HP_BOOST_DEF",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_JOESTAR_DMG_RATEADD",
+    "affectTextId": "AFFECT_ONLY_JOESTAR_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ONLY_JOESTAR_VCT_DAM_RATESUB",
+    "affectTextId": "AFFECT_ONLY_JOESTAR_VCT_DAM_RATESUB_TEXT",
+    "prvs": "PRVS_ATRBT",
+    "baseAffect": "BASE_VCT_DAM_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_AST_USE_ATRBT_HASHIRA_DMG_RATEADD",
+    "affectTextId": "AFFECT_AST_USE_ATRBT_HASHIRA_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_ASSIST_USE",
+    "baseAffect": "BASE_ATRBT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_AST_USE_ATRBT_VAMPIRE_DMG_RATEADD",
+    "affectTextId": "AFFECT_AST_USE_ATRBT_VAMPIRE_DMG_RATEADD_TEXT",
+    "prvs": "PRVS_ASSIST_USE",
+    "baseAffect": "BASE_ATRBT_DMG_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_ORAORA_MOVE_FAST",
+    "affectTextId": "AFFECT_ORAORA_MOVE_FAST_TEXT",
+    "prvs": "PRVS_ORAORA",
+    "baseAffect": "BASE_MOVE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_AST_USE_MOVE_FAST",
+    "affectTextId": "AFFECT_AST_USE_MOVE_FAST_TEXT",
+    "prvs": "PRVS_ASSIST_USE",
+    "baseAffect": "BASE_MOVE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_SPSTC_ADD",
+    "affectTextId": "AFFECT_SPSTC_ADD_TEXT",
+    "prvs": "PRVS_NONE",
+    "baseAffect": "BASE_SPSTC_ADD",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_FNT_VCT_CRT_DMG_RATESUB",
+    "affectTextId": "AFFECT_FNT_VCT_CRT_DMG_RATESUB_TEXT",
+    "prvs": "PRVS_DYING",
+    "baseAffect": "BASE_VCT_CRT_DMG_RATECON",
     "affectLimitNormal": [],
     "affectLimitExtra": [],
     "textSortIndex": 0

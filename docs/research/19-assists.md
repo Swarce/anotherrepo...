@@ -172,6 +172,18 @@ M = inferred.
 - **Assist skill.** `dtAssistSkillInfo` is the statue's own normal skill (258 statues), else its
   special (8): an existing tactical row, so the assist plays its own model's action.
 - **Enemies** send no assist skill or abilities.
+- **Action params (Build 41, docs/research/30-action-battle.md §7).** An ability in
+  `assist_abilities.json` may carry `"action"`: the AF_* params of the wiki effect lines (the
+  record the statue cites, else its other accepted record; JP lines through
+  `tools/content/action_vocab.py`, ShoutWiki `{stat, value}` lines through an English table) and a
+  card name. It replaces only the inline params and name of the `assistAbilityList` entry: the id
+  (the `DT_AST_*` id the condition table indexes), the tactical row, the condition and the
+  `dtAbilityList` folding are unchanged. 104 statues have it (65 research, 39 ShoutWiki); the others
+  send the tactical row, with the tactical-only `DTAF_DMG_RATEADD` (and the other `BASE_DT_*` ids,
+  `ACTION_AFFECT`) mapped to the action affect with the same numbers. The card name is the game's
+  `ABI_AST_<KIND><tier>_N` of the first line's kind at the tactical row's tier (not for assist-only
+  statues), so a move-speed card no longer says "ATK Assist". Assist-use timed lines (`AST_USE`)
+  show on the card but stay inert until the action assist character exists.
 
 ### 5.4 Not verified
 
@@ -179,8 +191,11 @@ M = inferred.
   - the Assist button, the assist character's entry and its skill animation;
   - the cards in the assist window with inline parameters (`isInit` parsed from JSON is M);
   - how folded abilities look on the seat statue's ability list.
-- The action battle's use of `assistAbilityList` (DTAF_* affect ids) is untested. The action
-  battle is not served.
+- The action battle's use of `assistAbilityList` is now intended (AF_* params, Build 41) and still
+  untested on a device. The tactical assist cards read the same list, so the action-era lines and
+  card names show in tactical mode too, while the tactical battle keeps the DT tier row (M).
+- Assists do not count toward JoJo Links: only the three seat statues do (M; the client checks no
+  members, doc 26 §1).
 - The assist-only statues: see §6.
 
 ## 6. Assist-only statues (Build 25)

@@ -1,0 +1,2132 @@
+{
+ "about": "Action-battle JoJo Links (TeamInfo.jojoLinkList, docs/research/26-links-and-skills.md §1, docs/research/30-action-battle.md §7). The server checks each team: a link is active when one of its rules holds (at least \"min\" distinct groups each have a seat statue whose family, statueId[:4], is in the group; rules are OR'd) or, for a trait link, when at least \"min\" seat statues carry the tribe in their tribeTypeList. Assists do not count. An active link is sent as {charaLinkId, abilityId JOLINK_<nnn>, abilityInfo {abilityName, abilityParamList, isInit true}} and applies to all three members. Units as action_abilities.json (Lv10 = Lv1). \"held\" lists the links not served with our reason. Built by tools/content/build_jojo_links.py.",
+ "sources": [
+  {
+   "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page and its comments, research pass)",
+   "page": "https://jojodr.gamerch.com/ジョジョリンク",
+   "accessed": "2026-11-20",
+   "note": "research-b33/action links.jojo link records: members, rule and effect per link"
+  },
+  {
+   "source": "Bahamut forum (巴哈姆特)",
+   "page": "https://forum.gamer.com.tw/G2.php?bsn=31489&parent=4&sn=18",
+   "accessed": "2026-11-20",
+   "note": "via research-b33: the record source for links 32, 33, 40, 45, 57 and 61; corroboration for 30 and 46"
+  },
+  {
+   "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine snapshot, saved link table)",
+   "page": "https://web.archive.org/web/20170706212148/https://jojodr.gamerch.com/ジョジョリンク",
+   "accessed": "2026-11-15",
+   "note": "local/wiki-raw/research-2026-11-15-v2/catalog/jojo_links.json: J001 = link 34, J032 = link 12 (confidence provisional)"
+  },
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/30-action-battle.md §7",
+   "note": "link affects: source 4 to all three members, key charaLinkId; units as the leader abilities"
+  },
+  {
+   "source": "jdr-default",
+   "note": "ids JOLINK_<nnn> and AF_* are ours; the member -> family mapping (STATUE_NAME labels, FAMILY_ALIAS), RULE_OVERRIDES, RESOLVED and HAND_HELD in tools/content/build_jojo_links.py, and the stricter rule where sources conflict"
+  }
+ ],
+ "links": [
+  {
+   "charaLinkId": 1,
+   "abilityName": "ABI_JOLINK_NAME_001",
+   "groups": [
+    [
+     "3000",
+     "3001",
+     "3002"
+    ],
+    [
+     "4040",
+     "4042",
+     "4043"
+    ],
+    [
+     "3321",
+     "3322",
+     "3323"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_SPSTC_ADD",
+     "giveLimit": -1,
+     "lv1": [1, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [1, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 2,
+   "abilityName": "ABI_JOLINK_NAME_002",
+   "groups": [
+    [
+     "4080"
+    ],
+    [
+     "4010",
+     "4011",
+     "4012"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 3,
+   "abilityName": "ABI_JOLINK_NAME_003",
+   "groups": [
+    [
+     "4020"
+    ],
+    [
+     "4160"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [20, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_VCT_CRT_DMG_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-300, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [-300, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 4,
+   "abilityName": "ABI_JOLINK_NAME_004",
+   "groups": [
+    [
+     "2110",
+     "2111"
+    ],
+    [
+     "3110"
+    ],
+    [
+     "4160"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [35, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [35, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 5,
+   "abilityName": "ABI_JOLINK_NAME_005",
+   "groups": [
+    [
+     "3050"
+    ],
+    [
+     "3300"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 6,
+   "abilityName": "ABI_JOLINK_NAME_006",
+   "groups": [
+    [
+     "1020"
+    ],
+    [
+     "2010",
+     "2011"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_FNT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 7,
+   "abilityName": "ABI_JOLINK_NAME_007",
+   "groups": [
+    [
+     "2020"
+    ],
+    [
+     "1000"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_FNT_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [75, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [75, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 9,
+   "abilityName": "ABI_JOLINK_NAME_009",
+   "groups": [
+    [
+     "4000"
+    ],
+    [
+     "3000",
+     "3001",
+     "3002"
+    ],
+    [
+     "4040",
+     "4042",
+     "4043"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 10,
+   "abilityName": "ABI_JOLINK_NAME_010",
+   "groups": [
+    [
+     "4020"
+    ],
+    [
+     "4000"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_MOVE_FAST",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [20, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 11,
+   "abilityName": "ABI_JOLINK_NAME_011",
+   "groups": [],
+   "rules": [],
+   "trait": {
+    "tribe": 6,
+    "min": 3
+   },
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 12,
+   "abilityName": "ABI_JOLINK_NAME_012",
+   "groups": [],
+   "rules": [],
+   "trait": {
+    "tribe": 2,
+    "min": 3
+   },
+   "params": [
+    {
+     "affectId": "AF_ORAORA_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine snapshot, saved link table)",
+    "page": "https://web.archive.org/web/20170706212148/https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-15",
+    "confidence": "provisional",
+    "note": "local/wiki-raw/research-2026-11-15-v2/catalog/jojo_links.json row J032"
+   }
+  },
+  {
+   "charaLinkId": 13,
+   "abilityName": "ABI_JOLINK_NAME_013",
+   "groups": [],
+   "rules": [],
+   "trait": {
+    "tribe": 5,
+    "min": 3
+   },
+   "params": [
+    {
+     "affectId": "AF_ORAORA_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 14,
+   "abilityName": "ABI_JOLINK_NAME_014",
+   "groups": [],
+   "rules": [],
+   "trait": {
+    "tribe": 3,
+    "min": 3
+   },
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [20, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [10, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [10, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 15,
+   "abilityName": "ABI_JOLINK_NAME_015",
+   "groups": [
+    [
+     "1000"
+    ],
+    [
+     "1010"
+    ],
+    [
+     "1020"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2],
+     "min": 3
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 16,
+   "abilityName": "ABI_JOLINK_NAME_016",
+   "groups": [
+    [
+     "2000"
+    ],
+    [
+     "2010",
+     "2011"
+    ],
+    [
+     "2020"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2],
+     "min": 3
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 17,
+   "abilityName": "ABI_JOLINK_NAME_017",
+   "groups": [
+    [
+     "3000",
+     "3001",
+     "3002"
+    ],
+    [
+     "3030",
+     "3031"
+    ],
+    [
+     "3010"
+    ],
+    [
+     "3040",
+     "3041"
+    ],
+    [
+     "3020"
+    ],
+    [
+     "3050"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2, 3, 4, 5],
+     "min": 3
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 18,
+   "abilityName": "ABI_JOLINK_NAME_018",
+   "groups": [
+    [
+     "4000"
+    ],
+    [
+     "4010",
+     "4011",
+     "4012"
+    ],
+    [
+     "4020"
+    ],
+    [
+     "4030",
+     "4031"
+    ],
+    [
+     "4040",
+     "4042",
+     "4043"
+    ],
+    [
+     "4130"
+    ],
+    [
+     "4110"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2, 3, 4, 5, 6],
+     "min": 3
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 19,
+   "abilityName": "ABI_JOLINK_NAME_019",
+   "groups": [
+    [
+     "4190",
+     "4193",
+     "4194"
+    ],
+    [
+     "2110",
+     "2111"
+    ],
+    [
+     "4130"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [1, 0],
+     "min": 2
+    },
+    {
+     "groups": [1, 2],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_FNT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high",
+    "note": "Stroheim + Kira or Stroheim + Yuya (record rule and the saved row J006)"
+   }
+  },
+  {
+   "charaLinkId": 22,
+   "abilityName": "ABI_JOLINK_NAME_022",
+   "groups": [
+    [
+     "4190",
+     "4193",
+     "4194"
+    ],
+    [
+     "3300"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [20, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 23,
+   "abilityName": "ABI_JOLINK_NAME_023",
+   "groups": [
+    [
+     "4110"
+    ],
+    [
+     "4160"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [35, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [35, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 24,
+   "abilityName": "ABI_JOLINK_NAME_024",
+   "groups": [
+    [
+     "2110",
+     "2111"
+    ],
+    [
+     "3020"
+    ],
+    [
+     "4040",
+     "4042",
+     "4043"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_FNT_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 27,
+   "abilityName": "ABI_JOLINK_NAME_027",
+   "groups": [
+    [
+     "1000"
+    ],
+    [
+     "1010"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 28,
+   "abilityName": "ABI_JOLINK_NAME_028",
+   "groups": [
+    [
+     "2000"
+    ],
+    [
+     "2010",
+     "2011"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [20, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_MOVE_FAST",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 29,
+   "abilityName": "ABI_JOLINK_NAME_029",
+   "groups": [
+    [
+     "3010"
+    ],
+    [
+     "3000",
+     "3001",
+     "3002"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [10, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [10, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [20, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 30,
+   "abilityName": "ABI_JOLINK_NAME_030",
+   "groups": [
+    [
+     "3030",
+     "3031"
+    ],
+    [
+     "3040",
+     "3041"
+    ],
+    [
+     "3010"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    },
+    {
+     "groups": [0, 2],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "medium",
+    "note": "stricter form where sources differ: Gamerch says any 2, Bahamut says Kakyoin + one of the others"
+   }
+  },
+  {
+   "charaLinkId": 31,
+   "abilityName": "ABI_JOLINK_NAME_031",
+   "groups": [
+    [
+     "3010"
+    ],
+    [
+     "2050"
+    ],
+    [
+     "2060"
+    ],
+    [
+     "2080",
+     "2081"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2, 3],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [-20, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 32,
+   "abilityName": "ABI_JOLINK_NAME_032",
+   "groups": [
+    [
+     "3300"
+    ],
+    [
+     "3210"
+    ],
+    [
+     "3270"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2],
+     "min": 3
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Bahamut forum (巴哈姆特)",
+    "page": "https://forum.gamer.com.tw/G2.php?bsn=31489&parent=4&sn=18",
+    "accessed": "2026-11-20",
+    "confidence": "medium",
+    "note": "all 3 members (the trait remark in the record is a guess)"
+   }
+  },
+  {
+   "charaLinkId": 33,
+   "abilityName": "ABI_JOLINK_NAME_033",
+   "groups": [],
+   "rules": [],
+   "trait": {
+    "tribe": 1,
+    "min": 3
+   },
+   "params": [
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Bahamut forum (巴哈姆特)",
+    "page": "https://forum.gamer.com.tw/G2.php?bsn=31489&parent=4&sn=18",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 34,
+   "abilityName": "ABI_JOLINK_NAME_034",
+   "groups": [
+    [
+     "2080",
+     "2081"
+    ],
+    [
+     "2050"
+    ],
+    [
+     "2060"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2],
+     "min": 3
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_SPSTC_ADD",
+     "giveLimit": -1,
+     "lv1": [1, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [1, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine snapshot, saved link table)",
+    "page": "https://web.archive.org/web/20170706212148/https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-15",
+    "confidence": "provisional",
+    "note": "local/wiki-raw/research-2026-11-15-v2/catalog/jojo_links.json row J001"
+   }
+  },
+  {
+   "charaLinkId": 37,
+   "abilityName": "ABI_JOLINK_NAME_037",
+   "groups": [
+    [
+     "3321",
+     "3322",
+     "3323"
+    ],
+    [
+     "3300"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [30, 0, 20, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 20, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 38,
+   "abilityName": "ABI_JOLINK_NAME_038",
+   "groups": [
+    [
+     "4150"
+    ],
+    [
+     "4080"
+    ],
+    [
+     "4010",
+     "4011",
+     "4012"
+    ],
+    [
+     "4030",
+     "4031"
+    ],
+    [
+     "4170"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2, 3, 4],
+     "min": 3
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 39,
+   "abilityName": "ABI_JOLINK_NAME_039",
+   "groups": [
+    [
+     "3030",
+     "3031"
+    ],
+    [
+     "4110"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_FNT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 40,
+   "abilityName": "ABI_JOLINK_NAME_040",
+   "groups": [
+    [
+     "3040",
+     "3041"
+    ],
+    [
+     "3020"
+    ],
+    [
+     "3050"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2],
+     "min": 3
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [20, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Bahamut forum (巴哈姆特)",
+    "page": "https://forum.gamer.com.tw/G2.php?bsn=31489&parent=4&sn=18",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 41,
+   "abilityName": "ABI_JOLINK_NAME_041",
+   "groups": [
+    [
+     "4000"
+    ],
+    [
+     "4030",
+     "4031"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 42,
+   "abilityName": "ABI_JOLINK_NAME_042",
+   "groups": [
+    [
+     "2000"
+    ],
+    [
+     "4010",
+     "4011",
+     "4012"
+    ],
+    [
+     "4020"
+    ],
+    [
+     "2050"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2],
+     "min": 2
+    },
+    {
+     "groups": [3, 0],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [30, 0, 20, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 20, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high",
+    "note": "any 2 of Joseph (Part 2) / Koichi / Okuyasu, or Santana + Joseph (Part 2), as the record says"
+   }
+  },
+  {
+   "charaLinkId": 44,
+   "abilityName": "ABI_JOLINK_NAME_044",
+   "groups": [
+    [
+     "3030",
+     "3031"
+    ],
+    [
+     "3100"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [20, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク/663034_2",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 45,
+   "abilityName": "ABI_JOLINK_NAME_045",
+   "groups": [
+    [
+     "3321",
+     "3322",
+     "3323"
+    ],
+    [
+     "3330"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [30, 0, 20, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 20, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Bahamut forum (巴哈姆特)",
+    "page": "https://forum.gamer.com.tw/G2.php?bsn=31489&parent=4&sn=18",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 46,
+   "abilityName": "ABI_JOLINK_NAME_046",
+   "groups": [
+    [
+     "3330"
+    ],
+    [
+     "4020"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [20, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "low",
+    "note": "the Gamerch main table and Bahamut agree on cool time +2.0%; the comment variant is ignored"
+   }
+  },
+  {
+   "charaLinkId": 47,
+   "abilityName": "ABI_JOLINK_NAME_047",
+   "groups": [
+    [
+     "3330"
+    ],
+    [
+     "3040",
+     "3041"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 48,
+   "abilityName": "ABI_JOLINK_NAME_048",
+   "groups": [
+    [
+     "4190",
+     "4193",
+     "4194"
+    ],
+    [
+     "4080"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [30, 0, 20, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 20, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 49,
+   "abilityName": "ABI_JOLINK_NAME_049",
+   "groups": [
+    [
+     "4190",
+     "4193",
+     "4194"
+    ],
+    [
+     "4010",
+     "4011",
+     "4012"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [25, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [25, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [25, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [25, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 50,
+   "abilityName": "ABI_JOLINK_NAME_050",
+   "groups": [
+    [
+     "4190",
+     "4193",
+     "4194"
+    ],
+    [
+     "4080"
+    ],
+    [
+     "3321",
+     "3322",
+     "3323"
+    ],
+    [
+     "3330"
+    ],
+    [
+     "1100"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2, 3, 4],
+     "min": 3
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_SPSTC_ADD",
+     "giveLimit": -1,
+     "lv1": [1, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [1, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 55,
+   "abilityName": "ABI_JOLINK_NAME_055",
+   "groups": [
+    [
+     "2000"
+    ],
+    [
+     "2010",
+     "2011"
+    ],
+    [
+     "2020"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2],
+     "min": 3
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_NORMAL_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 56,
+   "abilityName": "ABI_JOLINK_NAME_056",
+   "groups": [
+    [
+     "2080",
+     "2081"
+    ],
+    [
+     "2020"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_ORAORA_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 57,
+   "abilityName": "ABI_JOLINK_NAME_057",
+   "groups": [
+    [
+     "2080",
+     "2081"
+    ],
+    [
+     "2060"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_CURE_RATEADD",
+     "giveLimit": -1,
+     "lv1": [500, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [500, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Bahamut forum (巴哈姆特)",
+    "page": "https://forum.gamer.com.tw/G2.php?bsn=31489&parent=4&sn=18",
+    "accessed": "2026-11-20",
+    "confidence": "high",
+    "note": "Kars + Wamuu (the third member is marked uncertain in the record)"
+   }
+  },
+  {
+   "charaLinkId": 58,
+   "abilityName": "ABI_JOLINK_NAME_058",
+   "groups": [
+    [
+     "2000"
+    ],
+    [
+     "2020"
+    ],
+    [
+     "1000"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_CURE_RATEADD",
+     "giveLimit": -1,
+     "lv1": [500, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [500, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 61,
+   "abilityName": "ABI_JOLINK_NAME_061",
+   "groups": [
+    [
+     "3321",
+     "3322",
+     "3323"
+    ],
+    [
+     "1100"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_CURE_RATEADD",
+     "giveLimit": -1,
+     "lv1": [300, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [300, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Bahamut forum (巴哈姆特)",
+    "page": "https://forum.gamer.com.tw/G2.php?bsn=31489&parent=4&sn=18",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 63,
+   "abilityName": "ABI_JOLINK_NAME_063",
+   "groups": [
+    [
+     "1100"
+    ],
+    [
+     "3300"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 65,
+   "abilityName": "ABI_JOLINK_NAME_065",
+   "groups": [
+    [
+     "3090"
+    ],
+    [
+     "3150"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [20, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [-20, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 66,
+   "abilityName": "ABI_JOLINK_NAME_066",
+   "groups": [
+    [
+     "1130"
+    ],
+    [
+     "1120"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_SPSTC_ADD",
+     "giveLimit": -1,
+     "lv1": [1, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [1, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 68,
+   "abilityName": "ABI_JOLINK_NAME_068",
+   "groups": [
+    [
+     "1000"
+    ],
+    [
+     "3040",
+     "3041"
+    ],
+    [
+     "1130"
+    ],
+    [
+     "1120"
+    ],
+    [
+     "3240"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2, 3, 4],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_NORMAL_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  },
+  {
+   "charaLinkId": 72,
+   "abilityName": "ABI_JOLINK_NAME_072",
+   "groups": [
+    [
+     "3300"
+    ],
+    [
+     "3150"
+    ],
+    [
+     "3330"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_ORAORA_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 78,
+   "abilityName": "ABI_JOLINK_NAME_078",
+   "groups": [
+    [
+     "3110"
+    ],
+    [
+     "3100"
+    ],
+    [
+     "3090"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_NORMAL_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "high"
+   }
+  }
+ ],
+ "held": [
+  {
+   "charaLinkId": 8,
+   "reason": "gold/EXP '0.1%' unit ambiguous, and no client consumer"
+  },
+  {
+   "charaLinkId": 20,
+   "reason": "conflict between sources"
+  },
+  {
+   "charaLinkId": 21,
+   "reason": "gold/EXP '0.1%' unit ambiguous, and no client consumer"
+  },
+  {
+   "charaLinkId": 25,
+   "reason": "name only (no members or effect in any source)"
+  },
+  {
+   "charaLinkId": 26,
+   "reason": "gold/EXP '0.1%' unit ambiguous, and no client consumer"
+  },
+  {
+   "charaLinkId": 35,
+   "reason": "two Gamerch rows under one name (different members and effects)"
+  },
+  {
+   "charaLinkId": 36,
+   "reason": "low confidence"
+  },
+  {
+   "charaLinkId": 43,
+   "reason": "gold/EXP '0.1%' unit ambiguous, and no client consumer"
+  },
+  {
+   "charaLinkId": 51,
+   "reason": "name only (no members or effect in any source)"
+  },
+  {
+   "charaLinkId": 52,
+   "reason": "low confidence"
+  },
+  {
+   "charaLinkId": 53,
+   "reason": "effect unknown"
+  },
+  {
+   "charaLinkId": 54,
+   "reason": "members unknown"
+  },
+  {
+   "charaLinkId": 59,
+   "reason": "name only (no members or effect in any source)"
+  },
+  {
+   "charaLinkId": 60,
+   "reason": "crit-taken 0.07 (probably 0.70) and the Straizo membership is uncertain"
+  },
+  {
+   "charaLinkId": 62,
+   "reason": "low confidence"
+  },
+  {
+   "charaLinkId": 64,
+   "reason": "effect unknown"
+  },
+  {
+   "charaLinkId": 67,
+   "reason": "low confidence"
+  },
+  {
+   "charaLinkId": 69,
+   "reason": "name only (no members or effect in any source)"
+  },
+  {
+   "charaLinkId": 70,
+   "reason": "name only (no members or effect in any source)"
+  },
+  {
+   "charaLinkId": 71,
+   "reason": "name only (no members or effect in any source)"
+  },
+  {
+   "charaLinkId": 73,
+   "reason": "no record"
+  },
+  {
+   "charaLinkId": 74,
+   "reason": "low confidence"
+  },
+  {
+   "charaLinkId": 75,
+   "reason": "name only (no members or effect in any source)"
+  },
+  {
+   "charaLinkId": 76,
+   "reason": "effect unknown"
+  },
+  {
+   "charaLinkId": 77,
+   "reason": "name only (no members or effect in any source)"
+  }
+ ],
+ "report": {
+  "stats": {
+   "held": 25,
+   "served": 53,
+   "served_character": 48,
+   "served_trait": 5
+  },
+  "held_reasons": {
+   "conflict between sources": 1,
+   "crit-taken 0.07 (probably 0.70) and the Straizo membership is uncertain": 1,
+   "effect unknown": 3,
+   "gold/EXP '0.1%' unit ambiguous, and no client consumer": 4,
+   "low confidence": 5,
+   "members unknown": 1,
+   "name only (no members or effect in any source)": 8,
+   "no record": 1,
+   "two Gamerch rows under one name (different members and effects)": 1
+  },
+  "affect_ids": 18
+ }
+}

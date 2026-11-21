@@ -1061,6 +1061,7 @@ mod tests {
         )
         .unwrap();
         let lead = &r["teamInfo"]["teamOrder"]["leaderStatue"];
+        assert!(r["teamInfo"]["jojoLinkList"].is_array(), "never null");
         let list = lead["assistStatueList"].as_array().unwrap();
         assert_eq!(list.len(), 2);
         assert_eq!(

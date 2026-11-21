@@ -59,6 +59,16 @@ community wikis (each record cites its page) or are marked `jdr-default`.
    when that skill plays the cinematic. From rarity 5 their finisher is the single label at the
    cinematic entry (docs/research/30-action-battle.md §4–5).
 
+9. Action-battle leader and assist abilities, statue traits (Build 41, docs/research/30 §7): after
+   the leader builder, `tools/content/build_action_abilities.py` → `server/content/action_abilities.json`
+   (StatueInfo.leaderAbilityInfo, inline) and the `AF_*` rows of `affect_table` /
+   `affect_text_rule_table`; then `build_assist_abilities.py` (step 6) adds the assist `"action"`
+   params; then `build_statue_traits.py` → `server/content/statue_traits.json` (tribeTypeList);
+   then `build_jojo_links.py` → `server/content/jojo_links.json` (TeamInfo.jojoLinkList, computed
+   per team by the server; docs/research/26 §1). All share the line parser
+   `tools/content/action_vocab.py`, keep existing table rows and are idempotent; the commands are
+   in the scripts' docstrings.
+
 ## Offline rules (preservation sandbox)
 
 - The player owns every obtainable statue (266: model + animations + action set + leader ability in
@@ -90,6 +100,10 @@ community wikis (each record cites its page) or are marked `jdr-default`.
 | Mind Lv10 flat stats (`lv10`) | Gamerch MAX values; for 9 Minds the wiki leaves blank, the Diamond Records Preservation (PC) data (original-game screenshots at Lv10, an archived translation; cited per row) | 156 Minds (Build 41); the client does not read Mind hp/atk/def (docs/research/16 §9) |
 | Assist-ability conditions | ShoutWiki requirement icons (statue pages and 3 Old Mode templates), the research passes (ShoutWiki and Gamerch statue pages, incl. the live Gamerch pages) | 175 statues (Build 41; 116 in Build 33); the others always active; 6 held (docs/research/19 §5.3) |
 | Tactical leader abilities (`DT_LEAD_*`) | Gamerch leader numbers (Wayback dump; from Build 41 also live pages via the research pass) | 92 statues (Build 41: +1020_03, 1080_02, 1100_13, 3001_03) |
+| Action leader abilities (`LEAD_*`, inline) | the same Gamerch leader numbers, all action-era lines (docs/research/30 §7) | 142 statues, 328 lines (131 with every line served); gold/EXP, barrier and untraced lines held |
+| Assist action params (`"action"`) | the record each statue cites (Gamerch JP lines, ShoutWiki values) | 104 statues; the others send the tactical row (DTAF_* mapped to AF_*) |
+| Statue traits (`tribeTypeList`) | live Gamerch statue pages, ShoutWiki categories, family fill | 261 of 292 (31 in 17 families have no source) |
+| JoJo Links (`jojoLinkList`) | the research pass's Gamerch link page and comments, the Bahamut thread, the saved Gamerch link table (links 12, 34); hand rule overrides (docs/research/26 §1) | 53 links served (5 by trait), 25 held (gold/EXP, conflict, name only, unknown effect or members, low confidence) |
 | Daily quest numbers | Gamerch day pages via the Build 33 pass | Normal tier of every weekday (AP 8, level 20) and Tuesday's EXP/gold (15 stages); the other tiers ours |
 | Tactical tuning | atwiki ジョジョDR２ (tactical era, Wayback) and the Bahamut forum | Reversal 4 turns, speed +200%, cool turns halved; chain ×1.1/×1.35/×1.5/×2.0; type chart ×1.5/×0.7; same-type assist ×2 (Build 33) |
 | Item ids, categories | player's files: an `it_<id>` icon in `ui_item_00` and an `ITEM_<id>_NAME` label (`tools/content/build_items.py --icons <ui_item_00 listing>`); categories by the client's id ranges or, from Build 41, by ranges read from the item labels (docs/research/15) | 414 items |
