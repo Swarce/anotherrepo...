@@ -147,6 +147,22 @@ English runs longer than Japanese, and the UI was laid out for Japanese.
   - `wrap`: labels that spilled sideways with our English get wrap and truncate first, so best
     fit has a box to fit.
 
+  - `nameBox` (Build 32): statue name labels (`Txt_StatueName*`, line spacing 1) are sized by a
+    ContentSizeFitter (vertical, preferred size). With a long English name the fitter grows the
+    label by a line, so best fit never runs and the name spills onto the tabs below. The server
+    turns the fitter's vertical fit off and gives the label a fixed box 1.5x the font size tall
+    (two lines), its top where the one-line label's top was (7/6 of the font size); the text is
+    anchored to the top and best fit runs from the design size down to 12. Measured with the
+    game's font: every English statue name fits at 16 px or more, one line for all but 6-18 of
+    the 215 (by box width).
+  - `lineBox` (Build 32): one-line labels sized the same way (the Japanese takes one line at the
+    design size; boxes under 600 px; line spacing 1), such as the Town list's policy, active hours
+    and join requirement: a fixed one-line box (7/6 of the font size, centred where it was) with
+    best fit down to half size.
+
+  Scene edits that are not about text live in `server/content/l10n/ui_edits.json` (object ids):
+  the Options menu without its Achievements button (docs/research/29-debloat.md).
+
   Labels with the bitmap digit fonts (`Font_*Num*`) are never listed: they hold only digits and a
   few symbols, so a letter put in one would not show at all.
 - **Writing for the UI.**
