@@ -79,7 +79,7 @@ patcher            APK in -> patched, re-signed APK out (with a patch report)
 tools/jdr-tool     key recovery and file inspection on your own copy
 tools/content      builders that turn research and scans of your own files into content
 tools/l10n         translation export, checks and layout hints
-tools/ui-assets    UI art export and the redraw kit
+tools/ui-assets    UI art export from your own files
 tools/proofs       checks run against your own files
 docs/              architecture, protocol, research, status
 scripts/build.sh   build everything, run every test the environment allows
