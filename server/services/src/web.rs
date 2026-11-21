@@ -121,6 +121,7 @@ pub const ABOUT_PAGE: &str = "/information/about.html";
 
 /// What this build adds, for the Notices screen's Updates tab (our words; no game text).
 const NOTES: &[&str] = &[
+    "Build 40: a smoother battle camera: skill shots ease in from the attack view instead of jumping, and moving shots slow down into their hold.",
     "Build 39: attacks are filmed like the original, attacker and target side by side in the middle of the screen (the game's own two-shot camera), allies on the left and enemies on the right; skill cuts are cleaner; every character's win camera holds still like Jotaro's.",
     "Build 38: the battle camera moves like the original's, measured on every action of six original videos: normal attacks glide in towards the target with no cut, skills cut about three times, SP skills more; the win camera holds still while the winner poses.",
     "Build 37: the battle cameras finally move. Since Build 33 the camera stayed where the turn view was and only turned towards the attacker; now attacks and skills cut to their own shots (low from the front side, or over the shoulder), SP skills to several angles, and the win shot is the original's still, facing shot.",
