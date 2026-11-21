@@ -271,6 +271,7 @@ dependencies = [
  "jdr-crypto",
  "jdr-unity",
  "md-5",
+ "png",
  "serde",
  "serde_json",
  "sha2",

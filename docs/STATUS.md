@@ -2,6 +2,36 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 27 — portraits for the statues that have none (branch `wip/b27`)
+
+### What the owner asked
+- Statues without a portrait in the inventory: generate one from the statue's menu/gallery pose
+  (its face), with the frame around it like the other statues.
+
+### What changed
+- **Portrait tool** (`tools/content/render_portraits.py`, docs/research/28):
+  - 55 roster statues have no `st_` thumbnail in the player's files (53 regular, 2 assist-only).
+  - Each is rendered from its own model in its figure (menu) pose, framed on the head like the
+    real thumbnails (calibrated against 32 of them).
+  - It is composited over the attribute's diamond background, with the frame, gold stars, badge
+    and "A" mark averaged from the real thumbnails that share them.
+  - The output is a private art pack, `portraits.zip`.
+- **Into the game** (`art.rs`):
+  - a pack entry `ui_statue_01/thumbs/st_<id>.png` adds a thumbnail to `ui_statue_01` when the
+    phone rebuilds it;
+  - each new thumbnail is cloned from a real one (a full-quad sprite), renamed, given RGBA32
+    pixels, encrypted with the asset key and listed in the bundle's container.
+- **Patcher:** `--art` may be given more than once, e.g. the UI art and the portraits.
+- `posing.py` holds the posing code; `pose_models.py` output is unchanged.
+- Found while doing it: for nine statues the frame disagrees with our wiki rarity of 5
+  (4011_15/16/18, 4130_25/26/28, 4170_15/16/18 have the 3-, 4- and 6-star frames). Not changed.
+- Build number 27, server marker `JDR_EMBEDDED_SERVER_b027`.
+
+### Device checklist (expected; to be confirmed on a device)
+- [ ] The statue list shows portraits for statues that had none (e.g. 1080_01, 1090_01, 4220_73),
+      in lists, team panels and the statue detail
+- [ ] Original thumbnails unchanged; no load error or blank where a portrait was added
+
 ## Build 26 — the Town home connects offline (branch `wip/b26`)
 
 ### What the owner asked
