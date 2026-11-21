@@ -85,8 +85,13 @@ def P(base, look, rot, length, fov=30.0, boff=(0, 0, 0), loff=(0, 0, 0)):
 # rotate.x positive is below the bone; rotate.y 0 in front of the unit, 90 its right side (the
 # turn camera's side for allies; enemies are mirrored by the client for 1104xx-1499xx ids);
 # offsets in the unit's frame, z towards the target.
-NA_A = P(SPINE2, SPINE2, (3, 82, 0), 4.0, 30, (0, 0, 1.8), (0, -0.1, 1.8))
-NA_B = P(SPINE2, SPINE2, (3, 82, 0), 4.5, 30, (0, 0, 2.8), (0, -0.1, 2.8))
+# The screen centre is always bone(look) + R * lookatOffset (the rotation has no lag), so a
+# single-unit shot frames the unit and its target only when the look point sits about half way
+# between them: z ~ half the strike distance (melee 1.05-1.5 m, Stand users 2-2.5 m). Attacks
+# themselves no longer play these (forceNormalCamera 1: the client's Overview two-shot, research
+# 31 §9); the blue skills that request 111000 / 131000 / 131101 still do.
+NA_A = P(SPINE2, SPINE2, (3, 82, 0), 5.0, 32, (0, 0, 1.1), (0, -0.1, 1.1))
+NA_B = P(SPINE2, SPINE2, (3, 82, 0), 5.3, 32, (0, 0, 1.1), (0, -0.1, 1.1))
 DEFAULT_REF = P(SPINE2, SPINE2, (-5, 75, 0), 6.5, 30, (0, 0, 1.8), (0, -0.2, 1.8))
 RUSH = [P(SPINE2, SPINE2, (15, 90, 0), 1.5, 38, (0, 0, 0), (0, 0, 0.8)),
         P(SPINE2, SPINE2, (20, 60, 0), 1.4, 38, (0, 0, 0), (0, 0, 0.8)),
@@ -100,19 +105,20 @@ BAL2 = P(SPINE2, SPINE2, (5, 160, 0), 2.33, 32, (0, 0, 0), (0, 0, 3.0))
 REV = P(SPINE2, SPINE2, (0, 15, 0), 6.0, 30, (0, 0, 0), (0, -0.1, 0.5))
 KNEE = P(SPINE2, SPINE2, (6, 88, 0), 2.6, 30, (0, 0, 1.0), (0, -0.1, 1.0))
 SHOTS = {
-    # normal attacks (111000): glide in towards the target along the turn view's line, hold, then a
-    # 1 m truck with a slight pull-out (measured: no cut in 54 of 59 ally attacks)
+    # 111000: glide in on the pair, hold, then a slight pull-out (no truck: the look point stays
+    # half way to the target)
     "NA_PUSH": [(NA_A, 0.6, 0.09), (NA_A, 1.5, 0.09), (NA_B, 2.0, 0.09)],
     # a later request inside the same attack: stay (no visible change)
     "NA_HOLD": [(NA_B, 2.0, 0.05)],
-    # Stand attacks (131000): the same, closer, trucking with the Stand
-    "ST3_PUSH": [(P(SPINE2, SPINE2, (7, 82, 0), 3.2, 30, (0, 0, 2.0), (0, -0.1, 2.0)), 0.5, 0.09),
-                 (P(SPINE2, SPINE2, (7, 82, 0), 3.2, 30, (0, 0, 2.0), (0, -0.1, 2.0)), 1.2, 0.09),
-                 (P(SPINE2, SPINE2, (7, 82, 0), 3.6, 30, (0, 0, 3.2), (0, -0.1, 3.2)), 1.5, 0.09)],
-    # 131101: a lower, waist-up follow
-    "FOLLOW": [(P(SPINE2, SPINE2, (10, 85, 0), 2.6, 30, (0, 0, 2.4), (0, -0.1, 2.4)), 0.3, 0.09),
-               (P(SPINE2, SPINE2, (10, 85, 0), 2.6, 30, (0, 0, 2.4), (0, -0.1, 2.4)), 1.2, 0.09),
-               (P(SPINE2, SPINE2, (10, 85, 0), 2.6, 30, (0, 0, 3.4), (0, -0.1, 3.4)), 1.0, 0.09)],
+    # 131000 (Stand pair): the same, a little lower and closer; centred whether the shot binds to
+    # the Stand (about 1 m from the target) or its user (2-2.5 m)
+    "ST3_PUSH": [(P(SPINE2, SPINE2, (5, 82, 0), 4.6, 32, (0, 0, 1.0), (0, -0.1, 1.0)), 0.5, 0.09),
+                 (P(SPINE2, SPINE2, (5, 82, 0), 4.6, 32, (0, 0, 1.0), (0, -0.1, 1.0)), 1.2, 0.09),
+                 (P(SPINE2, SPINE2, (5, 82, 0), 4.9, 32, (0, 0, 1.1), (0, -0.1, 1.1)), 1.5, 0.09)],
+    # 131101: a lower, waist-to-knee-up follow
+    "FOLLOW": [(P(SPINE2, SPINE2, (8, 85, 0), 4.4, 32, (0, 0, 0.9), (0, -0.1, 0.9)), 0.3, 0.09),
+               (P(SPINE2, SPINE2, (8, 85, 0), 4.4, 32, (0, 0, 0.9), (0, -0.1, 0.9)), 1.2, 0.09),
+               (P(SPINE2, SPINE2, (8, 85, 0), 4.7, 32, (0, 0, 0.95), (0, -0.1, 0.95)), 1.0, 0.09)],
     # 101008 wrap-up: glide out towards the turn view
     "PULL_OUT": [(P(SPINE2, SPINE2, (-2, 78, 0), 5.6, 30, (0, 0, 1.8), (0, -0.2, 1.8)), 0.5, 0.1)],
     # a request that should change nothing visible: the turn view, glided very slowly
