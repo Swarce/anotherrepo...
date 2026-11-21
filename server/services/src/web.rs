@@ -121,6 +121,7 @@ pub const ABOUT_PAGE: &str = "/information/about.html";
 
 /// What this build adds, for the Notices screen's Updates tab (our words; no game text).
 const NOTES: &[&str] = &[
+    "Build 36 (camera calibration test): every attack and skill is filmed from one deliberately odd place, high up, in front of the attacker and to its right, with a wide view, so that we can tell whether the phone is showing the camera data at all and which way the game reads it. Not how the game will stay.",
     "Build 35: attacks and skills are filmed as in the original videos (low, from the front side, the attacker at the left and the target nearer the camera, or over the attacker's shoulder), and the win shot faces the winner (it showed their back).",
     "Build 34: the same game data as the last Build 33 package, numbered 34 so you can see at a glance that the new app is running. Battle cameras follow the kind of action (attacks stay near the turn view, SP skills cut between several angles), the win shot is the original's close low shot, and the My Page and team screens frame statues as the original did.",
     "Build 33: the battle camera cuts to its own shots on every attack and skill, as the original did, and bosses get their intro again. Action chapters: enemies appear and your statues can attack, use their skill and SP. Skill cool turns follow the original's; more statues have their real stats; assist abilities need their real conditions.",
