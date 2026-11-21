@@ -59,6 +59,11 @@ pub fn leader_change(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                 changed = true;
             }
         }
+        if changed {
+            p.progress
+                .missions
+                .bump("leader", 1, jdr_core::clock::now());
+        }
         (
             (),
             if changed {
@@ -149,6 +154,9 @@ pub fn set_team(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         for t in teams_numbered(&mut p.collection, team_num) {
             t.slots = slots;
         }
+        if slots.iter().all(|u| *u != 0) {
+            p.progress.missions.bump("team3", 1, jdr_core::clock::now());
+        }
         if main {
             for t in &mut p.collection.teams {
                 t.main = t.team_num == team_num;
@@ -176,8 +184,202 @@ pub fn block_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
 }
 
 /// `TrophyListResponse`: no achievements are tracked offline yet.
-pub fn trophy_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    ok(json!({ "trophyList": [] }))
+pub fn trophy_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let now = jdr_core::clock::now();
+    let (p, ()) = with_profile(ctx, env, |p| {
+        let day = p.progress.missions.day;
+        p.progress.missions.roll(now);
+        (
+            (),
+            if p.progress.missions.day != day {
+                Change::Bookkeeping
+            } else {
+                Change::None
+            },
+        )
+    })?;
+    ok(json!({ "trophyList": p.progress.missions.trophy_list(p.rank, now) }))
+}
+
+/// Grant a mission reward to the account: gold (item 20), free Diamond Coins (0/10), or a
+/// catalog item. Friend points have no wallet offline. (The screen then says the rewards went to
+/// the message box; our box is not built yet, so they arrive directly.)
+fn grant(p: &mut crate::accounts::Profile, r: &crate::missions::Reward) {
+    match r.item_id {
+        20 => p.gold += r.count,
+        0 | 10 => p.stone_free += r.count,
+        id if crate::items::find(id).is_some() => p.collection.add_item(id, r.count),
+        _ => {}
+    }
+}
+
+/// `/trophy/trophy_result_get {achievementId}` (one) and `/trophy/get_all_trophy_result {}`
+/// (every claimable mission): the full updated list replaces the client's.
+pub fn trophy_claim(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let one = env
+        .param
+        .get("achievementId")
+        .and_then(Value::as_str)
+        .map(str::to_owned);
+    let now = jdr_core::clock::now();
+    let (p, sets) = with_profile(ctx, env, |p| {
+        p.progress.missions.roll(now);
+        let ids: Vec<String> = match &one {
+            Some(id) => vec![id.clone()],
+            None => crate::missions::missions()
+                .iter()
+                .map(|m| m.id.clone())
+                .collect(),
+        };
+        let mut sets = Vec::new();
+        for id in ids {
+            if let Some(m) = p.progress.missions.claim(&id, p.rank) {
+                grant(p, &m.reward);
+                sets.push(crate::missions::reward_set(&m.reward));
+            }
+        }
+        let change = if sets.is_empty() {
+            Change::None
+        } else {
+            Change::Progress
+        };
+        (sets, change)
+    })?;
+    let list = p.progress.missions.trophy_list(p.rank, now);
+    let empty = json!({ "itemSetIcon": "", "itemSetNum": 0, "statueList": [], "mindList": [], "itemList": [], "clanObjectList": [] });
+    if one.is_some() {
+        ok(
+            json!({ "itemSetInfo": sets.first().cloned().unwrap_or(empty), "trophyList": list, "popupFlg": false }),
+        )
+    } else {
+        ok(json!({ "itemSetList": sets, "trophyList": list, "popupFlg": false }))
+    }
+}
+
+// ---- Mind equipment (docs/research/16-minds.md) ----
+
+/// Status codes the client shows (ResponseParameterCode.Status).
+const E_MIND_MISSING: i64 = 51103;
+const E_NO_STATUE: i64 = 51702;
+const E_CP_OVER: i64 = 51705;
+const E_SLOT_LOCKED: i64 = 51709;
+
+/// Apply `(seq, uid)` changes to one seat of a team number (both battle types follow), in order:
+/// uid 0 empties the slot; a Mind already on another seat of the team moves here. The result
+/// must fit the statue's capacity.
+fn equip(
+    c: &mut Collection,
+    team_num: i64,
+    seat: usize,
+    changes: &[(i64, i64)],
+) -> Result<(), i64> {
+    let Some(t) = c.teams.iter().find(|t| t.team_num == team_num) else {
+        return Err(E_NO_STATUE);
+    };
+    if c.known_statue(t.slots[seat]).is_none() {
+        return Err(E_NO_STATUE);
+    }
+    let mut seats = t.minds.clone();
+    for (seq, uid) in changes {
+        if !(1..=collection::MIND_SLOTS_OPEN).contains(seq) {
+            return Err(E_SLOT_LOCKED);
+        }
+        seats[seat].retain(|(s, _)| s != seq);
+        if *uid != 0 {
+            if !c.minds.iter().any(|m| m.uid == *uid) {
+                return Err(E_MIND_MISSING);
+            }
+            for s in seats.iter_mut() {
+                s.retain(|(_, u)| u != uid);
+            }
+            seats[seat].push((*seq, *uid));
+        }
+    }
+    let cost: i64 = seats[seat]
+        .iter()
+        .filter_map(|(_, u)| c.minds.iter().find(|m| m.uid == *u))
+        .map(|m| collection::mind_cost(&m.mind_id))
+        .sum();
+    if cost > collection::MIND_CAPACITY {
+        return Err(E_CP_OVER);
+    }
+    for s in seats.iter_mut() {
+        s.sort();
+    }
+    for t in teams_numbered(c, team_num) {
+        t.minds = seats.clone();
+    }
+    Ok(())
+}
+
+fn seat_of(env: &RequestEnvelope) -> Result<usize, ApiError> {
+    match int(env, "statueSeq") {
+        Some(s @ 1..=3) => Ok(s as usize - 1),
+        _ => Err(ApiError::Status(E_NO_STATUE)),
+    }
+}
+
+/// `/team/equip_multiple_minds {teamNum, statueSeq, mindList:[{equipSeq, minduId}]}`: the client's
+/// diff of changed slots (clears first). Replies with the team.
+pub fn equip_multiple_minds(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let team_num = team_num(env)?;
+    let seat = seat_of(env)?;
+    let changes: Vec<(i64, i64)> = env
+        .param
+        .get("mindList")
+        .and_then(Value::as_array)
+        .map(|a| {
+            a.iter()
+                .filter_map(|m| Some((m.get("equipSeq")?.as_i64()?, m.get("minduId")?.as_i64()?)))
+                .collect()
+        })
+        .unwrap_or_default();
+    let (p, r) = with_profile(ctx, env, |p| {
+        match equip(&mut p.collection, team_num, seat, &changes) {
+            Ok(()) => {
+                if changes.iter().any(|(_, u)| *u != 0) {
+                    p.progress
+                        .missions
+                        .bump("equip_mind", 1, jdr_core::clock::now());
+                }
+                (Ok(()), Change::Bookkeeping)
+            }
+            Err(code) => (Err(code), Change::None),
+        }
+    })?;
+    r.map_err(ApiError::Status)?;
+    ok(json!({ "teamInfo": shown(&p.collection, team_num) }))
+}
+
+/// `/team/equip_mind {teamNum, statueSeq, equipSeq, minduId}` (unused by 3.12, kept for safety).
+pub fn equip_mind(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let team_num = team_num(env)?;
+    let seat = seat_of(env)?;
+    let change = (
+        int(env, "equipSeq").unwrap_or(0),
+        int(env, "minduId").unwrap_or(0),
+    );
+    let (p, r) = with_profile(ctx, env, |p| {
+        match equip(&mut p.collection, team_num, seat, &[change]) {
+            Ok(()) => (Ok(()), Change::Bookkeeping),
+            Err(code) => (Err(code), Change::None),
+        }
+    })?;
+    r.map_err(ApiError::Status)?;
+    ok(json!({ "teamInfo": shown(&p.collection, team_num) }))
+}
+
+/// The open Mind slots (`mindSeqInfo`): the four golden frames.
+pub fn mind_seq_info() -> Value {
+    let seq: Vec<Value> = (1..=collection::MIND_SLOTS_OPEN)
+        .map(|s| json!({ "seq": s, "openFlg": 1, "goldenFlameFlg": 0, "onlySkillFlg": 0 }))
+        .collect();
+    json!({ "seqInfoList": seq, "unlockInfo": { "openRank": 0, "openMaterialList": [], "itemList": [] } })
+}
+
+/// `/team/unlock_mind_seq {}`: no further slots offline; the same info.
+pub fn unlock_mind_seq(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
+    ok(json!({ "mindSeqInfo": mind_seq_info() }))
 }
 
 #[cfg(test)]
@@ -377,5 +579,118 @@ mod tests {
             .as_str()
             .unwrap()
             .is_empty());
+    }
+
+    #[test]
+    fn minds_equip_move_and_lock() {
+        let dir = std::env::temp_dir().join(format!("jdr-minds-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let ctx = Ctx::new(Settings::new(dir), false);
+        let uuid = ctx.accounts.create(&[]).unwrap().uuid;
+        let call = |path: &str, param: Value| dispatch(&ctx, path, &env(&uuid, param)).0;
+        call("/team/team_info", json!({})).unwrap();
+        let p = ctx.accounts.get(&uuid).unwrap().unwrap();
+        let cost = |u: i64| {
+            let m = p.collection.minds.iter().find(|m| m.uid == u).unwrap();
+            crate::collection::mind_cost(&m.mind_id)
+        };
+        let mut uids: Vec<i64> = p.collection.minds.iter().map(|m| m.uid).collect();
+        uids.sort_by_key(|u| cost(*u));
+        let (a, b) = (uids[0], uids[1]);
+        // Two Minds on the leader of team 1.
+        let r = call(
+            "/team/equip_multiple_minds",
+            json!({"teamNum": 1, "statueSeq": 1,
+            "mindList": [{"equipSeq": 1, "minduId": a}, {"equipSeq": 2, "minduId": b}]}),
+        )
+        .unwrap();
+        let eq = r["teamInfo"]["teamOrder"]["leaderStatue"]["equipMindList"]
+            .as_array()
+            .unwrap()
+            .clone();
+        assert_eq!(
+            eq.iter()
+                .map(|m| (m["seq"].as_i64().unwrap(), m["minduId"].as_i64().unwrap()))
+                .collect::<Vec<_>>(),
+            [(1, a), (2, b)]
+        );
+        let p2 = ctx.accounts.get(&uuid).unwrap().unwrap();
+        assert!(
+            p2.collection
+                .teams
+                .iter()
+                .filter(|t| t.team_num == 1)
+                .all(|t| t.minds[0].len() == 2),
+            "both battle types follow"
+        );
+        // Moving one to the left seat takes it off the leader.
+        if p2
+            .collection
+            .teams
+            .iter()
+            .any(|t| t.team_num == 1 && t.slots[1] != 0)
+        {
+            let r = call(
+                "/team/equip_multiple_minds",
+                json!({"teamNum": 1, "statueSeq": 2,
+                "mindList": [{"equipSeq": 1, "minduId": a}]}),
+            )
+            .unwrap();
+            let lead = r["teamInfo"]["teamOrder"]["leaderStatue"]["equipMindList"]
+                .as_array()
+                .unwrap()
+                .len();
+            assert_eq!(lead, 1);
+        }
+        // Locked slot, unknown Mind and too much CP are refused.
+        assert!(call(
+            "/team/equip_multiple_minds",
+            json!({"teamNum": 1, "statueSeq": 1, "mindList": [{"equipSeq": 5, "minduId": b}]})
+        )
+        .is_err());
+        assert!(call(
+            "/team/equip_multiple_minds",
+            json!({"teamNum": 1, "statueSeq": 1, "mindList": [{"equipSeq": 3, "minduId": 999999}]})
+        )
+        .is_err());
+        let costly: Vec<i64> = uids.iter().rev().take(4).copied().collect();
+        if costly.iter().map(|u| cost(*u)).sum::<i64>() > crate::collection::MIND_CAPACITY {
+            let list: Vec<Value> = costly
+                .iter()
+                .enumerate()
+                .map(|(i, u)| json!({"equipSeq": i + 1, "minduId": u}))
+                .collect();
+            assert!(call(
+                "/team/equip_multiple_minds",
+                json!({"teamNum": 1, "statueSeq": 1, "mindList": list})
+            )
+            .is_err());
+        }
+        // Remove all: every filled slot cleared.
+        let r = call(
+            "/team/equip_multiple_minds",
+            json!({"teamNum": 1, "statueSeq": 1,
+            "mindList": [{"equipSeq": 1, "minduId": 0}, {"equipSeq": 2, "minduId": 0}]}),
+        )
+        .unwrap();
+        assert!(r["teamInfo"]["teamOrder"]["leaderStatue"]["equipMindList"]
+            .as_array()
+            .unwrap()
+            .is_empty());
+        // The lock returns the full MindInfo (the client reads mindInfo.minduId).
+        let r = call("/mind/protect", json!({"minduId": b, "protectedFlg": 1})).unwrap();
+        assert_eq!(
+            (
+                r["mindInfo"]["minduId"].as_i64(),
+                r["mindInfo"]["protectedFlg"].as_i64()
+            ),
+            (Some(b), Some(1))
+        );
+        let list = call("/mind/mind_list", json!({})).unwrap();
+        assert!(list["mindList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .all(|m| m["useFlg"].is_i64()));
     }
 }

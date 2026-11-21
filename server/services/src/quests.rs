@@ -128,6 +128,9 @@ pub struct Progress {
     /// Tactical missions cleared per stage (DT_QM types, from the clients' `starClearList`).
     #[serde(default)]
     pub stars: std::collections::BTreeMap<String, BTreeSet<i64>>,
+    /// Mission counters and claims (Build 21).
+    #[serde(default)]
+    pub missions: crate::missions::MissionState,
 }
 
 /// The three tactical missions of a stage (docs/research/11 §4): clear the quest, every member
@@ -228,6 +231,7 @@ fn enemy_info(statue_id: &str, level: i64) -> Value {
         exp: 0,
         get_date: String::new(),
         tree: Vec::new(),
+        boost: 0,
     });
     v["useAttr"] = json!(3); // EnemyOnly
     v
