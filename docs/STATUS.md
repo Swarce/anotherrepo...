@@ -2,6 +2,38 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 37 — the battle cameras move: `inter` was 0 (branch `wip/b37`)
+
+### What the owner showed
+- Build 35 and the calibration Build 36: "no changes, still the same angles". A screenshot of the
+  original's win shot: still while the appeal animation plays, the winner facing the camera, right
+  of centre, thigh-up.
+
+### What changed
+- **Root cause** (docs/research/31 §2): `ScriptCamera.SetCameraInfo` (0xD6FE60) places the camera
+  at `Lerp(current position, shot position, inter)` and the field of view the same way, every frame;
+  only the rotation is set outright, as a look at the target. Every step we sent since the delta fix
+  (Build 33, second package) had `inter` 0.0, so the camera never left the turn view's position
+  and field of view; it only turned towards the attacker. That is why six packages with different
+  numbers looked the same, why the first package (inter 1.2, a snap) was the only one that moved,
+  and why the Build 34 win shot showed the winner's back: the camera stayed where the finish shot
+  left it and turned to the winner. The client's own sample sets use 0.3, and 0.3 is its default.
+- Every step now has `inter` 1.0 (cut to the shot, follow it exactly); the 16 world-view sets keep
+  0.3. A test fails on any 0.
+- **Win shot** from the owner's screenshot, checked by rendering the win-appeal clip: one still
+  step, 2.4 m from the chest, 5° below, 16° to the side, the winner about 70 % across, framed to the
+  upper thighs. Build 35's 180° turn is undone (it was read from the frozen camera).
+- Build 36's calibration shot is gone (it had the same zero and could not have shown anything).
+- Build number 37, server marker `JDR_EMBEDDED_SERVER_b037`; `Node_el_camera_node_common 20 rows`.
+
+### Device checklist
+- [ ] Log: `[boot] jdr embedded build 37`, `Node_el_camera_node_common 20 rows`
+- [ ] Attacks and skills: the camera moves to its own shot (low from the front side with the
+      attacker at the left third, or over the shoulder) and back
+- [ ] SP skills: several angles; big area hits from high up
+- [ ] Win: still, the winner facing the camera, right of centre, thigh-up
+- [ ] Any shot that looks wrong: its time in a recording and the statue's name
+
 ## Build 36 — camera calibration test (branch `wip/b36`)
 
 ### What the owner showed
