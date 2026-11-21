@@ -8,6 +8,19 @@
    "accessed": "2026-11-15"
   },
   {
+   "source": "Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/",
+   "accessed": "2026-11-21",
+   "note": "assist requirement icons as conditions (Build 41), and three 'Old Mode' statue templates (oldids 3832, 3840, 3855) fetched 2026-11-21; each row cites its page and revision",
+   "license": "CC BY-SA 3.0"
+  },
+  {
+   "source": "Gamerch ジョジョDR攻略Wiki",
+   "page": "https://jojodr.gamerch.com/",
+   "accessed": "2026-11-20",
+   "note": "research passes (local/wiki-raw/research-b33): statue pages read live 2026-11-20 and Wayback captures; the activation condition (発動条件) and HP/ATK/DEF/damage values; each row cites its page"
+  },
+  {
    "source": "jdr-research",
    "doc": "docs/research/19-assists.md"
   },
@@ -169,12 +182,27 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【闘志】ジョナサン・ジョースター～宿命の星～★6（肩に浮かぶ星の痣）",
+    "accessed": "2026-11-20",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -597,7 +625,7 @@
    "statueId": "1110_03",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
+     "abilityId": "DT_AST_HP_RATEADD3",
      "conditions": [
       {
        "statueType": 1,
@@ -884,12 +912,27 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【闘志】ジョセフ・ジョースター～『最後の波紋』～★6（輝き放つ波紋の力）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1031,12 +1074,27 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【勇気】シーザー～一族への誇り～★6（虹色のシャボン）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1279,7 +1337,12 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
@@ -1288,7 +1351,7 @@
     "revid": 3343,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1296,7 +1359,12 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
@@ -1305,7 +1373,7 @@
     "revid": 3422,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1313,7 +1381,12 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
@@ -1322,7 +1395,7 @@
     "revid": 3254,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1459,13 +1532,24 @@
    "statueId": "2081_13",
    "abilities": [
     {
-     "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "abilityId": "DT_AST_DMG_RATEADD3",
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【孤高】カーズ★5（～アルティメット・シイング～）",
+    "accessed": "2026-11-20",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1542,7 +1626,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -1551,7 +1644,7 @@
     "revid": 3419,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1637,7 +1730,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -1646,7 +1748,7 @@
     "revid": 3161,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1654,7 +1756,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -1663,7 +1774,7 @@
     "revid": 3434,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1671,7 +1782,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -1680,7 +1800,7 @@
     "revid": 3274,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1718,7 +1838,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DMG_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -1727,7 +1856,7 @@
     "revid": 3883,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1735,12 +1864,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/Template%3A%285%E2%98%85%29_Jotaro_Kujo_~_You_pissed_me_off_~_%28Courage%29_Old_Mode",
+    "revid": 3832,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-21",
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1748,12 +1890,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Jotaro_Kujo_~_You_pissed_me_off_~_%28Courage%29",
+    "revid": 4439,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1936,7 +2095,12 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
@@ -1945,7 +2109,7 @@
     "revid": 3252,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1966,7 +2130,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -1975,7 +2148,7 @@
     "revid": 2321,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2013,7 +2186,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -2022,7 +2204,7 @@
     "revid": 3166,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2346,7 +2528,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -2355,7 +2546,7 @@
     "revid": 2724,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2389,7 +2580,20 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -2398,7 +2602,7 @@
     "revid": 4639,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2610,12 +2814,23 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 4,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【孤高】ラバーソール★4（ハナでもほじっていな！）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2649,7 +2864,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -2658,7 +2882,7 @@
     "revid": 4815,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2679,7 +2903,12 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 4,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
@@ -2688,7 +2917,7 @@
     "revid": 3260,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2848,7 +3077,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -2857,7 +3095,7 @@
     "revid": 3442,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3155,7 +3393,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 4,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -3164,7 +3411,7 @@
     "revid": 3467,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3172,25 +3419,47 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【孤高】DIO～スタンドのパワーを全開だッ！～★6（なじむジョースターの血）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "3322_08",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【知略】DIO～すでに手は打った！！～★6（念写に映る姿）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3250,7 +3519,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DMG_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -3259,7 +3537,7 @@
     "revid": 4150,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3306,7 +3584,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -3315,7 +3602,7 @@
     "revid": 3554,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3323,7 +3610,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -3332,7 +3628,7 @@
     "revid": 3276,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3378,13 +3674,28 @@
    "statueId": "4000_18",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "abilityId": "DT_AST_DMG_RATEADD4",
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【団結】東方仗助～町を護る者～★6（力強く優しき瞳）",
+    "accessed": "2026-11-20",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3643,12 +3954,19 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 4,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【団結】広瀬康一★3（覚醒の時）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3656,7 +3974,12 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DMG_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
@@ -3665,7 +3988,7 @@
     "revid": 3016,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3673,7 +3996,12 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DMG_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
@@ -3682,7 +4010,7 @@
     "revid": 2335,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3690,7 +4018,12 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DMG_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
@@ -3699,7 +4032,7 @@
     "revid": 3270,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3707,7 +4040,20 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DMG_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -3716,7 +4062,7 @@
     "revid": 4636,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3724,12 +4070,23 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【団結】虹村億泰★5（距離を縮める）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3737,7 +4094,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -3746,7 +4112,7 @@
     "revid": 3559,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3780,7 +4146,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -3789,7 +4164,7 @@
     "revid": 3275,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3827,7 +4202,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -3836,7 +4220,7 @@
     "revid": 3014,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3844,7 +4228,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -3853,7 +4246,7 @@
     "revid": 3262,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3926,12 +4319,27 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【勇気】空条承太郎～たたっこわしてやるぜ～★6（見ると観るの違い）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3939,7 +4347,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -3948,7 +4365,7 @@
     "revid": 3018,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3982,7 +4399,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -3991,7 +4417,7 @@
     "revid": 3259,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -4029,7 +4455,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DMG_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -4038,7 +4473,7 @@
     "revid": 3286,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -4345,7 +4780,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -4354,7 +4798,7 @@
     "revid": 3432,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -4440,7 +4884,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -4449,7 +4902,7 @@
     "revid": 3570,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -4457,7 +4910,16 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
@@ -4466,7 +4928,7 @@
     "revid": 3271,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -4547,13 +5009,26 @@
    "statueId": "4190_13",
    "abilities": [
     {
-     "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "abilityId": "DT_AST_DEF_RATEADD2",
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/Template%3A%285%E2%98%85%29_Yoshikage_Kira_%28Solitary%29_Old_Mode",
+    "revid": 3840,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-21",
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -4626,12 +5101,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/Template%3A%286%E2%98%85%29_Kosaku_Kawajiri_%28Courage%29_Old_Mode",
+    "revid": 3855,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-21",
+    "note": "condition and no tactical affect for the effect: the statue's leaning stat, tier = rarity - 2 (action-battle era)"
    }
   },
   {
@@ -4694,13 +5186,28 @@
    "statueId": "4193_08",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【知略】吉良吉影～...始末してからね......！～★6（日常に潜む闇）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -4880,7 +5387,7 @@
    "statueId": "5010_14",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -4919,13 +5426,30 @@
    "statueId": "5050_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_HP_RATEADD4",
-     "conditions": []
+     "abilityId": "DT_AST_DMG_RATEADD4",
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Guido_Mista_%28Courage%29",
+    "revid": 4400,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -4958,13 +5482,30 @@
    "statueId": "5120_14",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Prosciutto_%28Unity%29",
+    "revid": 4544,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "condition and no tactical affect for the effect: the statue's leaning stat, tier = rarity - 2 (action-battle era)"
    }
   },
   {
@@ -5063,12 +5604,21 @@
    "abilities": [
     {
      "abilityId": "DT_AST_1030_62",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Erina_Pendleton_(Courage)",
+    "revid": 3781,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -5076,12 +5626,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_2011_72",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Caesar_~_Bloodcurdling_Youth_~_(Solitary)",
+    "revid": 3305,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -5089,12 +5652,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_2040_72",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Messina_(Unity)",
+    "revid": 3289,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -5245,12 +5821,21 @@
    "abilities": [
     {
      "abilityId": "DT_AST_3290_62",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Daniel_J_D'Arby_(Tactical)",
+    "revid": 3299,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -5258,12 +5843,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_4000_62",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Josuke_Higashikata_(Tactical)",
+    "revid": 3235,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -5310,12 +5908,21 @@
    "abilities": [
     {
      "abilityId": "DT_AST_4120_62",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Aya_Tsuji_(Tactical)",
+    "revid": 3285,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -5323,12 +5930,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_4181_72",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 4,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Not_Bug-Eaten_(Unity)",
+    "revid": 3085,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {

@@ -1302,6 +1302,24 @@ mod tests {
         }
     }
 
+    /// statue_special_scene_data_table stays empty. The action battle's SP cinematic does not
+    /// read it: DoChangeBattleSceneMode mode 2 in the statue's own action set starts it, and
+    /// SpecialSkillSceneControl.GetCameraAnimatorController 0xCB3040 builds the camera's bundle
+    /// path from the model id (docs/research/30 §5). Its rows (special retire cameras and a second
+    /// actor, `spcialSkillSceneData`) have no retail values, and CreateActorObject 0xCB3624 calls
+    /// Substring on the scene params, so a guessed or short row could throw.
+    #[test]
+    fn statue_special_scene_table_stays_empty() {
+        let name = "statue_special_scene_data_table";
+        assert!(TABLES.iter().all(|(n, _)| *n != name));
+        assert!(generated_tables().iter().all(|(n, _)| n != name));
+        let mut all: Vec<(&str, &str)> = TABLES.to_vec();
+        let generated = generated_tables();
+        all.extend(generated.iter().map(|(a, b)| (a.as_str(), b.as_str())));
+        let t = tables(&Schema::embedded().unwrap(), &all).unwrap();
+        assert!(t.iter().filter(|t| t.name == name).all(|t| t.rows == 0));
+    }
+
     #[test]
     fn tutorial_table_content() {
         let s = Schema::embedded().unwrap();

@@ -98,7 +98,8 @@ returns the key itself when the label is missing (H).
   skills 125, specials 150.
 - **Left empty on purpose:**
   - `statue_special_scene_data_table`: rows trigger special death cameras and spawn a second actor;
-    a guess can spawn the wrong one;
+    a guess can spawn the wrong one. The action battle's SP cinematic does not read it (Build 41,
+    docs/research/30 §5);
   - `map_gimmick_pattern_table`: old-mode gimmicks only;
   - `action_branch_data_table`: needs affect data first.
 
@@ -144,7 +145,20 @@ What we send:
   - attribute targets (statues carry no `tribeTypeList` yet);
   - crit-rate multipliers (the client supports only a fixed add);
   - heal (capped by `_limitedHealRateMax`).
-- Rebuild: `tools/content/build_leader_abilities.py`.
+- Build 41: 4 more statues come from the live Gamerch statue pages of the research pass
+  (`--research local/wiki-raw/research-b33/action/results.jsonl`). The page's leader name must
+  equal the `ABI_LEAD_NAME` label after NFKC. Where several statues share that label, the page
+  title's ★ and 【type】 must pick exactly one roster statue with a known rarity and type.
+  - 1080_02: ALONE ATK +18%.
+  - 1020_03: HP +10%, +20% at MAX.
+  - 1100_13: FULL_HP ATK +25%.
+  - 3001_03: damage dealt +15%. This one is M: ShoutWiki oldid 3832 gives +15% as the MAX value.
+    3001_13 shares the label but has no known rarity or type, so it gets no row.
+  - Two newer matches are held in `RESEARCH_HELD` until their pages are checked: 3041_03 and
+    4000_23.
+  - Total: 92 statues.
+- Rebuild: `tools/content/build_leader_abilities.py`. `--table` merges the DT_LEAD rows into the
+  committed table and keeps the other rows; the usage line in the script has the full command.
 - Risk: the wiki numbers come from the action-battle era, so the balance is ours. The ability's
   description in the UI may be blank, because these stat affects have no text keys.
 

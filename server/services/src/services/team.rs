@@ -1173,10 +1173,19 @@ mod tests {
             );
             assert!(!collection::can_be_member(&d.statue_id));
         }
+        // One whose assist ability has no activation condition (Build 41: some have wiki terms).
+        let free = only
+            .iter()
+            .find(|d| {
+                collection::assist_abilities(&d.statue_id)
+                    .iter()
+                    .all(|a| a.conditions.is_empty())
+            })
+            .unwrap();
         let o = c
             .statues
             .iter()
-            .find(|o| o.statue_id == only[0].statue_id)
+            .find(|o| o.statue_id == free.statue_id)
             .unwrap()
             .uid;
         // Never a member: not on the starting team, refused in a seat, skipped by the auto team.
@@ -1210,7 +1219,7 @@ mod tests {
             .as_array()
             .unwrap()
             .iter()
-            .any(|a| a["abilityId"] == format!("DT_AST_{}", only[0].statue_id)));
+            .any(|a| a["abilityId"] == format!("DT_AST_{}", free.statue_id)));
         // AI teams (Arena opponents, ranking rivals) pick from the members only.
         assert!(collection::members().all(|d| !d.assist_only));
         assert_eq!(

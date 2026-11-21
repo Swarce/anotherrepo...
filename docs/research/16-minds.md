@@ -52,7 +52,7 @@ Read in the 3.12.0 client (H read in code, M inferred).
   - 12 shared rows `DT_MIND_<HP|ATK|DEF>_<rarity>`: Lv1 +2/3/5/8 % for rarity 1–4, doubled at
     Lv10.
   - Each Mind gets the stat its wiki stats lean to (`collection::mind_focus`: HP counted at two
-    thirds; ATK when the wiki has no stats, which is 258 of 417 Minds).
+    thirds; ATK when the wiki has no stats, which is 263 of 434 Minds in Build 41).
   - `abilityLevel` is the Mind's level (1 until Mind levelling exists).
 - **Detail screen (H).** It shows no ability name, only an effect line built from each affect
   row's `affectTextId` with `MindInfo.level`. Until Build 24 our affect rows had
@@ -159,3 +159,36 @@ battle pause screen and the support pick all print ability effects through
   - Whether `StatueInfoUIController` prints the leader ability through these lines or through its
     `ABI_LEAD_TEXT_*` description.
   - The original rules (our `Combine` and `Solo` choice).
+
+## 9. Flat stats and Lv10 (Build 41)
+
+- **Parser fix (ours, `build_minds.py`).** Lv1 HP/ATK/DEF are read from each effect's raw text
+  after NFKC: the first flat effect of a stat with no basis and no condition. Conditional bonuses
+  (ドドドモード時, 瀕死時, 敵を倒す度, 【波紋使い】の …) no longer count as the flat stat. Forms the
+  old parser lost now parse: 'ATK50(MAX+100)', 'HP+ 480(MAX+720)' and the full-width ＋. This
+  corrected Lv1 for 18 Minds, and `mind_focus` changes for 11 of them. Negative 【デメリット】
+  values (3008, 7220) stay out until the owner decides.
+- **More Minds.** A loose name key (no punctuation, ー, ―, …, ・, ~) adds 17 wiki records whose
+  exact name differs from `MIND_NAME_<id>` only in punctuation. It is used only where the exact name
+  matches nothing and the key is unique on both sides. These are 12 ability Minds and 5 skill
+  Minds; the skill Minds then get their skills in mind_skills.json. 7 more candidates with no stats
+  (4121, 7196, 7351, 7363, 7410, 7416, 7485) are printed and held until someone checks them.
+- **Lv10 (`lv10`, `lv10Source`).** 156 Minds:
+  - 147 from the wiki's MAX value. For 0013, 7020, 7197, 7202 and 3001 it is read from the effect
+    text because the capture's value_max is empty.
+  - 9 from the Diamond Records Preservation (PC) data where the wiki shows 'MAX+?' or no MAX: 7
+    original-game screenshots at Lv10 (cited by sha256) and 2 from an archived translation. Where
+    both have a Lv10, the screenshots agree with the wiki in all 54 cases.
+  - A Lv1 that no source gives (0013, 7260, 7392, 7490) is round(Lv10 × 0.71), marked
+    `lv1Source` jdr-default. 0.71 is the median Lv1/Lv10 of the wiki's ★3/★4 pairs.
+- **What the client reads (H, 3.12 disassembly).** Per-level hp/atk/def in `MindInfo` (+0xEC/
+  +0xF4/+0xF8) are inert. `CharacterStatus.SetStatueInfo` 0xF17DC4 reads only the statue's stats,
+  and the Mind screen's `StatusParts` has only `rootObject` and `expPart`. `mind_info` now
+  reports the level's values (linear Lv1→Lv10, `collection::mind_stats`), but this has no effect
+  in the game. They would count in the action battle only through `MindInfo.abilityInfo` (+0x40).
+  `ApplyEquipMindAbilityAffect` 0xF17864 passes it, the Mind's level and source 3 to
+  `ApplyAbilityAffect` → `AffectStatus.AddAffect` 0x2062884, interpolating Lv1→Lv10. That needs
+  flat `BASE_HP_CON`/`ATK_CON`/`DEF_CON` (1/3/5) affect rows, which we lack.
+- **Held:** this abilityInfo route. How `AddAffect` applies a `*_CON` value in the action battle
+  (flat units, any cap) and the `AFFECT_*_ADD` text label are unread. The tactical `dtAbilityInfo`
+  stays as in §6.

@@ -144,8 +144,6 @@ in 3.12.0: objects and the background are set over the socket.
 - Object models matched to titles by name (M); `clanObjectSize` 0 fits every slot; object icons
   (`clanObjectIcon`) are 0.
 - Background row ids 9001-9004 and their order (Morioh Station first, M).
-- Item 41 has no icon in `ui_item_00`; the donation list and the Message Box rows may show an
-  empty icon.
 - `myTownMember` as the member count (it is shown as a number on My Page).
 - What the original server did with chat notices to the sender, membership changes during Town
   events, and leaving one's own Town (ours: the Town closes).

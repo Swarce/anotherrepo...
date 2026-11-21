@@ -1,5 +1,5 @@
 {
- "about": "Action-battle skills per statue (tools/content/build_action_skills.py; docs/research/30-action-battle.md): the attack (SKILL_<p>_99), skill, SP skill and finisher ids for skillList, with the wiki's cool-downs and uses where it gives them.",
+ "about": "Action-battle skills per statue (tools/content/build_action_skills.py; docs/research/30-action-battle.md): the attack (SKILL_<p>_99), skill, SP skill and finisher ids for skillList, with the wiki's cool-downs and uses where it gives them. Finishers without a wiki source are the label at the statue's retail SP-cinematic entry (action_cinematics.json).",
  "statues": {
   "1000_01": {
    "attack": "SKILL_100_99",
@@ -17,7 +17,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】ジョナサン・ジョースター★3（紳士のあり方）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "1000_02": {
@@ -36,7 +36,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】ジョナサン・ジョースター★4（幸運と勇気の剣）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "1000_03": {
@@ -59,7 +59,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】ジョナサン・ジョースター★5（炎の波紋を纏いし拳）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "1000_04": {
@@ -67,13 +67,13 @@
    "skill": {
     "id": "SKILL_100_07"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_100_08"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "1000_12": {
@@ -92,7 +92,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【団結】ジョナサン・ジョースター★4（人間の可能性）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "1000_13": {
@@ -101,10 +101,12 @@
     "id": "SKILL_100_61"
    },
    "sp": null,
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_100_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "1000_28": {
@@ -113,10 +115,12 @@
     "id": "SKILL_100_61"
    },
    "sp": null,
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_100_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "1010_01": {
@@ -135,7 +139,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】ロバート・E・O・スピードワゴン★3（食屍鬼街のボス）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "1010_02": {
@@ -154,7 +158,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】ロバート・Ｅ・Ｏ・スピードワゴン★4（旅の同行者）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "1010_03": {
@@ -168,12 +172,16 @@
     "cooldown": 7,
     "uses": 3
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_101_08",
+    "cooldown": 10,
+    "uses": 2
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】ロバート・Ｅ・Ｏ・スピードワゴン★5（優しいおせっかい焼き）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "1020_01": {
@@ -192,7 +200,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】ウィル・A・ツェペリ★3（波紋の師）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "1020_02": {
@@ -211,7 +219,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】ウィル・A・ツェペリ★4（正義と怒りの波紋）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "1020_03": {
@@ -220,7 +228,11 @@
     "id": "SKILL_102_02",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_102_04",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": {
     "id": "SKILL_102_10",
     "cooldown": 10,
@@ -230,7 +242,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】ウィル・A・ツェペリ★5（これが「仙道」だ！！）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: fuzzy match 0.92 (runner-up 0.36); finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "1020_04": {
@@ -241,10 +253,12 @@
    "sp": {
     "id": "SKILL_102_08"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_102_10"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "1080_01": {
@@ -277,7 +291,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】ダイアー★4",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "1080_03": {
@@ -285,13 +299,13 @@
    "skill": {
     "id": "SKILL_108_05"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_108_06"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "1090_01": {
@@ -327,13 +341,13 @@
    "skill": {
     "id": "SKILL_109_05"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_109_06"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "1090_13": {
@@ -341,13 +355,13 @@
    "skill": {
     "id": "SKILL_109_05"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_109_06"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "1100_01": {
@@ -382,10 +396,12 @@
    "sp": {
     "id": "SKILL_110_06"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_110_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "1100_11": {
@@ -418,10 +434,12 @@
     "id": "SKILL_110_61"
    },
    "sp": null,
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_110_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "1100_14": {
@@ -430,10 +448,12 @@
     "id": "SKILL_110_61"
    },
    "sp": null,
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_110_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "1100_28": {
@@ -442,10 +462,12 @@
     "id": "SKILL_110_61"
    },
    "sp": null,
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_110_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "1110_01": {
@@ -477,13 +499,13 @@
   "1110_03": {
    "attack": "SKILL_111_99",
    "skill": null,
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_111_06"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "1120_01": {
@@ -517,13 +539,13 @@
   "1120_03": {
    "attack": "SKILL_112_99",
    "skill": null,
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_112_06"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "1130_01": {
@@ -553,7 +575,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】タルカス★4（世への恨み）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "1130_03": {
@@ -561,13 +583,13 @@
    "skill": {
     "id": "SKILL_113_05"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_113_06"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "1130_04": {
@@ -575,18 +597,21 @@
    "skill": {
     "id": "SKILL_113_05"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_113_06"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "1130_13": {
    "attack": "SKILL_113_99",
-   "skill": null,
+   "skill": {
+    "id": "SKILL_113_01",
+    "cooldown": 9
+   },
    "sp": {
     "id": "SKILL_113_03",
     "cooldown": 5,
@@ -601,7 +626,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【孤高】タルカス★5（醜悪なる狂気）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: fuzzy match 0.94 (runner-up 0.09); sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2000_01": {
@@ -620,7 +645,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】ジョセフ・ジョースター（2部）★3（頭脳戦に長けたヤツ）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2000_02": {
@@ -629,13 +654,17 @@
     "id": "SKILL_200_06",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_200_05",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": null,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】ジョセフ・ジョースター（2部）★4（機転のロープマジック）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: fuzzy match 0.83 (runner-up 0.31)); cool-downs and uses as printed (action era)"
    }
   },
   "2000_03": {
@@ -658,7 +687,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】ジョセフ・ジョースター（2部）★5（活路見出す生命の大車輪）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2000_04": {
@@ -666,13 +695,13 @@
    "skill": {
     "id": "SKILL_200_07"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_200_08"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "2000_12": {
@@ -695,10 +724,12 @@
     "id": "SKILL_200_61"
    },
    "sp": null,
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_200_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "2010_01": {
@@ -717,12 +748,15 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】シーザー・アントニオ・ツェペリ★3（シャボンの使い手）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2010_02": {
    "attack": "SKILL_201_99",
-   "skill": null,
+   "skill": {
+    "id": "SKILL_201_02",
+    "cooldown": 5
+   },
    "sp": {
     "id": "SKILL_201_07",
     "cooldown": 3,
@@ -733,12 +767,15 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】シーザー・アントニオ・ツェペリ★4（一族の誇りを胸に）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: fuzzy match 0.83 (runner-up 0.18); sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2010_03": {
    "attack": "SKILL_201_99",
-   "skill": null,
+   "skill": {
+    "id": "SKILL_201_02",
+    "cooldown": 5
+   },
    "sp": {
     "id": "SKILL_201_07",
     "cooldown": 3,
@@ -753,7 +790,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】シーザー・アントニオ・ツェペリ★5（父の仇を討つ覚悟）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: fuzzy match 0.83 (runner-up 0.18); sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2010_04": {
@@ -761,13 +798,13 @@
    "skill": {
     "id": "SKILL_201_07"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_201_08"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "2010_13": {
@@ -778,10 +815,12 @@
    "sp": {
     "id": "SKILL_201_10"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_201_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "2010_28": {
@@ -790,10 +829,12 @@
     "id": "SKILL_201_61"
    },
    "sp": null,
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_201_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "2020_01": {
@@ -812,7 +853,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】リサリサ★3（赤石の守り人）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2020_02": {
@@ -831,7 +872,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】リサリサ★4（厳しい波紋の修行）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2020_03": {
@@ -854,7 +895,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】リサリサ★5（曇りなき、奇跡の完全結晶）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2020_04": {
@@ -862,13 +903,13 @@
    "skill": {
     "id": "SKILL_202_07"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_202_08"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "2040_01": {
@@ -923,7 +964,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】サンタナ★3（メキシコに吹く熱風）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2050_02": {
@@ -942,7 +983,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】サンタナ★4（吸血による力の復活）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2050_03": {
@@ -965,7 +1006,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】サンタナ★5（指からの散弾）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2050_04": {
@@ -976,10 +1017,12 @@
    "sp": {
     "id": "SKILL_205_08"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_205_10"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "2050_12": {
@@ -987,13 +1030,11 @@
    "skill": {
     "id": "SKILL_205_09"
    },
-   "sp": {
-    "id": "SKILL_205_10"
-   },
+   "sp": null,
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "2060_01": {
@@ -1026,7 +1067,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】ワムウ★4（高きプライド）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2060_03": {
@@ -1049,7 +1090,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】ワムウ★5（風の使い手）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2070_01": {
@@ -1083,13 +1124,13 @@
   "2070_03": {
    "attack": "SKILL_207_99",
    "skill": null,
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_207_06"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "2080_01": {
@@ -1140,7 +1181,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】カーズ★5（光輝く刃）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2081_11": {
@@ -1148,13 +1189,11 @@
    "skill": {
     "id": "SKILL_208_15"
    },
-   "sp": {
-    "id": "SKILL_208_16"
-   },
+   "sp": null,
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "2081_12": {
@@ -1162,13 +1201,11 @@
    "skill": {
     "id": "SKILL_208_15"
    },
-   "sp": {
-    "id": "SKILL_208_16"
-   },
+   "sp": null,
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "2081_13": {
@@ -1205,10 +1242,12 @@
    "sp": {
     "id": "SKILL_210_02"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_210_06"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "2110_01": {
@@ -1227,7 +1266,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】ルドル・フォン・シュトロハイム★3（目覚めさせし男）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2110_02": {
@@ -1236,13 +1275,17 @@
     "id": "SKILL_211_03",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_211_09",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": null,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】ルドル・フォン・シュトロハイム★4（気骨ある軍人）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2110_03": {
@@ -1265,7 +1308,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】ルドル・フォン・シュトロハイム★5（絶対的な自信）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "2111_01": {
@@ -1273,13 +1316,11 @@
    "skill": {
     "id": "SKILL_211_15"
    },
-   "sp": {
-    "id": "SKILL_211_16"
-   },
+   "sp": null,
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "2111_02": {
@@ -1287,13 +1328,11 @@
    "skill": {
     "id": "SKILL_211_15"
    },
-   "sp": {
-    "id": "SKILL_211_16"
-   },
+   "sp": null,
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "2111_03": {
@@ -1326,7 +1365,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】空条承太郎（3部）★3（不良のレッテル）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3000_02": {
@@ -1335,13 +1374,17 @@
     "id": "SKILL_300_03",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_300_05",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": null,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】空条承太郎★4（己の正義）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: fuzzy match 0.88 (runner-up 0.32)); cool-downs and uses as printed (action era)"
    }
   },
   "3000_03": {
@@ -1364,7 +1407,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】空条承太郎（3部）★5（時を止める力の開花）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3000_04": {
@@ -1372,13 +1415,11 @@
    "skill": {
     "id": "SKILL_300_07"
    },
-   "sp": {
-    "id": "SKILL_300_08"
-   },
+   "sp": null,
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "3000_13": {
@@ -1415,7 +1456,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】空条承太郎★5（～てめーはおれを怒らせた～）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3001_04": {
@@ -1437,13 +1478,11 @@
    "skill": {
     "id": "SKILL_300_15"
    },
-   "sp": {
-    "id": "SKILL_300_16"
-   },
+   "sp": null,
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "3002_03": {
@@ -1452,7 +1491,11 @@
     "id": "SKILL_300_03",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_300_05",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": {
     "id": "SKILL_300_08",
     "cooldown": 10,
@@ -1462,7 +1505,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】空条承太郎★５（堂々とした姿）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: fuzzy match 0.88 (runner-up 0.21); finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3010_01": {
@@ -1481,7 +1524,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】ジョセフ・ジョースター（3部）★3（遠望の隠者）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3010_02": {
@@ -1500,7 +1543,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】ジョセフ・ジョースター（3部）★4（年季の違い）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3010_03": {
@@ -1523,7 +1566,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】ジョセフ・ジョースター（3部）★5（知恵と二つの力）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3010_13": {
@@ -1531,13 +1574,13 @@
    "skill": {
     "id": "SKILL_301_07"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_301_08"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "3020_01": {
@@ -1554,7 +1597,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】モハメド・アヴドゥル★3（聡明な占い師）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3020_02": {
@@ -1573,7 +1616,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】モハメド・アヴドゥル★4（灼熱の炎の猛攻）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3020_03": {
@@ -1596,7 +1639,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】モハメド・アヴドゥル★5（10年は早いんじゃあないかな）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3020_12": {
@@ -1631,17 +1674,19 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【団結】モハメド・アヴドゥル★5（心強い助言者）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3020_28": {
    "attack": "SKILL_302_99",
    "skill": null,
    "sp": null,
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_302_10"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "3030_01": {
@@ -1650,31 +1695,20 @@
     "id": "SKILL_303_01",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_303_03",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": null,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】花京院典明★3（潜み操りし法皇）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3030_02": {
-   "attack": "SKILL_303_99",
-   "skill": {
-    "id": "SKILL_303_01",
-    "cooldown": 5
-   },
-   "sp": null,
-   "finisher": null,
-   "source": {
-    "source": "Gamerch ジョジョDR攻略Wiki (live)",
-    "page": "https://jojodr.gamerch.com/【知略】花京院典明★4（仲間を守る冷静な洞察力）",
-    "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
-   }
-  },
-  "3030_03": {
    "attack": "SKILL_303_99",
    "skill": {
     "id": "SKILL_303_01",
@@ -1688,9 +1722,30 @@
    "finisher": null,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
-    "page": "https://jojodr.gamerch.com/【知略】花京院典明★5（最期のエメラルド・スプラッシュ）",
+    "page": "https://jojodr.gamerch.com/【知略】花京院典明★4（仲間を守る冷静な洞察力）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: fuzzy match 0.91 (runner-up 0.22)); cool-downs and uses as printed (action era)"
+   }
+  },
+  "3030_03": {
+   "attack": "SKILL_303_99",
+   "skill": {
+    "id": "SKILL_303_01",
+    "cooldown": 5
+   },
+   "sp": {
+    "id": "SKILL_303_04",
+    "cooldown": 3,
+    "uses": 3
+   },
+   "finisher": {
+    "id": "SKILL_303_08"
+   },
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【知略】花京院典明★5（最期のエメラルド・スプラッシュ）",
+    "accessed": "2026-11-21",
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era); the finisher block read again 2026-11-21"
    }
   },
   "3030_13": {
@@ -1713,7 +1768,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【団結】花京院典明★5（広範囲の調査）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3030_14": {
@@ -1724,10 +1779,12 @@
    "sp": {
     "id": "SKILL_303_10"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_303_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "3031_03": {
@@ -1741,12 +1798,14 @@
     "cooldown": 3,
     "uses": 3
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_303_08"
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】花京院典明★5（～恐怖を乗り越えた～）",
-    "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "accessed": "2026-11-21",
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era); the finisher block read again 2026-11-21"
    }
   },
   "3031_04": {
@@ -1757,10 +1816,12 @@
    "sp": {
     "id": "SKILL_303_11"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_303_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "3040_01": {
@@ -1779,7 +1840,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】ジャン・ピエール・ポルナレフ★3（気高き刺客）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3040_02": {
@@ -1788,13 +1849,17 @@
     "id": "SKILL_304_01",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_304_06",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": null,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】ジャン・ピエール・ポルナレフ★4（俊敏な剣の腕前）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3040_03": {
@@ -1803,9 +1868,13 @@
     "id": "SKILL_304_01",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_304_06",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": {
-    "id": "SKILL_304_03",
+    "id": "SKILL_304_08",
     "cooldown": 10,
     "uses": 2
    },
@@ -1813,7 +1882,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】ジャン・ピエール・ポルナレフ★5（卓越した剣技の持ち主）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match, the label at the retail cinematic entry); cool-downs and uses as printed (action era)"
    }
   },
   "3040_04": {
@@ -1834,9 +1903,13 @@
     "id": "SKILL_304_01",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_304_06",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": {
-    "id": "SKILL_304_03",
+    "id": "SKILL_304_08",
     "cooldown": 10,
     "uses": 2
    },
@@ -1844,7 +1917,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【団結】ジャン・ピエール・ポルナレフ★5（鋭く繰り広げられる剣先）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match, the label at the retail cinematic entry); cool-downs and uses as printed (action era)"
    }
   },
   "3041_03": {
@@ -1891,7 +1964,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】イギー★3（野良犬の帝王）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3050_02": {
@@ -1910,7 +1983,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】イギー★4（見殺しには……できねーぜ！）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3050_03": {
@@ -1933,7 +2006,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】イギー★5（シンプル故の強さ）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3050_04": {
@@ -1942,10 +2015,12 @@
    "sp": {
     "id": "SKILL_305_08"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_305_10"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "3060_01": {
@@ -1994,7 +2069,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】グレーフライ★5（破壊と災害、旅の中止）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3070_01": {
@@ -2030,13 +2105,13 @@
    "skill": {
     "id": "SKILL_307_05"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_307_06"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "3090_01": {
@@ -2087,7 +2162,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】呪いのデーボ★5（不吉なる堕落の道！）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3100_01": {
@@ -2106,7 +2181,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】ラバーソール★3（変身と捕食）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3100_02": {
@@ -2125,7 +2200,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】ラバーソール★4（食らった肉との同化）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3100_03": {
@@ -2148,7 +2223,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】ラバーソール★5（『弱点』なき『黄の節制』）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3100_12": {
@@ -2167,7 +2242,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【孤高】ラバーソール★4（ハナでもほじっていな！）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3110_01": {
@@ -2176,13 +2251,17 @@
     "id": "SKILL_311_05",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_311_04",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": null,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】ホル・ホース★3（コンビの力）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: fuzzy match 0.93 (runner-up 0.40)); cool-downs and uses as printed (action era)"
    }
   },
   "3110_02": {
@@ -2201,7 +2280,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】ホル・ホース★4（一番よりNO.2！）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3110_03": {
@@ -2212,10 +2291,12 @@
    "sp": {
     "id": "SKILL_311_06"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_311_10"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "3110_13": {
@@ -2238,7 +2319,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【団結】ホル・ホース★5（実力の発揮）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3110_14": {
@@ -2246,13 +2327,13 @@
    "skill": {
     "id": "SKILL_311_09"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_311_10"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "3150_01": {
@@ -2285,7 +2366,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】エンヤ婆★4（無数の死人たち）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3150_03": {
@@ -2296,10 +2377,12 @@
    "sp": {
     "id": "SKILL_315_06"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_315_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "3150_04": {
@@ -2307,13 +2390,13 @@
    "skill": {
     "id": "SKILL_315_07"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_315_08"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "3150_12": {
@@ -2332,7 +2415,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【団結】エンヤ婆★4（不気味な幻影の街）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3210_01": {
@@ -2351,7 +2434,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】ンドゥール★3（探知能力）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3210_02": {
@@ -2360,27 +2443,31 @@
     "id": "SKILL_321_03",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_321_10",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": null,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】ンドゥール★4（鋭い聴覚）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: fuzzy match 0.95 (runner-up 0.17)); cool-downs and uses as printed (action era)"
    }
   },
   "3210_03": {
    "attack": "SKILL_321_99",
-   "skill": {
-    "id": "SKILL_321_08"
-   },
+   "skill": null,
    "sp": {
     "id": "SKILL_321_10"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_321_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "3210_12": {
@@ -2389,27 +2476,31 @@
     "id": "SKILL_321_03",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_321_10",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": null,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【孤高】ンドゥール★4（注意深い判断力）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: fuzzy match 0.95 (runner-up 0.17)); cool-downs and uses as printed (action era)"
    }
   },
   "3210_13": {
    "attack": "SKILL_321_99",
-   "skill": {
-    "id": "SKILL_321_08"
-   },
+   "skill": null,
    "sp": {
     "id": "SKILL_321_10"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_321_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "3240_11": {
@@ -2460,7 +2551,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【孤高】チャカ★5（意志を持つ刀）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3270_01": {
@@ -2511,7 +2602,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】マライア★5（触れてはいけない物）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3270_04": {
@@ -2519,13 +2610,13 @@
    "skill": {
     "id": "SKILL_327_05"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_327_06"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "3300_01": {
@@ -2544,7 +2635,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】ペット・ショップ★3（鋭い眼光）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3300_02": {
@@ -2563,7 +2654,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】ペット・ショップ★4（館の守護をするモノ）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3300_03": {
@@ -2586,7 +2677,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】ペット・ショップ★5（凶暴凶悪なくちばしと氷）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3300_04": {
@@ -2597,10 +2688,12 @@
    "sp": {
     "id": "SKILL_330_08"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_330_09"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "3321_03": {
@@ -2620,7 +2713,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】DIO ★5（～最高に「ハイ！」ってやつだ～）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "3321_18": {
@@ -2698,12 +2791,16 @@
     "cooldown": 8,
     "uses": 3
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_333_08",
+    "cooldown": 10,
+    "uses": 2
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】ヴァニラ・アイス★5（狂信者の奉仕）",
-    "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "accessed": "2026-11-21",
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: Gamerch SP2 (name blank) + retail cinematic set); cool-downs and uses as printed (action era); the finisher block read again 2026-11-21"
    }
   },
   "3330_04": {
@@ -2711,13 +2808,13 @@
    "skill": {
     "id": "SKILL_333_07"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_333_08"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4000_01": {
@@ -2736,7 +2833,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】東方仗助★3（祖父の意思を継し者）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4000_02": {
@@ -2745,13 +2842,17 @@
     "id": "SKILL_400_01",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_400_06",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": null,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】東方仗助★4（許されざる悪への怒り）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4000_03": {
@@ -2760,7 +2861,11 @@
     "id": "SKILL_400_01",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_400_06",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": {
     "id": "SKILL_400_08",
     "cooldown": 10,
@@ -2770,7 +2875,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】東方仗助★5（砕けない黄金の精神）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4000_04": {
@@ -2778,13 +2883,13 @@
    "skill": {
     "id": "SKILL_400_07"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_400_08"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4000_12": {
@@ -2793,13 +2898,17 @@
     "id": "SKILL_400_01",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_400_06",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": null,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【団結】東方仗助★4（爽やかな気分）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4000_18": {
@@ -2808,29 +2917,40 @@
     "id": "SKILL_400_01",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_400_61",
+    "cooldown": 6,
+    "uses": 3
+   },
    "finisher": null,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【団結】東方仗助～町を護る者～★6（力強く優しき瞳）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4000_23": {
    "attack": "SKILL_400_99",
    "skill": {
-    "id": "SKILL_400_61"
+    "id": "SKILL_400_01",
+    "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_400_06",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": {
     "id": "SKILL_400_08",
     "cooldown": 10,
     "uses": 2
    },
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【闘志】東方仗助  ★5（～この頭のことなんつった！～）",
+    "accessed": "2026-11-20",
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4010_01": {
@@ -2846,7 +2966,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】広瀬康一（ACT1）★3（勇気ある優しき少年）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4010_13": {
@@ -2869,7 +2989,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【団結】広瀬康一（ACT1）★5（覚醒の可能性）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4011_02": {
@@ -2885,7 +3005,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】広瀬康一（ACT2）★4（成長する精神）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4011_03": {
@@ -2908,7 +3028,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】広瀬康一★5（『音の文字』を操る）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4011_15": {
@@ -2928,7 +3048,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【孤高】広瀬康一（ACT2）★6（成長し殻を破る）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4011_16": {
@@ -2960,13 +3080,11 @@
   "4011_18": {
    "attack": "SKILL_401_99",
    "skill": null,
-   "sp": {
-    "id": "SKILL_401_16"
-   },
+   "sp": null,
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4012_03": {
@@ -2989,7 +3107,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】広瀬康一（ACT3）★5（S・H・I・T）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4012_11": {
@@ -3008,7 +3126,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【団結】広瀬康一★3（覚醒の時）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4020_01": {
@@ -3027,7 +3145,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】虹村億泰★3（情に厚き友）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4020_02": {
@@ -3046,7 +3164,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】虹村億泰★4（ゾっとするほど強力なスタンド）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4020_03": {
@@ -3069,7 +3187,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】虹村億泰★5（兄からの自立）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4020_04": {
@@ -3080,10 +3198,12 @@
    "sp": {
     "id": "SKILL_402_08"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_402_10"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4020_13": {
@@ -3091,30 +3211,40 @@
    "skill": {
     "id": "SKILL_402_09"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_402_10"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4030_01": {
    "attack": "SKILL_403_99",
-   "skill": null,
+   "skill": {
+    "id": "SKILL_403_02",
+    "cooldown": 5
+   },
    "sp": {
-    "id": "SKILL_403_02"
+    "id": "SKILL_403_06",
+    "cooldown": 3,
+    "uses": 3
    },
    "finisher": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【知略】岸辺露伴★3（リアリティへの拘り）",
+    "accessed": "2026-11-20",
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: fuzzy match 0.95 (runner-up 0.12); sp: fuzzy match 0.90 (runner-up 0.34)); cool-downs and uses as printed (action era)"
    }
   },
   "4030_02": {
    "attack": "SKILL_403_99",
-   "skill": null,
+   "skill": {
+    "id": "SKILL_403_02",
+    "cooldown": 5
+   },
    "sp": {
     "id": "SKILL_403_03"
    },
@@ -3123,12 +3253,15 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】岸辺露伴★4（最高のネタは逃さない！）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: fuzzy match 0.95 (runner-up 0.12); sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4030_03": {
    "attack": "SKILL_403_99",
-   "skill": null,
+   "skill": {
+    "id": "SKILL_403_02",
+    "cooldown": 5
+   },
    "sp": {
     "id": "SKILL_403_03",
     "cooldown": 3,
@@ -3143,7 +3276,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】岸辺露伴★5（成長し続けるマンガ家）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: fuzzy match 0.95 (runner-up 0.12); sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4030_04": {
@@ -3151,13 +3284,13 @@
    "skill": {
     "id": "SKILL_403_07"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_403_08"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4031_18": {
@@ -3190,7 +3323,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】空条承太郎（4部）★3（経験による導き）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4040_12": {
@@ -3209,7 +3342,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【団結】空条承太郎★4（尊敬を集める経験者）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4040_13": {
@@ -3242,16 +3375,14 @@
   },
   "4042_03": {
    "attack": "SKILL_404_99",
-   "skill": {
-    "id": "SKILL_404_09"
-   },
+   "skill": null,
    "sp": {
     "id": "SKILL_404_10"
    },
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4043_08": {
@@ -3282,7 +3413,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】山岸由花子★3（恋する乙女）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4080_02": {
@@ -3301,7 +3432,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】山岸由花子★4（執念深い愛）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4080_03": {
@@ -3315,12 +3446,16 @@
     "cooldown": 3,
     "uses": 3
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_408_10",
+    "cooldown": 10,
+    "uses": 2
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】山岸由花子★5（輝く乙女の無敵の肉体）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4080_04": {
@@ -3329,10 +3464,12 @@
    "sp": {
     "id": "SKILL_408_08"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_408_10"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4080_13": {
@@ -3352,7 +3489,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【孤高】山岸由花子★5（激しい思い込み）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4110_01": {
@@ -3361,13 +3498,17 @@
     "id": "SKILL_411_01",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_411_04",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": null,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】矢安宮重清★3（小さく便利な群体）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4110_02": {
@@ -3386,14 +3527,16 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】矢安宮重清★4（おらたち仲間だよね？）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4110_13": {
    "attack": "SKILL_411_99",
    "skill": null,
    "sp": {
-    "id": "SKILL_411_06"
+    "id": "SKILL_411_03",
+    "cooldown": 3,
+    "uses": 3
    },
    "finisher": {
     "id": "SKILL_411_09",
@@ -3401,8 +3544,10 @@
     "uses": 2
    },
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【団結】矢安宮重清★5（お札がいっぱい！）",
+    "accessed": "2026-11-20",
+    "note": "skill names matched to the game's SKILL_NAME labels (sp: fuzzy match 0.90 (runner-up 0.09); finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4110_14": {
@@ -3411,10 +3556,12 @@
     "id": "SKILL_411_07"
    },
    "sp": null,
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_411_09"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4130_01": {
@@ -3453,87 +3600,93 @@
    "sp": {
     "id": "SKILL_413_06"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_413_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4130_13": {
    "attack": "SKILL_413_99",
-   "skill": null,
+   "skill": {
+    "id": "SKILL_413_09",
+    "cooldown": 5
+   },
    "sp": {
     "id": "SKILL_413_06",
     "cooldown": 3,
     "uses": 3
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_413_08"
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【団結】噴上裕也★5（スピードキング）",
-    "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "accessed": "2026-11-21",
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: fuzzy match 0.83 (runner-up 0.22); sp: strict match; finisher: fuzzy match 0.96 (runner-up 0.26)); cool-downs and uses as printed (action era); the finisher block read again 2026-11-21"
    }
   },
   "4130_25": {
    "attack": "SKILL_413_99",
-   "skill": {
-    "id": "SKILL_413_08"
-   },
+   "skill": null,
    "sp": {
     "id": "SKILL_413_09"
    },
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4130_26": {
    "attack": "SKILL_413_99",
-   "skill": {
-    "id": "SKILL_413_08"
-   },
+   "skill": null,
    "sp": {
     "id": "SKILL_413_09"
    },
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4130_27": {
    "attack": "SKILL_413_99",
-   "skill": {
-    "id": "SKILL_413_08"
-   },
+   "skill": null,
    "sp": {
     "id": "SKILL_413_09"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_413_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4130_28": {
    "attack": "SKILL_413_99",
-   "skill": {
-    "id": "SKILL_413_08"
-   },
+   "skill": null,
    "sp": {
     "id": "SKILL_413_09"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_413_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4150_01": {
    "attack": "SKILL_415_99",
-   "skill": null,
+   "skill": {
+    "id": "SKILL_415_02",
+    "cooldown": 5
+   },
    "sp": {
     "id": "SKILL_415_10",
     "cooldown": 3,
@@ -3544,7 +3697,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】片桐安十郎★3（能力の目覚め）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: fuzzy match 0.97 (runner-up 0.20); sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4150_02": {
@@ -3563,7 +3716,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【闘志】片桐安十郎★4（水に紛れし邪悪な気配）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4150_03": {
@@ -3574,10 +3727,12 @@
    "sp": {
     "id": "SKILL_415_06"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_415_08"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4160_01": {
@@ -3586,13 +3741,17 @@
     "id": "SKILL_416_05",
     "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_416_02",
+    "cooldown": 3,
+    "uses": 3
+   },
    "finisher": null,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】虹村形兆★3（キチョーメンな性格）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: fuzzy match 0.80 (runner-up 0.25)); cool-downs and uses as printed (action era)"
    }
   },
   "4160_02": {
@@ -3611,7 +3770,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】虹村形兆★4（父への秘めた想い）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4160_03": {
@@ -3634,7 +3793,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【知略】虹村形兆★5（規律正しい軍隊）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4160_12": {
@@ -3682,13 +3841,13 @@
    "skill": {
     "id": "SKILL_417_05"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_417_06"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4170_15": {
@@ -3696,13 +3855,11 @@
    "skill": {
     "id": "SKILL_417_05"
    },
-   "sp": {
-    "id": "SKILL_417_06"
-   },
+   "sp": null,
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4170_16": {
@@ -3710,13 +3867,11 @@
    "skill": {
     "id": "SKILL_417_05"
    },
-   "sp": {
-    "id": "SKILL_417_06"
-   },
+   "sp": null,
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4170_17": {
@@ -3724,13 +3879,13 @@
    "skill": {
     "id": "SKILL_417_05"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_417_06"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4170_18": {
@@ -3738,13 +3893,13 @@
    "skill": {
     "id": "SKILL_417_05"
    },
-   "sp": {
+   "sp": null,
+   "finisher": {
     "id": "SKILL_417_06"
    },
-   "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4190_13": {
@@ -3764,7 +3919,7 @@
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【孤高】吉良吉影★5（吉良吉影は静かに暮らしたい）",
     "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "note": "skill names matched to the game's SKILL_NAME labels (sp: strict match; finisher: strict match); cool-downs and uses as printed (action era)"
    }
   },
   "4190_14": {
@@ -3784,13 +3939,11 @@
    "skill": {
     "id": "SKILL_419_15"
    },
-   "sp": {
-    "id": "SKILL_419_16"
-   },
+   "sp": null,
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4191_02": {
@@ -3798,13 +3951,11 @@
    "skill": {
     "id": "SKILL_419_15"
    },
-   "sp": {
-    "id": "SKILL_419_16"
-   },
+   "sp": null,
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4191_03": {
@@ -3813,13 +3964,19 @@
     "id": "SKILL_419_11",
     "cooldown": 8
    },
-   "sp": null,
-   "finisher": null,
+   "sp": {
+    "id": "SKILL_419_13",
+    "cooldown": 5,
+    "uses": 3
+   },
+   "finisher": {
+    "id": "SKILL_419_16"
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (live)",
     "page": "https://jojodr.gamerch.com/【勇気】川尻浩作★5（抑えきれぬ殺人衝動）",
-    "accessed": "2026-11-20",
-    "note": "skill names matched to the game's SKILL_NAME labels; cool-downs and uses as printed (action era)"
+    "accessed": "2026-11-21",
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: strict match; sp: fuzzy match 0.89 (runner-up 0.29); finisher: fuzzy match 0.88 (runner-up 0.27)); cool-downs and uses as printed (action era); the finisher block read again 2026-11-21"
    }
   },
   "4191_04": {
@@ -3841,13 +3998,11 @@
    "skill": {
     "id": "SKILL_419_25"
    },
-   "sp": {
-    "id": "SKILL_419_26"
-   },
+   "sp": null,
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4192_04": {
@@ -3855,13 +4010,11 @@
    "skill": {
     "id": "SKILL_419_25"
    },
-   "sp": {
-    "id": "SKILL_419_26"
-   },
+   "sp": null,
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "4193_08": {
@@ -3917,15 +4070,24 @@
   "4240_13": {
    "attack": "SKILL_424_99",
    "skill": {
-    "id": "SKILL_424_05"
+    "id": "SKILL_424_01",
+    "cooldown": 5
    },
    "sp": {
-    "id": "SKILL_424_06"
+    "id": "SKILL_424_03",
+    "cooldown": 3,
+    "uses": 3
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_424_06",
+    "cooldown": 30,
+    "uses": 2
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【孤高】宮本輝之輔★5（絶対無敵の攻撃）",
+    "accessed": "2026-11-20",
+    "note": "skill names matched to the game's SKILL_NAME labels (skill: fuzzy match 0.95 (runner-up 0.22); sp: fuzzy match 0.97 (runner-up 0.21); finisher: fuzzy match 0.95 (runner-up 0.21)); cool-downs and uses as printed (action era)"
    }
   },
   "5000_03": {
@@ -3961,13 +4123,11 @@
    "skill": {
     "id": "SKILL_500_05"
    },
-   "sp": {
-    "id": "SKILL_500_06"
-   },
+   "sp": null,
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "5000_23": {
@@ -4014,10 +4174,12 @@
    "sp": {
     "id": "SKILL_501_03"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_501_06"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "5010_14": {
@@ -4028,10 +4190,12 @@
    "sp": {
     "id": "SKILL_501_04"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_501_06"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "5030_04": {
@@ -4056,10 +4220,12 @@
    "sp": {
     "id": "SKILL_505_03"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_505_06"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "5050_04": {
@@ -4070,10 +4236,12 @@
    "sp": {
     "id": "SKILL_505_04"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_505_06"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "5080_04": {
@@ -4112,10 +4280,12 @@
    "sp": {
     "id": "SKILL_512_03"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_512_06"
+   },
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "5140_04": {
@@ -4190,16 +4360,12 @@
   },
   "5290_04": {
    "attack": "SKILL_529_99",
-   "skill": {
-    "id": "SKILL_529_01"
-   },
-   "sp": {
-    "id": "SKILL_529_02"
-   },
+   "skill": null,
+   "sp": null,
    "finisher": null,
    "source": {
     "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
    }
   },
   "5320_04": {

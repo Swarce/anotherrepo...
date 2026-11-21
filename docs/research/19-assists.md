@@ -141,8 +141,29 @@ M = inferred.
   - the action-battle list carries the name and parameters inline (`isInit` true,
     `paramListLv…`);
   - the tactical list carries ids only, and the client fills them from the table.
-- **Conditions (ours).** `assist_ability_condition_table` is generated: one row per statue, with
-  no terms, so every ability is always active. The original conditions are unknown for the roster.
+- **Conditions.** `assist_ability_condition_table` is generated from `assist_abilities.json`: one
+  row per statue. Until Build 33 every row had no terms (always active).
+  - Build 33: 116 statues take the condition their research record lists (`--research`).
+  - Build 41: 175 statues.
+    - The ShoutWiki parser now reads the requirement icons: `{{Type}}` or `File:Type.png`, after
+      "Requirement:", "Activation Condition:" or "Activation Type Requirements:", or a bare icon
+      line. It also reads the h2 `== Assist Ability ==` inside `{{Article|…|…}}` tabs.
+    - 34 statues that cite a ShoutWiki revision get the condition from that same revision.
+    - 8 defaults get a ShoutWiki entry. Three of these come from "Old Mode" templates (oldids 3832,
+      3840, 3855, kept in `local/wiki-raw/shoutwiki/oldmode_pages.json`). With the entries,
+      4190_13 becomes DEF +8% (DEF2) and 5050_04 damage dealt +18% (DMG4).
+    - 17 defaults get the condition from the research records: `research-b33/action` (live Gamerch
+      pages, read for the first time) and `research-b33/statues`. Gamerch's 発動条件 text and its
+      JP damage line are now parsed. Records also count as agreeing when what they parse to agrees,
+      so the wording no longer has to match. With these, 2081_13 becomes DMG3, 4000_18 becomes
+      DMG4, and the assist-only row DT_AST_1030_62 becomes HP +10%.
+  - Held, with the reasons in `HELD` in the builder:
+    - 3180_62, 3230_62 and 4220_72 were rejected;
+    - 4030_04, 4090_72 and 4170_16 have a ShoutWiki requirement that has not been checked yet.
+  - Effects with no tactical affect keep the default kind (the leaning stat) under the wiki
+    condition. These are conversions, crit, cool time, move speed and damage to a race.
+  - Statues with no wiki type are counted under the server's placeholder type, so a condition
+    on them depends on that guess (collection.rs `StatueDef::statue_type`).
 - **Tactical effect (ours).** Since the client never applies assist abilities in a tactical
   battle, every TeamInfo puts a seat's active assist abilities into that seat statue's
   `dtAbilityList`. The battle applies that list as statue abilities (source Statue 2,

@@ -1492,6 +1492,37 @@ mod tests {
         assert_eq!(statue_setting_rows().len(), statues().len());
     }
 
+    /// Wiki stats stay consistent (docs/CONTENT.md "Wiki cross-checks"): Lv99 is about 10 x Lv1,
+    /// and a tree max is above Lv99 (a Gamerch Lv99 row that equals the wiki's tree max made four
+    /// statues 1.4-2x too strong). Lv1 from Lv99 rounds half up, as the wikis do.
+    #[test]
+    fn statue_wiki_stats_consistent() {
+        let tri = |s: &Stats| [s.hp, s.atk, s.def];
+        for d in statues() {
+            if let (Some(l1), Some(l99)) = (&d.lv1, &d.lv99) {
+                for (a, b) in tri(l1).into_iter().zip(tri(l99)) {
+                    assert!(a > 0 && (5..=20).contains(&(b / a)), "{}", d.statue_id);
+                }
+            }
+            if let (Some(l99), Some(m)) = (&d.lv99, &d.max_tree) {
+                let (a, b) = (tri(l99), tri(m));
+                assert!(a.iter().zip(&b).all(|(x, y)| x <= y), "{}", d.statue_id);
+                assert!(a != b, "{}: the tree adds nothing", d.statue_id);
+            }
+        }
+        let by = |id: &str| statues().iter().find(|d| d.statue_id == id).unwrap();
+        let k = by("4043_08");
+        assert_eq!(tri(k.lv99.as_ref().unwrap()), [22338, 16425, 11826]);
+        assert_eq!(tri(k.max_tree.as_ref().unwrap()), [31338, 30825, 24426]);
+        assert_eq!(tri(k.lv1.as_ref().unwrap()), [2234, 1643, 1183]);
+        // 4725 / 10 = 472.5 rounds up.
+        assert_eq!(by("1010_02").lv1.as_ref().unwrap().atk, 473);
+        // A default the JoJoWiki dump identifies (type, Lv99 and tree from its page).
+        let w = by("1110_03");
+        assert_eq!(w.statue_type, Some(3));
+        assert_eq!(tri(w.lv99.as_ref().unwrap()), [14400, 5184, 4896]);
+    }
+
     /// Assists (docs/research/19-assists.md §5): both ability lists match, the seat statue carries
     /// its assists' active abilities, and the assist skill is one of the statue's own skills.
     #[test]
@@ -1644,6 +1675,85 @@ mod tests {
         assert!(with_sp > 200, "{with_sp}");
     }
 
+    /// The SP cinematic is chosen by the player's files, not by us: an action-set entry whose FSM
+    /// runs DoChangeBattleSceneMode mode 2 starts it (server/content/action_cinematics.json,
+    /// docs/research/30 §5). A skill id SKILL_<p>_<NN> plays entry
+    /// GameConst.VariationSkillIdToSkillId(NN) 0xDB627C: 61..70 kept, else NN % 10 with 0 -> 10.
+    /// So the skill and SP slots must not land on a cinematic entry (the wiki never puts it
+    /// there), and a finisher we chose ourselves (jdr-default) must land on one. Wiki finishers
+    /// are not checked: 3090_03's wiki finisher has no cinematic in retail.
+    #[test]
+    fn action_finishers_play_the_retail_cinematic() {
+        fn entry(id: &str) -> i64 {
+            let n: i64 = id.rsplit('_').next().unwrap().parse().unwrap();
+            if n < 1 || (61..=70).contains(&n) {
+                n
+            } else if n % 10 == 0 {
+                10
+            } else {
+                n % 10
+            }
+        }
+        fn ints(v: Option<&Value>) -> Vec<i64> {
+            v.and_then(Value::as_array)
+                .map(|a| a.iter().filter_map(Value::as_i64).collect())
+                .unwrap_or_default()
+        }
+        assert_eq!(entry("SKILL_401_16"), 6);
+        assert_eq!(entry("SKILL_400_61"), 61);
+        assert_eq!(entry("SKILL_102_10"), 10);
+        assert_eq!(entry("SKILL_304_20"), 10);
+        let cin: Value =
+            serde_json::from_str(include_str!("../../content/action_cinematics.json")).unwrap();
+        assert!(cin["cinematic"].as_object().unwrap().len() >= 70);
+        let doc: Value = serde_json::from_str(ACTION_SKILLS_JSON).unwrap();
+        let (mut checked, mut defaults) = (0, 0);
+        for (sid, rec) in doc["statues"].as_object().unwrap() {
+            let entries = ints(cin["cinematic"].get(&sid[..4]));
+            let set = ints(cin["skillSets"].get(&sid[..4]));
+            let id = |slot: &str| rec[slot]["id"].as_str().map(str::to_owned);
+            for slot in ["skill", "sp"] {
+                if let Some(x) = id(slot) {
+                    assert!(
+                        !entries.contains(&entry(&x)),
+                        "{sid} {slot} {x} plays the SP cinematic"
+                    );
+                    checked += 1;
+                }
+            }
+            if let Some(x) = id("finisher") {
+                if !set.is_empty() {
+                    assert!(
+                        set.contains(&entry(&x)),
+                        "{sid} {x} has no action-set entry"
+                    );
+                }
+                if rec["source"]["source"] == "jdr-default" {
+                    assert!(
+                        entries.contains(&entry(&x)),
+                        "{sid}: our finisher {x} is not the cinematic"
+                    );
+                    defaults += 1;
+                }
+            }
+        }
+        assert!(checked > 300, "{checked}");
+        assert!(defaults >= 57, "{defaults} jdr-default finishers");
+        // The two Polnareff ★5 pages name a finisher whose text SKILL_304_03 shares; only 304_08
+        // is the cinematic.
+        let fin = |sid: &str| {
+            action_skills(sid)
+                .unwrap()
+                .finisher
+                .as_ref()
+                .unwrap()
+                .id
+                .clone()
+        };
+        assert_eq!(fin("3040_03"), "SKILL_304_08");
+        assert_eq!(fin("3040_13"), "SKILL_304_08");
+    }
+
     #[test]
     fn assist_conditions_count_the_seats_assist_types() {
         let assists = [
@@ -1657,6 +1767,48 @@ mod tests {
         assert!(conditions_met(&[cond(1, 1), cond(3, 1)], &assists));
         assert!(!conditions_met(&[cond(1, 3)], &assists));
         assert!(!conditions_met(&[cond(3, 1), cond(5, 1)], &assists));
+    }
+
+    /// Build 41 wiki merges: ShoutWiki requirement icons and Gamerch condition text become
+    /// conditions, a matched wiki kind replaces the default, held statues stay unconditioned, and a
+    /// leader row goes only to the statue its label, rarity and type pick.
+    #[test]
+    fn build41_assist_conditions_and_leader_rows() {
+        let terms = |sid: &str| -> Vec<(i64, i64)> {
+            assist_abilities(sid)[0]
+                .conditions
+                .iter()
+                .map(|c| (c.statue_type, c.count))
+                .collect()
+        };
+        // ShoutWiki revision 3299 ("Tactical, Tactical") and the same revision we cite (3343).
+        assert_eq!(terms("3290_62"), [(2, 2)]);
+        assert_eq!(terms("2060_01"), [(1, 2)]);
+        // Old Mode template oldid 3840 (DEF + 8%) and page rev 4400 (damage given + 18%).
+        assert_eq!(
+            assist_abilities("4190_13")[0].ability_id,
+            "DT_AST_DEF_RATEADD2"
+        );
+        assert_eq!(terms("4190_13"), [(1, 1), (3, 1)]);
+        assert_eq!(
+            assist_abilities("5050_04")[0].ability_id,
+            "DT_AST_DMG_RATEADD4"
+        );
+        // Gamerch '闘志1体と孤高を2体' and '与えるダメージ+7％'.
+        assert_eq!(terms("3321_18"), [(3, 1), (5, 2)]);
+        assert_eq!(
+            assist_abilities("2081_13")[0].ability_id,
+            "DT_AST_DMG_RATEADD3"
+        );
+        // Held: no condition.
+        for sid in ["3180_62", "3230_62", "4220_72"] {
+            assert!(terms(sid).is_empty(), "{sid}");
+        }
+        // 3001_13 shares 3001_03's leader label but not its rarity/type; 1100_03 likewise 1100_13.
+        assert_eq!(leader_ability("3001_03")["abilityId"], "DT_LEAD_3001_03");
+        assert_eq!(leader_ability("1100_13")["abilityId"], "DT_LEAD_1100_13");
+        assert_eq!(leader_ability("3001_13"), json!({}));
+        assert_eq!(leader_ability("1100_03"), json!({}));
     }
 
     #[test]
@@ -1835,6 +1987,9 @@ pub struct MindDef {
     pub hp: i64,
     pub atk: i64,
     pub def: i64,
+    /// Flat stats at Lv10 where a source gives them (Build 41; `lv10Source` in minds.json).
+    #[serde(default)]
+    pub lv10: Option<Stats>,
 }
 
 pub fn minds() -> &'static [MindDef] {
@@ -1966,11 +2121,27 @@ pub fn mind_rarity(mind_id: &str) -> i64 {
         .unwrap_or(3)
 }
 
+/// A Mind's flat HP/ATK/DEF at a level: linear from Lv1 to Lv10 where minds.json has `lv10`, else
+/// the Lv1 values. Only `mind_info` reports them, and the 3.12 client ignores them there: neither
+/// CharacterStatus.SetStatueInfo nor the Mind screen reads MindInfo hp/atk/def (docs/research/16
+/// §9). They would count in the action battle only through MindInfo.abilityInfo, which is held.
+pub fn mind_stats(d: &MindDef, level: i64) -> [i64; 3] {
+    let l1 = [d.hp, d.atk, d.def];
+    let Some(t) = &d.lv10 else { return l1 };
+    let step = level.clamp(1, MIND_MAX_LEVEL) - 1;
+    let span = MIND_MAX_LEVEL - 1;
+    let mut out = l1;
+    for (o, (a, b)) in out.iter_mut().zip(l1.into_iter().zip([t.hp, t.atk, t.def])) {
+        *o = a + (b - a) * step / span;
+    }
+    out
+}
+
 pub fn mind_info(o: &OwnedMind) -> Value {
     let d = minds().iter().find(|m| m.mind_id == o.mind_id);
-    let (rare, cost, hp, atk, def) = d
-        .map(|d| (d.rarity, d.cost, d.hp, d.atk, d.def))
-        .unwrap_or((3, 9, 0, 0, 0));
+    let (rare, cost, [hp, atk, def]) = d
+        .map(|d| (d.rarity, d.cost, mind_stats(d, o.level)))
+        .unwrap_or((3, 9, [0, 0, 0]));
     let id = &o.mind_id;
     let level_table: Vec<Value> = mind_curve(rare)
         .iter()
@@ -2010,6 +2181,75 @@ pub fn mind_info(o: &OwnedMind) -> Value {
         "bonusCondition": 0, "bonusRate": 0, "hp": hp, "eng": 0, "atk": atk, "def": def,
         "newFlg": 0, "useFlg": 0, "protectedFlg": o.protected as i64, "getDate": o.get_date
     })
+}
+
+/// Mind flat stats (docs/research/16-minds.md §9): Lv1 from the first unconditional flat effect,
+/// Lv10 from its MAX where a source gives one.
+#[cfg(test)]
+mod mind_stats_tests {
+    use super::*;
+
+    fn def(id: &str) -> &'static MindDef {
+        minds().iter().find(|m| m.mind_id == id).unwrap()
+    }
+
+    #[test]
+    fn lv1_and_lv10() {
+        assert_eq!(minds().len(), 434);
+        assert_eq!(minds().iter().filter(|m| m.lv10.is_some()).count(), 156);
+        for m in minds() {
+            if let Some(t) = &m.lv10 {
+                let pairs = [(m.hp, t.hp), (m.atk, t.atk), (m.def, t.def)];
+                assert!(
+                    pairs.iter().all(|(a, b)| 0 <= *a && a <= b),
+                    "{}",
+                    m.mind_id
+                );
+            }
+        }
+        // 'ATK50(MAX+100)', 'DEF+250(MAX DEF+400)', and 'HP+ 480(MAX+720)' on a loose name match.
+        let tri = |d: &MindDef, l| mind_stats(d, l);
+        assert_eq!(
+            (tri(def("3001"), 1), tri(def("3001"), 10)),
+            ([0, 50, 0], [0, 100, 0])
+        );
+        assert_eq!(tri(def("7202"), 10), [0, 0, 400]);
+        assert_eq!(
+            (tri(def("1005"), 1), tri(def("1005"), 10)),
+            ([480, 400, 0], [720, 650, 0])
+        );
+        // A conditional bonus (【波紋使い】のATK+6500) is not the flat stat.
+        assert_eq!(tri(def("8104"), 1), [0, 0, 2000]);
+        // Lv10 from an original-game screenshot; Lv1 a marked default (round(Lv10 x 0.71)).
+        assert_eq!(
+            (tri(def("7392"), 1), tri(def("7392"), 10)),
+            ([0, 511, 0], [0, 720, 0])
+        );
+        // Linear in between; Minds without Lv10 keep their Lv1 values.
+        assert_eq!(tri(def("0001"), 1), [750, 500, 0]);
+        assert_eq!(tri(def("0001"), 4), [1000, 600, 0]);
+        assert_eq!(tri(def("0001"), 10), [1500, 800, 0]);
+        assert_eq!(tri(def("7089"), 10), [610, 520, 0]);
+    }
+
+    #[test]
+    fn focus_follows_the_fixed_stats() {
+        assert_eq!(mind_focus("8109"), "HP");
+        assert_eq!(mind_focus("7142"), "DEF");
+        assert_eq!(mind_focus("8104"), "DEF");
+        assert_eq!(mind_focus("3005"), "ATK");
+        let o = OwnedMind {
+            uid: 1,
+            mind_id: "0001".into(),
+            level: 10,
+            ..Default::default()
+        };
+        let v = mind_info(&o);
+        assert_eq!(
+            (v["hp"].as_i64(), v["atk"].as_i64()),
+            (Some(1500), Some(800))
+        );
+    }
 }
 
 /// Skill Minds, Mind links, skill levels and time stop (docs/research/26-links-and-skills.md).

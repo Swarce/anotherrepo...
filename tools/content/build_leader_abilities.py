@@ -7,13 +7,30 @@ usage:
       --labels local/l10n/work2.tsv \
       --affect-table server/content/masterdata/affect_table.json \
       --out-content <dir> --out-schemas <dir> [--server-statues server/content/statues.json] \
-      [--report <file.json>]
+      [--research local/wiki-raw/research-b33/action/results.jsonl] [--report <file.json>]
+
+  Rerun on the committed table (Build 41; replaces only the DT_LEAD_* rows, keeps the Mind, assist and
+  Mind-link rows and the file's about/sources, appends any new affect row to --affect-table):
+  python3 -I tools/content/build_leader_abilities.py --wiki local/wiki-raw/gamerch/statues.json \
+      --labels local/l10n/export-b33.tsv \
+      --affect-table server/content/masterdata/affect_table.json \
+      --server-statues server/content/statues.json \
+      --research local/wiki-raw/research-b33/action/results.jsonl \
+      --table server/content/masterdata/dtbattle_ability_data_table.json
 
 Writes:
   <out-content>/affect_table.json                 the 3 existing rows + one row per affect id used
   <out-content>/dtbattle_ability_data_table.json  one row DT_LEAD_<statueId> per statue
   <out-content>/leader_abilities.json             {statueId: abilityId} for the server
   <out-schemas>/dtbattle_ability_data_table.json  schema fragment (asset entry only)
+
+--research (Build 41): leader_ability records of a research pass (results.jsonl) taken from a live
+Gamerch statue page (url https://jojodr.gamerch.com/<title>), for statues the --wiki dump does not
+give. The record's statueId is not trusted: the page's leader name must equal one ABI_LEAD_NAME
+label (after NFKC), and when several statues share that label, the page title's rarity (★N) and
+type (【勇気】...) must pick exactly one roster statue whose rarity and type are both known
+(--server-statues). So 3001_13, which shares 3001_03's label but has no known rarity or type, never
+gets 3001_03's row. The same effect rules apply.
 
 Client facts this relies on (libil2cpp RVAs, JoJo DR 3.12.0; see the K report):
   value(level) = RoundToInt(Lerp(paramLv1_i, paramLv10_i, (clamp(level,1,10)-1)/9))
@@ -27,7 +44,7 @@ Client facts this relies on (libil2cpp RVAs, JoJo DR 3.12.0; see the K report):
   STYPE rates: param 1 = target/attacker Jjs.StatueType (CalcAffectParam 0xED4458/0xED44C4)
   giveLimit becomes usableCount; 0 means never active (UpdateAffectCondition 0xFB8F0C), so -1.
 """
-import argparse, collections, json, os, re, unicodedata
+import argparse, collections, json, os, re, unicodedata, urllib.parse
 
 # --- wiki phrase vocabulary (unicode escapes keep this file ASCII) --------------------------------
 J_DMG_DEAL = '\u4e0e\u3048\u308b\u30c0\u30e1\u30fc\u30b8'
@@ -78,6 +95,14 @@ for jp, (word, val) in STYPE.items():
                  'BASE_DT_STYPE_VCT_DAM_RATECON', 'neg', val))
 MAXRE = re.compile(r'\((?:MAX ?)?([+-]?)' + NUM + r'(?:%|' + J_TIMES + r')?\)')
 MAXJUNK = re.compile(r'\(MAX[^)]*\)')  # e.g. '(MAX+?%)': no usable Lv10 value
+
+# --research matches held for a later check (Build 41): these statues gained the rarity and type that
+# make them match only after the plan that verified the research rows was made, so their pages have
+# not been checked against the live wiki yet.
+RESEARCH_HELD = {
+    '3041_03': 'type from the Build 41 typed defaults; live page not re-checked',
+    '4000_23': 'not in the Build 41 verified list; live page not re-checked',
+}
 
 # affectTextId of a new affect row: the game's affectText_JP label AFFECT_<cond>_<stat>_TEXT with
 # the same meaning (docs/research/16-minds.md section 8). DYING takes the near-death (FNT) labels,
@@ -160,25 +185,69 @@ def main():
     ap.add_argument('--wiki', required=True)
     ap.add_argument('--labels', required=True)
     ap.add_argument('--affect-table', required=True)
-    ap.add_argument('--out-content', required=True)
-    ap.add_argument('--out-schemas', required=True)
+    ap.add_argument('--out-content')
+    ap.add_argument('--out-schemas')
+    ap.add_argument('--table', help='merge the DT_LEAD_* rows into this table in place (and new affect '
+                    'rows into --affect-table) instead of writing --out-content/--out-schemas')
     ap.add_argument('--server-statues')
+    ap.add_argument('--research', action='append', default=[],
+                    help='research results.jsonl with leader_ability records from live Gamerch pages')
     ap.add_argument('--report')
     a = ap.parse_args()
+    if not a.table and not (a.out_content and a.out_schemas):
+        ap.error('give --table, or --out-content and --out-schemas')
+    if a.research and not a.server_statues:
+        ap.error('--research needs --server-statues (rarity and type pick the statue)')
 
     wiki = json.load(open(a.wiki, encoding='utf-8'))
-    keys = set()
+    keys, lead_jp = set(), collections.defaultdict(list)
     for line in open(a.labels, encoding='utf-8'):
-        k = line.split('\t', 1)[0]
+        c = line.rstrip('\n').split('\t')
+        k = c[0]
         if ':ABI_LEAD_NAME_' in k:
             keys.add(k.rsplit(':', 1)[1])
+            if len(c) >= 4 and c[3]:
+                lead_jp[norm(c[3])].append(k.rsplit('ABI_LEAD_NAME_', 1)[1])
     base_affect = json.load(open(a.affect_table, encoding='utf-8'))
+    srv_by_id = {}
+    if a.server_statues:
+        srv = json.load(open(a.server_statues, encoding='utf-8'))
+        lst = srv.get('data', srv)
+        lst = lst.get('statues', lst) if isinstance(lst, dict) else lst
+        srv_by_id = {x.get('statueId'): x for x in lst if isinstance(x, dict)}
+
+    # Research records -> wiki-shaped entries (after the --wiki statues, which take precedence).
+    research_rows, held = [], set()
+    TITLE = re.compile('\u3010(' + '|'.join(STYPE) + ')\u3011.*\u2605([0-9])')
+    for path in a.research:
+        for line in open(path, encoding='utf-8'):
+            r = json.loads(line)
+            v, url = r.get('value'), r.get('url') or ''
+            if r.get('field') != 'leader_ability' or r.get('confidence') not in ('high', 'medium') \
+                    or not isinstance(v, dict) or not v.get('name') or not v.get('effects') \
+                    or not url.startswith('https://jojodr.gamerch.com/'):
+                continue
+            title = norm(urllib.parse.unquote(url[len('https://jojodr.gamerch.com/'):]))
+            tm = TITLE.search(title)
+            if not tm:
+                continue
+            rarity, stype = int(tm.group(2)), STYPE[tm.group(1)][1]
+            cands = [i for i in lead_jp.get(norm(v['name']), [])
+                     if srv_by_id.get(i, {}).get('rarity') == rarity
+                     and srv_by_id.get(i, {}).get('statueType') == stype]
+            if len(cands) != 1:
+                continue
+            if cands[0] in RESEARCH_HELD:
+                held.add(cands[0])
+                continue
+            research_rows.append({'statue_id': cands[0], 'leader_ability_values': v['effects'],
+                                  '_url': url, '_accessed': r.get('accessed', '')})
 
     stats = collections.Counter()
     per_cat = collections.Counter()
     affects = {}          # affectId -> (baseAffect, prvs)
-    rows, mapping, seen = [], {}, set()
-    for s in wiki['statues']:
+    rows, mapping, seen, from_research = [], {}, set(), {}
+    for s in wiki['statues'] + research_rows:
         sid, vals = s.get('statue_id'), s.get('leader_ability_values') or []
         if not sid or not vals:
             stats['statue_no_id_or_values'] += 1
@@ -216,6 +285,9 @@ def main():
             q['affectId'] = p['affectId']
             plist.append(q)
         aid = 'DT_LEAD_' + sid
+        if '_url' in s:
+            from_research[sid] = s
+            stats['statue_with_row_from_research'] += 1
         rows.append({'abilityId': aid, 'abilityName': name, 'abilityParamList': plist})
         mapping[sid] = aid
         stats['statue_with_row'] += 1
@@ -257,26 +329,54 @@ def main():
                     'core': False, 'confidence': 'H'}],
         'types': {}}
 
-    os.makedirs(a.out_content, exist_ok=True)
-    os.makedirs(a.out_schemas, exist_ok=True)
     def dump(obj, path):
         with open(path, 'w', encoding='ascii') as f:
             json.dump(obj, f, indent=1, ensure_ascii=True)
             f.write('\n')
-    dump(affect_doc, os.path.join(a.out_content, 'affect_table.json'))
-    dump(table_doc, os.path.join(a.out_content, 'dtbattle_ability_data_table.json'))
-    dump(map_doc, os.path.join(a.out_content, 'leader_abilities.json'))
-    dump(schema_frag, os.path.join(a.out_schemas, 'dtbattle_ability_data_table.json'))
+    research_src = None
+    if from_research:
+        research_src = {
+            'source': 'Gamerch \u30b8\u30e7\u30b8\u30e7DR\u653b\u7565Wiki (live statue pages, research pass)',
+            'page': 'https://jojodr.gamerch.com/',
+            'pages': {'DT_LEAD_' + i: from_research[i]['_url'] for i in sorted(from_research)},
+            'accessed': max(x['_accessed'] for x in from_research.values()),
+            'note': 'leader-ability numbers only, for statues the Wayback dump lacks (build_leader_abilities.py '
+                    '--research): the page leader name equals the ABI_LEAD_NAME label and its title gives the '
+                    'rarity and type. A line without (MAX ...) gives Lv10 = Lv1.'
+                    + (' DT_LEAD_3001_03 is uncertain (M): its +15% has no MAX on the page, and ShoutWiki oldid '
+                       '3832 shows +15% as the MAX Lv. value, so Lv1 may be lower.' if '3001_03' in from_research else '')}
+    if a.table:
+        doc = json.load(open(a.table, encoding='utf-8'))
+        others = [r for r in doc['data']['paramList'] if not r['abilityId'].startswith('DT_LEAD_')]
+        doc['data']['paramList'] = rows + others
+        doc['sources'] = [x for x in doc['sources'] if 'research pass)' not in x.get('source', '')]
+        if research_src:
+            doc['sources'].insert(1, research_src)
+        with open(a.table, 'w', encoding='utf-8') as f:
+            json.dump(doc, f, ensure_ascii=False, indent=1)
+            f.write('\n')
+        if new_rows:
+            base_affect['data']['paramList'] = old + new_rows
+            dump(base_affect, a.affect_table)
+    else:
+        if research_src:
+            table_doc['sources'].insert(1, research_src)
+            map_doc['sources'].insert(1, research_src)
+        os.makedirs(a.out_content, exist_ok=True)
+        os.makedirs(a.out_schemas, exist_ok=True)
+        dump(affect_doc, os.path.join(a.out_content, 'affect_table.json'))
+        dump(table_doc, os.path.join(a.out_content, 'dtbattle_ability_data_table.json'))
+        dump(map_doc, os.path.join(a.out_content, 'leader_abilities.json'))
+        dump(schema_frag, os.path.join(a.out_schemas, 'dtbattle_ability_data_table.json'))
 
     by_affect = collections.Counter(q['affectId'] for r in rows for q in r['abilityParamList'])
     report = {'stats': dict(stats), 'effects_by_category': dict(per_cat),
               'params_by_affect': dict(sorted(by_affect.items())),
               'affect_rows_added': len(new_rows)}
+    report['research_rows'] = sorted(from_research)
+    report['research_held'] = sorted(held)
     if a.server_statues:
-        srv = json.load(open(a.server_statues, encoding='utf-8'))
-        lst = srv.get('data', srv)
-        lst = lst.get('statues', lst) if isinstance(lst, dict) else lst
-        ids = {x.get('statueId') or x.get('id') for x in lst if isinstance(x, dict)}
+        ids = set(srv_by_id)
         ids.discard(None)
         report['server_statues'] = len(ids)
         report['server_statues_with_leader_ability'] = len(ids & set(mapping))
