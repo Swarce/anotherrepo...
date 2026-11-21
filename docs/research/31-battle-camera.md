@@ -10,14 +10,12 @@ H = read in the 3.12.0 disassembly or the player's files, F = seen in frames of 
 
 - **Input phase:** one fixed default view, side-on and slightly 3/4, allies on the left third and
   enemies on the right, at chest height. No idle movement.
-- **Every action, ally or enemy, cuts away** for about 1.5–3 s: the camera closes in on the
-  attacker and cuts 2–4 times. In the full 2 fps frames (the owner's second package: X9xSMXBpsQw
-  0:56–1:07 and 5:12–5:18, ZCUC-PwLXxA 3:49–3:52) every cut stays on the side the default view
-  watches from: side-on to three-quarters behind the attacker, at chest height or a little lower,
-  attacker and target framed from the knees or waist up at about 3–5 m, the attacker in the
-  foreground. None looks from in front of the attacker or from beyond the target (the first
-  package's notes said "reverse angle"; the frames do not show one). Big area finishers land in a
-  high, wide view. Then a ~0.5 s settle back into the default view.
+- **The action's kind decides the shots** (every frame read, docs/research/32 §1): normal attacks
+  and blue skills stay near the default view, pushed in or as a side-on two-shot, sometimes with
+  one low cut behind the attacker, often with no cut at all. Red (Stand) SP skills and time stops
+  cut between angles on the battlefield: over the shoulder, a low front three-quarter, the reverse
+  from the enemy side, a 90° side shot, a high wide view 45–60° down. All watch from the default
+  view's side of the line between the teams. Then a ~0.5 s blur as the HUD returns.
 - **SP skills:** an 8–13 s cinematic on its own stage, or a ~3.5 s cut-in, then the hit on the
   field.
 - **Time stop:** a cyan negative wave, then the field in blue-grey monochrome (HUD in colour).
@@ -56,12 +54,17 @@ H = read in the 3.12.0 disassembly or the player's files, F = seen in frames of 
 
 - Before: every id played one world-fixed side view 9 m away (Build 13), so every action looked
   like the input phase: the "locked" camera the owner reported.
-- Now (`build_camera_sets.py`): each requested id plays one of the footage's shots, framed on the
-  acting unit, each with a slow push-in, all on the watched side:
-  - a side-on two-shot, three-quarters behind the attacker, a closer side shot, a slightly low side
-    shot, and a high wide view for the 14xxxx family;
-  - picked by the role of the states that request the id (wind-up → side/back/close, hit →
-    side/low/close, loop → side/back, wrap-up → side/close), varied by id.
+- Now (`build_camera_sets.py`): each requested id gets its shots from the kind of action that
+  requests it, read from the action set's template name (`…_ATTACK`, `…_SKILL_NN`, the skill
+  red when the statue's tactical skill is special; `scan_camera_requests.py` records the template):
+  - attacks and blue skills: near the default view (pushed in), a side-on two-shot, low behind the
+    attacker's shoulder, three-quarters behind;
+  - red SP skills (an id gets these when SPs are at least a third of its users): over the shoulder,
+    a low front three-quarter, the reverse from beyond the target, a 90° side shot, a high wide
+    view 50° down (the 14xxxx family's hits);
+  - picked by the role of the requesting states (wind-up, hit, loop, wrap-up) and varied by id.
+  - Camera id families do not separate the kinds: 130xxx alone is requested by 554 SP, 502 skill
+    and 466 other skill states.
 - The client mirrors only ids 100400–100999 and 110000–149999 for enemies
   (`GameConst.IsMirroringCameraId` 0xDB66E4, ranges set in its constructor, H). Those are 2,250 of
   the 2,545 requests. The few other action ids (102xxx, 150000/150001) get a shot straight behind

@@ -31,17 +31,19 @@ that request it (wind-up, hit, loop, wrap up) and varied by id, each with a slow
 footage too. Shot values are ours.
 
 usage: python3 -I tools/content/build_camera_sets.py --requests local/content/camera_requests.tsv \
-         --masterdata server/content/masterdata
+         --masterdata server/content/masterdata [--statues server/content/statues.json]
 """
 import argparse
 import collections
 import csv
 import json
 import os
+import re
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--requests", required=True)
 ap.add_argument("--masterdata", required=True)
+ap.add_argument("--statues", default="server/content/statues.json")
 a = ap.parse_args()
 
 # CharacterBoneList.Bone (docs/research/12 §5)
@@ -66,26 +68,45 @@ def delta(nid, a, b):
 # The unit faces local +Z, its target 1-3 m ahead. rotate.y 90 puts the camera on the unit's right:
 # for an ally (facing +X) that is world -Z, the side the turn camera watches from; the client mirrors
 # ids 100400-100999 and 110000-149999 for enemies (GameConst DTBattleCameraIdMirroring*, H), so
-# their shots land on the same side. In the original footage (owner's frame package: X9xSMXBpsQw
-# 0:56-1:07 and 5:12-5:18, ZCUC-PwLXxA 3:49-3:52) every action shot stays on that side: side-on to
-# three-quarters behind the attacker, at chest height or a little lower, framing attacker and target
-# from the knees or waist up, about 3-5 m away; big area moves land in a high wide view.
+# their shots land on the same side.
+# The original's shots, read in every frame of the owner's footage (eight reviews, private, under
+# local/wiki-raw/research-b33/camera-pack/review/), depend on the kind of action:
+#   - normal attacks and blue skills stay close to the default view: pushed in by 15-25 % or a
+#     side-on two-shot, sometimes one low cut behind the attacker (ZCUC-PwLXxA 460-463, 898-904;
+#     x0kbxom31cs: no cut at all for many of them);
+#   - red (Stand) SP skills and time stops cut between angles on the battlefield: over the shoulder
+#     behind the attacker, a low front three-quarter, the reverse from beyond the target looking
+#     back, a 90-degree side shot, a high wide view 45-60 degrees down (ZCUC 930-952, 1009-1019,
+#     1072-1080; x0kb 166-233, 515-536; X9xSMXBpsQw 3:00-3:13).
+# All of them watch from the turn camera's side of the line between the teams.
 SHOTS = {
+    # attacks and blue skills: near the default view, pushed in, looking between the fighters
+    "near": (node("jdr_near_a", SPINE2, SPINE2, (-6, 95, 0), 6.4, 30, (0, 0, 0), (0, -0.1, 1.4)),
+             node("jdr_near_b", SPINE2, SPINE2, (-6, 94, 0), 5.7, 30, (0, 0, 0), (0, -0.1, 1.4))),
     # side-on two-shot of attacker and target, chest height
     "side": (node("jdr_side_a", SPINE2, SPINE2, (-4, 100, 0), 4.6, 30, (0, 0, 0), (0, 0, 1.0)),
              node("jdr_side_b", SPINE2, SPINE2, (-4, 98, 0), 4.2, 30, (0, 0, 0), (0, 0, 1.0))),
+    # low behind the attacker's shoulder, looking past it at the target
+    "behind_low": (node("jdr_blow_a", SPINE2, SPINE2, (5, 155, 0), 2.6, 32, (0.3, 0, 0), (0, 0.1, 2.4)),
+                   node("jdr_blow_b", SPINE2, SPINE2, (5, 153, 0), 2.35, 32, (0.3, 0, 0), (0, 0.1, 2.4))),
     # three-quarters behind the attacker, looking past it at the target
     "back": (node("jdr_back_a", SPINE2, SPINE2, (-7, 130, 0), 4.2, 30, (0, 0, 0), (0, -0.15, 1.8)),
              node("jdr_back_b", SPINE2, SPINE2, (-7, 127, 0), 3.8, 30, (0, 0, 0), (0, -0.15, 1.8))),
-    # closer side shot on the attacker
-    "close": (node("jdr_close_a", SPINE2, NECK, (0, 90, 0), 3.2, 30, (0, 0, 0), (0, -0.1, 0.6)),
-              node("jdr_close_b", SPINE2, NECK, (0, 88, 0), 2.9, 30, (0, 0, 0), (0, -0.1, 0.6))),
-    # a little low, looking up slightly at the attacker and target
-    "low": (node("jdr_low_a", WAIST, NECK, (6, 95, 0), 3.8, 30, (0, 0, 0), (0, 0, 0.9)),
-            node("jdr_low_b", WAIST, NECK, (6, 93, 0), 3.5, 30, (0, 0, 0), (0, 0, 0.9))),
-    # high and wide, for the big area hits
-    "wide": (node("jdr_wide_a", WAIST, WAIST, (-22, 105, 0), 8.0, 32, (0, 0, 0), (0, -0.3, 1.5)),
-             node("jdr_wide_b", WAIST, WAIST, (-22, 103, 0), 7.4, 32, (0, 0, 0), (0, -0.3, 1.5))),
+    # SP: over the shoulder, close behind-right of the attacker
+    "ots": (node("jdr_ots_a", NECK, NECK, (-6, 155, 0), 2.0, 32, (0.35, 0.05, 0), (0, -0.25, 2.6)),
+            node("jdr_ots_b", NECK, NECK, (-6, 157, 0), 1.8, 32, (0.35, 0.05, 0), (0, -0.25, 2.6))),
+    # SP: low front three-quarter close-up of the attacker
+    "front_low": (node("jdr_flow_a", SPINE2, NECK, (12, 40, 0), 2.4, 34),
+                  node("jdr_flow_b", SPINE2, NECK, (12, 44, 0), 2.15, 34)),
+    # SP: the reverse, from beyond the target looking back at the attacker
+    "reverse": (node("jdr_rev_a", SPINE2, SPINE2, (3, 20, 0), 4.6, 30, (0, 0, 0), (0, 0, 0.6)),
+                node("jdr_rev_b", SPINE2, SPINE2, (3, 22, 0), 4.2, 30, (0, 0, 0), (0, 0, 0.6))),
+    # SP: a 90-degree side shot, closer
+    "side90": (node("jdr_s90_a", SPINE2, NECK, (0, 90, 0), 3.2, 30, (0, 0, 0), (0, -0.1, 0.8)),
+               node("jdr_s90_b", SPINE2, NECK, (0, 88, 0), 2.9, 30, (0, 0, 0), (0, -0.1, 0.8))),
+    # SP and big area moves: high and wide, about 50 degrees down
+    "wide": (node("jdr_wide_a", WAIST, WAIST, (-50, 115, 0), 7.2, 34, (0, 0, 0), (0, -0.3, 1.5)),
+             node("jdr_wide_b", WAIST, WAIST, (-50, 113, 0), 6.6, 34, (0, 0, 0), (0, -0.3, 1.5))),
     # straight behind the attacker: for the few action ids the client does not mirror (102xxx),
     # which must look right for either team
     "behind": (node("jdr_behind_a", SPINE2, SPINE2, (-10, 180, 0), 4.0, 30, (0, 0, 0), (0, -0.2, 1.6)),
@@ -109,12 +130,15 @@ EXTRA_NODES = [
     node("jdr_finish", WAIST, WAIST, (-6, -62, 0), 2.3, 36),
 ]
 
-ROLE_SHOTS = {
-    "in": ["side", "back", "close"],
-    "hit": ["side", "low", "close"],
-    "loop": ["side", "back"],
-    "out": ["side", "close"],
-    "any": ["side", "back", "low", "close"],
+# shots by the kind of action requesting the id (attack, skill, sp) and the role of its states
+KIND_SHOTS = {
+    "attack": {"in": ["near", "side"], "hit": ["behind_low", "side"], "loop": ["side", "near"],
+               "out": ["near"], "any": ["near", "side"]},
+    "skill": {"in": ["side", "near"], "hit": ["behind_low", "side", "back"], "loop": ["side", "back"],
+              "out": ["near", "side"], "any": ["side", "near", "back"]},
+    "sp": {"in": ["ots", "front_low", "back"], "hit": ["reverse", "side90", "wide", "front_low"],
+           "loop": ["side90", "reverse", "ots"], "out": ["wide", "front_low"],
+           "any": ["ots", "reverse", "front_low", "side90"]},
 }
 
 
@@ -140,11 +164,33 @@ def norm_id(i):
     return i + 100000 if 1000 <= i < 3000 else i
 
 
+# Which skills are red (SP): the statues' tactical skills (statues.json dtSkills `special`).
+SPECIAL = {}
+for st in json.load(open(a.statues, encoding="utf-8"))["statues"]:
+    for k in st.get("dtSkills") or []:
+        SPECIAL[k["id"]] = SPECIAL.get(k["id"], False) or bool(k["special"])
+
+
+def kind(psid, template):
+    """attack / skill / sp from the action set's template name (e.g. 3000_1_stapla_016_SKILL_06)."""
+    m = re.search(r"_\d{3}_([A-Z].*)$", template)
+    suffix = m.group(1) if m else ""
+    ms = re.fullmatch(r"SKILL_(\d\d)", suffix)
+    if ms:
+        return "sp" if SPECIAL.get("SKILL_%s_%s" % (psid[:3], ms.group(1))) else "skill"
+    return "attack" if "ATTACK" in suffix else None
+
+
 roles = collections.defaultdict(collections.Counter)
+kinds = collections.defaultdict(collections.Counter)
 for r in csv.DictReader(open(a.requests, encoding="utf-8"), delimiter="\t"):
     if r["cameraType"] != "1" or not r["scriptCameraId"]:
         continue
-    roles[norm_id(int(r["scriptCameraId"]))][role(r["state"])] += 1
+    cid = norm_id(int(r["scriptCameraId"]))
+    roles[cid][role(r["state"])] += 1
+    k = kind(r["psid"], r.get("template", ""))
+    if k:
+        kinds[cid][k] += 1
 
 set_path = os.path.join(a.masterdata, "Set_el_camera_set_common.json")
 node_path = os.path.join(a.masterdata, "Node_el_camera_node_common.json")
@@ -190,12 +236,16 @@ for cid in sorted(set(old_ids) | set(roles)):
         rc = roles[cid]
         if not mirrored(cid):
             shot = "behind"  # the same for either team
-        elif 140000 <= cid < 150000:
-            shot = "wide"  # the 14xxxx family: big moves (e.g. the road roller)
         else:
             top = rc.most_common(1)[0][0]
-            choices = ROLE_SHOTS[top]
-            shot = choices[cid % len(choices)]
+            kc = kinds[cid]
+            # an id any SP requests gets the SP grammar when SPs are at least a third of its users
+            k = "sp" if kc["sp"] * 3 >= sum(kc.values()) > 0 else (kc.most_common(1)[0][0] if kc else "skill")
+            if 140000 <= cid < 150000 and k == "sp" and top in ("hit", "out"):
+                shot = "wide"  # the 14xxxx family: big moves (e.g. the road roller)
+            else:
+                choices = KIND_SHOTS[k][top]
+                shot = choices[cid % len(choices)]
         used[shot] += 1
         sets.append(cam_set(cid, steps(shot)))
     else:
