@@ -36,6 +36,10 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
   of the arena. The shot set is now only the footage's: side-on, three-quarters behind, closer,
   slightly low, high wide; straight behind for the ids the client does not mirror; the boss intro
   and finish framed for the enemy side.
+- **Every frame read** (eight reviewers, 13,692 frames, docs/research/32): the original's shots
+  depend on the action: attacks and blue skills stay near the default view, red SP skills cut
+  between over-the-shoulder, low front, reverse, side and high wide angles. Each camera id now
+  gets its shots from the skills that request it. AP past the rank table is rank + 19.
 - **Win shot from the full frames:** tight head and chest from well below, the winner right of
   centre and turned towards WIN!, settling over 1 s (ours was head to waist, centred, barely low).
 - **Team screen and My Page framing** (docs/research/31 §5): in the original the team screen shows
@@ -49,6 +53,8 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 - [ ] My Page: the leader right of centre, thighs up, head in the upper part of the screen (not
       cut off, not under the menus); tapping the leader still reacts
 - [ ] Team screen: the three heads at about the same height, the leader not lower than the others
+- [ ] Normal attacks and blue skills: close to the default view, pushed in; red SP skills: several
+      angles (over the shoulder, low front, reverse, high wide)
 - [ ] Tactical battle: attacks and skills cut to close shots and back; enemies' turns too; no
       camera stuck after an action
 - [ ] Chapter-final boss: the intro plays and the battle starts (no hang)
