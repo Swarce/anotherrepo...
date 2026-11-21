@@ -438,6 +438,28 @@
     }
    },
    {
+    "id": "jdr_calib",
+    "baseBoneID": 4,
+    "lookatBoneID": 4,
+    "rotate": {
+     "x": -50.0,
+     "y": 40.0,
+     "z": 0.0
+    },
+    "perspective": 45.0,
+    "length": 4.5,
+    "baseOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    "lookatOffset": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   {
     "id": "jdr_result_to_b",
     "baseBoneID": 4,
     "lookatBoneID": 5,
