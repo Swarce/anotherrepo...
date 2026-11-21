@@ -161,6 +161,7 @@ fn ring_goods() -> Vec<(i64, i64, i64)> {
                 }],
                 "tree" => 20,
                 "key" => 200,
+                "bp" => 50,
                 _ => return None,
             };
             Some((50_000 + d.item_id, d.item_id, price))
@@ -247,12 +248,22 @@ fn event_goods() -> Vec<(i64, i64, i64)> {
         .collect()
 }
 
+/// The currency an event's exchange takes: its own (the high-score shop's Fight Coin 2), else the
+/// Fight Coin.
+pub fn shop_currency(event_id: &str) -> i64 {
+    match crate::services::event::currency(event_id) {
+        0 => items::EVENT_COIN,
+        c => c,
+    }
+}
+
 fn event_shops(event_id: &str) -> Value {
+    let pay = shop_currency(event_id);
     let goods: Vec<Value> = event_goods()
         .into_iter()
         .map(|(gid, item, price)| {
             json!({ "goodsId": gid, "baseGoodsId": gid, "saleFlg": 0, "stepGoodsId": 0, "SaleType": "3",
-                "num": 1, "payType": 3, "payItemId": items::EVENT_COIN, "price": price, "productId": "",
+                "num": 1, "payType": 3, "payItemId": pay, "price": price, "productId": "",
                 "limitNum": -1, "remainNum": -1,
                 "goodsName": format!("ITEM_{item:04}_NAME"), "goodsNameReplace": "",
                 "goodsDetail": format!("ITEM_{item:04}_DETAIL"), "goodsDetailReplace": "",
@@ -264,11 +275,9 @@ fn event_shops(event_id: &str) -> Value {
     json!([{ "eventId": event_id, "eventName": "", "goodsList": goods }])
 }
 
-/// The event currency as ItemInfo (Event Home, Shop3 header; counts are absolute).
-pub fn event_coin_list(c: &collection::Collection) -> Value {
-    json!(items::find(items::EVENT_COIN)
-        .map(|d| vec![items::item_info(d, c.item_count(items::EVENT_COIN))])
-        .unwrap_or_default())
+/// The event's exchange currency as ItemInfo (Shop3 header; counts are absolute).
+pub fn event_coin_list(c: &collection::Collection, event_id: &str) -> Value {
+    crate::services::event::currency_list(c, shop_currency(event_id))
 }
 
 fn event_id(env: &RequestEnvelope) -> String {
@@ -283,7 +292,7 @@ fn event_id(env: &RequestEnvelope) -> String {
 pub fn event_shop_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let p = profile(ctx, env)?;
     ok(
-        json!({ "eventShopList": event_shops(&event_id(env)), "itemList": event_coin_list(&p.collection) }),
+        json!({ "eventShopList": event_shops(&event_id(env)), "itemList": event_coin_list(&p.collection, &event_id(env)) }),
     )
 }
 
@@ -303,8 +312,11 @@ pub fn event_shop_buy(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .max(1);
     let goods = event_goods().into_iter().find(|g| g.0 == gid);
     let (p, res) = with_profile(ctx, env, |p| match goods {
-        Some((_, item, price)) if p.collection.item_count(items::EVENT_COIN) >= price * count => {
-            p.collection.add_item(items::EVENT_COIN, -price * count);
+        Some((_, item, price))
+            if p.collection.item_count(shop_currency(&event_id(env))) >= price * count =>
+        {
+            p.collection
+                .add_item(shop_currency(&event_id(env)), -price * count);
             p.collection.add_item(item, count);
             (Ok(item), Change::Progress)
         }
@@ -313,7 +325,7 @@ pub fn event_shop_buy(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let item = res?;
     ok(
         json!({ "userInfo": crate::services::user::user_info(&p), "itemSetInfo": item_set(item, 1),
-               "eventShopList": event_shops(&event_id(env)), "itemList": event_coin_list(&p.collection),
+               "eventShopList": event_shops(&event_id(env)), "itemList": event_coin_list(&p.collection, &event_id(env)),
                "haveItemSetInfo": item_set(item, count) }),
     )
 }

@@ -9,6 +9,7 @@ use serde_json::{json, Map, Value};
 pub mod arena;
 pub mod bizarre;
 pub mod book;
+pub mod clan;
 pub mod client;
 pub mod common;
 pub mod dungeon;
@@ -19,10 +20,12 @@ pub mod menu;
 pub mod mind;
 pub mod misc;
 pub mod present;
+pub mod raid;
 pub mod ranking;
 #[cfg(test)]
 pub mod shapes;
 pub mod statue;
+pub mod support;
 pub mod team;
 pub mod tree;
 pub mod user;
@@ -75,7 +78,7 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/follow/follower_list" => team::follower_list(ctx, env),
         "/follow/block_list" => team::block_list(ctx, env),
         "/trophy/trophy_list" => team::trophy_list(ctx, env),
-        "/bizarre/bizarre_resumption" => misc::bizarre_resumption(ctx, env),
+        "/bizarre/bizarre_resumption" => bizarre::bizarre_resumption(ctx, env),
         "/bizarre/bizarre_list" => bizarre::bizarre_list(ctx, env),
         "/bizarre/stage_list" => bizarre::stage_list(ctx, env),
         "/bizarre/bizarre_start" => bizarre::bizarre_start(ctx, env),
@@ -91,7 +94,32 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/dungeon/tarot_flip" => dungeon::tarot_flip(ctx, env),
         "/dungeon/earn_reward" => dungeon::earn_reward(ctx, env),
         "/dungeon/reward_check" => dungeon::reward_check(ctx, env),
-        "/clan/recommend" => menu::clan_recommend(ctx, env),
+        "/clan/recommend" => clan::recommend(ctx, env),
+        "/clan/search" => clan::search(ctx, env),
+        "/clan/create" => clan::create(ctx, env),
+        "/clan/add" => clan::add(ctx, env),
+        "/clan/cancel_approval" => clan::cancel_approval(ctx, env),
+        "/clan/info" => clan::info(ctx, env),
+        "/clan/sync_server_info" => clan::sync_server_info(ctx, env),
+        "/clan/check_add_request" => clan::check_add_request(ctx, env),
+        "/clan/add_request_list" => clan::add_request_list(ctx, env),
+        "/clan/add_approval" => clan::add_approval(ctx, env),
+        "/clan/denial_approval" => clan::denial_approval(ctx, env),
+        "/clan/expulsion" => clan::expulsion(ctx, env),
+        "/clan/set_sub_leader" => clan::set_sub_leader(ctx, env),
+        "/clan/change_info" => clan::change_info(ctx, env),
+        "/clan/secession" => clan::secession(ctx, env),
+        "/clan/invitation" => clan::invitation(ctx, env),
+        "/clan/clan_object_list" => clan::clan_object_list(ctx, env),
+        "/clan/clan_bg_list" => clan::clan_bg_list(ctx, env),
+        "/clan/donation_item_list" => clan::donation_item_list(ctx, env),
+        "/clan/clan_donation" => clan::clan_donation(ctx, env),
+        "/event/clan_member_event_point_list" => clan::member_point_list(ctx, env),
+        "/clan/room_info"
+        | "/clan/set_object"
+        | "/clan/del_object"
+        | "/clan/all_del_object"
+        | "/clan/set_object_comment" => clan::room_dead(ctx, env),
         "/present/present_list" => present::present_list(ctx, env),
         "/follow/follow_list" => menu::follow_list(ctx, env),
         "/item/item_list" => item::item_list(ctx, env),
@@ -127,10 +155,17 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/tree/acquisition" => tree::acquisition(ctx, env),
         "/pvp/get_pvp_config" => arena::get_pvp_config(ctx, env),
         "/event/point_reward_list" => arena::point_reward_list(ctx, env),
+        "/raid/raid_list" => raid::raid_list(ctx, env),
+        "/raid/raid_start" => raid::raid_start(ctx, env),
+        "/raid/raid_end" => raid::raid_end(ctx, env),
+        "/raid/raid_offer_rescue" => raid::raid_offer_rescue(ctx, env),
+        "/raid/raid_history_list" => raid::raid_history_list(ctx, env),
+        "/raid/get_raid_reward" => raid::get_raid_reward(ctx, env),
         "/event/get_event_ranking_list" => ranking::ranking_list(ctx, env),
         "/event/get_event_ranking_detail" => ranking::ranking_detail(ctx, env),
         "/event/get_event_ranking_reward" => ranking::ranking_reward(ctx, env),
         "/item/heal_item_list" => arena::heal_item_list(ctx, env),
+        "/user/recover_battle_point" => arena::recover_battle_point(ctx, env),
         "/pvp/home_acqusition_check" => arena::home_acqusition_check(ctx, env),
         "/pvp/home" => arena::home(ctx, env),
         "/pvp/enemy_player_list" => arena::enemy_player_list(ctx, env),

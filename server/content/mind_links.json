@@ -1,0 +1,57 @@
+{
+ "about": "Mind links: which Minds link (the Gamerch Mind pages) and the link abilities by number of linked Minds. See tools/content/build_mind_links.py and docs/research/26-links-and-skills.md.",
+ "sources": [
+  {
+   "source": "Gamerch JoJo DR wiki (Wayback Machine snapshot)",
+   "page": "https://jojodr.gamerch.com/",
+   "accessed": "2026-11-15",
+   "note": "the stat of each listed Mind link; per-Mind pages in local/wiki-raw/gamerch/minds.json"
+  },
+  {
+   "source": "jdr-default",
+   "note": "link ids MIND_LINK_<nnn> and ability rows DT_MLINK_<stat>_<n> are ours, named by the game's ABI_MIND_LINK_NAME_<nnn> labels; amounts +3/5/8% for 2/3/4 Minds are ours"
+  }
+ ],
+ "links": [
+  {
+   "mindLinkId": "MIND_LINK_001",
+   "stat": "ATK",
+   "name": "ABI_MIND_LINK_NAME_001",
+   "abilities": {
+    "2": "DT_MLINK_ATK_2",
+    "3": "DT_MLINK_ATK_3",
+    "4": "DT_MLINK_ATK_4"
+   }
+  },
+  {
+   "mindLinkId": "MIND_LINK_002",
+   "stat": "DEF",
+   "name": "ABI_MIND_LINK_NAME_002",
+   "abilities": {
+    "2": "DT_MLINK_DEF_2",
+    "3": "DT_MLINK_DEF_3",
+    "4": "DT_MLINK_DEF_4"
+   }
+  },
+  {
+   "mindLinkId": "MIND_LINK_003",
+   "stat": "HP",
+   "name": "ABI_MIND_LINK_NAME_003",
+   "abilities": {
+    "2": "DT_MLINK_HP_2",
+    "3": "DT_MLINK_HP_3",
+    "4": "DT_MLINK_HP_4"
+   }
+  }
+ ],
+ "minds": {
+  "3006": "MIND_LINK_001",
+  "7166": "MIND_LINK_002",
+  "7243": "MIND_LINK_001",
+  "7245": "MIND_LINK_003",
+  "7274": "MIND_LINK_003",
+  "7281": "MIND_LINK_001",
+  "7300": "MIND_LINK_002",
+  "7317": "MIND_LINK_001"
+ }
+}

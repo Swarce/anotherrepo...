@@ -14,6 +14,8 @@ pub mod missions;
 pub mod presents;
 pub mod quests;
 pub mod services;
+pub mod town;
+pub mod town_socket;
 pub mod versionfile;
 pub mod web;
 
