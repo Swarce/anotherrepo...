@@ -2,6 +2,35 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 38 — the camera measured on every original action; a still win shot (branch `wip/b38`)
+
+### What the owner said
+- Build 37: the camera moves now, but cuts far too much; the win camera follows a bone instead of
+  holding still while the character animates, though its framing is very close to the screenshot.
+- Check the frames again and measure the videos with agents so it is a perfect match.
+
+### What changed
+- **Measured grammar** (docs/research/31 §7): six readers measured every tactical action of six
+  original videos frame by frame (223 actions; background alignment to tell cuts from glides) and
+  mapped the shots to the camera ids each action set requests. Normal attacks glide with no cut in
+  92 % of cases; blue skills cut 3.5 times; SPs 5.7 with their cinematic.
+- `build_camera_sets.py`: shots are step lists with their own `inter`: glides (0.09) for attacks,
+  Stand attacks, follows and time-stop push-ins; cuts (1.0) for skills and SPs, with a second angle
+  after 0.5–0.8 s as in the footage; rush chains; the 30 observed ids get their measured shot.
+  Simulated cuts per action: attacks 0.02, blue skills 3.2, SPs 3.1 plus the cinematic wipes.
+- **Win shot holds still**: the win sets take the bones' positions on the first frame
+  (`flagBindBase`/`flagBindLookat` off). Its framing is unchanged.
+- 101007 and 101008 play their measured action shots (mostly requested by skills and an attack
+  wrap-up); the few statues whose win animation requests them get those shots for their win.
+- Build number 38, server marker `JDR_EMBEDDED_SERVER_b038`; `Node_el_camera_node_common 58 rows`.
+
+### Device checklist
+- [ ] Log: `[boot] jdr embedded build 38`, `Node_el_camera_node_common 58 rows`
+- [ ] Normal attacks: the camera glides in towards the target and follows, with no cut
+- [ ] Blue skills: about three cuts; SP skills more, around the cinematic
+- [ ] Win: still while the winner poses
+- [ ] Any shot that looks wrong: its time in a recording and the statue's name
+
 ## Build 37 — the battle cameras move: `inter` was 0 (branch `wip/b37`)
 
 ### What the owner showed
