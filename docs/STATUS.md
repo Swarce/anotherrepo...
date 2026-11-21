@@ -2,6 +2,27 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 34 — the last Build 33, numbered so it can be told apart (branch `wip/b34`)
+
+### What the owner asked
+- After the latest Build 33 package the cameras looked unchanged or worse; the owner suspected the
+  old data was still in use. Every Build 33 package said `build 33` at boot, so the packages could
+  not be told apart: number this one 34.
+
+### What changed
+- Build number 34, server marker `JDR_EMBEDDED_SERVER_b034`. No other change: the game data is the
+  last Build 33 package's (`main` at the merge of Swarce/anotherrepo...#31).
+- How to tell which camera data a phone runs: the log line `versionfile built: …` lists
+  `Node_el_camera_node_common N rows`: 3 in Build 32, 21 in the first Build 33 packages, 19 in the
+  "watched side" package, 27 now.
+
+### Device checklist
+- [ ] Log: `[boot] jdr embedded build 34` and `Node_el_camera_node_common 27 rows`, then
+      `GET … (generated in_memory_master_data)` at each start
+- [ ] If both are there and the cameras still look wrong: a screen recording (normal attack, blue
+      skill, red SP; ally and enemy) with the statues' names, compared shot by shot with our data
+- [ ] The Build 33 checklist below
+
 ## Build 33 — the original's camera, action battles, the research pass (branch `wip/b33`)
 
 ### What the owner asked and showed
