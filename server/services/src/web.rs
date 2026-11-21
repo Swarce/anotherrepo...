@@ -121,6 +121,7 @@ pub const ABOUT_PAGE: &str = "/information/about.html";
 
 /// What this build adds, for the Notices screen's Updates tab (our words; no game text).
 const NOTES: &[&str] = &[
+    "Build 26: the Town home connects without a network (it showed a connection error offline).",
     "Daily quests rotate by weekday; the day turns at 04:00 JST. The Friend Point summon has one free draw a day.",
     "Labyrinth: Beginner, Intermediate and Advanced dungeons. A battle or a Tarot pick left unfinished can be resumed from My Page.",
     "Story battles left unfinished can be resumed from My Page too.",
