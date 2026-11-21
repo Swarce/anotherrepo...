@@ -155,7 +155,61 @@ cut from a glide; a mapping stage aligned each action with the camera ids its ac
   sets: normal attacks 0.02 cuts (85 of 86 none), blue skills 3.2 (median 3), SPs 3.1 field cuts
   plus the client's cinematic wipes.
 
-## 8. Open (M)
+## 8. Attacks on the client's two-shot; what every set flag does (Build 39)
+
+The owner saw attack and hit shots off-centre: the pair on one side, half the screen empty
+(mirrored for enemies). Measured on the device recording and in the disassembly:
+
+- **The screen centre is always the look point.** `SetCameraInfo` lerps only the position and the
+  fov; the rotation is `LookRotation(lookat − position)` with no lag. A battle script camera gets
+  one target (`ChangeCameraDtBattle` 0xD0007C passes tgt0 and three nulls; it resolves the victim
+  through `CurrentActionSetTargetHandle` and discards it), so the look point is
+  `bone(look) + R·lookatOffset` of the acting unit, R its live facing. The acting unit is turned to
+  face its first target just before the request. Our attack shots looked 1.8–3.2 m ahead, while
+  attackers strike from 1.05–1.5 m (Stand users 2–2.5 m, bullet users 4–8 m): the look point fell
+  past the target.
+- **The client's Overview two-shot.** `Character.CreateSkillCommand` 0xFB1448 switches every action
+  to the JjsCamera Overview mode first (0xFB1680). It follows, every frame, the midpoint of the
+  actor and the centre of its targets (`CalculateNearFarCameraTargetPose` 0xCD4760, lookRate 0.5)
+  from a fixed world offset on the −Z side, and zooms with their distance (overview row by target
+  count, near 2 / far 15). It then enables script cameras only when the skill's
+  `forceNormalCamera` (dtSkillData +0xF8) is not 1 (0xFB1728–0xFB1740); `ChangeCameraDtBattle`
+  drops the request when they are off (slot 0x80 `GetScriptCameraEnable`, 0xD00698). Simulated at
+  the device's aspect, a one-on-one attack lands at x 0.40 / 0.60 at 1 m, 0.31 / 0.69 at 2 m and
+  0.20 / 0.80 at 8 m, mirrored for enemies, with no cut — the measured layout of the no-cut original
+  attacks (X9x, p1z, x0k, ZCUC; attacker 0.15–0.35, target 0.65–0.85).
+- **Build 39:** `JDR_ATK_00` (and every attack row copied from it) has `forceNormalCamera` 1; skill,
+  SP and Mind rows set 0. With script cameras off, a DamageBlow reaction becomes DamageBig
+  (`CharacterProxy.ChangeReaction` 0xEE3BE4), as on the client's finishing blows; KO and finish
+  cameras (`CameraManager.ChangeCameraMode` 0xFA5BC8) do not read the flag. Some original units
+  cut inside their attack (Abbacchio; the low party-side shot on some enemy attacks): those cuts
+  are not reproduced.
+- The blue skills that request 111000 / 131000 / 131101 still play them; their look point is now
+  half way to a melee target (z 0.9–1.1). 131000 sits 0.6 m lower because Stand sets make most
+  of its requests.
+
+Set flags, from every read in `ScrptCameraUpdate` (fields: set +0x1C flagMaintain … +0x23
+flagNotInter; step +0x20 targetIDBase, +0x24 targetIDLookat):
+
+| flag | effect |
+|---|---|
+| flagForcusAhead | the arm (rotate, length) is in world axes, the offsets stay unit-relative; it aims at nothing |
+| flagWorldSet | R = 0 (or 180° for the boss-end cameras) |
+| flagNowConnect | node 0 is rebuilt from the live camera on the first update; later nodes are deltas on it |
+| flagBindBase / flagBindLookat | off: the first frame's point is kept (later steps' bones too) |
+| flagNotUpdateBonePosition | both points kept from the first frame |
+| flagNotInter | inter 1 during step 0 |
+| flagMaintain | after the end, SetCameraInfo is skipped (no visible effect in battle) |
+
+`endInter` is only read by `GetEndInter` 0xD70B20, which has no callers: the return to the turn
+view glides or cuts by the action data's `endInterpolationFlag` (`ChangeCameraMode`). Steps that
+name target 1–3 resolve to the world origin in the tactical battle.
+
+Also from the device comparison: a 0.05 s blend step shows its in-between pose for a few frames
+(now 0.001 s; 0 would divide by zero), and the low behind shot stood inside a Stand user's back
+(now 145°, 3.6 m, one pose).
+
+## 9. Open (M)
 
 - The SP cinematics depend on animator assets in the player's files and on the skill rows; whether
   ours trigger them is not checked yet.

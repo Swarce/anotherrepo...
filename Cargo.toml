@@ -16,7 +16,7 @@ version = "0.1.0"
 edition = "2021"
 # Shared code must build for aarch64-linux-android with this toolchain. See docs/MODULES.md.
 rust-version = "1.80"
-license = "MIT"
+license = "MPL-2.0"
 publish = false
 
 [workspace.dependencies]
