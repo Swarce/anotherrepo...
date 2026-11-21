@@ -652,6 +652,13 @@ mod tests {
             ("minds", crate::collection::MINDS_JSON, "minds"),
             ("ranks", crate::collection::RANKS_JSON, ""),
             ("quests", crate::quests::QUESTS_JSON, "chapters"),
+            (
+                "action_abilities",
+                crate::collection::ACTION_ABILITIES_JSON,
+                "leaders",
+            ),
+            ("statue_traits", crate::collection::STATUE_TRAITS_JSON, ""),
+            ("jojo_links", crate::collection::JOJO_LINKS_JSON, "links"),
         ];
         for (name, js, records) in files {
             let v: Value = serde_json::from_str(js).unwrap();
@@ -1300,6 +1307,175 @@ mod tests {
                 .unwrap();
             assert_eq!(row["affectTextId"], format!("AFFECT_{stat}_RATEADD_TEXT"));
         }
+    }
+
+    /// Action-battle affects (docs/research/30-action-battle.md §7): every affectId the action
+    /// leader abilities, the assist "action" params, the JoJo Links and the tactical-to-action map
+    /// (ACTION_AFFECT) send has an affect_table row (the client drops unknown ones silently) whose base the action
+    /// battle reads (UpdateActiveAffectParameter cases, BASE_SPSTC_ADD 27, 88), HP-type bases only
+    /// with a condition known at battle start, a label with English that shows the amount, and a
+    /// text rule that shows slot 0, slot 1 per target type and slot 2 for the conditions that use it.
+    #[test]
+    fn action_affects_have_rows_labels_and_rules() {
+        let doc = |name: &str| -> Value {
+            let js = TABLES.iter().find(|(n, _)| *n == name).unwrap().1;
+            serde_json::from_str::<Value>(js).unwrap()["data"].clone()
+        };
+        let schema: Value = serde_json::from_str(SCHEMA_JSON).unwrap();
+        let base_value = |b: &str| -> i64 {
+            schema["types"]["Jjs.BaseAffectType"]["values"][b]
+                .as_i64()
+                .unwrap_or_else(|| panic!("{b}: a BaseAffectType"))
+        };
+        let consumer = |n: i64| {
+            (1..=20).contains(&n)
+                || (23..=27).contains(&n)
+                || (45..=57).contains(&n)
+                || n == 60
+                || n == 61
+                || (74..=79).contains(&n)
+                || n == 81
+                || (88..=91).contains(&n)
+        };
+        let mut used: Vec<String> = Vec::new();
+        for l in crate::collection::action_leaders().values() {
+            used.extend(l.params.iter().map(|p| p.affect_id.clone()));
+        }
+        for d in crate::collection::assist_defs() {
+            for a in &d.abilities {
+                if let Some(x) = &a.action {
+                    used.extend(x.params.iter().map(|p| p.affect_id.clone()));
+                }
+            }
+        }
+        for l in crate::collection::jojo_links() {
+            used.extend(l.params.iter().map(|p| p.affect_id.clone()));
+        }
+        used.extend(
+            crate::collection::ACTION_AFFECT
+                .iter()
+                .map(|(_, af)| af.to_string()),
+        );
+        used.sort();
+        used.dedup();
+        assert!(used.len() >= 100, "{}", used.len());
+        let rules = doc("affect_text_rule_table");
+        let slots = |list: &str, key: &str| -> Vec<(String, Vec<String>)> {
+            rules[list]
+                .as_array()
+                .unwrap()
+                .iter()
+                .map(|r| {
+                    let s: Vec<String> = r["paramRuleTypeList"]
+                        .as_array()
+                        .unwrap()
+                        .iter()
+                        .map(|x| x.as_str().unwrap().to_string())
+                        .collect();
+                    assert_eq!(s.len(), 8, "8 slots");
+                    (r[key].as_str().unwrap().to_string(), s)
+                })
+                .collect()
+        };
+        let by_prvs = slots("pvrsRuleList", "pvrs");
+        let by_base = slots("baseAffectRuleList", "baseAffectType");
+        let rule = |prvs: &str, base: &str| -> Vec<String> {
+            let mut r = by_prvs
+                .iter()
+                .find(|(k, _)| k == prvs)
+                .map(|(_, s)| s.clone())
+                .unwrap_or_else(|| vec!["Invalid".to_string(); 8]);
+            if let Some((_, s)) = by_base.iter().find(|(k, _)| k == base) {
+                for (i, x) in s.iter().enumerate() {
+                    if x != "Invalid" {
+                        r[i] = x.clone();
+                    }
+                }
+            }
+            r
+        };
+        let tr = crate::l10n::Translations::embedded().unwrap();
+        let untranslated = [
+            "AFFECT_HP_RATEADD_TEXT",
+            "AFFECT_ATK_RATEADD_TEXT",
+            "AFFECT_DEF_RATEADD_TEXT",
+        ];
+        let affects = doc("affect_table")["paramList"].as_array().unwrap().clone();
+        for id in &used {
+            let a = affects
+                .iter()
+                .find(|a| a["affectId"] == id.as_str())
+                .unwrap_or_else(|| panic!("{id}: an affect_table row"));
+            let (prvs, base) = (
+                a["prvs"].as_str().unwrap(),
+                a["baseAffect"].as_str().unwrap(),
+            );
+            assert!(consumer(base_value(base)), "{id}: {base} has a consumer");
+            if [
+                "BASE_HP_CON",
+                "BASE_HP_RATECON",
+                "BASE_ATK_BOOST_HP",
+                "BASE_DEF_BOOST_HP",
+            ]
+            .contains(&base)
+            {
+                assert!(
+                    prvs == "PRVS_NONE" || prvs == "PRVS_ATRBT",
+                    "{id}: max HP is fixed at battle start"
+                );
+            }
+            let text = a["affectTextId"].as_str().unwrap();
+            if !untranslated.contains(&text) {
+                let en = tr
+                    .english(&format!("text:affectText_JP:{text}"))
+                    .unwrap_or_else(|| panic!("{id}: no English for {text}"));
+                assert!(
+                    [
+                        "{decimal_Param0}",
+                        "{mag_Param0}",
+                        "{Param0}",
+                        "{permil_Param0}"
+                    ]
+                    .iter()
+                    .any(|p| en.contains(p)),
+                    "{id}: the line shows the amount"
+                );
+            }
+            let r = rule(prvs, base);
+            assert_ne!(r[0], "Invalid", "{id}: slot 0");
+            if base.contains("_ATRBT_") || base.contains("_STYPE_") {
+                assert_eq!(r[1], "Solo", "{id}: one line per target type");
+            }
+            if [
+                "PRVS_DEFEAT",
+                "PRVS_ASSIST_USE",
+                "PRVS_ATRBT",
+                "PRVS_OVER_HP",
+                "PRVS_UNDER_HP",
+            ]
+            .contains(&prvs)
+            {
+                assert_ne!(r[2], "Invalid", "{id}: slot 2");
+            }
+        }
+    }
+
+    /// statue_special_scene_data_table stays empty. The action battle's SP cinematic does not
+    /// read it: DoChangeBattleSceneMode mode 2 in the statue's own action set starts it, and
+    /// SpecialSkillSceneControl.GetCameraAnimatorController 0xCB3040 builds the camera's bundle
+    /// path from the model id (docs/research/30 §5). Its rows (special retire cameras and a second
+    /// actor, `spcialSkillSceneData`) have no retail values, and CreateActorObject 0xCB3624 calls
+    /// Substring on the scene params, so a guessed or short row could throw.
+    #[test]
+    fn statue_special_scene_table_stays_empty() {
+        let name = "statue_special_scene_data_table";
+        assert!(TABLES.iter().all(|(n, _)| *n != name));
+        assert!(generated_tables().iter().all(|(n, _)| n != name));
+        let mut all: Vec<(&str, &str)> = TABLES.to_vec();
+        let generated = generated_tables();
+        all.extend(generated.iter().map(|(a, b)| (a.as_str(), b.as_str())));
+        let t = tables(&Schema::embedded().unwrap(), &all).unwrap();
+        assert!(t.iter().filter(|t| t.name == name).all(|t| t.rows == 0));
     }
 
     #[test]

@@ -124,7 +124,8 @@ pub fn support_user_info(s: &Supporter, now: i64) -> Value {
         "lastLoginAt": date(now - 60 * (5 + s.n as i64 % 50)), "followStatus": FOLLOW_EACH,
         "statueInfoSupport": { "statueId": s.statue_id, "level": s.level, "convergence": 0 },
         "friendPoint": SUPPORT_FRIEND_POINTS,
-        "leaderAbilityInfo": {}, "dtLeaderAbilityInfo": collection::leader_ability(&s.statue_id),
+        "leaderAbilityInfo": collection::action_leader_ability(&s.statue_id),
+        "dtLeaderAbilityInfo": collection::leader_ability(&s.statue_id),
         "supportSkillName": ""
     })
 }
@@ -178,6 +179,11 @@ mod tests {
             assert_eq!(
                 info["leaderAblityId"],
                 info["statueInfo"]["dtLeaderAbilityInfo"]["abilityId"]
+            );
+            // The list entry carries the same action leader ability as the battle's statue.
+            assert_eq!(
+                support_user_info(s, now)["leaderAbilityInfo"],
+                info["statueInfo"]["leaderAbilityInfo"]
             );
         }
         assert_eq!(supporters("u1", 30, now), a, "stable within the day");

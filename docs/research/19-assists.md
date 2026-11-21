@@ -141,8 +141,29 @@ M = inferred.
   - the action-battle list carries the name and parameters inline (`isInit` true,
     `paramListLv…`);
   - the tactical list carries ids only, and the client fills them from the table.
-- **Conditions (ours).** `assist_ability_condition_table` is generated: one row per statue, with
-  no terms, so every ability is always active. The original conditions are unknown for the roster.
+- **Conditions.** `assist_ability_condition_table` is generated from `assist_abilities.json`: one
+  row per statue. Until Build 33 every row had no terms (always active).
+  - Build 33: 116 statues take the condition their research record lists (`--research`).
+  - Build 41: 175 statues.
+    - The ShoutWiki parser now reads the requirement icons: `{{Type}}` or `File:Type.png`, after
+      "Requirement:", "Activation Condition:" or "Activation Type Requirements:", or a bare icon
+      line. It also reads the h2 `== Assist Ability ==` inside `{{Article|…|…}}` tabs.
+    - 34 statues that cite a ShoutWiki revision get the condition from that same revision.
+    - 8 defaults get a ShoutWiki entry. Three of these come from "Old Mode" templates (oldids 3832,
+      3840, 3855, kept in `local/wiki-raw/shoutwiki/oldmode_pages.json`). With the entries,
+      4190_13 becomes DEF +8% (DEF2) and 5050_04 damage dealt +18% (DMG4).
+    - 17 defaults get the condition from the research records: `research-b33/action` (live Gamerch
+      pages, read for the first time) and `research-b33/statues`. Gamerch's 発動条件 text and its
+      JP damage line are now parsed. Records also count as agreeing when what they parse to agrees,
+      so the wording no longer has to match. With these, 2081_13 becomes DMG3, 4000_18 becomes
+      DMG4, and the assist-only row DT_AST_1030_62 becomes HP +10%.
+  - Held, with the reasons in `HELD` in the builder:
+    - 3180_62, 3230_62 and 4220_72 were rejected;
+    - 4030_04, 4090_72 and 4170_16 have a ShoutWiki requirement that has not been checked yet.
+  - Effects with no tactical affect keep the default kind (the leaning stat) under the wiki
+    condition. These are conversions, crit, cool time, move speed and damage to a race.
+  - Statues with no wiki type are counted under the server's placeholder type, so a condition
+    on them depends on that guess (collection.rs `StatueDef::statue_type`).
 - **Tactical effect (ours).** Since the client never applies assist abilities in a tactical
   battle, every TeamInfo puts a seat's active assist abilities into that seat statue's
   `dtAbilityList`. The battle applies that list as statue abilities (source Statue 2,
@@ -151,6 +172,18 @@ M = inferred.
 - **Assist skill.** `dtAssistSkillInfo` is the statue's own normal skill (258 statues), else its
   special (8): an existing tactical row, so the assist plays its own model's action.
 - **Enemies** send no assist skill or abilities.
+- **Action params (Build 41, docs/research/30-action-battle.md §7).** An ability in
+  `assist_abilities.json` may carry `"action"`: the AF_* params of the wiki effect lines (the
+  record the statue cites, else its other accepted record; JP lines through
+  `tools/content/action_vocab.py`, ShoutWiki `{stat, value}` lines through an English table) and a
+  card name. It replaces only the inline params and name of the `assistAbilityList` entry: the id
+  (the `DT_AST_*` id the condition table indexes), the tactical row, the condition and the
+  `dtAbilityList` folding are unchanged. 104 statues have it (65 research, 39 ShoutWiki); the others
+  send the tactical row, with the tactical-only `DTAF_DMG_RATEADD` (and the other `BASE_DT_*` ids,
+  `ACTION_AFFECT`) mapped to the action affect with the same numbers. The card name is the game's
+  `ABI_AST_<KIND><tier>_N` of the first line's kind at the tactical row's tier (not for assist-only
+  statues), so a move-speed card no longer says "ATK Assist". Assist-use timed lines (`AST_USE`)
+  show on the card but stay inert until the action assist character exists.
 
 ### 5.4 Not verified
 
@@ -158,8 +191,11 @@ M = inferred.
   - the Assist button, the assist character's entry and its skill animation;
   - the cards in the assist window with inline parameters (`isInit` parsed from JSON is M);
   - how folded abilities look on the seat statue's ability list.
-- The action battle's use of `assistAbilityList` (DTAF_* affect ids) is untested. The action
-  battle is not served.
+- The action battle's use of `assistAbilityList` is now intended (AF_* params, Build 41) and still
+  untested on a device. The tactical assist cards read the same list, so the action-era lines and
+  card names show in tactical mode too, while the tactical battle keeps the DT tier row (M).
+- Assists do not count toward JoJo Links: only the three seat statues do (M; the client checks no
+  members, doc 26 §1).
 - The assist-only statues: see §6.
 
 ## 6. Assist-only statues (Build 25)

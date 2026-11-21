@@ -62,7 +62,7 @@ doc = {
     "about": "Classic (action-mode) skill rows: one per SKILL_NAME_<X> label key in the player's files. The tactical battle does not read this table; classic skill tabs, the dictionary and the old action battle do. Name and text are label keys; numbers are ours.",
     "sources": [
         {"source": "jdr-research", "doc": "docs/research/12-master-data-fill.md §3", "note": "ids and label keys from the player's text tables (SKILL_NAME_/SKILL_TEXT_ keys)"},
-        {"source": "jdr-research", "doc": "docs/research/30-action-battle.md", "note": "skill, SP skill and finisher roles and their cool-downs/uses from server/content/action_skills.json (Gamerch statue pages where matched)"},
+        {"source": "jdr-research", "doc": "docs/research/30-action-battle.md", "note": "skill, SP skill and finisher roles and their cool-downs/uses from server/content/action_skills.json (Gamerch statue pages where matched; other finishers are the label at the statue's retail SP-cinematic entry, action_cinematics.json)"},
         {"source": "jdr-default", "note": "ids in no statue's action skills: type by number (99 attack, odd normal, even special); rates; cool-downs and uses where the wiki gives none"},
     ],
     "data": {"paramList": rows},

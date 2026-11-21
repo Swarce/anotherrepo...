@@ -1,6 +1,6 @@
 {
  "asset": "affect_text_rule_table",
- "about": "How the client merges the affects of one effect line (AffectTextUtil.CreateAffectText): affects with the same affectTextId are merged per parameter slot by the rule of their (prvs, baseAffect). A rule is the pvrsRuleList row of the condition, overridden by every non-Invalid slot of the baseAffectRuleList row of the BaseAffectType; a row needs 8 slots (GameConst.AffectParamCount). Invalid shows -1 (GameConst.InvalidAffectParam), Combine adds the values, Solo keeps one line per distinct value. One baseAffectRuleList row per BaseAffectType our affect_table uses: slot 0 (the amount) Combine, slot 1 Solo for the *_STYPE_* affects (it holds the StatueType). No condition rows: no slot of our affects depends on the condition.",
+ "about": "How the client merges the affects of one effect line (AffectTextUtil.CreateAffectText): affects with the same affectTextId are merged per parameter slot by the rule of their (prvs, baseAffect). A rule is the pvrsRuleList row of the condition, overridden by every non-Invalid slot of the baseAffectRuleList row of the BaseAffectType; a row needs 8 slots (GameConst.AffectParamCount). Invalid shows -1 (GameConst.InvalidAffectParam), Combine adds the values, Solo keeps one line per distinct value. One baseAffectRuleList row per BaseAffectType our affect_table uses: slot 0 (the amount) Combine, slot 1 Solo for the *_STYPE_* affects (it holds the StatueType). The AF_* action affects add their bases (slot 1 Solo for the ATRBT/STYPE targets) and condition rows for the conditions whose slot 2 holds seconds, an HP threshold or the holder tribe (Solo).",
  "sources": [
   {
    "source": "jdr-research",
@@ -10,10 +10,85 @@
   {
    "source": "jdr-default",
    "note": "the rows are ours: the shipped table is empty and no source has the original rules"
+  },
+  {
+   "source": "jdr-default",
+   "note": "rows for the AF_* action affects (tools/content/action_vocab.py): slot 0 Combine, slot 1 Solo for the ATRBT/STYPE target bases, slot 2 Solo for the DEFEAT, ASSIST_USE, ATRBT, OVER_HP and UNDER_HP conditions (seconds, HP threshold, holder tribe)"
   }
  ],
  "data": {
-  "pvrsRuleList": [],
+  "pvrsRuleList": [
+   {
+    "pvrs": "PRVS_ATRBT",
+    "baseAffectType": "BASE_NONE",
+    "paramRuleTypeList": [
+     "Invalid",
+     "Invalid",
+     "Solo",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_DEFEAT",
+    "baseAffectType": "BASE_NONE",
+    "paramRuleTypeList": [
+     "Invalid",
+     "Invalid",
+     "Solo",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_OVER_HP",
+    "baseAffectType": "BASE_NONE",
+    "paramRuleTypeList": [
+     "Invalid",
+     "Invalid",
+     "Solo",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_UNDER_HP",
+    "baseAffectType": "BASE_NONE",
+    "paramRuleTypeList": [
+     "Invalid",
+     "Invalid",
+     "Solo",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_ASSIST_USE",
+    "baseAffectType": "BASE_NONE",
+    "paramRuleTypeList": [
+     "Invalid",
+     "Invalid",
+     "Solo",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   }
+  ],
   "baseAffectRuleList": [
    {
     "pvrs": "PRVS_NONE",
@@ -133,6 +208,328 @@
     "paramRuleTypeList": [
      "Combine",
      "Solo",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_ORACHAGE_CON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_SP_SKILL_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_VCT_DAM_CON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_MOVE_CON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_DMG_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_STEP_RANGE",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_ATRBT_DMG_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Solo",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_ATRBT_VCT_DAM_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Solo",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_CURE_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_STEP_TIME",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_STYPE_DMG_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Solo",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_CRTRATE_CON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_CT_CON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_VCT_DAM_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_STYPE_VCT_DAM_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Solo",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_NORMAL_SKILL_RATECON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_HP_BOOST_ATK",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_DEF_BOOST_ATK",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_COMBO_GAUGE_RATE",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_DMG_CON",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_ATK_BOOST_DEF",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_HP_BOOST_DEF",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid",
+     "Invalid"
+    ]
+   },
+   {
+    "pvrs": "PRVS_NONE",
+    "baseAffectType": "BASE_SPSTC_ADD",
+    "paramRuleTypeList": [
+     "Combine",
+     "Invalid",
      "Invalid",
      "Invalid",
      "Invalid",

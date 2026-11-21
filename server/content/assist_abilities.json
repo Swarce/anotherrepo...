@@ -1,11 +1,24 @@
 {
- "about": "Assist abilities per statue (docs/research/19-assists.md §5, §6): ids of the shared dtbattle_ability_data_table rows DT_AST_<kind><tier> (an assist-only statue has its own row DT_AST_<statueId>), with the client's activation conditions ([{statueType, count}] over the seat's assists; empty = always). Built by tools/content/build_assist_abilities.py.",
+ "about": "Assist abilities per statue (docs/research/19-assists.md §5, §6): ids of the shared dtbattle_ability_data_table rows DT_AST_<kind><tier> (an assist-only statue has its own row DT_AST_<statueId>), with the client's activation conditions ([{statueType, count}] over the seat's assists; empty = always). An optional \"action\" holds the action-battle params of the ability (AF_* affects, lv1/lv10 slots in the units of docs/research/30-action-battle.md §7; \"left\" = hold categories of the lines not served) and the card name; it replaces only the inline params (and name) of assistAbilityList, never the tactical row. Built by tools/content/build_assist_abilities.py.",
  "sources": [
   {
    "source": "Diamond Records Wiki (ShoutWiki)",
    "page": "https://jojodiamondrecords.shoutwiki.com/",
    "license": "CC BY-SA 3.0",
    "accessed": "2026-11-15"
+  },
+  {
+   "source": "Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/",
+   "accessed": "2026-11-21",
+   "note": "assist requirement icons as conditions (Build 41), and three 'Old Mode' statue templates (oldids 3832, 3840, 3855) fetched 2026-11-21; each row cites its page and revision",
+   "license": "CC BY-SA 3.0"
+  },
+  {
+   "source": "Gamerch ジョジョDR攻略Wiki",
+   "page": "https://jojodr.gamerch.com/",
+   "accessed": "2026-11-20",
+   "note": "research passes (local/wiki-raw/research-b33): statue pages read live 2026-11-20 and Wayback captures; the activation condition (発動条件) and HP/ATK/DEF/damage values; each row cites its page"
   },
   {
    "source": "jdr-research",
@@ -18,6 +31,15 @@
   {
    "source": "jdr-default",
    "note": "assist-only statues: their own row under their own ABI_AST_<statueId>_N label, values of the kind and tier above"
+  },
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/30-action-battle.md §7",
+   "note": "\"action\": the effect lines of the record each statue cites (else its other accepted record) parsed by tools/content/action_vocab.py (JP lines; ShoutWiki {stat, value} lines through an English table); Lv10 = Lv1 unless a line has a plausible MAX"
+  },
+  {
+   "source": "jdr-default",
+   "note": "\"action\".abilityName: the game's ABI_AST_<KIND><tier>_N label of the first served line's kind at the tactical row's tier (not for assist-only statues), so the card name matches its lines; affect ids AF_* are ours"
   }
  ],
  "statues": [
@@ -61,7 +83,29 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "params": [
+       {
+        "affectId": "AF_ATRBT_VAMPIRE_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 1, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 1, 0, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ATRBT_HASHIRA_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 4, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 4, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Jonathan_Joestar_(Courage)",
+       "revid": 3779,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -169,12 +213,43 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_HP_RATEADD4_N",
+      "params": [
+       {
+        "affectId": "AF_HP_RATEADD",
+        "giveLimit": -1,
+        "lv1": [240, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [240, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodr.gamerch.com/【闘志】ジョナサン・ジョースター～宿命の星～★6（肩に浮かぶ星の痣）",
+       "accessed": "2026-11-20"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【闘志】ジョナサン・ジョースター～宿命の星～★6（肩に浮かぶ星の痣）",
+    "accessed": "2026-11-20",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -217,7 +292,24 @@
        "statueType": 3,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_MOVE_FAST3_N",
+      "params": [
+       {
+        "affectId": "AF_MOVE_FAST",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Robert_E._O._Speedwagon_(Courage)",
+       "revid": 3782,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -243,7 +335,29 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "params": [
+       {
+        "affectId": "AF_ATRBT_VAMPIRE_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [40, 1, 0, 0, 0, 0, 0, 0],
+        "lv10": [40, 1, 0, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ATRBT_HASHIRA_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [40, 4, 0, 0, 0, 0, 0, 0],
+        "lv10": [40, 4, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_William_Anthonio_Zeppeli_(Fighting_Spirit)",
+       "revid": 3783,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -295,7 +409,29 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "params": [
+       {
+        "affectId": "AF_ATRBT_VAMPIRE_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 1, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 1, 0, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ATRBT_HASHIRA_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 4, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 4, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_William_Anthonio_Zeppeli_(Fighting_Spirit)",
+       "revid": 3785,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -421,7 +557,29 @@
        "statueType": 4,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "params": [
+       {
+        "affectId": "AF_ATRBT_VAMPIRE_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 1, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 1, 0, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ATRBT_HASHIRA_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 4, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 4, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Straizo_(Solitary)",
+       "revid": 3787,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -512,7 +670,24 @@
        "statueType": 3,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD3_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Dio_Brando_(Solitary)",
+       "revid": 3793,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -555,7 +730,30 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD4_N",
+      "params": [
+       {
+        "affectId": "AF_ONLY_VAMPIRE_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [160, 0, 1, 0, 0, 0, 0, 0],
+        "lv10": [160, 0, 1, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ONLY_VAMPIRE_CURE_RATEADD",
+        "giveLimit": -1,
+        "lv1": [1000, 0, 1, 0, 0, 0, 0, 0],
+        "lv10": [1000, 0, 1, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Dio_Brando_~_Emperor_in_the_Moonlight_(Fighting_Spirit)",
+       "revid": 4648,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -597,7 +795,7 @@
    "statueId": "1110_03",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD3",
+     "abilityId": "DT_AST_HP_RATEADD3",
      "conditions": [
       {
        "statueType": 1,
@@ -607,7 +805,30 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD3_N",
+      "params": [
+       {
+        "affectId": "AF_ONLY_VAMPIRE_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [140, 0, 1, 0, 0, 0, 0, 0],
+        "lv10": [140, 0, 1, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ONLY_VAMPIRE_CURE_RATEADD",
+        "giveLimit": -1,
+        "lv1": [500, 0, 1, 0, 0, 0, 0, 0],
+        "lv10": [500, 0, 1, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Wang_Chan_(Fighting_Spirit)",
+       "revid": 3864,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -659,7 +880,24 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_CT_FAST3_N",
+      "params": [
+       {
+        "affectId": "AF_CT_FAST",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Bruford_(Courage)",
+       "revid": 3791,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -884,12 +1122,43 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_HP_BOOST_ATK4_N",
+      "params": [
+       {
+        "affectId": "AF_HP_BOOST_ATK",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodr.gamerch.com/【闘志】ジョセフ・ジョースター～『最後の波紋』～★6（輝き放つ波紋の力）",
+       "accessed": "2026-11-20"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【闘志】ジョセフ・ジョースター～『最後の波紋』～★6（輝き放つ波紋の力）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -906,7 +1175,29 @@
        "statueType": 3,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "params": [
+       {
+        "affectId": "AF_ATRBT_VAMPIRE_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [40, 1, 0, 0, 0, 0, 0, 0],
+        "lv10": [40, 1, 0, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ATRBT_HASHIRA_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [40, 4, 0, 0, 0, 0, 0, 0],
+        "lv10": [40, 4, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Caesar_Anthonio_Zeppeli_(Tactical)",
+       "revid": 3406,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -932,7 +1223,24 @@
        "statueType": 3,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_CURE_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_CURE_RATEADD",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Caesar_Anthonio_Zeppeli_(Tactical)",
+       "revid": 3417,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -988,7 +1296,29 @@
        "statueType": 4,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "params": [
+       {
+        "affectId": "AF_ATRBT_VAMPIRE_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [150, 1, 0, 0, 0, 0, 0, 0],
+        "lv10": [150, 1, 0, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ATRBT_HASHIRA_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [150, 4, 0, 0, 0, 0, 0, 0],
+        "lv10": [150, 4, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Caesar_Anthonio_Zeppeli_(Tactical)",
+       "revid": 3389,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -1014,7 +1344,24 @@
        "statueType": 2,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ORACHAGE_FAST3_N",
+      "params": [
+       {
+        "affectId": "AF_ORACHAGE_FAST",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Caesar_Anthonio_Zeppeli_(Unity)",
+       "revid": 2180,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -1031,12 +1378,43 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_CRT_DMG_RATEADD4_N",
+      "params": [
+       {
+        "affectId": "AF_CRT_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [1500, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [1500, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodr.gamerch.com/【勇気】シーザー～一族への誇り～★6（虹色のシャボン）",
+       "accessed": "2026-11-20"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【勇気】シーザー～一族への誇り～★6（虹色のシャボン）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1053,7 +1431,29 @@
        "statueType": 4,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "params": [
+       {
+        "affectId": "AF_ATRBT_VAMPIRE_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [40, 1, 0, 0, 0, 0, 0, 0],
+        "lv10": [40, 1, 0, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ATRBT_HASHIRA_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [40, 4, 0, 0, 0, 0, 0, 0],
+        "lv10": [40, 4, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Lisa_Lisa_(Tactical)",
+       "revid": 3408,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -1105,7 +1505,29 @@
        "statueType": 4,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "params": [
+       {
+        "affectId": "AF_ATRBT_VAMPIRE_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 1, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 1, 0, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ATRBT_HASHIRA_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 4, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 4, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Lisa_Lisa_(Fighting_Spirit)",
+       "revid": 3255,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -1279,7 +1701,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 2
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DEF_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_DEF_RATEADD",
+        "giveLimit": -1,
+        "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Wamuu_%28Courage%29",
+       "revid": 3343,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -1288,7 +1732,7 @@
     "revid": 3343,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1296,7 +1740,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 2
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Wamuu_%28Courage%29",
+       "revid": 3422,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -1305,7 +1771,7 @@
     "revid": 3422,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1313,7 +1779,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 2
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD3_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Wamuu_%28Courage%29",
+       "revid": 3254,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -1322,7 +1810,7 @@
     "revid": 3254,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1417,7 +1905,24 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_MOVE_FAST3_N",
+      "params": [
+       {
+        "affectId": "AF_MOVE_FAST",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Kars_(Tactical)",
+       "revid": 3256,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -1459,13 +1964,40 @@
    "statueId": "2081_13",
    "abilities": [
     {
-     "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "abilityId": "DT_AST_DMG_RATEADD3",
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DMG_RATEADD3_N",
+      "params": [
+       {
+        "affectId": "AF_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [70, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [70, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodr.gamerch.com/【孤高】カーズ★5（～アルティメット・シイング～）",
+       "accessed": "2026-11-20"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【孤高】カーズ★5（～アルティメット・シイング～）",
+    "accessed": "2026-11-20",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1499,7 +2031,36 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD3_N",
+      "params": [
+       {
+        "affectId": "AF_FULL_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ATRBT_STAND_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [100, 5, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 5, 0, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ONLY_VAMPIRE_DEF_RATEADD",
+        "giveLimit": -1,
+        "lv1": [50, 0, 1, 0, 0, 0, 0, 0],
+        "lv10": [50, 0, 1, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Wired_Beck_(Fighting_Spirit)",
+       "revid": 3301,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -1525,7 +2086,24 @@
        "statueType": 4,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ORACHAGE_FAST1_N",
+      "params": [
+       {
+        "affectId": "AF_ORACHAGE_FAST",
+        "giveLimit": -1,
+        "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Rudol_von_Stroheim_(Fighting_Spirit)",
+       "revid": 3344,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -1542,7 +2120,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD1_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Rudol_von_Stroheim_%28Fighting_Spirit%29",
+       "revid": 3419,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -1551,7 +2155,7 @@
     "revid": 3419,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1620,7 +2224,29 @@
        "statueType": 4,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "params": [
+       {
+        "affectId": "AF_ATRBT_HASHIRA_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [100, 4, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 4, 0, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ATRBT_VAMPIRE_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [100, 1, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 1, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Stroheim_~_I'm_back_from_Hell_~_(Courage)",
+       "revid": 4423,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -1637,7 +2263,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD1_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Jotaro_Kujo_%28Courage%29",
+       "revid": 3161,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -1646,7 +2298,7 @@
     "revid": 3161,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1654,7 +2306,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DEF_RATEADD1_N",
+      "params": [
+       {
+        "affectId": "AF_DEF_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Jotaro_Kujo_%28Courage%29",
+       "revid": 3434,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -1663,7 +2341,7 @@
     "revid": 3434,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1671,7 +2349,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Jotaro_Kujo_%28Courage%29",
+       "revid": 3274,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -1680,7 +2384,7 @@
     "revid": 3274,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1701,7 +2405,24 @@
        "statueType": 4,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD4_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Jotaro_Kujo_(Courage)",
+       "revid": 4640,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -1718,7 +2439,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DMG_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DMG_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Jotaro_Kujo_%28Solitary%29",
+       "revid": 3883,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -1727,7 +2474,7 @@
     "revid": 3883,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1735,12 +2482,42 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD3_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/Template%3A%285%E2%98%85%29_Jotaro_Kujo_~_You_pissed_me_off_~_%28Courage%29_Old_Mode",
+       "revid": 3832,
+       "accessed": "2026-11-21"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/Template%3A%285%E2%98%85%29_Jotaro_Kujo_~_You_pissed_me_off_~_%28Courage%29_Old_Mode",
+    "revid": 3832,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-21",
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1748,12 +2525,46 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD4_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Jotaro_Kujo_~_You_pissed_me_off_~_%28Courage%29",
+       "revid": 4439,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Jotaro_Kujo_~_You_pissed_me_off_~_%28Courage%29",
+    "revid": 4439,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1936,7 +2747,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 2
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Muhammad_Avdol_%28Fighting_Spirit%29",
+       "revid": 3252,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -1945,7 +2778,7 @@
     "revid": 3252,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1966,7 +2799,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD3_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Muhammad_Avdol_%28Unity%29",
+       "revid": 2321,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -1975,7 +2834,7 @@
     "revid": 2321,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -1996,7 +2855,24 @@
        "statueType": 4,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DMG_RATEADD4_N",
+      "params": [
+       {
+        "affectId": "AF_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [180, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [180, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Muhammad_Avdol_~_The_Magician's_revival_~_(Courage)",
+       "revid": 4646,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -2013,7 +2889,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DEF_RATEADD1_N",
+      "params": [
+       {
+        "affectId": "AF_DEF_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Noriaki_Kakyoin_%28Tactical%29",
+       "revid": 3166,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -2022,7 +2924,7 @@
     "revid": 3166,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2065,7 +2967,24 @@
        "statueType": 3,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_CT_FAST3_N",
+      "params": [
+       {
+        "affectId": "AF_CT_FAST",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Noriaki_Kakyoin_(Tactical)",
+       "revid": 3273,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -2091,7 +3010,24 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ORACHAGE_FAST3_N",
+      "params": [
+       {
+        "affectId": "AF_ORACHAGE_FAST",
+        "giveLimit": -1,
+        "lv1": [150, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [150, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Noriaki_Kakyoin_(Unity)",
+       "revid": 3306,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -2130,7 +3066,24 @@
        "statueType": 3,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_CT_FAST3_N",
+      "params": [
+       {
+        "affectId": "AF_CT_FAST",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Noriaki_Kakyoin_~_Fear_Overcame_(Courage)",
+       "revid": 2266,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -2290,7 +3243,24 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_MOVE_FAST3_N",
+      "params": [
+       {
+        "affectId": "AF_MOVE_FAST",
+        "giveLimit": -1,
+        "lv1": [150, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [150, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Jean_Pierre_Polnareff_~_God_Anubis'_Posession_(Tactical)",
+       "revid": 4149,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -2346,7 +3316,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Iggy_%28Fighting_Spirit%29",
+       "revid": 2724,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -2355,7 +3351,7 @@
     "revid": 2724,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2389,7 +3385,37 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD4_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Iggy_%28Fighting_Spirit%29",
+       "revid": 4639,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -2398,7 +3424,7 @@
     "revid": 4639,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2545,7 +3571,24 @@
        "statueType": 3,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DMG_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Devo_the_Cursed_(Courage)",
+       "revid": 3245,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -2610,12 +3653,39 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 4,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_BOOST_DEF2_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_BOOST_DEF",
+        "giveLimit": -1,
+        "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodr.gamerch.com/【孤高】ラバーソール★4（ハナでもほじっていな！）",
+       "accessed": "2026-11-20"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【孤高】ラバーソール★4（ハナでもほじっていな！）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2632,7 +3702,24 @@
        "statueType": 4,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD1_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Hol_Horse_(Tactical)",
+       "revid": 4814,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -2649,7 +3736,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Hol_Horse_%28Tactical%29",
+       "revid": 4815,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -2658,7 +3771,7 @@
     "revid": 4815,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2679,7 +3792,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 4,
+       "count": 2
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Hol_Horse_%28Unity%29",
+       "revid": 3260,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -2688,7 +3823,7 @@
     "revid": 3260,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -2701,7 +3836,24 @@
        "statueType": 4,
        "count": 3
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD4_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Hol_Horse_(Unity)",
+       "revid": 4720,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -2805,7 +3957,24 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ORACHAGE_FAST2_N",
+      "params": [
+       {
+        "affectId": "AF_ORACHAGE_FAST",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Enya_the_Hag_(Unity)",
+       "revid": 3440,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -2848,7 +4017,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_N%27Doul_%28Tactical%29",
+       "revid": 3442,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -2857,7 +4052,7 @@
     "revid": 3442,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3017,7 +4212,24 @@
        "statueType": 4,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ORACHAGE_FAST3_N",
+      "params": [
+       {
+        "affectId": "AF_ORACHAGE_FAST",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Mariah_(Tactical)",
+       "revid": 3257,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -3056,7 +4268,24 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_CT_FAST1_N",
+      "params": [
+       {
+        "affectId": "AF_CT_FAST",
+        "giveLimit": -1,
+        "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Pet_Shop_(Tactical)",
+       "revid": 3169,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -3082,7 +4311,24 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_CT_FAST2_N",
+      "params": [
+       {
+        "affectId": "AF_CT_FAST",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Pet_Shop_(Tactical)",
+       "revid": 2342,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -3108,7 +4354,24 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_CT_FAST3_N",
+      "params": [
+       {
+        "affectId": "AF_CT_FAST",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Pet_Shop_(Tactical)",
+       "revid": 3269,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -3138,7 +4401,24 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_CT_FAST4_N",
+      "params": [
+       {
+        "affectId": "AF_CT_FAST",
+        "giveLimit": -1,
+        "lv1": [250, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [250, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Pet_Shop_(Tactical)",
+       "revid": 4638,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -3155,7 +4435,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 4,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_HP_RATEADD3_N",
+      "params": [
+       {
+        "affectId": "AF_HP_RATEADD",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_High_DIO_%28Fighting_Spirit%29",
+       "revid": 3467,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -3164,7 +4470,7 @@
     "revid": 3467,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3172,25 +4478,91 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 2
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD4_N",
+      "params": [
+       {
+        "affectId": "AF_ONLY_VAMPIRE_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [160, 0, 1, 0, 0, 0, 0, 0],
+        "lv10": [160, 0, 1, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ONLY_VAMPIRE_CURE_RATEADD",
+        "giveLimit": -1,
+        "lv1": [1000, 0, 1, 0, 0, 0, 0, 0],
+        "lv10": [1000, 0, 1, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodr.gamerch.com/【孤高】DIO～スタンドのパワーを全開だッ！～★6（なじむジョースターの血）",
+       "accessed": "2026-11-20"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【孤高】DIO～スタンドのパワーを全開だッ！～★6（なじむジョースターの血）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
    "statueId": "3322_08",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 2
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD4_N",
+      "params": [
+       {
+        "affectId": "AF_ONLY_VAMPIRE_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [160, 0, 1, 0, 0, 0, 0, 0],
+        "lv10": [160, 0, 1, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ONLY_VAMPIRE_CURE_RATEADD",
+        "giveLimit": -1,
+        "lv1": [1000, 0, 1, 0, 0, 0, 0, 0],
+        "lv10": [1000, 0, 1, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodr.gamerch.com/【知略】DIO～すでに手は打った！！～★6（念写に映る姿）",
+       "accessed": "2026-11-20"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【知略】DIO～すでに手は打った！！～★6（念写に映る姿）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3220,7 +4592,24 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DMG_RATEADD1_N",
+      "params": [
+       {
+        "affectId": "AF_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Vanilla_Ice_(Courage)",
+       "revid": 3020,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -3250,7 +4639,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DMG_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DMG_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Vanilla_Ice_%28Courage%29",
+       "revid": 4150,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -3259,7 +4674,7 @@
     "revid": 4150,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3289,7 +4704,24 @@
        "statueType": 4,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD1_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Josuke_Higashikata_(Courage)",
+       "revid": 3012,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -3306,7 +4738,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DEF_RATEADD1_N",
+      "params": [
+       {
+        "affectId": "AF_DEF_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Josuke_Higashikata_%28Courage%29",
+       "revid": 3554,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -3315,7 +4773,7 @@
     "revid": 3554,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3323,7 +4781,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DEF_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_DEF_RATEADD",
+        "giveLimit": -1,
+        "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Josuke_Higashikata_%28Courage%29",
+       "revid": 3276,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -3332,7 +4816,7 @@
     "revid": 3276,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3362,7 +4846,24 @@
        "statueType": 4,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_CURE_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_CURE_RATEADD",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Josuke_Higashikata_(Unity)",
+       "revid": 3553,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -3378,13 +4879,44 @@
    "statueId": "4000_18",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "abilityId": "DT_AST_DMG_RATEADD4",
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DMG_RATEADD4_N",
+      "params": [
+       {
+        "affectId": "AF_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [180, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [180, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodr.gamerch.com/【団結】東方仗助～町を護る者～★6（力強く優しき瞳）",
+       "accessed": "2026-11-20"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【団結】東方仗助～町を護る者～★6（力強く優しき瞳）",
+    "accessed": "2026-11-20",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3453,7 +4985,24 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD3_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Koichi_Hirose_(Unity)",
+       "revid": 3294,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -3505,7 +5054,24 @@
        "statueType": 2,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD3_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Koichi_Hirose_(Courage)",
+       "revid": 3290,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -3531,7 +5097,24 @@
        "statueType": 4,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ORACHAGE_FAST1_N",
+      "params": [
+       {
+        "affectId": "AF_ORACHAGE_FAST",
+        "giveLimit": -1,
+        "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Koichi_Hirose_(Solitary)",
+       "revid": 3004,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -3557,7 +5140,24 @@
        "statueType": 4,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ORACHAGE_FAST2_N",
+      "params": [
+       {
+        "affectId": "AF_ORACHAGE_FAST",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Koichi_Hirose_(Solitary)",
+       "revid": 3558,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -3600,7 +5200,24 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ORACHAGE_FAST4_N",
+      "params": [
+       {
+        "affectId": "AF_ORACHAGE_FAST",
+        "giveLimit": -1,
+        "lv1": [300, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [300, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Koichi_Hirose_~_ACT_2_The_young_man_who_evolves_(Solitary)",
+       "revid": 2789,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -3626,7 +5243,24 @@
        "statueType": 3,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_MOVE_FAST3_N",
+      "params": [
+       {
+        "affectId": "AF_MOVE_FAST",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Koichi_Hirose_(Tactical)",
+       "revid": 3277,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -3643,12 +5277,35 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 4,
+       "count": 2
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_MOVE_FAST1_N",
+      "params": [
+       {
+        "affectId": "AF_MOVE_FAST",
+        "giveLimit": -1,
+        "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodr.gamerch.com/【団結】広瀬康一★3（覚醒の時）",
+       "accessed": "2026-11-20"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【団結】広瀬康一★3（覚醒の時）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3656,7 +5313,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DMG_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 2
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DMG_RATEADD1_N",
+      "params": [
+       {
+        "affectId": "AF_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Okuyasu_Nijimura_%28Fighting_Spirit%29",
+       "revid": 3016,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -3665,7 +5344,7 @@
     "revid": 3016,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3673,7 +5352,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DMG_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 2
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DMG_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Okuyasu_Nijimura_%28Fighting_Spirit%29",
+       "revid": 2335,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -3682,7 +5383,7 @@
     "revid": 2335,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3690,7 +5391,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DMG_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 2
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DMG_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Okuyasu_Nijimura_%28Fighting_Spirit%29",
+       "revid": 3270,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -3699,7 +5422,7 @@
     "revid": 3270,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3707,7 +5430,37 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DMG_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DMG_RATEADD4_N",
+      "params": [
+       {
+        "affectId": "AF_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [180, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [180, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Okuyasu_Nijimura_%28Fighting_Spirit%29",
+       "revid": 4636,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -3716,7 +5469,7 @@
     "revid": 4636,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3724,12 +5477,39 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_CT_FAST3_N",
+      "params": [
+       {
+        "affectId": "AF_CT_FAST",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodr.gamerch.com/【団結】虹村億泰★5（距離を縮める）",
+       "accessed": "2026-11-20"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【団結】虹村億泰★5（距離を縮める）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3737,7 +5517,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Rohan_Kishibe_%28Tactical%29",
+       "revid": 3559,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -3746,7 +5552,7 @@
     "revid": 3559,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3780,7 +5586,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD3_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Rohan_Kishibe_%28Tactical%29",
+       "revid": 3275,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -3789,7 +5621,7 @@
     "revid": 3275,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3797,7 +5629,24 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "conditions": [],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD4_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Rohan_Kishibe_%28Tactical%29",
+       "revid": 4819,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -3827,7 +5676,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DEF_RATEADD1_N",
+      "params": [
+       {
+        "affectId": "AF_DEF_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Jotaro_Kujo_%28Tactical%29",
+       "revid": 3014,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -3836,7 +5711,7 @@
     "revid": 3014,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3844,7 +5719,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DEF_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DEF_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_DEF_RATEADD",
+        "giveLimit": -1,
+        "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Jotaro_Kujo_%28Unity%29",
+       "revid": 3262,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -3853,7 +5754,7 @@
     "revid": 3262,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3926,12 +5827,43 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_HP_BOOST_DEF4_N",
+      "params": [
+       {
+        "affectId": "AF_HP_BOOST_DEF",
+        "giveLimit": -1,
+        "lv1": [120, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [120, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodr.gamerch.com/【勇気】空条承太郎～たたっこわしてやるぜ～★6（見ると観るの違い）",
+       "accessed": "2026-11-20"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【勇気】空条承太郎～たたっこわしてやるぜ～★6（見ると観るの違い）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3939,7 +5871,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD1",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD1_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Yukako_Yamagishi_%28Courage%29",
+       "revid": 3018,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -3948,7 +5906,7 @@
     "revid": 3018,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -3982,7 +5940,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Yukako_Yamagishi_%28Courage%29",
+       "revid": 3259,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -3991,7 +5975,7 @@
     "revid": 3259,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -4012,7 +5996,24 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ORACHAGE_FAST4_N",
+      "params": [
+       {
+        "affectId": "AF_ORACHAGE_FAST",
+        "giveLimit": -1,
+        "lv1": [300, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [300, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Yukako_Yamagishi_(Courage)",
+       "revid": 4637,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -4029,7 +6030,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_DMG_RATEADD3",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DMG_RATEADD3_N",
+      "params": [
+       {
+        "affectId": "AF_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [70, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [70, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Yukako_Yamagishi_%28Solitary%29",
+       "revid": 3286,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -4038,7 +6065,7 @@
     "revid": 3286,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -4055,7 +6082,24 @@
        "statueType": 4,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ORACHAGE_FAST1_N",
+      "params": [
+       {
+        "affectId": "AF_ORACHAGE_FAST",
+        "giveLimit": -1,
+        "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)Shigekiyo_Yangu_(Fighting_Spirit)",
+       "revid": 3019,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -4172,7 +6216,24 @@
        "statueType": 4,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_CURE_RATEADD3_N",
+      "params": [
+       {
+        "affectId": "AF_CURE_RATEADD",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Yuya_Fungami_(Courage)",
+       "revid": 3304,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -4345,7 +6406,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_HP_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_HP_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Keicho_Nijimura_%28Tactical%29",
+       "revid": 3432,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -4354,7 +6441,7 @@
     "revid": 3432,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -4440,7 +6527,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_HP_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_HP_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Akira_Otoishi_%28Fighting_Spirit%29",
+       "revid": 3570,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -4449,7 +6562,7 @@
     "revid": 3570,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -4457,7 +6570,33 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Akira_Otoishi_%28Fighting_Spirit%29",
+       "revid": 3271,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
@@ -4466,7 +6605,7 @@
     "revid": 3271,
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -4547,13 +6686,43 @@
    "statueId": "4190_13",
    "abilities": [
     {
-     "abilityId": "DT_AST_HP_RATEADD3",
-     "conditions": []
+     "abilityId": "DT_AST_DEF_RATEADD2",
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DEF_RATEADD2_N",
+      "params": [
+       {
+        "affectId": "AF_DEF_RATEADD",
+        "giveLimit": -1,
+        "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/Template%3A%285%E2%98%85%29_Yoshikage_Kira_%28Solitary%29_Old_Mode",
+       "revid": 3840,
+       "accessed": "2026-11-21"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/Template%3A%285%E2%98%85%29_Yoshikage_Kira_%28Solitary%29_Old_Mode",
+    "revid": 3840,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-21",
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -4626,12 +6795,29 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD4",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/Template%3A%286%E2%98%85%29_Kosaku_Kawajiri_%28Courage%29_Old_Mode",
+    "revid": 3855,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-21",
+    "note": "condition and no tactical affect for the effect: the statue's leaning stat, tier = rarity - 2 (action-battle era)"
    }
   },
   {
@@ -4648,7 +6834,24 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DMG_RATEADD4_N",
+      "params": [
+       {
+        "affectId": "AF_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [180, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [180, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Yoshikage_Kira_(Kosaku_Kawajiri)_(Fighting_Spirit)",
+       "revid": 2247,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -4678,7 +6881,26 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "abilityName": "ABI_AST_ATK_RATEADD4_N",
+      "params": [
+       {
+        "affectId": "AF_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [
+       "unclassified"
+      ],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Yoshikage_Kira_(Kosaku_Kawajiri)_(Fighting_Spirit)",
+       "revid": 4687,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -4694,13 +6916,44 @@
    "statueId": "4193_08",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_CT_FAST4_N",
+      "params": [
+       {
+        "affectId": "AF_CT_FAST",
+        "giveLimit": -1,
+        "lv1": [250, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [250, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodr.gamerch.com/【知略】吉良吉影～...始末してからね......！～★6（日常に潜む闇）",
+       "accessed": "2026-11-20"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【知略】吉良吉影～...始末してからね......！～★6（日常に潜む闇）",
+    "accessed": "2026-11-20",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -4880,7 +7133,7 @@
    "statueId": "5010_14",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
+     "abilityId": "DT_AST_HP_RATEADD4",
      "conditions": []
     }
    ],
@@ -4919,13 +7172,47 @@
    "statueId": "5050_04",
    "abilities": [
     {
-     "abilityId": "DT_AST_HP_RATEADD4",
-     "conditions": []
+     "abilityId": "DT_AST_DMG_RATEADD4",
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ],
+     "action": {
+      "abilityName": "ABI_AST_DMG_RATEADD4_N",
+      "params": [
+       {
+        "affectId": "AF_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [180, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [180, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Guido_Mista_%28Courage%29",
+       "revid": 4400,
+       "accessed": "2026-11-15"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Guido_Mista_%28Courage%29",
+    "revid": 4400,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "condition and assist-ability stat and value only (action-battle era); tier = nearest value"
    }
   },
   {
@@ -4958,13 +7245,30 @@
    "statueId": "5120_14",
    "abilities": [
     {
-     "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": []
+     "abilityId": "DT_AST_HP_RATEADD4",
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Prosciutto_%28Unity%29",
+    "revid": 4544,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-15",
+    "note": "condition and no tactical affect for the effect: the statue's leaning stat, tier = rarity - 2 (action-battle era)"
    }
   },
   {
@@ -5063,12 +7367,49 @@
    "abilities": [
     {
      "abilityId": "DT_AST_1030_62",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 2
+      }
+     ],
+     "action": {
+      "params": [
+       {
+        "affectId": "AF_HP_RATEADD",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ONLY_JOESTAR_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [150, 0, 2, 0, 0, 0, 0, 0],
+        "lv10": [150, 0, 2, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ONLY_JOESTAR_VCT_DAM_RATESUB",
+        "giveLimit": -1,
+        "lv1": [-150, 0, 2, 0, 0, 0, 0, 0],
+        "lv10": [-150, 0, 2, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Erina_Pendleton_(Courage)",
+       "revid": 3781,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Erina_Pendleton_(Courage)",
+    "revid": 3781,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -5076,12 +7417,47 @@
    "abilities": [
     {
      "abilityId": "DT_AST_2011_72",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ],
+     "action": {
+      "params": [
+       {
+        "affectId": "AF_AST_USE_ATRBT_HASHIRA_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [150, 4, 100, 0, 0, 0, 0, 0],
+        "lv10": [150, 4, 100, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_AST_USE_ATRBT_VAMPIRE_DMG_RATEADD",
+        "giveLimit": -1,
+        "lv1": [150, 1, 100, 0, 0, 0, 0, 0],
+        "lv10": [150, 1, 100, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Caesar_~_Bloodcurdling_Youth_~_(Solitary)",
+       "revid": 3305,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Caesar_~_Bloodcurdling_Youth_~_(Solitary)",
+    "revid": 3305,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -5089,12 +7465,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_2040_72",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 4,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Messina_(Unity)",
+    "revid": 3289,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -5111,7 +7500,29 @@
        "statueType": 4,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "params": [
+       {
+        "affectId": "AF_HP_RATEADD",
+        "giveLimit": -1,
+        "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ONLY_HAMON_DEF_RATEADD",
+        "giveLimit": -1,
+        "lv1": [50, 0, 3, 0, 0, 0, 0, 0],
+        "lv10": [50, 0, 3, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Suzi_Q_(Unity)",
+       "revid": 3296,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -5150,7 +7561,29 @@
        "statueType": 5,
        "count": 1
       }
-     ]
+     ],
+     "action": {
+      "params": [
+       {
+        "affectId": "AF_ORAORA_ATK_RATEADD",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       },
+       {
+        "affectId": "AF_ORAORA_MOVE_FAST",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(3%E2%98%85)_Steely_Dan_(Solitary)",
+       "revid": 3326,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
@@ -5245,12 +7678,21 @@
    "abilities": [
     {
      "abilityId": "DT_AST_3290_62",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Daniel_J_D'Arby_(Tactical)",
+    "revid": 3299,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -5258,12 +7700,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_4000_62",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Josuke_Higashikata_(Tactical)",
+    "revid": 3235,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -5310,12 +7765,21 @@
    "abilities": [
     {
      "abilityId": "DT_AST_4120_62",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 2
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Aya_Tsuji_(Tactical)",
+    "revid": 3285,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -5323,12 +7787,43 @@
    "abilities": [
     {
      "abilityId": "DT_AST_4181_72",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 4,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ],
+     "action": {
+      "params": [
+       {
+        "affectId": "AF_AST_USE_MOVE_FAST",
+        "giveLimit": -1,
+        "lv1": [1000, 0, 80, 0, 0, 0, 0, 0],
+        "lv10": [1000, 0, 80, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [
+       "unclassified"
+      ],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Not_Bug-Eaten_(Unity)",
+       "revid": 3085,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Not_Bug-Eaten_(Unity)",
+    "revid": 3085,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {

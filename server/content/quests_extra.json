@@ -50,8 +50,8 @@
     "4193_08"
    ],
    "bonusMinds": [
-    "4028",
-    "7007"
+    "4013",
+    "4025"
    ]
   },
   {
@@ -67,8 +67,8 @@
     "4130_03"
    ],
    "bonusMinds": [
-    "7431",
-    "8081"
+    "4020",
+    "7192"
    ]
   },
   {
@@ -84,8 +84,8 @@
     "4194_08"
    ],
    "bonusMinds": [
-    "4058",
-    "4075"
+    "4050",
+    "4060"
    ]
   },
   {
@@ -101,8 +101,8 @@
     "5000_24"
    ],
    "bonusMinds": [
-    "0006",
-    "7189"
+    "0010",
+    "4098"
    ]
   },
   {
@@ -118,8 +118,8 @@
     "4194_08"
    ],
    "bonusMinds": [
-    "0006",
-    "7448"
+    "4017",
+    "4019"
    ],
    "scoring": {
     "STAGE_EV_560001_02_01": [
@@ -140,8 +140,8 @@
     "4220_72"
    ],
    "bonusMinds": [
-    "7439",
-    "7491"
+    "7198",
+    "7309"
    ],
    "scoring": {
     "STAGE_EV_560005_01_01": [
@@ -186,8 +186,8 @@
     "3150_04"
    ],
    "bonusMinds": [
-    "4024",
-    "7203"
+    "4061",
+    "7309"
    ],
    "quiz": [
     {
@@ -305,8 +305,8 @@
     "4193_08"
    ],
    "bonusMinds": [
-    "4110",
-    "7536"
+    "4007",
+    "7083"
    ]
   },
   {
@@ -322,8 +322,8 @@
     "5120_14"
    ],
    "bonusMinds": [
-    "0019",
-    "7422"
+    "4016",
+    "8090"
    ]
   }
  ],
@@ -366,9 +366,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "3010_03",
-      "2010_01",
-      "3000_04"
+      "1000_02",
+      "3110_02",
+      "3020_01"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -385,9 +385,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "3001_04",
-      "5140_04",
-      "5000_22"
+      "4160_01",
+      "1000_28",
+      "3030_02"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -406,9 +406,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "2000_01",
-      "4020_03",
-      "3001_04"
+      "2060_02",
+      "4080_04",
+      "3020_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -424,9 +424,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "1130_04",
-      "1010_02",
-      "2110_01"
+      "1000_04",
+      "2010_02",
+      "2020_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -451,9 +451,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "3300_04",
-      "4130_03",
-      "2110_02"
+      "3100_02",
+      "1000_01",
+      "5210_04"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -470,9 +470,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "4043_08",
-      "4020_03",
-      "4130_27"
+      "3210_02",
+      "5290_04",
+      "1020_02"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -491,9 +491,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "3010_01",
-      "4150_03",
-      "4191_04"
+      "1000_03",
+      "4110_01",
+      "4130_25"
      ],
      "source": {
       "source": "jdr-default",
@@ -509,9 +509,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "3010_03",
-      "3270_04",
-      "4020_02"
+      "4000_23",
+      "3110_01",
+      "3040_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -536,9 +536,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "4130_25",
-      "4130_26",
-      "3010_02"
+      "5000_62",
+      "3300_03",
+      "2010_03"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -555,9 +555,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "2010_04",
-      "3030_02",
-      "3030_02"
+      "4130_26",
+      "4160_02",
+      "2010_01"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -576,9 +576,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "4160_03",
       "4193_08",
-      "4160_02"
+      "3010_03",
+      "3010_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -594,9 +594,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "3300_01",
-      "3010_01",
-      "4030_03"
+      "3300_04",
+      "4120_62",
+      "3030_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -621,9 +621,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "3300_03",
-      "2010_04",
-      "4130_28"
+      "3150_02",
+      "3060_03",
+      "3030_01"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -640,9 +640,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "3150_04",
-      "4040_01",
-      "4160_01"
+      "3290_61",
+      "3010_02",
+      "4040_01"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -661,9 +661,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "2010_01",
-      "4030_03",
-      "3070_03"
+      "3030_02",
+      "4040_01",
+      "3300_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -679,9 +679,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "3020_01",
-      "3270_03",
-      "4160_01"
+      "2020_01",
+      "3010_03",
+      "3290_61"
      ],
      "source": {
       "source": "jdr-default",
@@ -706,9 +706,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "2000_28",
-      "5150_04",
-      "4192_04"
+      "4150_01",
+      "2020_03",
+      "4170_03"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -725,9 +725,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "3020_03",
-      "4150_02",
-      "1020_03"
+      "4110_01",
+      "3100_01",
+      "4110_01"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -746,9 +746,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "2020_04",
-      "2070_03",
-      "3323_08"
+      "1020_01",
+      "1020_01",
+      "1020_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -764,9 +764,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "3020_03",
-      "2000_28",
-      "4192_03"
+      "2070_03",
+      "4170_02",
+      "4150_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -791,9 +791,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "2100_03",
-      "3100_02",
-      "3050_02"
+      "2070_03",
+      "4110_02",
+      "4020_04"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -810,9 +810,9 @@
      "gold": 6693,
      "enemyLevel": 20,
      "enemies": [
-      "4020_02",
-      "1130_03",
-      "4110_02"
+      "2070_03",
+      "5290_62",
+      "4020_02"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -831,9 +831,9 @@
      "gold": 17155,
      "enemyLevel": 30,
      "enemies": [
-      "3100_02",
-      "4110_01",
-      "3020_03"
+      "4110_02",
+      "3050_04",
+      "4170_03"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -852,9 +852,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "4000_23",
-      "2110_01",
-      "4170_03"
+      "1000_28",
+      "3050_04",
+      "2020_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -879,9 +879,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "2060_03",
-      "5010_04",
-      "5210_04"
+      "3001_04",
+      "4080_03",
+      "2000_01"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -898,9 +898,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "4000_01",
+      "1000_04",
       "1080_02",
-      "3330_01"
+      "2060_01"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -919,9 +919,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "2050_04",
-      "4011_03",
-      "1000_02"
+      "3000_02",
+      "2000_03",
+      "4000_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -937,9 +937,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "3330_01",
-      "3000_01",
-      "3330_04"
+      "4191_03",
+      "3031_03",
+      "1000_04"
      ],
      "source": {
       "source": "jdr-default",
@@ -965,8 +965,8 @@
      "enemyLevel": 10,
      "enemies": [
       "1000_01",
-      "3031_03",
-      "4000_02"
+      "4080_02",
+      "4000_01"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -983,9 +983,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "1010_01",
-      "4000_01",
-      "1010_03"
+      "2060_02",
+      "3000_04",
+      "3040_01"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1004,9 +1004,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "4000_03",
-      "2050_02",
-      "1120_03"
+      "4191_03",
+      "4000_02",
+      "2050_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -1022,9 +1022,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "1080_03",
-      "2010_28",
-      "2000_02"
+      "3040_01",
+      "1000_01",
+      "3230_62"
      ],
      "source": {
       "source": "jdr-default",
@@ -1049,9 +1049,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "2020_01",
+      "3210_02",
       "2010_02",
-      "5030_04"
+      "4030_02"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1068,9 +1068,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "3060_03",
-      "4030_04",
-      "3030_01"
+      "4012_03",
+      "3290_62",
+      "3270_04"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1089,9 +1089,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "3020_01",
-      "3210_01",
-      "4130_26"
+      "3070_03",
+      "4160_03",
+      "2020_01"
      ],
      "source": {
       "source": "jdr-default",
@@ -1107,9 +1107,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "2010_04",
-      "4030_04",
-      "2020_01"
+      "4130_26",
+      "3150_03",
+      "3300_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -1134,9 +1134,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "2010_04",
-      "2010_04",
-      "4040_01"
+      "5000_62",
+      "4030_01",
+      "4012_03"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1153,9 +1153,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "3270_03",
-      "4030_01",
-      "5030_04"
+      "4130_26",
+      "2020_02",
+      "4130_27"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1174,9 +1174,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "2020_01",
-      "4160_03",
-      "4010_01"
+      "3070_03",
+      "3041_03",
+      "4130_26"
      ],
      "source": {
       "source": "jdr-default",
@@ -1192,9 +1192,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "3300_02",
-      "3210_02",
-      "3010_03"
+      "3030_01",
+      "3041_03",
+      "3300_02"
      ],
      "source": {
       "source": "jdr-default",
@@ -1219,9 +1219,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "1000_28",
-      "5290_04",
-      "1000_28"
+      "5150_04",
+      "4000_23",
+      "4170_03"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1238,9 +1238,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "4192_04",
-      "4170_03",
-      "4110_02"
+      "2110_03",
+      "1130_04",
+      "1130_02"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1259,9 +1259,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "1020_03",
-      "4192_03",
-      "2020_03"
+      "5150_04",
+      "2000_28",
+      "4000_23"
      ],
      "source": {
       "source": "jdr-default",
@@ -1277,8 +1277,8 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "2110_03",
-      "2070_03",
+      "1020_04",
+      "4170_03",
       "5290_04"
      ],
      "source": {
@@ -1304,9 +1304,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "2000_28",
-      "3050_03",
-      "3050_02"
+      "2110_03",
+      "5290_62",
+      "3100_02"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1323,9 +1323,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "5080_04",
-      "2020_04",
-      "2070_03"
+      "1130_03",
+      "4170_03",
+      "2000_28"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1344,9 +1344,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "4170_02",
       "4192_04",
-      "4170_03"
+      "1100_28",
+      "1020_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -1362,9 +1362,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "1020_03",
-      "4042_03",
-      "3020_03"
+      "4192_03",
+      "4192_04",
+      "2000_28"
      ],
      "source": {
       "source": "jdr-default",
@@ -1389,9 +1389,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
-      "4130_03",
-      "3040_02",
-      "5010_04"
+      "2050_03",
+      "1030_62",
+      "4000_03"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1408,9 +1408,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "3040_04",
-      "4000_02",
-      "5210_04"
+      "1000_03",
+      "4130_03",
+      "3040_01"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1429,9 +1429,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "2010_28",
-      "2050_01",
-      "4011_03"
+      "3040_03",
+      "4000_02",
+      "1000_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -1447,9 +1447,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "3040_03",
-      "4000_04",
-      "1010_02"
+      "5050_03",
+      "1000_01",
+      "1080_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -1474,9 +1474,9 @@
      "gold": 500,
      "enemyLevel": 10,
      "enemies": [
+      "3001_04",
       "1120_03",
-      "2010_28",
-      "1120_03"
+      "3330_04"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1493,9 +1493,9 @@
      "gold": 800,
      "enemyLevel": 20,
      "enemies": [
-      "2000_01",
-      "1010_02",
-      "4080_02"
+      "2050_02",
+      "4000_03",
+      "1080_02"
      ],
      "source": {
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1514,9 +1514,9 @@
      "gold": 1200,
      "enemyLevel": 40,
      "enemies": [
-      "4000_03",
-      "3000_02",
-      "1000_02"
+      "5050_03",
+      "2060_03",
+      "4191_03"
      ],
      "source": {
       "source": "jdr-default",
@@ -1532,9 +1532,9 @@
      "gold": 1600,
      "enemyLevel": 60,
      "enemies": [
-      "1000_04",
-      "4011_03",
-      "2010_28"
+      "1010_03",
+      "4000_03",
+      "3000_04"
      ],
      "source": {
       "source": "jdr-default",

@@ -6,6 +6,7 @@ pub mod app;
 pub mod art;
 pub mod cdn;
 pub mod collection;
+pub mod gen_cache;
 pub mod items;
 pub mod l10n;
 pub mod labyrinth;
@@ -63,6 +64,10 @@ pub struct Ctx {
     pub last_built: std::sync::Mutex<Option<std::sync::Arc<Generated>>>,
     /// Serialises manifest builds.
     pub versionfile_build: std::sync::Mutex<()>,
+    /// Identity of the installed build (the embedded host sets it from its own APK: path, size,
+    /// modification time). When set, the generated bundles are kept on disk and reused on later
+    /// launches; they are rebuilt only when the APK is updated or the game files change.
+    pub build_identity: Option<String>,
 }
 
 /// Length of the all-ones tutorial list used to skip every tutorial (the real flag table is
@@ -80,11 +85,42 @@ impl Ctx {
             last_built: std::sync::Mutex::new(None),
             art: None,
             importing: std::sync::atomic::AtomicBool::new(false),
+            build_identity: None,
             settings,
             counters: Counters::default(),
             port: AtomicU16::new(0),
             trace,
         }
+    }
+
+    /// Where the generated bundles are kept between launches.
+    pub fn gen_cache_dir(&self) -> std::path::PathBuf {
+        self.settings.data_dir.join("generated")
+    }
+
+    /// The key a saved build must match: the installed build's identity, this server's build
+    /// number, the contents of the game files' record (`vcs.bytes`; the game may rewrite it
+    /// without changing it) and the last import. `None` (no identity, e.g. the PC dev server)
+    /// means nothing is kept on disk.
+    fn disk_cache_key(&self, game_dir: &std::path::Path) -> Option<String> {
+        let id = self.build_identity.as_ref()?;
+        let vcs = versionfile::md5_hex(&std::fs::read(game_dir.join("vcs.bytes")).ok()?);
+        let secs = |t: std::time::SystemTime| {
+            t.duration_since(std::time::UNIX_EPOCH)
+                .map(|d| d.as_nanos())
+                .unwrap_or(0)
+        };
+        let import = std::fs::metadata(self.settings.data_dir.join("import-record.json"))
+            .ok()
+            .and_then(|m| m.modified().ok())
+            .map(secs)
+            .unwrap_or(0);
+        let raw = format!(
+            "{id}|build {}|vcs {vcs}|import {import}|cache v{}",
+            jdr_core::BUILD,
+            gen_cache::FORMAT
+        );
+        Some(versionfile::md5_hex(raw.as_bytes()))
     }
 
     pub fn http_key(&self) -> Option<&[u8]> {
@@ -188,6 +224,27 @@ impl Ctx {
                 return Err(e)
             }
             _ => {}
+        }
+        // Built for this APK and these game files on an earlier launch: reuse it.
+        let disk_key = stamp.and_then(|_| self.disk_cache_key(dir));
+        if let (Some(s), Some(dk)) = (stamp, disk_key.as_deref()) {
+            if let Some(b) = gen_cache::load(&self.gen_cache_dir(), dk) {
+                jdr_core::log::line(
+                    "assets",
+                    &format!(
+                        "versionfile ({} KiB), master tables and {} English file(s) reused: built once for this APK",
+                        b.versionfile.len() / 1024,
+                        b.localized.len()
+                    ),
+                );
+                let b = std::sync::Arc::new(b);
+                *self
+                    .versionfile_cache
+                    .lock()
+                    .unwrap_or_else(|e| e.into_inner()) = Some(ManifestState::Built(s, b.clone()));
+                *self.last_built.lock().unwrap_or_else(|e| e.into_inner()) = Some(b.clone());
+                return Ok(b);
+            }
         }
         let t0 = std::time::Instant::now();
         let (key, iv) = (k.asset_key.as_bytes(), k.asset_iv.as_bytes());
@@ -344,6 +401,18 @@ impl Ctx {
             .unwrap_or_else(|e| e.into_inner());
         match built {
             Ok((s, b)) => {
+                if let Some(dk) = disk_key.as_deref() {
+                    match gen_cache::save(&self.gen_cache_dir(), dk, &b) {
+                        Ok(()) => jdr_core::log::line(
+                            "assets",
+                            "generated bundles saved: later launches reuse them until the APK is updated",
+                        ),
+                        Err(e) => jdr_core::log::line(
+                            "assets",
+                            &format!("generated bundles not saved ({e}); they are rebuilt next launch"),
+                        ),
+                    }
+                }
                 *g = Some(ManifestState::Built(s, b.clone()));
                 *self.last_built.lock().unwrap_or_else(|e| e.into_inner()) = Some(b.clone());
                 Ok(b)

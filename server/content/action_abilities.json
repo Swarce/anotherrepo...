@@ -1,0 +1,4180 @@
+{
+ "about": "Action-battle leader abilities (StatueInfo.leaderAbilityInfo, docs/research/30-action-battle.md §7): one entry per statue whose wiki leader ability has at least one line the action battle reads. The server sends {abilityId, abilityLevel, abilityName, abilityParamList, isInit true} with the params inline (paramListLv1_0..7 / paramListLv10_0..7 from lv1 / lv10). Units: p0 per mille (N% x 10, xX as (X-1) x 1000, flat values as they are, SP uses as the count); p1 the tribe or StatueType of a target; p2 seconds x 10, an HP threshold per mille or the holder tribe. \"left\" lists the hold categories of the lines not served. Built by tools/content/build_action_abilities.py.",
+ "sources": [
+  {
+   "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine snapshot)",
+   "page": "https://jojodr.gamerch.com/",
+   "accessed": "2026-11-14",
+   "note": "leader numbers only; per-record archive URLs in local/wiki-raw/gamerch/statues.json"
+  },
+  {
+   "source": "Gamerch ジョジョDR攻略Wiki (live statue pages, research pass)",
+   "page": "https://jojodr.gamerch.com/",
+   "pages": {
+    "LEAD_1020_03": "https://jojodr.gamerch.com/【闘志】ウィル・A・ツェペリ★5（これが「仙道」だ！！）",
+    "LEAD_1080_02": "https://jojodr.gamerch.com/【勇気】ダイアー★4",
+    "LEAD_1090_13": "https://jojodr.gamerch.com/【孤高】ストレイツォ★5（華麗なる跳躍）",
+    "LEAD_1100_13": "https://jojodr.gamerch.com/【孤高】ディオ・ブランドー★5（我が夜の亡者となれ）",
+    "LEAD_3001_03": "https://jojodr.gamerch.com/【勇気】空条承太郎★5（～てめーはおれを怒らせた～）",
+    "LEAD_4011_18": "https://jojodr.gamerch.com/【孤高】広瀬康一（ACT2）★6（成長し殻を破る）"
+   },
+   "accessed": "2026-11-20",
+   "note": "research-b33/action leader_ability records: leader numbers only, for statues the Wayback dump lacks"
+  },
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/30-action-battle.md §7",
+   "note": "units, conditions and the leader path read in the 3.12.0 client"
+  },
+  {
+   "source": "jdr-default",
+   "note": "ability ids LEAD_<sid> and affect ids AF_* are ours; Lv10 = Lv1 where the wiki gives no usable MAX; abilityLevel 1"
+  }
+ ],
+ "leaders": [
+  {
+   "statueId": "1000_01",
+   "abilityId": "LEAD_1000_01",
+   "abilityName": "ABI_LEAD_NAME_1000_01",
+   "params": [
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [15, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [45, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [65, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "1000_02",
+   "abilityId": "LEAD_1000_02",
+   "abilityName": "ABI_LEAD_NAME_1000_02",
+   "params": [
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [70, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "1000_03",
+   "abilityId": "LEAD_1000_03",
+   "abilityName": "ABI_LEAD_NAME_1000_03",
+   "params": [
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "1000_12",
+   "abilityId": "LEAD_1000_12",
+   "abilityName": "ABI_LEAD_NAME_1000_12",
+   "params": [
+    {
+     "affectId": "AF_ORAORA_SP_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [120, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E3%82%B8%E3%83%A7%E3%83%8A%E3%82%B5%E3%83%B3%E3%83%BB%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC%E2%98%854%EF%BC%88%E4%BA%BA%E9%96%93%E3%81%AE%E5%8F%AF%E8%83%BD%E6%80%A7%EF%BC%89",
+    "capture": "20171113093839",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "1000_13",
+   "abilityId": "LEAD_1000_13",
+   "abilityName": "ABI_LEAD_NAME_1000_13",
+   "params": [
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "1000_28",
+   "abilityId": "LEAD_1000_28",
+   "abilityName": "ABI_LEAD_NAME_1000_28",
+   "params": [
+    {
+     "affectId": "AF_ONLY_JOESTAR_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 2, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 2, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ONLY_JOESTAR_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 2, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 2, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_VCT_DAM_SUB",
+     "giveLimit": -1,
+     "lv1": [-500, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [-500, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%82%B8%E3%83%A7%E3%83%8A%E3%82%B5%E3%83%B3%E3%83%BB%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC%EF%BD%9E%E5%AE%BF%E5%91%BD%E3%81%AE%E6%98%9F%EF%BD%9E%E2%98%856%EF%BC%88%E8%82%A9%E3%81%AB%E6%B5%AE%E3%81%8B%E3%81%B6%E6%98%9F%E3%81%AE%E7%97%A3%EF%BC%89",
+    "capture": "20210410111941",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "1010_01",
+   "abilityId": "LEAD_1010_01",
+   "abilityName": "ABI_LEAD_NAME_1010_01",
+   "params": [
+    {
+     "affectId": "AF_HALF_MOVE_FAST",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [
+    "gold_rate"
+   ],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "1010_02",
+   "abilityId": "LEAD_1010_02",
+   "abilityName": "ABI_LEAD_NAME_1010_02",
+   "params": [
+    {
+     "affectId": "AF_HALF_MOVE_FAST",
+     "giveLimit": -1,
+     "lv1": [35, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [45, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [
+    "gold_rate"
+   ],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "1010_03",
+   "abilityId": "LEAD_1010_03",
+   "abilityName": "ABI_LEAD_NAME_1010_03",
+   "params": [
+    {
+     "affectId": "AF_HALF_MOVE_FAST",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [70, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [75, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [120, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [
+    "gold_rate"
+   ],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "1020_01",
+   "abilityId": "LEAD_1020_01",
+   "abilityName": "ABI_LEAD_NAME_1020_01",
+   "params": [
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [35, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [75, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "1020_02",
+   "abilityId": "LEAD_1020_02",
+   "abilityName": "ABI_LEAD_NAME_1020_02",
+   "params": [
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "1020_03",
+   "abilityId": "LEAD_1020_03",
+   "abilityName": "ABI_LEAD_NAME_1020_03",
+   "params": [
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_SP_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "research",
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【闘志】ウィル・A・ツェペリ★5（これが「仙道」だ！！）",
+    "accessed": "2026-11-20"
+   }
+  },
+  {
+   "statueId": "1080_02",
+   "abilityId": "LEAD_1080_02",
+   "abilityName": "ABI_LEAD_NAME_1080_02",
+   "params": [
+    {
+     "affectId": "AF_SP_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ALONE_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [180, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [180, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "research",
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【勇気】ダイアー★4",
+    "accessed": "2026-11-20"
+   }
+  },
+  {
+   "statueId": "1080_03",
+   "abilityId": "LEAD_1080_03",
+   "abilityName": "ABI_LEAD_NAME_1080_03",
+   "params": [
+    {
+     "affectId": "AF_SP_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ALONE_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ALONE_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [300, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [300, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "1090_13",
+   "abilityId": "LEAD_1090_13",
+   "abilityName": "ABI_LEAD_NAME_1090_13",
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [10, 0, 300, 0, 0, 0, 0, 0],
+     "lv10": [25, 0, 300, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEFEAT_MOVE_FAST",
+     "giveLimit": -1,
+     "lv1": [25, 0, 300, 0, 0, 0, 0, 0],
+     "lv10": [35, 0, 300, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_STEP_RANGE",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [45, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "research",
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【孤高】ストレイツォ★5（華麗なる跳躍）",
+    "accessed": "2026-11-20"
+   }
+  },
+  {
+   "statueId": "1100_13",
+   "abilityId": "LEAD_1100_13",
+   "abilityName": "ABI_LEAD_NAME_1100_13",
+   "params": [
+    {
+     "affectId": "AF_FULL_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [250, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [250, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATRBT_JOESTAR_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 2, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 2, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATRBT_JOESTAR_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-50, 2, 0, 0, 0, 0, 0, 0],
+     "lv10": [-50, 2, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "research",
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【孤高】ディオ・ブランドー★5（我が夜の亡者となれ）",
+    "accessed": "2026-11-20"
+   }
+  },
+  {
+   "statueId": "1100_28",
+   "abilityId": "LEAD_1100_28",
+   "abilityName": "ABI_LEAD_NAME_1100_28",
+   "params": [
+    {
+     "affectId": "AF_ATRBT_HAMON_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 3, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 3, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CURE_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%83%87%E3%82%A3%E3%82%AA%E3%83%BB%E3%83%96%E3%83%A9%E3%83%B3%E3%83%89%E3%83%BC%EF%BD%9E%E6%9C%88%E4%B8%8B%E3%81%AE%E5%B8%9D%E7%8E%8B%EF%BD%9E%E2%98%856%EF%BC%88%E8%80%B3%E3%81%AB%E6%B5%AE%E3%81%8B%E3%81%B6%E6%B3%A2%E4%B9%B1%E3%81%AE%E9%BB%92%E5%AD%90%EF%BC%89",
+    "capture": "20210410120230",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "1110_03",
+   "abilityId": "LEAD_1110_03",
+   "abilityName": "ABI_LEAD_NAME_1110_03",
+   "params": [
+    {
+     "affectId": "AF_HALF_STEP_RANGE",
+     "giveLimit": -1,
+     "lv1": [300, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [300, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_HALF_STEP_TIME",
+     "giveLimit": -1,
+     "lv1": [300, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [300, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATRBT_JOESTAR_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 2, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 2, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "1120_03",
+   "abilityId": "LEAD_1120_03",
+   "abilityName": "ABI_LEAD_NAME_1120_03",
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [20, 0, 300, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 300, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEFEAT_MOVE_FAST",
+     "giveLimit": -1,
+     "lv1": [20, 0, 300, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 300, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ONLY_VAMPIRE_TENACITY_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [180, 3, 1, 0, 0, 0, 0, 0],
+     "lv10": [200, 3, 1, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "1130_02",
+   "abilityId": "LEAD_1130_02",
+   "abilityName": "ABI_LEAD_NAME_1130_02",
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [10, 0, 300, 0, 0, 0, 0, 0],
+     "lv10": [10, 0, 300, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ONLY_VAMPIRE_INTELLI_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [160, 2, 1, 0, 0, 0, 0, 0],
+     "lv10": [160, 2, 1, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "1130_03",
+   "abilityId": "LEAD_1130_03",
+   "abilityName": "ABI_LEAD_NAME_1130_03",
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [10, 0, 100, 0, 0, 0, 0, 0],
+     "lv10": [25, 0, 100, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEFEAT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 100, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 100, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "1130_13",
+   "abilityId": "LEAD_1130_13",
+   "abilityName": "ABI_LEAD_NAME_1130_13",
+   "params": [
+    {
+     "affectId": "AF_UNITY_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [80, 4, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 4, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_TENACITY_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [70, 3, 0, 0, 0, 0, 0, 0],
+     "lv10": [95, 3, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_BRAVE_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [70, 1, 0, 0, 0, 0, 0, 0],
+     "lv10": [95, 1, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2000_01",
+   "abilityId": "LEAD_2000_01",
+   "abilityName": "ABI_LEAD_NAME_2000_01",
+   "params": [
+    {
+     "affectId": "AF_FNT_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2000_02",
+   "abilityId": "LEAD_2000_02",
+   "abilityName": "ABI_LEAD_NAME_2000_02",
+   "params": [
+    {
+     "affectId": "AF_FNT_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [150, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [250, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2000_03",
+   "abilityId": "LEAD_2000_03",
+   "abilityName": "ABI_LEAD_NAME_2000_03",
+   "params": [
+    {
+     "affectId": "AF_FNT_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [300, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_CRT_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [300, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%82%B8%E3%83%A7%E3%82%BB%E3%83%95%E3%83%BB%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC%EF%BC%882%E9%83%A8%EF%BC%89%E2%98%855%EF%BC%88%E6%B4%BB%E8%B7%AF%E8%A6%8B%E5%87%BA%E3%81%99%E7%94%9F%E5%91%BD%E3%81%AE%E5%A4%A7%E8%BB%8A%E8%BC%AA%EF%BC%89",
+    "capture": "20210410121225",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2000_28",
+   "abilityId": "LEAD_2000_28",
+   "abilityName": "ABI_LEAD_NAME_2000_28",
+   "params": [
+    {
+     "affectId": "AF_ONLY_HAMON_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 3, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 3, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATRBT_HASHIRA_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 4, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 4, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATRBT_ULTIMATE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 8, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 8, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%82%B8%E3%83%A7%E3%82%BB%E3%83%95%E3%83%BB%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC%EF%BD%9E%E3%80%8E%E6%9C%80%E5%BE%8C%E3%81%AE%E6%B3%A2%E7%B4%8B%E3%80%8F%EF%BD%9E%E2%98%856%EF%BC%88%E8%BC%9D%E3%81%8D%E6%94%BE%E3%81%A4%E6%B3%A2%E7%B4%8B%E3%81%AE%E5%8A%9B%EF%BC%89",
+    "capture": "20210410122345",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2010_01",
+   "abilityId": "LEAD_2010_01",
+   "abilityName": "ABI_LEAD_NAME_2010_01",
+   "params": [
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CURE_RATEADD",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2010_02",
+   "abilityId": "LEAD_2010_02",
+   "abilityName": "ABI_LEAD_NAME_2010_02",
+   "params": [
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CURE_RATEADD",
+     "giveLimit": -1,
+     "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2010_03",
+   "abilityId": "LEAD_2010_03",
+   "abilityName": "ABI_LEAD_NAME_2010_03",
+   "params": [
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CURE_RATEADD",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ONLY_HAMON_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 3, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 3, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2010_13",
+   "abilityId": "LEAD_2010_13",
+   "abilityName": "ABI_LEAD_NAME_2010_13",
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 100, 0, 0, 0, 0, 0],
+     "lv10": [20, 0, 100, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEFEAT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 100, 0, 0, 0, 0, 0],
+     "lv10": [20, 0, 100, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEFEAT_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 100, 0, 0, 0, 0, 0],
+     "lv10": [20, 0, 100, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2010_28",
+   "abilityId": "LEAD_2010_28",
+   "abilityName": "ABI_LEAD_NAME_2010_28",
+   "params": [
+    {
+     "affectId": "AF_ONLY_HAMON_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [200, 0, 3, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 3, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ONLY_HAMON_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [200, 0, 3, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 3, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ONLY_HAMON_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [200, 0, 3, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 3, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%82%B7%E3%83%BC%E3%82%B6%E3%83%BC%EF%BD%9E%E4%B8%80%E6%97%8F%E3%81%B8%E3%81%AE%E8%AA%87%E3%82%8A%EF%BD%9E%E2%98%856%EF%BC%88%E8%99%B9%E8%89%B2%E3%81%AE%E3%82%B7%E3%83%A3%E3%83%9C%E3%83%B3%EF%BC%89",
+    "capture": "20241110182402",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2020_01",
+   "abilityId": "LEAD_2020_01",
+   "abilityName": "ABI_LEAD_NAME_2020_01",
+   "params": [
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_SP_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2020_02",
+   "abilityId": "LEAD_2020_02",
+   "abilityName": "ABI_LEAD_NAME_2020_02",
+   "params": [
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_SP_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2020_03",
+   "abilityId": "LEAD_2020_03",
+   "abilityName": "ABI_LEAD_NAME_2020_03",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [75, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [90, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [75, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [90, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_SP_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2050_01",
+   "abilityId": "LEAD_2050_01",
+   "abilityName": "ABI_LEAD_NAME_2050_01",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [25, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [15, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [25, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2050_02",
+   "abilityId": "LEAD_2050_02",
+   "abilityName": "ABI_LEAD_NAME_2050_02",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2050_03",
+   "abilityId": "LEAD_2050_03",
+   "abilityName": "ABI_LEAD_NAME_2050_03",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [45, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [70, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [45, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [70, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [45, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [70, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2060_02",
+   "abilityId": "LEAD_2060_02",
+   "abilityName": "ABI_LEAD_NAME_2060_02",
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [90, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_TENACITY_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [45, 3, 0, 0, 0, 0, 0, 0],
+     "lv10": [75, 3, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2060_03",
+   "abilityId": "LEAD_2060_03",
+   "abilityName": "ABI_LEAD_NAME_2060_03",
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [120, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_TENACITY_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [60, 3, 0, 0, 0, 0, 0, 0],
+     "lv10": [90, 3, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%83%AF%E3%83%A0%E3%82%A6%E2%98%855%EF%BC%88%E9%A2%A8%E3%81%AE%E4%BD%BF%E3%81%84%E6%89%8B%EF%BC%89",
+    "capture": "20210410111521",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2070_03",
+   "abilityId": "LEAD_2070_03",
+   "abilityName": "ABI_LEAD_NAME_2070_03",
+   "params": [
+    {
+     "affectId": "AF_ONLY_HASHIRA_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [120, 0, 4, 0, 0, 0, 0, 0],
+     "lv10": [180, 0, 4, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2080_03",
+   "abilityId": "LEAD_2080_03",
+   "abilityName": "ABI_LEAD_NAME_2080_03",
+   "params": [
+    {
+     "affectId": "AF_ONLY_HASHIRA_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 4, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 4, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [150, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91%E3%82%AB%E3%83%BC%E3%82%BA%E2%98%855%EF%BC%88%E5%85%89%E8%BC%9D%E3%81%8F%E5%88%83%EF%BC%89",
+    "capture": "20171113093407",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2081_13",
+   "abilityId": "LEAD_2081_13",
+   "abilityName": "ABI_LEAD_NAME_2081_13",
+   "params": [
+    {
+     "affectId": "AF_ONLY_ULTIMATE_BRAVE_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [500, 1, 8, 0, 0, 0, 0, 0],
+     "lv10": [1000, 1, 8, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ONLY_ULTIMATE_INTELLI_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [500, 2, 8, 0, 0, 0, 0, 0],
+     "lv10": [1000, 2, 8, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ONLY_ULTIMATE_TENACITY_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [500, 3, 8, 0, 0, 0, 0, 0],
+     "lv10": [1000, 3, 8, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%AD%A4%E9%AB%98%E3%80%91%E3%82%AB%E3%83%BC%E3%82%BA%E2%98%855%EF%BC%88%EF%BD%9E%E3%82%A2%E3%83%AB%E3%83%86%E3%82%A3%E3%83%A1%E3%83%83%E3%83%88%E3%83%BB%E3%82%B7%E3%82%A4%E3%83%B3%E3%82%B0%EF%BD%9E%EF%BC%89",
+    "capture": "20210410115005",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2100_03",
+   "abilityId": "LEAD_2100_03",
+   "abilityName": "ABI_LEAD_NAME_2100_03",
+   "params": [
+    {
+     "affectId": "AF_FULL_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATRBT_STAND_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 5, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 5, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ONLY_VAMPIRE_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 1, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 1, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2110_01",
+   "abilityId": "LEAD_2110_01",
+   "abilityName": "ABI_LEAD_NAME_2110_01",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [75, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2110_02",
+   "abilityId": "LEAD_2110_02",
+   "abilityName": "ABI_LEAD_NAME_2110_02",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [85, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2110_03",
+   "abilityId": "LEAD_2110_03",
+   "abilityName": "ABI_LEAD_NAME_2110_03",
+   "params": [
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [-150, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [90, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%83%AB%E3%83%89%E3%83%AB%E3%83%BB%E3%83%95%E3%82%A9%E3%83%B3%E3%83%BB%E3%82%B7%E3%83%A5%E3%83%88%E3%83%AD%E3%83%8F%E3%82%A4%E3%83%A0%E2%98%855%EF%BC%88%E7%B5%B6%E5%AF%BE%E7%9A%84%E3%81%AA%E8%87%AA%E4%BF%A1%EF%BC%89",
+    "capture": "20250821194249",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "2111_03",
+   "abilityId": "LEAD_2111_03",
+   "abilityName": "ABI_LEAD_NAME_2111_03",
+   "params": [
+    {
+     "affectId": "AF_ATRBT_VAMPIRE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [120, 1, 0, 0, 0, 0, 0, 0],
+     "lv10": [180, 1, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATRBT_HASHIRA_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [120, 4, 0, 0, 0, 0, 0, 0],
+     "lv10": [180, 4, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [
+    "no_label"
+   ],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%82%B7%E3%83%A5%E3%83%88%E3%83%AD%E3%83%8F%E3%82%A4%E3%83%A0%E2%98%855%EF%BC%88%EF%BD%9E%E5%9C%B0%E7%8D%84%E3%81%8B%E3%82%89%E8%88%9E%E3%81%84%E6%88%BB%E3%81%A3%E3%81%9F%E3%81%9C%EF%BD%9E%EF%BC%89",
+    "capture": "20241110194055",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3000_01",
+   "abilityId": "LEAD_3000_01",
+   "abilityName": "ABI_LEAD_NAME_3000_01",
+   "params": [
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3000_02",
+   "abilityId": "LEAD_3000_02",
+   "abilityName": "ABI_LEAD_NAME_3000_02",
+   "params": [
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [120, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3000_03",
+   "abilityId": "LEAD_3000_03",
+   "abilityName": "ABI_LEAD_NAME_3000_03",
+   "params": [
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [15, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3000_13",
+   "abilityId": "LEAD_3000_13",
+   "abilityName": "ABI_LEAD_NAME_3000_13",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATRBT_M_ARCANA_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [120, 6, 0, 0, 0, 0, 0, 0],
+     "lv10": [120, 6, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [
+    "per_stype"
+   ],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3001_03",
+   "abilityId": "LEAD_3001_03",
+   "abilityName": "ABI_LEAD_NAME_3001_03",
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [1000, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [1000, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [150, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "research",
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【勇気】空条承太郎★5（～てめーはおれを怒らせた～）",
+    "accessed": "2026-11-20"
+   }
+  },
+  {
+   "statueId": "3002_03",
+   "abilityId": "LEAD_3002_03",
+   "abilityName": "ABI_LEAD_NAME_3002_03",
+   "params": [
+    {
+     "affectId": "AF_BRAVE_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 1, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 1, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_BRAVE_STYPE_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-100, 1, 0, 0, 0, 0, 0, 0],
+     "lv10": [-100, 1, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3010_01",
+   "abilityId": "LEAD_3010_01",
+   "abilityName": "ABI_LEAD_NAME_3010_01",
+   "params": [
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [10, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3010_02",
+   "abilityId": "LEAD_3010_02",
+   "abilityName": "ABI_LEAD_NAME_3010_02",
+   "params": [
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3010_03",
+   "abilityId": "LEAD_3010_03",
+   "abilityName": "ABI_LEAD_NAME_3010_03",
+   "params": [
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_NORMAL_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [25, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91%E3%82%B8%E3%83%A7%E3%82%BB%E3%83%95%E3%83%BB%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC%EF%BC%883%E9%83%A8%EF%BC%89%E2%98%855%EF%BC%88%E7%9F%A5%E6%81%B5%E3%81%A8%E4%BA%8C%E3%81%A4%E3%81%AE%E5%8A%9B%EF%BC%89",
+    "capture": "20210410120917",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3010_13",
+   "abilityId": "LEAD_3010_13",
+   "abilityName": "ABI_LEAD_NAME_3010_13",
+   "params": [
+    {
+     "affectId": "AF_ATRBT_M_ARCANA_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-80, 6, 0, 0, 0, 0, 0, 0],
+     "lv10": [-100, 6, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATRBT_EGYPT_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-40, 7, 0, 0, 0, 0, 0, 0],
+     "lv10": [-50, 7, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATRBT_VAMPIRE_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-60, 1, 0, 0, 0, 0, 0, 0],
+     "lv10": [-80, 1, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3020_01",
+   "abilityId": "LEAD_3020_01",
+   "abilityName": "ABI_LEAD_NAME_3020_01",
+   "params": [
+    {
+     "affectId": "AF_FNT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [120, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3020_02",
+   "abilityId": "LEAD_3020_02",
+   "abilityName": "ABI_LEAD_NAME_3020_02",
+   "params": [
+    {
+     "affectId": "AF_FNT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3020_03",
+   "abilityId": "LEAD_3020_03",
+   "abilityName": "ABI_LEAD_NAME_3020_03",
+   "params": [
+    {
+     "affectId": "AF_FNT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [150, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [180, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_INTELLI_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [60, 2, 0, 0, 0, 0, 0, 0],
+     "lv10": [90, 2, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATRBT_M_ARCANA_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-80, 6, 0, 0, 0, 0, 0, 0],
+     "lv10": [-120, 6, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3020_13",
+   "abilityId": "LEAD_3020_13",
+   "abilityName": "ABI_LEAD_NAME_3020_13",
+   "params": [
+    {
+     "affectId": "AF_ONLY_STAND_ATRBT_STAND_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [160, 5, 5, 0, 0, 0, 0, 0],
+     "lv10": [160, 5, 5, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATRBT_M_ARCANA_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-75, 6, 0, 0, 0, 0, 0, 0],
+     "lv10": [-100, 6, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [90, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [130, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3020_28",
+   "abilityId": "LEAD_3020_28",
+   "abilityName": "ABI_LEAD_NAME_3020_28",
+   "params": [
+    {
+     "affectId": "AF_ONLY_M_ARCANA_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 6, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 6, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_NORMAL_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_SP_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3030_01",
+   "abilityId": "LEAD_3030_01",
+   "abilityName": "ABI_LEAD_NAME_3030_01",
+   "params": [
+    {
+     "affectId": "AF_FNT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [15, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3030_02",
+   "abilityId": "LEAD_3030_02",
+   "abilityName": "ABI_LEAD_NAME_3030_02",
+   "params": [
+    {
+     "affectId": "AF_FNT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [120, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [35, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3030_03",
+   "abilityId": "LEAD_3030_03",
+   "abilityName": "ABI_LEAD_NAME_3030_03",
+   "params": [
+    {
+     "affectId": "AF_FNT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [120, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [160, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_HALF_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [45, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91%E8%8A%B1%E4%BA%AC%E9%99%A2%E5%85%B8%E6%98%8E%E2%98%855%EF%BC%88%E6%9C%80%E6%9C%9F%E3%81%AE%E3%82%A8%E3%83%A1%E3%83%A9%E3%83%AB%E3%83%89%E3%83%BB%E3%82%B9%E3%83%97%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%EF%BC%89",
+    "capture": "20210410120447",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3030_13",
+   "abilityId": "LEAD_3030_13",
+   "abilityName": "ABI_LEAD_NAME_3030_13",
+   "params": [
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [140, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_CRT_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [500, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [800, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [180, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [220, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3040_01",
+   "abilityId": "LEAD_3040_01",
+   "abilityName": "ABI_LEAD_NAME_3040_01",
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [120, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CRT_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3040_02",
+   "abilityId": "LEAD_3040_02",
+   "abilityName": "ABI_LEAD_NAME_3040_02",
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [180, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CRT_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3040_03",
+   "abilityId": "LEAD_3040_03",
+   "abilityName": "ABI_LEAD_NAME_3040_03",
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [250, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CRT_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [150, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [250, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ALONE_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%82%B8%E3%83%A3%E3%83%B3%E3%83%BB%E3%83%94%E3%82%A8%E3%83%BC%E3%83%AB%E3%83%BB%E3%83%9D%E3%83%AB%E3%83%8A%E3%83%AC%E3%83%95%E2%98%855%EF%BC%88%E5%8D%93%E8%B6%8A%E3%81%97%E3%81%9F%E5%89%A3%E6%8A%80%E3%81%AE%E6%8C%81%E3%81%A1%E4%B8%BB%EF%BC%89",
+    "capture": "20210410114242",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3040_13",
+   "abilityId": "LEAD_3040_13",
+   "abilityName": "ABI_LEAD_NAME_3040_13",
+   "params": [
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATRBT_EGYPT_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 7, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 7, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FULL_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3050_01",
+   "abilityId": "LEAD_3050_01",
+   "abilityName": "ABI_LEAD_NAME_3050_01",
+   "params": [
+    {
+     "affectId": "AF_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [-60, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3050_02",
+   "abilityId": "LEAD_3050_02",
+   "abilityName": "ABI_LEAD_NAME_3050_02",
+   "params": [
+    {
+     "affectId": "AF_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-60, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [-80, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3050_03",
+   "abilityId": "LEAD_3050_03",
+   "abilityName": "ABI_LEAD_NAME_3050_03",
+   "params": [
+    {
+     "affectId": "AF_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [-120, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%82%A4%E3%82%AE%E3%83%BC%E2%98%855%EF%BC%88%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E6%95%85%E3%81%AE%E5%BC%B7%E3%81%95%EF%BC%89",
+    "capture": "20210410111448",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3050_04",
+   "abilityId": "LEAD_3050_04",
+   "abilityName": "ABI_LEAD_NAME_3050_04",
+   "params": [
+    {
+     "affectId": "AF_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-90, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [-90, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%82%A4%E3%82%AE%E3%83%BC%E2%98%856%EF%BC%88%E5%A4%A7%E3%81%8D%E3%81%AA%E6%85%8B%E5%BA%A6%E3%81%AE%E5%B0%8F%E3%81%95%E3%81%84%E4%BD%93%EF%BC%89",
+    "capture": "20241110190420",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3060_03",
+   "abilityId": "LEAD_3060_03",
+   "abilityName": "ABI_LEAD_NAME_3060_03",
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [12, 0, 600, 0, 0, 0, 0, 0],
+     "lv10": [12, 0, 600, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_HP_BOOST_ATK",
+     "giveLimit": -1,
+     "lv1": [70, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [70, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEF_BOOST_ATK",
+     "giveLimit": -1,
+     "lv1": [70, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [70, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3070_03",
+   "abilityId": "LEAD_3070_03",
+   "abilityName": "ABI_LEAD_NAME_3070_03",
+   "params": [
+    {
+     "affectId": "AF_INTELLI_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 2, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 2, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_MOVE_FAST",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_SP_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3100_01",
+   "abilityId": "LEAD_3100_01",
+   "abilityName": "ABI_LEAD_NAME_3100_01",
+   "params": [
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [45, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ALONE_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3100_02",
+   "abilityId": "LEAD_3100_02",
+   "abilityName": "ABI_LEAD_NAME_3100_02",
+   "params": [
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [55, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [65, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [300, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ALONE_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [120, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3100_03",
+   "abilityId": "LEAD_3100_03",
+   "abilityName": "ABI_LEAD_NAME_3100_03",
+   "params": [
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [65, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [75, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [250, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [350, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ALONE_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [120, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3100_12",
+   "abilityId": "LEAD_3100_12",
+   "abilityName": "ABI_LEAD_NAME_3100_12",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [70, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [70, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [
+    "barrier"
+   ],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3110_02",
+   "abilityId": "LEAD_3110_02",
+   "abilityName": "ABI_LEAD_NAME_3110_02",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [45, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [25, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ALONE_DEF_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-900, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [-900, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3110_13",
+   "abilityId": "LEAD_3110_13",
+   "abilityName": "ABI_LEAD_NAME_3110_13",
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_SP_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [45, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_NORMAL_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [120, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E3%83%9B%E3%83%AB%E3%83%BB%E3%83%9B%E3%83%BC%E3%82%B9%E2%98%855%EF%BC%88%E5%AE%9F%E5%8A%9B%E3%81%AE%E7%99%BA%E6%8F%AE%EF%BC%89",
+    "capture": "20171113091359",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3150_02",
+   "abilityId": "LEAD_3150_02",
+   "abilityName": "ABI_LEAD_NAME_3150_02",
+   "params": [
+    {
+     "affectId": "AF_FULL_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [300, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_ATRBT_STAND_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [200, 5, 0, 0, 0, 0, 0, 0],
+     "lv10": [350, 5, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3150_03",
+   "abilityId": "LEAD_3150_03",
+   "abilityName": "ABI_LEAD_NAME_3150_03",
+   "params": [
+    {
+     "affectId": "AF_FULL_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [310, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [310, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_ATRBT_STAND_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [210, 5, 0, 0, 0, 0, 0, 0],
+     "lv10": [360, 5, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ONLY_STAND_ATRBT_STAND_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-80, 5, 5, 0, 0, 0, 0, 0],
+     "lv10": [-100, 5, 5, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3150_12",
+   "abilityId": "LEAD_3150_12",
+   "abilityName": "ABI_LEAD_NAME_3150_12",
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_ATRBT_STAND_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-30, 5, 300, 0, 0, 0, 0, 0],
+     "lv10": [-30, 5, 300, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_ATRBT_M_ARCANA_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [220, 6, 0, 0, 0, 0, 0, 0],
+     "lv10": [220, 6, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3210_01",
+   "abilityId": "LEAD_3210_01",
+   "abilityName": "ABI_LEAD_NAME_3210_01",
+   "params": [
+    {
+     "affectId": "AF_COMBO_GAUGE_RATE",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [300, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [120, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3210_02",
+   "abilityId": "LEAD_3210_02",
+   "abilityName": "ABI_LEAD_NAME_3210_02",
+   "params": [
+    {
+     "affectId": "AF_COMBO_GAUGE_RATE",
+     "giveLimit": -1,
+     "lv1": [150, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [400, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [180, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3210_12",
+   "abilityId": "LEAD_3210_12",
+   "abilityName": "ABI_LEAD_NAME_3210_12",
+   "params": [
+    {
+     "affectId": "AF_NORMAL_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [45, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_VCT_CRT_DMG_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-300, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [-500, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3210_13",
+   "abilityId": "LEAD_3210_13",
+   "abilityName": "ABI_LEAD_NAME_3210_13",
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [60, 0, 300, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 300, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_NORMAL_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_VCT_CRT_DMG_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-300, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [-300, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3240_13",
+   "abilityId": "LEAD_3240_13",
+   "abilityName": "ABI_LEAD_NAME_3240_13",
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [250, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CRT_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [300, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [1500, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [1850, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%AD%A4%E9%AB%98%E3%80%91%E3%83%81%E3%83%A3%E3%82%AB%E2%98%855%EF%BC%88%E6%84%8F%E5%BF%97%E3%82%92%E6%8C%81%E3%81%A4%E5%88%80%EF%BC%89",
+    "capture": "20210410111839",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3270_03",
+   "abilityId": "LEAD_3270_03",
+   "abilityName": "ABI_LEAD_NAME_3270_03",
+   "params": [
+    {
+     "affectId": "AF_STEP_RANGE",
+     "giveLimit": -1,
+     "lv1": [15, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_STEP_TIME",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_SP_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3300_01",
+   "abilityId": "LEAD_3300_01",
+   "abilityName": "ABI_LEAD_NAME_3300_01",
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3300_02",
+   "abilityId": "LEAD_3300_02",
+   "abilityName": "ABI_LEAD_NAME_3300_02",
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [150, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [250, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3300_03",
+   "abilityId": "LEAD_3300_03",
+   "abilityName": "ABI_LEAD_NAME_3300_03",
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [300, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_MOVE_FAST",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3321_03",
+   "abilityId": "LEAD_3321_03",
+   "abilityName": "ABI_LEAD_NAME_3321_03",
+   "params": [
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_UNITY_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 4, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 4, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [
+    "barrier"
+   ],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91DIO%20%E2%98%855%EF%BC%88%EF%BD%9E%E6%9C%80%E9%AB%98%E3%81%AB%E3%80%8C%E3%83%8F%E3%82%A4%EF%BC%81%E3%80%8D%E3%81%A3%E3%81%A6%E3%82%84%E3%81%A4%E3%81%A0%EF%BD%9E%EF%BC%89",
+    "capture": "20210410111656",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3321_18",
+   "abilityId": "LEAD_3321_18",
+   "abilityName": "ABI_LEAD_NAME_3321_18",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_UNITY_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 4, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 4, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_MAVERICK_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 5, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 5, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%AD%A4%E9%AB%98%E3%80%91DIO%EF%BD%9E%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%89%E3%81%AE%E3%83%91%E3%83%AF%E3%83%BC%E3%82%92%E5%85%A8%E9%96%8B%E3%81%A0%E3%83%83%EF%BC%81%EF%BD%9E%E2%98%856%EF%BC%88%E3%81%AA%E3%81%98%E3%82%80%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%AE%E8%A1%80%EF%BC%89",
+    "capture": "20210410121538",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3322_08",
+   "abilityId": "LEAD_3322_08",
+   "abilityName": "ABI_LEAD_NAME_3322_08",
+   "params": [
+    {
+     "affectId": "AF_ATRBT_STAND_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [150, 5, 0, 0, 0, 0, 0, 0],
+     "lv10": [150, 5, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ONLY_VAMPIRE_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [150, 0, 1, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 1, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_SP_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [150, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91DIO%EF%BD%9E%E3%81%99%E3%81%A7%E3%81%AB%E6%89%8B%E3%81%AF%E6%89%93%E3%81%A3%E3%81%9F%EF%BC%81%EF%BC%81%EF%BD%9E%E2%98%856%EF%BC%88%E5%BF%B5%E5%86%99%E3%81%AB%E6%98%A0%E3%82%8B%E5%A7%BF%EF%BC%89",
+    "capture": "20241110183141",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "3330_03",
+   "abilityId": "LEAD_3330_03",
+   "abilityName": "ABI_LEAD_NAME_3330_03",
+   "params": [
+    {
+     "affectId": "AF_ORAORA_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [25, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [55, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%83%B4%E3%82%A1%E3%83%8B%E3%83%A9%E3%83%BB%E3%82%A2%E3%82%A4%E3%82%B9%E2%98%855%EF%BC%88%E7%8B%82%E4%BF%A1%E8%80%85%E3%81%AE%E5%A5%89%E4%BB%95%EF%BC%89",
+    "capture": "20210410115636",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4000_02",
+   "abilityId": "LEAD_4000_02",
+   "abilityName": "ABI_LEAD_NAME_4000_02",
+   "params": [
+    {
+     "affectId": "AF_ORAORA_DMG_ADD",
+     "giveLimit": -1,
+     "lv1": [150, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [300, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4000_03",
+   "abilityId": "LEAD_4000_03",
+   "abilityName": "ABI_LEAD_NAME_4000_03",
+   "params": [
+    {
+     "affectId": "AF_ORAORA_DMG_ADD",
+     "giveLimit": -1,
+     "lv1": [250, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [500, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E6%9D%B1%E6%96%B9%E4%BB%97%E5%8A%A9%E2%98%855%EF%BC%88%E7%A0%95%E3%81%91%E3%81%AA%E3%81%84%E9%BB%84%E9%87%91%E3%81%AE%E7%B2%BE%E7%A5%9E%EF%BC%89",
+    "capture": "20210410110832",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4000_12",
+   "abilityId": "LEAD_4000_12",
+   "abilityName": "ABI_LEAD_NAME_4000_12",
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [300, 0, 30, 0, 0, 0, 0, 0],
+     "lv10": [300, 0, 30, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_NORMAL_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4000_18",
+   "abilityId": "LEAD_4000_18",
+   "abilityName": "ABI_LEAD_NAME_4000_18",
+   "params": [
+    {
+     "affectId": "AF_ONLY_STAND_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 5, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 5, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ONLY_STAND_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 5, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 5, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CURE_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E6%9D%B1%E6%96%B9%E4%BB%97%E5%8A%A9%EF%BD%9E%E7%94%BA%E3%82%92%E8%AD%B7%E3%82%8B%E8%80%85%EF%BD%9E%E2%98%856%EF%BC%88%E5%8A%9B%E5%BC%B7%E3%81%8F%E5%84%AA%E3%81%97%E3%81%8D%E7%9E%B3%EF%BC%89",
+    "capture": "20210410121132",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4010_01",
+   "abilityId": "LEAD_4010_01",
+   "abilityName": "ABI_LEAD_NAME_4010_01",
+   "params": [
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4010_13",
+   "abilityId": "LEAD_4010_13",
+   "abilityName": "ABI_LEAD_NAME_4010_13",
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_BRAVE_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [10, 1, 1200, 0, 0, 0, 0, 0],
+     "lv10": [10, 1, 1800, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEFEAT_INTELLI_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [10, 2, 1200, 0, 0, 0, 0, 0],
+     "lv10": [10, 2, 1800, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEFEAT_TENACITY_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [10, 3, 1200, 0, 0, 0, 0, 0],
+     "lv10": [10, 3, 1800, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4011_02",
+   "abilityId": "LEAD_4011_02",
+   "abilityName": "ABI_LEAD_NAME_4011_02",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4011_03",
+   "abilityId": "LEAD_4011_03",
+   "abilityName": "ABI_LEAD_NAME_4011_03",
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [150, 0, 600, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 600, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4011_18",
+   "abilityId": "LEAD_4011_18",
+   "abilityName": "ABI_LEAD_NAME_4011_18",
+   "params": [
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [250, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [250, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [250, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [250, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "research",
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/【孤高】広瀬康一（ACT2）★6（成長し殻を破る）",
+    "accessed": "2026-11-20"
+   }
+  },
+  {
+   "statueId": "4012_03",
+   "abilityId": "LEAD_4012_03",
+   "abilityName": "ABI_LEAD_NAME_4012_03",
+   "params": [
+    {
+     "affectId": "AF_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [-75, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4012_11",
+   "abilityId": "LEAD_4012_11",
+   "abilityName": "ABI_LEAD_NAME_4012_11",
+   "params": [
+    {
+     "affectId": "AF_FULL_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [1000, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [2000, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_MAVERICK_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [150, 5, 0, 0, 0, 0, 0, 0],
+     "lv10": [300, 5, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4020_01",
+   "abilityId": "LEAD_4020_01",
+   "abilityName": "ABI_LEAD_NAME_4020_01",
+   "params": [
+    {
+     "affectId": "AF_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4020_02",
+   "abilityId": "LEAD_4020_02",
+   "abilityName": "ABI_LEAD_NAME_4020_02",
+   "params": [
+    {
+     "affectId": "AF_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4020_03",
+   "abilityId": "LEAD_4020_03",
+   "abilityName": "ABI_LEAD_NAME_4020_03",
+   "params": [
+    {
+     "affectId": "AF_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [75, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CRT_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E8%99%B9%E6%9D%91%E5%84%84%E6%B3%B0%E2%98%855%EF%BC%88%E5%85%84%E3%81%8B%E3%82%89%E3%81%AE%E8%87%AA%E7%AB%8B%EF%BC%89",
+    "capture": "20241110184755",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4020_04",
+   "abilityId": "LEAD_4020_04",
+   "abilityName": "ABI_LEAD_NAME_4020_04",
+   "params": [
+    {
+     "affectId": "AF_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CRT_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E8%99%B9%E6%9D%91%E5%84%84%E6%B3%B0%E2%98%856%EF%BC%88%E7%A9%BA%E9%96%93%E3%82%92%E5%89%8A%E3%82%8A%E5%8F%96%E3%82%8B%EF%BC%89",
+    "capture": "20241110174830",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4020_13",
+   "abilityId": "LEAD_4020_13",
+   "abilityName": "ABI_LEAD_NAME_4020_13",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ONLY_STAND_ATRBT_STAND_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [150, 5, 5, 0, 0, 0, 0, 0],
+     "lv10": [180, 5, 5, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E8%99%B9%E6%9D%91%E5%84%84%E6%B3%B0%E2%98%855%EF%BC%88%E8%B7%9D%E9%9B%A2%E3%82%92%E7%B8%AE%E3%82%81%E3%82%8B%EF%BC%89",
+    "capture": "20210410122438",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4030_01",
+   "abilityId": "LEAD_4030_01",
+   "abilityName": "ABI_LEAD_NAME_4030_01",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4030_02",
+   "abilityId": "LEAD_4030_02",
+   "abilityName": "ABI_LEAD_NAME_4030_02",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4030_03",
+   "abilityId": "LEAD_4030_03",
+   "abilityName": "ABI_LEAD_NAME_4030_03",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4040_01",
+   "abilityId": "LEAD_4040_01",
+   "abilityName": "ABI_LEAD_NAME_4040_01",
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [10, 0, 100, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 100, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEFEAT_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-10, 0, 100, 0, 0, 0, 0, 0],
+     "lv10": [-30, 0, 100, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4040_12",
+   "abilityId": "LEAD_4040_12",
+   "abilityName": "ABI_LEAD_NAME_4040_12",
+   "params": [
+    {
+     "affectId": "AF_MAVERICK_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [80, 5, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 5, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_MAVERICK_STYPE_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-80, 5, 0, 0, 0, 0, 0, 0],
+     "lv10": [-100, 5, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%E2%98%854%EF%BC%88%E5%B0%8A%E6%95%AC%E3%82%92%E9%9B%86%E3%82%81%E3%82%8B%E7%B5%8C%E9%A8%93%E8%80%85%EF%BC%89",
+    "capture": "20170917161913",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4040_13",
+   "abilityId": "LEAD_4040_13",
+   "abilityName": "ABI_LEAD_NAME_4040_13",
+   "params": [
+    {
+     "affectId": "AF_MAVERICK_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 5, 0, 0, 0, 0, 0, 0],
+     "lv10": [120, 5, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_MAVERICK_STYPE_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-100, 5, 0, 0, 0, 0, 0, 0],
+     "lv10": [-120, 5, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%E2%98%855%EF%BC%88%E9%8B%AD%E3%81%8D%E8%A6%B3%E5%AF%9F%E7%9C%BC%EF%BC%89",
+    "capture": "20210410110307",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4043_08",
+   "abilityId": "LEAD_4043_08",
+   "abilityName": "ABI_LEAD_NAME_4043_08",
+   "params": [
+    {
+     "affectId": "AF_ONLY_STAND_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [150, 0, 5, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 5, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ONLY_JOESTAR_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [150, 0, 2, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 2, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [250, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [250, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%EF%BD%9E%E3%81%9F%E3%81%9F%E3%81%A3%E3%81%93%E3%82%8F%E3%81%97%E3%81%A6%E3%82%84%E3%82%8B%E3%81%9C%EF%BD%9E%E2%98%856%EF%BC%88%E8%A6%8B%E3%82%8B%E3%81%A8%E8%A6%B3%E3%82%8B%E3%81%AE%E9%81%95%E3%81%84%EF%BC%89",
+    "capture": "20241110180940",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4080_01",
+   "abilityId": "LEAD_4080_01",
+   "abilityName": "ABI_LEAD_NAME_4080_01",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4080_02",
+   "abilityId": "LEAD_4080_02",
+   "abilityName": "ABI_LEAD_NAME_4080_02",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4080_03",
+   "abilityId": "LEAD_4080_03",
+   "abilityName": "ABI_LEAD_NAME_4080_03",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E5%B1%B1%E5%B2%B8%E7%94%B1%E8%8A%B1%E5%AD%90%E2%98%855%EF%BC%88%E8%BC%9D%E3%81%8F%E4%B9%99%E5%A5%B3%E3%81%AE%E7%84%A1%E6%95%B5%E3%81%AE%E8%82%89%E4%BD%93%EF%BC%89",
+    "capture": "20210410121414",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4080_13",
+   "abilityId": "LEAD_4080_13",
+   "abilityName": "ABI_LEAD_NAME_4080_13",
+   "params": [
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [70, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [70, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CRT_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [500, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4110_02",
+   "abilityId": "LEAD_4110_02",
+   "abilityName": "ABI_LEAD_NAME_4110_02",
+   "params": [
+    {
+     "affectId": "AF_ORAORA_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-180, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [-200, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [
+    "gold_flat"
+   ],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4110_13",
+   "abilityId": "LEAD_4110_13",
+   "abilityName": "ABI_LEAD_NAME_4110_13",
+   "params": [
+    {
+     "affectId": "AF_ORAORA_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [180, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [220, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ALONE_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [120, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [
+    "gold_flat"
+   ],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E7%9F%A2%E5%AE%89%E5%AE%AE%E9%87%8D%E6%B8%85%E2%98%855%EF%BC%88%E3%81%8A%E6%9C%AD%E3%81%8C%E3%81%84%E3%81%A3%E3%81%B1%E3%81%84%EF%BC%81%EF%BC%89",
+    "capture": "20170917151807",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4130_03",
+   "abilityId": "LEAD_4130_03",
+   "abilityName": "ABI_LEAD_NAME_4130_03",
+   "params": [
+    {
+     "affectId": "AF_ONLY_STAND_ATRBT_STAND_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 5, 5, 0, 0, 0, 0, 0],
+     "lv10": [150, 5, 5, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_BRAVE_STYPE_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [80, 1, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 1, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_HP_RATEADD",
+     "giveLimit": -1,
+     "lv1": [70, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [70, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4130_13",
+   "abilityId": "LEAD_4130_13",
+   "abilityName": "ABI_LEAD_NAME_4130_13",
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_MOVE_FAST",
+     "giveLimit": -1,
+     "lv1": [30, 0, 300, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 300, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORAORA_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [150, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [180, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E5%99%B4%E4%B8%8A%E8%A3%95%E4%B9%9F%E2%98%855%EF%BC%88%E3%82%B9%E3%83%94%E3%83%BC%E3%83%89%E3%82%AD%E3%83%B3%E3%82%B0%EF%BC%89",
+    "capture": "20210410120729",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4150_01",
+   "abilityId": "LEAD_4150_01",
+   "abilityName": "ABI_LEAD_NAME_4150_01",
+   "params": [
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [60, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4150_02",
+   "abilityId": "LEAD_4150_02",
+   "abilityName": "ABI_LEAD_NAME_4150_02",
+   "params": [
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4150_03",
+   "abilityId": "LEAD_4150_03",
+   "abilityName": "ABI_LEAD_NAME_4150_03",
+   "params": [
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [91, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [91, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [411, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [411, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [
+    "nonint_flat"
+   ],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4160_01",
+   "abilityId": "LEAD_4160_01",
+   "abilityName": "ABI_LEAD_NAME_4160_01",
+   "params": [
+    {
+     "affectId": "AF_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4160_02",
+   "abilityId": "LEAD_4160_02",
+   "abilityName": "ABI_LEAD_NAME_4160_02",
+   "params": [
+    {
+     "affectId": "AF_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [40, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4160_03",
+   "abilityId": "LEAD_4160_03",
+   "abilityName": "ABI_LEAD_NAME_4160_03",
+   "params": [
+    {
+     "affectId": "AF_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [150, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [300, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4170_02",
+   "abilityId": "LEAD_4170_02",
+   "abilityName": "ABI_LEAD_NAME_4170_02",
+   "params": [
+    {
+     "affectId": "AF_MOVE_FAST",
+     "giveLimit": -1,
+     "lv1": [20, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [20, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4170_03",
+   "abilityId": "LEAD_4170_03",
+   "abilityName": "ABI_LEAD_NAME_4170_03",
+   "params": [
+    {
+     "affectId": "AF_MOVE_FAST",
+     "giveLimit": -1,
+     "lv1": [25, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [45, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [120, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FNT_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [60, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E9%9F%B3%E7%9F%B3%E6%98%8E%E2%98%855%EF%BC%88%E5%8F%8D%E7%9C%81%E3%81%99%E3%82%8B%E3%81%A8%E5%BC%B7%E3%81%84%E3%81%9C%E2%80%A6%EF%BC%89",
+    "capture": "20210410115223",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4190_13",
+   "abilityId": "LEAD_4190_13",
+   "abilityName": "ABI_LEAD_NAME_4190_13",
+   "params": [
+    {
+     "affectId": "AF_FULL_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [250, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [300, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATRBT_STAND_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [80, 5, 0, 0, 0, 0, 0, 0],
+     "lv10": [120, 5, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [
+    "barrier"
+   ],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%AD%A4%E9%AB%98%E3%80%91%E5%90%89%E8%89%AF%E5%90%89%E5%BD%B1%E2%98%855%EF%BC%88%E5%90%89%E8%89%AF%E5%90%89%E5%BD%B1%E3%81%AF%E9%9D%99%E3%81%8B%E3%81%AB%E6%9A%AE%E3%82%89%E3%81%97%E3%81%9F%E3%81%84%EF%BC%89",
+    "capture": "20210410121105",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4191_03",
+   "abilityId": "LEAD_4191_03",
+   "abilityName": "ABI_LEAD_NAME_4191_03",
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [69, 0, 150, 0, 0, 0, 0, 0],
+     "lv10": [69, 0, 150, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEFEAT_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [58, 0, 150, 0, 0, 0, 0, 0],
+     "lv10": [58, 0, 150, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ALONE_CT_FAST",
+     "giveLimit": -1,
+     "lv1": [118, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [118, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4192_03",
+   "abilityId": "LEAD_4192_03",
+   "abilityName": "ABI_LEAD_NAME_4192_03",
+   "params": [
+    {
+     "affectId": "AF_OVER_HP_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [200, 0, 700, 0, 0, 0, 0, 0],
+     "lv10": [200, 0, 700, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_UNDER_HP_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [150, 0, 700, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 700, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_UNDER_HP_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [150, 0, 700, 0, 0, 0, 0, 0],
+     "lv10": [150, 0, 700, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E5%90%89%E8%89%AF%E5%90%89%E5%BD%B1%E2%98%855%EF%BC%88%E5%B7%9D%E5%B0%BB%E6%B5%A9%E4%BD%9C%EF%BC%89",
+    "capture": "20241110175836",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4193_08",
+   "abilityId": "LEAD_4193_08",
+   "abilityName": "ABI_LEAD_NAME_4193_08",
+   "params": [
+    {
+     "affectId": "AF_ATRBT_STAND_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [200, 5, 0, 0, 0, 0, 0, 0],
+     "lv10": [200, 5, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATRBT_STAND_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-100, 5, 0, 0, 0, 0, 0, 0],
+     "lv10": [-100, 5, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_FULL_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [400, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [400, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91%E5%90%89%E8%89%AF%E5%90%89%E5%BD%B1%EF%BD%9E...%E5%A7%8B%E6%9C%AB%E3%81%97%E3%81%A6%E3%81%8B%E3%82%89%E3%81%AD......%EF%BC%81%EF%BD%9E%E2%98%856%EF%BC%88%E6%97%A5%E5%B8%B8%E3%81%AB%E6%BD%9C%E3%82%80%E9%97%87%EF%BC%89",
+    "capture": "20241110191432",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4240_13",
+   "abilityId": "LEAD_4240_13",
+   "abilityName": "ABI_LEAD_NAME_4240_13",
+   "params": [
+    {
+     "affectId": "AF_FULL_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [200, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [250, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_VCT_DAM_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-100, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [-120, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_VCT_CRT_DMG_RATESUB",
+     "giveLimit": -1,
+     "lv1": [-250, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [-300, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "wayback",
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+    "capture": "20241110194530",
+    "accessed": "2026-11-14"
+   }
+  }
+ ],
+ "report": {
+  "stats": {
+   "statue_every_line_served": 131,
+   "statue_listed": 142,
+   "statue_listed_research": 6,
+   "statue_listed_wayback": 136,
+   "statue_matched": 143,
+   "statue_not_in_roster": 1,
+   "statue_nothing_served": 1
+  },
+  "lines": {
+   "barrier": 3,
+   "gold_flat": 3,
+   "gold_rate": 3,
+   "no_label": 1,
+   "nonint_flat": 1,
+   "ok": 328,
+   "per_stype": 1
+  },
+  "max": {
+   "max": 220,
+   "max_rejected": 3,
+   "no_max": 105
+  },
+  "affect_ids": 106,
+  "research_held": [
+   "3041_03",
+   "4000_23"
+  ]
+ }
+}

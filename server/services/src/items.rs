@@ -162,3 +162,36 @@ pub fn material_gold(
     }
     g * count
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Build 41: the ranges read from the item labels (docs/research/15). Town Medals are in the
+    /// catalog (so presents of them are accepted); types only where an ItemType name matches the
+    /// item text; profile currencies stay out.
+    #[test]
+    fn label_ranges_in_catalog() {
+        assert_eq!(items().len(), 414);
+        let kind = |id| find(id).map(|d| (d.category.as_str(), d.item_type));
+        assert_eq!(kind(crate::town::MEDAL_ITEM), Some(("town", 0)));
+        assert_eq!(kind(1001), Some(("ap", 0)));
+        assert_eq!(kind(1533), Some(("honor", 0)));
+        assert_eq!(kind(2000), Some(("event_point", 12)));
+        assert_eq!(kind(2002), Some(("event", 11)));
+        assert_eq!(kind(4001), Some(("exchange", 11)));
+        assert_eq!(kind(4004), Some(("exchange", 0)));
+        assert_eq!(kind(6001), Some(("mind_box", 15)));
+        assert_eq!(kind(8749), Some(("awakening_medal", 0)));
+        for id in [0, 10, 20, 40, 1100, 8605, 3031] {
+            assert!(find(id).is_none(), "{id}");
+        }
+        assert_eq!(
+            items()
+                .iter()
+                .filter(|d| d.category == "awakening_medal")
+                .count(),
+            42
+        );
+    }
+}

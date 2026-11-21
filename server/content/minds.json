@@ -1,10 +1,15 @@
 {
- "about": "Minds matched to game ids on the Gamerch wiki: rarity, cost, flat stats (numbers only). See docs/CONTENT.md.",
+ "about": "Minds matched to game ids on the Gamerch wiki: rarity, cost, flat stats at Lv1 and, where known, Lv10 (numbers only). See docs/CONTENT.md.",
  "sources": [
   {
    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine snapshot)",
    "page": "https://jojodr.gamerch.com/",
-   "accessed": "2026-11-20"
+   "accessed": "2026-11-21"
+  },
+  {
+   "source": "jdr-research",
+   "doc": "docs/research/16-minds.md §9",
+   "note": "Diamond Records Preservation (PC) data: Lv10 stats the wiki leaves blank for 9 Minds (original-game screenshots at Lv10, an archived translation), cited per row in lv10Source / lv1Source; numbers only, nothing copied"
   }
  ],
  "minds": [
@@ -15,6 +20,12 @@
    "hp": 750,
    "atk": 500,
    "def": 0,
+   "lv10": {
+    "hp": 1500,
+    "atk": 800,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -29,6 +40,12 @@
    "hp": 680,
    "atk": 250,
    "def": 0,
+   "lv10": {
+    "hp": 1020,
+    "atk": 550,
+    "def": 0
+   },
+   "lv10Source": "HP, ATK: Diamond Records Preservation (PC) data, archived translation of the Mind's page",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -43,6 +60,12 @@
    "hp": 740,
    "atk": 650,
    "def": 0,
+   "lv10": {
+    "hp": 950,
+    "atk": 880,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -57,6 +80,12 @@
    "hp": 850,
    "atk": 600,
    "def": 0,
+   "lv10": {
+    "hp": 1050,
+    "atk": 800,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -85,6 +114,12 @@
    "hp": 500,
    "atk": 500,
    "def": 500,
+   "lv10": {
+    "hp": 1000,
+    "atk": 700,
+    "def": 700
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -99,6 +134,12 @@
    "hp": 770,
    "atk": 500,
    "def": 0,
+   "lv10": {
+    "hp": 990,
+    "atk": 720,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -113,6 +154,12 @@
    "hp": 780,
    "atk": 0,
    "def": 540,
+   "lv10": {
+    "hp": 1280,
+    "atk": 0,
+    "def": 800
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -127,6 +174,12 @@
    "hp": 990,
    "atk": 0,
    "def": 560,
+   "lv10": {
+    "hp": 1100,
+    "atk": 0,
+    "def": 720
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -141,6 +194,12 @@
    "hp": 780,
    "atk": 550,
    "def": 0,
+   "lv10": {
+    "hp": 1160,
+    "atk": 780,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -155,6 +214,12 @@
    "hp": 960,
    "atk": 0,
    "def": 530,
+   "lv10": {
+    "hp": 1280,
+    "atk": 0,
+    "def": 750
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -169,6 +234,12 @@
    "hp": 760,
    "atk": 0,
    "def": 580,
+   "lv10": {
+    "hp": 1050,
+    "atk": 0,
+    "def": 790
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -180,9 +251,16 @@
    "mindId": "0013",
    "rarity": 4,
    "cost": 12,
-   "hp": 0,
+   "hp": 788,
    "atk": 0,
-   "def": 0,
+   "def": 462,
+   "lv10": {
+    "hp": 1110,
+    "atk": 0,
+    "def": 650
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect (read from the effect text 'DEF+？（MAX+650）', 'HP+？（MAX+1110）')",
+   "lv1Source": "HP, DEF: round(Lv10 x 0.71) (jdr-default; the median Lv1/Lv10 of the wiki's ★3/★4 Minds), no Lv1 in our sources",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -197,6 +275,12 @@
    "hp": 910,
    "atk": 0,
    "def": 520,
+   "lv10": {
+    "hp": 1220,
+    "atk": 0,
+    "def": 620
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -225,6 +309,12 @@
    "hp": 950,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 1320,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -239,6 +329,12 @@
    "hp": 770,
    "atk": 610,
    "def": 0,
+   "lv10": {
+    "hp": 1250,
+    "atk": 810,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -253,6 +349,12 @@
    "hp": 720,
    "atk": 530,
    "def": 0,
+   "lv10": {
+    "hp": 1000,
+    "atk": 780,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -267,6 +369,12 @@
    "hp": 880,
    "atk": 0,
    "def": 630,
+   "lv10": {
+    "hp": 1350,
+    "atk": 0,
+    "def": 850
+   },
+   "lv10Source": "HP, DEF: Diamond Records Preservation (PC) data, original-game screenshot at Lv10 (sha256 bfb1e672216fd3c7ad2a5fd602d57ce4b326e8c6c8fa759e4e4fd488fc8c2360)",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -281,6 +389,12 @@
    "hp": 600,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 900,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -295,6 +409,12 @@
    "hp": 540,
    "atk": 550,
    "def": 0,
+   "lv10": {
+    "hp": 720,
+    "atk": 780,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -309,6 +429,32 @@
    "hp": 520,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 750,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost of every Mind of this rarity on the wiki"
+   }
+  },
+  {
+   "mindId": "1005",
+   "rarity": 3,
+   "cost": 8,
+   "hp": 480,
+   "atk": 400,
+   "def": 0,
+   "lv10": {
+    "hp": 720,
+    "atk": 650,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect (read from the effect text 'HP+ 480（MAX+720）')",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -323,6 +469,12 @@
    "hp": 900,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 1250,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -337,6 +489,12 @@
    "hp": 530,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 730,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -351,6 +509,12 @@
    "hp": 540,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 740,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -365,6 +529,12 @@
    "hp": 620,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 840,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -379,6 +549,12 @@
    "hp": 630,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 910,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -393,6 +569,12 @@
    "hp": 650,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 950,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -407,6 +589,12 @@
    "hp": 610,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 820,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -421,6 +609,12 @@
    "hp": 560,
    "atk": 0,
    "def": 400,
+   "lv10": {
+    "hp": 830,
+    "atk": 0,
+    "def": 650
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -433,8 +627,14 @@
    "rarity": 3,
    "cost": 8,
    "hp": 670,
-   "atk": 550,
+   "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 920,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -449,6 +649,12 @@
    "hp": 530,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 720,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -463,6 +669,12 @@
    "hp": 630,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 820,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -477,6 +689,12 @@
    "hp": 530,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 720,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -491,6 +709,12 @@
    "hp": 630,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 820,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -505,6 +729,12 @@
    "hp": 530,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 720,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -519,6 +749,12 @@
    "hp": 630,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 820,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -533,6 +769,12 @@
    "hp": 680,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 1100,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -547,6 +789,12 @@
    "hp": 700,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 950,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -561,6 +809,12 @@
    "hp": 720,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 1050,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -575,6 +829,12 @@
    "hp": 530,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 770,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -589,6 +849,12 @@
    "hp": 660,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 880,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -603,6 +869,12 @@
    "hp": 540,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 760,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -617,6 +889,12 @@
    "hp": 550,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 750,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -631,6 +909,12 @@
    "hp": 660,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 910,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -645,6 +929,12 @@
    "hp": 660,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 880,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -659,6 +949,12 @@
    "hp": 630,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 940,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -673,6 +969,12 @@
    "hp": 550,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 750,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E5%B0%91%E5%B9%B4%E3%81%AE%E8%A6%9A%E9%86%92",
@@ -686,6 +988,12 @@
    "hp": 660,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 880,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -700,6 +1008,12 @@
    "hp": 510,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 720,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -714,6 +1028,12 @@
    "hp": 660,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 910,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -728,6 +1048,12 @@
    "hp": 540,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 760,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -742,6 +1068,12 @@
    "hp": 460,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 680,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -754,8 +1086,14 @@
    "rarity": 3,
    "cost": 8,
    "hp": 480,
-   "atk": 50,
+   "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 710,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -770,6 +1108,12 @@
    "hp": 700,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 950,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -784,6 +1128,32 @@
    "hp": 730,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 990,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost of every Mind of this rarity on the wiki"
+   }
+  },
+  {
+   "mindId": "1041",
+   "rarity": 3,
+   "cost": 8,
+   "hp": 630,
+   "atk": 0,
+   "def": 0,
+   "lv10": {
+    "hp": 880,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -798,6 +1168,12 @@
    "hp": 620,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 880,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -812,6 +1188,12 @@
    "hp": 630,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 890,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -826,6 +1208,12 @@
    "hp": 550,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 800,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -910,6 +1298,26 @@
    "hp": 0,
    "atk": 100,
    "def": 0,
+   "lv10": {
+    "hp": 0,
+    "atk": 200,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%862",
+    "accessed": "2026-11-14",
+    "note": "cost of every Mind of this rarity on the wiki"
+   }
+  },
+  {
+   "mindId": "2008",
+   "rarity": 2,
+   "cost": 5,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%862",
@@ -952,6 +1360,12 @@
    "hp": 0,
    "atk": 0,
    "def": 100,
+   "lv10": {
+    "hp": 0,
+    "atk": 0,
+    "def": 200
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%862",
@@ -1048,8 +1462,14 @@
    "rarity": 1,
    "cost": 3,
    "hp": 0,
-   "atk": 0,
+   "atk": 50,
    "def": 0,
+   "lv10": {
+    "hp": 0,
+    "atk": 100,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect (read from the effect text 'ATK50（MAX+100）')",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%861",
@@ -1064,6 +1484,12 @@
    "hp": 0,
    "atk": 0,
    "def": 50,
+   "lv10": {
+    "hp": 0,
+    "atk": 0,
+    "def": 100
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%861",
@@ -1076,7 +1502,7 @@
    "rarity": 1,
    "cost": 3,
    "hp": 0,
-   "atk": 75,
+   "atk": 0,
    "def": 0,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -1105,7 +1531,7 @@
    "cost": 3,
    "hp": 0,
    "atk": 0,
-   "def": 40,
+   "def": 0,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%861",
@@ -1133,6 +1559,12 @@
    "hp": 100,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 200,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%861",
@@ -1198,6 +1630,20 @@
   },
   {
    "mindId": "4004",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost of every Mind of this rarity on the wiki"
+   }
+  },
+  {
+   "mindId": "4006",
    "rarity": 4,
    "cost": 12,
    "hp": 0,
@@ -1643,6 +2089,20 @@
   },
   {
    "mindId": "4046",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost of every Mind of this rarity on the wiki"
+   }
+  },
+  {
+   "mindId": "4047",
    "rarity": 4,
    "cost": 12,
    "hp": 0,
@@ -2141,6 +2601,20 @@
    }
   },
   {
+   "mindId": "4093",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost of every Mind of this rarity on the wiki"
+   }
+  },
+  {
    "mindId": "4094",
    "rarity": 4,
    "cost": 12,
@@ -2421,6 +2895,20 @@
    }
   },
   {
+   "mindId": "4118",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost of every Mind of this rarity on the wiki"
+   }
+  },
+  {
    "mindId": "4119",
    "rarity": 4,
    "cost": 12,
@@ -2449,6 +2937,20 @@
    }
   },
   {
+   "mindId": "4127",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%81%93%E3%81%84%E3%81%A4%E3%81%AE%E3%82%A8%E3%83%8D%E3%83%AB%E3%82%AE%E3%83%BC%E3%81%8C%E3%81%AA%E3%81%91%E3%82%8C%E3%81%B0%E3%83%BC%E3%83%BC%E3%83%BC",
+    "accessed": "2026-11-14",
+    "note": "cost of every Mind of this rarity on the wiki"
+   }
+  },
+  {
    "mindId": "4128",
    "rarity": 4,
    "cost": 12,
@@ -2469,6 +2971,12 @@
    "hp": 780,
    "atk": 700,
    "def": 0,
+   "lv10": {
+    "hp": 1250,
+    "atk": 900,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -2481,8 +2989,14 @@
    "rarity": 3,
    "cost": 8,
    "hp": 550,
-   "atk": 480,
+   "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 750,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -2497,6 +3011,12 @@
    "hp": 400,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 520,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -2511,6 +3031,12 @@
    "hp": 650,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 900,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -2525,6 +3051,12 @@
    "hp": 500,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 700,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -2539,6 +3071,12 @@
    "hp": 650,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 900,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -2553,6 +3091,12 @@
    "hp": 700,
    "atk": 540,
    "def": 460,
+   "lv10": {
+    "hp": 800,
+    "atk": 840,
+    "def": 660
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -2567,6 +3111,12 @@
    "hp": 620,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 780,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -2581,6 +3131,12 @@
    "hp": 500,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 700,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -2593,8 +3149,8 @@
    "rarity": 3,
    "cost": 8,
    "hp": 0,
-   "atk": 550,
-   "def": 550,
+   "atk": 0,
+   "def": 0,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -2623,6 +3179,12 @@
    "hp": 650,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 900,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -2651,6 +3213,12 @@
    "hp": 380,
    "atk": 500,
    "def": 0,
+   "lv10": {
+    "hp": 520,
+    "atk": 700,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -2665,6 +3233,12 @@
    "hp": 500,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 700,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -2693,6 +3267,12 @@
    "hp": 800,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 1000,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect (read from the effect text 'HP+800(+1000)')",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -2707,6 +3287,12 @@
    "hp": 560,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 790,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -2721,6 +3307,12 @@
    "hp": 490,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 720,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -2735,6 +3327,12 @@
    "hp": 700,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 1050,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -2749,6 +3347,12 @@
    "hp": 620,
    "atk": 700,
    "def": 0,
+   "lv10": {
+    "hp": 930,
+    "atk": 900,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -2763,6 +3367,12 @@
    "hp": 630,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 860,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -2791,6 +3401,12 @@
    "hp": 800,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 1000,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -2805,6 +3421,12 @@
    "hp": 500,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 1000,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%81%8A%E3%81%BE%E3%81%88%E3%81%AF%E4%BB%8A%E3%81%BE%E3%81%A7%E9%A3%9F%E3%81%A3%E3%81%9F%E3%83%91%E3%83%B3%E3%81%AE%E6%9E%9A%E6%95%B0%E3%82%92%E3%81%8A%E3%81%BC%E3%81%88%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%8B%EF%BC%9F",
@@ -2815,8 +3437,8 @@
    "mindId": "7035",
    "rarity": 4,
    "cost": 12,
-   "hp": 0,
-   "atk": 0,
+   "hp": 780,
+   "atk": 500,
    "def": 0,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -2831,9 +3453,35 @@
    "hp": 590,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 720,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost of every Mind of this rarity on the wiki"
+   }
+  },
+  {
+   "mindId": "7038",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 600,
+   "atk": 800,
+   "def": 0,
+   "lv10": {
+    "hp": 1000,
+    "atk": 1200,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
     "accessed": "2026-11-14",
     "note": "cost of every Mind of this rarity on the wiki"
    }
@@ -2845,6 +3493,12 @@
    "hp": 420,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 680,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -2873,6 +3527,12 @@
    "hp": 660,
    "atk": 0,
    "def": 460,
+   "lv10": {
+    "hp": 990,
+    "atk": 0,
+    "def": 660
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -2887,6 +3547,12 @@
    "hp": 440,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 670,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -2915,6 +3581,12 @@
    "hp": 800,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 1000,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -2926,9 +3598,15 @@
    "mindId": "7055",
    "rarity": 4,
    "cost": 12,
-   "hp": 0,
+   "hp": 1000,
    "atk": 0,
-   "def": 0,
+   "def": 620,
+   "lv10": {
+    "hp": 1500,
+    "atk": 0,
+    "def": 850
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -2943,6 +3621,12 @@
    "hp": 850,
    "atk": 500,
    "def": 0,
+   "lv10": {
+    "hp": 1250,
+    "atk": 1000,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%80%9C%E3%82%A8%E3%82%A4%E3%82%B8%E3%83%A3%E3%81%AE%E8%B5%A4%E7%9F%B3%E2%80%9D%E3%82%92%E6%8E%A2%E3%81%97%E3%81%AB%E8%A1%8C%E3%81%8F%E3%81%AE%E3%81%A0%E2%80%A6",
@@ -2956,6 +3640,12 @@
    "hp": 380,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 540,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -2998,6 +3688,12 @@
    "hp": 490,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 700,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -3012,6 +3708,12 @@
    "hp": 320,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 650,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%81%BE%E3%81%8E%E3%82%8C%E3%82%82%E3%81%AA%E3%81%84%E3%83%92%E3%83%BC%E3%83%AD%E3%83%BC%EF%BC%81JOJO%EF%BC%81",
@@ -3030,6 +3732,19 @@
     "page": "https://jojodr.gamerch.com/%E2%98%862",
     "accessed": "2026-11-14",
     "note": "cost of every Mind of this rarity on the wiki"
+   }
+  },
+  {
+   "mindId": "7089",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 610,
+   "atk": 520,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%83%8F%E3%83%83%E3%82%BF%E3%83%AA%E3%82%92%E3%81%8B%E3%81%BE%E3%81%99%E3%81%AA%E3%82%88JOJO%E3%81%A8%E3%82%84%E3%82%89",
+    "accessed": "2026-11-14"
    }
   },
   {
@@ -3052,6 +3767,12 @@
    "hp": 230,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 610,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -3066,6 +3787,12 @@
    "hp": 490,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 820,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -3080,6 +3807,12 @@
    "hp": 360,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 780,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -3094,6 +3827,12 @@
    "hp": 290,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 890,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -3108,6 +3847,12 @@
    "hp": 460,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 720,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -3122,6 +3867,12 @@
    "hp": 330,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 660,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -3136,6 +3887,12 @@
    "hp": 860,
    "atk": 0,
    "def": 500,
+   "lv10": {
+    "hp": 1650,
+    "atk": 0,
+    "def": 1000
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -3163,7 +3920,13 @@
    "cost": 8,
    "hp": 420,
    "atk": 0,
-   "def": 70,
+   "def": 0,
+   "lv10": {
+    "hp": 620,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -3177,10 +3940,36 @@
    "cost": 8,
    "hp": 520,
    "atk": 0,
-   "def": 70,
+   "def": 0,
+   "lv10": {
+    "hp": 890,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost of every Mind of this rarity on the wiki"
+   }
+  },
+  {
+   "mindId": "7106",
+   "rarity": 2,
+   "cost": 5,
+   "hp": 0,
+   "atk": 0,
+   "def": 10,
+   "lv10": {
+    "hp": 0,
+    "atk": 0,
+    "def": 100
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%862",
     "accessed": "2026-11-14",
     "note": "cost of every Mind of this rarity on the wiki"
    }
@@ -3192,6 +3981,12 @@
    "hp": 0,
    "atk": 120,
    "def": 0,
+   "lv10": {
+    "hp": 0,
+    "atk": 250,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%862",
@@ -3261,6 +4056,12 @@
    "hp": 500,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 1000,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -3275,6 +4076,12 @@
    "hp": 0,
    "atk": 0,
    "def": 480,
+   "lv10": {
+    "hp": 0,
+    "atk": 0,
+    "def": 530
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -3303,6 +4110,12 @@
    "hp": 0,
    "atk": 320,
    "def": 0,
+   "lv10": {
+    "hp": 0,
+    "atk": 540,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -3343,8 +4156,14 @@
    "rarity": 3,
    "cost": 8,
    "hp": 0,
-   "atk": 600,
+   "atk": 0,
    "def": 240,
+   "lv10": {
+    "hp": 0,
+    "atk": 0,
+    "def": 360
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -3372,7 +4191,7 @@
    "cost": 8,
    "hp": 0,
    "atk": 0,
-   "def": 200,
+   "def": 0,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -3582,6 +4401,12 @@
    "hp": 0,
    "atk": 0,
    "def": 280,
+   "lv10": {
+    "hp": 0,
+    "atk": 0,
+    "def": 450
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -3596,6 +4421,12 @@
    "hp": 0,
    "atk": 0,
    "def": 250,
+   "lv10": {
+    "hp": 0,
+    "atk": 0,
+    "def": 400
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -3610,6 +4441,32 @@
    "hp": 600,
    "atk": 0,
    "def": 780,
+   "lv10": {
+    "hp": 800,
+    "atk": 0,
+    "def": 1100
+   },
+   "lv10Source": "HP, DEF: Diamond Records Preservation (PC) data, original-game screenshot at Lv10 (sha256 ca91b5afad51682df5c070d26ce434c5c015084197fe198fe502c564d584f889)",
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost of every Mind of this rarity on the wiki"
+   }
+  },
+  {
+   "mindId": "7191",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 850,
+   "atk": 0,
+   "def": 500,
+   "lv10": {
+    "hp": 1250,
+    "atk": 0,
+    "def": 1000
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -3651,6 +4508,12 @@
    "hp": 0,
    "atk": 280,
    "def": 0,
+   "lv10": {
+    "hp": 0,
+    "atk": 450,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -3665,6 +4528,12 @@
    "hp": 600,
    "atk": 780,
    "def": 0,
+   "lv10": {
+    "hp": 800,
+    "atk": 1100,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect (read from the effect text 'HP+600{MAX+800)')",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -3693,6 +4562,12 @@
    "hp": 550,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 750,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -3707,10 +4582,36 @@
    "hp": 0,
    "atk": 780,
    "def": 780,
+   "lv10": {
+    "hp": 0,
+    "atk": 1100,
+    "def": 1100
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E7%AA%AE%E7%8A%AC%E9%B3%A5%E3%82%92%E5%99%9B%E3%82%80",
     "accessed": "2026-11-14"
+   }
+  },
+  {
+   "mindId": "7201",
+   "rarity": 3,
+   "cost": 8,
+   "hp": 0,
+   "atk": 250,
+   "def": 0,
+   "lv10": {
+    "hp": 0,
+    "atk": 400,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost of every Mind of this rarity on the wiki"
    }
   },
   {
@@ -3720,6 +4621,12 @@
    "hp": 0,
    "atk": 0,
    "def": 250,
+   "lv10": {
+    "hp": 0,
+    "atk": 0,
+    "def": 400
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect (read from the effect text 'DEF+250(MAX DEF+400)')",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -3762,6 +4669,12 @@
    "hp": 700,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 1050,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -3790,6 +4703,12 @@
    "hp": 0,
    "atk": 600,
    "def": 0,
+   "lv10": {
+    "hp": 0,
+    "atk": 890,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -3887,6 +4806,12 @@
    "hp": 1300,
    "atk": 0,
    "def": 500,
+   "lv10": {
+    "hp": 1400,
+    "atk": 0,
+    "def": 800
+   },
+   "lv10Source": "HP, DEF: Diamond Records Preservation (PC) data, original-game screenshot at Lv10 (sha256 25e8eb857f3adcd3eb7e98f8c777256970706e9b36437c4877d753bf0e8c24fc)",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -3901,6 +4826,12 @@
    "hp": 600,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 800,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%8F%E3%81%97%E3%82%89%E3%82%82%E5%8B%95%E3%81%8B%E3%81%AD%E3%81%B0%E3%81%AA%E3%82%89%E3%82%93%E3%82%88%E3%81%86%E3%81%98%E3%82%83%E3%81%AE...",
@@ -3912,8 +4843,14 @@
    "rarity": 3,
    "cost": 8,
    "hp": 0,
-   "atk": 450,
+   "atk": 320,
    "def": 0,
+   "lv10": {
+    "hp": 0,
+    "atk": 480,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%81%A8%E3%82%93%E3%81%A7%E3%82%82%E3%81%AA%E3%81%84%E4%BA%8B%E3%81%8C%E8%B5%B7%E3%81%93%E3%81%A3%E3%81%A6%E3%81%9F%E3%81%AE%E3%81%AD",
@@ -3927,6 +4864,12 @@
    "hp": 0,
    "atk": 0,
    "def": 470,
+   "lv10": {
+    "hp": 0,
+    "atk": 0,
+    "def": 630
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%81%93%E3%82%8C%E3%81%A7%E3%81%BF%E3%82%93%E3%81%AA%E5%8B%95%E3%81%8D%E5%87%BA%E3%81%99%E3%81%A3%E3%81%A6%E3%82%8F%E3%81%91%E3%81%8B",
@@ -3940,6 +4883,12 @@
    "hp": 630,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 820,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%81%86%E3%81%A1%E3%81%AB%E6%9D%A5%E3%82%8B%E3%81%A8%E3%81%AF%E6%80%9D%E3%81%88%E3%81%AA%E3%81%84%E3%81%91%E3%81%A9",
@@ -3967,6 +4916,12 @@
    "hp": 500,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 590,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E6%B6%88%E3%81%88%E3%81%9F%E3%82%B5%E3%83%B3%E3%83%89%E3%82%A4%E3%83%83%E3%83%81",
@@ -4006,6 +4961,12 @@
    "hp": 300,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 520,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E9%9D%B4%E3%81%AE%E3%83%A0%E3%82%AB%E3%83%87%E5%B1%8B%E3%81%AE%E5%BA%97%E4%B8%BB",
@@ -4016,9 +4977,16 @@
    "mindId": "7260",
    "rarity": 4,
    "cost": 12,
-   "hp": 0,
-   "atk": 0,
+   "hp": 746,
+   "atk": 405,
    "def": 0,
+   "lv10": {
+    "hp": 1050,
+    "atk": 570,
+    "def": 0
+   },
+   "lv10Source": "HP, ATK: Diamond Records Preservation (PC) data, original-game screenshot at Lv10 (sha256 21abce71f5798c27adb65a0fb00fe9bb6450767173b1c7352167241a54794974)",
+   "lv1Source": "HP, ATK: round(Lv10 x 0.71) (jdr-default; the median Lv1/Lv10 of the wiki's ★3/★4 Minds), no Lv1 in our sources",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -4046,6 +5014,12 @@
    "hp": 0,
    "atk": 460,
    "def": 0,
+   "lv10": {
+    "hp": 0,
+    "atk": 530,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E6%95%97%E5%8C%97%E3%81%99%E3%82%8B%E9%81%8B%E5%91%BD",
@@ -4072,6 +5046,12 @@
    "hp": 0,
    "atk": 620,
    "def": 0,
+   "lv10": {
+    "hp": 0,
+    "atk": 1010,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%80%8E%E3%83%91%E3%83%AF%E3%83%BC%E3%80%8F%E3%81%AB%E5%8B%9D%E3%82%8B%E3%80%8E%E9%80%9F%E3%81%95%E3%80%8F",
@@ -4085,6 +5065,12 @@
    "hp": 650,
    "atk": 430,
    "def": 0,
+   "lv10": {
+    "hp": 1050,
+    "atk": 800,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%BA%E3%82%AD%E3%83%A5%E3%82%A6%E3%82%A5%E3%82%A5%E3%83%B3",
@@ -4098,6 +5084,12 @@
    "hp": 0,
    "atk": 250,
    "def": 0,
+   "lv10": {
+    "hp": 0,
+    "atk": 500,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -4140,6 +5132,12 @@
    "hp": 0,
    "atk": 0,
    "def": 420,
+   "lv10": {
+    "hp": 0,
+    "atk": 0,
+    "def": 500
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -4209,9 +5207,49 @@
    "hp": 520,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 650,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
+    "accessed": "2026-11-14",
+    "note": "cost of every Mind of this rarity on the wiki"
+   }
+  },
+  {
+   "mindId": "7302",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 650,
+   "atk": 0,
+   "def": 430,
+   "lv10": {
+    "hp": 1050,
+    "atk": 0,
+    "def": 800
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost of every Mind of this rarity on the wiki"
+   }
+  },
+  {
+   "mindId": "7303",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
     "accessed": "2026-11-14",
     "note": "cost of every Mind of this rarity on the wiki"
    }
@@ -4235,8 +5273,14 @@
    "rarity": 3,
    "cost": 8,
    "hp": 400,
-   "atk": 1000,
+   "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 800,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -4250,7 +5294,13 @@
    "cost": 8,
    "hp": 0,
    "atk": 200,
-   "def": 1000,
+   "def": 0,
+   "lv10": {
+    "hp": 0,
+    "atk": 400,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -4293,6 +5343,12 @@
    "hp": 0,
    "atk": 0,
    "def": 500,
+   "lv10": {
+    "hp": 0,
+    "atk": 0,
+    "def": 840
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -4307,6 +5363,12 @@
    "hp": 200,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 560,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -4348,6 +5410,12 @@
    "hp": 560,
    "atk": 410,
    "def": 0,
+   "lv10": {
+    "hp": 820,
+    "atk": 800,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -4362,6 +5430,12 @@
    "hp": 620,
    "atk": 430,
    "def": 0,
+   "lv10": {
+    "hp": 1010,
+    "atk": 750,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -4376,9 +5450,28 @@
    "hp": 570,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 690,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E9%97%87%E5%A4%9C%E3%81%AB%E4%B9%97%E3%81%98%E3%81%A6",
+    "accessed": "2026-11-14"
+   }
+  },
+  {
+   "mindId": "7318",
+   "rarity": 3,
+   "cost": 8,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E3%80%8E%E8%B5%A4%E7%9F%B3%E3%80%8F%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E5%9F%B7%E5%BF%B5%E3%82%92%E5%88%A9%E7%94%A8%E3%81%95%E3%81%9B%E3%81%A6%E3%81%84%E3%81%9F%E3%81%A0%E3%81%8F%E9%98%B2%E5%BE%A1%E7%AD%96",
     "accessed": "2026-11-14"
    }
   },
@@ -4431,6 +5524,12 @@
    "hp": 0,
    "atk": 0,
    "def": 620,
+   "lv10": {
+    "hp": 0,
+    "atk": 0,
+    "def": 800
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -4445,6 +5544,12 @@
    "hp": 0,
    "atk": 500,
    "def": 0,
+   "lv10": {
+    "hp": 0,
+    "atk": 800,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -4459,6 +5564,12 @@
    "hp": 650,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 900,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -4473,6 +5584,12 @@
    "hp": 0,
    "atk": 550,
    "def": 0,
+   "lv10": {
+    "hp": 0,
+    "atk": 660,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -4487,6 +5604,12 @@
    "hp": 0,
    "atk": 600,
    "def": 0,
+   "lv10": {
+    "hp": 0,
+    "atk": 640,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -4501,6 +5624,12 @@
    "hp": 0,
    "atk": 0,
    "def": 480,
+   "lv10": {
+    "hp": 0,
+    "atk": 0,
+    "def": 630
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -4568,9 +5697,16 @@
    "mindId": "7350",
    "rarity": 4,
    "cost": 12,
-   "hp": 0,
-   "atk": 0,
+   "hp": 900,
+   "atk": 520,
    "def": 0,
+   "lv10": {
+    "hp": 1500,
+    "atk": 720,
+    "def": 0
+   },
+   "lv10Source": "HP, ATK: Diamond Records Preservation (PC) data, archived translation of the Mind's page",
+   "lv1Source": "Diamond Records Preservation (PC) data, archived translation of the Mind's page",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -4711,6 +5847,12 @@
    "hp": 800,
    "atk": 0,
    "def": 1200,
+   "lv10": {
+    "hp": 1200,
+    "atk": 0,
+    "def": 1500
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -4723,8 +5865,15 @@
    "rarity": 3,
    "cost": 8,
    "hp": 0,
-   "atk": 0,
+   "atk": 511,
    "def": 0,
+   "lv10": {
+    "hp": 0,
+    "atk": 720,
+    "def": 0
+   },
+   "lv10Source": "ATK: Diamond Records Preservation (PC) data, original-game screenshot at Lv10 (sha256 794bc16e3c5a4e51a4285460d207f979046161262b4a4ac1c6a667fd1235e7b8)",
+   "lv1Source": "ATK: round(Lv10 x 0.71) (jdr-default; the median Lv1/Lv10 of the wiki's ★3/★4 Minds), no Lv1 in our sources",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%863",
@@ -4943,6 +6092,20 @@
    }
   },
   {
+   "mindId": "7428",
+   "rarity": 4,
+   "cost": 12,
+   "hp": 0,
+   "atk": 0,
+   "def": 0,
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+    "page": "https://jojodr.gamerch.com/%E2%98%864",
+    "accessed": "2026-11-14",
+    "note": "cost of every Mind of this rarity on the wiki"
+   }
+  },
+  {
    "mindId": "7430",
    "rarity": 3,
    "cost": 8,
@@ -5019,6 +6182,12 @@
    "hp": 2078,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 2350,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "HP: Diamond Records Preservation (PC) data, original-game screenshot at Lv10 (sha256 2fbb2b479b60d9d4d73a57582e4ed9de0fbb1685a3891ae56653197dd775fb9a); the wiki's HP+2078 (no MAX) is kept as Lv1, though it may not be one",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -5033,6 +6202,12 @@
    "hp": 1800,
    "atk": 0,
    "def": 0,
+   "lv10": {
+    "hp": 2200,
+    "atk": 0,
+    "def": 0
+   },
+   "lv10Source": "Gamerch: the MAX value of the effect",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -5212,9 +6387,16 @@
    "mindId": "7490",
    "rarity": 4,
    "cost": 12,
-   "hp": 0,
-   "atk": 0,
-   "def": 0,
+   "hp": 1065,
+   "atk": 3550,
+   "def": 710,
+   "lv10": {
+    "hp": 1500,
+    "atk": 5000,
+    "def": 1000
+   },
+   "lv10Source": "HP, ATK, DEF: Diamond Records Preservation (PC) data, original-game screenshot at Lv10 (sha256 cd2490a00373bd61b82a9fde7ad5e81ab40b4553733499e6b58bfe94c988eec3)",
+   "lv1Source": "HP, ATK, DEF: round(Lv10 x 0.71) (jdr-default; the median Lv1/Lv10 of the wiki's ★3/★4 Minds), no Lv1 in our sources",
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E2%98%864",
@@ -5759,7 +6941,7 @@
    "rarity": 4,
    "cost": 12,
    "hp": 0,
-   "atk": 6500,
+   "atk": 0,
    "def": 2000,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
@@ -5787,7 +6969,7 @@
    "rarity": 4,
    "cost": 12,
    "hp": 4500,
-   "atk": 6500,
+   "atk": 0,
    "def": 0,
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",

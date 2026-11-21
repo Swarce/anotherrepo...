@@ -9,6 +9,18 @@
    "note": "leader-ability numbers only (Lv1 value and the MAX value as Lv10); per-record archive URLs are in local/wiki-raw/gamerch/statues.json"
   },
   {
+   "source": "Gamerch ジョジョDR攻略Wiki (live statue pages, research pass)",
+   "page": "https://jojodr.gamerch.com/",
+   "pages": {
+    "DT_LEAD_1020_03": "https://jojodr.gamerch.com/【闘志】ウィル・A・ツェペリ★5（これが「仙道」だ！！）",
+    "DT_LEAD_1080_02": "https://jojodr.gamerch.com/【勇気】ダイアー★4",
+    "DT_LEAD_1100_13": "https://jojodr.gamerch.com/【孤高】ディオ・ブランドー★5（我が夜の亡者となれ）",
+    "DT_LEAD_3001_03": "https://jojodr.gamerch.com/【勇気】空条承太郎★5（～てめーはおれを怒らせた～）"
+   },
+   "accessed": "2026-11-20",
+   "note": "leader-ability numbers only, for statues the Wayback dump lacks (build_leader_abilities.py --research): the page leader name equals the ABI_LEAD_NAME label and its title gives the rarity and type. A line without (MAX ...) gives Lv10 = Lv1. DT_LEAD_3001_03 is uncertain (M): its +15% has no MAX on the page, and ShoutWiki oldid 3832 shows +15% as the MAX Lv. value, so Lv1 may be lower."
+  },
+  {
    "source": "jdr-research",
    "doc": "docs/research/12-master-data-fill.md §4",
    "note": "units, slots and conditions read in the client code; see scripts/K_abilities.py header"
@@ -269,6 +281,58 @@
     ]
    },
    {
+    "abilityId": "DT_LEAD_1020_03",
+    "abilityName": "ABI_LEAD_NAME_1020_03",
+    "abilityParamList": [
+     {
+      "affectId": "DTAF_HP_RATEADD",
+      "giveLimit": -1,
+      "paramLv1_0": 100,
+      "paramLv1_1": 0,
+      "paramLv1_2": 0,
+      "paramLv1_3": 0,
+      "paramLv1_4": 0,
+      "paramLv1_5": 0,
+      "paramLv1_6": 0,
+      "paramLv1_7": 0,
+      "paramLv10_0": 200,
+      "paramLv10_1": 0,
+      "paramLv10_2": 0,
+      "paramLv10_3": 0,
+      "paramLv10_4": 0,
+      "paramLv10_5": 0,
+      "paramLv10_6": 0,
+      "paramLv10_7": 0
+     }
+    ]
+   },
+   {
+    "abilityId": "DT_LEAD_1080_02",
+    "abilityName": "ABI_LEAD_NAME_1080_02",
+    "abilityParamList": [
+     {
+      "affectId": "DTAF_ALONE_ATK_RATEADD",
+      "giveLimit": -1,
+      "paramLv1_0": 180,
+      "paramLv1_1": 0,
+      "paramLv1_2": 0,
+      "paramLv1_3": 0,
+      "paramLv1_4": 0,
+      "paramLv1_5": 0,
+      "paramLv1_6": 0,
+      "paramLv1_7": 0,
+      "paramLv10_0": 180,
+      "paramLv10_1": 0,
+      "paramLv10_2": 0,
+      "paramLv10_3": 0,
+      "paramLv10_4": 0,
+      "paramLv10_5": 0,
+      "paramLv10_6": 0,
+      "paramLv10_7": 0
+     }
+    ]
+   },
+   {
     "abilityId": "DT_LEAD_1080_03",
     "abilityName": "ABI_LEAD_NAME_1080_03",
     "abilityParamList": [
@@ -284,6 +348,32 @@
       "paramLv1_6": 0,
       "paramLv1_7": 0,
       "paramLv10_0": 200,
+      "paramLv10_1": 0,
+      "paramLv10_2": 0,
+      "paramLv10_3": 0,
+      "paramLv10_4": 0,
+      "paramLv10_5": 0,
+      "paramLv10_6": 0,
+      "paramLv10_7": 0
+     }
+    ]
+   },
+   {
+    "abilityId": "DT_LEAD_1100_13",
+    "abilityName": "ABI_LEAD_NAME_1100_13",
+    "abilityParamList": [
+     {
+      "affectId": "DTAF_FULL_HP_ATK_RATEADD",
+      "giveLimit": -1,
+      "paramLv1_0": 250,
+      "paramLv1_1": 0,
+      "paramLv1_2": 0,
+      "paramLv1_3": 0,
+      "paramLv1_4": 0,
+      "paramLv1_5": 0,
+      "paramLv1_6": 0,
+      "paramLv1_7": 0,
+      "paramLv10_0": 250,
       "paramLv10_1": 0,
       "paramLv10_2": 0,
       "paramLv10_3": 0,
@@ -1082,6 +1172,32 @@
       "paramLv1_6": 0,
       "paramLv1_7": 0,
       "paramLv10_0": 50,
+      "paramLv10_1": 0,
+      "paramLv10_2": 0,
+      "paramLv10_3": 0,
+      "paramLv10_4": 0,
+      "paramLv10_5": 0,
+      "paramLv10_6": 0,
+      "paramLv10_7": 0
+     }
+    ]
+   },
+   {
+    "abilityId": "DT_LEAD_3001_03",
+    "abilityName": "ABI_LEAD_NAME_3001_03",
+    "abilityParamList": [
+     {
+      "affectId": "DTAF_DMG_RATEADD",
+      "giveLimit": -1,
+      "paramLv1_0": 150,
+      "paramLv1_1": 0,
+      "paramLv1_2": 0,
+      "paramLv1_3": 0,
+      "paramLv1_4": 0,
+      "paramLv1_5": 0,
+      "paramLv1_6": 0,
+      "paramLv1_7": 0,
+      "paramLv10_0": 150,
       "paramLv10_1": 0,
       "paramLv10_2": 0,
       "paramLv10_3": 0,
@@ -4147,9 +4263,9 @@
     "abilityName": "ABI_AST_1030_62_N",
     "abilityParamList": [
      {
-      "affectId": "DTAF_ATK_RATEADD",
+      "affectId": "DTAF_HP_RATEADD",
       "giveLimit": -1,
-      "paramLv1_0": 60,
+      "paramLv1_0": 100,
       "paramLv1_1": 0,
       "paramLv1_2": 0,
       "paramLv1_3": 0,
@@ -4157,7 +4273,7 @@
       "paramLv1_5": 0,
       "paramLv1_6": 0,
       "paramLv1_7": 0,
-      "paramLv10_0": 60,
+      "paramLv10_0": 100,
       "paramLv10_1": 0,
       "paramLv10_2": 0,
       "paramLv10_3": 0,
@@ -4173,7 +4289,7 @@
     "abilityName": "ABI_AST_2011_72_N",
     "abilityParamList": [
      {
-      "affectId": "DTAF_ATK_RATEADD",
+      "affectId": "DTAF_HP_RATEADD",
       "giveLimit": -1,
       "paramLv1_0": 60,
       "paramLv1_1": 0,
@@ -4199,9 +4315,9 @@
     "abilityName": "ABI_AST_2040_72_N",
     "abilityParamList": [
      {
-      "affectId": "DTAF_ATK_RATEADD",
+      "affectId": "DTAF_DEF_RATEADD",
       "giveLimit": -1,
-      "paramLv1_0": 60,
+      "paramLv1_0": 80,
       "paramLv1_1": 0,
       "paramLv1_2": 0,
       "paramLv1_3": 0,
@@ -4209,7 +4325,7 @@
       "paramLv1_5": 0,
       "paramLv1_6": 0,
       "paramLv1_7": 0,
-      "paramLv10_0": 60,
+      "paramLv10_0": 80,
       "paramLv10_1": 0,
       "paramLv10_2": 0,
       "paramLv10_3": 0,
@@ -4251,7 +4367,7 @@
     "abilityName": "ABI_AST_2150_72_N",
     "abilityParamList": [
      {
-      "affectId": "DTAF_ATK_RATEADD",
+      "affectId": "DTAF_HP_RATEADD",
       "giveLimit": -1,
       "paramLv1_0": 60,
       "paramLv1_1": 0,
@@ -4277,9 +4393,9 @@
     "abilityName": "ABI_AST_3160_71_N",
     "abilityParamList": [
      {
-      "affectId": "DTAF_ATK_RATEADD",
+      "affectId": "DTAF_HP_RATEADD",
       "giveLimit": -1,
-      "paramLv1_0": 40,
+      "paramLv1_0": 50,
       "paramLv1_1": 0,
       "paramLv1_2": 0,
       "paramLv1_3": 0,
@@ -4287,7 +4403,7 @@
       "paramLv1_5": 0,
       "paramLv1_6": 0,
       "paramLv1_7": 0,
-      "paramLv10_0": 40,
+      "paramLv10_0": 50,
       "paramLv10_1": 0,
       "paramLv10_2": 0,
       "paramLv10_3": 0,
@@ -4355,7 +4471,7 @@
     "abilityName": "ABI_AST_3230_62_N",
     "abilityParamList": [
      {
-      "affectId": "DTAF_ATK_RATEADD",
+      "affectId": "DTAF_HP_RATEADD",
       "giveLimit": -1,
       "paramLv1_0": 60,
       "paramLv1_1": 0,
@@ -4407,9 +4523,9 @@
     "abilityName": "ABI_AST_3290_61_N",
     "abilityParamList": [
      {
-      "affectId": "DTAF_ATK_RATEADD",
+      "affectId": "DTAF_HP_RATEADD",
       "giveLimit": -1,
-      "paramLv1_0": 40,
+      "paramLv1_0": 50,
       "paramLv1_1": 0,
       "paramLv1_2": 0,
       "paramLv1_3": 0,
@@ -4417,7 +4533,7 @@
       "paramLv1_5": 0,
       "paramLv1_6": 0,
       "paramLv1_7": 0,
-      "paramLv10_0": 40,
+      "paramLv10_0": 50,
       "paramLv10_1": 0,
       "paramLv10_2": 0,
       "paramLv10_3": 0,
@@ -4433,7 +4549,7 @@
     "abilityName": "ABI_AST_3290_62_N",
     "abilityParamList": [
      {
-      "affectId": "DTAF_ATK_RATEADD",
+      "affectId": "DTAF_HP_RATEADD",
       "giveLimit": -1,
       "paramLv1_0": 60,
       "paramLv1_1": 0,
@@ -4459,7 +4575,7 @@
     "abilityName": "ABI_AST_4000_62_N",
     "abilityParamList": [
      {
-      "affectId": "DTAF_ATK_RATEADD",
+      "affectId": "DTAF_HP_RATEADD",
       "giveLimit": -1,
       "paramLv1_0": 60,
       "paramLv1_1": 0,
@@ -4511,7 +4627,7 @@
     "abilityName": "ABI_AST_4090_72_N",
     "abilityParamList": [
      {
-      "affectId": "DTAF_ATK_RATEADD",
+      "affectId": "DTAF_HP_RATEADD",
       "giveLimit": -1,
       "paramLv1_0": 60,
       "paramLv1_1": 0,
@@ -4563,7 +4679,7 @@
     "abilityName": "ABI_AST_4120_62_N",
     "abilityParamList": [
      {
-      "affectId": "DTAF_ATK_RATEADD",
+      "affectId": "DTAF_HP_RATEADD",
       "giveLimit": -1,
       "paramLv1_0": 60,
       "paramLv1_1": 0,
@@ -4589,7 +4705,7 @@
     "abilityName": "ABI_AST_4181_72_N",
     "abilityParamList": [
      {
-      "affectId": "DTAF_ATK_RATEADD",
+      "affectId": "DTAF_HP_RATEADD",
       "giveLimit": -1,
       "paramLv1_0": 60,
       "paramLv1_1": 0,
@@ -4719,7 +4835,7 @@
     "abilityName": "ABI_AST_4280_72_N",
     "abilityParamList": [
      {
-      "affectId": "DTAF_ATK_RATEADD",
+      "affectId": "DTAF_HP_RATEADD",
       "giveLimit": -1,
       "paramLv1_0": 60,
       "paramLv1_1": 0,
@@ -4771,9 +4887,9 @@
     "abilityName": "ABI_AST_5290_62_N",
     "abilityParamList": [
      {
-      "affectId": "DTAF_ATK_RATEADD",
+      "affectId": "DTAF_DEF_RATEADD",
       "giveLimit": -1,
-      "paramLv1_0": 60,
+      "paramLv1_0": 80,
       "paramLv1_1": 0,
       "paramLv1_2": 0,
       "paramLv1_3": 0,
@@ -4781,7 +4897,7 @@
       "paramLv1_5": 0,
       "paramLv1_6": 0,
       "paramLv1_7": 0,
-      "paramLv10_0": 60,
+      "paramLv10_0": 80,
       "paramLv10_1": 0,
       "paramLv10_2": 0,
       "paramLv10_3": 0,
@@ -4797,7 +4913,7 @@
     "abilityName": "ABI_AST_5330_72_N",
     "abilityParamList": [
      {
-      "affectId": "DTAF_ATK_RATEADD",
+      "affectId": "DTAF_HP_RATEADD",
       "giveLimit": -1,
       "paramLv1_0": 60,
       "paramLv1_1": 0,

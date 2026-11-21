@@ -20,8 +20,14 @@ a roster statue with one, keeps the shared rows since its effect is unknown): ea
 statue gets its own row DT_AST_<statueId> under its own label, with the kind and tier it would
 otherwise take (wiki, else the default).
 
-Research facts (--research, Build 33): an assist_ability record of medium or high confidence for a
-statue gives
+ShoutWiki conditions (Build 41): the matched ShoutWiki entry's requirement (`assist_condition`,
+tools/content/shoutwiki_statues.py) is the condition, as [{statueType, count}]. A matched entry whose
+effect has no tactical affect still gives its condition; the statue then keeps the default kind and
+cites the entry. A second --shoutwiki file holds the "Old Mode" templates (oldmode_statues.json) of
+statues whose current page lacks the action-era values.
+
+Research facts (--research, Build 33; several files from Build 41): an assist_ability record of
+medium or high confidence for a statue gives
   - its activation condition: the attributes the wiki lists (one per required assist, e.g. two
     Fighting Spirit) as [{statueType, count}];
   - its effects where the tactical battle has an affect for them (HP, ATK, DEF, damage dealt, as
@@ -29,18 +35,54 @@ statue gives
     race, one stat from another) have none: the statue then keeps its ShoutWiki or default kind,
     under the wiki's condition.
 
+Several records for one statue agree when the conditions and effect kinds they parse to are equal
+wherever both give one (Build 41; before, records of the same confidence conflicted whenever their
+text differed); records that disagree drop the statue's research facts. Gamerch condition text
+('発動条件：勇気を2体…', '知略、団結', '[団結][団結]') is parsed after NFKC, as are the JP effect lines
+('与えるダメージ+7%'). The cited record is one that gives the condition: a ShoutWiki page first, then
+the highest confidence. Where the matched ShoutWiki entry already gives the condition, a research
+record from another site does not replace that source.
+
 Conditions otherwise: none (always active). The client's condition rows ([{statueType, count}])
 are the server's assist_ability_condition_table, generated from the content file.
+
+Action params (Build 41, docs/research/30-action-battle.md §7): an ability may carry "action",
+{abilityName?, params [{affectId, giveLimit -1, lv1 [8], lv10 [8]}], left [hold categories],
+source {page, revid?, accessed}}. It is filled only from the records this builder already accepts
+for the statue (the same matching, HELD and agreement rules), the cited record first, else the
+other one; statues whose source is jdr-default get none. Research effect lines in JP go through
+tools/content/action_vocab.py parse(); a research record's English line (a ShoutWiki page) and the
+matched ShoutWiki entry's assist_ability [{stat, value, percent}] go through its English table
+(parse_en; ShoutWiki's own sign kept, Lv10 = Lv1). Held lines (KO timer, collision / explosion
+damage, invulnerability, always-crit, status procs, two conditions, extra text, missing labels)
+are listed by category in "left", never as text. abilityName is the game's ABI_AST_<KIND><tier>_N
+label when the first line's kind (its condition dropped) is one the game labels, the statue is not
+assist-only and the label exists; tier = the digit of the statue's DT_AST_<KIND><tier> row. "action"
+replaces only the inline params (and name) of assistAbilityList; the tactical kind and tier, the
+condition, dtAssistAbilityList and the dtAbilityList folding are unchanged. The AF_* ids used here
+and the ACTION_AFFECT targets get affect_table / affect_text_rule_table rows through
+action_vocab.append_affects (--affect-table, --rule-table; existing rows kept).
 
 Idempotent: replaces any DT_AST_* rows and keeps every other row as it is.
 
 usage: python3 -I tools/content/build_assist_abilities.py \
-         --shoutwiki local/wiki-raw/shoutwiki/statues.json --labels local/l10n/work23b.tsv \
+         --shoutwiki local/wiki-raw/shoutwiki/statues.json \
+         [--shoutwiki local/wiki-raw/shoutwiki/oldmode_statues.json] --labels local/l10n/export-b33.tsv \
+         [--research local/wiki-raw/research-b33/statues/results.jsonl \
+          --research local/wiki-raw/research-b33/action/results.jsonl] \
          [--statues server/content/statues.json] \
          [--table server/content/masterdata/dtbattle_ability_data_table.json] \
-         [--out server/content/assist_abilities.json]
+         [--out server/content/assist_abilities.json] \
+         [--affect-table server/content/masterdata/affect_table.json] \
+         [--rule-table server/content/masterdata/affect_text_rule_table.json] \
+         [--schema server/content/masterdata/schema.json]
 """
-import argparse, collections, json, re
+import argparse, collections, importlib.util, json, os, re, unicodedata
+
+_spec = importlib.util.spec_from_file_location(
+    "action_vocab", os.path.join(os.path.dirname(os.path.abspath(__file__)), "action_vocab.py"))
+V = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(V)
 
 # kind -> (affect id, per-mille value of tiers 1..4). Tier values follow the ShoutWiki numbers
 # (HP 5/6/10%, ATK 4/6/8/20%, DEF 6/8%, damage dealt 3/5/7/18%); the others are ours.
@@ -54,17 +96,33 @@ KINDS = {
 # DoDoDo charge, KO timer, attribute targets...) has no tactical affect yet and is skipped.
 WIKI_STAT = {"hp": "HP_RATEADD", "atk": "ATK_RATEADD", "def": "DEF_RATEADD",
              "damage dealt": "DMG_RATEADD", "damage given": "DMG_RATEADD"}
+# Held (Build 41): the conditions the ShoutWiki requirement or the research records now give these
+# statues are not applied (nor any research record), pending a check. The statue keeps what it had.
+HELD = {
+    "3180_62": "rejected: ShoutWiki revision 3300 may belong to 3180_72; identity needs a separate pass",
+    "3230_62": "rejected: research-only condition, the Gamerch records give none",
+    "4220_72": "rejected: research-only condition, the Gamerch records give none",
+    "4030_04": "ShoutWiki requirement not in the Build 41 verified list",
+    "4090_72": "ShoutWiki requirement not in the Build 41 verified list (type from the Build 41 typed defaults)",
+    "4170_16": "ShoutWiki requirement not in the Build 41 verified list",
+}
 STATUE_TYPE = {"Courage": 1, "Tactical": 2, "Fighting Spirit": 3, "Unity": 4, "Solitary": 5}
 
 ap = argparse.ArgumentParser()
-ap.add_argument("--shoutwiki", required=True)
+ap.add_argument("--shoutwiki", required=True, action="append",
+                help="parsed ShoutWiki entries (shoutwiki_statues.py output); may be given more than once")
 ap.add_argument("--labels", required=True, help="l10n export (key, hash, english, japanese)")
 ap.add_argument("--statues", default="server/content/statues.json")
 ap.add_argument("--table", default="server/content/masterdata/dtbattle_ability_data_table.json")
 ap.add_argument("--out", default="server/content/assist_abilities.json")
-ap.add_argument("--research", help="a research pass's statue facts (results.jsonl): assist_ability records "
-                "with statueId, effects, condition attributes, page and confidence")
+ap.add_argument("--research", action="append", default=[],
+                help="a research pass's statue facts (results.jsonl): assist_ability records "
+                "with statueId, effects, condition, page and confidence; may be given more than once")
+ap.add_argument("--affect-table", default="server/content/masterdata/affect_table.json")
+ap.add_argument("--rule-table", default="server/content/masterdata/affect_text_rule_table.json")
+ap.add_argument("--schema", default="server/content/masterdata/schema.json")
 a = ap.parse_args()
+V.load_schema(a.schema)
 
 labels = {}
 for line in open(a.labels, encoding="utf-8"):
@@ -113,11 +171,19 @@ if "DT_AST" not in doc["about"]:
 
 
 # 2) Statue -> abilities.
-wiki = json.load(open(a.shoutwiki))
+wiki = [w for path in a.shoutwiki for w in json.load(open(path))]
 
 
 def norm(s):
-    return (s or "").replace(" ", "").replace("\u3000", "").replace("\u30fb", "")
+    s = unicodedata.normalize("NFKC", s or "")
+    return s.replace(" ", "").replace("\u30fb", "").replace("\uff65", "")
+
+
+def wiki_conditions(w):
+    types = [STATUE_TYPE.get(t) for t in w.get("assist_condition") or []]
+    if not types or None in types:
+        return None
+    return [{"statueType": t, "count": n} for t, n in sorted(collections.Counter(types).items())]
 
 
 def wiki_kinds(w):
@@ -156,27 +222,19 @@ def lean(s):
 
 # 3) Research facts: per statue, the condition and the effects with a tactical affect.
 TYPE_JP = {"勇気": 1, "知略": 2, "闘志": 3, "団結": 4, "孤高": 5}
+# Effect lines are compared after NFKC (full-width digits, signs and percent become half-width).
 GENERIC = [(re.compile(r"^\s*HP\s*\+\s*([\d.]+)\s*%\s*$", re.I), "HP_RATEADD"),
            (re.compile(r"^\s*ATK\s*\+\s*([\d.]+)\s*%\s*$", re.I), "ATK_RATEADD"),
            (re.compile(r"^\s*DEF\s*\+\s*([\d.]+)\s*%\s*$", re.I), "DEF_RATEADD"),
-           (re.compile(r"^\s*Damage\s+(?:Dealt|Given)\s*\+\s*([\d.]+)\s*%\s*$", re.I), "DMG_RATEADD")]
-research = {}
-if a.research:
-    RANK = {"high": 3, "medium": 2}
-    for line in open(a.research, encoding="utf-8"):
-        r = json.loads(line)
-        if r.get("field") != "assist_ability" or r.get("confidence") not in RANK:
-            continue
-        old = research.get(r["statueId"])
-        if old is None or RANK[r["confidence"]] > RANK[old["confidence"]]:
-            research[r["statueId"]] = r
-        elif RANK[r["confidence"]] == RANK[old["confidence"]] and r["value"] != old["value"]:
-            research[r["statueId"]] = {"conflict": True, "confidence": r["confidence"]}
+           (re.compile(r"^\s*Damage\s+(?:Dealt|Given)\s*\+\s*([\d.]+)\s*%\s*$", re.I), "DMG_RATEADD"),
+           (re.compile(r"^\s*\u4e0e\u3048\u308b\u30c0\u30e1\u30fc\u30b8\s*\+\s*([\d.]+)\s*%\s*$"), "DMG_RATEADD")]
+RANK = {"high": 3, "medium": 2}
 
 
 def research_kinds(r):
     out = []
     for e in r["value"].get("effects") or []:
+        e = unicodedata.normalize("NFKC", e)
         for rx, kind in GENERIC:
             m = rx.match(e)
             if m:
@@ -185,18 +243,137 @@ def research_kinds(r):
     return out
 
 
+TYPE_RX = re.compile("(" + "|".join(TYPE_JP) + ")(?:\u3092)?([0-9])?")
+
+
 def research_conditions(r):
-    types = [TYPE_JP.get(t) for t in r["value"].get("condition_attributes_jp") or []]
-    if None in types:
+    """[{statueType, count}], or None when the record gives no condition (or one that is not types)."""
+    v = r["value"]
+    if v.get("condition_attributes_jp"):
+        types = [TYPE_JP.get(t) for t in v["condition_attributes_jp"]]
+        if None in types:
+            return None
+        c = collections.Counter(types)
+    elif v.get("condition"):
+        # Gamerch: '発動条件：勇気を2体アシスト編成すると発動ッ！', '…知略、団結を…', '[団結][団結]'
+        c = collections.Counter()
+        for m in TYPE_RX.finditer(unicodedata.normalize("NFKC", v["condition"])):
+            c[TYPE_JP[m.group(1)]] += int(m.group(2) or 1)
+        if not c:
+            return None
+    else:
         return None
-    c = collections.Counter(types)
     return [{"statueType": t, "count": n} for t, n in sorted(c.items())]
+
+
+research, research_conflicts = {}, []
+by_statue = collections.defaultdict(list)
+for path in a.research:
+    for line in open(path, encoding="utf-8"):
+        r = json.loads(line)
+        if r.get("field") == "assist_ability" and r.get("confidence") in RANK and r.get("statueId") \
+                and isinstance(r.get("value"), dict) and r.get("url"):
+            by_statue[r["statueId"]].append(r)
+research_overruled = []
+for sid, recs in by_statue.items():
+    # The highest confidence decides; a lower one only fills what the higher ones leave out.
+    top = max(RANK[r["confidence"]] for r in recs)
+    got = {}
+    for part, fn in (("conditions", research_conditions), ("kinds", research_kinds)):
+        for level in (top, 2) if top > 2 else (top,):
+            vals = {json.dumps(v) for r in recs if RANK[r["confidence"]] == level for v in [fn(r)] if v}
+            if len(vals) > 1:
+                got[part] = "conflict"
+                break
+            if vals:
+                if part in got and got[part] != json.loads(next(iter(vals))):
+                    research_overruled.append(sid)
+                got.setdefault(part, json.loads(next(iter(vals))))
+    if "conflict" in got.values():
+        research_conflicts.append(sid)
+        continue
+    giving = [r for r in recs if got.get("conditions") and research_conditions(r) == got["conditions"]] or \
+        [r for r in recs if RANK[r["confidence"]] == top]
+    best = sorted(giving, key=lambda r: ("shoutwiki" not in r["url"], -RANK[r["confidence"]]))[0]
+    research[sid] = {"record": best, "conditions": got.get("conditions"),
+                     "kinds": [tuple(k) for k in got.get("kinds") or []]}
 
 
 def research_page(r):
     url = r["url"].split(" (")[0]
     rev = re.search(r"\(revid (\d+)", r["url"])
     return url, (int(rev.group(1)) if rev else None)
+
+
+# 4) Action params ("action", docs/research/30-action-battle.md §7): the effect lines of the record
+# cited for the statue (else the other accepted record), through tools/content/action_vocab.py.
+ALABELS = V.affect_labels(labels)
+V.check_labels(labels)
+JA = re.compile("[\u3040-\u30ff\u4e00-\u9fff]")
+# The game labels these assist kinds (ABI_AST_<KIND><tier>_N); COMBO_GAUGE_RATE has tier 1 only,
+# which the label check covers.
+CARD_KINDS = {"HP_RATEADD", "ATK_RATEADD", "DEF_RATEADD", "DMG_RATEADD", "VCT_DAM_RATESUB", "MOVE_FAST",
+              "CT_FAST", "ORACHAGE_FAST", "CRTRATE_ADD", "CRT_DMG_RATEADD", "CURE_RATEADD", "HP_BOOST_ATK",
+              "DEF_BOOST_ATK", "ATK_BOOST_HP", "ATK_BOOST_DEF", "HP_BOOST_DEF", "DEF_BOOST_HP",
+              "COMBO_GAUGE_RATE"}
+action_lines = collections.Counter()
+action_used = []
+
+
+def research_lines(r):
+    """A research record's effect lines; a Gamerch record that gives none may carry the effect after
+    the condition icons ('[知略][知略]　ATKの12.0%分、HPを上昇')."""
+    v = r["value"]
+    if v.get("effects"):
+        return v["effects"]
+    rest = re.sub(r"^\s*(\[[^\]]*\]\s*)+", "", unicodedata.normalize("NFKC", v.get("condition") or ""))
+    return [rest] if rest and "発動条件" not in rest and rest != unicodedata.normalize("NFKC", v.get("condition") or "") else []
+
+
+def parse_line(line):
+    return V.parse(line, ALABELS) if JA.search(line) else V.parse_en_line(line, ALABELS)
+
+
+def action_from_research(r):
+    out = [parse_line(e) for e in research_lines(r)]
+    page, revid = research_page(r)
+    return out, {"page": page, **({"revid": revid} if revid else {}), "accessed": r.get("accessed") or "2026-11-14"}
+
+
+def action_from_shoutwiki(w):
+    out = [V.parse_en(x.get("stat", ""), x.get("value"), x.get("percent"), ALABELS)
+           for x in w.get("assist_ability") or []]
+    accessed = "2026-11-21" if "Old_Mode" in w["source"]["page"] else "2026-11-15"
+    return out, {"page": w["source"]["page"], **({"revid": w["source"]["revid"]} if w["source"].get("revid") else {}),
+                 "accessed": accessed}
+
+
+def action_for(s, src, w, rr, ids):
+    """(the "action" object of the statue's ability, the record kind), or (None, None): the inline
+    DT row is sent."""
+    if src["source"] == "jdr-default":
+        return None, None
+    cands = ([("research", rr["record"])] if rr else []) + ([("shoutwiki", w)] if w else [])
+    if rr and research_page(rr["record"])[0] != src.get("page"):
+        cands.reverse()  # the ShoutWiki entry is the cited record
+    for kind, rec in cands:
+        lines, source = action_from_research(rec) if kind == "research" else action_from_shoutwiki(rec)
+        params = [p for c, p in lines if p]
+        if not params:
+            continue
+        for c, _p in lines:
+            action_lines[c] += 1
+        params = V.merge(params)
+        act = {"params": [V.content_param(p) for p in params],
+               "left": sorted(c for c, p in lines if not p), "source": source}
+        op = V.split_id(params[0]["affectId"])[1]
+        m = re.fullmatch(r"DT_AST_[A-Z_]+([1-4])", ids[0])
+        name = f"ABI_AST_{op}{m.group(1)}_N" if m else None
+        if op in CARD_KINDS and not s.get("assistOnly") and name \
+                and f"text:Ability_Assist_Name_JP:{name}" in labels:
+            act = {"abilityName": name, **act}
+        return act, kind
+    return None, None
 
 
 out, by_src = [], collections.Counter()
@@ -210,25 +387,40 @@ for s in statues:
                 and ids_by_key.get(key) == [sid]:
             w = by_key[key][0]
     kinds = wiki_kinds(w) if w else []
-    if kinds:
+    wc = wiki_conditions(w) if w and sid not in HELD else None
+    kinds_ours = not kinds
+    if kinds or wc:
+        accessed = "2026-11-21" if "Old_Mode" in w["source"]["page"] else "2026-11-15"
         src = {"source": w["source"]["site"], "page": w["source"]["page"], "revid": w["source"].get("revid"),
-               "license": w["source"].get("license"), "accessed": "2026-11-15",
-               "note":"assist-ability stat and value only (action-battle era); tier = nearest value"}
+               "license": w["source"].get("license"), "accessed": accessed,
+               "note": ("condition and " if wc else "") +
+                       ("assist-ability stat and value only" if kinds else
+                        "no tactical affect for the effect: the statue's leaning stat, tier = rarity - 2")
+                       + " (action-battle era); tier = nearest value"}
+        if not kinds:
+            src["note"] = src["note"].replace("; tier = nearest value", "")
+            kinds = [(lean(s), max(1, min(4, (s.get("rarity") or 4) - 2)))]
         by_src["shoutwiki"] += 1
     else:
         kinds = [(lean(s), max(1, min(4, (s.get("rarity") or 4) - 2)))]
         src = {"source": "jdr-default", "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"}
         by_src["default"] += 1
-    conditions = []
-    r = research.get(sid)
-    if r and not r.get("conflict"):
-        rk, rc = research_kinds(r), research_conditions(r)
+    conditions = wc or []
+    rr = research.get(sid) if sid not in HELD else None
+    if rr:
+        r, rk, rc = rr["record"], rr["kinds"], rr["conditions"]
         page, revid = research_page(r)
         site = ("Diamond Records Wiki (ShoutWiki)" if "shoutwiki" in page else
                 "JoJo's Bizarre Encyclopedia (JoJoWiki)" if "jojowiki" in page else
-                "Gamerch ジョジョDR攻略Wiki (Wayback Machine)" if "gamerch" in page else None)
-        if site and (rk or rc):
-            if rk and src["source"] == "jdr-default":
+                "Gamerch ジョジョDR攻略Wiki (Wayback Machine)" if "web.archive.org" in page and "gamerch" in page else
+                "Gamerch ジョジョDR攻略Wiki" if "gamerch" in page else None)
+        if wc and rc is not None and rc != wc:
+            research_conflicts.append(sid)
+        if site and wc and "shoutwiki" not in page:
+            # The ShoutWiki entry already gives the condition: keep it as the source.
+            site = None
+        if site and (rk or rc is not None):
+            if rk and kinds_ours:
                 kinds = rk
             if rc is not None:
                 conditions = rc
@@ -236,7 +428,7 @@ for s in statues:
                    **({"license": "CC BY-SA 3.0"} if "shoutwiki" in page else
                       {"license": "CC BY-SA 4.0"} if "jojowiki" in page else {}),
                    "accessed": r.get("accessed") or "2026-11-14",
-                   "note": ("condition and " if rc else "") +
+                   "note": ("condition and " if conditions else "") +
                            ("stat and value" if rk else "no tactical affect for the effect: ours")
                            + " (action-battle era); tier = nearest value"}
             by_src["research"] += 1
@@ -253,7 +445,15 @@ for s in statues:
         by_src["assist_only"] += 1
     else:
         ids = [row_id(k, t) for k, t in kinds]
-    out.append({"statueId": sid, "abilities": [{"abilityId": i, "conditions": conditions} for i in ids],
+    abilities = [{"abilityId": i, "conditions": conditions} for i in ids]
+    act, act_kind = action_for(s, src, w, rr, ids)
+    if act:
+        abilities[0]["action"] = act
+        by_src["action_" + act_kind] += 1
+        for p in act["params"]:
+            if p["affectId"] not in action_used:
+                action_used.append(p["affectId"])
+    out.append({"statueId": sid, "abilities": abilities,
                 "source": src})
 
 rows += own_rows
@@ -261,20 +461,48 @@ doc["data"]["paramList"] = rows
 json.dump(doc, open(a.table, "w"), ensure_ascii=False, indent=1)
 open(a.table, "a").write("\n")
 
-json.dump({
+content = {
     "about": "Assist abilities per statue (docs/research/19-assists.md §5, §6): ids of the shared "
              "dtbattle_ability_data_table rows DT_AST_<kind><tier> (an assist-only statue has its own "
              "row DT_AST_<statueId>), with the client's activation "
-             "conditions ([{statueType, count}] over the seat's assists; empty = always). Built by "
-             "tools/content/build_assist_abilities.py.",
+             "conditions ([{statueType, count}] over the seat's assists; empty = always). An optional "
+             "\"action\" holds the action-battle params of the ability (AF_* affects, lv1/lv10 slots in the "
+             "units of docs/research/30-action-battle.md §7; \"left\" = hold categories of the lines not "
+             "served) and the card name; it replaces only the inline params (and name) of assistAbilityList, "
+             "never the tactical row. Built by tools/content/build_assist_abilities.py.",
     "sources": [
         {"source": "Diamond Records Wiki (ShoutWiki)", "page": "https://jojodiamondrecords.shoutwiki.com/",
          "license": "CC BY-SA 3.0", "accessed": "2026-11-15"},
+        {"source": "Diamond Records Wiki (ShoutWiki)", "page": "https://jojodiamondrecords.shoutwiki.com/",
+         "accessed": "2026-11-21", "note": "assist requirement icons as conditions (Build 41), "
+         "and three 'Old Mode' statue templates (oldids 3832, 3840, 3855) fetched 2026-11-21; each row cites its "
+         "page and revision", "license": "CC BY-SA 3.0"},
+        {"source": "Gamerch ジョジョDR攻略Wiki", "page": "https://jojodr.gamerch.com/", "accessed": "2026-11-20",
+         "note": "research passes (local/wiki-raw/research-b33): statue pages read live 2026-11-20 and Wayback "
+                 "captures; the activation condition (発動条件) and HP/ATK/DEF/damage values; each row cites its page"},
         {"source": "jdr-research", "doc": "docs/research/19-assists.md"},
         {"source": "jdr-default", "note": "statues without wiki assist numbers: the leaning stat at tier rarity - 2; conditions empty"},
         {"source": "jdr-default", "note": "assist-only statues: their own row under their own ABI_AST_<statueId>_N label, values of the kind and tier above"},
+        {"source": "jdr-research", "doc": "docs/research/30-action-battle.md §7",
+         "note": "\"action\": the effect lines of the record each statue cites (else its other accepted record) "
+                 "parsed by tools/content/action_vocab.py (JP lines; ShoutWiki {stat, value} lines through an "
+                 "English table); Lv10 = Lv1 unless a line has a plausible MAX"},
+        {"source": "jdr-default", "note": "\"action\".abilityName: the game's ABI_AST_<KIND><tier>_N label of the "
+                 "first served line's kind at the tactical row's tier (not for assist-only statues), so the card "
+                 "name matches its lines; affect ids AF_* are ours"},
     ],
     "statues": out,
-}, open(a.out, "w"), ensure_ascii=False, indent=1)
-open(a.out, "a").write("\n")
+}
+with open(a.out, "w", encoding="utf-8") as f:
+    f.write(V.dumps(content))
+added, radded = V.append_affects(action_used + [t for _d, t in V.ACTION_AFFECT], a.affect_table, a.rule_table)
+full = sum(1 for sid, rr in research.items() if sid not in HELD and any(d["statueId"] == sid for d in out)
+           for lines in [[parse_line(e) for e in research_lines(rr["record"])]] if lines and all(p for _c, p in lines))
+print("action:", dict(sorted(action_lines.items())), "| affect ids", len(action_used),
+      "| research records of roster statues whose lines all parse", full, "of", len(research),
+      "| affect rows added", added, "rule rows added", radded)
 print(len(rows), "ability rows;", len(out), "statues", dict(by_src))
+if research_overruled:
+    print("lower-confidence records overruled:", " ".join(sorted(set(research_overruled))))
+if research_conflicts:
+    print("research records that disagree (not used):", " ".join(sorted(set(research_conflicts))))

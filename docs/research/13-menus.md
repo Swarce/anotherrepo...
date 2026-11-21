@@ -45,7 +45,9 @@ other notes. No game text is reproduced.
   diamonds, 13 assist, 14 evolution.
 - **No original layout survives, so ours is:**
   - a start square, then 14 squares in a line cycling ATK, DEF, HP;
-  - together they add the wiki's tree-max minus Lv99 stats (20% of Lv99 when unknown);
+  - together they add the wiki's tree-max minus Lv99 stats (20% of Lv99 when unknown; from
+    Build 41 the tree max is known for 225 of the 228 statues with wiki stats, docs/CONTENT.md
+    "Wiki cross-checks");
   - squares open in order (`/tree/acquisition`: a square needs the one before it);
   - opened squares are saved per statue and added to its stats.
   - Build 25: up to four skill-level squares (effects 4 and 5) after the ATK and DEF lines and

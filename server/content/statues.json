@@ -91,7 +91,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -161,7 +161,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -221,13 +221,31 @@
     "atk": 5202,
     "def": 6426
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 29964,
+    "atk": 7152,
+    "def": 14226
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Jonathan_Joestar?oldid=1235277",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Jonathan_Joestar_%28Courage%29",
+      "revid": 3777,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -413,13 +431,31 @@
     "atk": 5814,
     "def": 7650
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 21792,
+    "atk": 11814,
+    "def": 13650
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Jonathan_Joestar?oldid=1235277",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Jonathan_Joestar_%28Unity%29",
+      "revid": 3776,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -467,13 +503,25 @@
     "atk": 12600,
     "def": 13200
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 30300,
+    "atk": 25200,
+    "def": 26700
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%82%B8%E3%83%A7%E3%83%8A%E3%82%B5%E3%83%B3%E3%83%BB%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC%EF%BD%9E%E5%AE%BF%E5%91%BD%E3%81%AE%E6%98%9F%EF%BD%9E%E2%98%856%EF%BC%88%E8%82%A9%E3%81%AB%E6%B5%AE%E3%81%8B%E3%81%B6%E6%98%9F%E3%81%AE%E7%97%A3%EF%BC%89",
     "capture": "20210410111941",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Jonathan_Joestar?oldid=1235277",
+      "license": "CC BY-SA 4.0"
+     }
+    ]
    }
   },
   {
@@ -543,7 +591,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -595,7 +643,7 @@
    "statueType": 1,
    "lv1": {
     "hp": 643,
-    "atk": 472,
+    "atk": 473,
     "def": 340
    },
    "lv99": {
@@ -613,7 +661,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -673,13 +721,31 @@
     "atk": 7200,
     "def": 5184
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 13392,
+    "atk": 21000,
+    "def": 7584
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Robert_E._O._Speedwagon?oldid=1235279",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Robert_E._O._Speedwagon_%28Courage%29",
+      "revid": 3782,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -749,7 +815,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -819,7 +885,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -1367,12 +1433,30 @@
     "atk": 5472,
     "def": 4608
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 29400,
+    "atk": 12672,
+    "def": 7968
+   },
    "source": {
     "source": "Diamond Records Wiki (ShoutWiki)",
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Straizo_(Solitary)",
     "license": "CC BY-SA 3.0",
-    "accessed": "2026-11-14"
+    "accessed": "2026-11-14",
+    "maxTreeNote": "maxTree from Gamerch and ShoutWiki (same rarity, type and Lv99); JoJoWiki has 29400/12672/7908; two sources agree on 29400/12672/7968",
+    "maxTreeSources": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Straizo_%28Solitary%29",
+      "revid": 3787,
+      "license": "CC BY-SA 3.0"
+     },
+     {
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+      "capture": "20241110194530"
+     }
+    ]
    }
   },
   {
@@ -1676,12 +1760,29 @@
     "atk": 5670,
     "def": 5670
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 43920,
+    "atk": 7470,
+    "def": 7470
+   },
    "source": {
     "source": "Diamond Records Wiki (ShoutWiki)",
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5%E2%98%85)_Dio_Brando_(Solitary)",
     "license": "CC BY-SA 3.0",
-    "accessed": "2026-11-14"
+    "accessed": "2026-11-14",
+    "maxTreeNote": "maxTree from Gamerch and JoJoWiki (same rarity, type and Lv99); ShoutWiki has 43920/7474/7474; two sources agree on 43920/7470/7470",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Dio_Brando?oldid=1189661",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+      "capture": "20241110194530"
+     }
+    ]
    }
   },
   {
@@ -1786,13 +1887,31 @@
     "atk": 13860,
     "def": 10710
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 39060,
+    "atk": 27360,
+    "def": 20610
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%83%87%E3%82%A3%E3%82%AA%E3%83%BB%E3%83%96%E3%83%A9%E3%83%B3%E3%83%89%E3%83%BC%EF%BD%9E%E6%9C%88%E4%B8%8B%E3%81%AE%E5%B8%9D%E7%8E%8B%EF%BD%9E%E2%98%856%EF%BC%88%E8%80%B3%E3%81%AB%E6%B5%AE%E3%81%8B%E3%81%B6%E6%B3%A2%E4%B9%B1%E3%81%AE%E9%BB%92%E5%AD%90%EF%BC%89",
     "capture": "20210410120230",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Dio_Brando?oldid=1189661",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Dio_Brando_~_Emperor_in_the_Moonlight_%28Fighting_Spirit%29",
+      "revid": 4648,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -1953,15 +2072,37 @@
    ],
    "resultComment": "Result_Chara_Comment_1110_03",
    "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 3,
+   "lv1": {
+    "hp": 1440,
+    "atk": 518,
+    "def": 490
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 14400,
+    "atk": 5184,
+    "def": 4896
+   },
+   "maxTree": {
+    "hp": 42000,
+    "atk": 7584,
+    "def": 6696
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Dio_Brando?oldid=1189661",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Dio Brando, with Wang Chan, 5-star Fighting Spirit): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id; the Gamerch page title 【闘志】…（証拠の残らぬ毒薬） has the same type tag. Lv99 and maxTree from that entry. Lv1 = Lv99 / 10, rounded half up (as the wikis show); ShoutWiki shows the same Lv1. ShoutWiki gives Lv99 DEF 4869, but its Lv1 DEF 490 fits JoJoWiki's 4896.",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Wang_Chan_%28Fighting_Spirit%29",
+      "revid": 3864,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
+   }
   },
   {
    "statueId": "1120_01",
@@ -2124,7 +2265,7 @@
    "statueType": 1,
    "lv1": {
     "hp": 1069,
-    "atk": 742,
+    "atk": 743,
     "def": 505
    },
    "lv99": {
@@ -2142,7 +2283,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -2337,7 +2478,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -2466,13 +2607,31 @@
     "atk": 5415,
     "def": 5700
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 28770,
+    "atk": 10215,
+    "def": 10500
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Tarkus?oldid=1235434",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Tarkus_%28Solitary%29",
+      "revid": 3789,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -2542,7 +2701,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -2612,7 +2771,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -2860,7 +3019,7 @@
     "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%82%B8%E3%83%A7%E3%82%BB%E3%83%95%E3%83%BB%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC%EF%BD%9E%E3%80%8E%E6%9C%80%E5%BE%8C%E3%81%AE%E6%B3%A2%E7%B4%8B%E3%80%8F%EF%BD%9E%E2%98%856%EF%BC%88%E8%BC%9D%E3%81%8D%E6%94%BE%E3%81%A4%E6%B3%A2%E7%B4%8B%E3%81%AE%E5%8A%9B%EF%BC%89",
     "capture": "20210410122345",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -2930,7 +3089,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -2990,13 +3149,31 @@
     "atk": 4488,
     "def": 3876
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 14052,
+    "atk": 9438,
+    "def": 7026
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Caesar_Anthonio_Zeppeli?oldid=1189730",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Caesar_Anthonio_Zeppeli_%28Tactical%29",
+      "revid": 3417,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -3066,7 +3243,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -3243,22 +3420,39 @@
    "rarity": 6,
    "statueType": 1,
    "lv1": {
-    "hp": 2940,
-    "atk": 2340,
-    "def": 2940
+    "hp": 2040,
+    "atk": 1080,
+    "def": 1500
    },
    "lv99": {
+    "hp": 20400,
+    "atk": 10800,
+    "def": 15000
+   },
+   "maxTree": {
     "hp": 29400,
     "atk": 23400,
     "def": 29400
    },
-   "maxTree": null,
    "source": {
-    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
-    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%82%B7%E3%83%BC%E3%82%B6%E3%83%BC%EF%BD%9E%E4%B8%80%E6%97%8F%E3%81%B8%E3%81%AE%E8%AA%87%E3%82%8A%EF%BD%9E%E2%98%856%EF%BC%88%E8%99%B9%E8%89%B2%E3%81%AE%E3%82%B7%E3%83%A3%E3%83%9C%E3%83%B3%EF%BC%89",
-    "capture": "20241110182402",
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Caesar_Anthonio_Zeppeli?oldid=1189730",
+    "license": "CC BY-SA 4.0",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv99 20400/10800/15000 from JoJoWiki; the Gamerch page's Lv99 row (29400/23400/29400) equals that entry's with-tree max on all three stats, so it is the tree max (maxTree). Lv1 = Lv99 / 10, rounded half up (as the wikis show).",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Caesar_Anthonio_Zeppeli_~_Pride_for_his_Family_~_%28Courage%29",
+      "revid": 4641,
+      "license": "CC BY-SA 3.0"
+     },
+     {
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%82%B7%E3%83%BC%E3%82%B6%E3%83%BC%EF%BD%9E%E4%B8%80%E6%97%8F%E3%81%B8%E3%81%AE%E8%AA%87%E3%82%8A%EF%BD%9E%E2%98%856%EF%BC%88%E8%99%B9%E8%89%B2%E3%81%AE%E3%82%B7%E3%83%A3%E3%83%9C%E3%83%B3%EF%BC%89",
+      "capture": "20241110182402"
+     }
+    ]
    }
   },
   {
@@ -3318,13 +3512,31 @@
     "atk": 2451,
     "def": 2838
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 8802,
+    "atk": 4401,
+    "def": 5688
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Lisa_Lisa?oldid=1235411",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Lisa_Lisa_%28Tactical%29",
+      "revid": 3408,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -3394,7 +3606,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -3447,7 +3659,7 @@
    "lv1": {
     "hp": 1197,
     "atk": 693,
-    "def": 598
+    "def": 599
    },
    "lv99": {
     "hp": 11970,
@@ -3464,7 +3676,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -3735,7 +3947,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -3795,13 +4007,31 @@
     "atk": 3366,
     "def": 3564
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 25200,
+    "atk": 5016,
+    "def": 5514
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Santana?oldid=1235429",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Santana_%28Courage%29",
+      "revid": 3420,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -3871,7 +4101,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -4000,13 +4230,31 @@
     "atk": 3762,
     "def": 4158
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 11820,
+    "atk": 5412,
+    "def": 11808
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Santana?oldid=1235429",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Santana_%28Solitary%29",
+      "revid": 3421,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -4129,20 +4377,38 @@
    "lv1": {
     "hp": 683,
     "atk": 362,
-    "def": 502
+    "def": 503
    },
    "lv99": {
     "hp": 6834,
     "atk": 3618,
     "def": 5025
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 10134,
+    "atk": 5568,
+    "def": 12675
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Wamuu?oldid=1235440",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Wamuu_%28Courage%29",
+      "revid": 3422,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -4383,13 +4649,31 @@
     "atk": 5400,
     "def": 5100
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 42600,
+    "atk": 7800,
+    "def": 6900
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Esidisi?oldid=1235399",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Esidisi_%28Fighting_Spirit%29",
+      "revid": 3246,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -4890,7 +5174,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -4948,7 +5232,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -5008,13 +5292,31 @@
     "atk": 3648,
     "def": 3648
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 18348,
+    "atk": 6798,
+    "def": 6798
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Rudol_von_Stroheim?oldid=1189718",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Rudol_von_Stroheim_%28Fighting_Spirit%29",
+      "revid": 3419,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -5265,7 +5567,7 @@
     "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%82%B7%E3%83%A5%E3%83%88%E3%83%AD%E3%83%8F%E3%82%A4%E3%83%A0%E2%98%855%EF%BC%88%EF%BD%9E%E5%9C%B0%E7%8D%84%E3%81%8B%E3%82%89%E8%88%9E%E3%81%84%E6%88%BB%E3%81%A3%E3%81%9F%E3%81%9C%EF%BD%9E%EF%BC%89",
     "capture": "20241110194055",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -5336,7 +5638,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -5407,7 +5709,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -5478,7 +5780,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -5609,13 +5911,32 @@
     "atk": 6120,
     "def": 5814
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 26652,
+    "atk": 13020,
+    "def": 10014
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from ShoutWiki and the JoJoWiki main grid (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Template:DRCharacters?oldid=1013232",
+      "license": "CC BY-SA 4.0",
+      "note": "the main Diamond_Records stat grid; the Jotaro Kujo subpage differs"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Jotaro_Kujo_%28Solitary%29",
+      "revid": 3883,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -5665,15 +5986,29 @@
    ],
    "resultComment": "Result_Chara_Comment_3001_03",
    "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 1080,
+    "atk": 910,
+    "def": 623
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 10800,
+    "atk": 9100,
+    "def": 6230
+   },
+   "maxTree": {
+    "hp": 14400,
+    "atk": 22900,
+    "def": 8630
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Jotaro_Kujo?oldid=1312507",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Jotaro Kujo, You Pissed Me Off, 5-star Courage): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id; the Gamerch page title 【勇気】…（運命との決着） has the same type tag. Lv99 and maxTree from that entry. Lv1 = Lv99 / 10, rounded half up (as the wikis show). Gamerch gives Lv99 DEF 9230, but its own Lv1 DEF 623 fits JoJoWiki's 6230."
+   }
   },
   {
    "statueId": "3001_04",
@@ -5869,7 +6204,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -5939,7 +6274,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -6009,7 +6344,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -6148,7 +6483,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -6209,13 +6544,31 @@
     "atk": 2772,
     "def": 2394
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 8688,
+    "atk": 5622,
+    "def": 4344
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Muhammad_Avdol?oldid=1264666",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Muhammad_Avdol_%28Tactical%29",
+      "revid": 3163,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -6286,7 +6639,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -6357,7 +6710,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -6463,13 +6816,31 @@
     "atk": 7200,
     "def": 5400
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 22800,
+    "atk": 13200,
+    "def": 11400
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Muhammad_Avdol?oldid=1264666",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Muhammad_Avdol_%28Unity%29",
+      "revid": 2321,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -6518,13 +6889,42 @@
     "atk": 13200,
     "def": 12600
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 30300,
+    "atk": 26700,
+    "def": 25200
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Josuke_Higashikata?oldid=1189671",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Muhammad_Avdol?oldid=1264666",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Josuke_Higashikata_%28Courage%29",
+      "revid": 4602,
+      "license": "CC BY-SA 3.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Muhammad_Avdol_~_The_Magician%27s_revival_~_%28Courage%29",
+      "revid": 4646,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -6595,7 +6995,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -6666,7 +7066,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -6807,7 +7207,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -7058,7 +7458,7 @@
    "statueType": 1,
    "lv1": {
     "hp": 464,
-    "atk": 322,
+    "atk": 323,
     "def": 219
    },
    "lv99": {
@@ -7076,7 +7476,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -7135,7 +7535,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -7395,15 +7795,42 @@
    ],
    "resultComment": "Result_Chara_Comment_3041_03",
    "rarity": 5,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 2,
+   "lv1": {
+    "hp": 1253,
+    "atk": 870,
+    "def": 592
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 12528,
+    "atk": 8700,
+    "def": 5916
+   },
+   "maxTree": {
+    "hp": 17328,
+    "atk": 22500,
+    "def": 7716
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Jean_Pierre_Polnareff?oldid=1189686",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Polnareff, God Anubis's Possession, 5-star Tactical): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id; the Gamerch page title 【知略】 has the same type tag. Lv99 and maxTree from that entry (also on Gamerch). Lv1 = Lv99 / 10, rounded half up (as the wikis show); ShoutWiki shows the same Lv1. ShoutWiki gives Lv99 HP 12582, but its Lv1 1253 fits 12528 (JoJoWiki and Gamerch).",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Jean_Pierre_Polnareff_~_God_Anubis%27_Posession_%28Tactical%29",
+      "revid": 4149,
+      "license": "CC BY-SA 3.0"
+     },
+     {
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
+      "capture": "20241110194530"
+     }
+    ]
+   }
   },
   {
    "statueId": "3041_04",
@@ -7530,7 +7957,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -7584,7 +8011,7 @@
    "lv1": {
     "hp": 724,
     "atk": 342,
-    "def": 502
+    "def": 503
    },
    "lv99": {
     "hp": 7236,
@@ -7601,7 +8028,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -7720,13 +8147,31 @@
     "atk": 7650,
     "def": 11250
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 28800,
+    "atk": 16650,
+    "def": 25650
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%82%A4%E3%82%AE%E3%83%BC%E2%98%856%EF%BC%88%E5%A4%A7%E3%81%8D%E3%81%AA%E6%85%8B%E5%BA%A6%E3%81%AE%E5%B0%8F%E3%81%95%E3%81%84%E4%BD%93%EF%BC%89",
     "capture": "20241110190420",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Iggy?oldid=1235406",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Iggy_%28Fighting_Spirit%29",
+      "revid": 4639,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -8085,13 +8530,31 @@
     "atk": 5700,
     "def": 5700
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 30000,
+    "atk": 10500,
+    "def": 10500
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Imposter_Captain_Tennille?oldid=1235408",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Impostor_Captain_Tennille_%28Tactical%29",
+      "revid": 3283,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -8333,13 +8796,25 @@
     "atk": 2040,
     "def": 2520
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 11280,
+    "atk": 2940,
+    "def": 5370
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Rubber_Soul?oldid=1235428",
+      "license": "CC BY-SA 4.0"
+     }
+    ]
    }
   },
   {
@@ -8400,13 +8875,25 @@
     "atk": 3315,
     "def": 4095
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 19080,
+    "atk": 4365,
+    "def": 9045
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Rubber_Soul?oldid=1235428",
+      "license": "CC BY-SA 4.0"
+     }
+    ]
    }
   },
   {
@@ -8477,7 +8964,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -8584,15 +9071,37 @@
    ],
    "resultComment": "Result_Chara_Comment_3110_01",
    "rarity": 3,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 2,
+   "lv1": {
+    "hp": 554,
+    "atk": 265,
+    "def": 214
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 5544,
+    "atk": 2646,
+    "def": 2142
+   },
+   "maxTree": {
+    "hp": 11544,
+    "atk": 5496,
+    "def": 3042
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Hol_Horse?oldid=1235405",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Hol Horse, 3-star Tactical): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id; the Gamerch page title 【知略】…（コンビの力） has the same type tag. Lv99 and maxTree from that entry (also on ShoutWiki). Lv1 = Lv99 / 10, rounded half up (as the wikis show); ShoutWiki shows the same Lv1. Gamerch gives DEF 2141 and tree DEF 3041; JoJoWiki and ShoutWiki give 2142 and 3042.",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Hol_Horse_%28Tactical%29",
+      "revid": 4814,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
+   }
   },
   {
    "statueId": "3110_02",
@@ -8651,13 +9160,31 @@
     "atk": 4221,
     "def": 3417
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 19344,
+    "atk": 9171,
+    "def": 4467
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Hol_Horse?oldid=1235405",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Hol_Horse_%28Tactical%29",
+      "revid": 4815,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -8969,13 +9496,31 @@
     "atk": 4158,
     "def": 4356
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 8832,
+    "atk": 9108,
+    "def": 9606
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Enya_the_Hag?oldid=1235397",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Enya_the_Hag_%28Tactical%29",
+      "revid": 3439,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -9046,7 +9591,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -9257,7 +9802,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -9318,13 +9863,31 @@
     "atk": 3564,
     "def": 4950
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 10032,
+    "atk": 5514,
+    "def": 12600
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/N'Doul?oldid=1235416",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_N%27Doul_%28Tactical%29",
+      "revid": 3442,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -9452,7 +10015,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -9513,13 +10076,25 @@
     "atk": 5643,
     "def": 5940
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 26274,
+    "atk": 9843,
+    "def": 12840
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/N'Doul?oldid=1235416",
+      "license": "CC BY-SA 4.0"
+     }
+    ]
    }
   },
   {
@@ -9694,12 +10269,30 @@
     "atk": 5880,
     "def": 5586
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 26148,
+    "atk": 12780,
+    "def": 9786
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%80%90%E5%AD%A4%E9%AB%98%E3%80%91%E3%83%81%E3%83%A3%E3%82%AB%E2%98%855%EF%BC%88%E6%84%8F%E5%BF%97%E3%82%92%E6%8C%81%E3%81%A4%E5%88%80%EF%BC%89",
     "capture": "20210410111839",
-    "accessed": "2026-11-14"
+    "accessed": "2026-11-14",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Chaka?oldid=1235393",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Chaka_%28Solitary%29",
+      "revid": 3241,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -9881,7 +10474,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -10009,7 +10602,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -10080,7 +10673,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -10151,7 +10744,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -10275,7 +10868,7 @@
    "statueType": 3,
    "lv1": {
     "hp": 1311,
-    "atk": 862,
+    "atk": 863,
     "def": 552
    },
    "lv99": {
@@ -10293,7 +10886,7 @@
     "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91DIO%20%E2%98%855%EF%BC%88%EF%BD%9E%E6%9C%80%E9%AB%98%E3%81%AB%E3%80%8C%E3%83%8F%E3%82%A4%EF%BC%81%E3%80%8D%E3%81%A3%E3%81%A6%E3%82%84%E3%81%A4%E3%81%A0%EF%BD%9E%EF%BC%89",
     "capture": "20210410111656",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -10354,13 +10947,31 @@
     "atk": 15840,
     "def": 11880
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 34560,
+    "atk": 30240,
+    "def": 22680
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%80%90%E5%AD%A4%E9%AB%98%E3%80%91DIO%EF%BD%9E%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%89%E3%81%AE%E3%83%91%E3%83%AF%E3%83%BC%E3%82%92%E5%85%A8%E9%96%8B%E3%81%A0%E3%83%83%EF%BC%81%EF%BD%9E%E2%98%856%EF%BC%88%E3%81%AA%E3%81%98%E3%82%80%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%AE%E8%A1%80%EF%BC%89",
     "capture": "20210410121538",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Dio_Brando?oldid=1189661",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_DIO_~_Maximum_Stand_Power_~_%28Solitary%29",
+      "revid": 4674,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -10400,22 +11011,33 @@
    "rarity": 6,
    "statueType": 2,
    "lv1": {
-    "hp": 4032,
-    "atk": 2802,
-    "def": 2112
+    "hp": 2772,
+    "atk": 1452,
+    "def": 1122
    },
    "lv99": {
+    "hp": 27720,
+    "atk": 14520,
+    "def": 11220
+   },
+   "maxTree": {
     "hp": 40320,
     "atk": 28020,
     "def": 21120
    },
-   "maxTree": null,
    "source": {
-    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
-    "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91DIO%EF%BD%9E%E3%81%99%E3%81%A7%E3%81%AB%E6%89%8B%E3%81%AF%E6%89%93%E3%81%A3%E3%81%9F%EF%BC%81%EF%BC%81%EF%BD%9E%E2%98%856%EF%BC%88%E5%BF%B5%E5%86%99%E3%81%AB%E6%98%A0%E3%82%8B%E5%A7%BF%EF%BC%89",
-    "capture": "20241110183141",
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Dio_Brando?oldid=1189661",
+    "license": "CC BY-SA 4.0",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv99 27720/14520/11220 from JoJoWiki; the Gamerch page's Lv99 row (40320/28020/21120) equals that entry's with-tree max on all three stats, so it is the tree max (maxTree). Lv1 = Lv99 / 10, rounded half up (as the wikis show).",
+    "also": [
+     {
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91DIO%EF%BD%9E%E3%81%99%E3%81%A7%E3%81%AB%E6%89%8B%E3%81%AF%E6%89%93%E3%81%A3%E3%81%9F%EF%BC%81%EF%BC%81%EF%BD%9E%E2%98%856%EF%BC%88%E5%BF%B5%E5%86%99%E3%81%AB%E6%98%A0%E3%82%8B%E5%A7%BF%EF%BC%89",
+      "capture": "20241110183141"
+     }
+    ]
    }
   },
   {
@@ -10871,13 +11493,31 @@
     "atk": 4554,
     "def": 4347
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 9138,
+    "atk": 9804,
+    "def": 9297
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Josuke_Higashikata?oldid=1189671",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Josuke_Higashikata_%28Courage%29",
+      "revid": 3554,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -11078,13 +11718,31 @@
     "atk": 3312,
     "def": 5175
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 15366,
+    "atk": 7062,
+    "def": 8925
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Josuke_Higashikata?oldid=1189671",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Josuke_Higashikata_%28Unity%29",
+      "revid": 3553,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -11255,7 +11913,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -11326,7 +11984,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -11387,13 +12045,31 @@
     "atk": 3570,
     "def": 4620
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 18720,
+    "atk": 4620,
+    "def": 9870
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Koichi_Hirose?oldid=1305157",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Koichi_Hirose_%28Courage%29",
+      "revid": 3556,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -11464,7 +12140,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -11815,7 +12491,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -11886,7 +12562,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -11957,7 +12633,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -12010,7 +12686,7 @@
    "statueType": 3,
    "lv1": {
     "hp": 724,
-    "atk": 502,
+    "atk": 503,
     "def": 342
    },
    "lv99": {
@@ -12028,7 +12704,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -12159,13 +12835,25 @@
     "atk": 10875,
     "def": 7395
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 28260,
+    "atk": 25275,
+    "def": 16395
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E8%99%B9%E6%9D%91%E5%84%84%E6%B3%B0%E2%98%856%EF%BC%88%E7%A9%BA%E9%96%93%E3%82%92%E5%89%8A%E3%82%8A%E5%8F%96%E3%82%8B%EF%BC%89",
     "capture": "20241110174830",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Okuyasu_Nijimura?oldid=1235420",
+      "license": "CC BY-SA 4.0"
+     }
+    ]
    }
   },
   {
@@ -12278,7 +12966,7 @@
    "lv1": {
     "hp": 439,
     "atk": 232,
-    "def": 322
+    "def": 323
    },
    "lv99": {
     "hp": 4386,
@@ -12295,7 +12983,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -12353,16 +13041,34 @@
    },
    "lv99": {
     "hp": 6936,
-    "atk": 3671,
+    "atk": 3672,
     "def": 5100
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 10236,
+    "atk": 5622,
+    "def": 12750
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "Lv99 6936/3672/5100 and maxTree from JoJoWiki and ShoutWiki, which agree; the Gamerch value 6936/3671/5100 is one point off",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Rohan_Kishibe?oldid=1235427",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Rohan_Kishibe_%28Tactical%29",
+      "revid": 3561,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -12433,7 +13139,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -12645,7 +13351,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -12776,12 +13482,30 @@
     "atk": 7950,
     "def": 5088
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 24084,
+    "atk": 13950,
+    "def": 11088
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%E2%98%855%EF%BC%88%E9%8B%AD%E3%81%8D%E8%A6%B3%E5%AF%9F%E7%9C%BC%EF%BC%89",
     "capture": "20210410110307",
-    "accessed": "2026-11-14"
+    "accessed": "2026-11-14",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Jotaro_Kujo?oldid=1312507",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Jotaro_Kujo_%28Unity%29",
+      "revid": 3249,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -12961,22 +13685,33 @@
    "rarity": 6,
    "statueType": 1,
    "lv1": {
-    "hp": 3134,
-    "atk": 3082,
-    "def": 2443
+    "hp": 2234,
+    "atk": 1643,
+    "def": 1183
    },
    "lv99": {
+    "hp": 22338,
+    "atk": 16425,
+    "def": 11826
+   },
+   "maxTree": {
     "hp": 31338,
     "atk": 30825,
     "def": 24426
    },
-   "maxTree": null,
    "source": {
-    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
-    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%EF%BD%9E%E3%81%9F%E3%81%9F%E3%81%A3%E3%81%93%E3%82%8F%E3%81%97%E3%81%A6%E3%82%84%E3%82%8B%E3%81%9C%EF%BD%9E%E2%98%856%EF%BC%88%E8%A6%8B%E3%82%8B%E3%81%A8%E8%A6%B3%E3%82%8B%E3%81%AE%E9%81%95%E3%81%84%EF%BC%89",
-    "capture": "20241110180940",
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Jotaro_Kujo?oldid=1312507",
+    "license": "CC BY-SA 4.0",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv99 22338/16425/11826 from JoJoWiki; the Gamerch page's Lv99 row (31338/30825/24426) equals that entry's with-tree max on all three stats, so it is the tree max (maxTree). Lv1 = Lv99 / 10, rounded half up (as the wikis show).",
+    "also": [
+     {
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%EF%BD%9E%E3%81%9F%E3%81%9F%E3%81%A3%E3%81%93%E3%82%8F%E3%81%97%E3%81%A6%E3%82%84%E3%82%8B%E3%81%9C%EF%BD%9E%E2%98%856%EF%BC%88%E8%A6%8B%E3%82%8B%E3%81%A8%E8%A6%B3%E3%82%8B%E3%81%AE%E9%81%95%E3%81%84%EF%BC%89",
+      "capture": "20241110180940"
+     }
+    ]
    }
   },
   {
@@ -13034,7 +13769,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -13092,7 +13827,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -13152,12 +13887,30 @@
     "atk": 6534,
     "def": 5643
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 20886,
+    "atk": 14934,
+    "def": 10443
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E5%B1%B1%E5%B2%B8%E7%94%B1%E8%8A%B1%E5%AD%90%E2%98%855%EF%BC%88%E8%BC%9D%E3%81%8F%E4%B9%99%E5%A5%B3%E3%81%AE%E7%84%A1%E6%95%B5%E3%81%AE%E8%82%89%E4%BD%93%EF%BC%89",
     "capture": "20210410121414",
-    "accessed": "2026-11-14"
+    "accessed": "2026-11-14",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Yukako_Yamagishi?oldid=1235443",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Yukako_Yamagishi_%28Courage%29",
+      "revid": 3259,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -13285,7 +14038,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -13408,21 +14161,39 @@
    "statueType": 3,
    "lv1": {
     "hp": 858,
-    "atk": 370,
-    "def": 370
+    "atk": 371,
+    "def": 371
    },
    "lv99": {
     "hp": 8580,
     "atk": 3705,
     "def": 3705
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 18480,
+    "atk": 6855,
+    "def": 6855
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Shigekiyo_Yangu?oldid=1235430",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29Shigekiyo_Yangu_%28Fighting_Spirit%29",
+      "revid": 3563,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -13706,20 +14477,38 @@
    "lv1": {
     "hp": 1069,
     "atk": 505,
-    "def": 742
+    "def": 743
    },
    "lv99": {
     "hp": 10692,
     "atk": 5049,
     "def": 7425
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 15492,
+    "atk": 6849,
+    "def": 21225
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Yuya_Fungami?oldid=1235444",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Yuya_Fungami_%28Courage%29",
+      "revid": 3304,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -13780,12 +14569,30 @@
     "atk": 6237,
     "def": 5940
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 23286,
+    "atk": 12237,
+    "def": 11940
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E5%99%B4%E4%B8%8A%E8%A3%95%E4%B9%9F%E2%98%855%EF%BC%88%E3%82%B9%E3%83%94%E3%83%BC%E3%83%89%E3%82%AD%E3%83%B3%E3%82%B0%EF%BC%89",
     "capture": "20210410120729",
-    "accessed": "2026-11-14"
+    "accessed": "2026-11-14",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Yuya_Fungami?oldid=1235444",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Yuya_Fungami_%28Unity%29",
+      "revid": 3253,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -14136,7 +14943,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -14190,20 +14997,32 @@
    "lv1": {
     "hp": 741,
     "atk": 429,
-    "def": 370
+    "def": 371
    },
    "lv99": {
     "hp": 7410,
     "atk": 4290,
     "def": 3705
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 13710,
+    "atk": 9240,
+    "def": 6855
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Anjuro_Katagiri?oldid=1235386",
+      "license": "CC BY-SA 4.0"
+     }
+    ]
    }
   },
   {
@@ -14274,7 +15093,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -14345,7 +15164,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -14406,13 +15225,31 @@
     "atk": 3819,
     "def": 4422
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 13938,
+    "atk": 6969,
+    "def": 9372
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Keicho_Nijimura?oldid=1235409",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Keicho_Nijimura_%28Tactical%29",
+      "revid": 3568,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -14483,7 +15320,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -14658,13 +15495,25 @@
     "atk": 5100,
     "def": 3672
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 10236,
+    "atk": 12750,
+    "def": 5622
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Akira_Otoishi?oldid=1235385",
+      "license": "CC BY-SA 4.0"
+     }
+    ]
    }
   },
   {
@@ -15327,7 +16176,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -15468,7 +16317,7 @@
     "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E5%90%89%E8%89%AF%E5%90%89%E5%BD%B1%E2%98%855%EF%BC%88%E5%B7%9D%E5%B0%BB%E6%B5%A9%E4%BD%9C%EF%BC%89",
     "capture": "20241110175836",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -15578,22 +16427,39 @@
    "rarity": 6,
    "statueType": 2,
    "lv1": {
-    "hp": 3224,
-    "atk": 2795,
-    "def": 2640
+    "hp": 2234,
+    "atk": 1445,
+    "def": 1380
    },
    "lv99": {
+    "hp": 22338,
+    "atk": 14454,
+    "def": 13797
+   },
+   "maxTree": {
     "hp": 32238,
     "atk": 27954,
     "def": 26397
    },
-   "maxTree": null,
    "source": {
-    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
-    "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91%E5%90%89%E8%89%AF%E5%90%89%E5%BD%B1%EF%BD%9E...%E5%A7%8B%E6%9C%AB%E3%81%97%E3%81%A6%E3%81%8B%E3%82%89%E3%81%AD......%EF%BC%81%EF%BD%9E%E2%98%856%EF%BC%88%E6%97%A5%E5%B8%B8%E3%81%AB%E6%BD%9C%E3%82%80%E9%97%87%EF%BC%89",
-    "capture": "20241110191432",
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Yoshikage_Kira?oldid=1189721",
+    "license": "CC BY-SA 4.0",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv99 22338/14454/13797 from JoJoWiki and ShoutWiki; the Gamerch page's Lv99 row (32238/27954/26397) equals that entry's with-tree max on all three stats, so it is the tree max (maxTree). Lv1 as ShoutWiki shows it. JoJoWiki lists this statue as Fighting Spirit; Gamerch and ShoutWiki say Tactical, kept.",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Yoshikage_Kira_~_Because_I_will..._deal_with_you..._~_%28Tactical%29",
+      "revid": 4644,
+      "license": "CC BY-SA 3.0"
+     },
+     {
+      "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
+      "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91%E5%90%89%E8%89%AF%E5%90%89%E5%BD%B1%EF%BD%9E...%E5%A7%8B%E6%9C%AB%E3%81%97%E3%81%A6%E3%81%8B%E3%82%89%E3%81%AD......%EF%BC%81%EF%BD%9E%E2%98%856%EF%BC%88%E6%97%A5%E5%B8%B8%E3%81%AB%E6%BD%9C%E3%82%80%E9%97%87%EF%BC%89",
+      "capture": "20241110191432"
+     }
+    ]
    }
   },
   {
@@ -15837,7 +16703,7 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
    }
   },
   {
@@ -16313,15 +17179,37 @@
    ],
    "resultComment": "Result_Chara_Comment_5010_14",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 4,
+   "lv1": {
+    "hp": 3080,
+    "atk": 1780,
+    "def": 1540
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 30800,
+    "atk": 17800,
+    "def": 15400
+   },
+   "maxTree": {
+    "hp": 42800,
+    "atk": 29800,
+    "def": 27400
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Bruno_Bucciarati?oldid=1235392",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Bruno Bucciarati, 6-star Unity): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id. Lv99 and maxTree from that entry (also on ShoutWiki). Lv1 = Lv99 / 10, rounded half up (as the wikis show); ShoutWiki shows the same Lv1. Unity by elimination: the wikis list a 6-star Courage and a 6-star Unity Bucciarati, and 5010_04 is the Courage one.",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Bruno_Bucciarati_%28Unity%29",
+      "revid": 4385,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
+   }
   },
   {
    "statueId": "5030_04",
@@ -16722,15 +17610,37 @@
    ],
    "resultComment": "Result_Chara_Comment_5120_14",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 4,
+   "lv1": {
+    "hp": 3400,
+    "atk": 1620,
+    "def": 1540
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 34000,
+    "atk": 16200,
+    "def": 15400
+   },
+   "maxTree": {
+    "hp": 46600,
+    "atk": 28800,
+    "def": 26200
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Prosciutto?oldid=1235424",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Prosciutto, 6-star Unity): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id. Lv99 and maxTree from that entry. Lv1 = Lv99 / 10, rounded half up (as the wikis show); ShoutWiki shows the same Lv1. ShoutWiki's Lv99 HP 3400 is a typo (its Lv1 3400 fits 34000).",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Prosciutto_%28Unity%29",
+      "revid": 4544,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
+   }
   },
   {
    "statueId": "5140_04",
@@ -17258,15 +18168,37 @@
    ],
    "resultComment": null,
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 1065,
+    "atk": 383,
+    "def": 362
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 10650,
+    "atk": 3834,
+    "def": 3621
+   },
+   "maxTree": {
+    "hp": 50650,
+    "atk": 5834,
+    "def": 5621
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Erina_Pendleton?oldid=1235398",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Erina Pendleton, 4-star Courage, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id. Lv99 and maxTree from that entry (also on ShoutWiki). Lv1 = Lv99 / 10, rounded half up (as the wikis show); ShoutWiki shows the same Lv1.",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Erina_Pendleton_%28Courage%29",
+      "revid": 3781,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
+   }
   },
   {
    "statueId": "2011_72",
@@ -17303,15 +18235,37 @@
    ],
    "resultComment": null,
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   "statueType": 5,
+   "lv1": {
+    "hp": 809,
+    "atk": 533,
+    "def": 341
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 8094,
+    "atk": 5325,
+    "def": 3408
+   },
+   "maxTree": {
+    "hp": 12094,
+    "atk": 25325,
+    "def": 5408
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Caesar_Anthonio_Zeppeli?oldid=1189730",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Caesar, Devilish Youth, 4-star Solitary, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id; the Gamerch page title 【孤高】 has the same type tag. Lv99 and maxTree from that entry. Lv1 = Lv99 / 10, rounded half up (as the wikis show); ShoutWiki shows the same Lv1.",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Caesar_~_Bloodcurdling_Youth_~_%28Solitary%29",
+      "revid": 3305,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
+   }
   },
   {
    "statueId": "2040_72",
@@ -17348,15 +18302,37 @@
    ],
    "resultComment": null,
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   "statueType": 4,
+   "lv1": {
+    "hp": 714,
+    "atk": 378,
+    "def": 525
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 7140,
+    "atk": 3780,
+    "def": 5250
+   },
+   "maxTree": {
+    "hp": 11140,
+    "atk": 23780,
+    "def": 7250
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Messina?oldid=1235414",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Messina, 4-star Unity, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id; the Gamerch page title 【団結】 has the same type tag. Lv99 and maxTree from that entry (also on ShoutWiki). Lv1 = Lv99 / 10, rounded half up (as the wikis show); ShoutWiki shows the same Lv1.",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Messina_%28Unity%29",
+      "revid": 3289,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
+   }
   },
   {
    "statueId": "2150_71",
@@ -17393,15 +18369,37 @@
    ],
    "resultComment": null,
    "rarity": 3,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   "statueType": 4,
+   "lv1": {
+    "hp": 432,
+    "atk": 257,
+    "def": 338
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 4320,
+    "atk": 2565,
+    "def": 3375
+   },
+   "maxTree": {
+    "hp": 5320,
+    "atk": 3065,
+    "def": 8375
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Suzi_Q?oldid=1235433",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Suzi Q, 3-star Unity, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id. Lv99 and maxTree from that entry (also on ShoutWiki). Lv1 = Lv99 / 10, rounded half up (as the wikis show); ShoutWiki shows the same Lv1.",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Suzi_Q_%28Unity%29",
+      "revid": 3296,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
+   }
   },
   {
    "statueId": "2150_72",
@@ -17438,15 +18436,29 @@
    ],
    "resultComment": null,
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   "statueType": 4,
+   "lv1": {
+    "hp": 1710,
+    "atk": 720,
+    "def": 1140
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 17100,
+    "atk": 7200,
+    "def": 11400
+   },
+   "maxTree": {
+    "hp": 33100,
+    "atk": 15200,
+    "def": 19400
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Suzi_Q?oldid=1235433",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Suzi Q, 4-star Unity, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id. Lv99 and maxTree from that entry; single source (JoJoWiki only). Lv1 = Lv99 / 10, rounded half up (as the wikis show)."
+   }
   },
   {
    "statueId": "3160_71",
@@ -17484,15 +18496,37 @@
    ],
    "resultComment": null,
    "rarity": 3,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   "statueType": 5,
+   "lv1": {
+    "hp": 513,
+    "atk": 338,
+    "def": 216
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 5130,
+    "atk": 3375,
+    "def": 2160
+   },
+   "maxTree": {
+    "hp": 6130,
+    "atk": 8375,
+    "def": 2660
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Steely_Dan?oldid=1235431",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Steely Dan, 3-star Solitary, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id. Lv99 and maxTree from that entry (also on ShoutWiki). Lv1 = Lv99 / 10, rounded half up (as the wikis show); ShoutWiki shows the same Lv1.",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Steely_Dan_%28Solitary%29",
+      "revid": 3326,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
+   }
   },
   {
    "statueId": "3180_62",
@@ -17619,15 +18653,37 @@
    ],
    "resultComment": null,
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   "statueType": 1,
+   "lv1": {
+    "hp": 787,
+    "atk": 455,
+    "def": 393
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 7866,
+    "atk": 4554,
+    "def": 3933
+   },
+   "maxTree": {
+    "hp": 23866,
+    "atk": 12554,
+    "def": 11933
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Boingo?oldid=1235390",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Boingo, 4-star Courage, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id; the Gamerch page title 【勇気】…（マンガで描かれた未来） has the same type tag. Lv99 and maxTree from that entry (also on ShoutWiki). Lv1 = Lv99 / 10, rounded half up (as the wikis show); ShoutWiki shows the same Lv1.",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Boingo_%28Courage%29",
+      "revid": 3239,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
+   }
   },
   {
    "statueId": "3230_63",
@@ -17710,15 +18766,37 @@
    ],
    "resultComment": null,
    "rarity": 3,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   "statueType": 2,
+   "lv1": {
+    "hp": 607,
+    "atk": 262,
+    "def": 262
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 6072,
+    "atk": 2622,
+    "def": 2622
+   },
+   "maxTree": {
+    "hp": 10072,
+    "atk": 4622,
+    "def": 4622
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Daniel_J._D'Arby?oldid=1235394",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Daniel J. D'Arby, 3-star Tactical, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id. Lv99 and maxTree from that entry (also on ShoutWiki). Lv1 = Lv99 / 10, rounded half up (as the wikis show); ShoutWiki shows the same Lv1.",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Daniel_J_D%27Arby_%28Tactical%29",
+      "revid": 3298,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
+   }
   },
   {
    "statueId": "3290_62",
@@ -17756,15 +18834,37 @@
    ],
    "resultComment": null,
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   "statueType": 2,
+   "lv1": {
+    "hp": 937,
+    "atk": 405,
+    "def": 405
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 9372,
+    "atk": 4047,
+    "def": 4047
+   },
+   "maxTree": {
+    "hp": 25372,
+    "atk": 12047,
+    "def": 12047
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Daniel_J._D'Arby?oldid=1235394",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Daniel J. D'Arby, 4-star Tactical, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id; the Gamerch page title 【知略】 has the same type tag. Lv99 and maxTree from that entry (also on ShoutWiki). Lv1 = Lv99 / 10, rounded half up (as the wikis show); ShoutWiki shows the same Lv1.",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Daniel_J_D%27Arby_%28Tactical%29",
+      "revid": 3299,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
+   }
   },
   {
    "statueId": "4000_62",
@@ -17802,15 +18902,37 @@
    ],
    "resultComment": null,
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   "statueType": 2,
+   "lv1": {
+    "hp": 1050,
+    "atk": 357,
+    "def": 378
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 10500,
+    "atk": 3570,
+    "def": 3780
+   },
+   "maxTree": {
+    "hp": 50500,
+    "atk": 5570,
+    "def": 5780
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Josuke_Higashikata?oldid=1189671",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Josuke Higashikata, 4-star Tactical, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id; the Gamerch page title 【知略】 has the same type tag. Lv99 and maxTree from that entry (also on ShoutWiki). Lv1 = Lv99 / 10, rounded half up (as the wikis show); ShoutWiki shows the same Lv1.",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Josuke_Higashikata_%28Tactical%29",
+      "revid": 3235,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
+   }
   },
   {
    "statueId": "4090_71",
@@ -17892,15 +19014,37 @@
    ],
    "resultComment": null,
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   "statueType": 4,
+   "lv1": {
+    "hp": 1050,
+    "atk": 336,
+    "def": 399
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 10500,
+    "atk": 3360,
+    "def": 3990
+   },
+   "maxTree": {
+    "hp": 50500,
+    "atk": 5360,
+    "def": 5990
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Tonio_Trussardi?oldid=1235437",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Tonio Trussardi, 4-star Unity, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id; the Gamerch page title 【団結】 has the same type tag. Lv99 and maxTree from that entry (also on ShoutWiki). Lv1 = Lv99 / 10, rounded half up (as the wikis show); ShoutWiki shows the same Lv1.",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Tonio_Trussardi_%28Unity%29",
+      "revid": 3240,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
+   }
   },
   {
    "statueId": "4090_73",
@@ -17983,15 +19127,37 @@
    ],
    "resultComment": null,
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   "statueType": 2,
+   "lv1": {
+    "hp": 852,
+    "atk": 426,
+    "def": 426
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 8520,
+    "atk": 4260,
+    "def": 4260
+   },
+   "maxTree": {
+    "hp": 24520,
+    "atk": 12260,
+    "def": 12260
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Aya_Tsuji?oldid=1235387",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Aya Tsuji, 4-star Tactical, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id; the Gamerch page title 【知略】 has the same type tag. Lv99 and maxTree from that entry (also on ShoutWiki). Lv1 = Lv99 / 10, rounded half up (as the wikis show); ShoutWiki shows the same Lv1.",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Aya_Tsuji_%28Tactical%29",
+      "revid": 3285,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
+   }
   },
   {
    "statueId": "4181_72",
@@ -18029,15 +19195,37 @@
    ],
    "resultComment": null,
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   "statueType": 4,
+   "lv1": {
+    "hp": 1020,
+    "atk": 388,
+    "def": 326
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 10200,
+    "atk": 3876,
+    "def": 3264
+   },
+   "maxTree": {
+    "hp": 26200,
+    "atk": 11876,
+    "def": 11264
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Not_Bug-Eaten?oldid=1235419",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Not Bug-Eaten, 4-star Unity, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id; the Gamerch page title 【団結】 has the same type tag. Lv99 and maxTree from that entry (also on ShoutWiki). Lv1 = Lv99 / 10, rounded half up (as the wikis show); ShoutWiki shows the same Lv1.",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Not_Bug-Eaten_%28Unity%29",
+      "revid": 3085,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
+   }
   },
   {
    "statueId": "4220_71",
@@ -18074,13 +19262,19 @@
    ],
    "resultComment": null,
    "rarity": 3,
-   "statueType": null,
+   "statueType": 5,
    "lv1": null,
    "lv99": null,
    "maxTree": null,
    "source": {
     "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+    "note": "assist-only statue: identifiers from the player's files; stats: server defaults. statueType from the JoJoWiki entry (Catgrass, 3-star Solitary, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id; the Gamerch page title 【孤高】…★3（欲望と本能） has the same type tag. Stats held: both wikis give the 3-star and 4-star Stray Cat the same Lv99, so one is a copy error.",
+    "typeSource": {
+     "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+     "page": "https://jojowiki.com/Diamond_Records/Stray_Cat?oldid=1235446",
+     "license": "CC BY-SA 4.0",
+     "accessed": "2026-11-14"
+    }
    },
    "rarityFrom": "the team-view pose clips present in the player's files"
   },
@@ -18119,13 +19313,19 @@
    ],
    "resultComment": null,
    "rarity": 4,
-   "statueType": null,
+   "statueType": 5,
    "lv1": null,
    "lv99": null,
    "maxTree": null,
    "source": {
     "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+    "note": "assist-only statue: identifiers from the player's files; stats: server defaults. statueType from the JoJoWiki entry (Catgrass, 4-star Solitary, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id; the Gamerch page title 【孤高】…★4（能力での食事） has the same type tag. Stats held: both wikis give the 3-star and 4-star Stray Cat the same Lv99, so one is a copy error.",
+    "typeSource": {
+     "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+     "page": "https://jojowiki.com/Diamond_Records/Stray_Cat?oldid=1235446",
+     "license": "CC BY-SA 4.0",
+     "accessed": "2026-11-14"
+    }
    },
    "rarityFrom": "the team-view pose clips present in the player's files"
   },
@@ -18221,13 +19421,31 @@
     "atk": 4410,
     "def": 4200
    },
-   "maxTree": null,
+   "maxTree": {
+    "hp": 23980,
+    "atk": 12410,
+    "def": 12200
+   },
    "source": {
     "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
     "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E6%9D%89%E6%9C%AC%E9%88%B4%E7%BE%8E%E2%98%854%EF%BC%88%E8%83%8C%E4%B8%AD%E3%81%AB%E5%8F%97%E3%81%91%E3%81%9F%E5%82%B7%EF%BC%89",
     "capture": "20210410121730",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10 (linear, as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "maxTreeNote": "maxTree from JoJoWiki and ShoutWiki (same rarity, type and Lv99)",
+    "maxTreeSources": [
+     {
+      "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+      "page": "https://jojowiki.com/Diamond_Records/Reimi_Sugimoto?oldid=1235425",
+      "license": "CC BY-SA 4.0"
+     },
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Reimi_Sugimoto_%28Unity%29",
+      "revid": 3775,
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   {
@@ -18265,15 +19483,29 @@
    ],
    "resultComment": null,
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   "statueType": 4,
+   "lv1": {
+    "hp": 1630,
+    "atk": 930,
+    "def": 970
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 16300,
+    "atk": 9300,
+    "def": 9700
+   },
+   "maxTree": {
+    "hp": 20300,
+    "atk": 29300,
+    "def": 11700
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Hayato_Kawajiri?oldid=1235404",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Hayato Kawajiri, 4-star Unity, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id. Lv99 and maxTree from that entry; single source (JoJoWiki only). Lv1 = Lv99 / 10, rounded half up (as the wikis show)."
+   }
   },
   {
    "statueId": "5000_62",
@@ -18311,13 +19543,19 @@
    ],
    "resultComment": null,
    "rarity": 4,
-   "statueType": null,
+   "statueType": 2,
    "lv1": null,
    "lv99": null,
    "maxTree": null,
    "source": {
     "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+    "note": "assist-only statue: identifiers from the player's files; stats: server defaults. statueType from the JoJoWiki entry (Giorno Giovanna, 4-star Tactical, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id. Stats held: the JoJoWiki subpage repeats the 4-star Josuke assist's numbers and the main grid differs (13700/6800/7900).",
+    "typeSource": {
+     "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+     "page": "https://jojowiki.com/Diamond_Records/Giorno_Giovanna?oldid=1189722",
+     "license": "CC BY-SA 4.0",
+     "accessed": "2026-11-14"
+    }
    },
    "rarityFrom": "the team-view pose clips present in the player's files"
   },
@@ -18356,15 +19594,29 @@
    ],
    "resultComment": null,
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   "statueType": 3,
+   "lv1": {
+    "hp": 1530,
+    "atk": 910,
+    "def": 1130
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 15300,
+    "atk": 9100,
+    "def": 11300
+   },
+   "maxTree": {
+    "hp": 19300,
+    "atk": 29100,
+    "def": 13300
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Leaky-Eye_Luca?oldid=965313",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Leaky-Eye Luca, 4-star Fighting Spirit, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id. Lv99 and maxTree from that entry; single source (JoJoWiki only). Lv1 = Lv99 / 10, rounded half up (as the wikis show)."
+   }
   },
   {
    "statueId": "5330_72",
@@ -18401,15 +19653,29 @@
    ],
    "resultComment": null,
    "rarity": 4,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+   "statueType": 5,
+   "lv1": {
+    "hp": 1370,
+    "atk": 900,
+    "def": 580
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 13700,
+    "atk": 9000,
+    "def": 5800
+   },
+   "maxTree": {
+    "hp": 17700,
+    "atk": 29000,
+    "def": 7800
+   },
+   "source": {
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Black_Sabbath?oldid=1235389",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "note": "statueType from the JoJoWiki entry (Black Sabbath, 4-star Solitary, assist): the only one of this character, rarity, type and assist status; the character from the game's STATUE_NAME label and character id. Lv99 and maxTree from that entry; single source (JoJoWiki only). Lv1 = Lv99 / 10, rounded half up (as the wikis show)."
+   }
   }
  ]
 }

@@ -139,9 +139,15 @@ fn effect_line_labels_are_in_text_jp() {
         assert!(elsewhere.is_empty(), "{id} also in {elsewhere:?}");
         if id.starts_with("AFFECT_") {
             let p = l10n::placeholders(src);
+            // SP uses ("{Param0} more") are a plain count.
             assert!(
-                p.iter()
-                    .any(|x| x == "{decimal_Param0}" || x == "{mag_Param0}"),
+                p.iter().any(|x| [
+                    "{decimal_Param0}",
+                    "{mag_Param0}",
+                    "{Param0}",
+                    "{permil_Param0}"
+                ]
+                .contains(&x.as_str())),
                 "{id}: shows the amount ({p:?})"
             );
         }
@@ -154,4 +160,21 @@ fn effect_line_labels_are_in_text_jp() {
         n += 1;
     }
     assert!(n >= 20, "{n}");
+    // The action abilities' names (docs/research/30-action-battle.md §7): the leader labels, the
+    // JoJo Link names and the assist card names are rows of the player's text.jp. (The AF_* affect
+    // labels are rows of affect_table, checked above.)
+    let row = |label: &str| labels.keys().any(|k| k.ends_with(&format!(":{label}")));
+    for l in jdr_services::collection::action_leaders().values() {
+        assert!(row(&l.ability_name), "{} is a row", l.ability_name);
+    }
+    for l in jdr_services::collection::jojo_links() {
+        assert!(row(&l.ability_name), "{} is a row", l.ability_name);
+    }
+    for d in jdr_services::collection::assist_defs() {
+        for a in &d.abilities {
+            if let Some(name) = a.action.as_ref().and_then(|x| x.ability_name.as_ref()) {
+                assert!(name.starts_with("ABI_AST_") && row(name), "{name} is a row");
+            }
+        }
+    }
 }

@@ -591,8 +591,10 @@ impl Collection {
     }
 }
 
-/// `StatueInfo` as the client reads it (see docs/research/10-content.md §2.2). Skill and ability
-/// details are left to the master tables (`isInit` false).
+/// `StatueInfo` as the client reads it (see docs/research/10-content.md §2.2). Tactical skill and
+/// ability details are left to the master tables (`isInit` false); the action-battle leader ability
+/// and the assist abilities go inline (`isInit` true, docs/research/30-action-battle.md §7), with
+/// the statue's traits (`tribeTypeList`).
 pub fn statue_info(o: &OwnedStatue) -> Value {
     let d = find(&o.statue_id);
     let (part, rare, stype, models) = match d {
@@ -619,12 +621,12 @@ pub fn statue_info(o: &OwnedStatue) -> Value {
         "rare": rare, "rareMax": rare, "appearedPart": part,
         "description": format!("PROF_TEXT_{sid}"), "specialActionText": "",
         "charaTypeId": d.map(|d| d.psid()).unwrap_or(0),
-        "tribeTypeList": [], "statueType": stype, "oraGauge": 0, "standRange": 0,
+        "tribeTypeList": tribe_type_list(sid), "statueType": stype, "oraGauge": 0, "standRange": 0,
         "modelDataList": models, "mindCapacity": MIND_CAPACITY, "useAttr": 1, "attckType": 0,
         "addProfileName": "", "addProfile": "",
         "maxLevel": MAX_LEVEL, "sellVm": 0, "level": o.level, "bounds": 0, "exp": o.exp,
         "hp": st.hp, "eng": 0, "atk": st.atk, "def": st.def,
-        "skillList": [], "abilityList": [], "leaderAbilityInfo": {},
+        "skillList": [], "abilityList": [], "leaderAbilityInfo": action_leader_ability(sid),
         "dtSkillList": [], "dtAbilityList": [], "dtLeaderAbilityInfo": leader_ability(sid),
         "characteristicList": [], "assistAttr": d.is_some_and(|d| d.assist_only) as i64, "assistSkillInfo": {},
         "assistAbilityList": assist_ability_list(sid), "dtAssistSkillInfo": assist_skill(sid),
@@ -1199,6 +1201,232 @@ pub fn leader_ability(statue_id: &str) -> Value {
 }
 
 // ---------------------------------------------------------------------------------------------
+// Action-battle abilities and statue traits (docs/research/30-action-battle.md §7).
+
+pub const ACTION_ABILITIES_JSON: &str = include_str!("../../content/action_abilities.json");
+pub const STATUE_TRAITS_JSON: &str = include_str!("../../content/statue_traits.json");
+
+/// One action-battle ability parameter (`Jjs.AbilityParam`): the eight slots at ability level 1
+/// and 10 (the client lerps between them by the level, every slot).
+#[derive(Debug, Clone, Deserialize)]
+pub struct ActionParam {
+    #[serde(rename = "affectId")]
+    pub affect_id: String,
+    #[serde(rename = "giveLimit")]
+    pub give_limit: i64,
+    pub lv1: [i64; 8],
+    pub lv10: [i64; 8],
+}
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct ActionLeader {
+    #[serde(rename = "statueId")]
+    pub statue_id: String,
+    #[serde(rename = "abilityId")]
+    pub ability_id: String,
+    #[serde(rename = "abilityName")]
+    pub ability_name: String,
+    pub params: Vec<ActionParam>,
+}
+
+/// The action-battle leader abilities by statueId.
+pub fn action_leaders() -> &'static std::collections::HashMap<String, ActionLeader> {
+    static CELL: std::sync::OnceLock<std::collections::HashMap<String, ActionLeader>> =
+        std::sync::OnceLock::new();
+    CELL.get_or_init(|| {
+        #[derive(Deserialize)]
+        struct Doc {
+            leaders: Vec<ActionLeader>,
+        }
+        serde_json::from_str::<Doc>(ACTION_ABILITIES_JSON)
+            .map(|d| {
+                d.leaders
+                    .into_iter()
+                    .map(|l| (l.statue_id.clone(), l))
+                    .collect()
+            })
+            .unwrap_or_default()
+    })
+}
+
+/// An `AbilityParam` as the client reads it (`affectId`, `giveLimit`, `paramListLv1_0..7`,
+/// `paramListLv10_0..7`).
+pub fn action_param(p: &ActionParam) -> Value {
+    let mut o = serde_json::Map::new();
+    o.insert("affectId".into(), json!(p.affect_id));
+    o.insert("giveLimit".into(), json!(p.give_limit));
+    for (i, v) in p.lv1.iter().enumerate() {
+        o.insert(format!("paramListLv1_{i}"), json!(v));
+    }
+    for (i, v) in p.lv10.iter().enumerate() {
+        o.insert(format!("paramListLv10_{i}"), json!(v));
+    }
+    Value::Object(o)
+}
+
+/// The level the action leader ability is sent at: the wiki's Lv1 values apply (10 = its MAX; the
+/// client clamps to 1..10 in AddAffect). Nothing raises it yet: an owner decision
+/// (docs/research/30-action-battle.md §7).
+pub const ACTION_LEADER_LEVEL: i64 = 1;
+
+/// `StatueInfo.leaderAbilityInfo`: the action-battle leader ability with its params inline
+/// (`isInit` true; with `isInit` false the client looks in the action AbilityDataTable, which we
+/// do not ship). The leader seat's goes to all three members (source 6), a mutual-follow
+/// supporter's too (source 7). `{}` when the statue has no wiki leader ability we can serve.
+pub fn action_leader_ability(statue_id: &str) -> Value {
+    match action_leaders().get(statue_id) {
+        Some(l) => json!({
+            "abilityId": l.ability_id, "abilityLevel": ACTION_LEADER_LEVEL,
+            "abilityName": l.ability_name,
+            "abilityParamList": l.params.iter().map(action_param).collect::<Vec<_>>(),
+            "isInit": true
+        }),
+        None => json!({}),
+    }
+}
+
+/// `StatueInfo.tribeTypeList`: `[{tribeTypeId}]` in ascending order (`[]` when unknown). The client
+/// ORs `1 << id` into the statue's attribute flag (AffectStatus.SetStatueInfo 0x2062124), which
+/// the trait conditions and trait-target damage read; the detail screens list the traits.
+pub fn tribe_type_list(statue_id: &str) -> Vec<Value> {
+    tribe_ids(statue_id)
+        .into_iter()
+        .map(|n| json!({ "tribeTypeId": n }))
+        .collect()
+}
+
+/// A statue's trait (tribe) ids, ascending (statue_traits.json; empty when unknown).
+pub fn tribe_ids(statue_id: &str) -> Vec<i64> {
+    static CELL: std::sync::OnceLock<std::collections::HashMap<String, Vec<i64>>> =
+        std::sync::OnceLock::new();
+    let map = CELL.get_or_init(|| {
+        #[derive(Deserialize)]
+        struct Doc {
+            tribes: std::collections::HashMap<String, Vec<i64>>,
+        }
+        serde_json::from_str::<Doc>(STATUE_TRAITS_JSON)
+            .map(|d| d.tribes)
+            .unwrap_or_default()
+    });
+    let mut ids = map.get(statue_id).cloned().unwrap_or_default();
+    ids.sort_unstable();
+    ids.dedup();
+    ids
+}
+
+// ---------------------------------------------------------------------------------------------
+// JoJo Links (docs/research/26-links-and-skills.md §1, 30-action-battle.md §7).
+
+pub const JOJO_LINKS_JSON: &str = include_str!("../../content/jojo_links.json");
+
+/// One rule of a character link: active when at least `min` of the named groups each have a seat
+/// statue whose family (statueId[..4]) is in the group.
+#[derive(Debug, Clone, Deserialize)]
+pub struct LinkRule {
+    pub groups: Vec<usize>,
+    pub min: usize,
+}
+
+/// A trait link: active when at least `min` seat statues carry the tribe.
+#[derive(Debug, Clone, Deserialize)]
+pub struct TraitRule {
+    pub tribe: i64,
+    pub min: usize,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct JojoLinkDef {
+    #[serde(rename = "charaLinkId")]
+    pub chara_link_id: i64,
+    #[serde(rename = "abilityName")]
+    pub ability_name: String,
+    /// Member groups: the families (statueId[..4]) that count as one member.
+    pub groups: Vec<Vec<String>>,
+    /// Character rules, OR'd.
+    pub rules: Vec<LinkRule>,
+    #[serde(rename = "trait")]
+    pub trait_: Option<TraitRule>,
+    pub params: Vec<ActionParam>,
+}
+
+/// The served JoJo Links, by charaLinkId.
+pub fn jojo_links() -> &'static [JojoLinkDef] {
+    static CELL: std::sync::OnceLock<Vec<JojoLinkDef>> = std::sync::OnceLock::new();
+    CELL.get_or_init(|| {
+        #[derive(Deserialize)]
+        struct Doc {
+            links: Vec<JojoLinkDef>,
+        }
+        let mut v = serde_json::from_str::<Doc>(JOJO_LINKS_JSON)
+            .map(|d| d.links)
+            .unwrap_or_default();
+        v.sort_by_key(|l| l.chara_link_id);
+        v
+    })
+}
+
+/// `TeamInfo.jojoLinkList`: the links the team's three seat statues activate (assists do not
+/// count). The client checks no members: it applies every entry whose abilityInfo is valid to all
+/// three members (affect source 4, key charaLinkId, ApplyJojoLinkAbilityAffect 0xF17A30), and only
+/// the action formation lists them. `type`, `dataList`, `name` and `matchType` are never read
+/// (ours: 1 character / 2 trait, the matching seats' families).
+pub fn jojo_link_list(c: &Collection, t: &Team) -> Vec<Value> {
+    let seats: Vec<(&str, Vec<i64>)> = t
+        .slots
+        .iter()
+        .filter_map(|&uid| c.known_statue(uid))
+        .map(|o| (o.statue_id.get(..4).unwrap_or(""), tribe_ids(&o.statue_id)))
+        .collect();
+    let in_group = |g: &[String], psid: &str| g.iter().any(|f| f == psid);
+    let mut out = Vec::new();
+    for l in jojo_links() {
+        let character = l.rules.iter().any(|r| {
+            r.groups
+                .iter()
+                .filter(|&&gi| {
+                    l.groups
+                        .get(gi)
+                        .is_some_and(|g| seats.iter().any(|(p, _)| in_group(g, p)))
+                })
+                .count()
+                >= r.min
+        });
+        let by_trait = l.trait_.as_ref().filter(|tr| {
+            seats
+                .iter()
+                .filter(|(_, ids)| ids.contains(&tr.tribe))
+                .count()
+                >= tr.min
+        });
+        if !character && by_trait.is_none() {
+            continue;
+        }
+        let data: Vec<Value> = seats
+            .iter()
+            .filter(|(p, ids)| match by_trait {
+                Some(tr) if !character => ids.contains(&tr.tribe),
+                _ => l.groups.iter().any(|g| in_group(g, p)),
+            })
+            .map(|(p, _)| json!({ "dataId": p.parse::<i64>().unwrap_or(0) }))
+            .collect();
+        let id = format!("JOLINK_{:03}", l.chara_link_id);
+        out.push(json!({
+            "charaLinkId": l.chara_link_id,
+            "type": if character { 1 } else { 2 },
+            "dataList": data,
+            "name": "", "matchType": 0,
+            "abilityId": id,
+            "abilityInfo": {
+                "abilityId": id, "abilityLevel": 1, "abilityName": l.ability_name,
+                "abilityParamList": l.params.iter().map(action_param).collect::<Vec<_>>(),
+                "isInit": true
+            }
+        }));
+    }
+    out
+}
+
+// ---------------------------------------------------------------------------------------------
 // Assist abilities and the assist skill (docs/research/19-assists.md §5).
 
 pub const ASSIST_ABILITIES_JSON: &str = include_str!("../../content/assist_abilities.json");
@@ -1217,6 +1445,18 @@ pub struct AssistAbility {
     #[serde(rename = "abilityId")]
     pub ability_id: String,
     pub conditions: Vec<AssistCond>,
+    /// The action-battle params (and card name) of the ability, from the wiki.
+    #[serde(default)]
+    pub action: Option<ActionAssist>,
+}
+
+/// An assist ability's action-battle side: replaces only the inline params (and name) of its
+/// `assistAbilityList` entry; the id, the tactical row and the condition stay.
+#[derive(Debug, Clone, Deserialize)]
+pub struct ActionAssist {
+    #[serde(default, rename = "abilityName")]
+    pub ability_name: Option<String>,
+    pub params: Vec<ActionParam>,
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -1269,17 +1509,62 @@ fn ability_rows() -> &'static std::collections::HashMap<String, Value> {
 }
 
 /// `assistAbilityList`: action-battle `AbilityInfo`s, read by the ability cards and the action
-/// battle. Their `SetupFromAbilityData` looks in the action-battle ability table, which we do not
-/// ship, so the name and parameters go inline (`isInit` true; parameters named `paramListLv…`).
+/// battle (AffectStatus.ApplyAssistAbilityAffect, source 11). Their `SetupFromAbilityData` looks in
+/// the action-battle ability table, which we do not ship, so the name and parameters go inline
+/// (`isInit` true; parameters named `paramListLv…`): the wiki's action params where the content
+/// has them ("action"), else the tactical row's. The id stays the `DT_AST_*` id the condition table
+/// indexes (GetAssistAbilityIndex 0xD316C8), in the order of `dtAssistAbilityList`.
 pub fn assist_ability_list(statue_id: &str) -> Vec<Value> {
     assist_abilities(statue_id)
         .iter()
-        .map(|a| inline_ability(&a.ability_id))
+        .map(|a| {
+            let mut v = inline_ability(&a.ability_id);
+            if let Some(x) = &a.action {
+                v["abilityParamList"] =
+                    json!(x.params.iter().map(action_param).collect::<Vec<_>>());
+                if let Some(n) = &x.ability_name {
+                    v["abilityName"] = json!(n);
+                }
+            }
+            v
+        })
         .collect()
 }
 
+/// Tactical-only affects (`BASE_DT_*`, which the action battle does not read) and the action
+/// affect with the same meaning and numbers (per mille of damage; p1 = StatueType). The same table
+/// is `ACTION_AFFECT` in tools/content/action_vocab.py, which gives the targets affect_table rows.
+pub static ACTION_AFFECT: &[(&str, &str)] = &[
+    ("DTAF_DMG_RATEADD", "AF_DMG_RATEADD"),
+    ("DTAF_VCT_DAM_RATESUB", "AF_VCT_DAM_RATESUB"),
+    ("DTAF_FULL_HP_DMG_RATEADD", "AF_FULL_DMG_RATEADD"),
+    ("DTAF_BRAVE_STYPE_DMG_RATEADD", "AF_BRAVE_STYPE_DMG_RATEADD"),
+    (
+        "DTAF_INTELLI_STYPE_DMG_RATEADD",
+        "AF_INTELLI_STYPE_DMG_RATEADD",
+    ),
+    (
+        "DTAF_TENACITY_STYPE_DMG_RATEADD",
+        "AF_TENACITY_STYPE_DMG_RATEADD",
+    ),
+    ("DTAF_UNITY_STYPE_DMG_RATEADD", "AF_UNITY_STYPE_DMG_RATEADD"),
+    (
+        "DTAF_MAVERICK_STYPE_DMG_RATEADD",
+        "AF_MAVERICK_STYPE_DMG_RATEADD",
+    ),
+    (
+        "DTAF_BRAVE_STYPE_VCT_DAM_RATESUB",
+        "AF_BRAVE_STYPE_VCT_DAM_RATESUB",
+    ),
+    (
+        "DTAF_MAVERICK_STYPE_VCT_DAM_RATESUB",
+        "AF_MAVERICK_STYPE_VCT_DAM_RATESUB",
+    ),
+];
+
 /// An action-battle `AbilityInfo` with the name and parameters of a dtbattle_ability_data_table
-/// row inline (`isInit` true; the parameters are named `paramListLv…`).
+/// row inline (`isInit` true; the parameters are named `paramListLv…`). A tactical-only affect
+/// becomes its action twin (`ACTION_AFFECT`).
 pub fn inline_ability(ability_id: &str) -> Value {
     let row = ability_rows().get(ability_id);
     let params: Vec<Value> = row
@@ -1296,7 +1581,15 @@ pub fn inline_ability(ability_id: &str) -> Value {
                         Some(rest) => format!("paramListLv{rest}"),
                         None => k.clone(),
                     };
-                    (k, v.clone())
+                    let v = match (k.as_str(), v.as_str()) {
+                        ("affectId", Some(id)) => ACTION_AFFECT
+                            .iter()
+                            .find(|(dt, _)| *dt == id)
+                            .map(|(_, af)| json!(af))
+                            .unwrap_or_else(|| v.clone()),
+                        _ => v.clone(),
+                    };
+                    (k, v)
                 })
                 .collect();
             Value::Object(o)
@@ -1385,7 +1678,7 @@ pub fn assist_condition_rows() -> Vec<Value> {
         .collect()
 }
 
-/// `TeamInfo` for one team.
+/// `TeamInfo` for one team (also the base of the arena's `PvpTeamInfo`).
 pub fn team_info(c: &Collection, t: &Team) -> Value {
     json!({
         "teamNum": t.team_num, "stageType": t.stage_type, "mainFlg": t.main as i64, "useFlg": 1,
@@ -1394,7 +1687,7 @@ pub fn team_info(c: &Collection, t: &Team) -> Value {
             "memberLeftStatue": setting(c, t, 1),
             "memberRightStatue": setting(c, t, 2)
         },
-        "jojoLinkList": []
+        "jojoLinkList": jojo_link_list(c, t)
     })
 }
 
@@ -1492,6 +1785,37 @@ mod tests {
         assert_eq!(statue_setting_rows().len(), statues().len());
     }
 
+    /// Wiki stats stay consistent (docs/CONTENT.md "Wiki cross-checks"): Lv99 is about 10 x Lv1,
+    /// and a tree max is above Lv99 (a Gamerch Lv99 row that equals the wiki's tree max made four
+    /// statues 1.4-2x too strong). Lv1 from Lv99 rounds half up, as the wikis do.
+    #[test]
+    fn statue_wiki_stats_consistent() {
+        let tri = |s: &Stats| [s.hp, s.atk, s.def];
+        for d in statues() {
+            if let (Some(l1), Some(l99)) = (&d.lv1, &d.lv99) {
+                for (a, b) in tri(l1).into_iter().zip(tri(l99)) {
+                    assert!(a > 0 && (5..=20).contains(&(b / a)), "{}", d.statue_id);
+                }
+            }
+            if let (Some(l99), Some(m)) = (&d.lv99, &d.max_tree) {
+                let (a, b) = (tri(l99), tri(m));
+                assert!(a.iter().zip(&b).all(|(x, y)| x <= y), "{}", d.statue_id);
+                assert!(a != b, "{}: the tree adds nothing", d.statue_id);
+            }
+        }
+        let by = |id: &str| statues().iter().find(|d| d.statue_id == id).unwrap();
+        let k = by("4043_08");
+        assert_eq!(tri(k.lv99.as_ref().unwrap()), [22338, 16425, 11826]);
+        assert_eq!(tri(k.max_tree.as_ref().unwrap()), [31338, 30825, 24426]);
+        assert_eq!(tri(k.lv1.as_ref().unwrap()), [2234, 1643, 1183]);
+        // 4725 / 10 = 472.5 rounds up.
+        assert_eq!(by("1010_02").lv1.as_ref().unwrap().atk, 473);
+        // A default the JoJoWiki dump identifies (type, Lv99 and tree from its page).
+        let w = by("1110_03");
+        assert_eq!(w.statue_type, Some(3));
+        assert_eq!(tri(w.lv99.as_ref().unwrap()), [14400, 5184, 4896]);
+    }
+
     /// Assists (docs/research/19-assists.md §5): both ability lists match, the seat statue carries
     /// its assists' active abilities, and the assist skill is one of the statue's own skills.
     #[test]
@@ -1519,7 +1843,8 @@ mod tests {
                 assert_eq!(a["abilityId"], b["abilityId"], "same order");
                 assert_eq!(a["isInit"], true);
                 assert!(!a["abilityParamList"].as_array().unwrap().is_empty());
-                assert!(a["abilityParamList"][0]["paramListLv1_0"].as_i64().unwrap() > 0);
+                // (damage-taken lines are negative)
+                assert!(a["abilityParamList"][0]["paramListLv1_0"].as_i64().unwrap() != 0);
                 assert!(a["abilityName"].as_str().unwrap().starts_with("ABI_AST_"));
                 assert_eq!(b["abilityParamList"], json!([]), "never null");
             }
@@ -1595,6 +1920,383 @@ mod tests {
         }
     }
 
+    /// Every statue: no wiki leader -> `{}`; else an inline, valid action AbilityInfo (IsValid
+    /// 0x205EBFC: an id, a param list, an affectId) at a level the client accepts.
+    #[test]
+    fn action_leader_abilities_are_inline_and_valid() {
+        let mut listed = 0;
+        for d in statues() {
+            let o = OwnedStatue {
+                statue_id: d.statue_id.clone(),
+                level: 1,
+                ..Default::default()
+            };
+            let v = &statue_info(&o)["leaderAbilityInfo"];
+            if !action_leaders().contains_key(&d.statue_id) {
+                assert_eq!(*v, json!({}), "{}", d.statue_id);
+                continue;
+            }
+            listed += 1;
+            assert!(v["abilityId"].as_str().is_some_and(|s| !s.is_empty()));
+            assert_eq!(v["isInit"], true);
+            assert!((1..=10).contains(&v["abilityLevel"].as_i64().unwrap()));
+            assert_eq!(v["abilityName"], format!("ABI_LEAD_NAME_{}", d.statue_id));
+            let params = v["abilityParamList"].as_array().unwrap();
+            assert!(!params.is_empty(), "{}", d.statue_id);
+            for p in params {
+                let o = p.as_object().unwrap();
+                assert!(p["affectId"].as_str().is_some_and(|s| !s.is_empty()));
+                assert_eq!(p["giveLimit"], -1);
+                assert_eq!(o.len(), 18, "affectId, giveLimit and 16 slots");
+                for i in 0..8 {
+                    for lv in [1, 10] {
+                        assert!(o[&format!("paramListLv{lv}_{i}")].is_i64());
+                    }
+                }
+            }
+        }
+        assert!(listed >= 140, "{listed}");
+        // Spot checks from the wiki (docs/research/30 §7): HP 1.5% -> 4.5%, ATK 3.0% -> 6.5%.
+        let p = &action_leader_ability("1000_01")["abilityParamList"];
+        assert_eq!(p[0]["affectId"], "AF_HP_RATEADD");
+        assert_eq!(
+            (
+                p[0]["paramListLv1_0"].as_i64(),
+                p[0]["paramListLv10_0"].as_i64()
+            ),
+            (Some(15), Some(45))
+        );
+        assert_eq!(p[1]["affectId"], "AF_ATK_RATEADD");
+        assert_eq!(
+            (
+                p[1]["paramListLv1_0"].as_i64(),
+                p[1]["paramListLv10_0"].as_i64()
+            ),
+            (Some(30), Some(65))
+        );
+        // Per kill, 12 s (MAX 18 s) per StatueType target: p1 = type, p2 = seconds x 10.
+        let p = &action_leader_ability("4010_13")["abilityParamList"];
+        assert_eq!(p[0]["affectId"], "AF_DEFEAT_BRAVE_STYPE_DMG_RATEADD");
+        assert_eq!(p[0]["paramListLv1_1"], 1);
+        assert_eq!(
+            (
+                p[0]["paramListLv1_2"].as_i64(),
+                p[0]["paramListLv10_2"].as_i64()
+            ),
+            (Some(1200), Some(1800))
+        );
+        // 4110_01 has a gold line only (no client consumer): nothing to send.
+        assert_eq!(action_leader_ability("4110_01"), json!({}));
+        assert_eq!(ACTION_LEADER_LEVEL, 1);
+    }
+
+    /// assistAbilityList: the wiki action params where the content has them, else the tactical row
+    /// with tactical-only affects mapped to their action twins; never a BASE_DT_* affect; the ids
+    /// stay those of dtAssistAbilityList.
+    #[test]
+    fn assist_ability_action_params() {
+        let affects: std::collections::HashMap<String, String> = serde_json::from_str::<Value>(
+            crate::masterdata::TABLES
+                .iter()
+                .find(|(n, _)| *n == "affect_table")
+                .unwrap()
+                .1,
+        )
+        .unwrap()["data"]["paramList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|r| {
+                (
+                    r["affectId"].as_str().unwrap().to_string(),
+                    r["baseAffect"].as_str().unwrap().to_string(),
+                )
+            })
+            .collect();
+        let mut with_action = 0;
+        for d in statues() {
+            let o = OwnedStatue {
+                statue_id: d.statue_id.clone(),
+                level: 1,
+                ..Default::default()
+            };
+            let v = statue_info(&o);
+            let cl = v["assistAbilityList"].as_array().unwrap();
+            let dt = v["dtAssistAbilityList"].as_array().unwrap();
+            for ((a, b), ab) in cl.iter().zip(dt).zip(assist_abilities(&d.statue_id)) {
+                assert_eq!(a["abilityId"], b["abilityId"]);
+                for p in a["abilityParamList"].as_array().unwrap() {
+                    let id = p["affectId"].as_str().unwrap();
+                    let base = affects.get(id).unwrap_or_else(|| panic!("{id}: a row"));
+                    assert!(!base.starts_with("BASE_DT_"), "{}: {id}", d.statue_id);
+                }
+                if let Some(x) = &ab.action {
+                    with_action += 1;
+                    assert_eq!(
+                        a["abilityParamList"].as_array().unwrap().len(),
+                        x.params.len()
+                    );
+                    assert!(!x.params.is_empty());
+                    continue;
+                }
+                let Some(tier) = ab.ability_id.strip_prefix("DT_AST_DMG_RATEADD") else {
+                    continue;
+                };
+                let row = &ability_rows()[&ab.ability_id]["abilityParamList"][0];
+                let p = &a["abilityParamList"][0];
+                assert_eq!(
+                    p["affectId"], "AF_DMG_RATEADD",
+                    "{} tier {tier}",
+                    d.statue_id
+                );
+                assert_eq!(p["paramListLv1_0"], row["paramLv1_0"]);
+                assert_eq!(p["paramListLv10_0"], row["paramLv10_0"]);
+            }
+        }
+        assert!(with_action >= 90, "{with_action}");
+        // (today every DT_AST_DMG_RATEADDn statue has wiki action params; the map still holds)
+        for t in 1..=4 {
+            let id = format!("DT_AST_DMG_RATEADD{t}");
+            let p = &inline_ability(&id)["abilityParamList"][0];
+            assert_eq!(p["affectId"], "AF_DMG_RATEADD");
+            assert_eq!(
+                p["paramListLv1_0"],
+                ability_rows()[&id]["abilityParamList"][0]["paramLv1_0"]
+            );
+        }
+        // A move-speed card names its kind at the tactical row's tier.
+        let sid = assist_defs()
+            .iter()
+            .find(|d| {
+                d.abilities[0].action.as_ref().is_some_and(|x| {
+                    x.params[0].affect_id == "AF_MOVE_FAST" && x.ability_name.is_some()
+                })
+            })
+            .map(|d| d.statue_id.clone())
+            .unwrap();
+        let a = &assist_ability_list(&sid)[0];
+        let tier = a["abilityId"].as_str().unwrap().chars().last().unwrap();
+        assert_eq!(a["abilityName"], format!("ABI_AST_MOVE_FAST{tier}_N"));
+    }
+
+    /// tribeTypeList: [{tribeTypeId}] with ids the client labels (1..=11, 15), ascending.
+    #[test]
+    fn statue_traits_are_tribe_types() {
+        let mut with = 0;
+        for d in statues() {
+            let list = tribe_type_list(&d.statue_id);
+            let ids: Vec<i64> = list
+                .iter()
+                .map(|t| {
+                    assert_eq!(t.as_object().unwrap().len(), 1);
+                    t["tribeTypeId"].as_i64().unwrap()
+                })
+                .collect();
+            for n in &ids {
+                assert!((1..=11).contains(n) || *n == 15, "{}: {n}", d.statue_id);
+            }
+            assert!(ids.windows(2).all(|w| w[0] < w[1]));
+            let o = OwnedStatue {
+                statue_id: d.statue_id.clone(),
+                level: 1,
+                ..Default::default()
+            };
+            assert_eq!(statue_info(&o)["tribeTypeList"], json!(list));
+            with += !ids.is_empty() as usize;
+        }
+        assert!(with >= 250, "{with}");
+        for d in statues()
+            .iter()
+            .filter(|d| d.statue_id.starts_with("3321_"))
+        {
+            assert!(tribe_type_list(&d.statue_id).contains(&json!({"tribeTypeId": 1})));
+        }
+        assert_eq!(
+            tribe_type_list("1000_01"),
+            vec![json!({"tribeTypeId": 2}), json!({"tribeTypeId": 3})]
+        );
+        assert_eq!(tribe_type_list("9999_99"), Vec::<Value>::new());
+    }
+
+    /// A collection holding one member statue of each family given (uids 1..), and a team seating
+    /// the first three.
+    fn link_team(fams: &[&str]) -> (Collection, Team) {
+        let mut c = Collection::default();
+        for (i, f) in fams.iter().enumerate() {
+            let d = statues()
+                .iter()
+                .find(|d| d.statue_id.starts_with(&format!("{f}_")) && !d.assist_only)
+                .unwrap_or_else(|| panic!("a member statue of {f}"));
+            c.statues.push(OwnedStatue {
+                uid: i as i64 + 1,
+                statue_id: d.statue_id.clone(),
+                level: 1,
+                ..Default::default()
+            });
+        }
+        let mut slots = [0i64; 3];
+        for (i, s) in slots.iter_mut().enumerate().take(fams.len().min(3)) {
+            *s = i as i64 + 1;
+        }
+        let t = Team {
+            slots,
+            ..Default::default()
+        };
+        (c, t)
+    }
+
+    fn link_ids(c: &Collection, t: &Team) -> Vec<i64> {
+        jojo_link_list(c, t)
+            .iter()
+            .map(|l| l["charaLinkId"].as_i64().unwrap())
+            .collect()
+    }
+
+    /// JoJo Links (docs/research/26-links-and-skills.md §1): computed per team from the seat
+    /// statues' families and traits; held links never sent; every entry carries an inline, valid
+    /// abilityInfo the client applies to all three members.
+    #[test]
+    fn jojo_links_follow_the_team() {
+        let held = [
+            8, 20, 21, 25, 26, 35, 36, 43, 51, 52, 53, 54, 59, 60, 62, 64, 67, 69, 70, 71, 73, 74,
+            75, 76, 77,
+        ];
+        let ids: Vec<i64> = jojo_links().iter().map(|l| l.chara_link_id).collect();
+        assert_eq!(ids.len(), 53);
+        assert!(ids.windows(2).all(|w| w[0] < w[1]), "unique charaLinkIds");
+        assert!(
+            ids.iter().all(|i| !held.contains(i)),
+            "held links are not served"
+        );
+        let count = |v: &[i64], id: i64| v.iter().filter(|&&x| x == id).count();
+        // Jotaro (Part 3) + DIO + anyone: link 1 once.
+        let (c, t) = link_team(&["3000", "3321", "1000"]);
+        assert_eq!(count(&link_ids(&c, &t), 1), 1);
+        // Jotaro (Part 3) + Jotaro (Part 4) + DIO: still once.
+        let (c, t) = link_team(&["3000", "4040", "3321"]);
+        assert_eq!(count(&link_ids(&c, &t), 1), 1);
+        // Kars + Santana + Wamuu: link 34, SP uses +1.
+        let (c, t) = link_team(&["2080", "2050", "2060"]);
+        let list = jojo_link_list(&c, &t);
+        let l34 = list
+            .iter()
+            .find(|l| l["charaLinkId"] == 34)
+            .expect("link 34");
+        let p = &l34["abilityInfo"]["abilityParamList"][0];
+        assert_eq!(p["affectId"], "AF_SPSTC_ADD");
+        assert_eq!(p["paramListLv1_0"], 1);
+        assert_eq!(l34["type"], 1);
+        assert_eq!(l34["dataList"].as_array().unwrap().len(), 3);
+        // Two of the three: no link from an all-3 rule.
+        let (c, t) = link_team(&["2080", "2050"]);
+        assert_eq!(count(&link_ids(&c, &t), 34), 0);
+        // An empty team, and a team of one, activate nothing.
+        let (c, t) = link_team(&[]);
+        assert!(jojo_link_list(&c, &t).is_empty());
+        let (c, t) = link_team(&["3000"]);
+        assert!(jojo_link_list(&c, &t).is_empty());
+        // Link 6: near-death ATK and DEF, never an unconditional DEF.
+        let (c, t) = link_team(&["1020", "2010", "1000"]);
+        let list = jojo_link_list(&c, &t);
+        let l6 = list.iter().find(|l| l["charaLinkId"] == 6).expect("link 6");
+        let affects: Vec<&str> = l6["abilityInfo"]["abilityParamList"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|p| p["affectId"].as_str().unwrap())
+            .collect();
+        assert_eq!(affects, ["AF_FNT_ATK_RATEADD", "AF_FNT_DEF_RATEADD"]);
+        // Trait link 11 needs three statues carrying tribe 6 (Major Arcana).
+        let mut arcana: Vec<&str> = Vec::new();
+        for d in statues() {
+            let f = &d.statue_id[..4];
+            if !d.assist_only && tribe_ids(&d.statue_id).contains(&6) && !arcana.contains(&f) {
+                arcana.push(f);
+            }
+        }
+        // Families whose first member statue carries the trait.
+        arcana.retain(|f| {
+            let (c, _) = link_team(&[*f]);
+            tribe_ids(&c.statues[0].statue_id).contains(&6)
+        });
+        assert!(arcana.len() >= 3, "{arcana:?}");
+        let (c, t) = link_team(&arcana[..3]);
+        let list = jojo_link_list(&c, &t);
+        let l11 = list
+            .iter()
+            .find(|l| l["charaLinkId"] == 11)
+            .expect("link 11");
+        assert_eq!(l11["type"], 2);
+        assert_eq!(l11["dataList"].as_array().unwrap().len(), 3);
+        let (c, mut t) = link_team(&arcana[..3]);
+        t.slots[2] = 0;
+        assert_eq!(count(&link_ids(&c, &t), 11), 0, "two are not enough");
+        // Every entry, over every pair of families plus a third: the client's shape.
+        let fams: Vec<&str> = {
+            let mut v: Vec<&str> = statues()
+                .iter()
+                .filter(|d| !d.assist_only)
+                .map(|d| &d.statue_id[..4])
+                .collect();
+            v.dedup();
+            v
+        };
+        let mut seen = std::collections::BTreeSet::new();
+        for w in fams.windows(3).chain(fams.chunks(3)) {
+            let (c, t) = link_team(w);
+            for l in jojo_link_list(&c, &t) {
+                check_link_entry(&l);
+                seen.insert(l["charaLinkId"].as_i64().unwrap());
+            }
+        }
+        for l in jojo_links() {
+            for r in &l.rules {
+                let pick: Vec<&str> = r.groups[..r.min.min(3)]
+                    .iter()
+                    .map(|&g| l.groups[g][0].as_str())
+                    .collect();
+                let (c, t) = link_team(&pick);
+                let list = jojo_link_list(&c, &t);
+                assert_eq!(
+                    count(&link_ids(&c, &t), l.chara_link_id),
+                    1,
+                    "{}",
+                    l.chara_link_id
+                );
+                list.iter().for_each(check_link_entry);
+                seen.insert(l.chara_link_id);
+            }
+        }
+        assert!(seen.iter().all(|i| !held.contains(i)));
+    }
+
+    fn check_link_entry(l: &Value) {
+        crate::services::shapes::assert_complete("Jjs.JojoLinkInfo", l);
+        let id = l["charaLinkId"].as_i64().unwrap();
+        for k in [
+            "dataList",
+            "name",
+            "abilityId",
+            "abilityInfo",
+            "type",
+            "matchType",
+        ] {
+            assert!(l.get(k).is_some(), "{id}: {k}");
+        }
+        let a = &l["abilityInfo"];
+        assert_eq!(a["isInit"], true);
+        assert_eq!(a["abilityName"], format!("ABI_JOLINK_NAME_{id:03}"));
+        assert_eq!(a["abilityId"], format!("JOLINK_{id:03}"));
+        assert_eq!(l["abilityId"], a["abilityId"]);
+        let ps = a["abilityParamList"].as_array().unwrap();
+        assert!(!ps.is_empty());
+        for p in ps {
+            assert!(!p["affectId"].as_str().unwrap().is_empty());
+            assert_eq!(p["giveLimit"], -1);
+            assert_eq!(p.as_object().unwrap().len(), 18);
+        }
+    }
+
     #[test]
     fn action_skill_lists_follow_the_client_slots() {
         // skillList by index: 0 attack, 1 skill 1, 2 skill 2, 3 SP 1, 4 SP 2 (docs/research/30);
@@ -1644,6 +2346,85 @@ mod tests {
         assert!(with_sp > 200, "{with_sp}");
     }
 
+    /// The SP cinematic is chosen by the player's files, not by us: an action-set entry whose FSM
+    /// runs DoChangeBattleSceneMode mode 2 starts it (server/content/action_cinematics.json,
+    /// docs/research/30 §5). A skill id SKILL_<p>_<NN> plays entry
+    /// GameConst.VariationSkillIdToSkillId(NN) 0xDB627C: 61..70 kept, else NN % 10 with 0 -> 10.
+    /// So the skill and SP slots must not land on a cinematic entry (the wiki never puts it
+    /// there), and a finisher we chose ourselves (jdr-default) must land on one. Wiki finishers
+    /// are not checked: 3090_03's wiki finisher has no cinematic in retail.
+    #[test]
+    fn action_finishers_play_the_retail_cinematic() {
+        fn entry(id: &str) -> i64 {
+            let n: i64 = id.rsplit('_').next().unwrap().parse().unwrap();
+            if n < 1 || (61..=70).contains(&n) {
+                n
+            } else if n % 10 == 0 {
+                10
+            } else {
+                n % 10
+            }
+        }
+        fn ints(v: Option<&Value>) -> Vec<i64> {
+            v.and_then(Value::as_array)
+                .map(|a| a.iter().filter_map(Value::as_i64).collect())
+                .unwrap_or_default()
+        }
+        assert_eq!(entry("SKILL_401_16"), 6);
+        assert_eq!(entry("SKILL_400_61"), 61);
+        assert_eq!(entry("SKILL_102_10"), 10);
+        assert_eq!(entry("SKILL_304_20"), 10);
+        let cin: Value =
+            serde_json::from_str(include_str!("../../content/action_cinematics.json")).unwrap();
+        assert!(cin["cinematic"].as_object().unwrap().len() >= 70);
+        let doc: Value = serde_json::from_str(ACTION_SKILLS_JSON).unwrap();
+        let (mut checked, mut defaults) = (0, 0);
+        for (sid, rec) in doc["statues"].as_object().unwrap() {
+            let entries = ints(cin["cinematic"].get(&sid[..4]));
+            let set = ints(cin["skillSets"].get(&sid[..4]));
+            let id = |slot: &str| rec[slot]["id"].as_str().map(str::to_owned);
+            for slot in ["skill", "sp"] {
+                if let Some(x) = id(slot) {
+                    assert!(
+                        !entries.contains(&entry(&x)),
+                        "{sid} {slot} {x} plays the SP cinematic"
+                    );
+                    checked += 1;
+                }
+            }
+            if let Some(x) = id("finisher") {
+                if !set.is_empty() {
+                    assert!(
+                        set.contains(&entry(&x)),
+                        "{sid} {x} has no action-set entry"
+                    );
+                }
+                if rec["source"]["source"] == "jdr-default" {
+                    assert!(
+                        entries.contains(&entry(&x)),
+                        "{sid}: our finisher {x} is not the cinematic"
+                    );
+                    defaults += 1;
+                }
+            }
+        }
+        assert!(checked > 300, "{checked}");
+        assert!(defaults >= 57, "{defaults} jdr-default finishers");
+        // The two Polnareff ★5 pages name a finisher whose text SKILL_304_03 shares; only 304_08
+        // is the cinematic.
+        let fin = |sid: &str| {
+            action_skills(sid)
+                .unwrap()
+                .finisher
+                .as_ref()
+                .unwrap()
+                .id
+                .clone()
+        };
+        assert_eq!(fin("3040_03"), "SKILL_304_08");
+        assert_eq!(fin("3040_13"), "SKILL_304_08");
+    }
+
     #[test]
     fn assist_conditions_count_the_seats_assist_types() {
         let assists = [
@@ -1657,6 +2438,48 @@ mod tests {
         assert!(conditions_met(&[cond(1, 1), cond(3, 1)], &assists));
         assert!(!conditions_met(&[cond(1, 3)], &assists));
         assert!(!conditions_met(&[cond(3, 1), cond(5, 1)], &assists));
+    }
+
+    /// Build 41 wiki merges: ShoutWiki requirement icons and Gamerch condition text become
+    /// conditions, a matched wiki kind replaces the default, held statues stay unconditioned, and a
+    /// leader row goes only to the statue its label, rarity and type pick.
+    #[test]
+    fn build41_assist_conditions_and_leader_rows() {
+        let terms = |sid: &str| -> Vec<(i64, i64)> {
+            assist_abilities(sid)[0]
+                .conditions
+                .iter()
+                .map(|c| (c.statue_type, c.count))
+                .collect()
+        };
+        // ShoutWiki revision 3299 ("Tactical, Tactical") and the same revision we cite (3343).
+        assert_eq!(terms("3290_62"), [(2, 2)]);
+        assert_eq!(terms("2060_01"), [(1, 2)]);
+        // Old Mode template oldid 3840 (DEF + 8%) and page rev 4400 (damage given + 18%).
+        assert_eq!(
+            assist_abilities("4190_13")[0].ability_id,
+            "DT_AST_DEF_RATEADD2"
+        );
+        assert_eq!(terms("4190_13"), [(1, 1), (3, 1)]);
+        assert_eq!(
+            assist_abilities("5050_04")[0].ability_id,
+            "DT_AST_DMG_RATEADD4"
+        );
+        // Gamerch '闘志1体と孤高を2体' and '与えるダメージ+7％'.
+        assert_eq!(terms("3321_18"), [(3, 1), (5, 2)]);
+        assert_eq!(
+            assist_abilities("2081_13")[0].ability_id,
+            "DT_AST_DMG_RATEADD3"
+        );
+        // Held: no condition.
+        for sid in ["3180_62", "3230_62", "4220_72"] {
+            assert!(terms(sid).is_empty(), "{sid}");
+        }
+        // 3001_13 shares 3001_03's leader label but not its rarity/type; 1100_03 likewise 1100_13.
+        assert_eq!(leader_ability("3001_03")["abilityId"], "DT_LEAD_3001_03");
+        assert_eq!(leader_ability("1100_13")["abilityId"], "DT_LEAD_1100_13");
+        assert_eq!(leader_ability("3001_13"), json!({}));
+        assert_eq!(leader_ability("1100_03"), json!({}));
     }
 
     #[test]
@@ -1835,6 +2658,9 @@ pub struct MindDef {
     pub hp: i64,
     pub atk: i64,
     pub def: i64,
+    /// Flat stats at Lv10 where a source gives them (Build 41; `lv10Source` in minds.json).
+    #[serde(default)]
+    pub lv10: Option<Stats>,
 }
 
 pub fn minds() -> &'static [MindDef] {
@@ -1966,11 +2792,27 @@ pub fn mind_rarity(mind_id: &str) -> i64 {
         .unwrap_or(3)
 }
 
+/// A Mind's flat HP/ATK/DEF at a level: linear from Lv1 to Lv10 where minds.json has `lv10`, else
+/// the Lv1 values. Only `mind_info` reports them, and the 3.12 client ignores them there: neither
+/// CharacterStatus.SetStatueInfo nor the Mind screen reads MindInfo hp/atk/def (docs/research/16
+/// §9). They would count in the action battle only through MindInfo.abilityInfo, which is held.
+pub fn mind_stats(d: &MindDef, level: i64) -> [i64; 3] {
+    let l1 = [d.hp, d.atk, d.def];
+    let Some(t) = &d.lv10 else { return l1 };
+    let step = level.clamp(1, MIND_MAX_LEVEL) - 1;
+    let span = MIND_MAX_LEVEL - 1;
+    let mut out = l1;
+    for (o, (a, b)) in out.iter_mut().zip(l1.into_iter().zip([t.hp, t.atk, t.def])) {
+        *o = a + (b - a) * step / span;
+    }
+    out
+}
+
 pub fn mind_info(o: &OwnedMind) -> Value {
     let d = minds().iter().find(|m| m.mind_id == o.mind_id);
-    let (rare, cost, hp, atk, def) = d
-        .map(|d| (d.rarity, d.cost, d.hp, d.atk, d.def))
-        .unwrap_or((3, 9, 0, 0, 0));
+    let (rare, cost, [hp, atk, def]) = d
+        .map(|d| (d.rarity, d.cost, mind_stats(d, o.level)))
+        .unwrap_or((3, 9, [0, 0, 0]));
     let id = &o.mind_id;
     let level_table: Vec<Value> = mind_curve(rare)
         .iter()
@@ -2010,6 +2852,75 @@ pub fn mind_info(o: &OwnedMind) -> Value {
         "bonusCondition": 0, "bonusRate": 0, "hp": hp, "eng": 0, "atk": atk, "def": def,
         "newFlg": 0, "useFlg": 0, "protectedFlg": o.protected as i64, "getDate": o.get_date
     })
+}
+
+/// Mind flat stats (docs/research/16-minds.md §9): Lv1 from the first unconditional flat effect,
+/// Lv10 from its MAX where a source gives one.
+#[cfg(test)]
+mod mind_stats_tests {
+    use super::*;
+
+    fn def(id: &str) -> &'static MindDef {
+        minds().iter().find(|m| m.mind_id == id).unwrap()
+    }
+
+    #[test]
+    fn lv1_and_lv10() {
+        assert_eq!(minds().len(), 434);
+        assert_eq!(minds().iter().filter(|m| m.lv10.is_some()).count(), 156);
+        for m in minds() {
+            if let Some(t) = &m.lv10 {
+                let pairs = [(m.hp, t.hp), (m.atk, t.atk), (m.def, t.def)];
+                assert!(
+                    pairs.iter().all(|(a, b)| 0 <= *a && a <= b),
+                    "{}",
+                    m.mind_id
+                );
+            }
+        }
+        // 'ATK50(MAX+100)', 'DEF+250(MAX DEF+400)', and 'HP+ 480(MAX+720)' on a loose name match.
+        let tri = |d: &MindDef, l| mind_stats(d, l);
+        assert_eq!(
+            (tri(def("3001"), 1), tri(def("3001"), 10)),
+            ([0, 50, 0], [0, 100, 0])
+        );
+        assert_eq!(tri(def("7202"), 10), [0, 0, 400]);
+        assert_eq!(
+            (tri(def("1005"), 1), tri(def("1005"), 10)),
+            ([480, 400, 0], [720, 650, 0])
+        );
+        // A conditional bonus (【波紋使い】のATK+6500) is not the flat stat.
+        assert_eq!(tri(def("8104"), 1), [0, 0, 2000]);
+        // Lv10 from an original-game screenshot; Lv1 a marked default (round(Lv10 x 0.71)).
+        assert_eq!(
+            (tri(def("7392"), 1), tri(def("7392"), 10)),
+            ([0, 511, 0], [0, 720, 0])
+        );
+        // Linear in between; Minds without Lv10 keep their Lv1 values.
+        assert_eq!(tri(def("0001"), 1), [750, 500, 0]);
+        assert_eq!(tri(def("0001"), 4), [1000, 600, 0]);
+        assert_eq!(tri(def("0001"), 10), [1500, 800, 0]);
+        assert_eq!(tri(def("7089"), 10), [610, 520, 0]);
+    }
+
+    #[test]
+    fn focus_follows_the_fixed_stats() {
+        assert_eq!(mind_focus("8109"), "HP");
+        assert_eq!(mind_focus("7142"), "DEF");
+        assert_eq!(mind_focus("8104"), "DEF");
+        assert_eq!(mind_focus("3005"), "ATK");
+        let o = OwnedMind {
+            uid: 1,
+            mind_id: "0001".into(),
+            level: 10,
+            ..Default::default()
+        };
+        let v = mind_info(&o);
+        assert_eq!(
+            (v["hp"].as_i64(), v["atk"].as_i64()),
+            (Some(1500), Some(800))
+        );
+    }
 }
 
 /// Skill Minds, Mind links, skill levels and time stop (docs/research/26-links-and-skills.md).
