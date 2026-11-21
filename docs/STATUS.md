@@ -2,7 +2,7 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
-## Build 35 — the win shot faces the winner (branch `wip/b35`)
+## Build 35 — battle shots measured on the original, the win shot faces the winner (branch `wip/b35`)
 
 ### What the owner showed
 - A screen recording of Build 34 (private, `local/wiki-raw/device-rec/`): the angles still looked
@@ -15,12 +15,22 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
   the frame the battle shots use, so our "in front" landed behind. The result nodes are turned
   180 degrees about the winner (rotate.y + 180, offsets' x and z negated): low, tight, the winner
   right of centre and turned towards WIN!.
-- Build number 35, server marker `JDR_EMBEDDED_SERVER_b035`; the log still reads
-  `Node_el_camera_node_common 27 rows` (same nodes, new values).
+- **Battle shots measured on the original frames** (docs/research/31 §3): the owner then said the
+  battle angles were still off from the videos. Measured on X9xSMXBpsQw 113-133, ZCUC-PwLXxA
+  460-920 and X9xS 628, the original's main shot stands on the turn camera's side 45-60 degrees off
+  the attacker's facing, low (about 1.1 m) and level, about 5 m away: the attacker at the left
+  third head to feet, the target nearer at the right. The second is over the attacker's shoulder
+  about 3.8 m back. Ours were perpendicular or behind, 2.6-4.6 m away and 1.6-2.0 m up (Jotaro cut
+  off at 0:37). Attacks and skills now use these two (and a wider variant); SP skills add the low
+  front close-up, the reverse and the high wide view. Field of view 36 degrees.
+- Build number 35, server marker `JDR_EMBEDDED_SERVER_b035`; the log reads
+  `Node_el_camera_node_common 21 rows`.
 
 ### Device checklist
 - [ ] Log: `[boot] jdr embedded build 35`
 - [ ] Win pose: the winner's face and chest from below, right of centre, not their back
+- [ ] Attacks and skills: the attacker at the left third head to feet, the target nearer at the
+      right, a low camera; sometimes over the attacker's shoulder
 - [ ] Battle: any shot that still looks wrong, with its time in a recording and the statue's name
 
 ## Build 34 — the last Build 33, numbered so it can be told apart (branch `wip/b34`)
