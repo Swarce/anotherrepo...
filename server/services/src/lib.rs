@@ -253,6 +253,25 @@ impl Ctx {
                 for e in l.stats.art_errors.iter().take(5) {
                     jdr_core::log::line("art", &format!("{}: skipped: {e}", l.name));
                 }
+                // the statue thumbnails: what the client will load (docs/research/28)
+                if l.name.starts_with("ui_statue_") {
+                    jdr_core::log::line(
+                        "art",
+                        &format!(
+                            "{}: {} image(s) in this rebuild, served as {} ({} bytes, md5 {}{})",
+                            l.name,
+                            l.stats.art,
+                            l.obf,
+                            l.size,
+                            l.md5,
+                            if l.on_device {
+                                ", already on the phone"
+                            } else {
+                                ""
+                            }
+                        ),
+                    );
+                }
             }
             if let Some(a) = &self.art {
                 let (done, unmatched) = loc.iter().fold((0, 0), |x, l| {
