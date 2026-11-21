@@ -16,7 +16,7 @@ rescue use local stand-ins.
 
 ## where it's at
 
-we're on **Build 35**. every build's changes and what to check on a phone are in
+we're on **Build 37**. every build's changes and what to check on a phone are in
 [docs/STATUS.md](docs/STATUS.md), and the plan is in [docs/ROADMAP.md](docs/ROADMAP.md). nothing
 counts as fixed until a device log shows it.
 
@@ -29,7 +29,7 @@ what works offline right now:
 - **tactical battles:** turns, damage, skills and cool turns, leader, assist and Mind abilities,
   Reversal, chains, the boss intro, the win screen and stage missions, with values rebuilt from
   public wikis. the battle cameras are still being matched to the original's footage, and Build
-  35 still needs testing on a phone.
+  37 still needs testing on a phone.
 - **action battles:** enemy waves on the stage's spawn points, plus attack, skill, SP and finisher
   (also still needs a phone test).
 - **collection:** statues (real stats for 206 of 292, from the wikis), Minds, the growth tree,

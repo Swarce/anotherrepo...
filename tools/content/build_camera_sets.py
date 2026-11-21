@@ -117,16 +117,11 @@ EXTRA_NODES = [
     # the client's own test node and the old side view (kept for ids nothing else claims)
     node("ski_cam_00", 0, 0, (-20, 0, 0), 13.0, 25.0, (0, 0, 0), (0, 0.6, 0)),
     node("jdr_side", 0, 0, (-8, 180, 0), 9.0, 30.0, (0, 1.0, 0), (0, 1.0, 0)),
-    # win pose (footage: ZCUC-PwLXxA 5:17-5:22 and 9:06, X9xSMXBpsQw 6:16-6:20): a tight head-and-
-    # chest shot from well below (about 25-30 degrees up at the face), the winner right of centre
-    # and turned towards screen left where WIN! sits; it starts closer and more turned and settles
-    # over about 1 s, then holds
-    # The winner stands on the result pivot facing away from the frame the battle shots use: the
-    # owner's recording of Build 34 (0:48-0:52) showed this shot from behind. So the result nodes
-    # are those numbers turned 180 degrees about the winner (rotate.y + 180, offsets' x and z
-    # negated).
-    node("jdr_result", SPINE2, NECK, (30, 214, 0), 1.0, 34, (0, 0, 0), (-0.2, 0.12, 0)),
-    node("jdr_result_b", SPINE2, NECK, (26, 207, 0), 1.15, 34, (0, 0, 0), (-0.26, 0.1, 0)),
+    # win pose (the owner's screenshot of the original, and ZCUC-PwLXxA 5:17-5:22, X9xSMXBpsQw
+    # 6:16-6:20): static while the appeal animation plays; the winner faces the camera, right of
+    # centre (about 70 % across), framed from the top of the head to the upper thighs, the camera a
+    # little below chest height. Checked by rendering the statues' own win-appeal clip.
+    node("jdr_result", SPINE2, NECK, (5, 16, 0), 2.4, 34, (0, 0, 0), (0.5, -0.35, 0)),
     # boss intro (id 201, not mirrored, always an enemy facing -X: a negative rotate.y is the
     # watched side): low on the legs, then a tilted low full-body shot (crane up)
     node("jdr_boss_a", WAIST, WAIST, (22, -24, 0), 2.0, 34, (0, 0, 0), (0, -0.4, 0)),
@@ -207,8 +202,14 @@ BOSS_INTRO = {201, 202, 204, 100201}  # 201 the client's; 202/204/100201 request
 FINISH = {100300, 100301, 100310, 100311, 350, 351}
 
 
-def step(nid, sec):
-    return {"cameraNode": nid, "sec": sec, "inter": 0.0, "targetIDBase": 0, "targetIDLookat": 0}
+def step(nid, sec, inter=1.0):
+    # `inter` is the share of the way the camera moves towards this step's pose on every frame
+    # (ScriptCamera.SetCameraInfo 0xD6FE60: position and field of view are
+    # Lerp(current, pose, inter); only the rotation is set outright, looking at the target).
+    # 0 never moves the camera: Builds 33-36 sent 0 and the camera stayed at the turn view's
+    # position, only turning towards the attacker. 1 cuts to the pose and follows it exactly; the
+    # client's own sample sets use 0.3.
+    return {"cameraNode": nid, "sec": sec, "inter": inter, "targetIDBase": 0, "targetIDLookat": 0}
 
 
 def steps(shot, push=1.2):
@@ -226,7 +227,7 @@ def cam_set(cid, data, begin=0.0, end=0.3):
 sets, used = [], collections.Counter()
 for cid in sorted(set(old_ids) | set(roles)):
     if cid in RESULT:
-        data = [step("jdr_result", 1.0), step("jdr_result_to_b", 4.0)]
+        data = [step("jdr_result", 5.0)]
         used["result"] += 1
         sets.append(cam_set(cid, data))
     elif cid in BOSS_INTRO:
@@ -268,11 +269,10 @@ for cid in sorted(set(old_ids) | set(roles)):
 
 by_id = {n["id"]: n for n in EXTRA_NODES}
 nodes = [n for a0, b0 in SHOTS.values() for n in (a0, delta(a0["id"] + "_to_b", a0, b0))]
-nodes += [n for n in EXTRA_NODES if n["id"] not in ("jdr_result_b", "jdr_boss_b")]
+nodes += [n for n in EXTRA_NODES if n["id"] not in ("jdr_boss_b",)]
 if a.calibrate:
     nodes.append(node("jdr_calib", SPINE2, SPINE2, (-50, 40, 0), 4.5, 45))
-nodes += [delta("jdr_result_to_b", by_id["jdr_result"], by_id["jdr_result_b"]),
-          delta("jdr_boss_a_to_b", by_id["jdr_boss_a"], by_id["jdr_boss_b"])]
+nodes += [delta("jdr_boss_a_to_b", by_id["jdr_boss_a"], by_id["jdr_boss_b"])]
 old_nodes = json.load(open(node_path))
 old_nodes["about"] = ("Camera nodes (tools/content/build_camera_sets.py, docs/research/31-battle-camera.md): the shots of the "
                       "original battle footage, framed on the acting unit's bones (CharacterBoneList.Bone WAIST 1, SPINE2 4, "
