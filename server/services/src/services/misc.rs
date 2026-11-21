@@ -46,7 +46,7 @@ pub fn get_menu_notify(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let mut m = p.progress.missions.clone();
     m.roll(jdr_core::clock::now());
     ok(json!({
-        "notAllowedFunction": [], "unopenedNotify": 0, "unopenedPresent": 0,
+        "notAllowedFunction": [], "unopenedNotify": 0, "unopenedPresent": p.progress.presents.waiting(),
         "unopenedAchievement": m.claimable(p.rank),
         "unopenedFollower": 0, "gashaPlayNum": 0, "myTownMember": 0, "unreadChatFlg": 0, "unapprovedMemberFlg": 0
     }))

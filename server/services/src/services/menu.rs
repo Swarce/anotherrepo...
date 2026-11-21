@@ -1,5 +1,5 @@
-//! MyPage menu screens that are still empty offline: present box, follow list, items, shops and
-//! Town recommendations. Story quests live in `bizarre.rs`; the collection in `statue.rs`.
+//! MyPage menu screens that are still empty offline: follow list, notices and Town
+//! recommendations. Story quests live in `bizarre.rs`; the collection in `statue.rs`.
 
 use crate::app::ApiResult;
 use crate::services::ok;
@@ -13,11 +13,6 @@ pub fn clan_recommend(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({}))
 }
 
-/// `PresentListResponse` for either tab (`receivedFlag` 0 or 1): an empty box shown as page 1 of 1.
-pub fn present_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    ok(json!({ "allPresentNum": 0, "allPageNum": 1, "presentList": [] }))
-}
-
 /// `FollowListResponse`: nobody followed; `sortType` 0 is `FollowListSort.SortType.Default`.
 pub fn follow_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "sortType": 0, "followList": [] }))
@@ -27,21 +22,6 @@ pub fn follow_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
 pub fn notify_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "updateUrl": "", "failureUrl": "", "otherUrl": "",
                "updateNewFlg": 0, "failureNewFlg": 0, "otherNewFlg": 0 }))
-}
-
-/// `EventShopListResponse`: no event shops offline.
-pub fn event_shop_list(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
-    ok(json!({ "eventShopList": [], "itemList": [] }))
-}
-
-/// `PresentGetResponse` (inbox claim): the box is empty.
-pub fn present_get(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
-    let p = crate::services::statue::profile(ctx, env)?;
-    ok(
-        json!({ "recieveFlg": 0, "allPresentNum": 0, "allPageNum": 1, "presentList": [],
-               "userInfo": crate::services::user::user_info(&p), "dataList": {},
-               "getPresentList": [], "originalStatueInfo": [] }),
-    )
 }
 
 /// Book-keeping routes the menus call (protect, sort order, "new" marks): accepted, nothing to
@@ -76,14 +56,8 @@ mod tests {
     fn menu_routes_are_known_and_empty() {
         let dir = std::env::temp_dir().join(format!("jdr-menu-{}", std::process::id()));
         let ctx = Ctx::new(Settings::new(dir), false);
-        for (path, param, list_fields) in [
-            (
-                "/present/present_list",
-                json!({"prevNum": 1, "receivedFlag": 0}),
-                &["presentList"][..],
-            ),
-            ("/follow/follow_list", json!({}), &["followList"][..]),
-        ] {
+        for (path, param, list_fields) in [("/follow/follow_list", json!({}), &["followList"][..])]
+        {
             let (r, known) = dispatch(&ctx, path, &env(param));
             assert!(known, "{path}");
             let m = r.unwrap_or_else(|_| panic!("{path} failed"));

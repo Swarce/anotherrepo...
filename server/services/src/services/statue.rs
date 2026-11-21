@@ -23,8 +23,17 @@ pub fn with_profile<R>(
         if fresh {
             p.gold += crate::items::STARTING_GOLD;
         }
+        // The one-time welcome gift waits in the Message Box (Build 22).
+        let welcomed = p.progress.presents.welcome(jdr_core::clock::now());
         let (r, change) = f(p);
-        (r, if granted { Change::Progress } else { change })
+        (
+            r,
+            if granted || welcomed {
+                Change::Progress
+            } else {
+                change
+            },
+        )
     }) {
         Ok(Some(x)) => Ok(x),
         Ok(None) => Err(ApiError::Status(10003)), // E_SESSION_NG

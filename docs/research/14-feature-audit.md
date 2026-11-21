@@ -57,7 +57,7 @@ system (Arena, Labyrinth, Town, events) that the client needs a whole protocol f
 |---|---|---|---|
 | home.leader | server ✓ | Main tactical team leader on My Page (`statue_setting_table`, Build 12) | Alternate voice lines are client side |
 | home.resources | server ✓ | `user_info`: rank, AP (always full), gold, coins | — |
-| home.present_box | server | `present/present_list`, `present/get`, `get_all` (empty box) | — |
+| home.present_box | server | Message Box with mission rewards and a welcome gift; receive one or all (Build 22, docs/research/18) | Count Up tickets |
 | home.missions | missing | `trophy/trophy_list` empty | Priority 2 |
 | home.notices | partial | `info/*` routes return empty lists | Offline: no notices (choice) |
 | home.collection | server | `book/statue_list`, `mind_list`, `item_list`, `yogo_list` | Collection achievements depend on missions |
@@ -135,8 +135,8 @@ We send its tables (reaction tables, `battle_damage_param`, `battle_combo_param`
 | economy.guaranteed_slot | server | Normal draws 86/12.5/1.5 (3/4/5-star); the tenth draw of a 10x summon is the guaranteed slot, 98.5/1.5 (4/5-star; launch guide), since Build 20 | — |
 | economy.friend_gacha | missing | — | Friend points have no use offline |
 | economy.inventory_expand / refill_revive | offline | Continue is free; no inventory cap | — |
-| economy.box / count_up | missing | — | Later, needs banner data |
-| economy.exchange | partial | One shop with no goods; event shops empty | Later |
+| economy.box / count_up | server | Statue Box Summon (50 per box, Reset, Box Status) and the Count Up rounds with tickets in the Message Box (Build 22, docs/research/21) | Contents and ticket ours |
+| economy.exchange | server | Ring Exchange (Build 21); event exchange for Fight Coins from event quests (Build 22, docs/research/20) | Currency and goods ours |
 | economy.cola | offline | BP unused | — |
 | economy.daily_reset | missing | No daily logic | Priority 5 |
 
@@ -181,11 +181,11 @@ examples and 8 event Minds. The numeric data is unchanged.
 | v2.growth.launch_slots / cp_level / cp_reject | missing | No Mind equipment yet | Use as checks when the Mind equip routes are built; the four slots are launch-era (dated) |
 | v2.growth.tree_resources | partial | Server-built tree with stat squares | SP, DoDoDo stocks and Mind-capacity squares wait for Minds |
 | v2.growth.material_rarity / crossfeed | missing | No EXP-material inventory | Item system (later) |
-| v2.growth.assist_display / assist_conditions / assist_scaling | missing | No assists | The scaling rule is provisional: keep it configurable |
+| v2.growth.assist_display / assist_conditions / assist_scaling | partial | Assists equip per seat; the stat bonus formula is the client's, constants ours (Build 22, docs/research/19) | Assist abilities and skills |
 | v2.action.armor_weak / armor_strong / crit_legacy / unity_phases / unity_stack / zeppeli_sacrifice | client | Action battle behaviour; the client's tables decide | Action battle is unverified offline |
 | v2.arena.* (8 rows) | missing | — | Keep the early (no switching, BP 5, cost lock) and later rule sets apart. Opponents were AI-controlled teams (2018 guide), which fits an offline build |
 | v2.labyrinth.* (10 rows) | missing | — | Pending rewards paid only on full clear or escape; Soul loss on defeat or retire; zero Souls forfeits. 22 Tarot identities, each used once until the deck resets; flipping all three costs 20 Mentality. Upright values only |
-| v2.countup.old_ticket / ticket_pool / ticket_delivery | missing | — | Per-banner config if ever built (20/30/50/50/50; the ticket goes to the present box) |
+| v2.countup.old_ticket / ticket_pool / ticket_delivery | server | Tiers 20/30/50/50/50; the ticket goes to the Message Box (Build 22) | Which ticket each round gave is unknown (ours) |
 | v2.events.* (9 rows) | offline / missing | Four event chapters playable (Build 20); no points, ranking or exchange | One-event examples, not general rules; never sum anniversary tiers |
 
 **Player flows** (`catalog/player_flows.json`, 33). Their audit checks match the boot, home,
