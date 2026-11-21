@@ -1,6 +1,6 @@
 {
  "asset": "Set_el_camera_set_common",
- "about": "Script camera sets for every camera id the client hard-codes and every id the statues' tactical action sets request (tools/content/build_camera_sets.py, docs/research/31-battle-camera.md): each requested id plays the shot measured for it in the original footage, or one chosen by the kind of action and the role of the states that request it with the measured frequencies; normal attacks glide (inter 0.09), skills and SPs cut (inter 1.0); win shots (301-314, 101001-101028) a still facing shot; the boss intro (201) a crane up to a tilted full-body shot; stage finishes (100300-100311, 350/351) a ground-level shot. flagMaintain stays false so each shot ends on its own.",
+ "about": "Script camera sets for every camera id the client hard-codes and every id the statues' tactical action sets request (tools/content/build_camera_sets.py, docs/research/31-battle-camera.md): each requested id plays the shot measured for it in the original footage, or one chosen by the kind of action and the role of the states that request it with the measured frequencies; attacks stay on the client's Overview two-shot (forceNormalCamera); every step has inter 1: glides are eased timed blends that enter from the Overview's pose, cuts are 0.001 s steps; win shots (301-314, 101001-101028) a still facing shot; the boss intro (201) a crane up to a tilted full-body shot; stage finishes (100300-100311, 350/351) a ground-level shot. flagMaintain stays false so each shot ends on its own.",
  "sources": [
   {
    "source": "jdr-research",
@@ -29,13 +29,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_behind_0",
-      "sec": 1.2,
+      "sec": 0.3,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_behind_1",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_2",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_3",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_4",
       "sec": 0.5,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -1406,13 +1427,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_behind_0",
-      "sec": 1.2,
+      "sec": 0.3,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_behind_1",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_2",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_3",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_4",
       "sec": 0.5,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -1435,13 +1477,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_behind_0",
-      "sec": 1.2,
+      "sec": 0.3,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_behind_1",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_2",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_3",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_4",
       "sec": 0.5,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -1464,13 +1527,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_behind_0",
-      "sec": 1.2,
+      "sec": 0.3,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_behind_1",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_2",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_3",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_4",
       "sec": 0.5,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -1493,13 +1577,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_behind_0",
-      "sec": 1.2,
+      "sec": 0.3,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_behind_1",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_2",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_3",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_4",
       "sec": 0.5,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -1522,13 +1627,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_behind_0",
-      "sec": 1.2,
+      "sec": 0.3,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_behind_1",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_2",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_3",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_4",
       "sec": 0.5,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -1551,13 +1677,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_behind_0",
-      "sec": 1.2,
+      "sec": 0.3,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_behind_1",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_2",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_3",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_4",
       "sec": 0.5,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -1580,13 +1727,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_behind_0",
-      "sec": 1.2,
+      "sec": 0.3,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_behind_1",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_2",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_3",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_4",
       "sec": 0.5,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -1609,13 +1777,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_behind_0",
-      "sec": 1.2,
+      "sec": 0.3,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_behind_1",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_2",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_3",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_4",
       "sec": 0.5,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -1638,13 +1827,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_behind_0",
-      "sec": 1.2,
+      "sec": 0.3,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_behind_1",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_2",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_3",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_4",
       "sec": 0.5,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -1703,8 +1913,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_SIDE_GLIDE_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -1725,8 +1963,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_SIDE_GLIDE_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -1819,13 +2085,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_0",
-      "sec": 1.0,
+      "sec": 0.25,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -1920,8 +2207,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -2000,8 +2315,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -2022,22 +2365,78 @@
     "dataList": [
      {
       "cameraNode": "jdr_NA_PUSH_0",
-      "sec": 0.6,
-      "inter": 0.09,
+      "sec": 0.15,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_NA_PUSH_1",
-      "sec": 1.5,
-      "inter": 0.09,
+      "sec": 0.15,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_NA_PUSH_2",
-      "sec": 2.0,
-      "inter": 0.09,
+      "sec": 0.15,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NA_PUSH_3",
+      "sec": 0.15,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NA_PUSH_4",
+      "sec": 0.9,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NA_PUSH_5",
+      "sec": 0.32,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NA_PUSH_6",
+      "sec": 0.32,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NA_PUSH_7",
+      "sec": 0.32,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NA_PUSH_8",
+      "sec": 0.32,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NA_PUSH_9",
+      "sec": 0.32,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NA_PUSH_10",
+      "sec": 1.0,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -2058,8 +2457,43 @@
     "dataList": [
      {
       "cameraNode": "jdr_DEFAULT_HOLD_0",
-      "sec": 1.0,
-      "inter": 0.05,
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_1",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_2",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_3",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_4",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_5",
+      "sec": 0.3,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -2080,8 +2514,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -2102,8 +2564,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_SIDE_GLIDE_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -2124,13 +2614,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_0",
-      "sec": 1.0,
+      "sec": 0.25,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -2189,8 +2700,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -2211,8 +2750,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -2313,13 +2880,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_TOPDOWN_0",
-      "sec": 1.0,
+      "sec": 0.25,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_TOPDOWN_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_4",
       "sec": 1.5,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -2342,13 +2930,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_0",
-      "sec": 1.0,
+      "sec": 0.25,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -2443,8 +3052,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -2523,13 +3160,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_HIGH_BEHIND_PARTY_0",
-      "sec": 2.5,
+      "sec": 0.625,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_HIGH_BEHIND_PARTY_1",
+      "sec": 0.625,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_PARTY_2",
+      "sec": 0.625,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_PARTY_3",
+      "sec": 0.625,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_PARTY_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -2552,8 +3210,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_SIDE_GLIDE_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -2574,8 +3260,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -2596,8 +3310,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_SIDE_GLIDE_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -2726,13 +3468,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_0",
-      "sec": 1.0,
+      "sec": 0.25,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -2871,13 +3634,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_0",
-      "sec": 1.0,
+      "sec": 0.25,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -2900,8 +3684,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_SIDE_GLIDE_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -2922,8 +3734,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -3024,8 +3864,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_CLOSE_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.225,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_CLOSE_1",
+      "sec": 0.225,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_CLOSE_2",
+      "sec": 0.225,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_CLOSE_3",
+      "sec": 0.225,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_CLOSE_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -3046,13 +3914,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_TOPDOWN_0",
-      "sec": 1.0,
+      "sec": 0.25,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_TOPDOWN_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_4",
       "sec": 1.5,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -3097,8 +3986,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -3119,8 +4036,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -3141,8 +4086,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_SIDE_GLIDE_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -3235,13 +4208,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_HIGH_BEHIND_PARTY_0",
-      "sec": 2.5,
+      "sec": 0.625,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_HIGH_BEHIND_PARTY_1",
+      "sec": 0.625,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_PARTY_2",
+      "sec": 0.625,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_PARTY_3",
+      "sec": 0.625,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_PARTY_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -3322,8 +4316,43 @@
     "dataList": [
      {
       "cameraNode": "jdr_DEFAULT_HOLD_0",
-      "sec": 1.0,
-      "inter": 0.05,
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_1",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_2",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_3",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_4",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_5",
+      "sec": 0.3,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -3562,13 +4591,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_HIGH_BEHIND_DRIFT_0",
-      "sec": 1.5,
+      "sec": 0.375,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_HIGH_BEHIND_DRIFT_1",
+      "sec": 0.375,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_DRIFT_2",
+      "sec": 0.375,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_DRIFT_3",
+      "sec": 0.375,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_DRIFT_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -3779,13 +4829,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_HIGH_BEHIND_DRIFT_0",
-      "sec": 1.5,
+      "sec": 0.375,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_HIGH_BEHIND_DRIFT_1",
+      "sec": 0.375,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_DRIFT_2",
+      "sec": 0.375,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_DRIFT_3",
+      "sec": 0.375,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_DRIFT_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -3866,13 +4937,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_HIGH_BEHIND_PARTY_0",
-      "sec": 2.5,
+      "sec": 0.625,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_HIGH_BEHIND_PARTY_1",
+      "sec": 0.625,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_PARTY_2",
+      "sec": 0.625,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_PARTY_3",
+      "sec": 0.625,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_PARTY_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -4075,8 +5167,43 @@
     "dataList": [
      {
       "cameraNode": "jdr_DEFAULT_HOLD_0",
-      "sec": 1.0,
-      "inter": 0.05,
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_1",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_2",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_3",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_4",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_5",
+      "sec": 0.3,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -4213,8 +5340,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -4436,13 +5591,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_HIGH_BEHIND_PARTY_0",
-      "sec": 2.5,
+      "sec": 0.625,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_HIGH_BEHIND_PARTY_1",
+      "sec": 0.625,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_PARTY_2",
+      "sec": 0.625,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_PARTY_3",
+      "sec": 0.625,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_PARTY_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -4465,13 +5641,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_0",
-      "sec": 1.0,
+      "sec": 0.25,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -4494,13 +5691,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_0",
-      "sec": 1.0,
+      "sec": 0.25,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -4603,8 +5821,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -4625,13 +5871,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_TOPDOWN_0",
-      "sec": 1.0,
+      "sec": 0.25,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_TOPDOWN_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_4",
       "sec": 1.5,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -4761,8 +6028,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_SIDE_GLIDE_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -4841,8 +6136,43 @@
     "dataList": [
      {
       "cameraNode": "jdr_DEFAULT_HOLD_0",
-      "sec": 1.0,
-      "inter": 0.05,
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_1",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_2",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_3",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_4",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_5",
+      "sec": 0.3,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -4885,8 +6215,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -4907,13 +6265,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_HIGH_BEHIND_DRIFT_0",
-      "sec": 1.5,
+      "sec": 0.375,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_HIGH_BEHIND_DRIFT_1",
+      "sec": 0.375,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_DRIFT_2",
+      "sec": 0.375,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_DRIFT_3",
+      "sec": 0.375,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_DRIFT_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -5129,8 +6508,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_SIDE_GLIDE_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -5223,8 +6630,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_SIDE_GLIDE_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -5303,8 +6738,43 @@
     "dataList": [
      {
       "cameraNode": "jdr_DEFAULT_HOLD_0",
-      "sec": 1.0,
-      "inter": 0.05,
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_1",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_2",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_3",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_4",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_DEFAULT_HOLD_5",
+      "sec": 0.3,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -5383,8 +6853,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -5584,13 +7082,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_0",
-      "sec": 1.0,
+      "sec": 0.25,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -5734,8 +7253,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_SIDE_GLIDE_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -5886,8 +7433,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -6137,8 +7712,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_SIDE_GLIDE_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -6217,8 +7820,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -6239,8 +7870,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -6646,8 +8305,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -6668,22 +8355,78 @@
     "dataList": [
      {
       "cameraNode": "jdr_ST3_PUSH_0",
-      "sec": 0.5,
-      "inter": 0.09,
+      "sec": 0.175,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_ST3_PUSH_1",
-      "sec": 1.2,
-      "inter": 0.09,
+      "sec": 0.175,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_ST3_PUSH_2",
-      "sec": 1.5,
-      "inter": 0.09,
+      "sec": 0.175,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ST3_PUSH_3",
+      "sec": 0.175,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ST3_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ST3_PUSH_5",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ST3_PUSH_6",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ST3_PUSH_7",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ST3_PUSH_8",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ST3_PUSH_9",
+      "sec": 0.24,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_ST3_PUSH_10",
+      "sec": 1.0,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -6704,22 +8447,78 @@
     "dataList": [
      {
       "cameraNode": "jdr_NA_PUSH_0",
-      "sec": 0.6,
-      "inter": 0.09,
+      "sec": 0.15,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_NA_PUSH_1",
-      "sec": 1.5,
-      "inter": 0.09,
+      "sec": 0.15,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_NA_PUSH_2",
-      "sec": 2.0,
-      "inter": 0.09,
+      "sec": 0.15,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NA_PUSH_3",
+      "sec": 0.15,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NA_PUSH_4",
+      "sec": 0.9,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NA_PUSH_5",
+      "sec": 0.32,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NA_PUSH_6",
+      "sec": 0.32,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NA_PUSH_7",
+      "sec": 0.32,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NA_PUSH_8",
+      "sec": 0.32,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NA_PUSH_9",
+      "sec": 0.32,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NA_PUSH_10",
+      "sec": 1.0,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -6740,22 +8539,78 @@
     "dataList": [
      {
       "cameraNode": "jdr_FOLLOW_0",
-      "sec": 0.3,
-      "inter": 0.09,
+      "sec": 0.175,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_FOLLOW_1",
-      "sec": 1.2,
-      "inter": 0.09,
+      "sec": 0.175,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_FOLLOW_2",
+      "sec": 0.175,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_FOLLOW_3",
+      "sec": 0.175,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_FOLLOW_4",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_FOLLOW_5",
+      "sec": 0.2,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_FOLLOW_6",
+      "sec": 0.2,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_FOLLOW_7",
+      "sec": 0.2,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_FOLLOW_8",
+      "sec": 0.2,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_FOLLOW_9",
+      "sec": 0.2,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_FOLLOW_10",
       "sec": 1.0,
-      "inter": 0.09,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -6776,13 +8631,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_TOPDOWN_0",
-      "sec": 1.0,
+      "sec": 0.25,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_TOPDOWN_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_4",
       "sec": 1.5,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -6805,13 +8681,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_TOPDOWN_0",
-      "sec": 1.0,
+      "sec": 0.25,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_TOPDOWN_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_4",
       "sec": 1.5,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -6870,8 +8767,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -6892,8 +8817,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -7022,8 +8975,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -7066,8 +9047,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_SIDE_GLIDE_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -7124,13 +9133,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_0",
-      "sec": 1.0,
+      "sec": 0.25,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -7310,8 +9340,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -7412,8 +9470,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -7434,8 +9520,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_STAND_PUSH_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_STAND_PUSH_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -7456,8 +9570,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_SIDE_GLIDE_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -7572,13 +9714,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_0",
-      "sec": 1.0,
+      "sec": 0.25,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -7637,13 +9800,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_HIGH_BEHIND_PARTY_0",
-      "sec": 2.5,
+      "sec": 0.625,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_HIGH_BEHIND_PARTY_1",
+      "sec": 0.625,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_PARTY_2",
+      "sec": 0.625,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_PARTY_3",
+      "sec": 0.625,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_HIGH_BEHIND_PARTY_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -7666,13 +9850,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_TOPDOWN_0",
-      "sec": 1.0,
+      "sec": 0.25,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_TOPDOWN_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_TOPDOWN_4",
       "sec": 1.5,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -7717,13 +9922,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_0",
-      "sec": 1.0,
+      "sec": 0.25,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_NEAR_DEFAULT_WIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_NEAR_DEFAULT_WIDE_4",
       "sec": 1.0,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -7782,8 +10008,36 @@
     "dataList": [
      {
       "cameraNode": "jdr_SIDE_GLIDE_0",
-      "sec": 1.0,
-      "inter": 0.09,
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_1",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_2",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_3",
+      "sec": 0.25,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_SIDE_GLIDE_4",
+      "sec": 0.5,
+      "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      }
@@ -7826,13 +10080,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_behind_0",
-      "sec": 1.2,
+      "sec": 0.3,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_behind_1",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_2",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_3",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_4",
       "sec": 0.5,
       "inter": 1.0,
       "targetIDBase": 0,
@@ -7855,13 +10130,34 @@
     "dataList": [
      {
       "cameraNode": "jdr_behind_0",
-      "sec": 1.2,
+      "sec": 0.3,
       "inter": 1.0,
       "targetIDBase": 0,
       "targetIDLookat": 0
      },
      {
       "cameraNode": "jdr_behind_1",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_2",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_3",
+      "sec": 0.3,
+      "inter": 1.0,
+      "targetIDBase": 0,
+      "targetIDLookat": 0
+     },
+     {
+      "cameraNode": "jdr_behind_4",
       "sec": 0.5,
       "inter": 1.0,
       "targetIDBase": 0,

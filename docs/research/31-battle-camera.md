@@ -209,6 +209,27 @@ Also from the device comparison: a 0.05 s blend step shows its in-between pose f
 (now 0.001 s; 0 would divide by zero), and the low behind shot stood inside a Stand user's back
 (now 145°, 3.6 m, one pose).
 
+### Smoothing (Build 40)
+
+- `SetCameraInfo` runs once per rendered frame from LateUpdate (`CameraManager.CameraLateUpdate`
+  0xFA2AC4, only while the camera type is SCRIPTS). `inter` is a share per frame with no
+  deltaTime; the step clock (`playSec += Time.deltaTime`) is game time. The game targets 30 fps
+  (`TimeManager.set_TargetFrameRate` 0x1035454; 60 only with the high performance setting), so
+  inter 0.09 needed about 1.06 s for 95 %, not the 0.5 s it was tuned for.
+- The aim is never smoothed (`LookRotation` every frame; roll = inter × rotate.z), so any pose
+  change under inter < 1 jumps the aim in one frame and drags the position behind it. Only the
+  boss-end ids 100300–100399 get a 0.2-per-frame pre-lerp of position and look point
+  (`ScriptCameraLateUpdate` 0xD6E9E0).
+- Build 40 gives every step inter 1 and builds every move from timed step blends: eased with
+  sub-steps (ease-out quarters 0 / 0.44 / 0.75 / 0.94, or smoothstep fifths), so the speed is the
+  same at any frame rate. The glide shots (111000, 131000, 131101, STAND_PUSH, STAND_PUSH_CLOSE,
+  SIDE_GLIDE, DEFAULT_HOLD) start on the client's Overview pose for a melee pair (camera 1.31 m up,
+  3.36 m out, fov 40, the shot's own look point) and ease into the shot over 0.6–1.0 s; the moving
+  wide shots ease out into their hold.
+- The return to the turn view when a skill's script camera ends is the client's: it cuts unless
+  the action data sets `endInterpolationFlag` (3 of 2,545 original requests do). Making it glide
+  needs a one-instruction patch (0xFA5DA8 `csel` → `nop`); not applied, since the original cuts there.
+
 ## 9. Open (M)
 
 - The SP cinematics depend on animator assets in the player's files and on the skill rows; whether
