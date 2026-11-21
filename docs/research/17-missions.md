@@ -16,7 +16,7 @@ Read in the 3.12.0 client (H read in code, M inferred).
 - **Crashes (H):** a null `itemSetInfo` or a null list inside it; an `acEnd` that is null, empty or
   unparseable.
 - **Claims.** The response's `trophyList` replaces the client's list. `popupFlg` must be false
-  (true opens a store-review dialog). The client then says the rewards went to the message box.
+  (true opens a store-review dialog). The client then says the rewards went to the message box, and since Build 22 they do (docs/research/18).
   Our box is not built yet, so rewards arrive on the account directly: gold, free Diamond Coins,
   or catalog items. Friend points have no wallet offline.
 - **Home badge:** `get_menu_notify.unopenedAchievement` is the number of claimable missions.

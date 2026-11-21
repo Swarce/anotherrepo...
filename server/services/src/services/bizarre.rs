@@ -55,16 +55,18 @@ pub fn bizarre_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         .filter(|c| c.category == category)
         .map(|c| quests::chapter_info(c, &p.progress))
         .collect();
-    // Event Home backs out with an "expired" dialog unless eventCampaignId is set; ranking,
-    // collection points, shop, BGM and the event summon stay off (all 0 or "").
+    // Event Home backs out with an "expired" dialog unless eventCampaignId is set. The exchange
+    // is on (collect type 2 = items, Build 22): its button needs eventShopFlg 1, and Shop3 copies
+    // eventItemList (never null). Ranking, points, BGM and the event summon stay off.
     let event_info = quests::events()
         .iter()
         .find(|e| e.category == category)
         .map(|e| {
-            json!({ "eventCampaignId": e.event_id, "eventShopFlg": 0, "eventCollectType": 0,
+            json!({ "eventCampaignId": e.event_id, "eventShopFlg": 1, "eventCollectType": 2,
                 "eventRankingFlg": 0, "eventMissiongFlg": 0, "eventBg": "",
                 "htmlLink": format!("/information/event_{}.html", e.event_id), "eventBgm": "",
-                "eventTutorialImage": "", "eventItemList": [], "eventPointImage": "",
+                "eventTutorialImage": "",
+                "eventItemList": crate::services::item::event_coin_list(&p.collection), "eventPointImage": "",
                 "userEventPoint": 0, "clanEventPoint": 0, "endDate": "", "finishedDate": "",
                 "banner": e.banner })
         })
@@ -165,6 +167,8 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     }
     let won = result.unwrap_or(0) == 0;
     let found = quests::find_stage(&stage_id);
+    let is_event =
+        found.is_some_and(|(c, _)| quests::events().iter().any(|e| e.category == c.category));
     let (p, (paid, team)) = with_profile(ctx, env, |p| {
         let pending = p.progress.pending.take_if(|b| b.stage_id == stage_id);
         let team = pending.as_ref().and_then(|b| {
@@ -202,6 +206,13 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                 }
                 let uids = team.as_ref().map(|t| t.slots.to_vec()).unwrap_or_default();
                 p.collection.add_statue_exp(&uids, s.gain_rank_exp);
+                // Event quests drop the exchange currency (Build 22).
+                if is_event {
+                    p.collection.add_item(
+                        crate::items::EVENT_COIN,
+                        crate::items::EVENT_COINS_PER_CLEAR,
+                    );
+                }
                 ((Some(s), team), Change::Progress)
             }
             (_, _, true) => ((None, team), Change::Bookkeeping),
@@ -231,7 +242,13 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         "rewardList": empty(), "dropList": empty(), "firstRewardList": empty(), "starRewardList": empty(),
         "newRecordFlg": 0, "teamInfo": team, "gold": gold, "rankExp": rank_exp, "levelExp": rank_exp,
         "mindGashaPoint": 0, "supportUserInfo": {},
-        "eventResult": { "eventType": 0, "userEventPointAll": 0, "getUserEventPoint": 0, "eventRewardList": [], "getEventItemList": [] },
+        // eventType 3 (Item) lists the event currency gained; never null.
+        "eventResult": if is_event && paid.is_some() {
+            json!({ "eventType": 3, "userEventPointAll": 0, "getUserEventPoint": 0, "eventRewardList": [],
+                    "getEventItemList": [{ "itemId": crate::items::EVENT_COIN, "count": crate::items::EVENT_COINS_PER_CLEAR }] })
+        } else {
+            json!({ "eventType": 0, "userEventPointAll": 0, "getUserEventPoint": 0, "eventRewardList": [], "getEventItemList": [] })
+        },
         "dungeonClearFlag": 0, "dungeonGameoverFlag": 0, "nowEventRankingPoint": 0,
         // The result screen's high-score panel reads eventDataList.Count without a null check
         // (BattleResultHighScoreUIController.Setup 0xC0D4B4); an empty list shows no panel.
@@ -377,6 +394,10 @@ mod tests {
             assert!(chapters.iter().all(|c| c["category"] == cat));
             if q["bannerType"] == 3 {
                 assert_eq!(l["eventInfo"]["eventCampaignId"], q["eventMasterId"]);
+                // The exchange button: shop flag 1 and an item collect type; Shop3 copies the list.
+                assert_eq!(l["eventInfo"]["eventShopFlg"], 1);
+                assert_eq!(l["eventInfo"]["eventCollectType"], 2);
+                assert!(l["eventInfo"]["eventItemList"].is_array());
                 assert!(
                     cat >= 13,
                     "event chapters return to Event Home only from 13 up"

@@ -14,6 +14,7 @@ pub mod gasha;
 pub mod item;
 pub mod menu;
 pub mod misc;
+pub mod present;
 pub mod statue;
 pub mod team;
 pub mod tree;
@@ -55,6 +56,7 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/team/leader_change" => team::leader_change(ctx, env),
         "/team/set_team" => team::set_team(ctx, env),
         "/team/equip_multiple_minds" => team::equip_multiple_minds(ctx, env),
+        "/team/equip_multiple_assist" => team::equip_multiple_assist(ctx, env),
         "/team/equip_mind" => team::equip_mind(ctx, env),
         "/team/unlock_mind_seq" => team::unlock_mind_seq(ctx, env),
         "/mind/protect" => statue::mind_protect(ctx, env),
@@ -75,14 +77,15 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/support/support_user_s" => bizarre::support_user_s(ctx, env),
         "/bizarre/get_bizarre_select" => bizarre::get_bizarre_select(ctx, env),
         "/clan/recommend" => menu::clan_recommend(ctx, env),
-        "/present/present_list" => menu::present_list(ctx, env),
+        "/present/present_list" => present::present_list(ctx, env),
         "/follow/follow_list" => menu::follow_list(ctx, env),
         "/item/item_list" => item::item_list(ctx, env),
         "/shop/shop_list" => item::shop_list(ctx, env),
         "/shop/shop_buy" => item::shop_buy(ctx, env),
-        "/shop/event_shop_list" => menu::event_shop_list(ctx, env),
+        "/shop/event_shop_list" => item::event_shop_list(ctx, env),
+        "/shop/event_shop_buy" => item::event_shop_buy(ctx, env),
         "/item/exp_item_list" => item::exp_item_list(ctx, env),
-        "/present/get" | "/present/get_all" => menu::present_get(ctx, env),
+        "/present/get" | "/present/get_all" => present::present_get(ctx, env),
         "/trophy/trophy_result_get" | "/trophy/get_all_trophy_result" => {
             team::trophy_claim(ctx, env)
         }
@@ -103,6 +106,8 @@ pub fn dispatch(ctx: &Ctx, api: &str, env: &RequestEnvelope) -> (ApiResult, bool
         "/info/notify_list" => menu::notify_list(ctx, env),
         "/gasha/gasha_list" => gasha::gasha_list(ctx, env),
         "/gasha/gasha_play" => gasha::gasha_play(ctx, env),
+        "/gasha/get_box_gasha" => gasha::get_box_gasha(ctx, env),
+        "/gasha/reset_box_gasha" => gasha::reset_box_gasha(ctx, env),
         "/tree/skill_list" => tree::skill_list(ctx, env),
         "/tree/acquisition" => tree::acquisition(ctx, env),
         _ => return (Ok(Map::new()), false),

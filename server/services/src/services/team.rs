@@ -201,18 +201,6 @@ pub fn trophy_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "trophyList": p.progress.missions.trophy_list(p.rank, now) }))
 }
 
-/// Grant a mission reward to the account: gold (item 20), free Diamond Coins (0/10), or a
-/// catalog item. Friend points have no wallet offline. (The screen then says the rewards went to
-/// the message box; our box is not built yet, so they arrive directly.)
-fn grant(p: &mut crate::accounts::Profile, r: &crate::missions::Reward) {
-    match r.item_id {
-        20 => p.gold += r.count,
-        0 | 10 => p.stone_free += r.count,
-        id if crate::items::find(id).is_some() => p.collection.add_item(id, r.count),
-        _ => {}
-    }
-}
-
 /// `/trophy/trophy_result_get {achievementId}` (one) and `/trophy/get_all_trophy_result {}`
 /// (every claimable mission): the full updated list replaces the client's.
 pub fn trophy_claim(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
@@ -234,7 +222,8 @@ pub fn trophy_claim(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         let mut sets = Vec::new();
         for id in ids {
             if let Some(m) = p.progress.missions.claim(&id, p.rank) {
-                grant(p, &m.reward);
+                // The screen says rewards go to the Message Box, so they do (Build 22).
+                crate::services::present::send_mission_reward(p, m, now);
                 sets.push(crate::missions::reward_set(&m.reward));
             }
         }
@@ -344,6 +333,71 @@ pub fn equip_multiple_minds(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
                 }
                 (Ok(()), Change::Bookkeeping)
             }
+            Err(code) => (Err(code), Change::None),
+        }
+    })?;
+    r.map_err(ApiError::Status)?;
+    ok(json!({ "teamInfo": shown(&p.collection, team_num) }))
+}
+
+/// Apply an assist diff to a seat (docs/research/19-assists.md): seq 1..3, uid 0 empties the
+/// slot; an assist must be owned and not a main member of the team, and moves off the team's
+/// other seats.
+fn equip_assists(
+    c: &mut Collection,
+    team_num: i64,
+    seat: usize,
+    changes: &[(i64, i64)],
+) -> Result<(), i64> {
+    let Some(t) = c.teams.iter().find(|t| t.team_num == team_num) else {
+        return Err(E_NO_STATUE);
+    };
+    if c.known_statue(t.slots[seat]).is_none() {
+        return Err(E_NO_STATUE);
+    }
+    let mut seats = t.assists.clone();
+    for (seq, uid) in changes {
+        if !(1..=collection::MAX_ASSISTS).contains(seq) {
+            return Err(E_SLOT_LOCKED);
+        }
+        seats[seat].retain(|(s, _)| s != seq);
+        if *uid != 0 {
+            if c.known_statue(*uid).is_none() || t.slots.contains(uid) {
+                return Err(E_NO_STATUE);
+            }
+            for s in seats.iter_mut() {
+                s.retain(|(_, u)| u != uid);
+            }
+            seats[seat].push((*seq, *uid));
+        }
+    }
+    for s in seats.iter_mut() {
+        s.sort();
+    }
+    for t in teams_numbered(c, team_num) {
+        t.assists = seats.clone();
+    }
+    Ok(())
+}
+
+/// `/team/equip_multiple_assist {teamNum, statueSeq, statueList:[{equipSeq, statueuId}]}`: the
+/// client's diff of changed assist slots. The reply's team replaces the cached team `teamNum`.
+pub fn equip_multiple_assist(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
+    let team_num = team_num(env)?;
+    let seat = seat_of(env)?;
+    let changes: Vec<(i64, i64)> = env
+        .param
+        .get("statueList")
+        .and_then(Value::as_array)
+        .map(|a| {
+            a.iter()
+                .filter_map(|m| Some((m.get("equipSeq")?.as_i64()?, m.get("statueuId")?.as_i64()?)))
+                .collect()
+        })
+        .unwrap_or_default();
+    let (p, r) = with_profile(ctx, env, |p| {
+        match equip_assists(&mut p.collection, team_num, seat, &changes) {
+            Ok(()) => (Ok(()), Change::Bookkeeping),
             Err(code) => (Err(code), Change::None),
         }
     })?;
@@ -692,5 +746,91 @@ mod tests {
             .unwrap()
             .iter()
             .all(|m| m["useFlg"].is_i64()));
+    }
+
+    #[test]
+    fn assists_equip_move_and_refuse() {
+        let dir = std::env::temp_dir().join(format!("jdr-assists-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let ctx = Ctx::new(Settings::new(dir), false);
+        let uuid = ctx.accounts.create(&[]).unwrap().uuid;
+        let call = |path: &str, param: Value| dispatch(&ctx, path, &env(&uuid, param)).0;
+        let team = call("/team/team_info", json!({})).unwrap();
+        let p = ctx.accounts.get(&uuid).unwrap().unwrap();
+        let t = p.collection.teams.iter().find(|t| t.team_num == 1).unwrap();
+        let main = t.slots;
+        let free: Vec<i64> = p
+            .collection
+            .statues
+            .iter()
+            .map(|o| o.uid)
+            .filter(|u| !main.contains(u) && p.collection.known_statue(*u).is_some())
+            .take(2)
+            .collect();
+        let (a, b) = (free[0], free[1]);
+        assert!(
+            Value::Object(team)
+                .to_string()
+                .contains("\"assistStatueList\":[]"),
+            "empty lists, never null"
+        );
+
+        let r = call(
+            "/team/equip_multiple_assist",
+            json!({"teamNum": 1, "statueSeq": 1,
+                   "statueList": [{"equipSeq": 1, "statueuId": a}, {"equipSeq": 2, "statueuId": b}]}),
+        )
+        .unwrap();
+        let lead = &r["teamInfo"]["teamOrder"]["leaderStatue"];
+        let list = lead["assistStatueList"].as_array().unwrap();
+        assert_eq!(list.len(), 2);
+        assert_eq!(
+            (list[0]["seq"].as_i64(), list[0]["statueuId"].as_i64()),
+            (Some(1), Some(a))
+        );
+        assert!(
+            list[0]["statueId"].as_str().is_some_and(|s| !s.is_empty()),
+            "a whole StatueInfo"
+        );
+        assert_eq!(list[0]["assistAbilityList"], list[0]["dtAssistAbilityList"]);
+
+        // Move `a` to the left seat: it leaves the leader.
+        let r = call(
+            "/team/equip_multiple_assist",
+            json!({"teamNum": 1, "statueSeq": 2, "statueList": [{"equipSeq": 1, "statueuId": a}]}),
+        )
+        .unwrap();
+        let order = &r["teamInfo"]["teamOrder"];
+        assert_eq!(
+            order["leaderStatue"]["assistStatueList"]
+                .as_array()
+                .unwrap()
+                .len(),
+            1
+        );
+        assert_eq!(
+            order["memberLeftStatue"]["assistStatueList"][0]["statueuId"],
+            a
+        );
+
+        // Refused: a main member, slot 4, an unknown statue.
+        for (seq, uid) in [(3, main[1]), (4, a), (3, 999_999)] {
+            let bad = json!({"teamNum": 1, "statueSeq": 1,
+                             "statueList": [{"equipSeq": seq, "statueuId": uid}]});
+            assert!(
+                call("/team/equip_multiple_assist", bad).is_err(),
+                "{seq} {uid}"
+            );
+        }
+        // Clear.
+        let r = call(
+            "/team/equip_multiple_assist",
+            json!({"teamNum": 1, "statueSeq": 1, "statueList": [{"equipSeq": 2, "statueuId": 0}]}),
+        )
+        .unwrap();
+        assert_eq!(
+            r["teamInfo"]["teamOrder"]["leaderStatue"]["assistStatueList"],
+            json!([])
+        );
     }
 }
