@@ -117,15 +117,17 @@ impl ArtPack {
                     }
                 }
             }
-            let sprites = b.path().join("sprites");
-            if !sprites.is_dir() {
-                continue;
-            }
-            for f in rd(&sprites)?.flatten() {
-                let name = f.file_name().to_string_lossy().into_owned();
-                if name.ends_with(".png") {
-                    let key = format!("{}/sprites/{name}", b.file_name().to_string_lossy());
-                    files.insert(key, std::fs::read(f.path()).map_err(|e| e.to_string())?);
+            for kind in ["sprites", "thumbs"] {
+                let sub = b.path().join(kind);
+                if !sub.is_dir() {
+                    continue;
+                }
+                for f in rd(&sub)?.flatten() {
+                    let name = f.file_name().to_string_lossy().into_owned();
+                    if name.ends_with(".png") {
+                        let key = format!("{}/{kind}/{name}", b.file_name().to_string_lossy());
+                        files.insert(key, std::fs::read(f.path()).map_err(|e| e.to_string())?);
+                    }
                 }
             }
         }
