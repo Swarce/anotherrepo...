@@ -1,5 +1,5 @@
 {
- "about": "Statue traits: the {tribeTypeId: n} list of StatueInfo.tribeTypeList per statueId (docs/research/30-action-battle.md §7). n is the Jjs tribe id of the ATTR_TEXT_<n> label; only ids 1-11 and 15 are used. \"from\" says where a statue's set comes from: gamerch (its live statue page), shoutwiki (the page's categories), family (the agreeing set of its statueId[:4] family) or sibling (a hand-named family of the same character); from Build 43 also research (a research verdict, cited per row in \"rowSources\"). Statues in \"noTribe\" have sources that show no tribe and statues in \"none\" have no source; both send []. Built by tools/content/build_statue_traits.py.",
+ "about": "Statue traits: the {tribeTypeId: n} list of StatueInfo.tribeTypeList per statueId (docs/research/30-action-battle.md §7). n is the Jjs tribe id of the ATTR_TEXT_<n> label; only ids 1-11 and 15 are used. \"from\" says where a statue's set comes from: gamerch (its live statue page), shoutwiki (the page's categories), family (the agreeing set of its statueId[:4] family) or sibling (a hand-named family of the same character); from Build 43 also research (a research verdict, cited per row in \"rowSources\"; Build 44 also extends a set by the traits a status tab or trait list shows). Statues in \"noTribe\" have sources that show no tribe and statues in \"none\" have no source; both send []. Built by tools/content/build_statue_traits.py.",
  "sources": [
   {
    "source": "Gamerch ジョジョDR攻略Wiki (live statue pages, research pass)",
@@ -205,6 +205,24 @@
    "page": "https://jojodr.gamerch.com/",
    "accessed": "2026-11-22",
    "note": "traits for statues the rules above leave without a set (siblings' Gamerch sets, statue pages, ShoutWiki categories; high/medium only), each cited in rowSources with page, capture and access date"
+  },
+  {
+   "source": "鎖国的ブログ (ameblo; in-game status-tab screenshots, read as data)",
+   "page": "https://ameblo.jp/yamasan-drm/",
+   "accessed": "2026-11-22",
+   "note": "research-b44 (Build 44): sets for statues without one, and sets that extend ours by a trait the wiki categories lack (high/medium; a smaller or different set is reported, not applied), then a family fill from them; each cited in rowSources (a confirming record under \"also\")"
+  },
+  {
+   "source": "ジョジョDR２ @ ウィキ (atwiki; page source in an archived RSS feed)",
+   "page": "https://www65.atwiki.jp/jojodrr/",
+   "accessed": "2026-11-22",
+   "note": "research-b44 (Build 44): sets for statues without one, and sets that extend ours by a trait the wiki categories lack (high/medium; a smaller or different set is reported, not applied), then a family fill from them; each cited in rowSources (a confirming record under \"also\")"
+  },
+  {
+   "source": "r/JoJoDiamondRecords (Reddit; a translator's retrospective guide)",
+   "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/mostly_recent_character_retrospectiveguide/",
+   "accessed": "2026-11-22",
+   "note": "research-b44 (Build 44): sets for statues without one, and sets that extend ours by a trait the wiki categories lack (high/medium; a smaller or different set is reported, not applied), then a family fill from them; each cited in rowSources (a confirming record under \"also\")"
   }
  ],
  "tribes": {
@@ -375,7 +393,7 @@
   "3330_01": [1, 5],
   "3330_02": [1, 5],
   "3330_03": [1, 5],
-  "3330_04": [1],
+  "3330_04": [1, 5],
   "4000_01": [2, 5],
   "4000_02": [2, 5],
   "4000_03": [2, 5],
@@ -462,19 +480,26 @@
   "4240_11": [5],
   "4240_12": [5],
   "4240_13": [5],
-  "5000_03": [5],
-  "5000_04": [5],
+  "5000_03": [5, 9],
+  "5000_04": [5, 9],
+  "5000_22": [5, 9],
+  "5000_23": [5, 9],
+  "5000_24": [5, 9],
+  "5000_62": [5, 9],
   "5001_14": [5, 9, 15],
-  "5010_04": [5],
-  "5010_14": [5],
-  "5030_04": [5],
-  "5050_03": [5],
-  "5050_04": [5],
-  "5080_04": [5],
-  "5100_14": [5],
+  "5010_04": [5, 9],
+  "5010_14": [5, 9],
+  "5030_04": [5, 9],
+  "5050_03": [5, 9],
+  "5050_04": [5, 9],
+  "5080_04": [5, 9],
+  "5100_14": [5, 9],
   "5120_14": [5, 10],
-  "5150_04": [5],
+  "5140_04": [5, 10],
+  "5150_04": [5, 10],
+  "5170_14": [5],
   "5210_04": [5],
+  "5220_14": [5, 10],
   "5290_04": [5],
   "5290_62": [5],
   "5320_04": [2, 5, 6]
@@ -647,7 +672,7 @@
   "3330_01": "shoutwiki",
   "3330_02": "research",
   "3330_03": "gamerch",
-  "3330_04": "shoutwiki",
+  "3330_04": "research",
   "4000_01": "shoutwiki",
   "4000_02": "gamerch",
   "4000_03": "gamerch",
@@ -734,19 +759,26 @@
   "4240_11": "family",
   "4240_12": "family",
   "4240_13": "gamerch",
-  "5000_03": "research",
+  "5000_03": "family",
   "5000_04": "research",
+  "5000_22": "family",
+  "5000_23": "family",
+  "5000_24": "research",
+  "5000_62": "family",
   "5001_14": "shoutwiki",
-  "5010_04": "shoutwiki",
-  "5010_14": "family",
-  "5030_04": "shoutwiki",
+  "5010_04": "research",
+  "5010_14": "research",
+  "5030_04": "research",
   "5050_03": "family",
-  "5050_04": "shoutwiki",
-  "5080_04": "shoutwiki",
-  "5100_14": "shoutwiki",
+  "5050_04": "research",
+  "5080_04": "research",
+  "5100_14": "research",
   "5120_14": "shoutwiki",
-  "5150_04": "shoutwiki",
+  "5140_04": "research",
+  "5150_04": "research",
+  "5170_14": "research",
   "5210_04": "shoutwiki",
+  "5220_14": "research",
   "5290_04": "shoutwiki",
   "5290_62": "family",
   "5320_04": "shoutwiki"
@@ -834,7 +866,16 @@
    "license": "CC BY-SA 3.0",
    "accessed": "2026-11-22",
    "confidence": "medium",
-   "note": "research-b43/links_traits_minds traits: the sources show no tribe"
+   "note": "research-b43/links_traits_minds traits: the sources show no tribe",
+   "also": [
+    {
+     "source": "鎖国的ブログ (ameblo; in-game status-tab screenshots, read as data)",
+     "page": "https://ameblo.jp/yamasan-drm/entry-12489857321.html",
+     "accessed": "2026-11-22",
+     "confidence": "high",
+     "note": "research-b44/blogs_archives traits"
+    }
+   ]
   },
   "2150_71": {
    "source": "Diamond Records Wiki (ShoutWiki)",
@@ -873,6 +914,13 @@
    "confidence": "medium",
    "note": "research-b43/links_traits_minds traits: the set the researchers give"
   },
+  "3330_04": {
+   "source": "鎖国的ブログ (ameblo; in-game status-tab screenshots, read as data)",
+   "page": "https://ameblo.jp/yamasan-drm/entry-12511215708.html",
+   "accessed": "2026-11-22",
+   "confidence": "high",
+   "note": "research-b44/blogs_archives traits; extends [1] (from shoutwiki), whose source lacks 5"
+  },
   "4090_71": {
    "source": "Gamerch ジョジョDR攻略Wiki",
    "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E3%83%88%E3%83%8B%E3%82%AA%E3%83%BB%E3%83%88%E3%83%A9%E3%82%B5%E3%83%AB%E3%83%87%E3%82%A3%E3%83%BC%E2%98%854%EF%BC%88%E3%81%95%E3%81%A3%EF%BC%81%E3%82%81%E3%81%97%E4%B8%8A%E3%81%8C%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%A6%E3%82%AF%E3%83%80%E3%82%B5%E3%82%A4%EF%BC%89",
@@ -900,20 +948,135 @@
    "note": "research-b43/links_traits_minds traits: the sources show no tribe"
   },
   "5000_03": {
-   "source": "Diamond Records Wiki (ShoutWiki)",
-   "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Giorno_Giovanna_(Tactical)",
-   "license": "CC BY-SA 3.0",
-   "accessed": "2026-11-22",
-   "confidence": "medium",
-   "note": "research-b43/links_traits_minds traits_lower_bound: lower bound, the statue may carry more"
+   "source": "jdr-default",
+   "note": "family fill from the research-b44 sets of 5000_04, 5000_24; was [5]",
+   "also": [
+    {
+     "source": "Diamond Records Wiki (ShoutWiki)",
+     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Giorno_Giovanna_(Tactical)",
+     "license": "CC BY-SA 3.0",
+     "accessed": "2026-11-22",
+     "confidence": "medium",
+     "note": "research-b43/links_traits_minds traits_lower_bound: lower bound, the statue may carry more"
+    }
+   ]
   },
   "5000_04": {
-   "source": "Diamond Records Wiki (ShoutWiki)",
-   "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Giorno_Giovanna_(Tactical)",
-   "license": "CC BY-SA 3.0",
+   "source": "r/JoJoDiamondRecords (Reddit; a translator's retrospective guide)",
+   "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/mostly_recent_character_retrospectiveguide/",
    "accessed": "2026-11-22",
    "confidence": "medium",
-   "note": "research-b43/links_traits_minds traits_lower_bound: lower bound, the statue may carry more"
+   "note": "research-b44/communities tribes; replaces the research-b43 lower bound [5]"
+  },
+  "5000_22": {
+   "source": "jdr-default",
+   "note": "family fill from the research-b44 sets of 5000_04, 5000_24"
+  },
+  "5000_23": {
+   "source": "jdr-default",
+   "note": "family fill from the research-b44 sets of 5000_04, 5000_24"
+  },
+  "5000_24": {
+   "source": "r/JoJoDiamondRecords (Reddit; a translator's retrospective guide)",
+   "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f4ou9jr/",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b44/communities tribes"
+  },
+  "5000_62": {
+   "source": "jdr-default",
+   "note": "family fill from the research-b44 sets of 5000_04, 5000_24"
+  },
+  "5010_04": {
+   "source": "鎖国的ブログ (ameblo; in-game status-tab screenshots, read as data)",
+   "page": "https://ameblo.jp/yamasan-drm/entry-12496817615.html",
+   "accessed": "2026-11-22",
+   "confidence": "high",
+   "note": "research-b44/blogs_archives traits; extends [5] (from shoutwiki), whose source lacks 9",
+   "also": [
+    {
+     "source": "r/JoJoDiamondRecords (Reddit; a translator's retrospective guide)",
+     "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f4oeilg/",
+     "accessed": "2026-11-22",
+     "confidence": "medium"
+    }
+   ]
+  },
+  "5010_14": {
+   "source": "r/JoJoDiamondRecords (Reddit; a translator's retrospective guide)",
+   "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f3wfffd/",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b44/communities tribes; extends [5] (from family), whose source lacks 9"
+  },
+  "5030_04": {
+   "source": "r/JoJoDiamondRecords (Reddit; a translator's retrospective guide)",
+   "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f3zhh25/",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b44/communities tribes; extends [5] (from shoutwiki), whose source lacks 9"
+  },
+  "5050_03": {
+   "source": "jdr-default",
+   "note": "family fill from the research-b44 sets of 5050_04; was [5]"
+  },
+  "5050_04": {
+   "source": "r/JoJoDiamondRecords (Reddit; a translator's retrospective guide)",
+   "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f3zeb3t/",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b44/communities tribes; extends [5] (from shoutwiki), whose source lacks 9"
+  },
+  "5080_04": {
+   "source": "r/JoJoDiamondRecords (Reddit; a translator's retrospective guide)",
+   "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f3zwbc4/",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b44/communities tribes; extends [5] (from shoutwiki), whose source lacks 9"
+  },
+  "5100_14": {
+   "source": "r/JoJoDiamondRecords (Reddit; a translator's retrospective guide)",
+   "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f3zs22u/",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b44/communities tribes; extends [5] (from shoutwiki), whose source lacks 9"
+  },
+  "5140_04": {
+   "source": "r/JoJoDiamondRecords (Reddit; a translator's retrospective guide)",
+   "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f4oiqy4/",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b44/communities tribes"
+  },
+  "5150_04": {
+   "source": "r/JoJoDiamondRecords (Reddit; a translator's retrospective guide)",
+   "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f4ocvd7/",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b44/communities tribes; extends [5] (from shoutwiki), whose source lacks 10"
+  },
+  "5170_14": {
+   "source": "ジョジョDR２ @ ウィキ (atwiki; page source in an archived RSS feed)",
+   "page": "https://www65.atwiki.jp/jojodrr/pages/506.html",
+   "capture": "https://web.archive.org/web/20190820154916/https://www65.atwiki.jp/jojodrr/rss10_new.xml",
+   "accessed": "2026-11-22",
+   "confidence": "high",
+   "note": "research-b44/jp_strategy_sites traits"
+  },
+  "5220_14": {
+   "source": "鎖国的ブログ (ameblo; in-game status-tab screenshots, read as data)",
+   "page": "https://ameblo.jp/yamasan-drm/entry-12498184965.html",
+   "accessed": "2026-11-22",
+   "confidence": "high",
+   "note": "research-b44/blogs_archives traits",
+   "also": [
+    {
+     "source": "r/JoJoDiamondRecords (Reddit; a translator's retrospective guide)",
+     "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f4osdr2/",
+     "accessed": "2026-11-22",
+     "confidence": "medium"
+    }
+   ]
   }
  },
  "noTribe": [
@@ -933,13 +1096,6 @@
  ],
  "none": [
   "4280_72",
-  "5000_22",
-  "5000_23",
-  "5000_24",
-  "5000_62",
-  "5140_04",
-  "5170_14",
-  "5220_14",
   "5330_72"
  ]
 }

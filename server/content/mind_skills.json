@@ -8,7 +8,7 @@
   },
   {
    "source": "jdr-default",
-   "note": "damage ranks, buttons and the classification of skills that are no statue's skill are ours; time-stop turns: 1 for normal skills, 2 for special ones (ours)"
+   "note": "damage ranks, buttons and the classification of skills that are no statue's skill are ours; time-stop turns: 1 for normal skills, 2 for special ones (ours); except where a Mind's source (research-b44) gives them"
   }
  ],
  "minds": [
@@ -25,6 +25,30 @@
     "targetType": 1,
     "processType": 1,
     "attr": "PHYSICAL"
+   },
+   "statues": [
+    "1000_01",
+    "1000_02",
+    "1000_03",
+    "1000_04",
+    "1000_12",
+    "1000_13",
+    "1000_28"
+   ]
+  },
+  {
+   "mindId": "4002",
+   "skill": {
+    "id": "SKILL_100_10",
+    "special": true,
+    "name": "SKILL_NAME_100_10",
+    "text": "DTbattle_SKILL_TEXT_100_10",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_HAMON",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "HAMON"
    },
    "statues": [
     "1000_01",
@@ -381,6 +405,30 @@
    ]
   },
   {
+   "mindId": "4023",
+   "skill": {
+    "id": "MSKILL_303_07",
+    "special": true,
+    "name": "SKILL_NAME_303_07",
+    "text": "DTbattle_SKILL_TEXT_303_07",
+    "button": 90,
+    "damageRank": 150,
+    "category": "DTSC_STAND_PHYSICAL_ALL",
+    "targetType": 2,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "3030_01",
+    "3030_02",
+    "3030_03",
+    "3030_13",
+    "3030_14",
+    "3031_03",
+    "3031_04"
+   ]
+  },
+  {
    "mindId": "4024",
    "skill": {
     "id": "SKILL_303_05",
@@ -492,6 +540,28 @@
    ]
   },
   {
+   "mindId": "4030",
+   "skill": {
+    "id": "SKILL_311_08",
+    "special": true,
+    "name": "SKILL_NAME_311_08",
+    "text": "DTbattle_SKILL_TEXT_311_08",
+    "button": 38,
+    "damageRank": 150,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY"
+   },
+   "statues": [
+    "3110_01",
+    "3110_02",
+    "3110_03",
+    "3110_13",
+    "3110_14"
+   ]
+  },
+  {
    "mindId": "4031",
    "skill": {
     "id": "SKILL_315_01",
@@ -557,6 +627,27 @@
    ]
   },
   {
+   "mindId": "4034",
+   "skill": {
+    "id": "SKILL_330_10",
+    "name": "SKILL_NAME_330_10",
+    "text": "DTbattle_SKILL_TEXT_330_10",
+    "button": 90,
+    "category": "DTSC_STAND_PHYSICAL_ALL",
+    "targetType": 2,
+    "processType": 1,
+    "attr": "STAND_PHY",
+    "special": true,
+    "damageRank": 150
+   },
+   "statues": [
+    "3300_01",
+    "3300_02",
+    "3300_03",
+    "3300_04"
+   ]
+  },
+  {
    "mindId": "4035",
    "skill": {
     "id": "SKILL_332_07",
@@ -573,6 +664,31 @@
    "statues": [
     "3323_08"
    ]
+  },
+  {
+   "mindId": "4036",
+   "skill": {
+    "id": "SKILL_332_09",
+    "name": "SKILL_NAME_332_09",
+    "text": "DTbattle_SKILL_TEXT_332_09",
+    "button": 38,
+    "category": "DTSC_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "PHYSICAL",
+    "special": true,
+    "damageRank": 150
+   },
+   "statues": [
+    "3323_08"
+   ],
+   "source": {
+    "source": "鎖国的ブログ (ameblo; in-game Mind detail screenshots, read as data)",
+    "page": "https://ameblo.jp/yamasan-drm/entry-12497757895.html",
+    "accessed": "2026-11-22",
+    "confidence": "high",
+    "note": "research-b44/blogs_archives skill_mind: time stop 3 turns, damage rank 0 (kept ours)"
+   }
   },
   {
    "mindId": "4038",
@@ -832,6 +948,26 @@
     "4110_02",
     "4110_13",
     "4110_14"
+   ]
+  },
+  {
+   "mindId": "4055",
+   "skill": {
+    "id": "SKILL_415_09",
+    "name": "SKILL_NAME_415_09",
+    "text": "DTbattle_SKILL_TEXT_415_09",
+    "button": 7,
+    "category": "DTSC_STAND_PHYSICAL",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "STAND_PHY",
+    "special": false,
+    "damageRank": 125
+   },
+   "statues": [
+    "4150_01",
+    "4150_02",
+    "4150_03"
    ]
   },
   {
@@ -1658,6 +1794,29 @@
    ]
   },
   {
+   "mindId": "4106",
+   "skill": {
+    "id": "SKILL_201_03",
+    "special": false,
+    "name": "SKILL_NAME_201_03",
+    "text": "DTbattle_SKILL_TEXT_201_03",
+    "button": 7,
+    "damageRank": 125,
+    "category": "DTSC_HAMON",
+    "targetType": 1,
+    "processType": 1,
+    "attr": "HAMON"
+   },
+   "statues": [
+    "2010_01",
+    "2010_02",
+    "2010_03",
+    "2010_04",
+    "2010_13",
+    "2010_28"
+   ]
+  },
+  {
    "mindId": "4108",
    "skill": {
     "id": "MSKILL_424_04",
@@ -1961,6 +2120,7 @@
   "MSKILL_300_14": "DTSC_WORLD_LIGHT",
   "SKILL_300_10": "DTSC_WORLD_MIDDLE",
   "SKILL_300_14": "DTSC_WORLD_MIDDLE",
+  "SKILL_332_09": "DTSC_WORLD_HEAVY",
   "SKILL_332_11": "DTSC_WORLD_LIGHT",
   "SKILL_404_06": "DTSC_WORLD_MIDDLE",
   "SKILL_404_10": "DTSC_WORLD_MIDDLE",

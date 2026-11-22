@@ -362,24 +362,6 @@
   "1090_03": {
    "attack": "SKILL_109_99",
    "skill": {
-    "id": "SKILL_109_01"
-   },
-   "sp": {
-    "id": "SKILL_109_04"
-   },
-   "finisher": {
-    "id": "SKILL_109_06"
-   },
-   "source": {
-    "source": "Gamerch ジョジョDR攻略Wiki (live)",
-    "page": "https://jojodr.gamerch.com/【孤高】ストレイツォ★5（華麗なる跳躍）",
-    "accessed": "2026-11-22",
-    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: strict match"
-   }
-  },
-  "1090_13": {
-   "attack": "SKILL_109_99",
-   "skill": {
     "id": "SKILL_109_05"
    },
    "sp": null,
@@ -389,6 +371,31 @@
    "source": {
     "source": "jdr-default",
     "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+   }
+  },
+  "1090_13": {
+   "attack": "SKILL_109_99",
+   "skill": {
+    "id": "SKILL_109_01"
+   },
+   "sp": {
+    "id": "SKILL_109_04"
+   },
+   "finisher": {
+    "id": "SKILL_109_06"
+   },
+   "source": {
+    "source": "Bandai Namco press release (4Gamer.net)",
+    "page": "https://www.4gamer.net/games/366/G036647/20180810147/",
+    "accessed": "2026-11-22",
+    "note": "research-b43/b44 kit (Gamerch and official press-release names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: strict match; the Gamerch page's records refiled from 1090_03 (REFILE)",
+    "also": [
+     {
+      "source": "Gamerch ジョジョDR攻略Wiki (live)",
+      "page": "https://jojodr.gamerch.com/【孤高】ストレイツォ★5（華麗なる跳躍）",
+      "accessed": "2026-11-22"
+     }
+    ]
    }
   },
   "1100_01": {
@@ -4490,7 +4497,14 @@
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Bruno_Bucciarati_(Courage)",
     "accessed": "2026-11-22",
     "license": "CC BY-SA 3.0",
-    "note": "the page's Action Battle (Old Mode) tab says the statue cannot be used there (research-b43); the kit above is kept and needs no source"
+    "note": "the page's Action Battle (Old Mode) tab says the statue cannot be used there (research-b43); the kit above is kept and needs no source",
+    "sourceSays": {
+     "source": "player blog (Ameba), in-game screenshots",
+     "page": "https://ameblo.jp/yamasan-drm/entry-12496817615.html",
+     "accessed": "2026-11-22",
+     "confidence": "medium",
+     "note": "research-b44: the in-game profile has no Tactical-Battle-only tag (5170_14, 5220_14 and 4031_18 have it), against the page above; noted, not applied"
+    }
    }
   },
   "5010_14": {
@@ -4689,6 +4703,13 @@
    "source": {
     "source": "jdr-default",
     "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+   },
+   "actionMode": {
+    "usable": false,
+    "source": "player blog (Ameba), in-game screenshots",
+    "page": "https://ameblo.jp/yamasan-drm/entry-12506957304.html",
+    "accessed": "2026-11-22",
+    "note": "the in-game profile (a player's screenshot) ends with the Tactical-Battle-only tag (research-b44); the kit above is kept and needs no source"
    }
   },
   "5210_04": {
@@ -4717,6 +4738,13 @@
    "source": {
     "source": "jdr-default",
     "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+   },
+   "actionMode": {
+    "usable": false,
+    "source": "player blog (Ameba), in-game screenshots",
+    "page": "https://ameblo.jp/yamasan-drm/entry-12498184965.html",
+    "accessed": "2026-11-22",
+    "note": "the in-game profile (a player's screenshot) ends with the Tactical-Battle-only tag (research-b44); the kit above is kept and needs no source"
    }
   },
   "5290_04": {

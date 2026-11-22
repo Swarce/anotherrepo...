@@ -36,7 +36,11 @@ Matching (strict; anything ambiguous falls back to marked defaults):
     `typeSource` (the researchers' verdict where the pages disagree on the type) and
     `assistOnlySource` are cited on the row; a collection's `checks` (Build 43: the Lv1 stat the
     researchers keep where the pages differ) are noted as `lv1Note`/`lv1Sources` when they equal our
-    value and reported otherwise, never applied.
+    value and reported otherwise, never applied;
+  - from Build 44 a collection's `tactical` rows (research-b44/statues) give a statue `tactical`
+    ({speed, evasion, hitrate, criticalRate}, served in StatueInfo) with `tacticalSource` and the
+    resistance grades as data (`resistGrades`); its `sourceSays` values that differ from ours are
+    noted on the row (`source.sourceSays`), never applied.
 Only numbers are written, each record citing its source page.
 
 usage: python3 -I tools/content/build_statues.py --scan local/content/statues_scan.json \
@@ -324,6 +328,9 @@ def research_cite(c):
     site = ("Diamond Records Wiki (ShoutWiki)" if "shoutwiki" in url else
             "JoJo's Bizarre Encyclopedia (JoJoWiki)" if "jojowiki" in url else
             "Gamerch ジョジョDR攻略Wiki" + (" (Wayback Machine)" if c.get("capture") else " (live page)") if "gamerch" in url
+            else "ジョジョDR２ @ ウィキ (atwiki; page source in an archived RSS feed)" if "atwiki.jp" in url
+            else "r/JoJoDiamondRecords (Reddit)" if "reddit.com" in url
+            else "2ch.sc thread (Wayback Machine)" if "2ch.sc" in url
             else None)
     return {**({"source": site} if site else {}), "page": url,
             **({"capture": c["capture"]} if c.get("capture") else {}), "accessed": c.get("accessed", TODAY)}
@@ -363,11 +370,16 @@ claimed = collections.defaultdict(set)  # character key -> {(rarity, type)} take
 # researchers keep where the pages differ; noted on the statue at the end, no value changes.
 extra = {}
 lv1_checks = []
+tactical_rows, source_says, pack_tactical = [], [], {}
 for path in a.extra:
     coll = json.load(open(path))
     lv1_checks += coll.get("checks", [])
+    tactical_rows += coll.get("tactical", [])
+    source_says += coll.get("sourceSays", [])
     for r in coll.get("records", []):
         sid, st = r.get("statueId"), r.get("stats") or {}
+        if r.get("tactical_parameters") and sid and r.get("source", {}).get("url"):
+            pack_tactical.setdefault(sid, r)
         if ((sid in jp_name or (sid in ast_jp_name and r.get("assistOnly"))) and sid not in gamerch
                 and r.get("confidence") in ("high", "medium")
                 and full(st.get("lv1")) and full(st.get("lv99")) and plausible(st["lv1"], st["lv99"])):
@@ -809,6 +821,57 @@ for c in lv1_checks:
                      "lv1Sources": [research_cite(c["source"])]}
     n_lv1_checks += 1
 
+# 6) Tactical parameters (Build 44, research-b44/statues): speed, evasion, hitrate (the wiki's accuracy)
+#    and critical rate, which the server sends in StatueInfo instead of its defaults (100/0/100/5). An
+#    agreeing row of the 2026-11-15 pack (the ShoutWiki tactical template) is cited as `also`; the
+#    resistance grades are data (`resistGrades`, not served: no rate table is known for them).
+n_tactical = 0
+for t in tactical_rows:
+    rec = by_id.get(t["statueId"])
+    if not rec:
+        print(f"warning: {t['statueId']}: tactical parameters for a statue we do not serve; not applied")
+        continue
+    also = [research_cite(x) | {"confidence": x["confidence"]} for x in t.get("also", [])]
+    p = pack_tactical.get(t["statueId"])
+    if p:
+        pv = p["tactical_parameters"]
+        if (pv.get("speed"), pv.get("evasion"), pv.get("accuracy"), pv.get("critical")) == tuple(t["value"].values()):
+            also.append({"source": "Diamond Records Wiki (ShoutWiki)", "page": p["source"]["url"], "license": "CC BY-SA 3.0",
+                         "accessed": p["source"].get("accessed", TODAY),
+                         "note": "via the 2026-11-15 research collection (the page's tactical template)"})
+        else:
+            print(f"warning: {t['statueId']}: the 2026-11-15 pack has other tactical parameters {pv}")
+    twins = sorted(x["statueId"] for x in tactical_rows if x is not t and x["statueId"][:4] == t["statueId"][:4]
+                   and x["value"] == t["value"] and by_id.get(x["statueId"], {}).get("rarity") == rec["rarity"])
+    rec["tactical"] = dict(t["value"])
+    if t.get("resist"):
+        rec["resistGrades"] = dict(t["resist"])
+    rec["tacticalSource"] = {**research_cite(t["source"]), "confidence": t["source"]["confidence"],
+                             "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate "
+                                     "(at max level, as the page lists them)"
+                                     + ("; resistance grades for hamon, vampiric, mental and aging attacks as data"
+                                        if t.get("resist") else "")
+                                     + (f"; the same values as {', '.join(twins)} (same character and rarity)"
+                                        if twins else ""),
+                             **({"also": also} if also else {})}
+    n_tactical += 1
+
+# 7) 'Source says' values (Build 44): a hand-typed table that differs from ours is noted on the row, never
+#    applied (each differing stat has two sources on either side).
+for c in source_says:
+    rec = by_id.get(c["statueId"])
+    ours = rec and rec.get(c["field"])
+    if not ours:
+        continue
+    diff = [k for k in ("hp", "atk", "def") if c["value"].get(k) != ours[k]]
+    if not diff:
+        continue
+    rec["source"] = {**rec["source"], "sourceSays": [*rec["source"].get("sourceSays", []), {
+        **research_cite(c["source"]), "confidence": c["confidence"],
+        "note": f"a hand-typed {c['field']} table gives " + ", ".join(f"{k.upper()} {c['value'][k]}" for k in diff)
+                + f" (ours {', '.join(str(ours[k]) for k in diff)}); a second vote for the other wiki value, "
+                  f"so the stat stays split two to two and is not changed"}]}
+
 doc = {
     "about": "Obtainable statues: identifiers from the player's own files (scan_statues.py), stats from community wikis where the match is unambiguous (each record cites its page). See docs/CONTENT.md.",
     "sources": [
@@ -818,12 +881,26 @@ doc = {
          "accessed": TODAY},
         *([{"source": "JoJo's Bizarre Encyclopedia (JoJoWiki)", "page": "https://jojowiki.com/Diamond_Records",
             "license": "CC BY-SA 4.0", "accessed": TODAY}] if any("jojowiki" in json.dumps(r.get("source")) for r in out) else []),
-        {"source": "jdr-default", "note": "identifiers and model names from the player's files; defaults where no wiki match"},
+        *([{"source": "r/JoJoDiamondRecords (Reddit)",
+            "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/mostly_recent_character_retrospectiveguide/",
+            "accessed": max(t["source"]["accessed"] for t in tactical_rows),
+            "note": "research-b44/statues (Build 44): a translator's retrospective guide (2019-10, main post and "
+                    "comments): tactical speed, evasion, accuracy and critical rate per statue (`tactical`, cited "
+                    "per row in `tacticalSource`)"},
+           {"source": "ジョジョDR２ @ ウィキ (atwiki; page source in an archived RSS feed)",
+            "page": "https://www65.atwiki.jp/jojodrr/",
+            "accessed": max(t["source"]["accessed"] for t in tactical_rows),
+            "note": "research-b44/statues (Build 44): Diavolo's statue page, read from the Wayback captures of the "
+                    "wiki's RSS feeds (the page itself was never archived)"}] if n_tactical else []),
+        {"source": "jdr-default", "note": "identifiers and model names from the player's files; defaults where no wiki match"
+                                          + ("; tactical speed 100, evasion 0, hitrate 100, critical rate 5 where no "
+                                             "`tactical` row" if n_tactical else "")},
     ],
     "statues": out,
 }
 json.dump(doc, open(a.out, "w"), indent=1, ensure_ascii=False)
 print(f"wiki cross-checks: {n_tree_lv99} Gamerch Lv99 rows that are the tree max, {n_typed} typed defaults, "
-      f"{n_tree} maxTree filled ({n_off_by_one} with a one-point Lv99 fix), {n_lv1_checks} Lv1 checks noted")
+      f"{n_tree} maxTree filled ({n_off_by_one} with a one-point Lv99 fix), {n_lv1_checks} Lv1 checks noted, "
+      f"{n_tactical} tactical parameter rows")
 print(f"{len(out)} obtainable statues ({n_assist} assist-only); {matched} with wiki stats ({dict(by_source)}), {len(out) - matched} on defaults; "
       f"rejected as implausible or out of rarity order: {sorted(set(rejected))}")

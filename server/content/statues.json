@@ -19,8 +19,20 @@
    "accessed": "2026-11-15"
   },
   {
+   "source": "r/JoJoDiamondRecords (Reddit)",
+   "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/mostly_recent_character_retrospectiveguide/",
+   "accessed": "2026-11-22",
+   "note": "research-b44/statues (Build 44): a translator's retrospective guide (2019-10, main post and comments): tactical speed, evasion, accuracy and critical rate per statue (`tactical`, cited per row in `tacticalSource`)"
+  },
+  {
+   "source": "ジョジョDR２ @ ウィキ (atwiki; page source in an archived RSS feed)",
+   "page": "https://www65.atwiki.jp/jojodrr/",
+   "accessed": "2026-11-22",
+   "note": "research-b44/statues (Build 44): Diavolo's statue page, read from the Wayback captures of the wiki's RSS feeds (the page itself was never archived)"
+  },
+  {
    "source": "jdr-default",
-   "note": "identifiers and model names from the player's files; defaults where no wiki match"
+   "note": "identifiers and model names from the player's files; defaults where no wiki match; tactical speed 100, evasion 0, hitrate 100, critical rate 5 where no `tactical` row"
   }
  ],
  "statues": [
@@ -1463,6 +1475,16 @@
       "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)",
       "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
       "capture": "20241110194530"
+     }
+    ],
+    "sourceSays": [
+     {
+      "source": "2ch.sc thread (Wayback Machine)",
+      "page": "http://anago.2ch.sc/test/read.cgi/applism/1518505669/",
+      "capture": "https://web.archive.org/web/20191028084907/http://anago.2ch.sc/test/read.cgi/applism/1518505669/",
+      "accessed": "2026-11-22",
+      "confidence": "medium",
+      "note": "a hand-typed maxTree table gives DEF 7908 (ours 7968); a second vote for the other wiki value, so the stat stays split two to two and is not changed"
      }
     ]
    }
@@ -11139,6 +11161,34 @@
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_DIO_~_There_is_no_Escape!_~_(Fighting_Spirit)",
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15"
+   },
+   "tactical": {
+    "speed": 100,
+    "evasion": 20,
+    "hitrate": 100,
+    "criticalRate": 17
+   },
+   "resistGrades": {
+    "hamon": "D-",
+    "vampiric": "C",
+    "mental": "A",
+    "aging": "B+"
+   },
+   "tacticalSource": {
+    "source": "r/JoJoDiamondRecords (Reddit)",
+    "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f4ntsj7/",
+    "accessed": "2026-11-22",
+    "confidence": "medium",
+    "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate (at max level, as the page lists them); resistance grades for hamon, vampiric, mental and aging attacks as data",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_DIO_~_There_is_no_Escape!_~_(Fighting_Spirit)",
+      "license": "CC BY-SA 3.0",
+      "accessed": "2026-11-15",
+      "note": "via the 2026-11-15 research collection (the page's tactical template)"
+     }
+    ]
    }
   },
   {
@@ -14081,7 +14131,17 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "sourceSays": [
+     {
+      "source": "2ch.sc thread (Wayback Machine)",
+      "page": "http://anago.2ch.sc/test/read.cgi/applism/1518505669/",
+      "capture": "https://web.archive.org/web/20191028084907/http://anago.2ch.sc/test/read.cgi/applism/1518505669/",
+      "accessed": "2026-11-22",
+      "confidence": "medium",
+      "note": "a hand-typed maxTree table gives DEF 7146 (ours 7046); a second vote for the other wiki value, so the stat stays split two to two and is not changed"
+     }
+    ]
    }
   },
   {
@@ -16869,7 +16929,26 @@
     "source": "jdr-default",
     "note": "no unambiguous wiki match yet; server uses defaults"
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "rarityFrom": "the team-view pose clips present in the player's files",
+   "tactical": {
+    "speed": 100,
+    "evasion": 20,
+    "hitrate": 110,
+    "criticalRate": 14
+   },
+   "resistGrades": {
+    "hamon": "C",
+    "vampiric": "C-",
+    "mental": "B",
+    "aging": "C"
+   },
+   "tacticalSource": {
+    "source": "r/JoJoDiamondRecords (Reddit)",
+    "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/mostly_recent_character_retrospectiveguide/",
+    "accessed": "2026-11-22",
+    "confidence": "medium",
+    "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate (at max level, as the page lists them); resistance grades for hamon, vampiric, mental and aging attacks as data; the same values as 5000_24 (same character and rarity)"
+   }
   },
   {
    "statueId": "5000_22",
@@ -17053,7 +17132,26 @@
     "source": "jdr-default",
     "note": "no unambiguous wiki match yet; server uses defaults"
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "rarityFrom": "the team-view pose clips present in the player's files",
+   "tactical": {
+    "speed": 100,
+    "evasion": 20,
+    "hitrate": 110,
+    "criticalRate": 14
+   },
+   "resistGrades": {
+    "hamon": "C",
+    "vampiric": "C-",
+    "mental": "B",
+    "aging": "C"
+   },
+   "tacticalSource": {
+    "source": "r/JoJoDiamondRecords (Reddit)",
+    "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f4ou9jr/",
+    "accessed": "2026-11-22",
+    "confidence": "medium",
+    "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate (at max level, as the page lists them); resistance grades for hamon, vampiric, mental and aging attacks as data; the same values as 5000_04 (same character and rarity)"
+   }
   },
   {
    "statueId": "5001_14",
@@ -17111,6 +17209,25 @@
     "page": "https://jojowiki.com/Diamond_Records/Giorno_Giovanna?oldid=1189722",
     "license": "CC BY-SA 4.0",
     "accessed": "2026-11-14"
+   },
+   "tactical": {
+    "speed": 125,
+    "evasion": 40,
+    "hitrate": 140,
+    "criticalRate": 17
+   },
+   "resistGrades": {
+    "hamon": "C",
+    "vampiric": "C-",
+    "mental": "B",
+    "aging": "C"
+   },
+   "tacticalSource": {
+    "source": "r/JoJoDiamondRecords (Reddit)",
+    "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f4owh88/",
+    "accessed": "2026-11-22",
+    "confidence": "medium",
+    "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate (at max level, as the page lists them); resistance grades for hamon, vampiric, mental and aging attacks as data"
    }
   },
   {
@@ -17181,6 +17298,25 @@
     "page": "https://jojowiki.com/Diamond_Records/Bruno_Bucciarati?oldid=1235392",
     "license": "CC BY-SA 4.0",
     "accessed": "2026-11-14"
+   },
+   "tactical": {
+    "speed": 100,
+    "evasion": 40,
+    "hitrate": 100,
+    "criticalRate": 5
+   },
+   "resistGrades": {
+    "hamon": "C",
+    "vampiric": "C-",
+    "mental": "B",
+    "aging": "C"
+   },
+   "tacticalSource": {
+    "source": "r/JoJoDiamondRecords (Reddit)",
+    "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f4oeilg/",
+    "accessed": "2026-11-22",
+    "confidence": "medium",
+    "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate (at max level, as the page lists them); resistance grades for hamon, vampiric, mental and aging attacks as data; the same values as 5010_14 (same character and rarity)"
    }
   },
   {
@@ -17260,6 +17396,25 @@
       "license": "CC BY-SA 3.0"
      }
     ]
+   },
+   "tactical": {
+    "speed": 100,
+    "evasion": 40,
+    "hitrate": 100,
+    "criticalRate": 5
+   },
+   "resistGrades": {
+    "hamon": "C",
+    "vampiric": "C-",
+    "mental": "B",
+    "aging": "C"
+   },
+   "tacticalSource": {
+    "source": "r/JoJoDiamondRecords (Reddit)",
+    "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f3wfffd/",
+    "accessed": "2026-11-22",
+    "confidence": "medium",
+    "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate (at max level, as the page lists them); resistance grades for hamon, vampiric, mental and aging attacks as data; the same values as 5010_04 (same character and rarity)"
    }
   },
   {
@@ -17331,6 +17486,34 @@
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Leone_Abbacchio_%28Tactical%29",
     "revid": 4591,
     "accessed": "2026-11-15"
+   },
+   "tactical": {
+    "speed": 100,
+    "evasion": 25,
+    "hitrate": 110,
+    "criticalRate": 11
+   },
+   "resistGrades": {
+    "hamon": "C",
+    "vampiric": "C-",
+    "mental": "B",
+    "aging": "C"
+   },
+   "tacticalSource": {
+    "source": "r/JoJoDiamondRecords (Reddit)",
+    "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f3zhh25/",
+    "accessed": "2026-11-22",
+    "confidence": "medium",
+    "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate (at max level, as the page lists them); resistance grades for hamon, vampiric, mental and aging attacks as data",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Leone_Abbacchio_(Tactical)",
+      "license": "CC BY-SA 3.0",
+      "accessed": "2026-11-15",
+      "note": "via the 2026-11-15 research collection (the page's tactical template)"
+     }
+    ]
    }
   },
   {
@@ -17471,6 +17654,25 @@
     "page": "https://jojowiki.com/Diamond_Records/Guido_Mista?oldid=1235403",
     "license": "CC BY-SA 4.0",
     "accessed": "2026-11-14"
+   },
+   "tactical": {
+    "speed": 100,
+    "evasion": 20,
+    "hitrate": 139,
+    "criticalRate": 5
+   },
+   "resistGrades": {
+    "hamon": "C",
+    "vampiric": "C-",
+    "mental": "B",
+    "aging": "C"
+   },
+   "tacticalSource": {
+    "source": "r/JoJoDiamondRecords (Reddit)",
+    "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f3zeb3t/",
+    "accessed": "2026-11-22",
+    "confidence": "medium",
+    "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate (at max level, as the page lists them); resistance grades for hamon, vampiric, mental and aging attacks as data"
    }
   },
   {
@@ -17542,6 +17744,34 @@
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Narancia_Ghirga_%28Fighting_Spirit%29",
     "revid": 4502,
     "accessed": "2026-11-15"
+   },
+   "tactical": {
+    "speed": 125,
+    "evasion": 10,
+    "hitrate": 100,
+    "criticalRate": 8
+   },
+   "resistGrades": {
+    "hamon": "C",
+    "vampiric": "C-",
+    "mental": "B",
+    "aging": "C"
+   },
+   "tacticalSource": {
+    "source": "r/JoJoDiamondRecords (Reddit)",
+    "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f3zwbc4/",
+    "accessed": "2026-11-22",
+    "confidence": "medium",
+    "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate (at max level, as the page lists them); resistance grades for hamon, vampiric, mental and aging attacks as data",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Narancia_Ghirga_(Fighting_Spirit)",
+      "license": "CC BY-SA 3.0",
+      "accessed": "2026-11-15",
+      "note": "via the 2026-11-15 research collection (the page's tactical template)"
+     }
+    ]
    }
   },
   {
@@ -17612,6 +17842,34 @@
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Pannacotta_Fugo_(Solitary)",
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-15"
+   },
+   "tactical": {
+    "speed": 100,
+    "evasion": 20,
+    "hitrate": 90,
+    "criticalRate": 20
+   },
+   "resistGrades": {
+    "hamon": "C",
+    "vampiric": "C-",
+    "mental": "B",
+    "aging": "C"
+   },
+   "tacticalSource": {
+    "source": "r/JoJoDiamondRecords (Reddit)",
+    "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f3zs22u/",
+    "accessed": "2026-11-22",
+    "confidence": "medium",
+    "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate (at max level, as the page lists them); resistance grades for hamon, vampiric, mental and aging attacks as data",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Pannacotta_Fugo_(Solitary)",
+      "license": "CC BY-SA 3.0",
+      "accessed": "2026-11-15",
+      "note": "via the 2026-11-15 research collection (the page's tactical template)"
+     }
+    ]
    }
   },
   {
@@ -17691,6 +17949,34 @@
       "license": "CC BY-SA 3.0"
      }
     ]
+   },
+   "tactical": {
+    "speed": 100,
+    "evasion": 20,
+    "hitrate": 120,
+    "criticalRate": 11
+   },
+   "resistGrades": {
+    "hamon": "C",
+    "vampiric": "C-",
+    "mental": "B",
+    "aging": "SSS+"
+   },
+   "tacticalSource": {
+    "source": "r/JoJoDiamondRecords (Reddit)",
+    "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f4o2s3t/",
+    "accessed": "2026-11-22",
+    "confidence": "medium",
+    "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate (at max level, as the page lists them); resistance grades for hamon, vampiric, mental and aging attacks as data",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Prosciutto_(Unity)",
+      "license": "CC BY-SA 3.0",
+      "accessed": "2026-11-15",
+      "note": "via the 2026-11-15 research collection (the page's tactical template)"
+     }
+    ]
    }
   },
   {
@@ -17761,6 +18047,25 @@
     "page": "https://jojowiki.com/Diamond_Records/Baby_Face?oldid=1235388",
     "license": "CC BY-SA 4.0",
     "accessed": "2026-11-14"
+   },
+   "tactical": {
+    "speed": 110,
+    "evasion": 25,
+    "hitrate": 100,
+    "criticalRate": 8
+   },
+   "resistGrades": {
+    "hamon": "C",
+    "vampiric": "C-",
+    "mental": "B",
+    "aging": "C"
+   },
+   "tacticalSource": {
+    "source": "r/JoJoDiamondRecords (Reddit)",
+    "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f4oiqy4/",
+    "accessed": "2026-11-22",
+    "confidence": "medium",
+    "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate (at max level, as the page lists them); resistance grades for hamon, vampiric, mental and aging attacks as data"
    }
   },
   {
@@ -17832,6 +18137,34 @@
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Ghiaccio_%28Fighting_Spirit%29",
     "revid": 4681,
     "accessed": "2026-11-15"
+   },
+   "tactical": {
+    "speed": 110,
+    "evasion": 20,
+    "hitrate": 120,
+    "criticalRate": 1
+   },
+   "resistGrades": {
+    "hamon": "C",
+    "vampiric": "C-",
+    "mental": "B",
+    "aging": "S"
+   },
+   "tacticalSource": {
+    "source": "r/JoJoDiamondRecords (Reddit)",
+    "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f4ocvd7/",
+    "accessed": "2026-11-22",
+    "confidence": "medium",
+    "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate (at max level, as the page lists them); resistance grades for hamon, vampiric, mental and aging attacks as data",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Ghiaccio_(Fighting_Spirit)",
+      "license": "CC BY-SA 3.0",
+      "accessed": "2026-11-15",
+      "note": "via the 2026-11-15 research collection (the page's tactical template)"
+     }
+    ]
    }
   },
   {
@@ -17902,6 +18235,34 @@
     "page": "https://jojowiki.com/Diamond_Records/Diavolo?oldid=1235396",
     "license": "CC BY-SA 4.0",
     "accessed": "2026-11-14"
+   },
+   "tactical": {
+    "speed": 110,
+    "evasion": 30,
+    "hitrate": 110,
+    "criticalRate": 14
+   },
+   "resistGrades": {
+    "hamon": "C",
+    "vampiric": "C-",
+    "mental": "B",
+    "aging": "C"
+   },
+   "tacticalSource": {
+    "source": "ジョジョDR２ @ ウィキ (atwiki; page source in an archived RSS feed)",
+    "page": "https://www65.atwiki.jp/jojodrr/pages/506.html",
+    "capture": "https://web.archive.org/web/20190820154916/https://www65.atwiki.jp/jojodrr/rss10_new.xml",
+    "accessed": "2026-11-22",
+    "confidence": "high",
+    "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate (at max level, as the page lists them); resistance grades for hamon, vampiric, mental and aging attacks as data",
+    "also": [
+     {
+      "source": "r/JoJoDiamondRecords (Reddit)",
+      "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f4ovl0b/",
+      "accessed": "2026-11-22",
+      "confidence": "medium"
+     }
+    ]
    }
   },
   {
@@ -17973,6 +18334,34 @@
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Trish_Una_%28Courage%29",
     "revid": 4714,
     "accessed": "2026-11-15"
+   },
+   "tactical": {
+    "speed": 110,
+    "evasion": 25,
+    "hitrate": 100,
+    "criticalRate": 8
+   },
+   "resistGrades": {
+    "hamon": "C",
+    "vampiric": "C-",
+    "mental": "B",
+    "aging": "B+"
+   },
+   "tacticalSource": {
+    "source": "r/JoJoDiamondRecords (Reddit)",
+    "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f4o7jng/",
+    "accessed": "2026-11-22",
+    "confidence": "medium",
+    "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate (at max level, as the page lists them); resistance grades for hamon, vampiric, mental and aging attacks as data",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Trish_Una_(Courage)",
+      "license": "CC BY-SA 3.0",
+      "accessed": "2026-11-15",
+      "note": "via the 2026-11-15 research collection (the page's tactical template)"
+     }
+    ]
    }
   },
   {
@@ -18042,6 +18431,25 @@
     "page": "https://jojowiki.com/Diamond_Records/Risotto_Nero?oldid=1235426",
     "license": "CC BY-SA 4.0",
     "accessed": "2026-11-14"
+   },
+   "tactical": {
+    "speed": 110,
+    "evasion": 20,
+    "hitrate": 100,
+    "criticalRate": 11
+   },
+   "resistGrades": {
+    "hamon": "C",
+    "vampiric": "C-",
+    "mental": "B",
+    "aging": "C"
+   },
+   "tacticalSource": {
+    "source": "r/JoJoDiamondRecords (Reddit)",
+    "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f4osdr2/",
+    "accessed": "2026-11-22",
+    "confidence": "medium",
+    "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate (at max level, as the page lists them); resistance grades for hamon, vampiric, mental and aging attacks as data"
    }
   },
   {
@@ -18182,6 +18590,25 @@
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Jotaro_Kujo_(Tactical)",
     "license": "CC BY-SA 3.0",
     "accessed": "2026-11-14"
+   },
+   "tactical": {
+    "speed": 110,
+    "evasion": 25,
+    "hitrate": 110,
+    "criticalRate": 5
+   },
+   "resistGrades": {
+    "hamon": "C",
+    "vampiric": "C-",
+    "mental": "B",
+    "aging": "C"
+   },
+   "tacticalSource": {
+    "source": "r/JoJoDiamondRecords (Reddit)",
+    "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f45kqdl/",
+    "accessed": "2026-11-22",
+    "confidence": "medium",
+    "note": "research-b44/statues: the tactical speed, evasion, accuracy and critical rate (at max level, as the page lists them); resistance grades for hamon, vampiric, mental and aging attacks as data"
    }
   },
   {

@@ -28,7 +28,10 @@ statues whose current page lacks the action-era values.
 
 Research facts (--research, Build 33; several files from Build 41; research-b43/assists from Build
 43, whose records may list the condition as 'condition_types' or 'condition_jp'; REFILE moves a record
-filed under the wrong id): an assist_ability record of medium or high confidence for a statue gives
+filed under the wrong id; Build 44: the research-b44 family files, whose assist_ability_resolved records
+(an in-game screenshot settling a held conflict; condition_icons read as condition_types) make the
+statue's source even where a ShoutWiki entry gives the same condition, which is then cited as "also"):
+an assist_ability record of medium or high confidence for a statue gives
   - its activation condition: the attributes the wiki lists (one per required assist, e.g. two
     Fighting Spirit) as [{statueType, count}];
   - its effects where the tactical battle has an affect for them (HP, ATK, DEF, damage dealt, as
@@ -71,7 +74,8 @@ usage: python3 -I tools/content/build_assist_abilities.py \
          [--shoutwiki local/wiki-raw/shoutwiki/oldmode_statues.json] --labels local/l10n/export-b33.tsv \
          [--research local/wiki-raw/research-b33/statues/results.jsonl \
           --research local/wiki-raw/research-b33/action/results.jsonl \
-          --research local/wiki-raw/research-b43/assists/results.jsonl] \
+          --research local/wiki-raw/research-b43/assists/results.jsonl \
+          --research local/wiki-raw/research-b44/<family>/results.jsonl ...] \
          [--statues server/content/statues.json] \
          [--table server/content/masterdata/dtbattle_ability_data_table.json] \
          [--out server/content/assist_abilities.json] \
@@ -104,9 +108,11 @@ WIKI_STAT = {"hp": "HP_RATEADD", "atk": "ATK_RATEADD", "def": "DEF_RATEADD",
 # ABI_AST_3180_62_N label, so ShoutWiki revision 3300 is this statue), 4030_04 and 4170_16 released
 # (their ShoutWiki requirements were read in the page source). The three below stay held: Gamerch
 # prints no condition on three of its pages while ShoutWiki gives one, and no third source was found.
+# Build 44 (research-b44/communities): 4220_72 released. In-game assist screens on the Bahamut forum
+# show its ability with two Solitary condition icons (ShoutWiki's condition; icon reading medium) and
+# its +30% (Gamerch; ShoutWiki's +20% is the ★3 4220_71's 欲望と本能). That record is the statue's source.
 HELD = {
     "3230_62": "held: ShoutWiki gives Courage+Unity, Gamerch prints no condition (research-b43 conflict, unresolved)",
-    "4220_72": "held: ShoutWiki gives Solitary+Solitary, Gamerch prints no condition (research-b43 conflict, unresolved)",
     "4090_72": "held: ShoutWiki gives Courage+Unity, Gamerch prints no condition (research-b43 conflict, "
                "unresolved; the id itself is settled by the assist-name label)",
 }
@@ -281,6 +287,11 @@ by_statue = collections.defaultdict(list)
 for path in a.research:
     for line in open(path, encoding="utf-8"):
         r = json.loads(line)
+        if r.get("field") == "assist_ability_resolved" and isinstance(r.get("value"), dict):
+            v = r["value"]
+            r = {**r, "field": "assist_ability", "_verdict": True,
+                 "value": {"name": v.get("name"), "condition_types": v.get("condition_icons"),
+                           "effects": v.get("effects") or []}}
         if r.get("field") == "assist_ability" and r.get("confidence") in RANK and r.get("statueId") \
                 and isinstance(r.get("value"), dict) and r.get("url"):
             title = unicodedata.normalize("NFKC", urllib.parse.unquote(r["url"]))
@@ -307,9 +318,11 @@ for sid, recs in by_statue.items():
         continue
     giving = [r for r in recs if got.get("conditions") and research_conditions(r) == got["conditions"]] or \
         [r for r in recs if RANK[r["confidence"]] == top]
-    best = sorted(giving, key=lambda r: ("shoutwiki" not in r["url"], -RANK[r["confidence"]]))[0]
+    # A research-b44 verdict first, then a ShoutWiki page, then the highest confidence.
+    best = sorted(giving, key=lambda r: (not r.get("_verdict"), "shoutwiki" not in r["url"], -RANK[r["confidence"]]))[0]
     research[sid] = {"record": best, "conditions": got.get("conditions"),
-                     "kinds": [tuple(k) for k in got.get("kinds") or []]}
+                     "kinds": [tuple(k) for k in got.get("kinds") or []],
+                     "agree": [r for r in giving if r is not best and got.get("conditions")]}
 
 
 def research_page(r):
@@ -426,10 +439,24 @@ for s in statues:
         site = ("Diamond Records Wiki (ShoutWiki)" if "shoutwiki" in page else
                 "JoJo's Bizarre Encyclopedia (JoJoWiki)" if "jojowiki" in page else
                 "Gamerch ジョジョDR攻略Wiki (Wayback Machine)" if "web.archive.org" in page and "gamerch" in page else
-                "Gamerch ジョジョDR攻略Wiki" if "gamerch" in page else None)
+                "Gamerch ジョジョDR攻略Wiki" if "gamerch" in page else
+                "Bahamut forum (巴哈姆特 JoJo DR board), in-game screenshots" if "forum.gamer.com.tw" in page else None)
         if wc and rc is not None and rc != wc:
             research_conflicts.append(sid)
-        if site and wc and "shoutwiki" not in page:
+        also = None
+        if site and r.get("_verdict") and (wc is None or rc == wc):
+            # A research verdict (an in-game screenshot) is the source; the records (or the matched
+            # ShoutWiki entry) that give the same condition are cited as "also".
+            also = [{"source": "Diamond Records Wiki (ShoutWiki)" if "shoutwiki" in research_page(x)[0] else
+                     "Gamerch ジョジョDR攻略Wiki", "page": research_page(x)[0],
+                     **({"revid": research_page(x)[1]} if research_page(x)[1] else {}),
+                     **({"license": "CC BY-SA 3.0"} if "shoutwiki" in research_page(x)[0] else {}),
+                     "accessed": x.get("accessed") or "2026-11-14"} for x in rr["agree"]]
+            if wc and w["source"]["page"] not in [x["page"] for x in also]:
+                also.append({"source": w["source"]["site"], "page": w["source"]["page"],
+                             **({"revid": w["source"]["revid"]} if w["source"].get("revid") else {}),
+                             "license": w["source"].get("license")})
+        elif site and wc and "shoutwiki" not in page:
             # The ShoutWiki entry already gives the condition: keep it as the source.
             site = None
         if site and (rk or rc is not None):
@@ -443,7 +470,11 @@ for s in statues:
                    "accessed": r.get("accessed") or "2026-11-14",
                    "note": ("condition and " if conditions else "") +
                            ("stat and value" if rk else "no tactical affect for the effect: ours")
-                           + " (action-battle era); tier = nearest value"}
+                           + " (action-battle era); tier = nearest value"
+                           + ("; research-b44: the in-game assist screens settle the research-b43 conflict "
+                              "(condition icons read at medium)" if r.get("_verdict") else "")}
+            if also:
+                src["also"] = also
             by_src["research"] += 1
     if sid in OWN:
         # Assist-only: its own label; the first kind/tier gives the values (ours).

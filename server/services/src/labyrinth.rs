@@ -17,11 +17,13 @@
 //! costs by room label from the Bahamut floor screenshots (2018-04) and their cost-by-slot pattern
 //! from floor 5 on; the ShoutWiki floor rewards of floors 1-4.
 //!
-//! Ours: the three dungeons (the game's Beginner/Intermediate/Advanced names of one mansion) and
-//! their rooms (our quest data has no labyrinth stages, so rooms reuse tactical story stages picked
-//! by floor, stronger in the harder dungeons), the costs of rooms no wiki covers (floors 1-4), the
-//! rewards of floors 5-20, the Tarot effects mapped onto existing affects, and the Mentality refill
-//! (full at the 04:00 JST day roll).
+//! Build 44 (research-b44, docs/research/22 §2.2): the grades have 10, 15 and 20 floors (a 2019
+//! select screen) and Mentality comes back 100 a day at 04:00 JST, up to 300.
+//!
+//! Ours: the three dungeons' grades and strength (the game's Beginner/Intermediate/Advanced names
+//! of one mansion) and their rooms (our quest data has no labyrinth stages, so rooms reuse tactical
+//! story stages picked by floor, stronger in the harder dungeons), the costs of rooms no wiki covers
+//! (floors 1-4), the rewards of floors 5-20 and the Tarot effects mapped onto existing affects.
 
 use crate::missions::Reward;
 use crate::quests::{self, ChapterDef, StageDef};
@@ -44,6 +46,10 @@ pub struct Dungeon {
     pub level_add: i64,
     /// Floor rewards are multiplied by this (ours).
     pub reward_mult: i64,
+    /// Floors (`floorMax`): 10, 15 and 20 for the three grades (a 2019 in-game Labyrinth select
+    /// screen, research-b44/communities, high; namu.wiki agrees). The 2018 action era had one
+    /// 20-floor labyrinth.
+    pub floors: i64,
 }
 
 /// The three dungeons: the game names one mansion in three grades (`CHAPTER_NAME_D_01..03`); its
@@ -57,6 +63,7 @@ pub const DUNGEONS: [Dungeon; 3] = [
         difficulty: 2, // C
         level_add: 0,
         reward_mult: 1,
+        floors: 10,
     },
     Dungeon {
         id: "DU02",
@@ -65,6 +72,7 @@ pub const DUNGEONS: [Dungeon; 3] = [
         difficulty: 4, // A
         level_add: 15,
         reward_mult: 2,
+        floors: 15,
     },
     Dungeon {
         id: "DU03",
@@ -73,6 +81,7 @@ pub const DUNGEONS: [Dungeon; 3] = [
         difficulty: 7, // SS
         level_add: 30,
         reward_mult: 3,
+        floors: 20,
     },
 ];
 /// The Beginner dungeon (the one Build 23 served; an empty `dungeonId` is taken as it).
@@ -86,12 +95,21 @@ const ROOM_LABEL_PREFIX: &str = "STAGE_DU01_";
 pub fn dungeon(id: &str) -> Option<&'static Dungeon> {
     DUNGEONS.iter().find(|d| d.id == id)
 }
-/// Floors (research pack, 20 shown on every screenshot).
+/// The most floors (the Advanced grade; the room labels name floors 1-20, and every 2018 screenshot
+/// shows 20). Each dungeon has its own `floors`.
 pub const FLOORS: i64 = 20;
+
+/// A dungeon's floors (FLOORS for an unknown id).
+pub fn floors_of(dungeon_id: &str) -> i64 {
+    dungeon(dungeon_id).map(|d| d.floors).unwrap_or(FLOORS)
+}
 /// GameConst DUNGEON_SOUL_MAX (client).
 pub const SOUL_MAX: i64 = 3;
 /// GameConst DUNGEON_MENTARITY_MAX (client display clamp).
 pub const MENTALITY_MAX: i64 = 300;
+/// Mentality regained at each 04:00 JST day roll, up to MENTALITY_MAX (research-b44/communities:
+/// namu.wiki and a 2019 Reddit reply give 100 a day; so did the research pack's earlier guide).
+pub const MENTALITY_PER_DAY: i64 = 100;
 /// Reversing the offer: the client's texts say 20 (GameConst says 30 but only feeds an unused
 /// placeholder), and so does the research pack.
 pub const FLIP_COST: i64 = 20;
@@ -162,12 +180,12 @@ pub fn room_cost(floor: i64, index: usize) -> i64 {
     }
 }
 
-/// The rooms of a floor (1..=FLOORS) of a dungeon. Each floor takes its twentieth of the stage
+/// The rooms of a floor (1..=d.floors) of a dungeon. Each floor takes its twentieth of the stage
 /// pool, so the enemies get stronger floor by floor; a single room takes the hardest stage of its
 /// slice. The harder dungeons raise the enemies' level.
 pub fn rooms_in(d: &'static Dungeon, floor: i64) -> Vec<Room> {
     let pool = pool();
-    if pool.is_empty() || !(1..=FLOORS).contains(&floor) {
+    if pool.is_empty() || !(1..=d.floors).contains(&floor) {
         return Vec::new();
     }
     let n = pool.len();
@@ -346,7 +364,8 @@ const REVERSED: [Option<Effect>; TAROT_CARDS] = [
     Some(("DTAF_VCT_DAM_RATESUB", -500, 0)),             // 013 damage taken -50%
     None,                                                // 014
     None,                                                // 015 accuracy +40
-    // 016 Tower: the client has only the upright text; reversed DEF +50% is ours.
+    // 016 Tower: the client has only the upright text; reversed DEF +50% is the 2018 Reddit tarot
+    // table's (research-b44/communities, medium), ours before.
     Some(("DTAF_DEF_RATEADD", 500, 0)),
     None,                                       // 017
     None,                                       // 018 HP <= 50%: dealt +100%
@@ -427,7 +446,7 @@ pub struct DungeonState {
 #[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Run {
     pub dungeon_id: String,
-    /// Current floor, 1..=FLOORS; FLOORS + 1 once the last floor is cleared.
+    /// Current floor, 1..=floors; floors + 1 once the dungeon's last floor is cleared.
     pub floor: i64,
     #[serde(default)]
     pub souls_lost: i64,
@@ -462,26 +481,22 @@ pub enum Outcome {
 }
 
 impl DungeonState {
-    /// Mentality now: full again once the game day has turned since the last refill (ours).
+    /// Mentality now: what was left on `mentality_day`, plus MENTALITY_PER_DAY for each day roll
+    /// since, up to the cap (a new save starts full).
     pub fn mentality(&self, now: i64) -> i64 {
-        if crate::missions::game_day(now) != self.mentality_day {
-            MENTALITY_MAX
-        } else {
-            (MENTALITY_MAX - self.mentality_used).clamp(0, MENTALITY_MAX)
-        }
+        let days = (crate::missions::game_day(now) - self.mentality_day).max(0);
+        (MENTALITY_MAX - self.mentality_used + MENTALITY_PER_DAY.saturating_mul(days))
+            .clamp(0, MENTALITY_MAX)
     }
 
     /// Spend Mentality, or `Err(52102)` when short (nothing spent).
     pub fn spend(&mut self, cost: i64, now: i64) -> Result<(), i64> {
-        let today = crate::missions::game_day(now);
-        if self.mentality_day != today {
-            self.mentality_day = today;
-            self.mentality_used = 0;
-        }
-        if self.mentality(now) < cost {
+        let have = self.mentality(now);
+        if have < cost {
             return Err(E_LACK_MENTALITY);
         }
-        self.mentality_used += cost;
+        self.mentality_day = crate::missions::game_day(now);
+        self.mentality_used = MENTALITY_MAX - (have - cost);
         Ok(())
     }
 
@@ -538,14 +553,15 @@ impl DungeonState {
         };
         run.room = None;
         run.chosen = None;
-        if run.floor > FLOORS {
+        let floors = floors_of(&run.dungeon_id);
+        if run.floor > floors {
             return Outcome::Cleared;
         }
         run.earned.push(run.floor);
         let best = self.best_floors.entry(run.dungeon_id.clone()).or_insert(0);
         *best = (*best).max(run.floor);
         run.floor += 1;
-        if run.floor > FLOORS {
+        if run.floor > floors {
             Outcome::Cleared
         } else {
             Outcome::Continue
@@ -574,7 +590,7 @@ impl DungeonState {
     pub fn finish(&mut self) -> Vec<i64> {
         match self.run.take() {
             Some(run) => {
-                if run.floor > FLOORS {
+                if run.floor > floors_of(&run.dungeon_id) {
                     self.clears += 1;
                 }
                 run.earned
@@ -628,14 +644,14 @@ impl Run {
 /// `DungeonInfo` for the dungeon list.
 pub fn dungeon_info(d: &Dungeon, s: &DungeonState) -> Value {
     json!({ "dungeonId": d.id, "name": d.name, "summary": d.summary,
-            "floorMax": FLOORS, "floorNum": s.floor_num(d.id), "floorClearNum": s.best(d.id),
+            "floorMax": d.floors, "floorNum": s.floor_num(d.id), "floorClearNum": s.best(d.id),
             "difficulty": d.difficulty, "imgNo": DUNGEON_IMG, "stageType": 1 })
 }
 
 /// `DungeonRewardInfo` rows for the reward review: one per floor. The client marks a row
 /// achieved while the run's floor is past it.
 pub fn reward_rows(d: &Dungeon) -> Vec<Value> {
-    (1..=FLOORS)
+    (1..=d.floors)
         .map(|f| {
             json!({ "rewardItemSet": crate::missions::reward_set(&floor_reward(d, f)), "floorNum": f,
                     "reward_title": "", "reward_text": "" })
@@ -651,7 +667,7 @@ mod tests {
     fn twenty_floors_of_rooms_get_harder() {
         let mut last = 0;
         for f in 1..=FLOORS {
-            let rs = rooms(f);
+            let rs = rooms_in(&DUNGEONS[2], f);
             assert_eq!(rs.len(), rooms_on(f));
             for r in &rs {
                 assert!((22..=35).contains(&r.cost), "{} costs {}", r.id, r.cost);
@@ -671,7 +687,12 @@ mod tests {
             assert!(top >= last, "floor {f} is not easier than the one above");
             last = top;
         }
-        assert!(find_room("STAGE_DU01_21_01").is_none());
+        assert!(find_room("STAGE_DU03_21_01").is_none());
+        assert!(find_room("STAGE_DU03_20_01").is_some());
+        assert!(
+            find_room("STAGE_DU01_11_01").is_none(),
+            "the Beginner grade has 10 floors"
+        );
         assert!(find_room("STAGE_DU01_10_02").is_none());
         assert!(find_room("STAGE_DU04_01_01").is_none());
         assert!(find_room("DT_STAGE_ST_00_01").is_none());
@@ -681,7 +702,7 @@ mod tests {
     /// and larger rewards; their room ids find their own dungeon.
     #[test]
     fn harder_dungeons_raise_levels_and_rewards() {
-        for f in [1, 10, 20] {
+        for f in [1, 5, 10] {
             let easy = rooms_in(&DUNGEONS[0], f);
             for d in &DUNGEONS[1..] {
                 let hard = rooms_in(d, f);
@@ -801,10 +822,38 @@ mod tests {
         assert_eq!(s.spend(1, noon), Err(E_LACK_MENTALITY));
         // 03:59 the next day: still the same game day.
         assert_eq!(s.mentality(noon + 16 * 3600 - 60), 0);
-        // 04:00: full again.
-        assert_eq!(s.mentality(noon + 16 * 3600), MENTALITY_MAX);
-        s.spend(25, noon + 16 * 3600).unwrap();
-        assert_eq!(s.mentality(noon + 16 * 3600 + 1), MENTALITY_MAX - 25);
+        // 04:00: 100 more (research-b44), not a full refill.
+        let roll = noon + 16 * 3600;
+        assert_eq!(s.mentality(roll), MENTALITY_PER_DAY);
+        s.spend(25, roll).unwrap();
+        assert_eq!(s.mentality(roll + 1), MENTALITY_PER_DAY - 25);
+        // More day rolls: +100 each, capped at 300.
+        assert_eq!(s.mentality(roll + 86_400), 2 * MENTALITY_PER_DAY - 25);
+        assert_eq!(s.mentality(roll + 2 * 86_400), 3 * MENTALITY_PER_DAY - 25);
+        assert_eq!(s.mentality(roll + 3 * 86_400), MENTALITY_MAX);
+        assert_eq!(s.mentality(roll + 30 * 86_400), MENTALITY_MAX);
+    }
+
+    /// research-b44: the three grades have 10, 15 and 20 floors; a run ends after its own.
+    #[test]
+    fn each_grade_has_its_floors() {
+        assert_eq!(DUNGEONS.map(|d| d.floors), [10, 15, 20]);
+        for d in &DUNGEONS {
+            assert_eq!(
+                dungeon_info(d, &DungeonState::default())["floorMax"],
+                d.floors
+            );
+            assert!(!rooms_in(d, d.floors).is_empty());
+            assert!(rooms_in(d, d.floors + 1).is_empty());
+            let mut s = DungeonState::default();
+            s.enter(d.id).unwrap();
+            for f in 1..=d.floors {
+                let o = s.battle_won();
+                assert_eq!(o == Outcome::Cleared, f == d.floors, "{} floor {f}", d.id);
+            }
+            assert_eq!(s.finish().len(), d.floors as usize);
+            assert_eq!(s.clears, 1);
+        }
     }
 
     #[test]
@@ -868,12 +917,12 @@ mod tests {
     #[test]
     fn rewards_are_one_known_item_per_floor() {
         for d in &DUNGEONS {
-            for f in 1..=FLOORS {
+            for f in 1..=d.floors {
                 let r = floor_reward(d, f);
                 assert!(r.count > 0);
                 assert!(r.item_id == 20 || crate::items::find(r.item_id).is_some());
             }
-            assert_eq!(reward_rows(d).len(), FLOORS as usize);
+            assert_eq!(reward_rows(d).len(), d.floors as usize);
         }
     }
 }

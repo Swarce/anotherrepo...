@@ -118,6 +118,22 @@ files, M = inferred. Code: `server/services/src/quests.rs` (`area_list`, `has_ac
 - `build_skill_table.py`: a `"from": "jdr-default"` slot takes a role only after the wiki-matched
   slots, and within each group a slot with a printed cool-down comes first (40 rows change).
 
+Build 44 (`--research-kit` once per research-b44 family file; of topic action_skills only the
+Action Battle flags are read, the tactical cool-downs go to `dt_cool_turns.json`, doc 26 §4):
+
+- **1090_13** (★5 Solitary Straizo): the official press release (Bandai Namco via 4Gamer,
+  2018-08-10; the names high) gives its skill 回し蹴り (109_01) and SP このストレイツォ容赦せん！.
+  That SP text is both 109_04 and 109_07; the action set has no entry 7, so §4's rule takes
+  109_04. research-b43/action_skills had filed the Gamerch ★5 華麗なる跳躍 page under 1090_03;
+  research-b43/statues showed the page is 1090_13's, so `REFILE` moves those records (the finisher
+  109_06 now cites that page as `also`) and 1090_03 returns to the jdr-default kit.
+- **Not usable in the action battle** (in-game profiles ending with the Tactical-Battle-only tag,
+  read on an ameblo player blog, high; the client's own PROF_TEXT strings agree): 5170_14 and
+  5220_14 get `actionMode`. 5010_04's profile has no tag, against ShoutWiki: kept as
+  `actionMode.sourceSays` (medium), not applied.
+- No action-era kit is new: the Reddit kits are tactical (2019-10), and no b44 source gives the
+  remaining ~104 kits or the 18 held finishers.
+
 ## 5. The SP cinematic (H)
 
 - The statue's own action set starts it: its `SKILL_<entry>` FSM runs `DoChangeBattleSceneMode`
@@ -250,6 +266,16 @@ What we send:
   (`noTribe`, still `[]`). An empty Gamerch 特徴 row is never read as "no tribe" (3040_13's page
   has one). Still none: 4280_72 and the Part 5 tactical-only statues 5000_22/23/24/62, 5140_04,
   5170_14, 5220_14, 5330_72.
+  Build 44 (research-b44, rule 6 of the builder; docs/CONTENT.md "Research collections"): 277
+  statues. In-game status tabs on an ameblo blog (high) give 5220_14 [5, 10], 5010_04 [5, 9] and
+  3330_04 [1, 5]; the atwiki statue page (archived RSS, high) gives 5170_14 [5]; a Reddit
+  translator's guide (medium) gives Team Bucciarati (9) to 5000_04/24, 5010_14, 5030_04, 5050_04,
+  5080_04 and 5100_14 and Hitman Team (10) to 5140_04 and 5150_04. ShoutWiki categories miss these
+  team traits (added in 3.9.0, 2019-06, after many pages were written), so a set that strictly
+  contains ours replaces it; a smaller or different one would only be reported. The family fill
+  then gives 5050_03, 5000_03, 5000_22, 5000_23 and 5000_62 [5, 9]. Only 4280_72 and 5330_72 have
+  no source. Trish's 性別(女) (17) stays unsent, so link 054 stays held. These change which teams
+  meet the trait links (Stand User ×3 now counts 3330_04 and 5170_14).
 - **JoJo Links** (`jojo_links.json`, doc 26 §1): 53 links served (48 by members, 5 by trait:
   11, 12, 13, 14, 33), 25 held; Lv1 = Lv10, sent at level 1. Build 43: 56 served, 22 held (doc 26
   §1).

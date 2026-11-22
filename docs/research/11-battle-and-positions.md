@@ -119,7 +119,10 @@ description or rewards. No errors were logged.
   rank table.
 - **Turns** (H for the mechanism):
   - Action gauges start at 50–52.
-  - Time to act = (100 − gauge) × 10000 / speed (0xBA31F0).
+  - Time to act = (100 − gauge) × 10000 / speed (0xBA31F0). We send
+    `StatueInfo.speed` 100 for every statue until Build 44, which sends the wiki value for 17
+    (100 to 125; docs/CONTENT.md "Research collections"); that the gauge reads this field is not
+    traced (M).
   - After acting, the unit's gauge drops by the skill's `skillWait` (0xBA338C).
   - With `skillWait` 0 the first unit keeps acting forever. Build 12 sends 100 for attacks and 50
     for the fixed skills (L).

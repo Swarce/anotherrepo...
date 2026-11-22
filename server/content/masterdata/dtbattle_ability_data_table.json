@@ -52,6 +52,18 @@
    "note": "research-b43/assists: the Reversal-era (tactical) MAX Lv. leader value of the statue page that the statue's stats cite, for statues no Gamerch page gives; the page prints no Lv1, so Lv1 = Lv10 = the MAX value (ours). Lines without a tactical affect are not used."
   },
   {
+   "source": "Reddit r/JoJoDiamondRecords (a translator's tactical retrospective, research pass)",
+   "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/",
+   "pages": {
+    "DT_LEAD_5010_14": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f3wfffd/",
+    "DT_LEAD_5050_04": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f3zeb3t/",
+    "DT_LEAD_5100_14": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f3zs22u/",
+    "DT_LEAD_5140_04": "https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/comment/f4oiqy4/"
+   },
+   "accessed": "2026-11-22",
+   "note": "research-b44/communities: the tactical-era (2019-10) MAX-level leader value, an English rendering of the in-game text (medium), for statues no wiki row gives; Lv1 = Lv10 = the MAX value (ours). Lines without a tactical affect (same-type counts, trait filters, an HP-above-half condition, defeated counts, Reversal) are not used. DT_LEAD_5100_14 takes +14%, the value of ShoutWiki's summary page (rev 4521), settling the research-b43 conflict with its statue page (+9.0%). It gives the same values as the rows of DT_LEAD_5030_04, DT_LEAD_5080_04, DT_LEAD_5150_04."
+  },
+  {
    "source": "jdr-research",
    "doc": "docs/research/12-master-data-fill.md §4",
    "note": "units, slots and conditions read in the client code; see scripts/K_abilities.py header"
@@ -3406,6 +3418,32 @@
     ]
    },
    {
+    "abilityId": "DT_LEAD_5010_14",
+    "abilityName": "ABI_LEAD_NAME_5010_14",
+    "abilityParamList": [
+     {
+      "affectId": "DTAF_ATK_RATEADD",
+      "giveLimit": -1,
+      "paramLv1_0": 100,
+      "paramLv1_1": 0,
+      "paramLv1_2": 0,
+      "paramLv1_3": 0,
+      "paramLv1_4": 0,
+      "paramLv1_5": 0,
+      "paramLv1_6": 0,
+      "paramLv1_7": 0,
+      "paramLv10_0": 100,
+      "paramLv10_1": 0,
+      "paramLv10_2": 0,
+      "paramLv10_3": 0,
+      "paramLv10_4": 0,
+      "paramLv10_5": 0,
+      "paramLv10_6": 0,
+      "paramLv10_7": 0
+     }
+    ]
+   },
+   {
     "abilityId": "DT_LEAD_5030_04",
     "abilityName": "ABI_LEAD_NAME_5030_04",
     "abilityParamList": [
@@ -3432,6 +3470,32 @@
     ]
    },
    {
+    "abilityId": "DT_LEAD_5050_04",
+    "abilityName": "ABI_LEAD_NAME_5050_04",
+    "abilityParamList": [
+     {
+      "affectId": "DTAF_TENACITY_STYPE_DMG_RATEADD",
+      "giveLimit": -1,
+      "paramLv1_0": 139,
+      "paramLv1_1": 3,
+      "paramLv1_2": 0,
+      "paramLv1_3": 0,
+      "paramLv1_4": 0,
+      "paramLv1_5": 0,
+      "paramLv1_6": 0,
+      "paramLv1_7": 0,
+      "paramLv10_0": 139,
+      "paramLv10_1": 3,
+      "paramLv10_2": 0,
+      "paramLv10_3": 0,
+      "paramLv10_4": 0,
+      "paramLv10_5": 0,
+      "paramLv10_6": 0,
+      "paramLv10_7": 0
+     }
+    ]
+   },
+   {
     "abilityId": "DT_LEAD_5080_04",
     "abilityName": "ABI_LEAD_NAME_5080_04",
     "abilityParamList": [
@@ -3448,6 +3512,58 @@
       "paramLv1_7": 0,
       "paramLv10_0": 150,
       "paramLv10_1": 2,
+      "paramLv10_2": 0,
+      "paramLv10_3": 0,
+      "paramLv10_4": 0,
+      "paramLv10_5": 0,
+      "paramLv10_6": 0,
+      "paramLv10_7": 0
+     }
+    ]
+   },
+   {
+    "abilityId": "DT_LEAD_5100_14",
+    "abilityName": "ABI_LEAD_NAME_5100_14",
+    "abilityParamList": [
+     {
+      "affectId": "DTAF_UNITY_STYPE_DMG_RATEADD",
+      "giveLimit": -1,
+      "paramLv1_0": 140,
+      "paramLv1_1": 4,
+      "paramLv1_2": 0,
+      "paramLv1_3": 0,
+      "paramLv1_4": 0,
+      "paramLv1_5": 0,
+      "paramLv1_6": 0,
+      "paramLv1_7": 0,
+      "paramLv10_0": 140,
+      "paramLv10_1": 4,
+      "paramLv10_2": 0,
+      "paramLv10_3": 0,
+      "paramLv10_4": 0,
+      "paramLv10_5": 0,
+      "paramLv10_6": 0,
+      "paramLv10_7": 0
+     }
+    ]
+   },
+   {
+    "abilityId": "DT_LEAD_5140_04",
+    "abilityName": "ABI_LEAD_NAME_5140_04",
+    "abilityParamList": [
+     {
+      "affectId": "DTAF_BRAVE_STYPE_DMG_RATEADD",
+      "giveLimit": -1,
+      "paramLv1_0": 150,
+      "paramLv1_1": 1,
+      "paramLv1_2": 0,
+      "paramLv1_3": 0,
+      "paramLv1_4": 0,
+      "paramLv1_5": 0,
+      "paramLv1_6": 0,
+      "paramLv1_7": 0,
+      "paramLv10_0": 150,
+      "paramLv10_1": 1,
       "paramLv10_2": 0,
       "paramLv10_3": 0,
       "paramLv10_4": 0,

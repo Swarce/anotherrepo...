@@ -17,6 +17,7 @@ usage:
       --server-statues server/content/statues.json \
       --research local/wiki-raw/research-b33/action/results.jsonl \
       --research local/wiki-raw/research-b43/assists/results.jsonl \
+      [--research local/wiki-raw/research-b44/<family>/results.jsonl ...] \
       --table server/content/masterdata/dtbattle_ability_data_table.json
 
 Writes:
@@ -37,6 +38,11 @@ confidence wins; 3041_03 and 4000_23 are no longer held. A high-confidence Shout
 level is 'MAX (Reversal/DR2)' (research-b43/assists) gives a row to the one roster statue whose
 statues.json source is that page, for statues the Gamerch sources lack: its English lines go through
 EN_LINES, and Lv1 = Lv10 = the MAX value (no Lv1 is published).
+Build 44: a leader_and_statue_ability_max record (research-b44/communities: a translator's 2019 Reddit
+retrospective, the tactical-era MAX-level leader ability in English, medium; its statueId is the
+researchers' leader-name match, verified) gives a row the same way (EN_LINES; Lv1 = Lv10 = MAX) to a
+roster statue no earlier source covers; for a statue that already has a row it is listed as agreeing
+or reported. Its statue ability (ABI_STAT) is not read: the server has no statue-ability rows.
 
 Client facts this relies on (libil2cpp RVAs, JoJo DR 3.12.0; see the K report):
   value(level) = RoundToInt(Lerp(paramLv1_i, paramLv10_i, (clamp(level,1,10)-1)/9))
@@ -118,7 +124,7 @@ EN_TYPE = {'Courage': '\u52c7\u6c17', 'Tactical': '\u77e5\u7565', 'Fighting Spir
            'Unity': '\u56e3\u7d50', 'Solitary': '\u5b64\u9ad8'}
 EN_LINES = [
     (r'(HP|ATK|DEF) ?\+ ?([0-9.]+)%', lambda m: '%s+%s%%' % (m.group(1), m.group(2))),
-    (r'Damage (?:dealt )?to (' + '|'.join(EN_TYPE) + r')(?: Type)? ?\+ ?([0-9.]+)%',
+    (r'Damage (?:dealt )?to (' + '|'.join(EN_TYPE) + r')(?: Types?)? ?\+ ?([0-9.]+)%',
      lambda m: EN_TYPE[m.group(1)] + J_TYPE_DEAL.replace('(?:\u30bf\u30a4\u30d7)?', '\u30bf\u30a4\u30d7')
      + '+%s%%' % m.group(2)),
     (r'When HP is halved, (HP|ATK|DEF) ?\+ ?([0-9.]+)%',
@@ -259,7 +265,7 @@ def main():
         srv_by_id = {x.get('statueId'): x for x in lst if isinstance(x, dict)}
 
     # Research records -> wiki-shaped entries (after the --wiki statues, which take precedence).
-    research_rows, held, shoutwiki_rows = [], set(), []
+    research_rows, held, shoutwiki_rows, reddit_rows = [], set(), [], []
     page_ids = collections.defaultdict(list)
     for i, x in srv_by_id.items():
         pg = (x.get('source') or {}).get('page') or ''
@@ -282,6 +288,15 @@ def main():
                     shoutwiki_rows.append({'statue_id': ids[0], 'leader_ability_values': [x for x in lines if x],
                                            '_url': url, '_page': page, '_revid': int(rev.group(1)) if rev else None,
                                            '_accessed': r.get('accessed', ''), '_kind': 'shoutwiki'})
+                continue
+            if r.get('field') == 'leader_and_statue_ability_max' and r.get('confidence') in ('high', 'medium') \
+                    and isinstance(v, dict) and isinstance(v.get('leader_ability'), str) \
+                    and url.startswith('https://www.reddit.com/') and r.get('statueId') in srv_by_id:
+                # 'Name: line; line': the name is dropped, each line goes through EN_LINES.
+                body = v['leader_ability'].split(': ', 1)[-1]
+                lines = [en_line(e) for e in body.split('; ')]
+                reddit_rows.append({'statue_id': r['statueId'], 'leader_ability_values': [x for x in lines if x],
+                                    '_url': url, '_accessed': r.get('accessed', ''), '_kind': 'reddit'})
                 continue
             if r.get('field') != 'leader_ability' or r.get('confidence') not in ('high', 'medium') \
                     or not isinstance(v, dict) or not v.get('name') or not record_lines(v) \
@@ -310,14 +325,22 @@ def main():
     stats = collections.Counter()
     per_cat = collections.Counter()
     affects = {}          # affectId -> (baseAffect, prvs)
-    rows, mapping, seen, from_research, from_shoutwiki = [], {}, set(), {}, {}
-    for s in wiki['statues'] + research_rows + shoutwiki_rows:
+    rows, mapping, seen, from_research, from_shoutwiki, from_reddit = [], {}, set(), {}, {}, {}
+    reddit_agree, reddit_differ = [], []
+    for s in wiki['statues'] + research_rows + shoutwiki_rows + reddit_rows:
         sid, vals = s.get('statue_id'), s.get('leader_ability_values') or []
         if not sid or not vals:
             stats['statue_no_id_or_values'] += 1
             continue
         if sid in seen:
             stats['statue_duplicate'] += 1
+            if s.get('_kind') == 'reddit':
+                # A later source for a statue that has a row: does it give the same params?
+                mine = sorted((p['affectId'], p['lv10'], p['stype']) for p in (parse(e)[1] for e in vals) if p)
+                have = next((r for r in rows if r['abilityId'] == 'DT_LEAD_' + sid), None)
+                theirs = sorted((q['affectId'], q['paramLv10_0'], q['paramLv10_1']) for q in
+                                (have or {}).get('abilityParamList', []))
+                (reddit_agree if have and mine == theirs else reddit_differ).append(sid)
             continue
         seen.add(sid)
         name = 'ABI_LEAD_NAME_' + sid
@@ -349,7 +372,10 @@ def main():
             q['affectId'] = p['affectId']
             plist.append(q)
         aid = 'DT_LEAD_' + sid
-        if s.get('_kind') == 'shoutwiki':
+        if s.get('_kind') == 'reddit':
+            from_reddit[sid] = s
+            stats['statue_with_row_from_reddit_max'] += 1
+        elif s.get('_kind') == 'shoutwiki':
             from_shoutwiki[sid] = s
             stats['statue_with_row_from_shoutwiki_max'] += 1
         elif '_url' in s:
@@ -424,11 +450,28 @@ def main():
             'note': 'research-b43/assists: the Reversal-era (tactical) MAX Lv. leader value of the statue page '
                     'that the statue\'s stats cite, for statues no Gamerch page gives; the page prints no Lv1, '
                     'so Lv1 = Lv10 = the MAX value (ours). Lines without a tactical affect are not used.'}
+    reddit_src = None
+    if from_reddit:
+        reddit_src = {
+            'source': 'Reddit r/JoJoDiamondRecords (a translator\'s tactical retrospective, research pass)',
+            'page': 'https://www.reddit.com/r/JoJoDiamondRecords/comments/dijnrg/',
+            'pages': {'DT_LEAD_' + i: from_reddit[i]['_url'] for i in sorted(from_reddit)},
+            'accessed': max(x['_accessed'] for x in from_reddit.values()),
+            'note': 'research-b44/communities: the tactical-era (2019-10) MAX-level leader value, an English '
+                    'rendering of the in-game text (medium), for statues no wiki row gives; Lv1 = Lv10 = the MAX '
+                    'value (ours). Lines without a tactical affect (same-type counts, trait filters, an HP-above-half '
+                    'condition, defeated counts, Reversal) are not used.'
+                    + (' DT_LEAD_5100_14 takes +14%, the value of ShoutWiki\'s summary page (rev 4521), settling the '
+                       'research-b43 conflict with its statue page (+9.0%).' if '5100_14' in from_reddit else '')
+                    + (' It gives the same values as the rows of ' + ', '.join('DT_LEAD_' + i for i in sorted(reddit_agree))
+                       + '.' if reddit_agree else '')}
     if a.table:
         doc = json.load(open(a.table, encoding='utf-8'))
         others = [r for r in doc['data']['paramList'] if not r['abilityId'].startswith('DT_LEAD_')]
         doc['data']['paramList'] = rows + others
         doc['sources'] = [x for x in doc['sources'] if 'research pass)' not in x.get('source', '')]
+        if reddit_src:
+            doc['sources'].insert(1, reddit_src)
         if shoutwiki_src:
             doc['sources'].insert(1, shoutwiki_src)
         if research_src:
@@ -440,6 +483,9 @@ def main():
             base_affect['data']['paramList'] = old + new_rows
             dump(base_affect, a.affect_table)
     else:
+        if reddit_src:
+            table_doc['sources'].insert(1, reddit_src)
+            map_doc['sources'].insert(1, reddit_src)
         if shoutwiki_src:
             table_doc['sources'].insert(1, shoutwiki_src)
             map_doc['sources'].insert(1, shoutwiki_src)
@@ -459,6 +505,9 @@ def main():
               'affect_rows_added': len(new_rows)}
     report['research_rows'] = sorted(from_research)
     report['shoutwiki_max_rows'] = sorted(from_shoutwiki)
+    report['reddit_max_rows'] = sorted(from_reddit)
+    report['reddit_agrees'] = sorted(reddit_agree)
+    report['reddit_differs'] = sorted(reddit_differ)
     report['research_held'] = sorted(held)
     if a.server_statues:
         ids = set(srv_by_id)

@@ -29,7 +29,8 @@ M = inferred.
 - **Stat bonus (tactical):** for each assist,
   `rate = base/1000 + min(boost, limitR)/limitR × addR/1000` (R = the assist's rarity 3–6), times
   `same or different statue type rate /1000`, applied to the **assist's own** HP/ATK/DEF and added
-  to the seat. The constants live in `dtbattle_damage_param`; ours were missing, so 0.
+  to the seat. The constants live in `dtbattle_damage_param` (0 before Build 22; the values we
+  send are in §4).
 - **Abilities** need `assist_ability_condition_table` rows keyed by statueId. Trap: the unused
   tactical reader finds the index in `dtAssistAbilityList` and reads that index from
   `assistAbilityList`, so both lists keep the same length and order. The tactical battle itself
@@ -63,7 +64,10 @@ Gamerch player posts 101615739 (2017-11-24), 101635727 (2017-11-27) and 10415577
 (2019-08-20); the original server's values are not recovered. Before Build 42 we sent
 10/5/50/10 (placeholders: 1% base, 51% at 50 boosts). Every assist record on a seat carries its
 `convergence` and stats (`collection::team_info`), so nothing else is sent. The tactical
-formula (§3, §4) is unchanged.
+formula (§3, §4) is unchanged by this. Build 44: Bahamut snA=361 (2017-09-27) states the
+action-era share as assist HP/ATK/DEF × (10% + boost × 0.4%), and snA=406 shows +150 = 70%
+(research-b44/communities, medium): the same line as ours at every fifth boost (ours steps per
+5 boosts, as the client's integer steps do).
 
 Not verified: the device check (the action formation shows a bigger share for a boosted assist);
 the Gamerch posts were not re-read in this session (the values are as the batch handoff quotes
@@ -76,9 +80,13 @@ them).
   becomes a main member of the team is not shown as an assist.
 - equip_multiple_assist applies the diff in order, moves an assist off the team's other seats, and
   refuses a main member, a seq outside 1–3 and an unknown statue (51702/51709).
-- **Bonus constants (ours):** base 10%, plus up to 10/10/15/20% for rarity 3/4/5/6 at 10 boosts,
-  ×1.2 when the assist shares the seat statue's type. So a fully boosted 5-star assist adds 30% of
-  its own stats.
+- **Bonus constants (`dtbattle_damage_param`):** base 10% plus boost/15 % up to +300 boosts
+  (20% more), ×2 when the assist shares the seat statue's type, ×1 otherwise; the same for every
+  rarity. So a fully boosted assist adds 60% of its own stats to a seat of its type, 30% to
+  another. Sources: Bahamut snA=773 (research-b33: the slope and ×2 since 2019-02-26, +226 = 50%)
+  and the 3.4.0 notice's translation on Reddit (research-b44, medium: the +300 cap, 20% / 10% at
+  +0). Before Build 44 the limits were ours (10 boosts, 10/10/15/20% by rarity; ×1.2 until the
+  research-b33 merge).
 - Abilities and the assist skill: Build 24 (§5).
 
 ## 5. Abilities and the assist skill (Build 24)
@@ -207,6 +215,15 @@ them).
       belongs to 4011_18 (by rarity). It gives no condition, so nothing served changes.
     - The 15 `assist_ability_absent` records (Tactical-era ★6 pages with no Assist Ability section)
       are not read: a missing section is not a missing ability, so those statues keep the default.
+  - Build 44 (the research-b44 family files, 292 statues): **4220_72 released.** In-game
+    アシスト編成 / アシストアビリティ詳細 screenshots on the Bahamut forum (snA=406, 2017-11-22, both
+    Stray Cats equipped; high) show 能力での食事 with +30% (so Gamerch is right; ShoutWiki's +20% is
+    the ★3 4220_71's 欲望と本能, whose ShoutWiki entry we already use) and two Solitary condition
+    icons (ShoutWiki's condition; the icon reading is medium). The `assist_ability_resolved` record
+    is the statue's source, the ShoutWiki page under `also`: conditions Solitary ×2, the leaning-stat
+    row as before (crit and explosion damage have no tactical affect), and `action` from its lines
+    (assist-use crit rate ×3 for 15 s; explosion damage held as `bomber_dmg`). 3230_62 and 4090_72
+    stay held (no b44 source). The Reddit retrospective's tactical-era kits name no assist ability.
   - Effects with no tactical affect keep the default kind (the leaning stat) under the wiki
     condition. These are conversions, crit, cool time, move speed and damage to a race.
   - Statues with no wiki type are counted under the server's placeholder type, so a condition

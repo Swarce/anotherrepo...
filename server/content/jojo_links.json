@@ -20,6 +20,12 @@
    "note": "research-b43/links_traits_minds: in-game team screenshots attached to comments (read as data, not stored) give the effects of links 53, 54, 64 and 76; cited per link in effectSource"
   },
   {
+   "source": "Bahamut forum (巴哈姆特), in-game team screenshot",
+   "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=342",
+   "accessed": "2026-11-22",
+   "note": "research-b44/communities: an in-game team screen (2017-09, read as data, not stored) shows links 66, 67, 68 active and prints their effects; cited per link in effectSource or also"
+  },
+  {
    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine snapshot, saved link table)",
    "page": "https://web.archive.org/web/20170706212148/https://jojodr.gamerch.com/ジョジョリンク",
    "accessed": "2026-11-15",
@@ -2007,7 +2013,58 @@
     "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
     "page": "https://jojodr.gamerch.com/ジョジョリンク",
     "accessed": "2026-11-20",
-    "confidence": "medium"
+    "confidence": "medium",
+    "also": [
+     {
+      "source": "Bahamut forum (巴哈姆特), in-game team screenshot",
+      "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=342",
+      "accessed": "2026-11-22",
+      "confidence": "high",
+      "note": "research-b44/communities: shown active, with this effect, on the team screen of link 67",
+      "field": "active_in_screenshot"
+     }
+    ]
+   }
+  },
+  {
+   "charaLinkId": 67,
+   "abilityName": "ABI_JOLINK_NAME_067",
+   "groups": [
+    [
+     "1120"
+    ],
+    [
+     "4080"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Bahamut forum (巴哈姆特)",
+    "page": "https://forum.gamer.com.tw/G2.php?bsn=31489&parent=4&sn=18",
+    "accessed": "2026-11-20",
+    "confidence": "medium",
+    "effectSource": {
+     "source": "Bahamut forum (巴哈姆特), in-game team screenshot",
+     "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=342",
+     "accessed": "2026-11-22",
+     "confidence": "high",
+     "note": "research-b44/communities link_effect_confirmed"
+    },
+    "note": "research-b44: an in-game team screen shows the link active with every member the record names (was low); ブラフォード: the middle seat is hidden by the pop-up; 伝説のふたりの騎士 (Tarkus + Bradford) is active in the same team, so it is Bradford (research-b44/communities)"
    }
   },
   {
@@ -2050,7 +2107,17 @@
     "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
     "page": "https://jojodr.gamerch.com/ジョジョリンク",
     "accessed": "2026-11-20",
-    "confidence": "high"
+    "confidence": "high",
+    "also": [
+     {
+      "source": "Bahamut forum (巴哈姆特), in-game team screenshot",
+      "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=342",
+      "accessed": "2026-11-22",
+      "confidence": "high",
+      "note": "research-b44/communities: shown active, with this effect, on the team screen of link 67",
+      "field": "active_in_screenshot"
+     }
+    ]
    }
   },
   {
@@ -2226,10 +2293,6 @@
    "reason": "low confidence"
   },
   {
-   "charaLinkId": 67,
-   "reason": "low confidence"
-  },
-  {
    "charaLinkId": 69,
    "reason": "name only (no members or effect in any source)"
   },
@@ -2260,9 +2323,9 @@
  ],
  "report": {
   "stats": {
-   "held": 22,
-   "served": 56,
-   "served_character": 51,
+   "held": 21,
+   "served": 57,
+   "served_character": 52,
    "served_trait": 5
   },
   "held_reasons": {
@@ -2270,7 +2333,7 @@
    "crit-taken 0.07 (probably 0.70) and the Straizo membership is uncertain": 1,
    "effect known (research-b43); the members are probably any two female statues (medium, from two screenshots), and our statues carry no gender trait (ATTR_TEXT_16-18 are not sent)": 1,
    "gold/EXP '0.1%' unit ambiguous, and no client consumer": 4,
-   "low confidence": 5,
+   "low confidence": 4,
    "name only (no members or effect in any source)": 8,
    "no record": 1,
    "two Gamerch rows under one name (different members and effects)": 1

@@ -8,6 +8,7 @@ usage:
   python3 -I tools/content/build_jojo_links.py \
       --research local/wiki-raw/research-b33/action/results.jsonl \
       --research-b43 local/wiki-raw/research-b43/links_traits_minds/results.jsonl \
+      [--research-b44 local/wiki-raw/research-b44/<family>/results.jsonl ...] \
       --saved-table local/wiki-raw/research-2026-11-15-v2/catalog/jojo_links.json \
       --saved-sources local/wiki-raw/research-2026-11-15-v2/catalog/sources.json \
       --labels local/l10n/export-b33.tsv --server-statues server/content/statues.json \
@@ -36,6 +37,14 @@ Sources:
                  members). 'link_members' and 'link_source' records are corroboration only, cited in
                  'also'; their verdicts (053 member rule open, 054 probably two female statues) are
                  applied by hand below.
+  --research-b44 (Build 44) the research-b44 family files (they mix topics; only records of topic
+                 links_traits_minds and field 'link_effect_confirmed', high/medium, are read; today one,
+                 in research-b44/communities): an in-game team screen on the Bahamut forum printing the
+                 link's effect. The effect replaces the record's (cited as 'effectSource'); a low record
+                 becomes medium when the screen's team holds every member the record names, or when
+                 MEMBERS_SEEN gives the researchers' reading of a member the screen hides (with the reason).
+                 The other links the same screen shows active, whose label and effect equal our record's,
+                 get the screen under 'also' (field 'active_in_screenshot').
   --saved-table  the saved Gamerch link table (Wayback 2017-07-06, sources.json id 'links'), only for
                  a link with no research record whose label equals the row name after NFKC: today
                  J001 = link 34 and J032 = link 12 (confidence "provisional").
@@ -106,7 +115,15 @@ HAND_HELD = {
     54: 'effect known (research-b43); the members are probably any two female statues (medium, from two '
         'screenshots), and our statues carry no gender trait (ATTR_TEXT_16-18 are not sent)',
 }
+# research-b44: a member a team screenshot hides, as the researchers read it (link -> {member: reason}).
+MEMBERS_SEEN = {
+    67: {'ブラフォード': 'the middle seat is hidden by the pop-up; 伝説のふたりの騎士 (Tarkus + Bradford) is active in '
+                        'the same team, so it is Bradford (research-b44/communities)'},
+}
 GOLD_EXP = {'gold_rate', 'gold_flat', 'exp_rate'}
+B44_SOURCES = (
+    ('https://forum.gamer.com.tw/', 'Bahamut forum (巴哈姆特), in-game team screenshot'),
+)
 
 
 def family_names(labels, srv):
@@ -177,6 +194,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--research', required=True)
     ap.add_argument('--research-b43', action='append', default=[])
+    ap.add_argument('--research-b44', action='append', default=[])
     ap.add_argument('--saved-table', required=True)
     ap.add_argument('--saved-sources', required=True)
     ap.add_argument('--labels', required=True)
@@ -243,6 +261,50 @@ def main():
                 rec['source'].setdefault('also', []).append(dict(cite, field=r['field']))
             else:
                 raise SystemExit('unknown links.jojo field %r' % r['field'])
+    b44_links = set()
+    for path in a.research_b44:
+        fam = os.path.basename(os.path.dirname(path))
+        for line in open(path, encoding='utf-8'):
+            r = json.loads(line)
+            if r.get('topic') != 'links_traits_minds' or r.get('field') != 'link_effect_confirmed' \
+                    or r.get('confidence') not in ('high', 'medium'):
+                continue
+            v = r['value']
+            n = int(v['label'].rsplit('_', 1)[1])
+            assert n in records and V.norm(v['name']) == V.norm(names[n]), n
+            rec = records[n]
+            src = next(name for host, name in B44_SOURCES if r['url'].startswith(host))
+            cite = {'source': src, 'page': r['url']}
+            if r.get('capture'):
+                cite['capture'] = r['capture']
+            cite.update({'accessed': r['accessed'], 'confidence': r['confidence'],
+                         'note': 'research-b44/%s %s' % (fam, r['field'])})
+            if rec['effect'] is not None and V.norm(rec['effect']) != V.norm(v['effect']):
+                cite['note'] += "; replaces the effect of the link's record"
+            rec['effect'] = v['effect']
+            rec['source']['effectSource'] = cite
+            b44_links.add(n)
+            team = {V.norm(re.sub(r'★[0-9]+$', '', V.nfkc(x)).strip()) for x in v.get('team_in_screenshot') or []}
+            members = [m for m in rec['members'] or [] if '?' not in m]
+            seen = MEMBERS_SEEN.get(n, {})
+            if rec['confidence'] == 'low' and members and all(V.norm(m) in team or m in seen for m in members):
+                rec['confidence'] = rec['source']['confidence'] = 'medium'
+                rec['source']['note'] = ('research-b44: an in-game team screen shows the link active with every '
+                                         'member the record names (was low)'
+                                         + ''.join('; %s: %s' % (m, seen[m]) for m in members if m in seen))
+            # The other links active on the same screen: corroboration when label name and effect agree.
+            for other in v.get('other_links_active_in_same_team') or []:
+                om = re.fullmatch(r'(.*?)\s*\((.*)\)', V.nfkc(other))
+                if not om:
+                    continue
+                hits = [k for k, jp in names.items() if V.norm(jp) == V.norm(om.group(1))]
+                if len(hits) == 1 and hits[0] in records and records[hits[0]]['effect'] \
+                        and V.norm(records[hits[0]]['effect']) == V.norm(om.group(2)):
+                    records[hits[0]]['source'].setdefault('also', []).append(
+                        dict(cite, field='active_in_screenshot',
+                             note='research-b44/%s: shown active, with this effect, on the team screen of link %d'
+                                  % (fam, n)))
+                    b44_links.add(hits[0])
     saved_src = {s['id']: s for s in json.load(open(a.saved_sources, encoding='utf-8'))}
     for row in json.load(open(a.saved_table, encoding='utf-8')):
         hits = [n for n, jp in names.items() if V.norm(jp) == V.norm(row.get('name_ja_source'))]
@@ -373,6 +435,11 @@ def main():
              'page': 'https://jojodr.gamerch.com/ジョジョリンク', 'accessed': '2026-11-22',
              'note': 'research-b43/links_traits_minds: in-game team screenshots attached to comments (read as data, '
                      'not stored) give the effects of links 53, 54, 64 and 76; cited per link in effectSource'},
+            *([{'source': B44_SOURCES[0][1], 'page': 'https://forum.gamer.com.tw/C.php?bsn=31489&snA=342',
+                'accessed': '2026-11-22',
+                'note': 'research-b44/communities: an in-game team screen (2017-09, read as data, not stored) shows '
+                        'links %s active and prints their effects; cited per link in effectSource or also'
+                        % ', '.join(str(n) for n in sorted(b44_links))}] if b44_links else []),
             {'source': 'Gamerch ジョジョDR攻略Wiki (Wayback Machine snapshot, saved link table)',
              'page': saved_src['links']['url'], 'accessed': saved_src['links']['accessed'],
              'note': 'local/wiki-raw/research-2026-11-15-v2/catalog/jojo_links.json: J001 = link 34, J032 = link 12 '

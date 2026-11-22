@@ -1309,6 +1309,15 @@
     "affectLimitNormal": [],
     "affectLimitExtra": [],
     "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_AST_USE_CRTRATE_ADD",
+    "affectTextId": "AFFECT_AST_USE_CRTRATE_ADD_TEXT",
+    "prvs": "PRVS_ASSIST_USE",
+    "baseAffect": "BASE_CRTRATE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
    }
   ]
  }

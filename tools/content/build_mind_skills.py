@@ -23,18 +23,32 @@ time", "only the user can move"). Those get the client's own category DTSC_WORLD
 category (ProcessType 4 WORLD, turn n): LIGHT (1 turn) for normal skills, MIDDLE (2 turns) for
 special ones (the turn counts are the labels'; which skill gets which is ours).
 
+Build 44. The quoted name is read up to the closing bracket before the line break, so a skill name
+that is itself in brackets (4036's 「「世界(ザ・ワールド)！」」) resolves. --research-b44 (each
+research-b44 family file; only topic links_traits_minds, field skill_mind, high/medium records are
+read): in-game Mind detail screens (the ameblo blog, read as data). For a Mind we serve, the record is
+cited in the Mind's "source"; its Lv1 damage rank replaces ours on a new skill row (a statue's own
+row is not changed, and rank 0 is not sent: our rows are hits and the client reads rank 0 as the
+damage-rank table's last entry; a difference is reported), and a '時止め N ターン' line gives the time-stop
+category whose label names N turns (DTSC_WORLD_*). Records of Minds not in minds.json are counted
+and not used.
+
 usage: python3 -I tools/content/build_mind_skills.py --export local/l10n/work23b.tsv \
          --scan local/content/statues_scan.json --statues server/content/statues.json \
-         --minds server/content/minds.json --out server/content/mind_skills.json
+         --minds server/content/minds.json \
+         [--research-b44 local/wiki-raw/research-b44/<family>/results.jsonl ...] \
+         --out server/content/mind_skills.json
 """
 import argparse
 import collections
 import json
+import os
 import re
 
 ap = argparse.ArgumentParser()
 for x in ("--export", "--scan", "--statues", "--minds", "--out"):
     ap.add_argument(x, required=True)
+ap.add_argument("--research-b44", action="append", default=[])
 a = ap.parse_args()
 
 jp, en = {}, {}
@@ -81,8 +95,9 @@ def english_hit(text):
 
 
 BUTTON = {1: (7, 38), 2: (83, 90)}  # single / all-target hits (as build_statues.py)
-# "(SP)skill<open quote>name<close quote>" in the Mind description (written escaped).
-QUOTE = re.compile("(SP)?\u30b9\u30ad\u30eb\u300c(.+?)\u300d")
+# "(SP)skill<open quote>name<close quote>" in the Mind description (written escaped), up to the close
+# quote before the escaped line break or the particle を: the name may itself be in brackets.
+QUOTE = re.compile("(SP)?\u30b9\u30ad\u30eb\u300c(.+?)\u300d(?=\\\\n|\u3092)")
 
 
 def record(key, special):
@@ -137,6 +152,59 @@ for rec in list(statue_skill.values()) + [m["skill"] for m in minds]:
     if "stopped time" in t or "only the user can move" in t:
         time_stop[rec["id"]] = "DTSC_WORLD_MIDDLE" if rec["special"] else "DTSC_WORLD_LIGHT"
 
+# Build 44: in-game Mind detail screens (research-b44, see the module docstring).
+B44_SOURCES = (("https://ameblo.jp/", "鎖国的ブログ (ameblo; in-game Mind detail screenshots, read as data)"),)
+WORLD_BY_TURNS = {int(m.group(1)): k for k in sorted(dtsc) if k.startswith("DTSC_WORLD_")
+                  for m in [re.search("\\[([0-9]+)\u30bf\u30fc\u30f3\\]", jp[k])] if m}
+by_mind = {m["mindId"]: m for m in minds}
+b44_used, b44_other, b44_report = 0, 0, []
+for path in a.research_b44:
+    fam = os.path.basename(os.path.dirname(path))
+    for line in open(path, encoding="utf-8"):
+        r = json.loads(line)
+        if r.get("topic") != "links_traits_minds" or r.get("field") != "skill_mind" \
+                or r.get("confidence") not in ("high", "medium"):
+            continue
+        v = r["value"]
+        m = by_mind.get(v.get("mindId"))
+        if m is None:
+            b44_other += 1
+            continue
+        assert "source" not in m, v["mindId"]
+        rec, applied, noted = m["skill"], [], []
+        assert v.get("skillLabel") in (None, "SKILL_" + rec["text"][len("DTbattle_SKILL_TEXT_"):]), v
+        dr = v.get("damageRank_lv1")
+        if dr is not None and dr != rec["damageRank"]:
+            if dr == 0:
+                # our row is a hit (processType 1), and the damage-rank table reads rank 0 as its last
+                # entry (masterdata/dtbattle_damage_rank_table.json), so "no damage" cannot be sent this way
+                noted.append("damage rank 0 (kept ours)")
+                b44_report.append(f"{v['mindId']}: damage rank 0 against our {rec['damageRank']} (kept: rank 0 "
+                                  "would read the last damage-rank entry)")
+            elif rec["id"] in statue_skill:
+                noted.append(f"damage rank {dr} (kept the statue row's)")
+                b44_report.append(f"{v['mindId']}: damage rank {dr} against the statue row's {rec['damageRank']} (kept)")
+            else:
+                rec["damageRank"] = dr
+                applied.append("damage rank (Lv1)")
+        for e in v.get("effect") or []:
+            tm = re.fullmatch("\u6642\u6b62\u3081\\s*([0-9]+)\\s*\u30bf\u30fc\u30f3", e.strip())
+            if not tm:
+                continue
+            cat = WORLD_BY_TURNS.get(int(tm.group(1)))
+            if rec["id"] not in time_stop or cat is None:
+                noted.append(f"time stop {tm.group(1)} turns (not a time-stop skill here)")
+                b44_report.append(f"{v['mindId']}: time stop {tm.group(1)} turns, not a time-stop skill here (kept)")
+            elif time_stop[rec["id"]] != cat:
+                time_stop[rec["id"]] = cat
+                applied.append(f"time stop {tm.group(1)} turns")
+        src = next(n for host, n in B44_SOURCES if r["url"].startswith(host))
+        m["source"] = {"source": src, "page": r["url"], **({"capture": r["capture"]} if r.get("capture") else {}),
+                       "accessed": r["accessed"], "confidence": r["confidence"],
+                       "note": f"research-b44/{fam} skill_mind: "
+                               + ", ".join(applied + noted or ["agrees with ours"])}
+        b44_used += 1
+
 doc = {
     "about": "Skill Minds (mindType 2) and time-stop skills, from the game's own labels (MIND_TEXT_<id> names the skill; "
              "SKILL_NAME_<p>_<NN> carries it) and action sets. See tools/content/build_mind_skills.py and docs/research/26.",
@@ -144,7 +212,8 @@ doc = {
         {"source": "jdr-research", "doc": "docs/research/26-links-and-skills.md",
          "note": "label keys (MIND_TEXT, SKILL_NAME, DTbattle_SKILL_TEXT, DTSC_WORLD_*) and statue action sets from the player's files"},
         {"source": "jdr-default", "note": "damage ranks, buttons and the classification of skills that are no statue's skill are ours; "
-                                          "time-stop turns: 1 for normal skills, 2 for special ones (ours)"},
+                                          "time-stop turns: 1 for normal skills, 2 for special ones (ours)"
+                                          + ("; except where a Mind's source (research-b44) gives them" if b44_used else "")},
     ],
     "minds": minds,
     "timeStop": dict(sorted(time_stop.items())),
@@ -152,4 +221,6 @@ doc = {
 json.dump(doc, open(a.out, "w"), indent=1, ensure_ascii=False)
 print(f"{len(minds)} skill Minds ({sum(1 for m in minds if m['skill']['special'])} SP), "
       f"{sum(1 for m in minds if m['skill']['id'] not in statue_skill)} new skill rows, {len(time_stop)} time-stop skills; "
-      f"skipped {dict(skipped)}")
+      f"skipped {dict(skipped)}; research-b44: {b44_used} Minds read, {b44_other} not in minds.json")
+for x in b44_report:
+    print("research-b44 not applied:", x)

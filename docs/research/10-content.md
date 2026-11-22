@@ -230,7 +230,8 @@ characteristicList  List<{id:int, level:int}>
 assistAttr          AssistAttribute Common=0, OnlyAssist=1
 assistSkillInfo     SkillInfo; assistAbilityList List<AbilityInfo>
 dtAssistSkillInfo   SkillInfo; dtAssistAbilityList List<DtAbilityInfo>
-speed, evasion, hitrate, criticalRate int   (DT stats)
+speed, evasion, hitrate, criticalRate int   (DT stats; Build 44: statues.json `tactical` where a
+                    wiki gives them, 17 statues, else our 100/0/100/5)
 stEffRateInfo       dtbattle.StEffRateInfo {stRateId, text, hamonAttack, bind, atkDown, defDown,
                     hitDown, avoDown, ctDown, spdDown, sripDamage, stun, vampireAttack, mindAttack,
                     aging, nodef, changeSType, stEffRateConfig}
@@ -592,6 +593,27 @@ stage's `source`, or an `also` entry with the `fields` it gives).
   drops are empty).
 - Enemies are drawn from team statues only (assist-only statues were excluded; this reproduces
   the Build 10 enemy picks). Output dates come from the inputs, so a rerun is byte for byte.
+
+Build 44 (`--research` also takes the four research-b44 family files; only topic `stages_story`
+is read; all read 2026-11-22, cited per row):
+- **Action chapters' last-stage reward**: the official beginner guide (jdr.channel.or.jp tab /3,
+  Wayback capture 2018-02-12, high) gives a special reward of 1 Diamond Coin on every chapter's last
+  stage except chapter 1 (in-game 第1章 = CHAPTER_ST_00). 24 last stages get it in `rewards.special`
+  (`itemId` null: two item labels read ダイヤモンドコイン). The four chapters whose stage count Gamerch
+  contradicts (CHAPTER_ST_01, 05, 07, 16) get none and note why in `wiki`: their last stage in our
+  files is not the original's. Data only, as the tactical rewards.
+- **CHAPTER_ST_01's third stage**: a 2019 in-game stage screen (Bahamut snA=1046, high) shows
+  第2章's 第3話 (boss; AP 5, EXP 80, the boss missions, special reward ダイヤ ×1), which the game's
+  files lack (2 stages). Recorded in the chapter's `wiki`, not mapped; the chapter keeps defaults.
+- **Tactical first-clear Diamonds**: 1 per stage (Bahamut snA=940: about 150 Diamonds for the 148
+  stages of chapters 7-40; derived, medium) fills the quantity of the 170 tactical stages' ダイヤ.
+- **Chapter 28's release** (1.8.0, 2018-01-29, official notice): in CHAPTER_ST_27's `wiki`, with the
+  N-1 mapping noted (the client's own label reads 第２７章).
+- **Not in the JSON**: AP came back every 5 minutes and every 3 from 3.3.0 (2018-12; Reddit, medium):
+  our `apOneRecoveryTime` is already 180 s. Quests cost no AP up to rank 30 (1.8.0 notice; the 2019
+  screen still shows 'Rank 30までAP無限'): AP is never charged offline. The tactical chapters'
+  release dates (19-20 in 3.3.0, 33-34 in 3.4.0, 45-46 in 3.9.0) need the held 4NN mapping and are
+  not attached to chapters.
 
 ---------------------------------------------------------------------------------------------------
 

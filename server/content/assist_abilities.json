@@ -7916,12 +7916,45 @@
    "abilities": [
     {
      "abilityId": "DT_AST_4220_72",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 5,
+       "count": 2
+      }
+     ],
+     "action": {
+      "params": [
+       {
+        "affectId": "AF_AST_USE_CRTRATE_ADD",
+        "giveLimit": -1,
+        "lv1": [2000, 0, 150, 0, 0, 0, 0, 0],
+        "lv10": [2000, 0, 150, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [
+       "bomber_dmg"
+      ],
+      "source": {
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=406",
+       "accessed": "2026-11-22"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Bahamut forum (巴哈姆特 JoJo DR board), in-game screenshots",
+    "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=406",
+    "accessed": "2026-11-22",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value; research-b44: the in-game assist screens settle the research-b43 conflict (condition icons read at medium)",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Stray_Cat_(Solitary)",
+      "revid": 3292,
+      "license": "CC BY-SA 3.0",
+      "accessed": "2026-11-14"
+     }
+    ]
    }
   },
   {

@@ -16,6 +16,12 @@ and special rewards. A stage the Gamerch merge already sourced keeps its Gamerch
 verdict does not change a wiki value). Chapter-level facts (an EXP maximum, an unmapped stage,
 a stage-count conflict) go to the chapter's `wiki` list and are not served.
 
+From Build 44 `--research` also takes the research-b44 family files (they mix topics; only records of
+topic `stages_story` are read): the official beginner guide's 1-Diamond-Coin special reward on every
+action chapter's last stage (from chapter 2; chapters whose stage count Gamerch contradicts keep none),
+the first-clear Diamond quantity of the tactical stages (1 each, derived from a player's report), a
+2019 in-game screen of the stage CHAPTER_ST_01's files lack, and chapter 28's release (chapter facts).
+
 Star missions (`missions`, QuestMissionClearType values the server sends on action stages) come
 from the wiki's own condition texts (Gamerch 特別報酬条件, JoJo Wiki, the Bahamut forum), mapped to
 the client's types through MISSION_TYPES; stages without one keep the server's default missions.
@@ -32,6 +38,10 @@ usage: python3 -I tools/content/build_quests.py --scan local/content/quests_scan
           --gamerch local/wiki-raw/gamerch/stages.json \
           --research local/wiki-raw/research-b33/stages_story/results.jsonl \
           --research local/wiki-raw/research-b43/stages_story/results.jsonl \
+          --research local/wiki-raw/research-b44/blogs_archives/results.jsonl \
+          --research local/wiki-raw/research-b44/communities/results.jsonl \
+          --research local/wiki-raw/research-b44/jp_strategy_sites/results.jsonl \
+          --research local/wiki-raw/research-b44/official_and_press/results.jsonl \
           --out server/content/quests.json
 """
 import argparse
@@ -100,12 +110,17 @@ def site(url):
         return "Bahamut forum (bsn 31489)"
     if "jojowiki.com" in url:
         return "JoJo Wiki"
+    if "jdr.channel.or.jp" in url:
+        return "ジョジョDR official notices (jdr.channel.or.jp, Wayback Machine)"
+    if "reddit.com/r/JoJoDiamondRecords" in url:
+        return "Reddit r/JoJoDiamondRecords"
     raise SystemExit(f"unknown research source {url}")
 
 
 wiki = {}  # game stageId -> numbers from the wiki
 missions = {}  # game stageId -> (QuestMissionClearType list, source)
 gamerch_dates = set()  # access dates of the wiki data used (the output's dates come from them)
+count_conflict = {}  # chapterId -> (stages on Gamerch, stages in the game's files), when they differ
 unmatched = []
 labels = {}  # NFKC label -> ids, per label kind
 if a.export:
@@ -142,6 +157,8 @@ if a.gamerch:
         ws.sort(key=lambda w: w["stage_no"])
         if len(ids) != 1 or len(game_stages.get(next(iter(ids)), [])) != len(ws):
             unmatched.append(title)
+            if len(ids) == 1:
+                count_conflict[next(iter(ids))] = (len(ws), len(game_stages.get(next(iter(ids)), [])))
             continue
         for w, stage_id in zip(ws, game_stages[next(iter(ids))]):
             gsrc = {"source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)", "page": w["source"]["page_url"],
@@ -168,6 +185,8 @@ for path in a.research:
         r = json.loads(line)
         if r.get("confidence") not in CONF:
             continue
+        if r.get("topic", "stages_story") != "stages_story":
+            continue  # research-b44 files mix topics: only the story stages are read here
         subj = r.get("subject") or r.get("stageId")
         old = research.get((subj, r["field"]))
         if old is None or CONF[r["confidence"]] > CONF[old["confidence"]]:
@@ -203,6 +222,7 @@ mission_conflicts = {}  # boss stageId -> the research conflict record on its th
 CONFLICT_NOTE = ("conflict on the boss-stage third mission: Bahamut players (2019) say a regular (blue) skill, "
                  "JoJo Wiki and Gamerch an SP skill; each stage keeps its own source's wording")
 chapter_wiki = {}  # chapterId -> chapter-level facts (not served)
+final_stage_reward = diamond_qty = None  # research-b44 rules over many stages (applied below)
 
 
 def chapter_range(subject):
@@ -238,6 +258,21 @@ for (subj, field), r in sorted(research.items()):
     elif field == "missions_conflict":
         for cid in chapter_range(subj):
             mission_conflicts[game_ids[cid][-1]] = r
+    elif field == "special_reward_final_stage":
+        final_stage_reward = r
+    elif field == "firstClearDiamondQty_derived":
+        diamond_qty = r
+    elif field == "stage3_in_2019" and subj.split()[0] in game_ids:
+        cid = subj.split()[0]
+        chapter_wiki.setdefault(cid, []).append(dict(
+            {"field": "stageCount", "value": v,
+             "held": f"a 2019 in-game stage screen shows a {v['stage']} the game's files do not have (they list "
+                     f"{len(game_ids[cid])} stages): not mapped"}, **rsource(r)))
+    elif field == "release" and r.get("statueId") in game_ids:
+        chapter_wiki.setdefault(r["statueId"], []).append(dict(
+            {"field": "release", "value": v,
+             "note": f"in-game {v['chapter_number_ingame']}章 is this chapter by the action story's N-1 numbering "
+                     "(research-b33, title-confirmed); the game's own chapter label reads one less"}, **rsource(r)))
     else:
         cids = chapter_range(subj)
         if not cids:
@@ -263,6 +298,38 @@ for (subj, field), r in sorted(research.items()):
             continue
         for cid in cids:
             chapter_wiki.setdefault(cid, []).append(dict(fact, **rsource(r)))
+
+# research-b44 (Build 44). The official beginner guide (2018-02): every action chapter's last stage has a
+# special reward of 1 Diamond Coin, except chapter 1 (in-game 第N章 = CHAPTER_ST_(N-1), so CHAPTER_ST_00). A
+# chapter whose stage count the wiki contradicts keeps none: its last stage in the game's files is not
+# the original's last.
+if final_stage_reward:
+    fv = final_stage_reward["value"]
+    for cid in sorted(c for c in game_ids if re.fullmatch(r"CHAPTER_ST_\d+", c) and game_ids[c]):
+        if cid == "CHAPTER_ST_00":
+            continue
+        if cid in count_conflict:
+            n, ours = count_conflict[cid]
+            chapter_wiki.setdefault(cid, []).append(dict(
+                {"field": "rewards", "held": f"the last stage's special reward ({fv['qty']} Diamond Coin) is not "
+                 f"mapped: Gamerch lists {n} stages, the game has {ours}"}, **rsource(final_stage_reward)))
+            continue
+        e = stage_extra.setdefault(game_ids[cid][-1], {"rewards": {}, "also": []})
+        if "special" in e["rewards"]:
+            continue
+        e["rewards"]["special"] = [reward({"name_jp": fv["item"], "qty": fv["qty"]})]
+        e["also"].append(rsource(final_stage_reward, ["rewards.special"]))
+# A player's report (Bahamut, 2019-05): about 150 Diamonds for the 148 stages of tactical chapters 7-40,
+# so a first clear gives 1 (derived, medium); it fills the quantity the atwiki leaves out.
+if diamond_qty:
+    q = diamond_qty["value"]["diamonds_per_stage"]
+    for sid, e in sorted(stage_extra.items()):
+        items = e["rewards"].get("firstClear", [])
+        if any(x["nameJp"] == "ダイヤ" and x["qty"] is None for x in items):
+            e["rewards"]["firstClear"] = [dict(x, qty=q) if x["nameJp"] == "ダイヤ" and x["qty"] is None else x
+                                          for x in items]
+            e["also"].append(rsource(diamond_qty, ["rewards.firstClear"],
+                                     "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"))
 
 battle_maps = [m["mapId"] for m in scan["maps"] if m["battle"] and not m["mapId"].startswith("map00_clan")]
 dt_maps = [m["mapId"] for m in scan["maps"] if m["dt"] and not m["mapId"].startswith("map00_clan")]

@@ -167,3 +167,13 @@ The owner asked for these tiles so more content can be tested. H unless marked, 
     2018 revamp still held in 2019, every day also had an all-type material quest, and a
     month-end 3x-materials quest was usual. No stage numbers; recorded in `quests_extra.json`
     `wiki.daily`, nothing changed.
+  - Build 44 (research-b44): AppMedia's difficulty table (2017-02, high) gives the 上級 tier a
+    recommended level of 30, so every weekday's `STAGE_DY2_*_003` fights at Lv30 (ours was 40;
+    its 中級 20 and 初級 10 match what the stages already had). Recorded only (`wiki.daily`, each
+    with `held`): AppMedia's AP column (上級 6 / 初級 10, a 'source says' record that looks swapped
+    against Gamerch's 解放 上級 10), its drop tiers (daily drops are not sent), a 2018 thread's Friday
+    quest of AP 15 for 230,000 gold (stage not named), and the official notices: 「知・闘・勇」 held
+    every day from 1.6.0 (2017-11; not stated after the 2018-02 renewal), the 初級 first-clear
+    special reward of 1-2 Diamond Coins (first-clear rewards are not sent) and the daily missions'
+    all-clear reward of 1 Diamond Coin, 3 on Thursdays (not built: our list has no
+    Daily_ACHIEVEMENT_Text_0056 mission).

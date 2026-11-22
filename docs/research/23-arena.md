@@ -104,6 +104,30 @@ owner's private pack, dated guides and screenshots) are cited by their id. Every
   about 1 h in 2017-09 (both medium, derived). Not applied: they are the action era's short Arena
   events, their point scale is not ours (our base points, ladder and seasons are ours), and the two
   BP rates disagree with each other, so our 30 min stays.
+- Build 44 (research-b44/jp_strategy_sites: the atwiki アリーナ page, last updated 2019-08-20 for
+  第11回, never archived itself, read from the description of an archived RSS feed; high). These are
+  the tactical era's Arena rules, the ones 3.12.0 runs:
+  - **Ranking rewards** (applied, §2): bands 1-100, 101-200, 201-300, 301-500, 501-1000,
+    1001-2000, 2001-3000, 3001-4000, 4001-5000, 5001-10000 with 金チケ 10連×1枚 / 5 / 4 / 4 / 3 / 3 /
+    2 / 1 / 1 / 1, 銀チケ 5 / 5 / 5 / 4 / 4 / 3 / 3 / 3 / 3 / 2, and the round's reward Mind
+    (ボスの決断 ★4) to 4000th. The rows 10001-20000 and 20001+ have one cell each whose column is
+    unclear (medium).
+  - **Rules** (applied where ours differed): BP apart from AP, restored by Colas but not by
+    sandwiches; up to three against three, no swaps; no Reversal; a win streak raises the point
+    rate but **lowers the stats**; Fever ×3; Mind arena effects; a lost connection is a defeat.
+  - **Not applied**: the point-reward excerpt (500 to 1,000,000 points: Stray Cat ★3, Diamond Coins,
+    gold and silver tickets, BP Cola (small) ×2, the reward Mind ボスからの伝言, fishing hooks, a
+    Golden Turtle, Pesci ★3) and the 100th-place lines of rounds 1-10 (4.7M to 13.7M points in four
+    or five days): the original's point scale, not ours (a season's field tops near 10,000), so our
+    ladder stays. The 2019-06-22 round and the per-round statue rewards (Formaggio, Stray Cat,
+    Pesci ★3): our seasons are weekly and always open. 大コーラ(12個入) for 10 Diamonds (medium):
+    our Colas come from the Ring Exchange.
+  - Official notices (jdr.channel.or.jp tabs /1-/3, Wayback captures of 2018-02-12, high), data
+    only: the 2018-02-10..13 Arena event (14:00 to 22:00 JST; top 2000 got the Arena Mind 8080
+    もしもし　ジョースターさん, 20001st and below a Mind gacha ticket; points by wins, a bonus for beating a
+    stronger team), 8080's five "per survivor" arena effects, the BP Cola (small) ×4 a day login
+    gift, Minds 8075-8078 with arena effects, and the 1.6.0 fixes (an interval after a team is
+    fought). The action era's short events, not the 2019 rules.
 
 ### 1.7 Home polling and its notices (H, Build 24)
 
@@ -255,8 +279,14 @@ owner's private pack, dated guides and screenshots) are cited by their id. Every
   300, 600, 1000, 1500, 2500, 4000, 6000 points: Diamond Coins, Memory Rings, gold, Fight Coins)
   go to the Message Box when reached and are listed in `eventRewardList` and in
   `/event/point_reward_list` (`getFlg`). Seasons are weeks turning on Monday at 04:00 JST; a
-  season with battles sends a reward by its final place in the field (top 10: 500 Diamond
-  Coins, 100: 300, 500: 150, else 50) and points, streak, Fever and rewards start again.
+  season with battles sends a reward by its final place in the field and points, streak, Fever
+  and rewards start again. From Build 44 the reward follows the atwiki's 2019 ranking table
+  (§1.6): 黄金のガシャチケット (item 282, usable in our Count Up summon) ×10 for places 1-100, ×5 for
+  101-200, ×4 for 201-500, ×3 for 501-1000 (and the table's 1000+ bands, which our 1000-place field
+  never reaches). Reading 金チケ as item 282 and paying the top band's 10-pull ticket as ten single
+  tickets are ours; the 銀チケ column (no silver ticket item in 3.12.0) and the reward Mind (8154, not
+  one of our Minds) are not paid. Before: 500/300/150/50 Diamond Coins by place 10/100/500/other
+  (ours).
 - **Polling:** `pollingTimes` 30 seconds (Build 24; it was 0).
 - **Defence (Build 24):** AI rivals attack while the player is away. Only an absence of 15
   minutes or more since the last `/pvp/home` (measured from `last_seen`, written at most every 5
@@ -278,8 +308,10 @@ owner's private pack, dated guides and screenshots) are cited by their id. Every
   starts a battle): streak 0, a loss, 2500 durability, a battle for Fever; `forceDefeatFlg` is
   true once. A late `pvp_end` pays nothing.
 - **recoveryTimes:** the cost recovery cycle's battle count (see "BP and cost", Build 25).
-- **Win-streak rates (Build 24):** 20 per win of the running streak, at most 100, for both: +2 %
-  ATK and DEF per win for the player's units, at most +10 % (§1.11).
+- **Win-streak rates (Build 24; sign from Build 44):** -20 per win of the running streak, at most
+  -100, for both: -2 % ATK and DEF per win for the player's units, at most -10 % (§1.11). The
+  atwiki's 2019 rules say a streak lowers the stats (§1.6); Builds 24-43 raised them. The size is
+  ours.
 - **Opponents' names:** rivals of the ranking field (one below the player, one near, one above),
   with their points.
 - **Not built:** clan rankings and clan points (no Towns offline), `eventCampaignList` (empty),
@@ -309,7 +341,8 @@ owner's private pack, dated guides and screenshots) are cited by their id. Every
   detail goes by `rankingKey` (then by `eventCampaignId`); top = places 1..100, around = 10
   places either side; the player's entry carries their id, name, rank, the tactical main
   leader's statue and (Arena) their wins and losses. An unknown key is an empty board. Rewards:
-  the Arena's season tiers (1-10, 11-100, 101-500, 501-1000); none for events.
+  the Arena's season bands our field reaches (1-100, 101-200, 201-300, 301-500, 501-1000; Build
+  44, §2); none for events.
 
 ## 4. Null audit (Build 24)
 

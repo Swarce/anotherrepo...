@@ -201,6 +201,15 @@ battle pause screen and the support pick all print ability effects through
   replaces them). Data only: 7260 ☆4 (as we have it), released 2017/05/29 from a campaign; 7485 and
   7351 appear in 2018/2 and 2017/8 Mind gachas, but their name, rarity and stats were not checked
   against the bundle, so the seven loose candidates stay held.
+- **Build 44 (research-b44).** Data only for minds.json, which is not rebuilt (it needs the
+  player's files for the `mim_<id>` bundle check):
+  - 9 tactical skill Minds from in-game Mind detail screens (blogs_archives, high; docs/research/26
+    §3): 4036 is ours (★4, cost 12, as we have it) and now gets its skill; 4131, 4132, 4137,
+    4149, 4173, 4174, 4175 and one Diavolo Mind without an id are not in minds.json (no Gamerch
+    record).
+  - Mind 7535 (第5部アニメキャンペーンマインド; official_and_press, a 2018-07 press release on
+    4Gamer): three effects (damage to Stand Users, ATK, statue EXP) and a campaign EXP bonus. It is
+    not in minds.json either.
 - **Held:** this abilityInfo route. How `AddAffect` applies a `*_CON` value in the action battle
   (flat units, any cap) and the `AFFECT_*_ADD` text label are unread. The tactical `dtAbilityInfo`
   stays as in §6.

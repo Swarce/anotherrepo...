@@ -28,6 +28,11 @@ Sources, in order (ids and numbers only):
      are kept (on the matched id, else on the jdr-default pick); finisher_label resolves a held
      finisher to one candidate label at the cinematic entry; a slot the wikis leave out keeps the
      jdr-default pick, marked "from": "jdr-default"; action_mode_usable false adds "actionMode".
+  1c. Build 44: the research-b44 family files are given as --research-kit too. Their action.skills
+     records (the official press release's skill and SP names) read as above; their action_skills
+     records give action_mode_usable (an in-game profile screenshot ending with the Tactical-Battle-only
+     tag); an action_mode_usable_source_says record that disagrees is kept as "sourceSays" in the
+     statue's actionMode, not applied. REFILE moves research-b43 records filed under the wrong id.
   2. Otherwise the statue's tactical skills (statues.json dtSkills: the normal one as the skill,
      the special one as the SP skill), skipping a skill whose entry is the statue's cinematic entry
      or has no action-set entry; from rarity 5, the finisher is the single label at the cinematic
@@ -39,6 +44,7 @@ usage: python3 -I tools/content/build_action_skills.py \
          --research local/wiki-raw/research-b33/action/results.jsonl \
          --research local/wiki-raw/research-b34/action/results.jsonl \
          --research-kit local/wiki-raw/research-b43/action_skills/results.jsonl \
+         [--research-kit local/wiki-raw/research-b44/<family>/results.jsonl ...] \
          --export local/l10n/export-b33.tsv --out server/content/action_skills.json
 """
 import argparse
@@ -93,17 +99,36 @@ cinematic = {k: set(v) for k, v in cin_doc["cinematic"].items()}
 # An action set with no SKILL_<NN> entry read (5140: no FSM at all) counts as unknown.
 skill_sets = {k: set(v) for k, v in cin_doc["skillSets"].items() if v}
 
+# Records filed under the wrong id (Build 44): research-b43/action_skills filed the Gamerch ★5 華麗なる跳躍
+# Straizo page under 1090_03; research-b43/statues showed it is 1090_13's (the page's statue ability
+# is 1090_13's), and the official press release (research-b44/official_and_press) gives the ★5 Solitary
+# Straizo the same skill and SP names. (statueId, NFKC page-title fragment) -> statueId.
+REFILE = {("1090_03", "【孤高】ストレイツォ★5(華麗なる跳躍)"): "1090_13"}
+
+
+def refile(r):
+    title = unicodedata.normalize("NFKC", r.get("url") or "")
+    return next((to for (frm, frag), to in REFILE.items() if r["statueId"] == frm and frag in title), r["statueId"])
+
+
 wiki = {}  # statueId -> field -> [record, ...] in file order (a later record wins)
 kit_only = {}  # statueId -> True while every slot record comes from a --research-kit file
 # assist_skill records are not read: the action battle gets no assist skill (assistSkillInfo {}).
 KIT_FIELDS = ("skill", "sp_skill_1", "sp_skill_2_finisher", "finisher_label")
+# research-b44 files mix topics: of topic action_skills only the Action Battle flags are read (its
+# tactical cool-downs go to build_dt_cool_turns.py).
+B44_FIELDS = ("action_mode_usable", "action_mode_usable_source_says")
 for path, kit in [(x, False) for x in a.research] + [(x, True) for x in a.research_kit or []]:
+    rnd = (re.search(r"research-(b\d+)", path) or [None, ""])[1]
     for line in open(path, encoding="utf-8"):
         r = json.loads(line)
-        if r.get("topic") == "action.skills" and r.get("statueId") and r.get("confidence") in ("high", "medium"):
-            wiki.setdefault(r["statueId"], {}).setdefault(r["field"], []).append(r)
+        if r.get("statueId") and r.get("confidence") in ("high", "medium") and (
+                r.get("topic") == "action.skills" or (r.get("topic") == "action_skills" and r.get("field") in B44_FIELDS)):
+            r["_round"] = rnd
+            sid = refile(r)
+            wiki.setdefault(sid, {}).setdefault(r["field"], []).append(r)
             if r["field"] in KIT_FIELDS:
-                kit_only[r["statueId"]] = kit_only.get(r["statueId"], True) and kit
+                kit_only[sid] = kit_only.get(sid, True) and kit
 
 
 def host(r):
@@ -111,7 +136,10 @@ def host(r):
 
 
 def site(r):
-    return "Diamond Records Wiki (ShoutWiki)" if "shoutwiki" in host(r) else "Gamerch ジョジョDR攻略Wiki (live)"
+    h = host(r)
+    return ("Diamond Records Wiki (ShoutWiki)" if "shoutwiki" in h else
+            "Bandai Namco press release (4Gamer.net)" if "4gamer" in h else
+            "player blog (Ameba), in-game screenshots" if "ameblo" in h else "Gamerch ジョジョDR攻略Wiki (live)")
 
 
 def numbers(r):
@@ -162,7 +190,7 @@ def match(p, name, slot, ce, matched, sets=None):
 statues = json.load(open(a.statues))["statues"]
 out = {}
 stats = {"wiki": 0, "tactical": 0, "unmatched_names": 0, "fuzzy": 0, "cinematic_policy": 0, "kit": 0,
-         "finisher_verdicts": 0, "numbers_on_default": 0, "numbers_unused": 0, "not_usable": 0}
+         "finisher_verdicts": 0, "numbers_on_default": 0, "numbers_unused": 0, "not_usable": 0, "source_says": 0}
 SLOTS = (("skill", "skill"), ("sp_skill_1", "sp"), ("sp_skill_2_finisher", "finisher"))
 unused = []
 
@@ -287,10 +315,15 @@ for s in statues:
                 pages.append({"source": site(r), "page": r["url"], "accessed": r["accessed"],
                               **({"capture": r["capture"]} if r.get("capture") else {}),
                               **({"license": "CC BY-SA 3.0"} if "shoutwiki" in host(r) else {})})
+        b44 = any(r.get("_round") == "b44" for _, r in used)
         src = {**pages[0],
-               "note": f"research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki "
+               "note": (f"research-b43/b44 kit (Gamerch and official press-release names" if b44 else
+                        f"research-b43 kit (Gamerch names") +
+                       f" matched to the game's SKILL_NAME labels; ShoutWiki "
                        f"cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default "
-                       f"pick): {notes}"}
+                       f"pick): {notes}"
+                       + "".join(sorted({f"; the Gamerch page's records refiled from {r['statueId']} (REFILE)"
+                                         for _, r in used if refile(r) != r["statueId"]}))}
         if pages[1:]:
             src["also"] = pages[1:]
     else:
@@ -310,8 +343,17 @@ for s in statues:
         stats["not_usable"] += 1
         rec["actionMode"] = {"usable": False, "source": site(um), "page": um["url"], "accessed": um["accessed"],
                              **({"license": "CC BY-SA 3.0"} if "shoutwiki" in host(um) else {}),
-                             "note": "the page's Action Battle (Old Mode) tab says the statue cannot be used there "
-                                     "(research-b43); the kit above is kept and needs no source"}
+                             "note": ("the in-game profile (a player's screenshot) ends with the Tactical-Battle-only "
+                                      "tag (research-b44)" if um["_round"] == "b44" else
+                                      "the page's Action Battle (Old Mode) tab says the statue cannot be used there "
+                                      "(research-b43)") + "; the kit above is kept and needs no source"}
+        ss = (w.get("action_mode_usable_source_says") or [None])[-1]
+        if ss is not None:
+            stats["source_says"] += 1
+            rec["actionMode"]["sourceSays"] = {
+                "source": site(ss), "page": ss["url"], "accessed": ss["accessed"], "confidence": ss["confidence"],
+                "note": "research-b44: the in-game profile has no Tactical-Battle-only tag (5170_14, 5220_14 and "
+                        "4031_18 have it), against the page above; noted, not applied"}
     out[sid] = rec
 json.dump({"about": "Action-battle skills per statue (tools/content/build_action_skills.py; docs/research/30-action-battle.md): "
                     "the attack (SKILL_<p>_99), skill, SP skill and finisher ids for skillList, with the wiki's "

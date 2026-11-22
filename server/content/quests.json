@@ -13,13 +13,37 @@
   },
   {
    "source": "Bahamut forum (bsn 31489)",
+   "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=1046",
+   "accessed": "2026-11-22",
+   "note": "research pass (stages_story)"
+  },
+  {
+   "source": "Bahamut forum (bsn 31489)",
    "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=726",
    "accessed": "2026-11-22",
    "note": "research pass (stages_story)"
   },
   {
    "source": "Bahamut forum (bsn 31489)",
+   "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+   "accessed": "2026-11-22",
+   "note": "research pass (stages_story)"
+  },
+  {
+   "source": "Bahamut forum (bsn 31489)",
    "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=969",
+   "accessed": "2026-11-22",
+   "note": "research pass (stages_story)"
+  },
+  {
+   "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+   "page": "https://jdr.channel.or.jp/info/get_info/2",
+   "accessed": "2026-11-22",
+   "note": "research pass (stages_story)"
+  },
+  {
+   "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+   "page": "https://jdr.channel.or.jp/info/get_info/3",
    "accessed": "2026-11-22",
    "note": "research pass (stages_story)"
   },
@@ -137,6 +161,44 @@
       "note": "no wiki data merged for this stage yet"
      }
     }
+   ],
+   "wiki": [
+    {
+     "field": "stageCount",
+     "value": {
+      "chapter_on_screen": "\u7b2c2\u7ae0 \u30a2\u30f3\u30b8\u2026",
+      "stage": "\u7b2c3\u8a71",
+      "objective": "\u30dc\u30b9\u3092\u5012\u305b",
+      "useStamina": 5,
+      "gainRankExp": 80,
+      "difficulty": 4,
+      "battle_condition": "\u30d0\u30c8\u30eb\u6761\u4ef6\u7121\u3057",
+      "clear_reward_qty": 1,
+      "first_clear_reward": "\u26053 Mind-type card (already COMPLETE) x1",
+      "special_reward": "\u30c0\u30a4\u30e4 x1",
+      "missions": [
+       "\u30af\u30a8\u30b9\u30c8\u3092\u30af\u30ea\u30a2\u3059\u308b",
+       "\u30c1\u30fc\u30e0\u30e1\u30f3\u30d0\u30fc\u304c\u5168\u54e1\u751f\u5b58",
+       "\u30b9\u30ad\u30eb\u3067\u30dc\u30b9\u3092\u5012\u3059"
+      ],
+      "enemy_icons": 3,
+      "enemy_type_icons": "all \u52c7\u6c17 (red heart)"
+     },
+     "held": "a 2019 in-game stage screen shows a \u7b2c3\u8a71 the game's files do not have (they list 2 stages): not mapped",
+     "source": "Bahamut forum (bsn 31489)",
+     "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=1046",
+     "accessed": "2026-11-22",
+     "confidence": "high"
+    },
+    {
+     "field": "rewards",
+     "held": "the last stage's special reward (1 Diamond Coin) is not mapped: Gamerch lists 3 stages, the game has 2",
+     "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+     "page": "https://jdr.channel.or.jp/info/get_info/3",
+     "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+     "accessed": "2026-11-22",
+     "confidence": "high"
+    }
    ]
   },
   {
@@ -230,6 +292,27 @@
       14,
       7,
       26
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -325,6 +408,27 @@
       14,
       7,
       26
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -420,6 +524,27 @@
       14,
       4,
       25
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -495,6 +620,17 @@
       "source": "jdr-default",
       "note": "no wiki data merged for this stage yet"
      }
+    }
+   ],
+   "wiki": [
+    {
+     "field": "rewards",
+     "held": "the last stage's special reward (1 Diamond Coin) is not mapped: Gamerch lists 4 stages, the game has 3",
+     "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+     "page": "https://jdr.channel.or.jp/info/get_info/3",
+     "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+     "accessed": "2026-11-22",
+     "confidence": "high"
     }
    ]
   },
@@ -616,6 +752,27 @@
       14,
       7,
       26
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -713,6 +870,17 @@
       "source": "jdr-default",
       "note": "no wiki data merged for this stage yet"
      }
+    }
+   ],
+   "wiki": [
+    {
+     "field": "rewards",
+     "held": "the last stage's special reward (1 Diamond Coin) is not mapped: Gamerch lists 5 stages, the game has 4",
+     "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+     "page": "https://jdr.channel.or.jp/info/get_info/3",
+     "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+     "accessed": "2026-11-22",
+     "confidence": "high"
     }
    ]
   },
@@ -873,6 +1041,27 @@
       14,
       7,
       26
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -1041,6 +1230,27 @@
       14,
       7,
       26
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -1197,6 +1407,27 @@
       14,
       7,
       27
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -1362,6 +1593,27 @@
       14,
       7,
       27
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -1527,6 +1779,27 @@
       14,
       7,
       27
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -1695,6 +1968,27 @@
       14,
       7,
       27
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -1863,6 +2157,27 @@
       14,
       7,
       27
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -2031,6 +2346,27 @@
       14,
       7,
       27
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -2150,6 +2486,17 @@
       "source": "jdr-default",
       "note": "no wiki data merged for this stage yet"
      }
+    }
+   ],
+   "wiki": [
+    {
+     "field": "rewards",
+     "held": "the last stage's special reward (1 Diamond Coin) is not mapped: Gamerch lists 7 stages, the game has 5",
+     "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+     "page": "https://jdr.channel.or.jp/info/get_info/3",
+     "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+     "accessed": "2026-11-22",
+     "confidence": "high"
     }
    ]
   },
@@ -2349,6 +2696,27 @@
       14,
       7,
       27
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -2537,6 +2905,27 @@
       14,
       7,
       27
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -2690,6 +3079,27 @@
       14,
       7,
       22
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -2843,6 +3253,27 @@
       14,
       7,
       27
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -2996,6 +3427,27 @@
       14,
       7,
       27
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -3149,6 +3601,27 @@
       14,
       7,
       27
+     ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
+     "also": [
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
+      }
      ]
     }
    ]
@@ -3343,6 +3816,15 @@
       7,
       27
      ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
      "also": [
       {
        "source": "JoJo Wiki",
@@ -3362,6 +3844,16 @@
         "missions"
        ],
        "note": "conflict on the boss-stage third mission: Bahamut players (2019) say a regular (blue) skill, JoJo Wiki and Gamerch an SP skill; each stage keeps its own source's wording"
+      },
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
       }
      ]
     }
@@ -3622,6 +4114,15 @@
       7,
       27
      ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
      "also": [
       {
        "source": "JoJo Wiki",
@@ -3641,6 +4142,16 @@
         "missions"
        ],
        "note": "conflict on the boss-stage third mission: Bahamut players (2019) say a regular (blue) skill, JoJo Wiki and Gamerch an SP skill; each stage keeps its own source's wording"
+      },
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
       }
      ]
     }
@@ -3897,6 +4408,15 @@
       7,
       26
      ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
      "also": [
       {
        "source": "Bahamut forum (bsn 31489)",
@@ -3907,6 +4427,16 @@
         "missions"
        ],
        "note": "conflict on the boss-stage third mission: Bahamut players (2019) say a regular (blue) skill, JoJo Wiki and Gamerch an SP skill; each stage keeps its own source's wording"
+      },
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
       }
      ]
     }
@@ -4163,6 +4693,15 @@
       7,
       26
      ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
      "also": [
       {
        "source": "Bahamut forum (bsn 31489)",
@@ -4173,6 +4712,16 @@
         "missions"
        ],
        "note": "conflict on the boss-stage third mission: Bahamut players (2019) say a regular (blue) skill, JoJo Wiki and Gamerch an SP skill; each stage keeps its own source's wording"
+      },
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
       }
      ]
     }
@@ -4429,6 +4978,15 @@
       7,
       26
      ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
      "also": [
       {
        "source": "Bahamut forum (bsn 31489)",
@@ -4439,11 +4997,35 @@
         "missions"
        ],
        "note": "conflict on the boss-stage third mission: Bahamut players (2019) say a regular (blue) skill, JoJo Wiki and Gamerch an SP skill; each stage keeps its own source's wording"
+      },
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
       }
      ]
     }
    ],
    "wiki": [
+    {
+     "field": "release",
+     "value": {
+      "chapter_number_ingame": 28,
+      "version": "1.8.0",
+      "date": "2018-01-29"
+     },
+     "note": "in-game 28\u7ae0 is this chapter by the action story's N-1 numbering (research-b33, title-confirmed); the game's own chapter label reads one less",
+     "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+     "page": "https://jdr.channel.or.jp/info/get_info/2",
+     "capture": "https://web.archive.org/web/20180212131225/https://jdr.channel.or.jp/info/get_info/2",
+     "accessed": "2026-11-22",
+     "confidence": "medium"
+    },
     {
      "field": "gainRankExpMax",
      "value": 5000,
@@ -4695,6 +5277,15 @@
       7,
       26
      ],
+     "rewards": {
+      "special": [
+       {
+        "nameJp": "\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u30b3\u30a4\u30f3",
+        "qty": 1,
+        "itemId": null
+       }
+      ]
+     },
      "also": [
       {
        "source": "Bahamut forum (bsn 31489)",
@@ -4705,6 +5296,16 @@
         "missions"
        ],
        "note": "conflict on the boss-stage third mission: Bahamut players (2019) say a regular (blue) skill, JoJo Wiki and Gamerch an SP skill; each stage keeps its own source's wording"
+      },
+      {
+       "source": "\u30b8\u30e7\u30b8\u30e7DR official notices (jdr.channel.or.jp, Wayback Machine)",
+       "page": "https://jdr.channel.or.jp/info/get_info/3",
+       "capture": "https://web.archive.org/web/20180212131311/https://jdr.channel.or.jp/info/get_info/3",
+       "accessed": "2026-11-22",
+       "confidence": "high",
+       "fields": [
+        "rewards.special"
+       ]
       }
      ]
     }
@@ -5351,7 +5952,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -5374,6 +5975,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -5398,7 +6009,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -5421,6 +6032,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -5445,7 +6066,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -5468,6 +6089,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -5492,7 +6123,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -5515,6 +6146,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -5539,7 +6180,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -5562,6 +6203,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -5594,7 +6245,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -5617,6 +6268,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -5641,7 +6302,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -5664,6 +6325,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -5688,7 +6359,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -5711,6 +6382,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -5735,7 +6416,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -5758,6 +6439,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -5782,7 +6473,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -5805,6 +6496,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -5946,7 +6647,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -5969,6 +6670,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -5993,7 +6704,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6016,6 +6727,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -6040,7 +6761,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6063,6 +6784,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -6087,7 +6818,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6110,6 +6841,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -6134,7 +6875,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6157,6 +6898,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -6189,7 +6940,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6212,6 +6963,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -6236,7 +6997,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6259,6 +7020,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -6283,7 +7054,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6306,6 +7077,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -6338,7 +7119,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6361,6 +7142,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -6385,7 +7176,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6408,6 +7199,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -6432,7 +7233,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6455,6 +7256,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -6479,7 +7290,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6502,6 +7313,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -6526,7 +7347,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6549,6 +7370,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -6581,7 +7412,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6604,6 +7435,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -6628,7 +7469,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6651,6 +7492,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -6675,7 +7526,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6698,6 +7549,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -6730,7 +7591,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6753,6 +7614,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -6777,7 +7648,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6800,6 +7671,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -6824,7 +7705,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6847,6 +7728,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -6871,7 +7762,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6894,6 +7785,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -6918,7 +7819,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6941,6 +7842,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -6973,7 +7884,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -6996,6 +7907,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -7020,7 +7941,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7043,6 +7964,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -7067,7 +7998,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7090,6 +8021,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -7122,7 +8063,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7145,6 +8086,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -7169,7 +8120,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7192,6 +8143,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -7216,7 +8177,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7239,6 +8200,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -7263,7 +8234,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7286,6 +8257,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -7310,7 +8291,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7333,6 +8314,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -7365,7 +8356,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7388,6 +8379,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -7412,7 +8413,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7435,6 +8436,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -7459,7 +8470,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7482,6 +8493,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -7514,7 +8535,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7537,6 +8558,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -7561,7 +8592,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7584,6 +8615,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -7608,7 +8649,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7631,6 +8672,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -7655,7 +8706,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7678,6 +8729,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -7702,7 +8763,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7725,6 +8786,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -7757,7 +8828,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7780,6 +8851,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -7804,7 +8885,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7827,6 +8908,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -7851,7 +8942,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7874,6 +8965,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -7906,7 +9007,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7929,6 +9030,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -7953,7 +9064,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -7976,6 +9087,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -8000,7 +9121,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8023,6 +9144,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -8047,7 +9178,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8070,6 +9201,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -8094,7 +9235,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8117,6 +9258,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -8149,7 +9300,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8172,6 +9323,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -8196,7 +9357,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8219,6 +9380,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -8243,7 +9414,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8266,6 +9437,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -8290,7 +9471,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8313,6 +9494,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -8337,7 +9528,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8360,6 +9551,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -8392,7 +9593,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8415,6 +9616,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -8439,7 +9650,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8462,6 +9673,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -8486,7 +9707,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8509,6 +9730,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -8533,7 +9764,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8556,6 +9787,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -8580,7 +9821,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8603,6 +9844,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -8708,7 +9959,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8731,6 +9982,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -8755,7 +10016,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8778,6 +10039,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -8802,7 +10073,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8825,6 +10096,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -8849,7 +10130,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8872,6 +10153,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -8896,7 +10187,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8919,6 +10210,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -8951,7 +10252,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -8974,6 +10275,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -8998,7 +10309,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9021,6 +10332,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -9045,7 +10366,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9068,6 +10389,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -9092,7 +10423,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9115,6 +10446,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -9139,7 +10480,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9162,6 +10503,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -9194,7 +10545,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9217,6 +10568,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -9241,7 +10602,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9264,6 +10625,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -9288,7 +10659,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9311,6 +10682,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -9335,7 +10716,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9358,6 +10739,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -9382,7 +10773,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9405,6 +10796,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -9437,7 +10838,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9460,6 +10861,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -9484,7 +10895,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9507,6 +10918,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -9531,7 +10952,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9554,6 +10975,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -9586,7 +11017,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9609,6 +11040,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -9633,7 +11074,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9656,6 +11097,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -9680,7 +11131,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9703,6 +11154,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -9727,7 +11188,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9750,6 +11211,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -9774,7 +11245,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9797,6 +11268,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -9829,7 +11310,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9852,6 +11333,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -9876,7 +11367,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9899,6 +11390,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -9923,7 +11424,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -9946,6 +11447,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -9978,7 +11489,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10001,6 +11512,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -10025,7 +11546,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10048,6 +11569,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -10072,7 +11603,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10095,6 +11626,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -10119,7 +11660,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10142,6 +11683,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -10166,7 +11717,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10189,6 +11740,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -10221,7 +11782,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10244,6 +11805,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -10268,7 +11839,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10291,6 +11862,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -10315,7 +11896,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10338,6 +11919,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -10370,7 +11961,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10393,6 +11984,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -10417,7 +12018,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10440,6 +12041,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -10464,7 +12075,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10487,6 +12098,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -10511,7 +12132,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10534,6 +12155,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -10558,7 +12189,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10581,6 +12212,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -10613,7 +12254,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10636,6 +12277,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -10660,7 +12311,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10683,6 +12334,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -10707,7 +12368,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10730,6 +12391,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -10754,7 +12425,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10777,6 +12448,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -10801,7 +12482,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10824,6 +12505,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -10856,7 +12547,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10879,6 +12570,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -10903,7 +12604,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10926,6 +12627,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -10950,7 +12661,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -10973,6 +12684,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -10997,7 +12718,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11020,6 +12741,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -11044,7 +12775,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11067,6 +12798,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -11208,7 +12949,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11231,6 +12972,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -11255,7 +13006,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11278,6 +13029,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -11302,7 +13063,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11325,6 +13086,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -11349,7 +13120,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11372,6 +13143,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -11396,7 +13177,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11419,6 +13200,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -11451,7 +13242,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11474,6 +13265,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -11498,7 +13299,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11521,6 +13322,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -11545,7 +13356,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11568,6 +13379,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -11592,7 +13413,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11615,6 +13436,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -11639,7 +13470,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11662,6 +13493,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -11694,7 +13535,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11717,6 +13558,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -11741,7 +13592,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11764,6 +13615,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -11788,7 +13649,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11811,6 +13672,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -11835,7 +13706,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11858,6 +13729,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -11882,7 +13763,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11905,6 +13786,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -11937,7 +13828,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -11960,6 +13851,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -11984,7 +13885,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12007,6 +13908,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -12031,7 +13942,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12054,6 +13965,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -12078,7 +13999,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12101,6 +14022,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -12125,7 +14056,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12148,6 +14079,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -12180,7 +14121,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12203,6 +14144,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -12227,7 +14178,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12250,6 +14201,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -12274,7 +14235,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12297,6 +14258,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -12321,7 +14292,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12344,6 +14315,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -12368,7 +14349,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12391,6 +14372,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -12439,7 +14430,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12462,6 +14453,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -12486,7 +14487,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12509,6 +14510,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -12533,7 +14544,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12556,6 +14567,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -12588,7 +14609,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12611,6 +14632,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -12635,7 +14666,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12658,6 +14689,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -12682,7 +14723,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12705,6 +14746,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -12729,7 +14780,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12752,6 +14803,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -12776,7 +14837,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12799,6 +14860,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -12831,7 +14902,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12854,6 +14925,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -12878,7 +14959,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12901,6 +14982,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -12925,7 +15016,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -12948,6 +15039,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -12980,7 +15081,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13003,6 +15104,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -13027,7 +15138,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13050,6 +15161,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -13074,7 +15195,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13097,6 +15218,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -13121,7 +15252,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13144,6 +15275,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -13168,7 +15309,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13191,6 +15332,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -13296,7 +15447,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13319,6 +15470,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -13343,7 +15504,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13366,6 +15527,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -13390,7 +15561,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13413,6 +15584,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -13437,7 +15618,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13460,6 +15641,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -13484,7 +15675,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13507,6 +15698,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -13539,7 +15740,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13562,6 +15763,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -13586,7 +15797,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13609,6 +15820,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -13633,7 +15854,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13656,6 +15877,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -13680,7 +15911,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13703,6 +15934,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -13727,7 +15968,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13750,6 +15991,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }
@@ -13782,7 +16033,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13805,6 +16056,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -13829,7 +16090,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13852,6 +16113,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -13876,7 +16147,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13899,6 +16170,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -13923,7 +16204,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13946,6 +16227,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     },
@@ -13970,7 +16261,7 @@
       "firstClear": [
        {
         "nameJp": "\u30c0\u30a4\u30e4",
-        "qty": null,
+        "qty": 1,
         "itemId": null
        }
       ],
@@ -13993,6 +16284,16 @@
         "rewards.firstClear",
         "rewards.special"
        ]
+      },
+      {
+       "source": "Bahamut forum (bsn 31489)",
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=940",
+       "accessed": "2026-11-22",
+       "confidence": "medium",
+       "fields": [
+        "rewards.firstClear"
+       ],
+       "note": "quantity derived: about 150 Diamonds for the 148 stages of chapters 7-40"
       }
      ]
     }

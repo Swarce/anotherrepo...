@@ -20,9 +20,18 @@ Later passes (`--facts` again, Build 43: research-b43/statues) add verdict recor
     gives research stats to an assist-only statue only with this);
   - a dict value of `lv1`, `lv99` or `maxTree` counts as one record per stat.
 Records without a statueId (the researchers left the id open) are not read.
+Build 44 (research-b44/<family>, files that mix topics: only topic `statues` is read) adds:
+  - `dt_battle_params` / `tactical_params` ({speed, evasion, accuracy, critical[, resist]}): the
+    statue's tactical parameters (`tactical` in the collection, accuracy as the client's `hitrate`;
+    the highest confidence wins, agreeing records are cited as `also`, an equal-confidence
+    disagreement is dropped); the resistance grades are kept as data;
+  - `<stat>_source_says` (a hand-typed table, medium): listed as `sourceSays`, never applied;
+  - `identity_type` / `identity_type_derived` (the Giorno 5000_03/04 vs 23/24 split): counted as
+    held, not applied; the ids stay as they are.
 
 usage: python3 -I tools/content/research_statues.py --facts local/wiki-raw/research-b33/statues/results.jsonl \
-         [--facts local/wiki-raw/research-b43/statues/results.jsonl] --out <collection.json>
+         [--facts local/wiki-raw/research-b43/statues/results.jsonl] \
+         [--facts local/wiki-raw/research-b44/<family>/results.jsonl ...] --out <collection.json>
   (Build 33 wrote local/wiki-raw/research-b33/statues/extra_statues.json from the b33 file alone;
   Build 43 reads both files, see docs/CONTENT.md "Research collections")
 """
@@ -41,7 +50,7 @@ facts = collections.defaultdict(lambda: collections.defaultdict(list))
 for path in a.facts:
     for line in open(path, encoding="utf-8"):
         r = json.loads(line)
-        if r.get("statueId") is None:
+        if r.get("statueId") is None or r.get("topic", "statues") != "statues":
             continue
         if r["field"] in ("lv1", "lv99", "maxTree") and isinstance(r["value"], dict):
             for k in ("hp", "atk", "def"):
@@ -78,9 +87,42 @@ def verdict(recs):
     return max(recs, key=lambda r: RANK[r["confidence"]]) if recs else None
 
 
+TACTICAL = (("speed", "speed"), ("evasion", "evasion"), ("accuracy", "hitrate"), ("critical", "criticalRate"))
+
+
+def tactical(sid, recs):
+    """The tactical speed/evasion/accuracy/critical of a statue (Build 44): the record of the highest
+    confidence, the others that agree as `also`; None when records of that confidence disagree."""
+    recs = sorted((r for r in recs if RANK.get(r.get("confidence"), 0) >= 2), key=lambda r: -RANK[r["confidence"]])
+    if not recs:
+        return None
+    key = lambda r: tuple(r["value"].get(k) for k, _ in TACTICAL)
+    top = recs[0]
+    if any(key(r) != key(top) and r["confidence"] == top["confidence"] for r in recs[1:]) \
+            or not all(isinstance(v, int) for v in key(top)):
+        held["tactical params disagree"] += 1
+        return None
+    resist = next((r["value"]["resist"] for r in recs if key(r) == key(top) and "resist" in r["value"]), None)
+    return {"statueId": sid, "value": {name: top["value"][k] for k, name in TACTICAL},
+            **({"resist": resist} if resist else {}),
+            "source": {**cite(top), "confidence": top["confidence"]},
+            **({"also": [{**cite(r), "confidence": r["confidence"]} for r in recs[1:] if key(r) == key(top)]}
+               if len(recs) > 1 else {})}
+
+
 records, checks, skipped = [], [], collections.Counter()
+tactical_rows, tree_checks, held = [], [], collections.Counter()
 for sid, fields in sorted(facts.items()):
     pick = {f: best(rs) for f, rs in fields.items()}
+    t = tactical(sid, fields.get("dt_battle_params", []) + fields.get("tactical_params", []))
+    if t:
+        tactical_rows.append(t)
+    for f in ("maxTree", "lv99", "lv1"):
+        for r in fields.get(f + "_source_says", []):
+            tree_checks.append({"statueId": sid, "field": f, "value": r["value"], "source": cite(r),
+                                "confidence": r["confidence"], "note": r.get("note")})
+    for f in ("identity_type", "identity_type_derived"):
+        held[f + " (the id split stays open; not applied)"] += len(fields.get(f, []))
     for r in fields.get("lv1_conflict", []):
         v = verdict([r])
         if v:
@@ -132,7 +174,10 @@ for sid, fields in sorted(facts.items()):
         **({"assistOnly": True, "assistOnlySource": cite(assist)} if assist and assist["value"] is True else {}),
     })
 json.dump({"collected": max((r["source"].get("accessed") or "" for r in records), default=""),
-           "records": records, **({"checks": checks} if checks else {})},
+           "records": records, **({"checks": checks} if checks else {}),
+           **({"tactical": tactical_rows} if tactical_rows else {}),
+           **({"sourceSays": tree_checks} if tree_checks else {})},
           open(a.out, "w"), ensure_ascii=False, indent=1)
 print(f"{len(records)} statues with stats, rarity and attribute (medium or high); {len(checks)} Lv1 checks; "
-      f"skipped: {dict(skipped)}")
+      f"{len(tactical_rows)} tactical parameter rows; {len(tree_checks)} 'source says' values; "
+      f"skipped: {dict(skipped)}; held: {dict(held)}")

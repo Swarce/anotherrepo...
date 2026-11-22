@@ -170,6 +170,19 @@ What we send:
     `AFFECT_HALF_*` label). No row: 5210_04 (HP above half, no client condition), 5290_04
     (reversal gauge), 5100_14 (statue page +9% against the summary page's +14%, M) and the trait
     filtered 4030_04 summary row.
+- Build 44 (`--research` once per research-b44 family file, 102 statues): a translator's 2019
+  Reddit retrospective (research-b44/communities, medium; the tactical-era MAX-level leader
+  ability in English, the statueId matched by leader name and verified) gives a row the same way
+  (EN_LINES, which now also reads "types"; Lv1 = Lv10 = MAX) to a statue no earlier source covers:
+  5010_14 ATK +10%, 5050_04 damage to Fighting Spirit +13.9%, 5100_14 damage to Unity +14% (the
+  summary page's value: a second source settles the Build 43 conflict) and 5140_04 damage to
+  Courage +15%. It gives the same values as the rows of 5030_04, 5080_04 and 5150_04 (listed in the
+  source's note). No row, as before: lines with same-type counts (5000_24, 5010_04, 5320_04),
+  trait filters (5000_04, 5220_14; 1020_04's Vampire filter from the 3.4.0 notice), HP above half
+  (5210_04), defeated counts (5120_14) or Reversal (3323_08, 5001_14); Diavolo 5170_14's atwiki
+  row (high) needs a "while time is erased" condition and a crit rate, which have no tactical
+  affect. The statue abilities (`ABI_STAT_*`) in the same records are kept as data only: the server
+  has no statue-ability rows. The action leader builder takes none of these (tactical-era values).
 - Rebuild: `tools/content/build_leader_abilities.py`. `--table` merges the DT_LEAD rows into the
   committed table and keeps the other rows; the usage line in the script has the full command.
 - Risk: the wiki numbers come from the action-battle era, so the balance is ours. The ability's

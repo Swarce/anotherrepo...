@@ -65,6 +65,31 @@ pub struct StatueDef {
     /// be an assist but never a team member.
     #[serde(rename = "assistOnly", default)]
     pub assist_only: bool,
+    /// Tactical speed, evasion, hit rate and critical rate from the wikis (Build 44,
+    /// `tools/content/build_statues.py` step 6), when known; else [`Tactical::DEFAULT`].
+    #[serde(default)]
+    pub tactical: Option<Tactical>,
+}
+
+/// The tactical `StatueInfo` stats (docs/research/10-content.md §2.2): speed sets how soon a unit
+/// acts (docs/research/11-battle-and-positions.md, "Turns"), the other three feed hits and criticals.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Deserialize)]
+pub struct Tactical {
+    pub speed: i64,
+    pub evasion: i64,
+    pub hitrate: i64,
+    #[serde(rename = "criticalRate")]
+    pub critical_rate: i64,
+}
+
+impl Tactical {
+    /// Ours, for statues no source gives (sent to every statue before Build 44).
+    pub const DEFAULT: Tactical = Tactical {
+        speed: 100,
+        evasion: 0,
+        hitrate: 100,
+        critical_rate: 5,
+    };
 }
 
 fn full_scale() -> i64 {
@@ -481,8 +506,9 @@ impl TreeSums {
     }
 
     /// `StatueInfo.mindCapacity`: 16 plus the opened CP squares, never under the 40 we sent
-    /// before Build 42 (owner's choice; the base of 16 is design borrowed from the Diamond Records
-    /// PC playtest).
+    /// before Build 42 (owner's choice; the base of 16, first borrowed from the Diamond Records PC
+    /// playtest, is the original game's: Build 44 in-game status tabs show 16, see
+    /// [`MIND_CAPACITY_BASE`]).
     pub fn mind_capacity(&self) -> i64 {
         (MIND_CAPACITY_BASE + self.cp).max(MIND_CAPACITY)
     }
@@ -550,8 +576,10 @@ fn seats_empty(m: &[Vec<(i64, i64)>; 3]) -> bool {
 /// before Build 42 (ours: three 4-star or four 3-star Minds at cost 3 x rarity). The tree's CP
 /// squares raise it ([`mind_capacity`]).
 pub const MIND_CAPACITY: i64 = 40;
-/// Capacity before CP squares (design from the Diamond Records PC playtest, used with its author's permission); with the
-/// floor it shows only once the squares pass 24.
+/// Capacity before CP squares; with the floor it shows only once the squares pass 24. First design
+/// from the Diamond Records PC playtest (used with its author's permission); from Build 44 sourced:
+/// the original game's status tabs show 16 on new ★5 and ★6 statues (research-b44/blogs_archives,
+/// ameblo.jp/yamasan-drm entries 12446013855 and 12446923862, read 2026-11-22; docs/CONTENT.md).
 pub const MIND_CAPACITY_BASE: i64 = 16;
 /// Mind slots open per seat: the four golden frames (seq 1-4), the skill frame (5) and the SP
 /// skill frame (6) (client `GameConst.GetMindSeqType`: 1-4 golden, 5 skill, 6 SP skill, 7-8 sub;
@@ -805,6 +833,7 @@ pub fn statue_info(o: &OwnedStatue) -> Value {
     st.atk += sums.atk;
     st.def += sums.def;
     let sid = &o.statue_id;
+    let tac = d.and_then(|d| d.tactical).unwrap_or(Tactical::DEFAULT);
     json!({
         "statueId": sid, "name": format!("STATUE_NAME_{sid}"), "nameSortIndex": 0,
         "rare": rare, "rareMax": rare, "appearedPart": part,
@@ -820,7 +849,7 @@ pub fn statue_info(o: &OwnedStatue) -> Value {
         "characteristicList": [], "assistAttr": d.is_some_and(|d| d.assist_only) as i64, "assistSkillInfo": {},
         "assistAbilityList": assist_ability_list(sid), "dtAssistSkillInfo": assist_skill_at(sid, lv.assist),
         "dtAssistAbilityList": dt_assist_ability_list(sid),
-        "speed": 100, "evasion": 0, "hitrate": 100, "criticalRate": 5,
+        "speed": tac.speed, "evasion": tac.evasion, "hitrate": tac.hitrate, "criticalRate": tac.critical_rate,
         "stEffRateInfo": {}, "maxSp": 100, "useStageType": 0, "levelUpTable": [],
         "statueuId": o.uid, "treeuId": "", "newFlg": 0, "useFlg": 0, "protectedFlg": 0,
         "limitReleaseCount": 0, "convergence": o.boost, "getDate": o.get_date,
@@ -1014,7 +1043,7 @@ pub fn dt_skill_table() -> Value {
     // their skills that no statue has (docs/research/26 §3).
     if let Some(src) = doc["sources"].as_array_mut() {
         src.push(json!({ "source": "jdr-research", "doc": "docs/research/26-links-and-skills.md",
-            "note": "Mind skill rows (server/content/mind_skills.json), time-stop sub categories (the client's DTSC_WORLD_* categories: ProcessType 4, turn 1/2) and cool turns by skill level (dtMinCoolTurn at level 0, dtMaxCoolTurn at level 10; the values are ours)" }));
+            "note": "Mind skill rows (server/content/mind_skills.json), time-stop sub categories (the client's DTSC_WORLD_* categories: ProcessType 4, turn 1/2 ours, 3 where an in-game Mind screen gives it, server/content/mind_skills.json) and cool turns by skill level (dtMinCoolTurn at level 0, dtMaxCoolTurn at level 10; the values are ours)" }));
     }
     let mut skills = std::collections::BTreeMap::new();
     let mut cats = std::collections::BTreeMap::new();
@@ -1096,8 +1125,9 @@ pub const COOL_TURN_LEVEL_GAIN: i64 = 2;
 pub const DT_COOL_TURNS_JSON: &str = include_str!("../../content/dt_cool_turns.json");
 
 /// A tactical skill's cool turn at the highest skill level and its uses (0 = unlimited).
-/// Players listed the cool turn at the highest level (the tactical-era atwiki and the Bahamut forum,
-/// docs/research/26 §4): the skill's own value where its name matched, else its family's usual one
+/// Players listed the cool turn at the highest level (the tactical-era atwiki and the Bahamut forum;
+/// from Build 44 a 2019 Reddit retrospective naming each skill's label; docs/research/26 §4): the
+/// skill's own value where documented, else its family's usual one
 /// there: attack skills 3, time stops 6/9/10 for 1/2/3 stopped turns, heals 8, special (SP) skills 5
 /// with 3 uses. How much the levels below take off is not documented (COOL_TURN_LEVEL_GAIN, ours).
 pub fn dt_cool_turn(s: &DtSkill) -> (i64, i64) {
@@ -2430,10 +2460,10 @@ mod tests {
     #[test]
     fn jojo_links_follow_the_team() {
         let held = [
-            8, 20, 21, 25, 26, 35, 36, 43, 51, 52, 54, 59, 60, 62, 67, 69, 70, 71, 73, 74, 75, 77,
+            8, 20, 21, 25, 26, 35, 36, 43, 51, 52, 54, 59, 60, 62, 69, 70, 71, 73, 74, 75, 77,
         ];
         let ids: Vec<i64> = jojo_links().iter().map(|l| l.chara_link_id).collect();
-        assert_eq!(ids.len(), 56);
+        assert_eq!(ids.len(), 57);
         assert!(ids.windows(2).all(|w| w[0] < w[1]), "unique charaLinkIds");
         assert!(
             ids.iter().all(|i| !held.contains(i)),
@@ -2469,6 +2499,15 @@ mod tests {
         assert_eq!(count(&link_ids(&c, &t), 53), 1);
         let (c, t) = link_team(&["3321", "2020", "1000"]);
         assert_eq!(count(&link_ids(&c, &t), 53), 0);
+        // Build 44 (research-b44 Bahamut team screen): Tarkus + Bradford + Yukako show links 66,
+        // 67 and 68; link 67 (critical rate +3.0%) needs Bradford and Yukako.
+        let (c, t) = link_team(&["1130", "1120", "4080"]);
+        let ids = link_ids(&c, &t);
+        for id in [66, 67, 68] {
+            assert_eq!(count(&ids, id), 1, "link {id}");
+        }
+        let (c, t) = link_team(&["1130", "1120", "1000"]);
+        assert_eq!(count(&link_ids(&c, &t), 67), 0);
         // An empty team, and a team of one, activate nothing.
         let (c, t) = link_team(&[]);
         assert!(jojo_link_list(&c, &t).is_empty());
@@ -2715,6 +2754,23 @@ mod tests {
         assert_eq!(sp("3020_28"), "SKILL_302_61");
         assert_eq!(doc["statues"]["5050_04"]["sp"]["cooldown"], 16);
         assert_eq!(doc["statues"]["5320_04"]["actionMode"]["usable"], false);
+        // Build 44 (research-b44): the official press release names 1090_13's skill and SP (the
+        // Gamerch page filed under 1090_03 is refiled), and two more statues are tactical-only.
+        let skill = |sid: &str| {
+            action_skills(sid)
+                .unwrap()
+                .skill
+                .as_ref()
+                .unwrap()
+                .id
+                .clone()
+        };
+        assert_eq!(skill("1090_13"), "SKILL_109_01");
+        assert_eq!(sp("1090_13"), "SKILL_109_04");
+        assert_eq!(skill("1090_03"), "SKILL_109_05");
+        for sid in ["5170_14", "5220_14"] {
+            assert_eq!(doc["statues"][sid]["actionMode"]["usable"], false, "{sid}");
+        }
     }
 
     #[test]
@@ -2764,9 +2820,11 @@ mod tests {
             "DT_AST_DMG_RATEADD3"
         );
         // Held (Build 43: the two sites disagree on the condition): no condition.
-        for sid in ["3230_62", "4220_72", "4090_72"] {
+        for sid in ["3230_62", "4090_72"] {
             assert!(terms(sid).is_empty(), "{sid}");
         }
+        // Released in Build 44: in-game assist screens show two Solitary icons (research-b44).
+        assert_eq!(terms("4220_72"), [(5, 2)]);
         // Released in Build 43 (research-b43/assists): Gamerch/ShoutWiki 知略+闘志, ShoutWiki
         // FS+Courage+Tactical and FS+Solitary.
         assert_eq!(terms("3180_62"), [(2, 1), (3, 1)]);
@@ -2784,9 +2842,61 @@ mod tests {
         ] {
             assert_eq!(leader_ability(sid)["abilityId"], format!("DT_LEAD_{sid}"));
         }
-        for sid in ["5210_04", "5290_04", "5100_14"] {
+        for sid in ["5210_04", "5290_04"] {
             assert_eq!(leader_ability(sid), json!({}), "{sid}");
         }
+        // Build 44: the Reddit retrospective's MAX values (research-b44/communities) for statues no
+        // wiki row gives; 5100_14 takes +14%, settling the research-b43 conflict.
+        for sid in ["5010_14", "5050_04", "5100_14", "5140_04"] {
+            assert_eq!(leader_ability(sid)["abilityId"], format!("DT_LEAD_{sid}"));
+        }
+    }
+
+    /// Build 44: the tactical stats the wikis give (research-b44/statues) replace our defaults; the
+    /// other statues keep them.
+    #[test]
+    fn tactical_stats_come_from_the_wikis() {
+        let info = |sid: &str| {
+            statue_info(&OwnedStatue {
+                statue_id: sid.into(),
+                level: 1,
+                ..Default::default()
+            })
+        };
+        let v = info("5080_04");
+        assert_eq!(
+            (
+                &v["speed"],
+                &v["evasion"],
+                &v["hitrate"],
+                &v["criticalRate"]
+            ),
+            (&json!(125), &json!(10), &json!(100), &json!(8))
+        );
+        assert_eq!(info("5170_14")["evasion"], json!(30));
+        let v = info("1000_01");
+        assert_eq!(
+            (
+                &v["speed"],
+                &v["evasion"],
+                &v["hitrate"],
+                &v["criticalRate"]
+            ),
+            (&json!(100), &json!(0), &json!(100), &json!(5))
+        );
+        let with = statues().iter().filter(|d| d.tactical.is_some()).count();
+        assert!(with >= 17, "{with}");
+        for d in statues() {
+            if let Some(t) = d.tactical {
+                assert!(t.speed >= 50 && t.hitrate >= 50, "{}", d.statue_id);
+                assert!((0..=100).contains(&t.evasion) && (0..=100).contains(&t.critical_rate));
+            }
+        }
+        // and the traits of the same pass: team traits the wiki categories lacked
+        assert_eq!(tribe_ids("5010_04"), vec![5, 9]);
+        assert_eq!(tribe_ids("5220_14"), vec![5, 10]);
+        assert_eq!(tribe_ids("3330_04"), vec![1, 5]);
+        assert_eq!(tribe_ids("5170_14"), vec![5]);
     }
 
     #[test]
@@ -2815,6 +2925,7 @@ mod tests {
             my_page_pos: my_page_pos(),
             assist_only: false,
             max_tree: None,
+            tactical: None,
         };
         assert_eq!(d.stats_at(1).hp, 100);
         assert_eq!(d.stats_at(99).hp, 1000);
@@ -3328,6 +3439,16 @@ mod links_and_skills_tests {
         }
         assert!(n >= 5, "DIO's and Jotaro's time stops");
         assert_eq!(time_stop("SKILL_300_10"), Some("DTSC_WORLD_MIDDLE"));
+        // Build 44 (research-b44 in-game Mind screen): Mind 4036's SP time stop lasts 3 turns,
+        // and its bracketed skill name resolves (the client's 3-turn category, turn 3).
+        let m = mind_skill("4036").expect("Mind 4036 grants a skill");
+        assert!(m.skill.special);
+        assert_eq!(time_stop(&m.skill.id), Some("DTSC_WORLD_HEAVY"));
+        let heavy = cats
+            .iter()
+            .find(|c| c["dtSkillCategoryId"] == "DTSC_WORLD_HEAVY")
+            .expect("DTSC_WORLD_HEAVY row");
+        assert_eq!(heavy["turn"], 3);
     }
 
     /// Cool turns by level: level 1 keeps the old 2 (special 3) turns, so existing battles are
@@ -3344,10 +3465,10 @@ mod links_and_skills_tests {
                 r["dtMaxCoolTurn"].as_i64().unwrap(),
             );
             // The documented value at the highest level, two more at level 1 to 4, one more
-            // from 5 (docs/research/26 §4).
+            // from 5 (docs/research/26 §4). Build 44: Giorno's SKILL_500_03 is documented at 1.
             let id = r["dtSkillId"].as_str().unwrap();
             let top = max;
-            assert!((2..=11).contains(&top), "{id}: {top} turns at level 10");
+            assert!((1..=11).contains(&top), "{id}: {top} turns at level 10");
             assert_eq!(cool_turn(min, max, 1), top + 2, "{id}");
             assert_eq!(cool_turn(min, max, 4), top + 2);
             assert_eq!(cool_turn(min, max, 5), top + 1);
@@ -3365,6 +3486,13 @@ mod links_and_skills_tests {
             assert_eq!(
                 (r["dtMaxCoolTurn"].clone(), r["dtLimitCount"].clone()),
                 (json!(4), json!(3))
+            );
+        }
+        // Build 44 (research-b44): the Reddit retrospective's kits, with the atwiki comment agreeing.
+        if let Some(r) = row("SKILL_517_03") {
+            assert_eq!(
+                (r["dtMaxCoolTurn"].clone(), r["dtLimitCount"].clone()),
+                (json!(8), json!(5))
             );
         }
     }
