@@ -121,7 +121,7 @@ in 3.12.0: objects and the background are set over the socket.
 - **Levels** (`clan_table`): 20 levels, exp 250·(L−1)·L; functions at 3/8/10 (above); all four
   backgrounds at Rank 10.
 - **Objects** (Build 42, `town.rs::OBJECT_UNLOCKS`): one of the 20 objects with a model per Town
-  Rank from 2, in an order that is design borrowed from the Diamond Records PC playtest (its
+  Rank from 2, in an order that is design from the Diamond Records PC playtest, used with its author's permission (its
   trophy list, matched to our ids by model): 52, 42, 27, 8017, 44, 34, 21 (Rank 8), 22, 70, 67,
   82, 89, 79, 75, 24, 91, 8019, 8018, 93 (Rank 20), and 62, whose PC rank 21 is above our top
   level, also at Rank 20. The client's rule stays: objects reached before Rank 8 are owned (listed

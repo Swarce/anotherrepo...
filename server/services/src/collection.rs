@@ -550,7 +550,7 @@ fn seats_empty(m: &[Vec<(i64, i64)>; 3]) -> bool {
 /// before Build 42 (ours: three 4-star or four 3-star Minds at cost 3 x rarity). The tree's CP
 /// squares raise it ([`mind_capacity`]).
 pub const MIND_CAPACITY: i64 = 40;
-/// Capacity before CP squares (design borrowed from the Diamond Records PC playtest); with the
+/// Capacity before CP squares (design from the Diamond Records PC playtest, used with its author's permission); with the
 /// floor it shows only once the squares pass 24.
 pub const MIND_CAPACITY_BASE: i64 = 16;
 /// Mind slots open per seat: the four golden frames (seq 1-4), the skill frame (5) and the SP

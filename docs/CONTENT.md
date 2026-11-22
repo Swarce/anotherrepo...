@@ -91,7 +91,7 @@ builds' text), rendered by `server/services/src/web.rs` into the three tabs
 
 `server/services/src/town.rs::OBJECT_UNLOCKS` gives each of the 20 Town objects (ids and models
 from the player's files) the Town Rank that unlocks it: one per rank from 2, the 21st capped at
-Rank 20. The order is design borrowed from the Diamond Records PC playtest (its trophy list,
+Rank 20. The order is design from the Diamond Records PC playtest, used with its author's permission (its trophy list,
 matched by model); no PC text or file is used, and its coin costs are not: objects stay free
 because the 3.12.0 client has no object cost. Placement still needs Rank 8 (client rule;
 docs/research/24-town.md §2).
@@ -135,7 +135,7 @@ PC board, value or cost is used.
 | 14 awakening | `E`, last | nothing (cosmetic) |
 
 Mind capacity is max(40, 16 + the opened CP squares): 40 until the seventh square, 48 with all
-eight (the base of 16 is design borrowed from the Diamond Records PC playtest; the +4 squares and
+eight (the base of 16 is design from the Diamond Records PC playtest, used with its author's permission; the +4 squares and
 the floor of 40 are ours). Levels are 1 plus the squares, capped at 10. Costs follow the depth
 rule of docs/research/13 §3.
 
@@ -146,7 +146,7 @@ rule of docs/research/13 §3.
 20 use a Skill (our translations of the labels). The types and the labels are the 3.12.0 client's
 (`QuestMission_JP:QuestMissionText_<type + 2>`, shown through our translations); `param` is
 empty (the client's check has the thresholds built in). The choice of these three is design
-borrowed from the Diamond Records PC playtest; no PC text is used. Cleared types are kept per
+from the Diamond Records PC playtest, used with its author's permission; no PC text is used. Cleared types are kept per
 stage in `Progress.stars` (types 1-46) and the result screen echoes the client's list, as for
 tactical stages.
 

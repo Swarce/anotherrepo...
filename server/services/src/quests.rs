@@ -251,7 +251,7 @@ pub fn dt_missions(s: &StageDef) -> [(i64, &'static str, String); 3] {
 /// not read (empty, as the labels have no `{starParam}`). Labels are the game's own
 /// `QuestMission_JP:QuestMissionText_<type + 2>` (texts 0-2 are counters; 3 is type 1 UseSupport,
 /// 16 is type 14 NoCondition), shown through our translations.
-/// The choice of these three: design borrowed from the Diamond Records PC playtest.
+/// The choice of these three: design from the Diamond Records PC playtest, used with its author's permission.
 pub fn action_missions(_s: &StageDef) -> [(i64, &'static str, String); 3] {
     [
         (7, "QuestMissionText_9", String::new()),

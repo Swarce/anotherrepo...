@@ -68,7 +68,7 @@ pub const DEFAULT_BACKGROUND: i64 = 9001;
 
 /// The 20 Town objects with a model in the player's `clan_instance_object_00`, each with the
 /// Town Rank that unlocks it, in unlock order. Ids and models are ours (the player's files); the
-/// unlock order and ranks are design borrowed from the Diamond Records PC playtest (its trophy
+/// unlock order and ranks are design from the Diamond Records PC playtest, used with its author's permission (its trophy
 /// list, matched to our ids by model). Rank 21 (`cl_roadroller`) is above our top level and
 /// unlocks at `level_max()`. The 3.12.0 client has no per-object rank or cost
 /// (`ClanObjectTable/Param` has none; `/clan/clan_object_list` is only ids), so objects stay free.
