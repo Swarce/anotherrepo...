@@ -1300,6 +1300,15 @@
     "affectLimitNormal": [],
     "affectLimitExtra": [],
     "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_HALF_HP_DEF_RATEADD",
+    "affectTextId": "AFFECT_HALF_DEF_RATEADD_TEXT",
+    "prvs": "PRVS_HALF_HP",
+    "baseAffect": "BASE_DEF_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
    }
   ]
  }

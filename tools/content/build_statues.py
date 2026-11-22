@@ -30,13 +30,20 @@ Matching (strict; anything ambiguous falls back to marked defaults):
     a Gamerch Lv99 row that equals a wiki tree max becomes maxTree (Lv99 from that wiki), null
     maxTree is filled from entries with the same rarity, type and Lv99, and the defaults in
     TYPED_DEFAULTS take their type (and stats) from the one wiki entry of their character
-    (docs/CONTENT.md "Wiki cross-checks"). Lv1 from Lv99 is Lv99 / 10 rounded half up.
+    (docs/CONTENT.md "Wiki cross-checks"). Lv1 from Lv99 is Lv99 / 10 rounded half up;
+  - research collections (--extra, research_statues.py): exact statueIds, for statues still without
+    numbers; an assist-only statue only when its record says so (`assistOnly`, Build 43). A record's
+    `typeSource` (the researchers' verdict where the pages disagree on the type) and
+    `assistOnlySource` are cited on the row; a collection's `checks` (Build 43: the Lv1 stat the
+    researchers keep where the pages differ) are noted as `lv1Note`/`lv1Sources` when they equal our
+    value and reported otherwise, never applied.
 Only numbers are written, each record citing its source page.
 
 usage: python3 -I tools/content/build_statues.py --scan local/content/statues_scan.json \
          --export local/l10n/work.tsv --shoutwiki local/wiki-raw/shoutwiki/statues.json \
          --gamerch local/wiki-raw/gamerch/statues.json --jojowiki local/wiki-raw/jojowiki/statues.json \
          [--clips ... --heights ... --pose ... --extra ... --accessed ...] --out server/content/statues.json
+  (the full command with its inputs: docs/CONTENT.md "Research collections")
 """
 import argparse
 import collections
@@ -311,16 +318,58 @@ if a.gamerch:
             rejected.append(sid)
             continue
         gamerch[sid] = g
+def research_cite(c):
+    """A research record's page (Build 43 collections): site, page, capture, access date."""
+    url = c["url"]
+    site = ("Diamond Records Wiki (ShoutWiki)" if "shoutwiki" in url else
+            "JoJo's Bizarre Encyclopedia (JoJoWiki)" if "jojowiki" in url else
+            "Gamerch ジョジョDR攻略Wiki" + (" (Wayback Machine)" if c.get("capture") else " (live page)") if "gamerch" in url
+            else None)
+    return {**({"source": site} if site else {}), "page": url,
+            **({"capture": c["capture"]} if c.get("capture") else {}), "accessed": c.get("accessed", TODAY)}
+
+
+TYPE_EN = {1: "Courage", 2: "Tactical", 3: "Fighting Spirit", 4: "Unity", 5: "Solitary"}
+
+
+def apply_extra(rec, x):
+    st = x["stats"]
+    rec.update({
+        "rarity": x.get("rarity"),
+        "statueType": GAMERCH_TYPE.get(x.get("type")),
+        "lv1": st["lv1"], "lv99": st["lv99"],
+        "maxTree": st["tree_max"] if full(st.get("tree_max")) else None,
+        "source": {"source": x["source"]["site"], "page": x["source"]["url"],
+                   **({"license": x["source"]["license"]} if x["source"].get("license") else {}),
+                   **({"capture": x["source"]["archive_url"]} if x["source"].get("archive_url") else {}),
+                   "accessed": x["source"].get("accessed", TODAY)},
+    })
+    if x.get("typeSource"):  # the researchers' verdict where the pages disagree on the type (Build 43)
+        votes = x["typeSource"].get("votes", {})
+        rec["source"]["note"] = (f"statueType {TYPE_EN[rec['statueType']]} by the research-b43 verdict "
+                                 f"({x['typeSource']['confidence']} confidence); the pages disagree: "
+                                 + ", ".join(f"{k.replace('_', ' ')} {v}" for k, v in votes.items()))
+        rec["source"]["typeSource"] = research_cite(x["typeSource"])
+    if x.get("assistOnlySource"):
+        rec["source"]["assistOnlySource"] = research_cite(x["assistOnlySource"])
+
+
 out = []
 matched = 0
 by_source = collections.Counter()
 claimed = collections.defaultdict(set)  # character key -> {(rarity, type)} taken by exact matches
-# Research collections: exact statueId matches only.
+# Research collections: exact statueId matches only. An assist-only statue takes a record only when
+# the research says it is assist-only (`assistOnly`, Build 43). `checks` (Build 43): the Lv1 stat the
+# researchers keep where the pages differ; noted on the statue at the end, no value changes.
 extra = {}
+lv1_checks = []
 for path in a.extra:
-    for r in json.load(open(path)).get("records", []):
+    coll = json.load(open(path))
+    lv1_checks += coll.get("checks", [])
+    for r in coll.get("records", []):
         sid, st = r.get("statueId"), r.get("stats") or {}
-        if (sid in jp_name and sid not in gamerch and r.get("confidence") in ("high", "medium")
+        if ((sid in jp_name or (sid in ast_jp_name and r.get("assistOnly"))) and sid not in gamerch
+                and r.get("confidence") in ("high", "medium")
                 and full(st.get("lv1")) and full(st.get("lv99")) and plausible(st["lv1"], st["lv99"])):
             url = r["source"]["url"]
             site = ("Diamond Records Wiki (ShoutWiki)" if "shoutwiki" in url else
@@ -407,17 +456,7 @@ for s in obtainable:
     #    statues still without numbers.
     x = extra.get(sid)
     if x and rec["lv99"] is None:
-        st = x["stats"]
-        rec.update({
-            "rarity": x.get("rarity"),
-            "statueType": GAMERCH_TYPE.get(x.get("type")),
-            "lv1": st["lv1"], "lv99": st["lv99"],
-            "maxTree": st["tree_max"] if full(st.get("tree_max")) else None,
-            "source": {"source": x["source"]["site"], "page": x["source"]["url"],
-                       **({"license": x["source"]["license"]} if x["source"].get("license") else {}),
-                       **({"capture": x["source"]["archive_url"]} if x["source"].get("archive_url") else {}),
-                       "accessed": x["source"].get("accessed", TODAY)},
-        })
+        apply_extra(rec, x)
         matched += 1
         by_source["extra"] += 1
     if rec["rarity"] is None:
@@ -479,6 +518,10 @@ for s in assist_only:
         })
         matched += 1
         by_source["gamerch_assist"] += 1
+    elif sid in extra:  # a research record that says the statue is assist-only (Build 43)
+        apply_extra(rec, extra[sid])
+        matched += 1
+        by_source["extra_assist"] += 1
     if rec["rarity"] is None:
         r = pose_rarity(s)
         if r:
@@ -743,6 +786,29 @@ for rec in out:
     rec["source"] = {**rec["source"], "maxTreeNote": tnote, "maxTreeSources": cites(agree)}
     n_tree += 1
 
+# 5) Lv1 checks (Build 43, research-b43/statues): where the pages disagree on one Lv1 stat, the
+#    researchers' verdict. It changes no value: a verdict that matches ours is noted with the page
+#    that differs; one that does not is reported and left for review.
+n_lv1_checks = 0
+by_id = {rec["statueId"]: rec for rec in out}
+for c in lv1_checks:
+    rec = by_id.get(c["statueId"])
+    stat = c["field"].split(".")[1]
+    if not rec or not rec["lv1"] or rec["lv1"][stat] != c["value"]:
+        print(f"warning: {c['statueId']}: Lv1 check {c['field']} = {c['value']} does not match ours; not applied")
+        continue
+    pages = c.get("pages", {})
+    shown = ", ".join(f"{name} {pages[k]}" for k, name in (("gamerch_live", "the live Gamerch page"),
+                                                         ("shoutwiki", "ShoutWiki")) if k in pages)
+    copied = (stat == "def" and len(set(pages.values())) == 1 and set(pages.values()) == {rec["lv1"]["atk"]})
+    rec["source"] = {**rec["source"],
+                     "lv1Note": (f"Lv1 {stat.upper()}: {shown}; {c['value']} (Lv99 / 10) is kept by the research-b43 "
+                                 f"verdict ({c['confidence']} confidence)"
+                                 + ("; both pages show the Lv1 ATK, most likely copied into DEF (not fully settled)"
+                                    if copied else "; the page that differs looks like a typo")),
+                     "lv1Sources": [research_cite(c["source"])]}
+    n_lv1_checks += 1
+
 doc = {
     "about": "Obtainable statues: identifiers from the player's own files (scan_statues.py), stats from community wikis where the match is unambiguous (each record cites its page). See docs/CONTENT.md.",
     "sources": [
@@ -758,6 +824,6 @@ doc = {
 }
 json.dump(doc, open(a.out, "w"), indent=1, ensure_ascii=False)
 print(f"wiki cross-checks: {n_tree_lv99} Gamerch Lv99 rows that are the tree max, {n_typed} typed defaults, "
-      f"{n_tree} maxTree filled ({n_off_by_one} with a one-point Lv99 fix)")
+      f"{n_tree} maxTree filled ({n_off_by_one} with a one-point Lv99 fix), {n_lv1_checks} Lv1 checks noted")
 print(f"{len(out)} obtainable statues ({n_assist} assist-only); {matched} with wiki stats ({dict(by_source)}), {len(out) - matched} on defaults; "
       f"rejected as implausible or out of rarity order: {sorted(set(rejected))}")

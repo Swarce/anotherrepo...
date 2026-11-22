@@ -163,3 +163,7 @@ The owner asked for these tiles so more content can be tested. H unless marked, 
   - Every stage reuses a tactical story stage's map. Enemies, levels and rewards are ours,
     except the Easy-tier daily AP/EXP/gold (wiki). Clears and stars are kept per stage, apart
     from the story.
+  - Build 43 (research-b43/stages_extra, the 2019 atwiki daily page): the weekday mapping of the
+    2018 revamp still held in 2019, every day also had an all-type material quest, and a
+    month-end 3x-materials quest was usual. No stage numbers; recorded in `quests_extra.json`
+    `wiki.daily`, nothing changed.

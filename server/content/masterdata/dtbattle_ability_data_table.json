@@ -15,10 +15,41 @@
     "DT_LEAD_1020_03": "https://jojodr.gamerch.com/【闘志】ウィル・A・ツェペリ★5（これが「仙道」だ！！）",
     "DT_LEAD_1080_02": "https://jojodr.gamerch.com/【勇気】ダイアー★4",
     "DT_LEAD_1100_13": "https://jojodr.gamerch.com/【孤高】ディオ・ブランドー★5（我が夜の亡者となれ）",
-    "DT_LEAD_3001_03": "https://jojodr.gamerch.com/【勇気】空条承太郎★5（～てめーはおれを怒らせた～）"
+    "DT_LEAD_3001_03": "https://jojodr.gamerch.com/【勇気】空条承太郎★5（～てめーはおれを怒らせた～）",
+    "DT_LEAD_3041_03": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91%E3%83%9D%E3%83%AB%E3%83%8A%E3%83%AC%E3%83%95%E2%98%855%EF%BC%88%EF%BD%9E%E3%82%A2%E3%83%8C%E3%83%93%E3%82%B9%E7%A5%9E%E3%81%AE%E6%86%91%E4%BE%9D%EF%BD%9E%EF%BC%89",
+    "DT_LEAD_4000_23": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E6%9D%B1%E6%96%B9%E4%BB%97%E5%8A%A9%20%20%E2%98%855%EF%BC%88%EF%BD%9E%E3%81%93%E3%81%AE%E9%A0%AD%E3%81%AE%E3%81%93%E3%81%A8%E3%81%AA%E3%82%93%E3%81%A4%E3%81%A3%E3%81%9F%EF%BC%81%EF%BD%9E%EF%BC%89"
    },
-   "accessed": "2026-11-20",
+   "accessed": "2026-11-22",
    "note": "leader-ability numbers only, for statues the Wayback dump lacks (build_leader_abilities.py --research): the page leader name equals the ABI_LEAD_NAME label and its title gives the rarity and type. A line without (MAX ...) gives Lv10 = Lv1. DT_LEAD_3001_03 is uncertain (M): its +15% has no MAX on the page, and ShoutWiki oldid 3832 shows +15% as the MAX Lv. value, so Lv1 may be lower."
+  },
+  {
+   "source": "Diamond Records Wiki (ShoutWiki) (MAX leader values, research pass)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/wiki/",
+   "license": "CC BY-SA 3.0",
+   "pages": {
+    "DT_LEAD_4031_18": {
+     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Rohan_Kishibe_%28Unity%29",
+     "revid": 4679,
+     "accessed": "2026-11-22"
+    },
+    "DT_LEAD_5030_04": {
+     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Leone_Abbacchio_%28Tactical%29",
+     "revid": 4591,
+     "accessed": "2026-11-22"
+    },
+    "DT_LEAD_5080_04": {
+     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Narancia_Ghirga_%28Fighting_Spirit%29",
+     "revid": 4502,
+     "accessed": "2026-11-22"
+    },
+    "DT_LEAD_5150_04": {
+     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Ghiaccio_%28Fighting_Spirit%29",
+     "revid": 4681,
+     "accessed": "2026-11-22"
+    }
+   },
+   "accessed": "2026-11-22",
+   "note": "research-b43/assists: the Reversal-era (tactical) MAX Lv. leader value of the statue page that the statue's stats cite, for statues no Gamerch page gives; the page prints no Lv1, so Lv1 = Lv10 = the MAX value (ours). Lines without a tactical affect are not used."
   },
   {
    "source": "jdr-research",
@@ -1673,6 +1704,32 @@
     ]
    },
    {
+    "abilityId": "DT_LEAD_3041_03",
+    "abilityName": "ABI_LEAD_NAME_3041_03",
+    "abilityParamList": [
+     {
+      "affectId": "DTAF_CRT_DMG_RATEADD",
+      "giveLimit": -1,
+      "paramLv1_0": 300,
+      "paramLv1_1": 0,
+      "paramLv1_2": 0,
+      "paramLv1_3": 0,
+      "paramLv1_4": 0,
+      "paramLv1_5": 0,
+      "paramLv1_6": 0,
+      "paramLv1_7": 0,
+      "paramLv10_0": 300,
+      "paramLv10_1": 0,
+      "paramLv10_2": 0,
+      "paramLv10_3": 0,
+      "paramLv10_4": 0,
+      "paramLv10_5": 0,
+      "paramLv10_6": 0,
+      "paramLv10_7": 0
+     }
+    ]
+   },
+   {
     "abilityId": "DT_LEAD_3050_01",
     "abilityName": "ABI_LEAD_NAME_3050_01",
     "abilityParamList": [
@@ -2241,6 +2298,32 @@
     ]
    },
    {
+    "abilityId": "DT_LEAD_4000_23",
+    "abilityName": "ABI_LEAD_NAME_4000_23",
+    "abilityParamList": [
+     {
+      "affectId": "DTAF_ATK_RATEADD",
+      "giveLimit": -1,
+      "paramLv1_0": 40,
+      "paramLv1_1": 0,
+      "paramLv1_2": 0,
+      "paramLv1_3": 0,
+      "paramLv1_4": 0,
+      "paramLv1_5": 0,
+      "paramLv1_6": 0,
+      "paramLv1_7": 0,
+      "paramLv10_0": 50,
+      "paramLv10_1": 0,
+      "paramLv10_2": 0,
+      "paramLv10_3": 0,
+      "paramLv10_4": 0,
+      "paramLv10_5": 0,
+      "paramLv10_6": 0,
+      "paramLv10_7": 0
+     }
+    ]
+   },
+   {
     "abilityId": "DT_LEAD_4010_01",
     "abilityName": "ABI_LEAD_NAME_4010_01",
     "abilityParamList": [
@@ -2662,6 +2745,32 @@
       "paramLv1_6": 0,
       "paramLv1_7": 0,
       "paramLv10_0": 60,
+      "paramLv10_1": 0,
+      "paramLv10_2": 0,
+      "paramLv10_3": 0,
+      "paramLv10_4": 0,
+      "paramLv10_5": 0,
+      "paramLv10_6": 0,
+      "paramLv10_7": 0
+     }
+    ]
+   },
+   {
+    "abilityId": "DT_LEAD_4031_18",
+    "abilityName": "ABI_LEAD_NAME_4031_18",
+    "abilityParamList": [
+     {
+      "affectId": "DTAF_HALF_HP_DEF_RATEADD",
+      "giveLimit": -1,
+      "paramLv1_0": 120,
+      "paramLv1_1": 0,
+      "paramLv1_2": 0,
+      "paramLv1_3": 0,
+      "paramLv1_4": 0,
+      "paramLv1_5": 0,
+      "paramLv1_6": 0,
+      "paramLv1_7": 0,
+      "paramLv10_0": 120,
       "paramLv10_1": 0,
       "paramLv10_2": 0,
       "paramLv10_3": 0,
@@ -3286,6 +3395,84 @@
       "paramLv1_6": 0,
       "paramLv1_7": 0,
       "paramLv10_0": -300,
+      "paramLv10_1": 0,
+      "paramLv10_2": 0,
+      "paramLv10_3": 0,
+      "paramLv10_4": 0,
+      "paramLv10_5": 0,
+      "paramLv10_6": 0,
+      "paramLv10_7": 0
+     }
+    ]
+   },
+   {
+    "abilityId": "DT_LEAD_5030_04",
+    "abilityName": "ABI_LEAD_NAME_5030_04",
+    "abilityParamList": [
+     {
+      "affectId": "DTAF_HP_RATEADD",
+      "giveLimit": -1,
+      "paramLv1_0": 160,
+      "paramLv1_1": 0,
+      "paramLv1_2": 0,
+      "paramLv1_3": 0,
+      "paramLv1_4": 0,
+      "paramLv1_5": 0,
+      "paramLv1_6": 0,
+      "paramLv1_7": 0,
+      "paramLv10_0": 160,
+      "paramLv10_1": 0,
+      "paramLv10_2": 0,
+      "paramLv10_3": 0,
+      "paramLv10_4": 0,
+      "paramLv10_5": 0,
+      "paramLv10_6": 0,
+      "paramLv10_7": 0
+     }
+    ]
+   },
+   {
+    "abilityId": "DT_LEAD_5080_04",
+    "abilityName": "ABI_LEAD_NAME_5080_04",
+    "abilityParamList": [
+     {
+      "affectId": "DTAF_INTELLI_STYPE_DMG_RATEADD",
+      "giveLimit": -1,
+      "paramLv1_0": 150,
+      "paramLv1_1": 2,
+      "paramLv1_2": 0,
+      "paramLv1_3": 0,
+      "paramLv1_4": 0,
+      "paramLv1_5": 0,
+      "paramLv1_6": 0,
+      "paramLv1_7": 0,
+      "paramLv10_0": 150,
+      "paramLv10_1": 2,
+      "paramLv10_2": 0,
+      "paramLv10_3": 0,
+      "paramLv10_4": 0,
+      "paramLv10_5": 0,
+      "paramLv10_6": 0,
+      "paramLv10_7": 0
+     }
+    ]
+   },
+   {
+    "abilityId": "DT_LEAD_5150_04",
+    "abilityName": "ABI_LEAD_NAME_5150_04",
+    "abilityParamList": [
+     {
+      "affectId": "DTAF_DEF_RATEADD",
+      "giveLimit": -1,
+      "paramLv1_0": 180,
+      "paramLv1_1": 0,
+      "paramLv1_2": 0,
+      "paramLv1_3": 0,
+      "paramLv1_4": 0,
+      "paramLv1_5": 0,
+      "paramLv1_6": 0,
+      "paramLv1_7": 0,
+      "paramLv10_0": 180,
       "paramLv10_1": 0,
       "paramLv10_2": 0,
       "paramLv10_3": 0,
@@ -4419,7 +4606,7 @@
     "abilityName": "ABI_AST_3180_62_N",
     "abilityParamList": [
      {
-      "affectId": "DTAF_ATK_RATEADD",
+      "affectId": "DTAF_HP_RATEADD",
       "giveLimit": -1,
       "paramLv1_0": 60,
       "paramLv1_1": 0,

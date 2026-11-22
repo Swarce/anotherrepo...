@@ -85,6 +85,39 @@ files, M = inferred. Code: `server/services/src/quests.rs` (`area_list`, `has_ac
   or SP slot, and every wiki finisher but 3090_03 is the cinematic (3090 has no cinematic set).
   Whether 6★ awakenings had a cinematic finisher in the action era is unknown (M).
 
+## 4a. Build 43 kits (research-b43/action_skills; wiki H/M, policy M)
+
+`build_action_skills.py --research-kit local/wiki-raw/research-b43/action_skills/results.jsonl`
+(189 verified records for 72 jdr-default statues, read live 2026-11-22):
+
+- **47 statues get a wiki kit** (34 from Gamerch names, 13 from ShoutWiki only). Gamerch names
+  (older DB template, no cool-downs) match as in §4. ShoutWiki's English fan names are not matched
+  (only our own translations could bridge them); its cool-downs and uses are kept as printed, on
+  the matched id or on the jdr-default pick (17 slots). 9 printed values have no slot id to carry
+  them (the SP of 1000_04, 1130_04, 2000_04, 2010_04 and 3330_04; 2081_14, 2111_03 and 4190_14
+  finishers; 4190_14's skill) and are dropped. Unusual numbers kept as printed: 5050_04 SP 3 uses /
+  16 s and finisher 2 / 6 s, 2000_04 finisher 3 uses.
+- **Slots the wikis leave out keep the jdr-default pick** (marked `"from": "jdr-default"`), so no
+  statue loses a finisher; a default pick a wiki slot already holds is dropped. The b33 statues
+  keep §4's rule (none).
+- **Shared names:** when several labels carry a skill's or SP's name, the one the action set plays
+  off the cinematic entry wins (3322_08 SP 肉の芽 → 332_63, the 3322 set has no entry 2; 4043_08
+  skill → 404_31), else the one extended label (3020_28 SP → 302_61: the researchers note that the
+  event ★6 statues' SP is their `_61`/`_63` label).
+- **Held finishers:** 10 of the 28 resolved by the research verdicts (`finisher_label`, the wiki's
+  finisher name = one candidate label's text; checked to be at the cinematic entry): 2081_13
+  208_16, 4040_13 and 4042_03 404_09 (Gamerch names, agreeing), 3000_13 300_08, 3001_04 300_16,
+  3040_04 304_08, 3041_04 304_16, 4192_04 and 4194_08 419_26, 4193_08 419_10. 18 stay held.
+- **Not usable in the action battle** (ShoutWiki "Not Usable in Old Mode", high): 3323_08, 4031_18,
+  5010_04, 5010_14, 5030_04, 5080_04, 5100_14, 5150_04, 5290_04, 5320_04 carry
+  `"actionMode": {"usable": false, ...}` with the page. Their kits stay; the server does not act on
+  the flag yet.
+- `assist_skill` records are not read: the action battle gets no assist skill (assistSkillInfo
+  `{}`, §7). The five Gamerch assist names equal the ids already in the skill slot (103_09, 201_19,
+  204_09, 329_09, 412_09).
+- `build_skill_table.py`: a `"from": "jdr-default"` slot takes a role only after the wiki-matched
+  slots, and within each group a slot with a printed cool-down comes first (40 rows change).
+
 ## 5. The SP cinematic (H)
 
 - The statue's own action set starts it: its `SKILL_<entry>` FSM runs `DoChangeBattleSceneMode`
@@ -196,8 +229,11 @@ What we send:
   MAX (3 lines, M). `ACTION_LEADER_LEVEL` = 1 (the wiki's Lv1 values; raising it is an owner
   decision). Held: gold/EXP (1010_01/02/03, 4110_01/02/13), BARRIER (4190_13, 3321_03, 3100_12),
   DoDoDo-mode DoDoDo charge (2111_03, no label), PER_STYPE (3000_13, not traced), 4150_03
-  "ATK+37.8" (not an integer). 4110_01 sends `{}`.
-- **Assist** (`assist_abilities.json` "action", 104 statues): the cited record's lines (JP via
+  "ATK+37.8" (not an integer). 4110_01 sends `{}`. Build 43: 144 statues, 333 lines (133 with
+  every line served): 3041_03 and 4000_23 leave `RESEARCH_HELD` (research-b43/assists re-read their
+  live pages; the higher-confidence record wins), and their Gamerch traits now count for
+  `statue_traits.json` too (same sets as ShoutWiki's).
+- **Assist** (`assist_abilities.json` "action", 104 statues; Build 43: 105 with 3180_62): the cited record's lines (JP via
   the parser, ShoutWiki `{stat, value}` through an English table), else the inline tactical row;
   `DTAF_DMG_RATEADD` and the other tactical-only affects become their `AF_*` twins. The card name
   follows the first line's kind (`ABI_AST_<KIND><tier>_N`), so a move-speed card no longer says
@@ -206,9 +242,17 @@ What we send:
 - **Traits** (`statue_traits.json`): 261 of 292 statues (134 live Gamerch pages, 61 ShoutWiki
   categories, 66 family fill); 31 statues in 17 families have none. Gamerch wins the 6
   disagreements (ShoutWiki misses a category). Assist-only Gamerch records have no leader record
-  to match by, so they are not used.
+  to match by, so they are not used. Build 43 (research-b43/links_traits_minds, all medium): 270
+  statues. 3040_13, 3001_13, 3330_02 and 2000_12 take their siblings' Gamerch sets (the family
+  fill had dropped them because ShoutWiki ★4 pages miss categories), 4090_71/73 Stand User (the
+  only Tonio page with a 特徴 row) and 4090_72 by family fill, 5000_03/04 Stand User as a lower
+  bound. 13 statues (Speedwagon, Stroheim, Suzi Q, Erina, Reimi) are sourced as no tribe
+  (`noTribe`, still `[]`). An empty Gamerch 特徴 row is never read as "no tribe" (3040_13's page
+  has one). Still none: 4280_72 and the Part 5 tactical-only statues 5000_22/23/24/62, 5140_04,
+  5170_14, 5220_14, 5330_72.
 - **JoJo Links** (`jojo_links.json`, doc 26 §1): 53 links served (48 by members, 5 by trait:
-  11, 12, 13, 14, 33), 25 held; Lv1 = Lv10, sent at level 1.
+  11, 12, 13, 14, 33), 25 held; Lv1 = Lv10, sent at level 1. Build 43: 56 served, 22 held (doc 26
+  §1).
   New rows `AF_SPSTC_ADD` (SP uses +1) and `AF_FNT_VCT_CRT_DMG_RATESUB` (near-death crit damage
   taken).
 - Not verified on a device: inline `isInit` cards, the leader window, the trait screens, the link

@@ -9,6 +9,7 @@ usage:
       --research-statues local/wiki-raw/research-b33/statues/results.jsonl \
       --wiki local/wiki-raw/gamerch/statues.json --labels local/l10n/export-b33.tsv \
       --shoutwiki-pages local/wiki-raw/shoutwiki/pages.json \
+      --verdicts local/wiki-raw/research-b43/links_traits_minds/results.jsonl \
       [--server-statues server/content/statues.json] [--assist server/content/assist_abilities.json] \
       [--out server/content/statue_traits.json]
 
@@ -31,6 +32,14 @@ Rules, in order:
   3. Family fill: a statue with no own set takes its family's set (statueId[:4]) only when every own
      set in the family agrees.
   4. Hand siblings (SIBLINGS): a family with no own set takes the agreeing set of the named families.
+  5. Research verdicts (--verdicts, Build 43: research-b43/links_traits_minds, high/medium only), for
+     statues the rules above leave without a set: a 'traits' record gives the set of the statue the
+     researchers named (siblings' sets, a statue page or ShoutWiki categories; [] = the sources show
+     no tribe, listed in "noTribe" and still sent as []); a 'traits_lower_bound' record gives its set
+     as a lower bound (the statue may carry more). Then a statue still without a set takes the
+     agreeing set of its family's own and full-verdict sets (4090_72 Tonio: the researchers derive
+     [Stand User] for the whole family, whichever of 4090_71/72 the one Gamerch page is). Each such
+     row names its page, capture and access date in "rowSources".
 Gamerch wins where both give a set; the differences are printed. Only ids 1-11 and 15 are sent (never
 12-18 or 21-24).
 """
@@ -75,6 +84,7 @@ def main():
     ap.add_argument('--wiki', required=True)
     ap.add_argument('--labels', required=True)
     ap.add_argument('--shoutwiki-pages', required=True)
+    ap.add_argument('--verdicts', action='append', default=[])
     ap.add_argument('--server-statues', default='server/content/statues.json')
     ap.add_argument('--assist', default='server/content/assist_abilities.json')
     ap.add_argument('--out', default='server/content/statue_traits.json')
@@ -193,17 +203,68 @@ def main():
             for sid in fam.get(f, []):
                 if sid not in tribes:
                     tribes[sid], frm[sid] = list(next(iter(sets))), 'sibling'
+
+    # 5) research verdicts, then a family fill from the own and full-verdict sets
+    row_sources, verdict, no_tribe, verdict_skipped = {}, {}, [], []
+    for path in a.verdicts:
+        for line in open(path, encoding='utf-8'):
+            r = json.loads(line)
+            if r.get('topic') != 'traits' or r.get('field') not in ('traits', 'traits_lower_bound') \
+                    or r.get('confidence') not in ('high', 'medium'):
+                continue
+            sid = r['statueId']
+            assert sid in srv, sid
+            words = [V.nfkc(w).strip() for w in r['value']]
+            assert all(w in jp_trait for w in words), (sid, words)
+            got = sorted({jp_trait[w] for w in words})
+            if sid in tribes or sid in row_sources:
+                verdict_skipped.append(sid)
+                continue
+            lower = r['field'] == 'traits_lower_bound'
+            url = r.get('url') or ''
+            shout = url.startswith(SHOUTWIKI)
+            row = {'source': 'Diamond Records Wiki (ShoutWiki)' if shout else 'Gamerch ジョジョDR攻略Wiki',
+                   'page': url}
+            if shout:
+                row['license'] = 'CC BY-SA 3.0'
+            if r.get('capture'):
+                row['capture'] = r['capture']
+            row.update({'accessed': r.get('accessed') or '', 'confidence': r['confidence'],
+                        'note': 'research-b43/links_traits_minds ' + r['field'] + (
+                            ': lower bound, the statue may carry more' if lower else
+                            ': the sources show no tribe' if not got else ': the set the researchers give')})
+            row_sources[sid] = row
+            stats['verdict_' + ('lower_bound' if lower else 'empty' if not got else 'set')] += 1
+            if not got:
+                no_tribe.append(sid)
+                continue
+            tribes[sid], frm[sid] = got, 'research'
+            if not lower:
+                verdict[sid] = got
+    for f, sids in sorted(fam.items()):
+        sets = {tuple(t) for s in sids for t in ([own[s]] if s in own else []) + ([verdict[s]] if s in verdict else [])}
+        if len(sets) != 1 or not any(s in verdict for s in sids):
+            continue
+        fs = list(next(iter(sets)))
+        for sid in sids:
+            if sid not in tribes and sid not in no_tribe:
+                tribes[sid], frm[sid] = fs, 'family'
+                row_sources[sid] = {'source': 'jdr-default', 'note': 'family fill from the research-b43 sets of ' +
+                                    ', '.join(s for s in sids if s in verdict)}
+                stats['verdict_family_fill'] += 1
     for sid, t in tribes.items():
         assert t and set(t) <= ALLOWED, sid
-    none = sorted(s for s in srv if s not in tribes)
+    no_tribe.sort()
+    none = sorted(s for s in srv if s not in tribes and s not in no_tribe)
 
     doc = {
         'about': 'Statue traits: the {tribeTypeId: n} list of StatueInfo.tribeTypeList per statueId '
                  '(docs/research/30-action-battle.md §7). n is the Jjs tribe id of the ATTR_TEXT_<n> label; only '
                  'ids 1-11 and 15 are used. "from" says where a statue\'s set comes from: gamerch (its live statue '
                  'page), shoutwiki (the page\'s categories), family (the agreeing set of its statueId[:4] family) '
-                 'or sibling (a hand-named family of the same character). Statues in "none" have no source and send '
-                 '[]. Built by tools/content/build_statue_traits.py.',
+                 'or sibling (a hand-named family of the same character); from Build 43 also research (a research '
+                 'verdict, cited per row in "rowSources"). Statues in "noTribe" have sources that show no tribe and '
+                 'statues in "none" have no source; both send []. Built by tools/content/build_statue_traits.py.',
         'sources': [
             {'source': 'Gamerch ジョジョDR攻略Wiki (live statue pages, research pass)', 'page': V.GAMERCH,
              'accessed': accessed_g,
@@ -217,9 +278,16 @@ def main():
              'note': 'family fill: a statue with no own set takes its family\'s set when every own set of the family '
                      'agrees; hand siblings: ' + '; '.join('%s <- %s (%s)' % (f, '/'.join(s), w)
                                                            for f, (s, w) in sorted(SIBLINGS.items()))},
+            {'source': 'research-b43 (links_traits_minds): Gamerch ジョジョDR攻略Wiki and ShoutWiki', 'page': V.GAMERCH,
+             'accessed': max(r['accessed'] for r in row_sources.values() if 'accessed' in r) if row_sources else '',
+             'note': 'traits for statues the rules above leave without a set (siblings\' Gamerch sets, statue pages, '
+                     'ShoutWiki categories; high/medium only), each cited in rowSources with page, capture and '
+                     'access date'},
         ],
         'tribes': dict(sorted(tribes.items())),
         'from': dict(sorted(frm.items())),
+        'rowSources': dict(sorted(row_sources.items())),
+        'noTribe': no_tribe,
         'none': none,
     }
     with open(a.out, 'w', encoding='utf-8') as f:
@@ -228,7 +296,8 @@ def main():
     print(json.dumps({'statues': len(srv), 'own_sets': len(own), 'with_set': len(tribes), 'none': len(none),
                       'none_families': sorted({s[:4] for s in none}), 'from': dict(sorted(c.items())),
                       'gamerch': dict(sorted(stats.items())), 'gamerch_conflicts': sorted(gamerch_conflict),
-                      'shoutwiki_conflicts': sorted(shout_conflict),
+                      'shoutwiki_conflicts': sorted(shout_conflict), 'verdicts_skipped': verdict_skipped,
+                      'no_tribe': no_tribe,
                       'disagreements (statue, gamerch, shoutwiki)': disagree}, ensure_ascii=False))
 
 

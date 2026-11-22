@@ -191,6 +191,22 @@ them).
   - Held, with the reasons in `HELD` in the builder:
     - 3180_62, 3230_62 and 4220_72 were rejected;
     - 4030_04, 4090_72 and 4170_16 have a ShoutWiki requirement that has not been checked yet.
+  - Build 43 (`research-b43/assists`, live Gamerch pages and ShoutWiki revisions read 2026-11-22;
+    the records may give `condition_types` or `condition_jp`): 178 statues.
+    - Released: 3180_62 (the live page's assist name is its `ABI_AST_3180_62_N` label, so ShoutWiki
+      rev 3300 is this statue: Tactical + Fighting Spirit), 4030_04 (rev 4819: Fighting Spirit +
+      Courage + Tactical) and 4170_16 (rev 3571: Fighting Spirit + Solitary). The last two are M:
+      a 2022 revision, and a stat block copied from the ★3 page.
+    - Still held: 3230_62, 4090_72 and 4220_72. Gamerch prints no 発動条件 on the statue page,
+      the ★4 index or the recommended-assists table, while ShoutWiki gives Courage + Unity, Courage
+      + Unity and Solitary + Solitary. The same table also omits it for 2040_72, whose ShoutWiki
+      condition we use, so "no condition" is a weak reading. The researchers settled 4090_72's id
+      (its assist-name label), not its condition. 4220_72's explosion damage (+30% Gamerch, +20%
+      ShoutWiki) has no tactical affect.
+    - `REFILE`: the Gamerch ★6 Koichi (ACT2) page that the b33 action pass filed under 4011_15
+      belongs to 4011_18 (by rarity). It gives no condition, so nothing served changes.
+    - The 15 `assist_ability_absent` records (Tactical-era ★6 pages with no Assist Ability section)
+      are not read: a missing section is not a missing ability, so those statues keep the default.
   - Effects with no tactical affect keep the default kind (the leaning stat) under the wiki
     condition. These are conversions, crit, cool time, move speed and damage to a race.
   - Statues with no wiki type are counted under the server's placeholder type, so a condition
@@ -209,7 +225,8 @@ them).
   `tools/content/action_vocab.py`, ShoutWiki `{stat, value}` lines through an English table) and a
   card name. It replaces only the inline params and name of the `assistAbilityList` entry: the id
   (the `DT_AST_*` id the condition table indexes), the tactical row, the condition and the
-  `dtAbilityList` folding are unchanged. 104 statues have it (65 research, 39 ShoutWiki); the others
+  `dtAbilityList` folding are unchanged. 104 statues have it (65 research, 39 ShoutWiki; Build 43:
+  105 with 3180_62's ShoutWiki DoDoDo cool-down line); the others
   send the tactical row, with the tactical-only `DTAF_DMG_RATEADD` (and the other `BASE_DT_*` ids,
   `ACTION_AFFECT`) mapped to the action affect with the same numbers. The card name is the game's
   `ABI_AST_<KIND><tier>_N` of the first line's kind at the tactical row's tier (not for assist-only
@@ -250,7 +267,10 @@ them).
 - **Roster.** `tools/content/build_statues.py` appends them to statues.json with `assistOnly`
   true (after the 266, so nothing else changes). Stats: Gamerch by assist-ability name where it
   matches exactly (1: 4260_72), else the defaults. Rarity from their pose clips where the wiki has
-  none.
+  none. Build 43: a research record that marks the statue assist-only (the live Gamerch page's
+  アシスト専用 trait) lets it take that research pass's stats: 3180_62 (Mannish Boy, ★4 Solitary,
+  JoJoWiki and ShoutWiki). The Tonio and Boingo ★4 pages could each be either of two ids
+  (4090_71/72, 3230_61/62), so the statue research leaves them out.
 - **One skill (M for the choice).** `dtSkills` holds one normal skill: `SKILL_<p>_09` when the
   model has it, else its lowest skill with a skill text. It is their assist skill
   (`dtAssistSkillInfo`, §5.3). No `dtAttack` (an assist never acts as a unit; an attack id could

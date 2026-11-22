@@ -26,8 +26,9 @@ effect has no tactical affect still gives its condition; the statue then keeps t
 cites the entry. A second --shoutwiki file holds the "Old Mode" templates (oldmode_statues.json) of
 statues whose current page lacks the action-era values.
 
-Research facts (--research, Build 33; several files from Build 41): an assist_ability record of
-medium or high confidence for a statue gives
+Research facts (--research, Build 33; several files from Build 41; research-b43/assists from Build
+43, whose records may list the condition as 'condition_types' or 'condition_jp'; REFILE moves a record
+filed under the wrong id): an assist_ability record of medium or high confidence for a statue gives
   - its activation condition: the attributes the wiki lists (one per required assist, e.g. two
     Fighting Spirit) as [{statueType, count}];
   - its effects where the tactical battle has an affect for them (HP, ATK, DEF, damage dealt, as
@@ -69,7 +70,8 @@ usage: python3 -I tools/content/build_assist_abilities.py \
          --shoutwiki local/wiki-raw/shoutwiki/statues.json \
          [--shoutwiki local/wiki-raw/shoutwiki/oldmode_statues.json] --labels local/l10n/export-b33.tsv \
          [--research local/wiki-raw/research-b33/statues/results.jsonl \
-          --research local/wiki-raw/research-b33/action/results.jsonl] \
+          --research local/wiki-raw/research-b33/action/results.jsonl \
+          --research local/wiki-raw/research-b43/assists/results.jsonl] \
          [--statues server/content/statues.json] \
          [--table server/content/masterdata/dtbattle_ability_data_table.json] \
          [--out server/content/assist_abilities.json] \
@@ -77,7 +79,7 @@ usage: python3 -I tools/content/build_assist_abilities.py \
          [--rule-table server/content/masterdata/affect_text_rule_table.json] \
          [--schema server/content/masterdata/schema.json]
 """
-import argparse, collections, importlib.util, json, os, re, unicodedata
+import argparse, collections, importlib.util, json, os, re, unicodedata, urllib.parse
 
 _spec = importlib.util.spec_from_file_location(
     "action_vocab", os.path.join(os.path.dirname(os.path.abspath(__file__)), "action_vocab.py"))
@@ -98,14 +100,20 @@ WIKI_STAT = {"hp": "HP_RATEADD", "atk": "ATK_RATEADD", "def": "DEF_RATEADD",
              "damage dealt": "DMG_RATEADD", "damage given": "DMG_RATEADD"}
 # Held (Build 41): the conditions the ShoutWiki requirement or the research records now give these
 # statues are not applied (nor any research record), pending a check. The statue keeps what it had.
+# Build 43 (research-b43/assists): 3180_62 released (the live Gamerch page's assist name is its
+# ABI_AST_3180_62_N label, so ShoutWiki revision 3300 is this statue), 4030_04 and 4170_16 released
+# (their ShoutWiki requirements were read in the page source). The three below stay held: Gamerch
+# prints no condition on three of its pages while ShoutWiki gives one, and no third source was found.
 HELD = {
-    "3180_62": "rejected: ShoutWiki revision 3300 may belong to 3180_72; identity needs a separate pass",
-    "3230_62": "rejected: research-only condition, the Gamerch records give none",
-    "4220_72": "rejected: research-only condition, the Gamerch records give none",
-    "4030_04": "ShoutWiki requirement not in the Build 41 verified list",
-    "4090_72": "ShoutWiki requirement not in the Build 41 verified list (type from the Build 41 typed defaults)",
-    "4170_16": "ShoutWiki requirement not in the Build 41 verified list",
+    "3230_62": "held: ShoutWiki gives Courage+Unity, Gamerch prints no condition (research-b43 conflict, unresolved)",
+    "4220_72": "held: ShoutWiki gives Solitary+Solitary, Gamerch prints no condition (research-b43 conflict, unresolved)",
+    "4090_72": "held: ShoutWiki gives Courage+Unity, Gamerch prints no condition (research-b43 conflict, "
+               "unresolved; the id itself is settled by the assist-name label)",
 }
+# Records filed under the wrong id (research-b43/assists README): the Gamerch page of the ★6 Koichi
+# (ACT2) was filed under 4011_15 by the b33 action pass; by rarity it is the ★6, 4011_18.
+# (statueId, NFKC page-title fragment) -> statueId.
+REFILE = {("4011_15", "\u3010\u5b64\u9ad8\u3011\u5e83\u702c\u5eb7\u4e00(ACT2)\u26056"): "4011_18"}
 STATUE_TYPE = {"Courage": 1, "Tactical": 2, "Fighting Spirit": 3, "Unity": 4, "Solitary": 5}
 
 ap = argparse.ArgumentParser()
@@ -249,15 +257,17 @@ TYPE_RX = re.compile("(" + "|".join(TYPE_JP) + ")(?:\u3092)?([0-9])?")
 def research_conditions(r):
     """[{statueType, count}], or None when the record gives no condition (or one that is not types)."""
     v = r["value"]
-    if v.get("condition_attributes_jp"):
-        types = [TYPE_JP.get(t) for t in v["condition_attributes_jp"]]
+    listed = v.get("condition_attributes_jp") or v.get("condition_types")
+    text = v.get("condition") or v.get("condition_jp")
+    if listed:
+        types = [TYPE_JP.get(t) for t in listed]
         if None in types:
             return None
         c = collections.Counter(types)
-    elif v.get("condition"):
+    elif text:
         # Gamerch: '発動条件：勇気を2体アシスト編成すると発動ッ！', '…知略、団結を…', '[団結][団結]'
         c = collections.Counter()
-        for m in TYPE_RX.finditer(unicodedata.normalize("NFKC", v["condition"])):
+        for m in TYPE_RX.finditer(unicodedata.normalize("NFKC", text)):
             c[TYPE_JP[m.group(1)]] += int(m.group(2) or 1)
         if not c:
             return None
@@ -273,7 +283,10 @@ for path in a.research:
         r = json.loads(line)
         if r.get("field") == "assist_ability" and r.get("confidence") in RANK and r.get("statueId") \
                 and isinstance(r.get("value"), dict) and r.get("url"):
-            by_statue[r["statueId"]].append(r)
+            title = unicodedata.normalize("NFKC", urllib.parse.unquote(r["url"]))
+            sid = next((to for (frm, frag), to in REFILE.items() if r["statueId"] == frm and frag in title),
+                       r["statueId"])
+            by_statue[sid].append(r)
 research_overruled = []
 for sid, recs in by_statue.items():
     # The highest confidence decides; a lower one only fills what the higher ones leave out.
@@ -480,6 +493,11 @@ content = {
         {"source": "Gamerch ジョジョDR攻略Wiki", "page": "https://jojodr.gamerch.com/", "accessed": "2026-11-20",
          "note": "research passes (local/wiki-raw/research-b33): statue pages read live 2026-11-20 and Wayback "
                  "captures; the activation condition (発動条件) and HP/ATK/DEF/damage values; each row cites its page"},
+        {"source": "Gamerch ジョジョDR攻略Wiki and Diamond Records Wiki (ShoutWiki)", "page": "https://jojodr.gamerch.com/",
+         "accessed": "2026-11-22",
+         "note": "research-b43/assists: live Gamerch pages and ShoutWiki revisions re-read 2026-11-22; they settle "
+                 "3180_62's identity and the 4030_04 and 4170_16 ShoutWiki requirements; 3230_62, 4090_72 and "
+                 "4220_72 stay held (the two sites disagree on the condition); each row cites its page"},
         {"source": "jdr-research", "doc": "docs/research/19-assists.md"},
         {"source": "jdr-default", "note": "statues without wiki assist numbers: the leaning stat at tier rarity - 2; conditions empty"},
         {"source": "jdr-default", "note": "assist-only statues: their own row under their own ABI_AST_<statueId>_N label, values of the kind and tier above"},

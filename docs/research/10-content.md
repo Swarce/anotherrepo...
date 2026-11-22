@@ -562,6 +562,37 @@ DT variant: stageType 1 chapters (`CHAPTER_NAME_DT_ST_401…`). Same calls, but 
 `areaSettingList[{seq:1, enemyStatueInfo, AiId:<dtbattle table>, difficultyLevel:1, dropList:[]}]`.
 It needs the dtbattle_* tables. The DT team (stageType 1) already exists for My Page.
 
+### 3.9 Story stage data from the wikis (Build 43)
+
+`tools/content/build_quests.py --research` merges the stages_story passes
+(`local/wiki-raw/research-b33/stages_story`, `research-b43/stages_story`; high and medium records
+only) into `server/content/quests.json`. Each value names its page, capture and access date (the
+stage's `source`, or an `also` entry with the `fields` it gives).
+
+- **CHAPTER_ST_23** (Gamerch 第24章, live page): AP 18 and recommended level 78 on every stage.
+  Build 33 held them because the page looked copied from 第23章; the atwiki EXP table
+  (その他のデータ, row 旧モードストーリー 23章以降: AP 18, EXP 5000, 難易度 78) corroborates them.
+  EXP and gold stay defaults (low confidence).
+- **CHAPTER_ST_24..28**: AP 18 and recommended level 78 per stage from the same atwiki row (old-mode
+  in-game numbering = Gamerch numbering = our ST_(N-1)). Its EXP 5000 is the top stage's, so the
+  stages keep default EXP and the chapter lists `gainRankExpMax` in `wiki`.
+- **Star missions** on 116 action story stages (docs/research/11 §4). Boss-stage conflict: the
+  Bahamut thread snA=969 (2019) says the old-mode final stage wants a regular (blue) skill, JoJo
+  Wiki and Gamerch 第24章 say an SP skill. Each stage keeps its own source (ST_23_05 and ST_24_05
+  JoJo Wiki, SP; ST_25_05..ST_28_05 Bahamut, regular) and the conflict is noted on all six.
+- **Tactical rewards** (atwiki ストーリークエスト): atwiki 第N章 = CHAPTER_DT_ST_4NN by number,
+  used only where the stage counts agree (38 chapters, 170 stages): first clear Diamonds (no
+  quantity) and one special reward per stage (`nameJp` as written; `itemId` only for an exact
+  ITEM_<id>_NAME label match, 67 of 170). Not served yet. Held in the chapter's `wiki`: the
+  prologue and chapters 1-4 (the 2018-09-28 maintenance cut their stages, Bahamut snA=726; our
+  files list the stages from before the cut) and 7, 21, 33, 43 (counts swapped 3/5, unexplained).
+  Atwiki chapters 47-48 have no id in the client.
+- **Not applied**: one DT_ST_438 stage's AP 15 / EXP 4185 / 難易度 30 (which stage is not
+  stated; recorded in `wiki`); drops are fixed when the area loads (atwiki FAQ; our tactical
+  drops are empty).
+- Enemies are drawn from team statues only (assist-only statues were excluded; this reproduces
+  the Build 10 enemy picks). Output dates come from the inputs, so a rerun is byte for byte.
+
 ---------------------------------------------------------------------------------------------------
 
 ## 4. Events

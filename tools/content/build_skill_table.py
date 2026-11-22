@@ -28,13 +28,20 @@ for line in open(a.export, encoding="utf-8"):
 role = {}
 try:
     recs = list(json.load(open(a.action))["statues"].values())
-    # wiki-sourced statues first: their roles win over the tactical fallbacks of other variants
-    recs.sort(key=lambda r: r.get("source", {}).get("source") == "jdr-default")
-    for rec in recs:
-        for slot, kind, cool, uses in (("skill", 2, 5, 0), ("sp", 3, 3, 3), ("finisher", 3, 10, 2)):
-            x = rec.get(slot)
-            if x and x["id"] not in role:
-                role[x["id"]] = (kind, x.get("cooldown", cool), x.get("uses", uses), 1 if kind == 2 else 4)
+    # Wiki-matched slots first: their roles win over the tactical fallbacks of other variants. A
+    # slot marked "from": "jdr-default" (a research-b43 kit slot the wikis leave out, Build 43) is a
+    # fallback even when the wiki gives its cool-down.
+    pairs = [(rec, slot, kind, cool, uses) for rec in recs
+             for slot, kind, cool, uses in (("skill", 2, 5, 0), ("sp", 3, 3, 3), ("finisher", 3, 10, 2))]
+    # Within each group a slot with the wiki's cool-down comes first (a Build 43 Gamerch name with no
+    # cool-down does not hide another statue's printed one for the same id).
+    pairs.sort(key=lambda t: (t[0].get("source", {}).get("source") == "jdr-default"
+                              or (t[0].get(t[1]) or {}).get("from") == "jdr-default",
+                              "cooldown" not in (t[0].get(t[1]) or {})))
+    for rec, slot, kind, cool, uses in pairs:
+        x = rec.get(slot)
+        if x and x["id"] not in role:
+            role[x["id"]] = (kind, x.get("cooldown", cool), x.get("uses", uses), 1 if kind == 2 else 4)
 except FileNotFoundError:
     pass
 rows = []
@@ -62,7 +69,7 @@ doc = {
     "about": "Classic (action-mode) skill rows: one per SKILL_NAME_<X> label key in the player's files. The tactical battle does not read this table; classic skill tabs, the dictionary and the old action battle do. Name and text are label keys; numbers are ours.",
     "sources": [
         {"source": "jdr-research", "doc": "docs/research/12-master-data-fill.md §3", "note": "ids and label keys from the player's text tables (SKILL_NAME_/SKILL_TEXT_ keys)"},
-        {"source": "jdr-research", "doc": "docs/research/30-action-battle.md", "note": "skill, SP skill and finisher roles and their cool-downs/uses from server/content/action_skills.json (Gamerch statue pages where matched; other finishers are the label at the statue's retail SP-cinematic entry, action_cinematics.json)"},
+        {"source": "jdr-research", "doc": "docs/research/30-action-battle.md", "note": "skill, SP skill and finisher roles and their cool-downs/uses from server/content/action_skills.json (Gamerch statue pages where matched, from Build 43 also ShoutWiki cool-downs and uses; other finishers are the label at the statue's retail SP-cinematic entry, action_cinematics.json)"},
         {"source": "jdr-default", "note": "ids in no statue's action skills: type by number (99 attack, odd normal, even special); rates; cool-downs and uses where the wiki gives none"},
     ],
     "data": {"paramList": rows},

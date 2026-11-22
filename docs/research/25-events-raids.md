@@ -166,6 +166,12 @@ earlier ones, the two high-score events, the quiz event and two more exchange ev
 50061). Each event records its kind, currency, bonus units, the scoring rules (high score) and
 the quiz answers. Maps, enemies, levels and rewards stay ours.
 
+Build 43 (research-b43/stages_extra) found 2019 stage numbers on the atwiki その他のデータ page: the
+month-end Town event's EX challenge (AP 10, EXP 5000, difficulty 110) and 強敵襲来 CHALLENGE その1/2/3
+(AP 3/5/10, EXP 2500/5250/6500, difficulty 80/90/95). No stage id of ours carries them (50077's
+EX stages are not identified; 強敵襲来 has no chapter labels in 3.12), so they are recorded in
+`quests_extra.json` `wiki.events` only. No reward list was found for any of our nine events.
+
 ## 7. Null walks
 
 `testdata/client_shapes.json` now covers `BizarreSelectResponse`, `BizarreListResponse`,

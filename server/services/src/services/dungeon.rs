@@ -720,16 +720,23 @@ mod tests {
         let er = t.call("/dungeon/earn_reward", json!({}));
         let paid = er["rewardItemList"].as_array().unwrap();
         assert_eq!(paid.len(), 1, "one floor cleared");
-        assert_eq!(paid[0]["itemList"][0]["itemId"], 20, "floor 1 pays gold");
+        // Floor 1 pays Blue Stone x30 (ShoutWiki, Build 43).
+        let reward = labyrinth::floor_reward(&labyrinth::DUNGEONS[0], 1);
+        assert_eq!((reward.item_id, reward.count), (1002, 30));
+        assert_eq!(
+            paid[0]["itemList"][0]["itemId"], 1002,
+            "floor 1 pays Blue Stones"
+        );
         assert_eq!(t.waiting(), box0 + 1);
         assert_eq!(t.floor(), -1);
         assert_eq!(t.user()["soul"], SOUL_MAX);
-        let gold0 = t.user()["vm"].as_i64().unwrap();
+        let stones = |t: &T| {
+            let p = t.ctx.accounts.get(&t.uuid).unwrap().unwrap();
+            p.collection.item_count(1002)
+        };
+        let stones0 = stones(&t);
         t.call("/present/get_all", json!({"prevNum": 1}));
-        assert_eq!(
-            t.user()["vm"].as_i64().unwrap(),
-            gold0 + labyrinth::floor_reward(&labyrinth::DUNGEONS[0], 1).count
-        );
+        assert_eq!(stones(&t), stones0 + reward.count);
         assert_eq!(
             t.call("/dungeon/earn_reward", json!({}))["rewardItemList"],
             json!([]),

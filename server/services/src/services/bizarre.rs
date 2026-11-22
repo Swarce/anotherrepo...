@@ -288,7 +288,7 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         match (won, found, pending.is_some()) {
             (true, Some((c, s)), true) => {
                 p.progress.cleared.insert(stage_id.clone());
-                // The client sends the missions it cleared ("1,2,10"; action stages "7,8,20");
+                // The client sends the missions it cleared ("1,2,10"; action stages e.g. "14,7,22");
                 // keep them for the stars.
                 let done = env
                     .param
@@ -578,7 +578,8 @@ mod tests {
         let done: Vec<i64> = p.progress.stars[&sid].iter().copied().collect();
         assert_eq!(done, [1, 10], "only mission types 1..16 are kept");
 
-        // Action stages report QuestMissionClearType values (7, 8, 20, ...): kept up to 46.
+        // Action stages report QuestMissionClearType values (14, 7, 22, ...): kept up to 46.
+        // The first action stage lists Gamerch's three (clear, all survive, use an SP skill).
         let c = crate::quests::chapters()
             .iter()
             .find(|c| c.stage_type == 0)
@@ -595,19 +596,19 @@ mod tests {
             .iter()
             .map(|x| x["starTarget"].as_i64().unwrap())
             .collect();
-        assert_eq!(targets, [7, 8, 20]);
+        assert_eq!(targets, [14, 7, 22]);
         let (r, _) = dispatch(
             &ctx,
             "/bizarre/bizarre_end",
             &env(
                 &uuid,
-                json!({"stageId": sid, "result": 0, "starClearList": "7,20,47"}),
+                json!({"stageId": sid, "result": 0, "starClearList": "7,22,47"}),
             ),
         );
-        assert_eq!(r.unwrap()["starClearList"], "7,20,47", "echoed as is");
+        assert_eq!(r.unwrap()["starClearList"], "7,22,47", "echoed as is");
         let p = ctx.accounts.get(&uuid).unwrap().unwrap();
         let done: Vec<i64> = p.progress.stars[&sid].iter().copied().collect();
-        assert_eq!(done, [7, 20], "47 NoContinue is outside the client's check");
+        assert_eq!(done, [7, 22], "47 NoContinue is outside the client's check");
         let (r, _) = dispatch(
             &ctx,
             "/bizarre/bizarre_start",
@@ -621,7 +622,7 @@ mod tests {
             .collect();
         assert_eq!(
             lit,
-            [1, 0, 1],
+            [0, 1, 1],
             "the next stage window lights the saved missions"
         );
     }

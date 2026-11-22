@@ -13,7 +13,7 @@ community wikis (each record cites its page) or are marked `jdr-default`.
    ShoutWiki (MediaWiki API), JoJoWiki (MediaWiki API via a fetch service), Gamerch (Wayback
    Machine snapshot via a fetch service). No images.
 3. Parsers extract numbers only (`tools/content/shoutwiki_statues.py`, …).
-4. Builders merge them (`tools/content/build_statues.py`, `build_quests.py`, `build_extra_quests.py` (daily and event chapters), `build_minds.py`) →
+4. Builders merge them (`tools/content/build_statues.py`, `build_quests.py`, `build_extra_quests.py` (daily and event chapters; from Build 43 also the Labyrinth room costs and floor rewards of research-b43/stages_extra, command in its docstring, docs/research/22 §2.1), `build_minds.py`) →
    `server/content/statues.json`, `quests.json`, `minds.json`. A wiki value attaches to a game id
    only on an unambiguous match against the game's own Japanese labels (from the player's l10n
    export, compared after NFKC normalisation, so full-width and half-width forms agree); ids a wiki
@@ -23,7 +23,12 @@ community wikis (each record cites its page) or are marked `jdr-default`.
      when the entry keeps rarity in order within the id's variant family; then the JoJoWiki dump
      (`--jojowiki`) cross-checks them (see "Wiki cross-checks" below);
    - stages: Gamerch chapter title against `CHAPTER_NAME_<id>`, and only when the wiki lists as many
-     stages as the game has (chapters 2, 6, 8 and 17 differ and keep defaults);
+     stages as the game has (chapters 2, 6, 8 and 17 differ and keep defaults). From Build 43
+     `build_quests.py --research` also reads the stages_story records of research-b33 and
+     research-b43 (high/medium only; command in its docstring): AP and recommended level for
+     CHAPTER_ST_23..28, star missions (`missions`), the tactical first-clear and special rewards
+     (`rewards`, data only) and chapter-level facts (`wiki`, not served); each value names its
+     page, capture and access date in the stage's `source` or `also` (docs/research/10 §3.9);
    - minds: name against `MIND_NAME_<id>`, then a loose key without punctuation for the 17 Minds
      checked in Build 41 (docs/research/16 §9);
    - plausibility: a statue whose wiki stats do not have 5 ≤ Lv99 / Lv1 ≤ 20 keeps defaults
@@ -37,9 +42,10 @@ community wikis (each record cites its page) or are marked `jdr-default`.
    `server/content/assist_abilities.json` and the `DT_AST_*` rows of
    `dtbattle_ability_data_table`; the server generates `assist_ability_condition_table` from it
    (docs/research/19-assists.md §5). From Build 41 it reads two ShoutWiki dumps (`statues.json`,
-   `oldmode_statues.json`) and two research files (`research-b33/statues` and `/action`); the
-   command is in the script's docstring. Leader abilities are rebuilt first:
-   `build_leader_abilities.py … --table` (docs/research/12 §4). The leader builder replaces its
+   `oldmode_statues.json`) and two research files (`research-b33/statues` and `/action`), from
+   Build 43 also `research-b43/assists`; the command is in the script's docstring. Leader abilities
+   are rebuilt first: `build_leader_abilities.py … --table` (docs/research/12 §4; from Build 43 it
+   and `build_action_abilities.py` also take `--research research-b43/assists`). The leader builder replaces its
    `DT_LEAD_*` rows in place, while the Mind-link and assist builders move theirs to the end of the
    table, so run `build_mind_links.py` (step 7) before this step to keep the committed row order.
 7. Skill Minds and time stop (Build 25): `tools/content/build_mind_skills.py` →
@@ -52,12 +58,17 @@ community wikis (each record cites its page) or are marked `jdr-default`.
    `tools/content/scan_action_cinematics.py` → `server/content/action_cinematics.json` (per model
    id, the SP-cinematic entries and the `SKILL_<NN>` entries of its action set, read from the
    player's files; entry numbers only). Then `tools/content/build_action_skills.py` (research
-   `research-b33/action` and `research-b34/action`) → `server/content/action_skills.json`, and
+   `research-b33/action` and `research-b34/action`, from Build 43 also `--research-kit
+   research-b43/action_skills`) → `server/content/action_skills.json`, and
    `build_skill_table.py` → `skill_data_table`. The commands are in the scripts' docstrings.
    Wiki names match the game's `SKILL_NAME_<p>_<NN>` labels strictly or, failing that, by a strict
    fuzzy rule. Statues without wiki names use their tactical skills, never in the skill or SP slot
    when that skill plays the cinematic. From rarity 5 their finisher is the single label at the
-   cinematic entry (docs/research/30-action-battle.md §4–5).
+   cinematic entry (docs/research/30-action-battle.md §4–5). Build 43 kits (§4a there): Gamerch
+   names for 34 more statues, ShoutWiki cool-downs/uses (its English names are not matched), 10
+   held finishers resolved, and `"actionMode": {"usable": false}` (with its page) for the 10
+   statues the wiki says cannot play the action battle; a kit slot the wikis leave out keeps the
+   jdr-default pick, marked `"from": "jdr-default"`.
 
 9. Action-battle leader and assist abilities, statue traits (Build 41, docs/research/30 §7): after
    the leader builder, `tools/content/build_action_abilities.py` → `server/content/action_abilities.json`
@@ -65,7 +76,10 @@ community wikis (each record cites its page) or are marked `jdr-default`.
    `affect_text_rule_table`; then `build_assist_abilities.py` (step 6) adds the assist `"action"`
    params; then `build_statue_traits.py` → `server/content/statue_traits.json` (tribeTypeList);
    then `build_jojo_links.py` → `server/content/jojo_links.json` (TeamInfo.jojoLinkList, computed
-   per team by the server; docs/research/26 §1). All share the line parser
+   per team by the server; docs/research/26 §1). From Build 43 the traits builder also takes
+   `--verdicts research-b43/links_traits_minds` (traits for statues no other rule covers, cited per
+   row in `rowSources`) and the links builder `--research-b43` of the same file (link effects read
+   from Gamerch comment screenshots, cited as `effectSource`). All share the line parser
    `tools/content/action_vocab.py`, keep existing table rows and are idempotent; the commands are
    in the scripts' docstrings.
 
@@ -142,11 +156,20 @@ rule of docs/research/13 §3.
 ## Action-stage star missions (Build 42)
 
 `server/services/src/quests.rs::action_missions` gives every action stage three star missions
-(docs/research/11 §4): QuestMissionClearType 7 all team members survive, 8 defeat all enemies and
-20 use a Skill (our translations of the labels). The types and the labels are the 3.12.0 client's
+(docs/research/11 §4). From Build 43 a story stage a wiki lists sends the wiki's three
+(`missions` in quests.json): Gamerch 特別報酬条件 for the 86 matched stages and 第24章 (CHAPTER_ST_23),
+JoJo Wiki's boss list for 第24章's final stage and its default rule and boss list for 第25章 and
+stages 1-4 of 第26-29章, and the Bahamut forum (research-b43) for the final stages of 第26-29章
+(wiki numbering; our CHAPTER_ST_(N-1)). `build_quests.py` maps the wiki
+wording to the client's types (`MISSION_TYPES`; e.g. 14 clear the quest, 7 all team members
+survive, 22 use an SP skill, 26/27 defeat the boss with a skill / an SP skill). The boss-stage
+conflict (Bahamut: a regular skill; JoJo Wiki and Gamerch: an SP skill) keeps each stage's own
+source and is noted on it. The other action stages (the four story chapters with a stage-count
+conflict, daily and event stages) send 7 all team members survive, 8 defeat all enemies and
+20 use a Skill: that choice is design from the Diamond Records PC playtest, used with its
+author's permission; no PC text is used. The types and the labels are the 3.12.0 client's
 (`QuestMission_JP:QuestMissionText_<type + 2>`, shown through our translations); `param` is
-empty (the client's check has the thresholds built in). The choice of these three is design
-from the Diamond Records PC playtest, used with its author's permission; no PC text is used. Cleared types are kept per
+empty (the client's check has the thresholds built in). Cleared types are kept per
 stage in `Progress.stars` (types 1-46) and the result screen echoes the client's list, as for
 tactical stages.
 
@@ -197,23 +220,27 @@ shot, 315–320 its front-on variant. Ids and numbers only; nothing from other b
 | Data | Source | State |
 |---|---|---|
 | Statue ids, models, bundles | player's files | 266 obtainable |
-| Statue rarity, type, Lv99 | Gamerch (leader- or assist-ability name), ShoutWiki (CC BY-SA 3.0, by elimination), the Build 33 research pass (JoJoWiki CC BY-SA 4.0 and ShoutWiki pages matched by ability names, `tools/content/research_statues.py`) and, from Build 41, the JoJoWiki dump for 22 defaults whose character, rarity, type and assist status the wiki lists once | 228 of 292 with stats, 231 with a type (Build 41); the 64 others are mostly ★3/★4 villains and alternate-attribute versions no wiki lists |
-| Statue Lv1, max tree | the same pages where they show them | Lv1 from a wiki page for 101 statues, Lv99 / 10 rounded half up for the other 127; max tree missing for 3 (2000_28, 2100_03, 4000_18: the wikis disagree) |
+| Statue rarity, type, Lv99 | Gamerch (leader- or assist-ability name), ShoutWiki (CC BY-SA 3.0, by elimination), the Build 33 research pass (JoJoWiki CC BY-SA 4.0 and ShoutWiki pages matched by ability names, `tools/content/research_statues.py`) and, from Build 41, the JoJoWiki dump for 22 defaults whose character, rarity, type and assist status the wiki lists once; from Build 43 the research-b43 verdicts (3041_04's type, 3180_62 assist-only) | 230 of 292 with stats, 233 with a type (Build 43: +3041_04, 3180_62); the 62 others are mostly ★3/★4 villains and alternate-attribute versions no wiki lists |
+| Statue Lv1, max tree | the same pages where they show them | Lv1 from a wiki page for 103 statues, Lv99 / 10 rounded half up for the other 127; max tree missing for 3 (2000_28, 2100_03, 4000_18: the wikis disagree) |
 | Stats per level | linear Lv1→Lv99 | all |
 | Tactical basic attack (`dtAttack`) | the statue's own action sets in the player's files (`SKILL_<psid3>_99` = ATTACK, else its lowest SKILL_NN) | all 266 (64 distinct ids) |
 | My Page background per statue | 21 backgrounds in the player's files, chosen by JoJo part (stable per statue id) | default choice |
 | Story chapters/stages/areas | player's files | 82 chapters (29 action, 53 tactical), 370 stages |
-| Stage AP, rank EXP, gold, recommended level | Gamerch (Wayback snapshot, chapters 1–23 matched by title) | 86 of 370 stages (gold blank on the wiki for 39 of them, so default); enemies and rewards default (the wiki shows them as images); the recommended level is used as the enemy level |
+| Stage AP, rank EXP, gold, recommended level | Gamerch (Wayback snapshot, chapters 1–23 matched by title); Build 43: the stages_story research (Gamerch 第24章 live page, corroborated by the atwiki EXP table, for CHAPTER_ST_23; the atwiki row 旧モードストーリー 23章以降 for CHAPTER_ST_24..28) | 116 of 370 stages (86 + 30 with AP and recommended level only; gold blank on the wiki for 39 of the 86, so default); enemies default (the wiki shows them as images); the recommended level is used as the enemy level; the chapter-level EXP maximum (5000) of ST_24..28 and one unstated DT_ST_438 stage's numbers are recorded, not applied |
+| Story star missions (`missions`) | Gamerch 特別報酬条件, JoJo Wiki, the Bahamut forum (Build 43) | 116 of 130 action story stages; the others send the default three (see "Action-stage star missions") |
+| Tactical stage rewards (`rewards`) | atwiki ストーリークエスト (Build 43; 第N章 = CHAPTER_DT_ST_4NN where the stage counts agree) | 170 stages in 38 chapters: first clear Diamonds (quantity not given) and one special reward each (67 matched to an item id by the game's own label); data only, not served. Prologue to chapter 4, 7, 21, 33 and 43 held (stage counts differ) |
 | Player rank: EXP per rank, AP max | Gamerch user-rank page | ranks 1–99 |
 | Minds: rarity, cost, flat stats | Gamerch (name; from Build 41 also a loose key without punctuation for 17 Minds) | 434 owned; 396 have no cost on the wiki and take the cost every Mind of their rarity has there (★1 3, ★2 5, ★3 8, ★4 12; Build 33) |
 | Mind Lv10 flat stats (`lv10`) | Gamerch MAX values; for 9 Minds the wiki leaves blank, the Diamond Records Preservation (PC) data (original-game screenshots at Lv10, an archived translation; cited per row) | 156 Minds (Build 41); the client does not read Mind hp/atk/def (docs/research/16 §9) |
-| Assist-ability conditions | ShoutWiki requirement icons (statue pages and 3 Old Mode templates), the research passes (ShoutWiki and Gamerch statue pages, incl. the live Gamerch pages) | 175 statues (Build 41; 116 in Build 33); the others always active; 6 held (docs/research/19 §5.3) |
-| Tactical leader abilities (`DT_LEAD_*`) | Gamerch leader numbers (Wayback dump; from Build 41 also live pages via the research pass) | 92 statues (Build 41: +1020_03, 1080_02, 1100_13, 3001_03) |
-| Action leader abilities (`LEAD_*`, inline) | the same Gamerch leader numbers, all action-era lines (docs/research/30 §7) | 142 statues, 328 lines (131 with every line served); gold/EXP, barrier and untraced lines held |
-| Assist action params (`"action"`) | the record each statue cites (Gamerch JP lines, ShoutWiki values) | 104 statues; the others send the tactical row (DTAF_* mapped to AF_*) |
-| Statue traits (`tribeTypeList`) | live Gamerch statue pages, ShoutWiki categories, family fill | 261 of 292 (31 in 17 families have no source) |
-| JoJo Links (`jojoLinkList`) | the research pass's Gamerch link page and comments, the Bahamut thread, the saved Gamerch link table (links 12, 34); hand rule overrides (docs/research/26 §1) | 53 links served (5 by trait), 25 held (gold/EXP, conflict, name only, unknown effect or members, low confidence) |
-| Daily quest numbers | Gamerch day pages via the Build 33 pass | Normal tier of every weekday (AP 8, level 20) and Tuesday's EXP/gold (15 stages); the other tiers ours |
+| Assist-ability conditions | ShoutWiki requirement icons (statue pages and 3 Old Mode templates), the research passes (ShoutWiki and Gamerch statue pages, incl. the live Gamerch pages; Build 43 research-b43/assists) | 178 statues (Build 43: +3180_62, 4030_04, 4170_16; 175 in Build 41, 116 in Build 33); the others always active; 3 held (docs/research/19 §5.3) |
+| Tactical leader abilities (`DT_LEAD_*`) | Gamerch leader numbers (Wayback dump; from Build 41 also live pages via the research pass); Build 43: ShoutWiki's Reversal-era MAX Lv. values where no Gamerch page exists (Lv1 = Lv10 = MAX) | 98 statues (Build 41: +1020_03, 1080_02, 1100_13, 3001_03; Build 43: +3041_03, 4000_23 released, +4031_18, 5030_04, 5080_04, 5150_04 from ShoutWiki) |
+| Action leader abilities (`LEAD_*`, inline) | the same Gamerch leader numbers, all action-era lines (docs/research/30 §7) | 144 statues, 333 lines (133 with every line served; Build 43: +3041_03, 4000_23); gold/EXP, barrier and untraced lines held |
+| Action-battle skills (`skillList`, `skill_data_table` roles) | Gamerch statue pages (b33/b34; Build 43 also the older-template pages), ShoutWiki cool-downs/uses and finisher names (Build 43, per-row `source`/`also`) | 160 statues with a wiki slot (Build 43: +47), 132 jdr-default; 18 held finishers (no wiki finisher name); 9 printed cool-downs with no slot to carry them |
+| Assist action params (`"action"`) | the record each statue cites (Gamerch JP lines, ShoutWiki values) | 105 statues (Build 43: +3180_62); the others send the tactical row (DTAF_* mapped to AF_*) |
+| Statue traits (`tribeTypeList`) | live Gamerch statue pages, ShoutWiki categories, family fill; Build 43 research-b43 verdicts (siblings' Gamerch sets, ShoutWiki categories; medium, cited per row) | 270 of 292 (Build 43: +8 research, +1 family fill); 13 more are sourced as no tribe (`noTribe`); 9 in 6 families (Part 5 tactical-only statues, 4280_72) have no source |
+| JoJo Links (`jojoLinkList`) | the research pass's Gamerch link page and comments, the Bahamut thread, the saved Gamerch link table (links 12, 34); hand rule overrides (docs/research/26 §1) | 56 links served (5 by trait; Build 43: +53, 64, 76 from research-b43 team screenshots), 22 held (gold/EXP, conflict, name only, members unknown, low confidence; 54 has its effect but a probably-gender rule we cannot express) |
+| Daily quest numbers | Gamerch day pages via the Build 33 pass | Normal tier of every weekday (AP 8, level 20) and Tuesday's EXP/gold (15 stages); the other tiers ours. Build 43: the 2019 atwiki confirms the weekday mapping (data only) |
+| Labyrinth room costs, floor rewards (`quests_extra.json` `labyrinth`) | Bahamut floor screenshots (2018-04) and ShoutWiki (CC BY-SA 3.0), research-b43 (Build 43) | 36 rooms seen (high) and 15 more from floor 5 on by the cost-by-slot pattern (medium); floors 1-4 rewards (the floor-4 count ours); floor 1-4 rooms no screenshot shows, floors 5-20 rewards, area counts (data only) and the three grades ours. Event and Arena numbers from the same pass are data only (`wiki`) |
 | Tactical tuning | atwiki ジョジョDR２ (tactical era, Wayback) and the Bahamut forum | Reversal 4 turns, speed +200%, cool turns halved; chain ×1.1/×1.35/×1.5/×2.0; type chart ×1.5/×0.7; same-type assist ×2 (Build 33) |
 | Item ids, categories | player's files: an `it_<id>` icon in `ui_item_00` and an `ITEM_<id>_NAME` label (`tools/content/build_items.py --icons <ui_item_00 listing>`); categories by the client's id ranges or, from Build 41, by ranges read from the item labels (docs/research/15) | 414 items |
 | Events, gacha | Gamerch (fetched: 48 gacha, 22 events) | not served yet |
@@ -248,8 +275,12 @@ from anywhere else.
 - **Held, not changed:**
   - 2000_28 and 4000_18: Gamerch is exactly 0.93 × JoJoWiki and ShoutWiki, which looks like a
     version change.
-  - the Lv1 values for 2010_01, 3020_02, 4160_02 and 1020_02, where Gamerch differs from ShoutWiki.
-  - 3041_04 and the 5000_x3/x4 Giorno ids, whose identity is unsettled.
+  - the 5000_x3/x4 Giorno ids, whose identity is unsettled.
+  - 1090_03, 1100_03 and 3001_13: the only public page of each is its sibling's (1090_13, 1100_13,
+    3001_03; Build 43), so they keep defaults.
+- **Settled in Build 43** (research-b43/statues, see "Research collections"): the Lv1 values for
+  2010_01, 3020_02, 4160_02 and 1020_02 (unchanged; each row's `lv1Note` cites the live Gamerch page,
+  and 1020_02 is not fully settled) and 3041_04's type.
 
 ## Research collections (Build 18)
 
@@ -264,3 +295,43 @@ The source page is cited per record. The first collection (2026-11-15) gave stat
 statues, and independently confirmed 11 ShoutWiki matches with identical numbers. It also gave the
 tactical battle's evaded-hit damage (1/4) and critical multiplier (×1.5). Its skill damage ranks had
 no skill names and were inconsistent, so they were not used.
+
+The Build 33 and Build 43 passes keep one fact per record (`results.jsonl`);
+`tools/content/research_statues.py` turns them into a collection. From Build 43 it reads both files,
+and the b43 verdicts apply (live Gamerch pages read 2026-11-22, cited per row):
+- **3041_04** (★6 Anubis Polnareff): type Tactical by the verdict (ShoutWiki and the JoJoWiki template
+  against one JoJoWiki gallery caption), so it gets the ShoutWiki ★6 page's stats (`typeSource`).
+- **3180_62** (Mannish Boy): the live page marks it assist-only, so it gets its JoJoWiki/ShoutWiki stats.
+  An assist-only statue takes research stats only with such a record (`assistOnlySource`). Its
+  `DT_AST_3180_62` row now leans HP (from its stats) instead of the ATK placeholder.
+- **Lv1 checks**: the four held Lv1 conflicts keep their values (Gamerch's 499, 762 and 441 look like
+  typos; for 1020_02 both pages show the Lv1 ATK as DEF). A verdict that disagrees with our value is
+  reported, not applied.
+- **identity** records leave 1090_03, 1100_03 and 3001_13 out (their b33 records are their siblings'
+  data). Records with no statueId (Tonio and Boingo, whose ★4 page could be either id) are not read;
+  their ids stay as Build 41 has them (4090_72, 3230_62).
+- **Assists and leaders** (`research-b43/assists`, read by the leader, action-leader and assist
+  builders; details in docs/research/19 §5.3 and 12 §4): 3041_03 and 4000_23 leave `RESEARCH_HELD`
+  (live pages re-read); 3180_62, 4030_04 and 4170_16 leave the assist `HELD` (identity by the
+  `ABI_AST_3180_62_N` label; ShoutWiki requirements read in the page source); 3230_62, 4090_72 and
+  4220_72 stay held (Gamerch prints no condition, ShoutWiki gives one; 4090_72's id is settled).
+  The ★6 Koichi page filed under 4011_15 is refiled to 4011_18 (`REFILE`). Four Tactical-era ★6
+  statues get ShoutWiki's Reversal-era MAX leader value. Not used: the medium 5100_14 conflict (+9%
+  vs +14%), 4011_17's derived values, 4170_16's and 4030_04's English MAX lines (no tactical affect,
+  or a 2022 revision), and the `assist_ability_absent` rows (no source is not no ability).
+
+The statue command (the inputs in `local/`; the collection is written anywhere, here `$T`):
+
+    python3 -I tools/content/research_statues.py \
+      --facts local/wiki-raw/research-b33/statues/results.jsonl \
+      --facts local/wiki-raw/research-b43/statues/results.jsonl --out $T/extra_statues.json
+    python3 -I tools/content/build_statues.py --scan local/content/statues_scan.json \
+      --export local/l10n/export-b33.tsv --shoutwiki local/wiki-raw/shoutwiki/statues.json \
+      --gamerch local/wiki-raw/gamerch/statues.json --jojowiki local/wiki-raw/jojowiki/statues.json \
+      --clips local/content/figure_clips.tsv --heights local/content/model_heights.tsv \
+      --pose local/content/team_pose.tsv \
+      --extra local/wiki-raw/gpt-2026-11-15/JoJoDR_Public_Data_2026-11-15/statues.json \
+      --extra $T/extra_statues.json --accessed 2026-11-15 --out server/content/statues.json
+
+Then rerun `build_assist_abilities.py` (step 6) and `build_extra_quests.py`: their enemy pools and
+default assist kinds read statues.json.

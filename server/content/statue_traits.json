@@ -1,5 +1,5 @@
 {
- "about": "Statue traits: the {tribeTypeId: n} list of StatueInfo.tribeTypeList per statueId (docs/research/30-action-battle.md §7). n is the Jjs tribe id of the ATTR_TEXT_<n> label; only ids 1-11 and 15 are used. \"from\" says where a statue's set comes from: gamerch (its live statue page), shoutwiki (the page's categories), family (the agreeing set of its statueId[:4] family) or sibling (a hand-named family of the same character). Statues in \"none\" have no source and send []. Built by tools/content/build_statue_traits.py.",
+ "about": "Statue traits: the {tribeTypeId: n} list of StatueInfo.tribeTypeList per statueId (docs/research/30-action-battle.md §7). n is the Jjs tribe id of the ATTR_TEXT_<n> label; only ids 1-11 and 15 are used. \"from\" says where a statue's set comes from: gamerch (its live statue page), shoutwiki (the page's categories), family (the agreeing set of its statueId[:4] family) or sibling (a hand-named family of the same character); from Build 43 also research (a research verdict, cited per row in \"rowSources\"). Statues in \"noTribe\" have sources that show no tribe and statues in \"none\" have no source; both send []. Built by tools/content/build_statue_traits.py.",
  "sources": [
   {
    "source": "Gamerch ジョジョDR攻略Wiki (live statue pages, research pass)",
@@ -47,6 +47,7 @@
     "(3★) Yukako Yamagishi (Courage)": 3018,
     "(3★)Shigekiyo Yangu (Fighting Spirit)": 3019,
     "(4★) Akira Otoishi (Fighting Spirit)": 3570,
+    "(4★) Akira Otoishi (Solitary)": 3571,
     "(4★) Anjuro Katagiri (Fighting Spirit)": 3565,
     "(4★) Aya Tsuji (Tactical)": 3285,
     "(4★) Boingo (Courage)": 3239,
@@ -198,6 +199,12 @@
   {
    "source": "jdr-default",
    "note": "family fill: a statue with no own set takes its family's set when every own set of the family agrees; hand siblings: 3323 <- 3321/3322 (DIO: the same character as 3321/3322); 4031 <- 4030 (Rohan: the same character as 4030)"
+  },
+  {
+   "source": "research-b43 (links_traits_minds): Gamerch ジョジョDR攻略Wiki and ShoutWiki",
+   "page": "https://jojodr.gamerch.com/",
+   "accessed": "2026-11-22",
+   "note": "traits for statues the rules above leave without a set (siblings' Gamerch sets, statue pages, ShoutWiki categories; high/medium only), each cited in rowSources with page, capture and access date"
   }
  ],
  "tribes": {
@@ -242,6 +249,7 @@
   "2000_02": [2, 3],
   "2000_03": [2, 3],
   "2000_04": [3],
+  "2000_12": [2, 3],
   "2000_28": [2, 3],
   "2010_01": [3],
   "2010_02": [3],
@@ -284,6 +292,7 @@
   "3000_13": [2, 5, 6],
   "3001_03": [2, 5, 6],
   "3001_04": [5, 6],
+  "3001_13": [2, 5, 6],
   "3002_03": [2, 5, 6],
   "3010_01": [2, 3, 5, 6],
   "3010_02": [2, 3, 5, 6],
@@ -306,6 +315,7 @@
   "3040_02": [5, 6],
   "3040_03": [5, 6],
   "3040_04": [5],
+  "3040_13": [5, 6],
   "3041_03": [5, 6, 7],
   "3041_04": [5, 6, 7],
   "3050_01": [5, 6],
@@ -363,6 +373,7 @@
   "3322_08": [1, 5, 6],
   "3323_08": [1, 5, 6],
   "3330_01": [1, 5],
+  "3330_02": [1, 5],
   "3330_03": [1, 5],
   "3330_04": [1],
   "4000_01": [2, 5],
@@ -404,6 +415,9 @@
   "4080_03": [5],
   "4080_04": [5],
   "4080_13": [5],
+  "4090_71": [5],
+  "4090_72": [5],
+  "4090_73": [5],
   "4110_01": [5],
   "4110_02": [5],
   "4110_13": [5],
@@ -448,6 +462,8 @@
   "4240_11": [5],
   "4240_12": [5],
   "4240_13": [5],
+  "5000_03": [5],
+  "5000_04": [5],
   "5001_14": [5, 9, 15],
   "5010_04": [5],
   "5010_14": [5],
@@ -505,6 +521,7 @@
   "2000_02": "gamerch",
   "2000_03": "gamerch",
   "2000_04": "shoutwiki",
+  "2000_12": "research",
   "2000_28": "gamerch",
   "2010_01": "gamerch",
   "2010_02": "gamerch",
@@ -547,6 +564,7 @@
   "3000_13": "gamerch",
   "3001_03": "gamerch",
   "3001_04": "shoutwiki",
+  "3001_13": "research",
   "3002_03": "gamerch",
   "3010_01": "gamerch",
   "3010_02": "gamerch",
@@ -569,7 +587,8 @@
   "3040_02": "gamerch",
   "3040_03": "gamerch",
   "3040_04": "shoutwiki",
-  "3041_03": "shoutwiki",
+  "3040_13": "research",
+  "3041_03": "gamerch",
   "3041_04": "shoutwiki",
   "3050_01": "gamerch",
   "3050_02": "gamerch",
@@ -626,6 +645,7 @@
   "3322_08": "gamerch",
   "3323_08": "shoutwiki",
   "3330_01": "shoutwiki",
+  "3330_02": "research",
   "3330_03": "gamerch",
   "3330_04": "shoutwiki",
   "4000_01": "shoutwiki",
@@ -634,7 +654,7 @@
   "4000_04": "shoutwiki",
   "4000_12": "gamerch",
   "4000_18": "gamerch",
-  "4000_23": "shoutwiki",
+  "4000_23": "gamerch",
   "4000_62": "shoutwiki",
   "4010_01": "gamerch",
   "4010_13": "gamerch",
@@ -667,6 +687,9 @@
   "4080_03": "gamerch",
   "4080_04": "shoutwiki",
   "4080_13": "gamerch",
+  "4090_71": "research",
+  "4090_72": "family",
+  "4090_73": "research",
   "4110_01": "gamerch",
   "4110_02": "gamerch",
   "4110_13": "gamerch",
@@ -691,7 +714,7 @@
   "4170_02": "gamerch",
   "4170_03": "gamerch",
   "4170_15": "shoutwiki",
-  "4170_16": "family",
+  "4170_16": "shoutwiki",
   "4170_17": "family",
   "4170_18": "shoutwiki",
   "4181_72": "shoutwiki",
@@ -711,6 +734,8 @@
   "4240_11": "family",
   "4240_12": "family",
   "4240_13": "gamerch",
+  "5000_03": "research",
+  "5000_04": "research",
   "5001_14": "shoutwiki",
   "5010_04": "shoutwiki",
   "5010_14": "family",
@@ -726,12 +751,176 @@
   "5290_62": "family",
   "5320_04": "shoutwiki"
  },
- "none": [
+ "rowSources": {
+  "1010_01": {
+   "source": "Gamerch ジョジョDR攻略Wiki",
+   "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%83%AD%E3%83%90%E3%83%BC%E3%83%88%E3%83%BBE%E3%83%BBO%E3%83%BB%E3%82%B9%E3%83%94%E3%83%BC%E3%83%89%E3%83%AF%E3%82%B4%E3%83%B3%E2%98%853%EF%BC%88%E9%A3%9F%E5%B1%8D%E9%AC%BC%E8%A1%97%E3%81%AE%E3%83%9C%E3%82%B9%EF%BC%89",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the sources show no tribe"
+  },
+  "1010_02": {
+   "source": "Gamerch ジョジョDR攻略Wiki",
+   "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%83%AD%E3%83%90%E3%83%BC%E3%83%88%E3%83%BB%EF%BC%A5%E3%83%BB%EF%BC%AF%E3%83%BB%E3%82%B9%E3%83%94%E3%83%BC%E3%83%89%E3%83%AF%E3%82%B4%E3%83%B3%E2%98%854%EF%BC%88%E6%97%85%E3%81%AE%E5%90%8C%E8%A1%8C%E8%80%85%EF%BC%89",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the sources show no tribe"
+  },
+  "1010_03": {
+   "source": "Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Robert_E._O._Speedwagon_%28Courage%29",
+   "license": "CC BY-SA 3.0",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the sources show no tribe"
+  },
+  "1030_62": {
+   "source": "Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Erina_Pendleton_%28Courage%29",
+   "license": "CC BY-SA 3.0",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the sources show no tribe"
+  },
+  "2000_12": {
+   "source": "Gamerch ジョジョDR攻略Wiki",
+   "page": "https://jojodr.gamerch.com/%E3%82%B8%E3%83%A7%E3%82%BB%E3%83%95%E3%83%BB%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC%EF%BC%882%E9%83%A8%EF%BC%89",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the set the researchers give"
+  },
+  "2110_01": {
+   "source": "Gamerch ジョジョDR攻略Wiki",
+   "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%83%AB%E3%83%89%E3%83%AB%E3%83%BB%E3%83%95%E3%82%A9%E3%83%B3%E3%83%BB%E3%82%B7%E3%83%A5%E3%83%88%E3%83%AD%E3%83%8F%E3%82%A4%E3%83%A0%E2%98%853%EF%BC%88%E7%9B%AE%E8%A6%9A%E3%82%81%E3%81%95%E3%81%9B%E3%81%97%E7%94%B7%EF%BC%89",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the sources show no tribe"
+  },
+  "2110_02": {
+   "source": "Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Rudol_von_Stroheim_%28Fighting_Spirit%29",
+   "license": "CC BY-SA 3.0",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the sources show no tribe"
+  },
+  "2110_03": {
+   "source": "Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Rudol_von_Stroheim_%28Fighting_Spirit%29",
+   "license": "CC BY-SA 3.0",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the sources show no tribe"
+  },
+  "2111_01": {
+   "source": "Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Stroheim_~_I%27m_back_from_Hell_~_%28Courage%29",
+   "license": "CC BY-SA 3.0",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the sources show no tribe"
+  },
+  "2111_02": {
+   "source": "Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Stroheim_~_I%27m_back_from_Hell_~_%28Courage%29",
+   "license": "CC BY-SA 3.0",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the sources show no tribe"
+  },
+  "2111_03": {
+   "source": "Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%285%E2%98%85%29_Stroheim_~_I%27m_back_from_Hell_~_%28Courage%29",
+   "license": "CC BY-SA 3.0",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the sources show no tribe"
+  },
+  "2150_71": {
+   "source": "Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Suzi_Q_%28Unity%29",
+   "license": "CC BY-SA 3.0",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the sources show no tribe"
+  },
+  "2150_72": {
+   "source": "Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%283%E2%98%85%29_Suzi_Q_%28Unity%29",
+   "license": "CC BY-SA 3.0",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the sources show no tribe"
+  },
+  "3001_13": {
+   "source": "Gamerch ジョジョDR攻略Wiki",
+   "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E7%A9%BA%E6%9D%A1%E6%89%BF%E5%A4%AA%E9%83%8E%E2%98%855%EF%BC%88%EF%BD%9E%E3%81%A6%E3%82%81%E3%83%BC%E3%81%AF%E3%81%8A%E3%82%8C%E3%82%92%E6%80%92%E3%82%89%E3%81%9B%E3%81%9F%EF%BD%9E%EF%BC%89",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the set the researchers give"
+  },
+  "3040_13": {
+   "source": "Gamerch ジョジョDR攻略Wiki",
+   "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E3%82%B8%E3%83%A3%E3%83%B3%E3%83%BB%E3%83%94%E3%82%A8%E3%83%BC%E3%83%AB%E3%83%BB%E3%83%9D%E3%83%AB%E3%83%8A%E3%83%AC%E3%83%95%E2%98%855%EF%BC%88%E9%8B%AD%E3%81%8F%E7%B9%B0%E3%82%8A%E5%BA%83%E3%81%92%E3%82%89%E3%82%8C%E3%82%8B%E5%89%A3%E5%85%88%EF%BC%89",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the set the researchers give"
+  },
+  "3330_02": {
+   "source": "Gamerch ジョジョDR攻略Wiki",
+   "page": "https://jojodr.gamerch.com/%E3%80%90%E5%8B%87%E6%B0%97%E3%80%91%E3%83%B4%E3%82%A1%E3%83%8B%E3%83%A9%E3%83%BB%E3%82%A2%E3%82%A4%E3%82%B9%E2%98%855%EF%BC%88%E7%8B%82%E4%BF%A1%E8%80%85%E3%81%AE%E5%A5%89%E4%BB%95%EF%BC%89",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the set the researchers give"
+  },
+  "4090_71": {
+   "source": "Gamerch ジョジョDR攻略Wiki",
+   "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E3%83%88%E3%83%8B%E3%82%AA%E3%83%BB%E3%83%88%E3%83%A9%E3%82%B5%E3%83%AB%E3%83%87%E3%82%A3%E3%83%BC%E2%98%854%EF%BC%88%E3%81%95%E3%81%A3%EF%BC%81%E3%82%81%E3%81%97%E4%B8%8A%E3%81%8C%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%A6%E3%82%AF%E3%83%80%E3%82%B5%E3%82%A4%EF%BC%89",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the set the researchers give"
+  },
+  "4090_72": {
+   "source": "jdr-default",
+   "note": "family fill from the research-b43 sets of 4090_71, 4090_73"
+  },
+  "4090_73": {
+   "source": "Gamerch ジョジョDR攻略Wiki",
+   "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E3%83%88%E3%83%8B%E3%82%AA%E3%83%BB%E3%83%88%E3%83%A9%E3%82%B5%E3%83%AB%E3%83%87%E3%82%A3%E3%83%BC%E2%98%854%EF%BC%88%E3%81%95%E3%81%A3%EF%BC%81%E3%82%81%E3%81%97%E4%B8%8A%E3%81%8C%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%A6%E3%82%AF%E3%83%80%E3%82%B5%E3%82%A4%EF%BC%89",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the set the researchers give"
+  },
+  "4260_72": {
+   "source": "Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Reimi_Sugimoto_%28Unity%29",
+   "license": "CC BY-SA 3.0",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits: the sources show no tribe"
+  },
+  "5000_03": {
+   "source": "Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Giorno_Giovanna_(Tactical)",
+   "license": "CC BY-SA 3.0",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits_lower_bound: lower bound, the statue may carry more"
+  },
+  "5000_04": {
+   "source": "Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Giorno_Giovanna_(Tactical)",
+   "license": "CC BY-SA 3.0",
+   "accessed": "2026-11-22",
+   "confidence": "medium",
+   "note": "research-b43/links_traits_minds traits_lower_bound: lower bound, the statue may carry more"
+  }
+ },
+ "noTribe": [
   "1010_01",
   "1010_02",
   "1010_03",
   "1030_62",
-  "2000_12",
   "2110_01",
   "2110_02",
   "2110_03",
@@ -740,16 +929,10 @@
   "2111_03",
   "2150_71",
   "2150_72",
-  "3001_13",
-  "3040_13",
-  "3330_02",
-  "4090_71",
-  "4090_72",
-  "4090_73",
-  "4260_72",
+  "4260_72"
+ ],
+ "none": [
   "4280_72",
-  "5000_03",
-  "5000_04",
   "5000_22",
   "5000_23",
   "5000_24",

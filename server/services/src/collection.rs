@@ -2430,11 +2430,10 @@ mod tests {
     #[test]
     fn jojo_links_follow_the_team() {
         let held = [
-            8, 20, 21, 25, 26, 35, 36, 43, 51, 52, 53, 54, 59, 60, 62, 64, 67, 69, 70, 71, 73, 74,
-            75, 76, 77,
+            8, 20, 21, 25, 26, 35, 36, 43, 51, 52, 54, 59, 60, 62, 67, 69, 70, 71, 73, 74, 75, 77,
         ];
         let ids: Vec<i64> = jojo_links().iter().map(|l| l.chara_link_id).collect();
-        assert_eq!(ids.len(), 53);
+        assert_eq!(ids.len(), 56);
         assert!(ids.windows(2).all(|w| w[0] < w[1]), "unique charaLinkIds");
         assert!(
             ids.iter().all(|i| !held.contains(i)),
@@ -2462,6 +2461,14 @@ mod tests {
         // Two of the three: no link from an all-3 rule.
         let (c, t) = link_team(&["2080", "2050"]);
         assert_eq!(count(&link_ids(&c, &t), 34), 0);
+        // Build 43 (research-b43 screenshots): Kakyoin + Gray Fly give link 76; link 53 only with
+        // all three of DIO, Lisa Lisa and Mariah (the one team seen).
+        let (c, t) = link_team(&["3030", "3060", "1000"]);
+        assert_eq!(count(&link_ids(&c, &t), 76), 1);
+        let (c, t) = link_team(&["3321", "2020", "3270"]);
+        assert_eq!(count(&link_ids(&c, &t), 53), 1);
+        let (c, t) = link_team(&["3321", "2020", "1000"]);
+        assert_eq!(count(&link_ids(&c, &t), 53), 0);
         // An empty team, and a team of one, activate nothing.
         let (c, t) = link_team(&[]);
         assert!(jojo_link_list(&c, &t).is_empty());
@@ -2671,7 +2678,10 @@ mod tests {
                         "{sid} {x} has no action-set entry"
                     );
                 }
-                if rec["source"]["source"] == "jdr-default" {
+                // A jdr-default statue, or a Build 43 kit slot the wikis leave out ("from").
+                if rec["source"]["source"] == "jdr-default"
+                    || rec["finisher"]["from"] == "jdr-default"
+                {
                     assert!(
                         entries.contains(&entry(&x)),
                         "{sid}: our finisher {x} is not the cinematic"
@@ -2681,7 +2691,7 @@ mod tests {
             }
         }
         assert!(checked > 300, "{checked}");
-        assert!(defaults >= 57, "{defaults} jdr-default finishers");
+        assert!(defaults >= 51, "{defaults} jdr-default finishers");
         // The two Polnareff ★5 pages name a finisher whose text SKILL_304_03 shares; only 304_08
         // is the cinematic.
         let fin = |sid: &str| {
@@ -2695,6 +2705,16 @@ mod tests {
         };
         assert_eq!(fin("3040_03"), "SKILL_304_08");
         assert_eq!(fin("3040_13"), "SKILL_304_08");
+        // Build 43 (research-b43): held finishers resolved by the wiki's finisher name, and a shared
+        // SP name resolved to the label the statue's action set plays (3322 has no entry 2).
+        assert_eq!(fin("3001_04"), "SKILL_300_16");
+        assert_eq!(fin("4193_08"), "SKILL_419_10");
+        assert_eq!(fin("2081_13"), "SKILL_208_16");
+        let sp = |sid: &str| action_skills(sid).unwrap().sp.as_ref().unwrap().id.clone();
+        assert_eq!(sp("3322_08"), "SKILL_332_63");
+        assert_eq!(sp("3020_28"), "SKILL_302_61");
+        assert_eq!(doc["statues"]["5050_04"]["sp"]["cooldown"], 16);
+        assert_eq!(doc["statues"]["5320_04"]["actionMode"]["usable"], false);
     }
 
     #[test]
@@ -2743,15 +2763,30 @@ mod tests {
             assist_abilities("2081_13")[0].ability_id,
             "DT_AST_DMG_RATEADD3"
         );
-        // Held: no condition.
-        for sid in ["3180_62", "3230_62", "4220_72"] {
+        // Held (Build 43: the two sites disagree on the condition): no condition.
+        for sid in ["3230_62", "4220_72", "4090_72"] {
             assert!(terms(sid).is_empty(), "{sid}");
         }
+        // Released in Build 43 (research-b43/assists): Gamerch/ShoutWiki 知略+闘志, ShoutWiki
+        // FS+Courage+Tactical and FS+Solitary.
+        assert_eq!(terms("3180_62"), [(2, 1), (3, 1)]);
+        assert_eq!(terms("4030_04"), [(1, 1), (2, 1), (3, 1)]);
+        assert_eq!(terms("4170_16"), [(3, 1), (5, 1)]);
         // 3001_13 shares 3001_03's leader label but not its rarity/type; 1100_03 likewise 1100_13.
         assert_eq!(leader_ability("3001_03")["abilityId"], "DT_LEAD_3001_03");
         assert_eq!(leader_ability("1100_13")["abilityId"], "DT_LEAD_1100_13");
         assert_eq!(leader_ability("3001_13"), json!({}));
         assert_eq!(leader_ability("1100_03"), json!({}));
+        // Build 43: the released live pages and the ShoutWiki Reversal-era MAX values; a page whose
+        // lines have no tactical affect (reversal gauge, HP above half) gives no row.
+        for sid in [
+            "3041_03", "4000_23", "5030_04", "5080_04", "5150_04", "4031_18",
+        ] {
+            assert_eq!(leader_ability(sid)["abilityId"], format!("DT_LEAD_{sid}"));
+        }
+        for sid in ["5210_04", "5290_04", "5100_14"] {
+            assert_eq!(leader_ability(sid), json!({}), "{sid}");
+        }
     }
 
     #[test]

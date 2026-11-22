@@ -34,6 +34,20 @@ M = inferred. No game text is reproduced; labels are cited by key.
 - **Traits (Build 41).** Trait links need the statues' traits: `StatueInfo.tribeTypeList` is now
   sent from `server/content/statue_traits.json` (docs/research/30-action-battle.md §7), so the
   formation and detail screens know them.
+- **Build 43 (research-b43/links_traits_minds).** In-game team screenshots attached to Gamerch
+  comments (read as data, not stored; cited per link as `effectSource` with the capture URL) give
+  the missing effects:
+  - **076** DoDoDo charge +3.0 % for 2 s per kill, **064** damage to Pillar Men +3.0 % and DEF
+    +5.0 %, **053** skill performance +5.0 % (H). Each screenshot shows the link active with every
+    member the Build 33 record names, so those low records count as medium and the three links
+    are served (56 in all). 053 was only ever seen with DIO + Lisa Lisa + Mariah and the
+    researchers leave its member rule open: we require all three (`RULE_OVERRIDES`, the stricter
+    form).
+  - **054** DoDoDo-mode damage +10.0 % (H), but its members are probably "any two female statues"
+    (M, two teams with exactly two women each). Our statues send no gender trait (ATTR_TEXT_16-18),
+    so it stays held with that reason. 013 is corroborated by one screenshot (`also`).
+  - Still held: the name-only links, 073, the gold/EXP links, 020 and 035 (no screenshot), 052,
+    060 and 062 (screenshots the OCR could not read), 036, 067, 074.
 - **What we send (Build 41).** `server/content/jojo_links.json` (`tools/content/build_jojo_links.py`)
   holds 53 links; `collection.rs jojo_link_list` computes the active ones for every team (so
   `TeamInfo` and the arena's `PvpTeamInfo`):

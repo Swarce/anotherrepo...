@@ -146,6 +146,37 @@ Card labels:
   - Flipping reverses all three and costs 20.
 - The pack's upright values are 2018 action-era values; they differ from the 3.12.0 texts.
 
+### 2.1 Wiki facts (Build 43, research-b43/stages_extra)
+
+`tools/content/build_extra_quests.py --research … --export …` writes them to
+`server/content/quests_extra.json` (`labyrinth`), each with its page, screenshot, capture and access
+date. All are action era (2018); the 3.12.0 (tactical) costs and levels are unknown.
+- **Room costs (served).** The 18 Bahamut floor screenshots (精華 sn=62, 2018-04) show 36 rooms by
+  name; every name is the client's `STAGE_DU01_<floor>_<room>` label for that floor (the builder
+  checks it against the JP export). Their costs replace ours (high).
+  - From floor 5 on, every room 01 seen costs 35, room 02 27, room 03 25 (medium: derived, and the
+    author logged one room per cost). Rooms 01-03 that no screenshot shows get that cost
+    (15 rows, marked as the pattern).
+  - Both single rooms (floors 10 and 20) cost **30**; ours charged 35 on floor 20.
+  - Floors 1-4 differ from the pattern; the rooms there that no screenshot shows keep ours.
+  - Rooms 02_04, 03_04 and 18_04 are recorded but are not rooms of ours (we serve rooms 01-03).
+  - A cheapest run is now 503 Mentality; the post's author estimates about 500 (unverified).
+- **Area counts (data only).** 1-5 per room; our rooms have one area (§5).
+- **Floor rewards (served).** ShoutWiki (revision 2018-06-27): floor 1 Blue Stone ×30, floor 2
+  Green Stone ×30, floor 3 Red Stone ×30, floor 4 Green Brooch. Items matched by the game's own
+  `ITEM_<id>_NAME` label (1002, 1003, 1004, 1006). The brooch count is cut off on the screenshot;
+  ours is 10. Floors 5-20 were not found and keep ours.
+- **Data only** (`labyrinth.wiki`): each floor's enemy-level preview (Lv80-135), clear condition
+  (制限時間内にボスを倒せ; 敵を全滅させろ on the ShoutWiki capture), Bizarre Effect flags and reward
+  quantities, the full-clear income (6 Diamonds and a few items about every 5 days), and the 2019
+  atwiki menu that still lists the mode.
+- **Conflicts kept:**
+  - The wiki lists one labyrinth, 潜み閉ざされた館, difficulty S. We keep the three grades: the
+    3.12.0 client names three (`CHAPTER_NAME_D_01..03`).
+  - The ShoutWiki floor-3 capture (early 2018) shows two rooms that the client and the 2018-04
+    screenshots put on floors 7 and 12 (07_02 at 27 there, 30 on ShoutWiki). The layout changed or
+    was random; we follow the 2018-04 screenshots.
+
 ## 3. Server
 
 **State** (`Progress.dungeon`, `#[serde(default)]`; older saves start full):
@@ -218,12 +249,13 @@ Card labels:
 - Three rooms a floor and one on floors 10 and 20 (the hardest stage of the slice).
 - A room keeps the stage's enemies, map and single area (`areaMax` 1). Its id and name label
   are `STAGE_DU01_ff_rr`.
-- Costs: 22 + (floor − 1) × 10 / 19, plus 3 per room down the list, capped at 35. The single
-  rooms of floors 10 and 20 cost 30 and 35.
+- Costs: the wiki's (§2.1, Build 43) for every room from floor 5 on and the rooms seen on floors
+  1-3. The others (floors 1-4): 22 + (floor − 1) × 10 / 19, plus 3 per room down the list.
 - Floor rewards, one item each:
+  - floors 1-4: the wiki's (§2.1, Build 43);
   - floors 5/10/15/20: 100/200/300/400 Memory Rings;
   - other odd floors: 2,000 + 1,000 × floor gold;
-  - other even floors: trophies (6112 ×5, 6113 ×5, 6114 ×3, 6115 ×2 by depth).
+  - other even floors: trophies (6113 ×5, 6114 ×3, 6115 ×2 by depth).
 - A room's `rewardItemSet` previews its floor's reward; `steadyItemSet` is empty.
 
 **Tarot effects**: the client's 3.12.0 card texts, where an affect in our `affect_table` does the
@@ -252,8 +284,8 @@ Wisdom/Unity/Spirit cards (no matching affect) send `{}`.
 ## 4. What is ours
 
 - One dungeon and its labels.
-- Rooms built from story stages, room counts and costs.
-- Rewards, and their delivery through the Message Box.
+- Rooms built from story stages, room counts, and the costs of floor 1-4 rooms no wiki shows.
+- Rewards of floors 5-20 and the floor-4 brooch count, and their delivery through the Message Box.
 - The full daily Mentality refill.
 - The Tarot-to-affect mapping, Strength upright and Tower reversed.
 - Free resent `tarot_select`; unlimited flips at 20 each.

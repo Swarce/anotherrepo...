@@ -98,6 +98,12 @@ owner's private pack, dated guides and screenshots) are cited by their id. Every
 - `arena.scoring`, `arena.survivor_bonus`: opponent power, streak and surviving members add
   points; the formula is unknown.
 - `v2.arena.early_failure`: timeouts and force-closes counted as defeats.
+- Build 43 (research-b43/stages_extra, Bahamut screenshots of the 2017 Arenas; recorded in
+  `quests_extra.json` `wiki.arena`, data only): opponents worth 1000 and 1500 points (2017-09);
+  2500 points gave Blue Tablet ×100 (2017-07, medium); BP took about 10 min each in 2017-07 and
+  about 1 h in 2017-09 (both medium, derived). Not applied: they are the action era's short Arena
+  events, their point scale is not ours (our base points, ladder and seasons are ours), and the two
+  BP rates disagree with each other, so our 30 min stays.
 
 ### 1.7 Home polling and its notices (H, Build 24)
 

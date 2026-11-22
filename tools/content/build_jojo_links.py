@@ -7,6 +7,7 @@ wiki text goes into the output ("held" gives our own reason, never the wiki line
 usage:
   python3 -I tools/content/build_jojo_links.py \
       --research local/wiki-raw/research-b33/action/results.jsonl \
+      --research-b43 local/wiki-raw/research-b43/links_traits_minds/results.jsonl \
       --saved-table local/wiki-raw/research-2026-11-15-v2/catalog/jojo_links.json \
       --saved-sources local/wiki-raw/research-2026-11-15-v2/catalog/sources.json \
       --labels local/l10n/export-b33.tsv --server-statues server/content/statues.json \
@@ -27,6 +28,14 @@ Sources:
   --research     the research pass's links.jojo 'link' records (the Gamerch ジョジョリンク page,
                  its comments and the Bahamut forum thread; url, accessed and confidence per record).
                  A record's ABI_JOLINK_NAME_<nnn> JP label must equal the record name after NFKC.
+  --research-b43 (Build 43) the links.jojo supplements of research-b43/links_traits_minds (high/medium):
+                 'link_effect' records replace the effect of the link's record (in-game team screenshots
+                 attached to Gamerch comments, cited as 'effectSource' with page, capture and access
+                 date); when the screenshot's active team holds every member the record names, a
+                 low-confidence record becomes medium (the screenshot shows the link active with those
+                 members). 'link_members' and 'link_source' records are corroboration only, cited in
+                 'also'; their verdicts (053 member rule open, 054 probably two female statues) are
+                 applied by hand below.
   --saved-table  the saved Gamerch link table (Wayback 2017-07-06, sources.json id 'links'), only for
                  a link with no research record whose label equals the row name after NFKC: today
                  J001 = link 34 and J032 = link 12 (confidence "provisional").
@@ -79,6 +88,9 @@ RULE_OVERRIDES = {
          'all 3 members (the trait remark in the record is a guess)'),
     42: ([(['ジョセフ・ジョースター【2部】', '広瀬康一', '虹村億泰'], 2), (['サンタナ', 'ジョセフ・ジョースター【2部】'], 2)],
          'any 2 of Joseph (Part 2) / Koichi / Okuyasu, or Santana + Joseph (Part 2), as the record says'),
+    53: ([(['DIO', 'リサリサ', 'マライア'], 3)],
+         'all 3 members: the only team any source shows with the link active (research-b43 screenshot; the '
+         'researchers leave the member rule open, so the stricter form)'),
     57: ([(['カーズ', 'ワムウ'], 2)],
          'Kars + Wamuu (the third member is marked uncertain in the record)'),
 }
@@ -91,6 +103,8 @@ RESOLVED = {
 HAND_HELD = {
     35: 'two Gamerch rows under one name (different members and effects)',
     60: 'crit-taken 0.07 (probably 0.70) and the Straizo membership is uncertain',
+    54: 'effect known (research-b43); the members are probably any two female statues (medium, from two '
+        'screenshots), and our statues carry no gender trait (ATTR_TEXT_16-18 are not sent)',
 }
 GOLD_EXP = {'gold_rate', 'gold_flat', 'exp_rate'}
 
@@ -162,6 +176,7 @@ def saved_row(row):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--research', required=True)
+    ap.add_argument('--research-b43', action='append', default=[])
     ap.add_argument('--saved-table', required=True)
     ap.add_argument('--saved-sources', required=True)
     ap.add_argument('--labels', required=True)
@@ -202,6 +217,32 @@ def main():
                       'confidence': r.get('confidence'),
                       'source': {'source': src, 'page': url, 'accessed': r.get('accessed', ''),
                                  'confidence': r.get('confidence')}}
+    for path in a.research_b43:
+        for line in open(path, encoding='utf-8'):
+            r = json.loads(line)
+            if r.get('topic') != 'links.jojo' or r.get('confidence') not in ('high', 'medium'):
+                continue
+            v = r['value']
+            n = int(v['label'].rsplit('_', 1)[1])
+            assert n in records and V.norm(v.get('name', names[n])) == V.norm(names[n]), n
+            rec = records[n]
+            cite = {'source': 'Gamerch ジョジョDR攻略Wiki (ジョジョリンク page, comment screenshot)',
+                    'page': r.get('url') or '', 'capture': r.get('capture'), 'accessed': r.get('accessed', ''),
+                    'confidence': r['confidence']}
+            if r['field'] == 'link_effect':
+                eff = v['effect']
+                rec['effect'] = ' / '.join(eff) if isinstance(eff, list) else eff
+                rec['source']['effectSource'] = cite
+                team = {V.norm(x) for x in v.get('observed_active_team') or []}
+                members = [m for m in rec['members'] or [] if '?' not in m]
+                if rec['confidence'] == 'low' and members and all(V.norm(m) in team for m in members):
+                    rec['confidence'] = rec['source']['confidence'] = 'medium'
+                    rec['source']['note'] = ('research-b43: a team screenshot shows the link active with every '
+                                             'member the record names (was low)')
+            elif r['field'] in ('link_members', 'link_source'):
+                rec['source'].setdefault('also', []).append(dict(cite, field=r['field']))
+            else:
+                raise SystemExit('unknown links.jojo field %r' % r['field'])
     saved_src = {s['id']: s for s in json.load(open(a.saved_sources, encoding='utf-8'))}
     for row in json.load(open(a.saved_table, encoding='utf-8')):
         hits = [n for n, jp in names.items() if V.norm(jp) == V.norm(row.get('name_ja_source'))]
@@ -328,6 +369,10 @@ def main():
              'accessed': '2026-11-20',
              'note': 'via research-b33: the record source for links 32, 33, 40, 45, 57 and 61; corroboration for '
                      '30 and 46'},
+            {'source': 'Gamerch ジョジョDR攻略Wiki (ジョジョリンク comment screenshots, research-b43)',
+             'page': 'https://jojodr.gamerch.com/ジョジョリンク', 'accessed': '2026-11-22',
+             'note': 'research-b43/links_traits_minds: in-game team screenshots attached to comments (read as data, '
+                     'not stored) give the effects of links 53, 54, 64 and 76; cited per link in effectSource'},
             {'source': 'Gamerch ジョジョDR攻略Wiki (Wayback Machine snapshot, saved link table)',
              'page': saved_src['links']['url'], 'accessed': saved_src['links']['accessed'],
              'note': 'local/wiki-raw/research-2026-11-15-v2/catalog/jojo_links.json: J001 = link 34, J032 = link 12 '

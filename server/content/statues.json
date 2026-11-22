@@ -885,7 +885,15 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "lv1Note": "Lv1 DEF: the live Gamerch page 442, ShoutWiki 442; 422 (Lv99 / 10) is kept by the research-b43 verdict (medium confidence); both pages show the Lv1 ATK, most likely copied into DEF (not fully settled)",
+    "lv1Sources": [
+     {
+      "source": "Gamerch ジョジョDR攻略Wiki (live page)",
+      "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E3%82%A6%E3%82%A3%E3%83%AB%E3%83%BBA%E3%83%BB%E3%83%84%E3%82%A7%E3%83%9A%E3%83%AA%E2%98%854%EF%BC%88%E6%AD%A3%E7%BE%A9%E3%81%A8%E6%80%92%E3%82%8A%E3%81%AE%E6%B3%A2%E7%B4%8B%EF%BC%89",
+      "accessed": "2026-11-22"
+     }
+    ]
    }
   },
   {
@@ -3089,7 +3097,15 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "lv1Note": "Lv1 HP: the live Gamerch page 499, ShoutWiki 490; 490 (Lv99 / 10) is kept by the research-b43 verdict (medium confidence); the page that differs looks like a typo",
+    "lv1Sources": [
+     {
+      "source": "Gamerch ジョジョDR攻略Wiki (live page)",
+      "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91%E3%82%B7%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%BB%E3%82%A2%E3%83%B3%E3%83%88%E3%83%8B%E3%82%AA%E3%83%BB%E3%83%84%E3%82%A7%E3%83%9A%E3%83%AA%E2%98%853%EF%BC%88%E3%82%B7%E3%83%A3%E3%83%9C%E3%83%B3%E3%81%AE%E4%BD%BF%E3%81%84%E6%89%8B%EF%BC%89",
+      "accessed": "2026-11-22"
+     }
+    ]
    }
   },
   {
@@ -6639,7 +6655,15 @@
     "page": "https://jojodr.gamerch.com/%E3%82%B9%E3%82%BF%E3%83%81%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7%E8%A1%A8",
     "capture": "20241110194530",
     "accessed": "2026-11-14",
-    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)"
+    "note": "Lv1 = Lv99 / 10, rounded half up (as the wikis show)",
+    "lv1Note": "Lv1 HP: the live Gamerch page 762, ShoutWiki 764; 764 (Lv99 / 10) is kept by the research-b43 verdict (medium confidence); the page that differs looks like a typo",
+    "lv1Sources": [
+     {
+      "source": "Gamerch ジョジョDR攻略Wiki (live page)",
+      "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91%E3%83%A2%E3%83%8F%E3%83%A1%E3%83%89%E3%83%BB%E3%82%A2%E3%83%B4%E3%83%89%E3%82%A5%E3%83%AB%E2%98%854%EF%BC%88%E7%81%BC%E7%86%B1%E3%81%AE%E7%82%8E%E3%81%AE%E7%8C%9B%E6%94%BB%EF%BC%89",
+      "accessed": "2026-11-22"
+     }
+    ]
    }
   },
   {
@@ -7879,15 +7903,34 @@
    ],
    "resultComment": "Result_Chara_Comment_3041_04",
    "rarity": 6,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
-   "source": {
-    "source": "jdr-default",
-    "note": "no unambiguous wiki match yet; server uses defaults"
+   "statueType": 2,
+   "lv1": {
+    "hp": 2330,
+    "atk": 1620,
+    "def": 1100
    },
-   "rarityFrom": "the team-view pose clips present in the player's files"
+   "lv99": {
+    "hp": 23300,
+    "atk": 16200,
+    "def": 11000
+   },
+   "maxTree": {
+    "hp": 35900,
+    "atk": 30600,
+    "def": 20000
+   },
+   "source": {
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Jean_Pierre_Polnareff_~_God_Anubis'_Posession_(Tactical)",
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "statueType Tactical by the research-b43 verdict (medium confidence); the pages disagree: shoutwiki page Tactical, jojowiki template Tactical, jojowiki gallery caption Courage",
+    "typeSource": {
+     "source": "Diamond Records Wiki (ShoutWiki)",
+     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6%E2%98%85)_Jean_Pierre_Polnareff_~_God_Anubis'_Posession_(Tactical)",
+     "accessed": "2026-11-22"
+    }
+   }
   },
   {
    "statueId": "3050_01",
@@ -15249,6 +15292,14 @@
       "revid": 3568,
       "license": "CC BY-SA 3.0"
      }
+    ],
+    "lv1Note": "Lv1 DEF: the live Gamerch page 441, ShoutWiki 442; 442 (Lv99 / 10) is kept by the research-b43 verdict (medium confidence); the page that differs looks like a typo",
+    "lv1Sources": [
+     {
+      "source": "Gamerch ジョジョDR攻略Wiki (live page)",
+      "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91%E8%99%B9%E6%9D%91%E5%BD%A2%E5%85%86%E2%98%854%EF%BC%88%E7%88%B6%E3%81%B8%E3%81%AE%E7%A7%98%E3%82%81%E3%81%9F%E6%83%B3%E3%81%84%EF%BC%89",
+      "accessed": "2026-11-22"
+     }
     ]
    }
   },
@@ -18563,14 +18614,33 @@
     180
    ],
    "resultComment": null,
-   "rarity": null,
-   "statueType": null,
-   "lv1": null,
-   "lv99": null,
-   "maxTree": null,
+   "rarity": 4,
+   "statueType": 5,
+   "lv1": {
+    "hp": 869,
+    "atk": 414,
+    "def": 393
+   },
+   "lv99": {
+    "hp": 8694,
+    "atk": 4140,
+    "def": 3933
+   },
+   "maxTree": {
+    "hp": 24694,
+    "atk": 12140,
+    "def": 11933
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "assist-only statue: identifiers from the player's files; no unambiguous wiki match yet; server uses defaults"
+    "source": "JoJo's Bizarre Encyclopedia (JoJoWiki)",
+    "page": "https://jojowiki.com/Diamond_Records/Mannish_Boy?oldid=1235412",
+    "license": "CC BY-SA 4.0",
+    "accessed": "2026-11-14",
+    "assistOnlySource": {
+     "source": "Gamerch ジョジョDR攻略Wiki (live page)",
+     "page": "https://jojodr.gamerch.com/%E3%80%90%E5%AD%A4%E9%AB%98%E3%80%91%E3%83%9E%E3%83%8B%E3%83%83%E3%82%B7%E3%83%A5%E3%83%BB%E3%83%9C%E3%83%BC%E3%82%A4%EF%BC%88%E3%83%A9%E3%83%AA%E3%83%9B%EF%BD%9E%EF%BD%9E%EF%BD%9E%EF%BD%9E%EF%BD%9E%EF%BC%89",
+     "accessed": "2026-11-22"
+    }
    }
   },
   {

@@ -13,11 +13,15 @@
 //! identities, three offered per room, each used once until the deck resets (after all 22, an
 //! escape or losing every Soul); reversing the offer costs 20 Mentality.
 //!
+//! Wiki facts (Build 43, research-b43, `quests_extra.json` `labyrinth`, docs/research/22 §2.1): room
+//! costs by room label from the Bahamut floor screenshots (2018-04) and their cost-by-slot pattern
+//! from floor 5 on; the ShoutWiki floor rewards of floors 1-4.
+//!
 //! Ours: the three dungeons (the game's Beginner/Intermediate/Advanced names of one mansion) and
 //! their rooms (our quest data has no labyrinth stages, so rooms reuse tactical story stages picked
-//! by floor, stronger in the harder dungeons), room costs within the pack's range, the rewards, the
-//! Tarot effects mapped onto existing affects, and the Mentality refill (full at the 04:00 JST day
-//! roll).
+//! by floor, stronger in the harder dungeons), the costs of rooms no wiki covers (floors 1-4), the
+//! rewards of floors 5-20, the Tarot effects mapped onto existing affects, and the Mentality refill
+//! (full at the 04:00 JST day roll).
 
 use crate::missions::Reward;
 use crate::quests::{self, ChapterDef, StageDef};
@@ -142,9 +146,15 @@ pub fn rooms_on(floor: i64) -> usize {
     }
 }
 
-/// Mentality per room (ours, inside the pack's 22–35): 22 rising to 31 by floor, +3 per room
-/// down the list; the single rooms of floors 10 and 20 cost 30 and 35.
+/// Mentality per room: the wiki's cost for the room's label where one is known (Build 43: the
+/// rooms on the Bahamut screenshots, and rooms 01-03 from floor 5 on by the cost-by-slot pattern
+/// 35/27/25; both single rooms 30). Otherwise ours, inside the pack's 22–35: 22 rising to 31 by
+/// floor, +3 per room down the list (floors 1-4 only, in practice).
 pub fn room_cost(floor: i64, index: usize) -> i64 {
+    let label = format!("{ROOM_LABEL_PREFIX}{floor:02}_{:02}", index + 1);
+    if let Some(r) = quests::labyrinth().rooms.iter().find(|r| r.label == label) {
+        return r.use_mentality;
+    }
     if rooms_on(floor) == 1 {
         25 + floor / 2
     } else {
@@ -230,10 +240,11 @@ pub fn room_stage_info(r: &Room) -> Value {
     v
 }
 
-/// The reward a floor earns (ours, one item per floor so any list row shows it): Memory Rings
-/// every fifth floor, gold on the other odd floors, trophies (enhancement material for any
-/// statue, 6112–6115 by tier) on the other even floors, times the dungeon's `reward_mult`. Item
-/// ids as missions give them (20 = gold).
+/// The reward a floor earns, one item per floor so any list row shows it: the wiki's for floors
+/// 1-4 (Build 43, ShoutWiki: Blue, Green and Red Stone ×30, a Green Brooch whose count is ours);
+/// ours on the others: Memory Rings every fifth floor, gold on the other odd floors, trophies
+/// (enhancement material for any statue, 6112–6115 by tier) on the other even floors. Times the
+/// dungeon's `reward_mult` (ours). Item ids as missions give them (20 = gold).
 pub fn floor_reward(d: &Dungeon, floor: i64) -> Reward {
     let r = base_floor_reward(floor);
     Reward {
@@ -243,6 +254,16 @@ pub fn floor_reward(d: &Dungeon, floor: i64) -> Reward {
 }
 
 fn base_floor_reward(floor: i64) -> Reward {
+    if let Some(r) = quests::labyrinth()
+        .floor_rewards
+        .iter()
+        .find(|r| r.floor == floor)
+    {
+        return Reward {
+            item_id: r.item_id,
+            count: r.count,
+        };
+    }
     let (item_id, count) = match floor {
         f if f % 5 == 0 => (crate::items::MEMORY_RING, 100 * (f / 5)),
         f if f % 2 == 1 => (20, 2_000 + 1_000 * f),
@@ -815,6 +836,33 @@ mod tests {
         assert_eq!(run.used.len(), 0, "the deck reset after all 22");
         assert_eq!(run.offer.len(), OFFER_SIZE);
         assert!(run.choose(99).is_none());
+    }
+
+    /// Build 43: the wiki's room costs (Bahamut screenshots, the slot pattern) and floor rewards
+    /// (ShoutWiki) replace ours; rooms no wiki covers keep ours.
+    #[test]
+    fn wiki_room_costs_and_floor_rewards_apply() {
+        assert!(quests::labyrinth().rooms.len() >= 36);
+        // On a screenshot: STAGE_DU01_01_02 22, STAGE_DU01_02_01 30, both single rooms 30.
+        assert_eq!(room_cost(1, 1), 22);
+        assert_eq!(room_cost(2, 0), 30);
+        assert_eq!(room_cost(10, 0), 30);
+        assert_eq!(room_cost(20, 0), 30);
+        // The slot pattern from floor 5 on (floor 17 has no screenshot).
+        assert_eq!(
+            (room_cost(17, 0), room_cost(17, 1), room_cost(17, 2)),
+            (35, 27, 25)
+        );
+        // Floor 4 has no screenshot and comes before the pattern: ours.
+        assert_eq!(room_cost(4, 0), 23);
+        for (floor, item, count) in [(1, 1002, 30), (2, 1003, 30), (3, 1004, 30), (4, 1006, 10)] {
+            let r = floor_reward(&DUNGEONS[0], floor);
+            assert_eq!((r.item_id, r.count), (item, count), "floor {floor}");
+        }
+        assert_eq!(
+            floor_reward(&DUNGEONS[0], 5).item_id,
+            crate::items::MEMORY_RING
+        );
     }
 
     #[test]
