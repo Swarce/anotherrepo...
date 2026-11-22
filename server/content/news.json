@@ -15,6 +15,31 @@
  },
  "posts": [
   {
+   "id": "build-043",
+   "build": 43,
+   "date": "2026-11-22",
+   "title": "Build 43",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• More of the original game's data, from the community wikis, official notices and player archives: action skill kits for 47 more statues, more leader and assist abilities, traits for almost every statue, and more JoJo Links."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Story: Quest Missions for the action stages, rewards for the tactical stages, and Diamond Coin special rewards on chapter finales."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Arena season rewards follow the official ranking table; the Labyrinth has 10, 15 or 20 floors by grade and recovers 100 Mentality a day."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• Some statues now have their real speed, evasion, accuracy and critical rate in tactical battles."
+    }
+   ]
+  },
+  {
    "id": "build-042",
    "build": 42,
    "date": "2026-11-21",

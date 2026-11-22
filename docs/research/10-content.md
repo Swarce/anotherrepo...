@@ -230,7 +230,8 @@ characteristicList  List<{id:int, level:int}>
 assistAttr          AssistAttribute Common=0, OnlyAssist=1
 assistSkillInfo     SkillInfo; assistAbilityList List<AbilityInfo>
 dtAssistSkillInfo   SkillInfo; dtAssistAbilityList List<DtAbilityInfo>
-speed, evasion, hitrate, criticalRate int   (DT stats)
+speed, evasion, hitrate, criticalRate int   (DT stats; Build 44: statues.json `tactical` where a
+                    wiki gives them, 17 statues, else our 100/0/100/5)
 stEffRateInfo       dtbattle.StEffRateInfo {stRateId, text, hamonAttack, bind, atkDown, defDown,
                     hitDown, avoDown, ctDown, spdDown, sripDamage, stun, vampireAttack, mindAttack,
                     aging, nodef, changeSType, stEffRateConfig}
@@ -561,6 +562,58 @@ DT variant: stageType 1 chapters (`CHAPTER_NAME_DT_ST_401…`). Same calls, but 
 `mapId` (dtBattleOk), `formation` = a pattern defined in area_position_pattern_table, and
 `areaSettingList[{seq:1, enemyStatueInfo, AiId:<dtbattle table>, difficultyLevel:1, dropList:[]}]`.
 It needs the dtbattle_* tables. The DT team (stageType 1) already exists for My Page.
+
+### 3.9 Story stage data from the wikis (Build 43)
+
+`tools/content/build_quests.py --research` merges the stages_story passes
+(`local/wiki-raw/research-b33/stages_story`, `research-b43/stages_story`; high and medium records
+only) into `server/content/quests.json`. Each value names its page, capture and access date (the
+stage's `source`, or an `also` entry with the `fields` it gives).
+
+- **CHAPTER_ST_23** (Gamerch 第24章, live page): AP 18 and recommended level 78 on every stage.
+  Build 33 held them because the page looked copied from 第23章; the atwiki EXP table
+  (その他のデータ, row 旧モードストーリー 23章以降: AP 18, EXP 5000, 難易度 78) corroborates them.
+  EXP and gold stay defaults (low confidence).
+- **CHAPTER_ST_24..28**: AP 18 and recommended level 78 per stage from the same atwiki row (old-mode
+  in-game numbering = Gamerch numbering = our ST_(N-1)). Its EXP 5000 is the top stage's, so the
+  stages keep default EXP and the chapter lists `gainRankExpMax` in `wiki`.
+- **Star missions** on 116 action story stages (docs/research/11 §4). Boss-stage conflict: the
+  Bahamut thread snA=969 (2019) says the old-mode final stage wants a regular (blue) skill, JoJo
+  Wiki and Gamerch 第24章 say an SP skill. Each stage keeps its own source (ST_23_05 and ST_24_05
+  JoJo Wiki, SP; ST_25_05..ST_28_05 Bahamut, regular) and the conflict is noted on all six.
+- **Tactical rewards** (atwiki ストーリークエスト): atwiki 第N章 = CHAPTER_DT_ST_4NN by number,
+  used only where the stage counts agree (38 chapters, 170 stages): first clear Diamonds (no
+  quantity) and one special reward per stage (`nameJp` as written; `itemId` only for an exact
+  ITEM_<id>_NAME label match, 67 of 170). Not served yet. Held in the chapter's `wiki`: the
+  prologue and chapters 1-4 (the 2018-09-28 maintenance cut their stages, Bahamut snA=726; our
+  files list the stages from before the cut) and 7, 21, 33, 43 (counts swapped 3/5, unexplained).
+  Atwiki chapters 47-48 have no id in the client.
+- **Not applied**: one DT_ST_438 stage's AP 15 / EXP 4185 / 難易度 30 (which stage is not
+  stated; recorded in `wiki`); drops are fixed when the area loads (atwiki FAQ; our tactical
+  drops are empty).
+- Enemies are drawn from team statues only (assist-only statues were excluded; this reproduces
+  the Build 10 enemy picks). Output dates come from the inputs, so a rerun is byte for byte.
+
+Build 44 (`--research` also takes the four research-b44 family files; only topic `stages_story`
+is read; all read 2026-11-22, cited per row):
+- **Action chapters' last-stage reward**: the official beginner guide (jdr.channel.or.jp tab /3,
+  Wayback capture 2018-02-12, high) gives a special reward of 1 Diamond Coin on every chapter's last
+  stage except chapter 1 (in-game 第1章 = CHAPTER_ST_00). 24 last stages get it in `rewards.special`
+  (`itemId` null: two item labels read ダイヤモンドコイン). The four chapters whose stage count Gamerch
+  contradicts (CHAPTER_ST_01, 05, 07, 16) get none and note why in `wiki`: their last stage in our
+  files is not the original's. Data only, as the tactical rewards.
+- **CHAPTER_ST_01's third stage**: a 2019 in-game stage screen (Bahamut snA=1046, high) shows
+  第2章's 第3話 (boss; AP 5, EXP 80, the boss missions, special reward ダイヤ ×1), which the game's
+  files lack (2 stages). Recorded in the chapter's `wiki`, not mapped; the chapter keeps defaults.
+- **Tactical first-clear Diamonds**: 1 per stage (Bahamut snA=940: about 150 Diamonds for the 148
+  stages of chapters 7-40; derived, medium) fills the quantity of the 170 tactical stages' ダイヤ.
+- **Chapter 28's release** (1.8.0, 2018-01-29, official notice): in CHAPTER_ST_27's `wiki`, with the
+  N-1 mapping noted (the client's own label reads 第２７章).
+- **Not in the JSON**: AP came back every 5 minutes and every 3 from 3.3.0 (2018-12; Reddit, medium):
+  our `apOneRecoveryTime` is already 180 s. Quests cost no AP up to rank 30 (1.8.0 notice; the 2019
+  screen still shows 'Rank 30までAP無限'): AP is never charged offline. The tactical chapters'
+  release dates (19-20 in 3.3.0, 33-34 in 3.4.0, 45-46 in 3.9.0) need the held 4NN mapping and are
+  not attached to chapters.
 
 ---------------------------------------------------------------------------------------------------
 

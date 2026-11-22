@@ -29,7 +29,8 @@ M = inferred.
 - **Stat bonus (tactical):** for each assist,
   `rate = base/1000 + min(boost, limitR)/limitR × addR/1000` (R = the assist's rarity 3–6), times
   `same or different statue type rate /1000`, applied to the **assist's own** HP/ATK/DEF and added
-  to the seat. The constants live in `dtbattle_damage_param`; ours were missing, so 0.
+  to the seat. The constants live in `dtbattle_damage_param` (0 before Build 22; the values we
+  send are in §4).
 - **Abilities** need `assist_ability_condition_table` rows keyed by statueId. Trap: the unused
   tactical reader finds the index in `dtAssistAbilityList` and reads that index from
   `assistAbilityList`, so both lists keep the same length and order. The tactical battle itself
@@ -63,7 +64,10 @@ Gamerch player posts 101615739 (2017-11-24), 101635727 (2017-11-27) and 10415577
 (2019-08-20); the original server's values are not recovered. Before Build 42 we sent
 10/5/50/10 (placeholders: 1% base, 51% at 50 boosts). Every assist record on a seat carries its
 `convergence` and stats (`collection::team_info`), so nothing else is sent. The tactical
-formula (§3, §4) is unchanged.
+formula (§3, §4) is unchanged by this. Build 44: Bahamut snA=361 (2017-09-27) states the
+action-era share as assist HP/ATK/DEF × (10% + boost × 0.4%), and snA=406 shows +150 = 70%
+(research-b44/communities, medium): the same line as ours at every fifth boost (ours steps per
+5 boosts, as the client's integer steps do).
 
 Not verified: the device check (the action formation shows a bigger share for a boosted assist);
 the Gamerch posts were not re-read in this session (the values are as the batch handoff quotes
@@ -76,9 +80,13 @@ them).
   becomes a main member of the team is not shown as an assist.
 - equip_multiple_assist applies the diff in order, moves an assist off the team's other seats, and
   refuses a main member, a seq outside 1–3 and an unknown statue (51702/51709).
-- **Bonus constants (ours):** base 10%, plus up to 10/10/15/20% for rarity 3/4/5/6 at 10 boosts,
-  ×1.2 when the assist shares the seat statue's type. So a fully boosted 5-star assist adds 30% of
-  its own stats.
+- **Bonus constants (`dtbattle_damage_param`):** base 10% plus boost/15 % up to +300 boosts
+  (20% more), ×2 when the assist shares the seat statue's type, ×1 otherwise; the same for every
+  rarity. So a fully boosted assist adds 60% of its own stats to a seat of its type, 30% to
+  another. Sources: Bahamut snA=773 (research-b33: the slope and ×2 since 2019-02-26, +226 = 50%)
+  and the 3.4.0 notice's translation on Reddit (research-b44, medium: the +300 cap, 20% / 10% at
+  +0). Before Build 44 the limits were ours (10 boosts, 10/10/15/20% by rarity; ×1.2 until the
+  research-b33 merge).
 - Abilities and the assist skill: Build 24 (§5).
 
 ## 5. Abilities and the assist skill (Build 24)
@@ -191,6 +199,31 @@ them).
   - Held, with the reasons in `HELD` in the builder:
     - 3180_62, 3230_62 and 4220_72 were rejected;
     - 4030_04, 4090_72 and 4170_16 have a ShoutWiki requirement that has not been checked yet.
+  - Build 43 (`research-b43/assists`, live Gamerch pages and ShoutWiki revisions read 2026-11-22;
+    the records may give `condition_types` or `condition_jp`): 178 statues.
+    - Released: 3180_62 (the live page's assist name is its `ABI_AST_3180_62_N` label, so ShoutWiki
+      rev 3300 is this statue: Tactical + Fighting Spirit), 4030_04 (rev 4819: Fighting Spirit +
+      Courage + Tactical) and 4170_16 (rev 3571: Fighting Spirit + Solitary). The last two are M:
+      a 2022 revision, and a stat block copied from the ★3 page.
+    - Still held: 3230_62, 4090_72 and 4220_72. Gamerch prints no 発動条件 on the statue page,
+      the ★4 index or the recommended-assists table, while ShoutWiki gives Courage + Unity, Courage
+      + Unity and Solitary + Solitary. The same table also omits it for 2040_72, whose ShoutWiki
+      condition we use, so "no condition" is a weak reading. The researchers settled 4090_72's id
+      (its assist-name label), not its condition. 4220_72's explosion damage (+30% Gamerch, +20%
+      ShoutWiki) has no tactical affect.
+    - `REFILE`: the Gamerch ★6 Koichi (ACT2) page that the b33 action pass filed under 4011_15
+      belongs to 4011_18 (by rarity). It gives no condition, so nothing served changes.
+    - The 15 `assist_ability_absent` records (Tactical-era ★6 pages with no Assist Ability section)
+      are not read: a missing section is not a missing ability, so those statues keep the default.
+  - Build 44 (the research-b44 family files, 292 statues): **4220_72 released.** In-game
+    アシスト編成 / アシストアビリティ詳細 screenshots on the Bahamut forum (snA=406, 2017-11-22, both
+    Stray Cats equipped; high) show 能力での食事 with +30% (so Gamerch is right; ShoutWiki's +20% is
+    the ★3 4220_71's 欲望と本能, whose ShoutWiki entry we already use) and two Solitary condition
+    icons (ShoutWiki's condition; the icon reading is medium). The `assist_ability_resolved` record
+    is the statue's source, the ShoutWiki page under `also`: conditions Solitary ×2, the leaning-stat
+    row as before (crit and explosion damage have no tactical affect), and `action` from its lines
+    (assist-use crit rate ×3 for 15 s; explosion damage held as `bomber_dmg`). 3230_62 and 4090_72
+    stay held (no b44 source). The Reddit retrospective's tactical-era kits name no assist ability.
   - Effects with no tactical affect keep the default kind (the leaning stat) under the wiki
     condition. These are conversions, crit, cool time, move speed and damage to a race.
   - Statues with no wiki type are counted under the server's placeholder type, so a condition
@@ -209,7 +242,8 @@ them).
   `tools/content/action_vocab.py`, ShoutWiki `{stat, value}` lines through an English table) and a
   card name. It replaces only the inline params and name of the `assistAbilityList` entry: the id
   (the `DT_AST_*` id the condition table indexes), the tactical row, the condition and the
-  `dtAbilityList` folding are unchanged. 104 statues have it (65 research, 39 ShoutWiki); the others
+  `dtAbilityList` folding are unchanged. 104 statues have it (65 research, 39 ShoutWiki; Build 43:
+  105 with 3180_62's ShoutWiki DoDoDo cool-down line); the others
   send the tactical row, with the tactical-only `DTAF_DMG_RATEADD` (and the other `BASE_DT_*` ids,
   `ACTION_AFFECT`) mapped to the action affect with the same numbers. The card name is the game's
   `ABI_AST_<KIND><tier>_N` of the first line's kind at the tactical row's tier (not for assist-only
@@ -250,7 +284,10 @@ them).
 - **Roster.** `tools/content/build_statues.py` appends them to statues.json with `assistOnly`
   true (after the 266, so nothing else changes). Stats: Gamerch by assist-ability name where it
   matches exactly (1: 4260_72), else the defaults. Rarity from their pose clips where the wiki has
-  none.
+  none. Build 43: a research record that marks the statue assist-only (the live Gamerch page's
+  アシスト専用 trait) lets it take that research pass's stats: 3180_62 (Mannish Boy, ★4 Solitary,
+  JoJoWiki and ShoutWiki). The Tonio and Boingo ★4 pages could each be either of two ids
+  (4090_71/72, 3230_61/62), so the statue research leaves them out.
 - **One skill (M for the choice).** `dtSkills` holds one normal skill: `SKILL_<p>_09` when the
   model has it, else its lowest skill with a skill text. It is their assist skill
   (`dtAssistSkillInfo`, §5.3). No `dtAttack` (an assist never acts as a unit; an attack id could

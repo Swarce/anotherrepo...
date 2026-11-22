@@ -21,6 +21,12 @@
    "note": "research passes (local/wiki-raw/research-b33): statue pages read live 2026-11-20 and Wayback captures; the activation condition (発動条件) and HP/ATK/DEF/damage values; each row cites its page"
   },
   {
+   "source": "Gamerch ジョジョDR攻略Wiki and Diamond Records Wiki (ShoutWiki)",
+   "page": "https://jojodr.gamerch.com/",
+   "accessed": "2026-11-22",
+   "note": "research-b43/assists: live Gamerch pages and ShoutWiki revisions re-read 2026-11-22; they settle 3180_62's identity and the 4030_04 and 4170_16 ShoutWiki requirements; 3230_62, 4090_72 and 4220_72 stay held (the two sites disagree on the condition); each row cites its page"
+  },
+  {
    "source": "jdr-research",
    "doc": "docs/research/19-assists.md"
   },
@@ -5629,7 +5635,20 @@
    "abilities": [
     {
      "abilityId": "DT_AST_ATK_RATEADD4",
-     "conditions": [],
+     "conditions": [
+      {
+       "statueType": 1,
+       "count": 1
+      },
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ],
      "action": {
       "abilityName": "ABI_AST_ATK_RATEADD4_N",
       "params": [
@@ -5644,7 +5663,7 @@
       "source": {
        "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Rohan_Kishibe_%28Tactical%29",
        "revid": 4819,
-       "accessed": "2026-11-15"
+       "accessed": "2026-11-22"
       }
      }
     }
@@ -5654,8 +5673,8 @@
     "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%286%E2%98%85%29_Rohan_Kishibe_%28Tactical%29",
     "revid": 4819,
     "license": "CC BY-SA 3.0",
-    "accessed": "2026-11-15",
-    "note": "assist-ability stat and value only (action-battle era); tier = nearest value"
+    "accessed": "2026-11-22",
+    "note": "condition and stat and value (action-battle era); tier = nearest value"
    }
   },
   {
@@ -6635,12 +6654,25 @@
    "abilities": [
     {
      "abilityId": "DT_AST_HP_RATEADD2",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 3,
+       "count": 1
+      },
+      {
+       "statueType": 5,
+       "count": 1
+      }
+     ]
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/%284%E2%98%85%29_Akira_Otoishi_%28Solitary%29",
+    "revid": 3571,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-22",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -7600,12 +7632,43 @@
    "abilities": [
     {
      "abilityId": "DT_AST_3180_62",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 2,
+       "count": 1
+      },
+      {
+       "statueType": 3,
+       "count": 1
+      }
+     ],
+     "action": {
+      "params": [
+       {
+        "affectId": "AF_ORAORA_CT_FAST",
+        "giveLimit": -1,
+        "lv1": [100, 0, 0, 0, 0, 0, 0, 0],
+        "lv10": [100, 0, 0, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [
+       "unclassified"
+      ],
+      "source": {
+       "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Mannish_Boy_(Solitary)",
+       "revid": 3300,
+       "accessed": "2026-11-14"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Mannish_Boy_(Solitary)",
+    "revid": 3300,
+    "license": "CC BY-SA 3.0",
+    "accessed": "2026-11-14",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value"
    }
   },
   {
@@ -7853,12 +7916,45 @@
    "abilities": [
     {
      "abilityId": "DT_AST_4220_72",
-     "conditions": []
+     "conditions": [
+      {
+       "statueType": 5,
+       "count": 2
+      }
+     ],
+     "action": {
+      "params": [
+       {
+        "affectId": "AF_AST_USE_CRTRATE_ADD",
+        "giveLimit": -1,
+        "lv1": [2000, 0, 150, 0, 0, 0, 0, 0],
+        "lv10": [2000, 0, 150, 0, 0, 0, 0, 0]
+       }
+      ],
+      "left": [
+       "bomber_dmg"
+      ],
+      "source": {
+       "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=406",
+       "accessed": "2026-11-22"
+      }
+     }
     }
    ],
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki assist ability: the statue's leaning stat, tier = rarity - 2"
+    "source": "Bahamut forum (巴哈姆特 JoJo DR board), in-game screenshots",
+    "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=406",
+    "accessed": "2026-11-22",
+    "note": "condition and no tactical affect for the effect: ours (action-battle era); tier = nearest value; research-b44: the in-game assist screens settle the research-b43 conflict (condition icons read at medium)",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(4%E2%98%85)_Stray_Cat_(Solitary)",
+      "revid": 3292,
+      "license": "CC BY-SA 3.0",
+      "accessed": "2026-11-14"
+     }
+    ]
    }
   },
   {

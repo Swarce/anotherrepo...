@@ -25,7 +25,7 @@ use std::time::{Duration, Instant};
 /// Marker the patcher checks to make sure it embeds this library and not something else.
 #[used]
 #[no_mangle]
-pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_b042";
+pub static JDR_EMBEDDED_MARKER: [u8; 24] = *b"JDR_EMBEDDED_SERVER_b043";
 
 pub const KEYS_ASSET: &str = "assets/jdr/keys.json";
 /// The player's redrawn UI art, stored in their APK by the patcher (optional).

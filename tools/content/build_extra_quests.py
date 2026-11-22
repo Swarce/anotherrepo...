@@ -8,16 +8,39 @@ source gives the original daily/event stage layouts, so every stage reuses the m
 real tactical story stage and gets enemies, levels and rewards that are ours (`jdr-default`),
 except the Easy-tier daily AP/EXP/gold, which the wiki gives (cited).
 
+From Build 43 it also reads research-b43/stages_extra (`--research` may be given more than once):
+Labyrinth room costs and area counts by room label (Bahamut floor screenshots), the cost-by-slot
+pattern for rooms the screenshots leave out (floors 5-20), the ShoutWiki floor rewards of floors
+1-4, and data-only facts (enemy-level previews, clear conditions, daily, event and Arena numbers)
+that no stage id of ours carries. They go to the `labyrinth` and `wiki` keys, each with its page,
+capture and access date; `server/services/src/labyrinth.rs` serves the room costs and the floor
+rewards (docs/research/22 §2.1). `--export` (the JP label export) checks each room name against the
+client's `STAGE_DU01_*` label and matches reward names to `ITEM_<id>_NAME` labels.
+
+From Build 44 `--research` also takes the research-b44 family files (they mix topics; only records of
+topic `stages_extra*` are read): AppMedia's recommended level for every weekday's 上級 tier (the
+STAGE_DY*_*_003 pattern in the record, used as the enemy level), and data-only facts (the 2019 atwiki
+Arena page, the 2018 official notices, event templates, the tactical-era Labyrinth). Each fact carries
+`use` (the server code that follows it) or `held` (why it is data only); see docs/CONTENT.md.
+
 usage: python3 -I tools/content/build_extra_quests.py --names <jdr-tool names output> \
-         [--gamerch local/wiki-raw/gamerch/stages.json] --out server/content/quests_extra.json
+         [--gamerch local/wiki-raw/gamerch/stages.json] \
+         [--research local/wiki-raw/research-b33/stages_extra/results.jsonl \
+          --research local/wiki-raw/research-b43/stages_extra/results.jsonl \
+          --research local/wiki-raw/research-b44/<family>/results.jsonl (each of blogs_archives,
+            communities, jp_strategy_sites, official_and_press) \
+          --export local/l10n/export-b33.tsv] --out server/content/quests_extra.json
 """
-import argparse, glob, hashlib, json, re
+import argparse, fnmatch, glob, hashlib, json, re
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--names", required=True, help="jdr-tool names output (logical bundle names)")
 ap.add_argument("--gamerch", help="local/wiki-raw/gamerch/stages.json (daily quest numbers)")
-ap.add_argument("--research", help="a research pass's stage facts (results.jsonl): useStamina, gainRankExp, "
-                "gold, recommendedLevel per stageId, with page and confidence (medium/high used)")
+ap.add_argument("--research", action="append", default=[],
+                help="a research pass's stage facts (results.jsonl): useStamina, gainRankExp, gold, "
+                "recommendedLevel per stageId, with page and confidence (medium/high used); from Build 43 "
+                "also Labyrinth, daily, event and Arena facts (research-b43); repeatable")
+ap.add_argument("--export", help="local/l10n/export-b33.tsv (JP labels: room names, item names)")
 ap.add_argument("--out", required=True)
 a = ap.parse_args()
 
@@ -52,6 +75,34 @@ def stage(stage_id, seed, level, ap, exp, gold, stype=None, source=None):
            "source": source or {"source": "jdr-default",
                                 "note": f"map and areas of {base['stageId']}; enemies, level and rewards ours"}}
     return rec
+
+
+def site(url):
+    host = url.split("/")[2]
+    if "forum.gamer.com.tw" in host:
+        return "Bahamut forum (bsn 31489)"
+    if "shoutwiki.com" in host:
+        return "Diamond Records Wiki (ShoutWiki), CC BY-SA 3.0"
+    if "atwiki.jp" in host:
+        return "ジョジョDR２ @ ウィキ (atwiki, Wayback Machine)"
+    if "jojowiki.com" in host:
+        return "JoJo Wiki"
+    # research-b44 (Build 44)
+    if "appmedia.jp" in host:
+        return "AppMedia ジョジョDR攻略wiki (Wayback Machine)"
+    if "jdr.channel.or.jp" in host:
+        return "ジョジョDR official notices (jdr.channel.or.jp, Wayback Machine)"
+    if "reddit.com" in host:
+        return "Reddit r/JoJoDiamondRecords"
+    if "2ch.sc" in host:
+        return "2ch ジョジョDR thread (Wayback Machine)"
+    if "4gamer.net" in host:
+        return "4Gamer.net (Bandai Namco press release)"
+    if "famitsu.com" in host:
+        return "Famitsu App"
+    if "twitter.com" in host:
+        return "@jojodr_app on X/Twitter (Wayback Machine)"
+    return host
 
 
 TYPE_WORDS = {"Courage": 1, "Wisdom": 2, "Spirit": 3, "Unity": 4, "Solitude": 5}
@@ -95,12 +146,26 @@ if a.gamerch:
 # Research facts per stage (Build 33): medium/high only; the recommended level is the enemy level,
 # as for the story stages.
 facts = {}
-if a.research:
-    for line in open(a.research, encoding="utf-8"):
+records = []  # every medium/high research record, in file order
+used_pages = {}  # research pages the output cites -> access date
+DAILY_IDS = sorted(l for l in labels if re.fullmatch(r"STAGE_DY2_[A-Z]+_\d{3}", l))
+for path in a.research:
+    for line in open(path, encoding="utf-8"):
         r = json.loads(line)
-        if r.get("confidence") in ("high", "medium") and r.get("field") in (
+        if r.get("confidence") not in ("high", "medium"):
+            continue
+        if not r.get("topic", "stages_extra").startswith("stages_extra"):
+            continue  # research-b44 files mix topics: only the daily, event, Arena and Labyrinth ones here
+        records.append(r)
+        if r.get("stageId") and r.get("field") in (
                 "useStamina", "gainRankExp", "gold", "recommendedLevel") and isinstance(r.get("value"), int):
             facts.setdefault(r["stageId"], {})[r["field"]] = r
+        # research-b44: a daily tier's number named by a stage-id pattern in the subject (e.g.
+        # STAGE_DY*_*_003, every weekday's 上級); a stage's own record (b33) comes first.
+        m = re.search(r"\((STAGE_DY[A-Z0-9*_]+)\)", r.get("subject") or "")
+        if m and r.get("field") == "daily.recommendedLevel" and isinstance(r.get("value"), int):
+            for sid in fnmatch.filter(DAILY_IDS, m.group(1)):
+                facts.setdefault(sid, {}).setdefault("recommendedLevel", dict(r, field="recommendedLevel"))
 chapters, daily = [], {}
 for i, (dy, dy2, ban) in enumerate(DAYS):
     category = 6 + i
@@ -129,7 +194,9 @@ for i, (dy, dy2, ban) in enumerate(DAYS):
                 lv = f["recommendedLevel"]["value"] if "recommendedLevel" in f else lv
                 first_fact = next(iter(f.values()))
                 page = first_fact["url"]
-                src = {"source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)" if "gamerch" in page else page.split("/")[2],
+                if "gamerch" not in page:
+                    used_pages.setdefault(page, first_fact["accessed"])
+                src = {"source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine)" if "gamerch" in page else site(page),
                        "page": page, **({"capture": first_fact["capture"]} if first_fact.get("capture") else {}),
                        "accessed": first_fact.get("accessed") or "2026-11-20",
                        "note": "wiki: " + ", ".join(sorted(k.replace("recommendedLevel", "recommended level as enemy level")
@@ -281,13 +348,193 @@ for b in sorted(bundles):
         campaigns.append({"campaignId": m.group(2), "banner": m.group(1), "name": f"EC_{m.group(2)}_Name"})
 assert campaigns
 
+# ---- Labyrinth and data-only facts (research-b43/stages_extra, Build 43) ----
+used_pages = {}
+
+
+def rsource(r, note=None):
+    """A record's citation: site, page, the screenshot it was read from, capture, access date."""
+    out = {"source": site(r["url"]), "page": r["url"]}
+    img = re.search(r"https://(?:truth\.bahamut\.com\.tw|i\.redd\.it)/\S+?\.(?:JPG|PNG|jpg|png)", r.get("note") or "")
+    if img:
+        out["image"] = img.group(0)
+    rev = re.search(r"page revision (\d{4}-\d\d-\d\d)", r.get("note") or "")
+    if rev:
+        out["revision"] = rev.group(1)
+    if r.get("capture"):
+        out["capture"] = r["capture"]
+    out["accessed"] = r["accessed"]
+    out["confidence"] = r["confidence"]
+    if note:
+        out["note"] = note
+    used_pages.setdefault(r["url"], r["accessed"])
+    return out
+
+
+jp = {}
+if a.export:
+    for line in open(a.export, encoding="utf-8"):
+        f = line.rstrip("\n").split("\t")
+        if len(f) >= 4 and f[0].startswith("text:"):
+            jp[f[0].split(":", 2)[2]] = f[3]
+
+
+def item_by_jp(name):
+    """The item whose game label (`ITEM_<id>_NAME`) is exactly this Japanese name, if one is."""
+    ids = sorted({int(m.group(1)) for k, v in jp.items() if v == name
+                  for m in [re.fullmatch(r"ITEM_(\d+)_NAME", k)] if m})
+    return ids[0] if len(ids) == 1 else None
+
+
+ROOM = re.compile(r"(STAGE_DU01_(\d\d)_(\d\d)) (.+)$")
+# Why a data-only fact is not served (docs/research/22 §2.1, 23 §1.6, 25 §6, 13).
+HELD = {
+    "stages_extra.labyrinth": "data only: action-era (2018) preview or note; our rooms reuse story stages",
+    "stages_extra.daily": "data only: confirms the weekday tiles; no stage numbers",
+    "stages_extra.events": "data only: no stage id of ours carries these numbers",
+    "stages_extra.arena": "data only: 2017 action-era Arena; our point scale, ladder and BP rate stay ours",
+}
+# research-b44 (Build 44): what each new fact does here, by field. "use" names the server code that
+# follows it; "held" says why it is data only (docs/research/22 §2.2, 23 §1.6, 25 §6, 13).
+OLD_ARENA = ("held", "data only: the 2018 action-era Arena event; our Arena follows the 2019 rules (atwiki "
+                     "第11回 rows)")
+EVENT = ("held", "data only: no event or campaign of ours carries it (the event ids differ, or the client's "
+                 "chapter is not one we serve)")
+B44 = {
+    "arena.ranking_rewards": ("use", "server/services/src/services/arena.rs SEASON_REWARDS: the rank bands to "
+                              "10000 and the 金チケ column, read as 黄金のガシャチケット (item 282; 10連×1枚 as 10 of "
+                              "them); not paid: 銀チケ (no such item in the client), the reward Mind (8154, not in "
+                              "minds.json) and the two rows below 10000th (medium: column unclear)"),
+    "arena.point_rewards": ("held", "the round's point scale (500 to 1,000,000; 100th place about 10M in four "
+                            "days) is not ours (a season's field tops near 10,000 points): our ladder stays"),
+    "arena.rank100_line": ("held", "data only: the original's point scale"),
+    "arena.schedule": ("held", "data only: our Arena runs weekly seasons and never closes"),
+    "arena.special_rewards": ("held", "data only: our Arena runs weekly seasons and never closes"),
+    "arena.rules": ("use", "server/services/src/services/arena.rs: the win-streak stat correction is negative (its "
+                    "size is ours); no Reversal, BP apart from AP, Colas only, three against three, Fever x3 and a "
+                    "lost connection counted as a defeat agree with ours; Mind arena effects are not built"),
+    "arena.cola_shop": ("held", "data only (medium): our Colas come from the Ring Exchange"),
+    "event_period": OLD_ARENA, "ranking_reward_tiers": OLD_ARENA, "rules": OLD_ARENA,
+    "arena_mind_effect": OLD_ARENA, "login_bonus": OLD_ARENA, "arena_effect_minds": OLD_ARENA,
+    "rule_fix": OLD_ARENA,
+    "daily.useStamina_source_says": ("held", "source says (medium): AppMedia's 上級 6 / 初級 10 look swapped "
+                                     "against Gamerch's 解放 上級 10; not used"),
+    "daily_source_says": ("held", "source says (medium): the stage is not named"),
+    "daily.drop_tiers": ("held", "data only: daily drops are not sent"),
+    "everyday_quest": ("held", "data only: from 1.6.0 (2017-11); whether it stayed daily after the 2018-02 "
+                       "renewal is not stated, and our tiles follow the weekday"),
+    "first_clear_special_reward": ("held", "data only: first-clear rewards are not sent, and the per-stage "
+                                   "split is not given"),
+    "daily_mission_reward": ("held", "not built: our mission list has no 'clear every daily mission' (the "
+                             "client's Daily_ACHIEVEMENT_Text_0056)"),
+    "labyrinth_grades": ("use", "server/services/src/labyrinth.rs: 10, 15 and 20 floors for the three grades "
+                         "and +100 Mentality a day up to the client's 300; the 難易度 numbers (10/50/80) are not "
+                         "the client's letter grade, so our grades stay"),
+    "labyrinth_run_rules": ("use", "agrees with ours: rewards on a full clear or an escape, none after the last "
+                            "Soul, a fresh run after a full clear"),
+    "enemy_preview": ("held", "data only: action-era (2018) preview; our rooms reuse story stages"),
+    "tarot_reversed": ("use", "server/services/src/labyrinth.rs: Tower reversed DEF +50% (ours before) now has "
+                       "this source; the other reversed effects keep the 3.12.0 client's texts (this table is the "
+                       "2018 action era's)"),
+}
+
+
+def kind(r):
+    """The area of a stages_extra record: b43 and official_and_press name it in the topic, the other
+    research-b44 families in the field."""
+    if "." in r["topic"]:
+        return r["topic"].split(".", 1)[1]
+    f = r["field"]
+    for k in ("arena", "events", "daily"):
+        if f.startswith(k + ".") or f.startswith(k + "_"):
+            return k
+    return "labyrinth"
+
+
+EVENT_FIELDS = {"schedule", "event_items_and_reward_mind", "guerrilla_quest", "missions_and_star_minds",
+                "new_quest", "login_campaign", "new_player_dc", "mission_dc_rewards_tree", "login_gift",
+                "community_milestones", "gacha_points"}
+lab_rooms, lab_wiki, wiki_facts = {}, [], {}
+pattern = floor_rewards = None
+for r in records:
+    if not r.get("topic", "").startswith("stages_extra") or r.get("stageId"):
+        continue
+    if r["field"] == "daily.recommendedLevel":
+        continue  # applied to the daily stages above (their `source`)
+    m = ROOM.match(r["subject"])
+    if m and r["field"] in ("useMentality", "areaMax") and isinstance(r["value"], int):
+        label, floor, room, name = m.group(1), int(m.group(2)), int(m.group(3)), m.group(4)
+        assert a.export, "--export is needed to check the room names"
+        assert jp.get(label) == name, (label, name, jp.get(label))
+        row = lab_rooms.setdefault(label, {"label": label, "floor": floor, "room": room})
+        row[r["field"]] = r["value"]
+        row.setdefault("source", rsource(r))
+        continue
+    if r["field"] == "useMentality_pattern":
+        pattern = r
+    elif r["field"] == "floorReward":
+        floor_rewards = r
+    fact = {"subject": r["subject"], "field": r["field"], "value": r["value"],
+            **rsource(r, r.get("note") or None)}
+    if r["field"] in B44:
+        fact[B44[r["field"]][0]] = B44[r["field"]][1]
+    elif r["field"] in EVENT_FIELDS or r["field"].startswith("events."):
+        fact["held"] = EVENT[1]
+    elif r["field"] not in ("useMentality_pattern", "floorReward"):
+        fact["held"] = HELD[r["topic"]]
+    if kind(r) == "labyrinth":
+        lab_wiki.append(fact)
+    else:
+        wiki_facts.setdefault(kind(r), []).append(fact)
+
+labyrinth = {}
+if lab_rooms:
+    rooms = sorted(lab_rooms.values(), key=lambda x: (x["floor"], x["room"]))
+    # The cost-by-slot pattern (medium, derived from the screenshots: from floor 5 on every room 01
+    # seen costs 35, every room 02 27, every room 03 25) fills rooms 01-03 the screenshots leave
+    # out, from floor 5 on; floors 1-4 differ and keep ours.
+    if pattern:
+        pv = pattern["value"]
+        for floor in range(5, 21):
+            for room in (1, 2, 3):
+                label = f"STAGE_DU01_{floor:02}_{room:02}"
+                if label in labels and label not in lab_rooms and isinstance(pv.get(f"rr{room:02}"), int):
+                    rooms.append({"label": label, "floor": floor, "room": room,
+                                  "useMentality": pv[f"rr{room:02}"],
+                                  "source": rsource(pattern, f"cost-by-slot pattern (room {room:02} from floor 5 "
+                                                             "on); not on a screenshot")})
+        rooms.sort(key=lambda x: (x["floor"], x["room"]))
+    rewards = []
+    for x in (floor_rewards or {}).get("value", []):
+        iid = item_by_jp(x["item_jp"])
+        if iid is None:
+            continue  # no game label with that name: not served
+        row = {"floor": x["floor"], "itemId": iid, "nameJp": x["item_jp"], "count": x["qty"] or 10,
+               "source": rsource(floor_rewards)}
+        if not x["qty"]:
+            row["countFrom"] = "jdr-default"
+            row["source"]["note"] = "quantity cut off on the screenshot: count ours"
+        rewards.append(row)
+    labyrinth = {"about": "Labyrinth room costs (useMentality) and area counts (areaMax, data only: our rooms have "
+                          "one area) by the client's room label, and floor rewards; read by "
+                          "server/services/src/labyrinth.rs. See docs/research/22-labyrinth.md §2.1.",
+                 "rooms": rooms, "floorRewards": rewards, "wiki": lab_wiki}
+
 ids = [s["stageId"] for c in story + chapters for s in c["stages"]]
 assert len(ids) == len(set(ids)), "stage ids are unique"
 doc = {"about": "Daily and event chapters for the Quest Select tiles. Labels and banners from the player's files; "
                 "every stage reuses a tactical story stage's map; enemies, levels and rewards are ours unless cited. "
                 "See docs/research/13-menus.md.",
-       "sources": [{"source": "jdr-default", "note": "generated by tools/content/build_extra_quests.py"}],
+       "sources": [{"source": "jdr-default", "note": "generated by tools/content/build_extra_quests.py"}]
+       + [{"source": site(u), "page": u, "accessed": d, "note": "research pass (stages_extra)"}
+          for u, d in sorted(used_pages.items())],
        "daily": daily, "events": events, "campaigns": campaigns, "chapters": chapters}
+if labyrinth:
+    doc["labyrinth"] = labyrinth
+if wiki_facts:
+    doc["wiki"] = wiki_facts
 json.dump(doc, open(a.out, "w"), indent=1, ensure_ascii=False)
 print(len(chapters), "chapters;", sum(len(c["stages"]) for c in chapters), "stages;",
-      len(daily), "days;", len(events), "events;", len(campaigns), "campaigns")
+      len(daily), "days;", len(events), "events;", len(campaigns), "campaigns;",
+      len(labyrinth.get("rooms", [])), "labyrinth rooms;", len(labyrinth.get("floorRewards", [])), "floor rewards;",
+      sum(len(v) for v in wiki_facts.values()) + len(labyrinth.get("wiki", [])), "data-only facts")

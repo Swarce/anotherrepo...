@@ -119,7 +119,10 @@ description or rewards. No errors were logged.
   rank table.
 - **Turns** (H for the mechanism):
   - Action gauges start at 50–52.
-  - Time to act = (100 − gauge) × 10000 / speed (0xBA31F0).
+  - Time to act = (100 − gauge) × 10000 / speed (0xBA31F0). We send
+    `StatueInfo.speed` 100 for every statue until Build 44, which sends the wiki value for 17
+    (100 to 125; docs/CONTENT.md "Research collections"); that the gauge reads this field is not
+    traced (M).
   - After acting, the unit's gauge drops by the skill's `skillWait` (0xBA338C).
   - With `skillWait` 0 the first unit keeps acting forever. Build 12 sends 100 for attacks and 50
     for the fixed skills (L).
@@ -196,10 +199,14 @@ empty star rows, and the loading screen's tip board was blank.
   - Labels: `QuestMission_JP:QuestMissionText_<type + 2>` (texts 0–2 are counters; 3 is type 1
     UseSupport, 16 type 14 NoCondition, 49 type 47 NoContinue) (M for the offset rule: every row
     matches its enum name).
-  - What we send: 7 all team members survive, 8 defeat all enemies, 20 use a Skill (our
-    translations of the labels), `param` empty (the choice: design borrowed from the Diamond
-    Records PC playtest). Wins keep types
-    1..46 in `Progress.stars`.
+  - What we send (Build 43): a story stage a wiki lists sends the wiki's three (`missions` in
+    quests.json, 116 of 130 stages; docs/research/10 §3.9), e.g. 14 NoCondition (クエストをクリアする,
+    text 16), 7, 22 UseSPSkill (text 24), 26/27 boss by skill / SP skill (texts 28/29), 4 and 25
+    DoDoDo. Other action stages: 7 all team members survive, 8 defeat all enemies, 20 use a Skill
+    (our translations of the labels; the choice: design borrowed from the Diamond Records PC
+    playtest). `param` empty. Wins keep types 1..46 in `Progress.stars`.
+  - Open (M): how the client checks 14 NoCondition (expected: met by any win) and 26/27 (the
+    boss kill's last hit) is not traced yet.
   - Open (M): not yet seen on a device (whether every served wave raises `EnemyNum` as it
     spawns, so 8 can be met).
 - **Loading tips** (H).

@@ -14,6 +14,18 @@
    "note": "via research-b33: the record source for links 32, 33, 40, 45, 57 and 61; corroboration for 30 and 46"
   },
   {
+   "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク comment screenshots, research-b43)",
+   "page": "https://jojodr.gamerch.com/ジョジョリンク",
+   "accessed": "2026-11-22",
+   "note": "research-b43/links_traits_minds: in-game team screenshots attached to comments (read as data, not stored) give the effects of links 53, 54, 64 and 76; cited per link in effectSource"
+  },
+  {
+   "source": "Bahamut forum (巴哈姆特), in-game team screenshot",
+   "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=342",
+   "accessed": "2026-11-22",
+   "note": "research-b44/communities: an in-game team screen (2017-09, read as data, not stored) shows links 66, 67, 68 active and prints their effects; cited per link in effectSource or also"
+  },
+  {
    "source": "Gamerch ジョジョDR攻略Wiki (Wayback Machine snapshot, saved link table)",
    "page": "https://web.archive.org/web/20170706212148/https://jojodr.gamerch.com/ジョジョリンク",
    "accessed": "2026-11-15",
@@ -432,7 +444,17 @@
     "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
     "page": "https://jojodr.gamerch.com/ジョジョリンク",
     "accessed": "2026-11-20",
-    "confidence": "medium"
+    "confidence": "medium",
+    "also": [
+     {
+      "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page, comment screenshot)",
+      "page": "https://jojodr.gamerch.com/%E3%82%B8%E3%83%A7%E3%82%B8%E3%83%A7%E3%83%AA%E3%83%B3%E3%82%AF/663034_1",
+      "capture": "https://cdn.img-conv.gamerch.com/img.gamerch.com/jojodr/663034/20171109005942DON2DmpD.jpg",
+      "accessed": "2026-11-22",
+      "confidence": "high",
+      "field": "link_source"
+     }
+    ]
    }
   },
   {
@@ -1610,6 +1632,62 @@
    }
   },
   {
+   "charaLinkId": 53,
+   "abilityName": "ABI_JOLINK_NAME_053",
+   "groups": [
+    [
+     "3321",
+     "3322",
+     "3323"
+    ],
+    [
+     "2020"
+    ],
+    [
+     "3270"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1, 2],
+     "min": 3
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_NORMAL_SKILL_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク/663034_1",
+    "accessed": "2026-11-20",
+    "confidence": "medium",
+    "effectSource": {
+     "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page, comment screenshot)",
+     "page": "https://jojodr.gamerch.com/%E3%82%B8%E3%83%A7%E3%82%B8%E3%83%A7%E3%83%AA%E3%83%B3%E3%82%AF/663034_1",
+     "capture": "https://cdn.img-conv.gamerch.com/img.gamerch.com/jojodr/663034/20171118225231YX3eIQkD.jpg",
+     "accessed": "2026-11-22",
+     "confidence": "high"
+    },
+    "note": "research-b43: a team screenshot shows the link active with every member the record names (was low); all 3 members: the only team any source shows with the link active (research-b43 screenshot; the researchers leave the member rule open, so the stricter form)",
+    "also": [
+     {
+      "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page, comment screenshot)",
+      "page": "https://jojodr.gamerch.com/%E3%82%B8%E3%83%A7%E3%82%B8%E3%83%A7%E3%83%AA%E3%83%B3%E3%82%AF/663034_1",
+      "capture": "https://cdn.img-conv.gamerch.com/img.gamerch.com/jojodr/663034/20171118225231YX3eIQkD.jpg",
+      "accessed": "2026-11-22",
+      "confidence": "medium",
+      "field": "link_members"
+     }
+    ]
+   }
+  },
+  {
    "charaLinkId": 55,
    "abilityName": "ABI_JOLINK_NAME_055",
    "groups": [
@@ -1820,6 +1898,53 @@
    }
   },
   {
+   "charaLinkId": 64,
+   "abilityName": "ABI_JOLINK_NAME_064",
+   "groups": [
+    [
+     "2020"
+    ],
+    [
+     "1090"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_ATRBT_HASHIRA_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [30, 4, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 4, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_DEF_RATEADD",
+     "giveLimit": -1,
+     "lv1": [50, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "medium",
+    "effectSource": {
+     "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page, comment screenshot)",
+     "page": "https://jojodr.gamerch.com/%E3%82%B8%E3%83%A7%E3%82%B8%E3%83%A7%E3%83%AA%E3%83%B3%E3%82%AF",
+     "capture": "https://cdn.img-conv.gamerch.com/img.gamerch.com/jojodr/663034/20180113200027s5Bei2OF.jpg",
+     "accessed": "2026-11-22",
+     "confidence": "high"
+    },
+    "note": "research-b43: a team screenshot shows the link active with every member the record names (was low)"
+   }
+  },
+  {
    "charaLinkId": 65,
    "abilityName": "ABI_JOLINK_NAME_065",
    "groups": [
@@ -1888,7 +2013,58 @@
     "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
     "page": "https://jojodr.gamerch.com/ジョジョリンク",
     "accessed": "2026-11-20",
-    "confidence": "medium"
+    "confidence": "medium",
+    "also": [
+     {
+      "source": "Bahamut forum (巴哈姆特), in-game team screenshot",
+      "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=342",
+      "accessed": "2026-11-22",
+      "confidence": "high",
+      "note": "research-b44/communities: shown active, with this effect, on the team screen of link 67",
+      "field": "active_in_screenshot"
+     }
+    ]
+   }
+  },
+  {
+   "charaLinkId": 67,
+   "abilityName": "ABI_JOLINK_NAME_067",
+   "groups": [
+    [
+     "1120"
+    ],
+    [
+     "4080"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_CRTRATE_ADD",
+     "giveLimit": -1,
+     "lv1": [30, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Bahamut forum (巴哈姆特)",
+    "page": "https://forum.gamer.com.tw/G2.php?bsn=31489&parent=4&sn=18",
+    "accessed": "2026-11-20",
+    "confidence": "medium",
+    "effectSource": {
+     "source": "Bahamut forum (巴哈姆特), in-game team screenshot",
+     "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=342",
+     "accessed": "2026-11-22",
+     "confidence": "high",
+     "note": "research-b44/communities link_effect_confirmed"
+    },
+    "note": "research-b44: an in-game team screen shows the link active with every member the record names (was low); ブラフォード: the middle seat is hidden by the pop-up; 伝説のふたりの騎士 (Tarkus + Bradford) is active in the same team, so it is Bradford (research-b44/communities)"
    }
   },
   {
@@ -1931,7 +2107,17 @@
     "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
     "page": "https://jojodr.gamerch.com/ジョジョリンク",
     "accessed": "2026-11-20",
-    "confidence": "high"
+    "confidence": "high",
+    "also": [
+     {
+      "source": "Bahamut forum (巴哈姆特), in-game team screenshot",
+      "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=342",
+      "accessed": "2026-11-22",
+      "confidence": "high",
+      "note": "research-b44/communities: shown active, with this effect, on the team screen of link 67",
+      "field": "active_in_screenshot"
+     }
+    ]
    }
   },
   {
@@ -1968,6 +2154,48 @@
     "page": "https://jojodr.gamerch.com/ジョジョリンク",
     "accessed": "2026-11-20",
     "confidence": "medium"
+   }
+  },
+  {
+   "charaLinkId": 76,
+   "abilityName": "ABI_JOLINK_NAME_076",
+   "groups": [
+    [
+     "3030",
+     "3031"
+    ],
+    [
+     "3060"
+    ]
+   ],
+   "rules": [
+    {
+     "groups": [0, 1],
+     "min": 2
+    }
+   ],
+   "trait": null,
+   "params": [
+    {
+     "affectId": "AF_DEFEAT_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [30, 0, 20, 0, 0, 0, 0, 0],
+     "lv10": [30, 0, 20, 0, 0, 0, 0, 0]
+    }
+   ],
+   "source": {
+    "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page)",
+    "page": "https://jojodr.gamerch.com/ジョジョリンク",
+    "accessed": "2026-11-20",
+    "confidence": "medium",
+    "effectSource": {
+     "source": "Gamerch ジョジョDR攻略Wiki (ジョジョリンク page, comment screenshot)",
+     "page": "https://jojodr.gamerch.com/%E3%82%B8%E3%83%A7%E3%82%B8%E3%83%A7%E3%83%AA%E3%83%B3%E3%82%AF",
+     "capture": "https://cdn.img-conv.gamerch.com/img.gamerch.com/jojodr/663034/20180113201342GaAxkqRT.jpg",
+     "accessed": "2026-11-22",
+     "confidence": "high"
+    },
+    "note": "research-b43: a team screenshot shows the link active with every member the record names (was low)"
    }
   },
   {
@@ -2049,12 +2277,8 @@
    "reason": "low confidence"
   },
   {
-   "charaLinkId": 53,
-   "reason": "effect unknown"
-  },
-  {
    "charaLinkId": 54,
-   "reason": "members unknown"
+   "reason": "effect known (research-b43); the members are probably any two female statues (medium, from two screenshots), and our statues carry no gender trait (ATTR_TEXT_16-18 are not sent)"
   },
   {
    "charaLinkId": 59,
@@ -2066,14 +2290,6 @@
   },
   {
    "charaLinkId": 62,
-   "reason": "low confidence"
-  },
-  {
-   "charaLinkId": 64,
-   "reason": "effect unknown"
-  },
-  {
-   "charaLinkId": 67,
    "reason": "low confidence"
   },
   {
@@ -2101,32 +2317,27 @@
    "reason": "name only (no members or effect in any source)"
   },
   {
-   "charaLinkId": 76,
-   "reason": "effect unknown"
-  },
-  {
    "charaLinkId": 77,
    "reason": "name only (no members or effect in any source)"
   }
  ],
  "report": {
   "stats": {
-   "held": 25,
-   "served": 53,
-   "served_character": 48,
+   "held": 21,
+   "served": 57,
+   "served_character": 52,
    "served_trait": 5
   },
   "held_reasons": {
    "conflict between sources": 1,
    "crit-taken 0.07 (probably 0.70) and the Straizo membership is uncertain": 1,
-   "effect unknown": 3,
+   "effect known (research-b43); the members are probably any two female statues (medium, from two screenshots), and our statues carry no gender trait (ATTR_TEXT_16-18 are not sent)": 1,
    "gold/EXP '0.1%' unit ambiguous, and no client consumer": 4,
-   "low confidence": 5,
-   "members unknown": 1,
+   "low confidence": 4,
    "name only (no members or effect in any source)": 8,
    "no record": 1,
    "two Gamerch rows under one name (different members and effects)": 1
   },
-  "affect_ids": 18
+  "affect_ids": 19
  }
 }

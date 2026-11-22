@@ -567,8 +567,10 @@ def dumps(obj):
 
 # --- leader records (shared by build_action_abilities.py and build_statue_traits.py) -------------
 GAMERCH = 'https://jojodr.gamerch.com/'
-# Research matches held for a later check (as build_leader_abilities.py RESEARCH_HELD).
-RESEARCH_HELD = {'3041_03', '4000_23'}
+# Research matches held for a later check (as build_leader_abilities.py RESEARCH_HELD). Build 43:
+# 3041_03 and 4000_23 released (research-b43/assists re-read both live pages).
+RESEARCH_HELD = set()
+RANK = {'high': 3, 'medium': 2}
 TITLE = re.compile('【(' + '|'.join(STYPE_JP) + ')】.*★([0-9])')
 
 
@@ -581,13 +583,26 @@ def leader_names(labels):
     return out
 
 
+def leader_lines(v):
+    """A leader_ability record's lines: its 'effects', else (research-b43) its 'lv1' lines with the
+    matching 'max' line's number as '(MAX ...)', the form the Gamerch pages print."""
+    if v.get('effects'):
+        return v['effects']
+    lv1, mx = v.get('lv1') or [], v.get('max') or []
+    out = []
+    for i, line in enumerate(lv1):
+        m = re.search(r'([+-]?[0-9]+(?:\.[0-9]+)?)(%|倍)?$', nfkc(mx[i])) if i < len(mx) else None
+        out.append(line + ('(MAX%s%s)' % (m.group(1), m.group(2) or '') if m else ''))
+    return out
+
+
 def match_leader_record(r, lead_jp, srv_by_id):
     """A research leader_ability record (live Gamerch statue page) -> its statueId, 'held', or None.
     The record's statueId is not trusted: the page leader name must equal one ABI_LEAD_NAME label
     after NFKC, and the URL title's ★rarity and 【type】 must pick exactly one roster statue."""
     v, url = r.get('value'), r.get('url') or ''
     if r.get('field') != 'leader_ability' or r.get('confidence') not in ('high', 'medium') \
-            or not isinstance(v, dict) or not v.get('name') or not v.get('effects') \
+            or not isinstance(v, dict) or not v.get('name') or not leader_lines(v) \
             or not url.startswith(GAMERCH):
         return None
     import urllib.parse

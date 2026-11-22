@@ -5,7 +5,9 @@
 //!
 //! Client facts (H, read in the 3.12.0 code) are marked "client"; facts from the research pack's
 //! dated guides are marked with their note id; everything else is ours. The campaign is always
-//! open; seasons, point rewards and opponent strength are ours.
+//! open; seasons, point rewards and opponent strength are ours. From Build 44 the season-end
+//! rewards and the sign of the win-streak stat correction follow the 2019 atwiki Arena page
+//! (research-b44; docs/research/23 §1.6).
 //!
 //! - My Page shows the Arena button for the first `/info/event_list` entry of eventType 6/7 and
 //!   reads `userBattleInfo.fieverEndTime` as a date (client).
@@ -115,12 +117,27 @@ const LADDER: &[(i64, i64, i64)] = &[
     (4_000, 31, 1_000),
     (6_000, 10, 300),
 ];
-/// Season-end rewards by final ranking position (at most this position, item, count) (ours).
+/// The 2019 Arena's gold gacha ticket (the atwiki's 金チケ), read as the client's only gold gacha
+/// ticket, 黄金のガシャチケット (item 282; our reading: the wiki's short name matches no label).
+const GOLD_TICKET: i64 = crate::services::gasha::COUNT_UP_TICKET;
+/// Season-end rewards by final ranking position (at most this position, item, count): the rank
+/// bands and the 金チケ column of the atwiki Arena page's ranking reward table (第11回, 2019-08,
+/// the tactical era whose Arena 3.12.0 runs; research-b44/jp_strategy_sites, high for rows to
+/// 10000th). The top band's 10-pull ticket (10連×1枚) is paid as 10 single tickets (ours: our
+/// gacha takes single tickets). Not paid: the 銀チケ column (no silver ticket in the client), the
+/// round's reward Mind (8154, not one of our Minds) and the two rows below 10000th (medium: their
+/// column is unclear). Our field has FIELD_SIZE + 1 places, so only the first five bands occur.
 const SEASON_REWARDS: &[(i64, i64, i64)] = &[
-    (10, 10, 500),
-    (100, 10, 300),
-    (500, 10, 150),
-    (i64::MAX, 10, 50),
+    (100, GOLD_TICKET, 10),
+    (200, GOLD_TICKET, 5),
+    (300, GOLD_TICKET, 4),
+    (500, GOLD_TICKET, 4),
+    (1_000, GOLD_TICKET, 3),
+    (2_000, GOLD_TICKET, 3),
+    (3_000, GOLD_TICKET, 2),
+    (4_000, GOLD_TICKET, 1),
+    (5_000, GOLD_TICKET, 1),
+    (10_000, GOLD_TICKET, 1),
 ];
 /// Opponent ids start here (ours; `enemyuId` is an Int32).
 const ENEMY_UID_BASE: i64 = 100_000;
@@ -142,10 +159,12 @@ const ATTACK_CHANCE_PCT: u64 = 50;
 pub const MAX_ATTACKS: usize = 3;
 const DEFENCE_WIN_PCT: u64 = 60;
 pub const DEFENCE_DAMAGE: i64 = LOSS_DAMAGE / 2;
-/// Win-streak battle bonus (ours): `winningStreakAtkRate`/`DefRate` per win of the running
-/// streak, up to STREAK_BONUS_MAX. The tactical battle adds a tenth of each to the player's
-/// units' ATK and DEF rates (client), so 20 per win is +2 %, at most +10 %.
-const STREAK_BONUS_PER_WIN: i64 = 20;
+/// Win-streak stat correction: `winningStreakAtkRate`/`DefRate` per win of the running streak,
+/// down to -STREAK_BONUS_MAX. The tactical battle adds a tenth of each to the player's units' ATK
+/// and DEF rates (client). A streak raises the point rate but lowers the stats (the atwiki Arena
+/// page's rules, 2019; research-b44/jp_strategy_sites), so the rates are negative; their size is
+/// ours: -20 per win is -2 %, at most -10 %.
+const STREAK_BONUS_PER_WIN: i64 = -20;
 const STREAK_BONUS_MAX: i64 = 100;
 
 /// Status codes (client E_PVP_*).
@@ -279,9 +298,20 @@ pub fn final_ranking(season: i64, points: i64) -> i64 {
     ranking::position(&ranking::arena_final_field(season), points)
 }
 
-/// The season-end reward tiers (at most this place, item, count), for the ranking screen.
+/// The season-end reward tiers (at most this place, item, count) a place in our field can reach,
+/// for the ranking screen.
 pub fn season_reward_tiers() -> Vec<(i64, i64, i64)> {
-    SEASON_REWARDS.to_vec()
+    let places = ranking::FIELD_SIZE as i64 + 1;
+    let mut from = 1;
+    SEASON_REWARDS
+        .iter()
+        .take_while(|(upto, ..)| {
+            let reachable = from <= places;
+            from = upto + 1;
+            reachable
+        })
+        .copied()
+        .collect()
 }
 
 /// An ItemSetInfo for a reward.
@@ -473,13 +503,12 @@ impl ArenaState {
     }
 }
 
-/// The reward for a season's final ranking position (ours).
-pub fn season_reward(position: i64) -> (i64, i64) {
+/// The reward for a season's final ranking position (SEASON_REWARDS); none below the table.
+pub fn season_reward(position: i64) -> Option<(i64, i64)> {
     SEASON_REWARDS
         .iter()
         .find(|(top, ..)| position <= *top)
         .map(|(_, item, n)| (*item, *n))
-        .unwrap_or((10, 50))
 }
 
 fn send_reward(p: &mut Profile, item_id: i64, count: i64, comment: String, now: i64) {
@@ -494,14 +523,15 @@ fn send_reward(p: &mut Profile, item_id: i64, count: i64, comment: String, now: 
 fn touch(p: &mut Profile, now: i64) -> Change {
     let (changed, finished) = p.progress.arena.roll(now);
     if let Some(pos) = finished {
-        let (item, n) = season_reward(pos);
-        send_reward(
-            p,
-            item,
-            n,
-            format!("Arena season reward: final position {pos}."),
-            now,
-        );
+        if let Some((item, n)) = season_reward(pos) {
+            send_reward(
+                p,
+                item,
+                n,
+                format!("Arena season reward: final position {pos}."),
+                now,
+            );
+        }
         return Change::Progress;
     }
     if changed {
@@ -1170,7 +1200,7 @@ pub fn pvp_start(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
     let now = jdr_core::clock::now();
     let st = &p.progress.arena;
     let (oc, ot) = opponent_team(&o);
-    let streak_bonus = (st.streak * STREAK_BONUS_PER_WIN).clamp(0, STREAK_BONUS_MAX);
+    let streak_bonus = (st.streak * STREAK_BONUS_PER_WIN).clamp(-STREAK_BONUS_MAX, 0);
     ok(json!({
         "userInfo": crate::services::user::user_info(&p),
         "pvpTeamInfo": arena_team_info(&p, team_num, now),
@@ -2306,8 +2336,19 @@ mod tests {
             None,
             "no battles, no season reward"
         );
-        assert_eq!(season_reward(1), (10, 500));
-        assert_eq!(season_reward(5_000), (10, 50));
+        assert_eq!(season_reward(1), Some((GOLD_TICKET, 10)));
+        assert_eq!(season_reward(1_000), Some((GOLD_TICKET, 3)));
+        assert_eq!(season_reward(5_000), Some((GOLD_TICKET, 1)));
+        assert_eq!(
+            season_reward(20_000),
+            None,
+            "the rows below 10000th are held"
+        );
+        assert_eq!(
+            season_reward_tiers().len(),
+            5,
+            "places 1-1000 reach five bands"
+        );
         let last = ranking(0, t);
         assert!(
             last > 900 && last <= ranking::FIELD_SIZE as i64 + 1,
@@ -2840,7 +2881,7 @@ mod tests {
         assert_eq!(late["getRankingPoint"], 0);
     }
 
-    /// The streak's battle bonus (winningStreakAtkRate/DefRate) grows with the running streak.
+    /// The streak's stat correction (winningStreakAtkRate/DefRate) falls with the running streak.
     #[test]
     fn streak_battle_bonus() {
         let (ctx, uuid) = setup("streakrate");
@@ -2880,6 +2921,6 @@ mod tests {
                 ((), Change::Bookkeeping)
             })
             .unwrap();
-        assert_eq!(start(&ctx)["winningStreakAtkRate"], STREAK_BONUS_MAX);
+        assert_eq!(start(&ctx)["winningStreakAtkRate"], -STREAK_BONUS_MAX);
     }
 }

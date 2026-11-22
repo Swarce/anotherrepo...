@@ -146,6 +146,59 @@ Card labels:
   - Flipping reverses all three and costs 20.
 - The pack's upright values are 2018 action-era values; they differ from the 3.12.0 texts.
 
+### 2.1 Wiki facts (Build 43, research-b43/stages_extra)
+
+`tools/content/build_extra_quests.py --research … --export …` writes them to
+`server/content/quests_extra.json` (`labyrinth`), each with its page, screenshot, capture and access
+date. All are action era (2018); the 3.12.0 (tactical) costs and levels are unknown.
+- **Room costs (served).** The 18 Bahamut floor screenshots (精華 sn=62, 2018-04) show 36 rooms by
+  name; every name is the client's `STAGE_DU01_<floor>_<room>` label for that floor (the builder
+  checks it against the JP export). Their costs replace ours (high).
+  - From floor 5 on, every room 01 seen costs 35, room 02 27, room 03 25 (medium: derived, and the
+    author logged one room per cost). Rooms 01-03 that no screenshot shows get that cost
+    (15 rows, marked as the pattern).
+  - Both single rooms (floors 10 and 20) cost **30**; ours charged 35 on floor 20.
+  - Floors 1-4 differ from the pattern; the rooms there that no screenshot shows keep ours.
+  - Rooms 02_04, 03_04 and 18_04 are recorded but are not rooms of ours (we serve rooms 01-03).
+  - A cheapest run is now 503 Mentality; the post's author estimates about 500 (unverified).
+- **Area counts (data only).** 1-5 per room; our rooms have one area (§5).
+- **Floor rewards (served).** ShoutWiki (revision 2018-06-27): floor 1 Blue Stone ×30, floor 2
+  Green Stone ×30, floor 3 Red Stone ×30, floor 4 Green Brooch. Items matched by the game's own
+  `ITEM_<id>_NAME` label (1002, 1003, 1004, 1006). The brooch count is cut off on the screenshot;
+  ours is 10. Floors 5-20 were not found and keep ours.
+- **Data only** (`labyrinth.wiki`): each floor's enemy-level preview (Lv80-135), clear condition
+  (制限時間内にボスを倒せ; 敵を全滅させろ on the ShoutWiki capture), Bizarre Effect flags and reward
+  quantities, the full-clear income (6 Diamonds and a few items about every 5 days), and the 2019
+  atwiki menu that still lists the mode.
+- **Conflicts kept:**
+  - The wiki lists one labyrinth, 潜み閉ざされた館, difficulty S. We keep the three grades: the
+    3.12.0 client names three (`CHAPTER_NAME_D_01..03`). Settled in Build 44 (§2.2): the one
+    labyrinth was the action era's; the tactical era had three grades.
+  - The ShoutWiki floor-3 capture (early 2018) shows two rooms that the client and the 2018-04
+    screenshots put on floors 7 and 12 (07_02 at 27 there, 30 on ShoutWiki). The layout changed or
+    was random; we follow the 2018-04 screenshots.
+
+### 2.2 Wiki facts (Build 44, research-b44)
+
+Read 2026-11-22, each in `quests_extra.json` `labyrinth.wiki` with `use` or `held`:
+- **Three grades, tactical era (applied, high).** A Reddit post's in-game select screen (2019-02,
+  read as data) shows 初級/中級/上級：潜み閉ざされた館 with **10, 15 and 20 floors**, 難易度 10/50/80, three
+  Souls and Mentality out of 300; namu.wiki (live) gives the same split and **100 Mentality a day
+  at 04:00**, up to 300, and a Reddit reply says 100 a day. The mode came back in 3.3.0
+  (2018-12-18). This settles the Build 43 conflict: the 2018 action era had one 20-floor labyrinth
+  (S), the tactical era three grades. The server now gives each grade its floors and adds 100
+  Mentality a day (§3). The 難易度 numbers are not the client's letter grade (`difficulty` E0 …
+  SSS+10), so our C/A/SS stay ours.
+- **Run rules (agree, medium; one source not re-fetched by the verifier).** All floor rewards on a
+  full clear; none after three failures; an escape pays what was won and resets the run; after a
+  full clear a new run starts at floor 1. Ours already work this way.
+- **Tarot reversed effects (medium).** A 2018 Reddit table gives every card's reversed effect (the
+  owner pack had none). Its Tower reversed, DEF +50%, is the value we had chosen, so that row now
+  has a source. The other rows are 2018 action-era values; the 3.12.0 client's own `_REV` texts
+  stay the source of ours.
+- **Data only:** a four-enemy preview (Lv129/135/135/135, 2018; the floor is inferred from the
+  levels, medium).
+
 ## 3. Server
 
 **State** (`Progress.dungeon`, `#[serde(default)]`; older saves start full):
@@ -157,13 +210,13 @@ Card labels:
 **Dungeons (Build 25, ours):** three grades of one mansion, named by the game's
 `CHAPTER_NAME_D_01..03` ("Beginner/Intermediate/Advanced: The Hidden and Sealed Mansion"):
 
-| id | Name | Summary | Difficulty | Enemy levels | Floor rewards |
-|---|---|---|---|---|---|
-| DU01 | CHAPTER_NAME_D_01 | DUNGEON_MES_001 | C (2) | the story stage's | ×1 |
-| DU02 | CHAPTER_NAME_D_02 | DUNGEON_MES_002 | A (4) | +15 (≤ 99) | ×2 |
-| DU03 | CHAPTER_NAME_D_03 | DUNGEON_MES_003 | SS (7) | +30 (≤ 99) | ×3 |
+| id | Name | Summary | Floors (Build 44, §2.2) | Difficulty | Enemy levels | Floor rewards |
+|---|---|---|---|---|---|---|
+| DU01 | CHAPTER_NAME_D_01 | DUNGEON_MES_001 | 10 | C (2) | the story stage's | ×1 |
+| DU02 | CHAPTER_NAME_D_02 | DUNGEON_MES_002 | 15 | A (4) | +15 (≤ 99) | ×2 |
+| DU03 | CHAPTER_NAME_D_03 | DUNGEON_MES_003 | 20 | SS (7) | +30 (≤ 99) | ×3 |
 
-- The same rooms, costs and picture in all three. Room ids are `STAGE_DUnn_ff_rr`; the banner
+- The same rooms (floors 1 to the grade's last), costs and picture in all three. Room ids are `STAGE_DUnn_ff_rr`; the banner
   shows the Beginner room labels (`STAGE_DU01_ff_rr`, the only room labels the client has).
 - One run at a time (52101 for another dungeon, as the client itself warns). The best floor is
   kept per dungeon (`best_floors`; saves before Build 25 keep theirs as the Beginner one's).
@@ -174,9 +227,11 @@ Card labels:
 - `get_bizarre_select`: `dungeonLockFlg` 0.
 - `user_info`: `soul` = 3 − Souls lost in the run (3 without one); `mentality` = current.
 - `dungeon_list`: the three dungeons.
-  - Fields: name, summary and difficulty as above, `floorMax` 20, `imgNo` 2, `floorClearNum` =
+  - Fields: name, summary and difficulty as above, `floorMax` the grade's floors (10, 15, 20;
+    Build 44, §2.2; 20 for all before), `imgNo` 2, `floorClearNum` =
     best floor cleared there.
-  - `floorNum` is -1 with no run, the floor otherwise, and 21 once floor 20 is cleared.
+  - `floorNum` is -1 with no run, the floor otherwise, and `floorMax` + 1 once the last floor is
+    cleared.
 - `stage_list {dungeonId}`: starts the run on floor 1 if none (an empty id means the run's
   dungeon, else the Beginner one). Returns the floor's rooms and every tactical team.
 - `tarot_select`: the room must be on the current floor (else 10103).
@@ -190,7 +245,7 @@ Card labels:
     never null), the full TarotInfo, `dungeonId` and `floorNum`.
 - `bizarre_end` for a room id: once per started battle.
   - Win: the floor's reward joins the pending list and the run moves down a floor;
-    `dungeonClearFlag` 1 after floor 20. The stage's rank EXP goes to the player and the
+    `dungeonClearFlag` 1 after the grade's last floor. The stage's rank EXP goes to the player and the
     team; no gold.
   - Loss or retire (any result ≠ 0): one Soul. At 0 the run and its pending rewards are gone;
     `dungeonGameoverFlag` 1.
@@ -218,12 +273,13 @@ Card labels:
 - Three rooms a floor and one on floors 10 and 20 (the hardest stage of the slice).
 - A room keeps the stage's enemies, map and single area (`areaMax` 1). Its id and name label
   are `STAGE_DU01_ff_rr`.
-- Costs: 22 + (floor − 1) × 10 / 19, plus 3 per room down the list, capped at 35. The single
-  rooms of floors 10 and 20 cost 30 and 35.
+- Costs: the wiki's (§2.1, Build 43) for every room from floor 5 on and the rooms seen on floors
+  1-3. The others (floors 1-4): 22 + (floor − 1) × 10 / 19, plus 3 per room down the list.
 - Floor rewards, one item each:
+  - floors 1-4: the wiki's (§2.1, Build 43);
   - floors 5/10/15/20: 100/200/300/400 Memory Rings;
   - other odd floors: 2,000 + 1,000 × floor gold;
-  - other even floors: trophies (6112 ×5, 6113 ×5, 6114 ×3, 6115 ×2 by depth).
+  - other even floors: trophies (6113 ×5, 6114 ×3, 6115 ×2 by depth).
 - A room's `rewardItemSet` previews its floor's reward; `steadyItemSet` is empty.
 
 **Tarot effects**: the client's 3.12.0 card texts, where an affect in our `affect_table` does the
@@ -238,7 +294,7 @@ same thing; otherwise `abilityInfo: {}` (the card still shows, without effect).
 | 011 Strength | ATK +50% (pack value; no client text) | ATK −50% |
 | 012 Hanged Man | taken from Solitude +100% (MAVERICK_STYPE_VCT_DAM) | vs Solitude +100% (MAVERICK_STYPE_DMG) |
 | 013 Death | damage taken +50% | damage taken −50% |
-| 016 Tower | DEF −50% | DEF +50% (ours; no client text) |
+| 016 Tower | DEF −50% | DEF +50% (no client text; the 2018 Reddit table, Build 44) |
 | 020 Judgement | damage dealt +50% | damage dealt −50% |
 | 021 World | crit damage +30% (CRT_DMG) | crit damage taken +30% (VCT_CRT_DMG) |
 
@@ -246,18 +302,19 @@ Evasion, speed, accuracy, crit rate, the attribute targets (Vampires, Pillar Men
 Arcana, Stand users, Hamon users, Joestar family), the HP-threshold cards, and the reversed
 Wisdom/Unity/Spirit cards (no matching affect) send `{}`.
 
-**Mentality**: cap 300 (client). It refills **fully** at the 04:00 JST day roll
-(`missions::game_day`). This is ours: the pack's earlier guide says +100 a day.
+**Mentality**: cap 300 (client). Each 04:00 JST day roll (`missions::game_day`) adds 100, up to
+300 (Build 44, §2.2: namu.wiki, a Reddit reply and the pack's earlier guide); a new save starts
+full. Builds 25-43 refilled it fully at the day roll (ours).
 
 ## 4. What is ours
 
 - One dungeon and its labels.
-- Rooms built from story stages, room counts and costs.
-- Rewards, and their delivery through the Message Box.
-- The full daily Mentality refill.
-- The Tarot-to-affect mapping, Strength upright and Tower reversed.
+- Rooms built from story stages, room counts, and the costs of floor 1-4 rooms no wiki shows.
+- Rewards of floors 5-20 and the floor-4 brooch count, and their delivery through the Message Box.
+- The Tarot-to-affect mapping and Strength upright.
 - Free resent `tarot_select`; unlimited flips at 20 each.
-- The three grades, their level steps and reward multipliers; the room labels shared by all three.
+- The three grades' letters, their level steps and reward multipliers (their floors are sourced
+  from Build 44); the room labels shared by all three (each grade uses floors 1 to its last).
 - A declined room battle costs a Soul; a declined Tarot pick keeps the room paid for.
 - Rank EXP for labyrinth wins; `floorClearNum` as the best floor.
 - The deck also resets on a full clear.

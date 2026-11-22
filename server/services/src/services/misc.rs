@@ -43,7 +43,9 @@ pub fn assist_transfer(stat: i32, convergence: i32) -> i32 {
     (stat as f32 * assist_magnification(convergence)).floor() as i32
 }
 
-/// `ConfigInfo` (29 ints). Recovery times are divisors in the client, so never 0.
+/// `ConfigInfo` (29 ints). Recovery times are divisors in the client, so never 0. `apOneRecoveryTime`
+/// 180 s is 1 AP every 3 minutes, the rate from 3.3.0 (2018-12; research-b44/communities, the
+/// notice's Reddit translation; AP is never charged offline anyway).
 pub fn get_system_config(_ctx: &Ctx, _env: &RequestEnvelope) -> ApiResult {
     ok(json!({ "configList": {
         "statueGrowthRare1Gold": 100, "statueGrowthRare2Gold": 200, "statueGrowthRare3Gold": 300,

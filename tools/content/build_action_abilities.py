@@ -8,6 +8,7 @@ usage:
   python3 -I tools/content/build_action_abilities.py --wiki local/wiki-raw/gamerch/statues.json \
       --labels local/l10n/export-b33.tsv --server-statues server/content/statues.json \
       --research local/wiki-raw/research-b33/action/results.jsonl \
+      --research local/wiki-raw/research-b43/assists/results.jsonl \
       --affect-table server/content/masterdata/affect_table.json \
       --rule-table server/content/masterdata/affect_text_rule_table.json \
       [--schema server/content/masterdata/schema.json] [--out server/content/action_abilities.json] \
@@ -20,8 +21,11 @@ Sources and matching (as build_leader_abilities.py):
                --labels and the statue is in --server-statues. A dump record takes precedence.
   --research   leader_ability records of the research pass taken from a live Gamerch statue page
                (confidence high or medium): the page leader name equals one ABI_LEAD_NAME JP label
-               after NFKC and the URL title's ★rarity and 【type】 pick exactly one roster statue;
-               3041_03 and 4000_23 are held (RESEARCH_HELD).
+               after NFKC and the URL title's ★rarity and 【type】 pick exactly one roster statue.
+               3041_03 and 4000_23, held in Build 41 (RESEARCH_HELD), were released in Build 43
+               (research-b43/assists re-read their live pages). Where two records match one statue,
+               the higher confidence wins, else the first one read. A record with 'lv1' and
+               'max' lists instead of 'effects' (research-b43) reads as 'line(MAX n)'.
 Each line goes through tools/content/action_vocab.py parse(): the condition prefix, the MAX forms
 (Lv10 = the MAX when plausible, else Lv1; none = Lv1), the stat body and the hold rules (gold/EXP and
 BARRIER have no client consumer; PER_STYPE is not traced; DoDoDo-mode DoDoDo charge has no label;
@@ -74,7 +78,7 @@ def main():
                         'source': {'kind': 'wayback', 'source': 'Gamerch ジョジョDR攻略Wiki (Wayback Machine)',
                                    'page': src.get('page_url', ''), 'capture': src.get('capture'),
                                    'accessed': src.get('accessed', '')}})
-    held_research = set()
+    held_research, found = set(), []
     for path in a.research:
         for line in open(path, encoding='utf-8'):
             r = json.loads(line)
@@ -83,9 +87,14 @@ def main():
                 held_research.add(r.get('statueId'))
                 continue
             if sid:
-                entries.append({'sid': sid, 'lines': r['value']['effects'],
-                                'source': {'kind': 'research', 'source': 'Gamerch ジョジョDR攻略Wiki',
-                                           'page': r['url'], 'accessed': r.get('accessed', '')}})
+                found.append((sid, r))
+    # Two records for one statue (research-b33 and research-b43 of the same page): the higher
+    # confidence first, else the order read; the first one listed is used.
+    found = [x for _i, x in sorted(enumerate(found), key=lambda t: (-V.RANK[t[1][1]['confidence']], t[0]))]
+    for sid, r in found:
+        entries.append({'sid': sid, 'lines': V.leader_lines(r['value']),
+                        'source': {'kind': 'research', 'source': 'Gamerch ジョジョDR攻略Wiki',
+                                   'page': r['url'], 'accessed': r.get('accessed', '')}})
 
     cats, maxes, stats = collections.Counter(), collections.Counter(), collections.Counter()
     leaders, seen = [], set()
@@ -148,8 +157,8 @@ def main():
              'note': 'leader numbers only; per-record archive URLs in local/wiki-raw/gamerch/statues.json'},
             {'source': 'Gamerch ジョジョDR攻略Wiki (live statue pages, research pass)', 'page': V.GAMERCH,
              'pages': research_pages, 'accessed': accessed,
-             'note': 'research-b33/action leader_ability records: leader numbers only, for statues the Wayback '
-                     'dump lacks'},
+             'note': 'research-b33/action and research-b43/assists leader_ability records: leader numbers only, '
+                     'for statues the Wayback dump lacks'},
             {'source': 'jdr-research', 'doc': 'docs/research/30-action-battle.md §7',
              'note': 'units, conditions and the leader path read in the 3.12.0 client'},
             {'source': 'jdr-default',

@@ -157,6 +157,32 @@ What we send:
   - Two newer matches are held in `RESEARCH_HELD` until their pages are checked: 3041_03 and
     4000_23.
   - Total: 92 statues.
+- Build 43 (`--research local/wiki-raw/research-b43/assists/results.jsonl`, 98 statues):
+  - The live pages of 3041_03 and 4000_23 were re-read (leader name, rarity, type and Lv99 as the
+    roster), so `RESEARCH_HELD` is empty: 3041_03 crit damage ×1.3 (no MAX on the page, so Lv10 =
+    Lv1), 4000_23 ATK +4%, +5% at MAX (the record's `lv1`/`max` lists). Where two records match one
+    statue, the higher confidence wins. The action builder takes the same two (docs/research/30 §7).
+  - ShoutWiki MAX values: a high-confidence record of a statue page's Reversal-era "MAX Lv. Leader
+    Ability" gives a row to the one roster statue whose stats cite that page, when no Gamerch page
+    gives one. The English lines go through `EN_LINES`; the page prints no Lv1, so Lv1 = Lv10 = MAX
+    (ours, as for 3001_03). 5030_04 HP +16%, 5080_04 damage to Tactical +15%, 5150_04 DEF +18%,
+    4031_18 HP-halved DEF +12% (the first HALF_HP row: `text_id` now maps it to the game's
+    `AFFECT_HALF_*` label). No row: 5210_04 (HP above half, no client condition), 5290_04
+    (reversal gauge), 5100_14 (statue page +9% against the summary page's +14%, M) and the trait
+    filtered 4030_04 summary row.
+- Build 44 (`--research` once per research-b44 family file, 102 statues): a translator's 2019
+  Reddit retrospective (research-b44/communities, medium; the tactical-era MAX-level leader
+  ability in English, the statueId matched by leader name and verified) gives a row the same way
+  (EN_LINES, which now also reads "types"; Lv1 = Lv10 = MAX) to a statue no earlier source covers:
+  5010_14 ATK +10%, 5050_04 damage to Fighting Spirit +13.9%, 5100_14 damage to Unity +14% (the
+  summary page's value: a second source settles the Build 43 conflict) and 5140_04 damage to
+  Courage +15%. It gives the same values as the rows of 5030_04, 5080_04 and 5150_04 (listed in the
+  source's note). No row, as before: lines with same-type counts (5000_24, 5010_04, 5320_04),
+  trait filters (5000_04, 5220_14; 1020_04's Vampire filter from the 3.4.0 notice), HP above half
+  (5210_04), defeated counts (5120_14) or Reversal (3323_08, 5001_14); Diavolo 5170_14's atwiki
+  row (high) needs a "while time is erased" condition and a crit rate, which have no tactical
+  affect. The statue abilities (`ABI_STAT_*`) in the same records are kept as data only: the server
+  has no statue-ability rows. The action leader builder takes none of these (tactical-era values).
 - Rebuild: `tools/content/build_leader_abilities.py`. `--table` merges the DT_LEAD rows into the
   committed table and keeps the other rows; the usage line in the script has the full command.
 - Risk: the wiki numbers come from the action-battle era, so the balance is ours. The ability's

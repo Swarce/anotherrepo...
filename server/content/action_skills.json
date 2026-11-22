@@ -65,15 +65,23 @@
   "1000_04": {
    "attack": "SKILL_100_99",
    "skill": {
-    "id": "SKILL_100_07"
+    "id": "SKILL_100_07",
+    "cooldown": 5,
+    "from": "jdr-default"
    },
    "sp": null,
    "finisher": {
-    "id": "SKILL_100_08"
+    "id": "SKILL_100_08",
+    "cooldown": 10,
+    "uses": 2,
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Jonathan_Joestar_(Courage)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: jdr-default pick, cool-down/uses from Diamond Records Wiki (ShoutWiki) (its name is not matched); finisher: jdr-default pick, cool-down/uses from Diamond Records Wiki (ShoutWiki) (its name is not matched)"
    }
   },
   "1000_12": {
@@ -98,29 +106,39 @@
   "1000_13": {
    "attack": "SKILL_100_99",
    "skill": {
-    "id": "SKILL_100_61"
+    "id": "SKILL_100_03"
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_100_07"
+   },
    "finisher": {
-    "id": "SKILL_100_08"
+    "id": "SKILL_100_08",
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【団結】ジョナサン・ジョースター★5（重機関車のよう）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: jdr-default pick"
    }
   },
   "1000_28": {
    "attack": "SKILL_100_99",
    "skill": {
+    "id": "SKILL_100_03"
+   },
+   "sp": {
     "id": "SKILL_100_61"
    },
-   "sp": null,
    "finisher": {
-    "id": "SKILL_100_08"
+    "id": "SKILL_100_08",
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【闘志】ジョナサン・ジョースター～宿命の星～★6（肩に浮かぶ星の痣）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: jdr-default pick"
    }
   },
   "1010_01": {
@@ -297,15 +315,20 @@
   "1080_03": {
    "attack": "SKILL_108_99",
    "skill": {
+    "id": "SKILL_108_02"
+   },
+   "sp": {
     "id": "SKILL_108_05"
    },
-   "sp": null,
    "finisher": {
-    "id": "SKILL_108_06"
+    "id": "SKILL_108_06",
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【勇気】ダイアー★5（友の仇を今）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: jdr-default pick"
    }
   },
   "1090_01": {
@@ -353,15 +376,26 @@
   "1090_13": {
    "attack": "SKILL_109_99",
    "skill": {
-    "id": "SKILL_109_05"
+    "id": "SKILL_109_01"
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_109_04"
+   },
    "finisher": {
     "id": "SKILL_109_06"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Bandai Namco press release (4Gamer.net)",
+    "page": "https://www.4gamer.net/games/366/G036647/20180810147/",
+    "accessed": "2026-11-22",
+    "note": "research-b43/b44 kit (Gamerch and official press-release names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: strict match; the Gamerch page's records refiled from 1090_03 (REFILE)",
+    "also": [
+     {
+      "source": "Gamerch ジョジョDR攻略Wiki (live)",
+      "page": "https://jojodr.gamerch.com/【孤高】ストレイツォ★5（華麗なる跳躍）",
+      "accessed": "2026-11-22"
+     }
+    ]
    }
   },
   "1100_01": {
@@ -392,16 +426,21 @@
   },
   "1100_03": {
    "attack": "SKILL_110_99",
-   "skill": null,
+   "skill": {
+    "id": "SKILL_110_04"
+   },
    "sp": {
-    "id": "SKILL_110_06"
+    "id": "SKILL_110_10"
    },
    "finisher": {
-    "id": "SKILL_110_08"
+    "id": "SKILL_110_08",
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【孤高】ディオ・ブランドー★5（我が夜の亡者となれ）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: jdr-default pick"
    }
   },
   "1100_11": {
@@ -459,15 +498,20 @@
   "1100_28": {
    "attack": "SKILL_110_99",
    "skill": {
+    "id": "SKILL_110_04"
+   },
+   "sp": {
     "id": "SKILL_110_61"
    },
-   "sp": null,
    "finisher": {
-    "id": "SKILL_110_08"
+    "id": "SKILL_110_08",
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【闘志】ディオ・ブランドー～月下の帝王～★6（耳に浮かぶ波乱の黒子）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: fuzzy match 0.80 (runner-up 0.18); finisher: jdr-default pick"
    }
   },
   "1110_01": {
@@ -538,14 +582,20 @@
   },
   "1120_03": {
    "attack": "SKILL_112_99",
-   "skill": null,
-   "sp": null,
+   "skill": {
+    "id": "SKILL_112_01"
+   },
+   "sp": {
+    "id": "SKILL_112_03"
+   },
    "finisher": {
     "id": "SKILL_112_06"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【勇気】ブラフォード★5（高潔な人間としての魂）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: strict match"
    }
   },
   "1130_01": {
@@ -581,29 +631,42 @@
   "1130_03": {
    "attack": "SKILL_113_99",
    "skill": {
-    "id": "SKILL_113_05"
+    "id": "SKILL_113_01"
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_113_03"
+   },
    "finisher": {
-    "id": "SKILL_113_06"
+    "id": "SKILL_113_06",
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【闘志】タルカス★5（地面を割る剣）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: jdr-default pick"
    }
   },
   "1130_04": {
    "attack": "SKILL_113_99",
    "skill": {
-    "id": "SKILL_113_05"
+    "id": "SKILL_113_05",
+    "cooldown": 9,
+    "from": "jdr-default"
    },
    "sp": null,
    "finisher": {
-    "id": "SKILL_113_06"
+    "id": "SKILL_113_06",
+    "cooldown": 10,
+    "uses": 2,
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Tarkus_(Fighting_Spirit)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: jdr-default pick, cool-down/uses from Diamond Records Wiki (ShoutWiki) (its name is not matched); finisher: jdr-default pick, cool-down/uses from Diamond Records Wiki (ShoutWiki) (its name is not matched)"
    }
   },
   "1130_13": {
@@ -693,15 +756,23 @@
   "2000_04": {
    "attack": "SKILL_200_99",
    "skill": {
-    "id": "SKILL_200_07"
+    "id": "SKILL_200_07",
+    "cooldown": 5,
+    "from": "jdr-default"
    },
    "sp": null,
    "finisher": {
-    "id": "SKILL_200_08"
+    "id": "SKILL_200_08",
+    "cooldown": 10,
+    "uses": 3,
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Joseph_Joestar_(Courage)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: jdr-default pick, cool-down/uses from Diamond Records Wiki (ShoutWiki) (its name is not matched); finisher: jdr-default pick, cool-down/uses from Diamond Records Wiki (ShoutWiki) (its name is not matched)"
    }
   },
   "2000_12": {
@@ -721,15 +792,33 @@
   "2000_28": {
    "attack": "SKILL_200_99",
    "skill": {
-    "id": "SKILL_200_61"
+    "id": "SKILL_200_06",
+    "cooldown": 5
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_200_61",
+    "cooldown": 6,
+    "uses": 3
+   },
    "finisher": {
-    "id": "SKILL_200_08"
+    "id": "SKILL_200_08",
+    "cooldown": 10,
+    "uses": 2,
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【闘志】ジョセフ・ジョースター～『最後の波紋』～★6（輝き放つ波紋の力）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match, cool-down/uses from Diamond Records Wiki (ShoutWiki); sp: strict match, cool-down/uses from Diamond Records Wiki (ShoutWiki); finisher: jdr-default pick, cool-down/uses from Diamond Records Wiki (ShoutWiki) (its name is not matched)",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Joseph_Joestar_(Fighting_Spirit)",
+      "accessed": "2026-11-22",
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   "2010_01": {
@@ -796,45 +885,60 @@
   "2010_04": {
    "attack": "SKILL_201_99",
    "skill": {
-    "id": "SKILL_201_07"
+    "id": "SKILL_201_07",
+    "from": "jdr-default"
    },
    "sp": null,
    "finisher": {
-    "id": "SKILL_201_08"
+    "id": "SKILL_201_08",
+    "cooldown": 10,
+    "uses": 2,
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Caesar_Anthonio_Zeppeli_(Tactical)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: jdr-default pick; finisher: jdr-default pick, cool-down/uses from Diamond Records Wiki (ShoutWiki) (its name is not matched)"
    }
   },
   "2010_13": {
    "attack": "SKILL_201_99",
    "skill": {
-    "id": "SKILL_201_09"
+    "id": "SKILL_201_02"
    },
    "sp": {
-    "id": "SKILL_201_10"
+    "id": "SKILL_201_07"
    },
    "finisher": {
-    "id": "SKILL_201_08"
+    "id": "SKILL_201_08",
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【団結】シーザー・アントニオ・ツェペリ★5（仕込ませた特殊石けん水）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: jdr-default pick"
    }
   },
   "2010_28": {
    "attack": "SKILL_201_99",
    "skill": {
+    "id": "SKILL_201_02"
+   },
+   "sp": {
     "id": "SKILL_201_61"
    },
-   "sp": null,
    "finisher": {
-    "id": "SKILL_201_08"
+    "id": "SKILL_201_08",
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【勇気】シーザー～一族への誇り～★6（虹色のシャボン）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: jdr-default pick"
    }
   },
   "2020_01": {
@@ -1123,14 +1227,20 @@
   },
   "2070_03": {
    "attack": "SKILL_207_99",
-   "skill": null,
-   "sp": null,
+   "skill": {
+    "id": "SKILL_207_02"
+   },
+   "sp": {
+    "id": "SKILL_207_04"
+   },
    "finisher": {
     "id": "SKILL_207_06"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【闘志】エシディシ★5（炎の使い手）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: strict match"
    }
   },
   "2080_01": {
@@ -1214,26 +1324,38 @@
     "id": "SKILL_208_11"
    },
    "sp": {
-    "id": "SKILL_208_12"
+    "id": "SKILL_208_13"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_208_16"
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【孤高】カーズ★5（～アルティメット・シイング～）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: fuzzy match 0.94 (runner-up 0.26), as the research pass's verdict"
    }
   },
   "2081_14": {
    "attack": "SKILL_208_99",
    "skill": {
-    "id": "SKILL_208_13"
+    "id": "SKILL_208_13",
+    "cooldown": 7,
+    "from": "jdr-default"
    },
    "sp": {
-    "id": "SKILL_208_14"
+    "id": "SKILL_208_14",
+    "cooldown": 6,
+    "uses": 3,
+    "from": "jdr-default"
    },
    "finisher": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Kars_~_Ultimate_Lifeform_~_(Solitary)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: jdr-default pick, cool-down/uses from Diamond Records Wiki (ShoutWiki) (its name is not matched); sp: jdr-default pick, cool-down/uses from Diamond Records Wiki (ShoutWiki) (its name is not matched)"
    }
   },
   "2100_03": {
@@ -1338,15 +1460,28 @@
   "2111_03": {
    "attack": "SKILL_211_99",
    "skill": {
-    "id": "SKILL_211_11"
+    "id": "SKILL_211_11",
+    "cooldown": 7
    },
    "sp": {
-    "id": "SKILL_211_12"
+    "id": "SKILL_211_14",
+    "cooldown": 5,
+    "uses": 3
    },
    "finisher": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【勇気】シュトロハイム★5（～地獄から舞い戻ったぜ～）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match, cool-down/uses from Diamond Records Wiki (ShoutWiki); sp: strict match, cool-down/uses from Diamond Records Wiki (ShoutWiki)",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5★)_Stroheim_~_I'm_back_from_Hell_~_(Courage)",
+      "accessed": "2026-11-22",
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   "3000_01": {
@@ -1425,15 +1560,27 @@
   "3000_13": {
    "attack": "SKILL_300_99",
    "skill": {
-    "id": "SKILL_300_09"
+    "id": "SKILL_300_03"
    },
    "sp": {
-    "id": "SKILL_300_10"
+    "id": "SKILL_300_05"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_300_08"
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【孤高】空条承太郎★5（弾丸を掴む正確性）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: the research pass's verdict for a held finisher (Diamond Records Wiki (ShoutWiki): the finisher name = this label's text)",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(5★)_Jotaro_Kujo_(Solitary)",
+      "accessed": "2026-11-22",
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   "3001_03": {
@@ -1462,15 +1609,24 @@
   "3001_04": {
    "attack": "SKILL_300_99",
    "skill": {
-    "id": "SKILL_300_13"
+    "id": "SKILL_300_13",
+    "from": "jdr-default"
    },
    "sp": {
-    "id": "SKILL_300_14"
+    "id": "SKILL_300_14",
+    "cooldown": 4,
+    "uses": 3,
+    "from": "jdr-default"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_300_16"
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Jotaro_Kujo_~_You_pissed_me_off_~_(Courage)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: jdr-default pick; sp: jdr-default pick, cool-down/uses from Diamond Records Wiki (ShoutWiki) (its name is not matched); finisher: the research pass's verdict for a held finisher (Diamond Records Wiki (ShoutWiki): the finisher name = this label's text)"
    }
   },
   "3001_13": {
@@ -1572,15 +1728,20 @@
   "3010_13": {
    "attack": "SKILL_301_99",
    "skill": {
+    "id": "SKILL_301_05"
+   },
+   "sp": {
     "id": "SKILL_301_07"
    },
-   "sp": null,
    "finisher": {
-    "id": "SKILL_301_08"
+    "id": "SKILL_301_08",
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【団結】ジョセフ・ジョースター★5（3部）（伸びる紫の蔓）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: jdr-default pick"
    }
   },
   "3020_01": {
@@ -1679,14 +1840,21 @@
   },
   "3020_28": {
    "attack": "SKILL_302_99",
-   "skill": null,
-   "sp": null,
+   "skill": {
+    "id": "SKILL_302_01"
+   },
+   "sp": {
+    "id": "SKILL_302_61"
+   },
    "finisher": {
-    "id": "SKILL_302_10"
+    "id": "SKILL_302_10",
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【勇気】アヴドゥル～復活の魔術師～★6（仲間たちのブレーン）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match, the extended label its action set plays; finisher: jdr-default pick"
    }
   },
   "3030_01": {
@@ -1888,13 +2056,19 @@
   "3040_04": {
    "attack": "SKILL_304_99",
    "skill": {
-    "id": "SKILL_304_07"
+    "id": "SKILL_304_07",
+    "from": "jdr-default"
    },
    "sp": null,
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_304_08"
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Jean_Pierre_Polnareff_(Courage)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: jdr-default pick; finisher: the research pass's verdict for a held finisher (Diamond Records Wiki (ShoutWiki): the finisher name = this label's text)"
    }
   },
   "3040_13": {
@@ -1926,26 +2100,35 @@
     "id": "SKILL_304_11"
    },
    "sp": {
-    "id": "SKILL_304_12"
+    "id": "SKILL_304_13"
    },
    "finisher": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【知略】ポルナレフ★5（～アヌビス神の憑依～）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match"
    }
   },
   "3041_04": {
    "attack": "SKILL_304_99",
    "skill": {
-    "id": "SKILL_304_13"
+    "id": "SKILL_304_13",
+    "from": "jdr-default"
    },
    "sp": {
-    "id": "SKILL_304_14"
+    "id": "SKILL_304_14",
+    "from": "jdr-default"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_304_16"
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Jean_Pierre_Polnareff_~_God_Anubis'_Posession_(Tactical)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: jdr-default pick; sp: jdr-default pick; finisher: the research pass's verdict for a held finisher (Diamond Records Wiki (ShoutWiki): the finisher name = this label's text)"
    }
   },
   "3050_01": {
@@ -2011,16 +2194,34 @@
   },
   "3050_04": {
    "attack": "SKILL_305_99",
-   "skill": null,
+   "skill": {
+    "id": "SKILL_305_01",
+    "cooldown": 7
+   },
    "sp": {
-    "id": "SKILL_305_08"
+    "id": "SKILL_305_06",
+    "cooldown": 3,
+    "uses": 3
    },
    "finisher": {
-    "id": "SKILL_305_10"
+    "id": "SKILL_305_10",
+    "cooldown": 10,
+    "uses": 2,
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【闘志】イギー★6（大きな態度の小さい体）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match, cool-down/uses from Diamond Records Wiki (ShoutWiki); sp: strict match, cool-down/uses from Diamond Records Wiki (ShoutWiki); finisher: jdr-default pick, cool-down/uses from Diamond Records Wiki (ShoutWiki) (its name is not matched)",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Iggy_(Fighting_Spirit)",
+      "accessed": "2026-11-22",
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   "3060_01": {
@@ -2103,15 +2304,20 @@
   "3070_03": {
    "attack": "SKILL_307_99",
    "skill": {
-    "id": "SKILL_307_05"
+    "id": "SKILL_307_01"
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_307_03"
+   },
    "finisher": {
-    "id": "SKILL_307_06"
+    "id": "SKILL_307_06",
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【知略】偽キャプテン・テニール★5（普通の人の3倍の肺活量）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: jdr-default pick"
    }
   },
   "3090_01": {
@@ -2375,14 +2581,17 @@
     "id": "SKILL_315_05"
    },
    "sp": {
-    "id": "SKILL_315_06"
+    "id": "SKILL_315_02"
    },
    "finisher": {
-    "id": "SKILL_315_08"
+    "id": "SKILL_315_08",
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【知略】エンヤ婆★5（息子の恨み！）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: jdr-default pick"
    }
   },
   "3150_04": {
@@ -2491,7 +2700,9 @@
   },
   "3210_13": {
    "attack": "SKILL_321_99",
-   "skill": null,
+   "skill": {
+    "id": "SKILL_321_03"
+   },
    "sp": {
     "id": "SKILL_321_10"
    },
@@ -2499,8 +2710,10 @@
     "id": "SKILL_321_08"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【孤高】ンドゥール★5（高速鋭利な流水）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: strict match"
    }
   },
   "3240_11": {
@@ -2719,25 +2932,33 @@
   "3321_18": {
    "attack": "SKILL_332_99",
    "skill": {
-    "id": "SKILL_332_13"
+    "id": "SKILL_332_11"
    },
    "sp": {
-    "id": "SKILL_332_14"
+    "id": "SKILL_332_62"
    },
    "finisher": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【孤高】DIO～スタンドのパワーを全開だッ！～★6（なじむジョースターの血）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match"
    }
   },
   "3322_08": {
    "attack": "SKILL_332_99",
-   "skill": null,
-   "sp": null,
+   "skill": {
+    "id": "SKILL_332_21"
+   },
+   "sp": {
+    "id": "SKILL_332_63"
+   },
    "finisher": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【知略】DIO～すでに手は打った！！～★6（念写に映る姿）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match, the one label its action set plays off the cinematic entry"
    }
   },
   "3323_08": {
@@ -2750,6 +2971,14 @@
    "source": {
     "source": "jdr-default",
     "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+   },
+   "actionMode": {
+    "usable": false,
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_DIO_~_There_is_no_Escape!_~_(Fighting_Spirit)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "the page's Action Battle (Old Mode) tab says the statue cannot be used there (research-b43); the kit above is kept and needs no source"
    }
   },
   "3330_01": {
@@ -2806,15 +3035,23 @@
   "3330_04": {
    "attack": "SKILL_333_99",
    "skill": {
-    "id": "SKILL_333_07"
+    "id": "SKILL_333_07",
+    "cooldown": 10,
+    "from": "jdr-default"
    },
    "sp": null,
    "finisher": {
-    "id": "SKILL_333_08"
+    "id": "SKILL_333_08",
+    "cooldown": 10,
+    "uses": 2,
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Vanilla_Ice_(Courage)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: jdr-default pick, cool-down/uses from Diamond Records Wiki (ShoutWiki) (its name is not matched); finisher: jdr-default pick, cool-down/uses from Diamond Records Wiki (ShoutWiki) (its name is not matched)"
    }
   },
   "4000_01": {
@@ -3193,31 +3430,39 @@
   "4020_04": {
    "attack": "SKILL_402_99",
    "skill": {
-    "id": "SKILL_402_07"
+    "id": "SKILL_402_03"
    },
    "sp": {
-    "id": "SKILL_402_08"
+    "id": "SKILL_402_06"
    },
    "finisher": {
-    "id": "SKILL_402_10"
+    "id": "SKILL_402_10",
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【闘志】虹村億泰★6（空間を削り取る）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: jdr-default pick"
    }
   },
   "4020_13": {
    "attack": "SKILL_402_99",
    "skill": {
-    "id": "SKILL_402_09"
+    "id": "SKILL_402_03"
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_402_06"
+   },
    "finisher": {
-    "id": "SKILL_402_10"
+    "id": "SKILL_402_10",
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【団結】虹村億泰★5（距離を縮める）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: jdr-default pick"
    }
   },
   "4030_01": {
@@ -3305,6 +3550,14 @@
    "source": {
     "source": "jdr-default",
     "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+   },
+   "actionMode": {
+    "usable": false,
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Rohan_Kishibe_(Unity)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "the page's Action Battle (Old Mode) tab says the statue cannot be used there (research-b43); the kit above is kept and needs no source"
    }
   },
   "4040_01": {
@@ -3348,15 +3601,19 @@
   "4040_13": {
    "attack": "SKILL_404_99",
    "skill": {
-    "id": "SKILL_404_05"
+    "id": "SKILL_404_01"
    },
    "sp": {
-    "id": "SKILL_404_06"
+    "id": "SKILL_404_03"
    },
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_404_09"
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【団結】空条承太郎★5（鋭き観察眼）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: strict match, as the research pass's verdict"
    }
   },
   "4040_14": {
@@ -3375,26 +3632,36 @@
   },
   "4042_03": {
    "attack": "SKILL_404_99",
-   "skill": null,
-   "sp": {
-    "id": "SKILL_404_10"
+   "skill": {
+    "id": "SKILL_404_01"
    },
-   "finisher": null,
+   "sp": {
+    "id": "SKILL_404_03"
+   },
+   "finisher": {
+    "id": "SKILL_404_09"
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【闘志】空条丈太郎★5（落ち着いた姿）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: strict match, as the research pass's verdict"
    }
   },
   "4043_08": {
    "attack": "SKILL_404_99",
    "skill": {
+    "id": "SKILL_404_31"
+   },
+   "sp": {
     "id": "SKILL_404_63"
    },
-   "sp": null,
    "finisher": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【勇気】空条承太郎～たたっこわしてやるぜ～★6（見ると観るの違い）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match, the one label its action set plays off the cinematic entry; sp: strict match"
    }
   },
   "4080_01": {
@@ -3595,7 +3862,7 @@
   "4130_03": {
    "attack": "SKILL_413_99",
    "skill": {
-    "id": "SKILL_413_05"
+    "id": "SKILL_413_09"
    },
    "sp": {
     "id": "SKILL_413_06"
@@ -3604,8 +3871,10 @@
     "id": "SKILL_413_08"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【勇気】噴上裕也★5（養分の吸収）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: fuzzy match 0.96 (runner-up 0.26)"
    }
   },
   "4130_13": {
@@ -3825,29 +4094,37 @@
   "4170_02": {
    "attack": "SKILL_417_99",
    "skill": {
-    "id": "SKILL_417_03"
+    "id": "SKILL_417_03",
+    "from": "jdr-default"
    },
    "sp": {
     "id": "SKILL_417_04"
    },
    "finisher": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【闘志】音石明★4（演奏技術）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: jdr-default pick; sp: strict match"
    }
   },
   "4170_03": {
    "attack": "SKILL_417_99",
    "skill": {
-    "id": "SKILL_417_05"
+    "id": "SKILL_417_05",
+    "from": "jdr-default"
    },
-   "sp": null,
+   "sp": {
+    "id": "SKILL_417_04"
+   },
    "finisher": {
     "id": "SKILL_417_06"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【闘志】音石明★5（反省すると強いぜ…）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: jdr-default pick; sp: strict match; finisher: strict match"
    }
   },
   "4170_15": {
@@ -3926,12 +4203,18 @@
    "attack": "SKILL_419_99",
    "skill": null,
    "sp": {
-    "id": "SKILL_419_04"
+    "id": "SKILL_419_04",
+    "cooldown": 5,
+    "uses": 3,
+    "from": "jdr-default"
    },
    "finisher": null,
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Yoshikage_Kira_(Solitary)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): sp: jdr-default pick, cool-down/uses from Diamond Records Wiki (ShoutWiki) (its name is not matched)"
    }
   },
   "4191_01": {
@@ -3996,47 +4279,74 @@
   "4192_03": {
    "attack": "SKILL_419_99",
    "skill": {
-    "id": "SKILL_419_25"
+    "id": "SKILL_419_21"
    },
    "sp": null,
    "finisher": null,
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【闘志】吉良吉影★5（川尻浩作）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match"
    }
   },
   "4192_04": {
    "attack": "SKILL_419_99",
    "skill": {
-    "id": "SKILL_419_25"
+    "id": "SKILL_419_25",
+    "from": "jdr-default"
    },
    "sp": null,
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_419_26"
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Yoshikage_Kira_(Kosaku_Kawajiri)_(Fighting_Spirit)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: jdr-default pick; finisher: the research pass's verdict for a held finisher (Diamond Records Wiki (ShoutWiki): the finisher name = this label's text)"
    }
   },
   "4193_08": {
    "attack": "SKILL_419_99",
    "skill": {
+    "id": "SKILL_419_05"
+   },
+   "sp": {
     "id": "SKILL_419_61"
    },
-   "sp": null,
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_419_10"
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Gamerch ジョジョDR攻略Wiki (live)",
+    "page": "https://jojodr.gamerch.com/【知略】吉良吉影～...始末してからね......！～★6（日常に潜む闇）",
+    "accessed": "2026-11-22",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: strict match; sp: strict match; finisher: the research pass's verdict for a held finisher (Diamond Records Wiki (ShoutWiki): the finisher name = this label's text)",
+    "also": [
+     {
+      "source": "Diamond Records Wiki (ShoutWiki)",
+      "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Yoshikage_Kira_~_Because_I_will..._deal_with_you..._~_(Tactical)",
+      "accessed": "2026-11-22",
+      "license": "CC BY-SA 3.0"
+     }
+    ]
    }
   },
   "4194_08": {
    "attack": "SKILL_419_99",
    "skill": null,
    "sp": null,
-   "finisher": null,
+   "finisher": {
+    "id": "SKILL_419_26"
+   },
    "source": {
-    "source": "jdr-default",
-    "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Yoshikage_Kira_~_I'm_at_my_limit!_I'll_activate_it!_~_(Courage)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): finisher: the research pass's verdict for a held finisher (Diamond Records Wiki (ShoutWiki): the finisher name = this label's text)"
    }
   },
   "4240_11": {
@@ -4180,6 +4490,21 @@
    "source": {
     "source": "jdr-default",
     "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+   },
+   "actionMode": {
+    "usable": false,
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Bruno_Bucciarati_(Courage)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "the page's Action Battle (Old Mode) tab says the statue cannot be used there (research-b43); the kit above is kept and needs no source",
+    "sourceSays": {
+     "source": "player blog (Ameba), in-game screenshots",
+     "page": "https://ameblo.jp/yamasan-drm/entry-12496817615.html",
+     "accessed": "2026-11-22",
+     "confidence": "medium",
+     "note": "research-b44: the in-game profile has no Tactical-Battle-only tag (5170_14, 5220_14 and 4031_18 have it), against the page above; noted, not applied"
+    }
    }
   },
   "5010_14": {
@@ -4196,6 +4521,14 @@
    "source": {
     "source": "jdr-default",
     "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+   },
+   "actionMode": {
+    "usable": false,
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Bruno_Bucciarati_(Unity)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "the page's Action Battle (Old Mode) tab says the statue cannot be used there (research-b43); the kit above is kept and needs no source"
    }
   },
   "5030_04": {
@@ -4210,6 +4543,14 @@
    "source": {
     "source": "jdr-default",
     "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+   },
+   "actionMode": {
+    "usable": false,
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Leone_Abbacchio_(Tactical)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "the page's Action Battle (Old Mode) tab says the statue cannot be used there (research-b43); the kit above is kept and needs no source"
    }
   },
   "5050_03": {
@@ -4231,17 +4572,27 @@
   "5050_04": {
    "attack": "SKILL_505_99",
    "skill": {
-    "id": "SKILL_505_03"
+    "id": "SKILL_505_03",
+    "from": "jdr-default"
    },
    "sp": {
-    "id": "SKILL_505_04"
+    "id": "SKILL_505_04",
+    "cooldown": 16,
+    "uses": 3,
+    "from": "jdr-default"
    },
    "finisher": {
-    "id": "SKILL_505_06"
+    "id": "SKILL_505_06",
+    "cooldown": 6,
+    "uses": 2,
+    "from": "jdr-default"
    },
    "source": {
-    "source": "jdr-default",
-    "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Guido_Mista_(Courage)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "research-b43 kit (Gamerch names matched to the game's SKILL_NAME labels; ShoutWiki cool-downs and uses as printed, action era; a slot the wikis leave out keeps the jdr-default pick): skill: jdr-default pick; sp: jdr-default pick, cool-down/uses from Diamond Records Wiki (ShoutWiki) (its name is not matched); finisher: jdr-default pick, cool-down/uses from Diamond Records Wiki (ShoutWiki) (its name is not matched)"
    }
   },
   "5080_04": {
@@ -4256,6 +4607,14 @@
    "source": {
     "source": "jdr-default",
     "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+   },
+   "actionMode": {
+    "usable": false,
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Narancia_Ghirga_(Fighting_Spirit)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "the page's Action Battle (Old Mode) tab says the statue cannot be used there (research-b43); the kit above is kept and needs no source"
    }
   },
   "5100_14": {
@@ -4270,6 +4629,14 @@
    "source": {
     "source": "jdr-default",
     "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+   },
+   "actionMode": {
+    "usable": false,
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Pannacotta_Fugo_(Solitary)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "the page's Action Battle (Old Mode) tab says the statue cannot be used there (research-b43); the kit above is kept and needs no source"
    }
   },
   "5120_14": {
@@ -4314,6 +4681,14 @@
    "source": {
     "source": "jdr-default",
     "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+   },
+   "actionMode": {
+    "usable": false,
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Ghiaccio_(Fighting_Spirit)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "the page's Action Battle (Old Mode) tab says the statue cannot be used there (research-b43); the kit above is kept and needs no source"
    }
   },
   "5170_14": {
@@ -4328,6 +4703,13 @@
    "source": {
     "source": "jdr-default",
     "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+   },
+   "actionMode": {
+    "usable": false,
+    "source": "player blog (Ameba), in-game screenshots",
+    "page": "https://ameblo.jp/yamasan-drm/entry-12506957304.html",
+    "accessed": "2026-11-22",
+    "note": "the in-game profile (a player's screenshot) ends with the Tactical-Battle-only tag (research-b44); the kit above is kept and needs no source"
    }
   },
   "5210_04": {
@@ -4356,6 +4738,13 @@
    "source": {
     "source": "jdr-default",
     "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+   },
+   "actionMode": {
+    "usable": false,
+    "source": "player blog (Ameba), in-game screenshots",
+    "page": "https://ameblo.jp/yamasan-drm/entry-12498184965.html",
+    "accessed": "2026-11-22",
+    "note": "the in-game profile (a player's screenshot) ends with the Tactical-Battle-only tag (research-b44); the kit above is kept and needs no source"
    }
   },
   "5290_04": {
@@ -4366,6 +4755,14 @@
    "source": {
     "source": "jdr-default",
     "note": "jdr-default + retail cinematic set (player files): no wiki skill names; the statue's tactical skills (normal as skill, special as SP) that have an action-set entry and do not play its SP cinematic, and from rarity 5 the finisher at its cinematic entry (action_cinematics.json)"
+   },
+   "actionMode": {
+    "usable": false,
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Leaky-Eye_Luca_(Fighting_Spirit)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "the page's Action Battle (Old Mode) tab says the statue cannot be used there (research-b43); the kit above is kept and needs no source"
    }
   },
   "5320_04": {
@@ -4380,6 +4777,14 @@
    "source": {
     "source": "jdr-default",
     "note": "no wiki skill names: the statue's tactical skills (normal as skill, special as SP)"
+   },
+   "actionMode": {
+    "usable": false,
+    "source": "Diamond Records Wiki (ShoutWiki)",
+    "page": "https://jojodiamondrecords.shoutwiki.com/wiki/(6★)_Jotaro_Kujo_(Tactical)",
+    "accessed": "2026-11-22",
+    "license": "CC BY-SA 3.0",
+    "note": "the page's Action Battle (Old Mode) tab says the statue cannot be used there (research-b43); the kit above is kept and needs no source"
    }
   },
   "1030_62": {

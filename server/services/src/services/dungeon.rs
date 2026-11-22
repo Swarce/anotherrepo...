@@ -11,7 +11,7 @@ use crate::accounts::Change;
 use crate::accounts::Profile;
 use crate::app::{ApiError, ApiResult};
 use crate::collection;
-use crate::labyrinth::{self, Dungeon, Outcome, DUNGEONS, E_INVALID, FLIP_COST, FLOORS};
+use crate::labyrinth::{self, Dungeon, Outcome, DUNGEONS, E_INVALID, FLIP_COST};
 use crate::quests::{self, PendingBattle};
 use crate::services::bizarre::{end_response, no_event, EndInfo};
 use crate::services::ok;
@@ -93,7 +93,7 @@ pub fn stage_list(ctx: &Ctx, env: &RequestEnvelope) -> ApiResult {
         }
         Err(code) => (Err(code), Change::None),
     })?;
-    let floor = floor.map_err(ApiError::Status)?.min(FLOORS);
+    let floor = floor.map_err(ApiError::Status)?.min(d.floors);
     let rooms: Vec<Value> = labyrinth::rooms_in(d, floor)
         .iter()
         .map(|r| json!({ "stageInfo": labyrinth::room_stage_info(r), "mapGimmickFlg": 0 }))
@@ -387,7 +387,7 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope, stage_id: &str, won: bool) 
                 .dungeon
                 .run
                 .as_ref()
-                .is_some_and(|r| r.floor > FLOORS);
+                .is_some_and(|r| r.floor > labyrinth::floors_of(&r.dungeon_id));
             let o = if cleared {
                 Outcome::Cleared
             } else {
@@ -447,7 +447,9 @@ pub fn bizarre_end(ctx: &Ctx, env: &RequestEnvelope, stage_id: &str, won: bool) 
 mod tests {
     use crate::accounts::Change;
     use crate::app::ApiError;
-    use crate::labyrinth::{self, FLOORS, MENTALITY_MAX, SOUL_MAX};
+    use crate::labyrinth::{self, MENTALITY_MAX, SOUL_MAX};
+    /// The Beginner dungeon's floors (DU01, the one these tests run).
+    const FLOORS: i64 = labyrinth::DUNGEONS[0].floors;
     use crate::services::dispatch;
     use crate::Ctx;
     use jdr_core::envelope::RequestEnvelope;
@@ -517,7 +519,7 @@ mod tests {
             let list = l["dungeonList"].as_array().unwrap();
             assert_eq!(list.len(), 3, "Beginner, Intermediate, Advanced");
             let d = list.iter().find(|d| d["dungeonId"] == id).unwrap();
-            assert_eq!(d["floorMax"], FLOORS);
+            assert_eq!(d["floorMax"], labyrinth::floors_of(id));
             d["floorNum"].as_i64().unwrap()
         }
         fn resumption(&self) -> Result<Map<String, Value>, ApiError> {
@@ -720,16 +722,23 @@ mod tests {
         let er = t.call("/dungeon/earn_reward", json!({}));
         let paid = er["rewardItemList"].as_array().unwrap();
         assert_eq!(paid.len(), 1, "one floor cleared");
-        assert_eq!(paid[0]["itemList"][0]["itemId"], 20, "floor 1 pays gold");
+        // Floor 1 pays Blue Stone x30 (ShoutWiki, Build 43).
+        let reward = labyrinth::floor_reward(&labyrinth::DUNGEONS[0], 1);
+        assert_eq!((reward.item_id, reward.count), (1002, 30));
+        assert_eq!(
+            paid[0]["itemList"][0]["itemId"], 1002,
+            "floor 1 pays Blue Stones"
+        );
         assert_eq!(t.waiting(), box0 + 1);
         assert_eq!(t.floor(), -1);
         assert_eq!(t.user()["soul"], SOUL_MAX);
-        let gold0 = t.user()["vm"].as_i64().unwrap();
+        let stones = |t: &T| {
+            let p = t.ctx.accounts.get(&t.uuid).unwrap().unwrap();
+            p.collection.item_count(1002)
+        };
+        let stones0 = stones(&t);
         t.call("/present/get_all", json!({"prevNum": 1}));
-        assert_eq!(
-            t.user()["vm"].as_i64().unwrap(),
-            gold0 + labyrinth::floor_reward(&labyrinth::DUNGEONS[0], 1).count
-        );
+        assert_eq!(stones(&t), stones0 + reward.count);
         assert_eq!(
             t.call("/dungeon/earn_reward", json!({}))["rewardItemList"],
             json!([]),
@@ -752,7 +761,7 @@ mod tests {
         );
         assert_eq!(t.waiting(), box1);
 
-        // A full clear: twenty floors, then the clear panel pays every floor.
+        // A full clear: the Beginner dungeon's ten floors, then the clear panel pays every floor.
         for f in 1..=FLOORS {
             t.refill();
             let end = t.battle(0);

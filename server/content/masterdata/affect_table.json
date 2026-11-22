@@ -1300,6 +1300,24 @@
     "affectLimitNormal": [],
     "affectLimitExtra": [],
     "textSortIndex": 0
+   },
+   {
+    "affectId": "DTAF_HALF_HP_DEF_RATEADD",
+    "affectTextId": "AFFECT_HALF_DEF_RATEADD_TEXT",
+    "prvs": "PRVS_HALF_HP",
+    "baseAffect": "BASE_DEF_RATECON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
+   },
+   {
+    "affectId": "AF_AST_USE_CRTRATE_ADD",
+    "affectTextId": "AFFECT_AST_USE_CRTRATE_ADD_TEXT",
+    "prvs": "PRVS_ASSIST_USE",
+    "baseAffect": "BASE_CRTRATE_CON",
+    "affectLimitNormal": [],
+    "affectLimitExtra": [],
+    "textSortIndex": 0
    }
   ]
  }

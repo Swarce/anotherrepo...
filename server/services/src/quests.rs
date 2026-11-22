@@ -30,6 +30,10 @@ pub struct StageDef {
     #[serde(rename = "enemyLevel")]
     pub enemy_level: i64,
     pub enemies: Vec<String>,
+    /// The stage's three star missions from a wiki (QuestMissionClearType, action stages;
+    /// `build_quests.py`); empty where no wiki lists them.
+    #[serde(default)]
+    pub missions: Vec<i64>,
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -107,6 +111,34 @@ pub struct CampaignDef {
     pub name: String,
 }
 
+/// A Labyrinth room's cost from a wiki (`quests_extra.json` `labyrinth.rooms`, Build 43,
+/// docs/research/22 §2.1), by the client's room label `STAGE_DU01_<floor>_<room>`.
+#[derive(Debug, Clone, Deserialize)]
+pub struct LabyrinthRoomDef {
+    pub label: String,
+    #[serde(rename = "useMentality")]
+    pub use_mentality: i64,
+}
+
+/// A Labyrinth floor reward from a wiki (`labyrinth.floorRewards`).
+#[derive(Debug, Clone, Deserialize)]
+pub struct LabyrinthRewardDef {
+    pub floor: i64,
+    #[serde(rename = "itemId")]
+    pub item_id: i64,
+    pub count: i64,
+}
+
+/// The wiki-sourced Labyrinth content (`build_extra_quests.py`, research-b43); everything else
+/// about the Labyrinth is ours (`labyrinth.rs`).
+#[derive(Debug, Clone, Default, Deserialize)]
+pub struct LabyrinthDef {
+    #[serde(default)]
+    pub rooms: Vec<LabyrinthRoomDef>,
+    #[serde(default, rename = "floorRewards")]
+    pub floor_rewards: Vec<LabyrinthRewardDef>,
+}
+
 #[derive(Deserialize)]
 struct ExtraDoc {
     daily: std::collections::BTreeMap<String, DailyDef>,
@@ -114,6 +146,8 @@ struct ExtraDoc {
     #[serde(default)]
     campaigns: Vec<CampaignDef>,
     chapters: Vec<ChapterDef>,
+    #[serde(default)]
+    labyrinth: LabyrinthDef,
 }
 
 fn extra() -> &'static ExtraDoc {
@@ -124,6 +158,11 @@ fn extra() -> &'static ExtraDoc {
 /// The events with a tile, in order.
 pub fn events() -> &'static [EventDef] {
     &extra().events
+}
+
+/// The wiki-sourced Labyrinth room costs and floor rewards.
+pub fn labyrinth() -> &'static LabyrinthDef {
+    &extra().labyrinth
 }
 
 /// The campaign banners, in order.
@@ -234,30 +273,33 @@ pub struct Progress {
 /// survives, clear within a number of turns. `starTarget` is the DTBattleQuestMissionClearType the
 /// client checks itself when the battle ends; `comment` is the mission's text label, with
 /// `{starParam}` replaced by `param`.
-pub fn dt_missions(s: &StageDef) -> [(i64, &'static str, String); 3] {
+pub fn dt_missions(s: &StageDef) -> [(i64, String, String); 3] {
     // Turn limit: ours (jdr-default), 10 turns for the first area and 5 more for each further one.
     let turns = 10 + 5 * (s.areas.len().max(1) as i64 - 1);
     [
-        (1, "DT_QM_Text_001", String::new()),
-        (2, "DT_QM_Text_002", String::new()),
-        (10, "DT_QM_Text_010", turns.to_string()),
+        (1, "DT_QM_Text_001".into(), String::new()),
+        (2, "DT_QM_Text_002".into(), String::new()),
+        (10, "DT_QM_Text_010".into(), turns.to_string()),
     ]
 }
 
-/// The three action-stage missions (docs/research/11 §4, 30 §6): all team members survive
-/// (QuestMissionClearType 7 NobodyDied), defeat all enemies (8 KillAllEnemy) and use a Skill
-/// (20 UseSkill), in our translations of the labels. `starTarget` is the action enum:
-/// `BattleLogManager.GetClearMissionList` 0xC05DFC checks each row's type itself, with the thresholds built into the type, so `param` is
-/// not read (empty, as the labels have no `{starParam}`). Labels are the game's own
+/// The three action-stage missions (docs/research/11 §4, 30 §6). A story stage a wiki lists
+/// (Gamerch 特別報酬条件, JoJo Wiki, the Bahamut forum; `missions` in quests.json, Build 43) sends
+/// the wiki's three, e.g. clear the quest (QuestMissionClearType 14 NoCondition), all team members
+/// survive (7 NobodyDied), use an SP skill (22). Other action stages send all team members
+/// survive (7), defeat all enemies (8 KillAllEnemy) and use a Skill (20 UseSkill): that choice is
+/// design from the Diamond Records PC playtest, used with its author's permission.
+/// `starTarget` is the action enum: `BattleLogManager.GetClearMissionList` 0xC05DFC checks each
+/// row's type itself, with the thresholds built into the type, so `param` is not read (empty, as
+/// the labels have no `{starParam}`). Labels are the game's own
 /// `QuestMission_JP:QuestMissionText_<type + 2>` (texts 0-2 are counters; 3 is type 1 UseSupport,
 /// 16 is type 14 NoCondition), shown through our translations.
-/// The choice of these three: design borrowed from the Diamond Records PC playtest.
-pub fn action_missions(_s: &StageDef) -> [(i64, &'static str, String); 3] {
-    [
-        (7, "QuestMissionText_9", String::new()),
-        (8, "QuestMissionText_10", String::new()),
-        (20, "QuestMissionText_22", String::new()),
-    ]
+pub fn action_missions(s: &StageDef) -> [(i64, String, String); 3] {
+    let types = match s.missions[..] {
+        [a, b, c] if s.missions.iter().all(|t| mission_types(0).contains(t)) => [a, b, c],
+        _ => [7, 8, 20],
+    };
+    types.map(|t| (t, format!("QuestMissionText_{}", t + 2), String::new()))
 }
 
 /// The mission types the client can report as cleared for a stage type: DT types 1..16 for
@@ -623,13 +665,38 @@ mod tests {
         assert_eq!(lit, [1, 0, 1]);
     }
 
+    /// Story stages with wiki missions send them; other action stages the default three.
+    #[test]
+    fn action_stages_send_the_wiki_missions() {
+        let types = |id: &str| -> Vec<i64> {
+            let (c, s) = find_stage(id).unwrap();
+            stage_info(c, s, 0, &Progress::default())["starList"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .map(|x| x["starTarget"].as_i64().unwrap())
+                .collect()
+        };
+        // Gamerch 第１章 第１話: clear the quest, all survive, use an SP skill.
+        assert_eq!(types("STAGE_ST_00_01"), [14, 7, 22]);
+        // Bahamut snA=969 (research-b43): the old-mode final stage, defeat the boss with a skill.
+        assert_eq!(types("STAGE_ST_25_05"), [14, 7, 26]);
+        // JoJo Wiki's boss list keeps its SP-skill wording for chapter 25 (the conflict is noted).
+        assert_eq!(types("STAGE_ST_24_05"), [14, 7, 27]);
+        // Stage-count conflict with the wiki (ST_01): the default three.
+        assert_eq!(types("STAGE_ST_01_01"), [7, 8, 20]);
+    }
+
     /// Action stages list three QuestMissionClearType missions with the game's own labels
     /// (docs/research/11 §4); tactical stages keep their DT types.
     #[test]
     fn action_stages_list_their_own_missions() {
         let tr = crate::l10n::Translations::embedded().unwrap();
-        for c in chapters().iter().filter(|c| c.stage_type == 0) {
-            let s = &c.stages[0];
+        for (c, s) in chapters()
+            .iter()
+            .filter(|c| c.stage_type == 0)
+            .flat_map(|c| c.stages.iter().map(move |s| (c, s)))
+        {
             let info = stage_info(c, s, 0, &Progress::default());
             let stars = info["starList"].as_array().unwrap();
             assert_eq!(stars.len(), 3, "{}", c.chapter_id);
@@ -653,7 +720,7 @@ mod tests {
         let s = &c.stages[0];
         let mut p = Progress::default();
         p.stars
-            .insert(s.stage_id.clone(), [8, 20, 1].into_iter().collect());
+            .insert(s.stage_id.clone(), [7, 22, 1].into_iter().collect());
         let lit: Vec<i64> = stage_info(c, s, 0, &p)["starList"]
             .as_array()
             .unwrap()

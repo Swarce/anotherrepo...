@@ -16,10 +16,12 @@
     "LEAD_1090_13": "https://jojodr.gamerch.com/【孤高】ストレイツォ★5（華麗なる跳躍）",
     "LEAD_1100_13": "https://jojodr.gamerch.com/【孤高】ディオ・ブランドー★5（我が夜の亡者となれ）",
     "LEAD_3001_03": "https://jojodr.gamerch.com/【勇気】空条承太郎★5（～てめーはおれを怒らせた～）",
+    "LEAD_3041_03": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91%E3%83%9D%E3%83%AB%E3%83%8A%E3%83%AC%E3%83%95%E2%98%855%EF%BC%88%EF%BD%9E%E3%82%A2%E3%83%8C%E3%83%93%E3%82%B9%E7%A5%9E%E3%81%AE%E6%86%91%E4%BE%9D%EF%BD%9E%EF%BC%89",
+    "LEAD_4000_23": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E6%9D%B1%E6%96%B9%E4%BB%97%E5%8A%A9%20%20%E2%98%855%EF%BC%88%EF%BD%9E%E3%81%93%E3%81%AE%E9%A0%AD%E3%81%AE%E3%81%93%E3%81%A8%E3%81%AA%E3%82%93%E3%81%A4%E3%81%A3%E3%81%9F%EF%BC%81%EF%BD%9E%EF%BC%89",
     "LEAD_4011_18": "https://jojodr.gamerch.com/【孤高】広瀬康一（ACT2）★6（成長し殻を破る）"
    },
-   "accessed": "2026-11-20",
-   "note": "research-b33/action leader_ability records: leader numbers only, for statues the Wayback dump lacks"
+   "accessed": "2026-11-22",
+   "note": "research-b33/action and research-b43/assists leader_ability records: leader numbers only, for statues the Wayback dump lacks"
   },
   {
    "source": "jdr-research",
@@ -2066,6 +2068,38 @@
    }
   },
   {
+   "statueId": "3041_03",
+   "abilityId": "LEAD_3041_03",
+   "abilityName": "ABI_LEAD_NAME_3041_03",
+   "params": [
+    {
+     "affectId": "AF_CRT_DMG_RATEADD",
+     "giveLimit": -1,
+     "lv1": [300, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [300, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ORACHAGE_FAST",
+     "giveLimit": -1,
+     "lv1": [80, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [80, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ONLY_STAND_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [100, 0, 5, 0, 0, 0, 0, 0],
+     "lv10": [100, 0, 5, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "research",
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E7%9F%A5%E7%95%A5%E3%80%91%E3%83%9D%E3%83%AB%E3%83%8A%E3%83%AC%E3%83%95%E2%98%855%EF%BC%88%EF%BD%9E%E3%82%A2%E3%83%8C%E3%83%93%E3%82%B9%E7%A5%9E%E3%81%AE%E6%86%91%E4%BE%9D%EF%BD%9E%EF%BC%89",
+    "accessed": "2026-11-22"
+   }
+  },
+  {
    "statueId": "3050_01",
    "abilityId": "LEAD_3050_01",
    "abilityName": "ABI_LEAD_NAME_3050_01",
@@ -2991,6 +3025,32 @@
     "page": "https://jojodr.gamerch.com/%E3%80%90%E5%9B%A3%E7%B5%90%E3%80%91%E6%9D%B1%E6%96%B9%E4%BB%97%E5%8A%A9%EF%BD%9E%E7%94%BA%E3%82%92%E8%AD%B7%E3%82%8B%E8%80%85%EF%BD%9E%E2%98%856%EF%BC%88%E5%8A%9B%E5%BC%B7%E3%81%8F%E5%84%AA%E3%81%97%E3%81%8D%E7%9E%B3%EF%BC%89",
     "capture": "20210410121132",
     "accessed": "2026-11-14"
+   }
+  },
+  {
+   "statueId": "4000_23",
+   "abilityId": "LEAD_4000_23",
+   "abilityName": "ABI_LEAD_NAME_4000_23",
+   "params": [
+    {
+     "affectId": "AF_CURE_RATEADD",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+     "affectId": "AF_ATK_RATEADD",
+     "giveLimit": -1,
+     "lv1": [40, 0, 0, 0, 0, 0, 0, 0],
+     "lv10": [50, 0, 0, 0, 0, 0, 0, 0]
+    }
+   ],
+   "left": [],
+   "source": {
+    "kind": "research",
+    "source": "Gamerch ジョジョDR攻略Wiki",
+    "page": "https://jojodr.gamerch.com/%E3%80%90%E9%97%98%E5%BF%97%E3%80%91%E6%9D%B1%E6%96%B9%E4%BB%97%E5%8A%A9%20%20%E2%98%855%EF%BC%88%EF%BD%9E%E3%81%93%E3%81%AE%E9%A0%AD%E3%81%AE%E3%81%93%E3%81%A8%E3%81%AA%E3%82%93%E3%81%A4%E3%81%A3%E3%81%9F%EF%BC%81%EF%BD%9E%EF%BC%89",
+    "accessed": "2026-11-22"
    }
   },
   {
@@ -4149,11 +4209,11 @@
  ],
  "report": {
   "stats": {
-   "statue_every_line_served": 131,
-   "statue_listed": 142,
-   "statue_listed_research": 6,
+   "statue_every_line_served": 133,
+   "statue_listed": 144,
+   "statue_listed_research": 8,
    "statue_listed_wayback": 136,
-   "statue_matched": 143,
+   "statue_matched": 145,
    "statue_not_in_roster": 1,
    "statue_nothing_served": 1
   },
@@ -4163,18 +4223,15 @@
    "gold_rate": 3,
    "no_label": 1,
    "nonint_flat": 1,
-   "ok": 328,
+   "ok": 333,
    "per_stype": 1
   },
   "max": {
-   "max": 220,
+   "max": 222,
    "max_rejected": 3,
-   "no_max": 105
+   "no_max": 108
   },
   "affect_ids": 106,
-  "research_held": [
-   "3041_03",
-   "4000_23"
-  ]
+  "research_held": []
  }
 }

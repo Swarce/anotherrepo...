@@ -1,6 +1,6 @@
 {
  "asset": "dtbattle_damage_param",
- "about": "Tactical battle damage tuning: one row (the client reads row 0 outside PvP). The real values died with the server; these are chosen so damage is neither zero nor capped (limit rates bracket 1.0, the random spread brackets 100% (in 1/10000: 9500-10500), a large cap) and the reversal mode is off. Assist-bonus fields are 0. Move ranges and the bystanders' escape distance are in centimetres (the client multiplies by 0.01): approach animations by distance 0.3/1.5/4/8 m, bystanders step 1.2 m aside. The miss (0.25) and critical (1.5) rates follow the community wiki; the rest are ours.",
+ "about": "Tactical battle damage tuning: one row (the client reads row 0 outside PvP). The real values died with the server; these are chosen so damage is neither zero nor capped (limit rates bracket 1.0, the random spread brackets 100% (in 1/10000: 9500-10500), a large cap) and the reversal mode is off. The assist-bonus fields follow the community sources (docs/research/19-assists.md §4). Move ranges and the bystanders' escape distance are in centimetres (the client multiplies by 0.01): approach animations by distance 0.3/1.5/4/8 m, bystanders step 1.2 m aside. The miss (0.25) and critical (1.5) rates follow the community wiki; the rest are ours.",
  "sources": [
   {
    "source": "jdr-research",
@@ -24,8 +24,9 @@
    "note": "Reversal on (Build 20): field meanings and units read in the client's ReversalManager; the gauge values are ours"
   },
   {
-   "source": "jdr-default",
-   "note": "assist bonus (Build 22): an assist adds (10% + up to 10/10/15/20% for rarity 3/4/5/6 at 10 boosts) of its own HP/ATK/DEF, formula read in the client (docs/research/19-assists.md); the limits are ours"
+   "source": "jdr-research",
+   "doc": "docs/research/19-assists.md §3",
+   "note": "assist bonus (Build 22): an assist adds (base + min(boost, limit)/limit x add) x the type rate of its own HP/ATK/DEF, formula read in the client; from Build 44 the limits follow the sources below (before: ours, 10 boosts and 10/10/15/20%)"
   },
   {
    "source": "atwiki ジョジョDR２ @ ウィキ (Wayback Machine)",
@@ -37,7 +38,13 @@
    "source": "Bahamut forum (gamer.com.tw), JoJo DR board",
    "page": "https://forum.gamer.com.tw/C.php?bsn=31489&snA=773",
    "accessed": "2026-11-20",
-   "note": "since 2019-02-26 an assist of the seat's own type passes on twice its share (_sameTypeAssistBonusRate 2000); Reversal: 4 turns, cool-downs halved (snA=703, 2018-08-30)"
+   "note": "since 2019-02-26 an assist of the seat's own type passes on twice its share (_sameTypeAssistBonusRate 2000); Reversal: 4 turns, cool-downs halved (snA=703, 2018-08-30). Its share is (10% + boost/15 %) x 2 for the same type, x 1 otherwise (+226: 50%), read by research-b33"
+  },
+  {
+   "source": "Reddit r/JoJoDiamondRecords (translation of the 3.4.0 update notice, 2019-02-26)",
+   "page": "https://www.reddit.com/r/JoJoDiamondRecords/comments/av03tg/2nd_anniversary340_update/",
+   "accessed": "2026-11-22",
+   "note": "research-b44/communities (medium): the stat increase stops at +300 boosts, from 20% (same type) / 10% (other type); with the snA=773 slope that is 20% more at +300 for every rarity (_limitRarityNAssistStatueAmplification 300, _limitAddBonusRarityNAssistStatueAmplification 200), so 60% / 30% at the cap"
   }
  ],
  "data": {
@@ -103,13 +110,13 @@
     "_baseAssistBonusRate": 100,
     "_sameTypeAssistBonusRate": 2000,
     "_differentTypeAssistBonusRate": 1000,
-    "_limitRarity3AssistStatueAmplification": 10,
-    "_limitAddBonusRarity3AssistStatueAmplification": 100,
-    "_limitRarity4AssistStatueAmplification": 10,
-    "_limitAddBonusRarity4AssistStatueAmplification": 100,
-    "_limitRarity5AssistStatueAmplification": 10,
-    "_limitAddBonusRarity5AssistStatueAmplification": 150,
-    "_limitRarity6AssistStatueAmplification": 10,
+    "_limitRarity3AssistStatueAmplification": 300,
+    "_limitAddBonusRarity3AssistStatueAmplification": 200,
+    "_limitRarity4AssistStatueAmplification": 300,
+    "_limitAddBonusRarity4AssistStatueAmplification": 200,
+    "_limitRarity5AssistStatueAmplification": 300,
+    "_limitAddBonusRarity5AssistStatueAmplification": 200,
+    "_limitRarity6AssistStatueAmplification": 300,
     "_limitAddBonusRarity6AssistStatueAmplification": 200
    }
   ]

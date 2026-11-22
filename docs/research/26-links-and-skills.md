@@ -34,6 +34,30 @@ M = inferred. No game text is reproduced; labels are cited by key.
 - **Traits (Build 41).** Trait links need the statues' traits: `StatueInfo.tribeTypeList` is now
   sent from `server/content/statue_traits.json` (docs/research/30-action-battle.md §7), so the
   formation and detail screens know them.
+- **Build 43 (research-b43/links_traits_minds).** In-game team screenshots attached to Gamerch
+  comments (read as data, not stored; cited per link as `effectSource` with the capture URL) give
+  the missing effects:
+  - **076** DoDoDo charge +3.0 % for 2 s per kill, **064** damage to Pillar Men +3.0 % and DEF
+    +5.0 %, **053** skill performance +5.0 % (H). Each screenshot shows the link active with every
+    member the Build 33 record names, so those low records count as medium and the three links
+    are served (56 in all). 053 was only ever seen with DIO + Lisa Lisa + Mariah and the
+    researchers leave its member rule open: we require all three (`RULE_OVERRIDES`, the stricter
+    form).
+  - **054** DoDoDo-mode damage +10.0 % (H), but its members are probably "any two female statues"
+    (M, two teams with exactly two women each). Our statues send no gender trait (ATTR_TEXT_16-18),
+    so it stays held with that reason. 013 is corroborated by one screenshot (`also`).
+  - Still held: the name-only links, 073, the gold/EXP links, 020 and 035 (no screenshot), 052,
+    060 and 062 (screenshots the OCR could not read), 036, 067, 074.
+- **Build 44 (research-b44/communities).** An in-game team screen posted on the Bahamut forum
+  (snA=342, 2017-09; read as data, not stored; cited as `effectSource`) prints **067** critical
+  rate ×1.03 (AF_CRTRATE_ADD 30, the Build 33 record's effect; H). Its team is Tarkus, a seat the
+  pop-up hides, and Yukako; 066 (Tarkus + Bradford) is active on the same screen, so the
+  researchers read the hidden seat as Bradford (M; `MEMBERS_SEEN` in the builder). Both members
+  the record names are then on the team, so the low record counts as medium, as in Build 43, and
+  067 is served with the record's rule, Bradford + Yukako (57 links). The screen also shows 066
+  and 068 active with our effects (`also`, field `active_in_screenshot`); its third line has no
+  readable name. **054** stays held: research-b44 shows the 性別(女) trait (ATTR_TEXT_17) only on
+  Trish 5210_04's status tab, and that id is not sent.
 - **What we send (Build 41).** `server/content/jojo_links.json` (`tools/content/build_jojo_links.py`)
   holds 53 links; `collection.rs jojo_link_list` computes the active ones for every team (so
   `TeamInfo` and the arena's `PvpTeamInfo`):
@@ -153,6 +177,20 @@ M = inferred. No game text is reproduced; labels are cited by key.
   - A skill Mind left on a seat whose statue changed is not sent in the TeamInfo, so the battle
     never adds a skill the model cannot play. The next equip on that seat drops it.
   - The auto formation leaves skill Minds out.
+- **Build 44 (research-b44/blogs_archives).** In-game Mind detail screens on an ameblo blog (read
+  as data) give 9 tactical skill Minds: ★4, cost 12, max Lv 10, one per team, the Lv1 damage rank,
+  the effect labels and the equip targets.
+  - **4036** (SP `SKILL_332_09`, time stop 3 turns) was in minds.json but had no skill: the parser
+    took the quoted name only up to the first close bracket, and this name is itself bracketed.
+    It now reads up to the bracket before the escaped line break, which also resolves 4002, 4023,
+    4030, 4034, 4055 and 4106 from the game's own labels (99 skill Minds, 50 SP). 4036 goes to
+    3323_08, the one roster DIO with `SKILL_09` (the screen says 3 statues: the others are not
+    ours or lack the action set). Its damage rank 0 is not sent (our row is a hit; rank 0 reads
+    the damage-rank table's last entry), so it keeps our 150.
+  - 4131, 4132, 4137, 4149, 4173, 4174, 4175 and a Diavolo Mind with no known id are not in
+    minds.json (no Gamerch record; adding Minds needs the bundle check on the player's files),
+    and their skills have no `dt_skills_base` row: data only. The labels of 4137, 4149 and
+    4173-4175 say they are unavailable in action battles.
 
 ## 4. Skill levels and cool turns
 
@@ -173,6 +211,15 @@ M = inferred. No game text is reproduced; labels are cited by key.
   - With no squares opened, every battle input is what Build 24 sent: a test dump of the main
     team and of all 266 statues alone showed no TeamInfo change. In the skill table only
     `dtMaxCoolTurn` changed, plus the new sub categories.
+- **Documented values (`server/content/dt_cool_turns.json`, `build_dt_cool_turns.py`).** The
+  research-b33 atwiki and Bahamut values (24 skills); Build 44 adds 57 skills of 16 tactical-era
+  ★6 statues (Part 5 and the late DIO/Jotaro kits) from a translator's 2019 Reddit retrospective
+  (research-b44/communities, medium), each record naming its `SKILL_<p>_<NN>` label (checked
+  against SkillName_JP): cool turn at max level and uses (none = unlimited). It agrees with every
+  atwiki value it overlaps (508_*, 510_01/03/04/05, 532_03/04/05); the atwiki reader comment on
+  Diavolo's 517_05 (2 uses, CT 3) is cited as `also`. Giorno's 500_03 is documented at 1 turn
+  (the test now allows 1..11). Trish's 521_05 keeps its cool turn 3 but not its uses (2 here, 3 on
+  the ShoutWiki tactical template: `USES_HELD`, so the server's default applies).
 
 ## 5. Time stop and other skill families
 
@@ -196,9 +243,11 @@ M = inferred. No game text is reproduced; labels are cited by key.
 - **What we send.**
   - `mind_skills.json` `timeStop` lists the 7 skills whose text says the user acts in stopped
     time (DIO's and Jotaro's): 300_10, 300_14, 404_06, 404_10, 332_11, 532_01, and a Mind copy
-    of 300_14.
+    of 300_14. Build 44 adds 332_09, Mind 4036's SP (§3).
   - Their row gets `subSkillCategory` `DTSC_WORLD_LIGHT` (normal, 1 turn) or `_MIDDLE` (special,
     2 turns). The category row is `{TargetType 5, ProcessType 4, turn 1/2, paramList []}`.
+    Build 44: 332_09 gets `DTSC_WORLD_HEAVY` (turn 3), the turns an in-game Mind detail screen
+    shows at Lv1 (research-b44/blogs_archives, high); the other turn counts stay ours.
   - The main category (their hit) is unchanged. Skills that only show a time stop in their
     animation stay plain hits.
 - **Not built:**

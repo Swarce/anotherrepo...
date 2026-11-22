@@ -166,6 +166,23 @@ earlier ones, the two high-score events, the quiz event and two more exchange ev
 50061). Each event records its kind, currency, bonus units, the scoring rules (high score) and
 the quiz answers. Maps, enemies, levels and rewards stay ours.
 
+Build 43 (research-b43/stages_extra) found 2019 stage numbers on the atwiki その他のデータ page: the
+month-end Town event's EX challenge (AP 10, EXP 5000, difficulty 110) and 強敵襲来 CHALLENGE その1/2/3
+(AP 3/5/10, EXP 2500/5250/6500, difficulty 80/90/95). No stage id of ours carries them (50077's
+EX stages are not identified; 強敵襲来 has no chapter labels in 3.12), so they are recorded in
+`quests_extra.json` `wiki.events` only. No reward list was found for any of our nine events.
+
+Build 44 (research-b44) adds templates and notices, none for an event id of ours, so all are
+recorded in `wiki.events` only (each with `held`): the 2018-11 tactical item-collection event
+力をつける『ハイウェイ・スター』 (atwiki, read from an archived RSS feed: per-chapter AP 3/5/7/10,
+drop counts, bonus rooms, try/EX rewards, EX lineup, exchange table), 帝王による『予知』 (2019-08:
+items, box-gacha mission, カオスクエスト), the 強化大成功キャンペーン multipliers (大成功 EXP ×2, 超成功
+×3, both twice as likely), and from the official notices and press releases: ツェペリ家の教え
+(2018-02 schedule, items, guerrilla windows), the 強敵襲来 CHALLENGE_21/22 schedule and
+CHALLENGE_622's date (2019-09-13; chapters we do not serve), login and new-player campaigns,
+ポルポの遺産を狙え！'s community milestones (CHAPTER_3COLL_01) and the 大還元祭 gacha points. Our nine
+events keep their numbers.
+
 ## 7. Null walks
 
 `testdata/client_shapes.json` now covers `BizarreSelectResponse`, `BizarreListResponse`,
