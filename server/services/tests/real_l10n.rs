@@ -68,9 +68,32 @@ fn rebuilds_every_text_bundle() {
     let hinted =
         doc["nameBox"].as_array().unwrap().len() + doc["lineBox"].as_array().unwrap().len();
     assert_eq!(boxes, hinted, "fixed boxes");
-    // The Options menu edits (Achievements hidden, the buttons after it moved up).
+    // Every Build 44 hint (lineFit, widthBox, widen) found its label (one count per label).
+    let fits: usize = loc.iter().map(|l| l.stats.line_fits).sum();
+    let mut ids: Vec<&str> = doc["lineFit"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .filter_map(|v| v.as_str())
+        .chain(
+            doc["widthBox"]
+                .as_object()
+                .unwrap()
+                .keys()
+                .map(String::as_str),
+        )
+        .chain(doc["widen"].as_object().unwrap().keys().map(String::as_str))
+        .collect();
+    ids.sort_unstable();
+    ids.dedup();
+    assert_eq!(fits, ids.len(), "line fits");
+    // The scene edits: Options menu (Achievements hidden, the buttons after it moved up), inbox
+    // rows (hidden), Notices web view background (set).
     let ed = serde_json::from_str::<serde_json::Value>(l10n::EDITS).unwrap();
-    let want = ed["hide"].as_array().unwrap().len() + ed["moveTo"].as_array().unwrap().len();
+    let want = ["hide", "moveTo", "set"]
+        .iter()
+        .map(|k| ed[k].as_array().unwrap().len())
+        .sum::<usize>();
     assert_eq!(
         loc.iter().map(|l| l.stats.edits).sum::<usize>(),
         want,

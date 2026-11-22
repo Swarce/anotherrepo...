@@ -348,7 +348,7 @@ impl Ctx {
             jdr_core::log::line(
                 "l10n",
                 &format!(
-                    "{} English file(s) ready in {} ms, {} already on the phone ({} rebuilt now: {} of {} strings replaced, {} stale, {} name box(es))",
+                    "{} English file(s) ready in {} ms, {} already on the phone ({} rebuilt now: {} of {} strings replaced, {} stale, {} name box(es), {} line fit(s))",
                     localized.len(),
                     t_l10n.elapsed().as_millis(),
                     loc.iter().filter(|l| l.on_device).count(),
@@ -356,7 +356,8 @@ impl Ctx {
                     replaced,
                     strings,
                     stale,
-                    loc.iter().map(|l| l.stats.name_boxes).sum::<usize>()
+                    loc.iter().map(|l| l.stats.name_boxes).sum::<usize>(),
+                    loc.iter().map(|l| l.stats.line_fits).sum::<usize>()
                 ),
             );
             let vf = versionfile::build(

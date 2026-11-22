@@ -121,6 +121,28 @@ TEXT_BY_LABEL = {}
 for k in L10N:
     if k.startswith("text:"):
         TEXT_BY_LABEL.setdefault(k.split(":", 2)[2], k)
+
+# Labels the game fills at runtime from text.jp rows (their baked text is empty or a placeholder):
+# (path regex, key prefixes of the rows they show). Their English is measured against the box too.
+CHAPTERS = ("text:ChapterName_JP:", "text:EventChapterName_JP:")
+RUNTIME = [
+    (r"(BizarreChapterBanner|BizarreEventChapterBanner)/Txt_ChapterName$", CHAPTERS),
+    (r"StartCall/Txt_QuestTitle$", CHAPTERS),
+    (r"PauseWindowGroup/.*/Img_TitlePanel/Txt_ChapterName$", CHAPTERS),
+    (r"Img_StageTitle/Txt_QuestTitleValue$", CHAPTERS),
+    (r"BizarreDungeonBanner/Txt_DungeonName$", ("text:DungeonStageName_JP:",)),
+    (r"Img_ClanCondition0/Txt_ClanCondition0Value$", ("text:ClanText_JP:ClanPolicy_",)),
+    (r"Img_ClanCondition1/Txt_ClanCondition1Value$", ("text:ClanText_JP:ClanActiveTime_",)),
+    (r"Img_ClanCondition2/Txt_ClanCondition2Value$", ("text:ClanText_JP:ClanApproval_",)),
+]
+
+
+def runtime_texts(path):
+    out = set()
+    for rx, prefixes in RUNTIME:
+        if re.search(rx, path):
+            out |= {en for k, (h, en) in L10N.items() if k.startswith(prefixes) and en.strip()}
+    return sorted(out)
 JA_SRC = {}  # Japanese of text rows, from the private export (never written out)
 ap2 = os.path.join(a.repo, "local/l10n/work3.tsv")
 if os.path.exists(ap2):
@@ -282,6 +304,38 @@ for path in sorted(glob.glob(os.path.join(a.dec, "*"))):
                 return rect_size(fa)[0]
             return 0
 
+        def edges(rpid, pw, ph):
+            """(left, right, bottom, top) of a RectTransform in its parent's space."""
+            t = tree(rpid)
+            amin, amax, sd, pos, piv = t["m_AnchorMin"], t["m_AnchorMax"], t["m_SizeDelta"], t["m_AnchoredPosition"], t["m_Pivot"]
+            w, h = pw * (amax["x"] - amin["x"]) + sd["x"], ph * (amax["y"] - amin["y"]) + sd["y"]
+            px = pw * (amin["x"] + piv["x"] * (amax["x"] - amin["x"])) + pos["x"]
+            py = ph * (amin["y"] + piv["y"] * (amax["y"] - amin["y"])) + pos["y"]
+            return px - piv["x"] * w, px + (1 - piv["x"]) * w, py - piv["y"] * h, py + (1 - piv["y"]) * h
+
+        def room_right(rpid):
+            """Width a left-anchored label (pivot x 0, not stretched sideways) can take: up to the
+            nearest sibling to its right on its row (8 px gap) or its parent's right edge (4 px)."""
+            t = tree(rpid)
+            fa = t["m_Father"]["m_PathID"]
+            if t["m_Pivot"]["x"] != 0 or t["m_AnchorMin"]["x"] != t["m_AnchorMax"]["x"]:
+                return None
+            if not (fa in objs and objs[fa].type.name == "RectTransform"):
+                return None
+            pw, ph = rect_size(fa)
+            l, r, b, tp = edges(rpid, pw, ph)
+            if tp - b < 1:
+                b, tp = b - 10, tp + 10
+            room = pw - 4 - l
+            for c in tree(fa)["m_Children"]:
+                cp = c["m_PathID"]
+                if cp == rpid or cp not in objs:
+                    continue
+                cl, cr, cb, ct = edges(cp, pw, ph)
+                if cr - cl > 1 and ct - cb > 1 and cl > l + 4 and cb < tp and ct > b:
+                    room = min(room, cl - 8 - l)
+            return room
+
         def go_path(rpid):
             parts = []
             while rpid and rpid in objs and objs[rpid].type.name == "RectTransform":
@@ -314,8 +368,10 @@ for path in sorted(glob.glob(os.path.join(a.dec, "*"))):
                     src = fs + JA_SRC[tkey] + bs
                     en = fs + L10N[tkey][1] + bs
                     key = tkey
-            rows.append(dict(id=f"{name}:{fi}:{pid}", key=key, bundle=name, path=go_path(rpid), font=fname, fd=fd, w=w, h=h, src=src, en=en,
-                             enabled=t.get("m_Enabled", 1), driven=driven(gid, rpid), parent_w=parent_w(rpid)))
+            path = go_path(rpid)
+            rows.append(dict(id=f"{name}:{fi}:{pid}", key=key, bundle=name, path=path, font=fname, fd=fd, w=w, h=h, src=src, en=en,
+                             enabled=t.get("m_Enabled", 1), driven=driven(gid, rpid), parent_w=parent_w(rpid),
+                             runtime=runtime_texts(path), room=room_right(rpid)))
 
 print(len(rows), "UI.Text labels;", sum(1 for r in rows if JP.search(r["src"])), "with Japanese;",
       sum(1 for r in rows if r["en"]), "with our English", file=sys.stderr)
@@ -337,6 +393,83 @@ if a.calibrate:
     sys.exit()
 
 K = a.line or 1.1
+UNITY_W = 0.97  # Unity rounds glyph advances at the scaled render size: wrap checks keep 3% spare
+
+
+def max_size(fd):
+    return fd["m_MaxSize"] if fd["m_BestFit"] else fd["m_FontSize"]
+
+
+def texts_of(r):
+    """Our English for a label: its baked or BaseTextBox text, and the rows it shows at runtime."""
+    return sorted({s for s in ([r["en"]] if r["en"] is not None else []) + r["runtime"] if s.strip()})
+
+
+def one_line(s):
+    return "\\n" not in s and "\n" not in s
+
+
+def natural(s, sz):
+    return max(width(l, sz) for l in RICH.sub("", s).replace("\\n", "\n").split("\n"))
+
+
+def line_fd(fd):
+    """FontData as the server ships a lineFit label: wrap and truncate, best fit down to half size
+    (or the designer's smaller minimum)."""
+    m = max_size(fd)
+    half = min(max(8, m // 2), m)
+    mn = min(fd["m_MinSize"], half) if fd["m_BestFit"] and fd["m_MinSize"] >= 1 else half
+    return dict(fd, m_BestFit=1, m_MinSize=mn, m_MaxSize=m, m_HorizontalOverflow=0, m_VerticalOverflow=0)
+
+
+def plan(r):
+    """Layout fix for labels whose English runs out of a box the Japanese fit on one line:
+    lineFit (wrap with vertical overflow in a one-line box, no fitter), lineBox for runtime labels
+    sized by a vertical fitter, widthBox (sized by a horizontal fitter, past its frame), and widen
+    (left-anchored labels with room up to their right-hand neighbour)."""
+    fd = r["fd"]
+    if r["font"] not in FONT_FILES or fd["m_FontSize"] <= 0 or r["font"] in BITMAP:
+        return None
+    CUR[0] = r["font"]
+    m = max_size(fd)
+    texts = [s for s in texts_of(r) if one_line(s)]
+    if not texts or (JP.search(r["src"]) and not one_line(r["src"])):
+        return None
+    left = fd["m_Alignment"] % 3 == 0
+    if (fd["m_HorizontalOverflow"] == 0 and fd["m_VerticalOverflow"] == 1 and not r["driven"] and r["w"] >= 16
+            and m * 0.5 <= r["h"] < 2 * m * K and not (JP.search(r["src"]) and len(wrap(r["src"], m, r["w"])) > 1)):
+        kind, w, h, f2 = "lineFit", r["w"], max(r["h"], m * 7 / 6), line_fd(fd)
+    elif (r["runtime"] and r["driven"] == "fitter-v" and fd["m_HorizontalOverflow"] == 0 and 16 <= r["w"] < 600
+          and fd["m_LineSpacing"] >= 1.0 - 1e-6):
+        size = fd["m_FontSize"]
+        kind, w, h = "lineBox", r["w"], size * 7 / 6
+        f2 = dict(fd, m_BestFit=1, m_MinSize=min(max(8, size // 2), size), m_MaxSize=size, m_HorizontalOverflow=0, m_VerticalOverflow=0)
+        m = size
+    elif r["driven"] == "fitter-h" and r["room"] and left and r["room"] >= 16:
+        size = fd["m_FontSize"]
+        # never tighter than the room the Japanese took (the neighbour may sit closer than 8 px)
+        room = max(r["room"], natural(r["src"], size) + 2 if JP.search(r["src"]) else 0)
+        if max(natural(s, size) for s in texts) <= room * UNITY_W:
+            return None
+        r = dict(r, room=room)
+        f2 = dict(fd, m_BestFit=1, m_MinSize=min(max(8, size // 2), size), m_MaxSize=size, m_HorizontalOverflow=0, m_VerticalOverflow=0)
+        kind, w, h, m = "widthBox", int(r["room"]), size * 7 / 6, size
+    else:
+        return None
+    long_ = [s for s in texts if natural(s, m) > w * UNITY_W]
+    if not long_:
+        return None
+    widen = None
+    if kind != "widthBox" and left and r["room"] and r["room"] > w + 1:
+        widen = int(min(r["room"], max(natural(s, m) for s in long_) / UNITY_W + 2))
+        w = widen
+    worst = min((best_size(s, f2, w * UNITY_W, h, K) for s in long_), key=lambda x: (x[1], x[0]))
+    return dict(kind=kind, texts=long_, width=w, widen=widen, size=worst[0], ok=worst[1], design=m)
+
+
+for r in rows:
+    r["fix"] = plan(r)
+
 out = open(a.out, "w")
 out.write("key\tbundle\tpath\tfont\tsize\tbestfit\tmin\tmax\thwrap\tvtrunc\tw\th\tja_fits\tja_size\ten_size_now\ten_fits_now\ten_fits_at_half\tproblem\tdriven\tparent_w\tjapanese_baked\tenglish\n")
 for r in rows:
@@ -374,6 +507,11 @@ for r in rows:
                 wd = max(width(l, esz) for l in en.replace("\\n", "\n").split("\n"))
                 if wd > r["w"] * 1.15:
                     problem.append("no wrap: %.0f px wide in a %.0f px box" % (wd, r["w"]))
+    fx = r["fix"]
+    if fx:
+        problem.append("%s: %d text(s) wrap at the design size%s; fixed: %d px (%d%%)%s" % (
+            fx["kind"], len(fx["texts"]), ", widened to %d px" % fx["widen"] if fx["widen"] else "", fx["size"],
+            round(100 * fx["size"] / fx["design"]), "" if fx["ok"] else ", overflows even at min size"))
     out.write("\t".join(str(x) for x in [r["key"], r["bundle"], r["path"], r["font"], fd["m_FontSize"], fd["m_BestFit"], fd["m_MinSize"], fd["m_MaxSize"],
                                           int(fd["m_HorizontalOverflow"] == 0), int(fd["m_VerticalOverflow"] == 0), round(r["w"]), round(r["h"]),
                                           jok, jsz, esz, eok, half, "; ".join(problem), r["driven"], round(r["parent_w"]), int(ja), (r["en"] or "").replace("\t", " ").replace("\n", "\\n")]) + "\n")
@@ -418,12 +556,33 @@ if a.hints:
             lines1.add(r["id"])
             if a.list_boxes:
                 print("lineBox", r["id"], r["path"].rsplit("/", 2)[-2:], r["w"], fd["m_FontSize"], file=sys.stderr)
+    # Build 44 (plan()): runtime labels in a vertical fitter join lineBox; lineFit, widthBox and widen.
+    linefit, widthbox, widen = set(), {}, {}
+    for r in rows:
+        fx = r["fix"]
+        if not fx or r["id"] in names:
+            continue
+        if fx["kind"] == "lineBox":
+            lines1.add(r["id"])
+        elif fx["kind"] == "lineFit":
+            linefit.add(r["id"])
+        elif fx["kind"] == "widthBox":
+            widthbox[r["id"]] = fx["width"]
+        if fx["widen"]:
+            widen[r["id"]] = fx["widen"]
+        if a.list_boxes:
+            print(fx["kind"], r["id"], r["path"].rsplit("/", 2)[-2:], fx["width"], fx["size"], file=sys.stderr)
     doc = {"about": "UI.Text layout hints from tools/l10n/ui_fit.py (label ids bundle:file:pathId; no game text). "
                     "bestFit: labels that wrap and truncate get best fit (down to half size); wrap: labels that spill "
                     "sideways with our English get wrap, truncate and best fit; nameBox: statue name labels that a "
                     "ContentSizeFitter grows by a line get a fixed box of up to two lines and best fit; lineBox: one-line "
-                    "labels a ContentSizeFitter grows when the English wraps get a fixed one-line box and best fit. "
-                    "See docs/LOCALIZATION.md.",
-           "bestFit": sorted(best), "wrap": sorted(wrapl), "nameBox": sorted(names), "lineBox": sorted(lines1)}
+                    "labels a ContentSizeFitter grows when the English wraps get a fixed one-line box and best fit; "
+                    "lineFit: one-line labels whose vertical overflow let the English wrap out of the box get "
+                    "truncate, best fit and a box one line tall; widthBox: labels a ContentSizeFitter widens past "
+                    "their frame get a fixed box of this width (one line, best fit); widen: left-anchored labels get "
+                    "this width (room up to their right-hand neighbour). See docs/LOCALIZATION.md.",
+           "bestFit": sorted(best), "wrap": sorted(wrapl), "nameBox": sorted(names), "lineBox": sorted(lines1),
+           "lineFit": sorted(linefit), "widthBox": dict(sorted(widthbox.items())), "widen": dict(sorted(widen.items()))}
     json.dump(doc, open(a.hints, "w"), indent=0)
-    print("hints:", len(best), "best fit,", len(wrapl), "wrap,", len(names), "name boxes,", len(lines1), "line boxes ->", a.hints, file=sys.stderr)
+    print("hints:", len(best), "best fit,", len(wrapl), "wrap,", len(names), "name boxes,", len(lines1), "line boxes,",
+          len(linefit), "line fits,", len(widthbox), "width boxes,", len(widen), "widened ->", a.hints, file=sys.stderr)

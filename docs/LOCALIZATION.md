@@ -161,7 +161,11 @@ English runs longer than Japanese, and the UI was laid out for Japanese.
     best fit down to half size.
 
   Scene edits that are not about text live in `server/content/l10n/ui_edits.json` (object ids):
-  the Options menu without its Achievements button (docs/research/29-debloat.md).
+  `hide` (GameObjects made inactive), `moveTo` (a RectTransform takes another's anchors and
+  position) and `set` (`[object, dotted field, number]`: a numeric field of a component, e.g.
+  `backgroundColor.a`). They give the Options menu without its Achievements button
+  (docs/research/29-debloat.md), the inbox rows below, and the Notices web view a transparent
+  background (docs/research/27-support-and-news.md §2.3).
 
   Labels with the bitmap digit fonts (`Font_*Num*`) are never listed: they hold only digits and a
   few symbols, so a letter put in one would not show at all.
@@ -171,6 +175,75 @@ English runs longer than Japanese, and the UI was laid out for Japanese.
   - Prefer the short forms used across the game: Easy/Normal/Hard, (S)/(M)/(L)/(XL),
     "X Shard", "X Slab", "Tarot: …", "• Fire attack on one foe".
   - Character, Stand, skill and Mind names stay whole: best fit shrinks them instead.
+
+## Text that ran out of its box (Build 44)
+
+The owner's device screenshots (Galaxy S22, 2340x1080) showed English wrapping out of rows,
+overlapping its neighbours or running past panels. The causes and fixes below are applied on the
+phone as layout hints or scene edits, like those above. They are `lineFit`, `widthBox` and `widen` in
+`ui_layout.json` (`widthBox`/`widen` map a label id to a width) and `hide` in `ui_edits.json`.
+Fixed boxes are counted in the server log ("line fit(s)"), and `GEN_VERSION` 5 rebuilds the cached
+English files.
+
+- **Vertical overflow hid the wrap (`lineFit`, 77 labels).** Many one-line labels have wrap on and
+  vertical overflow, in a box no taller than one line (often shorter than the font: 20 px for 24).
+  The Japanese fit on one line. Longer English wraps, and the second line spills under the row (or
+  over the stage below it). Vertical overflow also stops best fit, so labels that already had best
+  fit (chapter titles, 18-28) never shrank. For a label whose English wraps at the design size, the
+  server sets truncate and best fit, from the design size (the label's own maximum when it had best
+  fit) down to half of it, or to the designer's smaller minimum. If the box is shorter than one
+  line (7/6 of the largest size), it grows to that height, keeping the edge its text is anchored to.
+  Seen in the screenshots: System Settings ("Graphics Settings", "Frame Rate Settings", "Battle
+  Camera Settings (Action)"), the quest list and chapter stage list title (`Txt_ChapterName` in
+  `BizarreChapterBanner` / `BizarreEventChapterBanner`), the battle START banner
+  (`StartCall/Txt_QuestTitle`) and the AP header ("Next +1 in", 93 px in an 85 px box at 16 px).
+  The scan found the same pattern in purchase and recovery dialogs ("Currently Owned", "Owned
+  After", "Owned", "Cost"), notification settings, the Terms of Use buttons, "Not Enough Diamond
+  Coins", Statue awakening materials ("Owned ×") and the auto-set tabs.
+- **Runtime labels.** Chapter titles, dungeon names and the Town Info values are filled at runtime
+  from text.jp. `ui_fit.py` now measures the rows each one shows (`RUNTIME`: chapter and event
+  chapter names, dungeon stage names, the Town policy / active hours / join requirement rows)
+  against its box. A chapter title such as "Jotaro Kujo Meets Josuke Higashikata (2)" (581 px at
+  28) now takes one line at 23 px in the 500 px banner, where it used to wrap. Daily titles such as
+  'Unleash! Souls of "Wisdom, Spirit, Courage"' take one line at 21 px. The longest event titles go
+  down to 15 px (the pause header, 440 px wide, to 13 px).
+- **Pause menu header (`lineBox`).** The pause header's chapter title is sized by a vertical
+  ContentSizeFitter. It joins the Build 32 one-line boxes (runtime labels whose rows wrap).
+- **Grown past the frame (`widthBox`, 9 labels).** Labels sized by a horizontal ContentSizeFitter
+  grow with their text. In the Town Info header, "Approval Required" and "Beginners Welcome" (254
+  and 268 px) ran past the 224 px left in their frame. The server turns the fitter off and gives
+  the label a fixed box of the width the tool measured: up to its right-hand neighbour (8 px gap) or
+  its parent's edge (4 px), never less than the Japanese took. The box is one line tall when the
+  fitter also sized it vertically, with best fit down to half size and Upper anchors moved to
+  Middle; the Town values now show at 19-20 px. The scan also covered the battle Options titles,
+  "Unlimited AP until", the event shop "Left" and the dungeon "Floor".
+- **Wider boxes where there is room (`widen`, 6 labels).** Left-anchored labels (pivot x 0, left
+  aligned) get the width up to their right-hand neighbour when the English needs it: the System
+  Settings titles (240 -> 254 px, 384 -> 412 px) and the Notification Settings titles (-> 265 px).
+  "Graphics Settings" stays at 24 px; the others shrink to 20-23 px.
+- **Inbox: "Expires in", "No Expiration" and a stray "D".** This was not a translation length
+  problem. `GiftBoxBannerController.UpdateUI` (0xDE6B3C) shows `ReceivePeriodNoLimit` for a present
+  with `indefinitely` 1 and hides `ReceivePeriod`. But the row's animation `UI_GiftBox_Panel_On`
+  sets `ReceivePeriod` active again (a GameObject `m_IsActive` curve). So the period label and its
+  value are drawn over "No Expiration". The value still holds its baked day unit "D", because the
+  code fills it only for presents with an end date. Our server sends `indefinitely: 1` for every
+  present (`presents.rs`, tested in `services/present.rs`). `ui_edits.json` therefore hides
+  `Txt_ReceivePeriodLabel` and `Txt_ReceivePeriodValue` (the animation only drives their parent),
+  and only "No Expiration" shows. The Claimed tab (`ReceiveDate`) is unchanged.
+- **Shorter text, where best fit would go too small.** The event shop period title "Exchange ends
+  in" sits in a 110 px gap before the period value and would shrink to 11 px. It is now "Ends in"
+  (`SHOP_0030_MESSAGE` and the three baked labels).
+- **Measuring.** Unity rounds glyph advances at the scaled render size. The tool's wrap checks
+  keep 3% spare, which is why "Next +1 in" counts as wrapping. The report's `problem` column names
+  each fix and the size it reaches (`lineFit: N text(s) wrap at the design size, widened to W px;
+  fixed: S px (P%)`). `--list-boxes` prints them.
+
+  ```bash
+  python3 -I tools/l10n/ui_fit.py --dec <decrypted bundles> --out local/l10n/fit.tsv --hints <new hints> --list-boxes
+  ```
+
+  Merge the new lists into `ui_layout.json`. Keep the ids of bundles your copy lacks: this pass
+  ran without `ui_script`, so its `bestFit` id was kept.
 
 ## Redrawn UI art (Build 09)
 

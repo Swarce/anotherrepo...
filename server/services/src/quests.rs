@@ -428,11 +428,48 @@ fn star_list(c: &ChapterDef, s: &StageDef, p: &Progress) -> Vec<Value> {
         .collect()
 }
 
+/// `AreaInfo.clearAreaType` of our tactical areas: DTBattleClearAreaType KILL_ALL (1), the area
+/// ends when every enemy is dead (docs/research/11 §3; 0xEBD730).
+pub const DT_CLEAR_AREA_TYPE: i64 = 1;
+/// `AreaInfo.clearWaveNum` of our action areas.
+pub const ACTION_CLEAR_WAVE_NUM: i64 = 1;
+
+/// The stage's clear-condition label, `StageInfo.text`. The client shows it under "Clear
+/// Conditions" in the battle pause menu (`BattlePauseUIController.SetupUI` 0xC09284:
+/// questPurposeText = GetString(text)), as the title beside the stage name in the Quest Results
+/// header (`BattleResultUIController.SetUI` 0xC0DFB8: titleText = GetString(text), stageIdText =
+/// the stageId label) and in the stage information window (0xE0EDD4). The START banner does not
+/// read it: it picks `Areachange_cleartext_00N` from the area itself
+/// (`BattleSceneBaseControllerData.GetGoalPurposeText` 0xEC2A98 for tactical battles,
+/// `BizarreQuestManager.GetCurrentAreaGoalPurposeText` 0xE04608 for action ones). With no time or
+/// turn limits that is 001 "Defeat all enemies", or 002 "Defeat the boss" for a tactical area of
+/// clearAreaType 2 (KILL_BOSS) or an action area whose clearWaveNum is not -1. We send the
+/// StageText_JP stage label with the same text (`STAGE_CLEAR_TEXT_01`/`_02`), so the pause menu
+/// and the results agree with the banner. (Build 43 sent the stage id, which is the stage-name
+/// label: "Part 3" showed in both places.)
+pub fn clear_text_label(
+    stage_type: i64,
+    clear_area_type: i64,
+    clear_wave_num: i64,
+) -> &'static str {
+    let boss = if stage_type == 1 {
+        clear_area_type == 2
+    } else {
+        clear_wave_num != -1
+    };
+    if boss {
+        "STAGE_CLEAR_TEXT_02"
+    } else {
+        "STAGE_CLEAR_TEXT_01"
+    }
+}
+
 pub fn stage_info(c: &ChapterDef, s: &StageDef, n: usize, p: &Progress) -> Value {
     let cleared = p.cleared.contains(&s.stage_id);
+    let text = clear_text_label(c.stage_type, DT_CLEAR_AREA_TYPE, ACTION_CLEAR_WAVE_NUM);
     json!({
         "stageId": s.stage_id, "name": s.stage_id, "stageNo": n + 1, "stageDifficulty": 0, "type": 0,
-        "text": s.stage_id, "startTalkId": "", "endTalkId": "",
+        "text": text, "startTalkId": "", "endTalkId": "",
         "startConditionItemList": [], "startConditionList": [], "startConditionFlg": true,
         "startConditionText": "", "areaMax": s.areas.len().max(1), "useMentality": 0, "openSetting": 1,
         "nextStageIdList": c.stages.get(n + 1).map(|x| vec![x.stage_id.clone()]).unwrap_or_default(),
@@ -572,12 +609,12 @@ pub fn area_list(c: &ChapterDef, s: &StageDef) -> Vec<Value> {
                 "areaEventId": "", "endEventId": "", "bizarreEffectId": "", "mapId": s.map_id,
                 "dayNight": 0, "vampireDayNight": 0, "mapCamera": 0, "startCamera": 0, "bgmCueId": 0,
                 "rotate": 0, "levelEditId": "", "instanceObjType": 0, "startWipe": 1, "endWipe": 1,
-                "clearWaveNum": 1, "limitTime": 0, "endureTime": 0,
+                "clearWaveNum": ACTION_CLEAR_WAVE_NUM, "limitTime": 0, "endureTime": 0,
                 "waveList": if c.stage_type == 0 { waves } else { Vec::new() },
                 "mapGimmickInfo": {}, "mapPoint": 0,
                 // Tactical areas place units by this area_position_pattern_table row.
                 "formation": if c.stage_type == 1 { DT_FORMATION } else { "" },
-                "clearAreaType": 1, "limitTurn": 0,
+                "clearAreaType": DT_CLEAR_AREA_TYPE, "limitTurn": 0,
                 "areaSettingList": if c.stage_type == 1 { dt_settings } else { Vec::new() }
             })
         })
@@ -663,6 +700,58 @@ mod tests {
             .map(|x| x["clearFlg"].as_i64().unwrap())
             .collect();
         assert_eq!(lit, [1, 0, 1]);
+    }
+
+    /// Build 44: `StageInfo.text` is the clear condition the pause menu and the Quest Results
+    /// header show (Build 43 sent the stage id, the stage-name label: "Part 3" twice). It must
+    /// match the START banner's choice from the area (clearAreaType / clearWaveNum) and name a
+    /// StageText_JP label with English.
+    #[test]
+    fn stage_text_is_the_clear_condition() {
+        let tr = crate::l10n::Translations::embedded().unwrap();
+        let english = |label: &str| tr.english(&format!("text:StageText_JP:{label}"));
+        // The client's choice with no time or turn limits.
+        assert_eq!(clear_text_label(1, 1, 1), "STAGE_CLEAR_TEXT_01");
+        assert_eq!(clear_text_label(1, 2, 1), "STAGE_CLEAR_TEXT_02");
+        assert_eq!(clear_text_label(0, 1, -1), "STAGE_CLEAR_TEXT_01");
+        assert_eq!(clear_text_label(0, 1, 1), "STAGE_CLEAR_TEXT_02");
+        for stage_type in [0, 1] {
+            let c = chapters()
+                .iter()
+                .find(|c| c.stage_type == stage_type)
+                .unwrap();
+            for (n, s) in c.stages.iter().enumerate() {
+                let info = stage_info(c, s, n, &Progress::default());
+                let text = info["text"].as_str().unwrap();
+                assert_ne!(text, s.stage_id, "the stage id is the name label");
+                let area = &area_list(c, s)[0];
+                let want = clear_text_label(
+                    stage_type,
+                    area["clearAreaType"].as_i64().unwrap(),
+                    area["clearWaveNum"].as_i64().unwrap(),
+                );
+                assert_eq!(text, want, "{}", s.stage_id);
+                assert!(english(text).is_some(), "{text}");
+            }
+        }
+        // The owner's stage (Chapter 2 Part 3, tactical): "Defeat all enemies", as on the banner.
+        let (c, s) = chapters()
+            .iter()
+            .filter(|c| c.stage_type == 1)
+            .find_map(|c| {
+                c.stages
+                    .iter()
+                    .find(|s| s.stage_id.ends_with("_402_03"))
+                    .map(|s| (c, s))
+            })
+            .unwrap();
+        let text = stage_info(c, s, 2, &Progress::default())["text"].clone();
+        assert_eq!(text, "STAGE_CLEAR_TEXT_01");
+        assert_eq!(
+            english("STAGE_CLEAR_TEXT_01"),
+            english("Areachange_cleartext_001")
+        );
+        assert_eq!(english("STAGE_CLEAR_TEXT_01"), Some("Defeat all enemies"));
     }
 
     /// Story stages with wiki missions send them; other action stages the default three.
