@@ -125,7 +125,12 @@ pub const NEWS_JSON: &str = include_str!("../../content/news.json");
 const NOTICE_CSS: &str = include_str!("../../content/notice.css");
 /// Collapses every post but the first. Without it (scripts off) every post stays open: the page
 /// is sent expanded and only this script folds it (docs/research/27-support-and-news.md §2.2).
-const NOTICE_JS: &str = "document.querySelectorAll('.headline').forEach(function(b,i){var s=document.getElementById(b.getAttribute('aria-controls'));function set(o){s.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');}set(i===0);b.addEventListener('click',function(){set(s.hidden);});});";
+/// A tap toggles a post. First the script sets `--edge` (notice.css): how
+/// much wider the view is than the box the game designed for it, 1200x720 of its 1280x720 layout
+/// (Notices offsets 40 left and right), so 5/3 of the screen height on a wide screen. Only on a
+/// phone whose cutout widens the web view (docs/research/27-support-and-news.md §2.3) is it more
+/// than 0; at most a fifth of the view.
+const NOTICE_JS: &str = "(function(){function fit(){var s=window.screen,h=Math.min(s.width,s.height),w=window.innerWidth,e=w-h*5/3;e=e>2?Math.min(e,w*0.2):0;document.documentElement.style.setProperty('--edge',Math.floor(e)+'px');}fit();window.addEventListener('resize',fit);})();document.querySelectorAll('.headline').forEach(function(b,i){var s=document.getElementById(b.getAttribute('aria-controls'));function set(o){s.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');}set(i===0);b.addEventListener('click',function(){set(s.hidden);});});";
 
 #[derive(serde::Deserialize)]
 struct News {
@@ -274,11 +279,19 @@ fn render_post(p: &Post) -> String {
     )
 }
 
+/// The notice pages' viewport: the layout is as wide as the web view, at scale 1, never zoomed.
+/// The client's web view keeps Android's defaults (no wide viewport, no overview mode, no text
+/// zoom, zoom off), which already lay a page out at the view's width; the meta says the same, so
+/// a web view that honours it (wide viewport on) shows the page the same way.
+/// docs/research/27-support-and-news.md §2.3.
+const NOTICE_VIEWPORT: &str =
+    "width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no";
+
 /// A Notices tab: its posts as collapsible notices, CSS and script inline (no other files).
 fn notice_page(title: &str, category: &str) -> Response {
     let posts: String = posts(category).map(render_post).collect();
     let s = format!(
-        "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>{title}</title><style>{NOTICE_CSS}</style></head><body><main>{posts}</main><script>{NOTICE_JS}</script></body></html>"
+        "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"{NOTICE_VIEWPORT}\"><title>{title}</title><style>{NOTICE_CSS}</style></head><body><main>{posts}</main><script>{NOTICE_JS}</script></body></html>"
     );
     Response::ok("text/html; charset=utf-8", s.into_bytes())
 }
@@ -433,6 +446,52 @@ mod tests {
                 "{rel}"
             );
             assert!(!page.contains("[["), "{rel}: a placeholder is shown");
+        }
+    }
+
+    /// The pages fit any web view: the viewport is the view's width at scale 1, the type scales
+    /// with the view within readable bounds, sizes are relative (no fixed pixel boxes), nothing
+    /// is set wider than the view, sideways scrolling is off and long words wrap.
+    #[test]
+    fn notice_pages_fit_the_view() {
+        for rel in [NOTES_PAGE, MAINTENANCE_PAGE, ABOUT_PAGE] {
+            let page = body(rel);
+            let meta = format!("<meta name=\"viewport\" content=\"{NOTICE_VIEWPORT}\">");
+            assert!(page.contains(&meta), "{rel}");
+        }
+        for part in ["width=device-width", "initial-scale=1", "maximum-scale=1"] {
+            assert!(NOTICE_VIEWPORT.contains(part), "{part}");
+        }
+        let css: String = NOTICE_CSS
+            .split("*/")
+            .map(|s| s.split("/*").next().unwrap_or(""))
+            .collect();
+        for rule in [
+            "font-size: clamp(13px, min(2.5vw, 6.4vh), 22px)",
+            "html, body { width: 100%; max-width: 100%; overflow-x:hidden; }",
+            "overflow-wrap: anywhere",
+            "text-size-adjust: 100%",
+            "img, table, pre { max-width: 100%; }",
+            "html { background: transparent;",
+            "margin: 0 var(--edge, 0px)",
+        ] {
+            assert!(css.contains(rule), "missing: {rule}");
+        }
+        // Only `main` is painted, inset by --edge, which the script sets from the view and screen.
+        assert!(NOTICE_JS.contains("setProperty('--edge'") && NOTICE_JS.contains("h*5/3"));
+        // Fixed sizes only for hairlines (borders, shadows), the root clamp and the breakpoint;
+        // every other length is in em, rem, % or view units.
+        let fixed: Vec<&str> = css
+            .split(|c: char| !(c.is_ascii_alphanumeric() || c == '.' || c == '-'))
+            .filter(|w| {
+                w.strip_suffix("px").is_some_and(|n| {
+                    n.parse::<f32>().is_ok_and(|v| v > 2.0) && !["13", "22", "480"].contains(&n)
+                })
+            })
+            .collect();
+        assert!(fixed.is_empty(), "fixed sizes: {fixed:?}");
+        for bad in ["100vw", "min-width", "nowrap", "position: fixed"] {
+            assert!(!css.contains(bad), "{bad}");
         }
     }
 

@@ -209,6 +209,24 @@ empty star rows, and the loading screen's tip board was blank.
     boss kill's last hit) is not traced yet.
   - Open (M): not yet seen on a device (whether every served wave raises `EnemyNum` as it
     spawns, so 8 can be met).
+- **Clear condition text** (Build 44) (H).
+  - `StageInfo.text` is the stage's clear-condition label. The pause menu shows it under "Clear
+    Conditions" (`BattlePauseUIController.SetupUI` 0xC09284: questPurposeText =
+    GetString(text); the header is `chapterInfo.name` and the `stageId` label). The Quest Results
+    header shows the `stageId` label and, beside it, GetString(text) (`BattleResultUIController`
+    SetUI 0xC0DFB8). The stage information window (0xE0EDD4) uses it as its title too.
+  - The START banner does not read it: `BizarreLoadInfo.clearConditionLabel` comes from
+    `BattleSceneBaseControllerData.GetGoalPurposeText` 0xEC2A98 (tactical) or
+    `BizarreQuestManager.GetCurrentAreaGoalPurposeText` 0xE04608 (action), which pick the
+    literal `Areachange_cleartext_001..006` from the stage's and area's time/turn limits and the
+    area's `clearAreaType` (tactical, 2 = boss) or `clearWaveNum` (action, -1 = all enemies).
+    With no limits: 001 "Defeat all enemies", else 002 "Defeat the boss".
+  - Build 43 sent the stage id, so "Part 3" (the stage-name label) showed as the clear condition
+    and twice in the results header. We now send the StageText_JP stage label with the banner's
+    text (`quests::clear_text_label`): `STAGE_CLEAR_TEXT_01` "Defeat all enemies" for tactical
+    stages (clearAreaType 1). Action areas send clearWaveNum 1, so their banner and text say
+    `_02` "Defeat the boss" (M: not yet seen on a device). Labyrinth rooms still put the room
+    name label in `text`.
 - **Loading tips** (H).
   - `BattleSceneController.CreateSceneChangeOption` 0xEC36F0 passes the stage's `questTips` to
     the loading screen; there is no random pick.

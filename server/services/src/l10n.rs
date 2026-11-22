@@ -35,19 +35,25 @@ use std::path::{Path, PathBuf};
 type Error = String;
 
 /// Bump when the rewrite logic changes, so cached English files are rebuilt.
-pub const GEN_VERSION: u32 = 4;
+pub const GEN_VERSION: u32 = 5;
 
 /// UI.Text layout hints (`tools/l10n/ui_fit.py`): label ids `bundle:file:pathId`, no game text.
 pub const LAYOUT: &str = include_str!("../../content/l10n/ui_layout.json");
 
 /// Labels that get best fit (they wrap and truncate), labels that get wrap, truncate and best
 /// fit (they spilled sideways with our English), statue name labels that get a fixed two-line box
-/// and one-line labels that get a fixed one-line box (`fit_box`).
+/// and one-line labels that get a fixed one-line box (`fit_box`). Build 44: one-line labels whose
+/// vertical overflow let the English wrap out of the box (`line_fit`), labels a horizontal
+/// ContentSizeFitter widened past their frame (`width_box`, the width they get) and left-anchored
+/// labels given the room up to their right-hand neighbour (`widen`).
 struct Layout {
     best_fit: std::collections::HashSet<String>,
     wrap: std::collections::HashSet<String>,
     name_box: std::collections::HashSet<String>,
     line_box: std::collections::HashSet<String>,
+    line_fit: std::collections::HashSet<String>,
+    width_box: HashMap<String, f32>,
+    widen: HashMap<String, f32>,
 }
 
 fn layout() -> &'static Layout {
@@ -63,21 +69,37 @@ fn layout() -> &'static Layout {
                 })
                 .unwrap_or_default()
         };
+        let widths = |k: &str| {
+            v[k].as_object()
+                .map(|m| {
+                    m.iter()
+                        .filter_map(|(id, w)| Some((id.clone(), w.as_f64()? as f32)))
+                        .filter(|(_, w)| *w >= 1.0)
+                        .collect()
+                })
+                .unwrap_or_default()
+        };
         Layout {
             best_fit: set("bestFit"),
             wrap: set("wrap"),
             name_box: set("nameBox"),
             line_box: set("lineBox"),
+            line_fit: set("lineFit"),
+            width_box: widths("widthBox"),
+            widen: widths("widen"),
         }
     })
 }
 
-/// Scene edits by object id (`hide`, `moveTo`): the Options menu without Google Play Games.
+/// Scene edits by object id (`hide`, `moveTo`, `set`): the Options menu without Google Play
+/// Games, the inbox rows, the Notices web view background.
 pub const EDITS: &str = include_str!("../../content/l10n/ui_edits.json");
 
 struct Edits {
     hide: Vec<String>,
     move_to: Vec<(String, String)>,
+    /// `[object id, dotted field path, number]`: a numeric field of a component set to a value.
+    set: Vec<(String, String, f64)>,
 }
 
 fn edits() -> &'static Edits {
@@ -95,6 +117,14 @@ fn edits() -> &'static Edits {
                 .map(|a| {
                     a.iter()
                         .filter_map(|p| Some((strs(&p[0])?, strs(&p[1])?)))
+                        .collect()
+                })
+                .unwrap_or_default(),
+            set: v["set"]
+                .as_array()
+                .map(|a| {
+                    a.iter()
+                        .filter_map(|p| Some((strs(&p[0])?, strs(&p[1])?, p[2].as_f64()?)))
                         .collect()
                 })
                 .unwrap_or_default(),
@@ -179,7 +209,43 @@ fn apply_edits(f: &mut sfile::SFile, prefix: &str, stats: &mut Stats) -> bool {
                 .push(format!("{prefix}{pid}: move: {err}")),
         }
     }
+    for (id, path, n) in &e.set {
+        let Some(pid) = local(id) else { continue };
+        let r = (|| -> Result<(), Error> {
+            let i = find(f, pid).ok_or("no object")?;
+            let nd = nodes(f, i);
+            let mut v = sfile::read_object(&nd, &f.objects[i].data)?;
+            set_number(&mut v, path, *n)?;
+            f.objects[i].data = sfile::write_object(&nd, &v)?;
+            Ok(())
+        })();
+        match r {
+            Ok(()) => {
+                stats.edits += 1;
+                changed = true;
+            }
+            Err(err) => stats
+                .layout_errors
+                .push(format!("{prefix}{pid}: set {path}: {err}")),
+        }
+    }
     changed
+}
+
+/// Set the numeric field at a dotted path (`backgroundColor.a`) to `n`, keeping its stored type.
+fn set_number(v: &mut V, path: &str, n: f64) -> Result<(), Error> {
+    let mut x = v;
+    for k in path.split('.') {
+        x = x.get_mut(k).ok_or_else(|| format!("no field {k}"))?;
+    }
+    *x = match x {
+        V::F32(_) => V::F32(n as f32),
+        V::F64(_) => V::F64(n),
+        V::I(_) if n.fract() == 0.0 => V::I(n as i64),
+        V::U(_) if n.fract() == 0.0 && n >= 0.0 => V::U(n as u64),
+        _ => return Err("not a number of that kind".into()),
+    };
+    Ok(())
 }
 
 /// Smallest font size a statue name may shrink to in its box (every English name fits at 16).
@@ -413,6 +479,8 @@ pub struct Stats {
     pub art_errors: Vec<String>,
     /// Labels given a fixed box (`fit_box`): statue names (two lines) and one-line labels.
     pub name_boxes: usize,
+    /// Build 44 layout hints applied: `lineFit` boxes, `widthBox` boxes and `widen` widths.
+    pub line_fits: usize,
     /// Scene edits applied (`ui_edits.json`: objects hidden or moved).
     pub edits: usize,
     /// Hinted labels or edits whose objects did not have the expected shape (left alone).
@@ -544,6 +612,57 @@ fn visit_object(
         if let Some(fd) = v.get_mut("m_FontData") {
             changed |= line_box_font(fd);
         }
+    } else if hints.line_fit.contains(&id) {
+        if let Some(fd) = v.get_mut("m_FontData") {
+            changed |= line_fit_font(fd);
+        }
+    } else if hints.width_box.contains_key(&id) {
+        if let Some(fd) = v.get_mut("m_FontData") {
+            changed |= line_box_font(fd);
+            // The fitter made the box exactly one line tall around the label's pivot: keep the
+            // text there in the fixed box (TextAnchor 0/1/2 Upper -> 3/4/5 Middle).
+            if let Some(a @ 0..=2) = fd.get("m_Alignment").and_then(V::as_i64) {
+                set_int(fd.get_mut("m_Alignment").expect("checked"), a + 3);
+                changed = true;
+            }
+        }
+    }
+    changed
+}
+
+/// The font side of a `lineFit` label: the vertical overflow let the English wrap out of a box
+/// laid out for one line, and it also kept best fit from running (the box never fills). Wrap and
+/// truncate, and best fit from the design size (the label's own maximum when it had best fit) down
+/// to half of it, or to the designer's smaller minimum.
+fn line_fit_font(fd: &mut V) -> bool {
+    let Some(size @ 1..) = fd.get("m_FontSize").and_then(V::as_i64) else {
+        return false;
+    };
+    let g = |fd: &V, k: &str| fd.get(k).and_then(V::as_i64);
+    let had = g(fd, "m_BestFit") == Some(1);
+    let max = match g(fd, "m_MaxSize") {
+        Some(m @ 1..) if had => m,
+        _ => size,
+    };
+    let half = (max / 2).max(8).min(max);
+    let min = match g(fd, "m_MinSize") {
+        Some(m @ 1..) if had => m.min(half),
+        _ => half,
+    };
+    let mut changed = false;
+    for (k, n) in [
+        ("m_BestFit", 1),
+        ("m_MinSize", min),
+        ("m_MaxSize", max),
+        ("m_HorizontalOverflow", 0),
+        ("m_VerticalOverflow", 0),
+    ] {
+        if let Some(x) = fd.get_mut(k) {
+            if x.as_i64() != Some(n) {
+                set_int(x, n);
+                changed = true;
+            }
+        }
     }
     changed
 }
@@ -606,42 +725,35 @@ fn f32_of(v: &V) -> Option<f32> {
     }
 }
 
-/// A label sized by a ContentSizeFitter (vertical: preferred size) grows by a line when the
-/// English wraps, so best fit never runs and the text spills onto what lies above and below
-/// (statue names onto the tabs, Town values out of their bars). Its box becomes fixed instead:
-/// the fitter stops sizing it vertically, and the RectTransform keeps the top of the one-line
-/// box the label had (7/6 of the font size, the game's own one-line box). `lines` 1 (`lineBox`)
-/// keeps that box; 2 (`nameBox`, statue names) makes it 1.5x the font size tall. Best fit
-/// (`line_box_font`, `name_box_font`) then shrinks the full text into it.
-fn fit_box(f: &mut sfile::SFile, text_pid: i64, lines: u8) -> Result<(), Error> {
-    let find = |f: &sfile::SFile, pid: i64| {
+/// One label's objects in a serialized file: its UI.Text, the RectTransform of its GameObject
+/// and the ContentSizeFitter on it, if any (each as object index and decoded value).
+struct LabelParts {
+    text: V,
+    rect: (usize, V),
+    fitter: Option<(usize, V)>,
+}
+
+fn label_parts(f: &sfile::SFile, text_pid: i64) -> Result<LabelParts, Error> {
+    let find = |pid: i64| {
         f.objects
             .iter()
             .position(|o| o.path_id == pid)
             .ok_or_else(|| format!("no object {pid}"))
     };
-    let class_of =
-        |f: &sfile::SFile, i: usize| f.types[f.objects[i].type_index as usize].entry.class_id;
-    let read = |f: &sfile::SFile, i: usize| {
+    let class_of = |i: usize| f.types[f.objects[i].type_index as usize].entry.class_id;
+    let read = |i: usize| {
         sfile::read_object(
             &f.types[f.objects[i].type_index as usize].nodes,
             &f.objects[i].data,
         )
     };
     let pid_of = |v: Option<&V>| v.and_then(|p| p.get("m_PathID")).and_then(V::as_i64);
-    let ti = find(f, text_pid)?;
-    let text = read(f, ti)?;
-    let size = text
-        .get("m_FontData")
-        .and_then(|fd| fd.get("m_FontSize"))
-        .and_then(V::as_i64)
-        .filter(|&s| s > 0)
-        .ok_or("no font size")? as f32;
-    let gi = find(f, pid_of(text.get("m_GameObject")).ok_or("no GameObject")?)?;
-    if class_of(f, gi) != CLASS_GAMEOBJECT {
+    let text = read(find(text_pid)?)?;
+    let gi = find(pid_of(text.get("m_GameObject")).ok_or("no GameObject")?)?;
+    if class_of(gi) != CLASS_GAMEOBJECT {
         return Err("m_GameObject is not a GameObject".into());
     }
-    let comps: Vec<i64> = match read(f, gi)?.get("m_Component") {
+    let comps: Vec<i64> = match read(gi)?.get("m_Component") {
         Some(V::Arr(items)) => items
             .iter()
             .filter_map(|c| pid_of(c.get("component")))
@@ -650,12 +762,12 @@ fn fit_box(f: &mut sfile::SFile, text_pid: i64, lines: u8) -> Result<(), Error> 
     };
     let (mut rect, mut fitter) = (None, None);
     for c in comps {
-        let ci = find(f, c)?;
-        match class_of(f, ci) {
-            CLASS_RECTTRANSFORM => rect = Some((ci, read(f, ci)?)),
+        let ci = find(c)?;
+        match class_of(ci) {
+            CLASS_RECTTRANSFORM => rect = Some((ci, read(ci)?)),
             jdr_unity::CLASS_MONOBEHAVIOUR => {
-                if let Ok(v) = read(f, ci) {
-                    if v.get("m_VerticalFit").is_some() {
+                if let Ok(v) = read(ci) {
+                    if v.get("m_VerticalFit").is_some() && v.get("m_HorizontalFit").is_some() {
                         fitter = Some((ci, v));
                     }
                 }
@@ -663,18 +775,61 @@ fn fit_box(f: &mut sfile::SFile, text_pid: i64, lines: u8) -> Result<(), Error> 
             _ => {}
         }
     }
-    let (ri, mut rv) = rect.ok_or("no RectTransform")?;
+    Ok(LabelParts {
+        text,
+        rect: rect.ok_or("no RectTransform")?,
+        fitter,
+    })
+}
+
+fn font_int(text: &V, k: &str) -> Option<i64> {
+    text.get("m_FontData")
+        .and_then(|fd| fd.get(k))
+        .and_then(V::as_i64)
+}
+
+fn store(f: &mut sfile::SFile, (i, v): &(usize, V)) -> Result<(), Error> {
+    f.objects[*i].data = sfile::write_object(&f.types[f.objects[*i].type_index as usize].nodes, v)?;
+    Ok(())
+}
+
+/// A Vector2 component (`axis` "x" or "y") of a RectTransform field.
+fn vec2(v: &V, k: &str, axis: &str) -> Option<f32> {
+    v.get(k).and_then(|p| p.get(axis)).and_then(f32_of)
+}
+
+fn set_vec2(v: &mut V, k: &str, axis: &str, n: f32) {
+    if let Some(V::F32(x)) = v.get_mut(k).and_then(|p| p.get_mut(axis)) {
+        *x = n;
+    }
+}
+
+/// A label sized by a ContentSizeFitter (vertical: preferred size) grows by a line when the
+/// English wraps, so best fit never runs and the text spills onto what lies above and below
+/// (statue names onto the tabs, Town values out of their bars). Its box becomes fixed instead:
+/// the fitter stops sizing it vertically, and the RectTransform keeps the top of the one-line
+/// box the label had (7/6 of the font size, the game's own one-line box). `lines` 1 (`lineBox`)
+/// keeps that box; 2 (`nameBox`, statue names) makes it 1.5x the font size tall. Best fit
+/// (`line_box_font`, `name_box_font`) then shrinks the full text into it.
+fn fit_box(f: &mut sfile::SFile, text_pid: i64, lines: u8) -> Result<(), Error> {
+    let LabelParts {
+        text,
+        rect: (ri, mut rv),
+        fitter,
+    } = label_parts(f, text_pid)?;
+    let size = font_int(&text, "m_FontSize")
+        .filter(|&s| s > 0)
+        .ok_or("no font size")? as f32;
     let (fi, mut fv) = fitter.ok_or("no ContentSizeFitter")?;
     if fv.get("m_VerticalFit").and_then(V::as_i64) != Some(2) {
         return Err("not sized by a vertical fitter".into());
     }
     set_int(fv.get_mut("m_VerticalFit").expect("checked"), 0);
-    let y = |v: &V, k: &str| v.get(k).and_then(|p| p.get("y")).and_then(f32_of);
     let (Some(amin), Some(amax), Some(pivot), Some(pos)) = (
-        y(&rv, "m_AnchorMin"),
-        y(&rv, "m_AnchorMax"),
-        y(&rv, "m_Pivot"),
-        y(&rv, "m_AnchoredPosition"),
+        vec2(&rv, "m_AnchorMin", "y"),
+        vec2(&rv, "m_AnchorMax", "y"),
+        vec2(&rv, "m_Pivot", "y"),
+        vec2(&rv, "m_AnchoredPosition", "y"),
     ) else {
         return Err("RectTransform without anchors".into());
     };
@@ -684,18 +839,119 @@ fn fit_box(f: &mut sfile::SFile, text_pid: i64, lines: u8) -> Result<(), Error> 
     let one = size * 7.0 / 6.0;
     let two = if lines >= 2 { size * 1.5 } else { one };
     let top = pos + (1.0 - pivot) * one;
-    let set_y = |v: &mut V, k: &str, n: f32| {
-        if let Some(V::F32(x)) = v.get_mut(k).and_then(|p| p.get_mut("y")) {
-            *x = n;
-        }
+    set_vec2(
+        &mut rv,
+        "m_AnchoredPosition",
+        "y",
+        top - (1.0 - pivot) * two,
+    );
+    set_vec2(&mut rv, "m_SizeDelta", "y", two);
+    store(f, &(fi, fv))?;
+    store(f, &(ri, rv))
+}
+
+/// `lineFit`: make a box at least one line tall at the label's largest size (7/6 of it), keeping
+/// the edge its text is anchored to (top, centre or bottom: TextAnchor row `align / 3`), so best
+/// fit can fit one line. Returns whether the box changed.
+fn grow_to_line(rv: &mut V, max_size: f32, align: i64) -> Result<bool, Error> {
+    let (Some(amin), Some(amax), Some(p), Some(pos), Some(h)) = (
+        vec2(rv, "m_AnchorMin", "y"),
+        vec2(rv, "m_AnchorMax", "y"),
+        vec2(rv, "m_Pivot", "y"),
+        vec2(rv, "m_AnchoredPosition", "y"),
+        vec2(rv, "m_SizeDelta", "y"),
+    ) else {
+        return Err("RectTransform without anchors".into());
     };
-    set_y(&mut rv, "m_AnchoredPosition", top - (1.0 - pivot) * two);
-    set_y(&mut rv, "m_SizeDelta", two);
-    let fdata = sfile::write_object(&f.types[f.objects[fi].type_index as usize].nodes, &fv)?;
-    let rdata = sfile::write_object(&f.types[f.objects[ri].type_index as usize].nodes, &rv)?;
-    f.objects[fi].data = fdata;
-    f.objects[ri].data = rdata;
-    Ok(())
+    if amin != amax {
+        return Err("stretched vertically".into());
+    }
+    let one = (max_size * 7.0 / 6.0).ceil();
+    if h >= one - 0.5 {
+        return Ok(false);
+    }
+    let y = match align / 3 {
+        0 => pos + (1.0 - p) * h - (1.0 - p) * one, // keep the top
+        2 => pos - p * h + p * one,                 // keep the bottom
+        _ => pos + (0.5 - p) * h - (0.5 - p) * one, // keep the centre
+    };
+    set_vec2(rv, "m_AnchoredPosition", "y", y);
+    set_vec2(rv, "m_SizeDelta", "y", one);
+    Ok(true)
+}
+
+/// `widen` and `widthBox`: give a left-anchored box (pivot x 0, not stretched sideways) this width;
+/// its left edge stays. Returns whether the box changed.
+fn set_width(rv: &mut V, width: f32) -> Result<bool, Error> {
+    let (Some(amin), Some(amax), Some(px), Some(w)) = (
+        vec2(rv, "m_AnchorMin", "x"),
+        vec2(rv, "m_AnchorMax", "x"),
+        vec2(rv, "m_Pivot", "x"),
+        vec2(rv, "m_SizeDelta", "x"),
+    ) else {
+        return Err("RectTransform without anchors".into());
+    };
+    if amin != amax {
+        return Err("stretched sideways".into());
+    }
+    if px != 0.0 {
+        return Err("not anchored on its left edge".into());
+    }
+    if (w - width).abs() < 0.5 {
+        return Ok(false);
+    }
+    set_vec2(rv, "m_SizeDelta", "x", width);
+    Ok(true)
+}
+
+/// Apply the Build 44 hints to one label (`text_pid`): `lineFit` grows the box to one line,
+/// `widthBox` turns the horizontal fitter off and fixes the width (and, when the fitter also
+/// sized it vertically, a one-line height), `widen` sets the width.
+fn fit_line(
+    f: &mut sfile::SFile,
+    text_pid: i64,
+    line_fit: bool,
+    width_box: Option<f32>,
+    widen: Option<f32>,
+) -> Result<bool, Error> {
+    let LabelParts {
+        text,
+        rect: (ri, mut rv),
+        fitter,
+    } = label_parts(f, text_pid)?;
+    let size = font_int(&text, "m_FontSize")
+        .filter(|&s| s > 0)
+        .ok_or("no font size")?;
+    let mut changed = false;
+    if line_fit {
+        let max = match font_int(&text, "m_MaxSize") {
+            Some(m @ 1..) if font_int(&text, "m_BestFit") == Some(1) => m,
+            _ => size,
+        };
+        let align = font_int(&text, "m_Alignment").unwrap_or(4);
+        changed |= grow_to_line(&mut rv, max as f32, align)?;
+    }
+    if let Some(width) = width_box {
+        let (fi, mut fv) = fitter.ok_or("no ContentSizeFitter")?;
+        if fv.get("m_HorizontalFit").and_then(V::as_i64) != Some(2) {
+            return Err("not sized by a horizontal fitter".into());
+        }
+        set_int(fv.get_mut("m_HorizontalFit").expect("checked"), 0);
+        if fv.get("m_VerticalFit").and_then(V::as_i64) == Some(2) {
+            set_int(fv.get_mut("m_VerticalFit").expect("checked"), 0);
+            set_vec2(&mut rv, "m_SizeDelta", "y", size as f32 * 7.0 / 6.0);
+        }
+        set_width(&mut rv, width)?;
+        store(f, &(fi, fv))?;
+        changed = true;
+    }
+    if let Some(width) = widen {
+        changed |= set_width(&mut rv, width)?;
+    }
+    if changed {
+        store(f, &(ri, rv))?;
+    }
+    Ok(changed)
 }
 
 /// Walk a (decrypted) bundle; returns the rewritten bundle if anything changed.
@@ -750,6 +1006,32 @@ pub fn rewrite_bundle(
                     file_changed = true;
                 }
                 Err(e) => stats.layout_errors.push(format!("{id_prefix}{pid}: {e}")),
+            }
+        }
+        let local = |id: &String| id.strip_prefix(&id_prefix)?.parse::<i64>().ok();
+        let mut lines: Vec<i64> = hints
+            .line_fit
+            .iter()
+            .chain(hints.width_box.keys())
+            .chain(hints.widen.keys())
+            .filter_map(local)
+            .collect();
+        lines.sort_unstable();
+        lines.dedup();
+        for pid in lines {
+            let id = format!("{id_prefix}{pid}");
+            match fit_line(
+                &mut f,
+                pid,
+                hints.line_fit.contains(&id),
+                hints.width_box.get(&id).copied(),
+                hints.widen.get(&id).copied(),
+            ) {
+                Ok(c) => {
+                    stats.line_fits += 1;
+                    file_changed |= c;
+                }
+                Err(e) => stats.layout_errors.push(format!("{id}: {e}")),
             }
         }
         file_changed |= apply_edits(&mut f, &id_prefix, &mut stats);
@@ -1298,18 +1580,171 @@ mod tests {
             ),
             (0, 0, 1)
         );
+        // A one-line label whose vertical overflow let the English wrap out: truncate, best fit
+        // from the design size down to half.
+        let (b, f, p) = parse(doc["lineFit"][0].as_str().unwrap());
+        let mut v = label(0, 1);
+        assert!(visit_object(&b, f, p, &mut v, &mut none, &mut st));
+        assert_eq!(
+            (
+                fd(&v, "m_VerticalOverflow"),
+                fd(&v, "m_BestFit"),
+                fd(&v, "m_MinSize"),
+                fd(&v, "m_MaxSize")
+            ),
+            (0, 1, 10, 20)
+        );
+        // A label a horizontal fitter widened: one line, best fit.
+        let (b, f, p) = parse(doc["widthBox"].as_object().unwrap().keys().next().unwrap());
+        let mut v = label(1, 1);
+        assert!(visit_object(&b, f, p, &mut v, &mut none, &mut st));
+        assert_eq!(
+            (
+                fd(&v, "m_HorizontalOverflow"),
+                fd(&v, "m_VerticalOverflow"),
+                fd(&v, "m_BestFit")
+            ),
+            (0, 0, 1)
+        );
         // Not listed and not translated: untouched.
         let mut v = label(1, 1);
         assert!(!visit_object("ui_none", 0, 1, &mut v, &mut none, &mut st));
         assert_eq!(fd(&v, "m_BestFit"), 0);
         // Every hinted label is in a bundle the server rebuilds.
         let targets = targets(&Translations::embedded().unwrap());
-        for k in ["bestFit", "wrap", "nameBox", "lineBox"] {
+        for k in ["bestFit", "wrap", "nameBox", "lineBox", "lineFit"] {
             for id in doc[k].as_array().unwrap() {
                 let (b, _, _) = parse(id.as_str().unwrap());
                 assert!(targets.contains(&b), "{b} is rebuilt");
             }
         }
+        for k in ["widthBox", "widen"] {
+            for (id, w) in doc[k].as_object().unwrap() {
+                let (b, _, _) = parse(id);
+                assert!(targets.contains(&b), "{b} is rebuilt");
+                assert!(w.as_f64().unwrap() >= 16.0, "{id}: {w}");
+            }
+        }
+    }
+
+    #[test]
+    fn scene_edits_are_valid() {
+        // Every edit is in a bundle the server rebuilds, and `set` keeps the stored number type.
+        let targets = targets(&Translations::embedded().unwrap());
+        let e = edits();
+        let ids = e
+            .hide
+            .iter()
+            .chain(e.move_to.iter().flat_map(|(a, b)| [a, b]))
+            .chain(e.set.iter().map(|(id, _, _)| id));
+        for id in ids {
+            let b = id.split(':').next().unwrap();
+            assert!(targets.iter().any(|t| t == b), "{id}: {b} is rebuilt");
+        }
+        assert!(e.set.iter().any(|(id, k, n)| id == "scene_mypage:11:104"
+            && k == "backgroundColor.a"
+            && *n == 0.0));
+        let c = |a| V::Obj(vec![("a".into(), V::F32(a)), ("r".into(), V::F32(1.0))]);
+        let mut v = V::Obj(vec![
+            ("backgroundColor".into(), c(1.0)),
+            ("n".into(), V::I(3)),
+        ]);
+        set_number(&mut v, "backgroundColor.a", 0.0).unwrap();
+        assert!(matches!(v.get("backgroundColor").unwrap().get("a"), Some(V::F32(x)) if *x == 0.0));
+        set_number(&mut v, "n", 5.0).unwrap();
+        assert!(matches!(v.get("n"), Some(V::I(5))));
+        assert!(set_number(&mut v, "n", 0.5).is_err());
+        assert!(set_number(&mut v, "backgroundColor.z", 0.0).is_err());
+    }
+
+    #[test]
+    fn line_fit_keeps_the_designers_range() {
+        let fd = |pairs: &[(&str, i64)]| {
+            V::Obj(
+                pairs
+                    .iter()
+                    .map(|(k, n)| (k.to_string(), V::I(*n)))
+                    .collect(),
+            )
+        };
+        let g = |v: &V, k: &str| v.get(k).unwrap().as_i64().unwrap();
+        // Best fit 18-28 with vertical overflow (chapter titles): 28 down to 14.
+        let mut v = fd(&[
+            ("m_FontSize", 24),
+            ("m_BestFit", 1),
+            ("m_MinSize", 18),
+            ("m_MaxSize", 28),
+            ("m_HorizontalOverflow", 0),
+            ("m_VerticalOverflow", 1),
+        ]);
+        assert!(line_fit_font(&mut v));
+        assert_eq!(
+            (
+                g(&v, "m_MinSize"),
+                g(&v, "m_MaxSize"),
+                g(&v, "m_VerticalOverflow")
+            ),
+            (14, 28, 0)
+        );
+        assert!(!line_fit_font(&mut v), "idempotent");
+        // A smaller minimum of the designer's stays; no best fit: the design size down to half.
+        let mut v = fd(&[
+            ("m_FontSize", 28),
+            ("m_BestFit", 1),
+            ("m_MinSize", 2),
+            ("m_MaxSize", 28),
+        ]);
+        line_fit_font(&mut v);
+        assert_eq!(g(&v, "m_MinSize"), 2);
+        let mut v = fd(&[
+            ("m_FontSize", 24),
+            ("m_BestFit", 0),
+            ("m_MinSize", 0),
+            ("m_MaxSize", 40),
+        ]);
+        line_fit_font(&mut v);
+        assert_eq!((g(&v, "m_MinSize"), g(&v, "m_MaxSize")), (12, 24));
+    }
+
+    fn rect(pos: (f32, f32), size: (f32, f32), pivot: (f32, f32)) -> V {
+        let v2 =
+            |(x, y): (f32, f32)| V::Obj(vec![("x".into(), V::F32(x)), ("y".into(), V::F32(y))]);
+        V::Obj(vec![
+            ("m_AnchorMin".into(), v2((0.5, 0.5))),
+            ("m_AnchorMax".into(), v2((0.5, 0.5))),
+            ("m_AnchoredPosition".into(), v2(pos)),
+            ("m_SizeDelta".into(), v2(size)),
+            ("m_Pivot".into(), v2(pivot)),
+        ])
+    }
+
+    #[test]
+    fn line_boxes_keep_the_anchored_edge() {
+        let y = |v: &V, k: &str| vec2(v, k, "y").unwrap();
+        // System Settings title: 20 px box for a 24 px font, middle-left: centre kept.
+        let mut v = rect((16.0, 0.0), (240.0, 20.0), (0.0, 0.5));
+        assert!(grow_to_line(&mut v, 24.0, 3).unwrap());
+        assert_eq!(
+            (y(&v, "m_AnchoredPosition"), y(&v, "m_SizeDelta")),
+            (0.0, 28.0)
+        );
+        // "Next +1 in": upper-centre, pivot 0.5, 16 px box for 16 px: the top stays at +8.
+        let mut v = rect((44.0, -16.0), (85.0, 16.0), (0.0, 0.5));
+        assert!(grow_to_line(&mut v, 16.0, 1).unwrap());
+        let (p, h) = (y(&v, "m_AnchoredPosition"), y(&v, "m_SizeDelta"));
+        assert_eq!(h, 19.0);
+        assert_eq!(p + h / 2.0, -16.0 + 8.0);
+        // Lower alignment keeps the bottom; a box already one line tall is left alone.
+        let mut v = rect((0.0, 0.0), (100.0, 20.0), (0.5, 0.0));
+        assert!(grow_to_line(&mut v, 24.0, 7).unwrap());
+        assert_eq!(y(&v, "m_AnchoredPosition"), 0.0);
+        let mut v = rect((0.0, -24.0), (500.0, 33.0), (0.5, 0.5));
+        assert!(!grow_to_line(&mut v, 28.0, 0).unwrap());
+        // Widths: left-anchored boxes only.
+        let mut v = rect((16.0, 0.0), (240.0, 20.0), (0.0, 0.5));
+        assert!(set_width(&mut v, 254.0).unwrap());
+        assert_eq!(vec2(&v, "m_SizeDelta", "x"), Some(254.0));
+        assert!(set_width(&mut rect((0.0, 0.0), (500.0, 32.0), (0.5, 0.5)), 600.0).is_err());
     }
 
     #[test]

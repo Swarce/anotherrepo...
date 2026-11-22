@@ -1,6 +1,6 @@
 {
-"about": "Scene edits by object id (bundle:file:pathId; no game text). hide: GameObjects made inactive. moveTo: [RectTransform, slot]: the RectTransform takes the anchors and position the slot RectTransform had in the original file. Options menu (scene_option file 9, BuildPlayer-OptionUI): Btn_Option7 (Achievements, Google Play Games) is hidden and Btn_Option8..15 move back one place in the 3-column grid. See docs/research/29-debloat.md.",
-"hide": ["scene_option:9:25"],
+"about": "Scene edits by object id (bundle:file:pathId; no game text). hide: GameObjects made inactive. moveTo: [RectTransform, slot]: the RectTransform takes the anchors and position the slot RectTransform had in the original file. Options menu (scene_option file 9, BuildPlayer-OptionUI): Btn_Option7 (Achievements, Google Play Games) is hidden and Btn_Option8..15 move back one place in the 3-column grid. See docs/research/29-debloat.md. Inbox rows (ui_mypage GiftBoxMessageGroup, Build 44): the panel animation UI_GiftBox_Panel_On always shows ReceivePeriod, also for presents without an end date (our server sends indefinitely: 1 for every present), so its label (Txt_ReceivePeriodLabel) and day unit (Txt_ReceivePeriodValue) are hidden and only Txt_NoLimitLabel shows. See docs/LOCALIZATION.md. set: [object, dotted field, number]: a numeric field of a component takes that value. Notices web view (scene_mypage file 11, BuildPlayer-InformationUI, WebView_Info BaseWebView): backgroundColor alpha 0, so the strip of the web view that runs past the Notices box on a phone with a camera cutout (the plugin sizes it from the whole panel) is transparent and our page draws only inside the box. See docs/research/27-support-and-news.md 2.3.",
+"hide": ["scene_option:9:25", "ui_mypage:0:2512097529633130779", "ui_mypage:0:5230947504975408121"],
 "moveTo": [
 ["scene_option:9:174", "scene_option:9:182"],
 ["scene_option:9:184", "scene_option:9:174"],
@@ -10,5 +10,8 @@
 ["scene_option:9:169", "scene_option:9:185"],
 ["scene_option:9:183", "scene_option:9:169"],
 ["scene_option:9:193", "scene_option:9:183"]
+],
+"set": [
+["scene_mypage:11:104", "backgroundColor.a", 0]
 ]
 }

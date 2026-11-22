@@ -15,6 +15,31 @@
  },
  "posts": [
   {
+   "id": "build-044",
+   "build": 44,
+   "date": "2026-11-22",
+   "title": "Build 44",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• The Notices page stays inside its box and scales with the screen."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• English text that spilled out of its box now fits: chapter and quest titles, the battle start banner and pause menu, System Settings, Town Info, the AP timer, purchase dialogs and many more."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• The Inbox no longer shows \"Expires in\" on gifts that never expire."
+    },
+    {
+     "kind": "paragraph",
+     "text": "• The battle pause menu and Quest Results show the clear condition instead of the stage name."
+    }
+   ]
+  },
+  {
    "id": "build-043",
    "build": 43,
    "date": "2026-11-22",

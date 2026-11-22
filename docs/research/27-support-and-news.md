@@ -84,3 +84,55 @@ Read in the 3.12.0 client: H = read in the disassembly, M = inferred. Code:
   opens the Notices once on this build (`Progress.notes_seen_build`). Kept per build, not per
   post: news.json is built into the server, so new posts only arrive with a new build.
 - Not run on a device: the three tabs loading our pages, and the tap toggling a post.
+
+### 2.3 Where the web view sits, and how big it is (H, Build 44)
+
+- The Notices web view is `WebView_Info` (`scene_mypage`, path id 104), a `BaseWebView` with:
+  alpha 1, background colour white, spinner on ("Loading"), vertical and horizontal scroll bars
+  on, back button / bounces / zoom off, **immersiveMode on**, `DefaultScreenResolution`
+  1280x720, offsets top 190, bottom 38, left 40, right 40.
+- `BaseWebView.Start` 0x1074AE4 turns the offsets into UniWebView insets in device pixels:
+  top/bottom × `DefaultScreenHeight/720`, left/right × `DefaultScreenWidth/1280`
+  (`ScreenManager.Default*` = `Screen.width/height` read once at start, before
+  `SetResolution`). For exactly 2160x1080, 2246x1080 and 2880x1440 it adds `73 × W/1280` to left
+  and right (float at 0x2241240). The UI itself (CanvasScaler 1280x720, Expand) scales by the
+  height on a wide screen and is centred, so the side insets only match the box on those sizes.
+- Java side (`classes.dex`, `UniWebViewDialog.updateContentSize`): the web view is a dialog window
+  at x = left, y = top, size = `displaySize()` − insets; with immersive mode on, `displaySize()`
+  is `Display.getRealSize` (the whole panel, cutout included), not the area Unity draws in.
+- Galaxy S22 (2340x1080, DPR 3; `shots-b43/notices_empty.jpg`): the game draws in about
+  2246x1080 beside a ~94 px cutout strip, so Unity takes the 2246 case (left = right = 199 px,
+  top 285, bottom 57), but the window is 2340 − 398 = 1942 px wide: about one cutout width
+  wider than the box (inner frame ~1819 px, x 308..2128 on screen), so it runs past the box on
+  one side. Inside, the page is 1942x738 px = about 647x246 CSS px.
+- Web view settings: the plugin sets only JavaScript, DOM storage, database, file access and
+  zoom controls off; no `setUseWideViewPort`, `setLoadWithOverviewMode`, `setTextZoom` or
+  `setInitialScale`, and nothing in C# calls `UniWebView.SetUseWideViewPort`,
+  `LoadWithOverviewMode` or `SetTransparentBackground`. So the page is laid out at the view's own
+  CSS width, never zoomed out, and its own background covers the white web view.
+- Our pages (Build 44): viewport `width=device-width, initial-scale=1, maximum-scale=1`; the
+  root font size is `clamp(13px, min(2.5vw, 6.4vh), 22px)` and every other size is in em, so the
+  type follows the view (about 16px in the S22 box, 22px on a tablet); `overflow-x` hidden on
+  html/body, `overflow-wrap: anywhere`, images and tables at most 100% wide. Checked with
+  Playwright at 607x247, 647x246, 731x246, 686x281, 960x524 and 420x200 CSS px (desktop and
+  mobile viewport modes): no element past the view and no sideways scroll, also with a
+  150-letter word and a 3000 px image.
+- The window itself: `UniWebViewDialog` is a full-screen dialog with a transparent window
+  (`ColorDrawable(0)`); the web view's own background is `BaseWebView.backgroundColor`, passed
+  as `Color.argb(a×255, …)` to `setBackgroundColor`. Build 44 sets its alpha to 0 with a scene
+  edit (`ui_edits.json` `set`: `scene_mypage:11:104` `backgroundColor.a` 0), and the page paints
+  only `main`: `html`/`body` are transparent and `main` is inset on both sides by `--edge`, which
+  the page script sets to the view's width minus the box the game designed for it (1280 − 40 − 40
+  of a 1280x720 layout = 5/3 of the screen height; `min(screen.width, screen.height)` in case a
+  web view reports the portrait size), at most a fifth of the view. On the S22 that is
+  647 − 600 = 47 CSS px, so the painted page spans 47..600 of the 647 px view and stays inside the
+  box whether the extra strip is on the left or on the right; the strip shows the game's box
+  through it. On a 16:9 phone or a 4:3 tablet `--edge` is 0 (the window is the box). Checked with
+  Playwright (screen and view sizes of the S22, a 1920x1080 and a 2400x1080 phone and a 2048x1536
+  tablet; the S22 render laid over `notices_empty.jpg` at both possible window positions).
+- Not run on a device: the transparent background, and whether the dialog's x is counted from
+  the panel edge or the cutout edge (either way the painted page is inside the box). If the
+  alpha edit did not take, the strip would show white instead of the game.
+- Not fixed: the window's own size. A client code patch could size it to the box (right inset +=
+  real width − Unity width), but the page and the transparent strip already keep what is drawn
+  inside the box.

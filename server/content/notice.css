@@ -1,28 +1,45 @@
 /* JDR Offline notice page style. Our own CSS: a lookalike of the retail notice layout
    (dark page, gold-framed collapsible headlines, date above title, black body box).
-   No retail images or stylesheet bytes; every shape is drawn with CSS. */
-:root { color-scheme: dark; }
+   No retail images or stylesheet bytes; every shape is drawn with CSS.
+   Fits any web view: the Notices box is a small, wide view (about 650x250 CSS px on a
+   2340x1080 phone, 960x520 on a tablet; docs/research/27-support-and-news.md §2.3), so the
+   type scales with the view (the root size follows its width and height, within 13-22px),
+   every size below is in em, nothing is wider than the view and long words wrap.
+   On a phone with a camera cutout the client makes the web view about one cutout wider than
+   the box (§2.3). The page itself is transparent there (the web view's background is made
+   transparent by a scene edit, ui_edits.json) and only `main` is painted, inset on both sides
+   by --edge: the script sets it to how much wider the view is than the box the game designed
+   for it (5/3 of the screen height), so the painted page stays inside the box whichever side
+   the extra strip is on. */
+:root { color-scheme: dark; font-size: clamp(13px, min(2.5vw, 6.4vh), 22px); }
 * { box-sizing: border-box; }
-body { margin: 0; padding: 14px 10px; background: #1d0600; color: #fff;
-  font: 20px/1.35 Arial, Helvetica, sans-serif; -webkit-user-select: none; }
-main { max-width: 1200px; margin: 0 auto; }
-.notice { margin-bottom: 14px; }
-.headline { display: block; position: relative; width: 100%; min-height: 80px; margin: 0;
-  padding: 8px 64px 8px 40px; border: 2px solid #b8862b; border-radius: 6px 30px 30px 6px;
-  background: linear-gradient(#5a3410, #2b1405 55%, #3d1f08); color: #fff; text-align: left;
-  font: inherit; cursor: pointer; box-shadow: inset 0 0 0 2px #2a1203, 0 2px 0 #000; }
-.headline::before { content: ""; position: absolute; left: 10px; top: 50%; width: 16px; height: 16px;
-  margin-top: -8px; transform: rotate(45deg); background: #d9a536; box-shadow: 0 0 0 2px #2a1203; }
-.headline::after { content: ""; position: absolute; right: 22px; top: 50%; margin-top: -6px;
-  border: 10px solid transparent; border-top: 12px solid #ffd700; transition: transform .15s; }
-.headline[aria-expanded="true"]::after { transform: rotate(180deg) translateY(10px); }
-.date { display: block; color: #ffd700; font-size: 16px; font-weight: bold; }
-.title { display: block; font-size: 23px; font-weight: bold; line-height: 1.25; }
-.content { margin: -4px 20px 10px 38px; padding: 16px; background: #000;
-  border: 2px solid #503115; border-top: 0; }
+html, body { width: 100%; max-width: 100%; overflow-x:hidden; }
+html { background: transparent; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { margin: 0; padding: 0; background: transparent; color: #fff;
+  font: 1rem/1.35 Arial, Helvetica, sans-serif; -webkit-user-select: none; user-select: none;
+  overflow-wrap: anywhere; word-wrap: break-word; -webkit-tap-highlight-color: transparent; }
+main { display: block; max-width: 100%; min-height: 100vh; margin: 0 var(--edge, 0px);
+  padding: .55em max(.6em, 1.5vw); background: #1d0600; }
+.notice { margin-bottom: .6em; max-width: 100%; }
+.headline { display: block; position: relative; width: 100%; max-width: 100%; min-height: 3.2em;
+  margin: 0; padding: .35em 2.9em .35em 2em; border: 2px solid #b8862b;
+  border-radius: .3em 1.5em 1.5em .3em; background: linear-gradient(#5a3410, #2b1405 55%, #3d1f08);
+  color: #fff; text-align: left; font: inherit; overflow-wrap: anywhere; cursor: pointer;
+  box-shadow: inset 0 0 0 2px #2a1203, 0 2px 0 #000; }
+.headline::before { content: ""; position: absolute; left: .55em; top: 50%; width: .75em; height: .75em;
+  margin-top: -.375em; transform: rotate(45deg); background: #d9a536; box-shadow: 0 0 0 2px #2a1203; }
+.headline::after { content: ""; position: absolute; right: 1em; top: 50%; margin-top: -.3em;
+  border: .5em solid transparent; border-top: .6em solid #ffd700; transition: transform .15s; }
+.headline[aria-expanded="true"]::after { transform: rotate(180deg) translateY(.5em); }
+.date { display: block; color: #ffd700; font-size: .8em; font-weight: bold; }
+.title { display: block; font-size: 1.15em; font-weight: bold; line-height: 1.2; }
+.content { margin: -.2em 1em .5em 1.8em; padding: .7em .8em; background: #000;
+  border: 2px solid #503115; border-top: 0; max-width: 100%; overflow-wrap: anywhere; }
 .content[hidden] { display: none; }
-.content p { margin: 0 0 16px; } .content p:last-child { margin-bottom: 0; }
-.content .subhead { font-size: 24px; font-weight: bold; margin-bottom: 4px; }
-.content .note { color: #a9a9a9; font-size: 17px; }
-.content img.banner { display: block; width: 60%; height: auto; margin: 0 0 10px; }
-@media (max-width: 650px) { .headline { padding-right: 52px; } .title { font-size: 18px; } .content { margin: -4px 8px 10px 16px; } }
+.content p { margin: 0 0 .75em; } .content p:last-child { margin-bottom: 0; }
+.content .subhead { font-size: 1.15em; font-weight: bold; margin-bottom: .2em; }
+.content .note { color: #a9a9a9; font-size: .85em; }
+.content img.banner { display: block; width: 60%; max-width: 100%; height: auto; margin: 0 0 .5em; }
+img, table, pre { max-width: 100%; }
+pre { white-space: pre-wrap; }
+@media (max-width: 480px) { .content { margin-left: .8em; margin-right: .4em; } }
