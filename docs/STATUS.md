@@ -2,6 +2,32 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 44 — the English UI fits: notices, titles, settings, dialogs (branch `wip/b44`)
+
+### What I showed
+- Screenshots of text overflowing its boxes, and the Notices page running past its box.
+
+### What changed
+- **Notices:** the game sizes its web view from the whole panel (immersive mode), so on wide
+  phones like the S22 the window is about one camera-cutout wider than the box. The page now scales
+  with the view, the web view's background is transparent (new scene edit kind `set`:
+  `WebView_Info` `backgroundColor.a` = 0), and the painted page keeps to the box the game designed
+  (docs/research/27 §2.3). Checked by rendering at the S22 size and others.
+- **Text:** most overflowing labels wrapped below a one-line box, which also stopped the game's
+  shrink-to-fit; they now shrink onto one line. Chapter and quest titles (stage list, START
+  banner, pause header), System Settings rows, Town Info values, the AP timer and about 70 more
+  labels found by a scan (docs/LOCALIZATION.md, Build 44).
+- **Inbox:** the "Expires in" group is hidden on gifts without an end date.
+- **Clear condition:** the stage text is now the clear-condition label ("Defeat all enemies",
+  "Defeat the boss"), as the START banner shows, not the stage name.
+- Build number 44, server marker `JDR_EMBEDDED_SERVER_b044`.
+
+### Device checklist
+- [ ] Notices: the page sits inside the box on the S22, with no white strip beside it
+- [ ] The screens from the screenshots: titles on one line, settings rows, Town Info, AP timer
+- [ ] Some labels shrink a lot (e.g. "Owned" in cost dialogs at 11 px): tell me any that read badly
+- [ ] Pause menu and Quest Results show the clear condition
+
 ## Build 43 — two wiki research rounds merged (branch `wip/b43`)
 
 ### What I asked for
