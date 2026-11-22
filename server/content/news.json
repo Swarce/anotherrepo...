@@ -15,6 +15,19 @@
  },
  "posts": [
   {
+   "id": "build-045",
+   "build": 45,
+   "date": "2026-11-22",
+   "title": "Build 45",
+   "category": "update",
+   "blocks": [
+    {
+     "kind": "paragraph",
+     "text": "• The Notices page now fills its box, without the dark strips beside it."
+    }
+   ]
+  },
+  {
    "id": "build-044",
    "build": 44,
    "date": "2026-11-22",
