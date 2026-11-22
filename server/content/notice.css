@@ -8,9 +8,10 @@
    On a phone with a camera cutout the client makes the web view about one cutout wider than
    the box (§2.3). The page itself is transparent there (the web view's background is made
    transparent by a scene edit, ui_edits.json) and only `main` is painted, inset on both sides
-   by --edge: the script sets it to half of how much wider the view is than the box the game designed
-   for it (5/3 of the screen height), so the painted page stays inside the box whichever side
-   the extra strip is on. */
+   by --edge-l / --edge-r: the script places it between the box's thin inner border lines, which
+   span 1.683 x the screen height (measured on the S22); when the window starts at a camera
+   cutout it ends about 4 % of the height short of the panel edge, so the box sits m/2 right of
+   the window centre (docs/research/27 §2.4). */
 :root { color-scheme: only light; font-size: clamp(13px, min(2.5vw, 6.4vh), 22px); }
 * { box-sizing: border-box; }
 html, body { width: 100%; max-width: 100%; overflow-x:hidden; }
@@ -18,7 +19,7 @@ html { background: transparent; -webkit-text-size-adjust: 100%; text-size-adjust
 body { margin: 0; padding: 0; background: transparent; color: #fff;
   font: 1rem/1.35 Arial, Helvetica, sans-serif; -webkit-user-select: none; user-select: none;
   overflow-wrap: anywhere; word-wrap: break-word; -webkit-tap-highlight-color: transparent; }
-main { display: block; max-width: 100%; min-height: 100vh; margin: 0 var(--edge, 0px);
+main { display: block; max-width: 100%; min-height: 100vh; margin: 0 var(--edge-r, 0px) 0 var(--edge-l, 0px);
   padding: .55em max(.6em, 1.5vw); background: #1d0600; }
 .notice { margin-bottom: .6em; max-width: 100%; }
 .headline { display: block; position: relative; width: 100%; max-width: 100%; min-height: 3.2em;

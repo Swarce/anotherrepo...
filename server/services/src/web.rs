@@ -125,12 +125,12 @@ pub const NEWS_JSON: &str = include_str!("../../content/news.json");
 const NOTICE_CSS: &str = include_str!("../../content/notice.css");
 /// Collapses every post but the first. Without it (scripts off) every post stays open: the page
 /// is sent expanded and only this script folds it (docs/research/27-support-and-news.md §2.2).
-/// A tap toggles a post. First the script sets `--edge` (notice.css): how
-/// much wider the view is than the box the game designed for it, 1200x720 of its 1280x720 layout
-/// (Notices offsets 40 left and right), so 5/3 of the screen height on a wide screen. Only on a
-/// phone whose cutout widens the web view (docs/research/27-support-and-news.md §2.3) is it more
-/// than 0; at most a fifth of the view.
-const NOTICE_JS: &str = "(function(){function fit(){var s=window.screen,h=Math.min(s.width,s.height),w=window.innerWidth,b=h*5/3,e=(w-b)/2+b*0.015;e=e>1?Math.min(e,w*0.2):0;document.documentElement.style.setProperty('--edge',Math.floor(e)+'px');}fit();window.addEventListener('resize',fit);})();document.querySelectorAll('.headline').forEach(function(b,i){var s=document.getElementById(b.getAttribute('aria-controls'));function set(o){s.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');}set(i===0);b.addEventListener('click',function(){set(s.hidden);});});";
+/// A tap toggles a post. First the script sets `--edge-l` / `--edge-r` (notice.css) so the painted
+/// page reaches the box's thin inner border lines, which span 1.683 x the screen height; when the
+/// window starts at a camera cutout (it then ends about 4 % of the height short of the panel
+/// edge) the box sits half that margin right of the window centre (docs/research/27 §2.3-2.4).
+/// Each inset is at most a fifth of the view, and 0 when the view is not wider than the box.
+const NOTICE_JS: &str = "(function(){function fit(){var s=window.screen,h=Math.min(s.width,s.height),sw=Math.max(s.width,s.height),w=window.innerWidth,b=h*1.683,m=h*0.04,t=(w-b)/2,k=(sw-w>3*m)?m/2:0,l=t+k,r=t-k,d=document.documentElement.style;if(t<=1){l=0;r=0;}l=Math.max(0,Math.min(l,w*0.2));r=Math.max(0,Math.min(r,w*0.2));d.setProperty('--edge-l',Math.round(l)+'px');d.setProperty('--edge-r',Math.round(r)+'px');}fit();window.addEventListener('resize',fit);})();document.querySelectorAll('.headline').forEach(function(b,i){var s=document.getElementById(b.getAttribute('aria-controls'));function set(o){s.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');}set(i===0);b.addEventListener('click',function(){set(s.hidden);});});";
 
 #[derive(serde::Deserialize)]
 struct News {
@@ -457,7 +457,7 @@ mod tests {
         // The web view is wider than the box (docs/research/27 §2.3): the page is inset on each
         // side by HALF of the extra width (plus a small margin), and asks for a light scheme so
         // the web view does not paint its dark default (#121212) around the page.
-        assert!(NOTICE_JS.contains("e=(w-b)/2"));
+        assert!(NOTICE_JS.contains("t=(w-b)/2"));
         assert!(NOTICE_CSS.contains("color-scheme: only light"));
         assert!(!NOTICE_CSS.contains("color-scheme: dark"));
     }
@@ -483,12 +483,12 @@ mod tests {
             "text-size-adjust: 100%",
             "img, table, pre { max-width: 100%; }",
             "html { background: transparent;",
-            "margin: 0 var(--edge, 0px)",
+            "margin: 0 var(--edge-r, 0px) 0 var(--edge-l, 0px)",
         ] {
             assert!(css.contains(rule), "missing: {rule}");
         }
-        // Only `main` is painted, inset by --edge, which the script sets from the view and screen.
-        assert!(NOTICE_JS.contains("setProperty('--edge'") && NOTICE_JS.contains("h*5/3"));
+        // Only `main` is painted, inset by --edge-l/-r, which the script sets from the view and screen.
+        assert!(NOTICE_JS.contains("setProperty('--edge-l'") && NOTICE_JS.contains("b=h*1.683"));
         // Fixed sizes only for hairlines (borders, shadows), the root clamp and the breakpoint;
         // every other length is in em, rem, % or view units.
         let fixed: Vec<&str> = css

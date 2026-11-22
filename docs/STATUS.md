@@ -10,7 +10,8 @@ Newest build first. Nothing here is "fixed" or "working on device" until a devic
 
 ### What changed
 - The page was inset by the whole extra width of the web view on each side (twice too much); it
-  is now half the extra width plus 1.5 % of the box, so it fills the box (docs/research/27 §2.4).
+  now reaches the box's thin inner border lines on both sides, measured on the S22 screenshot
+  (docs/research/27 §2.4).
 - `color-scheme: dark` made the web view paint its dark default (#121212) around the page; the
   page now asks for a light scheme, so the transparent web view shows the game there.
 - Build number 45, server marker `JDR_EMBEDDED_SERVER_b045`.

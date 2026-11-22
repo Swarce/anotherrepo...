@@ -145,7 +145,8 @@ Read in the 3.12.0 client: H = read in the disassembly, M = inferred. Code:
   window centre.
 - Build 44 inset the page by the whole extra width on each side (twice too much), and its
   `color-scheme: dark` made Chromium paint its dark default (#121212) around the page. Build 45
-  insets by half the extra width plus 1.5 % of the box, and asks for a light scheme so the
+  places the page between the box's thin inner border lines (width 1.683 × screen height, shifted
+  half the window's 4 %-of-height right margin when the window starts at a cutout), and asks for a light scheme so the
   transparent web view shows the game around the page. Rendered at the measured window and laid
   over the empty-box screenshot: the page sits inside the box frame.
 
