@@ -2,6 +2,40 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 43 — two wiki research rounds merged (branch `wip/b43`)
+
+### What I asked for
+- Research agents on the wikis and other public sources for everything we still guess; then a
+  second round. The PC playtest's author allowed reuse of what we took from it (CREDITS.md).
+
+### What changed
+- **Research** (private records in `local/wiki-raw/research-b43/` and `research-b44/`, each fact
+  with its page, capture and access date, verified by a second pass): Gamerch (live and archived),
+  JoJoWiki, ShoutWiki, the atwiki (pages and archived RSS feeds), the official in-game notice
+  archive (jdr.channel.or.jp via Wayback), AppMedia, Bahamut, Reddit and a player blog.
+- **Statues:** 3041_04 and 3180_62 sourced; Lv1 conflicts checked; traits for 277 of 292;
+  tactical speed/evasion/accuracy/crit for 17 (sent in place of the fixed defaults).
+- **Action battle:** wiki kits for 160 of 292 statues (+47), 10 held finishers resolved; 2 more
+  action leaders.
+- **Tactical:** 57 more skill cool turns, 10 more leader rows, assist conditions for 179 statues.
+- **Story:** missions for 116 action stages; AP and level for chapters 23–28; rewards for 170
+  tactical stages (1 Diamond Coin first clear); 1 Diamond Coin on action chapter finales.
+- **Arena / Labyrinth:** season rewards follow the official ranking bands; Labyrinth 10/15/20
+  floors by grade, +100 Mentality a day, room costs for 51 rooms.
+- **JoJo Links:** 57 served (053, 064, 067, 076 added), 21 held.
+- **PC-derived values:** the Mind capacity base of 16 is now wiki-sourced; 116 of 130 action story
+  stages have wiki missions instead of the PC choice.
+- Build number 43, server marker `JDR_EMBEDDED_SERVER_b043`.
+
+### To confirm
+- The Arena "gold ticket" read as item 282 and the top band's 10-pull paid as 10 single tickets.
+- Six more skill Minds came from fixing the Mind-skill parser (the game's own labels).
+
+### Device checklist
+- [ ] Log: `[boot] jdr embedded build 43`
+- [ ] Notices show the Build 43 post; Arena rewards and Labyrinth floors look right
+- [ ] Action kits and leaders for newly sourced statues
+
 ## Build 42 — growth tree squares, shops, action missions and assists, Town unlocks, notices (branch `wip/b42`)
 
 ### What I asked for

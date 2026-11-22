@@ -11,7 +11,7 @@ No download: you turn your own copy of the game into the offline version on your
 
 ![Platform: Android](https://img.shields.io/badge/platform-Android-3DDC84?logo=android&logoColor=white)
 ![Game: 3.12.0](https://img.shields.io/badge/game-3.12.0-555555)
-![Build: 42](https://img.shields.io/badge/build-42-orange)
+![Build: 43](https://img.shields.io/badge/build-43-orange)
 [![License: MPL 2.0](https://img.shields.io/badge/license-MPL--2.0-brightgreen)](LICENSE)
 
 [Quick start](#getting-started) · [Player setup](docs/PLAYER-SETUP.md) · [Status](#status) · [Architecture](docs/ARCHITECTURE.md) · [Roadmap](docs/ROADMAP.md)
@@ -80,7 +80,7 @@ patcher. Multiplayer is not part of it: the clan room is hidden, and PvP and rai
 
 ## Status
 
-Current build: **42**. The game boots offline on a Samsung Galaxy S22 (Android 16), reaches My Page, plays tactical
+Current build: **43**. The game boots offline on a Samsung Galaxy S22 (Android 16), reaches My Page, plays tactical
 battles and shows the English text and art. Every build lists what changed and what to check on a phone in
 [docs/STATUS.md](docs/STATUS.md). Nothing counts as fixed until a device log or recording shows it.
 
