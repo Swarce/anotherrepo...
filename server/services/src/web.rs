@@ -130,7 +130,7 @@ const NOTICE_CSS: &str = include_str!("../../content/notice.css");
 /// (Notices offsets 40 left and right), so 5/3 of the screen height on a wide screen. Only on a
 /// phone whose cutout widens the web view (docs/research/27-support-and-news.md §2.3) is it more
 /// than 0; at most a fifth of the view.
-const NOTICE_JS: &str = "(function(){function fit(){var s=window.screen,h=Math.min(s.width,s.height),w=window.innerWidth,e=w-h*5/3;e=e>2?Math.min(e,w*0.2):0;document.documentElement.style.setProperty('--edge',Math.floor(e)+'px');}fit();window.addEventListener('resize',fit);})();document.querySelectorAll('.headline').forEach(function(b,i){var s=document.getElementById(b.getAttribute('aria-controls'));function set(o){s.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');}set(i===0);b.addEventListener('click',function(){set(s.hidden);});});";
+const NOTICE_JS: &str = "(function(){function fit(){var s=window.screen,h=Math.min(s.width,s.height),w=window.innerWidth,b=h*5/3,e=(w-b)/2+b*0.015;e=e>1?Math.min(e,w*0.2):0;document.documentElement.style.setProperty('--edge',Math.floor(e)+'px');}fit();window.addEventListener('resize',fit);})();document.querySelectorAll('.headline').forEach(function(b,i){var s=document.getElementById(b.getAttribute('aria-controls'));function set(o){s.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');}set(i===0);b.addEventListener('click',function(){set(s.hidden);});});";
 
 #[derive(serde::Deserialize)]
 struct News {
@@ -452,6 +452,16 @@ mod tests {
     /// The pages fit any web view: the viewport is the view's width at scale 1, the type scales
     /// with the view within readable bounds, sizes are relative (no fixed pixel boxes), nothing
     /// is set wider than the view, sideways scrolling is off and long words wrap.
+    #[test]
+    fn notice_page_insets_by_half_the_extra_width() {
+        // The web view is wider than the box (docs/research/27 §2.3): the page is inset on each
+        // side by HALF of the extra width (plus a small margin), and asks for a light scheme so
+        // the web view does not paint its dark default (#121212) around the page.
+        assert!(NOTICE_JS.contains("e=(w-b)/2"));
+        assert!(NOTICE_CSS.contains("color-scheme: only light"));
+        assert!(!NOTICE_CSS.contains("color-scheme: dark"));
+    }
+
     #[test]
     fn notice_pages_fit_the_view() {
         for rel in [NOTES_PAGE, MAINTENANCE_PAGE, ABOUT_PAGE] {

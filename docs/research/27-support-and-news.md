@@ -136,3 +136,16 @@ Read in the 3.12.0 client: H = read in the disassembly, M = inferred. Code:
 - Not fixed: the window's own size. A client code patch could size it to the box (right inset +=
   real width − Unity width), but the page and the transparent strip already keep what is drawn
   inside the box.
+
+### 2.4 Build 45 correction (device screenshot of Build 44)
+
+- Measured on the S22 screenshot: the web view window spans device x 98–2297 and y 284–1021
+  (2199 × 737 px); the box's inner area is about x 310–2127. The window starts at the camera-cutout
+  edge and ends 43 px before the panel edge, so the box centre sits about 21 px right of the
+  window centre.
+- Build 44 inset the page by the whole extra width on each side (twice too much), and its
+  `color-scheme: dark` made Chromium paint its dark default (#121212) around the page. Build 45
+  insets by half the extra width plus 1.5 % of the box, and asks for a light scheme so the
+  transparent web view shows the game around the page. Rendered at the measured window and laid
+  over the empty-box screenshot: the page sits inside the box frame.
+

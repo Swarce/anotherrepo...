@@ -2,6 +2,22 @@
 
 Newest build first. Nothing here is "fixed" or "working on device" until a device log shows it.
 
+## Build 45 — the Notices page fills its box (branch `wip/b45`)
+
+### What I showed
+- Build 44 screenshot: the notice page was smaller, but still not fitting the box, with dark
+  strips on both sides.
+
+### What changed
+- The page was inset by the whole extra width of the web view on each side (twice too much); it
+  is now half the extra width plus 1.5 % of the box, so it fills the box (docs/research/27 §2.4).
+- `color-scheme: dark` made the web view paint its dark default (#121212) around the page; the
+  page now asks for a light scheme, so the transparent web view shows the game there.
+- Build number 45, server marker `JDR_EMBEDDED_SERVER_b045`.
+
+### Device checklist
+- [ ] Notices: the page fills the box; the strips beside it show the game, not grey or white
+
 ## Build 44 — the English UI fits: notices, titles, settings, dialogs (branch `wip/b44`)
 
 ### What I showed

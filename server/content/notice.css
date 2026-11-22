@@ -8,10 +8,10 @@
    On a phone with a camera cutout the client makes the web view about one cutout wider than
    the box (§2.3). The page itself is transparent there (the web view's background is made
    transparent by a scene edit, ui_edits.json) and only `main` is painted, inset on both sides
-   by --edge: the script sets it to how much wider the view is than the box the game designed
+   by --edge: the script sets it to half of how much wider the view is than the box the game designed
    for it (5/3 of the screen height), so the painted page stays inside the box whichever side
    the extra strip is on. */
-:root { color-scheme: dark; font-size: clamp(13px, min(2.5vw, 6.4vh), 22px); }
+:root { color-scheme: only light; font-size: clamp(13px, min(2.5vw, 6.4vh), 22px); }
 * { box-sizing: border-box; }
 html, body { width: 100%; max-width: 100%; overflow-x:hidden; }
 html { background: transparent; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
